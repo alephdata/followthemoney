@@ -14,8 +14,11 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'six',
         'normality',
-        'pyyaml'
+        'pyyaml',
+        'countrynames>=1.2',
+        'phonenumbers>=8.3.3',
     ],
     test_suite='nose.collector',
     entry_points={

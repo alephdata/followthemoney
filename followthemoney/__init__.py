@@ -1,8 +1,11 @@
 import os
 
+from followthemoney.model import Model
+
 model_path = os.path.dirname(__file__)
 model_path = os.path.join(model_path, 'schema')
 
-print model_path
+# Data model singleton
+model = Model(model_path)
 
-model = None
+__all__ = [model]

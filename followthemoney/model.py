@@ -1,15 +1,27 @@
+import os
+import yaml
+
+from followthemoney.schema import Schema
+
 
 class Model(object):
     """A collection of schemata."""
 
-    def __init__(self, data):
-        self.schemata = {}
+    def __init__(self, path):
+        self.path = path
 
-        # for section in Schema.SECTIONS:
-        #     for name, sconfig in data.get(section, {}).items():
-        #         if name in self.schemata:
-        #             raise TypeError("Duplicate schema name: %r" % name)
-        #         self.schemata[name] = Schema(self, section, name, sconfig)
+    @property
+    def schemata(self):
+        if not hasattr(self, '_schemata'):
+            self._schemata = {}
+            for (path, _, filenames) in os.walk(self.path):
+                for filename in filenames:
+                    filepath = os.path.join(path, filename)
+                    with open(filepath, 'r') as fh:
+                        data = yaml.load(fh)
+                        for name, config in data.items():
+                            self.schemata[name] = Schema(self, name, config)
+        return self._schemata
 
     def get(self, name):
         schema = self.schemata.get(name)
@@ -53,4 +65,4 @@ class Model(object):
         return iter(self.schemata.values())
 
     def __repr__(self):
-        return '<Model(%r)>' % self.schemata
+        return '<Model(%r)>' % self.schemata.values()

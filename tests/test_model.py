@@ -5,4 +5,7 @@ from followthemoney import model
 class ModelTestCase(TestCase):
 
     def test_model_path(self):
-        print model
+        assert model.path.endswith('/schema'), model.path
+
+    def test_model_basics(self):
+        assert model.schemata['Thing'], model.schemata

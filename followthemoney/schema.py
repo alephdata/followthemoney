@@ -1,7 +1,4 @@
-from normality import stringify
-
-from aleph.util import dict_list, ensure_list
-from aleph.schema.types import resolve_type
+from banal import ensure_list
 
 from followthemoney.property import Property
 from followthemoney.exc import InvalidData
@@ -13,39 +10,32 @@ class Schema(object):
     Schema items define the entities and links available in the model.
     """
 
-    ENTITY = 'entities'
-    LINK = 'links'
-    SECTIONS = [ENTITY, LINK]
-
-    def __init__(self, schemata, section, name, data):
-        assert section in self.SECTIONS, section
-        self._schemata = schemata
-        self.section = section
+    def __init__(self, model, name, data):
+        self._model = model
         self.name = name
         self.data = data
         self.label = data.get('label', name)
         self.plural = data.get('plural', self.label)
         self.icon = data.get('icon')
+
         # Do not show in listings:
         self.hidden = data.get('hidden', False)
+
         # Try to perform fuzzy matching. Fuzzy similarity search does not
         # make sense for entities which have a lot of similar names, such
         # as land plots, assets etc.
         self.fuzzy = data.get('fuzzy', True)
-        self._extends = dict_list(data, 'extends')
+        self._extends = ensure_list(data.get('extends'))
 
         self._own_properties = []
         for name, prop in data.get('properties', {}).items():
             self._own_properties.append(Property(self, name, prop))
 
-        self.forward = data.get('forward', self.label)
-        self.reverse = data.get('reverse', self.label)
-
     @property
     def extends(self):
         """Return the inherited schemata."""
         for base in self._extends:
-            yield self._schemata.get(base)
+            yield self._model.get(base)
 
     @property
     def schemata(self):
@@ -103,9 +93,6 @@ class Schema(object):
             'fuzzy': self.fuzzy,
             'properties': list(self.properties)
         }
-        if self.section == Schema.LINK:
-            data['forward'] = self.forward
-            data['reverse'] = self.reverse
         return data
 
     def __repr__(self):

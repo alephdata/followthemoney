@@ -1,0 +1,9 @@
+language: python
+python:
+  - "2.7"
+  - "3.6"
+install:
+  - pip install -e .
+  - pip install coverage nose
+script:
+  - nosetests --with-coverage --cover-package=followthemoney --cover-erase
