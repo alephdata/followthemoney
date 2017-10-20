@@ -1,4 +1,4 @@
-from banal import ensure_sequence
+from banal import ensure_list
 from normality import stringify
 from followthemoney.types import resolve_type
 
@@ -23,7 +23,7 @@ class Property(object):
         tries to normalize the value to see if it passes strict parsing.
         """
         value, error = [], None
-        for val in ensure_sequence(data):
+        for val in ensure_list(data):
             val = stringify(val)
             if val is None:
                 continue
