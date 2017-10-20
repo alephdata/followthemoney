@@ -1,0 +1,28 @@
+Land:
+  label: Land
+  plural: Lands
+  extends: Asset
+  icon: fa-map
+  fuzzy: false
+  properties:
+    address:
+      label: Address
+      type: address
+    location:
+      label: Location
+    censusBlock:
+      label: Census block
+    cadastralCode:
+      label: Cadastral code
+      type: identifier
+    area:
+      label: Area
+    registrationNumber:
+      label: Registration number
+      type: identifier
+    propertyType:
+      label: Property type
+    landType:
+      label: Land type
+    createDate:
+      label: Record date

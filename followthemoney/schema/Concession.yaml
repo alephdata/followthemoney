@@ -1,0 +1,11 @@
+Concession:
+  label: Concession
+  plural: Concessions
+  extends: Asset
+  icon: fa-th
+  fuzzy: false
+  properties:
+    area:
+      label: Area
+    commodities:
+      label: Commodities

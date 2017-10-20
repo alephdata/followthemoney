@@ -1,0 +1,43 @@
+Thing:
+  hidden: true
+  icon: fa-circle
+  properties:
+    name:
+      label: Name
+      type: name
+      hidden: true
+    summary:
+      label: Summary
+    description:
+      label: Description
+    country:
+      label: Country
+      type: country
+    alias:
+      label: Other name
+      type: name
+      multiple: true
+    previousName:
+      label: Previous name
+      type: name
+      multiple: true
+    weakAlias:
+      label: Weak alias
+      multiple: true
+    sourceUrl:
+      label: Source link
+      type: url
+    icijId:
+      label: ICIJ ID
+    tags:
+      label: Relevancy
+    keywords:
+      label: Keywords
+      multiple: true
+    address:
+      label: Address
+      type: address
+    program: # Used by sanctions
+      label: Program
+    notes:
+      label: Notes

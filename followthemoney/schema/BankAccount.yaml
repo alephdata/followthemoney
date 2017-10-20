@@ -1,0 +1,15 @@
+BankAccount:
+  label: Bank Account
+  plural: Bank Accounts
+  extends: Asset
+  icon: fa-bank
+  properties:
+    bankName:
+      label: Bank Name
+    accountNumber:
+      label: Account Number
+      type: identifier
+    accountType:
+      label: Account Type
+    balance:
+      label: Balance

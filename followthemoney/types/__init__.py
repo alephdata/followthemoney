@@ -1,9 +1,8 @@
 import re
+from banal import ensure_sequence
 from normality import stringify, collapse_spaces
 from dalet import is_partial_date, parse_date
 from dalet import parse_phone, parse_country, parse_email
-
-from aleph.util import ensure_list
 
 
 class StringProperty(object):
@@ -20,7 +19,7 @@ class StringProperty(object):
     def normalize(self, values):
         results = set()
         for value in values:
-            results.update(ensure_list(self.normalize_value(value)))
+            results.update(ensure_sequence(self.normalize_value(value)))
         return results
 
     def normalize_value(self, value):

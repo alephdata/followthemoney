@@ -1,0 +1,6 @@
+PublicBody:
+  label: Public body
+  plural: Public bodies
+  icon: fa-building
+  extends: Organization
+  fuzzy: false

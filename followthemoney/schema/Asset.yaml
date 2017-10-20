@@ -1,0 +1,11 @@
+Asset:
+  plural: Assets
+  extends: Entity
+  icon: fa-car
+  hidden: true
+  fuzzy: false
+  properties:
+    value:
+      label: Value
+    valueCurrency:
+      label: Value (Currency)

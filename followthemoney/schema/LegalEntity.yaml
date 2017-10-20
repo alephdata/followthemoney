@@ -1,0 +1,49 @@
+LegalEntity:
+  extends: Entity
+  label: Legal entity
+  plural: Legal entities
+  icon: fa-user-secret
+  properties:
+    email:
+      label: E-Mail
+      type: email
+    phone:
+      label: Phone
+      type: phone
+    website:
+      label: Website
+      type: url
+    legalForm:
+      label: Legal form
+    incorporationDate:
+      label: Incorporation date
+      type: date
+    dissolutionDate:
+      label: Dissolution date
+      type: date
+    taxStatus:
+      label: Tax status
+    status:
+      label: Status
+    sector:
+      label: Sector
+    classification:
+      label: Classification
+    registrationNumber:
+      label: Registration number
+      type: identifier
+    idNumber:
+      label: ID Number
+      type: identifier
+    taxNumber:
+      label: Tax ID Number
+      type: identifier
+    bankAccount:
+      label: Bank account
+      type: identifier
+    jurisdiction:
+      label: Jurisdiction
+      type: country
+    mainCountry:
+      label: Country of origin
+      type: country

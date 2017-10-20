@@ -1,0 +1,22 @@
+CourtCase:
+  label: Court case
+  plural: Court cases
+  extends: Entity
+  icon: fa-briefcase
+  fuzzy: false
+  properties:
+    category:
+      label: Category
+    type:
+      label: Type
+    status:
+      label: Status
+    caseNumber:
+      label: Case number
+      type: identifier
+    court:
+      label: Court
+    fileDate:
+      label: File date
+    closeDate:
+      label: Close date

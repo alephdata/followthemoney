@@ -1,0 +1,40 @@
+Company:
+  label: Company
+  plural: Companies
+  icon: fa-industry
+  extends:
+    - Organization
+    - Asset
+  properties:
+    capital:
+      label: "Capital"
+    voenCode:
+      label: "VOEN"
+      type: identifier
+    okpoCode:
+      label: "OKPO"
+      type: identifier
+    innCode:
+      label: "INN"
+      type: identifier
+    coatoCode:
+      label: "COATO"
+      type: identifier
+    vatCode:
+      label: "VAT Identifier"
+      type: identifier
+    irsCode:
+      label: "IRS Number"
+      type: identifier
+    ipoCode:
+      label: "IPO"
+      type: identifier
+    cikCode:
+      label: "SEC Central Index Key"
+      type: identifier
+    jibCode:
+      label: "JIB"
+      type: identifier
+    mbsCode:
+      label: "MBS"
+      type: identifier

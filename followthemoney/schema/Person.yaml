@@ -1,0 +1,34 @@
+Person:
+  extends: LegalEntity
+  label: Person
+  plural: People
+  icon: fa-user
+  properties:
+    title:
+      label: Title
+    firstName:
+      label: First name
+    secondName:
+      label: Second name
+    middleName:
+      label: Middle name
+    lastName:
+      label: Last name
+    birthDate:
+      label: Birth date
+      type: date
+    birthPlace:
+      label: Place of birth
+    deathDate:
+      label: Death date
+      type: date
+    position:
+      label: Position
+    nationality:
+      label: Nationality
+      type: country
+    gender:
+      label: Gender
+    passportNumber:
+      label: Passport
+      type: identifier
