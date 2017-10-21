@@ -16,6 +16,7 @@ setup(
     install_requires=[
         'six',
         'pyyaml',
+        'requests',
         'normality',
         'sqlalchemy',
         'unicodecsv',
