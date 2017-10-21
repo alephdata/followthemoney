@@ -11,6 +11,7 @@ class ModelTestCase(TestCase):
     def test_model_basics(self):
         assert model.schemata['Thing'], model.schemata
         thing = model.schemata['Thing']
+        assert thing == model.get(thing)
         assert thing in list(model), list(model)
         assert 'Person' in model.to_dict(), model.to_dict()
         assert 'Thing' not in model.to_dict(), model.to_dict()
@@ -41,6 +42,7 @@ class ModelTestCase(TestCase):
         assert model.merge_entity_schema('Thing', 'Thing') == 'Thing'
         assert model.merge_entity_schema('Thing', 'Person') == 'Person'
         assert model.merge_entity_schema('Person', 'Thing') == 'Person'
+        assert model.merge_entity_schema('Person', 'Company') == 'LegalEntity'
 
     def test_model_to_dict(self):
         thing = model.schemata['Thing']

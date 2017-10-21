@@ -2,7 +2,7 @@ import os
 import yaml
 from unittest import TestCase
 from followthemoney import model
-from followthemoney.exc import InvalidData
+from followthemoney.exc import InvalidMapping
 
 
 class MappingTestCase(TestCase):
@@ -39,3 +39,35 @@ class MappingTestCase(TestCase):
     def test_kek_sqlite(self):
         entities = list(model.map_entities(self.kek_mapping))
         assert len(entities) == 8712, len(entities)
+        ids = set([e['id'] for e in entities])
+        assert len(ids) == 5599, len(ids)
+
+    def test_csv_load(self):
+        url = 'file://' + os.path.join(self.fixture_path, 'experts.csv')
+        mapping = {'csv_url': url}
+        with self.assertRaises(InvalidMapping):
+            list(model.map_entities(mapping))
+        mapping['entities'] = {
+            'expert': {
+                'schema': 'Person',
+                'properties': {
+                    'name': {'column': 'name'},
+                    'nationality': {'column': 'nationality'},
+                    'gender': {'column': 'gender'},
+                }
+            }
+        }
+        with self.assertRaises(InvalidMapping):
+            list(model.map_entities(mapping))
+
+        mapping['entities']['expert']['key'] = 'name'
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 14, len(entities)
+
+        mapping['filters'] = {'gender': 'male'}
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 10, len(entities)
+
+        mapping['filters_not'] = {'nationality': 'Portugal'}
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 7, len(entities)

@@ -2,8 +2,10 @@ import os
 import six
 from uuid import uuid4
 from banal import ensure_list
+from normality import stringify
 from sqlalchemy import create_engine, MetaData
-from sqlalchemy import select, text as sql_text
+from sqlalchemy import select
+# from sqlalchemy import text as sql_text
 from sqlalchemy.pool import NullPool
 from sqlalchemy.schema import Table
 
@@ -58,6 +60,7 @@ class SQLSource(Source):
         for table in self.tables:
             if ref in table.refs:
                 return table.refs.get(ref)
+        raise InvalidMapping("Missing reference: %s" % ref)
 
     def apply_filters(self, q):
         for col, val in self.filters:
@@ -82,7 +85,7 @@ class SQLSource(Source):
     @property
     def records(self):
         """Compose the actual query and return an iterator of ``Record``."""
-        mapping = {self.get_column(r).name: r for r in self.query.refs}
+        mapping = [(r, self.get_column(r).name) for r in self.query.refs]
         q = self.compose_query()
         # log.info("Query [%s]: %s", self.collection.foreign_id, q)
         rp = self.engine.execute(q)
@@ -92,4 +95,7 @@ class SQLSource(Source):
             if not len(rows):
                 break
             for row in rows:
-                yield {mapping.get(k, k): v for k, v in row.items()}
+                data = {}
+                for ref, name in mapping:
+                    data[ref] = stringify(row[name])
+                yield data

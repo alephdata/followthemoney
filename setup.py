@@ -15,10 +15,11 @@ setup(
     zip_safe=False,
     install_requires=[
         'six',
-        'normality',
         'pyyaml',
-        'countrynames>=1.2',
-        'phonenumbers>=8.3.3',
+        'normality',
+        'sqlalchemy',
+        'unicodecsv',
+        'dalet>=1.3'
     ],
     test_suite='nose.collector',
     entry_points={

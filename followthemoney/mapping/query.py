@@ -10,7 +10,7 @@ class QueryMapping(object):
 
         self.mappings = {}
         self.refs = set()
-        for name, data in data.get('entities').items():
+        for name, data in data.get('entities', {}).items():
             mapping = EntityMapping(model, name, data, key_prefix=key_prefix)
             self.mappings[name] = mapping
             self.refs.update(mapping.refs)

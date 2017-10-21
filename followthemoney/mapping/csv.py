@@ -52,12 +52,12 @@ class CSVSource(Source):
             if v == data.get(k):
                 return False
         return True
-    
+
     @property
     def records(self):
         """Iterate through the table applying filters on-the-go."""
-        for csv_url in self.csv_urls:
-            for row in self.read_csv(csv_url):
+        for url in self.urls:
+            for row in self.read_csv(url):
                 data = {}
                 for ref in self.query.refs:
                     data[ref] = stringify(row.get(ref))
