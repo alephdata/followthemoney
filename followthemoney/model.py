@@ -2,6 +2,7 @@ import os
 import yaml
 
 from followthemoney.schema import Schema
+from followthemoney.mapping import QueryMapping, get_source
 from followthemoney.exc import InvalidModel
 
 
@@ -32,6 +33,17 @@ class Model(object):
         if isinstance(name, Schema):
             return name
         return self.schemata.get(name)
+
+    def make_mapping(self, mapping, key_prefix=None):
+        """Parse a mapping that applies (tabular) source data to the model."""
+        return QueryMapping(self, mapping, key_prefix=key_prefix)
+
+    def map_entities(self, mapping, key_prefix=None):
+        """Given a mapping, yield a series of entities from the data source."""
+        mapping = self.make_mapping(mapping, key_prefix=key_prefix)
+        for record in get_source(mapping).records:
+            for entity in mapping.map(record).values():
+                yield entity
 
     def merge_entity_schema(self, left, right):
         """Select the most narrow of two schemata.
