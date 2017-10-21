@@ -1,0 +1,28 @@
+Ownership:
+  label: "Ownership"
+  # extends: controlledBy
+  properties:
+    owner:
+      label: "Owner"
+      type: entity
+      schema: LegalEntity
+    asset:
+      label: "Asset"
+      type: entity
+      schema: Asset
+    percentage:
+      label: "Percentage held"
+    value:
+      label: "Value of shares"
+    shareCount:
+      label: "Number of shares"
+    shareType:
+      label: "Type of shares"
+    shareCurrency:
+      label: "Currency of shares"
+    legalBasis:
+      label: "Legal basis"
+    status:
+      label: "Status"
+    ownershipType:
+      label: "Type of ownership"

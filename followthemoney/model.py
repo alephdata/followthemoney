@@ -2,6 +2,7 @@ import os
 import yaml
 
 from followthemoney.schema import Schema
+from followthemoney.exc import InvalidModel
 
 
 class Model(object):
@@ -16,18 +17,21 @@ class Model(object):
             self._schemata = {}
             for (path, _, filenames) in os.walk(self.path):
                 for filename in filenames:
-                    filepath = os.path.join(path, filename)
-                    with open(filepath, 'r') as fh:
-                        data = yaml.load(fh)
-                        for name, config in data.items():
-                            self.schemata[name] = Schema(self, name, config)
+                    self._load(os.path.join(path, filename))
         return self._schemata
 
+    def _load(self, filepath):
+        with open(filepath, 'r') as fh:
+            data = yaml.load(fh)
+            if not isinstance(data, dict):
+                raise InvalidModel('Model file is not a mapping.')
+            for name, config in data.items():
+                self.schemata[name] = Schema(self, name, config)
+
     def get(self, name):
-        schema = self.schemata.get(name)
-        if schema is None:
-            raise TypeError("No such schema: %r" % name)
-        return schema
+        if isinstance(name, Schema):
+            return name
+        return self.schemata.get(name)
 
     def merge_entity_schema(self, left, right):
         """Select the most narrow of two schemata.
@@ -58,11 +62,8 @@ class Model(object):
         data = {}
         for name, schema in self.schemata.items():
             if not schema.hidden:
-                data[name] = schema
+                data[name] = schema.to_dict()
         return data
 
     def __iter__(self):
         return iter(self.schemata.values())
-
-    def __repr__(self):
-        return '<Model(%r)>' % self.schemata.values()

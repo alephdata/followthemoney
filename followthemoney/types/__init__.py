@@ -33,6 +33,10 @@ class NameProperty(StringProperty):
         return collapse_spaces(value)
 
 
+class EntityProperty(StringProperty):
+    index_invert = 'entities'
+
+
 class URLProperty(StringProperty):
     index_invert = None
 
@@ -103,6 +107,7 @@ def resolve_type(name):
     types = {
         'string': StringProperty,
         'name': NameProperty,
+        'entity': EntityProperty,
         'date': DateProperty,
         'country': CountryProperty,
         'address': AddressProperty,

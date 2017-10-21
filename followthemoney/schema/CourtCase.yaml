@@ -1,7 +1,7 @@
 CourtCase:
   label: Court case
   plural: Court cases
-  extends: Entity
+  extends: Thing
   icon: fa-briefcase
   fuzzy: false
   properties:

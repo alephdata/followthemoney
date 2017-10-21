@@ -1,5 +1,6 @@
 from banal import ensure_list
 from normality import stringify
+
 from followthemoney.types import resolve_type
 
 

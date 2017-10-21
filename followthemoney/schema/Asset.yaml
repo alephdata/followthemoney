@@ -1,6 +1,6 @@
 Asset:
   plural: Assets
-  extends: Entity
+  extends: Thing
   icon: fa-car
   hidden: true
   fuzzy: false

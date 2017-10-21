@@ -1,5 +1,5 @@
 LegalEntity:
-  extends: Entity
+  extends: Thing
   label: Legal entity
   plural: Legal entities
   icon: fa-user-secret

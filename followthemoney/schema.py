@@ -1,7 +1,7 @@
 from banal import ensure_list
 
 from followthemoney.property import Property
-from followthemoney.exc import InvalidData
+from followthemoney.exc import InvalidData, InvalidModel
 
 
 class Schema(object):
@@ -35,7 +35,10 @@ class Schema(object):
     def extends(self):
         """Return the inherited schemata."""
         for base in self._extends:
-            yield self._model.get(base)
+            basecls = self._model.get(base)
+            if basecls is None:
+                raise InvalidModel("No such schema: %s" % base)
+            yield basecls
 
     @property
     def schemata(self):
@@ -63,7 +66,6 @@ class Schema(object):
         for prop in self.properties:
             if prop.name == name:
                 return prop
-        raise ValueError("[%r] missing property: %s" % (self, name))
 
     def validate(self, data):
         """Validate a dataset against the given schema.
@@ -85,13 +87,12 @@ class Schema(object):
 
     def to_dict(self):
         data = {
-            'type': self.section,
             'label': self.label,
             'plural': self.plural,
             'icon': self.icon,
             'hidden': self.hidden,
             'fuzzy': self.fuzzy,
-            'properties': list(self.properties)
+            'properties': [p.to_dict() for p in self.properties]
         }
         return data
 
