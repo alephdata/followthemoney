@@ -31,7 +31,7 @@ class QueryTable(object):
         self.refs = {}
         for column in self.alias.columns:
             name = '%s.%s' % (self.alias_ref, column.name)
-            labeled_column = column.label('col_%s' % uuid4().get_hex()[:10])
+            labeled_column = column.label('col_%s' % uuid4().hex[:10])
             self.refs[name] = labeled_column
             self.refs[column.name] = labeled_column
 

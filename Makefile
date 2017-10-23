@@ -2,6 +2,7 @@
 all: clean test dists release
 
 test:
+	pip install -q nose coverage responses
 	nosetests --with-coverage --cover-package=followthemoney --cover-erase
 
 dists:

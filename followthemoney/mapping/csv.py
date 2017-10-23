@@ -1,8 +1,9 @@
+import io
 import os
 import requests
+from backports.csv import DictReader
 from banal import ensure_list
 from normality import stringify
-from unicodecsv import DictReader
 
 from followthemoney.mapping.source import Source
 from followthemoney.exc import InvalidMapping
@@ -22,27 +23,21 @@ class CSVSource(Source):
         if not len(self.urls):
             raise InvalidMapping("No CSV URLs are specified.")
 
-    def read_remote_csv(self, url):
-        res = requests.get(url, stream=True)
-        if not res.ok:
-            raise InvalidMapping("Failed to open CSV: %s" % url)
-        if res.encoding is None:
-            res.encoding = 'utf-8'
-        lines = res.iter_lines(decode_unicode=False)
-        for row in DictReader(lines, skipinitialspace=True):
-            yield row
-
-    def read_local_csv(self, path):
-        with open(path, "r") as f:
-            for row in DictReader(f, skipinitialspace=True):
+    def read_csv(self, url):
+        parsed_url = requests.utils.urlparse(url)
+        if parsed_url.scheme in ['http', 'https']:
+            res = requests.get(url, stream=True)
+            if not res.ok:
+                raise InvalidMapping("Failed to open CSV: %s" % url)
+            if res.encoding is None:
+                res.encoding = 'utf-8'
+            lines = res.iter_lines(decode_unicode=True)
+            for row in DictReader(lines, skipinitialspace=True):
                 yield row
-
-    def read_csv(self, csv_url):
-        parsed_url = requests.utils.urlparse(csv_url)
-        if parsed_url.scheme == 'file':
-            return self.read_local_csv(parsed_url.path)
         else:
-            return self.read_remote_csv(csv_url)
+            with io.open(parsed_url.path, 'r') as fh:
+                for row in DictReader(fh, skipinitialspace=True):
+                    yield row
 
     def check_filters(self, data):
         for (k, v) in self.filters:
@@ -61,5 +56,6 @@ class CSVSource(Source):
                 data = {}
                 for ref in self.query.refs:
                     data[ref] = stringify(row.get(ref))
+                print data
                 if self.check_filters(data):
                     yield data

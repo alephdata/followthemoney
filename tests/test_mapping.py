@@ -1,5 +1,6 @@
 import os
 import yaml
+import responses
 from unittest import TestCase
 from followthemoney import model
 from followthemoney.exc import InvalidMapping
@@ -42,7 +43,7 @@ class MappingTestCase(TestCase):
         ids = set([e['id'] for e in entities])
         assert len(ids) == 5599, len(ids)
 
-    def test_csv_load(self):
+    def test_local_csv_load(self):
         url = 'file://' + os.path.join(self.fixture_path, 'experts.csv')
         mapping = {'csv_url': url}
         with self.assertRaises(InvalidMapping):
@@ -71,3 +72,27 @@ class MappingTestCase(TestCase):
         mapping['filters_not'] = {'nationality': 'Portugal'}
         entities = list(model.map_entities(mapping))
         assert len(entities) == 7, len(entities)
+
+    @responses.activate
+    def test_http_csv_load(self):
+        with open(os.path.join(self.fixture_path, 'experts.csv'), 'r') as fh:
+            data = fh.read()
+        url = 'http://pets.com/experts.csv'
+        responses.add(responses.GET, url, body=data, status=200,
+                      content_type='text/csv')
+        mapping = {
+            'csv_url': url,
+            'entities': {
+                'expert': {
+                    'schema': 'Person',
+                    'key': 'name',
+                    'properties': {
+                        'name': {'column': 'name'},
+                        'nationality': {'column': 'nationality'},
+                        'gender': {'column': 'gender'},
+                    }
+                }
+            }
+        }
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 14, len(entities)
