@@ -3,6 +3,7 @@ import yaml
 
 from followthemoney.schema import Schema
 from followthemoney.mapping import QueryMapping, get_source
+from followthemoney.util import merge_data
 from followthemoney.exc import InvalidModel
 
 
@@ -36,16 +37,18 @@ class Model(object):
 
     def make_mapping(self, mapping, key_prefix=None):
         """Parse a mapping that applies (tabular) source data to the model."""
-        return QueryMapping(self, mapping, key_prefix=key_prefix)
+        mapping = QueryMapping(self, mapping, key_prefix=key_prefix)
+        mapping.source = get_source(mapping)
+        return mapping
 
     def map_entities(self, mapping, key_prefix=None):
         """Given a mapping, yield a series of entities from the data source."""
         mapping = self.make_mapping(mapping, key_prefix=key_prefix)
-        for record in get_source(mapping).records:
+        for record in mapping.source.records:
             for entity in mapping.map(record).values():
                 yield entity
 
-    def merge_entity_schema(self, left, right):
+    def precise_schema(self, left, right):
         """Select the most narrow of two schemata.
 
         When indexing data from a dataset, an entity may be declared as a
@@ -56,11 +59,15 @@ class Model(object):
         if left == right:
             return left
         lefts = self.get(left)
+        if lefts is None:
+            return right
         lefts = [s.name for s in lefts.schemata]
         if right in lefts:
             return left
 
         rights = self.get(right)
+        if rights is None:
+            return left
         rights = [s.name for s in rights.schemata]
         if left in rights:
             return right
@@ -69,6 +76,20 @@ class Model(object):
             for right in rights:
                 if left == right:
                     return left
+
+        raise InvalidModel("No common ancestor: %s and %s" % (left, right))
+
+    def merge(self, left, right):
+        """Merge two entities and return a combined version."""
+        properties = merge_data(left.get('properties'),
+                                right.get('properties'))
+        return {
+            'schema': self.precise_schema(left.get('schema'),
+                                          right.get('schema')),
+            'id': left.get('id', right.get('id')),
+            'properties': properties,
+            'data': merge_data(left.get('data'), right.get('data'))
+        }
 
     def to_dict(self):
         data = {}

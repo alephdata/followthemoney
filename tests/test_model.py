@@ -28,6 +28,7 @@ class ModelTestCase(TestCase):
 
         person = model.schemata['Person']
         assert 1 == len(list(person.extends)), list(person.extends)
+        assert 'Thing' in person.names, person.names
 
     def test_schema_validate(self):
         thing = model.schemata['Thing']
@@ -38,11 +39,19 @@ class ModelTestCase(TestCase):
         with self.assertRaises(InvalidData):
             thing.validate({})
 
+    def test_model_precise_schema(self):
+        assert model.precise_schema('Thing', 'Thing') == 'Thing'
+        assert model.precise_schema('Thing', 'Person') == 'Person'
+        assert model.precise_schema('Person', 'Thing') == 'Person'
+        assert model.precise_schema('Person', 'Company') == 'LegalEntity'
+
     def test_model_merge(self):
-        assert model.merge_entity_schema('Thing', 'Thing') == 'Thing'
-        assert model.merge_entity_schema('Thing', 'Person') == 'Person'
-        assert model.merge_entity_schema('Person', 'Thing') == 'Person'
-        assert model.merge_entity_schema('Person', 'Company') == 'LegalEntity'
+        merged = model.merge({'schema': 'Person'},
+                             {'schema': 'Company'})
+        assert merged['schema'] == 'LegalEntity'
+
+        merged = model.merge({}, {'id': 'banana'})
+        assert merged['id'] == 'banana'
 
     def test_model_to_dict(self):
         thing = model.schemata['Thing']
@@ -64,5 +73,3 @@ class ModelTestCase(TestCase):
         value, errors = name.validate(None)
         assert errors, errors
         assert value is None, value
-        
-    

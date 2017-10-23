@@ -44,6 +44,7 @@ class EntityMapping(object):
             properties[prop.name] = prop.map(record)
         return {
             'id': self.compute_key(record),
+            'schema': self.schema.name,
             'properties': properties
         }
 

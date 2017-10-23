@@ -1,5 +1,5 @@
 Document:
-  extends: Entity
+  extends: Thing
   label: Document
   plural: Documents
   icon: fa-file-text

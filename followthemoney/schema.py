@@ -49,6 +49,10 @@ class Schema(object):
                 yield schema
 
     @property
+    def names(self):
+        return [s.name for s in self.schemata]
+
+    @property
     def properties(self):
         """Return properties, those defined locally and in ancestors."""
         names = set()
