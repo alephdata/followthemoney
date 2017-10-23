@@ -56,6 +56,5 @@ class CSVSource(Source):
                 data = {}
                 for ref in self.query.refs:
                     data[ref] = stringify(row.get(ref))
-                print data
                 if self.check_filters(data):
                     yield data
