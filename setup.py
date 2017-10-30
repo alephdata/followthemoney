@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney',
-    version='0.2.2',
+    version='0.2.3',
     long_description="Data model and validator for investigative graph data.",
     author='Organized Crime and Corruption Reporting Project',
     author_email='pudo@occrp.org',
@@ -16,13 +16,13 @@ setup(
     },
     zip_safe=False,
     install_requires=[
-        'six',
-        'pyyaml',
-        'requests[security]',
-        'normality',
-        'sqlalchemy',
         'backports.csv',
-        'dalet>=1.3'
+        'six >= 1.11.0',
+        'pyyaml',
+        'requests[security] >= 2.18.4',
+        'normality >= 0.5.1',
+        'sqlalchemy >= 1.1.14',
+        'dalet >= 1.3'
     ],
     test_suite='nose.collector',
     entry_points={},
