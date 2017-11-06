@@ -1,0 +1,12 @@
+Interest:
+  label: "Interest"
+  extends: Interval
+  properties:
+    position:
+      label: "Position"
+    role:
+      label: "Role"
+    level:
+      label: "Level of interest" # direct/indirect
+    votes:
+      label: "Number of votes"

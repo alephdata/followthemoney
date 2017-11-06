@@ -1,0 +1,14 @@
+Directorship:
+  label: "Directorship"
+  extends: Interest
+  properties:
+    director:
+      label: "Director"
+      type: entity
+      schema: Person
+    organization:
+      label: "Organization"
+      type: entity
+      schema: Organization
+    secretary:
+      label: "Secretary"

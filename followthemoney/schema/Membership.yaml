@@ -1,0 +1,12 @@
+Membership:
+  label: "Membership"
+  extends: Interest
+  properties:
+    member:
+      label: "Member"
+      type: entity
+      schema: LegalEntity
+    organization:
+      label: "Organization"
+      type: entity
+      schema: Organization
