@@ -1,6 +1,7 @@
 Membership:
   label: "Membership"
   extends: Interest
+  icon: fa-id-badge
   properties:
     member:
       label: "Member"

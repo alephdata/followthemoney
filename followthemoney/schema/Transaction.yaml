@@ -1,6 +1,7 @@
 Transaction:
   label: "Transaction"
   extends: Interval
+  icon: fa-money
   properties:
     payer:
       label: "Payer"

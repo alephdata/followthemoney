@@ -1,6 +1,7 @@
 Payment:
   label: "Payment"
   extends: Transaction
+  icon: fa-usd
   properties:
     amount:
       label: "Payment amount"

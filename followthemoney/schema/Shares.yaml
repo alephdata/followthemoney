@@ -1,7 +1,7 @@
 Shares:
   extends: Asset
   label: Shares
-  icon: fa-money
+  icon: fa-pie-chart
   properties:
     count:
       label: "Number of shares"

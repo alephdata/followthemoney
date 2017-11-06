@@ -1,6 +1,7 @@
 Event:
   label: "Event"
   extends: Interval
+  icon: fa-calendar
   properties:
     location:
       label: "Location"

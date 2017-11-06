@@ -1,6 +1,7 @@
 Contract:
   label: "Contract"
   extends: Transaction
+  icon: fa-handshake-o
   properties:
     totalValue:
       label: "Total value of contract"
