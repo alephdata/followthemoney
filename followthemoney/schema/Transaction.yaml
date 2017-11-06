@@ -1,0 +1,16 @@
+Transaction:
+  label: "Transaction"
+  extends: Interval
+  properties:
+    payer:
+      label: "Payer"
+      type: entity
+      schema: LegalEntity
+    beneficiary:
+      label: "Beneficiary"
+      type: entity
+      schema: LegalEntity
+    asset:
+      label: "Asset"
+      type: entity
+      schema: Asset

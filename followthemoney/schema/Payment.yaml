@@ -1,0 +1,24 @@
+Payment:
+  label: "Payment"
+  extends: Transaction
+  properties:
+    amount:
+      label: "Payment amount"
+    currency:
+      label: "Original currency"
+    amountUsd:
+      label: "Amount in USD"
+    sequenceNumber:
+      label: "Sequence number"
+    transactionNumber:
+      label: "Transaction number"
+    purpose:
+      label: "Payment purpose"
+    payerAccount:
+      label: "Payer bank account"
+      type: entity
+      schema: BankAccount
+    beneficiaryAccount:
+      label: "Beneficiary bank account"
+      type: entity
+      schema: BankAccount

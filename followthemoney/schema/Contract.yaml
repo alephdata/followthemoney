@@ -1,0 +1,20 @@
+Contract:
+  label: "Contract"
+  extends: Transaction
+  properties:
+    totalValue:
+      label: "Total value of contract"
+    type:
+      label: "Type of contract"
+    procedureNumber:
+      label: "Procedure number"
+    documentNumber:
+      label: "Document number"
+    decisionReason:
+      label: "Decision reason"
+    documentDate:
+      label: "Document date"
+      typte: date
+    identifier:
+      label: "Identifier"
+      type: identifier
