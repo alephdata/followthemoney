@@ -3,8 +3,6 @@ Interest:
   extends: Interval
   icon: fa-certificate
   properties:
-    position:
-      label: "Position"
     role:
       label: "Role"
     # level:
