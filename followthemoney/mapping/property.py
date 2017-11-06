@@ -1,4 +1,5 @@
 import re
+from copy import deepcopy
 from normality import stringify
 from banal import unique_list, ensure_list
 
@@ -9,6 +10,7 @@ class PropertyMapping(object):
     FORMAT_PATTERN = re.compile('{{([^(}})]*)}}')
 
     def __init__(self, mapper, data, schema):
+        data = deepcopy(data)
         self.mapper = mapper
         self.data = data
         self.schema = schema

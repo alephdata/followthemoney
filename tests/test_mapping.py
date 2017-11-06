@@ -45,7 +45,9 @@ class MappingTestCase(TestCase):
 
     def test_local_csv_load(self):
         url = 'file://' + os.path.join(self.fixture_path, 'experts.csv')
-        mapping = {'csv_url': url}
+        mapping = {
+            'csv_url': url
+        }
         with self.assertRaises(InvalidMapping):
             list(model.map_entities(mapping))
         mapping['entities'] = {
