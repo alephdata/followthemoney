@@ -13,14 +13,16 @@ Ownership:
       schema: Asset
     percentage:
       label: "Percentage held"
-    value:
-      label: "Value of ownership"
     status: 
       label: "Ownership status"
-    shares:
-      label: "Associated shares"
-      type: entity
-      schema: Shares
+    haresCount:
+      label: "Number of shares"
+    sharesValue:
+      label: "Value of shares"
+    sharesCurrency:
+      label: "Currency of shares"
+    sharesType:
+      label: "Type of shares"
     legalBasis:
       label: "Legal basis"
     status:

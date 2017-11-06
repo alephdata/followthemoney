@@ -7,7 +7,7 @@ Interest:
       label: "Position"
     role:
       label: "Role"
-    level:
-      label: "Level of interest" # direct/indirect
-    votes:
-      label: "Number of votes"
+    # level:
+    #   label: "Level of interest" # direct/indirect
+    # votes:
+    #   label: "Number of votes"
