@@ -1,7 +1,7 @@
 CourtCase:
   label: Court case
   plural: Court cases
-  extends: Thing
+  extends: Interval
   icon: fa-briefcase
   fuzzy: false
   properties:
@@ -20,3 +20,11 @@ CourtCase:
       label: File date
     closeDate:
       label: Close date
+    defendant:
+      label: "Defendant"
+      type: entity
+      schema: LegalEntity
+    plaintiff:
+      label: "Plaintiff"
+      type: entity
+      schema: LegalEntity

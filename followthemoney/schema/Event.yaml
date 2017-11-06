@@ -1,0 +1,9 @@
+Event:
+  label: "Event"
+  extends: Interval
+  properties:
+    location:
+      label: "Location"
+    country:
+      label: "Country"
+      type: country

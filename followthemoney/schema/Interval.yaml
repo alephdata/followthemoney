@@ -1,0 +1,19 @@
+Interval:
+  label: "Interval"
+  icon: fa-clock-o
+  properties:
+    startDate:
+      label: "Start date"
+      type: date
+    endDate:
+      label: "End date"
+      type: date
+    date:
+      label: "Date"
+      type: date
+    summary:
+      label: "Summary"
+    recordId:
+      label: "Record ID"
+    sourceURL:
+      label: "Source URL"
