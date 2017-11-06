@@ -1,0 +1,13 @@
+Shares:
+  extends: Asset
+  label: Shares
+  icon: fa-money
+  properties:
+    count:
+      label: "Number of shares"
+    value:
+      label: "Value of shares"
+    currency:
+      label: "Currency of shares"
+    type:
+      label: "Type of shares"
