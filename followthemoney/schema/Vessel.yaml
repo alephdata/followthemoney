@@ -31,6 +31,7 @@ Vessel:
       type: identifier
     pastNames:
       label: Past Names
+      type: name
     pastFlags:
       label: Past Flags
     pastTypes:
@@ -39,3 +40,4 @@ Vessel:
       label: Build Date
     mmsi:
       label: MMSI
+      type: identifier

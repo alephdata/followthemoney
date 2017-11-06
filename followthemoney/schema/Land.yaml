@@ -26,3 +26,4 @@ Land:
       label: Land type
     createDate:
       label: Record date
+      type: date

@@ -15,7 +15,7 @@ Contract:
       label: "Decision reason"
     documentDate:
       label: "Document date"
-      typte: date
+      type: date
     identifier:
       label: "Identifier"
       type: identifier

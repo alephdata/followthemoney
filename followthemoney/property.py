@@ -1,7 +1,8 @@
 from banal import ensure_list
 from normality import stringify
 
-from followthemoney.types import resolve_type
+from followthemoney.exc import InvalidModel
+from followthemoney.types import TYPES
 
 
 class Property(object):
@@ -14,8 +15,12 @@ class Property(object):
         self.hidden = data.get('hidden', False)
         self.is_multiple = data.get('multiple', False)
         self.is_label = name == 'name'
-        cls = resolve_type(data.get('type', 'string'))
-        self.type = cls()
+        self.type_name = data.get('type', 'string')
+        try:
+            self.type = TYPES[self.type_name].type
+            self.invert = TYPES[self.type_name].invert
+        except KeyError:
+            raise InvalidModel("Invalid type: %s" % self.type_name)
 
     def validate(self, data):
         """Validate that the data should be stored.
@@ -25,13 +30,10 @@ class Property(object):
         """
         value, error = [], None
         for val in ensure_list(data):
-            val = stringify(val)
-            if val is None:
-                continue
-            val = val.strip()
-            if self.type.normalize_value(val) is None:
+            if not self.type.validate(val):
                 error = "Invalid value"
-            value.append(val)
+            else:
+                value.append(val)
         if not self.is_multiple:
             value = value[0] if len(value) else None
         else:
@@ -45,7 +47,7 @@ class Property(object):
             'name': self.name,
             'label': self.label,
             'hidden': self.hidden,
-            'type': self.type.name
+            'type': self.type_name
         }
 
     def __repr__(self):

@@ -16,4 +16,3 @@ class InvalidModel(Exception):
 class InvalidMapping(Exception):
     """A data mapping was invalid."""
     pass
-
