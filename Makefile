@@ -5,10 +5,10 @@ test:
 	pip install -q nose coverage responses
 	nosetests --with-coverage --cover-package=followthemoney --cover-erase
 
-dists:
+dist:
 	python setup.py sdist bdist_wheel
 
-release: dists
+release: clean dist
 	twine upload dist/*
 
 clean:
