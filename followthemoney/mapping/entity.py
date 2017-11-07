@@ -40,8 +40,23 @@ class EntityMapping(object):
 
     def map(self, record):
         properties = {}
+
+        # THIS IS HACKY
+        # Some of the converters, e.g. for phone numbers, work better if they
+        # know the country which the number is from. In order to provide that
+        # detail, we are first running country fields, then making the data
+        # from that accessible to phone and address parsers.
+        countries = set()
         for prop in self.properties:
-            properties[prop.name] = prop.map(record)
+            if prop.schema.is_country:
+                values = prop.map(record)
+                countries.update(values)
+                properties[prop.name] = values
+
+        for prop in self.properties:
+            if not prop.schema.is_country:
+                properties[prop.name] = prop.map(record, countries=countries)
+
         return {
             'id': self.compute_key(record),
             'schema': self.schema.name,
