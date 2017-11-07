@@ -49,13 +49,14 @@ class PropertyMapping(object):
         values.extend([record.get(r) for r in self.refs])
         return values
 
-    def map(self, record):
+    def map(self, record, **kwargs):
+        kwargs.update(self.data)
         values = []
         # clean the values returned by the query, or by using literals, or
         # formats.
         for value in self.record_values(record):
             # TODO: should we add unclean here?
-            value = self.type.clean(value, **self.data)
+            value = self.type.clean(value, **kwargs)
             if value is not None:
                 values.append(value)
 

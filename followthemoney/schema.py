@@ -55,16 +55,15 @@ class Schema(object):
     @property
     def properties(self):
         """Return properties, those defined locally and in ancestors."""
-        names = set()
-        for prop in self._own_properties:
-            names.add(prop.name)
-            yield prop
-        for schema in self.extends:
-            for prop in schema.properties:
-                if prop.name in names:
-                    continue
-                names.add(prop.name)
-                yield prop
+        if not hasattr(self, '_properties'):
+            properties = {}
+            for schema in self.extends:
+                for prop in schema.properties:
+                    properties[prop.name] = prop
+            for prop in self._own_properties:
+                properties[prop.name] = prop
+            self._properties = properties.values()
+        return self._properties
 
     def get(self, name):
         for prop in self.properties:
@@ -79,6 +78,8 @@ class Schema(object):
         result = {}
         errors = {}
         for prop in self.properties:
+            if prop.name not in data:
+                continue
             value = data.get(prop.name)
             value, error = prop.validate(value)
             if error is not None:
@@ -88,6 +89,31 @@ class Schema(object):
         if len(errors):
             raise InvalidData(errors)
         return result
+
+    def invert(self, entity, cleaned=True):
+        """Invert the properties of an entity into their normalised form."""
+        properties = entity.get('properties', {})
+
+        # Generate inverted representations of the data stored in properties.
+        for prop in self.properties:
+            values = properties.get(prop.name, [])
+            if not len(values):
+                continue
+
+            # Find an set the name property
+            if prop.is_label:
+                entity['name'] = values[0]
+
+            # Add inverted properties. This takes all the properties
+            # of a specific type (names, dates, emails etc.)
+            if prop.invert:
+                if prop.invert not in entity:
+                    entity[prop.invert] = []
+                for norm in prop.type.normalize(values, cleaned=cleaned):
+                    if norm not in entity[prop.invert]:
+                        entity[prop.invert].append(norm)
+
+        return entity
 
     def to_dict(self):
         data = {

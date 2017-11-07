@@ -37,7 +37,23 @@ class ModelTestCase(TestCase):
         assert value['name'] == data['name'], value
 
         with self.assertRaises(InvalidData):
-            thing.validate({})
+            thing.validate({'name': None})
+
+    def test_schema_invert(self):
+        thing = model.schemata['Thing']
+        data = {
+            'schmea': thing.name,
+            'properties': {
+                'name': ['Foo'],
+                'alias': ['Foobar'],
+                'country': ['de']
+            }
+        }
+        out = thing.invert(data)
+        assert out['name'] == 'Foo', out
+        assert 'Foo' in out['names'], out
+        assert 'Foobar' in out['names'], out
+        assert 'de' in out['countries'], out
 
     def test_model_precise_schema(self):
         assert model.precise_schema('Thing', 'Thing') == 'Thing'

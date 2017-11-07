@@ -1,5 +1,4 @@
 from banal import ensure_list
-from normality import stringify
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import TYPES
@@ -16,6 +15,7 @@ class Property(object):
         self.is_multiple = data.get('multiple', False)
         self.is_label = name == 'name'
         self.type_name = data.get('type', 'string')
+        self.is_country = self.type_name == 'country'
         try:
             self.type = TYPES[self.type_name].type
             self.invert = TYPES[self.type_name].invert
