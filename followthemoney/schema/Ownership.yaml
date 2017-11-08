@@ -15,7 +15,7 @@ Ownership:
       label: "Percentage held"
     status: 
       label: "Ownership status"
-    haresCount:
+    sharesCount:
       label: "Number of shares"
     sharesValue:
       label: "Value of shares"

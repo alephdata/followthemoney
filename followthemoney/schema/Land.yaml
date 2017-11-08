@@ -8,8 +8,13 @@ Land:
     address:
       label: Address
       type: address
-    location:
-      label: Location
+    country:
+      label: Country
+      type: country
+    latitude:
+      label: Latitude
+    longitude:
+      label: Longitude
     censusBlock:
       label: Census block
     cadastralCode:
