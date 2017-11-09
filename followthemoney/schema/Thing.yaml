@@ -27,10 +27,6 @@ Thing:
     sourceUrl:
       label: Source link
       type: url
-    icijId:
-      label: ICIJ ID
-    tags:
-      label: Relevancy
     keywords:
       label: Keywords
       multiple: true

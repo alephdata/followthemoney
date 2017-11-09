@@ -40,10 +40,13 @@ LegalEntity:
       type: identifier
     bankAccount:
       label: Bank account
-      type: identifier
+      type: entity
+      schema: BankAccount
     jurisdiction:
       label: Jurisdiction
       type: country
     mainCountry:
       label: Country of origin
       type: country
+    icijId:
+      label: ICIJ ID

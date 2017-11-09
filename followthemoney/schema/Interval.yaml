@@ -15,5 +15,5 @@ Interval:
       label: "Summary"
     recordId:
       label: "Record ID"
-    sourceURL:
+    sourceUrl:
       label: "Source URL"
