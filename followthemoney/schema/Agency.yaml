@@ -1,0 +1,13 @@
+Agency:
+  label: "Agency"
+  extends: Interest
+  icon: fa-rocket
+  properties:
+    agent: # aka representative
+      label: "Agent"
+      type: entity
+      schema: LegalEntity
+    client:
+      label: "Client"
+      type: entity
+      schema: LegalEntity

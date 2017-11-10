@@ -20,11 +20,3 @@ CourtCase:
       label: File date
     closeDate:
       label: Close date
-    defendant:
-      label: "Defendant"
-      type: entity
-      schema: LegalEntity
-    plaintiff:
-      label: "Plaintiff"
-      type: entity
-      schema: LegalEntity
