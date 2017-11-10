@@ -9,8 +9,8 @@ BankAccount:
     accountNumber:
       label: Account Number
       type: identifier
-    bicCode:
-      label: BIC Code
+    bic:
+      label: Bank Identifier Code
     accountType:
       label: Account Type
     balance:
