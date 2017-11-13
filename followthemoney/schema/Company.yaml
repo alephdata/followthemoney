@@ -38,3 +38,7 @@ Company:
     mbsCode:
       label: "MBS"
       type: identifier
+    parent:
+      label: "Parent company"
+      type: entity
+      schema: LegalEntity
