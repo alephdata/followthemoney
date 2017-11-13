@@ -1,0 +1,25 @@
+Sanction:
+  label: Sanction
+  plural: Sanctions
+  extends: Interval
+  icon: fa-ban
+  fuzzy: false
+  properties:
+    entity:
+      label: "Sanctioned entity"
+      type: entity
+      schema: Thing
+    authority:
+      label: "Sanctioning authority"
+      type: entity
+      schema: Thing
+    program:
+      label: "Sanctions program"
+    sanctionStatus:
+      label: "Sanction status"
+    sanctionDuration:
+      label: "Sanction duration"
+    sanctionReason:
+      label: "Sanction reason"
+    sanctionOccurence:
+      label: "Sanction occurence"
