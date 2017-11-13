@@ -50,3 +50,7 @@ LegalEntity:
       type: country
     icijId:
       label: ICIJ ID
+    parent:
+      label: "Parent company"
+      type: entity
+      schema: LegalEntity
