@@ -1,0 +1,14 @@
+# Two entities are connected but the nature of the connection is tbd
+UnknownLink: 
+  label: "Link"
+  extends: Interest
+  icon: fa-user-circle
+  properties:
+    subject:
+      label: "Subject"
+      type: entity
+      schema: Thing
+    object:
+      label: "Object"
+      type: entity
+      schema: Thing
