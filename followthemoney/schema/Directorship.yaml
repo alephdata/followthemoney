@@ -6,7 +6,7 @@ Directorship:
     director:
       label: "Director"
       type: entity
-      schema: Person
+      schema: LegalEntity
     organization:
       label: "Organization"
       type: entity
