@@ -3,7 +3,7 @@ Representation:
   extends: Interest
   icon: fa-rocket
   properties:
-    agent: # aka representative
+    agent: # aka representative / incorporation agent
       label: "Agent"
       type: entity
       schema: LegalEntity

@@ -38,10 +38,6 @@ LegalEntity:
     taxNumber:
       label: Tax ID Number
       type: identifier
-    bankAccount:
-      label: Bank account
-      type: entity
-      schema: BankAccount
     jurisdiction:
       label: Jurisdiction
       type: country
