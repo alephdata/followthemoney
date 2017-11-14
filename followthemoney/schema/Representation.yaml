@@ -1,5 +1,5 @@
-Agency:
-  label: "Agency"
+Representation:
+  label: "Representation"
   extends: Interest
   icon: fa-rocket
   properties:
