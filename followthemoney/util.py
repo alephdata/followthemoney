@@ -1,6 +1,5 @@
 import six
 from normality import stringify
-from normality.cleaning import remove_control_chars
 from banal import clean_dict, unique_list, is_sequence
 
 
@@ -9,7 +8,6 @@ def key_bytes(key):
     key = stringify(key)
     if key is None:
         return six.binary_type()
-    key = remove_control_chars(key)
     return key.encode('utf-8')
 
 
