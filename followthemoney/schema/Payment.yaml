@@ -15,11 +15,11 @@ Payment:
       label: "Transaction number"
     purpose:
       label: "Payment purpose"
-    payerAccount:
+    fromAccount:
       label: "Payer bank account"
       type: entity
       schema: BankAccount
-    beneficiaryAccount:
+    toAccount:
       label: "Beneficiary bank account"
       type: entity
       schema: BankAccount
