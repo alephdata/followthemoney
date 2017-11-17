@@ -7,11 +7,17 @@ class QueryMapping(object):
     def __init__(self, model, data, key_prefix=None):
         self.model = model
         self.data = data
+        
+        # entity_schemas = {}
+        entity_schemas = self.get_entity_schemas()
+        # for i, schema in schemas.items():
+        #     schema_names = schemas = [s.name for s in model.get(schema).schemata]
+        #     entity_schemas[i] = schema_names
 
         self.mappings = {}
         self.refs = set()
         for name, data in data.get('entities', {}).items():
-            mapping = EntityMapping(model, name, data, key_prefix=key_prefix)
+            mapping = EntityMapping(model, name, data, entity_schemas, key_prefix=key_prefix)
             self.mappings[name] = mapping
             self.refs.update(mapping.refs)
 
@@ -28,3 +34,9 @@ class QueryMapping(object):
             mapping = self.mappings.get(name)
             mapping.resolve(entity, entities)
         return entities
+
+    def get_entity_schemas(self):
+        schemas = {}
+        for name, properties in self.data.get('entities', {}).items():
+            schemas[name] = properties.get('schema')
+        return schemas

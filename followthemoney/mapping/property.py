@@ -3,6 +3,8 @@ from copy import deepcopy
 from normality import stringify
 from banal import unique_list, ensure_list
 
+from followthemoney.exc import InvalidMapping
+
 
 class PropertyMapping(object):
     """Map values from a given record (e.g. a CSV row or SQL result) to the
@@ -16,6 +18,7 @@ class PropertyMapping(object):
         self.schema = schema
         self.name = schema.name
         self.type = schema.type
+        self.range = schema.range
 
         self.refs = ensure_list(data.pop('column', []))
         self.refs.extend(ensure_list(data.pop('columns', [])))
@@ -25,7 +28,19 @@ class PropertyMapping(object):
 
         self.join = stringify(data.pop('join', None))
         self.entity = data.pop('entity', None)
-        # TODO: check entity type against model constraints
+
+        if self.entity is not None:
+            # Check entity schema against model constraints
+            try:
+                entity_schema = mapper.entity_schemas[self.entity]
+            except KeyError:
+                raise InvalidMapping(
+                    "No entity [%s] for property [%s]" % (self.entity, self.name))
+            if not mapper.model.is_descendant(self.range, entity_schema):
+              # Check the schema of the entity in the mapping is or descends
+              # from the range of this property
+                raise InvalidMapping(
+                    "The entity for property [%s] must be a %s (not %s)" % (self.name, self.range, entity_schema))
 
         self.template = stringify(data.pop('template', None))
         self.replacements = {}

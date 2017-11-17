@@ -12,7 +12,7 @@ def key_bytes(key):
 
 
 def merge_data(old, new):
-    """Exend the values of the new doc with extra values from the old."""
+    """Extend the values of the new doc with extra values from the old."""
     if old is None or new is None:
         return old or new
     old = dict(clean_dict(old))

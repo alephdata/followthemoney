@@ -100,7 +100,7 @@ class Schema(object):
             if not len(values):
                 continue
 
-            # Find an set the name property
+            # Find and set the name property
             if prop.is_label:
                 entity['name'] = values[0]
 

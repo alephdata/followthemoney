@@ -16,6 +16,7 @@ class Property(object):
         self.is_label = name == 'name'
         self.type_name = data.get('type', 'string')
         self.is_country = self.type_name == 'country'
+        self.range = data.get('schema', 'Thing')
         try:
             self.type = TYPES[self.type_name].type
             self.invert = TYPES[self.type_name].invert
@@ -47,7 +48,8 @@ class Property(object):
             'name': self.name,
             'label': self.label,
             'hidden': self.hidden,
-            'type': self.type_name
+            'type': self.type_name,
+            'range': self.range
         }
 
     def __repr__(self):

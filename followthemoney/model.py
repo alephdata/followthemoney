@@ -79,6 +79,16 @@ class Model(object):
 
         raise InvalidModel("No common ancestor: %s and %s" % (left, right))
 
+    def is_descendant(self, parent, child):
+        """ Find out if a child schema extends parent."""
+        if parent == child:
+            return True
+        childs = self.get(child)
+        ancestors = childs.schemata
+        if parent in [s.name for s in ancestors]:
+            return True
+        return False
+
     def merge(self, left, right):
         """Merge two entities and return a combined version."""
         properties = merge_data(left.get('properties'),
