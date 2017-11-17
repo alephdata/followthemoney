@@ -8,10 +8,10 @@ from followthemoney.exc import InvalidMapping
 
 class EntityMapping(object):
 
-    def __init__(self, model, name, data, entity_schemas, key_prefix=None):
+    def __init__(self, mapping, model, name, data, key_prefix=None):
+        self.mappings = mapping.mappings
         self.model = model
         self.data = data
-        self.entity_schemas = entity_schemas
 
         self.seed = sha1(key_bytes(key_prefix))
         self.keys = ensure_list(data.get('key'))
