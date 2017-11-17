@@ -61,6 +61,18 @@ class ModelTestCase(TestCase):
         assert model.precise_schema('Person', 'Thing') == 'Person'
         assert model.precise_schema('Person', 'Company') == 'LegalEntity'
 
+    def test_model_is_descendant(self):
+        assert model.is_descendant('Thing', 'Thing') == True
+        assert model.is_descendant('Thing', 'LegalEntity') == True
+        assert model.is_descendant('Thing', 'Vessel') == True
+        assert model.is_descendant('Interval', 'Interest') == True
+        assert model.is_descendant('Interval', 'Ownership') == True
+        assert model.is_descendant('Interest', 'Ownership') == True
+        assert model.is_descendant('Person', 'Payment') == False
+        assert model.is_descendant('Vessel', 'LegalEntity') == False
+        assert model.is_descendant('LegalEntity', 'Vessel') == False
+        assert model.is_descendant('LegalEntity', 'Ownership') == False
+
     def test_model_merge(self):
         merged = model.merge({'schema': 'Person'},
                              {'schema': 'Company'})
