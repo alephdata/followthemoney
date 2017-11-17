@@ -37,6 +37,64 @@ class MappingTestCase(TestCase):
         assert company['id'], company
         assert record['comp.name'] in company['properties']['name'], company
 
+    def test_mappings_with_links(self):
+        url = 'file://' + os.path.join(self.fixture_path, 'links.csv')
+        mapping_director = {
+            "csv_url": url,
+            "entities": {
+                "director": {
+                    "schema": "Person",
+                    "key": "id",
+                    "properties": {"name": {"column": "name"}}
+                },
+                "company": {
+                    "schema": "Company",
+                    "key": "comp_id",
+                    "properties": {"name": {"column": "comp_name"}}
+                },
+                "directorship": {
+                    "schema": "Directorship",
+                    "keys": ["comp_id", "id"],
+                    "properties": {
+                        "director": {"entity": "director"},
+                        "organization": {"entity": "company"},
+                        "role": {"column": "role"},
+                    },
+                }
+            }
+        }
+
+        mapping_slavery = {
+            "csv_url": url,
+            "entities": {
+                "owner": {
+                    "schema": "LegalEntity",
+                    "key": "le_id",
+                    "properties": {"name": {"column": "le_name"}}
+                },
+                "person": {
+                    "schema": "Person",
+                    "key": "person_id",
+                    "properties": {"name": {"column": "name"}}
+                },
+                "ownership": {
+                    "schema": "Ownership",
+                    "keys": ["person_id", "le_id"],
+                    "properties": {
+                        "owner": {"entity": "owner"},
+                        "asset": {"entity": "person"},
+                        "percentage": {"column": "percentage"},
+                    },
+                }
+            }
+        }
+
+        entities = list(model.map_entities(mapping_director))
+        assert len(entities) == 3, len(entities)
+
+        with self.assertRaises(InvalidMapping):
+            list(model.map_entities(mapping_slavery))
+
     def test_kek_sqlite(self):
         entities = list(model.map_entities(self.kek_mapping))
         assert len(entities) == 8712, len(entities)
