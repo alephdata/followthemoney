@@ -32,7 +32,7 @@ class PropertyMapping(object):
         if self.entity is not None:
             # Check entity schema against model constraints
             try:
-                entity_schema = mapper.mappings[self.entity].schema.name5
+                entity_schema = mapper.mappings[self.entity].schema.name
             except KeyError:
                 raise InvalidMapping(
                     "No entity [%s] for property [%s]" % (self.entity, self.name))
