@@ -7,12 +7,7 @@ class QueryMapping(object):
     def __init__(self, model, data, key_prefix=None):
         self.model = model
         self.data = data
-        
-        # entity_schemas = {}
         entity_schemas = self.get_entity_schemas()
-        # for i, schema in schemas.items():
-        #     schema_names = schemas = [s.name for s in model.get(schema).schemata]
-        #     entity_schemas[i] = schema_names
 
         self.mappings = {}
         self.refs = set()
