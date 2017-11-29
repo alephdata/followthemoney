@@ -32,7 +32,7 @@ class ModelTestCase(TestCase):
 
     def test_schema_validate(self):
         thing = model.schemata['Thing']
-        data = {'name': 'Banana'}
+        data = {'name': ['Banana']}
         value = thing.validate(data)
         assert value['name'] == data['name'], value
 
@@ -100,4 +100,4 @@ class ModelTestCase(TestCase):
 
         value, errors = name.validate(None)
         assert errors, errors
-        assert value is None, value
+        assert not len(value), value

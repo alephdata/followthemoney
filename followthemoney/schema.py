@@ -80,12 +80,12 @@ class Schema(object):
         for prop in self.properties:
             if prop.name not in data:
                 continue
-            value = data.get(prop.name)
-            value, error = prop.validate(value)
+            values = data.get(prop.name)
+            values, error = prop.validate(values)
             if error is not None:
                 errors[prop.name] = error
-            elif value is not None:
-                result[prop.name] = value
+            if len(values):
+                result[prop.name] = values
         if len(errors):
             raise InvalidData(errors)
         return result
@@ -122,8 +122,10 @@ class Schema(object):
             'icon': self.icon,
             'hidden': self.hidden,
             'fuzzy': self.fuzzy,
-            'properties': [p.to_dict() for p in self.properties]
+            'properties': {}
         }
+        for prop in self.properties:
+            data['properties'][prop.name] = prop.to_dict()
         return data
 
     def __repr__(self):

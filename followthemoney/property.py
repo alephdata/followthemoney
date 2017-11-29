@@ -29,19 +29,14 @@ class Property(object):
         Since the types system doesn't really have validation, this currently
         tries to normalize the value to see if it passes strict parsing.
         """
-        value, error = [], None
+        values, error = [], None
         for val in ensure_list(data):
             if not self.type.validate(val):
                 error = "Invalid value"
             else:
-                value.append(val)
-        if not self.is_multiple:
-            value = value[0] if len(value) else None
-        else:
-            value = list(set(value))
-        if self.is_label and (value is None or not len(value)):
-            error = "Field is required."
-        return value, error
+                values.append(val)
+        values = list(set(values))
+        return values, error
 
     def to_dict(self):
         return {
