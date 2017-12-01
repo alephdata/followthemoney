@@ -1,7 +1,7 @@
 Document:
   extends: Thing
-  label: Document
-  plural: Documents
+  label: File
+  plural: Files
   icon: fa-file-o
   hidden: true
   fuzzy: false
@@ -18,8 +18,8 @@ PlainText:
 Pages:
   # Like PDF, word document, ...
   extends: Document
-  label: Print document
-  plural: Print documents
+  label: Document
+  plural: Documents
   icon: fa-file-pdf-o
   hidden: true
   fuzzy: false
@@ -37,6 +37,14 @@ Package:
   label: Package
   plural: Packages
   icon: fa-file-archive-o
+  hidden: true
+  fuzzy: false
+
+Workbook:
+  extends: Folder
+  label: Workbook
+  plural: Workbooks
+  icon: fa-file-excel-o
   hidden: true
   fuzzy: false
 
@@ -58,29 +66,12 @@ HyperText:
   fuzzy: false
 
 Email:
-  extends: Folder
+  extends:
+    - Folder
+    - PlainText
+    - HyperText
   label: E-Mail
   plural: E-Mails
-  icon: fa-envelope-o
-  hidden: true
-  fuzzy: false
-
-TextEmail:
-  extends:
-    - Email
-    - PlainText
-  label: Text E-Mail
-  plural: Text E-Mails
-  icon: fa-envelope-o
-  hidden: true
-  fuzzy: false
-
-HyperTextEmail:
-  extends:
-    - Email
-    - HyperText
-  label: HTML E-Mail
-  plural: HTML E-Mails
   icon: fa-envelope-o
   hidden: true
   fuzzy: false

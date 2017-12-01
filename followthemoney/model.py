@@ -35,6 +35,12 @@ class Model(object):
             return name
         return self.schemata.get(name)
 
+    def __getitem__(self, name):
+        schema = self.get(name)
+        if schema is None:
+            raise KeyError("No such schema: %s" % name)
+        return schema
+
     def make_mapping(self, mapping, key_prefix=None):
         """Parse a mapping that applies (tabular) source data to the model."""
         mapping = QueryMapping(self, mapping, key_prefix=key_prefix)
