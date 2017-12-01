@@ -56,19 +56,16 @@ class Schema(object):
     def properties(self):
         """Return properties, those defined locally and in ancestors."""
         if not hasattr(self, '_properties'):
-            properties = {}
+            self._properties = {}
             for schema in self.extends:
-                for prop in schema.properties:
-                    properties[prop.name] = prop
+                for name, prop in schema.properties.items():
+                    self._properties[name] = prop
             for prop in self._own_properties:
-                properties[prop.name] = prop
-            self._properties = properties.values()
+                self._properties[prop.name] = prop
         return self._properties
 
     def get(self, name):
-        for prop in self.properties:
-            if prop.name == name:
-                return prop
+        return self.properties.get(name)
 
     def validate(self, data):
         """Validate a dataset against the given schema.
@@ -77,15 +74,15 @@ class Schema(object):
         """
         result = {}
         errors = {}
-        for prop in self.properties:
-            if prop.name not in data:
+        for name, prop in self.properties.items():
+            if not prop.required and name not in data:
                 continue
-            values = data.get(prop.name)
+            values = data.get(name)
             values, error = prop.validate(values)
             if error is not None:
-                errors[prop.name] = error
+                errors[name] = error
             if len(values):
-                result[prop.name] = values
+                result[name] = values
         if len(errors):
             raise InvalidData(errors)
         return result
@@ -95,14 +92,10 @@ class Schema(object):
         properties = entity.get('properties', {})
 
         # Generate inverted representations of the data stored in properties.
-        for prop in self.properties:
-            values = properties.get(prop.name, [])
+        for name, prop in self.properties.items():
+            values = properties.get(name, [])
             if not len(values):
                 continue
-
-            # Find and set the name property
-            if prop.is_label:
-                entity['name'] = values[0]
 
             # Add inverted properties. This takes all the properties
             # of a specific type (names, dates, emails etc.)
@@ -124,8 +117,8 @@ class Schema(object):
             'fuzzy': self.fuzzy,
             'properties': {}
         }
-        for prop in self.properties:
-            data['properties'][prop.name] = prop.to_dict()
+        for name, prop in self.properties.items():
+            data['properties'][name] = prop.to_dict()
         return data
 
     def __repr__(self):

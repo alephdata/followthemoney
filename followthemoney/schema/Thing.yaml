@@ -6,6 +6,7 @@ Thing:
       label: Name
       type: name
       hidden: true
+      required: true
     summary:
       label: Summary
     description:

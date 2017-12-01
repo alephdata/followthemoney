@@ -12,8 +12,8 @@ class Property(object):
         self.data = data
         self.label = data.get('label', name)
         self.hidden = data.get('hidden', False)
+        self.required = data.get('required', False)
         self.is_multiple = data.get('multiple', False)
-        self.is_label = name == 'name'
         self.type_name = data.get('type', 'string')
         self.is_country = self.type_name == 'country'
         self.range = data.get('schema', 'Thing')
@@ -35,8 +35,12 @@ class Property(object):
                 error = "Invalid value"
             else:
                 values.append(val)
+        if self.required and not len(values):
+            error = 'Required'
+        if error is not None:
+            return ensure_list(data), error
         values = list(set(values))
-        return values, error
+        return values, None
 
     def to_dict(self):
         return {

@@ -50,7 +50,7 @@ class ModelTestCase(TestCase):
             }
         }
         out = thing.invert(data)
-        assert out['name'] == 'Foo', out
+        # assert out['name'] == 'Foo', out
         assert 'Foo' in out['names'], out
         assert 'Foobar' in out['names'], out
         assert 'de' in out['countries'], out
@@ -93,7 +93,7 @@ class ModelTestCase(TestCase):
         assert name.name in repr(name), repr(name)
 
         assert not name.is_multiple, name.is_multiple
-        assert name.is_label, name.is_label
+        assert name.required, name.required
 
         value, errors = name.validate('huhu')
         assert not errors, errors

@@ -2,6 +2,93 @@ Document:
   extends: Thing
   label: Document
   plural: Documents
-  icon: fa-file-text
+  icon: fa-file-o
+  hidden: true
+  fuzzy: false
+
+PlainText:
+  # Text files, like .txt or source code.
+  extends: Document
+  label: Text file
+  plural: Text files
+  icon: fa-text-o
+  hidden: true
+  fuzzy: false
+
+Pages:
+  # Like PDF, word document, ...
+  extends: Document
+  label: Print document
+  plural: Print documents
+  icon: fa-file-pdf-o
+  hidden: true
+  fuzzy: false
+
+Folder:
+  extends: Document
+  label: Folder
+  plural: Folders
+  icon: fa-folder
+  hidden: true
+  fuzzy: false
+
+Package:
+  extends: Folder
+  label: Package
+  plural: Packages
+  icon: fa-file-archive-o
+  hidden: true
+  fuzzy: false
+
+Image:
+  extends: Document
+  label: Image
+  plural: Images
+  icon: fa-file-image-o
+  hidden: true
+  fuzzy: false
+
+HyperText:
+  # HTML document
+  extends: Document
+  label: Web page
+  plural: Web pages
+  icon: fa-file-code-o
+  hidden: true
+  fuzzy: false
+
+Email:
+  extends: Folder
+  label: E-Mail
+  plural: E-Mails
+  icon: fa-envelope-o
+  hidden: true
+  fuzzy: false
+
+TextEmail:
+  extends:
+    - Email
+    - PlainText
+  label: Text E-Mail
+  plural: Text E-Mails
+  icon: fa-envelope-o
+  hidden: true
+  fuzzy: false
+
+HyperTextEmail:
+  extends:
+    - Email
+    - HyperText
+  label: HTML E-Mail
+  plural: HTML E-Mails
+  icon: fa-envelope-o
+  hidden: true
+  fuzzy: false
+
+Table:
+  extends: Document
+  label: Table
+  plural: Tables
+  icon: fa-table
   hidden: true
   fuzzy: false

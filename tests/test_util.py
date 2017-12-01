@@ -12,7 +12,7 @@ class UtilTestCase(TestCase):
             'foo': 'quux',
         }
         result = merge_data(old, new)
-        assert result['foo'] == 'bar', result
+        assert result['foo'] == 'quux', result
 
     def test_merge_different(self):
         old = {
