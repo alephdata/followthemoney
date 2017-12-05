@@ -52,6 +52,16 @@ class Schema(object):
     def names(self):
         return [s.name for s in self.schemata]
 
+    def is_a(self, parent):
+        for schema in self.schemata:
+            if schema == parent:
+                return True
+        return False
+
+    def __eq__(self, other):
+        other = self._model.get(other)
+        return other.name == self.name
+
     @property
     def properties(self):
         """Return properties, those defined locally and in ancestors."""

@@ -62,16 +62,16 @@ class ModelTestCase(TestCase):
         assert model.precise_schema('Person', 'Company') == 'LegalEntity'
 
     def test_model_is_descendant(self):
-        assert model.is_descendant('Thing', 'Thing') == True
-        assert model.is_descendant('Thing', 'LegalEntity') == True
-        assert model.is_descendant('Thing', 'Vessel') == True
-        assert model.is_descendant('Interval', 'Interest') == True
-        assert model.is_descendant('Interval', 'Ownership') == True
-        assert model.is_descendant('Interest', 'Ownership') == True
-        assert model.is_descendant('Person', 'Payment') == False
-        assert model.is_descendant('Vessel', 'LegalEntity') == False
-        assert model.is_descendant('LegalEntity', 'Vessel') == False
-        assert model.is_descendant('LegalEntity', 'Ownership') == False
+        assert model['Thing'].is_a('Thing') is True
+        assert model['LegalEntity'].is_a('Thing') is True
+        assert model['Vessel'].is_a('Thing') is True
+        assert model['Interest'].is_a('Interval') is True
+        assert model['Ownership'].is_a('Interval') is True
+        assert model['Ownership'].is_a('Interest') is True
+        assert model['Payment'].is_a('Person') is False
+        assert model['LegalEntity'].is_a('Vessel') is False
+        assert model['Vessel'].is_a('LegalEntity') is False
+        assert model['Ownership'].is_a('LegalEntity') is False
 
     def test_model_merge(self):
         merged = model.merge({'schema': 'Person'},
