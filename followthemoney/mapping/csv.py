@@ -1,5 +1,6 @@
 import io
 import os
+import logging
 import requests
 from backports.csv import DictReader
 from banal import ensure_list
@@ -7,6 +8,8 @@ from normality import stringify
 
 from followthemoney.mapping.source import Source
 from followthemoney.exc import InvalidMapping
+
+log = logging.getLogger(__name__)
 
 
 class CSVSource(Source):
@@ -25,12 +28,14 @@ class CSVSource(Source):
 
     def read_csv(self, url):
         parsed_url = requests.utils.urlparse(url)
+        log.info("Loading: %s", url) 
         if parsed_url.scheme in ['http', 'https']:
             res = requests.get(url, stream=True)
             if not res.ok:
                 raise InvalidMapping("Failed to open CSV: %s" % url)
-            if res.encoding is None:
-                res.encoding = 'utf-8'
+            # if res.encoding is None:
+            res.encoding = 'utf-8'
+            # log.info("Detected encoding: %s", res.encoding)
             lines = res.iter_lines(decode_unicode=True)
             for row in DictReader(lines, skipinitialspace=True):
                 yield row

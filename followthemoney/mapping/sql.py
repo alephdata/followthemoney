@@ -1,5 +1,6 @@
 import os
 import six
+import logging
 from uuid import uuid4
 from banal import ensure_list
 from normality import stringify
@@ -12,6 +13,7 @@ from sqlalchemy.schema import Table
 from followthemoney.mapping.source import Source
 from followthemoney.exc import InvalidMapping
 
+log = logging.getLogger(__name__)
 DATA_PAGE = 1000
 
 
@@ -87,9 +89,8 @@ class SQLSource(Source):
         """Compose the actual query and return an iterator of ``Record``."""
         mapping = [(r, self.get_column(r).name) for r in self.query.refs]
         q = self.compose_query()
-        # log.info("Query [%s]: %s", self.collection.foreign_id, q)
+        log.info("Query: %s", q)
         rp = self.engine.execute(q)
-        # log.info("Query executed, loading data...")
         while True:
             rows = rp.fetchmany(size=DATA_PAGE)
             if not len(rows):
