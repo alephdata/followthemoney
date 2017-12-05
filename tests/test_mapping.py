@@ -20,7 +20,7 @@ class MappingTestCase(TestCase):
 
     def test_kek_map_single(self):
         mapping = model.make_mapping(self.kek_mapping)
-        assert len(mapping.mappings) == 3, mapping.mappings
+        assert len(mapping.entities) == 3, mapping.entities
         assert len(mapping.refs) == 7, mapping.refs
         record = {
             'comp.id': 4,
@@ -63,7 +63,11 @@ class MappingTestCase(TestCase):
                 }
             }
         }
+        entities = list(model.map_entities(mapping_director))
+        assert len(entities) == 3, len(entities)
 
+    def test_mappings_with_links_slavery(self):
+        url = 'file://' + os.path.join(self.fixture_path, 'links.csv')
         mapping_slavery = {
             "csv_url": url,
             "entities": {
@@ -88,9 +92,6 @@ class MappingTestCase(TestCase):
                 }
             }
         }
-
-        entities = list(model.map_entities(mapping_director))
-        assert len(entities) == 3, len(entities)
 
         with self.assertRaises(InvalidMapping):
             list(model.map_entities(mapping_slavery))

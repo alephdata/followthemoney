@@ -11,14 +11,13 @@ class PropertyMapping(object):
     schema form."""
     FORMAT_PATTERN = re.compile('{{([^(}})]*)}}')
 
-    def __init__(self, mapper, data, schema):
+    def __init__(self, query, data, schema):
+        self.query = query
         data = deepcopy(data)
-        self.mapper = mapper
         self.data = data
         self.schema = schema
         self.name = schema.name
         self.type = schema.type
-        self.range = schema.range
 
         self.refs = ensure_list(data.pop('column', []))
         self.refs.extend(ensure_list(data.pop('columns', [])))
@@ -29,19 +28,6 @@ class PropertyMapping(object):
         self.join = stringify(data.pop('join', None))
         self.entity = data.pop('entity', None)
 
-        if self.entity is not None:
-            # Check entity schema against model constraints
-            try:
-                entity_schema = mapper.mappings[self.entity].schema.name
-            except KeyError:
-                raise InvalidMapping(
-                    "No entity [%s] for property [%s]" % (self.entity, self.name))
-            if not mapper.model.is_descendant(self.range, entity_schema):
-              # Check the schema of the entity in the mapping is or descends
-              # from the range of this property
-                raise InvalidMapping(
-                    "The entity for property [%s] must be a %s (not %s)" % (self.name, self.range, entity_schema))
-
         self.template = stringify(data.pop('template', None))
         self.replacements = {}
         if self.template is not None:
@@ -49,6 +35,21 @@ class PropertyMapping(object):
             for ref in self.FORMAT_PATTERN.findall(self.template):
                 self.refs.append(ref)
                 self.replacements['{{%s}}' % ref] = ref
+
+    def bind(self):
+        if self.entity is None:
+            return
+
+        for entity in self.query.entities:
+            if entity.name != self.entity:
+                continue
+            if not entity.schema.is_a(self.schema.range):
+                raise InvalidMapping("The entity [%s] must be a %s (not %s)" %
+                                     (self.name, self.schema.range, entity.schema.name))  # noqa
+            return
+
+        raise InvalidMapping("No entity [%s] for property [%s]"
+                             % (self.entity, self.name))
 
     def record_values(self, record):
         if self.template is not None:
@@ -64,13 +65,19 @@ class PropertyMapping(object):
         values.extend([record.get(r) for r in self.refs])
         return values
 
-    def map(self, record, **kwargs):
+    def map(self, record, entities, **kwargs):
         kwargs.update(self.data)
-        values = []
+
+        if self.entity is not None:
+            entity = entities.get(self.entity)
+            if entity is not None:
+                return [entity.get('id')]
+            return []
+
         # clean the values returned by the query, or by using literals, or
         # formats.
+        values = []
         for value in self.record_values(record):
-            # TODO: should we add unclean here?
             value = self.type.clean(value, **kwargs)
             if value is not None:
                 values.append(value)
@@ -78,10 +85,3 @@ class PropertyMapping(object):
         if self.join is not None:
             values = [self.join.join(values)]
         return unique_list(values)
-
-    def resolve(self, entities):
-        if self.entity is None:
-            return
-        entity = entities.get(self.entity)
-        if entity is not None:
-            return entity.get('id')

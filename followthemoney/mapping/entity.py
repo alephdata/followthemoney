@@ -1,5 +1,7 @@
 from hashlib import sha1
 from banal import ensure_list
+from normality import stringify
+from itertools import chain
 
 from followthemoney.mapping.property import PropertyMapping
 from followthemoney.util import key_bytes
@@ -8,9 +10,9 @@ from followthemoney.exc import InvalidMapping
 
 class EntityMapping(object):
 
-    def __init__(self, mapping, model, name, data, key_prefix=None):
-        self.mappings = mapping.mappings
+    def __init__(self, model, query, name, data, key_prefix=None):
         self.model = model
+        self.name = name
         self.data = data
 
         self.seed = sha1(key_bytes(key_prefix))
@@ -24,23 +26,30 @@ class EntityMapping(object):
             raise InvalidMapping("Invalid schema: %s" % data.get('schema'))
 
         self.refs = set(self.keys)
+        self.dependencies = set()
         self.properties = []
         for name, prop in data.get('properties', {}).items():
             prop_schema = self.schema.get(name)
             if prop_schema is None:
                 raise InvalidMapping("Invalid property: %s" % name)
-            prop = PropertyMapping(self, prop, prop_schema)
+            prop = PropertyMapping(query, prop, prop_schema)
             self.properties.append(prop)
             self.refs.update(prop.refs)
+            if prop.entity:
+                self.dependencies.add(prop.entity)
 
-    def compute_key(self, record):
+    def bind(self):
+        for prop in self.properties:
+            prop.bind()
+
+    def compute_key(self, record, keys):
         digest = self.seed.copy()
-        for key in self.keys:
+        for key in chain(keys, self.keys):
             digest.update(key_bytes(record.get(key)))
         if digest.digest() != self.seed.digest():
             return digest.hexdigest()
 
-    def map(self, record):
+    def map(self, record, entities):
         properties = {}
 
         # THIS IS HACKY
@@ -51,23 +60,25 @@ class EntityMapping(object):
         countries = set()
         for prop in self.properties:
             if prop.schema.is_country:
-                values = prop.map(record)
+                values = prop.map(record, entities)
                 countries.update(values)
                 properties[prop.name] = values
 
+        keys = set()
         for prop in self.properties:
-            if not prop.schema.is_country:
-                properties[prop.name] = prop.map(record, countries=countries)
+            values = properties.pop(prop.name, None)
+            if values is None:
+                values = prop.map(record, entities, countries=countries)
+            if len(values):
+                properties[prop.name] = values
+            if prop.entity is not None:
+                keys.update(values)
 
         return {
-            'id': self.compute_key(record),
+            'id': self.compute_key(record, keys),
             'schema': self.schema.name,
             'properties': properties
         }
 
-    def resolve(self, entity, entities):
-        for prop in self.properties:
-            value = prop.resolve(entities)
-            if value is not None:
-                entity['properties'][prop.name] = ensure_list(value)
-        return entity
+    def __repr__(self):
+        return '<EntityMapping(%r)>' % self.name
