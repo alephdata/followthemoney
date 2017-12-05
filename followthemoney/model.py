@@ -67,19 +67,18 @@ class Model(object):
         lefts = self.get(left)
         if lefts is None:
             return right
-        lefts = [s.name for s in lefts.schemata]
-        if right in lefts:
+        if right in lefts.names:
             return left
 
         rights = self.get(right)
         if rights is None:
             return left
-        rights = [s.name for s in rights.schemata]
-        if left in rights:
+        if left in rights.names:
             return right
 
-        for left in lefts:
-            for right in rights:
+        # Find a common ancestor:
+        for left in lefts.names:
+            for right in rights.names:
                 if left == right:
                     return left
 
