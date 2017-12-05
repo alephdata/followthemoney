@@ -3,6 +3,8 @@ Contract:
   extends: Transaction
   icon: fa-handshake-o
   properties:
+    title:
+      label: "Title"
     totalValue:
       label: "Total value of contract"
     type:
@@ -19,3 +21,7 @@ Contract:
     identifier:
       label: "Identifier"
       type: identifier
+    customer:
+      label: "Customer"
+      type: entity
+      schema: LegalEntity
