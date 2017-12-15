@@ -65,6 +65,9 @@ class Schema(object):
         other = self._model.get(other)
         return other.name == self.name
 
+    def __hash__(self):
+        return hash(self.name)
+
     @property
     def properties(self):
         """Return properties, those defined locally and in ancestors."""
