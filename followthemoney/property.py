@@ -9,6 +9,7 @@ class Property(object):
     def __init__(self, schema, name, data):
         self.schema = schema
         self.name = name.strip()
+        self.qname = '%s:%s' % (schema.name, self.name)
         self.data = data
         self.label = data.get('label', name)
         self.hidden = data.get('hidden', False)
@@ -41,6 +42,12 @@ class Property(object):
             return ensure_list(data), error
         values = list(set(values))
         return values, None
+
+    def __eq__(self, other):
+        return self.qname == other.qname
+
+    def __hash__(self):
+        return hash(self.qname)
 
     def to_dict(self):
         return {
