@@ -43,10 +43,13 @@ class Schema(object):
     @property
     def schemata(self):
         """Return the full inheritance chain."""
+        seen = set([self])
         yield self
         for base in self.extends:
             for schema in base.schemata:
-                yield schema
+                if schema not in seen:
+                    seen.add(schema)
+                    yield schema
 
     @property
     def names(self):
