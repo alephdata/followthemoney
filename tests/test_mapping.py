@@ -100,7 +100,7 @@ class MappingTestCase(TestCase):
         entities = list(model.map_entities(self.kek_mapping))
         assert len(entities) == 8712, len(entities)
         ids = set([e['id'] for e in entities])
-        assert len(ids) == 5599, len(ids)
+        assert len(ids) == 5607, len(ids)
 
     def test_local_csv_load(self):
         url = 'file://' + os.path.join(self.fixture_path, 'experts.csv')
@@ -119,8 +119,8 @@ class MappingTestCase(TestCase):
                 }
             }
         }
-        with self.assertRaises(InvalidMapping):
-            list(model.map_entities(mapping))
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 0, len(entities)
 
         mapping['entities']['expert']['key'] = 'name'
         entities = list(model.map_entities(mapping))

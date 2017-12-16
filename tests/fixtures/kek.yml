@@ -33,9 +33,6 @@ entities:
         template: "{{comp.address}}"
   ownership:
     schema: Ownership
-    keys:
-      - comp.id
-      - sub.id
     properties:
       owner:
         entity: company

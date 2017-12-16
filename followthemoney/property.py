@@ -32,6 +32,8 @@ class Property(object):
         """
         values, error = [], None
         for val in ensure_list(data):
+            if isinstance(val, dict):
+                val = val.get('id')
             if not self.type.validate(val):
                 error = "Invalid value"
             else:

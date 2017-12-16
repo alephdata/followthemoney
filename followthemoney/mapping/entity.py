@@ -1,7 +1,5 @@
 from hashlib import sha1
 from banal import ensure_list
-from normality import stringify
-from itertools import chain
 
 from followthemoney.mapping.property import PropertyMapping
 from followthemoney.util import key_bytes
@@ -18,8 +16,9 @@ class EntityMapping(object):
         self.seed = sha1(key_bytes(key_prefix))
         self.keys = ensure_list(data.get('key'))
         self.keys.extend(ensure_list(data.get('keys')))
-        if not len(self.keys):
-            raise InvalidMapping("No keys defined for %r" % name)
+        self.keys = set(self.keys)
+        # if not len(self.keys):
+        #     raise InvalidMapping("No keys defined for %r" % name)
 
         self.schema = model.get(data.get('schema'))
         if self.schema is None:
@@ -42,10 +41,15 @@ class EntityMapping(object):
         for prop in self.properties:
             prop.bind()
 
-    def compute_key(self, record, keys):
+    def compute_key(self, record, related):
+        """Generate a key for this entity, based on the given fields, and the
+        ID of other entities referenced by this entity."""
         digest = self.seed.copy()
-        for key in chain(keys, self.keys):
-            digest.update(key_bytes(record.get(key)))
+        for entity in sorted(related):
+            digest.update(key_bytes(entity))
+        for key in self.keys:
+            value = record.get(key)
+            digest.update(key_bytes(value))
         if digest.digest() != self.seed.digest():
             return digest.hexdigest()
 
@@ -64,7 +68,7 @@ class EntityMapping(object):
                 countries.update(values)
                 properties[prop.name] = values
 
-        keys = set()
+        related = set()
         for prop in self.properties:
             values = properties.pop(prop.name, None)
             if values is None:
@@ -72,10 +76,14 @@ class EntityMapping(object):
             if len(values):
                 properties[prop.name] = values
             if prop.entity is not None:
-                keys.update(values)
+                related.update(values)
+
+        key = self.compute_key(record, related)
+        if key is None:
+            return
 
         return {
-            'id': self.compute_key(record, keys),
+            'id': key,
             'schema': self.schema.name,
             'properties': properties
         }

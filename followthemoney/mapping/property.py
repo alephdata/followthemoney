@@ -40,6 +40,10 @@ class PropertyMapping(object):
         if self.entity is None:
             return
 
+        # Figure out if the schema types of the referenced entities
+        # are of a type compatible with the range of this property.
+        # For example, an asset can be owned by a legal entity, but
+        # by a bank payment or a ship.
         for entity in self.query.entities:
             if entity.name != self.entity:
                 continue

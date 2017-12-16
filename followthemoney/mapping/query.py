@@ -44,5 +44,7 @@ class QueryMapping(object):
     def map(self, record):
         data = {}
         for entity in self.entities:
-            data[entity.name] = entity.map(record, data)
+            mapped = entity.map(record, data)
+            if mapped is not None:
+                data[entity.name] = mapped
         return data

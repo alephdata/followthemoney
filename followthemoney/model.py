@@ -88,12 +88,12 @@ class Model(object):
         """Merge two entities and return a combined version."""
         properties = merge_data(left.get('properties'),
                                 right.get('properties'))
+        schema = self.precise_schema(left.get('schema'),
+                                     right.get('schema'))
         return {
-            'schema': self.precise_schema(left.get('schema'),
-                                          right.get('schema')),
             'id': left.get('id', right.get('id')),
-            'properties': properties,
-            'data': merge_data(left.get('data'), right.get('data'))
+            'schema': schema,
+            'properties': properties
         }
 
     def to_dict(self):

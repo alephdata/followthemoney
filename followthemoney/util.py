@@ -1,4 +1,5 @@
-import six
+from __future__ import unicode_literals
+
 from normality import stringify
 from banal import is_mapping, is_sequence
 from banal import unique_list, ensure_list
@@ -6,9 +7,7 @@ from banal import unique_list, ensure_list
 
 def key_bytes(key):
     """Convert the given data to a value appropriate for hashing."""
-    key = stringify(key)
-    if key is None:
-        return six.binary_type()
+    key = stringify(key) or ''
     return key.encode('utf-8')
 
 
