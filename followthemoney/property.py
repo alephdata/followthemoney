@@ -15,8 +15,9 @@ class Property(object):
         self.hidden = data.get('hidden', False)
         self.required = data.get('required', False)
         self.is_multiple = data.get('multiple', False)
-        self.type_name = data.get('type', 'string')
         self.is_country = self.type_name == 'country'
+        self.is_entity = self.type_name == 'entity'
+        self.type_name = data.get('type', 'string')
         self.range = data.get('schema', 'Thing')
         try:
             self.type = TYPES[self.type_name].type
@@ -52,13 +53,16 @@ class Property(object):
         return hash(self.qname)
 
     def to_dict(self):
-        return {
+        data = {
             'name': self.name,
+            'qname': self.qname,
             'label': self.label,
             'hidden': self.hidden,
-            'type': self.type_name,
-            'range': self.range
+            'type': self.type_name
         }
+        if self.is_entity:
+            data['range'] = self.range
+        return data
 
     def __repr__(self):
         return '<Property(%r, %r)>' % (self.schema, self.name)

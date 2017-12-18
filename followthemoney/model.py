@@ -97,11 +97,7 @@ class Model(object):
         }
 
     def to_dict(self):
-        data = {}
-        for name, schema in self.schemata.items():
-            if not schema.hidden:
-                data[name] = schema.to_dict()
-        return data
+        return {n: s.to_dict() for (n, s) in self.schemata.items()}
 
     def __iter__(self):
         return iter(self.schemata.values())
