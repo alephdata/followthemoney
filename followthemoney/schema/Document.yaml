@@ -11,7 +11,7 @@ PlainText:
   extends: Document
   label: Text file
   plural: Text files
-  icon: fa-text-o
+  icon: fa-file-text-o
   hidden: true
   fuzzy: false
 
