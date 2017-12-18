@@ -15,10 +15,10 @@ class Property(object):
         self.hidden = data.get('hidden', False)
         self.required = data.get('required', False)
         self.is_multiple = data.get('multiple', False)
-        self.is_country = self.type_name == 'country'
-        self.is_entity = self.type_name == 'entity'
         self.type_name = data.get('type', 'string')
         self.range = data.get('schema', 'Thing')
+        self.is_country = self.type_name == 'country'
+        self.is_entity = self.type_name == 'entity'
         try:
             self.type = TYPES[self.type_name].type
             self.invert = TYPES[self.type_name].invert

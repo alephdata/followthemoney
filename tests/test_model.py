@@ -14,7 +14,7 @@ class ModelTestCase(TestCase):
         assert thing == model.get(thing)
         assert thing in list(model), list(model)
         assert 'Person' in model.to_dict(), model.to_dict()
-        assert 'Thing' not in model.to_dict(), model.to_dict()
+        assert 'Thing' in model.to_dict(), model.to_dict()
 
     def test_schema_basics(self):
         thing = model.schemata['Thing']
