@@ -3,7 +3,7 @@ Vessel:
   plural: Vessels
   extends: Asset
   icon: fa-ship
-  fuzzy: false
+  fuzzy: true
   properties:
     imoNumber:
       label: IMO Number

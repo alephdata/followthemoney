@@ -2,6 +2,7 @@ Transaction:
   label: "Transaction"
   extends: Interval
   icon: fa-money
+  fuzzy: false
   properties:
     from:
       label: "From (eg. payer)"

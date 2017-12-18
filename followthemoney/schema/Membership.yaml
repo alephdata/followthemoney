@@ -2,6 +2,7 @@ Membership:
   label: "Membership"
   extends: Interest
   icon: fa-id-badge
+  fuzzy: false
   properties:
     member:
       label: "Member"

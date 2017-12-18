@@ -2,6 +2,7 @@ Interest:
   label: "Interest"
   extends: Interval
   icon: fa-certificate
+  fuzzy: false
   properties:
     role:
       label: "Role"

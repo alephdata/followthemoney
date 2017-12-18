@@ -1,6 +1,7 @@
 Interval:
   label: "Interval"
   icon: fa-clock-o
+  fuzzy: false
   properties:
     startDate:
       label: "Start date"

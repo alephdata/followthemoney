@@ -2,6 +2,7 @@ Directorship:
   label: "Directorship"
   extends: Interest
   icon: fa-user-circle
+  fuzzy: false
   properties:
     director:
       label: "Director"

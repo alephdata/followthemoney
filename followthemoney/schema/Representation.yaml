@@ -2,6 +2,7 @@ Representation:
   label: "Representation"
   extends: Interest
   icon: fa-rocket
+  fuzzy: false
   properties:
     agent: # aka representative / incorporation agent
       label: "Agent"

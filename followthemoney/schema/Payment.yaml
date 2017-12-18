@@ -2,6 +2,7 @@ Payment:
   label: "Payment"
   extends: Transaction
   icon: fa-usd
+  fuzzy: false
   properties:
     amount:
       label: "Payment amount"

@@ -2,6 +2,7 @@ Party:
   label: "Party"
   extends: Interest
   icon: fa-birthday-cake
+  fuzzy: false
   properties:
     party: 
       label: "Party"
