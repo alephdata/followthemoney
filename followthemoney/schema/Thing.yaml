@@ -1,7 +1,7 @@
 Thing:
   hidden: true
   icon: fa-circle
-  fuzzy: false
+  fuzzy: true
   properties:
     name:
       label: Name
