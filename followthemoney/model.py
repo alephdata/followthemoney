@@ -22,6 +22,14 @@ class Model(object):
                     self._load(os.path.join(path, filename))
         return self._schemata
 
+    @property
+    def properties(self):
+        props = set()
+        for schema in self.schemata.values():
+            for prop in schema.properties.values():
+                props.add(prop)
+        return props
+
     def _load(self, filepath):
         with open(filepath, 'r') as fh:
             data = yaml.load(fh)

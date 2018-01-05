@@ -6,9 +6,11 @@ Representation:
   properties:
     agent: # aka representative / incorporation agent
       label: "Agent"
+      reverse: "Agency clients"
       type: entity
       schema: LegalEntity
     client:
       label: "Client"
+      reverse: "Agents"
       type: entity
       schema: LegalEntity

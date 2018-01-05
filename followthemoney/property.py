@@ -17,6 +17,7 @@ class Property(object):
         self.is_multiple = data.get('multiple', False)
         self.type_name = data.get('type', 'string')
         self.range = data.get('schema', 'Thing')
+        self.reverse = data.get('reverse')
         self.is_country = self.type_name == 'country'
         self.is_entity = self.type_name == 'entity'
         try:
@@ -62,6 +63,7 @@ class Property(object):
         }
         if self.is_entity:
             data['range'] = self.range
+            data['reverse'] = self.reverse
         return data
 
     def __repr__(self):

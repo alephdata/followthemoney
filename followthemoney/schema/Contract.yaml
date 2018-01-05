@@ -23,5 +23,6 @@ Contract:
       type: identifier
     customer:
       label: "Customer"
+      reverse: "Contracts"
       type: entity
       schema: LegalEntity

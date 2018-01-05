@@ -16,6 +16,10 @@ class ModelTestCase(TestCase):
         assert 'Person' in model.to_dict(), model.to_dict()
         assert 'Thing' in model.to_dict(), model.to_dict()
 
+        props = list(model.properties)
+        assert len(props), props
+        assert thing.get('name') in props, props
+
     def test_schema_basics(self):
         thing = model.schemata['Thing']
         assert 'Thing' in repr(thing), repr(thing)
@@ -26,9 +30,16 @@ class ModelTestCase(TestCase):
         assert not len(list(thing.extends)), list(thing.extends)
         assert 1 == len(list(thing.schemata)), list(thing.schemata)
 
-        person = model.schemata['Person']
+        person = model['Person']
         assert 1 == len(list(person.extends)), list(person.extends)
         assert 'Thing' in person.names, person.names
+
+        ownership = model['Ownership']
+        owner = ownership.get('owner')
+        assert owner.range == 'LegalEntity'
+        assert owner.reverse is not None
+        role = ownership.get('role')
+        assert role.reverse is None
 
     def test_schema_validate(self):
         thing = model.schemata['Thing']

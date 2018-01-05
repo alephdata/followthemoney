@@ -6,10 +6,12 @@ Ownership:
   properties:
     owner:
       label: "Owner"
+      reverse: "Assets and shares"
       type: entity
       schema: LegalEntity
     asset:
       label: "Asset"
+      reverse: "Owners"
       type: entity
       schema: Asset
     percentage:

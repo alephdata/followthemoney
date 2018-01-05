@@ -1,4 +1,4 @@
-Party:
+CourtCaseParty:
   label: "Party"
   extends: Interest
   icon: fa-birthday-cake
@@ -6,9 +6,11 @@ Party:
   properties:
     party: 
       label: "Party"
+      reverse: "Court cases"
       type: entity
       schema: Thing
     case:
       label: "Case"
+      reverse: "Parties"
       type: entity
       schema: CourtCase

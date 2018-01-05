@@ -48,5 +48,6 @@ LegalEntity:
       label: ICIJ ID
     parent:
       label: "Parent company"
+      reverse: "Subsidiaries"
       type: entity
       schema: LegalEntity

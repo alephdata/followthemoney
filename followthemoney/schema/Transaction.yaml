@@ -6,13 +6,16 @@ Transaction:
   properties:
     from:
       label: "From (eg. payer)"
+      reverse: "Transactions issued"
       type: entity
       schema: LegalEntity
     to:
       label: "To (eg. beneficiary)"
+      reverse: "Transactions received"
       type: entity
       schema: LegalEntity
     asset:
       label: "Asset"
+      reverse: "Transactions"
       type: entity
       schema: Asset

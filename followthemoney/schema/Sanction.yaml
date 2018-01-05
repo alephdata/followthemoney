@@ -7,10 +7,12 @@ Sanction:
   properties:
     entity:
       label: "Sanctioned entity"
+      reverse: "Sanctions"
       type: entity
       schema: Thing
     authority:
       label: "Sanctioning authority"
+      reverse: "Sanctioned entities"
       type: entity
       schema: Thing
     program:
