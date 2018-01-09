@@ -5,12 +5,6 @@ Land:
   icon: fa-map
   fuzzy: false
   properties:
-    address:
-      label: Address
-      type: address
-    country:
-      label: Country
-      type: country
     latitude:
       label: Latitude
     longitude:
