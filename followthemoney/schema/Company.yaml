@@ -6,6 +6,14 @@ Company:
     - Organization
     - Asset
   properties:
+    jurisdiction:
+      label: Jurisdiction
+      type: country
+      featured: true
+    registrationNumber:
+      label: Registration number
+      type: identifier
+      featured: true
     capital:
       label: "Capital"
     voenCode:

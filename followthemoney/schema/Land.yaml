@@ -19,6 +19,7 @@ Land:
     registrationNumber:
       label: Registration number
       type: identifier
+      featured: true
     propertyType:
       label: Property type
     landType:

@@ -13,6 +13,7 @@ class Property(object):
         self.data = data
         self.label = data.get('label', name)
         self.hidden = data.get('hidden', False)
+        self.featured = data.get('featured', False)
         self.required = data.get('required', False)
         self.is_multiple = data.get('multiple', False)
         self.type_name = data.get('type', 'string')
@@ -59,6 +60,7 @@ class Property(object):
             'qname': self.qname,
             'label': self.label,
             'hidden': self.hidden,
+            'featured': self.featured,
             'type': self.type_name
         }
         if self.is_entity:

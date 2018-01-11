@@ -17,6 +17,7 @@ Person:
     birthDate:
       label: Birth date
       type: date
+      featured: true
     birthPlace:
       label: Place of birth
     deathDate:
@@ -27,6 +28,7 @@ Person:
     nationality:
       label: Nationality
       type: country
+      featured: true
     gender:
       label: Gender
     passportNumber:

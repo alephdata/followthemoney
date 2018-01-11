@@ -9,6 +9,7 @@ BankAccount:
     accountNumber:
       label: Account Number
       type: identifier
+      featured: true
     bic:
       label: Bank Identifier Code
     accountType:

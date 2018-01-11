@@ -6,9 +6,11 @@ Interval:
     startDate:
       label: "Start date"
       type: date
+      featured: true
     endDate:
       label: "End date"
       type: date
+      featured: true
     date:
       label: "Date"
       type: date
