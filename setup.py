@@ -22,8 +22,7 @@ setup(
         'requests[security] >= 2.18.4',
         'normality >= 0.5.1',
         'sqlalchemy >= 1.1.14',
-        'exactitude >= 2.0.0',
-        'responses'
+        'exactitude >= 2.0.0'
     ],
     test_suite='nose.collector',
     entry_points={},
