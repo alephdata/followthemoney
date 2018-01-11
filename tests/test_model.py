@@ -112,3 +112,12 @@ class ModelTestCase(TestCase):
         value, errors = name.validate(None)
         assert errors, errors
         assert not len(value), value
+
+    def test_model_property_types(self):
+        property_types = model.property_types
+        assert property_types['name'] == 'name', property_types
+        assert property_types['position'] == 'string', property_types
+        assert property_types['director'] == 'entity', property_types
+        assert property_types['birthDate'] == 'date', property_types
+        assert property_types['mainCountry'] == 'country', property_types
+        assert property_types['accountNumber'] == 'identifier', property_types

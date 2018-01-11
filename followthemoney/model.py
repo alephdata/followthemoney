@@ -30,6 +30,13 @@ class Model(object):
                 props.add(prop)
         return props
 
+    @property
+    def property_types(self):
+        prop_types = {}
+        for prop in self.properties:
+            prop_types[prop.name] = prop.type_name
+        return prop_types
+
     def _load(self, filepath):
         with open(filepath, 'r') as fh:
             data = yaml.load(fh)
