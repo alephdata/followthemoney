@@ -1,6 +1,8 @@
 import sys
 import json
-from rdflib import Graph, Namespace, URIRef, Literal, RDF, RDFS, OWL
+from datetime import datetime
+from rdflib import Graph, Namespace, URIRef, Literal
+from rdflib.namespace import OWL, DCTERMS, RDF, RDFS, XSD
 
 from followthemoney import model
 
@@ -16,11 +18,14 @@ class Ontology(object):
         self.graph = Graph(identifier=ns_uri)
         self.graph.namespace_manager.bind('ftm', self.ns)
         self.graph.namespace_manager.bind('owl', OWL)
+        self.graph.namespace_manager.bind('dct', DCTERMS)
 
         self.graph.add((self.uri, RDF.type, OWL.Ontology))
         self.graph.add((self.uri, RDFS.label, Literal("Follow The Money")))
         self.graph.add((self.uri, RDFS.comment, Literal(
             "A vocabulary for investigative reporting, based on real life.")))
+        self.graph.add((self.uri, DCTERMS.modified,
+                        Literal(datetime.now().strftime('%Y-%m-%dT%H:%I:%M'), datatype=XSD.dateTime)))
 
         self.add_schemata()
 
@@ -32,11 +37,14 @@ class Ontology(object):
         prop_type = model.property_types[prop.name]
         if prop_type == 'entity':
             return self.uri_for(model[prop.range])
+        elif prop_type == 'date':
+            return XSD.dateTime
         return None
 
     def add_class(self, entity):
         entity_uri = self.uri_for(entity)
         self.graph.add((entity_uri, RDF.type, RDFS.Class))
+        self.graph.add((entity_uri, RDFS.isDefinedBy, self.uri))
         for extends in entity.extends:
             self.graph.add((entity_uri, RDFS.subClassOf,
                             self.uri_for(model[extends])))
@@ -49,6 +57,7 @@ class Ontology(object):
     def add_property(self, entity, prop):
         prop_uri = self.uri_for(prop)
         self.graph.add((prop_uri, RDF.type, RDF.Property))
+        self.graph.add((prop_uri, RDFS.isDefinedBy, self.uri))
 
         self.graph.add((prop_uri, RDFS.label, Literal(prop.label)))
         if prop.description is not None:
