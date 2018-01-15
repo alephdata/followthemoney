@@ -17,6 +17,7 @@ class Schema(object):
         self.label = data.get('label', name)
         self.plural = data.get('plural', self.label)
         self.icon = data.get('icon')
+        self.description = data.get('description')
 
         # Do not show in listings:
         self.hidden = data.get('hidden', False)

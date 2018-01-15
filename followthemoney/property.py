@@ -12,6 +12,7 @@ class Property(object):
         self.qname = '%s:%s' % (schema.name, self.name)
         self.data = data
         self.label = data.get('label', name)
+        self.description = data.get('description')
         self.hidden = data.get('hidden', False)
         self.featured = data.get('featured', False)
         self.required = data.get('required', False)
