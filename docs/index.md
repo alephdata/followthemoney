@@ -1,20 +1,26 @@
-# The Schema
+# Follow The Money
 
 The followthemoney data model is designed to organise concepts which arise in money laundering and corruption investigations, in a way that is useful to investigative journalists.
 
+## The Schema
+
 The root of the data model is **Things** and **Intervals**. You can also think of these as entities and events. Things are documents, assets, legal entites and their descendents. Intervals are business interests, court cases, sanctions and transactions (and their descendents). Intervals tend to be useful for linking two entities together, possibly over a specific time period.
 
-## Thing
+### Thing
 
 ![The Things schema](https://raw.githubusercontent.com/alephdata/followthemoney/master/docs/schema_thing.png)
 
-## Interval
+### Interval
 
 ![The Intervals schema](https://raw.githubusercontent.com/alephdata/followthemoney/master/docs/schema_interval.png)
 
 ## Uses
 
 This data model is used by [Aleph](https://github.com/alephdata/aleph).
+
+## Namespace
+
+To use this schema with RDF see the [namespace docs](ns/).
 
 ## Future
 
