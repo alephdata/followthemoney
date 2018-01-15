@@ -1,4 +1,5 @@
-from urlparse import urljoin
+import sys
+import json
 from rdflib import Graph, Namespace, URIRef, Literal, RDF, RDFS, OWL
 
 from followthemoney import model
@@ -8,6 +9,7 @@ class Ontology(object):
 
     def __init__(self, ns_uri):
 
+        self.ns_uri = ns_uri
         self.uri = URIRef(ns_uri)
         self.ns = Namespace(ns_uri)
 
@@ -23,7 +25,7 @@ class Ontology(object):
         self.add_schemata()
 
     def uri_for(self, thing):
-        url = urljoin(self.uri, thing.name)
+        url = self.uri + thing.name  # Not using urljoin for this because it loses fragments
         return URIRef(url)
 
     def property_range(self, prop):
@@ -41,7 +43,8 @@ class Ontology(object):
 
         self.graph.add((entity_uri, RDFS.label, Literal(entity.label)))
         if entity.description is not None:
-            self.graph.add((entity_uri, RDFS.comment, Literal(entity.description)))
+            self.graph.add((entity_uri, RDFS.comment,
+                            Literal(entity.description)))
 
     def add_property(self, entity, prop):
         prop_uri = self.uri_for(prop)
@@ -64,3 +67,52 @@ class Ontology(object):
 
     def serialize(self, format='n3'):
         return self.graph.serialize(format=format)
+
+    def jsonld_context(self):
+        context = {
+            '@context': {
+                'xsd': 'http://www.w3.org/2001/XMLSchema#',
+                'ftm': self.ns_uri
+            }
+        }
+
+        for s, p, o in self.graph.triples((None, None, None)):
+            name = s.split(self.ns_uri)[1]
+            if name != "":
+                id_types = ['entity', 'url', 'uri']
+                if model.property_types.get(name) in id_types:
+                    context['@context'][name] = {
+                        '@id': 'ftm:%s' % name,
+                        '@type': '@id'
+                    }
+                elif model.property_types.get(name) == 'date':
+                    context['@context'][name] = {
+                        '@id': 'ftm:%s' % name,
+                        '@type': 'xsd:dateTime'
+                    }
+                else:
+                    context['@context'][name] = 'ftm:%s' % name
+
+        return context
+
+    def write_namespace_docs(self, path):
+        ttl_fn = '%s/ftm.ttl' % path
+        with open(ttl_fn, 'w') as ttl_file:
+            ttl_file.write(self.serialize())
+
+        xml_fn = '%s/ftm.xml' % path
+        with open(xml_fn, 'w') as xml_file:
+            xml_file.write(self.serialize('xml'))
+
+        json_fn = '%s/ftm.jsonld' % path
+        with open(json_fn, 'w') as json_file:
+            json_file.write(json.dumps(
+                self.jsonld_context(), indent=4, sort_keys=True))
+
+
+if __name__ == '__main__':
+    uri = sys.argv[1]
+    path = sys.argv[2]
+    o = Ontology(uri)
+    o.write_namespace_docs(path)
+    print "Namespace docs written to %s" % path
