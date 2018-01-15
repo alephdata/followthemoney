@@ -12,7 +12,7 @@ Vessel:
       label: CRS Number
       type: identifier
     type:
-      label: Vessel Type
+      label: Type
     flag:
       label: Flag
     registrationPort:

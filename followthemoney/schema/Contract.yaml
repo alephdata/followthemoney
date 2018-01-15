@@ -9,7 +9,7 @@ Contract:
     totalValue:
       label: "Total value of contract"
     type:
-      label: "Type of contract"
+      label: "Type"
     procedureNumber:
       label: "Procedure number"
     documentNumber:
