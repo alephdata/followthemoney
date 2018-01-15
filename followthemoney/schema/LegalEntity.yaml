@@ -3,51 +3,69 @@ LegalEntity:
   label: Legal entity
   plural: Legal entities
   icon: fa-user-secret
+  description: "A legal entity may be a person or a company."
   properties:
     email:
       label: E-Mail
       type: email
+      description: "Email address"
     phone:
       label: Phone
       type: phone
+      description: "Phone number"
     website:
       label: Website
       type: url
+      description: "Website address"
     legalForm:
       label: Legal form
+      description: "?"
     incorporationDate:
       label: Incorporation date
       type: date
+      description: "The date the legal entity was incorporated"
     dissolutionDate:
       label: Dissolution date
       type: date
+      description: "The date the legal entity was dissolved, if applicable"
     taxStatus:
       label: Tax status
+      description: "Tax status, eg. ??"
     status:
       label: Status
+      description: "Status, eg. ??"
     sector:
       label: Sector
+      description: "Sector, eg. ??"
     classification:
       label: Classification
+      description: "Classification, eg. ??"
     registrationNumber:
       label: Registration number
       type: identifier
+      description: "Company registration number"
     idNumber:
       label: ID Number
       type: identifier
+      description: "ID number of any applicable ID"
     taxNumber:
       label: Tax ID Number
       type: identifier
+      description: "Tax ID number"
     jurisdiction:
       label: Jurisdiction
       type: country
+      description: "Country or region in which this entity operates"
     mainCountry:
       label: Country of origin
       type: country
+      description: "Primary country of this entity"
     icijId:
       label: ICIJ ID
+      description: "ID according to International Consortium for Investigative Journalists"
     parent:
       label: "Parent company"
       reverse: "Subsidiaries"
       type: entity
       schema: LegalEntity
+      description: "If this entity is a subsidiary, another entity (company or organisation) is its parent"
