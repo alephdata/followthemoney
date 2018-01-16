@@ -1,0 +1,34 @@
+ContractAward:
+  label: "Contract Award"
+  description: "One contract may be awarded to multiple suppliers"
+  extends: Interest
+  icon: fa-handshake-o
+  properties:
+    contract:
+      label: "Contract"
+      reverse: "Awards"
+      type: entity
+      schema: Contract
+    supplier:
+      label: "Awarded to"
+      reverse: "Contracts awarded"
+      type: entity
+      schema: LegalEntity
+    authority:
+      label: "Contract authority"
+      reverse: "Contracts issued"
+      type: entity
+      schema: LegalEntity
+    decisionReason:
+      label: "Decision reason"
+    documentNumber:
+      label: "Document number"
+    identifier:
+      label: "Identifier"
+      type: identifier
+    duration:
+      label: "Duration"
+    percentage:
+      label: "Percentage"
+    status:
+      label: "Status"
