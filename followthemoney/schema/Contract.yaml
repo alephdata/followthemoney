@@ -4,7 +4,7 @@ Contract:
   extends: Asset
   icon: fa-handshake-o
   properties:
-    title:
+    contractTitle:
       label: "Title"
       featured: true
     type:
