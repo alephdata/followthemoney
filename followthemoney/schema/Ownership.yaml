@@ -16,8 +16,6 @@ Ownership:
       schema: Asset
     percentage:
       label: "Percentage held"
-    status: 
-      label: "Ownership status"
     sharesCount:
       label: "Number of shares"
     sharesValue:
