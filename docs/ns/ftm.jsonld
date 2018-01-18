@@ -137,7 +137,7 @@
             "@id": "ftm:fromAccount", 
             "@type": "@id"
         }, 
-        "ftm": "https://ns.data.occrp.org/ftm#", 
+        "ftm": "https://w3id.org/ftm#", 
         "gender": "ftm:gender", 
         "grossRegisteredTonnage": "ftm:grossRegisteredTonnage", 
         "icijId": "ftm:icijId", 

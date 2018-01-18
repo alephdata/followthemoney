@@ -1,5 +1,5 @@
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix ftm: <https://ns.data.occrp.org/ftm#> .
+@prefix ftm: <https://w3id.org/ftm#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -928,6 +928,6 @@ ftm:website a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2018-01-15T13:01:33"^^xsd:dateTime ;
+    dct:modified "2018-01-18T13:01:02"^^xsd:dateTime ;
     rdfs:comment "A vocabulary for investigative reporting, based on real life." .
 
