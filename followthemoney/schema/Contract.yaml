@@ -3,10 +3,11 @@ Contract:
   description: "An agreement or offer for the supplier to provide goods or services to the authority. May be awarded to multiple suppliers (see ContractAward) or broken into lots."
   extends: Asset
   icon: fa-handshake-o
+  featured:
+    - name
   properties:
-    contractTitle:
-      label: "Title"
-      featured: true
+    totalValue:
+      label: "Total value of contract"
     type:
       label: "Type"
     procedureNumber:

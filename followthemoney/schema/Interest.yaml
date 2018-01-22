@@ -3,10 +3,11 @@ Interest:
   extends: Interval
   icon: fa-certificate
   fuzzy: false
+  featured:
+    - role
   properties:
     role:
       label: "Role"
-      featured: true
     # level:
     #   label: "Level of interest" # direct/indirect
     # votes:

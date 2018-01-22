@@ -1,16 +1,16 @@
 Thing:
-  hidden: true
+  abstract: true
   icon: fa-circle
   fuzzy: true
   properties:
     name:
       label: Name
       type: name
-      hidden: true
+      caption: true
       required: true
-    summary:
+    summary: # a short one-liner kind of description
       label: Summary
-    description:
+    description: # a longer description
       label: Description
     country:
       label: Country

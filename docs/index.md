@@ -14,6 +14,29 @@ The root of the data model is **Things** and **Intervals**. You can also think o
 
 ![The Intervals schema](https://raw.githubusercontent.com/alephdata/followthemoney/master/docs/schema_interval.png)
 
+## Behaviour
+
+The YAML definitions for the schema include ways to define the behaviour or features of entities and their properties. These keys on entities are:
+
+* `abstract` (bool): if `true`, nothing should use this as its type directly, always use a descendant. 
+* `description`: an explanation of what this type of entity means.
+* `extends` (string): a parent schema from which properties are inherited.
+* `featured` (list): this list of properties are extra useful in understanding the entity. In Aleph we use this to decide to show properties of something even if there's no value set.
+* `fuzzy` (bool): ..
+* `icon` (string): the Font Awesome icon of an entity.
+* `label` (string): human-friendly name for the entity type.
+* `plural` (string): plural of `label`.
+
+And on properties of entities: 
+
+* `caption` (bool): if `true` this is the sort of property that you might want to use as the header of a web page about the thing, for example.
+* `description`: an explanation of what this property means.
+* `label` (string): human-friendly name for the property.
+* `multiple` (bool): if `true`, can have multiple values.
+* `reverse` (string): inverse of `label`
+* `schema` (string): if `type` is `entity`, this is what kind. AKA 'domain' of the property.
+* `type` (string): datatype of the value of this property according to [exactitude](https://github.com/alephdata/exactitude).
+
 ## Uses
 
 This data model is used by [Aleph](https://github.com/alephdata/aleph).

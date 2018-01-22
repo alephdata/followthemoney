@@ -2,7 +2,7 @@ Asset:
   plural: Assets
   extends: Thing
   icon: fa-car
-  hidden: true
+  abstract: true
   fuzzy: false
   properties:
     value:

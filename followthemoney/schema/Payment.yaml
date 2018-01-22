@@ -3,10 +3,12 @@ Payment:
   extends: Transaction
   icon: fa-usd
   fuzzy: false
+  featured:
+    - amount
+    - purpose
   properties:
     amount:
       label: "Payment amount"
-      featured: true
     currency:
       label: "Original currency"
     amountUsd:
@@ -17,7 +19,6 @@ Payment:
       label: "Transaction number"
     purpose:
       label: "Payment purpose"
-      featured: true
     fromAccount:
       label: "Payer bank account"
       reverse: "Payments made"
