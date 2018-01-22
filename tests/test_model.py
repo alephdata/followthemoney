@@ -23,7 +23,7 @@ class ModelTestCase(TestCase):
     def test_schema_basics(self):
         thing = model.schemata['Thing']
         assert 'Thing' in repr(thing), repr(thing)
-        assert thing.hidden, thing
+        assert thing.abstract, thing
         assert thing.label == thing.name, thing
         assert thing.get('name'), thing.properties
         assert not thing.get('banana'), thing.properties

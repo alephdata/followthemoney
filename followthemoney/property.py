@@ -13,7 +13,7 @@ class Property(object):
         self.data = data
         self.label = data.get('label', name)
         self.description = data.get('description')
-        self.hidden = data.get('hidden', False)
+        self.caption = data.get('caption', False)
         self.featured = data.get('featured', False)
         self.required = data.get('required', False)
         self.is_multiple = data.get('multiple', False)
@@ -60,7 +60,7 @@ class Property(object):
             'name': self.name,
             'qname': self.qname,
             'label': self.label,
-            'hidden': self.hidden,
+            'caption': self.caption,
             'featured': self.featured,
             'type': self.type_name
         }

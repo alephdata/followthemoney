@@ -20,7 +20,7 @@ class Schema(object):
         self.description = data.get('description')
 
         # Do not show in listings:
-        self.hidden = data.get('hidden', False)
+        self.abstract = data.get('abstract', False)
 
         # Try to perform fuzzy matching. Fuzzy similarity search does not
         # make sense for entities which have a lot of similar names, such
@@ -130,7 +130,7 @@ class Schema(object):
             'label': self.label,
             'plural': self.plural,
             'icon': self.icon,
-            'hidden': self.hidden,
+            'abstract': self.abstract,
             'fuzzy': self.fuzzy,
             'properties': {}
         }
