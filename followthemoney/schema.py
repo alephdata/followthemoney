@@ -18,6 +18,7 @@ class Schema(object):
         self.plural = data.get('plural', self.label)
         self.icon = data.get('icon')
         self.description = data.get('description')
+        self.featured = data.get('featured')
 
         # Do not show in listings:
         self.abstract = data.get('abstract', False)
@@ -132,6 +133,8 @@ class Schema(object):
             'icon': self.icon,
             'abstract': self.abstract,
             'fuzzy': self.fuzzy,
+            'description': self.description,
+            'featured': self.featured,
             'properties': {}
         }
         for name, prop in self.properties.items():
