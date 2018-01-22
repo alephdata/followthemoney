@@ -2,10 +2,9 @@ Contract:
   label: "Contract"
   extends: Transaction
   icon: fa-handshake-o
+  featured:
+    - name
   properties:
-    title:
-      label: "Title"
-      featured: true
     totalValue:
       label: "Total value of contract"
     type:

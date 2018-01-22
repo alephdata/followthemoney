@@ -4,6 +4,8 @@ Land:
   extends: Asset
   icon: fa-map
   fuzzy: false
+  featured:
+    - registrationNumber
   properties:
     latitude:
       label: Latitude
@@ -19,7 +21,6 @@ Land:
     registrationNumber:
       label: Registration number
       type: identifier
-      featured: true
     propertyType:
       label: Property type
     landType:

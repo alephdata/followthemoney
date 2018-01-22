@@ -2,15 +2,16 @@ Interval:
   label: "Interval"
   icon: fa-clock-o
   fuzzy: false
+  featured:
+    - startDate
+    - endDate
   properties:
     startDate:
       label: "Start date"
       type: date
-      featured: true
     endDate:
       label: "End date"
       type: date
-      featured: true
     date:
       label: "Date"
       type: date
