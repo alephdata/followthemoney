@@ -1,0 +1,17 @@
+ContractAward:
+  label: "Contract Award"
+  description: "One contract may be awarded to multiple suppliers"
+  extends: Transaction
+  icon: fa-handshake-o
+  properties:
+    decisionReason:
+      label: "Decision reason"
+    documentNumber:
+      label: "Document number"
+    identifier:
+      label: "Identifier"
+      type: identifier
+    duration:
+      label: "Duration"
+    status:
+      label: "Status"

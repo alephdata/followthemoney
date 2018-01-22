@@ -1,7 +1,8 @@
 Concession:
   label: Concession
+  description: "A grant of land, rights or property. A type of Contract"
   plural: Concessions
-  extends: Asset
+  extends: Contract
   icon: fa-th
   fuzzy: false
   properties:
