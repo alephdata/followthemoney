@@ -8,9 +8,9 @@ Thing:
       type: name
       hidden: true
       required: true
-    summary:
+    summary: # a short one-liner kind of description
       label: Summary
-    description:
+    description: # a longer description
       label: Description
     country:
       label: Country
