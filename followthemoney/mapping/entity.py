@@ -13,7 +13,8 @@ class EntityMapping(object):
         self.name = name
         self.data = data
 
-        self.seed = sha1(key_bytes(key_prefix))
+        self.seed = sha1(key_bytes(key_prefix) +
+                         key_bytes(data.get('key_literal', '')))
         self.keys = ensure_list(data.get('key'))
         self.keys.extend(ensure_list(data.get('keys')))
         self.keys = set(self.keys)

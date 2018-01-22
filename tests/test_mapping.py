@@ -96,6 +96,30 @@ class MappingTestCase(TestCase):
         with self.assertRaises(InvalidMapping):
             list(model.map_entities(mapping_slavery))
 
+    def test_mapping_with_literal_keys(self):
+        url = 'file://' + os.path.join(self.fixture_path, 'links.csv')
+        mapping = {
+            "csv_url": url,
+            "entities": {
+                "director": {
+                    "schema": "Person",
+                    "key": "id",
+                    "key_literal": "person",
+                    "properties": {"name": {"column": "name"}}
+                },
+                "company": {
+                    "schema": "LegalEntity",
+                    "key": "id",
+                    "key_literal": "legalentity",
+                    "properties": {"name": {"column": "comp_name"}}
+                }
+            }
+        }
+
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 2, len(entities)
+        assert entities[0]['id'] != entities[1]['id'], entities
+
     def test_kek_sqlite(self):
         entities = list(model.map_entities(self.kek_mapping))
         assert len(entities) == 8712, len(entities)
