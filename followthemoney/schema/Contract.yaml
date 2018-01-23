@@ -17,6 +17,8 @@ Contract:
     documentDate:
       label: "Document date"
       type: date
+    documentType:
+      label: "Document type"
     identifier:
       label: "Identifier"
       type: identifier
@@ -34,3 +36,5 @@ Contract:
       label: "Lot number"
     numberAwards:
       label: "Number of awards"
+    cpvCode:
+      label: "CPV Code"
