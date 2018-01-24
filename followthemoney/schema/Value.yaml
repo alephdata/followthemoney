@@ -1,7 +1,12 @@
 Value:
   label: "Value"
+  abstract: true
   properties:
     amount:
       label: "Amount"
     currency:
       label: "Currency"
+    amountUsd:
+      label: "Amount in USD"
+    amountEur:
+      label: "Amount in EUR"

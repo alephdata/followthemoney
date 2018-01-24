@@ -1,18 +1,12 @@
 Payment:
   label: "Payment"
-  extends: Transaction
+  extends: Transaction, Value
   icon: fa-usd
   fuzzy: false
   featured:
     - amount
     - purpose
   properties:
-    amount:
-      label: "Payment amount"
-    currency:
-      label: "Original currency"
-    amountUsd:
-      label: "Amount in USD"
     sequenceNumber:
       label: "Sequence number"
     transactionNumber:

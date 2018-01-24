@@ -1,7 +1,7 @@
 ContractLot:
   label: "Contract Award Lot"
   description: "A contract as awarded to a supplier."
-  extends: Interest
+  extends: Interest, Value
   icon: fa-handshake-o
   properties:
     supplier:
@@ -13,10 +13,6 @@ ContractLot:
       label: "Contract"
       type: entity
       schema: Contract
-    value:
-      label: "Award value"
-      type: entity
-      schema: Value
     lotNumber:
       label: "Lot number"
     documentNumber:

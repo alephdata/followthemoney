@@ -1,11 +1,6 @@
 Asset:
   plural: Assets
-  extends: Thing
+  extends: Thing, Value
   icon: fa-car
   abstract: true
   fuzzy: false
-  properties:
-    value:
-      label: Value
-      type: entity
-      schema: Value
