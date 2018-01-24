@@ -1,0 +1,28 @@
+ContractLot:
+  label: "Contract Award Lot"
+  description: "A contract as awarded to a supplier."
+  extends: Interest
+  icon: fa-handshake-o
+  properties:
+    supplier:
+      label: "Supplier"
+      description: "The entity the contract was awarded to"
+      type: entity
+      schema: LegalEntity
+    contract:
+      label: "Contract"
+      type: entity
+      schema: Contract
+    value:
+      label: "Award value"
+    lotNumber:
+      label: "Lot number"
+    documentNumber:
+      label: "Document number"
+    documentType:
+      label: "Document type"
+    decisionReason:
+      label: "Decision reason"
+    documentNumber:
+      label: "Document number"
+

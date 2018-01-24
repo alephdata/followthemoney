@@ -1,40 +1,16 @@
 Contract:
   label: "Contract"
-  description: "An agreement or offer for the supplier to provide goods or services to the authority. May be awarded to multiple suppliers (see ContractAward) or broken into lots."
+  description: "An agreement or offer for the supplier to provide goods or services to the authority. May be awarded to multiple suppliers (see ContractLot)."
   extends: Asset
   icon: fa-handshake-o
   featured:
     - name
   properties:
-    totalValue:
-      label: "Total value of contract"
+    authority:
+      label: "Contract authority"
+      type: entity
+      schema: LegalEntity
     type:
       label: "Type"
     procedureNumber:
       label: "Procedure number"
-    documentNumber:
-      label: "Document number"
-    documentDate:
-      label: "Document date"
-      type: date
-    documentType:
-      label: "Document type"
-    identifier:
-      label: "Identifier"
-      type: identifier
-    hasLot:
-      label: "Lot"
-      reverse: "Part of"
-      type: entity
-      schema: Contract
-    lotOf:
-      label: "Part of contract"
-      reverse: "Has lot"
-      type: entity
-      schema: Contract
-    lotNumber:
-      label: "Lot number"
-    numberAwards:
-      label: "Number of awards"
-    cpvCode:
-      label: "CPV Code"
