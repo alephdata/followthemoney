@@ -1,0 +1,7 @@
+Value:
+  label: "Value"
+  properties:
+    amount:
+      label: "Amount"
+    currency:
+      label: "Currency"

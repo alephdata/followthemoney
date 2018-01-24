@@ -7,5 +7,5 @@ Asset:
   properties:
     value:
       label: Value
-    valueCurrency:
-      label: Value (Currency)
+      type: entity
+      schema: Value
