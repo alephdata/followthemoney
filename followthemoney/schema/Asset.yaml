@@ -1,6 +1,8 @@
 Asset:
   plural: Assets
-  extends: Thing, Value
+  extends: 
+    - Thing
+    - Value
   icon: fa-car
   abstract: true
   fuzzy: false

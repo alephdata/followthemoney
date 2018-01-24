@@ -1,7 +1,9 @@
 ContractLot:
   label: "Contract Award Lot"
   description: "A contract as awarded to a supplier."
-  extends: Interest, Value
+  extends: 
+    - Interest
+    - Value
   icon: fa-handshake-o
   properties:
     supplier:

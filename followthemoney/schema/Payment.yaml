@@ -1,6 +1,8 @@
 Payment:
   label: "Payment"
-  extends: Transaction, Value
+  extends: 
+    - Transaction
+    - Value
   icon: fa-usd
   fuzzy: false
   featured:
