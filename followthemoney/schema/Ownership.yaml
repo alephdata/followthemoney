@@ -26,7 +26,5 @@ Ownership:
       label: "Type of shares"
     legalBasis:
       label: "Legal basis"
-    status:
-      label: "Status"
     ownershipType:
       label: "Type of ownership"

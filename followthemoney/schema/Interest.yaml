@@ -8,6 +8,8 @@ Interest:
   properties:
     role:
       label: "Role"
+    status:
+      label: "Status"
     # level:
     #   label: "Level of interest" # direct/indirect
     # votes:
