@@ -1,5 +1,6 @@
 Contract:
   label: "Contract"
+  plural: "Contracts"
   description: "An agreement or offer for the supplier to provide goods or services to the authority. May be awarded to multiple suppliers (see ContractLot)."
   extends: Asset
   icon: fa-handshake-o
@@ -8,6 +9,8 @@ Contract:
   properties:
     authority:
       label: "Contract authority"
+      plural: "Contract authorities"
+      reverse: "Contracts issued"
       type: entity
       schema: LegalEntity
     type:

@@ -1,5 +1,6 @@
 ContractLot:
   label: "Contract Award Lot"
+  plural: "Contract Awards"
   description: "A contract as awarded to a supplier."
   extends: 
     - Interest
@@ -8,11 +9,15 @@ ContractLot:
   properties:
     supplier:
       label: "Supplier"
+      plural: "Suppliers"
+      reverse: "Contracts awarded"
       description: "The entity the contract was awarded to"
       type: entity
       schema: LegalEntity
     contract:
       label: "Contract"
+      plural: "Contracts"
+      reverse: "Lots awarded"
       type: entity
       schema: Contract
     name:
