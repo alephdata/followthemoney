@@ -1,0 +1,39 @@
+ContractAward:
+  label: "Contract Lot Award"
+  plural: "Contract Awards"
+  description: "A contract or contract lot as awarded to a supplier."
+  extends: 
+    - Interest
+    - Value
+  icon: fa-handshake-o
+  properties:
+    supplier:
+      label: "Supplier"
+      plural: "Suppliers"
+      reverse: "Contracts awarded"
+      description: "The entity the contract was awarded to"
+      type: entity
+      schema: LegalEntity
+    contract:
+      label: "Contract"
+      plural: "Contracts"
+      reverse: "Lots awarded"
+      type: entity
+      schema: Contract
+    name:
+      label: "Name"
+    lotNumber:
+      label: "Lot number"
+    documentNumber:
+      label: "Document number"
+    documentType:
+      label: "Document type"
+    decisionReason:
+      label: "Decision reason"
+    documentNumber:
+      label: "Document number"
+    cpvCode:
+      label: "CPV Code"
+    nutsCode:
+      label: "NUTS Code"
+      description: "Nomencalture of Territorial Units for Statistics (NUTS)"

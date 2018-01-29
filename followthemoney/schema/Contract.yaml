@@ -1,7 +1,7 @@
 Contract:
   label: "Contract"
   plural: "Contracts"
-  description: "An agreement or offer for the supplier to provide goods or services to the authority. May be awarded to multiple suppliers (see ContractLot)."
+  description: "An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward)."
   extends: Asset
   icon: fa-handshake-o
   featured:
@@ -15,5 +15,10 @@ Contract:
       schema: LegalEntity
     type:
       label: "Type"
+      description: "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
     procedureNumber:
       label: "Procedure number"
+    noticeId:
+      label: "Contract Award Notice ID"
+    numberAwards:
+      label: "Number of awards"
