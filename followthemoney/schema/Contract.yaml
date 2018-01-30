@@ -22,3 +22,5 @@ Contract:
       label: "Contract Award Notice ID"
     numberAwards:
       label: "Number of awards"
+    cancelled:
+      label: "Cancelled?"
