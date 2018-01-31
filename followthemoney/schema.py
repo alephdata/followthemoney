@@ -18,7 +18,7 @@ class Schema(object):
         self.plural = data.get('plural', self.label)
         self.icon = data.get('icon')
         self.description = data.get('description')
-        self.featured = data.get('featured')
+        self._featured = ensure_list(data.get('featured'))
 
         # Do not show in listings:
         self.abstract = data.get('abstract', False)
@@ -81,6 +81,17 @@ class Schema(object):
             for prop in self._own_properties:
                 self._properties[prop.name] = prop
         return self._properties
+
+    @property
+    def featured(self):
+        """ Return featured properties, including from ancestors."""
+        featured = self._featured
+        for schema in self.extends:
+            for prop in schema.featured:
+                if prop not in featured:
+                    featured.append(prop)
+
+        return featured
 
     def get(self, name):
         return self.properties.get(name)

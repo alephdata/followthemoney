@@ -53,7 +53,7 @@ class ModelTestCase(TestCase):
     def test_schema_invert(self):
         thing = model.schemata['Thing']
         data = {
-            'schmea': thing.name,
+            'schema': thing.name,
             'properties': {
                 'name': ['Foo'],
                 'alias': ['Foobar'],
@@ -121,3 +121,9 @@ class ModelTestCase(TestCase):
         assert property_types['birthDate'] == 'date', property_types
         assert property_types['mainCountry'] == 'country', property_types
         assert property_types['accountNumber'] == 'identifier', property_types
+
+    def test_model_featured_properties(self):
+        interval = model.schemata['Interval']
+        interest = model.schemata['Interest']
+        assert 'startDate' in interval.featured and 'endDate' in interval.featured, interval
+        assert 'startDate' in interest.featured and 'endDate' in interest.featured and 'role' in interest.featured, interest
