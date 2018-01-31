@@ -1,2 +1,2 @@
-id, comp_id, name, comp_name, role
-1, 2, Wile E. Coyote, ACME Inc., founder
+id, comp_id, name, comp_name, role, house_number, town, zip, fave_colours
+1, 2, Wile E. Coyote, ACME Inc., founder, 64, The Desert, 01234, "brown; black; blue"

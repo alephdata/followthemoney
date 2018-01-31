@@ -181,3 +181,51 @@ class MappingTestCase(TestCase):
         }
         entities = list(model.map_entities(mapping))
         assert len(entities) == 14, len(entities)
+
+    def test_mapping_join(self):
+        url = 'file://' + os.path.join(self.fixture_path, 'links.csv')
+        mapping = {
+            "csv_url": url,
+            "entities": {
+                "director": {
+                    "schema": "Person",
+                    "key": "id",
+                    "key_literal": "person",
+                    "properties": {
+                        "name": {"column": "name"},
+                        "address": {
+                            "join": ", ",
+                            "columns": ["house_number", "town", "zip"]
+                        }
+                    }
+                }
+            }
+        }
+
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 1, len(entities)
+        assert entities[0]['properties']['address'] == ['64, The Desert, 01234'], entities
+
+    def test_mapping_split(self):
+        url = 'file://' + os.path.join(self.fixture_path, 'links.csv')
+        mapping = {
+            "csv_url": url,
+            "entities": {
+                "director": {
+                    "schema": "Person",
+                    "key": "id",
+                    "key_literal": "person",
+                    "properties": {
+                        "name": {"column": "name"},
+                        "notes": {
+                            "split": "; ",
+                            "column": "fave_colours"
+                        }
+                    }
+                }
+            }
+        }
+
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 1, len(entities)
+        assert entities[0]['properties']['notes'] == ['brown', 'black', 'blue'], entities

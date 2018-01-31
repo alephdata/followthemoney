@@ -26,6 +26,7 @@ class PropertyMapping(object):
         self.literals.extend(ensure_list(data.pop('literals', [])))
 
         self.join = data.pop('join', None)
+        self.split = data.pop('split', None)
         self.entity = data.pop('entity', None)
 
         self.template = stringify(data.pop('template', None))
@@ -88,4 +89,11 @@ class PropertyMapping(object):
 
         if self.join is not None:
             values = [self.join.join(values)]
+        
+        if self.split is not None:
+            splote = []
+            for value in values:
+                splote = splote + value.split(self.split)
+            values = splote
+
         return unique_list(values)
