@@ -25,7 +25,7 @@ class PropertyMapping(object):
         self.literals = ensure_list(data.pop('literal', []))
         self.literals.extend(ensure_list(data.pop('literals', [])))
 
-        self.join = stringify(data.pop('join', None))
+        self.join = data.pop('join', None)
         self.entity = data.pop('entity', None)
 
         self.template = stringify(data.pop('template', None))
