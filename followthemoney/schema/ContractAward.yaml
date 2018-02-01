@@ -20,8 +20,6 @@ ContractAward:
       reverse: "Lots awarded"
       type: entity
       schema: Contract
-    name:
-      label: "Name"
     lotNumber:
       label: "Lot number"
     documentNumber:
