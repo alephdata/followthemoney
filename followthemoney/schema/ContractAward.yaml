@@ -35,3 +35,6 @@ ContractAward:
     nutsCode:
       label: "NUTS Code"
       description: "Nomencalture of Territorial Units for Statistics (NUTS)"
+    amended:
+      label: "Amended?"
+      description: "Was this award amended, modified or updated by a subsequent document?"
