@@ -1,5 +1,6 @@
 Representation:
   label: "Representation"
+  description: "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity."
   extends: Interest
   icon: fa-rocket
   fuzzy: false
