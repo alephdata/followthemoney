@@ -47,3 +47,6 @@ Company:
     mbsCode:
       label: "MBS"
       type: identifier
+    ibcRuc:
+      label: "ibcRUC"
+      type: identifier
