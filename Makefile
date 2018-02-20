@@ -17,3 +17,6 @@ clean:
 	find . -name '*.egg' -exec rm -f {} +
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
+
+namespace:
+	python ns/ontology.py https://w3id.org/ftm# docs/ns

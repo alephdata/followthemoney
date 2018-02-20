@@ -9,7 +9,8 @@
 ftm:Asset a rdfs:Class ;
     rdfs:label "Asset" ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Thing .
+    rdfs:subClassOf ftm:Thing,
+        ftm:Value .
 
 ftm:BankAccount a rdfs:Class ;
     rdfs:label "Bank Account" ;
@@ -24,13 +25,22 @@ ftm:Company a rdfs:Class ;
 
 ftm:Concession a rdfs:Class ;
     rdfs:label "Concession" ;
+    rdfs:comment "A grant of land, rights or property. A type of Contract" ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Asset .
+    rdfs:subClassOf ftm:Contract .
 
 ftm:Contract a rdfs:Class ;
     rdfs:label "Contract" ;
+    rdfs:comment "An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward)." ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Transaction .
+    rdfs:subClassOf ftm:Asset .
+
+ftm:ContractAward a rdfs:Class ;
+    rdfs:label "Contract Lot Award" ;
+    rdfs:comment "A contract or contract lot as awarded to a supplier." ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Interest,
+        ftm:Value .
 
 ftm:CourtCase a rdfs:Class ;
     rdfs:label "Court case" ;
@@ -127,7 +137,8 @@ ftm:Pages a rdfs:Class ;
 ftm:Payment a rdfs:Class ;
     rdfs:label "Payment" ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Transaction .
+    rdfs:subClassOf ftm:Transaction,
+        ftm:Value .
 
 ftm:Person a rdfs:Class ;
     rdfs:label "Person" ;
@@ -146,6 +157,7 @@ ftm:PublicBody a rdfs:Class ;
 
 ftm:Representation a rdfs:Class ;
     rdfs:label "Representation" ;
+    rdfs:comment "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity." ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
 
@@ -172,6 +184,10 @@ ftm:UnknownLink a rdfs:Class ;
     rdfs:label "Link" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
+
+ftm:Value a rdfs:Class ;
+    rdfs:label "Value" ;
+    rdfs:isDefinedBy ftm: .
 
 ftm:Vessel a rdfs:Class ;
     rdfs:label "Vessel" ;
@@ -209,14 +225,25 @@ ftm:alias a rdf:Property ;
     rdfs:domain ftm:Thing ;
     rdfs:isDefinedBy ftm: .
 
+ftm:amended a rdf:Property ;
+    rdfs:label "Amended?" ;
+    rdfs:comment "Was this award amended, modified or updated by a subsequent document?" ;
+    rdfs:domain ftm:ContractAward ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:amount a rdf:Property ;
-    rdfs:label "Payment amount" ;
-    rdfs:domain ftm:Payment ;
+    rdfs:label "Amount" ;
+    rdfs:domain ftm:Value ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:amountEur a rdf:Property ;
+    rdfs:label "Amount in EUR" ;
+    rdfs:domain ftm:Value ;
     rdfs:isDefinedBy ftm: .
 
 ftm:amountUsd a rdf:Property ;
     rdfs:label "Amount in USD" ;
-    rdfs:domain ftm:Payment ;
+    rdfs:domain ftm:Value ;
     rdfs:isDefinedBy ftm: .
 
 ftm:area a rdf:Property ;
@@ -227,16 +254,20 @@ ftm:area a rdf:Property ;
 
 ftm:asset a rdf:Property ;
     rdfs:label "Asset" ;
+    rdfs:comment "The thing being transacted; could be a Contract" ;
     rdfs:domain ftm:Ownership,
         ftm:Transaction ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Asset .
 
 ftm:authority a rdf:Property ;
-    rdfs:label "Sanctioning authority" ;
-    rdfs:domain ftm:Sanction ;
+    rdfs:label "Contract authority",
+        "Sanctioning authority" ;
+    rdfs:domain ftm:Contract,
+        ftm:Sanction ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
+    rdfs:range ftm:LegalEntity,
+        ftm:Thing .
 
 ftm:balance a rdf:Property ;
     rdfs:label "Balance" ;
@@ -277,6 +308,11 @@ ftm:cadastralCode a rdf:Property ;
 ftm:callSign a rdf:Property ;
     rdfs:label "Call Sign" ;
     rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:cancelled a rdf:Property ;
+    rdfs:label "Cancelled?" ;
+    rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: .
 
 ftm:capital a rdf:Property ;
@@ -337,6 +373,12 @@ ftm:commodities a rdf:Property ;
     rdfs:domain ftm:Concession ;
     rdfs:isDefinedBy ftm: .
 
+ftm:contract a rdf:Property ;
+    rdfs:label "Contract" ;
+    rdfs:domain ftm:ContractAward ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Contract .
+
 ftm:country a rdf:Property ;
     rdfs:label "Country" ;
     rdfs:domain ftm:Event,
@@ -346,6 +388,11 @@ ftm:country a rdf:Property ;
 ftm:court a rdf:Property ;
     rdfs:label "Court" ;
     rdfs:domain ftm:CourtCase ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:cpvCode a rdf:Property ;
+    rdfs:label "CPV Code" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
 ftm:createDate a rdf:Property ;
@@ -360,15 +407,9 @@ ftm:crsNumber a rdf:Property ;
     rdfs:isDefinedBy ftm: .
 
 ftm:currency a rdf:Property ;
-    rdfs:label "Original currency" ;
-    rdfs:domain ftm:Payment ;
+    rdfs:label "Currency" ;
+    rdfs:domain ftm:Value ;
     rdfs:isDefinedBy ftm: .
-
-ftm:customer a rdf:Property ;
-    rdfs:label "Customer" ;
-    rdfs:domain ftm:Contract ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
 
 ftm:date a rdf:Property ;
     rdfs:label "Date" ;
@@ -384,7 +425,7 @@ ftm:deathDate a rdf:Property ;
 
 ftm:decisionReason a rdf:Property ;
     rdfs:label "Decision reason" ;
-    rdfs:domain ftm:Contract ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
 ftm:description a rdf:Property ;
@@ -405,15 +446,14 @@ ftm:dissolutionDate a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
 
-ftm:documentDate a rdf:Property ;
-    rdfs:label "Document date" ;
-    rdfs:domain ftm:Contract ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
 ftm:documentNumber a rdf:Property ;
     rdfs:label "Document number" ;
-    rdfs:domain ftm:Contract ;
+    rdfs:domain ftm:ContractAward ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:documentType a rdf:Property ;
+    rdfs:label "Document type" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
 ftm:email a rdf:Property ;
@@ -450,7 +490,8 @@ ftm:flag a rdf:Property ;
     rdfs:isDefinedBy ftm: .
 
 ftm:from a rdf:Property ;
-    rdfs:label "From (eg. payer)" ;
+    rdfs:label "From" ;
+    rdfs:comment "The payer in the case of a payment; the contract issuer/authority in the case of a contract." ;
     rdfs:domain ftm:Transaction ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:LegalEntity .
@@ -471,6 +512,11 @@ ftm:grossRegisteredTonnage a rdf:Property ;
     rdfs:domain ftm:Vessel ;
     rdfs:isDefinedBy ftm: .
 
+ftm:ibcRuc a rdf:Property ;
+    rdfs:label "ibcRUC" ;
+    rdfs:domain ftm:Company ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:icijId a rdf:Property ;
     rdfs:label "ICIJ ID" ;
     rdfs:comment "ID according to International Consortium for Investigative Journalists" ;
@@ -481,11 +527,6 @@ ftm:idNumber a rdf:Property ;
     rdfs:label "ID Number" ;
     rdfs:comment "ID number of any applicable ID" ;
     rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:identifier a rdf:Property ;
-    rdfs:label "Identifier" ;
-    rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: .
 
 ftm:imoNumber a rdf:Property ;
@@ -568,6 +609,11 @@ ftm:longitude a rdf:Property ;
     rdfs:domain ftm:Land ;
     rdfs:isDefinedBy ftm: .
 
+ftm:lotNumber a rdf:Property ;
+    rdfs:label "Lot number" ;
+    rdfs:domain ftm:ContractAward ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:mainCountry a rdf:Property ;
     rdfs:label "Country of origin" ;
     rdfs:comment "Primary country of this entity" ;
@@ -619,6 +665,22 @@ ftm:navigationArea a rdf:Property ;
 ftm:notes a rdf:Property ;
     rdfs:label "Notes" ;
     rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:noticeId a rdf:Property ;
+    rdfs:label "Contract Award Notice ID" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:numberAwards a rdf:Property ;
+    rdfs:label "Number of awards" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:nutsCode a rdf:Property ;
+    rdfs:label "NUTS Code" ;
+    rdfs:comment "Nomencalture of Territorial Units for Statistics (NUTS)" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
 ftm:object a rdf:Property ;
@@ -827,8 +889,8 @@ ftm:status a rdf:Property ;
     rdfs:label "Status" ;
     rdfs:comment "Status, eg. ??" ;
     rdfs:domain ftm:CourtCase,
-        ftm:LegalEntity,
-        ftm:Ownership ;
+        ftm:Interest,
+        ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: .
 
 ftm:subject a rdf:Property ;
@@ -842,6 +904,13 @@ ftm:summary a rdf:Property ;
     rdfs:domain ftm:Interval,
         ftm:Thing ;
     rdfs:isDefinedBy ftm: .
+
+ftm:supplier a rdf:Property ;
+    rdfs:label "Supplier" ;
+    rdfs:comment "The entity the contract was awarded to" ;
+    rdfs:domain ftm:ContractAward ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
 
 ftm:taxNumber a rdf:Property ;
     rdfs:label "Tax ID Number" ;
@@ -857,12 +926,12 @@ ftm:taxStatus a rdf:Property ;
 
 ftm:title a rdf:Property ;
     rdfs:label "Title" ;
-    rdfs:domain ftm:Contract,
-        ftm:Person ;
+    rdfs:domain ftm:Person ;
     rdfs:isDefinedBy ftm: .
 
 ftm:to a rdf:Property ;
-    rdfs:label "To (eg. beneficiary)" ;
+    rdfs:label "To" ;
+    rdfs:comment "The beneficiary in the case of a pyament; the contract supplier/awardee in the case of a contract." ;
     rdfs:domain ftm:Transaction ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:LegalEntity .
@@ -878,11 +947,6 @@ ftm:tonnage a rdf:Property ;
     rdfs:domain ftm:Vessel ;
     rdfs:isDefinedBy ftm: .
 
-ftm:totalValue a rdf:Property ;
-    rdfs:label "Total value of contract" ;
-    rdfs:domain ftm:Contract ;
-    rdfs:isDefinedBy ftm: .
-
 ftm:transactionNumber a rdf:Property ;
     rdfs:label "Transaction number" ;
     rdfs:domain ftm:Payment ;
@@ -890,19 +954,10 @@ ftm:transactionNumber a rdf:Property ;
 
 ftm:type a rdf:Property ;
     rdfs:label "Type" ;
+    rdfs:comment "Type of contract. Potentially W (Works), U (Supplies), S (Services)." ;
     rdfs:domain ftm:Contract,
         ftm:CourtCase,
         ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:value a rdf:Property ;
-    rdfs:label "Value" ;
-    rdfs:domain ftm:Asset ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:valueCurrency a rdf:Property ;
-    rdfs:label "Value (Currency)" ;
-    rdfs:domain ftm:Asset ;
     rdfs:isDefinedBy ftm: .
 
 ftm:vatCode a rdf:Property ;
@@ -928,6 +983,6 @@ ftm:website a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2018-01-18T13:01:02"^^xsd:dateTime ;
+    dct:modified "2018-02-20T12:12:16"^^xsd:dateTime ;
     rdfs:comment "A vocabulary for investigative reporting, based on real life." .
 

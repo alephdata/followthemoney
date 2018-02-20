@@ -5,6 +5,7 @@
         "Company": "ftm:Company", 
         "Concession": "ftm:Concession", 
         "Contract": "ftm:Contract", 
+        "ContractAward": "ftm:ContractAward", 
         "CourtCase": "ftm:CourtCase", 
         "CourtCaseParty": "ftm:CourtCaseParty", 
         "Directorship": "ftm:Directorship", 
@@ -33,6 +34,7 @@
         "Thing": "ftm:Thing", 
         "Transaction": "ftm:Transaction", 
         "UnknownLink": "ftm:UnknownLink", 
+        "Value": "ftm:Value", 
         "Vessel": "ftm:Vessel", 
         "Workbook": "ftm:Workbook", 
         "accountNumber": "ftm:accountNumber", 
@@ -43,7 +45,9 @@
             "@type": "@id"
         }, 
         "alias": "ftm:alias", 
+        "amended": "ftm:amended", 
         "amount": "ftm:amount", 
+        "amountEur": "ftm:amountEur", 
         "amountUsd": "ftm:amountUsd", 
         "area": "ftm:area", 
         "asset": {
@@ -65,6 +69,7 @@
         "buildDate": "ftm:buildDate", 
         "cadastralCode": "ftm:cadastralCode", 
         "callSign": "ftm:callSign", 
+        "cancelled": "ftm:cancelled", 
         "capital": "ftm:capital", 
         "case": {
             "@id": "ftm:case", 
@@ -82,18 +87,19 @@
         "closeDate": "ftm:closeDate", 
         "coatoCode": "ftm:coatoCode", 
         "commodities": "ftm:commodities", 
+        "contract": {
+            "@id": "ftm:contract", 
+            "@type": "@id"
+        }, 
         "country": "ftm:country", 
         "court": "ftm:court", 
+        "cpvCode": "ftm:cpvCode", 
         "createDate": {
             "@id": "ftm:createDate", 
             "@type": "xsd:dateTime"
         }, 
         "crsNumber": "ftm:crsNumber", 
         "currency": "ftm:currency", 
-        "customer": {
-            "@id": "ftm:customer", 
-            "@type": "@id"
-        }, 
         "date": {
             "@id": "ftm:date", 
             "@type": "xsd:dateTime"
@@ -112,11 +118,8 @@
             "@id": "ftm:dissolutionDate", 
             "@type": "xsd:dateTime"
         }, 
-        "documentDate": {
-            "@id": "ftm:documentDate", 
-            "@type": "xsd:dateTime"
-        }, 
         "documentNumber": "ftm:documentNumber", 
+        "documentType": "ftm:documentType", 
         "email": "ftm:email", 
         "endDate": {
             "@id": "ftm:endDate", 
@@ -140,9 +143,9 @@
         "ftm": "https://w3id.org/ftm#", 
         "gender": "ftm:gender", 
         "grossRegisteredTonnage": "ftm:grossRegisteredTonnage", 
+        "ibcRuc": "ftm:ibcRuc", 
         "icijId": "ftm:icijId", 
         "idNumber": "ftm:idNumber", 
-        "identifier": "ftm:identifier", 
         "imoNumber": "ftm:imoNumber", 
         "incorporationDate": {
             "@id": "ftm:incorporationDate", 
@@ -161,6 +164,7 @@
         "legalForm": "ftm:legalForm", 
         "location": "ftm:location", 
         "longitude": "ftm:longitude", 
+        "lotNumber": "ftm:lotNumber", 
         "mainCountry": "ftm:mainCountry", 
         "mbsCode": "ftm:mbsCode", 
         "member": {
@@ -177,6 +181,9 @@
         "nationality": "ftm:nationality", 
         "navigationArea": "ftm:navigationArea", 
         "notes": "ftm:notes", 
+        "noticeId": "ftm:noticeId", 
+        "numberAwards": "ftm:numberAwards", 
+        "nutsCode": "ftm:nutsCode", 
         "object": {
             "@id": "ftm:object", 
             "@type": "@id"
@@ -238,6 +245,10 @@
             "@type": "@id"
         }, 
         "summary": "ftm:summary", 
+        "supplier": {
+            "@id": "ftm:supplier", 
+            "@type": "@id"
+        }, 
         "taxNumber": "ftm:taxNumber", 
         "taxStatus": "ftm:taxStatus", 
         "title": "ftm:title", 
@@ -250,11 +261,8 @@
             "@type": "@id"
         }, 
         "tonnage": "ftm:tonnage", 
-        "totalValue": "ftm:totalValue", 
         "transactionNumber": "ftm:transactionNumber", 
         "type": "ftm:type", 
-        "value": "ftm:value", 
-        "valueCurrency": "ftm:valueCurrency", 
         "vatCode": "ftm:vatCode", 
         "voenCode": "ftm:voenCode", 
         "weakAlias": "ftm:weakAlias", 
