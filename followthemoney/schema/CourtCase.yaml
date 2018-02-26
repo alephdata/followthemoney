@@ -11,6 +11,11 @@ CourtCase:
       label: Type
     status:
       label: Status
+    name:
+      label: Name
+    country:
+      label: Country
+      type: country
     caseNumber:
       label: Case number
       type: identifier
