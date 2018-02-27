@@ -23,5 +23,5 @@ Sanction:
       label: "Sanction duration"
     sanctionReason:
       label: "Sanction reason"
-    sanctionOccurence:
-      label: "Sanction occurence"
+    sanctionOccurrence:
+      label: "Sanction occurrence"
