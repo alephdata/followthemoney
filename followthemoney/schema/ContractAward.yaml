@@ -32,6 +32,7 @@ ContractAward:
       label: "Document number"
     cpvCode:
       label: "CPV Code"
+      description: "Contract Procurement Vocabulary (what type of goods/services, EU)"
     nutsCode:
       label: "NUTS Code"
       description: "Nomencalture of Territorial Units for Statistics (NUTS)"
