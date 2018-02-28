@@ -32,6 +32,7 @@ Company:
     coatoCode:
       label: "COATO"
       type: identifier
+      descrption: "Soviet classifier for regions, districts, villages"
     vatCode:
       label: "VAT Identifier"
       description: "(EU) VAT number"
