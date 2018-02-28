@@ -13,6 +13,7 @@ CourtCase:
       label: Status
     name:
       label: Name
+      type: name
     country:
       label: Country
       type: country
