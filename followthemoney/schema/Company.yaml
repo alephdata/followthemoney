@@ -19,30 +19,37 @@ Company:
       label: "Capital"
     voenCode:
       label: "VOEN"
+      description: "Azerbaijan taxpayer ID"
       type: identifier
     okpoCode:
       label: "OKPO"
+      description: "Russian industry classifier"
       type: identifier
     innCode:
       label: "INN"
+      description: "Russian company ID"
       type: identifier
     coatoCode:
       label: "COATO"
       type: identifier
     vatCode:
       label: "VAT Identifier"
+      description: "(EU) VAT number"
       type: identifier
     irsCode:
       label: "IRS Number"
+      description: "US tax ID"
       type: identifier
     ipoCode:
       label: "IPO"
       type: identifier
     cikCode:
       label: "SEC Central Index Key"
+      description: "US SEC Central Index Key"
       type: identifier
     jibCode:
       label: "JIB"
+      description: "Yugoslavia company ID"
       type: identifier
     mbsCode:
       label: "MBS"
@@ -50,3 +57,6 @@ Company:
     ibcRuc:
       label: "ibcRUC"
       type: identifier
+    caemCode:
+      label: "COD CAEM"
+      description: "(RO) What kind of activity a legal entity is allowed to develop"
