@@ -11,6 +11,15 @@ dist:
 release: clean dist
 	twine upload dist/*
 
+# initalize a new language:
+# pybabel init -i followthemoney/i18n/messages.pot -d followthemoney/i18n -l de
+translate:
+	pip install --upgrade transifex-client
+	pybabel extract -F babel.cfg -o followthemoney/i18n/messages.pot followthemoney
+	tx push --source
+	pybabel compile -d followthemoney/i18n
+	tx pull --all
+
 clean:
 	rm -rf dist build .eggs
 	find . -name '*.egg-info' -exec rm -fr {} +

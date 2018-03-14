@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[followthemoney.messages-pot]
+file_filter = followthemoney/i18n/<lang>/LC_MESSAGES/messages.mo
+minimum_perc = 0
+source_file = followthemoney/i18n/messages.pot
+source_lang = en
+type = PO
+

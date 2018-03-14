@@ -17,6 +17,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'backports.csv',
+        'babel',
         'six >= 1.11.0',
         'pyyaml',
         'requests[security] >= 2.18.4',
@@ -26,6 +27,10 @@ setup(
         'rdflib'
     ],
     test_suite='nose.collector',
-    entry_points={},
+    entry_points={
+        'babel.extractors': {
+            'ftmmodel = followthemoney.messages:extract_yaml'
+        }
+    },
     tests_require=['coverage', 'nose']
 )

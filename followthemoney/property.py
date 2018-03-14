@@ -2,6 +2,7 @@ from banal import ensure_list
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import TYPES
+from followthemoney.util import gettext
 
 
 class Property(object):
@@ -58,7 +59,8 @@ class Property(object):
         data = {
             'name': self.name,
             'qname': self.qname,
-            'label': self.label,
+            'label': gettext(self.label),
+            'description': gettext(self.description),
             'caption': self.caption,
             'type': self.type_name
         }

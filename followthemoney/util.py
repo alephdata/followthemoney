@@ -1,8 +1,14 @@
 from __future__ import unicode_literals
 
+import os
+import gettext as pygettext
 from normality import stringify
 from banal import is_mapping, is_sequence
 from banal import unique_list, ensure_list
+
+i18n_path = os.path.join(os.path.dirname(__file__), 'i18n')
+translation = pygettext.translation('followthemoney', i18n_path)
+gettext = translation.ugettext
 
 
 def key_bytes(key):

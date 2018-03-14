@@ -2,6 +2,7 @@ from banal import ensure_list
 
 from followthemoney.property import Property
 from followthemoney.exc import InvalidData, InvalidModel
+from followthemoney.util import gettext
 
 
 class Schema(object):
@@ -139,12 +140,12 @@ class Schema(object):
 
     def to_dict(self):
         data = {
-            'label': self.label,
-            'plural': self.plural,
+            'label': gettext(self.label),
+            'plural': gettext(self.plural),
             'icon': self.icon,
             'abstract': self.abstract,
             'fuzzy': self.fuzzy,
-            'description': self.description,
+            'description': gettext(self.description),
             'featured': self.featured,
             'properties': {}
         }
