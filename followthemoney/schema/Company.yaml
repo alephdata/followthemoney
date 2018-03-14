@@ -82,3 +82,7 @@ Company:
       label: "OGRN"
       description: "Major State Registration Number"
       type: identifier
+    pfrNumber:
+      label: "PFR Number"
+      description: "(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch"
+      type: identifier
