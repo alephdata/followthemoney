@@ -30,9 +30,9 @@ Company:
       description: "Russian company ID"
       type: identifier
     coatoCode:
-      label: "COATO"
+      label: "COATO / SOATO / OKATO"
       type: identifier
-      descrption: "Soviet classifier for regions, districts, villages"
+      descrption: "Soviet classifier for territories, regions, districts, villages. Aka. SOATO and same as OKATO"
     vatCode:
       label: "VAT Identifier"
       description: "(EU) VAT number"
@@ -61,3 +61,24 @@ Company:
     caemCode:
       label: "COD CAEM"
       description: "(RO) What kind of activity a legal entity is allowed to develop"
+    kppCode:
+      label: "KPP"
+      description: "(RU, КПП) in addition to INN for orgs; reason for registration at FNS"
+      type: identifier
+    okvedCode:
+      label: "OKVED(2) Classifier"
+      description: "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
+    okopfCode:
+      label: "OKOPF"
+      description: "(RU, ОКОПФ) What kind of business entity"
+    fnsCode:
+      label: "Federal tax service code"
+      description: "(RU, ФНС) Federal Tax Service related info"
+      type: identifier
+    fssCode:
+      label: "FSS"
+      description: "(RU, ФСС) Social Security"
+    ogrnCode:
+      label: "OGRN"
+      description: "Major State Registration Number"
+      type: identifier
