@@ -12,13 +12,13 @@ release: clean dist
 	twine upload dist/*
 
 # initalize a new language:
-# pybabel init -i followthemoney/i18n/messages.pot -d followthemoney/i18n -l de
+# pybabel init -i followthemoney/translations/messages.pot -d followthemoney/translations -l de -D followthemoney
 translate:
 	pip install --upgrade transifex-client
-	pybabel extract -F babel.cfg -o followthemoney/i18n/messages.pot followthemoney
+	pybabel extract -F babel.cfg -o followthemoney/translations/messages.pot followthemoney
 	tx push --source
-	pybabel compile -d followthemoney/i18n
 	tx pull --all
+	pybabel compile -d followthemoney/translations -D followthemoney -f
 
 clean:
 	rm -rf dist build .eggs

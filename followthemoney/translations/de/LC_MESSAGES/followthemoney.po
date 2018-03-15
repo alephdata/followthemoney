@@ -8,74 +8,85 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-03-14 19:41+0100\n"
+"POT-Creation-Date: 2018-03-15 08:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
+"Last-Translator: pudo <friedrich@pudo.org>, 2018\n"
+"Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.1\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Asset.plural
 #: followthemoney/schema/Asset.yaml
 msgid "Assets"
-msgstr ""
+msgstr "Vermögenswerte"
 
 #. BankAccount.plural
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Accounts"
-msgstr ""
+msgstr "Bankkonten"
 
 #. BankAccount.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Balance"
-msgstr ""
+msgstr "Kontostand"
 
 #. BankAccount.properties.bankName.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Name"
-msgstr ""
+msgstr "Bankname"
 
 #. BankAccount.properties.bic.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Identifier Code"
-msgstr ""
+msgstr "Bankleitzahl"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account Type"
-msgstr ""
+msgstr "Kontotyp"
 
 #. BankAccount.properties.accountNumber.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account Number"
-msgstr ""
+msgstr "Kontonummer"
 
 #. BankAccount.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Account"
-msgstr ""
+msgstr "Bankkonto"
 
 #. Company.plural
 #: followthemoney/schema/Company.yaml
 msgid "Companies"
-msgstr ""
+msgstr "Firmen"
 
 #. Company.properties.fnsCode.description
 #: followthemoney/schema/Company.yaml
 msgid "(RU, ФНС) Federal Tax Service related info"
-msgstr ""
+msgstr "Russische Bundessteuer-Informationen"
 
 #. Company.properties.fnsCode.label
 #: followthemoney/schema/Company.yaml
 msgid "Federal tax service code"
-msgstr ""
+msgstr "Bundessteuer-Code"
 
 #. Company.properties.ibcRuc.label
 #: followthemoney/schema/Company.yaml
 msgid "ibcRUC"
+msgstr ""
+
+#. Company.properties.oksmCode.description
+#: followthemoney/schema/Company.yaml
+msgid "Russian (ОКСМ) countries classifer"
+msgstr ""
+
+#. Company.properties.oksmCode.label
+#: followthemoney/schema/Company.yaml
+msgid "OKSM"
 msgstr ""
 
 #. Company.properties.caemCode.description
@@ -96,7 +107,7 @@ msgstr ""
 #. Company.properties.ogrnCode.label
 #: followthemoney/schema/Company.yaml
 msgid "OGRN"
-msgstr ""
+msgstr "OGRN"
 
 #. Company.properties.jurisdiction.label
 #. LegalEntity.properties.jurisdiction.label
@@ -122,7 +133,7 @@ msgstr ""
 #. Company.properties.vatCode.label
 #: followthemoney/schema/Company.yaml
 msgid "VAT Identifier"
-msgstr ""
+msgstr "USt-Identifikation"
 
 #. Company.properties.coatoCode.label
 #: followthemoney/schema/Company.yaml
@@ -132,7 +143,7 @@ msgstr ""
 #. Company.properties.voenCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Azerbaijan taxpayer ID"
-msgstr ""
+msgstr "Azerbaidschanische Steuernummer"
 
 #. Company.properties.voenCode.label
 #: followthemoney/schema/Company.yaml
@@ -142,12 +153,12 @@ msgstr ""
 #. Company.properties.irsCode.description
 #: followthemoney/schema/Company.yaml
 msgid "US tax ID"
-msgstr ""
+msgstr "US Steuernummer"
 
 #. Company.properties.irsCode.label
 #: followthemoney/schema/Company.yaml
 msgid "IRS Number"
-msgstr ""
+msgstr "IRS-Nummer"
 
 #. Company.properties.okopfCode.description
 #: followthemoney/schema/Company.yaml
@@ -183,12 +194,12 @@ msgstr ""
 #. Company.properties.innCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Russian company ID"
-msgstr ""
+msgstr "Russische Firmennummer"
 
 #. Company.properties.innCode.label
 #: followthemoney/schema/Company.yaml
 msgid "INN"
-msgstr ""
+msgstr "INN"
 
 #. Company.properties.ipoCode.label
 #: followthemoney/schema/Company.yaml
@@ -198,7 +209,7 @@ msgstr ""
 #. Company.properties.jibCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Yugoslavia company ID"
-msgstr ""
+msgstr "Jugoslawische Firmennummer"
 
 #. Company.properties.jibCode.label
 #: followthemoney/schema/Company.yaml
@@ -233,7 +244,7 @@ msgstr ""
 #. Company.properties.capital.label
 #: followthemoney/schema/Company.yaml
 msgid "Capital"
-msgstr ""
+msgstr "Vermögen"
 
 #. Company.properties.okpoCode.description
 #: followthemoney/schema/Company.yaml
@@ -258,7 +269,7 @@ msgstr ""
 #. Company.label
 #: followthemoney/schema/Company.yaml
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 #. Concession.description
 #: followthemoney/schema/Concession.yaml
@@ -298,22 +309,22 @@ msgstr ""
 #: followthemoney/schema/Contract.yaml
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contracts"
-msgstr ""
+msgstr "Verträge"
 
 #. Contract.properties.noticeId.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract Award Notice ID"
-msgstr ""
+msgstr "Vergabeszuschlagsnummer"
 
 #. Contract.properties.numberAwards.label
 #: followthemoney/schema/Contract.yaml
 msgid "Number of awards"
-msgstr ""
+msgstr "Anzahl der Zuschläge"
 
 #. Contract.properties.cancelled.label
 #: followthemoney/schema/Contract.yaml
 msgid "Cancelled?"
-msgstr ""
+msgstr "Abgebrochen?"
 
 #. Contract.properties.type.description
 #: followthemoney/schema/Contract.yaml
@@ -358,7 +369,7 @@ msgstr ""
 #. ContractAward.plural
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract Awards"
-msgstr ""
+msgstr "Vergabezuschläge"
 
 #. ContractAward.properties.amended.description
 #: followthemoney/schema/ContractAward.yaml
@@ -388,7 +399,7 @@ msgstr ""
 #. ContractAward.properties.supplier.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "The entity the contract was awarded to"
-msgstr ""
+msgstr "Die Entität, der dieser Auftrage zugeschlagen wurde"
 
 #. ContractAward.properties.documentNumber.label
 #: followthemoney/schema/ContractAward.yaml
@@ -1182,17 +1193,17 @@ msgstr ""
 #. Thing.properties.keywords.label
 #: followthemoney/schema/Thing.yaml
 msgid "Keywords"
-msgstr ""
+msgstr "Schlüsselworte"
 
 #. Thing.properties.description.label
 #: followthemoney/schema/Thing.yaml
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #. Transaction.label
 #: followthemoney/schema/Transaction.yaml
 msgid "Transaction"
-msgstr ""
+msgstr "Transaktion"
 
 #. Transaction.properties.to.description
 #: followthemoney/schema/Transaction.yaml
@@ -1200,11 +1211,13 @@ msgid ""
 "The beneficiary in the case of a pyament; the contract supplier/awardee in "
 "the case of a contract."
 msgstr ""
+"Der Empfänger einer Zahlung, oder der Anbieter/Gewinner eines "
+"Vergabevorgangs"
 
 #. Transaction.properties.to.label
 #: followthemoney/schema/Transaction.yaml
 msgid "To"
-msgstr ""
+msgstr "An"
 
 #. Transaction.properties.from.description
 #: followthemoney/schema/Transaction.yaml
@@ -1212,11 +1225,13 @@ msgid ""
 "The payer in the case of a payment; the contract issuer/authority in the "
 "case of a contract."
 msgstr ""
+"Der Zahlende einer Zahlung, oder die Ausschreibende/Behörde eines "
+"Vergabevorgangs"
 
 #. Transaction.properties.from.label
 #: followthemoney/schema/Transaction.yaml
 msgid "From"
-msgstr ""
+msgstr "Von"
 
 #. Transaction.properties.asset.description
 #: followthemoney/schema/Transaction.yaml
@@ -1231,37 +1246,37 @@ msgstr ""
 #. UnknownLink.properties.object.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Object"
-msgstr ""
+msgstr "Objekt"
 
 #. UnknownLink.properties.subject.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Subject"
-msgstr ""
+msgstr "Subjekt"
 
 #. Value.properties.currency.label
 #: followthemoney/schema/Value.yaml
 msgid "Currency"
-msgstr ""
+msgstr "Währung"
 
 #. Value.properties.amount.label
 #: followthemoney/schema/Value.yaml
 msgid "Amount"
-msgstr ""
+msgstr "Betrag"
 
 #. Value.properties.amountUsd.label
 #: followthemoney/schema/Value.yaml
 msgid "Amount in USD"
-msgstr ""
+msgstr "Betrag in USD"
 
 #. Value.properties.amountEur.label
 #: followthemoney/schema/Value.yaml
 msgid "Amount in EUR"
-msgstr ""
+msgstr "Betrag in Euro"
 
 #. Value.label
 #: followthemoney/schema/Value.yaml
 msgid "Value"
-msgstr ""
+msgstr "Wert"
 
 #. Vessel.plural
 #: followthemoney/schema/Vessel.yaml
@@ -1296,27 +1311,27 @@ msgstr ""
 #. Vessel.properties.pastFlags.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Flags"
-msgstr ""
+msgstr "Vorherige Flaggen"
 
 #. Vessel.properties.pastNames.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Names"
-msgstr ""
+msgstr "Vorherige Namen"
 
 #. Vessel.properties.pastTypes.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Types"
-msgstr ""
+msgstr "Vorherige Typen"
 
 #. Vessel.properties.flag.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Flag"
-msgstr ""
+msgstr "Flagge"
 
 #. Vessel.properties.callSign.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Call Sign"
-msgstr ""
+msgstr "Rufzeichen"
 
 #. Vessel.properties.tonnage.label
 #: followthemoney/schema/Vessel.yaml
@@ -1326,12 +1341,12 @@ msgstr ""
 #. Vessel.properties.imoNumber.label
 #: followthemoney/schema/Vessel.yaml
 msgid "IMO Number"
-msgstr ""
+msgstr "IMO-Nummer"
 
 #. Vessel.properties.mmsi.label
 #: followthemoney/schema/Vessel.yaml
 msgid "MMSI"
-msgstr ""
+msgstr "MMSI"
 
 #. Vessel.properties.nameChangeDate.label
 #: followthemoney/schema/Vessel.yaml

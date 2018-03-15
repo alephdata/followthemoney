@@ -2,9 +2,9 @@
 host = https://www.transifex.com
 
 [followthemoney.messages-pot]
-file_filter = followthemoney/i18n/<lang>/LC_MESSAGES/messages.mo
+file_filter = followthemoney/translations/<lang>/LC_MESSAGES/followthemoney.po
 minimum_perc = 0
-source_file = followthemoney/i18n/messages.pot
+source_file = followthemoney/translations/messages.pot
 source_lang = en
 type = PO
 

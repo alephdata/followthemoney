@@ -1,14 +1,25 @@
 from __future__ import unicode_literals
 
 import os
-import gettext as pygettext
+from threading import local
+from gettext import translation
 from normality import stringify
 from banal import is_mapping, is_sequence
 from banal import unique_list, ensure_list
 
-i18n_path = os.path.join(os.path.dirname(__file__), 'i18n')
-translation = pygettext.translation('followthemoney', i18n_path)
-gettext = translation.ugettext
+DEFAULT_LOCALE = 'en'
+i18n_path = os.path.join(os.path.dirname(__file__), 'translations')
+locale = local()
+
+
+def gettext(*args, **kwargs):
+    if not hasattr(locale, 'translation'):
+        set_model_locale(DEFAULT_LOCALE)
+    return locale.translation.ugettext(*args, **kwargs)
+
+
+def set_model_locale(locale):
+    locale.translation = pygettext.translation('followthemoney', i18n_path, [locale])
 
 
 def key_bytes(key):
