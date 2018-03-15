@@ -9,17 +9,17 @@ from banal import unique_list, ensure_list
 
 DEFAULT_LOCALE = 'en'
 i18n_path = os.path.join(os.path.dirname(__file__), 'translations')
-locale = local()
+state = local()
 
 
 def gettext(*args, **kwargs):
-    if not hasattr(locale, 'translation'):
+    if not hasattr(state, 'translation'):
         set_model_locale(DEFAULT_LOCALE)
-    return locale.translation.ugettext(*args, **kwargs)
+    return state.translation.ugettext(*args, **kwargs)
 
 
 def set_model_locale(locale):
-    locale.translation = translation('followthemoney', i18n_path, [locale])
+    state.translation = translation('followthemoney', i18n_path, [locale], fallback=True)
 
 
 def key_bytes(key):

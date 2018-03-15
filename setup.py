@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney',
-    version='0.6.1',
+    version='0.6.2',
     long_description="Data model and validator for investigative graph data.",
     author='Organized Crime and Corruption Reporting Project',
     author_email='pudo@occrp.org',
@@ -12,7 +12,7 @@ setup(
     namespace_packages=[],
     include_package_data=True,
     package_data={
-        '': ['followthemoney/schema/*']
+        '': ['followthemoney/schema/*', 'followthemoney/translations/*']
     },
     zip_safe=False,
     install_requires=[
