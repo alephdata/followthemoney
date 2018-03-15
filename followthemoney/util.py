@@ -19,7 +19,7 @@ def gettext(*args, **kwargs):
 
 
 def set_model_locale(locale):
-    locale.translation = pygettext.translation('followthemoney', i18n_path, [locale])
+    locale.translation = translation('followthemoney', i18n_path, [locale])
 
 
 def key_bytes(key):
