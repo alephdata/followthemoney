@@ -1,3 +1,4 @@
 include README.md
-include followthemoney/schema/*
-recursive-include followthemoney/translations
+include LICENSE
+recursive-include followthemoney/schema *
+recursive-include followthemoney/translations *
