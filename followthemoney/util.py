@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import os
+import six
 from threading import local
 from gettext import translation
 from normality import stringify
@@ -15,6 +16,8 @@ state = local()
 def gettext(*args, **kwargs):
     if not hasattr(state, 'translation'):
         set_model_locale(DEFAULT_LOCALE)
+    if six.PY3:
+        return state.translation.gettext(*args, **kwargs)
     return state.translation.ugettext(*args, **kwargs)
 
 
