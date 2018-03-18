@@ -34,7 +34,8 @@ class Property(object):
     
     @property
     def reverse(self):
-        return gettext(self._reverse)
+        if self._reverse is not None:
+            return gettext(self._reverse)
     
     @property
     def description(self):
