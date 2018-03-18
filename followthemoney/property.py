@@ -12,8 +12,8 @@ class Property(object):
         self.name = name.strip()
         self.qname = '%s:%s' % (schema.name, self.name)
         self.data = data
-        self.label = data.get('label', name)
-        self.description = data.get('description')
+        self._label = data.get('label', name)
+        self._description = data.get('description')
         self.caption = data.get('caption', False)
         self.required = data.get('required', False)
         self.is_multiple = data.get('multiple', False)
@@ -27,6 +27,14 @@ class Property(object):
             self.invert = TYPES[self.type_name].invert
         except KeyError:
             raise InvalidModel("Invalid type: %s" % self.type_name)
+    
+    @property
+    def label(self):
+        return gettext(self._label)
+    
+    @property
+    def description(self):
+        return gettext(self._description)
 
     def validate(self, data):
         """Validate that the data should be stored.
@@ -59,8 +67,8 @@ class Property(object):
         data = {
             'name': self.name,
             'qname': self.qname,
-            'label': gettext(self.label),
-            'description': gettext(self.description),
+            'label': self.label,
+            'description': self.description,
             'caption': self.caption,
             'type': self.type_name
         }

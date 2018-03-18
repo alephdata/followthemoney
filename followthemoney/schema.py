@@ -15,10 +15,10 @@ class Schema(object):
         self._model = model
         self.name = name
         self.data = data
-        self.label = data.get('label', name)
-        self.plural = data.get('plural', self.label)
         self.icon = data.get('icon')
-        self.description = data.get('description')
+        self._label = data.get('label', name)
+        self._plural = data.get('plural', self.label)
+        self._description = data.get('description')
         self._featured = ensure_list(data.get('featured'))
 
         # Do not show in listings:
@@ -33,6 +33,18 @@ class Schema(object):
         self._own_properties = []
         for name, prop in data.get('properties', {}).items():
             self._own_properties.append(Property(self, name, prop))
+
+    @property
+    def label(self):
+        return gettext(self._label)
+
+    @property
+    def plural(self):
+        return gettext(self._plural)
+    
+    @property
+    def description(self):
+        return gettext(self._description)
 
     @property
     def extends(self):
@@ -140,12 +152,12 @@ class Schema(object):
 
     def to_dict(self):
         data = {
-            'label': gettext(self.label),
-            'plural': gettext(self.plural),
+            'label': self.label,
+            'plural': self.plural,
             'icon': self.icon,
             'abstract': self.abstract,
             'fuzzy': self.fuzzy,
-            'description': gettext(self.description),
+            'description': self.description,
             'featured': self.featured,
             'properties': {}
         }
