@@ -13,13 +13,13 @@ class Property(object):
         self.qname = '%s:%s' % (schema.name, self.name)
         self.data = data
         self._label = data.get('label', name)
+        self._reverse = data.get('reverse')
         self._description = data.get('description')
         self.caption = data.get('caption', False)
         self.required = data.get('required', False)
         self.is_multiple = data.get('multiple', False)
         self.type_name = data.get('type', 'string')
         self.range = data.get('schema', 'Thing')
-        self.reverse = data.get('reverse')
         self.is_country = self.type_name == 'country'
         self.is_entity = self.type_name == 'entity'
         try:
@@ -31,6 +31,10 @@ class Property(object):
     @property
     def label(self):
         return gettext(self._label)
+    
+    @property
+    def reverse(self):
+        return gettext(self._reverse)
     
     @property
     def description(self):
