@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-03-19 13:43+0100\n"
+"POT-Creation-Date: 2018-03-20 13:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -318,7 +318,7 @@ msgstr "Контракты"
 #. Contract.properties.noticeId.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract Award Notice ID"
-msgstr "Номер извещения о предоставлении контракта"
+msgstr "Номер извещения о выборе поставщика"
 
 #. Contract.properties.numberAwards.label
 #: followthemoney/schema/Contract.yaml
@@ -380,7 +380,7 @@ msgstr "Контракт или лот, заключенный с поставщ
 #. ContractAward.plural
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract Awards"
-msgstr "Сумма контрактов"
+msgstr "Закупки по контракту"
 
 #. ContractAward.properties.amended.description
 #: followthemoney/schema/ContractAward.yaml
@@ -460,7 +460,7 @@ msgstr "Причина решения"
 #. ContractAward.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract Lot Award"
-msgstr "Заказ на поставку товаров, выполнение работ, оказание услуг"
+msgstr "Размещение закупки"
 
 #. CourtCase.plural
 #. CourtCaseParty.properties.party.reverse
