@@ -68,6 +68,7 @@
         "birthPlace": "ftm:birthPlace", 
         "buildDate": "ftm:buildDate", 
         "cadastralCode": "ftm:cadastralCode", 
+        "caemCode": "ftm:caemCode", 
         "callSign": "ftm:callSign", 
         "cancelled": "ftm:cancelled", 
         "capital": "ftm:capital", 
@@ -129,9 +130,11 @@
             "@id": "ftm:entity", 
             "@type": "@id"
         }, 
+        "fatherName": "ftm:fatherName", 
         "fileDate": "ftm:fileDate", 
         "firstName": "ftm:firstName", 
         "flag": "ftm:flag", 
+        "fnsCode": "ftm:fnsCode", 
         "from": {
             "@id": "ftm:from", 
             "@type": "@id"
@@ -140,6 +143,7 @@
             "@id": "ftm:fromAccount", 
             "@type": "@id"
         }, 
+        "fssCode": "ftm:fssCode", 
         "ftm": "https://w3id.org/ftm#", 
         "gender": "ftm:gender", 
         "grossRegisteredTonnage": "ftm:grossRegisteredTonnage", 
@@ -157,6 +161,7 @@
         "jibCode": "ftm:jibCode", 
         "jurisdiction": "ftm:jurisdiction", 
         "keywords": "ftm:keywords", 
+        "kppCode": "ftm:kppCode", 
         "landType": "ftm:landType", 
         "lastName": "ftm:lastName", 
         "latitude": "ftm:latitude", 
@@ -173,6 +178,7 @@
         }, 
         "middleName": "ftm:middleName", 
         "mmsi": "ftm:mmsi", 
+        "motherName": "ftm:motherName", 
         "name": "ftm:name", 
         "nameChangeDate": {
             "@id": "ftm:nameChangeDate", 
@@ -188,7 +194,11 @@
             "@id": "ftm:object", 
             "@type": "@id"
         }, 
+        "ogrnCode": "ftm:ogrnCode", 
+        "okopfCode": "ftm:okopfCode", 
         "okpoCode": "ftm:okpoCode", 
+        "oksmCode": "ftm:oksmCode", 
+        "okvedCode": "ftm:okvedCode", 
         "organization": {
             "@id": "ftm:organization", 
             "@type": "@id"
@@ -211,6 +221,7 @@
         "pastNames": "ftm:pastNames", 
         "pastTypes": "ftm:pastTypes", 
         "percentage": "ftm:percentage", 
+        "pfrNumber": "ftm:pfrNumber", 
         "phone": "ftm:phone", 
         "position": "ftm:position", 
         "previousName": "ftm:previousName", 
@@ -223,7 +234,7 @@
         "registrationPort": "ftm:registrationPort", 
         "role": "ftm:role", 
         "sanctionDuration": "ftm:sanctionDuration", 
-        "sanctionOccurence": "ftm:sanctionOccurence", 
+        "sanctionOccurrence": "ftm:sanctionOccurrence", 
         "sanctionReason": "ftm:sanctionReason", 
         "sanctionStatus": "ftm:sanctionStatus", 
         "secondName": "ftm:secondName", 
