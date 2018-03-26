@@ -1,8 +1,10 @@
 
 all: clean test dists release
 
-test:
-	pip install -q nose coverage responses
+dev:
+	pip install -q --upgrade nose coverage responses transifex-client bumpversion
+
+test: dev
 	nosetests --with-coverage --cover-package=followthemoney --cover-erase
 
 dist:
@@ -13,8 +15,7 @@ release: clean dist
 
 # initalize a new language:
 # pybabel init -i followthemoney/translations/messages.pot -d followthemoney/translations -l de -D followthemoney
-translate:
-	pip install --upgrade transifex-client
+translate: dev
 	pybabel extract -F babel.cfg -o followthemoney/translations/messages.pot followthemoney
 	tx push --source
 	tx pull --all
