@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-03-20 13:41+0100\n"
+"POT-Creation-Date: 2018-03-26 11:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -42,22 +42,22 @@ msgstr "Название банка"
 #. BankAccount.properties.bic.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Identifier Code"
-msgstr "Банковский идентификационный код"
+msgstr "БИК"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account Type"
-msgstr "Вид счета"
+msgstr "Тип счёта"
 
 #. BankAccount.properties.accountNumber.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account Number"
-msgstr "Номер счета"
+msgstr "Номер счёта"
 
 #. BankAccount.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Account"
-msgstr "Банковский счет"
+msgstr "Банковский счёт"
 
 #. Company.plural
 #: followthemoney/schema/Company.yaml
@@ -1151,7 +1151,7 @@ msgstr "Дата смерти"
 #. Person.label
 #: followthemoney/schema/Person.yaml
 msgid "Person"
-msgstr "Человек"
+msgstr "Физическое лицо"
 
 #. PublicBody.plural
 #: followthemoney/schema/PublicBody.yaml
@@ -1259,7 +1259,7 @@ msgstr "Слабая связь"
 #. Thing.properties.notes.label
 #: followthemoney/schema/Thing.yaml
 msgid "Notes"
-msgstr "Пометки"
+msgstr "Примечания"
 
 #. Thing.properties.previousName.label
 #: followthemoney/schema/Thing.yaml
