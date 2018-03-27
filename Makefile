@@ -2,7 +2,7 @@
 all: clean test dists release
 
 dev:
-	pip install -q --upgrade nose coverage responses transifex-client bumpversion
+	pip install -q --upgrade nose coverage responses transifex-client bumpversion twine
 
 test: dev
 	nosetests --with-coverage --cover-package=followthemoney --cover-erase
