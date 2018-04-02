@@ -20,6 +20,7 @@ this end, here's the steps for making a release:
 $ git pull --rebase
 $ make test
 $ bumpversion patch
+$ git push --tags
 $ make clean release
 ```
 
