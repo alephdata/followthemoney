@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-03-26 11:14+0200\n"
+"POT-Creation-Date: 2018-04-02 15:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -281,7 +281,7 @@ msgstr "Концессионнное соглашение"
 #. Concession.plural
 #: followthemoney/schema/Concession.yaml
 msgid "Concessions"
-msgstr "Концессия"
+msgstr "Концессии"
 
 #. Concession.properties.commodities.label
 #: followthemoney/schema/Concession.yaml
@@ -292,7 +292,7 @@ msgstr "Товары"
 #. Land.properties.area.label
 #: followthemoney/schema/Concession.yaml followthemoney/schema/Land.yaml
 msgid "Area"
-msgstr "Площадь"
+msgstr "Участок"
 
 #. Concession.label
 #: followthemoney/schema/Concession.yaml
@@ -343,7 +343,7 @@ msgstr ""
 #: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
 #: followthemoney/schema/Vessel.yaml
 msgid "Type"
-msgstr "Вид"
+msgstr "Тип"
 
 #. Contract.properties.authority.plural
 #: followthemoney/schema/Contract.yaml
@@ -395,7 +395,7 @@ msgstr "Изменено?"
 #. ContractAward.properties.documentType.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Document type"
-msgstr "Вид документа"
+msgstr "Тип документа"
 
 #. ContractAward.properties.contract.reverse
 #: followthemoney/schema/ContractAward.yaml
@@ -731,7 +731,7 @@ msgstr "Информация"
 #. Land.plural
 #: followthemoney/schema/Land.yaml
 msgid "Lands"
-msgstr "Земли"
+msgstr "Недвижимость"
 
 #. Land.properties.createDate.label
 #: followthemoney/schema/Land.yaml
@@ -771,7 +771,7 @@ msgstr "Переписной квартал"
 #. Land.label
 #: followthemoney/schema/Land.yaml
 msgid "Land"
-msgstr "Земля"
+msgstr "Недвижимость"
 
 #. LegalEntity.description
 #: followthemoney/schema/LegalEntity.yaml
