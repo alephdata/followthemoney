@@ -63,6 +63,14 @@ LegalEntity:
     icijId:
       label: ICIJ ID
       description: "ID according to International Consortium for Investigative Journalists"
+    okpoCode:
+      label: "OKPO"
+      description: "Russian industry classifier"
+      type: identifier
+    innCode:
+      label: "INN"
+      description: "Russian company ID"
+      type: identifier
     parent:
       label: "Parent company"
       reverse: "Subsidiaries"

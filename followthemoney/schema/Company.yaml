@@ -21,14 +21,6 @@ Company:
       label: "VOEN"
       description: "Azerbaijan taxpayer ID"
       type: identifier
-    okpoCode:
-      label: "OKPO"
-      description: "Russian industry classifier"
-      type: identifier
-    innCode:
-      label: "INN"
-      description: "Russian company ID"
-      type: identifier
     coatoCode:
       label: "COATO / SOATO / OKATO"
       type: identifier
