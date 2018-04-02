@@ -21,7 +21,6 @@ $ git pull --rebase
 $ make test
 $ bumpversion patch
 $ git push --tags
-$ make clean release
 ```
 
 This will create a new patch release and upload a distribution of it. If
