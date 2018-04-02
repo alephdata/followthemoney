@@ -2,11 +2,21 @@ language: python
 python:
   - "2.7"
   - "3.6"
+
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libicu-dev
+
 install:
-  - pip install coverage nose pyicu==1.9.8 responses
+  - pip install coverage nose pyicu==1.9.8 responses twine
   - pip install -e .
+
 script:
   - nosetests --with-coverage --cover-package=followthemoney --cover-erase
+
+after_success:
+  # push tag as well
+  - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then
+      python setup.py sdist bdist_wheel ;
+      twine upload dist/* ;
+    fi
