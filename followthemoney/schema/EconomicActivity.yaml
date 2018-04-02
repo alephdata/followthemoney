@@ -1,0 +1,78 @@
+EconomicActivity:
+  label: "Economic Activity"
+  plural: "Economic Activities"
+  description: "An economic activity"
+  extends: Transaction
+  icon: fa-truck
+  properties:
+    contract:
+      label: "Associated contract"
+      type: entity
+      range: Contract
+    ccdNumber:
+      label: "Customs Cargo Declaration Number"
+      type: identifier
+    ccdValue:
+      label: "CCD Value"
+      description: "Declaration Value"
+    directionOfTransportation:
+      label: "Direction of transportation"
+      description: "Direction of transportation (import/export)"
+    customsProcedure:
+      label: "Customs Procedure"
+      description: "Customs Procedure — type of customs clearance"
+    vedCode:
+      label: "FEAC Code"
+      description: "(Код ТН ВЭД) Foreign Economic Activity Commodity Code"
+      type: identifier
+    vedCodeDescription:
+      label: "FEAC Code description"
+      description: "(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
+    goodsDescription:
+      label: "Description"
+      description: "Description of goods"
+    declarant:
+      label: "Declarant"
+      description: "Customs declarant"
+      type: entity
+      range: LegalEntity
+    invoiceValue:
+      label: "Invoice Value"
+      description: "Invoice Value of goods"
+    customsValue:
+      label: "Customs Value"
+      description: "Customs Value of goods"
+    dollarExchRate:
+      label: "USD Exchange Rate"
+      description: "USD Exchange Rate for the activity"
+    tradingCountry:
+      label: "Trading Country"
+      description: "Trading Country of the company which transports the goods via Russian border"
+      type: country
+    departureCountry:
+      label: "Country of departure"
+      description: "Country out of which the goods are transported"
+      type: country
+    destinationCountry:
+      label: "Country of destination"
+      description: "Final destination for the goods"
+      type: country
+    originCountry:
+      label: "Country of origin"
+      description: "Country of origin of goods"
+      type: country
+    bankAccount:
+      label: "Bank Account"
+      description: "Bank account of the contract"
+      type: entity
+      range: BankAccount
+    bankRub:
+      label: "Rouble bank"
+      description: "Bank account for payments in roubles"
+      type: entity
+      range: BankAccount
+    bankForeign:
+      label: "Foreign currency bank"
+      description: "Bank account for payments in foreign currency"
+      type: entity
+      range: BankAccount
