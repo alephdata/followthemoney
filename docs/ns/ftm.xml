@@ -4,1385 +4,260 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
-  <rdf:Description rdf:about="https://w3id.org/ftm#entity">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
-    <rdfs:label>Sanctioned entity</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#endDate">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
+  <rdf:Description rdf:about="https://w3id.org/ftm#censusBlock">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:comment>None</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>End date</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#amount">
-    <rdfs:label>Amount</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Value"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#coatoCode">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>COATO / SOATO / OKATO</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#address">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:label>Address</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#incorporationDate">
-    <rdfs:comment>The date the legal entity was incorporated</rdfs:comment>
-    <rdfs:label>Incorporation date</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#LegalEntity">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>A legal entity may be a person or a company.</rdfs:comment>
-    <rdfs:label>Legal entity</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#cancelled">
-    <rdfs:label>Cancelled?</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+    <rdfs:label>Census block</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/ftm#sanctionStatus">
-    <rdfs:label>Sanction status</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
     <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Sanction status</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#phone">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sanctionDuration">
+    <rdfs:label>Sanction duration</rdfs:label>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Phone</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:comment>Phone number</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#organization">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Directorship"/>
-    <rdfs:label>Organization</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Membership"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#Organization"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
     <rdfs:comment>None</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Payment">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Value"/>
+  <rdf:Description rdf:about="https://w3id.org/ftm#contractDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:label>Contract date</rdfs:label>
     <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Transaction"/>
-    <rdfs:label>Payment</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#propertyType">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Property type</rdfs:label>
+  <rdf:Description rdf:about="https://w3id.org/ftm#kppCode">
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:label>KPP</rdfs:label>
+    <rdfs:comment>(RU, КПП) in addition to INN for orgs; reason for registration at FNS</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/ftm#mainCountry">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:label>Country of origin</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:comment>Primary country of this entity</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#coatoCode">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#status">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Status</rdfs:label>
-    <rdfs:comment>Status, eg. ??</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interest"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#capital">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Capital</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
     <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Interest">
-    <rdfs:label>Interest</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interval"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Concession">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Contract"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>A grant of land, rights or property. A type of Contract</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Concession</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#agent">
-    <rdfs:label>Agent</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Representation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#previousName">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Previous name</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#latitude">
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Latitude</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#alias">
-    <rdfs:label>Other name</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:label>COATO / SOATO / OKATO</rdfs:label>
     <rdfs:comment>None</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#mmsi">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>MMSI</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#ibcRuc">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>ibcRUC</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#asset">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Transaction"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Asset</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#Asset"/>
-    <rdfs:comment>The thing being transacted; could be a Contract</rdfs:comment>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Ownership">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
-    <rdfs:label>Ownership</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#jibCode">
-    <rdfs:label>JIB</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>Yugoslavia company ID</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#jurisdiction">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Jurisdiction</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:comment>Country or region in which this entity operates</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#party">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Party</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCaseParty"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#object">
+  <rdf:Description rdf:about="https://w3id.org/ftm#organization">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#UnknownLink"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:label>Object</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#PlainText">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Text file</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#toAccount">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#BankAccount"/>
-    <rdfs:label>Beneficiary bank account</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Payment"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#secretary">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#Organization"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Membership"/>
+    <rdfs:label>Organization</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:domain rdf:resource="https://w3id.org/ftm#Directorship"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Secretary</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Transaction">
-    <rdfs:label>Transaction</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interval"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#description">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Description</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#client">
-    <rdfs:label>Client</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Representation"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#icijId">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>ID according to International Consortium for Investigative Journalists</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>ICIJ ID</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Document">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>File</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#CourtCaseParty">
-    <rdfs:label>Party</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sharesCurrency">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Currency of shares</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#from">
-    <rdfs:comment>The payer in the case of a payment; the contract issuer/authority in the case of a contract.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Transaction"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>From</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#type">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>Type of contract. Potentially W (Works), U (Supplies), S (Services).</rdfs:comment>
-    <rdfs:label>Type</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#category">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Category</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#purpose">
-    <rdfs:label>Payment purpose</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
+  <rdf:Description rdf:about="https://w3id.org/ftm#toAccount">
     <rdfs:domain rdf:resource="https://w3id.org/ftm#Payment"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#noticeId">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Contract Award Notice ID</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#area">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Area</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Concession"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#amountUsd">
-    <rdfs:label>Amount in USD</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Value"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#irsCode">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>IRS Number</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:comment>US tax ID</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Land">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Land</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Directorship">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
-    <rdfs:label>Directorship</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#vatCode">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>VAT Identifier</rdfs:label>
-    <rdfs:comment>(EU) VAT number</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#createDate">
-    <rdfs:label>Record date</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#okpoCode">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>OKPO</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:comment>Russian industry classifier</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#fnsCode">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:label>Federal tax service code</rdfs:label>
-    <rdfs:comment>(RU, ФНС) Federal Tax Service related info</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#okvedCode">
-    <rdfs:comment>(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>OKVED(2) Classifier</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Thing">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Thing</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#contract">
-    <rdfs:label>Contract</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#Contract"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#weakAlias">
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:label>Weak alias</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Contract">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward).</rdfs:comment>
-    <rdfs:label>Contract</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#BankAccount">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Bank Account</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#currency">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Currency</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Value"/>
+    <rdfs:label>Beneficiary bank account</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#BankAccount"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/ftm#caemCode">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:label>COD CAEM</rdfs:label>
     <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
     <rdfs:comment>(RO) What kind of activity a legal entity is allowed to develop</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Image">
-    <rdfs:label>Image</rdfs:label>
+  <rdf:Description rdf:about="https://w3id.org/ftm#weakAlias">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Weak alias</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#middleName">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Middle name</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Ownership">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Ownership</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sector">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>Sector, eg. ??</rdfs:comment>
-    <rdfs:label>Sector</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#to">
-    <rdfs:label>To</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:comment>The beneficiary in the case of a pyament; the contract supplier/awardee in the case of a contract.</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Transaction"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#accountNumber">
-    <rdfs:label>Account Number</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#legalForm">
-    <rdfs:comment>?</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Legal form</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#HyperText">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Web page</rdfs:label>
     <rdfs:comment>None</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#email">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>Email address</rdfs:comment>
-    <rdfs:label>E-Mail</rdfs:label>
+  <rdf:Description rdf:about="https://w3id.org/ftm#incorporationDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:comment>The date the legal entity was incorporated</rdfs:comment>
+    <rdfs:label>Incorporation date</rdfs:label>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#cikCode">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>SEC Central Index Key</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:comment>US SEC Central Index Key</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/ftm#nationality">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
     <rdfs:label>Nationality</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#passportNumber">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Passport</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#owner">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Owner</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#closeDate">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Close date</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sharesValue">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Value of shares</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#pastFlags">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  <rdf:Description rdf:about="https://w3id.org/ftm#summary">
     <rdfs:comment>None</rdfs:comment>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Past Flags</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:label>Summary</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#CourtCase">
+  <rdf:Description rdf:about="https://w3id.org/ftm#Event">
+    <rdfs:label>Event</rdfs:label>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interval"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Court case</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#balance">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Balance</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sharesType">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Type of shares</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#buildDate">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-    <rdfs:label>Build Date</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sanctionOccurrence">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
-    <rdfs:label>Sanction occurrence</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#idNumber">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>ID number of any applicable ID</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:label>ID Number</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#authority">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Sanctioning authority</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Contract authority</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#ownershipType">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Type of ownership</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:comment>None</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#documentType">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Document type</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#firstName">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>First name</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#voenCode">
-    <rdfs:comment>Azerbaijan taxpayer ID</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>VOEN</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#landType">
-    <rdfs:label>Land type</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Vessel">
-    <rdfs:label>Vessel</rdfs:label>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Transaction">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:comment>None</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interval"/>
+    <rdfs:label>Transaction</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#parent">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Parent company</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:comment>If this entity is a subsidiary, another entity (company or organisation) is its parent</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#kppCode">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>KPP</rdfs:label>
-    <rdfs:comment>(RU, КПП) in addition to INN for orgs; reason for registration at FNS</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Asset">
+  <rdf:Description rdf:about="https://w3id.org/ftm#asset">
+    <rdfs:comment>The thing being transacted; could be a Contract</rdfs:comment>
     <rdfs:label>Asset</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Value"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#okopfCode">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:label>OKOPF</rdfs:label>
-    <rdfs:comment>(RU, ОКОПФ) What kind of business entity</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#Asset"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Transaction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#court">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Court</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#party">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Party</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCaseParty"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/ftm#decisionReason">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:label>Decision reason</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#position">
-    <rdfs:label>Position</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#navigationArea">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Navigation Area</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#program">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
-    <rdfs:label>Program</rdfs:label>
-    <rdfs:label>Sanctions program</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#registrationNumber">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
-    <rdfs:comment>Company registration number</rdfs:comment>
-    <rdfs:label>Registration number</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#startDate">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Start date</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#pastTypes">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-    <rdfs:label>Past Types</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Pages">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
-    <rdfs:label>Document</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#notes">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Notes</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sanctionReason">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
-    <rdfs:label>Sanction reason</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#censusBlock">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Census block</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#oksmCode">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>OKSM</rdfs:label>
-    <rdfs:comment>Russian (ОКСМ) countries classifer</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#ipoCode">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:label>IPO</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#taxNumber">
-    <rdfs:label>Tax ID Number</rdfs:label>
-    <rdfs:comment>Tax ID number</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#legalBasis">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Legal basis</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#fssCode">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>FSS</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>(RU, ФСС) Social Security</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#role">
-    <rdfs:label>Role</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interest"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Folder">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Folder</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#percentage">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Percentage held</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Company">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Organization"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Company</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#taxStatus">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Tax status</rdfs:label>
-    <rdfs:comment>Tax status, eg. ??</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#birthPlace">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Place of birth</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#name">
-    <rdfs:label>Name</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#documentNumber">
-    <rdfs:label>Document number</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#cadastralCode">
-    <rdfs:label>Cadastral code</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#director">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Directorship"/>
-    <rdfs:label>Director</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#case">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCaseParty"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#CourtCase"/>
-    <rdfs:label>Case</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#crsNumber">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>CRS Number</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#keywords">
-    <rdfs:label>Keywords</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#commodities">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Commodities</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Concession"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#recordId">
-    <rdfs:label>Record ID</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#registrationPort">
-    <rdfs:label>Port of Registration</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#transactionNumber">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Transaction number</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Payment"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#fatherName">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdfs:label>Patronymic</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#cpvCode">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>CPV Code</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>Contract Procurement Vocabulary (what type of goods/services, EU)</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sequenceNumber">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Sequence number</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Payment"/>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#pastNames">
-    <rdfs:label>Past Names</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#amountEur">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Value"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Amount in EUR</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#date">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:label>Date</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#pfrNumber">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>PFR Number</rdfs:label>
-    <rdfs:comment>(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sourceUrl">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Source link</rdfs:label>
-    <rdfs:label>Source URL</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Representation">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
-    <rdfs:comment>A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity.</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:label>Representation</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#longitude">
-    <rdfs:label>Longitude</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Package">
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:label>Package</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Folder"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#fileDate">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>File date</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#nameChangeDate">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Date of Name Change</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#bankName">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Bank Name</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#classification">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:label>Classification</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>Classification, eg. ??</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Table">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Table</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#summary">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Summary</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#UnknownLink">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Link</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sharesCount">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Number of shares</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#">
-    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-03-21T10:10:26</dct:modified>
-    <rdfs:label>Follow The Money</rdfs:label>
-    <rdfs:comment>A vocabulary for investigative reporting, based on real life.</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#ContractAward">
-    <rdfs:comment>A contract or contract lot as awarded to a supplier.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
-    <rdfs:label>Contract Lot Award</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Value"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#caseNumber">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Case number</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#dissolutionDate">
-    <rdfs:comment>The date the legal entity was dissolved, if applicable</rdfs:comment>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Dissolution date</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#accountType">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Account Type</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Workbook">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Folder"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Workbook</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#motherName">
-    <rdfs:label>Matronymic</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#nutsCode">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>Nomencalture of Territorial Units for Statistics (NUTS)</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>NUTS Code</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#deathDate">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Death date</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Email">
-    <rdfs:label>E-Mail</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#HyperText"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Folder"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#PlainText"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#title">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Title</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#flag">
-    <rdfs:label>Flag</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#ogrnCode">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:label>OGRN</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>Major State Registration Number</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#website">
-    <rdfs:label>Website</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>Website address</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#innCode">
+  <rdf:Description rdf:about="https://w3id.org/ftm#capital">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:label>INN</rdfs:label>
-    <rdfs:comment>Russian company ID</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#fromAccount">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Payer bank account</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#BankAccount"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Payment"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Event">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:label>Event</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interval"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#callSign">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Call Sign</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#procedureNumber">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Procedure number</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#birthDate">
-    <rdfs:label>Birth date</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Interval">
-    <rdfs:label>Interval</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#middleName">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Middle name</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#secondName">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdfs:label>Second name</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#location">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>Location</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Event"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#bic">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Bank Identifier Code</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#country">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Event"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
-    <rdfs:label>Country</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#member">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Membership"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Member</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Organization">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:label>Organization</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#lastName">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
-    <rdfs:label>Last name</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#PublicBody">
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Organization"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:label>Public body</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#tonnage">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-    <rdfs:label>Tonnage</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#mbsCode">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
-    <rdfs:label>MBS</rdfs:label>
+    <rdfs:label>Capital</rdfs:label>
     <rdfs:comment>None</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/ftm#Membership">
-    <rdfs:label>Membership</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
     <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>Membership</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:comment>None</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#court">
-    <rdfs:label>Court</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sector">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:label>Sector</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:comment>Sector, eg. ??</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#LegalEntity">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:label>Legal entity</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment>A legal entity may be a person or a company.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#okvedCode">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>OKVED(2) Classifier</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:comment>(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/ftm#amended">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdfs:comment>Was this award amended, modified or updated by a subsequent document?</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
     <rdfs:label>Amended?</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#subject">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Subject</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#UnknownLink"/>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#supplier">
-    <rdfs:comment>The entity the contract was awarded to</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
-    <rdfs:label>Supplier</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Value">
+  <rdf:Description rdf:about="https://w3id.org/ftm#Document">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:label>Value</rdfs:label>
+    <rdfs:label>File</rdfs:label>
     <rdfs:comment>None</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Thing"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#numberAwards">
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Number of awards</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#grossRegisteredTonnage">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label>Gross Registered Tonnage</rdfs:label>
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#lotNumber">
-    <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Lot number</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#imoNumber">
+  <rdf:Description rdf:about="https://w3id.org/ftm#registrationPort">
     <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Port of Registration</rdfs:label>
     <rdfs:comment>None</rdfs:comment>
-    <rdfs:label>IMO Number</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#sanctionDuration">
+  <rdf:Description rdf:about="https://w3id.org/ftm#taxStatus">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>Tax status, eg. ??</rdfs:comment>
+    <rdfs:label>Tax status</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Workbook">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Folder"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Workbook</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#HyperText">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
+    <rdfs:label>Web page</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#bic">
+    <rdfs:label>Bank Identifier Code</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:comment>None</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Sanction duration</rdfs:label>
-    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Person">
+  <rdf:Description rdf:about="https://w3id.org/ftm#recordId">
     <rdfs:comment>None</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>Record ID</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
-    <rdfs:label>Person</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/ftm#gender">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
@@ -1391,11 +266,1152 @@
     <rdfs:comment>None</rdfs:comment>
     <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/ftm#Sanction">
+  <rdf:Description rdf:about="https://w3id.org/ftm#pastFlags">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Past Flags</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#innCode">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>INN</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>Russian company ID</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#pastNames">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Past Names</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Email">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#PlainText"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>E-Mail</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Folder"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#HyperText"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#procedureNumber">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Procedure number</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#fssCode">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>FSS</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:comment>(RU, ФСС) Social Security</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#UnknownLink">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>Link</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#subject">
+    <rdfs:label>Subject</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#UnknownLink"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#endDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:label>End date</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#mbsCode">
+    <rdfs:label>MBS</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Concession">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Contract"/>
+    <rdfs:label>Concession</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment>A grant of land, rights or property. A type of Contract</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#website">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Website</rdfs:label>
+    <rdfs:comment>Website address</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#okopfCode">
+    <rdfs:label>OKOPF</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:comment>(RU, ОКОПФ) What kind of business entity</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#authority">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:label>Contract authority</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>Sanctioning authority</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Interval">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Interval</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#object">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#UnknownLink"/>
+    <rdfs:label>Object</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sharesType">
+    <rdfs:label>Type of shares</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#classification">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Classification</rdfs:label>
+    <rdfs:comment>Classification, eg. ??</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Company">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Company</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Organization"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#fromAccount">
+    <rdfs:label>Payer bank account</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Payment"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#BankAccount"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#parent">
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>Parent company</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:comment>If this entity is a subsidiary, another entity (company or organisation) is its parent</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sourceUrl">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Source link</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:label>Source URL</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#irsCode">
+    <rdfs:comment>US tax ID</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>IRS Number</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#bankName">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
+    <rdfs:label>Bank Name</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#">
+    <rdfs:label>Follow The Money</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:comment>A vocabulary for investigative reporting, based on real life.</rdfs:comment>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-02T15:03:27</dct:modified>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#buildDate">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Build Date</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#balance">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Balance</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#type">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:comment>Type of contract. Potentially W (Works), U (Supplies), S (Services).</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Type</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#contract">
+    <rdfs:label>Contract</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#Contract"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Folder">
+    <rdfs:label>Folder</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
     <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Value">
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>Value</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#address">
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Address</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#jurisdiction">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:comment>Country or region in which this entity operates</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:label>Jurisdiction</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#accountType">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
+    <rdfs:label>Account Type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#cikCode">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:comment>US SEC Central Index Key</rdfs:comment>
+    <rdfs:label>SEC Central Index Key</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#okpoCode">
+    <rdfs:comment>Russian industry classifier</rdfs:comment>
+    <rdfs:label>OKPO</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sharesValue">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Value of shares</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#motherName">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+    <rdfs:label>Matronymic</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Package">
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Folder"/>
+    <rdfs:label>Package</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#fileDate">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>File date</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#latitude">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Latitude</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#ogrnCode">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>Major State Registration Number</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:label>OGRN</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#deathDate">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+    <rdfs:label>Death date</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#purpose">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Payment purpose</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Payment"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#status">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>Status, eg. ??</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Status</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interest"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#vatCode">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>VAT Identifier</rdfs:label>
+    <rdfs:comment>(EU) VAT number</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#caseNumber">
+    <rdfs:label>Case number</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#flag">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdfs:label>Flag</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#idNumber">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>ID Number</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>ID number of any applicable ID</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#previousName">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Previous name</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#ContractAward">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Value"/>
+    <rdfs:comment>A contract or contract lot as awarded to a supplier.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Contract Lot Award</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#case">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCaseParty"/>
+    <rdfs:label>Case</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#area">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Concession"/>
+    <rdfs:label>Area</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#country">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:label>Country</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Event"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#numberAwards">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Number of awards</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#currency">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Value"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Currency</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Representation">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>Representation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
+    <rdfs:comment>A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#entity">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
+    <rdfs:label>Sanctioned entity</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Payment">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Value"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Transaction"/>
+    <rdfs:label>Payment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#legalForm">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Legal form</rdfs:label>
+    <rdfs:comment>?</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#alias">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Other name</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#ibcRuc">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>ibcRUC</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#propertyType">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Property type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#landType">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Land type</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sharesCount">
+    <rdfs:label>Number of shares</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#nutsCode">
+    <rdfs:label>NUTS Code</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
+    <rdfs:comment>Nomencalture of Territorial Units for Statistics (NUTS)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#program">
+    <rdfs:label>Sanctions program</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:label>Program</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#registrationNumber">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+    <rdfs:comment>Company registration number</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:label>Registration number</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#birthPlace">
+    <rdfs:label>Place of birth</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#to">
+    <rdfs:comment>The beneficiary in the case of a pyament; the contract supplier/awardee in the case of a contract.</rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>To</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Transaction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#documentType">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Document type</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#supplier">
+    <rdfs:comment>The entity the contract was awarded to</rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>Supplier</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#icijId">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>ID according to International Consortium for Investigative Journalists</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>ICIJ ID</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#cpvCode">
+    <rdfs:label>CPV Code</rdfs:label>
+    <rdfs:comment>Contract Procurement Vocabulary (what type of goods/services, EU)</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#passportNumber">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+    <rdfs:label>Passport</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#client">
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Representation"/>
+    <rdfs:label>Client</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#birthDate">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+    <rdfs:label>Birth date</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#owner">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>Owner</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#percentage">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
+    <rdfs:label>Percentage held</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#description">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Description</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#from">
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Transaction"/>
+    <rdfs:label>From</rdfs:label>
+    <rdfs:comment>The payer in the case of a payment; the contract issuer/authority in the case of a contract.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#CourtCase">
+    <rdfs:label>Court case</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interval"/>
     <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#ipoCode">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>IPO</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#commodities">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Concession"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Commodities</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#holder">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
+    <rdfs:label>Contract holder</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#notes">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:label>Notes</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#documentNumber">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Document number</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Vessel">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Vessel</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#mmsi">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>MMSI</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#pastTypes">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Past Types</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Directorship">
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Directorship</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#dissolutionDate">
+    <rdfs:label>Dissolution date</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:comment>The date the legal entity was dissolved, if applicable</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#role">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Role</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interest"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#BankAccount">
+    <rdfs:label>Bank Account</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#imoNumber">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>IMO Number</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#PlainText">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Text file</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#noticeId">
+    <rdfs:label>Contract Award Notice ID</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sanctionOccurrence">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Sanction occurrence</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#pfrNumber">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:label>PFR Number</rdfs:label>
+    <rdfs:comment>(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#voenCode">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>Azerbaijan taxpayer ID</rdfs:comment>
+    <rdfs:label>VOEN</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sanctionReason">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Sanction"/>
+    <rdfs:label>Sanction reason</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Person">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Person</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#lotNumber">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#ContractAward"/>
+    <rdfs:label>Lot number</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#firstName">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>First name</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#fnsCode">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:label>Federal tax service code</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>(RU, ФНС) Federal Tax Service related info</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#longitude">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Longitude</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#closeDate">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Close date</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#cadastralCode">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Cadastral code</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#position">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:label>Position</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#ownershipType">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
+    <rdfs:label>Type of ownership</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#fatherName">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+    <rdfs:label>Patronymic</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#amount">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Amount</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Value"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#amountEur">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Amount in EUR</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Value"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Interest">
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Interest</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#keywords">
+    <rdfs:label>Keywords</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Table">
+    <rdfs:label>Table</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Organization">
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>Organization</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#navigationArea">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Navigation Area</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#crsNumber">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdfs:label>CRS Number</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#legalBasis">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Legal basis</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#transactionNumber">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Payment"/>
+    <rdfs:label>Transaction number</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#name">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:label>Name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#createDate">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Land"/>
+    <rdfs:label>Record date</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#cancelled">
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Cancelled?</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Contract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Image">
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Image</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#jibCode">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+    <rdfs:label>JIB</rdfs:label>
+    <rdfs:comment>Yugoslavia company ID</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#phone">
+    <rdfs:comment>Phone number</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>Phone</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#secretary">
+    <rdfs:label>Secretary</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Directorship"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#category">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Category</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#CourtCase"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Sanction">
     <rdfs:label>Sanction</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#email">
+    <rdfs:comment>Email address</rdfs:comment>
+    <rdfs:label>E-Mail</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#secondName">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+    <rdfs:label>Second name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#grossRegisteredTonnage">
+    <rdfs:label>Gross Registered Tonnage</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#director">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Directorship"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:label>Director</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#member">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Membership"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Member</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#callSign">
+    <rdfs:label>Call Sign</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#amountUsd">
+    <rdfs:label>Amount in USD</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Value"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#tonnage">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Tonnage</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Pages">
+    <rdfs:label>Document</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Document"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Land">
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
+    <rdfs:label>Land</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Contract">
+    <rdfs:comment>An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward).</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>Contract</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Asset"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#startDate">
+    <rdfs:label>Start date</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#taxNumber">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Tax ID Number</rdfs:label>
+    <rdfs:comment>Tax ID number</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#lastName">
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Last name</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sequenceNumber">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Payment"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Sequence number</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#CourtCaseParty">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>Party</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Interest"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#oksmCode">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:comment>Russian (ОКСМ) countries classifer</rdfs:comment>
+    <rdfs:label>OKSM</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Company"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Asset">
+    <rdfs:label>Asset</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Value"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#agent">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Representation"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Agent</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="https://w3id.org/ftm#LegalEntity"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#PublicBody">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>Public body</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/ftm#Organization"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#accountNumber">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#BankAccount"/>
+    <rdfs:label>Account Number</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#sharesCurrency">
+    <rdfs:label>Currency of shares</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Ownership"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#nameChangeDate">
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Vessel"/>
+    <rdfs:label>Date of Name Change</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#title">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Title</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#date">
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Interval"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+    <rdfs:label>Date</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:comment>None</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#location">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label>Location</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/ftm#Event"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/ftm#Thing">
+    <rdfs:label>Thing</rdfs:label>
+    <rdfs:comment>None</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:isDefinedBy rdf:resource="https://w3id.org/ftm#"/>
   </rdf:Description>
 </rdf:RDF>

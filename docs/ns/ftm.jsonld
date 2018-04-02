@@ -92,6 +92,10 @@
             "@id": "ftm:contract", 
             "@type": "@id"
         }, 
+        "contractDate": {
+            "@id": "ftm:contractDate", 
+            "@type": "xsd:dateTime"
+        }, 
         "country": "ftm:country", 
         "court": "ftm:court", 
         "cpvCode": "ftm:cpvCode", 
@@ -147,6 +151,10 @@
         "ftm": "https://w3id.org/ftm#", 
         "gender": "ftm:gender", 
         "grossRegisteredTonnage": "ftm:grossRegisteredTonnage", 
+        "holder": {
+            "@id": "ftm:holder", 
+            "@type": "@id"
+        }, 
         "ibcRuc": "ftm:ibcRuc", 
         "icijId": "ftm:icijId", 
         "idNumber": "ftm:idNumber", 

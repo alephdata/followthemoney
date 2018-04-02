@@ -448,6 +448,13 @@ ftm:contract a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Contract .
 
+ftm:contractDate a rdf:Property ;
+    rdfs:label "Contract date" ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
 ftm:country a rdf:Property ;
     rdfs:label "Country" ;
     rdfs:comment "None" ;
@@ -621,6 +628,13 @@ ftm:grossRegisteredTonnage a rdf:Property ;
     rdfs:domain ftm:Vessel ;
     rdfs:isDefinedBy ftm: .
 
+ftm:holder a rdf:Property ;
+    rdfs:label "Contract holder" ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
 ftm:ibcRuc a rdf:Property ;
     rdfs:label "ibcRUC" ;
     rdfs:comment "None" ;
@@ -655,7 +669,7 @@ ftm:incorporationDate a rdf:Property ;
 ftm:innCode a rdf:Property ;
     rdfs:label "INN" ;
     rdfs:comment "Russian company ID" ;
-    rdfs:domain ftm:Company ;
+    rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: .
 
 ftm:ipoCode a rdf:Property ;
@@ -853,7 +867,7 @@ ftm:okopfCode a rdf:Property ;
 ftm:okpoCode a rdf:Property ;
     rdfs:label "OKPO" ;
     rdfs:comment "Russian industry classifier" ;
-    rdfs:domain ftm:Company ;
+    rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: .
 
 ftm:oksmCode a rdf:Property ;
@@ -1206,6 +1220,6 @@ ftm:website a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2018-03-21T10:10:26"^^xsd:dateTime ;
+    dct:modified "2018-04-02T15:03:27"^^xsd:dateTime ;
     rdfs:comment "A vocabulary for investigative reporting, based on real life." .
 
