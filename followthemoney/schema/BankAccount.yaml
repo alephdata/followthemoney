@@ -17,3 +17,5 @@ BankAccount:
       label: Account Type
     balance:
       label: Balance
+    bankAddress:
+      label: Bank Address
