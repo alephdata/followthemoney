@@ -20,7 +20,7 @@ entities:
       name:
         column: comp.name
       address:
-        column: comp.address
+        template: "{{comp.address}}"
       sourceUrl:
         column: comp.url
   subsidiary:
@@ -29,14 +29,17 @@ entities:
     properties:
       name:
         column: sub.name
-      address:
-        template: "{{comp.address}}"
   ownership:
     schema: Ownership
+    keys:
+      - sub.id
+      - comp.id
     properties:
       owner:
         entity: company
+        required: true
       asset:
         entity: subsidiary
+        required: true
       percentage:
         column: shares.share

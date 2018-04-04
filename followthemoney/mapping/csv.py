@@ -28,7 +28,7 @@ class CSVSource(Source):
 
     def read_csv(self, url):
         parsed_url = requests.utils.urlparse(url)
-        log.info("Loading: %s", url) 
+        log.info("Loading: %s", url)
         if parsed_url.scheme in ['http', 'https']:
             res = requests.get(url, stream=True)
             if not res.ok:

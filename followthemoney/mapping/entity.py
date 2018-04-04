@@ -1,5 +1,6 @@
 from hashlib import sha1
 from banal import ensure_list
+from normality import stringify
 
 from followthemoney.mapping.property import PropertyMapping
 from followthemoney.util import key_bytes
@@ -13,13 +14,16 @@ class EntityMapping(object):
         self.name = name
         self.data = data
 
+        key_prefix = stringify(key_prefix)
+        key_literal = stringify(data.get('key_literal'))
         self.seed = sha1(key_bytes(key_prefix) +
-                         key_bytes(data.get('key_literal', '')))
+                         key_bytes(key_literal))
+
         self.keys = ensure_list(data.get('key'))
         self.keys.extend(ensure_list(data.get('keys')))
         self.keys = set(self.keys)
-        # if not len(self.keys):
-        #     raise InvalidMapping("No keys defined for %r" % name)
+        if not len(self.keys):
+            raise InvalidMapping("No keys: %r" % name)
 
         self.schema = model.get(data.get('schema'))
         if self.schema is None:
@@ -42,15 +46,14 @@ class EntityMapping(object):
         for prop in self.properties:
             prop.bind()
 
-    def compute_key(self, record, related):
+    def compute_key(self, record):
         """Generate a key for this entity, based on the given fields, and the
         ID of other entities referenced by this entity."""
         digest = self.seed.copy()
-        for entity in sorted(related):
-            digest.update(key_bytes(entity))
         for key in self.keys:
-            value = record.get(key)
-            digest.update(key_bytes(value))
+            value = stringify(record.get(key))
+            if value is not None:
+                digest.update(key_bytes(value))
         if digest.digest() != self.seed.digest():
             return digest.hexdigest()
 
@@ -69,17 +72,20 @@ class EntityMapping(object):
                 countries.update(values)
                 properties[prop.name] = values
 
-        related = set()
         for prop in self.properties:
             values = properties.pop(prop.name, None)
             if values is None:
                 values = prop.map(record, entities, countries=countries)
             if len(values):
                 properties[prop.name] = values
-            if prop.entity is not None:
-                related.update(values)
+            elif prop.required:
+                # This is a bit weird, it flags fields to be required in
+                # the mapping, not in the model. Basically it means: if
+                # this row of source data doesn't have that field, then do
+                # not map it again.
+                return
 
-        key = self.compute_key(record, related)
+        key = self.compute_key(record)
         if key is None:
             return
 

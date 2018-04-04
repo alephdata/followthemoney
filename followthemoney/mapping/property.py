@@ -28,6 +28,7 @@ class PropertyMapping(object):
         self.join = data.pop('join', None)
         self.split = data.pop('split', None)
         self.entity = data.pop('entity', None)
+        self.required = data.pop('required', False)
 
         self.template = stringify(data.pop('template', None))
         self.replacements = {}
@@ -89,7 +90,7 @@ class PropertyMapping(object):
 
         if self.join is not None:
             values = [self.join.join(values)]
-        
+
         if self.split is not None:
             splote = []
             for value in values:
