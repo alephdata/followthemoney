@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import os
 import six
 from threading import local
+from normality import stringify
 from gettext import translation
 from banal import is_mapping, is_sequence
 from banal import unique_list, ensure_list
@@ -27,8 +28,7 @@ def set_model_locale(locale):
 
 def key_bytes(key):
     """Convert the given data to a value appropriate for hashing."""
-    if not isinstance(key, six.text_type):
-        return ''
+    key = stringify(key) or ''
     return key.encode('utf-8')
 
 
