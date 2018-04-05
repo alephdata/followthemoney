@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-02 15:37+0200\n"
+"POT-Creation-Date: 2018-04-05 18:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,14 @@ msgstr ""
 #. Asset.plural
 #: followthemoney/schema/Asset.yaml
 msgid "Assets"
+msgstr ""
+
+#. Asset.label
+#. Ownership.properties.asset.label
+#. Transaction.properties.asset.label
+#: followthemoney/schema/Asset.yaml followthemoney/schema/Ownership.yaml
+#: followthemoney/schema/Transaction.yaml
+msgid "Asset"
 msgstr ""
 
 #. BankAccount.plural
@@ -231,10 +239,10 @@ msgid "PFR Number"
 msgstr ""
 
 #. Company.properties.registrationNumber.label
-#. Land.properties.registrationNumber.label
 #. LegalEntity.properties.registrationNumber.label
-#: followthemoney/schema/Company.yaml followthemoney/schema/Land.yaml
-#: followthemoney/schema/LegalEntity.yaml
+#. RealEstate.properties.registrationNumber.label
+#: followthemoney/schema/Company.yaml followthemoney/schema/LegalEntity.yaml
+#: followthemoney/schema/RealEstate.yaml
 msgid "Registration number"
 msgstr ""
 
@@ -273,6 +281,11 @@ msgstr ""
 msgid "A grant of land, rights or property. A type of Contract"
 msgstr ""
 
+#. Concession.label
+#: followthemoney/schema/Concession.yaml
+msgid "Concession"
+msgstr ""
+
 #. Concession.plural
 #: followthemoney/schema/Concession.yaml
 msgid "Concessions"
@@ -284,14 +297,9 @@ msgid "Commodities"
 msgstr ""
 
 #. Concession.properties.area.label
-#. Land.properties.area.label
-#: followthemoney/schema/Concession.yaml followthemoney/schema/Land.yaml
+#. RealEstate.properties.area.label
+#: followthemoney/schema/Concession.yaml followthemoney/schema/RealEstate.yaml
 msgid "Area"
-msgstr ""
-
-#. Concession.label
-#: followthemoney/schema/Concession.yaml
-msgid "Concession"
 msgstr ""
 
 #. Contract.description
@@ -526,11 +534,6 @@ msgstr ""
 msgid "Parties"
 msgstr ""
 
-#. Directorship.label
-#: followthemoney/schema/Directorship.yaml
-msgid "Directorship"
-msgstr ""
-
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Director"
@@ -558,6 +561,11 @@ msgstr ""
 #. Directorship.properties.secretary.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Secretary"
+msgstr ""
+
+#. Directorship.label
+#: followthemoney/schema/Directorship.yaml
+msgid "Directorship"
 msgstr ""
 
 #. Package.plural
@@ -715,51 +723,6 @@ msgstr ""
 #. Thing.properties.summary.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Summary"
-msgstr ""
-
-#. Land.plural
-#: followthemoney/schema/Land.yaml
-msgid "Lands"
-msgstr ""
-
-#. Land.properties.createDate.label
-#: followthemoney/schema/Land.yaml
-msgid "Record date"
-msgstr ""
-
-#. Land.properties.cadastralCode.label
-#: followthemoney/schema/Land.yaml
-msgid "Cadastral code"
-msgstr ""
-
-#. Land.properties.longitude.label
-#: followthemoney/schema/Land.yaml
-msgid "Longitude"
-msgstr ""
-
-#. Land.properties.landType.label
-#: followthemoney/schema/Land.yaml
-msgid "Land type"
-msgstr ""
-
-#. Land.properties.latitude.label
-#: followthemoney/schema/Land.yaml
-msgid "Latitude"
-msgstr ""
-
-#. Land.properties.propertyType.label
-#: followthemoney/schema/Land.yaml
-msgid "Property type"
-msgstr ""
-
-#. Land.properties.censusBlock.label
-#: followthemoney/schema/Land.yaml
-msgid "Census block"
-msgstr ""
-
-#. Land.label
-#: followthemoney/schema/Land.yaml
-msgid "Land"
 msgstr ""
 
 #. LegalEntity.description
@@ -989,12 +952,6 @@ msgstr ""
 msgid "Assets and shares"
 msgstr ""
 
-#. Ownership.properties.asset.label
-#. Transaction.properties.asset.label
-#: followthemoney/schema/Ownership.yaml followthemoney/schema/Transaction.yaml
-msgid "Asset"
-msgstr ""
-
 #. Ownership.properties.asset.reverse
 #: followthemoney/schema/Ownership.yaml
 msgid "Owners"
@@ -1148,6 +1105,84 @@ msgstr ""
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
 msgid "Public body"
+msgstr ""
+
+#. Land.plural
+#: followthemoney/schema/RealEstate.yaml
+msgid "Lands"
+msgstr ""
+
+#. Land.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Land"
+msgstr ""
+
+#. RealEstate.plural
+#: followthemoney/schema/RealEstate.yaml
+msgid "Real estates"
+msgstr ""
+
+#. RealEstate.properties.tenure.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Tenure"
+msgstr ""
+
+#. RealEstate.properties.encumbrance.description
+#: followthemoney/schema/RealEstate.yaml
+msgid ""
+"An encumbrance is a right to, interest in, or legal liability on real "
+"property that does not prohibit passing title to the property but that "
+"diminishes its value.\n"
+msgstr ""
+
+#. RealEstate.properties.encumbrance.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Encumbrance"
+msgstr ""
+
+#. RealEstate.properties.titleNumber.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Title number"
+msgstr ""
+
+#. RealEstate.properties.cadastralCode.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Cadastral code"
+msgstr ""
+
+#. RealEstate.properties.longitude.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Longitude"
+msgstr ""
+
+#. RealEstate.properties.landType.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Land type"
+msgstr ""
+
+#. RealEstate.properties.latitude.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Latitude"
+msgstr ""
+
+#. RealEstate.properties.propertyType.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Property type"
+msgstr ""
+
+#. RealEstate.properties.censusBlock.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Census block"
+msgstr ""
+
+#. RealEstate.properties.createDate.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Record date"
+msgstr ""
+
+#. RealEstate.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Real estate"
 msgstr ""
 
 #. Representation.description
@@ -1338,14 +1373,18 @@ msgid "Object"
 msgstr ""
 
 #. UnknownLink.properties.object.reverse
-#. UnknownLink.properties.subject.reverse
 #: followthemoney/schema/UnknownLink.yaml
-msgid "Linked to"
+msgid "Linked from"
 msgstr ""
 
 #. UnknownLink.properties.subject.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Subject"
+msgstr ""
+
+#. UnknownLink.properties.subject.reverse
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Linked to"
 msgstr ""
 
 #. Value.properties.currency.label

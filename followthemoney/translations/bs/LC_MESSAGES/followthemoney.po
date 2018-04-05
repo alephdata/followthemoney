@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-03-18 23:05+0100\n"
+"POT-Creation-Date: 2018-04-05 18:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Emina Muratovic <emina@occrp.org>, 2018\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -22,6 +22,14 @@ msgstr ""
 #. Asset.plural
 #: followthemoney/schema/Asset.yaml
 msgid "Assets"
+msgstr "Imovina"
+
+#. Asset.label
+#. Ownership.properties.asset.label
+#. Transaction.properties.asset.label
+#: followthemoney/schema/Asset.yaml followthemoney/schema/Ownership.yaml
+#: followthemoney/schema/Transaction.yaml
+msgid "Asset"
 msgstr "Imovina"
 
 #. BankAccount.plural
@@ -234,10 +242,10 @@ msgid "PFR Number"
 msgstr "PFR broj"
 
 #. Company.properties.registrationNumber.label
-#. Land.properties.registrationNumber.label
 #. LegalEntity.properties.registrationNumber.label
-#: followthemoney/schema/Company.yaml followthemoney/schema/Land.yaml
-#: followthemoney/schema/LegalEntity.yaml
+#. RealEstate.properties.registrationNumber.label
+#: followthemoney/schema/Company.yaml followthemoney/schema/LegalEntity.yaml
+#: followthemoney/schema/RealEstate.yaml
 msgid "Registration number"
 msgstr "Broj registracije"
 
@@ -276,6 +284,11 @@ msgstr "Kompanija"
 msgid "A grant of land, rights or property. A type of Contract"
 msgstr ""
 
+#. Concession.label
+#: followthemoney/schema/Concession.yaml
+msgid "Concession"
+msgstr "Koncesija"
+
 #. Concession.plural
 #: followthemoney/schema/Concession.yaml
 msgid "Concessions"
@@ -287,15 +300,10 @@ msgid "Commodities"
 msgstr ""
 
 #. Concession.properties.area.label
-#. Land.properties.area.label
-#: followthemoney/schema/Concession.yaml followthemoney/schema/Land.yaml
+#. RealEstate.properties.area.label
+#: followthemoney/schema/Concession.yaml followthemoney/schema/RealEstate.yaml
 msgid "Area"
 msgstr ""
-
-#. Concession.label
-#: followthemoney/schema/Concession.yaml
-msgid "Concession"
-msgstr "Koncesija"
 
 #. Contract.description
 #: followthemoney/schema/Contract.yaml
@@ -531,11 +539,6 @@ msgstr "Slučaj"
 msgid "Parties"
 msgstr ""
 
-#. Directorship.label
-#: followthemoney/schema/Directorship.yaml
-msgid "Directorship"
-msgstr "Direktorski položaj"
-
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Director"
@@ -564,6 +567,11 @@ msgstr ""
 #: followthemoney/schema/Directorship.yaml
 msgid "Secretary"
 msgstr "Sekretar"
+
+#. Directorship.label
+#: followthemoney/schema/Directorship.yaml
+msgid "Directorship"
+msgstr "Direktorski položaj"
 
 #. Package.plural
 #: followthemoney/schema/Document.yaml
@@ -721,51 +729,6 @@ msgstr "ID zapisa"
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Summary"
 msgstr "Opis"
-
-#. Land.plural
-#: followthemoney/schema/Land.yaml
-msgid "Lands"
-msgstr "Zemljišta"
-
-#. Land.properties.createDate.label
-#: followthemoney/schema/Land.yaml
-msgid "Record date"
-msgstr "Datum zapisa"
-
-#. Land.properties.cadastralCode.label
-#: followthemoney/schema/Land.yaml
-msgid "Cadastral code"
-msgstr ""
-
-#. Land.properties.longitude.label
-#: followthemoney/schema/Land.yaml
-msgid "Longitude"
-msgstr "Dužina"
-
-#. Land.properties.landType.label
-#: followthemoney/schema/Land.yaml
-msgid "Land type"
-msgstr ""
-
-#. Land.properties.latitude.label
-#: followthemoney/schema/Land.yaml
-msgid "Latitude"
-msgstr "Širina"
-
-#. Land.properties.propertyType.label
-#: followthemoney/schema/Land.yaml
-msgid "Property type"
-msgstr "Tip imovine"
-
-#. Land.properties.censusBlock.label
-#: followthemoney/schema/Land.yaml
-msgid "Census block"
-msgstr ""
-
-#. Land.label
-#: followthemoney/schema/Land.yaml
-msgid "Land"
-msgstr "Zemljište"
 
 #. LegalEntity.description
 #: followthemoney/schema/LegalEntity.yaml
@@ -994,12 +957,6 @@ msgstr "Vlasnik"
 msgid "Assets and shares"
 msgstr ""
 
-#. Ownership.properties.asset.label
-#. Transaction.properties.asset.label
-#: followthemoney/schema/Ownership.yaml followthemoney/schema/Transaction.yaml
-msgid "Asset"
-msgstr "Imovina"
-
 #. Ownership.properties.asset.reverse
 #: followthemoney/schema/Ownership.yaml
 msgid "Owners"
@@ -1154,6 +1111,84 @@ msgstr "Javna tijela"
 #: followthemoney/schema/PublicBody.yaml
 msgid "Public body"
 msgstr "Javno tijelo"
+
+#. Land.plural
+#: followthemoney/schema/RealEstate.yaml
+msgid "Lands"
+msgstr "Zemljišta"
+
+#. Land.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Land"
+msgstr "Zemljište"
+
+#. RealEstate.plural
+#: followthemoney/schema/RealEstate.yaml
+msgid "Real estates"
+msgstr ""
+
+#. RealEstate.properties.tenure.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Tenure"
+msgstr ""
+
+#. RealEstate.properties.encumbrance.description
+#: followthemoney/schema/RealEstate.yaml
+msgid ""
+"An encumbrance is a right to, interest in, or legal liability on real "
+"property that does not prohibit passing title to the property but that "
+"diminishes its value.\n"
+msgstr ""
+
+#. RealEstate.properties.encumbrance.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Encumbrance"
+msgstr ""
+
+#. RealEstate.properties.titleNumber.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Title number"
+msgstr ""
+
+#. RealEstate.properties.cadastralCode.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Cadastral code"
+msgstr ""
+
+#. RealEstate.properties.longitude.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Longitude"
+msgstr "Dužina"
+
+#. RealEstate.properties.landType.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Land type"
+msgstr ""
+
+#. RealEstate.properties.latitude.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Latitude"
+msgstr "Širina"
+
+#. RealEstate.properties.propertyType.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Property type"
+msgstr "Tip imovine"
+
+#. RealEstate.properties.censusBlock.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Census block"
+msgstr ""
+
+#. RealEstate.properties.createDate.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Record date"
+msgstr "Datum zapisa"
+
+#. RealEstate.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Real estate"
+msgstr ""
 
 #. Representation.description
 #: followthemoney/schema/Representation.yaml
@@ -1343,15 +1378,19 @@ msgid "Object"
 msgstr "Objekat"
 
 #. UnknownLink.properties.object.reverse
-#. UnknownLink.properties.subject.reverse
 #: followthemoney/schema/UnknownLink.yaml
-msgid "Linked to"
+msgid "Linked from"
 msgstr ""
 
 #. UnknownLink.properties.subject.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Subject"
 msgstr "Predmet"
+
+#. UnknownLink.properties.subject.reverse
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Linked to"
+msgstr ""
 
 #. Value.properties.currency.label
 #: followthemoney/schema/Value.yaml

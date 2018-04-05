@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-02 15:37+0200\n"
+"POT-Creation-Date: 2018-04-05 18:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -23,6 +23,14 @@ msgstr ""
 #: followthemoney/schema/Asset.yaml
 msgid "Assets"
 msgstr "Имущество"
+
+#. Asset.label
+#. Ownership.properties.asset.label
+#. Transaction.properties.asset.label
+#: followthemoney/schema/Asset.yaml followthemoney/schema/Ownership.yaml
+#: followthemoney/schema/Transaction.yaml
+msgid "Asset"
+msgstr "Актив"
 
 #. BankAccount.plural
 #: followthemoney/schema/BankAccount.yaml
@@ -236,10 +244,10 @@ msgid "PFR Number"
 msgstr "Номер ПФР"
 
 #. Company.properties.registrationNumber.label
-#. Land.properties.registrationNumber.label
 #. LegalEntity.properties.registrationNumber.label
-#: followthemoney/schema/Company.yaml followthemoney/schema/Land.yaml
-#: followthemoney/schema/LegalEntity.yaml
+#. RealEstate.properties.registrationNumber.label
+#: followthemoney/schema/Company.yaml followthemoney/schema/LegalEntity.yaml
+#: followthemoney/schema/RealEstate.yaml
 msgid "Registration number"
 msgstr "Регистрационный номер"
 
@@ -278,6 +286,11 @@ msgstr "Компания"
 msgid "A grant of land, rights or property. A type of Contract"
 msgstr "Концессионнное соглашение"
 
+#. Concession.label
+#: followthemoney/schema/Concession.yaml
+msgid "Concession"
+msgstr "Концессия"
+
 #. Concession.plural
 #: followthemoney/schema/Concession.yaml
 msgid "Concessions"
@@ -289,15 +302,10 @@ msgid "Commodities"
 msgstr "Товары"
 
 #. Concession.properties.area.label
-#. Land.properties.area.label
-#: followthemoney/schema/Concession.yaml followthemoney/schema/Land.yaml
+#. RealEstate.properties.area.label
+#: followthemoney/schema/Concession.yaml followthemoney/schema/RealEstate.yaml
 msgid "Area"
 msgstr "Участок"
-
-#. Concession.label
-#: followthemoney/schema/Concession.yaml
-msgid "Concession"
-msgstr "Концессия"
 
 #. Contract.description
 #: followthemoney/schema/Contract.yaml
@@ -537,11 +545,6 @@ msgstr "Дело"
 msgid "Parties"
 msgstr "Стороны"
 
-#. Directorship.label
-#: followthemoney/schema/Directorship.yaml
-msgid "Directorship"
-msgstr "Руководство"
-
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Director"
@@ -570,6 +573,11 @@ msgstr "Директора"
 #: followthemoney/schema/Directorship.yaml
 msgid "Secretary"
 msgstr "Секретарь"
+
+#. Directorship.label
+#: followthemoney/schema/Directorship.yaml
+msgid "Directorship"
+msgstr "Руководство"
 
 #. Package.plural
 #: followthemoney/schema/Document.yaml
@@ -727,51 +735,6 @@ msgstr "ID записи"
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Summary"
 msgstr "Информация"
-
-#. Land.plural
-#: followthemoney/schema/Land.yaml
-msgid "Lands"
-msgstr "Недвижимость"
-
-#. Land.properties.createDate.label
-#: followthemoney/schema/Land.yaml
-msgid "Record date"
-msgstr "Дата записи"
-
-#. Land.properties.cadastralCode.label
-#: followthemoney/schema/Land.yaml
-msgid "Cadastral code"
-msgstr "Кадастровый код"
-
-#. Land.properties.longitude.label
-#: followthemoney/schema/Land.yaml
-msgid "Longitude"
-msgstr "Долгота"
-
-#. Land.properties.landType.label
-#: followthemoney/schema/Land.yaml
-msgid "Land type"
-msgstr "Назначение земельного участка"
-
-#. Land.properties.latitude.label
-#: followthemoney/schema/Land.yaml
-msgid "Latitude"
-msgstr "Широта"
-
-#. Land.properties.propertyType.label
-#: followthemoney/schema/Land.yaml
-msgid "Property type"
-msgstr "Вид собственности"
-
-#. Land.properties.censusBlock.label
-#: followthemoney/schema/Land.yaml
-msgid "Census block"
-msgstr "Переписной квартал"
-
-#. Land.label
-#: followthemoney/schema/Land.yaml
-msgid "Land"
-msgstr "Недвижимость"
 
 #. LegalEntity.description
 #: followthemoney/schema/LegalEntity.yaml
@@ -1002,12 +965,6 @@ msgstr "Владелец"
 msgid "Assets and shares"
 msgstr "Состав имущества"
 
-#. Ownership.properties.asset.label
-#. Transaction.properties.asset.label
-#: followthemoney/schema/Ownership.yaml followthemoney/schema/Transaction.yaml
-msgid "Asset"
-msgstr "Актив"
-
 #. Ownership.properties.asset.reverse
 #: followthemoney/schema/Ownership.yaml
 msgid "Owners"
@@ -1162,6 +1119,84 @@ msgstr "Товары"
 #: followthemoney/schema/PublicBody.yaml
 msgid "Public body"
 msgstr "Государственный орган"
+
+#. Land.plural
+#: followthemoney/schema/RealEstate.yaml
+msgid "Lands"
+msgstr "Недвижимость"
+
+#. Land.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Land"
+msgstr "Недвижимость"
+
+#. RealEstate.plural
+#: followthemoney/schema/RealEstate.yaml
+msgid "Real estates"
+msgstr ""
+
+#. RealEstate.properties.tenure.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Tenure"
+msgstr ""
+
+#. RealEstate.properties.encumbrance.description
+#: followthemoney/schema/RealEstate.yaml
+msgid ""
+"An encumbrance is a right to, interest in, or legal liability on real "
+"property that does not prohibit passing title to the property but that "
+"diminishes its value.\n"
+msgstr ""
+
+#. RealEstate.properties.encumbrance.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Encumbrance"
+msgstr ""
+
+#. RealEstate.properties.titleNumber.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Title number"
+msgstr ""
+
+#. RealEstate.properties.cadastralCode.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Cadastral code"
+msgstr "Кадастровый код"
+
+#. RealEstate.properties.longitude.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Longitude"
+msgstr "Долгота"
+
+#. RealEstate.properties.landType.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Land type"
+msgstr "Назначение земельного участка"
+
+#. RealEstate.properties.latitude.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Latitude"
+msgstr "Широта"
+
+#. RealEstate.properties.propertyType.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Property type"
+msgstr "Вид собственности"
+
+#. RealEstate.properties.censusBlock.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Census block"
+msgstr "Переписной квартал"
+
+#. RealEstate.properties.createDate.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Record date"
+msgstr "Дата записи"
+
+#. RealEstate.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Real estate"
+msgstr ""
 
 #. Representation.description
 #: followthemoney/schema/Representation.yaml
@@ -1353,15 +1388,19 @@ msgid "Object"
 msgstr "Объект"
 
 #. UnknownLink.properties.object.reverse
-#. UnknownLink.properties.subject.reverse
 #: followthemoney/schema/UnknownLink.yaml
-msgid "Linked to"
-msgstr "Связь с"
+msgid "Linked from"
+msgstr ""
 
 #. UnknownLink.properties.subject.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Subject"
 msgstr "Субъект"
+
+#. UnknownLink.properties.subject.reverse
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Linked to"
+msgstr "Связь с"
 
 #. Value.properties.currency.label
 #: followthemoney/schema/Value.yaml
