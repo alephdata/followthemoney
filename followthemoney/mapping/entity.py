@@ -1,6 +1,5 @@
 from hashlib import sha1
 from banal import ensure_list
-from normality import stringify
 
 from followthemoney.mapping.property import PropertyMapping
 from followthemoney.util import key_bytes
@@ -49,9 +48,7 @@ class EntityMapping(object):
         ID of other entities referenced by this entity."""
         digest = self.seed.copy()
         for key in self.keys:
-            value = stringify(record.get(key))
-            if value is not None:
-                digest.update(key_bytes(value))
+            digest.update(key_bytes(record.get(key)))
         if digest.digest() != self.seed.digest():
             return digest.hexdigest()
 

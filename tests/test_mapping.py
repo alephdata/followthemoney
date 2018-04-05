@@ -205,7 +205,7 @@ class MappingTestCase(TestCase):
 
         entities = list(model.map_entities(mapping))
         assert len(entities) == 1, len(entities)
-        assert entities[0]['properties']['address'] == ['64, The Desert, 01234'], entities
+        assert entities[0]['properties']['address'] == ['64, The Desert, 01234'], entities  # noqa
 
     def test_mapping_split(self):
         url = 'file://' + os.path.join(self.fixture_path, 'links.csv')
@@ -229,4 +229,4 @@ class MappingTestCase(TestCase):
 
         entities = list(model.map_entities(mapping))
         assert len(entities) == 1, len(entities)
-        assert entities[0]['properties']['notes'] == ['brown', 'black', 'blue'], entities
+        assert entities[0]['properties']['notes'] == ['brown', 'black', 'blue'], entities  # noqa
