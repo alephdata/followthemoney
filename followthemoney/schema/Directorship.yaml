@@ -3,6 +3,13 @@ Directorship:
   extends: Interest
   icon: fa-user-circle
   fuzzy: false
+  featured:
+    - director
+    - organization
+    - role
+    - date
+    - startDate
+    - endDate
   properties:
     director:
       label: "Director"

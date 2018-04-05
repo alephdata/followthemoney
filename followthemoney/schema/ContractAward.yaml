@@ -6,6 +6,12 @@ ContractAward:
     - Interest
     - Value
   icon: fa-handshake-o
+  featured:
+    - supplier
+    - contract
+    - lotNumber
+    - amount
+    - decisionReason
   properties:
     supplier:
       label: "Supplier"

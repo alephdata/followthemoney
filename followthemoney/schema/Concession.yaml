@@ -5,6 +5,8 @@ Concession:
   extends: Contract
   icon: fa-th
   fuzzy: false
+  featured:
+    - commodities
   properties:
     area:
       label: Area

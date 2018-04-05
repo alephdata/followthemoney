@@ -12,6 +12,6 @@ UnknownLink:
       schema: Thing
     object:
       label: "Object"
-      reverse: "Linked to"
+      reverse: "Linked from"
       type: entity
       schema: Thing

@@ -1,0 +1,51 @@
+RealEstate:
+  label: Real estate
+  plural: Real estates
+  extends: Asset
+  icon: fa-map
+  fuzzy: false
+  featured:
+    - registrationNumber
+  properties:
+    latitude:
+      label: Latitude
+    longitude:
+      label: Longitude
+    censusBlock:
+      label: Census block
+    cadastralCode:
+      label: Cadastral code
+      type: identifier
+    area:
+      label: Area
+    registrationNumber:
+      label: Registration number
+      type: identifier
+    titleNumber:
+      label: Title number
+      type: identifier
+    tenure:
+      label: Tenure
+    encumbrance:
+      label: Encumbrance
+      description: >
+        An encumbrance is a right to, interest in, or legal liability on real
+        property that does not prohibit passing title to the property but that
+        diminishes its value.
+    propertyType:
+      label: Property type
+    landType:
+      label: Land type
+    createDate:
+      label: Record date
+      type: date
+
+Land:
+  label: Land
+  plural: Lands
+  extends: RealEstate
+  icon: fa-map
+  fuzzy: false
+  featured:
+    - registrationNumber
+  properties: {}
