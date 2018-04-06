@@ -15,13 +15,6 @@ Contract:
       reverse: "Contracts issued"
       type: entity
       schema: LegalEntity
-    holder:
-      label: "Contract holder"
-      plural: "Contract holders"
-      reverse: "Contracts held"
-      descripton: "An entity that acts on behalf of the contract authority."
-      type: entity
-      schema: LegalEntity
     type:
       label: "Type"
       description: "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
