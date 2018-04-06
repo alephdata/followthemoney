@@ -2,11 +2,14 @@ EconomicActivity:
   label: "Economic Activity"
   plural: "Economic Activities"
   description: "An economic activity"
-  extends: Transaction
+  extends:
+    - Value
+    - Interval
   icon: fa-truck
   properties:
     contract:
       label: "Associated contract"
+      reverse: "Used in customs"
       type: entity
       range: Contract
     ccdNumber:
@@ -33,15 +36,31 @@ EconomicActivity:
       description: "Description of goods"
     declarant:
       label: "Declarant"
+      reverse: "Customs declartions"
       description: "Customs declarant"
       type: entity
       range: LegalEntity
+    sender:
+      label: "Sender"
+      reverse: "Goods originated"
+      description: "Origin of the goods"
+      type: entity
+      range: LegalEntity
+    recipient:
+      label: "Recipient"
+      reverse: "Goods received"
+      description: "Destination of the goods"
+      type: entity
+      range: LegalEntity
+    
+    # Should these be named in line with Value.amount? E.g. invoiceAmount, customsAmount?
     invoiceValue:
       label: "Invoice Value"
       description: "Invoice Value of goods"
     customsValue:
       label: "Customs Value"
       description: "Customs Value of goods"
+    
     dollarExchRate:
       label: "USD Exchange Rate"
       description: "USD Exchange Rate for the activity"
