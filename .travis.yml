@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get install -y libicu-dev
 
 install:
-  - pip install coverage nose pyicu==1.9.8 responses twine
+  - pip install coverage nose pyicu==1.9.8 responses twine pyicu
   - pip install -e .
 
 script:

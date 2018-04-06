@@ -2,6 +2,7 @@
 .DS_Store
 *.egg-info
 .vscode/
+.tox/
 .coverage
 build/*
 dist/*

@@ -44,8 +44,7 @@ class EntityMapping(object):
             prop.bind()
 
     def compute_key(self, record):
-        """Generate a key for this entity, based on the given fields, and the
-        ID of other entities referenced by this entity."""
+        """Generate a key for this entity, based on the given fields."""
         digest = self.seed.copy()
         for key in self.keys:
             digest.update(key_bytes(record.get(key)))
@@ -73,7 +72,7 @@ class EntityMapping(object):
                 values = prop.map(record, entities, countries=countries)
             if len(values):
                 properties[prop.name] = values
-            elif prop.required:
+            if not len(values) and prop.required:
                 # This is a bit weird, it flags fields to be required in
                 # the mapping, not in the model. Basically it means: if
                 # this row of source data doesn't have that field, then do
