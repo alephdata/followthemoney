@@ -47,7 +47,7 @@ EconomicActivity:
       type: entity
       range: LegalEntity
     receiver:
-      label: "Recipient"
+      label: "Receiver"
       reverse: "Goods received"
       description: "Destination of the goods"
       type: entity
@@ -55,17 +55,15 @@ EconomicActivity:
     contractHolder:
       label: "Contract holder"
       reverse: ""
-      description: "Customs formalities caretaker"
+      description: "Customs formalities/fees/clearance caretaker"
       type: entity
       range: LegalEntity
-    # Should these be named in line with Value.amount? E.g. invoiceAmount, customsAmount?
     invoiceAmount:
-      label: "Invoice Value"
+      label: "Invoice Value Amount"
       description: "Invoice Value of goods"
     customsAmount:
-      label: "Customs Value"
+      label: "Customs Value Amount"
       description: "Customs Value of goods"
-    
     dollarExchRate:
       label: "USD Exchange Rate"
       description: "USD Exchange Rate for the activity"
