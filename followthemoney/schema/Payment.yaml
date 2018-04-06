@@ -1,7 +1,7 @@
 Payment:
   label: "Payment"
   extends: 
-    - Transaction
+    - Interval
     - Value
   icon: fa-usd
   fuzzy: false
@@ -15,12 +15,22 @@ Payment:
       label: "Transaction number"
     purpose:
       label: "Payment purpose"
-    fromAccount:
+    payer:
+      label: "Payer"
+      reverse: "Payments made"
+      type: entity
+      schema: LegalEntity
+    payerAccount:
       label: "Payer bank account"
       reverse: "Payments made"
       type: entity
       schema: BankAccount
-    toAccount:
+    beneficiary:
+      label: "Beneficiarys"
+      reverse: "Payments received"
+      type: entity
+      schema: LegalEntity
+    beneficiaryAccount:
       label: "Beneficiary bank account"
       reverse: "Payments received"
       type: entity
