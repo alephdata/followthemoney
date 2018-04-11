@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-11 12:13+0200\n"
+"POT-Creation-Date: 2018-04-11 15:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: John Ospina <jmospina@gmail.com>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -26,9 +26,7 @@ msgstr "Activos"
 
 #. Asset.label
 #. Ownership.properties.asset.label
-#. Transaction.properties.asset.label
 #: followthemoney/schema/Asset.yaml followthemoney/schema/Ownership.yaml
-#: followthemoney/schema/Transaction.yaml
 msgid "Asset"
 msgstr "Activo"
 
@@ -321,6 +319,16 @@ msgstr ""
 msgid "Number of awards"
 msgstr ""
 
+#. Contract.properties.contractDate.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract date"
+msgstr ""
+
+#. Contract.properties.cancelled.label
+#: followthemoney/schema/Contract.yaml
+msgid "Cancelled?"
+msgstr ""
+
 #. Contract.properties.type.description
 #: followthemoney/schema/Contract.yaml
 msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
@@ -347,31 +355,6 @@ msgstr ""
 #. Contract.properties.authority.reverse
 #: followthemoney/schema/Contract.yaml
 msgid "Contracts issued"
-msgstr ""
-
-#. Contract.properties.cancelled.label
-#: followthemoney/schema/Contract.yaml
-msgid "Cancelled?"
-msgstr ""
-
-#. Contract.properties.holder.reverse
-#: followthemoney/schema/Contract.yaml
-msgid "Contracts held"
-msgstr ""
-
-#. Contract.properties.holder.plural
-#: followthemoney/schema/Contract.yaml
-msgid "Contract holders"
-msgstr ""
-
-#. Contract.properties.holder.label
-#: followthemoney/schema/Contract.yaml
-msgid "Contract holder"
-msgstr ""
-
-#. Contract.properties.contractDate.label
-#: followthemoney/schema/Contract.yaml
-msgid "Contract date"
 msgstr ""
 
 #. Contract.properties.procedureNumber.label
@@ -701,14 +684,19 @@ msgstr ""
 msgid "Bank account of the contract"
 msgstr ""
 
+#. EconomicActivity.properties.declarant.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Declarant"
+msgstr ""
+
 #. EconomicActivity.properties.declarant.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarant"
 msgstr ""
 
-#. EconomicActivity.properties.declarant.label
+#. EconomicActivity.properties.declarant.reverse
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Declarant"
+msgid "Customs declarations"
 msgstr ""
 
 #. EconomicActivity.properties.bankRub.description
@@ -751,6 +739,16 @@ msgstr ""
 msgid "Country of departure"
 msgstr ""
 
+#. EconomicActivity.properties.invoiceAmount.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Invoice Value of goods"
+msgstr ""
+
+#. EconomicActivity.properties.invoiceAmount.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Invoice Value Amount"
+msgstr ""
+
 #. EconomicActivity.properties.bankForeign.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank account for payments in foreign currency"
@@ -783,14 +781,16 @@ msgstr ""
 msgid "USD Exchange Rate"
 msgstr ""
 
-#. EconomicActivity.properties.invoiceValue.description
+#. EconomicActivity.properties.goodsDescription.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Invoice Value of goods"
+msgid "Description of goods"
 msgstr ""
 
-#. EconomicActivity.properties.invoiceValue.label
+#. EconomicActivity.properties.goodsDescription.label
+#. Thing.properties.description.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Invoice Value"
+#: followthemoney/schema/Thing.yaml
+msgid "Description"
 msgstr ""
 
 #. EconomicActivity.properties.ccdValue.description
@@ -803,26 +803,49 @@ msgstr ""
 msgid "CCD Value"
 msgstr ""
 
-#. EconomicActivity.properties.customsValue.description
+#. EconomicActivity.properties.customsAmount.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs Value of goods"
 msgstr ""
 
-#. EconomicActivity.properties.customsValue.label
+#. EconomicActivity.properties.customsAmount.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs Value"
+msgid "Customs Value Amount"
 msgstr ""
 
-#. EconomicActivity.properties.goodsDescription.description
+#. EconomicActivity.properties.sender.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Description of goods"
+msgid "Sender"
 msgstr ""
 
-#. EconomicActivity.properties.goodsDescription.label
-#. Thing.properties.description.label
+#. EconomicActivity.properties.sender.description
 #: followthemoney/schema/EconomicActivity.yaml
-#: followthemoney/schema/Thing.yaml
-msgid "Description"
+msgid "Origin of the goods"
+msgstr ""
+
+#. EconomicActivity.properties.sender.reverse
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Goods originated"
+msgstr ""
+
+#. EconomicActivity.properties.contractHolder.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Contract holder"
+msgstr ""
+
+#. EconomicActivity.properties.contractHolder.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs formalities caretaker"
+msgstr ""
+
+#. EconomicActivity.properties.contractHolder.reverse
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Economic activities"
+msgstr ""
+
+#. EconomicActivity.properties.contract.reverse
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Used in customs"
 msgstr ""
 
 #. EconomicActivity.properties.contract.label
@@ -865,6 +888,21 @@ msgstr ""
 #. EconomicActivity.properties.vedCodeDescription.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "FEAC Code description"
+msgstr ""
+
+#. EconomicActivity.properties.receiver.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Receiver"
+msgstr ""
+
+#. EconomicActivity.properties.receiver.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Destination of the goods"
+msgstr ""
+
+#. EconomicActivity.properties.receiver.reverse
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Goods received"
 msgstr ""
 
 #. EconomicActivity.properties.destinationCountry.description
@@ -1205,12 +1243,13 @@ msgstr ""
 msgid "Type of shares"
 msgstr ""
 
-#. Payment.properties.toAccount.label
+#. Payment.properties.beneficiary.label
 #: followthemoney/schema/Payment.yaml
-msgid "Beneficiary bank account"
+msgid "Beneficiarys"
 msgstr ""
 
-#. Payment.properties.toAccount.reverse
+#. Payment.properties.beneficiary.reverse
+#. Payment.properties.beneficiaryAccount.reverse
 #: followthemoney/schema/Payment.yaml
 msgid "Payments received"
 msgstr ""
@@ -1220,9 +1259,15 @@ msgstr ""
 msgid "Transaction number"
 msgstr ""
 
-#. Payment.properties.purpose.label
+#. Payment.properties.payerAccount.label
 #: followthemoney/schema/Payment.yaml
-msgid "Payment purpose"
+msgid "Payer bank account"
+msgstr ""
+
+#. Payment.properties.payerAccount.reverse
+#. Payment.properties.payer.reverse
+#: followthemoney/schema/Payment.yaml
+msgid "Payments made"
 msgstr ""
 
 #. Payment.properties.sequenceNumber.label
@@ -1230,14 +1275,19 @@ msgstr ""
 msgid "Sequence number"
 msgstr ""
 
-#. Payment.properties.fromAccount.label
+#. Payment.properties.payer.label
 #: followthemoney/schema/Payment.yaml
-msgid "Payer bank account"
+msgid "Payer"
 msgstr ""
 
-#. Payment.properties.fromAccount.reverse
+#. Payment.properties.beneficiaryAccount.label
 #: followthemoney/schema/Payment.yaml
-msgid "Payments made"
+msgid "Beneficiary bank account"
+msgstr ""
+
+#. Payment.properties.purpose.label
+#: followthemoney/schema/Payment.yaml
+msgid "Payment purpose"
 msgstr ""
 
 #. Payment.label
@@ -1534,55 +1584,6 @@ msgstr ""
 #. Thing.properties.keywords.label
 #: followthemoney/schema/Thing.yaml
 msgid "Keywords"
-msgstr ""
-
-#. Transaction.label
-#: followthemoney/schema/Transaction.yaml
-msgid "Transaction"
-msgstr ""
-
-#. Transaction.properties.to.description
-#: followthemoney/schema/Transaction.yaml
-msgid ""
-"The beneficiary in the case of a pyament; the contract supplier/awardee in "
-"the case of a contract."
-msgstr ""
-
-#. Transaction.properties.to.label
-#: followthemoney/schema/Transaction.yaml
-msgid "To"
-msgstr ""
-
-#. Transaction.properties.to.reverse
-#: followthemoney/schema/Transaction.yaml
-msgid "Transactions received"
-msgstr ""
-
-#. Transaction.properties.from.description
-#: followthemoney/schema/Transaction.yaml
-msgid ""
-"The payer in the case of a payment; the contract issuer/authority in the "
-"case of a contract."
-msgstr ""
-
-#. Transaction.properties.from.label
-#: followthemoney/schema/Transaction.yaml
-msgid "From"
-msgstr ""
-
-#. Transaction.properties.from.reverse
-#: followthemoney/schema/Transaction.yaml
-msgid "Transactions issued"
-msgstr ""
-
-#. Transaction.properties.asset.description
-#: followthemoney/schema/Transaction.yaml
-msgid "The thing being transacted; could be a Contract"
-msgstr ""
-
-#. Transaction.properties.asset.reverse
-#: followthemoney/schema/Transaction.yaml
-msgid "Transactions"
 msgstr ""
 
 #. UnknownLink.label

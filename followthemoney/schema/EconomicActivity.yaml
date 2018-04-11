@@ -54,8 +54,8 @@ EconomicActivity:
       range: LegalEntity
     contractHolder:
       label: "Contract holder"
-      reverse: ""
-      description: "Customs formalities/fees/clearance caretaker"
+      reverse: "Economic activities"
+      description: "Customs formalities caretaker"
       type: entity
       range: LegalEntity
     invoiceAmount:
