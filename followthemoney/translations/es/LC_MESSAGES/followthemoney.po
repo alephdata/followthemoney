@@ -8,8 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-05 18:49+0200\n"
+"POT-Creation-Date: 2018-04-11 12:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: John Ospina <jmospina@gmail.com>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -21,7 +22,7 @@ msgstr ""
 #. Asset.plural
 #: followthemoney/schema/Asset.yaml
 msgid "Assets"
-msgstr ""
+msgstr "Activos"
 
 #. Asset.label
 #. Ownership.properties.asset.label
@@ -29,57 +30,65 @@ msgstr ""
 #: followthemoney/schema/Asset.yaml followthemoney/schema/Ownership.yaml
 #: followthemoney/schema/Transaction.yaml
 msgid "Asset"
-msgstr ""
+msgstr "Activo"
 
 #. BankAccount.plural
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Accounts"
-msgstr ""
+msgstr "Cuentas bancarias"
 
 #. BankAccount.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Balance"
+msgstr "Saldo"
+
+#. BankAccount.properties.accountType.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Account Type"
+msgstr "Tipo de cuenta"
+
+#. BankAccount.properties.accountNumber.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Account Number"
+msgstr "Número de cuenta"
+
+#. BankAccount.properties.bankAddress.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank Address"
 msgstr ""
 
 #. BankAccount.properties.bankName.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Name"
-msgstr ""
+msgstr "Nombre del banco"
 
 #. BankAccount.properties.bic.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Identifier Code"
-msgstr ""
-
-#. BankAccount.properties.accountType.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Account Type"
-msgstr ""
-
-#. BankAccount.properties.accountNumber.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Account Number"
-msgstr ""
+msgstr "Código de identificación del banco"
 
 #. BankAccount.label
+#. EconomicActivity.properties.bankAccount.label
 #: followthemoney/schema/BankAccount.yaml
+#: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank Account"
-msgstr ""
+msgstr "Cuenta bancaria"
 
 #. Company.plural
 #: followthemoney/schema/Company.yaml
 msgid "Companies"
-msgstr ""
+msgstr "Empresas"
 
 #. Company.properties.fnsCode.description
 #: followthemoney/schema/Company.yaml
 msgid "(RU, ФНС) Federal Tax Service related info"
 msgstr ""
+"(RU, ФНС) Información relacionada con el Servicio Federal de Impuestos"
 
 #. Company.properties.fnsCode.label
 #: followthemoney/schema/Company.yaml
 msgid "Federal tax service code"
-msgstr ""
+msgstr "Código de servicio de impuestos federales"
 
 #. Company.properties.ibcRuc.label
 #: followthemoney/schema/Company.yaml
@@ -89,43 +98,36 @@ msgstr ""
 #. Company.properties.oksmCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Russian (ОКСМ) countries classifer"
-msgstr ""
+msgstr "Clasificador de países ruso (ОКСМ)"
 
 #. Company.properties.oksmCode.label
 #: followthemoney/schema/Company.yaml
 msgid "OKSM"
 msgstr ""
 
-#. Company.properties.caemCode.description
-#: followthemoney/schema/Company.yaml
-msgid "(RO) What kind of activity a legal entity is allowed to develop"
-msgstr ""
-
-#. Company.properties.caemCode.label
-#: followthemoney/schema/Company.yaml
-msgid "COD CAEM"
-msgstr ""
-
 #. Company.properties.ogrnCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Major State Registration Number"
-msgstr ""
+msgstr "Número Principal de Registro del Estado"
 
 #. Company.properties.ogrnCode.label
 #: followthemoney/schema/Company.yaml
 msgid "OGRN"
 msgstr ""
+"OGRN - Número Principal de Registro del Estado de la inscripción realizada "
+"en el Registro sobre la formación de una empresa rusa - consta de 12 dígitos"
+" -"
 
 #. Company.properties.jurisdiction.label
 #. LegalEntity.properties.jurisdiction.label
 #: followthemoney/schema/Company.yaml followthemoney/schema/LegalEntity.yaml
 msgid "Jurisdiction"
-msgstr ""
+msgstr "Jurisdicción"
 
 #. Company.properties.fssCode.description
 #: followthemoney/schema/Company.yaml
 msgid "(RU, ФСС) Social Security"
-msgstr ""
+msgstr "(RU, ФСС) Seguridad Social"
 
 #. Company.properties.fssCode.label
 #: followthemoney/schema/Company.yaml
@@ -135,12 +137,12 @@ msgstr ""
 #. Company.properties.vatCode.description
 #: followthemoney/schema/Company.yaml
 msgid "(EU) VAT number"
-msgstr ""
+msgstr "(EU) Número VAT"
 
 #. Company.properties.vatCode.label
 #: followthemoney/schema/Company.yaml
 msgid "VAT Identifier"
-msgstr ""
+msgstr "Identificador VAT"
 
 #. Company.properties.coatoCode.label
 #: followthemoney/schema/Company.yaml
@@ -198,16 +200,6 @@ msgstr ""
 msgid "KPP"
 msgstr ""
 
-#. Company.properties.innCode.description
-#: followthemoney/schema/Company.yaml
-msgid "Russian company ID"
-msgstr ""
-
-#. Company.properties.innCode.label
-#: followthemoney/schema/Company.yaml
-msgid "INN"
-msgstr ""
-
 #. Company.properties.ipoCode.label
 #: followthemoney/schema/Company.yaml
 msgid "IPO"
@@ -253,14 +245,15 @@ msgstr ""
 msgid "Capital"
 msgstr ""
 
-#. Company.properties.okpoCode.description
+#. Company.properties.caemCode.description
 #: followthemoney/schema/Company.yaml
-msgid "Russian industry classifier"
+msgid "(RO) What kind of activity a legal entity is allowed to develop"
 msgstr ""
+"(RO) ¿Qué tipo de actividad se le permite desarrollar a una entidad legal?"
 
-#. Company.properties.okpoCode.label
+#. Company.properties.caemCode.label
 #: followthemoney/schema/Company.yaml
-msgid "OKPO"
+msgid "COD CAEM"
 msgstr ""
 
 #. Company.properties.cikCode.description
@@ -328,11 +321,6 @@ msgstr ""
 msgid "Number of awards"
 msgstr ""
 
-#. Contract.properties.cancelled.label
-#: followthemoney/schema/Contract.yaml
-msgid "Cancelled?"
-msgstr ""
-
 #. Contract.properties.type.description
 #: followthemoney/schema/Contract.yaml
 msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
@@ -359,6 +347,31 @@ msgstr ""
 #. Contract.properties.authority.reverse
 #: followthemoney/schema/Contract.yaml
 msgid "Contracts issued"
+msgstr ""
+
+#. Contract.properties.cancelled.label
+#: followthemoney/schema/Contract.yaml
+msgid "Cancelled?"
+msgstr ""
+
+#. Contract.properties.holder.reverse
+#: followthemoney/schema/Contract.yaml
+msgid "Contracts held"
+msgstr ""
+
+#. Contract.properties.holder.plural
+#: followthemoney/schema/Contract.yaml
+msgid "Contract holders"
+msgstr ""
+
+#. Contract.properties.holder.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract holder"
+msgstr ""
+
+#. Contract.properties.contractDate.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract date"
 msgstr ""
 
 #. Contract.properties.procedureNumber.label
@@ -673,6 +686,202 @@ msgstr ""
 msgid "Web page"
 msgstr ""
 
+#. EconomicActivity.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "An economic activity"
+msgstr ""
+
+#. EconomicActivity.plural
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Economic Activities"
+msgstr ""
+
+#. EconomicActivity.properties.bankAccount.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank account of the contract"
+msgstr ""
+
+#. EconomicActivity.properties.declarant.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs declarant"
+msgstr ""
+
+#. EconomicActivity.properties.declarant.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Declarant"
+msgstr ""
+
+#. EconomicActivity.properties.bankRub.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank account for payments in roubles"
+msgstr ""
+
+#. EconomicActivity.properties.bankRub.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Rouble bank"
+msgstr ""
+
+#. EconomicActivity.properties.directionOfTransportation.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Direction of transportation (import/export)"
+msgstr ""
+
+#. EconomicActivity.properties.directionOfTransportation.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Direction of transportation"
+msgstr ""
+
+#. EconomicActivity.properties.vedCode.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "(Код ТН ВЭД) Foreign Economic Activity Commodity Code"
+msgstr ""
+
+#. EconomicActivity.properties.vedCode.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "FEAC Code"
+msgstr ""
+
+#. EconomicActivity.properties.departureCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country out of which the goods are transported"
+msgstr ""
+
+#. EconomicActivity.properties.departureCountry.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country of departure"
+msgstr ""
+
+#. EconomicActivity.properties.bankForeign.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank account for payments in foreign currency"
+msgstr ""
+
+#. EconomicActivity.properties.bankForeign.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Foreign currency bank"
+msgstr ""
+
+#. EconomicActivity.properties.originCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country of origin of goods"
+msgstr ""
+
+#. EconomicActivity.properties.originCountry.label
+#. LegalEntity.properties.mainCountry.label
+#: followthemoney/schema/EconomicActivity.yaml
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Country of origin"
+msgstr ""
+
+#. EconomicActivity.properties.dollarExchRate.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "USD Exchange Rate for the activity"
+msgstr ""
+
+#. EconomicActivity.properties.dollarExchRate.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "USD Exchange Rate"
+msgstr ""
+
+#. EconomicActivity.properties.invoiceValue.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Invoice Value of goods"
+msgstr ""
+
+#. EconomicActivity.properties.invoiceValue.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Invoice Value"
+msgstr ""
+
+#. EconomicActivity.properties.ccdValue.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Declaration Value"
+msgstr ""
+
+#. EconomicActivity.properties.ccdValue.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "CCD Value"
+msgstr ""
+
+#. EconomicActivity.properties.customsValue.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Value of goods"
+msgstr ""
+
+#. EconomicActivity.properties.customsValue.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Value"
+msgstr ""
+
+#. EconomicActivity.properties.goodsDescription.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Description of goods"
+msgstr ""
+
+#. EconomicActivity.properties.goodsDescription.label
+#. Thing.properties.description.label
+#: followthemoney/schema/EconomicActivity.yaml
+#: followthemoney/schema/Thing.yaml
+msgid "Description"
+msgstr ""
+
+#. EconomicActivity.properties.contract.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Associated contract"
+msgstr ""
+
+#. EconomicActivity.properties.customsProcedure.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Procedure — type of customs clearance"
+msgstr ""
+
+#. EconomicActivity.properties.customsProcedure.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Procedure"
+msgstr ""
+
+#. EconomicActivity.properties.ccdNumber.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Cargo Declaration Number"
+msgstr ""
+
+#. EconomicActivity.properties.tradingCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid ""
+"Trading Country of the company which transports the goods via Russian border"
+msgstr ""
+
+#. EconomicActivity.properties.tradingCountry.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Trading Country"
+msgstr ""
+
+#. EconomicActivity.properties.vedCodeDescription.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid ""
+"(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
+msgstr ""
+
+#. EconomicActivity.properties.vedCodeDescription.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "FEAC Code description"
+msgstr ""
+
+#. EconomicActivity.properties.destinationCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Final destination for the goods"
+msgstr ""
+
+#. EconomicActivity.properties.destinationCountry.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country of destination"
+msgstr ""
+
+#. EconomicActivity.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Economic Activity"
+msgstr ""
+
 #. Event.label
 #: followthemoney/schema/Event.yaml
 msgid "Event"
@@ -871,9 +1080,14 @@ msgstr ""
 msgid "Primary country of this entity"
 msgstr ""
 
-#. LegalEntity.properties.mainCountry.label
+#. LegalEntity.properties.innCode.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Country of origin"
+msgid "Russian company ID"
+msgstr ""
+
+#. LegalEntity.properties.innCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "INN"
 msgstr ""
 
 #. LegalEntity.properties.legalForm.description
@@ -894,6 +1108,16 @@ msgstr ""
 #. LegalEntity.properties.email.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Email address"
+msgstr ""
+
+#. LegalEntity.properties.okpoCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Russian industry classifier"
+msgstr ""
+
+#. LegalEntity.properties.okpoCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "OKPO"
 msgstr ""
 
 #. LegalEntity.label
@@ -1310,11 +1534,6 @@ msgstr ""
 #. Thing.properties.keywords.label
 #: followthemoney/schema/Thing.yaml
 msgid "Keywords"
-msgstr ""
-
-#. Thing.properties.description.label
-#: followthemoney/schema/Thing.yaml
-msgid "Description"
 msgstr ""
 
 #. Transaction.label

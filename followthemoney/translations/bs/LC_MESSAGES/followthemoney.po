@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-05 18:49+0200\n"
+"POT-Creation-Date: 2018-04-11 12:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Emina Muratovic <emina@occrp.org>, 2018\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -42,16 +42,6 @@ msgstr "Bankovni računi"
 msgid "Balance"
 msgstr "Saldo"
 
-#. BankAccount.properties.bankName.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Bank Name"
-msgstr "Ime banke"
-
-#. BankAccount.properties.bic.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Bank Identifier Code"
-msgstr "Šifra identifikatora banke"
-
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account Type"
@@ -62,8 +52,25 @@ msgstr "Tip računa"
 msgid "Account Number"
 msgstr "Broj računa"
 
-#. BankAccount.label
+#. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
+msgid "Bank Address"
+msgstr ""
+
+#. BankAccount.properties.bankName.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank Name"
+msgstr "Ime banke"
+
+#. BankAccount.properties.bic.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank Identifier Code"
+msgstr "Šifra identifikatora banke"
+
+#. BankAccount.label
+#. EconomicActivity.properties.bankAccount.label
+#: followthemoney/schema/BankAccount.yaml
+#: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank Account"
 msgstr "Bankovni račun"
 
@@ -96,16 +103,6 @@ msgstr ""
 #: followthemoney/schema/Company.yaml
 msgid "OKSM"
 msgstr "OKSM"
-
-#. Company.properties.caemCode.description
-#: followthemoney/schema/Company.yaml
-msgid "(RO) What kind of activity a legal entity is allowed to develop"
-msgstr ""
-
-#. Company.properties.caemCode.label
-#: followthemoney/schema/Company.yaml
-msgid "COD CAEM"
-msgstr "COD CAEM"
 
 #. Company.properties.ogrnCode.description
 #: followthemoney/schema/Company.yaml
@@ -199,16 +196,6 @@ msgstr ""
 msgid "KPP"
 msgstr "KPP"
 
-#. Company.properties.innCode.description
-#: followthemoney/schema/Company.yaml
-msgid "Russian company ID"
-msgstr "ID ruske kompanije"
-
-#. Company.properties.innCode.label
-#: followthemoney/schema/Company.yaml
-msgid "INN"
-msgstr "INN"
-
 #. Company.properties.ipoCode.label
 #: followthemoney/schema/Company.yaml
 msgid "IPO"
@@ -254,15 +241,15 @@ msgstr "Broj registracije"
 msgid "Capital"
 msgstr "Kapital"
 
-#. Company.properties.okpoCode.description
+#. Company.properties.caemCode.description
 #: followthemoney/schema/Company.yaml
-msgid "Russian industry classifier"
+msgid "(RO) What kind of activity a legal entity is allowed to develop"
 msgstr ""
 
-#. Company.properties.okpoCode.label
+#. Company.properties.caemCode.label
 #: followthemoney/schema/Company.yaml
-msgid "OKPO"
-msgstr "OKPO"
+msgid "COD CAEM"
+msgstr "COD CAEM"
 
 #. Company.properties.cikCode.description
 #: followthemoney/schema/Company.yaml
@@ -329,11 +316,6 @@ msgstr ""
 msgid "Number of awards"
 msgstr "Broj nagrada"
 
-#. Contract.properties.cancelled.label
-#: followthemoney/schema/Contract.yaml
-msgid "Cancelled?"
-msgstr "Otkazan?"
-
 #. Contract.properties.type.description
 #: followthemoney/schema/Contract.yaml
 msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
@@ -360,6 +342,31 @@ msgstr ""
 #. Contract.properties.authority.reverse
 #: followthemoney/schema/Contract.yaml
 msgid "Contracts issued"
+msgstr ""
+
+#. Contract.properties.cancelled.label
+#: followthemoney/schema/Contract.yaml
+msgid "Cancelled?"
+msgstr "Otkazan?"
+
+#. Contract.properties.holder.reverse
+#: followthemoney/schema/Contract.yaml
+msgid "Contracts held"
+msgstr ""
+
+#. Contract.properties.holder.plural
+#: followthemoney/schema/Contract.yaml
+msgid "Contract holders"
+msgstr ""
+
+#. Contract.properties.holder.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract holder"
+msgstr ""
+
+#. Contract.properties.contractDate.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract date"
 msgstr ""
 
 #. Contract.properties.procedureNumber.label
@@ -674,6 +681,202 @@ msgstr "Web stranice"
 msgid "Web page"
 msgstr "Web stranica"
 
+#. EconomicActivity.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "An economic activity"
+msgstr ""
+
+#. EconomicActivity.plural
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Economic Activities"
+msgstr ""
+
+#. EconomicActivity.properties.bankAccount.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank account of the contract"
+msgstr ""
+
+#. EconomicActivity.properties.declarant.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs declarant"
+msgstr ""
+
+#. EconomicActivity.properties.declarant.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Declarant"
+msgstr ""
+
+#. EconomicActivity.properties.bankRub.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank account for payments in roubles"
+msgstr ""
+
+#. EconomicActivity.properties.bankRub.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Rouble bank"
+msgstr ""
+
+#. EconomicActivity.properties.directionOfTransportation.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Direction of transportation (import/export)"
+msgstr ""
+
+#. EconomicActivity.properties.directionOfTransportation.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Direction of transportation"
+msgstr ""
+
+#. EconomicActivity.properties.vedCode.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "(Код ТН ВЭД) Foreign Economic Activity Commodity Code"
+msgstr ""
+
+#. EconomicActivity.properties.vedCode.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "FEAC Code"
+msgstr ""
+
+#. EconomicActivity.properties.departureCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country out of which the goods are transported"
+msgstr ""
+
+#. EconomicActivity.properties.departureCountry.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country of departure"
+msgstr ""
+
+#. EconomicActivity.properties.bankForeign.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank account for payments in foreign currency"
+msgstr ""
+
+#. EconomicActivity.properties.bankForeign.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Foreign currency bank"
+msgstr ""
+
+#. EconomicActivity.properties.originCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country of origin of goods"
+msgstr ""
+
+#. EconomicActivity.properties.originCountry.label
+#. LegalEntity.properties.mainCountry.label
+#: followthemoney/schema/EconomicActivity.yaml
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Country of origin"
+msgstr "Zemlja podrijekla"
+
+#. EconomicActivity.properties.dollarExchRate.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "USD Exchange Rate for the activity"
+msgstr ""
+
+#. EconomicActivity.properties.dollarExchRate.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "USD Exchange Rate"
+msgstr ""
+
+#. EconomicActivity.properties.invoiceValue.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Invoice Value of goods"
+msgstr ""
+
+#. EconomicActivity.properties.invoiceValue.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Invoice Value"
+msgstr ""
+
+#. EconomicActivity.properties.ccdValue.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Declaration Value"
+msgstr ""
+
+#. EconomicActivity.properties.ccdValue.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "CCD Value"
+msgstr ""
+
+#. EconomicActivity.properties.customsValue.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Value of goods"
+msgstr ""
+
+#. EconomicActivity.properties.customsValue.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Value"
+msgstr ""
+
+#. EconomicActivity.properties.goodsDescription.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Description of goods"
+msgstr ""
+
+#. EconomicActivity.properties.goodsDescription.label
+#. Thing.properties.description.label
+#: followthemoney/schema/EconomicActivity.yaml
+#: followthemoney/schema/Thing.yaml
+msgid "Description"
+msgstr "Opis"
+
+#. EconomicActivity.properties.contract.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Associated contract"
+msgstr ""
+
+#. EconomicActivity.properties.customsProcedure.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Procedure — type of customs clearance"
+msgstr ""
+
+#. EconomicActivity.properties.customsProcedure.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Procedure"
+msgstr ""
+
+#. EconomicActivity.properties.ccdNumber.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Cargo Declaration Number"
+msgstr ""
+
+#. EconomicActivity.properties.tradingCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid ""
+"Trading Country of the company which transports the goods via Russian border"
+msgstr ""
+
+#. EconomicActivity.properties.tradingCountry.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Trading Country"
+msgstr ""
+
+#. EconomicActivity.properties.vedCodeDescription.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid ""
+"(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
+msgstr ""
+
+#. EconomicActivity.properties.vedCodeDescription.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "FEAC Code description"
+msgstr ""
+
+#. EconomicActivity.properties.destinationCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Final destination for the goods"
+msgstr ""
+
+#. EconomicActivity.properties.destinationCountry.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country of destination"
+msgstr ""
+
+#. EconomicActivity.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Economic Activity"
+msgstr ""
+
 #. Event.label
 #: followthemoney/schema/Event.yaml
 msgid "Event"
@@ -872,10 +1075,15 @@ msgstr "Sektor"
 msgid "Primary country of this entity"
 msgstr "Primarna država ovog entiteta"
 
-#. LegalEntity.properties.mainCountry.label
+#. LegalEntity.properties.innCode.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Country of origin"
-msgstr "Zemlja podrijekla"
+msgid "Russian company ID"
+msgstr "ID ruske kompanije"
+
+#. LegalEntity.properties.innCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "INN"
+msgstr "INN"
 
 #. LegalEntity.properties.legalForm.description
 #: followthemoney/schema/LegalEntity.yaml
@@ -896,6 +1104,16 @@ msgstr "Broj registracije države"
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Email address"
 msgstr "Mail adresa"
+
+#. LegalEntity.properties.okpoCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Russian industry classifier"
+msgstr ""
+
+#. LegalEntity.properties.okpoCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "OKPO"
+msgstr "OKPO"
 
 #. LegalEntity.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -1312,11 +1530,6 @@ msgstr "Adresa"
 #: followthemoney/schema/Thing.yaml
 msgid "Keywords"
 msgstr "Ključne riječi"
-
-#. Thing.properties.description.label
-#: followthemoney/schema/Thing.yaml
-msgid "Description"
-msgstr "Opis"
 
 #. Transaction.label
 #: followthemoney/schema/Transaction.yaml
