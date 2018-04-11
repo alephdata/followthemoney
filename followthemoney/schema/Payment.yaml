@@ -26,7 +26,7 @@ Payment:
       type: entity
       schema: BankAccount
     beneficiary:
-      label: "Beneficiarys"
+      label: "Beneficiary"
       reverse: "Payments received"
       type: entity
       schema: LegalEntity
