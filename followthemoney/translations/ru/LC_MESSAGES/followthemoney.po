@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-11 15:10+0200\n"
+"POT-Creation-Date: 2018-04-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.1\n"
+"Generated-By: Babel 2.5.3\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
@@ -698,7 +698,7 @@ msgstr "Таможенный декларант"
 #. EconomicActivity.properties.declarant.reverse
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations"
-msgstr ""
+msgstr "Таможенные декларации"
 
 #. EconomicActivity.properties.bankRub.description
 #: followthemoney/schema/EconomicActivity.yaml
@@ -748,7 +748,7 @@ msgstr "Фактурная стоимость товаров"
 #. EconomicActivity.properties.invoiceAmount.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Invoice Value Amount"
-msgstr ""
+msgstr "Фактурная стоимость"
 
 #. EconomicActivity.properties.bankForeign.description
 #: followthemoney/schema/EconomicActivity.yaml
@@ -812,22 +812,22 @@ msgstr "Таможенная стоимость товаров"
 #. EconomicActivity.properties.customsAmount.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs Value Amount"
-msgstr ""
+msgstr "Таможенная стоимость"
 
 #. EconomicActivity.properties.sender.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Sender"
-msgstr ""
+msgstr "Отправитель"
 
 #. EconomicActivity.properties.sender.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Origin of the goods"
-msgstr ""
+msgstr "Отправитель товаров"
 
 #. EconomicActivity.properties.sender.reverse
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Goods originated"
-msgstr ""
+msgstr "Отправитель товаров"
 
 #. EconomicActivity.properties.contractHolder.label
 #: followthemoney/schema/EconomicActivity.yaml
@@ -837,22 +837,22 @@ msgstr "Контрактодержатель"
 #. EconomicActivity.properties.contractHolder.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs formalities caretaker"
-msgstr ""
+msgstr "Сторона, осуществляющая таможенные, налоговые и валютные операции"
 
 #. EconomicActivity.properties.contractHolder.reverse
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Economic activities"
-msgstr ""
+msgstr "Внешнеэкономическая деятельность"
 
 #. EconomicActivity.properties.contract.reverse
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Used in customs"
-msgstr ""
+msgstr "Внешнеэкономические сделки"
 
 #. EconomicActivity.properties.contract.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Associated contract"
-msgstr "Номер контракта"
+msgstr "Контракт"
 
 #. EconomicActivity.properties.customsProcedure.description
 #: followthemoney/schema/EconomicActivity.yaml
@@ -897,17 +897,17 @@ msgstr "Описание кода ТН ВЭД"
 #. EconomicActivity.properties.receiver.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Receiver"
-msgstr ""
+msgstr "Получатель"
 
 #. EconomicActivity.properties.receiver.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Destination of the goods"
-msgstr ""
+msgstr "Получатель товаров"
 
 #. EconomicActivity.properties.receiver.reverse
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Goods received"
-msgstr ""
+msgstr "Получатель товаров"
 
 #. EconomicActivity.properties.destinationCountry.description
 #: followthemoney/schema/EconomicActivity.yaml
@@ -1251,7 +1251,7 @@ msgstr "Тип акций"
 
 #. Payment.properties.beneficiary.label
 #: followthemoney/schema/Payment.yaml
-msgid "Beneficiarys"
+msgid "Beneficiary"
 msgstr ""
 
 #. Payment.properties.beneficiary.reverse
@@ -1284,7 +1284,7 @@ msgstr "Номер последовательности"
 #. Payment.properties.payer.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payer"
-msgstr ""
+msgstr "Плательщик"
 
 #. Payment.properties.beneficiaryAccount.label
 #: followthemoney/schema/Payment.yaml

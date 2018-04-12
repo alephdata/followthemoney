@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-11 15:10+0200\n"
+"POT-Creation-Date: 2018-04-12 11:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: John Ospina <jmospina@gmail.com>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.1\n"
+"Generated-By: Babel 2.5.3\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -53,7 +53,7 @@ msgstr "Número de cuenta"
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Address"
-msgstr ""
+msgstr "Dirección del banco"
 
 #. BankAccount.properties.bankName.label
 #: followthemoney/schema/BankAccount.yaml
@@ -1245,7 +1245,7 @@ msgstr ""
 
 #. Payment.properties.beneficiary.label
 #: followthemoney/schema/Payment.yaml
-msgid "Beneficiarys"
+msgid "Beneficiary"
 msgstr ""
 
 #. Payment.properties.beneficiary.reverse
@@ -1398,12 +1398,12 @@ msgstr ""
 #. RealEstate.plural
 #: followthemoney/schema/RealEstate.yaml
 msgid "Real estates"
-msgstr ""
+msgstr "Bienes raíces"
 
 #. RealEstate.properties.tenure.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Tenure"
-msgstr ""
+msgstr "Tenencia"
 
 #. RealEstate.properties.encumbrance.description
 #: followthemoney/schema/RealEstate.yaml
@@ -1412,56 +1412,59 @@ msgid ""
 "property that does not prohibit passing title to the property but that "
 "diminishes its value.\n"
 msgstr ""
+"Un gravamen es un derecho, un interés o una responsabilidad legal en bienes "
+"inmuebles que no prohíbe pasar el título de propiedad pero que disminuye su "
+"valor.\n"
 
 #. RealEstate.properties.encumbrance.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Encumbrance"
-msgstr ""
+msgstr "Gravamen"
 
 #. RealEstate.properties.titleNumber.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Title number"
-msgstr ""
+msgstr "Número del título"
 
 #. RealEstate.properties.cadastralCode.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Cadastral code"
-msgstr ""
+msgstr "Código catastral"
 
 #. RealEstate.properties.longitude.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Longitude"
-msgstr ""
+msgstr "Longitud"
 
 #. RealEstate.properties.landType.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Land type"
-msgstr ""
+msgstr "Tipo de tierra"
 
 #. RealEstate.properties.latitude.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Latitude"
-msgstr ""
+msgstr "Latitud"
 
 #. RealEstate.properties.propertyType.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Property type"
-msgstr ""
+msgstr "Tipo de propiedad"
 
 #. RealEstate.properties.censusBlock.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Census block"
-msgstr ""
+msgstr "Bloque de censo"
 
 #. RealEstate.properties.createDate.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Record date"
-msgstr ""
+msgstr "Fecha de registro"
 
 #. RealEstate.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Real estate"
-msgstr ""
+msgstr "Bienes raíces"
 
 #. Representation.description
 #: followthemoney/schema/Representation.yaml
@@ -1469,87 +1472,89 @@ msgid ""
 "A mediatory, intermediary, middleman, or broker acting on behalf of a legal "
 "entity."
 msgstr ""
+"Un mediador, intermediario, comisionista o corredor que actúa en nombre de "
+"una entidad legal."
 
 #. Representation.properties.client.label
 #: followthemoney/schema/Representation.yaml
 msgid "Client"
-msgstr ""
+msgstr "Cliente"
 
 #. Representation.properties.client.reverse
 #: followthemoney/schema/Representation.yaml
 msgid "Agents"
-msgstr ""
+msgstr "Agentes"
 
 #. Representation.properties.agent.label
 #: followthemoney/schema/Representation.yaml
 msgid "Agent"
-msgstr ""
+msgstr "Agente"
 
 #. Representation.properties.agent.reverse
 #: followthemoney/schema/Representation.yaml
 msgid "Agency clients"
-msgstr ""
+msgstr "Clientes de agencias"
 
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
 msgid "Representation"
-msgstr ""
+msgstr "Representación"
 
 #. Sanction.plural
 #. Sanction.properties.entity.reverse
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanctions"
-msgstr ""
+msgstr "Sanciones"
 
 #. Sanction.properties.sanctionOccurrence.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanction occurrence"
-msgstr ""
+msgstr "Ocurrencia de la sanción"
 
 #. Sanction.properties.program.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanctions program"
-msgstr ""
+msgstr "Programa de sanciones"
 
 #. Sanction.properties.sanctionReason.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanction reason"
-msgstr ""
+msgstr "Motivo de la sanción"
 
 #. Sanction.properties.sanctionStatus.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanction status"
-msgstr ""
+msgstr "Estado de la sanción"
 
 #. Sanction.properties.sanctionDuration.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanction duration"
-msgstr ""
+msgstr "Duración de la sanción"
 
 #. Sanction.properties.authority.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanctioning authority"
-msgstr ""
+msgstr "Autoridad sancionadora"
 
 #. Sanction.properties.authority.reverse
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanctioned entities"
-msgstr ""
+msgstr "Entidades sancionadas"
 
 #. Sanction.properties.entity.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanctioned entity"
-msgstr ""
+msgstr "Entidad sancionada"
 
 #. Sanction.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanction"
-msgstr ""
+msgstr "Sanción"
 
 #. Thing.properties.sourceUrl.label
 #: followthemoney/schema/Thing.yaml
 msgid "Source link"
-msgstr ""
+msgstr "Vínculo original"
 
 #. Thing.properties.weakAlias.label
 #: followthemoney/schema/Thing.yaml
@@ -1559,97 +1564,97 @@ msgstr ""
 #. Thing.properties.notes.label
 #: followthemoney/schema/Thing.yaml
 msgid "Notes"
-msgstr ""
+msgstr "Notas"
 
 #. Thing.properties.previousName.label
 #: followthemoney/schema/Thing.yaml
 msgid "Previous name"
-msgstr ""
+msgstr "Nombre previo"
 
 #. Thing.properties.alias.label
 #: followthemoney/schema/Thing.yaml
 msgid "Other name"
-msgstr ""
+msgstr "Otro nombre"
 
 #. Thing.properties.program.label
 #: followthemoney/schema/Thing.yaml
 msgid "Program"
-msgstr ""
+msgstr "Programa"
 
 #. Thing.properties.address.label
 #: followthemoney/schema/Thing.yaml
 msgid "Address"
-msgstr ""
+msgstr "Dirección"
 
 #. Thing.properties.keywords.label
 #: followthemoney/schema/Thing.yaml
 msgid "Keywords"
-msgstr ""
+msgstr "Palarbas clave"
 
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Link"
-msgstr ""
+msgstr "Vincular"
 
 #. UnknownLink.properties.object.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Object"
-msgstr ""
+msgstr "Objeto"
 
 #. UnknownLink.properties.object.reverse
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked from"
-msgstr ""
+msgstr "Vinculado desde"
 
 #. UnknownLink.properties.subject.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Subject"
-msgstr ""
+msgstr "Tema"
 
 #. UnknownLink.properties.subject.reverse
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked to"
-msgstr ""
+msgstr "Vinculado a"
 
 #. Value.properties.currency.label
 #: followthemoney/schema/Value.yaml
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 #. Value.properties.amount.label
 #: followthemoney/schema/Value.yaml
 msgid "Amount"
-msgstr ""
+msgstr "Cantidad"
 
 #. Value.properties.amountUsd.label
 #: followthemoney/schema/Value.yaml
 msgid "Amount in USD"
-msgstr ""
+msgstr "Cantidad en USD"
 
 #. Value.properties.amountEur.label
 #: followthemoney/schema/Value.yaml
 msgid "Amount in EUR"
-msgstr ""
+msgstr "Cantidad en EUR"
 
 #. Value.label
 #: followthemoney/schema/Value.yaml
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 #. Vessel.plural
 #: followthemoney/schema/Vessel.yaml
 msgid "Vessels"
-msgstr ""
+msgstr "Buques"
 
 #. Vessel.properties.buildDate.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Build Date"
-msgstr ""
+msgstr "Fecha de elaboración"
 
 #. Vessel.properties.registrationPort.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Port of Registration"
-msgstr ""
+msgstr "Puerto de registro"
 
 #. Vessel.properties.crsNumber.label
 #: followthemoney/schema/Vessel.yaml
@@ -1659,42 +1664,42 @@ msgstr ""
 #. Vessel.properties.grossRegisteredTonnage.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Gross Registered Tonnage"
-msgstr ""
+msgstr "Tonelaje bruto registrado"
 
 #. Vessel.properties.navigationArea.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Navigation Area"
-msgstr ""
+msgstr "Área de navegación"
 
 #. Vessel.properties.pastFlags.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Flags"
-msgstr ""
+msgstr "Marcas Past"
 
 #. Vessel.properties.pastNames.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Names"
-msgstr ""
+msgstr "Nombres Past"
 
 #. Vessel.properties.pastTypes.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Types"
-msgstr ""
+msgstr "Tipo Past"
 
 #. Vessel.properties.flag.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Flag"
-msgstr ""
+msgstr "Marca"
 
 #. Vessel.properties.callSign.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Call Sign"
-msgstr ""
+msgstr "Señal de identificación"
 
 #. Vessel.properties.tonnage.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Tonnage"
-msgstr ""
+msgstr "Tonelaje"
 
 #. Vessel.properties.imoNumber.label
 #: followthemoney/schema/Vessel.yaml
@@ -1709,7 +1714,7 @@ msgstr ""
 #. Vessel.properties.nameChangeDate.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Date of Name Change"
-msgstr ""
+msgstr "Fecha de cambio de nombre"
 
 #. Vessel.label
 #: followthemoney/schema/Vessel.yaml
