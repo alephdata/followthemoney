@@ -6,8 +6,8 @@ Vessel:
   fuzzy: true
   featured:
     - name
-    - type
     - imoNumber
+    - type
   properties:
     imoNumber:
       label: IMO Number

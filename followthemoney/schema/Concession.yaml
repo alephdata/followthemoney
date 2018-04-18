@@ -6,9 +6,11 @@ Concession:
   icon: fa-th
   fuzzy: false
   featured:
-    - commodities
+    - name
+    - amount
     - authority
     - contractDate
+    - commodities
   properties:
     area:
       label: Area

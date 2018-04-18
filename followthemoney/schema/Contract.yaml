@@ -5,9 +5,10 @@ Contract:
   extends: Asset
   icon: fa-handshake-o
   featured:
-    - authority
     - name
     - amount
+    - authority
+    - contractDate
   properties:
     authority:
       label: "Contract authority"

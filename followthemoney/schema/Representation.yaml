@@ -5,9 +5,9 @@ Representation:
   icon: fa-rocket
   fuzzy: false
   featured:
-    - role
     - agent
     - client
+    - role
   properties:
     agent: # aka representative / incorporation agent
       label: "Agent"

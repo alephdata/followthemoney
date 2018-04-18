@@ -7,7 +7,6 @@ Directorship:
     - director
     - organization
     - role
-    - date
     - startDate
     - endDate
   properties:

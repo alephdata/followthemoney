@@ -6,10 +6,10 @@ Payment:
   icon: fa-usd
   fuzzy: false
   featured:
-    - amount
-    - purpose
     - payer
     - beneficiary
+    - amount
+    - purpose
   properties:
     sequenceNumber:
       label: "Sequence number"

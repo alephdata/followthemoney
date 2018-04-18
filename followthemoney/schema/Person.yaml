@@ -5,8 +5,8 @@ Person:
   icon: fa-user
   featured:
     - name
-    - birthDate
     - nationality
+    - birthDate
   properties:
     title:
       label: Title

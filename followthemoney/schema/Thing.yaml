@@ -4,6 +4,7 @@ Thing:
   fuzzy: true
   featured:
     - name
+    - country
   properties:
     name:
       label: Name

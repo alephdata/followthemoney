@@ -9,8 +9,8 @@ ContractAward:
   featured:
     - supplier
     - contract
-    - lotNumber
     - amount
+    - lotNumber
     - decisionReason
   properties:
     supplier:
