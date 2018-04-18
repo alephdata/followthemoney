@@ -10,6 +10,7 @@
         "CourtCaseParty": "ftm:CourtCaseParty", 
         "Directorship": "ftm:Directorship", 
         "Document": "ftm:Document", 
+        "EconomicActivity": "ftm:EconomicActivity", 
         "Email": "ftm:Email", 
         "Event": "ftm:Event", 
         "Folder": "ftm:Folder", 
@@ -28,11 +29,11 @@
         "Person": "ftm:Person", 
         "PlainText": "ftm:PlainText", 
         "PublicBody": "ftm:PublicBody", 
+        "RealEstate": "ftm:RealEstate", 
         "Representation": "ftm:Representation", 
         "Sanction": "ftm:Sanction", 
         "Table": "ftm:Table", 
         "Thing": "ftm:Thing", 
-        "Transaction": "ftm:Transaction", 
         "UnknownLink": "ftm:UnknownLink", 
         "Value": "ftm:Value", 
         "Vessel": "ftm:Vessel", 
@@ -59,7 +60,28 @@
             "@type": "@id"
         }, 
         "balance": "ftm:balance", 
+        "bankAccount": {
+            "@id": "ftm:bankAccount", 
+            "@type": "@id"
+        }, 
+        "bankAddress": "ftm:bankAddress", 
+        "bankForeign": {
+            "@id": "ftm:bankForeign", 
+            "@type": "@id"
+        }, 
         "bankName": "ftm:bankName", 
+        "bankRub": {
+            "@id": "ftm:bankRub", 
+            "@type": "@id"
+        }, 
+        "beneficiary": {
+            "@id": "ftm:beneficiary", 
+            "@type": "@id"
+        }, 
+        "beneficiaryAccount": {
+            "@id": "ftm:beneficiaryAccount", 
+            "@type": "@id"
+        }, 
         "bic": "ftm:bic", 
         "birthDate": {
             "@id": "ftm:birthDate", 
@@ -78,6 +100,8 @@
         }, 
         "caseNumber": "ftm:caseNumber", 
         "category": "ftm:category", 
+        "ccdNumber": "ftm:ccdNumber", 
+        "ccdValue": "ftm:ccdValue", 
         "censusBlock": "ftm:censusBlock", 
         "cikCode": "ftm:cikCode", 
         "classification": "ftm:classification", 
@@ -96,6 +120,10 @@
             "@id": "ftm:contractDate", 
             "@type": "xsd:dateTime"
         }, 
+        "contractHolder": {
+            "@id": "ftm:contractHolder", 
+            "@type": "@id"
+        }, 
         "country": "ftm:country", 
         "court": "ftm:court", 
         "cpvCode": "ftm:cpvCode", 
@@ -105,6 +133,8 @@
         }, 
         "crsNumber": "ftm:crsNumber", 
         "currency": "ftm:currency", 
+        "customsAmount": "ftm:customsAmount", 
+        "customsProcedure": "ftm:customsProcedure", 
         "date": {
             "@id": "ftm:date", 
             "@type": "xsd:dateTime"
@@ -114,7 +144,14 @@
             "@type": "xsd:dateTime"
         }, 
         "decisionReason": "ftm:decisionReason", 
+        "declarant": {
+            "@id": "ftm:declarant", 
+            "@type": "@id"
+        }, 
+        "departureCountry": "ftm:departureCountry", 
         "description": "ftm:description", 
+        "destinationCountry": "ftm:destinationCountry", 
+        "directionOfTransportation": "ftm:directionOfTransportation", 
         "director": {
             "@id": "ftm:director", 
             "@type": "@id"
@@ -125,7 +162,9 @@
         }, 
         "documentNumber": "ftm:documentNumber", 
         "documentType": "ftm:documentType", 
+        "dollarExchRate": "ftm:dollarExchRate", 
         "email": "ftm:email", 
+        "encumbrance": "ftm:encumbrance", 
         "endDate": {
             "@id": "ftm:endDate", 
             "@type": "xsd:dateTime"
@@ -139,22 +178,11 @@
         "firstName": "ftm:firstName", 
         "flag": "ftm:flag", 
         "fnsCode": "ftm:fnsCode", 
-        "from": {
-            "@id": "ftm:from", 
-            "@type": "@id"
-        }, 
-        "fromAccount": {
-            "@id": "ftm:fromAccount", 
-            "@type": "@id"
-        }, 
         "fssCode": "ftm:fssCode", 
         "ftm": "https://w3id.org/ftm#", 
         "gender": "ftm:gender", 
+        "goodsDescription": "ftm:goodsDescription", 
         "grossRegisteredTonnage": "ftm:grossRegisteredTonnage", 
-        "holder": {
-            "@id": "ftm:holder", 
-            "@type": "@id"
-        }, 
         "ibcRuc": "ftm:ibcRuc", 
         "icijId": "ftm:icijId", 
         "idNumber": "ftm:idNumber", 
@@ -164,6 +192,7 @@
             "@type": "xsd:dateTime"
         }, 
         "innCode": "ftm:innCode", 
+        "invoiceAmount": "ftm:invoiceAmount", 
         "ipoCode": "ftm:ipoCode", 
         "irsCode": "ftm:irsCode", 
         "jibCode": "ftm:jibCode", 
@@ -211,6 +240,7 @@
             "@id": "ftm:organization", 
             "@type": "@id"
         }, 
+        "originCountry": "ftm:originCountry", 
         "owner": {
             "@id": "ftm:owner", 
             "@type": "@id"
@@ -228,6 +258,14 @@
         "pastFlags": "ftm:pastFlags", 
         "pastNames": "ftm:pastNames", 
         "pastTypes": "ftm:pastTypes", 
+        "payer": {
+            "@id": "ftm:payer", 
+            "@type": "@id"
+        }, 
+        "payerAccount": {
+            "@id": "ftm:payerAccount", 
+            "@type": "@id"
+        }, 
         "percentage": "ftm:percentage", 
         "pfrNumber": "ftm:pfrNumber", 
         "phone": "ftm:phone", 
@@ -237,6 +275,10 @@
         "program": "ftm:program", 
         "propertyType": "ftm:propertyType", 
         "purpose": "ftm:purpose", 
+        "receiver": {
+            "@id": "ftm:receiver", 
+            "@type": "@id"
+        }, 
         "recordId": "ftm:recordId", 
         "registrationNumber": "ftm:registrationNumber", 
         "registrationPort": "ftm:registrationPort", 
@@ -248,12 +290,19 @@
         "secondName": "ftm:secondName", 
         "secretary": "ftm:secretary", 
         "sector": "ftm:sector", 
+        "sender": {
+            "@id": "ftm:sender", 
+            "@type": "@id"
+        }, 
         "sequenceNumber": "ftm:sequenceNumber", 
         "sharesCount": "ftm:sharesCount", 
         "sharesCurrency": "ftm:sharesCurrency", 
         "sharesType": "ftm:sharesType", 
         "sharesValue": "ftm:sharesValue", 
-        "sourceUrl": "ftm:sourceUrl", 
+        "sourceUrl": {
+            "@id": "ftm:sourceUrl", 
+            "@type": "@id"
+        }, 
         "startDate": {
             "@id": "ftm:startDate", 
             "@type": "xsd:dateTime"
@@ -270,19 +319,16 @@
         }, 
         "taxNumber": "ftm:taxNumber", 
         "taxStatus": "ftm:taxStatus", 
+        "tenure": "ftm:tenure", 
         "title": "ftm:title", 
-        "to": {
-            "@id": "ftm:to", 
-            "@type": "@id"
-        }, 
-        "toAccount": {
-            "@id": "ftm:toAccount", 
-            "@type": "@id"
-        }, 
+        "titleNumber": "ftm:titleNumber", 
         "tonnage": "ftm:tonnage", 
+        "tradingCountry": "ftm:tradingCountry", 
         "transactionNumber": "ftm:transactionNumber", 
         "type": "ftm:type", 
         "vatCode": "ftm:vatCode", 
+        "vedCode": "ftm:vedCode", 
+        "vedCodeDescription": "ftm:vedCodeDescription", 
         "voenCode": "ftm:voenCode", 
         "weakAlias": "ftm:weakAlias", 
         "website": {

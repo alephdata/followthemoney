@@ -3,7 +3,6 @@ EconomicActivity:
   plural: "Economic Activities"
   description: "An economic activity"
   extends:
-    - Value
     - Interval
   icon: fa-truck
   featured:

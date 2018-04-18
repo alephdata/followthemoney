@@ -69,6 +69,12 @@ ftm:Document a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Thing .
 
+ftm:EconomicActivity a rdfs:Class ;
+    rdfs:label "Economic Activity" ;
+    rdfs:comment "An economic activity" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Interval .
+
 ftm:Email a rdfs:Class ;
     rdfs:label "E-Mail" ;
     rdfs:comment "None" ;
@@ -116,7 +122,7 @@ ftm:Land a rdfs:Class ;
     rdfs:label "Land" ;
     rdfs:comment "None" ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Asset .
+    rdfs:subClassOf ftm:RealEstate .
 
 ftm:LegalEntity a rdfs:Class ;
     rdfs:label "Legal entity" ;
@@ -158,7 +164,7 @@ ftm:Payment a rdfs:Class ;
     rdfs:label "Payment" ;
     rdfs:comment "None" ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Transaction,
+    rdfs:subClassOf ftm:Interval,
         ftm:Value .
 
 ftm:Person a rdfs:Class ;
@@ -178,6 +184,12 @@ ftm:PublicBody a rdfs:Class ;
     rdfs:comment "None" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Organization .
+
+ftm:RealEstate a rdfs:Class ;
+    rdfs:label "Real estate" ;
+    rdfs:comment "None" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Asset .
 
 ftm:Representation a rdfs:Class ;
     rdfs:label "Representation" ;
@@ -201,12 +213,6 @@ ftm:Thing a rdfs:Class ;
     rdfs:label "Thing" ;
     rdfs:comment "None" ;
     rdfs:isDefinedBy ftm: .
-
-ftm:Transaction a rdfs:Class ;
-    rdfs:label "Transaction" ;
-    rdfs:comment "None" ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Interval .
 
 ftm:UnknownLink a rdfs:Class ;
     rdfs:label "Link" ;
@@ -290,15 +296,13 @@ ftm:area a rdf:Property ;
     rdfs:label "Area" ;
     rdfs:comment "None" ;
     rdfs:domain ftm:Concession,
-        ftm:Land ;
+        ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
 ftm:asset a rdf:Property ;
     rdfs:label "Asset" ;
-    rdfs:comment "None",
-        "The thing being transacted; could be a Contract" ;
-    rdfs:domain ftm:Ownership,
-        ftm:Transaction ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:Ownership ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Asset .
 
@@ -318,11 +322,52 @@ ftm:balance a rdf:Property ;
     rdfs:domain ftm:BankAccount ;
     rdfs:isDefinedBy ftm: .
 
+ftm:bankAccount a rdf:Property ;
+    rdfs:label "Bank Account" ;
+    rdfs:comment "Bank account of the contract" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
+ftm:bankAddress a rdf:Property ;
+    rdfs:label "Bank Address" ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:BankAccount ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:bankForeign a rdf:Property ;
+    rdfs:label "Foreign currency bank" ;
+    rdfs:comment "Bank account for payments in foreign currency" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
 ftm:bankName a rdf:Property ;
     rdfs:label "Bank Name" ;
     rdfs:comment "None" ;
     rdfs:domain ftm:BankAccount ;
     rdfs:isDefinedBy ftm: .
+
+ftm:bankRub a rdf:Property ;
+    rdfs:label "Rouble bank" ;
+    rdfs:comment "Bank account for payments in roubles" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
+ftm:beneficiary a rdf:Property ;
+    rdfs:label "Beneficiary" ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+ftm:beneficiaryAccount a rdf:Property ;
+    rdfs:label "Beneficiary bank account" ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:BankAccount .
 
 ftm:bic a rdf:Property ;
     rdfs:label "Bank Identifier Code" ;
@@ -352,7 +397,7 @@ ftm:buildDate a rdf:Property ;
 ftm:cadastralCode a rdf:Property ;
     rdfs:label "Cadastral code" ;
     rdfs:comment "None" ;
-    rdfs:domain ftm:Land ;
+    rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
 ftm:caemCode a rdf:Property ;
@@ -398,10 +443,22 @@ ftm:category a rdf:Property ;
     rdfs:domain ftm:CourtCase ;
     rdfs:isDefinedBy ftm: .
 
+ftm:ccdNumber a rdf:Property ;
+    rdfs:label "Customs Cargo Declaration Number" ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:ccdValue a rdf:Property ;
+    rdfs:label "CCD Value" ;
+    rdfs:comment "Declaration Value" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:censusBlock a rdf:Property ;
     rdfs:label "Census block" ;
     rdfs:comment "None" ;
-    rdfs:domain ftm:Land ;
+    rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
 ftm:cikCode a rdf:Property ;
@@ -442,11 +499,14 @@ ftm:commodities a rdf:Property ;
     rdfs:isDefinedBy ftm: .
 
 ftm:contract a rdf:Property ;
-    rdfs:label "Contract" ;
+    rdfs:label "Associated contract",
+        "Contract" ;
     rdfs:comment "None" ;
-    rdfs:domain ftm:ContractAward ;
+    rdfs:domain ftm:ContractAward,
+        ftm:EconomicActivity ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Contract .
+    rdfs:range ftm:Contract,
+        ftm:Thing .
 
 ftm:contractDate a rdf:Property ;
     rdfs:label "Contract date" ;
@@ -454,6 +514,13 @@ ftm:contractDate a rdf:Property ;
     rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
+
+ftm:contractHolder a rdf:Property ;
+    rdfs:label "Contract holder" ;
+    rdfs:comment "Customs formalities caretaker" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
 
 ftm:country a rdf:Property ;
     rdfs:label "Country" ;
@@ -478,7 +545,7 @@ ftm:cpvCode a rdf:Property ;
 ftm:createDate a rdf:Property ;
     rdfs:label "Record date" ;
     rdfs:comment "None" ;
-    rdfs:domain ftm:Land ;
+    rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
 
@@ -492,6 +559,18 @@ ftm:currency a rdf:Property ;
     rdfs:label "Currency" ;
     rdfs:comment "None" ;
     rdfs:domain ftm:Value ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:customsAmount a rdf:Property ;
+    rdfs:label "Customs Value Amount" ;
+    rdfs:comment "Customs Value of goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:customsProcedure a rdf:Property ;
+    rdfs:label "Customs Procedure" ;
+    rdfs:comment "Customs Procedure — type of customs clearance" ;
+    rdfs:domain ftm:EconomicActivity ;
     rdfs:isDefinedBy ftm: .
 
 ftm:date a rdf:Property ;
@@ -514,10 +593,35 @@ ftm:decisionReason a rdf:Property ;
     rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
+ftm:declarant a rdf:Property ;
+    rdfs:label "Declarant" ;
+    rdfs:comment "Customs declarant" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
+ftm:departureCountry a rdf:Property ;
+    rdfs:label "Country of departure" ;
+    rdfs:comment "Country out of which the goods are transported" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:description a rdf:Property ;
     rdfs:label "Description" ;
     rdfs:comment "None" ;
     rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:destinationCountry a rdf:Property ;
+    rdfs:label "Country of destination" ;
+    rdfs:comment "Final destination for the goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:directionOfTransportation a rdf:Property ;
+    rdfs:label "Direction of transportation" ;
+    rdfs:comment "Direction of transportation (import/export)" ;
+    rdfs:domain ftm:EconomicActivity ;
     rdfs:isDefinedBy ftm: .
 
 ftm:director a rdf:Property ;
@@ -546,10 +650,23 @@ ftm:documentType a rdf:Property ;
     rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
+ftm:dollarExchRate a rdf:Property ;
+    rdfs:label "USD Exchange Rate" ;
+    rdfs:comment "USD Exchange Rate for the activity" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:email a rdf:Property ;
     rdfs:label "E-Mail" ;
     rdfs:comment "Email address" ;
     rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:encumbrance a rdf:Property ;
+    rdfs:label "Encumbrance" ;
+    rdfs:comment """An encumbrance is a right to, interest in, or legal liability on real property that does not prohibit passing title to the property but that diminishes its value.
+""" ;
+    rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
 ftm:endDate a rdf:Property ;
@@ -596,20 +713,6 @@ ftm:fnsCode a rdf:Property ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:from a rdf:Property ;
-    rdfs:label "From" ;
-    rdfs:comment "The payer in the case of a payment; the contract issuer/authority in the case of a contract." ;
-    rdfs:domain ftm:Transaction ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
-
-ftm:fromAccount a rdf:Property ;
-    rdfs:label "Payer bank account" ;
-    rdfs:comment "None" ;
-    rdfs:domain ftm:Payment ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:BankAccount .
-
 ftm:fssCode a rdf:Property ;
     rdfs:label "FSS" ;
     rdfs:comment "(RU, ФСС) Social Security" ;
@@ -622,18 +725,17 @@ ftm:gender a rdf:Property ;
     rdfs:domain ftm:Person ;
     rdfs:isDefinedBy ftm: .
 
+ftm:goodsDescription a rdf:Property ;
+    rdfs:label "Description" ;
+    rdfs:comment "Description of goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:grossRegisteredTonnage a rdf:Property ;
     rdfs:label "Gross Registered Tonnage" ;
     rdfs:comment "None" ;
     rdfs:domain ftm:Vessel ;
     rdfs:isDefinedBy ftm: .
-
-ftm:holder a rdf:Property ;
-    rdfs:label "Contract holder" ;
-    rdfs:comment "None" ;
-    rdfs:domain ftm:Contract ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
 
 ftm:ibcRuc a rdf:Property ;
     rdfs:label "ibcRUC" ;
@@ -670,6 +772,12 @@ ftm:innCode a rdf:Property ;
     rdfs:label "INN" ;
     rdfs:comment "Russian company ID" ;
     rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:invoiceAmount a rdf:Property ;
+    rdfs:label "Invoice Value Amount" ;
+    rdfs:comment "Invoice Value of goods" ;
+    rdfs:domain ftm:EconomicActivity ;
     rdfs:isDefinedBy ftm: .
 
 ftm:ipoCode a rdf:Property ;
@@ -713,7 +821,7 @@ ftm:kppCode a rdf:Property ;
 ftm:landType a rdf:Property ;
     rdfs:label "Land type" ;
     rdfs:comment "None" ;
-    rdfs:domain ftm:Land ;
+    rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
 ftm:lastName a rdf:Property ;
@@ -725,7 +833,7 @@ ftm:lastName a rdf:Property ;
 ftm:latitude a rdf:Property ;
     rdfs:label "Latitude" ;
     rdfs:comment "None" ;
-    rdfs:domain ftm:Land ;
+    rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
 ftm:legalBasis a rdf:Property ;
@@ -749,7 +857,7 @@ ftm:location a rdf:Property ;
 ftm:longitude a rdf:Property ;
     rdfs:label "Longitude" ;
     rdfs:comment "None" ;
-    rdfs:domain ftm:Land ;
+    rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
 ftm:lotNumber a rdf:Property ;
@@ -890,6 +998,12 @@ ftm:organization a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Organization .
 
+ftm:originCountry a rdf:Property ;
+    rdfs:label "Country of origin" ;
+    rdfs:comment "Country of origin of goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:owner a rdf:Property ;
     rdfs:label "Owner" ;
     rdfs:comment "None" ;
@@ -941,6 +1055,20 @@ ftm:pastTypes a rdf:Property ;
     rdfs:domain ftm:Vessel ;
     rdfs:isDefinedBy ftm: .
 
+ftm:payer a rdf:Property ;
+    rdfs:label "Payer" ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+ftm:payerAccount a rdf:Property ;
+    rdfs:label "Payer bank account" ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:BankAccount .
+
 ftm:percentage a rdf:Property ;
     rdfs:label "Percentage held" ;
     rdfs:comment "None" ;
@@ -988,7 +1116,7 @@ ftm:program a rdf:Property ;
 ftm:propertyType a rdf:Property ;
     rdfs:label "Property type" ;
     rdfs:comment "None" ;
-    rdfs:domain ftm:Land ;
+    rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
 ftm:purpose a rdf:Property ;
@@ -996,6 +1124,13 @@ ftm:purpose a rdf:Property ;
     rdfs:comment "None" ;
     rdfs:domain ftm:Payment ;
     rdfs:isDefinedBy ftm: .
+
+ftm:receiver a rdf:Property ;
+    rdfs:label "Receiver" ;
+    rdfs:comment "Destination of the goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
 
 ftm:recordId a rdf:Property ;
     rdfs:label "Record ID" ;
@@ -1008,8 +1143,8 @@ ftm:registrationNumber a rdf:Property ;
     rdfs:comment "Company registration number",
         "None" ;
     rdfs:domain ftm:Company,
-        ftm:Land,
-        ftm:LegalEntity ;
+        ftm:LegalEntity,
+        ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
 ftm:registrationPort a rdf:Property ;
@@ -1065,6 +1200,13 @@ ftm:sector a rdf:Property ;
     rdfs:comment "Sector, eg. ??" ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: .
+
+ftm:sender a rdf:Property ;
+    rdfs:label "Sender" ;
+    rdfs:comment "Origin of the goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
 
 ftm:sequenceNumber a rdf:Property ;
     rdfs:label "Sequence number" ;
@@ -1153,30 +1295,34 @@ ftm:taxStatus a rdf:Property ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: .
 
+ftm:tenure a rdf:Property ;
+    rdfs:label "Tenure" ;
+    rdfs:comment "None" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:title a rdf:Property ;
     rdfs:label "Title" ;
     rdfs:comment "None" ;
     rdfs:domain ftm:Person ;
     rdfs:isDefinedBy ftm: .
 
-ftm:to a rdf:Property ;
-    rdfs:label "To" ;
-    rdfs:comment "The beneficiary in the case of a pyament; the contract supplier/awardee in the case of a contract." ;
-    rdfs:domain ftm:Transaction ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
-
-ftm:toAccount a rdf:Property ;
-    rdfs:label "Beneficiary bank account" ;
+ftm:titleNumber a rdf:Property ;
+    rdfs:label "Title number" ;
     rdfs:comment "None" ;
-    rdfs:domain ftm:Payment ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:BankAccount .
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
 
 ftm:tonnage a rdf:Property ;
     rdfs:label "Tonnage" ;
     rdfs:comment "None" ;
     rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:tradingCountry a rdf:Property ;
+    rdfs:label "Trading Country" ;
+    rdfs:comment "Trading Country of the company which transports the goods via Russian border" ;
+    rdfs:domain ftm:EconomicActivity ;
     rdfs:isDefinedBy ftm: .
 
 ftm:transactionNumber a rdf:Property ;
@@ -1200,6 +1346,18 @@ ftm:vatCode a rdf:Property ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
+ftm:vedCode a rdf:Property ;
+    rdfs:label "FEAC Code" ;
+    rdfs:comment "(Код ТН ВЭД) Foreign Economic Activity Commodity Code" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:vedCodeDescription a rdf:Property ;
+    rdfs:label "FEAC Code description" ;
+    rdfs:comment "(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:voenCode a rdf:Property ;
     rdfs:label "VOEN" ;
     rdfs:comment "Azerbaijan taxpayer ID" ;
@@ -1220,6 +1378,6 @@ ftm:website a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2018-04-02T15:03:27"^^xsd:dateTime ;
+    dct:modified "2018-04-18T10:10:51"^^xsd:dateTime ;
     rdfs:comment "A vocabulary for investigative reporting, based on real life." .
 
