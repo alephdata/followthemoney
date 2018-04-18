@@ -5,6 +5,8 @@ Interest:
   fuzzy: false
   featured:
     - role
+    - startDate
+    - endDate
   properties:
     role:
       label: "Role"
