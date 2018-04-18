@@ -19,7 +19,7 @@ class Schema(object):
         self._label = data.get('label', name)
         self._plural = data.get('plural', self.label)
         self._description = data.get('description')
-        self._featured = ensure_list(data.get('featured'))
+        self.featured = ensure_list(data.get('featured'))
 
         # Do not show in listings:
         self.abstract = data.get('abstract', False)
@@ -41,7 +41,7 @@ class Schema(object):
     @property
     def plural(self):
         return gettext(self._plural)
-    
+
     @property
     def description(self):
         return gettext(self._description)
@@ -95,16 +95,15 @@ class Schema(object):
                 self._properties[prop.name] = prop
         return self._properties
 
-    @property
-    def featured(self):
-        """ Return featured properties, including from ancestors."""
-        featured = self._featured
-        for schema in self.extends:
-            for prop in schema.featured:
-                if prop not in featured:
-                    featured.append(prop)
-
-        return featured
+    # @property
+    # def featured(self):
+    #     """ Return featured properties, including from ancestors."""
+    #     featured = self._featured
+    #     for schema in self.extends:
+    #         for prop in schema.featured:
+    #             if prop not in featured:
+    #                 featured.append(prop)
+    #     return featured
 
     def get(self, name):
         return self.properties.get(name)
