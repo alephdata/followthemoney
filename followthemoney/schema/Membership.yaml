@@ -3,6 +3,10 @@ Membership:
   extends: Interest
   icon: fa-id-badge
   fuzzy: false
+  featured:
+    - member
+    - organization
+    - role
   properties:
     member:
       label: "Member"

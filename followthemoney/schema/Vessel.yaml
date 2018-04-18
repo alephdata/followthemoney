@@ -4,6 +4,10 @@ Vessel:
   extends: Asset
   icon: fa-ship
   fuzzy: true
+  featured:
+    - name
+    - type
+    - imoNumber
   properties:
     imoNumber:
       label: IMO Number

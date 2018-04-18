@@ -4,6 +4,10 @@ Representation:
   extends: Interest
   icon: fa-rocket
   fuzzy: false
+  featured:
+    - role
+    - agent
+    - client
   properties:
     agent: # aka representative / incorporation agent
       label: "Agent"

@@ -6,6 +6,7 @@ Company:
     - Organization
     - Asset
   featured:
+    - name
     - jurisdiction
     - registrationNumber
   properties:

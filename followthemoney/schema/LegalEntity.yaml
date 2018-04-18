@@ -4,6 +4,9 @@ LegalEntity:
   plural: Legal entities
   icon: fa-user-secret
   description: "A legal entity may be a person or a company."
+  featured:
+    - name
+    - country
   properties:
     email:
       label: E-Mail

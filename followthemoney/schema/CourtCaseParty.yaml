@@ -3,6 +3,10 @@ CourtCaseParty:
   extends: Interest
   icon: fa-birthday-cake
   fuzzy: false
+  featured:
+    - party
+    - case
+    - role
   properties:
     party: 
       label: "Party"

@@ -8,6 +8,8 @@ Payment:
   featured:
     - amount
     - purpose
+    - payer
+    - beneficiary
   properties:
     sequenceNumber:
       label: "Sequence number"

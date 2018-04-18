@@ -4,6 +4,10 @@ UnknownLink:
   extends: Interest
   icon: fa-user-circle
   fuzzy: false
+  featured:
+    - subject
+    - object
+    - role
   properties:
     subject:
       label: "Subject"

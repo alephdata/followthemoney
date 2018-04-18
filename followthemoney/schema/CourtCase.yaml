@@ -4,6 +4,10 @@ CourtCase:
   extends: Interval
   icon: fa-briefcase
   fuzzy: false
+  featured:
+    - name
+    - date
+    - caseNumber
   properties:
     category:
       label: Category

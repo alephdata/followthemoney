@@ -3,6 +3,10 @@ Ownership:
   extends: Interest
   icon: fa-shopping-bag
   fuzzy: false
+  featured:
+    - owner
+    - asset
+    - percentage
   properties:
     owner:
       label: "Owner"

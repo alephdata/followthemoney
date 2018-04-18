@@ -4,6 +4,11 @@ Sanction:
   extends: Interval
   icon: fa-ban
   fuzzy: false
+  featured:
+    - entity
+    - authority
+    - startDate
+    - endDate
   properties:
     entity:
       label: "Sanctioned entity"

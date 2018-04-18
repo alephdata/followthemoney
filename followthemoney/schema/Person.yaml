@@ -4,6 +4,7 @@ Person:
   plural: People
   icon: fa-user
   featured:
+    - name
     - birthDate
     - nationality
   properties:

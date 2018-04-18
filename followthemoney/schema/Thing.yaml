@@ -2,6 +2,8 @@ Thing:
   abstract: true
   icon: fa-circle
   fuzzy: true
+  featured:
+    - name
   properties:
     name:
       label: Name

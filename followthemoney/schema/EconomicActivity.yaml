@@ -6,6 +6,12 @@ EconomicActivity:
     - Value
     - Interval
   icon: fa-truck
+  featured:
+    - startDate
+    - endDate
+    - sender
+    - receiver
+    - contract
   properties:
     contract:
       label: "Associated contract"
