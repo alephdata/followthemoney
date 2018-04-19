@@ -7,6 +7,8 @@ Ownership:
     - owner
     - asset
     - percentage
+    - startDate
+    - endDate
   properties:
     owner:
       label: "Owner"

@@ -5,6 +5,7 @@ BankAccount:
   icon: fa-bank
   featured:
     - accountNumber
+    - bankName
   properties:
     bankName:
       label: Bank Name

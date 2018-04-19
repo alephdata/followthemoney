@@ -6,6 +6,7 @@ RealEstate:
   fuzzy: false
   featured:
     - registrationNumber
+    - address
     - country
   properties:
     latitude:
