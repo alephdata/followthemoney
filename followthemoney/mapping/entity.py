@@ -18,7 +18,6 @@ class EntityMapping(object):
 
         self.keys = ensure_list(data.get('key'))
         self.keys.extend(ensure_list(data.get('keys')))
-        self.keys = set(self.keys)
         if not len(self.keys):
             raise InvalidMapping("No keys: %r" % name)
 
@@ -45,9 +44,10 @@ class EntityMapping(object):
 
     def compute_key(self, record):
         """Generate a key for this entity, based on the given fields."""
+        values = [key_bytes(record.get(k)) for k in self.keys]
         digest = self.seed.copy()
-        for key in self.keys:
-            digest.update(key_bytes(record.get(key)))
+        for value in sorted(values):
+            digest.update(value)
         if digest.digest() != self.seed.digest():
             return digest.hexdigest()
 
