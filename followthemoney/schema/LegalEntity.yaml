@@ -6,6 +6,7 @@ LegalEntity:
   description: "A legal entity may be a person or a company."
   featured:
     - name
+    - legalForm
     - country
   properties:
     email:
@@ -22,7 +23,7 @@ LegalEntity:
       description: "Website address"
     legalForm:
       label: Legal form
-      description: "?"
+      # description: ""
     incorporationDate:
       label: Incorporation date
       type: date
@@ -33,16 +34,16 @@ LegalEntity:
       description: "The date the legal entity was dissolved, if applicable"
     taxStatus:
       label: Tax status
-      description: "Tax status, eg. ??"
+      # description: "Tax status, eg. ??"
     status:
       label: Status
-      description: "Status, eg. ??"
+      # description: "Status, eg. ??"
     sector:
       label: Sector
-      description: "Sector, eg. ??"
+      # description: "Sector, eg. ??"
     classification:
       label: Classification
-      description: "Classification, eg. ??"
+      # description: "Classification, eg. ??"
     registrationNumber:
       label: Registration number
       type: identifier
