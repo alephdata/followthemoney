@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-12 11:19+0200\n"
+"POT-Creation-Date: 2018-04-25 15:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.3\n"
+"Generated-By: Babel 2.5.1\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
@@ -519,12 +519,6 @@ msgstr "Имя"
 msgid "Court case"
 msgstr "Судебный документ"
 
-#. CourtCaseParty.label
-#. CourtCaseParty.properties.party.label
-#: followthemoney/schema/CourtCaseParty.yaml
-msgid "Party"
-msgstr "Сторона"
-
 #. CourtCaseParty.properties.case.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case"
@@ -534,6 +528,12 @@ msgstr "Дело"
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Parties"
 msgstr "Стороны"
+
+#. CourtCaseParty.properties.party.label
+#. CourtCaseParty.label
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "Party"
+msgstr "Сторона"
 
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
@@ -1000,11 +1000,6 @@ msgstr "Адрес сайта"
 msgid "Website"
 msgstr "Веб-сайт"
 
-#. LegalEntity.properties.status.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Status, eg. ??"
-msgstr "Например, статус"
-
 #. LegalEntity.properties.incorporationDate.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "The date the legal entity was incorporated"
@@ -1014,11 +1009,6 @@ msgstr "Дата регистрации юридического лица"
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Incorporation date"
 msgstr "Дата регистрации"
-
-#. LegalEntity.properties.classification.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Classification, eg. ??"
-msgstr "Например, классификация"
 
 #. LegalEntity.properties.classification.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -1080,11 +1070,6 @@ msgstr "ID согласно Международному Консорциуму 
 msgid "ICIJ ID"
 msgstr "ICIJ ID"
 
-#. LegalEntity.properties.taxStatus.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Tax status, eg. ??"
-msgstr "например, Налоговый статус"
-
 #. LegalEntity.properties.taxStatus.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax status"
@@ -1109,11 +1094,6 @@ msgstr ""
 "Если эта организация — дочерняя, то связанная с ней компания или организация"
 " — родительская."
 
-#. LegalEntity.properties.sector.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Sector, eg. ??"
-msgstr "например, Отрасль"
-
 #. LegalEntity.properties.sector.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Sector"
@@ -1133,11 +1113,6 @@ msgstr "Идентификационный номер налогоплатель
 #: followthemoney/schema/LegalEntity.yaml
 msgid "INN"
 msgstr "ИНН"
-
-#. LegalEntity.properties.legalForm.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "?"
-msgstr "?"
 
 #. LegalEntity.properties.legalForm.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -1169,11 +1144,6 @@ msgstr "ОКПО"
 msgid "Legal entity"
 msgstr "Юридическое лицо"
 
-#. Membership.label
-#: followthemoney/schema/Membership.yaml
-msgid "Membership"
-msgstr "Членство"
-
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
 msgid "Member"
@@ -1189,15 +1159,15 @@ msgstr "Состав участников"
 msgid "Members"
 msgstr "Участники"
 
+#. Membership.label
+#: followthemoney/schema/Membership.yaml
+msgid "Membership"
+msgstr "Членство"
+
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
 msgid "Organizations"
 msgstr "Организации"
-
-#. Ownership.label
-#: followthemoney/schema/Ownership.yaml
-msgid "Ownership"
-msgstr "Структура собственности"
 
 #. Ownership.properties.legalBasis.label
 #: followthemoney/schema/Ownership.yaml
@@ -1222,7 +1192,7 @@ msgstr "Владелец"
 #. Ownership.properties.owner.reverse
 #: followthemoney/schema/Ownership.yaml
 msgid "Assets and shares"
-msgstr "Состав имущества"
+msgstr "Имущество компании"
 
 #. Ownership.properties.asset.reverse
 #: followthemoney/schema/Ownership.yaml
@@ -1249,10 +1219,15 @@ msgstr "Доля владения акциями"
 msgid "Type of shares"
 msgstr "Тип акций"
 
+#. Ownership.label
+#: followthemoney/schema/Ownership.yaml
+msgid "Ownership"
+msgstr "Структура собственности"
+
 #. Payment.properties.beneficiary.label
 #: followthemoney/schema/Payment.yaml
 msgid "Beneficiary"
-msgstr ""
+msgstr "Бенефициар"
 
 #. Payment.properties.beneficiary.reverse
 #. Payment.properties.beneficiaryAccount.reverse
@@ -1595,11 +1570,6 @@ msgstr "Адрес"
 msgid "Keywords"
 msgstr "Ключевые слова"
 
-#. UnknownLink.label
-#: followthemoney/schema/UnknownLink.yaml
-msgid "Link"
-msgstr "Связь"
-
 #. UnknownLink.properties.object.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Object"
@@ -1619,6 +1589,11 @@ msgstr "Субъект"
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked to"
 msgstr "Связь к"
+
+#. UnknownLink.label
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Link"
+msgstr "Связь"
 
 #. Value.properties.currency.label
 #: followthemoney/schema/Value.yaml

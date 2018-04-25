@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-12 11:19+0200\n"
+"POT-Creation-Date: 2018-04-25 15:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Emina Muratovic <emina@occrp.org>, 2018\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.3\n"
+"Generated-By: Babel 2.5.1\n"
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
@@ -513,12 +513,6 @@ msgstr "Naziv"
 msgid "Court case"
 msgstr "Sudski predmet"
 
-#. CourtCaseParty.label
-#. CourtCaseParty.properties.party.label
-#: followthemoney/schema/CourtCaseParty.yaml
-msgid "Party"
-msgstr "Stranka"
-
 #. CourtCaseParty.properties.case.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case"
@@ -528,6 +522,12 @@ msgstr "Slučaj"
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Parties"
 msgstr ""
+
+#. CourtCaseParty.properties.party.label
+#. CourtCaseParty.label
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "Party"
+msgstr "Stranka"
 
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
@@ -991,11 +991,6 @@ msgstr "Adresa web stranice"
 msgid "Website"
 msgstr "Web stranica"
 
-#. LegalEntity.properties.status.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Status, eg. ??"
-msgstr "Status, npr. ??"
-
 #. LegalEntity.properties.incorporationDate.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "The date the legal entity was incorporated"
@@ -1005,11 +1000,6 @@ msgstr "Datum kada je legalni entitet pripojen"
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Incorporation date"
 msgstr "Datum inkorporacije"
-
-#. LegalEntity.properties.classification.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Classification, eg. ??"
-msgstr "Klasifikacija, npr. ??"
 
 #. LegalEntity.properties.classification.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -1071,11 +1061,6 @@ msgstr ""
 msgid "ICIJ ID"
 msgstr ""
 
-#. LegalEntity.properties.taxStatus.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Tax status, eg. ??"
-msgstr "Status poreza, npr. ??"
-
 #. LegalEntity.properties.taxStatus.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax status"
@@ -1098,11 +1083,6 @@ msgid ""
 "its parent"
 msgstr ""
 
-#. LegalEntity.properties.sector.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Sector, eg. ??"
-msgstr "Sektor, npr. ??"
-
 #. LegalEntity.properties.sector.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Sector"
@@ -1122,11 +1102,6 @@ msgstr "ID ruske kompanije"
 #: followthemoney/schema/LegalEntity.yaml
 msgid "INN"
 msgstr "INN"
-
-#. LegalEntity.properties.legalForm.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "?"
-msgstr "?"
 
 #. LegalEntity.properties.legalForm.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -1158,11 +1133,6 @@ msgstr "OKPO"
 msgid "Legal entity"
 msgstr "Legalni entitet"
 
-#. Membership.label
-#: followthemoney/schema/Membership.yaml
-msgid "Membership"
-msgstr "Članstvo"
-
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
 msgid "Member"
@@ -1178,15 +1148,15 @@ msgstr ""
 msgid "Members"
 msgstr ""
 
+#. Membership.label
+#: followthemoney/schema/Membership.yaml
+msgid "Membership"
+msgstr "Članstvo"
+
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
 msgid "Organizations"
 msgstr "Organizacije"
-
-#. Ownership.label
-#: followthemoney/schema/Ownership.yaml
-msgid "Ownership"
-msgstr "Vlasništvo"
 
 #. Ownership.properties.legalBasis.label
 #: followthemoney/schema/Ownership.yaml
@@ -1237,6 +1207,11 @@ msgstr ""
 #: followthemoney/schema/Ownership.yaml
 msgid "Type of shares"
 msgstr "Tip dionica"
+
+#. Ownership.label
+#: followthemoney/schema/Ownership.yaml
+msgid "Ownership"
+msgstr "Vlasništvo"
 
 #. Payment.properties.beneficiary.label
 #: followthemoney/schema/Payment.yaml
@@ -1581,11 +1556,6 @@ msgstr "Adresa"
 msgid "Keywords"
 msgstr "Ključne riječi"
 
-#. UnknownLink.label
-#: followthemoney/schema/UnknownLink.yaml
-msgid "Link"
-msgstr "Link"
-
 #. UnknownLink.properties.object.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Object"
@@ -1605,6 +1575,11 @@ msgstr "Predmet"
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked to"
 msgstr ""
+
+#. UnknownLink.label
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Link"
+msgstr "Link"
 
 #. Value.properties.currency.label
 #: followthemoney/schema/Value.yaml

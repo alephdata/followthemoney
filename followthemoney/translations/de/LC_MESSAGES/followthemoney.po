@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-12 11:19+0200\n"
+"POT-Creation-Date: 2018-04-25 15:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2018\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.3\n"
+"Generated-By: Babel 2.5.1\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -513,12 +513,6 @@ msgstr ""
 msgid "Court case"
 msgstr ""
 
-#. CourtCaseParty.label
-#. CourtCaseParty.properties.party.label
-#: followthemoney/schema/CourtCaseParty.yaml
-msgid "Party"
-msgstr ""
-
 #. CourtCaseParty.properties.case.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case"
@@ -527,6 +521,12 @@ msgstr ""
 #. CourtCaseParty.properties.case.reverse
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Parties"
+msgstr ""
+
+#. CourtCaseParty.properties.party.label
+#. CourtCaseParty.label
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "Party"
 msgstr ""
 
 #. Directorship.properties.director.label
@@ -991,11 +991,6 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#. LegalEntity.properties.status.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Status, eg. ??"
-msgstr ""
-
 #. LegalEntity.properties.incorporationDate.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "The date the legal entity was incorporated"
@@ -1004,11 +999,6 @@ msgstr ""
 #. LegalEntity.properties.incorporationDate.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Incorporation date"
-msgstr ""
-
-#. LegalEntity.properties.classification.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Classification, eg. ??"
 msgstr ""
 
 #. LegalEntity.properties.classification.label
@@ -1071,11 +1061,6 @@ msgstr ""
 msgid "ICIJ ID"
 msgstr ""
 
-#. LegalEntity.properties.taxStatus.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Tax status, eg. ??"
-msgstr ""
-
 #. LegalEntity.properties.taxStatus.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax status"
@@ -1098,11 +1083,6 @@ msgid ""
 "its parent"
 msgstr ""
 
-#. LegalEntity.properties.sector.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Sector, eg. ??"
-msgstr ""
-
 #. LegalEntity.properties.sector.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Sector"
@@ -1122,11 +1102,6 @@ msgstr "Russische Firmennummer"
 #: followthemoney/schema/LegalEntity.yaml
 msgid "INN"
 msgstr "INN"
-
-#. LegalEntity.properties.legalForm.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "?"
-msgstr ""
 
 #. LegalEntity.properties.legalForm.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -1158,11 +1133,6 @@ msgstr ""
 msgid "Legal entity"
 msgstr ""
 
-#. Membership.label
-#: followthemoney/schema/Membership.yaml
-msgid "Membership"
-msgstr ""
-
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
 msgid "Member"
@@ -1178,14 +1148,14 @@ msgstr ""
 msgid "Members"
 msgstr ""
 
+#. Membership.label
+#: followthemoney/schema/Membership.yaml
+msgid "Membership"
+msgstr ""
+
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
 msgid "Organizations"
-msgstr ""
-
-#. Ownership.label
-#: followthemoney/schema/Ownership.yaml
-msgid "Ownership"
 msgstr ""
 
 #. Ownership.properties.legalBasis.label
@@ -1236,6 +1206,11 @@ msgstr ""
 #. Ownership.properties.sharesType.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Type of shares"
+msgstr ""
+
+#. Ownership.label
+#: followthemoney/schema/Ownership.yaml
+msgid "Ownership"
 msgstr ""
 
 #. Payment.properties.beneficiary.label
@@ -1581,11 +1556,6 @@ msgstr ""
 msgid "Keywords"
 msgstr "Schlüsselworte"
 
-#. UnknownLink.label
-#: followthemoney/schema/UnknownLink.yaml
-msgid "Link"
-msgstr ""
-
 #. UnknownLink.properties.object.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Object"
@@ -1604,6 +1574,11 @@ msgstr "Subjekt"
 #. UnknownLink.properties.subject.reverse
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked to"
+msgstr ""
+
+#. UnknownLink.label
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Link"
 msgstr ""
 
 #. Value.properties.currency.label
