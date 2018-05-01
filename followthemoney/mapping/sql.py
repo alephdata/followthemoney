@@ -100,3 +100,6 @@ class SQLSource(Source):
                 for ref, name in mapping:
                     data[ref] = stringify(row[name])
                 yield data
+
+    def __len__(self):
+        return self.compose_query().count()
