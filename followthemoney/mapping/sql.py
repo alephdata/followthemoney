@@ -102,4 +102,6 @@ class SQLSource(Source):
                 yield data
 
     def __len__(self):
-        return self.compose_query().count()
+        q = self.compose_query().count()
+        rp = self.engine.execute(q)
+        return rp.scalar()
