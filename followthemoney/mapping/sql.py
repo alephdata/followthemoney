@@ -5,7 +5,7 @@ from uuid import uuid4
 from banal import ensure_list
 from normality import stringify
 from sqlalchemy import create_engine, MetaData
-from sqlalchemy import select
+from sqlalchemy import select, func
 # from sqlalchemy import text as sql_text
 from sqlalchemy.pool import NullPool
 from sqlalchemy.schema import Table
@@ -102,6 +102,7 @@ class SQLSource(Source):
                 yield data
 
     def __len__(self):
-        q = self.compose_query().count()
+        sq = self.compose_query().alias()
+        q = select(columns=[func.count('*')], from_obj=[sq])
         rp = self.engine.execute(q)
         return rp.scalar()
