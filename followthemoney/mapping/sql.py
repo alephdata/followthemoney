@@ -102,7 +102,9 @@ class SQLSource(Source):
                 yield data
 
     def __len__(self):
-        sq = self.compose_query().alias()
-        q = select(columns=[func.count('*')], from_obj=[sq])
+        from_clause = [t.alias for t in self.tables]
+        columns = [func.count('*')]
+        q = select(columns=columns, from_obj=from_clause, use_labels=True)
+        q = self.apply_filters(q)
         rp = self.engine.execute(q)
         return rp.scalar()
