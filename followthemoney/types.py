@@ -15,4 +15,6 @@ TYPES = {
     'email': PropType(exactitude.emails, 'emails'),
     'phone': PropType(exactitude.phones, 'phones'),
     'identifier': PropType(exactitude.identifiers, 'identifiers'),
+    'iban': PropType(exactitude.ibans, 'ibans'),
+    'ip': PropType(exactitude.ips, 'ips'),
 }
