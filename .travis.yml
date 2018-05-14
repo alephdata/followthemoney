@@ -7,8 +7,7 @@ before_install:
   - sudo apt-get install -y libicu-dev
 
 install:
-  - pip install coverage nose responses twine pyicu
-  - pip install -e .
+  - pip install -e ".[dev]"
 
 script:
   - nosetests --with-coverage --cover-package=followthemoney --cover-erase
