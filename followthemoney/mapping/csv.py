@@ -2,7 +2,7 @@ import io
 import os
 import logging
 import requests
-from backports.csv import DictReader
+from csv import DictReader
 from banal import ensure_list
 from normality import stringify
 

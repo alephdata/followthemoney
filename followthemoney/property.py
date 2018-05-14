@@ -27,16 +27,16 @@ class Property(object):
             self.invert = TYPES[self.type_name].invert
         except KeyError:
             raise InvalidModel("Invalid type: %s" % self.type_name)
-    
+
     @property
     def label(self):
         return gettext(self._label)
-    
+
     @property
     def reverse(self):
         if self._reverse is not None:
             return gettext(self._reverse)
-    
+
     @property
     def description(self):
         return gettext(self._description)

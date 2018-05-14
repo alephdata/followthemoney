@@ -16,16 +16,29 @@ setup(
     },
     zip_safe=False,
     install_requires=[
-        'backports.csv',
         'babel',
         'six >= 1.11.0',
         'pyyaml',
         'requests[security] >= 2.18.4',
-        'normality >= 0.5.1',
+        'normality >= 0.6.1',
         'sqlalchemy >= 1.1.14',
         'exactitude >= 2.0.0',
-        'rdflib'
+        'rdflib >= 4.1'
     ],
+    extras_require={
+        'dev': [
+            'pip>=10.0.0',
+            'bumpversion>=0.5.3',
+            'wheel>=0.29.0',
+            'twine',
+            'flake8>=2.6.0',
+            'nose',
+            'transifex-client',
+            'responses>=0.9.0'
+            'coverage>=4.1',
+            'recommonmark>=0.4.0'
+        ]
+    },
     test_suite='nose.collector',
     entry_points={
         'babel.extractors': {
