@@ -34,7 +34,7 @@ setup(
             'flake8>=2.6.0',
             'nose',
             'transifex-client',
-            'responses>=0.9.0'
+            'responses>=0.9.0',
             'coverage>=4.1',
             'recommonmark>=0.4.0'
         ]
