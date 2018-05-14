@@ -12,6 +12,9 @@ BankAccount:
     accountNumber:
       label: Account Number
       type: identifier
+    iban:
+      label: IBAN
+      type: iban
     bic:
       label: Bank Identifier Code
     accountType:
