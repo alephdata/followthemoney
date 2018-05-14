@@ -8,21 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-25 15:06+0200\n"
+"POT-Creation-Date: 2018-05-14 21:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Emina Muratovic <emina@occrp.org>, 2018\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.1\n"
+"Generated-By: Babel 2.5.3\n"
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#. Asset.plural
-#: followthemoney/schema/Asset.yaml
-msgid "Assets"
-msgstr "Imovina"
 
 #. Asset.label
 #. Ownership.properties.asset.label
@@ -30,40 +25,10 @@ msgstr "Imovina"
 msgid "Asset"
 msgstr "Imovina"
 
-#. BankAccount.plural
-#: followthemoney/schema/BankAccount.yaml
-msgid "Bank Accounts"
-msgstr "Bankovni računi"
-
-#. BankAccount.properties.balance.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Balance"
-msgstr "Saldo"
-
-#. BankAccount.properties.accountType.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Account Type"
-msgstr "Tip računa"
-
-#. BankAccount.properties.accountNumber.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Account Number"
-msgstr "Broj računa"
-
-#. BankAccount.properties.bankAddress.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Bank Address"
-msgstr "Adresa banke"
-
-#. BankAccount.properties.bankName.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Bank Name"
-msgstr "Ime banke"
-
-#. BankAccount.properties.bic.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Bank Identifier Code"
-msgstr "Šifra identifikatora banke"
+#. Asset.plural
+#: followthemoney/schema/Asset.yaml
+msgid "Assets"
+msgstr "Imovina"
 
 #. BankAccount.label
 #. EconomicActivity.properties.bankAccount.label
@@ -72,159 +37,61 @@ msgstr "Šifra identifikatora banke"
 msgid "Bank Account"
 msgstr "Bankovni račun"
 
+#. BankAccount.plural
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank Accounts"
+msgstr "Bankovni računi"
+
+#. BankAccount.properties.bankName.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank Name"
+msgstr "Ime banke"
+
+#. BankAccount.properties.accountNumber.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Account Number"
+msgstr "Broj računa"
+
+#. BankAccount.properties.iban.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "IBAN"
+msgstr ""
+
+#. BankAccount.properties.bic.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank Identifier Code"
+msgstr "Šifra identifikatora banke"
+
+#. BankAccount.properties.accountType.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Account Type"
+msgstr "Tip računa"
+
+#. BankAccount.properties.balance.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Balance"
+msgstr "Saldo"
+
+#. BankAccount.properties.bankAddress.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank Address"
+msgstr "Adresa banke"
+
+#. Company.label
+#: followthemoney/schema/Company.yaml
+msgid "Company"
+msgstr "Kompanija"
+
 #. Company.plural
 #: followthemoney/schema/Company.yaml
 msgid "Companies"
 msgstr "Kompanije"
-
-#. Company.properties.fnsCode.description
-#: followthemoney/schema/Company.yaml
-msgid "(RU, ФНС) Federal Tax Service related info"
-msgstr "(RU, ФНС) Povezane informacije sa saveznom poreznom službom"
-
-#. Company.properties.fnsCode.label
-#: followthemoney/schema/Company.yaml
-msgid "Federal tax service code"
-msgstr "Šifra savezne porezne službe"
-
-#. Company.properties.ibcRuc.label
-#: followthemoney/schema/Company.yaml
-msgid "ibcRUC"
-msgstr "ibcRUC"
-
-#. Company.properties.oksmCode.description
-#: followthemoney/schema/Company.yaml
-msgid "Russian (ОКСМ) countries classifer"
-msgstr ""
-
-#. Company.properties.oksmCode.label
-#: followthemoney/schema/Company.yaml
-msgid "OKSM"
-msgstr "OKSM"
-
-#. Company.properties.ogrnCode.description
-#: followthemoney/schema/Company.yaml
-msgid "Major State Registration Number"
-msgstr "Glavni registarski broj države"
-
-#. Company.properties.ogrnCode.label
-#: followthemoney/schema/Company.yaml
-msgid "OGRN"
-msgstr "OGRN"
 
 #. Company.properties.jurisdiction.label
 #. LegalEntity.properties.jurisdiction.label
 #: followthemoney/schema/Company.yaml followthemoney/schema/LegalEntity.yaml
 msgid "Jurisdiction"
 msgstr "Nadležnost"
-
-#. Company.properties.fssCode.description
-#: followthemoney/schema/Company.yaml
-msgid "(RU, ФСС) Social Security"
-msgstr "(RU, ФСС) Socijalno Osiguranje"
-
-#. Company.properties.fssCode.label
-#: followthemoney/schema/Company.yaml
-msgid "FSS"
-msgstr "FSS"
-
-#. Company.properties.vatCode.description
-#: followthemoney/schema/Company.yaml
-msgid "(EU) VAT number"
-msgstr "(EU) VAT broj"
-
-#. Company.properties.vatCode.label
-#: followthemoney/schema/Company.yaml
-msgid "VAT Identifier"
-msgstr "VAT identifikator"
-
-#. Company.properties.coatoCode.label
-#: followthemoney/schema/Company.yaml
-msgid "COATO / SOATO / OKATO"
-msgstr "COATO / SOATO / OKATO"
-
-#. Company.properties.voenCode.description
-#: followthemoney/schema/Company.yaml
-msgid "Azerbaijan taxpayer ID"
-msgstr "ID azerbejdžanskog poreznog obaveznika"
-
-#. Company.properties.voenCode.label
-#: followthemoney/schema/Company.yaml
-msgid "VOEN"
-msgstr "VOEN"
-
-#. Company.properties.irsCode.description
-#: followthemoney/schema/Company.yaml
-msgid "US tax ID"
-msgstr "ID poreza iz US"
-
-#. Company.properties.irsCode.label
-#: followthemoney/schema/Company.yaml
-msgid "IRS Number"
-msgstr "IRS broj"
-
-#. Company.properties.okopfCode.description
-#: followthemoney/schema/Company.yaml
-msgid "(RU, ОКОПФ) What kind of business entity"
-msgstr ""
-
-#. Company.properties.okopfCode.label
-#: followthemoney/schema/Company.yaml
-msgid "OKOPF"
-msgstr "OKOPF"
-
-#. Company.properties.okvedCode.description
-#: followthemoney/schema/Company.yaml
-msgid ""
-"(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
-msgstr ""
-
-#. Company.properties.okvedCode.label
-#: followthemoney/schema/Company.yaml
-msgid "OKVED(2) Classifier"
-msgstr ""
-
-#. Company.properties.kppCode.description
-#: followthemoney/schema/Company.yaml
-msgid "(RU, КПП) in addition to INN for orgs; reason for registration at FNS"
-msgstr ""
-
-#. Company.properties.kppCode.label
-#: followthemoney/schema/Company.yaml
-msgid "KPP"
-msgstr "KPP"
-
-#. Company.properties.ipoCode.label
-#: followthemoney/schema/Company.yaml
-msgid "IPO"
-msgstr "IPO"
-
-#. Company.properties.jibCode.description
-#: followthemoney/schema/Company.yaml
-msgid "Yugoslavia company ID"
-msgstr "ID jugoslovenske kompanije"
-
-#. Company.properties.jibCode.label
-#: followthemoney/schema/Company.yaml
-msgid "JIB"
-msgstr "JIB"
-
-#. Company.properties.mbsCode.label
-#: followthemoney/schema/Company.yaml
-msgid "MBS"
-msgstr "MBS"
-
-#. Company.properties.pfrNumber.description
-#: followthemoney/schema/Company.yaml
-msgid ""
-"(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is "
-"organisation region, BBB is district, CCCCCC number at a specific branch"
-msgstr ""
-
-#. Company.properties.pfrNumber.label
-#: followthemoney/schema/Company.yaml
-msgid "PFR Number"
-msgstr "PFR broj"
 
 #. Company.properties.registrationNumber.label
 #. LegalEntity.properties.registrationNumber.label
@@ -239,34 +106,167 @@ msgstr "Broj registracije"
 msgid "Capital"
 msgstr "Kapital"
 
-#. Company.properties.caemCode.description
+#. Company.properties.voenCode.label
 #: followthemoney/schema/Company.yaml
-msgid "(RO) What kind of activity a legal entity is allowed to develop"
-msgstr ""
+msgid "VOEN"
+msgstr "VOEN"
 
-#. Company.properties.caemCode.label
+#. Company.properties.voenCode.description
 #: followthemoney/schema/Company.yaml
-msgid "COD CAEM"
-msgstr "COD CAEM"
+msgid "Azerbaijan taxpayer ID"
+msgstr "ID azerbejdžanskog poreznog obaveznika"
 
-#. Company.properties.cikCode.description
+#. Company.properties.coatoCode.label
 #: followthemoney/schema/Company.yaml
-msgid "US SEC Central Index Key"
-msgstr ""
+msgid "COATO / SOATO / OKATO"
+msgstr "COATO / SOATO / OKATO"
+
+#. Company.properties.vatCode.label
+#: followthemoney/schema/Company.yaml
+msgid "VAT Identifier"
+msgstr "VAT identifikator"
+
+#. Company.properties.vatCode.description
+#: followthemoney/schema/Company.yaml
+msgid "(EU) VAT number"
+msgstr "(EU) VAT broj"
+
+#. Company.properties.irsCode.label
+#: followthemoney/schema/Company.yaml
+msgid "IRS Number"
+msgstr "IRS broj"
+
+#. Company.properties.irsCode.description
+#: followthemoney/schema/Company.yaml
+msgid "US tax ID"
+msgstr "ID poreza iz US"
+
+#. Company.properties.ipoCode.label
+#: followthemoney/schema/Company.yaml
+msgid "IPO"
+msgstr "IPO"
 
 #. Company.properties.cikCode.label
 #: followthemoney/schema/Company.yaml
 msgid "SEC Central Index Key"
 msgstr "SEC centralni indeksni ključ"
 
-#. Company.label
+#. Company.properties.cikCode.description
 #: followthemoney/schema/Company.yaml
-msgid "Company"
-msgstr "Kompanija"
+msgid "US SEC Central Index Key"
+msgstr "US SEC centralni indeksni ključ"
 
-#. Concession.description
-#: followthemoney/schema/Concession.yaml
-msgid "A grant of land, rights or property. A type of Contract"
+#. Company.properties.jibCode.label
+#: followthemoney/schema/Company.yaml
+msgid "JIB"
+msgstr "JIB"
+
+#. Company.properties.jibCode.description
+#: followthemoney/schema/Company.yaml
+msgid "Yugoslavia company ID"
+msgstr "ID jugoslovenske kompanije"
+
+#. Company.properties.mbsCode.label
+#: followthemoney/schema/Company.yaml
+msgid "MBS"
+msgstr "MBS"
+
+#. Company.properties.ibcRuc.label
+#: followthemoney/schema/Company.yaml
+msgid "ibcRUC"
+msgstr "ibcRUC"
+
+#. Company.properties.caemCode.label
+#: followthemoney/schema/Company.yaml
+msgid "COD CAEM"
+msgstr "COD CAEM"
+
+#. Company.properties.caemCode.description
+#: followthemoney/schema/Company.yaml
+msgid "(RO) What kind of activity a legal entity is allowed to develop"
+msgstr ""
+
+#. Company.properties.kppCode.label
+#: followthemoney/schema/Company.yaml
+msgid "KPP"
+msgstr "KPP"
+
+#. Company.properties.kppCode.description
+#: followthemoney/schema/Company.yaml
+msgid "(RU, КПП) in addition to INN for orgs; reason for registration at FNS"
+msgstr ""
+
+#. Company.properties.okvedCode.label
+#: followthemoney/schema/Company.yaml
+msgid "OKVED(2) Classifier"
+msgstr ""
+
+#. Company.properties.okvedCode.description
+#: followthemoney/schema/Company.yaml
+msgid ""
+"(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
+msgstr ""
+
+#. Company.properties.okopfCode.label
+#: followthemoney/schema/Company.yaml
+msgid "OKOPF"
+msgstr "OKOPF"
+
+#. Company.properties.okopfCode.description
+#: followthemoney/schema/Company.yaml
+msgid "(RU, ОКОПФ) What kind of business entity"
+msgstr ""
+
+#. Company.properties.fnsCode.label
+#: followthemoney/schema/Company.yaml
+msgid "Federal tax service code"
+msgstr "Šifra savezne porezne službe"
+
+#. Company.properties.fnsCode.description
+#: followthemoney/schema/Company.yaml
+msgid "(RU, ФНС) Federal Tax Service related info"
+msgstr "(RU, ФНС) Povezane informacije sa saveznom poreznom službom"
+
+#. Company.properties.fssCode.label
+#: followthemoney/schema/Company.yaml
+msgid "FSS"
+msgstr "FSS"
+
+#. Company.properties.fssCode.description
+#: followthemoney/schema/Company.yaml
+msgid "(RU, ФСС) Social Security"
+msgstr "(RU, ФСС) Socijalno Osiguranje"
+
+#. Company.properties.ogrnCode.label
+#: followthemoney/schema/Company.yaml
+msgid "OGRN"
+msgstr "OGRN"
+
+#. Company.properties.ogrnCode.description
+#: followthemoney/schema/Company.yaml
+msgid "Major State Registration Number"
+msgstr "Glavni registarski broj države"
+
+#. Company.properties.pfrNumber.label
+#: followthemoney/schema/Company.yaml
+msgid "PFR Number"
+msgstr "PFR broj"
+
+#. Company.properties.pfrNumber.description
+#: followthemoney/schema/Company.yaml
+msgid ""
+"(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is "
+"organisation region, BBB is district, CCCCCC number at a specific branch"
+msgstr ""
+
+#. Company.properties.oksmCode.label
+#: followthemoney/schema/Company.yaml
+msgid "OKSM"
+msgstr "OKSM"
+
+#. Company.properties.oksmCode.description
+#: followthemoney/schema/Company.yaml
+msgid "Russian (ОКСМ) countries classifer"
 msgstr ""
 
 #. Concession.label
@@ -274,21 +274,40 @@ msgstr ""
 msgid "Concession"
 msgstr "Koncesija"
 
+#. Concession.description
+#: followthemoney/schema/Concession.yaml
+msgid "A grant of land, rights or property. A type of Contract"
+msgstr ""
+
 #. Concession.plural
 #: followthemoney/schema/Concession.yaml
 msgid "Concessions"
 msgstr "Koncesije"
-
-#. Concession.properties.commodities.label
-#: followthemoney/schema/Concession.yaml
-msgid "Commodities"
-msgstr ""
 
 #. Concession.properties.area.label
 #. RealEstate.properties.area.label
 #: followthemoney/schema/Concession.yaml followthemoney/schema/RealEstate.yaml
 msgid "Area"
 msgstr ""
+
+#. Concession.properties.commodities.label
+#: followthemoney/schema/Concession.yaml
+msgid "Commodities"
+msgstr ""
+
+#. Contract.label
+#. ContractAward.properties.contract.label
+#: followthemoney/schema/Contract.yaml
+#: followthemoney/schema/ContractAward.yaml
+msgid "Contract"
+msgstr "Ugovor"
+
+#. Contract.plural
+#. ContractAward.properties.contract.plural
+#: followthemoney/schema/Contract.yaml
+#: followthemoney/schema/ContractAward.yaml
+msgid "Contracts"
+msgstr "Ugovori"
 
 #. Contract.description
 #: followthemoney/schema/Contract.yaml
@@ -297,12 +316,43 @@ msgid ""
 "awarded to different suppliers (see ContractAward)."
 msgstr ""
 
-#. Contract.plural
-#. ContractAward.properties.contract.plural
+#. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
-#: followthemoney/schema/ContractAward.yaml
-msgid "Contracts"
-msgstr "Ugovori"
+msgid "Contract authority"
+msgstr ""
+
+#. Contract.properties.authority.plural
+#: followthemoney/schema/Contract.yaml
+msgid "Contract authorities"
+msgstr ""
+
+#. Contract.properties.authority.reverse
+#: followthemoney/schema/Contract.yaml
+msgid "Contracts issued"
+msgstr ""
+
+#. Contract.properties.type.label
+#. CourtCase.properties.type.label
+#. Vessel.properties.type.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
+#: followthemoney/schema/Vessel.yaml
+msgid "Type"
+msgstr "Tip"
+
+#. Contract.properties.type.description
+#: followthemoney/schema/Contract.yaml
+msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
+msgstr ""
+
+#. Contract.properties.contractDate.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract date"
+msgstr "Datum ugovora"
+
+#. Contract.properties.procedureNumber.label
+#: followthemoney/schema/Contract.yaml
+msgid "Procedure number"
+msgstr "Broj procedure"
 
 #. Contract.properties.noticeId.label
 #: followthemoney/schema/Contract.yaml
@@ -314,59 +364,14 @@ msgstr ""
 msgid "Number of awards"
 msgstr "Broj nagrada"
 
-#. Contract.properties.contractDate.label
-#: followthemoney/schema/Contract.yaml
-msgid "Contract date"
-msgstr ""
-
 #. Contract.properties.cancelled.label
 #: followthemoney/schema/Contract.yaml
 msgid "Cancelled?"
 msgstr "Otkazan?"
 
-#. Contract.properties.type.description
-#: followthemoney/schema/Contract.yaml
-msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
-msgstr ""
-
-#. Contract.properties.type.label
-#. CourtCase.properties.type.label
-#. Vessel.properties.type.label
-#: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
-#: followthemoney/schema/Vessel.yaml
-msgid "Type"
-msgstr "Tip"
-
-#. Contract.properties.authority.plural
-#: followthemoney/schema/Contract.yaml
-msgid "Contract authorities"
-msgstr ""
-
-#. Contract.properties.authority.label
-#: followthemoney/schema/Contract.yaml
-msgid "Contract authority"
-msgstr ""
-
-#. Contract.properties.authority.reverse
-#: followthemoney/schema/Contract.yaml
-msgid "Contracts issued"
-msgstr ""
-
-#. Contract.properties.procedureNumber.label
-#: followthemoney/schema/Contract.yaml
-msgid "Procedure number"
-msgstr "Broj procedure"
-
-#. Contract.label
-#. ContractAward.properties.contract.label
-#: followthemoney/schema/Contract.yaml
+#. ContractAward.label
 #: followthemoney/schema/ContractAward.yaml
-msgid "Contract"
-msgstr "Ugovor"
-
-#. ContractAward.description
-#: followthemoney/schema/ContractAward.yaml
-msgid "A contract or contract lot as awarded to a supplier."
+msgid "Contract Lot Award"
 msgstr ""
 
 #. ContractAward.plural
@@ -374,29 +379,9 @@ msgstr ""
 msgid "Contract Awards"
 msgstr ""
 
-#. ContractAward.properties.amended.description
+#. ContractAward.description
 #: followthemoney/schema/ContractAward.yaml
-msgid "Was this award amended, modified or updated by a subsequent document?"
-msgstr ""
-
-#. ContractAward.properties.amended.label
-#: followthemoney/schema/ContractAward.yaml
-msgid "Amended?"
-msgstr ""
-
-#. ContractAward.properties.documentType.label
-#: followthemoney/schema/ContractAward.yaml
-msgid "Document type"
-msgstr "Tip dokumenta"
-
-#. ContractAward.properties.contract.reverse
-#: followthemoney/schema/ContractAward.yaml
-msgid "Lots awarded"
-msgstr ""
-
-#. ContractAward.properties.supplier.reverse
-#: followthemoney/schema/ContractAward.yaml
-msgid "Contracts awarded"
+msgid "A contract or contract lot as awarded to a supplier."
 msgstr ""
 
 #. ContractAward.properties.supplier.label
@@ -409,9 +394,24 @@ msgstr ""
 msgid "Suppliers"
 msgstr ""
 
+#. ContractAward.properties.supplier.reverse
+#: followthemoney/schema/ContractAward.yaml
+msgid "Contracts awarded"
+msgstr ""
+
 #. ContractAward.properties.supplier.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "The entity the contract was awarded to"
+msgstr ""
+
+#. ContractAward.properties.contract.reverse
+#: followthemoney/schema/ContractAward.yaml
+msgid "Lots awarded"
+msgstr ""
+
+#. ContractAward.properties.lotNumber.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "Lot number"
 msgstr ""
 
 #. ContractAward.properties.documentNumber.label
@@ -419,9 +419,19 @@ msgstr ""
 msgid "Document number"
 msgstr "Broj dokumenta"
 
-#. ContractAward.properties.lotNumber.label
+#. ContractAward.properties.documentType.label
 #: followthemoney/schema/ContractAward.yaml
-msgid "Lot number"
+msgid "Document type"
+msgstr "Tip dokumenta"
+
+#. ContractAward.properties.decisionReason.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "Decision reason"
+msgstr "Razlog odluke"
+
+#. ContractAward.properties.cpvCode.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "CPV Code"
 msgstr ""
 
 #. ContractAward.properties.cpvCode.description
@@ -429,30 +439,30 @@ msgstr ""
 msgid "Contract Procurement Vocabulary (what type of goods/services, EU)"
 msgstr ""
 
-#. ContractAward.properties.cpvCode.label
+#. ContractAward.properties.nutsCode.label
 #: followthemoney/schema/ContractAward.yaml
-msgid "CPV Code"
-msgstr ""
+msgid "NUTS Code"
+msgstr "NUTS kod"
 
 #. ContractAward.properties.nutsCode.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "Nomencalture of Territorial Units for Statistics (NUTS)"
 msgstr ""
 
-#. ContractAward.properties.nutsCode.label
+#. ContractAward.properties.amended.label
 #: followthemoney/schema/ContractAward.yaml
-msgid "NUTS Code"
+msgid "Amended?"
 msgstr ""
 
-#. ContractAward.properties.decisionReason.label
+#. ContractAward.properties.amended.description
 #: followthemoney/schema/ContractAward.yaml
-msgid "Decision reason"
-msgstr "Razlog odluke"
-
-#. ContractAward.label
-#: followthemoney/schema/ContractAward.yaml
-msgid "Contract Lot Award"
+msgid "Was this award amended, modified or updated by a subsequent document?"
 msgstr ""
+
+#. CourtCase.label
+#: followthemoney/schema/CourtCase.yaml
+msgid "Court case"
+msgstr "Sudski predmet"
 
 #. CourtCase.plural
 #. CourtCaseParty.properties.party.reverse
@@ -474,15 +484,11 @@ msgstr "Kategorija"
 msgid "Status"
 msgstr "Status"
 
-#. CourtCase.properties.court.label
-#: followthemoney/schema/CourtCase.yaml
-msgid "Court"
-msgstr "Sud"
-
-#. CourtCase.properties.caseNumber.label
-#: followthemoney/schema/CourtCase.yaml
-msgid "Case number"
-msgstr "Broj slučaja"
+#. CourtCase.properties.name.label
+#. Thing.properties.name.label
+#: followthemoney/schema/CourtCase.yaml followthemoney/schema/Thing.yaml
+msgid "Name"
+msgstr "Naziv"
 
 #. CourtCase.properties.country.label
 #. Event.properties.country.label
@@ -492,26 +498,31 @@ msgstr "Broj slučaja"
 msgid "Country"
 msgstr "Država"
 
-#. CourtCase.properties.closeDate.label
+#. CourtCase.properties.caseNumber.label
 #: followthemoney/schema/CourtCase.yaml
-msgid "Close date"
-msgstr "Darum zatvaranja"
+msgid "Case number"
+msgstr "Broj slučaja"
+
+#. CourtCase.properties.court.label
+#: followthemoney/schema/CourtCase.yaml
+msgid "Court"
+msgstr "Sud"
 
 #. CourtCase.properties.fileDate.label
 #: followthemoney/schema/CourtCase.yaml
 msgid "File date"
 msgstr "Datum fajla"
 
-#. CourtCase.properties.name.label
-#. Thing.properties.name.label
-#: followthemoney/schema/CourtCase.yaml followthemoney/schema/Thing.yaml
-msgid "Name"
-msgstr "Naziv"
-
-#. CourtCase.label
+#. CourtCase.properties.closeDate.label
 #: followthemoney/schema/CourtCase.yaml
-msgid "Court case"
-msgstr "Sudski predmet"
+msgid "Close date"
+msgstr "Darum zatvaranja"
+
+#. CourtCaseParty.label
+#. CourtCaseParty.properties.party.label
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "Party"
+msgstr "Stranka"
 
 #. CourtCaseParty.properties.case.label
 #: followthemoney/schema/CourtCaseParty.yaml
@@ -523,11 +534,10 @@ msgstr "Slučaj"
 msgid "Parties"
 msgstr ""
 
-#. CourtCaseParty.properties.party.label
-#. CourtCaseParty.label
-#: followthemoney/schema/CourtCaseParty.yaml
-msgid "Party"
-msgstr "Stranka"
+#. Directorship.label
+#: followthemoney/schema/Directorship.yaml
+msgid "Directorship"
+msgstr "Direktorski položaj"
 
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
@@ -551,61 +561,61 @@ msgstr "Organizacija"
 #. Directorship.properties.organization.reverse
 #: followthemoney/schema/Directorship.yaml
 msgid "Directors"
-msgstr ""
+msgstr "Direktori"
 
 #. Directorship.properties.secretary.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Secretary"
 msgstr "Sekretar"
 
-#. Directorship.label
-#: followthemoney/schema/Directorship.yaml
-msgid "Directorship"
-msgstr "Direktorski položaj"
-
-#. Package.plural
+#. Document.label
 #: followthemoney/schema/Document.yaml
-msgid "Packages"
-msgstr ""
+msgid "File"
+msgstr "Fajl"
 
-#. Package.label
+#. Document.plural
 #: followthemoney/schema/Document.yaml
-msgid "Package"
-msgstr ""
-
-#. PlainText.plural
-#: followthemoney/schema/Document.yaml
-msgid "Text files"
-msgstr "Tekstualni fajlovi"
+msgid "Files"
+msgstr "Fajlovi"
 
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
 msgid "Text file"
 msgstr "Tekstualni fajl"
 
-#. Image.plural
+#. PlainText.plural
 #: followthemoney/schema/Document.yaml
-msgid "Images"
-msgstr "Slike"
-
-#. Image.label
-#: followthemoney/schema/Document.yaml
-msgid "Image"
-msgstr "Slika"
-
-#. Pages.plural
-#: followthemoney/schema/Document.yaml
-msgid "Documents"
-msgstr "Dokumenti"
+msgid "Text files"
+msgstr "Tekstualni fajlovi"
 
 #. Pages.label
 #: followthemoney/schema/Document.yaml
 msgid "Document"
 msgstr "Dokument"
 
-#. Workbook.plural
+#. Pages.plural
 #: followthemoney/schema/Document.yaml
-msgid "Workbooks"
+msgid "Documents"
+msgstr "Dokumenti"
+
+#. Folder.label
+#: followthemoney/schema/Document.yaml
+msgid "Folder"
+msgstr "Folder"
+
+#. Folder.plural
+#: followthemoney/schema/Document.yaml
+msgid "Folders"
+msgstr "Folderi"
+
+#. Package.label
+#: followthemoney/schema/Document.yaml
+msgid "Package"
+msgstr ""
+
+#. Package.plural
+#: followthemoney/schema/Document.yaml
+msgid "Packages"
 msgstr ""
 
 #. Workbook.label
@@ -613,40 +623,50 @@ msgstr ""
 msgid "Workbook"
 msgstr ""
 
-#. Table.plural
+#. Workbook.plural
 #: followthemoney/schema/Document.yaml
-msgid "Tables"
-msgstr "Tabele"
+msgid "Workbooks"
+msgstr ""
 
-#. Table.label
+#. Image.label
 #: followthemoney/schema/Document.yaml
-msgid "Table"
-msgstr "Tabela"
+msgid "Image"
+msgstr "Slika"
 
-#. Folder.plural
+#. Image.plural
 #: followthemoney/schema/Document.yaml
-msgid "Folders"
-msgstr "Folderi"
+msgid "Images"
+msgstr "Slike"
 
-#. Folder.label
+#. Video.label
 #: followthemoney/schema/Document.yaml
-msgid "Folder"
-msgstr "Folder"
+msgid "Video"
+msgstr ""
 
-#. Document.plural
+#. Video.plural
 #: followthemoney/schema/Document.yaml
-msgid "Files"
-msgstr "Fajlovi"
+msgid "Videos"
+msgstr ""
 
-#. Document.label
+#. Audio.label
 #: followthemoney/schema/Document.yaml
-msgid "File"
-msgstr "Fajl"
+msgid "Audio"
+msgstr ""
 
-#. Email.plural
+#. Audio.plural
 #: followthemoney/schema/Document.yaml
-msgid "E-Mails"
-msgstr "Mailovi"
+msgid "Audio files"
+msgstr ""
+
+#. HyperText.label
+#: followthemoney/schema/Document.yaml
+msgid "Web page"
+msgstr "Web stranica"
+
+#. HyperText.plural
+#: followthemoney/schema/Document.yaml
+msgid "Web pages"
+msgstr "Web stranice"
 
 #. Email.label
 #. LegalEntity.properties.email.label
@@ -654,19 +674,24 @@ msgstr "Mailovi"
 msgid "E-Mail"
 msgstr "Mail"
 
-#. HyperText.plural
+#. Email.plural
 #: followthemoney/schema/Document.yaml
-msgid "Web pages"
-msgstr "Web stranice"
+msgid "E-Mails"
+msgstr "Mailovi"
 
-#. HyperText.label
+#. Table.label
 #: followthemoney/schema/Document.yaml
-msgid "Web page"
-msgstr "Web stranica"
+msgid "Table"
+msgstr "Tabela"
 
-#. EconomicActivity.description
+#. Table.plural
+#: followthemoney/schema/Document.yaml
+msgid "Tables"
+msgstr "Tabele"
+
+#. EconomicActivity.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "An economic activity"
+msgid "Economic Activity"
 msgstr ""
 
 #. EconomicActivity.plural
@@ -674,39 +699,34 @@ msgstr ""
 msgid "Economic Activities"
 msgstr ""
 
-#. EconomicActivity.properties.bankAccount.description
+#. EconomicActivity.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Bank account of the contract"
+msgid "An economic activity"
 msgstr ""
 
-#. EconomicActivity.properties.declarant.label
+#. EconomicActivity.properties.contract.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Declarant"
+msgid "Associated contract"
 msgstr ""
 
-#. EconomicActivity.properties.declarant.description
+#. EconomicActivity.properties.contract.reverse
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs declarant"
+msgid "Used in customs"
 msgstr ""
 
-#. EconomicActivity.properties.declarant.reverse
+#. EconomicActivity.properties.ccdNumber.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs declarations"
+msgid "Customs Cargo Declaration Number"
 msgstr ""
 
-#. EconomicActivity.properties.bankRub.description
+#. EconomicActivity.properties.ccdValue.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Bank account for payments in roubles"
+msgid "CCD Value"
 msgstr ""
 
-#. EconomicActivity.properties.bankRub.label
+#. EconomicActivity.properties.ccdValue.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Rouble bank"
-msgstr ""
-
-#. EconomicActivity.properties.directionOfTransportation.description
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Direction of transportation (import/export)"
+msgid "Declaration Value"
 msgstr ""
 
 #. EconomicActivity.properties.directionOfTransportation.label
@@ -714,71 +734,40 @@ msgstr ""
 msgid "Direction of transportation"
 msgstr ""
 
-#. EconomicActivity.properties.vedCode.description
+#. EconomicActivity.properties.directionOfTransportation.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "(Код ТН ВЭД) Foreign Economic Activity Commodity Code"
+msgid "Direction of transportation (import/export)"
+msgstr ""
+
+#. EconomicActivity.properties.customsProcedure.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Procedure"
+msgstr ""
+
+#. EconomicActivity.properties.customsProcedure.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs Procedure — type of customs clearance"
 msgstr ""
 
 #. EconomicActivity.properties.vedCode.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "FEAC Code"
+msgstr "FEAC kod"
+
+#. EconomicActivity.properties.vedCode.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "(Код ТН ВЭД) Foreign Economic Activity Commodity Code"
 msgstr ""
 
-#. EconomicActivity.properties.departureCountry.description
+#. EconomicActivity.properties.vedCodeDescription.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Country out of which the goods are transported"
+msgid "FEAC Code description"
 msgstr ""
 
-#. EconomicActivity.properties.departureCountry.label
+#. EconomicActivity.properties.vedCodeDescription.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Country of departure"
-msgstr ""
-
-#. EconomicActivity.properties.invoiceAmount.description
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Invoice Value of goods"
-msgstr ""
-
-#. EconomicActivity.properties.invoiceAmount.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Invoice Value Amount"
-msgstr ""
-
-#. EconomicActivity.properties.bankForeign.description
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Bank account for payments in foreign currency"
-msgstr ""
-
-#. EconomicActivity.properties.bankForeign.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Foreign currency bank"
-msgstr ""
-
-#. EconomicActivity.properties.originCountry.description
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Country of origin of goods"
-msgstr ""
-
-#. EconomicActivity.properties.originCountry.label
-#. LegalEntity.properties.mainCountry.label
-#: followthemoney/schema/EconomicActivity.yaml
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Country of origin"
-msgstr "Zemlja podrijekla"
-
-#. EconomicActivity.properties.dollarExchRate.description
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "USD Exchange Rate for the activity"
-msgstr ""
-
-#. EconomicActivity.properties.dollarExchRate.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "USD Exchange Rate"
-msgstr ""
-
-#. EconomicActivity.properties.goodsDescription.description
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Description of goods"
+msgid ""
+"(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
 msgstr ""
 
 #. EconomicActivity.properties.goodsDescription.label
@@ -788,29 +777,34 @@ msgstr ""
 msgid "Description"
 msgstr "Opis"
 
-#. EconomicActivity.properties.ccdValue.description
+#. EconomicActivity.properties.goodsDescription.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Declaration Value"
+msgid "Description of goods"
 msgstr ""
 
-#. EconomicActivity.properties.ccdValue.label
+#. EconomicActivity.properties.declarant.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "CCD Value"
+msgid "Declarant"
 msgstr ""
 
-#. EconomicActivity.properties.customsAmount.description
+#. EconomicActivity.properties.declarant.reverse
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs Value of goods"
+msgid "Customs declarations"
 msgstr ""
 
-#. EconomicActivity.properties.customsAmount.label
+#. EconomicActivity.properties.declarant.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs Value Amount"
+msgid "Customs declarant"
 msgstr ""
 
 #. EconomicActivity.properties.sender.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Sender"
+msgstr "Pošiljalac"
+
+#. EconomicActivity.properties.sender.reverse
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Goods originated"
 msgstr ""
 
 #. EconomicActivity.properties.sender.description
@@ -818,14 +812,29 @@ msgstr ""
 msgid "Origin of the goods"
 msgstr ""
 
-#. EconomicActivity.properties.sender.reverse
+#. EconomicActivity.properties.receiver.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Goods originated"
+msgid "Receiver"
+msgstr "Primalac"
+
+#. EconomicActivity.properties.receiver.reverse
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Goods received"
+msgstr ""
+
+#. EconomicActivity.properties.receiver.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Destination of the goods"
 msgstr ""
 
 #. EconomicActivity.properties.contractHolder.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Contract holder"
+msgstr "Nositelj ugovora"
+
+#. EconomicActivity.properties.contractHolder.reverse
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Economic activities"
 msgstr ""
 
 #. EconomicActivity.properties.contractHolder.description
@@ -833,34 +842,39 @@ msgstr ""
 msgid "Customs formalities caretaker"
 msgstr ""
 
-#. EconomicActivity.properties.contractHolder.reverse
+#. EconomicActivity.properties.invoiceAmount.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Economic activities"
+msgid "Invoice Value Amount"
 msgstr ""
 
-#. EconomicActivity.properties.contract.reverse
+#. EconomicActivity.properties.invoiceAmount.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Used in customs"
+msgid "Invoice Value of goods"
 msgstr ""
 
-#. EconomicActivity.properties.contract.label
+#. EconomicActivity.properties.customsAmount.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Associated contract"
+msgid "Customs Value Amount"
 msgstr ""
 
-#. EconomicActivity.properties.customsProcedure.description
+#. EconomicActivity.properties.customsAmount.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs Procedure — type of customs clearance"
+msgid "Customs Value of goods"
 msgstr ""
 
-#. EconomicActivity.properties.customsProcedure.label
+#. EconomicActivity.properties.dollarExchRate.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs Procedure"
+msgid "USD Exchange Rate"
 msgstr ""
 
-#. EconomicActivity.properties.ccdNumber.label
+#. EconomicActivity.properties.dollarExchRate.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs Cargo Declaration Number"
+msgid "USD Exchange Rate for the activity"
+msgstr ""
+
+#. EconomicActivity.properties.tradingCountry.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Trading Country"
 msgstr ""
 
 #. EconomicActivity.properties.tradingCountry.description
@@ -869,51 +883,62 @@ msgid ""
 "Trading Country of the company which transports the goods via Russian border"
 msgstr ""
 
-#. EconomicActivity.properties.tradingCountry.label
+#. EconomicActivity.properties.departureCountry.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Trading Country"
+msgid "Country of departure"
+msgstr "Zemlja polaska"
+
+#. EconomicActivity.properties.departureCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country out of which the goods are transported"
 msgstr ""
 
-#. EconomicActivity.properties.vedCodeDescription.description
+#. EconomicActivity.properties.destinationCountry.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid ""
-"(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
-msgstr ""
-
-#. EconomicActivity.properties.vedCodeDescription.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "FEAC Code description"
-msgstr ""
-
-#. EconomicActivity.properties.receiver.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Receiver"
-msgstr ""
-
-#. EconomicActivity.properties.receiver.description
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Destination of the goods"
-msgstr ""
-
-#. EconomicActivity.properties.receiver.reverse
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Goods received"
-msgstr ""
+msgid "Country of destination"
+msgstr "Zemlja odredišta"
 
 #. EconomicActivity.properties.destinationCountry.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Final destination for the goods"
 msgstr ""
 
-#. EconomicActivity.properties.destinationCountry.label
+#. EconomicActivity.properties.originCountry.label
+#. LegalEntity.properties.mainCountry.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Country of destination"
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Country of origin"
+msgstr "Zemlja podrijekla"
+
+#. EconomicActivity.properties.originCountry.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Country of origin of goods"
 msgstr ""
 
-#. EconomicActivity.label
+#. EconomicActivity.properties.bankAccount.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Economic Activity"
+msgid "Bank account of the contract"
+msgstr "Račun banke ugovora"
+
+#. EconomicActivity.properties.bankRub.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Rouble bank"
 msgstr ""
+
+#. EconomicActivity.properties.bankRub.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank account for payments in roubles"
+msgstr ""
+
+#. EconomicActivity.properties.bankForeign.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Foreign currency bank"
+msgstr "Devizna banka"
+
+#. EconomicActivity.properties.bankForeign.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank account for payments in foreign currency"
+msgstr "Račun banke za plaćanja u stranoj valuti"
 
 #. Event.label
 #: followthemoney/schema/Event.yaml
@@ -925,15 +950,15 @@ msgstr "Događaj"
 msgid "Location"
 msgstr "Lokacija"
 
-#. Interest.properties.role.label
-#: followthemoney/schema/Interest.yaml
-msgid "Role"
-msgstr "Uloga"
-
 #. Interest.label
 #: followthemoney/schema/Interest.yaml
 msgid "Interest"
 msgstr "Interesovanje"
+
+#. Interest.properties.role.label
+#: followthemoney/schema/Interest.yaml
+msgid "Role"
+msgstr "Uloga"
 
 #. Interval.label
 #: followthemoney/schema/Interval.yaml
@@ -945,11 +970,6 @@ msgstr "Interval"
 msgid "Start date"
 msgstr "Datum početka"
 
-#. Interval.properties.sourceUrl.label
-#: followthemoney/schema/Interval.yaml
-msgid "Source URL"
-msgstr "URL izvora"
-
 #. Interval.properties.endDate.label
 #: followthemoney/schema/Interval.yaml
 msgid "End date"
@@ -960,111 +980,166 @@ msgstr "Datum završetka"
 msgid "Date"
 msgstr "Datum"
 
-#. Interval.properties.recordId.label
-#: followthemoney/schema/Interval.yaml
-msgid "Record ID"
-msgstr "ID zapisa"
-
 #. Interval.properties.summary.label
 #. Thing.properties.summary.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Summary"
 msgstr "Opis"
 
-#. LegalEntity.description
+#. Interval.properties.recordId.label
+#: followthemoney/schema/Interval.yaml
+msgid "Record ID"
+msgstr "ID zapisa"
+
+#. Interval.properties.sourceUrl.label
+#: followthemoney/schema/Interval.yaml
+msgid "Source URL"
+msgstr "URL izvora"
+
+#. LegalEntity.label
 #: followthemoney/schema/LegalEntity.yaml
-msgid "A legal entity may be a person or a company."
-msgstr "Legalni entitet može biti osoba ili kompanija."
+msgid "Legal entity"
+msgstr "Legalni entitet"
 
 #. LegalEntity.plural
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Legal entities"
 msgstr "Legalni entiteti"
 
-#. LegalEntity.properties.website.description
+#. LegalEntity.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Website address"
-msgstr "Adresa web stranice"
+msgid "A legal entity may be a person or a company."
+msgstr "Legalni entitet može biti osoba ili kompanija."
 
-#. LegalEntity.properties.website.label
+#. LegalEntity.properties.email.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Website"
-msgstr "Web stranica"
-
-#. LegalEntity.properties.incorporationDate.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "The date the legal entity was incorporated"
-msgstr "Datum kada je legalni entitet pripojen"
-
-#. LegalEntity.properties.incorporationDate.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Incorporation date"
-msgstr "Datum inkorporacije"
-
-#. LegalEntity.properties.classification.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Classification"
-msgstr "Klasifikacija"
-
-#. LegalEntity.properties.taxNumber.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Tax ID number"
-msgstr "ID broj poreza"
-
-#. LegalEntity.properties.taxNumber.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Tax ID Number"
-msgstr "ID Broj Poreza"
-
-#. LegalEntity.properties.jurisdiction.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Country or region in which this entity operates"
-msgstr "Država i regija u kojoj ovaj entitet djeluje"
-
-#. LegalEntity.properties.idNumber.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "ID number of any applicable ID"
-msgstr ""
-
-#. LegalEntity.properties.idNumber.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "ID Number"
-msgstr "ID broj"
-
-#. LegalEntity.properties.phone.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Phone number"
-msgstr "Broj telefona"
+msgid "Email address"
+msgstr "Mail adresa"
 
 #. LegalEntity.properties.phone.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Phone"
 msgstr "Telefon"
 
-#. LegalEntity.properties.dissolutionDate.description
+#. LegalEntity.properties.phone.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "The date the legal entity was dissolved, if applicable"
-msgstr ""
+msgid "Phone number"
+msgstr "Broj telefona"
+
+#. LegalEntity.properties.website.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Website"
+msgstr "Web stranica"
+
+#. LegalEntity.properties.website.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Website address"
+msgstr "Adresa web stranice"
+
+#. LegalEntity.properties.legalForm.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Legal form"
+msgstr "Legalna forma"
+
+#. LegalEntity.properties.incorporationDate.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Incorporation date"
+msgstr "Datum inkorporacije"
+
+#. LegalEntity.properties.incorporationDate.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "The date the legal entity was incorporated"
+msgstr "Datum kada je legalni entitet pripojen"
 
 #. LegalEntity.properties.dissolutionDate.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Dissolution date"
 msgstr ""
 
-#. LegalEntity.properties.icijId.description
+#. LegalEntity.properties.dissolutionDate.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "ID according to International Consortium for Investigative Journalists"
-msgstr ""
-
-#. LegalEntity.properties.icijId.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "ICIJ ID"
+msgid "The date the legal entity was dissolved, if applicable"
 msgstr ""
 
 #. LegalEntity.properties.taxStatus.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax status"
 msgstr "Status poreza"
+
+#. LegalEntity.properties.sector.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Sector"
+msgstr "Sektor"
+
+#. LegalEntity.properties.classification.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Classification"
+msgstr "Klasifikacija"
+
+#. LegalEntity.properties.registrationNumber.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Company registration number"
+msgstr "Broj registracije države"
+
+#. LegalEntity.properties.idNumber.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "ID Number"
+msgstr "ID broj"
+
+#. LegalEntity.properties.idNumber.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "ID number of any applicable ID"
+msgstr ""
+
+#. LegalEntity.properties.taxNumber.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Tax ID Number"
+msgstr "ID Broj Poreza"
+
+#. LegalEntity.properties.taxNumber.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Tax ID number"
+msgstr "ID broj poreza"
+
+#. LegalEntity.properties.jurisdiction.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Country or region in which this entity operates"
+msgstr "Država i regija u kojoj ovaj entitet djeluje"
+
+#. LegalEntity.properties.mainCountry.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Primary country of this entity"
+msgstr "Primarna država ovog entiteta"
+
+#. LegalEntity.properties.icijId.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "ICIJ ID"
+msgstr "ICIJ ID"
+
+#. LegalEntity.properties.icijId.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "ID according to International Consortium for Investigative Journalists"
+msgstr ""
+
+#. LegalEntity.properties.okpoCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "OKPO"
+msgstr "OKPO"
+
+#. LegalEntity.properties.okpoCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Russian industry classifier"
+msgstr ""
+
+#. LegalEntity.properties.innCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "INN"
+msgstr "INN"
+
+#. LegalEntity.properties.innCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Russian company ID"
+msgstr "ID ruske kompanije"
 
 #. LegalEntity.properties.parent.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -1083,55 +1158,10 @@ msgid ""
 "its parent"
 msgstr ""
 
-#. LegalEntity.properties.sector.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Sector"
-msgstr "Sektor"
-
-#. LegalEntity.properties.mainCountry.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Primary country of this entity"
-msgstr "Primarna država ovog entiteta"
-
-#. LegalEntity.properties.innCode.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Russian company ID"
-msgstr "ID ruske kompanije"
-
-#. LegalEntity.properties.innCode.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "INN"
-msgstr "INN"
-
-#. LegalEntity.properties.legalForm.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Legal form"
-msgstr "Legalna forma"
-
-#. LegalEntity.properties.registrationNumber.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Company registration number"
-msgstr "Broj registracije države"
-
-#. LegalEntity.properties.email.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Email address"
-msgstr "Mail adresa"
-
-#. LegalEntity.properties.okpoCode.description
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Russian industry classifier"
-msgstr ""
-
-#. LegalEntity.properties.okpoCode.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "OKPO"
-msgstr "OKPO"
-
-#. LegalEntity.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Legal entity"
-msgstr "Legalni entitet"
+#. Membership.label
+#: followthemoney/schema/Membership.yaml
+msgid "Membership"
+msgstr "Članstvo"
 
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
@@ -1141,37 +1171,22 @@ msgstr "Član"
 #. Membership.properties.member.reverse
 #: followthemoney/schema/Membership.yaml
 msgid "Memberships"
-msgstr ""
+msgstr "Članstvo"
 
 #. Membership.properties.organization.reverse
 #: followthemoney/schema/Membership.yaml
 msgid "Members"
-msgstr ""
-
-#. Membership.label
-#: followthemoney/schema/Membership.yaml
-msgid "Membership"
-msgstr "Članstvo"
+msgstr "Članovi"
 
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
 msgid "Organizations"
 msgstr "Organizacije"
 
-#. Ownership.properties.legalBasis.label
+#. Ownership.label
 #: followthemoney/schema/Ownership.yaml
-msgid "Legal basis"
-msgstr ""
-
-#. Ownership.properties.ownershipType.label
-#: followthemoney/schema/Ownership.yaml
-msgid "Type of ownership"
-msgstr "Tip vlasništva"
-
-#. Ownership.properties.sharesCurrency.label
-#: followthemoney/schema/Ownership.yaml
-msgid "Currency of shares"
-msgstr "Valuta dionice"
+msgid "Ownership"
+msgstr "Vlasništvo"
 
 #. Ownership.properties.owner.label
 #: followthemoney/schema/Ownership.yaml
@@ -1186,6 +1201,11 @@ msgstr ""
 #. Ownership.properties.asset.reverse
 #: followthemoney/schema/Ownership.yaml
 msgid "Owners"
+msgstr "Vlasnici"
+
+#. Ownership.properties.percentage.label
+#: followthemoney/schema/Ownership.yaml
+msgid "Percentage held"
 msgstr ""
 
 #. Ownership.properties.sharesCount.label
@@ -1198,20 +1218,61 @@ msgstr "Broj dionica"
 msgid "Value of shares"
 msgstr "Vrijednost dionica"
 
-#. Ownership.properties.percentage.label
+#. Ownership.properties.sharesCurrency.label
 #: followthemoney/schema/Ownership.yaml
-msgid "Percentage held"
-msgstr ""
+msgid "Currency of shares"
+msgstr "Valuta dionice"
 
 #. Ownership.properties.sharesType.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Type of shares"
 msgstr "Tip dionica"
 
-#. Ownership.label
+#. Ownership.properties.legalBasis.label
 #: followthemoney/schema/Ownership.yaml
-msgid "Ownership"
-msgstr "Vlasništvo"
+msgid "Legal basis"
+msgstr ""
+
+#. Ownership.properties.ownershipType.label
+#: followthemoney/schema/Ownership.yaml
+msgid "Type of ownership"
+msgstr "Tip vlasništva"
+
+#. Payment.label
+#: followthemoney/schema/Payment.yaml
+msgid "Payment"
+msgstr "Plaćanje"
+
+#. Payment.properties.sequenceNumber.label
+#: followthemoney/schema/Payment.yaml
+msgid "Sequence number"
+msgstr "Redni broj"
+
+#. Payment.properties.transactionNumber.label
+#: followthemoney/schema/Payment.yaml
+msgid "Transaction number"
+msgstr "Broj transakcije"
+
+#. Payment.properties.purpose.label
+#: followthemoney/schema/Payment.yaml
+msgid "Payment purpose"
+msgstr "Svrha plaćanja"
+
+#. Payment.properties.payer.label
+#: followthemoney/schema/Payment.yaml
+msgid "Payer"
+msgstr "Platiša"
+
+#. Payment.properties.payer.reverse
+#. Payment.properties.payerAccount.reverse
+#: followthemoney/schema/Payment.yaml
+msgid "Payments made"
+msgstr "Izvršene uplate"
+
+#. Payment.properties.payerAccount.label
+#: followthemoney/schema/Payment.yaml
+msgid "Payer bank account"
+msgstr "Bankovni račun uplatioca"
 
 #. Payment.properties.beneficiary.label
 #: followthemoney/schema/Payment.yaml
@@ -1222,108 +1283,72 @@ msgstr ""
 #. Payment.properties.beneficiaryAccount.reverse
 #: followthemoney/schema/Payment.yaml
 msgid "Payments received"
-msgstr ""
-
-#. Payment.properties.transactionNumber.label
-#: followthemoney/schema/Payment.yaml
-msgid "Transaction number"
-msgstr "Broj transakcije"
-
-#. Payment.properties.payerAccount.label
-#: followthemoney/schema/Payment.yaml
-msgid "Payer bank account"
-msgstr "Bankovni račun uplatioca"
-
-#. Payment.properties.payerAccount.reverse
-#. Payment.properties.payer.reverse
-#: followthemoney/schema/Payment.yaml
-msgid "Payments made"
-msgstr ""
-
-#. Payment.properties.sequenceNumber.label
-#: followthemoney/schema/Payment.yaml
-msgid "Sequence number"
-msgstr "Redni broj"
-
-#. Payment.properties.payer.label
-#: followthemoney/schema/Payment.yaml
-msgid "Payer"
-msgstr ""
+msgstr "Dobijene uplate"
 
 #. Payment.properties.beneficiaryAccount.label
 #: followthemoney/schema/Payment.yaml
 msgid "Beneficiary bank account"
 msgstr "Bankovni račun korisnika"
 
-#. Payment.properties.purpose.label
-#: followthemoney/schema/Payment.yaml
-msgid "Payment purpose"
-msgstr "Svrha plaćanja"
-
-#. Payment.label
-#: followthemoney/schema/Payment.yaml
-msgid "Payment"
-msgstr "Plaćanje"
+#. Person.label
+#: followthemoney/schema/Person.yaml
+msgid "Person"
+msgstr "Osoba"
 
 #. Person.plural
 #: followthemoney/schema/Person.yaml
 msgid "People"
 msgstr "Ljudi"
 
-#. Person.properties.motherName.label
+#. Person.properties.title.label
 #: followthemoney/schema/Person.yaml
-msgid "Matronymic"
-msgstr "Ime majke"
+msgid "Title"
+msgstr "Naziv"
 
 #. Person.properties.firstName.label
 #: followthemoney/schema/Person.yaml
 msgid "First name"
 msgstr "Ime"
 
-#. Person.properties.title.label
+#. Person.properties.secondName.label
 #: followthemoney/schema/Person.yaml
-msgid "Title"
-msgstr "Naziv"
+msgid "Second name"
+msgstr "Drugo ime"
 
 #. Person.properties.middleName.label
 #: followthemoney/schema/Person.yaml
 msgid "Middle name"
 msgstr "Srednje ime"
 
-#. Person.properties.gender.label
+#. Person.properties.fatherName.label
 #: followthemoney/schema/Person.yaml
-msgid "Gender"
-msgstr "Spol"
+msgid "Patronymic"
+msgstr "Ime oca"
 
-#. Person.properties.secondName.label
+#. Person.properties.motherName.label
 #: followthemoney/schema/Person.yaml
-msgid "Second name"
-msgstr "Drugo ime"
+msgid "Matronymic"
+msgstr "Ime majke"
 
-#. Person.properties.birthPlace.label
+#. Person.properties.lastName.label
 #: followthemoney/schema/Person.yaml
-msgid "Place of birth"
-msgstr "Mjesto rođenja"
+msgid "Last name"
+msgstr "Prezime"
 
 #. Person.properties.birthDate.label
 #: followthemoney/schema/Person.yaml
 msgid "Birth date"
 msgstr "Datum rođenja"
 
-#. Person.properties.passportNumber.label
+#. Person.properties.birthPlace.label
 #: followthemoney/schema/Person.yaml
-msgid "Passport"
-msgstr "Pasoš"
+msgid "Place of birth"
+msgstr "Mjesto rođenja"
 
-#. Person.properties.fatherName.label
+#. Person.properties.deathDate.label
 #: followthemoney/schema/Person.yaml
-msgid "Patronymic"
-msgstr "Ime oca"
-
-#. Person.properties.lastName.label
-#: followthemoney/schema/Person.yaml
-msgid "Last name"
-msgstr "Prezime"
+msgid "Death date"
+msgstr "Datum smrti"
 
 #. Person.properties.position.label
 #: followthemoney/schema/Person.yaml
@@ -1335,44 +1360,69 @@ msgstr "Položaj"
 msgid "Nationality"
 msgstr "Nacionalnost"
 
-#. Person.properties.deathDate.label
+#. Person.properties.gender.label
 #: followthemoney/schema/Person.yaml
-msgid "Death date"
-msgstr "Datum smrti"
+msgid "Gender"
+msgstr "Spol"
 
-#. Person.label
+#. Person.properties.passportNumber.label
 #: followthemoney/schema/Person.yaml
-msgid "Person"
-msgstr "Osoba"
-
-#. PublicBody.plural
-#: followthemoney/schema/PublicBody.yaml
-msgid "Public bodies"
-msgstr "Javna tijela"
+msgid "Passport"
+msgstr "Pasoš"
 
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
 msgid "Public body"
 msgstr "Javno tijelo"
 
-#. Land.plural
-#: followthemoney/schema/RealEstate.yaml
-msgid "Lands"
-msgstr "Zemljišta"
+#. PublicBody.plural
+#: followthemoney/schema/PublicBody.yaml
+msgid "Public bodies"
+msgstr "Javna tijela"
 
-#. Land.label
+#. RealEstate.label
 #: followthemoney/schema/RealEstate.yaml
-msgid "Land"
-msgstr "Zemljište"
+msgid "Real estate"
+msgstr "Nekretnina"
 
 #. RealEstate.plural
 #: followthemoney/schema/RealEstate.yaml
 msgid "Real estates"
+msgstr "Nekretnine"
+
+#. RealEstate.properties.latitude.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Latitude"
+msgstr "Širina"
+
+#. RealEstate.properties.longitude.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Longitude"
+msgstr "Dužina"
+
+#. RealEstate.properties.censusBlock.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Census block"
+msgstr ""
+
+#. RealEstate.properties.cadastralCode.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Cadastral code"
+msgstr ""
+
+#. RealEstate.properties.titleNumber.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Title number"
 msgstr ""
 
 #. RealEstate.properties.tenure.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Tenure"
+msgstr ""
+
+#. RealEstate.properties.encumbrance.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Encumbrance"
 msgstr ""
 
 #. RealEstate.properties.encumbrance.description
@@ -1383,44 +1433,14 @@ msgid ""
 "diminishes its value.\n"
 msgstr ""
 
-#. RealEstate.properties.encumbrance.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Encumbrance"
-msgstr ""
-
-#. RealEstate.properties.titleNumber.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Title number"
-msgstr ""
-
-#. RealEstate.properties.cadastralCode.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Cadastral code"
-msgstr ""
-
-#. RealEstate.properties.longitude.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Longitude"
-msgstr "Dužina"
-
-#. RealEstate.properties.landType.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Land type"
-msgstr ""
-
-#. RealEstate.properties.latitude.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Latitude"
-msgstr "Širina"
-
 #. RealEstate.properties.propertyType.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Property type"
 msgstr "Tip imovine"
 
-#. RealEstate.properties.censusBlock.label
+#. RealEstate.properties.landType.label
 #: followthemoney/schema/RealEstate.yaml
-msgid "Census block"
+msgid "Land type"
 msgstr ""
 
 #. RealEstate.properties.createDate.label
@@ -1428,26 +1448,26 @@ msgstr ""
 msgid "Record date"
 msgstr "Datum zapisa"
 
-#. RealEstate.label
+#. Land.label
 #: followthemoney/schema/RealEstate.yaml
-msgid "Real estate"
-msgstr ""
+msgid "Land"
+msgstr "Zemljište"
+
+#. Land.plural
+#: followthemoney/schema/RealEstate.yaml
+msgid "Lands"
+msgstr "Zemljišta"
+
+#. Representation.label
+#: followthemoney/schema/Representation.yaml
+msgid "Representation"
+msgstr "Prikaz"
 
 #. Representation.description
 #: followthemoney/schema/Representation.yaml
 msgid ""
 "A mediatory, intermediary, middleman, or broker acting on behalf of a legal "
 "entity."
-msgstr ""
-
-#. Representation.properties.client.label
-#: followthemoney/schema/Representation.yaml
-msgid "Client"
-msgstr "Klijent"
-
-#. Representation.properties.client.reverse
-#: followthemoney/schema/Representation.yaml
-msgid "Agents"
 msgstr ""
 
 #. Representation.properties.agent.label
@@ -1458,12 +1478,22 @@ msgstr "Zastupnik"
 #. Representation.properties.agent.reverse
 #: followthemoney/schema/Representation.yaml
 msgid "Agency clients"
-msgstr ""
+msgstr "Klijenti agencije"
 
-#. Representation.label
+#. Representation.properties.client.label
 #: followthemoney/schema/Representation.yaml
-msgid "Representation"
-msgstr "Prikaz"
+msgid "Client"
+msgstr "Klijent"
+
+#. Representation.properties.client.reverse
+#: followthemoney/schema/Representation.yaml
+msgid "Agents"
+msgstr "Zastupnici"
+
+#. Sanction.label
+#: followthemoney/schema/Sanction.yaml
+msgid "Sanction"
+msgstr "Sankcija"
 
 #. Sanction.plural
 #. Sanction.properties.entity.reverse
@@ -1471,30 +1501,10 @@ msgstr "Prikaz"
 msgid "Sanctions"
 msgstr "Sankcije"
 
-#. Sanction.properties.sanctionOccurrence.label
+#. Sanction.properties.entity.label
 #: followthemoney/schema/Sanction.yaml
-msgid "Sanction occurrence"
-msgstr ""
-
-#. Sanction.properties.program.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Sanctions program"
-msgstr "Program sankcije"
-
-#. Sanction.properties.sanctionReason.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Sanction reason"
-msgstr "Razlog sankcije"
-
-#. Sanction.properties.sanctionStatus.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Sanction status"
-msgstr "Status sankcije"
-
-#. Sanction.properties.sanctionDuration.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Sanction duration"
-msgstr "Dužina sankcije"
+msgid "Sanctioned entity"
+msgstr "Sankcionisani entitet"
 
 #. Sanction.properties.authority.label
 #: followthemoney/schema/Sanction.yaml
@@ -1506,55 +1516,85 @@ msgstr ""
 msgid "Sanctioned entities"
 msgstr ""
 
-#. Sanction.properties.entity.label
+#. Sanction.properties.program.label
 #: followthemoney/schema/Sanction.yaml
-msgid "Sanctioned entity"
-msgstr "Sankcionisani entitet"
+msgid "Sanctions program"
+msgstr "Program sankcije"
 
-#. Sanction.label
+#. Sanction.properties.sanctionStatus.label
 #: followthemoney/schema/Sanction.yaml
-msgid "Sanction"
-msgstr "Sankcija"
+msgid "Sanction status"
+msgstr "Status sankcije"
 
-#. Thing.properties.sourceUrl.label
-#: followthemoney/schema/Thing.yaml
-msgid "Source link"
+#. Sanction.properties.sanctionDuration.label
+#: followthemoney/schema/Sanction.yaml
+msgid "Sanction duration"
+msgstr "Dužina sankcije"
+
+#. Sanction.properties.sanctionReason.label
+#: followthemoney/schema/Sanction.yaml
+msgid "Sanction reason"
+msgstr "Razlog sankcije"
+
+#. Sanction.properties.sanctionOccurrence.label
+#: followthemoney/schema/Sanction.yaml
+msgid "Sanction occurrence"
 msgstr ""
-
-#. Thing.properties.weakAlias.label
-#: followthemoney/schema/Thing.yaml
-msgid "Weak alias"
-msgstr ""
-
-#. Thing.properties.notes.label
-#: followthemoney/schema/Thing.yaml
-msgid "Notes"
-msgstr "Bilješke"
-
-#. Thing.properties.previousName.label
-#: followthemoney/schema/Thing.yaml
-msgid "Previous name"
-msgstr "Prethodno ime"
 
 #. Thing.properties.alias.label
 #: followthemoney/schema/Thing.yaml
 msgid "Other name"
 msgstr "Drugo ime"
 
-#. Thing.properties.program.label
+#. Thing.properties.previousName.label
 #: followthemoney/schema/Thing.yaml
-msgid "Program"
-msgstr "Program"
+msgid "Previous name"
+msgstr "Prethodno ime"
+
+#. Thing.properties.weakAlias.label
+#: followthemoney/schema/Thing.yaml
+msgid "Weak alias"
+msgstr ""
+
+#. Thing.properties.sourceUrl.label
+#: followthemoney/schema/Thing.yaml
+msgid "Source link"
+msgstr ""
+
+#. Thing.properties.keywords.label
+#: followthemoney/schema/Thing.yaml
+msgid "Keywords"
+msgstr "Ključne riječi"
 
 #. Thing.properties.address.label
 #: followthemoney/schema/Thing.yaml
 msgid "Address"
 msgstr "Adresa"
 
-#. Thing.properties.keywords.label
+#. Thing.properties.program.label
 #: followthemoney/schema/Thing.yaml
-msgid "Keywords"
-msgstr "Ključne riječi"
+msgid "Program"
+msgstr "Program"
+
+#. Thing.properties.notes.label
+#: followthemoney/schema/Thing.yaml
+msgid "Notes"
+msgstr "Bilješke"
+
+#. UnknownLink.label
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Link"
+msgstr "Link"
+
+#. UnknownLink.properties.subject.label
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Subject"
+msgstr "Predmet"
+
+#. UnknownLink.properties.subject.reverse
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Linked to"
+msgstr "Povezano sa"
 
 #. UnknownLink.properties.object.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -1566,30 +1606,20 @@ msgstr "Objekat"
 msgid "Linked from"
 msgstr ""
 
-#. UnknownLink.properties.subject.label
-#: followthemoney/schema/UnknownLink.yaml
-msgid "Subject"
-msgstr "Predmet"
-
-#. UnknownLink.properties.subject.reverse
-#: followthemoney/schema/UnknownLink.yaml
-msgid "Linked to"
-msgstr ""
-
-#. UnknownLink.label
-#: followthemoney/schema/UnknownLink.yaml
-msgid "Link"
-msgstr "Link"
-
-#. Value.properties.currency.label
+#. Value.label
 #: followthemoney/schema/Value.yaml
-msgid "Currency"
-msgstr "Valuta"
+msgid "Value"
+msgstr "Vrijednost"
 
 #. Value.properties.amount.label
 #: followthemoney/schema/Value.yaml
 msgid "Amount"
 msgstr "Iznos"
+
+#. Value.properties.currency.label
+#: followthemoney/schema/Value.yaml
+msgid "Currency"
+msgstr "Valuta"
 
 #. Value.properties.amountUsd.label
 #: followthemoney/schema/Value.yaml
@@ -1601,69 +1631,14 @@ msgstr "Iznos u USD"
 msgid "Amount in EUR"
 msgstr "Iznos u EUR"
 
-#. Value.label
-#: followthemoney/schema/Value.yaml
-msgid "Value"
-msgstr "Vrijednost"
+#. Vessel.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Vessel"
+msgstr ""
 
 #. Vessel.plural
 #: followthemoney/schema/Vessel.yaml
 msgid "Vessels"
-msgstr ""
-
-#. Vessel.properties.buildDate.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Build Date"
-msgstr ""
-
-#. Vessel.properties.registrationPort.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Port of Registration"
-msgstr ""
-
-#. Vessel.properties.crsNumber.label
-#: followthemoney/schema/Vessel.yaml
-msgid "CRS Number"
-msgstr ""
-
-#. Vessel.properties.grossRegisteredTonnage.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Gross Registered Tonnage"
-msgstr ""
-
-#. Vessel.properties.navigationArea.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Navigation Area"
-msgstr ""
-
-#. Vessel.properties.pastFlags.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Past Flags"
-msgstr ""
-
-#. Vessel.properties.pastNames.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Past Names"
-msgstr "Prošla imena"
-
-#. Vessel.properties.pastTypes.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Past Types"
-msgstr ""
-
-#. Vessel.properties.flag.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Flag"
-msgstr "Zastava"
-
-#. Vessel.properties.callSign.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Call Sign"
-msgstr ""
-
-#. Vessel.properties.tonnage.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Tonnage"
 msgstr ""
 
 #. Vessel.properties.imoNumber.label
@@ -1671,9 +1646,34 @@ msgstr ""
 msgid "IMO Number"
 msgstr ""
 
-#. Vessel.properties.mmsi.label
+#. Vessel.properties.crsNumber.label
 #: followthemoney/schema/Vessel.yaml
-msgid "MMSI"
+msgid "CRS Number"
+msgstr ""
+
+#. Vessel.properties.flag.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Flag"
+msgstr "Zastava"
+
+#. Vessel.properties.registrationPort.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Port of Registration"
+msgstr ""
+
+#. Vessel.properties.navigationArea.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Navigation Area"
+msgstr ""
+
+#. Vessel.properties.tonnage.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Tonnage"
+msgstr ""
+
+#. Vessel.properties.grossRegisteredTonnage.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Gross Registered Tonnage"
 msgstr ""
 
 #. Vessel.properties.nameChangeDate.label
@@ -1681,7 +1681,32 @@ msgstr ""
 msgid "Date of Name Change"
 msgstr "Datum promjene imena"
 
-#. Vessel.label
+#. Vessel.properties.callSign.label
 #: followthemoney/schema/Vessel.yaml
-msgid "Vessel"
+msgid "Call Sign"
+msgstr ""
+
+#. Vessel.properties.pastNames.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Past Names"
+msgstr "Prošla imena"
+
+#. Vessel.properties.pastFlags.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Past Flags"
+msgstr ""
+
+#. Vessel.properties.pastTypes.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Past Types"
+msgstr "Prošli tipovi"
+
+#. Vessel.properties.buildDate.label
+#: followthemoney/schema/Vessel.yaml
+msgid "Build Date"
+msgstr ""
+
+#. Vessel.properties.mmsi.label
+#: followthemoney/schema/Vessel.yaml
+msgid "MMSI"
 msgstr ""
