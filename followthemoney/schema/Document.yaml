@@ -56,6 +56,22 @@ Image:
   hidden: true
   fuzzy: false
 
+Video:
+  extends: Document
+  label: Video
+  plural: Videos
+  icon: fa-file-video-o
+  hidden: true
+  fuzzy: false
+
+Audio:
+  extends: Document
+  label: Audio
+  plural: Audio files
+  icon: fa-file-audio-o
+  hidden: true
+  fuzzy: false
+
 HyperText:
   # HTML document
   extends: Document
