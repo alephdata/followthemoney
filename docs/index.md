@@ -49,10 +49,10 @@ To use this schema with RDF see the [namespace docs](ns/).
 
 Things to consider in future iterations.
 
-* Concession is a type of contract and should share many of the properties of Contract (according to Lejla). Maybe move it from Asset to Contract.
+* Family relations
 
 * Event (extends Interval)
   * location
   * country
 
-* Linking Ownership events to Transactions (Contracts and Payments) to facilitate building a timeline of how assets change hands.
+* Linking Ownership events to Contracts and Payments to facilitate building a timeline of how assets change hands.
