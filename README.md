@@ -32,3 +32,5 @@ or `major` arguments.
 When the schema is updated, please update the docs, ideally including the diagrams.
 
 For the RDF namespace run `make namespace`.
+
+Namespace URI is `https://w3id.org/ftm/`. Docs are auto-hosted on github pages, and redirects are managed at https://github.com/perma-id/w3id.org/
