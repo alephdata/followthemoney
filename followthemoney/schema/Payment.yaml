@@ -17,6 +17,9 @@ Payment:
       label: "Transaction number"
     purpose:
       label: "Payment purpose"
+    programme:
+      label: "Payment programme"
+      description: "Programme name, funding code, category identifier, etc."
     payer:
       label: "Payer"
       reverse: "Payments made"
