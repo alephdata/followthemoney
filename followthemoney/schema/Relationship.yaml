@@ -2,6 +2,9 @@ Relationship:
   label: "Relationship"
   description: "Person-to-person relationship"
   extends: Interval
+  featured:
+    - person
+    - relationship
   properties:
     person:
       label: "Person"
@@ -23,6 +26,7 @@ Family:
   label: "Family"
   description: "Family relationship between two people"
   extends: Relationship
+  icon: fa-home-heart
   featured:
     - person
     - relative
@@ -39,6 +43,7 @@ Associate:
   label: "Associate"
   description: "Non-family association between two people"
   extends: Relationship
+  icon: fa-hand-holding-usd
   featured:
     - person
     - associate
