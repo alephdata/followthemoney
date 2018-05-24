@@ -42,19 +42,25 @@ Person:
       type: identifier
     mother:
       label: Mother
+      type: entity
       description: "Mother of the person"
     father:
       label: Father
+      type: entity
       description: "Father of the person"
     spouse:
       label: Spouse
+      type: entity
       description: "Spouse of the person"
     child:
       label: Child
+      type: entity
       description: "Child of the person"
     cousin:
       label: Cousin
+      type: entity
       description: "Cousin of the person"
     sibling:
       label: Sibling
+      type: entity
       description: "Sibling of the person"
