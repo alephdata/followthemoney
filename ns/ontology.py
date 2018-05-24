@@ -107,11 +107,13 @@ class Ontology(object):
     def write_namespace_docs(self, path):
         ttl_fn = '%s/ftm.ttl' % path
         with open(ttl_fn, 'w') as ttl_file:
-            ttl_file.write(self.serialize())
+            ttl = self.serialize()
+            ttl_file.write(ttl.decode('utf-8'))
 
         xml_fn = '%s/ftm.xml' % path
         with open(xml_fn, 'w') as xml_file:
-            xml_file.write(self.serialize('xml'))
+            xml = self.serialize('xml')
+            xml_file.write(xml.decode('utf-8'))
 
         json_fn = '%s/ftm.jsonld' % path
         with open(json_fn, 'w') as json_file:
@@ -124,4 +126,4 @@ if __name__ == '__main__':
     path = sys.argv[2]
     o = Ontology(uri)
     o.write_namespace_docs(path)
-    print "Namespace docs written to %s" % path
+    print("Namespace docs written to %s" % path)
