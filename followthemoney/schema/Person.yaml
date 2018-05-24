@@ -40,3 +40,21 @@ Person:
     passportNumber:
       label: Passport
       type: identifier
+    mother:
+      label: Mother
+      description: "Mother of the person"
+    father:
+      label: Father
+      description: "Father of the person"
+    spouse:
+      label: Spouse
+      description: "Spouse of the person"
+    child:
+      label: Child
+      description: "Child of the person"
+    cousin:
+      label: Cousin
+      description: "Cousin of the person"
+    sibling:
+      label: Sibling
+      description: "Sibling of the person"
