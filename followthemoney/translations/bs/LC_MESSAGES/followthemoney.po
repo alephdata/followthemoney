@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-14 21:30+0200\n"
+"POT-Creation-Date: 2018-05-29 07:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Emina Muratovic <emina@occrp.org>, 2018\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -1257,6 +1257,16 @@ msgstr "Broj transakcije"
 #: followthemoney/schema/Payment.yaml
 msgid "Payment purpose"
 msgstr "Svrha plaćanja"
+
+#. Payment.properties.programme.label
+#: followthemoney/schema/Payment.yaml
+msgid "Payment programme"
+msgstr ""
+
+#. Payment.properties.programme.description
+#: followthemoney/schema/Payment.yaml
+msgid "Programme name, funding code, category identifier, etc."
+msgstr ""
 
 #. Payment.properties.payer.label
 #: followthemoney/schema/Payment.yaml

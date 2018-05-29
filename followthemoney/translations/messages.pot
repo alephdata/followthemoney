@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-14 21:30+0200\n"
+"POT-Creation-Date: 2018-05-29 07:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1252,6 +1252,16 @@ msgstr ""
 #. Payment.properties.purpose.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payment purpose"
+msgstr ""
+
+#. Payment.properties.programme.label
+#: followthemoney/schema/Payment.yaml
+msgid "Payment programme"
+msgstr ""
+
+#. Payment.properties.programme.description
+#: followthemoney/schema/Payment.yaml
+msgid "Programme name, funding code, category identifier, etc."
 msgstr ""
 
 #. Payment.properties.payer.label

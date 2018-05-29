@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-14 21:30+0200\n"
+"POT-Creation-Date: 2018-05-29 07:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -55,7 +55,7 @@ msgstr "Номер счёта"
 #. BankAccount.properties.iban.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
 #. BankAccount.properties.bic.label
 #: followthemoney/schema/BankAccount.yaml
@@ -647,22 +647,22 @@ msgstr "Изображения"
 #. Video.label
 #: followthemoney/schema/Document.yaml
 msgid "Video"
-msgstr ""
+msgstr "Видеозапись"
 
 #. Video.plural
 #: followthemoney/schema/Document.yaml
 msgid "Videos"
-msgstr ""
+msgstr "Видеозаписи"
 
 #. Audio.label
 #: followthemoney/schema/Document.yaml
 msgid "Audio"
-msgstr ""
+msgstr "Аудиозапись"
 
 #. Audio.plural
 #: followthemoney/schema/Document.yaml
 msgid "Audio files"
-msgstr ""
+msgstr "Аудиозаписи"
 
 #. HyperText.label
 #: followthemoney/schema/Document.yaml
@@ -1268,6 +1268,16 @@ msgstr "Номер платёжной операции"
 #: followthemoney/schema/Payment.yaml
 msgid "Payment purpose"
 msgstr "Цель платежа"
+
+#. Payment.properties.programme.label
+#: followthemoney/schema/Payment.yaml
+msgid "Payment programme"
+msgstr ""
+
+#. Payment.properties.programme.description
+#: followthemoney/schema/Payment.yaml
+msgid "Programme name, funding code, category identifier, etc."
+msgstr ""
 
 #. Payment.properties.payer.label
 #: followthemoney/schema/Payment.yaml
