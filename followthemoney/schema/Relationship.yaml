@@ -1,0 +1,57 @@
+Relationship:
+  label: "Relationship"
+  description: "Person-to-person relationship"
+  extends: Interval
+  featured:
+    - person
+    - relationship
+  properties:
+    person:
+      label: "Person"
+      type: entity
+      schema: Person
+      reverse: "Related to"
+      description: "The subject of the familial relation."
+    relationship:
+      label: "Relationship"
+      description: "Nature of the relationship, from the *person's* perspective eg. 'mother', where 'relative' is mother of 'person'."
+    supportingDocumentType:
+      label: "Supporting document"
+      description: "Eg. birth certificate, marriage license. This is *not* just the data source."
+    supportingDocumentNumber:
+      label: "Supporting document number"
+      descripton: "Number or unique identifier for supporting document"
+
+Family:
+  label: "Family"
+  description: "Family relationship between two people"
+  extends: Relationship
+  icon: fa-home-heart
+  featured:
+    - person
+    - relative
+    - relationship
+  properties:
+    relative:
+      label: "Relative"
+      type: entity
+      schema: Person
+      reverse: "Relatives"
+      description: "The relative of the subject person."
+
+Associate:
+  label: "Associate"
+  description: "Non-family association between two people"
+  extends: Relationship
+  icon: fa-hand-holding-usd
+  featured:
+    - person
+    - associate
+    - relationship
+  properties:
+    associate:
+      label: "Associate"
+      type: entity
+      schema: Person
+      reverse: "Associates"
+      description: "An associate of the subject person."
