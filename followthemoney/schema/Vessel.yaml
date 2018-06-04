@@ -1,7 +1,8 @@
 Vessel:
   label: Vessel
   plural: Vessels
-  extends: Asset
+  #extends: Asset
+  extends: Vehicle
   icon: fa-ship
   fuzzy: true
   featured:
@@ -15,10 +16,11 @@ Vessel:
     crsNumber:
       label: CRS Number
       type: identifier
-    type:
-      label: Type
+    #type:
+    #  label: Type
     flag:
       label: Flag
+      type: country
     registrationPort:
       label: Port of Registration
     navigationArea:
@@ -40,8 +42,8 @@ Vessel:
       label: Past Flags
     pastTypes:
       label: Past Types
-    buildDate:
-      label: Build Date
+    #buildDate:
+    #  label: Build Date
     mmsi:
       label: MMSI
       type: identifier

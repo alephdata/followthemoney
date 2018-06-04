@@ -104,3 +104,8 @@ EconomicActivity:
       description: "Bank account for payments in foreign currency"
       type: entity
       range: BankAccount
+    transport:
+      label: "Transport"
+      description: "Means of transportation"
+      type: entity
+      range: Vehicle

@@ -1,0 +1,37 @@
+Vehicle:
+  label: Vehicle
+  plural: Vehicles
+  extends: Asset
+  icon: fa-bicycle
+  fuzzy: true
+  featured:
+    - type
+    - name
+    - registrationNumber    
+    - country
+    - owner
+  properties:
+    registrationNumber:
+      label: Registration Number
+      type: identifier
+    type:
+      label: Type
+    model:
+      label: Model
+    owner:
+      label: Owner
+      type: entity
+      range: LegalEntity
+    operator:
+      label: Operator
+      type: entity
+      range: LegalEntity
+    buildDate:
+      label: Build Date
+      type: date
+    country:
+      label: Country
+      type: country
+    registrationDate:
+      label: Registration Date
+      type: date

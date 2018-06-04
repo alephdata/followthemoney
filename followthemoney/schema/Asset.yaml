@@ -4,6 +4,6 @@ Asset:
   extends: 
     - Thing
     - Value
-  icon: fa-car
+  icon: fa-shopping-bag
   abstract: true
   fuzzy: false
