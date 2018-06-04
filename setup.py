@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney',
-    version='0.9.0',
+    version='0.9.1',
     long_description="Data model and validator for investigative graph data.",
     author='Organized Crime and Corruption Reporting Project',
     author_email='pudo@occrp.org',
@@ -34,7 +34,7 @@ setup(
             'flake8>=2.6.0',
             'nose',
             'transifex-client',
-            'responses>=0.9.0',
+            'responses>=0.9.1',
             'coverage>=4.1',
             'recommonmark>=0.4.0'
         ]
