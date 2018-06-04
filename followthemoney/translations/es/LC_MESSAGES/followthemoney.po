@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-29 07:59+0300\n"
+"POT-Creation-Date: 2018-06-04 15:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: John Ospina <jmospina@gmail.com>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -18,6 +18,31 @@ msgstr ""
 "Generated-By: Babel 2.5.3\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Airplane.label
+#: followthemoney/schema/Airplane.yaml
+msgid "Airplane"
+msgstr ""
+
+#. Airplane.plural
+#: followthemoney/schema/Airplane.yaml
+msgid "Airplanes"
+msgstr ""
+
+#. Airplane.properties.serialNumber.label
+#: followthemoney/schema/Airplane.yaml
+msgid "Serial Number"
+msgstr ""
+
+#. Airplane.properties.icaoCode.label
+#: followthemoney/schema/Airplane.yaml
+msgid "ICAO aircraft type designator"
+msgstr ""
+
+#. Airplane.properties.manufacturer.label
+#: followthemoney/schema/Airplane.yaml
+msgid "Manufacturer"
+msgstr ""
 
 #. Asset.label
 #. Ownership.properties.asset.label
@@ -338,9 +363,9 @@ msgstr ""
 
 #. Contract.properties.type.label
 #. CourtCase.properties.type.label
-#. Vessel.properties.type.label
+#. Vehicle.properties.type.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
-#: followthemoney/schema/Vessel.yaml
+#: followthemoney/schema/Vehicle.yaml
 msgid "Type"
 msgstr ""
 
@@ -498,8 +523,9 @@ msgstr ""
 #. CourtCase.properties.country.label
 #. Event.properties.country.label
 #. Thing.properties.country.label
+#. Vehicle.properties.country.label
 #: followthemoney/schema/CourtCase.yaml followthemoney/schema/Event.yaml
-#: followthemoney/schema/Thing.yaml
+#: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
 msgid "Country"
 msgstr ""
 
@@ -945,6 +971,16 @@ msgstr ""
 msgid "Bank account for payments in foreign currency"
 msgstr ""
 
+#. EconomicActivity.properties.transport.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Transport"
+msgstr ""
+
+#. EconomicActivity.properties.transport.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Means of transportation"
+msgstr ""
+
 #. Event.label
 #: followthemoney/schema/Event.yaml
 msgid "Event"
@@ -1194,7 +1230,8 @@ msgid "Ownership"
 msgstr ""
 
 #. Ownership.properties.owner.label
-#: followthemoney/schema/Ownership.yaml
+#. Vehicle.properties.owner.label
+#: followthemoney/schema/Ownership.yaml followthemoney/schema/Vehicle.yaml
 msgid "Owner"
 msgstr ""
 
@@ -1306,7 +1343,8 @@ msgid "Beneficiary bank account"
 msgstr ""
 
 #. Person.label
-#: followthemoney/schema/Person.yaml
+#. Relationship.properties.person.label
+#: followthemoney/schema/Person.yaml followthemoney/schema/Relationship.yaml
 msgid "Person"
 msgstr ""
 
@@ -1474,6 +1512,96 @@ msgstr ""
 #. Land.plural
 #: followthemoney/schema/RealEstate.yaml
 msgid "Lands"
+msgstr ""
+
+#. Relationship.label
+#. Relationship.properties.relationship.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Relationship"
+msgstr ""
+
+#. Relationship.description
+#: followthemoney/schema/Relationship.yaml
+msgid "Person-to-person relationship"
+msgstr ""
+
+#. Relationship.properties.person.reverse
+#: followthemoney/schema/Relationship.yaml
+msgid "Related to"
+msgstr ""
+
+#. Relationship.properties.person.description
+#: followthemoney/schema/Relationship.yaml
+msgid "The subject of the familial relation."
+msgstr ""
+
+#. Relationship.properties.relationship.description
+#: followthemoney/schema/Relationship.yaml
+msgid ""
+"Nature of the relationship, from the *person's* perspective eg. 'mother', "
+"where 'relative' is mother of 'person'."
+msgstr ""
+
+#. Relationship.properties.supportingDocumentType.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Supporting document"
+msgstr ""
+
+#. Relationship.properties.supportingDocumentType.description
+#: followthemoney/schema/Relationship.yaml
+msgid ""
+"Eg. birth certificate, marriage license. This is *not* just the data source."
+msgstr ""
+
+#. Relationship.properties.supportingDocumentNumber.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Supporting document number"
+msgstr ""
+
+#. Family.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Family"
+msgstr ""
+
+#. Family.description
+#: followthemoney/schema/Relationship.yaml
+msgid "Family relationship between two people"
+msgstr ""
+
+#. Family.properties.relative.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Relative"
+msgstr ""
+
+#. Family.properties.relative.reverse
+#: followthemoney/schema/Relationship.yaml
+msgid "Relatives"
+msgstr ""
+
+#. Family.properties.relative.description
+#: followthemoney/schema/Relationship.yaml
+msgid "The relative of the subject person."
+msgstr ""
+
+#. Associate.label
+#. Associate.properties.associate.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Associate"
+msgstr ""
+
+#. Associate.description
+#: followthemoney/schema/Relationship.yaml
+msgid "Non-family association between two people"
+msgstr ""
+
+#. Associate.properties.associate.reverse
+#: followthemoney/schema/Relationship.yaml
+msgid "Associates"
+msgstr ""
+
+#. Associate.properties.associate.description
+#: followthemoney/schema/Relationship.yaml
+msgid "An associate of the subject person."
 msgstr ""
 
 #. Representation.label
@@ -1651,6 +1779,41 @@ msgstr "Cantidad en USD"
 msgid "Amount in EUR"
 msgstr "Cantidad en EUR"
 
+#. Vehicle.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicle"
+msgstr ""
+
+#. Vehicle.plural
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicles"
+msgstr ""
+
+#. Vehicle.properties.registrationNumber.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Registration Number"
+msgstr ""
+
+#. Vehicle.properties.model.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Model"
+msgstr ""
+
+#. Vehicle.properties.operator.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Operator"
+msgstr ""
+
+#. Vehicle.properties.buildDate.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Build Date"
+msgstr "Fecha de elaboración"
+
+#. Vehicle.properties.registrationDate.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Registration Date"
+msgstr ""
+
 #. Vessel.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Vessel"
@@ -1720,11 +1883,6 @@ msgstr "Marcas Past"
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Types"
 msgstr "Tipo Past"
-
-#. Vessel.properties.buildDate.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Build Date"
-msgstr "Fecha de elaboración"
 
 #. Vessel.properties.mmsi.label
 #: followthemoney/schema/Vessel.yaml

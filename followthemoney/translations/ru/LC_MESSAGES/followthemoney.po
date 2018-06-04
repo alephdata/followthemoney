@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-29 07:59+0300\n"
+"POT-Creation-Date: 2018-06-04 17:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -18,6 +18,31 @@ msgstr ""
 "Generated-By: Babel 2.5.3\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#. Airplane.label
+#: followthemoney/schema/Airplane.yaml
+msgid "Airplane"
+msgstr "Самолёт"
+
+#. Airplane.plural
+#: followthemoney/schema/Airplane.yaml
+msgid "Airplanes"
+msgstr "Самолёты"
+
+#. Airplane.properties.serialNumber.label
+#: followthemoney/schema/Airplane.yaml
+msgid "Serial Number"
+msgstr "Серийный номер"
+
+#. Airplane.properties.icaoCode.label
+#: followthemoney/schema/Airplane.yaml
+msgid "ICAO aircraft type designator"
+msgstr "ИКАО Код самолёта"
+
+#. Airplane.properties.manufacturer.label
+#: followthemoney/schema/Airplane.yaml
+msgid "Manufacturer"
+msgstr "Изготовитель"
 
 #. Asset.label
 #. Ownership.properties.asset.label
@@ -337,9 +362,9 @@ msgstr "Размещено контрактов"
 
 #. Contract.properties.type.label
 #. CourtCase.properties.type.label
-#. Vessel.properties.type.label
+#. Vehicle.properties.type.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
-#: followthemoney/schema/Vessel.yaml
+#: followthemoney/schema/Vehicle.yaml
 msgid "Type"
 msgstr "Тип"
 
@@ -499,8 +524,9 @@ msgstr "Имя"
 #. CourtCase.properties.country.label
 #. Event.properties.country.label
 #. Thing.properties.country.label
+#. Vehicle.properties.country.label
 #: followthemoney/schema/CourtCase.yaml followthemoney/schema/Event.yaml
-#: followthemoney/schema/Thing.yaml
+#: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
 msgid "Country"
 msgstr "Страна"
 
@@ -949,6 +975,16 @@ msgstr "Наименование банка (валюта)"
 msgid "Bank account for payments in foreign currency"
 msgstr "Наименование банка для расчётов в валюте"
 
+#. EconomicActivity.properties.transport.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Transport"
+msgstr "Транспорт"
+
+#. EconomicActivity.properties.transport.description
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Means of transportation"
+msgstr "Транспортное средство"
+
 #. Event.label
 #: followthemoney/schema/Event.yaml
 msgid "Event"
@@ -1200,7 +1236,8 @@ msgid "Ownership"
 msgstr "Структура собственности"
 
 #. Ownership.properties.owner.label
-#: followthemoney/schema/Ownership.yaml
+#. Vehicle.properties.owner.label
+#: followthemoney/schema/Ownership.yaml followthemoney/schema/Vehicle.yaml
 msgid "Owner"
 msgstr "Владелец"
 
@@ -1272,12 +1309,12 @@ msgstr "Цель платежа"
 #. Payment.properties.programme.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payment programme"
-msgstr ""
+msgstr "Программа платежей"
 
 #. Payment.properties.programme.description
 #: followthemoney/schema/Payment.yaml
 msgid "Programme name, funding code, category identifier, etc."
-msgstr ""
+msgstr "Название, кодекс финансирования, классификатор и т.д."
 
 #. Payment.properties.payer.label
 #: followthemoney/schema/Payment.yaml
@@ -1312,7 +1349,8 @@ msgid "Beneficiary bank account"
 msgstr "Банковский счет бенефициара"
 
 #. Person.label
-#: followthemoney/schema/Person.yaml
+#. Relationship.properties.person.label
+#: followthemoney/schema/Person.yaml followthemoney/schema/Relationship.yaml
 msgid "Person"
 msgstr "Физическое лицо"
 
@@ -1481,6 +1519,100 @@ msgstr "Недвижимость"
 #: followthemoney/schema/RealEstate.yaml
 msgid "Lands"
 msgstr "Недвижимость"
+
+#. Relationship.label
+#. Relationship.properties.relationship.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Relationship"
+msgstr "Связь"
+
+#. Relationship.description
+#: followthemoney/schema/Relationship.yaml
+msgid "Person-to-person relationship"
+msgstr "Личные отношения"
+
+#. Relationship.properties.person.reverse
+#: followthemoney/schema/Relationship.yaml
+msgid "Related to"
+msgstr "Связан с"
+
+#. Relationship.properties.person.description
+#: followthemoney/schema/Relationship.yaml
+msgid "The subject of the familial relation."
+msgstr "Субъект семейных отношений"
+
+#. Relationship.properties.relationship.description
+#: followthemoney/schema/Relationship.yaml
+msgid ""
+"Nature of the relationship, from the *person's* perspective eg. 'mother', "
+"where 'relative' is mother of 'person'."
+msgstr ""
+"Природа отношений, с точки зрения *субъекта*, например, \"мать\", где "
+"\"родственник\" — это мать \"субъекта\"."
+
+#. Relationship.properties.supportingDocumentType.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Supporting document"
+msgstr "Подтверждающий документ"
+
+#. Relationship.properties.supportingDocumentType.description
+#: followthemoney/schema/Relationship.yaml
+msgid ""
+"Eg. birth certificate, marriage license. This is *not* just the data source."
+msgstr ""
+"Например, свидетельство о рождении или свидетельство о браке, а не только "
+"источник сведений."
+
+#. Relationship.properties.supportingDocumentNumber.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Supporting document number"
+msgstr "Номер подтверждающего документа"
+
+#. Family.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Family"
+msgstr "Семья"
+
+#. Family.description
+#: followthemoney/schema/Relationship.yaml
+msgid "Family relationship between two people"
+msgstr "Родственные отношения между двумя людьми"
+
+#. Family.properties.relative.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Relative"
+msgstr "Родственник"
+
+#. Family.properties.relative.reverse
+#: followthemoney/schema/Relationship.yaml
+msgid "Relatives"
+msgstr "Родственники"
+
+#. Family.properties.relative.description
+#: followthemoney/schema/Relationship.yaml
+msgid "The relative of the subject person."
+msgstr "Родственник субъекта."
+
+#. Associate.label
+#. Associate.properties.associate.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Associate"
+msgstr "Знакомый/знакомая"
+
+#. Associate.description
+#: followthemoney/schema/Relationship.yaml
+msgid "Non-family association between two people"
+msgstr "Внесемейные отношения между двумя людьми"
+
+#. Associate.properties.associate.reverse
+#: followthemoney/schema/Relationship.yaml
+msgid "Associates"
+msgstr "Знакомые"
+
+#. Associate.properties.associate.description
+#: followthemoney/schema/Relationship.yaml
+msgid "An associate of the subject person."
+msgstr "Знакомый субъекта"
 
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
@@ -1655,6 +1787,41 @@ msgstr "Сумма в долларах США"
 msgid "Amount in EUR"
 msgstr "Сумма в Евро"
 
+#. Vehicle.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicle"
+msgstr "Транспортное средство"
+
+#. Vehicle.plural
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicles"
+msgstr "Транспортные средства"
+
+#. Vehicle.properties.registrationNumber.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Registration Number"
+msgstr "Регистрационный номер"
+
+#. Vehicle.properties.model.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Model"
+msgstr "Модель"
+
+#. Vehicle.properties.operator.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Operator"
+msgstr "Оператор"
+
+#. Vehicle.properties.buildDate.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Build Date"
+msgstr "Дата постройки"
+
+#. Vehicle.properties.registrationDate.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Registration Date"
+msgstr "Дата регистрации"
+
 #. Vessel.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Vessel"
@@ -1724,11 +1891,6 @@ msgstr "Смена флага в прошлом"
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Types"
 msgstr "Предыдущие типы судна"
-
-#. Vessel.properties.buildDate.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Build Date"
-msgstr "Дата постройки"
 
 #. Vessel.properties.mmsi.label
 #: followthemoney/schema/Vessel.yaml
