@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-18 12:00+0200\n"
+"POT-Creation-Date: 2018-06-18 12:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -1301,32 +1301,32 @@ msgstr "Паспорт"
 #. Passport.plural
 #: followthemoney/schema/Passport.yaml
 msgid "Passports"
-msgstr ""
+msgstr "Паспорта"
 
 #. Passport.properties.holder.label
 #: followthemoney/schema/Passport.yaml
 msgid "Document holder"
-msgstr ""
+msgstr "Держатель документа"
 
 #. Passport.properties.passportNumber.label
 #: followthemoney/schema/Passport.yaml
 msgid "Passport number"
-msgstr ""
+msgstr "Номер паспорта"
 
 #. Passport.properties.surname.label
 #: followthemoney/schema/Passport.yaml
 msgid "Surname"
-msgstr ""
+msgstr "Фамилия"
 
 #. Passport.properties.givenName.label
 #: followthemoney/schema/Passport.yaml
 msgid "Given name"
-msgstr ""
+msgstr "Имя"
 
 #. Passport.properties.birthDate.label
 #: followthemoney/schema/Passport.yaml
 msgid "Date of birth"
-msgstr ""
+msgstr "Дата рождения"
 
 #. Passport.properties.birthPlace.label
 #. Person.properties.birthPlace.label
@@ -1343,12 +1343,12 @@ msgstr "Пол"
 #. Passport.properties.personalNumber.label
 #: followthemoney/schema/Passport.yaml
 msgid "Personal number"
-msgstr ""
+msgstr "Идентификационный номер"
 
 #. Passport.properties.authority.label
 #: followthemoney/schema/Passport.yaml
 msgid "Authority"
-msgstr ""
+msgstr "Орган, выдавший документ"
 
 #. Payment.label
 #: followthemoney/schema/Payment.yaml
