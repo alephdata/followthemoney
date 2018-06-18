@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-04 17:48+0200\n"
+"POT-Creation-Date: 2018-06-18 12:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -451,7 +451,9 @@ msgid "Document number"
 msgstr "Номер документа"
 
 #. ContractAward.properties.documentType.label
+#. Passport.properties.type.label
 #: followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/Passport.yaml
 msgid "Document type"
 msgstr "Тип документа"
 
@@ -523,10 +525,12 @@ msgstr "Имя"
 
 #. CourtCase.properties.country.label
 #. Event.properties.country.label
+#. Passport.properties.country.label
 #. Thing.properties.country.label
 #. Vehicle.properties.country.label
 #: followthemoney/schema/CourtCase.yaml followthemoney/schema/Event.yaml
-#: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/schema/Vehicle.yaml
 msgid "Country"
 msgstr "Страна"
 
@@ -1244,7 +1248,7 @@ msgstr "Владелец"
 #. Ownership.properties.owner.reverse
 #: followthemoney/schema/Ownership.yaml
 msgid "Assets and shares"
-msgstr "Имущество компании"
+msgstr "Имущество"
 
 #. Ownership.properties.asset.reverse
 #: followthemoney/schema/Ownership.yaml
@@ -1254,7 +1258,7 @@ msgstr "Владельцы"
 #. Ownership.properties.percentage.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Percentage held"
-msgstr "Доля владения акциями"
+msgstr "Доля владения"
 
 #. Ownership.properties.sharesCount.label
 #: followthemoney/schema/Ownership.yaml
@@ -1285,6 +1289,66 @@ msgstr "Правовая основа"
 #: followthemoney/schema/Ownership.yaml
 msgid "Type of ownership"
 msgstr "Характер собственности"
+
+#. Passport.label
+#. Passport.description
+#. Passport.properties.holder.reverse
+#. Person.properties.passportNumber.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+msgid "Passport"
+msgstr "Паспорт"
+
+#. Passport.plural
+#: followthemoney/schema/Passport.yaml
+msgid "Passports"
+msgstr ""
+
+#. Passport.properties.holder.label
+#: followthemoney/schema/Passport.yaml
+msgid "Document holder"
+msgstr ""
+
+#. Passport.properties.passportNumber.label
+#: followthemoney/schema/Passport.yaml
+msgid "Passport number"
+msgstr ""
+
+#. Passport.properties.surname.label
+#: followthemoney/schema/Passport.yaml
+msgid "Surname"
+msgstr ""
+
+#. Passport.properties.givenName.label
+#: followthemoney/schema/Passport.yaml
+msgid "Given name"
+msgstr ""
+
+#. Passport.properties.birthDate.label
+#: followthemoney/schema/Passport.yaml
+msgid "Date of birth"
+msgstr ""
+
+#. Passport.properties.birthPlace.label
+#. Person.properties.birthPlace.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+msgid "Place of birth"
+msgstr "Место рождения"
+
+#. Passport.properties.gender.label
+#. Person.properties.gender.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+msgid "Gender"
+msgstr "Пол"
+
+#. Passport.properties.personalNumber.label
+#: followthemoney/schema/Passport.yaml
+msgid "Personal number"
+msgstr ""
+
+#. Passport.properties.authority.label
+#: followthemoney/schema/Passport.yaml
+msgid "Authority"
+msgstr ""
 
 #. Payment.label
 #: followthemoney/schema/Payment.yaml
@@ -1399,11 +1463,6 @@ msgstr "Фамилия"
 msgid "Birth date"
 msgstr "Дата рождения"
 
-#. Person.properties.birthPlace.label
-#: followthemoney/schema/Person.yaml
-msgid "Place of birth"
-msgstr "Место рождения"
-
 #. Person.properties.deathDate.label
 #: followthemoney/schema/Person.yaml
 msgid "Death date"
@@ -1418,16 +1477,6 @@ msgstr "Должность"
 #: followthemoney/schema/Person.yaml
 msgid "Nationality"
 msgstr "Гражданство"
-
-#. Person.properties.gender.label
-#: followthemoney/schema/Person.yaml
-msgid "Gender"
-msgstr "Пол"
-
-#. Person.properties.passportNumber.label
-#: followthemoney/schema/Person.yaml
-msgid "Passport"
-msgstr "Паспорт"
 
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
@@ -1524,7 +1573,7 @@ msgstr "Недвижимость"
 #. Relationship.properties.relationship.label
 #: followthemoney/schema/Relationship.yaml
 msgid "Relationship"
-msgstr "Связь"
+msgstr "Тип связи или родства"
 
 #. Relationship.description
 #: followthemoney/schema/Relationship.yaml
@@ -1750,7 +1799,7 @@ msgstr "Субъект"
 #. UnknownLink.properties.subject.reverse
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked to"
-msgstr "Связь к"
+msgstr "Связь (к)"
 
 #. UnknownLink.properties.object.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -1760,7 +1809,7 @@ msgstr "Объект"
 #. UnknownLink.properties.object.reverse
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked from"
-msgstr "Связь от"
+msgstr "Связь (от)"
 
 #. Value.label
 #: followthemoney/schema/Value.yaml

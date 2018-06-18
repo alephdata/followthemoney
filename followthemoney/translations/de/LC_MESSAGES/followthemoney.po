@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-04 15:59+0200\n"
+"POT-Creation-Date: 2018-06-18 12:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2018\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -445,7 +445,9 @@ msgid "Document number"
 msgstr ""
 
 #. ContractAward.properties.documentType.label
+#. Passport.properties.type.label
 #: followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/Passport.yaml
 msgid "Document type"
 msgstr ""
 
@@ -517,10 +519,12 @@ msgstr ""
 
 #. CourtCase.properties.country.label
 #. Event.properties.country.label
+#. Passport.properties.country.label
 #. Thing.properties.country.label
 #. Vehicle.properties.country.label
 #: followthemoney/schema/CourtCase.yaml followthemoney/schema/Event.yaml
-#: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/schema/Vehicle.yaml
 msgid "Country"
 msgstr ""
 
@@ -1275,6 +1279,66 @@ msgstr ""
 msgid "Type of ownership"
 msgstr ""
 
+#. Passport.label
+#. Passport.description
+#. Passport.properties.holder.reverse
+#. Person.properties.passportNumber.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+msgid "Passport"
+msgstr ""
+
+#. Passport.plural
+#: followthemoney/schema/Passport.yaml
+msgid "Passports"
+msgstr ""
+
+#. Passport.properties.holder.label
+#: followthemoney/schema/Passport.yaml
+msgid "Document holder"
+msgstr ""
+
+#. Passport.properties.passportNumber.label
+#: followthemoney/schema/Passport.yaml
+msgid "Passport number"
+msgstr ""
+
+#. Passport.properties.surname.label
+#: followthemoney/schema/Passport.yaml
+msgid "Surname"
+msgstr ""
+
+#. Passport.properties.givenName.label
+#: followthemoney/schema/Passport.yaml
+msgid "Given name"
+msgstr ""
+
+#. Passport.properties.birthDate.label
+#: followthemoney/schema/Passport.yaml
+msgid "Date of birth"
+msgstr ""
+
+#. Passport.properties.birthPlace.label
+#. Person.properties.birthPlace.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+msgid "Place of birth"
+msgstr ""
+
+#. Passport.properties.gender.label
+#. Person.properties.gender.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+msgid "Gender"
+msgstr ""
+
+#. Passport.properties.personalNumber.label
+#: followthemoney/schema/Passport.yaml
+msgid "Personal number"
+msgstr ""
+
+#. Passport.properties.authority.label
+#: followthemoney/schema/Passport.yaml
+msgid "Authority"
+msgstr ""
+
 #. Payment.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payment"
@@ -1388,11 +1452,6 @@ msgstr ""
 msgid "Birth date"
 msgstr ""
 
-#. Person.properties.birthPlace.label
-#: followthemoney/schema/Person.yaml
-msgid "Place of birth"
-msgstr ""
-
 #. Person.properties.deathDate.label
 #: followthemoney/schema/Person.yaml
 msgid "Death date"
@@ -1406,16 +1465,6 @@ msgstr ""
 #. Person.properties.nationality.label
 #: followthemoney/schema/Person.yaml
 msgid "Nationality"
-msgstr ""
-
-#. Person.properties.gender.label
-#: followthemoney/schema/Person.yaml
-msgid "Gender"
-msgstr ""
-
-#. Person.properties.passportNumber.label
-#: followthemoney/schema/Person.yaml
-msgid "Passport"
 msgstr ""
 
 #. PublicBody.label
