@@ -1,0 +1,45 @@
+Passport:
+  label: "Passport"
+  plural: "Passports"
+  description: "Passport"
+  extends: Interval
+  icon: id-card-o
+  featured:
+    - type
+    - holder
+    - startDate
+    - endDate
+  properties:
+    holder:
+      label: "Document holder"
+      reverse: "Passport"
+      type: entity
+      range: LegalEntity
+    type:
+      label: "Document type"
+    countryCode:
+      label: "Country code"
+    passportNumber:
+      label: "Passport number"
+      type: identifier
+    surname:
+      label: "Surname"
+    givenName:
+      label: "Given name"
+    nationality:
+      label: "Nationality"
+    birthDate:
+      label: "Date of birth"
+      type: date
+    birthPlace:
+      label: "Place of birth"
+    gender:
+      label: "Gender"
+    startDate:
+      label: "Date of issue"
+    endDate:
+      label: "Date of expiry"
+    personalNumber:
+      label: "Personal number"
+    authority:
+      label: "Authority"
