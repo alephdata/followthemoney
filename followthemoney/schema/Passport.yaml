@@ -7,6 +7,7 @@ Passport:
   featured:
     - type
     - holder
+    - nationality
     - startDate
     - endDate
   properties:
@@ -17,8 +18,9 @@ Passport:
       range: LegalEntity
     type:
       label: "Document type"
-    countryCode:
-      label: "Country code"
+    country:
+      label: "Country"
+      type: country
     passportNumber:
       label: "Passport number"
       type: identifier
@@ -26,8 +28,6 @@ Passport:
       label: "Surname"
     givenName:
       label: "Given name"
-    nationality:
-      label: "Nationality"
     birthDate:
       label: "Date of birth"
       type: date
@@ -35,11 +35,8 @@ Passport:
       label: "Place of birth"
     gender:
       label: "Gender"
-    startDate:
-      label: "Date of issue"
-    endDate:
-      label: "Date of expiry"
     personalNumber:
       label: "Personal number"
+      type: identifier
     authority:
       label: "Authority"
