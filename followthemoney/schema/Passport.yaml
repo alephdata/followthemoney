@@ -32,8 +32,8 @@ Passport:
       label: "Date of birth"
     birthPlace:
       label: "Place of birth"
-    sex:
-      label: "Sex"
+    gender:
+      label: "Gender"
     startDate:
       label: "Date of issue"
     endDate:
