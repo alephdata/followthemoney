@@ -30,6 +30,7 @@ Passport:
       label: "Nationality"
     birthDate:
       label: "Date of birth"
+      type: date
     birthPlace:
       label: "Place of birth"
     gender:
