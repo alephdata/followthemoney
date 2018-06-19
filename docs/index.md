@@ -8,11 +8,11 @@ The root of the data model is **Things** and **Intervals**. You can also think o
 
 ### Thing
 
-<img alt="The Thing schema" src="https://docs.google.com/drawings/d/e/2PACX-1vT7D6livwkAobwBgLEivm1uof2N2SP4heVMK87Q77uQ2hqz5XJrgc3vI4uWD2M4e30e59LhodqPpK29/pub?w=100%">
+<img alt="The Thing schema" src="https://docs.google.com/drawings/d/e/2PACX-1vT7D6livwkAobwBgLEivm1uof2N2SP4heVMK87Q77uQ2hqz5XJrgc3vI4uWD2M4e30e59LhodqPpK29/pub?w=1762&amp;h=1113">
 
 ### Interval
 
-<img alt="The Interval schema" src="https://docs.google.com/drawings/d/e/2PACX-1vR9vlUEfPC_zuymx0HMI2IHpViJC-c0BQI5zTlvJKFxP-z50McU5N6LPaXWMH2EHN6Nr1WJC-t561OR/pub?w=100%">
+<img alt="The Interval schema" src="https://docs.google.com/drawings/d/e/2PACX-1vR9vlUEfPC_zuymx0HMI2IHpViJC-c0BQI5zTlvJKFxP-z50McU5N6LPaXWMH2EHN6Nr1WJC-t561OR/pub?w=2002&amp;h=818">
 
 ## Behaviour
 
