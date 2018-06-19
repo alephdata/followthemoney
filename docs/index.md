@@ -8,11 +8,11 @@ The root of the data model is **Things** and **Intervals**. You can also think o
 
 ### Thing
 
-![The Things schema](https://raw.githubusercontent.com/alephdata/followthemoney/master/docs/schema_thing.png)
+<img alt="The Thing schema" src="https://docs.google.com/drawings/d/e/2PACX-1vT7D6livwkAobwBgLEivm1uof2N2SP4heVMK87Q77uQ2hqz5XJrgc3vI4uWD2M4e30e59LhodqPpK29/pub?w=100%">
 
 ### Interval
 
-![The Intervals schema](https://raw.githubusercontent.com/alephdata/followthemoney/master/docs/schema_interval.png)
+<img alt="The Interval schema" src="https://docs.google.com/drawings/d/e/2PACX-1vR9vlUEfPC_zuymx0HMI2IHpViJC-c0BQI5zTlvJKFxP-z50McU5N6LPaXWMH2EHN6Nr1WJC-t561OR/pub?w=100%">
 
 ## Behaviour
 
