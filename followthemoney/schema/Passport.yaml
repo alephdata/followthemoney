@@ -7,7 +7,6 @@ Passport:
   featured:
     - type
     - holder
-    - nationality
     - startDate
     - endDate
   properties:
