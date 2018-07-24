@@ -3,4 +3,4 @@ PublicBody:
   plural: Public bodies
   icon: fa-building
   extends: Organization
-  fuzzy: true
+  matchable: true

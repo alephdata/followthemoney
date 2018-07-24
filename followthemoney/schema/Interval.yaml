@@ -1,7 +1,7 @@
 Interval:
   label: "Interval"
   icon: fa-clock-o
-  fuzzy: false
+  matchable: false
   featured:
     - startDate
     - endDate

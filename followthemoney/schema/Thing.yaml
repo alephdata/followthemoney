@@ -1,7 +1,7 @@
 Thing:
   abstract: true
   icon: fa-circle
-  fuzzy: true
+  matchable: false
   featured:
     - name
     - country

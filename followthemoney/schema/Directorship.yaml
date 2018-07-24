@@ -2,7 +2,7 @@ Directorship:
   label: "Directorship"
   extends: Interest
   icon: fa-user-circle
-  fuzzy: false
+  matchable: false
   featured:
     - director
     - organization

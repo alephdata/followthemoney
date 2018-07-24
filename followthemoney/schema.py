@@ -19,6 +19,7 @@ class Schema(object):
         self._label = data.get('label', name)
         self._plural = data.get('plural', self.label)
         self._description = data.get('description')
+        self._extends = ensure_list(data.get('extends'))
         self.featured = ensure_list(data.get('featured'))
 
         # Do not show in listings:
@@ -27,8 +28,7 @@ class Schema(object):
         # Try to perform fuzzy matching. Fuzzy similarity search does not
         # make sense for entities which have a lot of similar names, such
         # as land plots, assets etc.
-        self.fuzzy = data.get('fuzzy', True)
-        self._extends = ensure_list(data.get('extends'))
+        self.matchable = data.get('matchable', True)
 
         self._own_properties = []
         for name, prop in data.get('properties', {}).items():
@@ -145,7 +145,7 @@ class Schema(object):
             'plural': self.plural,
             'icon': self.icon,
             'abstract': self.abstract,
-            'fuzzy': self.fuzzy,
+            'matchable': self.matchable,
             'description': self.description,
             'featured': self.featured,
             'properties': {}

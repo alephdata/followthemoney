@@ -3,7 +3,7 @@ CourtCase:
   plural: Court cases
   extends: Interval
   icon: fa-briefcase
-  fuzzy: false
+  matchable: false
   featured:
     - name
     - date

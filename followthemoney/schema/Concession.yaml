@@ -4,7 +4,7 @@ Concession:
   plural: Concessions
   extends: Contract
   icon: fa-th
-  fuzzy: false
+  matchable: false
   featured:
     - name
     - amount

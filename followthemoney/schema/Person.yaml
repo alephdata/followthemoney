@@ -3,6 +3,7 @@ Person:
   label: Person
   plural: People
   icon: fa-user
+  matchable: true
   featured:
     - name
     - nationality

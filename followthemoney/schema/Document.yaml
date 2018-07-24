@@ -4,7 +4,7 @@ Document:
   plural: Files
   icon: fa-file-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 PlainText:
   # Text files, like .txt or source code.
@@ -13,7 +13,7 @@ PlainText:
   plural: Text files
   icon: fa-file-text-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 Pages:
   # Like PDF, word document, ...
@@ -22,7 +22,7 @@ Pages:
   plural: Documents
   icon: fa-file-pdf-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 Folder:
   extends: Document
@@ -30,7 +30,7 @@ Folder:
   plural: Folders
   icon: fa-folder
   hidden: true
-  fuzzy: false
+  matchable: false
 
 Package:
   extends: Folder
@@ -38,7 +38,7 @@ Package:
   plural: Packages
   icon: fa-file-archive-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 Workbook:
   extends: Folder
@@ -46,7 +46,7 @@ Workbook:
   plural: Workbooks
   icon: fa-file-excel-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 Image:
   extends: Document
@@ -54,7 +54,7 @@ Image:
   plural: Images
   icon: fa-file-image-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 Video:
   extends: Document
@@ -62,7 +62,7 @@ Video:
   plural: Videos
   icon: fa-file-video-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 Audio:
   extends: Document
@@ -70,7 +70,7 @@ Audio:
   plural: Audio files
   icon: fa-file-audio-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 HyperText:
   # HTML document
@@ -79,7 +79,7 @@ HyperText:
   plural: Web pages
   icon: fa-file-code-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 Email:
   extends:
@@ -90,7 +90,7 @@ Email:
   plural: E-Mails
   icon: fa-envelope-o
   hidden: true
-  fuzzy: false
+  matchable: false
 
 Table:
   extends: Document
@@ -98,4 +98,4 @@ Table:
   plural: Tables
   icon: fa-table
   hidden: true
-  fuzzy: false
+  matchable: false

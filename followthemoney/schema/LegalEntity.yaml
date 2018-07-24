@@ -4,6 +4,7 @@ LegalEntity:
   plural: Legal entities
   icon: fa-user-secret
   description: "A legal entity may be a person or a company."
+  matchable: true
   featured:
     - name
     - legalForm

@@ -1,6 +1,7 @@
 Value:
   label: "Value"
   abstract: true
+  matchable: false
   properties:
     amount:
       label: "Amount"

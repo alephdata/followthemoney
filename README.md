@@ -10,7 +10,7 @@ rather to have a working data structure for researchers.
 `followthemoney` also contains code used to validate and normalize many
 of the elements of data, and to map tabular data into the model.
 
-## Releasing 
+## Releasing
 
 We release a lot of version of `followthemoney` because even small changes
 to the code base require a pypi release to begin being used in `aleph`. To

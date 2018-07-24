@@ -3,7 +3,7 @@ Airplane:
   plural: Airplanes
   extends: Vehicle
   icon: fa-plane
-  fuzzy: true
+  matchable: false
   featured:
     - type               # Airbus A320 214SL
     - registrationNumber # A7-LAE

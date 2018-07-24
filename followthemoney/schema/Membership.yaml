@@ -2,7 +2,7 @@ Membership:
   label: "Membership"
   extends: Interest
   icon: fa-id-badge
-  fuzzy: false
+  matchable: false
   featured:
     - member
     - organization

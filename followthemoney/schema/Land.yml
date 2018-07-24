@@ -1,0 +1,9 @@
+Land:
+  label: Land
+  plural: Lands
+  extends: RealEstate
+  icon: fa-map
+  matchable: false
+  featured:
+    - registrationNumber
+  properties: {}

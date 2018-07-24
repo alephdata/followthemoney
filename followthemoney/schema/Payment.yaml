@@ -4,7 +4,7 @@ Payment:
     - Interval
     - Value
   icon: fa-usd
-  fuzzy: false
+  matchable: false
   featured:
     - payer
     - beneficiary

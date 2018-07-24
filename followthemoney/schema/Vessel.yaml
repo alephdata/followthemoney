@@ -4,7 +4,7 @@ Vessel:
   #extends: Asset
   extends: Vehicle
   icon: fa-ship
-  fuzzy: true
+  matchable: false
   featured:
     - name
     - imoNumber

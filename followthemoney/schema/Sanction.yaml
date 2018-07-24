@@ -3,7 +3,7 @@ Sanction:
   plural: Sanctions
   extends: Interval
   icon: fa-ban
-  fuzzy: false
+  matchable: false
   featured:
     - entity
     - authority

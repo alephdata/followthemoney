@@ -3,7 +3,7 @@ UnknownLink:
   label: "Link"
   extends: Interest
   icon: fa-user-circle
-  fuzzy: false
+  matchable: false
   featured:
     - subject
     - object

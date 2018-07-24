@@ -2,6 +2,7 @@ EconomicActivity:
   label: "Economic Activity"
   plural: "Economic Activities"
   description: "An economic activity"
+  matchable: false
   extends:
     - Interval
   icon: fa-truck

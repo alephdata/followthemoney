@@ -2,7 +2,7 @@ Ownership:
   label: "Ownership"
   extends: Interest
   icon: fa-shopping-bag
-  fuzzy: false
+  matchable: false
   featured:
     - owner
     - asset

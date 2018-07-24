@@ -6,6 +6,7 @@ ContractAward:
     - Interest
     - Value
   icon: fa-handshake-o
+  matchable: false
   featured:
     - supplier
     - contract

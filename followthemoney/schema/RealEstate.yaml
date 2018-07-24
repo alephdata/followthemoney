@@ -3,7 +3,7 @@ RealEstate:
   plural: Real estates
   extends: Asset
   icon: fa-map
-  fuzzy: false
+  matchable: false
   featured:
     - registrationNumber
     - address
@@ -41,13 +41,3 @@ RealEstate:
     createDate:
       label: Record date
       type: date
-
-Land:
-  label: Land
-  plural: Lands
-  extends: RealEstate
-  icon: fa-map
-  fuzzy: false
-  featured:
-    - registrationNumber
-  properties: {}

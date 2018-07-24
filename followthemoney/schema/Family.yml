@@ -1,0 +1,17 @@
+Family:
+  label: "Family"
+  description: "Family relationship between two people"
+  extends: Relationship
+  icon: fa-home-heart
+  matchable: false
+  featured:
+    - person
+    - relative
+    - relationship
+  properties:
+    relative:
+      label: "Relative"
+      type: entity
+      schema: Person
+      reverse: "Relatives"
+      description: "The relative of the subject person."

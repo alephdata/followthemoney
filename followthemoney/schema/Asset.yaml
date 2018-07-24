@@ -6,4 +6,4 @@ Asset:
     - Value
   icon: fa-shopping-bag
   abstract: true
-  fuzzy: false
+  matchable: false

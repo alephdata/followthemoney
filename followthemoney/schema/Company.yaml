@@ -2,6 +2,7 @@ Company:
   label: Company
   plural: Companies
   icon: fa-industry
+  matchable: true
   extends:
     - Organization
     - Asset

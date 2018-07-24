@@ -3,7 +3,7 @@ Vehicle:
   plural: Vehicles
   extends: Asset
   icon: fa-bicycle
-  fuzzy: true
+  matchable: false
   featured:
     - type
     - name
