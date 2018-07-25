@@ -67,6 +67,30 @@ class Schema(object):
                     yield schema
 
     @property
+    def descendants(self):
+        for schema in self._model:
+            if schema == self:
+                continue
+            if self in schema.schemata:
+                yield schema
+
+    @property
+    def matchable_schemata(self):
+        """The set of comparable types."""
+        if not self.matchable:
+            return
+        # This is used by the cross-referencer to determine what
+        # other schemata should be considered for matches. For
+        # example, a Company may be compared to a Legal Entity,
+        # but it makes no sense to compare it to an Aircraft.
+        matchable = set(self.schemata)
+        for schema in self.descendants:
+            matchable.add(schema)
+        for schema in matchable:
+            if schema.matchable:
+                yield schema
+
+    @property
     def names(self):
         return [s.name for s in self.schemata]
 

@@ -122,8 +122,27 @@ class ModelTestCase(TestCase):
         assert property_types['mainCountry'] == 'country', property_types
         assert property_types['accountNumber'] == 'identifier', property_types
 
+    def test_descendants(self):
+        le = model.schemata['LegalEntity']
+        company = model.schemata['Company']
+        descendants = list(le.descendants)
+        assert company in descendants, descendants
+        assert le not in descendants, descendants
+
+    def test_matchable(self):
+        le = model.schemata['LegalEntity']
+        company = model.schemata['Company']
+        doc = model.schemata['Document']
+        assert len(list(doc.matchable_schemata)) == 0
+        matchable = list(company.matchable_schemata)
+        assert company in matchable, matchable
+        assert le in matchable, matchable
+        assert doc not in matchable, matchable
+
     def test_model_featured_properties(self):
         interval = model.schemata['Interval']
         interest = model.schemata['Interest']
-        assert 'startDate' in interval.featured and 'endDate' in interval.featured, interval
-        assert 'startDate' in interest.featured and 'endDate' in interest.featured and 'role' in interest.featured, interest
+        assert 'startDate' in interval.featured and 'endDate' in \
+            interval.featured, interval
+        assert 'startDate' in interest.featured and 'endDate' in \
+            interest.featured and 'role' in interest.featured, interest
