@@ -1,4 +1,6 @@
 from followthemoney.mapping.entity import EntityMapping
+from followthemoney.mapping.sql import SQLSource
+from followthemoney.mapping.csv import CSVSource
 from followthemoney.exc import InvalidMapping
 
 
@@ -41,6 +43,14 @@ class QueryMapping(object):
                     break
             if before == len(entities):
                 raise InvalidMapping("Circular entity dependency detected.")
+
+    @property
+    def source(self):
+        if 'database' in self.data:
+            return SQLSource(self, self.data)
+        elif 'csv_url' in self.data or 'csv_urls' in self.data:
+            return CSVSource(self, self.data)
+        raise InvalidMapping("Cannot determine mapping type")
 
     def map(self, record):
         data = {}

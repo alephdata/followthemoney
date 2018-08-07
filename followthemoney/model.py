@@ -2,7 +2,7 @@ import os
 import yaml
 
 from followthemoney.schema import Schema
-from followthemoney.mapping import QueryMapping, get_source
+from followthemoney.mapping import QueryMapping
 from followthemoney.util import merge_data
 from followthemoney.exc import InvalidModel
 
@@ -58,9 +58,7 @@ class Model(object):
 
     def make_mapping(self, mapping, key_prefix=None):
         """Parse a mapping that applies (tabular) source data to the model."""
-        mapping = QueryMapping(self, mapping, key_prefix=key_prefix)
-        mapping.source = get_source(mapping)
-        return mapping
+        return QueryMapping(self, mapping, key_prefix=key_prefix)
 
     def map_entities(self, mapping, key_prefix=None):
         """Given a mapping, yield a series of entities from the data source."""
