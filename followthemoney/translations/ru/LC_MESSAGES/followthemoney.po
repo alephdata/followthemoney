@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-24 16:24+0200\n"
+"POT-Creation-Date: 2018-08-14 10:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -1091,6 +1091,16 @@ msgstr "ID записи"
 msgid "Source URL"
 msgstr "Ссылка на источник"
 
+#. Land.label
+#: followthemoney/schema/Land.yml
+msgid "Land"
+msgstr "Недвижимость"
+
+#. Land.plural
+#: followthemoney/schema/Land.yml
+msgid "Lands"
+msgstr "Недвижимость"
+
 #. LegalEntity.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Legal entity"
@@ -1460,7 +1470,9 @@ msgstr "Банковский счет бенефициара"
 
 #. Person.label
 #. Relationship.properties.person.label
+#. TaxRoll.properties.person.label
 #: followthemoney/schema/Person.yaml followthemoney/schema/Relationship.yaml
+#: followthemoney/schema/TaxRoll.yaml
 msgid "Person"
 msgstr "Физическое лицо"
 
@@ -1605,16 +1617,6 @@ msgstr "Назначение земельного участка"
 msgid "Record date"
 msgstr "Дата записи"
 
-#. Land.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Land"
-msgstr "Недвижимость"
-
-#. Land.plural
-#: followthemoney/schema/RealEstate.yaml
-msgid "Lands"
-msgstr "Недвижимость"
-
 #. Relationship.label
 #. Relationship.properties.relationship.label
 #: followthemoney/schema/Relationship.yaml
@@ -1745,6 +1747,31 @@ msgstr "Причина санкций"
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanction occurrence"
 msgstr "Период действия санкций"
+
+#. TaxRoll.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Tax Roll"
+msgstr ""
+
+#. TaxRoll.plural
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Tax Rolls"
+msgstr ""
+
+#. TaxRoll.properties.income.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Registered income"
+msgstr ""
+
+#. TaxRoll.properties.taxPaid.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Amount of tax paid"
+msgstr ""
+
+#. TaxRoll.properties.wealth.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Registered wealth"
+msgstr ""
 
 #. Thing.properties.alias.label
 #: followthemoney/schema/Thing.yaml

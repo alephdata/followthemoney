@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-24 16:25+0200\n"
+"POT-Creation-Date: 2018-08-14 10:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1454,7 +1454,9 @@ msgstr ""
 
 #. Person.label
 #. Relationship.properties.person.label
+#. TaxRoll.properties.person.label
 #: followthemoney/schema/Person.yaml followthemoney/schema/Relationship.yaml
+#: followthemoney/schema/TaxRoll.yaml
 msgid "Person"
 msgstr ""
 
@@ -1722,6 +1724,31 @@ msgstr ""
 #. Sanction.properties.sanctionOccurrence.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanction occurrence"
+msgstr ""
+
+#. TaxRoll.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Tax Roll"
+msgstr ""
+
+#. TaxRoll.plural
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Tax Rolls"
+msgstr ""
+
+#. TaxRoll.properties.income.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Registered income"
+msgstr ""
+
+#. TaxRoll.properties.taxPaid.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Amount of tax paid"
+msgstr ""
+
+#. TaxRoll.properties.wealth.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Registered wealth"
 msgstr ""
 
 #. Thing.properties.alias.label

@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-18 12:00+0200\n"
+"POT-Creation-Date: 2018-08-14 10:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2018\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.3\n"
+"Generated-By: Babel 2.6.0\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -54,6 +54,27 @@ msgstr ""
 #: followthemoney/schema/Asset.yaml
 msgid "Assets"
 msgstr "Vermögenswerte"
+
+#. Associate.label
+#. Associate.properties.associate.label
+#: followthemoney/schema/Associate.yml
+msgid "Associate"
+msgstr ""
+
+#. Associate.description
+#: followthemoney/schema/Associate.yml
+msgid "Non-family association between two people"
+msgstr ""
+
+#. Associate.properties.associate.reverse
+#: followthemoney/schema/Associate.yml
+msgid "Associates"
+msgstr ""
+
+#. Associate.properties.associate.description
+#: followthemoney/schema/Associate.yml
+msgid "An associate of the subject person."
+msgstr ""
 
 #. BankAccount.label
 #. EconomicActivity.properties.bankAccount.label
@@ -990,6 +1011,31 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
+#. Family.label
+#: followthemoney/schema/Family.yml
+msgid "Family"
+msgstr ""
+
+#. Family.description
+#: followthemoney/schema/Family.yml
+msgid "Family relationship between two people"
+msgstr ""
+
+#. Family.properties.relative.label
+#: followthemoney/schema/Family.yml
+msgid "Relative"
+msgstr ""
+
+#. Family.properties.relative.reverse
+#: followthemoney/schema/Family.yml
+msgid "Relatives"
+msgstr ""
+
+#. Family.properties.relative.description
+#: followthemoney/schema/Family.yml
+msgid "The relative of the subject person."
+msgstr ""
+
 #. Interest.label
 #: followthemoney/schema/Interest.yaml
 msgid "Interest"
@@ -1034,6 +1080,16 @@ msgstr ""
 #. Interval.properties.sourceUrl.label
 #: followthemoney/schema/Interval.yaml
 msgid "Source URL"
+msgstr ""
+
+#. Land.label
+#: followthemoney/schema/Land.yml
+msgid "Land"
+msgstr ""
+
+#. Land.plural
+#: followthemoney/schema/Land.yml
+msgid "Lands"
 msgstr ""
 
 #. LegalEntity.label
@@ -1403,7 +1459,9 @@ msgstr ""
 
 #. Person.label
 #. Relationship.properties.person.label
+#. TaxRoll.properties.person.label
 #: followthemoney/schema/Person.yaml followthemoney/schema/Relationship.yaml
+#: followthemoney/schema/TaxRoll.yaml
 msgid "Person"
 msgstr ""
 
@@ -1545,16 +1603,6 @@ msgstr ""
 msgid "Record date"
 msgstr ""
 
-#. Land.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Land"
-msgstr ""
-
-#. Land.plural
-#: followthemoney/schema/RealEstate.yaml
-msgid "Lands"
-msgstr ""
-
 #. Relationship.label
 #. Relationship.properties.relationship.label
 #: followthemoney/schema/Relationship.yaml
@@ -1597,52 +1645,6 @@ msgstr ""
 #. Relationship.properties.supportingDocumentNumber.label
 #: followthemoney/schema/Relationship.yaml
 msgid "Supporting document number"
-msgstr ""
-
-#. Family.label
-#: followthemoney/schema/Relationship.yaml
-msgid "Family"
-msgstr ""
-
-#. Family.description
-#: followthemoney/schema/Relationship.yaml
-msgid "Family relationship between two people"
-msgstr ""
-
-#. Family.properties.relative.label
-#: followthemoney/schema/Relationship.yaml
-msgid "Relative"
-msgstr ""
-
-#. Family.properties.relative.reverse
-#: followthemoney/schema/Relationship.yaml
-msgid "Relatives"
-msgstr ""
-
-#. Family.properties.relative.description
-#: followthemoney/schema/Relationship.yaml
-msgid "The relative of the subject person."
-msgstr ""
-
-#. Associate.label
-#. Associate.properties.associate.label
-#: followthemoney/schema/Relationship.yaml
-msgid "Associate"
-msgstr ""
-
-#. Associate.description
-#: followthemoney/schema/Relationship.yaml
-msgid "Non-family association between two people"
-msgstr ""
-
-#. Associate.properties.associate.reverse
-#: followthemoney/schema/Relationship.yaml
-msgid "Associates"
-msgstr ""
-
-#. Associate.properties.associate.description
-#: followthemoney/schema/Relationship.yaml
-msgid "An associate of the subject person."
 msgstr ""
 
 #. Representation.label
@@ -1726,6 +1728,31 @@ msgstr ""
 #. Sanction.properties.sanctionOccurrence.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanction occurrence"
+msgstr ""
+
+#. TaxRoll.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Tax Roll"
+msgstr ""
+
+#. TaxRoll.plural
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Tax Rolls"
+msgstr ""
+
+#. TaxRoll.properties.income.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Registered income"
+msgstr ""
+
+#. TaxRoll.properties.taxPaid.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Amount of tax paid"
+msgstr ""
+
+#. TaxRoll.properties.wealth.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Registered wealth"
 msgstr ""
 
 #. Thing.properties.alias.label
