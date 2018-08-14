@@ -1,0 +1,54 @@
+License:
+  label: "License"
+  plural: "Licenses"
+  description: "License"
+  matchable: false
+  extends:
+    Interest
+  icon: fa-certificate
+  featured:
+    - asset
+    - licensee
+    - licenseDescription
+    - startDate
+    - endDate
+    - date
+  properties:
+    asset:
+      label: "Licensed object"
+      description: ""
+      type: entity
+      schema: Asset
+    licensee:
+      label: "Licensee"
+      description: "An entity to which a license is granted"
+      reverse: "Licensed assets"
+      type: entity
+      schema: LegalEntity
+    licensor:
+      label: "Licensor"
+      reverse: "Granted license"
+      description: "Entity that granted a license"
+      type: entity
+      schema: LegalEntity
+    licensedObjectOwner:
+      label: "Owner"
+      reverse: "Asset"
+      description: "Owner of the licensed asset"
+      type: entity
+      schema: LegalEntity
+    licenseDescription:
+      label: "License description"
+      description: "License details"
+    licensedArea:
+      label: "Licensed areas"
+      description: "License applicable for particular geographic region"
+    licensedActivity:
+      label: "Licensed activity"
+      description: "Type of licensed activity"
+    licenseStatus:
+      label: "License status"
+      description: "Current status of the license"
+    licenseReviewDate:
+      label: "License review date"
+      description: "License renewal date"
