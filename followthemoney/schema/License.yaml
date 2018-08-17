@@ -1,9 +1,10 @@
-Concession:
-  label: Concession
+License:
+  label: License
   description: "A grant of land, rights or property. A type of Contract"
-  plural: Concessions
-  extends: Contract
-  icon: fa-th
+  plural: Licenses
+  extends:
+    - Contract
+  icon: fa-certificate
   matchable: false
   featured:
     - name
@@ -13,6 +14,8 @@ Concession:
     - commodities
   properties:
     area:
-      label: Area
+      label: "Area"
     commodities:
-      label: Commodities
+      label: "Commodities"
+    reviewDate:
+      label: "License review date"
