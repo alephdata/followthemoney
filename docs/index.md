@@ -35,7 +35,7 @@ And on properties of entities:
 * `multiple` (bool): if `true`, can have multiple values.
 * `reverse` (string): inverse of `label`
 * `schema` (string): if `type` is `entity`, this is what kind. AKA 'domain' of the property.
-* `type` (string): datatype of the value of this property according to [exactitude](https://github.com/alephdata/exactitude).
+* `type` (string): datatype of the value of this property.
 
 ## Uses
 

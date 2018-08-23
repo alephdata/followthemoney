@@ -29,7 +29,6 @@ setup(
         'parsedatetime >= 2.1',
         'python-dateutil',
         'pytz >= 2018.5',
-        'exactitude >= 2.0.0',
         'rdflib >= 4.1'
     ],
     extras_require={
