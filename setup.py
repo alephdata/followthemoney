@@ -17,11 +17,17 @@ setup(
     zip_safe=False,
     install_requires=[
         'babel',
-        'six >= 1.11.0',
         'pyyaml',
         'requests[security] >= 2.18.4',
         'normality >= 0.6.1',
         'sqlalchemy >= 1.1.14',
+        'countrynames >= 1.6.0',
+        'languagecodes >= 1.0.4',
+        'phonenumbers >= 8.9.11',
+        'urlnormalizer >= 1.2.0',
+        'parsedatetime >= 2.1',
+        'python-dateutil',
+        'pytz >= 2018.5',
         'exactitude >= 2.0.0',
         'rdflib >= 4.1'
     ],

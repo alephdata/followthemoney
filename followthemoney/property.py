@@ -1,7 +1,7 @@
 from banal import ensure_list
 
 from followthemoney.exc import InvalidModel
-from followthemoney.types import TYPES
+from followthemoney.types_ import TYPES
 from followthemoney.util import gettext
 
 
