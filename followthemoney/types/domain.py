@@ -1,3 +1,4 @@
+# TODO: https://pypi.python.org/pypi/publicsuffix/
 # import socket
 from normality import stringify
 from urllib.parse import urlparse
@@ -6,7 +7,9 @@ from followthemoney.types.common import PropertyType
 
 
 class DomainType(PropertyType):
-    # TODO: https://pypi.python.org/pypi/publicsuffix/
+    name = 'domain'
+    group = 'domains'
+    prefix = 'domain'
 
     # def _check_exists(self, domain):
     #     """Actually try to resolve a domain name."""

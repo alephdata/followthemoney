@@ -1,13 +1,12 @@
-from babel import Locale
 from banal import ensure_list
 from normality import stringify
 
 
 class PropertyType(object):
     """Base class for all types."""
-
-    def __init__(self, locale='en_GB'):
-        self.locale = Locale(locale)
+    name = None
+    group = None
+    prefix = None
 
     def validate(self, text, **kwargs):
         """Returns a boolean to indicate if this is a valid instance of
@@ -40,6 +39,32 @@ class PropertyType(object):
             values.update(self.normalize(item, **kwargs))
         return list(values)
 
+    def to_ref(self, value):
+        return ':'.join(self.prefix, value)
+
 
 class TextType(PropertyType):
-    pass
+    name = 'text'
+
+
+class Registry(object):
+
+    def __init__(self):
+        self.prefixes = {}
+        self.groups = {}
+        self.names = {}
+
+    def add(self, instance):
+        setattr(self, instance.name, instance)
+        self.names[instance.name] = instance
+        if instance.prefix is not None:
+            self.prefixes[instance.prefix] = instance
+        if instance.group is not None:
+            self.groups[instance.group] = instance
+        return instance
+
+    def by_name(self, name):
+        try:
+            return getattr(self, name)
+        except AttributeError:
+            pass

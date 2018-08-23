@@ -3,6 +3,7 @@ import yaml
 
 from followthemoney.schema import Schema
 from followthemoney.mapping import QueryMapping
+from followthemoney.types import types
 from followthemoney.util import merge_data
 from followthemoney.exc import InvalidModel
 
@@ -29,13 +30,6 @@ class Model(object):
             for prop in schema.properties.values():
                 props.add(prop)
         return props
-
-    @property
-    def property_types(self):
-        prop_types = {}
-        for prop in self.properties:
-            prop_types[prop.name] = prop.type_name
-        return prop_types
 
     def _load(self, filepath):
         with open(filepath, 'r') as fh:

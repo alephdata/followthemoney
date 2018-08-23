@@ -5,6 +5,7 @@ from rdflib import Graph, Namespace, URIRef, Literal
 from rdflib.namespace import OWL, DCTERMS, RDF, RDFS, XSD
 
 from followthemoney import model
+from followthemoney.types import types
 
 
 class Ontology(object):
@@ -34,12 +35,13 @@ class Ontology(object):
         return URIRef(url)
 
     def property_range(self, prop):
-        prop_type = model.property_types[prop.name]
-        if prop_type == 'entity':
-            return self.uri_for(model[prop.range])
-        elif prop_type == 'date':
-            return XSD.dateTime
-        return None
+        raise ValueError("Whaaa!")
+        # prop_type = types.by_name(prop.name)
+        # if prop_type == types.entity:
+        #     return self.uri_for(model[prop.range])
+        # elif prop_type == types.date:
+        #     return XSD.dateTime
+        # return None
 
     def add_class(self, entity):
         entity_uri = self.uri_for(entity)

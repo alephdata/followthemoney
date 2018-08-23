@@ -1,16 +1,12 @@
-import os
 import sys
 import yaml
 
-from followthemoney.model import Model
-
-model_path = os.path.dirname(__file__)
-model_path = os.path.join(model_path, 'schema')
-model = Model(model_path)
+from followthemoney import model
 
 
 def execute_mapping(query):
     for entity in model.map_entities(query):
+        schema = model.get(entity['schema'])
         print(entity)
 
 

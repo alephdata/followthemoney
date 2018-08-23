@@ -2,35 +2,47 @@ import countrynames
 from normality import stringify
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import gettext, get_locale
 
 
 class CountryType(PropertyType):
+    name = 'country'
+    group = 'countries'
+    prefix = 'country'
 
     def __init__(self, *args):
         super(CountryType, self).__init__(*args)
-        # extra countries that OCCRP is interested in.
-        self.names = {
-            'zz': 'Global',
-            'eu': 'European Union',
-            'xk': 'Kosovo',
-            'yucs': 'Yugoslavia',
-            'csxx': 'Serbia and Montenegro',
-            'suhh': 'Soviet Union',
-            'ge-ab': 'Abkhazia',
-            'x-so': 'South Ossetia',
-            'so-som': 'Somaliland',
-            'gb-wls': 'Wales',
-            'gb-sct': 'Scotland',
-            'md-pmr': 'Transnistria'
-        }
-        for code, label in self.locale.territories.items():
-            self.names[code.lower()] = label
+        self._names = {}
+        self.codes = self.names.keys()
+
+    @property
+    def names(self):
+        locale = get_locale()
+        if locale not in self._names:
+            # extra territories that OCCRP is interested in.
+            self._names[locale] = {
+                'zz': gettext('Global'),
+                'eu': gettext('European Union'),
+                'xk': gettext('Kosovo'),
+                'yucs': gettext('Yugoslavia'),
+                'csxx': gettext('Serbia and Montenegro'),
+                'suhh': gettext('Soviet Union'),
+                'ge-ab': gettext('Abkhazia'),
+                'x-so': gettext('South Ossetia'),
+                'so-som': gettext('Somaliland'),
+                'gb-wls': gettext('Wales'),
+                'gb-sct': gettext('Scotland'),
+                'md-pmr': gettext('Transnistria')
+            }
+            for code, label in locale.territories.items():
+                self._names[locale][code.lower()] = label
+        return self._names[locale]
 
     def validate(self, country, **kwargs):
         country = stringify(country)
         if country is None:
             return False
-        return country.lower() in self.names
+        return country.lower() in self.codes
 
     def clean_text(self, country, guess=False, **kwargs):
         """Determine a two-letter country code based on an input.
@@ -38,7 +50,7 @@ class CountryType(PropertyType):
         The input may be a country code, a country name, etc.
         """
         code = country.lower().strip()
-        if code in self.names:
+        if code in self.codes:
             return code
         country = countrynames.to_code(country, fuzzy=guess)
         if country is not None:

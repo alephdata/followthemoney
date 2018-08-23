@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import os
 from threading import local
 from normality import stringify
+from babel import Locale
 from gettext import translation
 from banal import is_mapping, is_sequence
 from banal import unique_list, ensure_list
@@ -19,8 +20,15 @@ def gettext(*args, **kwargs):
 
 
 def set_model_locale(locale):
+    state.locale = locale
     state.translation = translation('followthemoney', i18n_path, [locale],
                                     fallback=True)
+
+
+def get_locale():
+    if not hasattr(state, 'locale'):
+        return Locale(DEFAULT_LOCALE)
+    return Locale(state.locale)
 
 
 def key_bytes(key):

@@ -1,7 +1,7 @@
 from banal import ensure_list
 
 from followthemoney.exc import InvalidModel
-from followthemoney.types import TYPES
+from followthemoney.types import types
 from followthemoney.util import gettext
 
 
@@ -17,16 +17,14 @@ class Property(object):
         self._description = data.get('description')
         self.caption = data.get('caption', False)
         self.required = data.get('required', False)
-        self.is_multiple = data.get('multiple', False)
-        self.type_name = data.get('type', 'string')
         self.range = data.get('schema', 'Thing')
-        self.is_country = self.type_name == 'country'
-        self.is_entity = self.type_name == 'entity'
-        try:
-            self.type = TYPES[self.type_name].type
-            self.invert = TYPES[self.type_name].invert
-        except KeyError:
+        self.type_name = data.get('type', 'text')
+        self.type = types.by_name(self.type_name)
+        if self.type is None:
             raise InvalidModel("Invalid type: %s" % self.type_name)
+        self.invert = self.type.group
+        self.is_country = self.type == types.country
+        self.is_entity = self.type == types.entity
 
     @property
     def label(self):

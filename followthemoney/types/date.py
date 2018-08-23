@@ -15,6 +15,10 @@ class DateType(PropertyType):
     CUT_ZEROES = re.compile(r'((\-00.*)|(.00:00:00))$')
     MAX_LENGTH = 19
 
+    name = 'date'
+    group = 'dates'
+    prefix = 'date'
+
     def validate(self, obj, **kwargs):
         """Check if a thing is a valid date."""
         obj = stringify(obj)

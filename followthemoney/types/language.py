@@ -1,15 +1,26 @@
 from normality import stringify
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import get_locale
 
 
 class LanguageType(PropertyType):
+    name = 'language'
+    group = 'languages'
+    prefix = 'lang'
 
     def __init__(self, *args):
         super(LanguageType, self).__init__(*args)
-        self.names = {}
-        for code, label in self.locale.languages.items():
-            self.names[code.lower()] = label
+        self._names = {}
+
+    @property
+    def names(self):
+        locale = get_locale()
+        if locale not in self._names:
+            self._names[locale] = {}
+            for code, label in locale.languages.items():
+                self._names[locale][code.lower()] = label
+        return self._names[locale]
 
     def validate(self, text, **kwargs):
         text = stringify(text)

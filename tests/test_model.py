@@ -102,8 +102,6 @@ class ModelTestCase(TestCase):
         thing = model.schemata['Thing']
         name = thing.get('name')
         assert name.name in repr(name), repr(name)
-
-        assert not name.is_multiple, name.is_multiple
         assert name.required, name.required
 
         value, errors = name.validate('huhu')
@@ -112,15 +110,6 @@ class ModelTestCase(TestCase):
         value, errors = name.validate(None)
         assert errors, errors
         assert not len(value), value
-
-    def test_model_property_types(self):
-        property_types = model.property_types
-        assert property_types['name'] == 'name', property_types
-        assert property_types['position'] == 'string', property_types
-        assert property_types['director'] == 'entity', property_types
-        assert property_types['birthDate'] == 'date', property_types
-        assert property_types['mainCountry'] == 'country', property_types
-        assert property_types['accountNumber'] == 'identifier', property_types
 
     def test_descendants(self):
         le = model.schemata['LegalEntity']

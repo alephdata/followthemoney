@@ -9,6 +9,9 @@ from followthemoney.types.domain import DomainType
 class EmailType(PropertyType):
     EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
     domains = DomainType()
+    name = 'email'
+    group = 'emails'
+    prefix = 'mail'
 
     def validate(self, email, **kwargs):
         """Check to see if this is a valid email address."""

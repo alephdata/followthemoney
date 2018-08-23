@@ -5,6 +5,9 @@ from followthemoney.types.common import PropertyType
 
 
 class IpType(PropertyType):
+    name = 'ip'
+    group = 'ips'
+    prefix = 'ip'
 
     def validate(self, ip, **kwargs):
         """Check to see if this is a valid ip address."""

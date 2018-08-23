@@ -8,6 +8,9 @@ from followthemoney.types.common import PropertyType
 
 
 class PhoneType(PropertyType):
+    name = 'phone'
+    group = 'phones'
+    prefix = 'tel'
 
     def _clean_countries(self, countries, country):
         result = set([None])
