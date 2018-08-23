@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from normality import stringify
 from ipaddress import ip_address
 

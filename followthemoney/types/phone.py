@@ -1,4 +1,3 @@
-import six
 from banal import ensure_list
 from phonenumbers import parse as parse_number
 from phonenumbers import is_possible_number, is_valid_number, format_number
@@ -15,7 +14,7 @@ class PhoneType(PropertyType):
         countries = ensure_list(countries)
         countries.extend(ensure_list(country))
         for country in countries:
-            if isinstance(country, six.string_types):
+            if isinstance(country, str):
                 country = country.strip().upper()
                 result.add(country)
         return result

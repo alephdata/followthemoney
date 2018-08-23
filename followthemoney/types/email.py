@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import re
 from normality import stringify
 from normality.cleaning import strip_quotes

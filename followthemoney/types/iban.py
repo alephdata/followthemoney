@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from normality import stringify
 from stdnum import iban as iban_validator
 

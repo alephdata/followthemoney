@@ -1,6 +1,6 @@
 # import socket
 from normality import stringify
-from six.moves.urllib.parse import urlparse
+from urllib.parse import urlparse
 
 from followthemoney.types.common import PropertyType
 
