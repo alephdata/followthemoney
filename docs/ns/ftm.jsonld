@@ -1,5 +1,6 @@
 {
     "@context": {
+        "Airplane": "ftm:Airplane",
         "Asset": "ftm:Asset",
         "Associate": "ftm:Associate",
         "Audio": "ftm:Audio",
@@ -28,6 +29,7 @@
         "Ownership": "ftm:Ownership",
         "Package": "ftm:Package",
         "Pages": "ftm:Pages",
+        "Passport": "ftm:Passport",
         "Payment": "ftm:Payment",
         "Person": "ftm:Person",
         "PlainText": "ftm:PlainText",
@@ -37,65 +39,37 @@
         "Representation": "ftm:Representation",
         "Sanction": "ftm:Sanction",
         "Table": "ftm:Table",
+        "TaxRoll": "ftm:TaxRoll",
         "Thing": "ftm:Thing",
         "UnknownLink": "ftm:UnknownLink",
         "Value": "ftm:Value",
+        "Vehicle": "ftm:Vehicle",
         "Vessel": "ftm:Vessel",
         "Video": "ftm:Video",
         "Workbook": "ftm:Workbook",
         "accountNumber": "ftm:accountNumber",
         "accountType": "ftm:accountType",
         "address": "ftm:address",
-        "agent": {
-            "@id": "ftm:agent",
-            "@type": "@id"
-        },
+        "agent": "ftm:agent",
         "alias": "ftm:alias",
         "amended": "ftm:amended",
         "amount": "ftm:amount",
         "amountEur": "ftm:amountEur",
         "amountUsd": "ftm:amountUsd",
         "area": "ftm:area",
-        "asset": {
-            "@id": "ftm:asset",
-            "@type": "@id"
-        },
-        "associate": {
-            "@id": "ftm:associate",
-            "@type": "@id"
-        },
-        "authority": {
-            "@id": "ftm:authority",
-            "@type": "@id"
-        },
+        "asset": "ftm:asset",
+        "associate": "ftm:associate",
+        "authority": "ftm:authority",
         "balance": "ftm:balance",
-        "bankAccount": {
-            "@id": "ftm:bankAccount",
-            "@type": "@id"
-        },
+        "bankAccount": "ftm:bankAccount",
         "bankAddress": "ftm:bankAddress",
-        "bankForeign": {
-            "@id": "ftm:bankForeign",
-            "@type": "@id"
-        },
+        "bankForeign": "ftm:bankForeign",
         "bankName": "ftm:bankName",
-        "bankRub": {
-            "@id": "ftm:bankRub",
-            "@type": "@id"
-        },
-        "beneficiary": {
-            "@id": "ftm:beneficiary",
-            "@type": "@id"
-        },
-        "beneficiaryAccount": {
-            "@id": "ftm:beneficiaryAccount",
-            "@type": "@id"
-        },
+        "bankRub": "ftm:bankRub",
+        "beneficiary": "ftm:beneficiary",
+        "beneficiaryAccount": "ftm:beneficiaryAccount",
         "bic": "ftm:bic",
-        "birthDate": {
-            "@id": "ftm:birthDate",
-            "@type": "xsd:dateTime"
-        },
+        "birthDate": "ftm:birthDate",
         "birthPlace": "ftm:birthPlace",
         "buildDate": "ftm:buildDate",
         "cadastralCode": "ftm:cadastralCode",
@@ -103,10 +77,7 @@
         "callSign": "ftm:callSign",
         "cancelled": "ftm:cancelled",
         "capital": "ftm:capital",
-        "case": {
-            "@id": "ftm:case",
-            "@type": "@id"
-        },
+        "case": "ftm:case",
         "caseNumber": "ftm:caseNumber",
         "category": "ftm:category",
         "ccdNumber": "ftm:ccdNumber",
@@ -114,74 +85,38 @@
         "censusBlock": "ftm:censusBlock",
         "cikCode": "ftm:cikCode",
         "classification": "ftm:classification",
-        "client": {
-            "@id": "ftm:client",
-            "@type": "@id"
-        },
+        "client": "ftm:client",
         "closeDate": "ftm:closeDate",
         "coatoCode": "ftm:coatoCode",
         "commodities": "ftm:commodities",
-        "contract": {
-            "@id": "ftm:contract",
-            "@type": "@id"
-        },
-        "contractDate": {
-            "@id": "ftm:contractDate",
-            "@type": "xsd:dateTime"
-        },
-        "contractHolder": {
-            "@id": "ftm:contractHolder",
-            "@type": "@id"
-        },
+        "contract": "ftm:contract",
+        "contractDate": "ftm:contractDate",
+        "contractHolder": "ftm:contractHolder",
         "country": "ftm:country",
         "court": "ftm:court",
         "cpvCode": "ftm:cpvCode",
-        "createDate": {
-            "@id": "ftm:createDate",
-            "@type": "xsd:dateTime"
-        },
+        "createDate": "ftm:createDate",
         "crsNumber": "ftm:crsNumber",
         "currency": "ftm:currency",
         "customsAmount": "ftm:customsAmount",
         "customsProcedure": "ftm:customsProcedure",
-        "date": {
-            "@id": "ftm:date",
-            "@type": "xsd:dateTime"
-        },
-        "deathDate": {
-            "@id": "ftm:deathDate",
-            "@type": "xsd:dateTime"
-        },
+        "date": "ftm:date",
+        "deathDate": "ftm:deathDate",
         "decisionReason": "ftm:decisionReason",
-        "declarant": {
-            "@id": "ftm:declarant",
-            "@type": "@id"
-        },
+        "declarant": "ftm:declarant",
         "departureCountry": "ftm:departureCountry",
         "description": "ftm:description",
         "destinationCountry": "ftm:destinationCountry",
         "directionOfTransportation": "ftm:directionOfTransportation",
-        "director": {
-            "@id": "ftm:director",
-            "@type": "@id"
-        },
-        "dissolutionDate": {
-            "@id": "ftm:dissolutionDate",
-            "@type": "xsd:dateTime"
-        },
+        "director": "ftm:director",
+        "dissolutionDate": "ftm:dissolutionDate",
         "documentNumber": "ftm:documentNumber",
         "documentType": "ftm:documentType",
         "dollarExchRate": "ftm:dollarExchRate",
         "email": "ftm:email",
         "encumbrance": "ftm:encumbrance",
-        "endDate": {
-            "@id": "ftm:endDate",
-            "@type": "xsd:dateTime"
-        },
-        "entity": {
-            "@id": "ftm:entity",
-            "@type": "@id"
-        },
+        "endDate": "ftm:endDate",
+        "entity": "ftm:entity",
         "fatherName": "ftm:fatherName",
         "fileDate": "ftm:fileDate",
         "firstName": "ftm:firstName",
@@ -190,17 +125,18 @@
         "fssCode": "ftm:fssCode",
         "ftm": "https://w3id.org/ftm#",
         "gender": "ftm:gender",
+        "givenName": "ftm:givenName",
         "goodsDescription": "ftm:goodsDescription",
         "grossRegisteredTonnage": "ftm:grossRegisteredTonnage",
+        "holder": "ftm:holder",
         "iban": "ftm:iban",
         "ibcRuc": "ftm:ibcRuc",
+        "icaoCode": "ftm:icaoCode",
         "icijId": "ftm:icijId",
         "idNumber": "ftm:idNumber",
         "imoNumber": "ftm:imoNumber",
-        "incorporationDate": {
-            "@id": "ftm:incorporationDate",
-            "@type": "xsd:dateTime"
-        },
+        "income": "ftm:income",
+        "incorporationDate": "ftm:incorporationDate",
         "innCode": "ftm:innCode",
         "invoiceAmount": "ftm:invoiceAmount",
         "ipoCode": "ftm:ipoCode",
@@ -218,69 +154,43 @@
         "longitude": "ftm:longitude",
         "lotNumber": "ftm:lotNumber",
         "mainCountry": "ftm:mainCountry",
+        "manufacturer": "ftm:manufacturer",
         "mbsCode": "ftm:mbsCode",
-        "member": {
-            "@id": "ftm:member",
-            "@type": "@id"
-        },
+        "member": "ftm:member",
         "middleName": "ftm:middleName",
         "mmsi": "ftm:mmsi",
+        "model": "ftm:model",
         "motherName": "ftm:motherName",
         "name": "ftm:name",
-        "nameChangeDate": {
-            "@id": "ftm:nameChangeDate",
-            "@type": "xsd:dateTime"
-        },
+        "nameChangeDate": "ftm:nameChangeDate",
         "nationality": "ftm:nationality",
         "navigationArea": "ftm:navigationArea",
         "notes": "ftm:notes",
         "noticeId": "ftm:noticeId",
         "numberAwards": "ftm:numberAwards",
         "nutsCode": "ftm:nutsCode",
-        "object": {
-            "@id": "ftm:object",
-            "@type": "@id"
-        },
+        "object": "ftm:object",
         "ogrnCode": "ftm:ogrnCode",
         "okopfCode": "ftm:okopfCode",
         "okpoCode": "ftm:okpoCode",
         "oksmCode": "ftm:oksmCode",
         "okvedCode": "ftm:okvedCode",
-        "organization": {
-            "@id": "ftm:organization",
-            "@type": "@id"
-        },
+        "operator": "ftm:operator",
+        "organization": "ftm:organization",
         "originCountry": "ftm:originCountry",
-        "owner": {
-            "@id": "ftm:owner",
-            "@type": "@id"
-        },
+        "owner": "ftm:owner",
         "ownershipType": "ftm:ownershipType",
-        "parent": {
-            "@id": "ftm:parent",
-            "@type": "@id"
-        },
-        "party": {
-            "@id": "ftm:party",
-            "@type": "@id"
-        },
+        "parent": "ftm:parent",
+        "party": "ftm:party",
         "passportNumber": "ftm:passportNumber",
         "pastFlags": "ftm:pastFlags",
         "pastNames": "ftm:pastNames",
         "pastTypes": "ftm:pastTypes",
-        "payer": {
-            "@id": "ftm:payer",
-            "@type": "@id"
-        },
-        "payerAccount": {
-            "@id": "ftm:payerAccount",
-            "@type": "@id"
-        },
+        "payer": "ftm:payer",
+        "payerAccount": "ftm:payerAccount",
         "percentage": "ftm:percentage",
-        "person": {
-            "@id": "ftm:person",
-            "@type": "@id"
-        },
+        "person": "ftm:person",
+        "personalNumber": "ftm:personalNumber",
         "pfrNumber": "ftm:pfrNumber",
         "phone": "ftm:phone",
         "position": "ftm:position",
@@ -290,18 +200,13 @@
         "programme": "ftm:programme",
         "propertyType": "ftm:propertyType",
         "purpose": "ftm:purpose",
-        "receiver": {
-            "@id": "ftm:receiver",
-            "@type": "@id"
-        },
+        "receiver": "ftm:receiver",
         "recordId": "ftm:recordId",
+        "registrationDate": "ftm:registrationDate",
         "registrationNumber": "ftm:registrationNumber",
         "registrationPort": "ftm:registrationPort",
         "relationship": "ftm:relationship",
-        "relative": {
-            "@id": "ftm:relative",
-            "@type": "@id"
-        },
+        "relative": "ftm:relative",
         "role": "ftm:role",
         "sanctionDuration": "ftm:sanctionDuration",
         "sanctionOccurrence": "ftm:sanctionOccurrence",
@@ -310,36 +215,24 @@
         "secondName": "ftm:secondName",
         "secretary": "ftm:secretary",
         "sector": "ftm:sector",
-        "sender": {
-            "@id": "ftm:sender",
-            "@type": "@id"
-        },
+        "sender": "ftm:sender",
         "sequenceNumber": "ftm:sequenceNumber",
+        "serialNumber": "ftm:serialNumber",
         "sharesCount": "ftm:sharesCount",
         "sharesCurrency": "ftm:sharesCurrency",
         "sharesType": "ftm:sharesType",
         "sharesValue": "ftm:sharesValue",
-        "sourceUrl": {
-            "@id": "ftm:sourceUrl",
-            "@type": "@id"
-        },
-        "startDate": {
-            "@id": "ftm:startDate",
-            "@type": "xsd:dateTime"
-        },
+        "sourceUrl": "ftm:sourceUrl",
+        "startDate": "ftm:startDate",
         "status": "ftm:status",
-        "subject": {
-            "@id": "ftm:subject",
-            "@type": "@id"
-        },
+        "subject": "ftm:subject",
         "summary": "ftm:summary",
-        "supplier": {
-            "@id": "ftm:supplier",
-            "@type": "@id"
-        },
+        "supplier": "ftm:supplier",
         "supportingDocumentNumber": "ftm:supportingDocumentNumber",
         "supportingDocumentType": "ftm:supportingDocumentType",
+        "surname": "ftm:surname",
         "taxNumber": "ftm:taxNumber",
+        "taxPaid": "ftm:taxPaid",
         "taxStatus": "ftm:taxStatus",
         "tenure": "ftm:tenure",
         "title": "ftm:title",
@@ -347,16 +240,15 @@
         "tonnage": "ftm:tonnage",
         "tradingCountry": "ftm:tradingCountry",
         "transactionNumber": "ftm:transactionNumber",
+        "transport": "ftm:transport",
         "type": "ftm:type",
         "vatCode": "ftm:vatCode",
         "vedCode": "ftm:vedCode",
         "vedCodeDescription": "ftm:vedCodeDescription",
         "voenCode": "ftm:voenCode",
         "weakAlias": "ftm:weakAlias",
-        "website": {
-            "@id": "ftm:website",
-            "@type": "@id"
-        },
+        "wealth": "ftm:wealth",
+        "website": "ftm:website",
         "xsd": "http://www.w3.org/2001/XMLSchema#"
     }
 }

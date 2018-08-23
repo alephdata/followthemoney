@@ -6,6 +6,11 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+ftm:Airplane a rdfs:Class ;
+    rdfs:label "Airplane" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Vehicle .
+
 ftm:Asset a rdfs:Class ;
     rdfs:label "Asset" ;
     rdfs:isDefinedBy ftm: ;
@@ -157,6 +162,12 @@ ftm:Pages a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Document .
 
+ftm:Passport a rdfs:Class ;
+    rdfs:label "Passport" ;
+    rdfs:comment "Passport" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Interval .
+
 ftm:Payment a rdfs:Class ;
     rdfs:label "Payment" ;
     rdfs:isDefinedBy ftm: ;
@@ -205,6 +216,11 @@ ftm:Table a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Document .
 
+ftm:TaxRoll a rdfs:Class ;
+    rdfs:label "Tax Roll" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Interval .
+
 ftm:Thing a rdfs:Class ;
     rdfs:label "Thing" ;
     rdfs:isDefinedBy ftm: .
@@ -218,10 +234,15 @@ ftm:Value a rdfs:Class ;
     rdfs:label "Value" ;
     rdfs:isDefinedBy ftm: .
 
+ftm:Vehicle a rdfs:Class ;
+    rdfs:label "Vehicle" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Asset .
+
 ftm:Vessel a rdfs:Class ;
     rdfs:label "Vessel" ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Asset .
+    rdfs:subClassOf ftm:Vehicle .
 
 ftm:Video a rdfs:Class ;
     rdfs:label "Video" ;
@@ -300,9 +321,11 @@ ftm:associate a rdf:Property ;
     rdfs:range ftm:Person .
 
 ftm:authority a rdf:Property ;
-    rdfs:label "Contract authority",
+    rdfs:label "Authority",
+        "Contract authority",
         "Sanctioning authority" ;
     rdfs:domain ftm:Contract,
+        ftm:Passport,
         ftm:Sanction ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:LegalEntity,
@@ -362,20 +385,24 @@ ftm:bic a rdf:Property ;
     rdfs:isDefinedBy ftm: .
 
 ftm:birthDate a rdf:Property ;
-    rdfs:label "Birth date" ;
-    rdfs:domain ftm:Person ;
+    rdfs:label "Birth date",
+        "Date of birth" ;
+    rdfs:domain ftm:Passport,
+        ftm:Person ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
 
 ftm:birthPlace a rdf:Property ;
     rdfs:label "Place of birth" ;
-    rdfs:domain ftm:Person ;
+    rdfs:domain ftm:Passport,
+        ftm:Person ;
     rdfs:isDefinedBy ftm: .
 
 ftm:buildDate a rdf:Property ;
     rdfs:label "Build Date" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
 
 ftm:cadastralCode a rdf:Property ;
     rdfs:label "Cadastral code" ;
@@ -493,7 +520,9 @@ ftm:country a rdf:Property ;
     rdfs:label "Country" ;
     rdfs:domain ftm:CourtCase,
         ftm:Event,
-        ftm:Thing ;
+        ftm:Passport,
+        ftm:Thing,
+        ftm:Vehicle ;
     rdfs:isDefinedBy ftm: .
 
 ftm:court a rdf:Property ;
@@ -670,7 +699,13 @@ ftm:fssCode a rdf:Property ;
 
 ftm:gender a rdf:Property ;
     rdfs:label "Gender" ;
-    rdfs:domain ftm:Person ;
+    rdfs:domain ftm:Passport,
+        ftm:Person ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:givenName a rdf:Property ;
+    rdfs:label "Given name" ;
+    rdfs:domain ftm:Passport ;
     rdfs:isDefinedBy ftm: .
 
 ftm:goodsDescription a rdf:Property ;
@@ -684,6 +719,12 @@ ftm:grossRegisteredTonnage a rdf:Property ;
     rdfs:domain ftm:Vessel ;
     rdfs:isDefinedBy ftm: .
 
+ftm:holder a rdf:Property ;
+    rdfs:label "Document holder" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
 ftm:iban a rdf:Property ;
     rdfs:label "IBAN" ;
     rdfs:domain ftm:BankAccount ;
@@ -692,6 +733,11 @@ ftm:iban a rdf:Property ;
 ftm:ibcRuc a rdf:Property ;
     rdfs:label "ibcRUC" ;
     rdfs:domain ftm:Company ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:icaoCode a rdf:Property ;
+    rdfs:label "ICAO aircraft type designator" ;
+    rdfs:domain ftm:Airplane ;
     rdfs:isDefinedBy ftm: .
 
 ftm:icijId a rdf:Property ;
@@ -709,6 +755,11 @@ ftm:idNumber a rdf:Property ;
 ftm:imoNumber a rdf:Property ;
     rdfs:label "IMO Number" ;
     rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:income a rdf:Property ;
+    rdfs:label "Registered income" ;
+    rdfs:domain ftm:TaxRoll ;
     rdfs:isDefinedBy ftm: .
 
 ftm:incorporationDate a rdf:Property ;
@@ -811,6 +862,11 @@ ftm:mainCountry a rdf:Property ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: .
 
+ftm:manufacturer a rdf:Property ;
+    rdfs:label "Manufacturer" ;
+    rdfs:domain ftm:Airplane ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:mbsCode a rdf:Property ;
     rdfs:label "MBS" ;
     rdfs:domain ftm:Company ;
@@ -830,6 +886,11 @@ ftm:middleName a rdf:Property ;
 ftm:mmsi a rdf:Property ;
     rdfs:label "MMSI" ;
     rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:model a rdf:Property ;
+    rdfs:label "Model" ;
+    rdfs:domain ftm:Vehicle ;
     rdfs:isDefinedBy ftm: .
 
 ftm:motherName a rdf:Property ;
@@ -916,6 +977,12 @@ ftm:okvedCode a rdf:Property ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
+ftm:operator a rdf:Property ;
+    rdfs:label "Operator" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
 ftm:organization a rdf:Property ;
     rdfs:label "Organization" ;
     rdfs:domain ftm:Directorship,
@@ -931,9 +998,11 @@ ftm:originCountry a rdf:Property ;
 
 ftm:owner a rdf:Property ;
     rdfs:label "Owner" ;
-    rdfs:domain ftm:Ownership ;
+    rdfs:domain ftm:Ownership,
+        ftm:Vehicle ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
+    rdfs:range ftm:LegalEntity,
+        ftm:Thing .
 
 ftm:ownershipType a rdf:Property ;
     rdfs:label "Type of ownership" ;
@@ -954,8 +1023,10 @@ ftm:party a rdf:Property ;
     rdfs:range ftm:Thing .
 
 ftm:passportNumber a rdf:Property ;
-    rdfs:label "Passport" ;
-    rdfs:domain ftm:Person ;
+    rdfs:label "Passport",
+        "Passport number" ;
+    rdfs:domain ftm:Passport,
+        ftm:Person ;
     rdfs:isDefinedBy ftm: .
 
 ftm:pastFlags a rdf:Property ;
@@ -993,9 +1064,15 @@ ftm:percentage a rdf:Property ;
 ftm:person a rdf:Property ;
     rdfs:label "Person" ;
     rdfs:comment "The subject of the familial relation." ;
-    rdfs:domain ftm:Relationship ;
+    rdfs:domain ftm:Relationship,
+        ftm:TaxRoll ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Person .
+
+ftm:personalNumber a rdf:Property ;
+    rdfs:label "Personal number" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
 
 ftm:pfrNumber a rdf:Property ;
     rdfs:label "PFR Number" ;
@@ -1059,12 +1136,20 @@ ftm:recordId a rdf:Property ;
     rdfs:domain ftm:Interval ;
     rdfs:isDefinedBy ftm: .
 
+ftm:registrationDate a rdf:Property ;
+    rdfs:label "Registration Date" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
 ftm:registrationNumber a rdf:Property ;
-    rdfs:label "Registration number" ;
+    rdfs:label "Registration Number",
+        "Registration number" ;
     rdfs:comment "Company registration number" ;
     rdfs:domain ftm:Company,
         ftm:LegalEntity,
-        ftm:RealEstate ;
+        ftm:RealEstate,
+        ftm:Vehicle ;
     rdfs:isDefinedBy ftm: .
 
 ftm:registrationPort a rdf:Property ;
@@ -1137,6 +1222,11 @@ ftm:sequenceNumber a rdf:Property ;
     rdfs:domain ftm:Payment ;
     rdfs:isDefinedBy ftm: .
 
+ftm:serialNumber a rdf:Property ;
+    rdfs:label "Serial Number" ;
+    rdfs:domain ftm:Airplane ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:sharesCount a rdf:Property ;
     rdfs:label "Number of shares" ;
     rdfs:domain ftm:Ownership ;
@@ -1207,10 +1297,20 @@ ftm:supportingDocumentType a rdf:Property ;
     rdfs:domain ftm:Relationship ;
     rdfs:isDefinedBy ftm: .
 
+ftm:surname a rdf:Property ;
+    rdfs:label "Surname" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:taxNumber a rdf:Property ;
     rdfs:label "Tax ID Number" ;
     rdfs:comment "Tax ID number" ;
     rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+ftm:taxPaid a rdf:Property ;
+    rdfs:label "Amount of tax paid" ;
+    rdfs:domain ftm:TaxRoll ;
     rdfs:isDefinedBy ftm: .
 
 ftm:taxStatus a rdf:Property ;
@@ -1249,12 +1349,21 @@ ftm:transactionNumber a rdf:Property ;
     rdfs:domain ftm:Payment ;
     rdfs:isDefinedBy ftm: .
 
+ftm:transport a rdf:Property ;
+    rdfs:label "Transport" ;
+    rdfs:comment "Means of transportation" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
 ftm:type a rdf:Property ;
-    rdfs:label "Type" ;
+    rdfs:label "Document type",
+        "Type" ;
     rdfs:comment "Type of contract. Potentially W (Works), U (Supplies), S (Services)." ;
     rdfs:domain ftm:Contract,
         ftm:CourtCase,
-        ftm:Vessel ;
+        ftm:Passport,
+        ftm:Vehicle ;
     rdfs:isDefinedBy ftm: .
 
 ftm:vatCode a rdf:Property ;
@@ -1286,6 +1395,11 @@ ftm:weakAlias a rdf:Property ;
     rdfs:domain ftm:Thing ;
     rdfs:isDefinedBy ftm: .
 
+ftm:wealth a rdf:Property ;
+    rdfs:label "Registered wealth" ;
+    rdfs:domain ftm:TaxRoll ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:website a rdf:Property ;
     rdfs:label "Website" ;
     rdfs:comment "Website address" ;
@@ -1294,6 +1408,6 @@ ftm:website a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2018-05-24T17:05:07"^^xsd:dateTime ;
+    dct:modified "2018-08-23T18:06:33"^^xsd:dateTime ;
     rdfs:comment "A vocabulary for investigative reporting, based on real life." .
 

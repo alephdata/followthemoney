@@ -4,8 +4,7 @@ from datetime import datetime
 from rdflib import Graph, Namespace, URIRef, Literal
 from rdflib.namespace import OWL, DCTERMS, RDF, RDFS, XSD
 
-from followthemoney import model
-from followthemoney.types import types
+from followthemoney import model, types
 
 
 class Ontology(object):
@@ -35,13 +34,11 @@ class Ontology(object):
         return URIRef(url)
 
     def property_range(self, prop):
-        raise ValueError("Whaaa!")
-        # prop_type = types.by_name(prop.name)
-        # if prop_type == types.entity:
-        #     return self.uri_for(model[prop.range])
-        # elif prop_type == types.date:
-        #     return XSD.dateTime
-        # return None
+        if prop.type == types.entities:
+            return self.uri_for(model[prop.range])
+        elif prop.type == types.dates:
+            return XSD.dateTime
+        return None
 
     def add_class(self, entity):
         entity_uri = self.uri_for(entity)
@@ -71,10 +68,10 @@ class Ontology(object):
             self.graph.add((prop_uri, RDFS.range, prop_range))
 
     def add_schemata(self):
-        for schema in model.schemata:
-            self.add_class(model.schemata[schema])
-            for prop in model.schemata[schema]._own_properties:
-                self.add_property(model.schemata[schema], prop)
+        for schema in model:
+            self.add_class(schema)
+            for prop in schema._own_properties:
+                self.add_property(schema, prop)
 
     def serialize(self, format='n3'):
         return self.graph.serialize(format=format)
@@ -90,19 +87,19 @@ class Ontology(object):
         for s, p, o in self.graph.triples((None, None, None)):
             name = s.split(self.ns_uri)[1]
             if name != "":
-                id_types = ['entity', 'url', 'uri']
-                if model.property_types.get(name) in id_types:
-                    context['@context'][name] = {
-                        '@id': 'ftm:%s' % name,
-                        '@type': '@id'
-                    }
-                elif model.property_types.get(name) == 'date':
-                    context['@context'][name] = {
-                        '@id': 'ftm:%s' % name,
-                        '@type': 'xsd:dateTime'
-                    }
-                else:
-                    context['@context'][name] = 'ftm:%s' % name
+                # id_types = ['entity', 'url', 'uri']
+                # if model.property_types.get(name) in id_types:
+                #     context['@context'][name] = {
+                #         '@id': 'ftm:%s' % name,
+                #         '@type': '@id'
+                #     }
+                # elif model.property_types.get(name) == 'date':
+                #     context['@context'][name] = {
+                #         '@id': 'ftm:%s' % name,
+                #         '@type': 'xsd:dateTime'
+                #     }
+                # else:
+                context['@context'][name] = 'ftm:%s' % name
 
         return context
 

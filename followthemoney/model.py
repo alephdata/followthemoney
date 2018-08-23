@@ -3,7 +3,6 @@ import yaml
 
 from followthemoney.schema import Schema
 from followthemoney.mapping import QueryMapping
-from followthemoney.types import types
 from followthemoney.util import merge_data
 from followthemoney.exc import InvalidModel
 
