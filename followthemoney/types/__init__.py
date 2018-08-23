@@ -1,3 +1,5 @@
+from collections import namedtuple
+
 from followthemoney.types.url import UrlType
 from followthemoney.types.name import NameType
 from followthemoney.types.domain import DomainType
@@ -39,3 +41,20 @@ __all__ = [urls,
            languages,
            identifiers,
            texts]
+
+PropType = namedtuple('PropType', ['type', 'invert'])
+
+TYPES = {
+    'string': PropType(texts, None),
+    'name': PropType(names, 'names'),
+    'entity': PropType(texts, 'entities'),
+    'url': PropType(urls, 'urls'),
+    'date': PropType(dates, 'dates'),
+    'address': PropType(addresses, 'addresses'),
+    'country': PropType(countries, 'countries'),
+    'email': PropType(emails, 'emails'),
+    'phone': PropType(phones, 'phones'),
+    'identifier': PropType(identifiers, 'identifiers'),
+    'iban': PropType(ibans, 'ibans'),
+    'ip': PropType(ips, 'ips'),
+}

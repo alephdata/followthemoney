@@ -17,6 +17,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'babel',
+        'banal',
         'pyyaml',
         'requests[security] >= 2.18.4',
         'normality >= 0.6.1',
