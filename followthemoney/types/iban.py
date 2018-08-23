@@ -1,5 +1,5 @@
 from normality import stringify
-from stdnum import iban as iban_validator
+from schwifty import IBAN
 
 from followthemoney.types.common import PropertyType
 
@@ -10,15 +10,14 @@ class IbanType(PropertyType):
         iban = stringify(iban)
         if iban is None:
             return False
-
         try:
-            return iban_validator.is_valid(iban)
-        except iban.error:  # not a valid iban
+            IBAN(iban)
+            return True
+        except ValueError as ex:
+            print(ex)
             return False
 
     def clean_text(self, text, **kwargs):
         """Create a more clean, but still user-facing version of an
         instance of the type."""
-        text = text.replace(" ", "")
-        text = text.upper()
-        return text
+        return text.replace(" ", "").upper()

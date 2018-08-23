@@ -1,19 +1,19 @@
-import exactitude
+import followthemoney.types
 from collections import namedtuple
 
 PropType = namedtuple('PropType', ['type', 'invert'])
 
 TYPES = {
-    'string': PropType(exactitude.texts, None),
-    'name': PropType(exactitude.names, 'names'),
-    'entity': PropType(exactitude.texts, 'entities'),
-    'url': PropType(exactitude.urls, 'urls'),
-    'date': PropType(exactitude.dates, 'dates'),
-    'address': PropType(exactitude.addresses, 'addresses'),
-    'country': PropType(exactitude.countries, 'countries'),
-    'email': PropType(exactitude.emails, 'emails'),
-    'phone': PropType(exactitude.phones, 'phones'),
-    'identifier': PropType(exactitude.identifiers, 'identifiers'),
-    'iban': PropType(exactitude.ibans, 'ibans'),
-    'ip': PropType(exactitude.ips, 'ips'),
+    'string': PropType(followthemoney.types.texts, None),
+    'name': PropType(followthemoney.types.names, 'names'),
+    'entity': PropType(followthemoney.types.texts, 'entities'),
+    'url': PropType(followthemoney.types.urls, 'urls'),
+    'date': PropType(followthemoney.types.dates, 'dates'),
+    'address': PropType(followthemoney.types.addresses, 'addresses'),
+    'country': PropType(followthemoney.types.countries, 'countries'),
+    'email': PropType(followthemoney.types.emails, 'emails'),
+    'phone': PropType(followthemoney.types.phones, 'phones'),
+    'identifier': PropType(followthemoney.types.identifiers, 'identifiers'),
+    'iban': PropType(followthemoney.types.ibans, 'ibans'),
+    'ip': PropType(followthemoney.types.ips, 'ips'),
 }

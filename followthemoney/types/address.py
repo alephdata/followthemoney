@@ -16,9 +16,9 @@ class AddressType(PropertyType):
         if len(address):
             return address
 
-    def normalize(self, address, **kwargs):
-        """Make the address more compareable."""
-        # TODO: normalize well-known parts like "Street", "Road", etc.
-        # TODO: consider using https://github.com/openvenues/pypostal
-        addresses = super(AddressType, self).normalize(address, **kwargs)
-        return addresses
+    # TODO: normalize well-known parts like "Street", "Road", etc.
+    # TODO: consider using https://github.com/openvenues/pypostal    
+    # def normalize(self, address, **kwargs):
+    #     """Make the address more compareable."""
+    #     addresses = super(AddressType, self).normalize(address, **kwargs)
+    #     return addresses

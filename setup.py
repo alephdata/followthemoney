@@ -24,6 +24,7 @@ setup(
         'countrynames >= 1.6.0',
         'languagecodes >= 1.0.4',
         'phonenumbers >= 8.9.11',
+        'schwifty >= 2018.4.1',
         'urlnormalizer >= 1.2.0',
         'parsedatetime >= 2.1',
         'python-dateutil',

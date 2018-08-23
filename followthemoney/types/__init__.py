@@ -2,8 +2,6 @@ from followthemoney.types.url import UrlType
 from followthemoney.types.name import NameType
 from followthemoney.types.domain import DomainType
 from followthemoney.types.email import EmailType
-# from followthemoney.types.ipv4 import Ipv4Type
-# from followthemoney.types.ipv6 import Ipv6Type
 from followthemoney.types.ip import IpType
 from followthemoney.types.iban import IbanType
 from followthemoney.types.address import AddressType
