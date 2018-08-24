@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-08-14 10:24+0200\n"
+"POT-Creation-Date: 2018-08-24 15:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ahmed Ghanam <info@ahmedghanam.com>, 2018\n"
 "Language-Team: Arabic (https://www.transifex.com/aleph/teams/76591/ar/)\n"
@@ -629,6 +629,148 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
+#. Document.properties.contentHash.label
+#: followthemoney/schema/Document.yaml
+msgid "Content checksum"
+msgstr ""
+
+#. Document.properties.contentHash.description
+#: followthemoney/schema/Document.yaml
+msgid "SHA1 hash of the data"
+msgstr ""
+
+#. Document.properties.title.label
+#. Person.properties.title.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
+msgid "Title"
+msgstr ""
+
+#. Document.properties.author.label
+#: followthemoney/schema/Document.yaml
+msgid "Author"
+msgstr ""
+
+#. Document.properties.author.description
+#: followthemoney/schema/Document.yaml
+msgid "The original author, not the uploader"
+msgstr ""
+
+#. Document.properties.generator.label
+#: followthemoney/schema/Document.yaml
+msgid "Generator"
+msgstr ""
+
+#. Document.properties.generator.description
+#: followthemoney/schema/Document.yaml
+msgid "The program used to generate this file"
+msgstr ""
+
+#. Document.properties.crawler.label
+#: followthemoney/schema/Document.yaml
+msgid "Crawler"
+msgstr ""
+
+#. Document.properties.crawler.description
+#: followthemoney/schema/Document.yaml
+msgid "The crawler used to acquire this file"
+msgstr ""
+
+#. Document.properties.fileSize.label
+#: followthemoney/schema/Document.yaml
+msgid "File size"
+msgstr ""
+
+#. Document.properties.fileName.label
+#: followthemoney/schema/Document.yaml
+msgid "File name"
+msgstr ""
+
+#. Document.properties.extension.label
+#: followthemoney/schema/Document.yaml
+msgid "File extension"
+msgstr ""
+
+#. Document.properties.encoding.label
+#: followthemoney/schema/Document.yaml
+msgid "File encoding"
+msgstr ""
+
+#. Document.properties.mimeType.label
+#: followthemoney/schema/Document.yaml
+msgid "MIME type"
+msgstr ""
+
+#. Document.properties.language.label
+#: followthemoney/schema/Document.yaml
+msgid "Language"
+msgstr ""
+
+#. Document.properties.date.label
+#. Interval.properties.date.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
+msgid "Date"
+msgstr ""
+
+#. Document.properties.date.description
+#: followthemoney/schema/Document.yaml
+msgid "If not otherwise specified"
+msgstr ""
+
+#. Document.properties.authoredAt.label
+#: followthemoney/schema/Document.yaml
+msgid "Authored on"
+msgstr ""
+
+#. Document.properties.modifiedAt.label
+#: followthemoney/schema/Document.yaml
+msgid "Modified on"
+msgstr ""
+
+#. Document.properties.publishedAt.label
+#: followthemoney/schema/Document.yaml
+msgid "Published on"
+msgstr ""
+
+#. Document.properties.retrievedAt.label
+#: followthemoney/schema/Document.yaml
+msgid "Retrieved on"
+msgstr ""
+
+#. Document.properties.parent.label
+#: followthemoney/schema/Document.yaml
+msgid "Parent document"
+msgstr ""
+
+#. Document.properties.namesMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "Mentioned names"
+msgstr ""
+
+#. Document.properties.ibanMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "IBANs"
+msgstr ""
+
+#. Document.properties.ipMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "IP addresses"
+msgstr ""
+
+#. Document.properties.locationMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "Locations"
+msgstr ""
+
+#. Document.properties.phoneMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "Phone numbers"
+msgstr ""
+
+#. Document.properties.emailMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mail addresses"
+msgstr ""
+
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
 msgid "Text file"
@@ -1061,11 +1203,6 @@ msgstr ""
 msgid "End date"
 msgstr ""
 
-#. Interval.properties.date.label
-#: followthemoney/schema/Interval.yaml
-msgid "Date"
-msgstr ""
-
 #. Interval.properties.summary.label
 #. Thing.properties.summary.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
@@ -1470,11 +1607,6 @@ msgstr ""
 msgid "People"
 msgstr ""
 
-#. Person.properties.title.label
-#: followthemoney/schema/Person.yaml
-msgid "Title"
-msgstr ""
-
 #. Person.properties.firstName.label
 #: followthemoney/schema/Person.yaml
 msgid "First name"
@@ -1767,7 +1899,7 @@ msgstr ""
 
 #. Thing.properties.weakAlias.label
 #: followthemoney/schema/Thing.yaml
-msgid "Weak alias"
+msgid "Weak aliass"
 msgstr ""
 
 #. Thing.properties.sourceUrl.label
@@ -1953,4 +2085,52 @@ msgstr ""
 #. Vessel.properties.mmsi.label
 #: followthemoney/schema/Vessel.yaml
 msgid "MMSI"
+msgstr ""
+
+#: followthemoney/types/country.py:25
+msgid "Global"
+msgstr ""
+
+#: followthemoney/types/country.py:26
+msgid "European Union"
+msgstr ""
+
+#: followthemoney/types/country.py:27
+msgid "Kosovo"
+msgstr ""
+
+#: followthemoney/types/country.py:28
+msgid "Yugoslavia"
+msgstr ""
+
+#: followthemoney/types/country.py:29
+msgid "Serbia and Montenegro"
+msgstr ""
+
+#: followthemoney/types/country.py:30
+msgid "Soviet Union"
+msgstr ""
+
+#: followthemoney/types/country.py:31
+msgid "Abkhazia"
+msgstr ""
+
+#: followthemoney/types/country.py:32
+msgid "South Ossetia"
+msgstr ""
+
+#: followthemoney/types/country.py:33
+msgid "Somaliland"
+msgstr ""
+
+#: followthemoney/types/country.py:34
+msgid "Wales"
+msgstr ""
+
+#: followthemoney/types/country.py:35
+msgid "Scotland"
+msgstr ""
+
+#: followthemoney/types/country.py:36
+msgid "Transnistria"
 msgstr ""
