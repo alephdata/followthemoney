@@ -1,4 +1,5 @@
 import re
+from rdflib import URIRef
 from normality import stringify
 from normality.cleaning import strip_quotes
 
@@ -41,3 +42,6 @@ class EmailType(PropertyType):
         """Normalize for comparison."""
         emails = super(EmailType, self).normalize(email, **kwargs)
         return [e.lower() for e in emails]
+
+    def rdf(self, value):
+        return URIRef('mailto:%s' % value)

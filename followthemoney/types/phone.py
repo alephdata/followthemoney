@@ -1,3 +1,4 @@
+from rdflib import URIRef
 from banal import ensure_list
 from phonenumbers import parse as parse_number
 from phonenumbers import is_possible_number, is_valid_number, format_number
@@ -39,3 +40,6 @@ class PhoneType(PropertyType):
                         return format_number(num, PhoneNumberFormat.E164)
             except NumberParseException:
                 pass
+
+    def rdf(self, value):
+        return URIRef('tel:%s' % value)

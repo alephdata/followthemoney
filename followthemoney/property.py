@@ -1,8 +1,9 @@
 from banal import ensure_list
+from rdflib import URIRef
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry
-from followthemoney.util import gettext
+from followthemoney.util import gettext, NAMESPACE
 
 
 class Property(object):
@@ -23,6 +24,10 @@ class Property(object):
             raise InvalidModel("Invalid type: %s" % self.type_name)
         self.invert = self.type.group
         self.range = data.get('schema', 'Thing')
+
+        self.uri = NAMESPACE[self.qname]
+        if 'rdf' in data:
+            self.uri = URIRef(data.get('rdf'))
 
     @property
     def label(self):

@@ -1,3 +1,4 @@
+from rdflib import URIRef
 from normality import stringify
 from schwifty import IBAN
 
@@ -24,3 +25,6 @@ class IbanType(PropertyType):
         """Create a more clean, but still user-facing version of an
         instance of the type."""
         return text.replace(" ", "").upper()
+
+    def rdf(self, value):
+        return URIRef('iban:%s' % value)

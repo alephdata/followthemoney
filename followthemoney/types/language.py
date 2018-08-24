@@ -1,3 +1,4 @@
+from rdflib import URIRef
 from normality import stringify
 
 from followthemoney.types.common import PropertyType
@@ -32,3 +33,6 @@ class LanguageType(PropertyType):
         code = text.lower().strip()
         if code in self.names:
             return code
+
+    def rdf(self, value):
+        return URIRef('iso-639:%s' % value)

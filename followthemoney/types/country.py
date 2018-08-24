@@ -1,4 +1,5 @@
 import countrynames
+from rdflib import URIRef
 from normality import stringify
 
 from followthemoney.types.common import PropertyType
@@ -55,3 +56,6 @@ class CountryType(PropertyType):
         country = countrynames.to_code(country, fuzzy=guess)
         if country is not None:
             return country.lower()
+
+    def rdf(self, value):
+        return URIRef('iso-3166-1:%s' % value)

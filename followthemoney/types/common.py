@@ -1,3 +1,4 @@
+from rdflib import Literal
 from banal import ensure_list, is_mapping
 from normality import stringify
 
@@ -44,6 +45,9 @@ class PropertyType(object):
             if is_mapping(value):
                 value = value.get('id')
             return ':'.join((self.prefix, value))
+
+    def rdf(self, value):
+        return Literal(value)
 
 
 class TextType(PropertyType):

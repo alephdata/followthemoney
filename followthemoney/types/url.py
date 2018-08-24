@@ -1,3 +1,4 @@
+from rdflib import URIRef
 from urlnormalizer import normalize_url, is_valid_url
 
 from followthemoney.types.common import PropertyType
@@ -18,3 +19,6 @@ class UrlType(PropertyType):
             return normalize_url(url)
         except UnicodeDecodeError:
             return None
+
+    def rdf(self, value):
+        return URIRef(value)

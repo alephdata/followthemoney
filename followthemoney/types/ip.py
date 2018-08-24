@@ -1,3 +1,4 @@
+from rdflib import URIRef
 from normality import stringify
 from ipaddress import ip_address
 
@@ -26,3 +27,6 @@ class IpType(PropertyType):
                 return str(ip_address(text))
             except ValueError:
                 return None
+
+    def rdf(self, value):
+        return URIRef('ip:%s' % value)

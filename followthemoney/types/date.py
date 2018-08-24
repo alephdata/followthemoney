@@ -1,5 +1,7 @@
 import re
 import pytz
+from rdflib import Literal
+from rdflib.namespace import XSD
 from normality import stringify
 from datetime import datetime, date
 
@@ -72,3 +74,6 @@ class DateType(PropertyType):
                 return None
 
         return self._clean_text(text)
+
+    def rdf(self, value):
+        return Literal(value, datatype=XSD.dateTime)

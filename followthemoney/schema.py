@@ -1,8 +1,9 @@
+from rdflib import URIRef
 from banal import ensure_list
 
 from followthemoney.property import Property
 from followthemoney.exc import InvalidData, InvalidModel
-from followthemoney.util import gettext
+from followthemoney.util import gettext, NAMESPACE
 
 
 class Schema(object):
@@ -21,6 +22,10 @@ class Schema(object):
         self._description = data.get('description')
         self._extends = ensure_list(data.get('extends'))
         self.featured = ensure_list(data.get('featured'))
+
+        self.uri = NAMESPACE[name]
+        if 'rdf' in data:
+            self.uri = URIRef(data.get('rdf'))
 
         # Do not show in listings:
         self.abstract = data.get('abstract', False)
