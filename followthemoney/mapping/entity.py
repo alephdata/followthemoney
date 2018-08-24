@@ -2,6 +2,7 @@ from hashlib import sha1
 from banal import ensure_list
 
 from followthemoney.mapping.property import PropertyMapping
+from followthemoney.types import registry
 from followthemoney.util import key_bytes
 from followthemoney.exc import InvalidMapping
 
@@ -61,7 +62,7 @@ class EntityMapping(object):
         # from that accessible to phone and address parsers.
         countries = set()
         for prop in self.properties:
-            if prop.schema.is_country:
+            if prop.schema.type == registry.country:
                 values = prop.map(record, entities)
                 countries.update(values)
                 properties[prop.name] = values

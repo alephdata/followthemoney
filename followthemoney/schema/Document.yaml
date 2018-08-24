@@ -5,6 +5,77 @@ Document:
   icon: fa-file-o
   hidden: true
   matchable: false
+  properties:
+    contentHash:
+      label: "Content checksum"
+      description: "SHA1 hash of the data"
+      type: identifier
+    title:
+      label: "Title"
+    author:
+      label: "Author"
+      description: "The original author, not the uploader"
+    generator:
+      label: "Generator"
+      description: "The program used to generate this file"
+    crawler:
+      label: "Crawler"
+      description: "The crawler used to acquire this file"
+    fileSize:
+      label: "File size"
+    fileName:
+      label: "File name"
+    extension:
+      label: "File extension"
+    encoding:
+      label: "File encoding"
+    mimeType:
+      label: "MIME type"
+    language:
+      label: "Language"
+    date:
+      label: "Date"
+      description: "If not otherwise specified"
+      type: date
+    authoredAt:
+      label: "Authored on"
+      type: date
+    modifiedAt:
+      label: "Modified on"
+      type: date
+    publishedAt:
+      label: "Published on"
+      type: date
+    retrievedAt:
+      label: "Retrieved on"
+      type: date
+    parent:
+      label: "Parent document"
+      type: entity
+      schema: Folder
+    namesMentioned:
+      label: "Mentioned names"
+      type: name
+    ibanMentioned:
+      label: "IBANs"
+      type: iban
+    ipMentioned:
+      label: "IP addresses"
+      type: ip
+    locationMentioned:
+      label: "Locations"
+      type: address
+    phoneMentioned:
+      label: "Phone numbers"
+      type: phone
+    emailMentioned:
+      label: "E-Mail addresses"
+      type: email
+    # Not included:
+    # * pdf version
+    # * columns
+    # * headers
+
 
 PlainText:
   # Text files, like .txt or source code.

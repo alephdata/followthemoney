@@ -22,8 +22,6 @@ class Property(object):
         if self.type is None:
             raise InvalidModel("Invalid type: %s" % self.type_name)
         self.invert = self.type.group
-        self.is_country = self.type == registry.country
-        self.is_entity = self.type == registry.entity
         self.range = data.get('schema', 'Thing')
 
     @property
@@ -75,7 +73,7 @@ class Property(object):
             'caption': self.caption,
             'type': self.type_name
         }
-        if self.is_entity:
+        if self.type == registry.entity:
             data['range'] = self.range
             data['reverse'] = self.reverse
         return data
