@@ -27,8 +27,6 @@ setup(
         'phonenumbers >= 8.9.11',
         'schwifty >= 2018.4.1',
         'urlnormalizer >= 1.2.0',
-        'parsedatetime >= 2.1',
-        'python-dateutil',
         'pytz >= 2018.5',
         'rdflib >= 4.1'
     ],

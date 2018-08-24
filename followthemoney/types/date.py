@@ -1,9 +1,7 @@
 import re
 import pytz
-import parsedatetime
 from normality import stringify
 from datetime import datetime, date
-from dateutil import parser as dateparser
 
 from followthemoney.types.common import PropertyType
 
@@ -54,7 +52,7 @@ class DateType(PropertyType):
         text = self.CUT_ZEROES.sub('', text)
         return text
 
-    def clean(self, text, guess=True, format=None, **kwargs):
+    def clean(self, text, format=None, **kwargs):
         """The classic: date parsing, every which way."""
         # handle date/datetime before converting to text.
         date = self._clean_datetime(text)
@@ -73,33 +71,4 @@ class DateType(PropertyType):
             except Exception:
                 return None
 
-        if guess and not self.validate(text):
-            # use dateparser to guess the format
-            obj = self.fuzzy_date_parser(text)
-            if obj is not None:
-                return obj.date().isoformat()
-
         return self._clean_text(text)
-
-    def fuzzy_date_parser(self, text):
-        """Thin wrapper around ``parsedatetime`` and ``dateutil`` modules.
-        Since there's no upstream suppport for multiple locales, this wrapper
-        exists.
-        :param str text: Text to parse.
-        :returns: A parsed date/time object. Raises exception on failure.
-        :rtype: datetime
-        """
-        try:
-            parsed = dateparser.parse(text, dayfirst=True)
-            return parsed
-        except (ValueError, TypeError):
-            locales = parsedatetime._locales[:]
-            # Loop through all the locales and try to parse successfully our
-            # string
-            for locale in locales:
-                const = parsedatetime.Constants(locale)
-                const.re_option += re.UNICODE
-                parser = parsedatetime.Calendar(const)
-                parsed, ok = parser.parse(text)
-                if ok:
-                    return datetime(*parsed[:6])
