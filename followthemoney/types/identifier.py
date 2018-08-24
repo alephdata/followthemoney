@@ -11,7 +11,5 @@ class IdentifierType(PropertyType):
 
     def normalize(self, text, **kwargs):
         """Normalize for comparison."""
-        identifiers = []
-        for ident in super(IdentifierType, self).normalize(text, **kwargs):
-            identifiers.append(normalize(ident))
-        return identifiers
+        ids = super(IdentifierType, self).normalize(text, **kwargs)
+        return [normalize(i) for i in ids]

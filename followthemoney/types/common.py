@@ -40,7 +40,11 @@ class PropertyType(object):
             values.update(self.normalize(item, **kwargs))
         return list(values)
 
+    def specificity(self, value):
+        return 0
+
     def ref(self, value):
+        """Generate a qualified form for storage in a triplestore."""
         if self.prefix is not None:
             if is_mapping(value):
                 value = value.get('id')

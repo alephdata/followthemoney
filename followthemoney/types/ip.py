@@ -28,5 +28,8 @@ class IpType(PropertyType):
             except ValueError:
                 return None
 
+    def specificity(self, value):
+        return 1
+
     def rdf(self, value):
         return URIRef('ip:%s' % value)

@@ -26,5 +26,8 @@ class IbanType(PropertyType):
         instance of the type."""
         return text.replace(" ", "").upper()
 
+    def specificity(self, value):
+        return 1
+
     def rdf(self, value):
         return URIRef('iban:%s' % value)

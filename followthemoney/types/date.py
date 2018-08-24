@@ -6,6 +6,7 @@ from normality import stringify
 from datetime import datetime, date
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import dampen
 
 
 class DateType(PropertyType):
@@ -74,6 +75,9 @@ class DateType(PropertyType):
                 return None
 
         return self._clean_text(text)
+
+    def specificity(self, value):
+        return dampen(19, self.MAX_LENGTH, value) * .5
 
     def rdf(self, value):
         return Literal(value, datatype=XSD.dateTime)

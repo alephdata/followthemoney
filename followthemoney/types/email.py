@@ -43,5 +43,8 @@ class EmailType(PropertyType):
         emails = super(EmailType, self).normalize(email, **kwargs)
         return [e.lower() for e in emails]
 
+    def specificity(self, value):
+        return 0 if value is None else 1
+
     def rdf(self, value):
         return URIRef('mailto:%s' % value)

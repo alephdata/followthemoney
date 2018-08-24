@@ -14,5 +14,8 @@ class EntityType(PropertyType):
             text = text.get('id')
         return super(EntityType, self).clean(text, **kwargs)
 
+    def specificity(self, value):
+        return 1
+
     def rdf(self, value):
         return URIRef('urn:entity:%s' % value)

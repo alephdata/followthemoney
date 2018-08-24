@@ -57,3 +57,8 @@ def merge_data(old, new):
                 combined[key] = value
         return combined
     return new or old
+
+
+def dampen(short, long, text):
+    length = len(text) - short
+    return max(0, min(1.0, (length / (long - short))))

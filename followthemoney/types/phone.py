@@ -41,5 +41,8 @@ class PhoneType(PropertyType):
             except NumberParseException:
                 pass
 
+    def specificity(self, value):
+        return 1
+
     def rdf(self, value):
         return URIRef('tel:%s' % value)

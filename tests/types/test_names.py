@@ -24,3 +24,7 @@ class NamesTest(unittest.TestCase):
         self.assertEqual(names.normalize_set(['FOO', '']), ['FOO'])
         self.assertEqual(names.normalize_set(['FOO', 'FOO']), ['FOO'])
         self.assertEqual(len(names.normalize_set(['FOO', 'BAR'])), 2)
+
+    def test_specificity(self):
+        self.assertEqual(names.specificity('bo'), 0)
+        self.assertGreater(names.specificity('boban'), 0)

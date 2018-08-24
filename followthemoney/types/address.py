@@ -2,6 +2,7 @@ import re
 from normality.cleaning import collapse_spaces
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import dampen
 
 
 class AddressType(PropertyType):
@@ -25,3 +26,6 @@ class AddressType(PropertyType):
     #     """Make the address more compareable."""
     #     addresses = super(AddressType, self).normalize(address, **kwargs)
     #     return addresses
+
+    def specificity(self, value):
+        return dampen(20, 50, value) * .6
