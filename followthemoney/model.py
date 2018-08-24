@@ -25,7 +25,7 @@ class Model(object):
     @property
     def properties(self):
         props = set()
-        for schema in self.schemata.values():
+        for schema in self:
             for prop in schema.properties.values():
                 props.add(prop)
         return props
@@ -42,6 +42,11 @@ class Model(object):
         if isinstance(name, Schema):
             return name
         return self.schemata.get(name)
+
+    def get_qname(self, qname):
+        if not hasattr(self, '_qnames'):
+            self._qnames = {p.qname: p for p in self.properties}
+        return self._qnames.get(qname)
 
     def __getitem__(self, name):
         schema = self.get(name)

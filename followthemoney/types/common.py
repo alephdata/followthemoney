@@ -1,4 +1,4 @@
-from banal import ensure_list
+from banal import ensure_list, is_mapping
 from normality import stringify
 
 
@@ -39,8 +39,11 @@ class PropertyType(object):
             values.update(self.normalize(item, **kwargs))
         return list(values)
 
-    def to_ref(self, value):
-        return ':'.join(self.prefix, value)
+    def ref(self, value):
+        if self.prefix is not None:
+            if is_mapping(value):
+                value = value.get('id')
+            return ':'.join((self.prefix, value))
 
 
 class TextType(PropertyType):
@@ -63,8 +66,12 @@ class Registry(object):
             self.groups[instance.group] = instance
         return instance
 
-    def by_name(self, name):
+    def get(self, name):
         try:
             return getattr(self, name)
         except AttributeError:
             pass
+
+    def deref(self, ref):
+        prefix, value = ref.split(':', 1)
+        return self.prefixes.get(prefix), value
