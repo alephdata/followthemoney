@@ -159,12 +159,13 @@ class Schema(object):
 
             # Add inverted properties. This takes all the properties
             # of a specific type (names, dates, emails etc.)
-            if prop.invert:
-                if prop.invert not in entity:
-                    entity[prop.invert] = []
-                for norm in prop.type.normalize(values, cleaned=cleaned):
-                    if norm not in entity[prop.invert]:
-                        entity[prop.invert].append(norm)
+            inverted = prop.type.group
+            if inverted:
+                if inverted not in entity:
+                    entity[inverted] = []
+                for norm in prop.type.normalize_set(values, cleaned=cleaned):
+                    if norm not in entity[inverted]:
+                        entity[inverted].append(norm)
 
         return entity
 
@@ -173,6 +174,7 @@ class Schema(object):
             'label': self.label,
             'plural': self.plural,
             'icon': self.icon,
+            'uri': str(self.rdf),
             'abstract': self.abstract,
             'matchable': self.matchable,
             'description': self.description,

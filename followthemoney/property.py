@@ -14,16 +14,17 @@ class Property(object):
         self.qname = '%s:%s' % (schema.name, self.name)
         self.data = data
         self._label = data.get('label', name)
-        self._reverse = data.get('reverse')
         self._description = data.get('description')
         self.caption = data.get('caption', False)
         self.required = data.get('required', False)
-        self.type_name = data.get('type', 'text')
-        self.type = registry.get(self.type_name)
+        self._type = data.get('type', 'text')
+        self.type = registry.get(self._type)
         if self.type is None:
-            raise InvalidModel("Invalid type: %s" % self.type_name)
-        self.invert = self.type.group
+            raise InvalidModel("Invalid type: %s" % self._type)
+
         self.range = data.get('schema', 'Thing')
+        self._reverse = data.get('reverse')
+        self.stub = data.get('stub', False)
 
         self.uri = NAMESPACE[self.qname]
         if 'rdf' in data:
@@ -76,9 +77,11 @@ class Property(object):
             'label': self.label,
             'description': self.description,
             'caption': self.caption,
+            'uri': str(self.rdf),
             'type': self.type_name
         }
         if self.type == registry.entity:
+            data['stub'] = self.stub
             data['range'] = self.range
             data['reverse'] = self.reverse
         return data
