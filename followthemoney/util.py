@@ -61,4 +61,5 @@ def merge_data(old, new):
 
 def dampen(short, long, text):
     length = len(text) - short
-    return max(0, min(1.0, (length / (long - short))))
+    baseline = max(1.0, (long - short))
+    return max(0, min(1.0, (length / baseline)))

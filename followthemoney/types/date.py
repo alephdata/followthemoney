@@ -77,7 +77,7 @@ class DateType(PropertyType):
         return self._clean_text(text)
 
     def specificity(self, value):
-        return dampen(19, self.MAX_LENGTH, value) * .5
+        return dampen(5, self.MAX_LENGTH, value) * .5
 
     def rdf(self, value):
         return Literal(value, datatype=XSD.dateTime)
