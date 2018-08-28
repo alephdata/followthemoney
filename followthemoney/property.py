@@ -22,7 +22,7 @@ class Property(object):
         if self.type is None:
             raise InvalidModel("Invalid type: %s" % self._type)
 
-        self.range = data.get('schema', 'Thing')
+        self._range = data.get('schema', 'Thing')
         self._reverse = data.get('reverse')
         self.stub = data.get('stub', False)
 
@@ -35,9 +35,15 @@ class Property(object):
         return gettext(self._label)
 
     @property
+    def range(self):
+        if self._range:
+            return self.schema.model.get(self._range)
+
+    @property
     def reverse(self):
-        if self._reverse is not None:
-            return gettext(self._reverse)
+        schema = self.range
+        if self._reverse and schema:
+            return schema.get(self._reverse)
 
     @property
     def description(self):
@@ -77,13 +83,13 @@ class Property(object):
             'label': self.label,
             'description': self.description,
             'caption': self.caption,
-            'uri': str(self.rdf),
-            'type': self.type_name
+            'uri': str(self.uri),
+            'type': self._type
         }
         if self.type == registry.entity:
             data['stub'] = self.stub
-            data['range'] = self.range
-            data['reverse'] = self.reverse
+            data['schema'] = self._range
+            data['reverse'] = self._reverse
         return data
 
     def __repr__(self):

@@ -1,5 +1,5 @@
 from rdflib import URIRef
-from banal import ensure_list
+from banal import ensure_list, as_bool
 
 from followthemoney.property import Property
 from followthemoney.exc import InvalidData, InvalidModel
@@ -13,7 +13,7 @@ class Schema(object):
     """
 
     def __init__(self, model, name, data):
-        self._model = model
+        self.model = model
         self.name = name
         self.data = data
         self.icon = data.get('icon')
@@ -28,12 +28,12 @@ class Schema(object):
             self.uri = URIRef(data.get('rdf'))
 
         # Do not show in listings:
-        self.abstract = data.get('abstract', False)
+        self.abstract = as_bool(data.get('abstract'), False)
 
         # Try to perform fuzzy matching. Fuzzy similarity search does not
         # make sense for entities which have a lot of similar names, such
         # as land plots, assets etc.
-        self.matchable = data.get('matchable', True)
+        self.matchable = as_bool(data.get('matchable'), True)
 
         self._own_properties = []
         for name, prop in data.get('properties', {}).items():
@@ -55,7 +55,7 @@ class Schema(object):
     def extends(self):
         """Return the inherited schemata."""
         for base in self._extends:
-            basecls = self._model.get(base)
+            basecls = self.model.get(base)
             if basecls is None:
                 raise InvalidModel("No such schema: %s" % base)
             yield basecls
@@ -73,7 +73,7 @@ class Schema(object):
 
     @property
     def descendants(self):
-        for schema in self._model:
+        for schema in self.model:
             if schema == self:
                 continue
             if self in schema.schemata:
@@ -106,7 +106,7 @@ class Schema(object):
         return False
 
     def __eq__(self, other):
-        other = self._model.get(other)
+        other = self.model.get(other)
         return other.name == self.name
 
     def __hash__(self):
@@ -174,7 +174,7 @@ class Schema(object):
             'label': self.label,
             'plural': self.plural,
             'icon': self.icon,
-            'uri': str(self.rdf),
+            'uri': str(self.uri),
             'abstract': self.abstract,
             'matchable': self.matchable,
             'description': self.description,

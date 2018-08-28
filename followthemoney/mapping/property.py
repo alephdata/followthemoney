@@ -39,6 +39,9 @@ class PropertyMapping(object):
                 self.replacements['{{%s}}' % ref] = ref
 
     def bind(self):
+        if self.schema.stub:
+            raise InvalidMapping("Property for [%s] is a stub" % self.name)
+
         if self.entity is None:
             return
 
