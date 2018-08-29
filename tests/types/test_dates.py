@@ -63,3 +63,7 @@ class DatesTest(unittest.TestCase):
         # TODO: make this yield an imprecise date somehow?
         self.assertEquals(dates.clean('4/2017', format="%m/%Y"), '2017-04-01')
         self.assertEquals(dates.clean('4/2xx017', format="%m/%Y"), None)
+
+    def test_specificity(self):
+        self.assertEqual(dates.specificity('2011'), 0)
+        self.assertGreater(dates.specificity('2011-01-01'), 0.1)
