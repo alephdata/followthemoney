@@ -55,11 +55,13 @@ class Schema(object):
 
         prop = self.get(name)
         if prop is None:
-            data.update({'type': 'entity', 'range': None})
+            data.update({
+                'type': 'entity',
+                'reverse': {'name': other.name},
+                'schema': other.schema.name
+            })
             prop = Property(self, name, data, stub=True)
             prop.generate()
-            prop.range = other.schema
-            prop.reverse = prop
             self._own_properties.append(prop)
             self._flush_properties()
         assert prop.type == registry.entity, prop.type

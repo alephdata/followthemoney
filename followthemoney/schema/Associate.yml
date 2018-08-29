@@ -15,5 +15,5 @@ Associate:
       type: entity
       schema: Person
       reverse:
-        name: associated
+        name: associates
         label: "Associates"

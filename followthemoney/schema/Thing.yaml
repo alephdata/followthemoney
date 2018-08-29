@@ -11,6 +11,12 @@ Thing:
       type: name
       caption: true
       required: true
+    sameAs:
+      label: "Same as"
+      type: entity
+      range: Thing
+      reverse:
+        name: sameAs
     summary: # a short one-liner kind of description
       label: Summary
     description: # a longer description
