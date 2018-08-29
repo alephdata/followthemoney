@@ -14,7 +14,9 @@ Contract:
     authority:
       label: "Contract authority"
       plural: "Contract authorities"
-      reverse: "Contracts issued"
+      reverse:
+        name: contractAuthority
+        label: "Contracts issued"
       type: entity
       schema: LegalEntity
     type:

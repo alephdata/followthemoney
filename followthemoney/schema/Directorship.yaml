@@ -12,12 +12,16 @@ Directorship:
   properties:
     director:
       label: "Director"
-      reverse: "Directorships"
+      reverse:
+        name: directorshipDirector
+        label: "Directorships"
       type: entity
       schema: LegalEntity
     organization:
       label: "Organization"
-      reverse: "Directors"
+      reverse:
+        name: directorshipOrganization
+        label: "Directors"
       type: entity
       schema: Organization
     secretary:

@@ -11,7 +11,9 @@ Associate:
   properties:
     associate:
       label: "Associate"
+      description: "An associate of the subject person."
       type: entity
       schema: Person
-      reverse: "Associates"
-      description: "An associate of the subject person."
+      reverse:
+        name: associated
+        label: "Associates"

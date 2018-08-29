@@ -2,6 +2,7 @@ from rdflib import URIRef
 from banal import ensure_list, as_bool
 
 from followthemoney.property import Property
+from followthemoney.types import registry
 from followthemoney.exc import InvalidData, InvalidModel
 from followthemoney.util import gettext, NAMESPACE
 
@@ -38,6 +39,31 @@ class Schema(object):
         self._own_properties = []
         for name, prop in data.get('properties', {}).items():
             self._own_properties.append(Property(self, name, prop))
+
+    def generate(self):
+        for prop in self._own_properties:
+            prop.generate()
+
+        for featured in self.featured:
+            if self.get(featured) is None:
+                raise InvalidModel("Missing featured property: %s" % featured)
+
+    def _add_reverse(self, data, other):
+        name = data.pop('name', None)
+        if name is None:
+            raise InvalidModel("Unnamed reverse: %s" % other)
+
+        prop = self.get(name)
+        if prop is None:
+            data.update({'type': 'entity', 'range': None})
+            prop = Property(self, name, data, stub=True)
+            prop.generate()
+            prop.range = other.schema
+            prop.reverse = prop
+            self._own_properties.append(prop)
+            self._flush_properties()
+        assert prop.type == registry.entity, prop.type
+        return prop
 
     @property
     def label(self):
@@ -105,17 +131,10 @@ class Schema(object):
                 return True
         return False
 
-    def __eq__(self, other):
-        other = self.model.get(other)
-        return other.name == self.name
-
-    def __hash__(self):
-        return hash(self.name)
-
     @property
     def properties(self):
         """Return properties, those defined locally and in ancestors."""
-        if not hasattr(self, '_properties'):
+        if not hasattr(self, '_properties') or self._properties is None:
             self._properties = {}
             for schema in self.extends:
                 for name, prop in schema.properties.items():
@@ -123,6 +142,11 @@ class Schema(object):
             for prop in self._own_properties:
                 self._properties[prop.name] = prop
         return self._properties
+
+    def _flush_properties(self):
+        for schema in self.descendants:
+            schema._flush_properties()
+        self._properties = None
 
     def get(self, name):
         return self.properties.get(name)
@@ -184,6 +208,13 @@ class Schema(object):
         for name, prop in self.properties.items():
             data['properties'][name] = prop.to_dict()
         return data
+
+    def __eq__(self, other):
+        other = self.model.get(other)
+        return other.name == self.name
+
+    def __hash__(self):
+        return hash(self.name)
 
     def __repr__(self):
         return '<Schema(%r)>' % self.name

@@ -12,12 +12,16 @@ Sanction:
   properties:
     entity:
       label: "Sanctioned entity"
-      reverse: "Sanctions"
+      reverse:
+        name: sanctionEntity
+        label: "Sanctions"
       type: entity
       schema: Thing
     authority:
       label: "Sanctioning authority"
-      reverse: "Sanctioned entities"
+      reverse:
+        name: sanctionAuthority
+        label: "Sanctioned entities"
       type: entity
       schema: Thing
     program:

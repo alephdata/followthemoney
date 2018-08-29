@@ -16,15 +16,19 @@ ContractAward:
   properties:
     supplier:
       label: "Supplier"
-      plural: "Suppliers"
-      reverse: "Contracts awarded"
       description: "The entity the contract was awarded to"
+      plural: "Suppliers"
+      reverse:
+        name: contractAwardSupplier
+        label: "Contracts awarded"
       type: entity
       schema: LegalEntity
     contract:
       label: "Contract"
       plural: "Contracts"
-      reverse: "Lots awarded"
+      reverse:
+        name: awards
+        label: "Lots awarded"
       type: entity
       schema: Contract
     lotNumber:

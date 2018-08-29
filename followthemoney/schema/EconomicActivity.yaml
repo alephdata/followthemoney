@@ -16,7 +16,9 @@ EconomicActivity:
   properties:
     contract:
       label: "Associated contract"
-      reverse: "Used in customs"
+      reverse:
+        name: economicActivityContract
+        label: "Used in customs"
       type: entity
       range: Contract
     ccdNumber:
@@ -43,26 +45,34 @@ EconomicActivity:
       description: "Description of goods"
     declarant:
       label: "Declarant"
-      reverse: "Customs declarations"
       description: "Customs declarant"
+      reverse:
+        name: economicActivityDeclarant
+        label: "Customs declarations"
       type: entity
       range: LegalEntity
     sender:
       label: "Sender"
-      reverse: "Goods originated"
       description: "Origin of the goods"
+      reverse:
+        name: economicActivitySender
+        label: "Goods originated"
       type: entity
       range: LegalEntity
     receiver:
       label: "Receiver"
-      reverse: "Goods received"
       description: "Destination of the goods"
+      reverse:
+        name: economicActivityReceiver
+        label: "Goods received"
       type: entity
       range: LegalEntity
     contractHolder:
       label: "Contract holder"
-      reverse: "Economic activities"
       description: "Customs formalities caretaker"
+      reverse:
+        name: economicActivityHolder
+        label: "Economic activities"
       type: entity
       range: LegalEntity
     invoiceAmount:

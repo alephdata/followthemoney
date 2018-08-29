@@ -22,21 +22,29 @@ Payment:
       description: "Programme name, funding code, category identifier, etc."
     payer:
       label: "Payer"
-      reverse: "Payments made"
+      reverse:
+        name: paymentPayer
+        label: "Payments made"
       type: entity
       schema: LegalEntity
     payerAccount:
       label: "Payer bank account"
-      reverse: "Payments made"
+      reverse:
+        name: paymentPayerAccount
+        name: "Payments made"
       type: entity
       schema: BankAccount
     beneficiary:
       label: "Beneficiary"
-      reverse: "Payments received"
+      reverse:
+        name: paymentBeneficiary
+        label: "Payments received"
       type: entity
       schema: LegalEntity
     beneficiaryAccount:
       label: "Beneficiary bank account"
-      reverse: "Payments received"
+      reverse:
+        name: paymentBeneficiaryAccount
+        label: "Payments received"
       type: entity
       schema: BankAccount

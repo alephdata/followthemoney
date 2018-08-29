@@ -12,23 +12,18 @@ class Model(object):
 
     def __init__(self, path):
         self.path = path
+        self.schemata = {}
+        for (path, _, filenames) in os.walk(self.path):
+            for filename in filenames:
+                self._load(os.path.join(path, filename))
+        self.generate()
 
-    @property
-    def schemata(self):
-        if not hasattr(self, '_schemata'):
-            self._schemata = {}
-            for (path, _, filenames) in os.walk(self.path):
-                for filename in filenames:
-                    self._load(os.path.join(path, filename))
-        return self._schemata
-
-    @property
-    def properties(self):
-        props = set()
+    def generate(self):
+        self.properties = set()
         for schema in self:
+            schema.generate()
             for prop in schema.properties.values():
-                props.add(prop)
-        return props
+                self.properties.add(prop)
 
     def _load(self, filepath):
         with open(filepath, 'r') as fh:
