@@ -43,7 +43,14 @@ class Link(object):
         return self.ref, f'{self.prop.qname}>{qualifier}>{self.value}'
 
     def invert(self):
-        return Link(self.value_ref, self.prop, self.subject,
+        if not self.inverted and self.prop.reverse is not None:
+            return Link(self.value_ref,
+                        self.prop.reverse,
+                        self.subject,
+                        weight=self.weight)
+        return Link(self.value_ref,
+                    self.prop,
+                    self.subject,
                     weight=self.weight,
                     inverted=not self.inverted)
 

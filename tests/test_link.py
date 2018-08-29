@@ -22,7 +22,7 @@ ENTITY = {
 
 class LinkTestCase(TestCase):
 
-    def test_link(self):
+    def test_link_pack(self):
         ref = registry.entity.ref('banana')
         prop = model.get_qname('Thing:name')
         link = Link(ref, prop, "Theodore")
@@ -33,10 +33,24 @@ class LinkTestCase(TestCase):
         other = link.unpack(model, key, value)
         assert other == link, (link, other)
 
+    def test_invert(self):
+        ref = registry.entity.ref('banana')
+        prop = model.get_qname('Thing:name')
+        link = Link(ref, prop, "Theodore")
         assert not link.inverted
         inv = link.invert()
         assert inv.inverted
         assert inv.rdf() is None
+
+        banana = registry.entity.ref('banana')
+        peach = 'peach'
+        peach_ref = registry.entity.ref(peach)
+        prop = model.get_qname('Thing:sameAs')
+        link = Link(banana, prop, peach)
+        inv = link.invert()
+        assert inv.ref == peach_ref
+        assert inv.value_ref == banana
+        assert inv.prop == link.prop
 
     def test_make_links(self):
         links = list(model.entity_links(ENTITY))
