@@ -11,10 +11,12 @@ Thing:
       type: name
       caption: true
       required: true
+      rdf: http://www.w3.org/2004/02/skos/core#prefLabel
     sameAs:
       label: "Same as"
       type: entity
       range: Thing
+      rdf: http://www.w3.org/2002/07/owl#sameAs
       reverse:
         name: sameAs
     summary: # a short one-liner kind of description
@@ -27,6 +29,7 @@ Thing:
     alias:
       label: Other name
       type: name
+      rdf: http://www.w3.org/2004/02/skos/core#altLabel
     previousName:
       label: Previous name
       type: name

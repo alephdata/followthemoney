@@ -2,6 +2,7 @@ import os
 import yaml
 
 from followthemoney.schema import Schema
+from followthemoney.link import Link
 from followthemoney.mapping import QueryMapping
 from followthemoney.util import merge_data
 from followthemoney.exc import InvalidModel, InvalidData
@@ -101,6 +102,15 @@ class Model(object):
             'schema': schema,
             'properties': properties
         }
+
+    def entity_links(self, entity):
+        yield from Link.from_entity(self, entity)
+
+    def entity_rdf(self, entity):
+        for link in self.entity_links(entity):
+            triple = link.rdf()
+            if triple is not None:
+                yield triple
 
     def to_dict(self):
         return {n: s.to_dict() for (n, s) in self.schemata.items()}
