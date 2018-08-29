@@ -15,3 +15,6 @@ class PhonesTest(unittest.TestCase):
         self.assertEqual(phones.clean('017623423980'), None)
         self.assertEqual(phones.clean('017623423980', countries='DE'),
                          '+4917623423980')
+
+    def test_specificity(self):
+        self.assertEqual(phones.specificity('+4917623423980'), 1)

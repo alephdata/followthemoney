@@ -90,3 +90,6 @@ class IbansTest(unittest.TestCase):
         self.assertTrue(ibans.validate('AE460090000000123456789'))
         self.assertTrue(ibans.validate('GB98MIDL07009312345678'))
         self.assertTrue(ibans.validate('VG21PACG0000000123456789'))
+
+    def test_specificity(self):
+        self.assertEqual(ibans.specificity('VG21PACG0000000123456789'), 1)

@@ -4,7 +4,7 @@ import yaml
 from followthemoney.schema import Schema
 from followthemoney.mapping import QueryMapping
 from followthemoney.util import merge_data
-from followthemoney.exc import InvalidModel
+from followthemoney.exc import InvalidModel, InvalidData
 
 
 class Model(object):
@@ -88,7 +88,7 @@ class Model(object):
                 if left == right:
                     return left
 
-        raise InvalidModel("No common ancestor: %s and %s" % (left, right))
+        raise InvalidData("No common ancestor: %s and %s" % (left, right))
 
     def merge(self, left, right):
         """Merge two entities and return a combined version."""

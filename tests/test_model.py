@@ -1,3 +1,4 @@
+from nose.tools import assert_raises
 from unittest import TestCase
 from followthemoney import model
 from followthemoney.exc import InvalidData
@@ -15,6 +16,11 @@ class ModelTestCase(TestCase):
         assert thing in list(model), list(model)
         assert 'Person' in model.to_dict(), model.to_dict()
         assert 'Thing' in model.to_dict(), model.to_dict()
+
+        with assert_raises(KeyError):
+            model['Banana']
+
+        assert model.get_qname('Thing:name') == thing.get('name')
 
         props = list(model.properties)
         assert len(props), props
@@ -72,6 +78,9 @@ class ModelTestCase(TestCase):
         assert model.precise_schema('Person', 'Thing') == 'Person'
         assert model.precise_schema('Person', 'Company') == 'LegalEntity'
 
+        with assert_raises(InvalidData):
+            model.precise_schema('Person', 'Directorship')
+
     def test_model_is_descendant(self):
         assert model['Thing'].is_a('Thing') is True
         assert model['LegalEntity'].is_a('Thing') is True
@@ -111,12 +120,32 @@ class ModelTestCase(TestCase):
         assert errors, errors
         assert not len(value), value
 
+        person = model.get('Person')
+        assert str(person.uri) == 'http://xmlns.com/foaf/0.1/Person'
+
     def test_descendants(self):
         le = model.schemata['LegalEntity']
         company = model.schemata['Company']
         descendants = list(le.descendants)
         assert company in descendants, descendants
         assert le not in descendants, descendants
+
+    def test_model_reverse_properties(self):
+        thing = model.schemata['Thing']
+        sameAs = thing.get('sameAs')
+        assert sameAs.reverse == sameAs, sameAs
+        assert sameAs.stub is False, sameAs
+
+        person = model.schemata['Person']
+        assoc = model.schemata['Associate']
+        prop = assoc.get('associate')
+        assert prop.stub is False, prop
+        assert prop.range == person, prop
+        assert prop.reverse is not None
+        rev = prop.reverse
+        assert rev.range == assoc, rev
+        assert rev.stub is True, rev
+        assert rev.reverse == prop, rev
 
     def test_matchable(self):
         le = model.schemata['LegalEntity']

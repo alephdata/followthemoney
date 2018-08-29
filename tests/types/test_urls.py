@@ -18,3 +18,6 @@ class UrlsTest(unittest.TestCase):
                          'http://foo.com/?a=2&b=1')
         self.assertEqual(urls.clean('http://FOO.com'), 'http://foo.com/')
         self.assertEqual(urls.clean('http://FOO.com/A'), 'http://foo.com/A')
+
+    def test_specificity(self):
+        self.assertEqual(urls.specificity('http://foo.com/'), 1)

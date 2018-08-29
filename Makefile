@@ -5,7 +5,7 @@ dev:
 	pip install -q ".[dev]"
 
 test: dev
-	nosetests --with-coverage --cover-package=followthemoney --cover-erase
+	nosetests --with-coverage --cover-package=followthemoney --cover-erase --cover-html --cover-html-dir=coverage-report
 
 dist:
 	python setup.py sdist bdist_wheel
