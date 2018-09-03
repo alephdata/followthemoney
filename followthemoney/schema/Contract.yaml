@@ -2,7 +2,9 @@ Contract:
   label: "Contract"
   plural: "Contracts"
   description: "An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward)."
-  extends: Asset
+  extends:
+    - Asset
+    - Interval
   icon: fa-handshake-o
   matchable: false
   featured:

@@ -2,9 +2,9 @@ ContractAward:
   label: "Contract Lot Award"
   plural: "Contract Awards"
   description: "A contract or contract lot as awarded to a supplier."
-  extends: 
-    - Interest
+  extends:
     - Value
+    - Contract
   icon: fa-handshake-o
   matchable: false
   featured:
