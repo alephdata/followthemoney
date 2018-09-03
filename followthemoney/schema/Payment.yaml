@@ -31,7 +31,7 @@ Payment:
       label: "Payer bank account"
       reverse:
         name: paymentPayerAccount
-        name: "Payments made"
+        label: "Payments made"
       type: entity
       schema: BankAccount
     beneficiary:
