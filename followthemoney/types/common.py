@@ -56,6 +56,18 @@ class PropertyType(object):
     def rdf(self, value):
         return Literal(value)
 
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __hash__(self):
+        return hash(self.name)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return '<%s()>' % type(self).__name__
+
 
 class TextType(PropertyType):
     name = 'text'
