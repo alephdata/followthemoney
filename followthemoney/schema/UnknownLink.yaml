@@ -11,11 +11,15 @@ UnknownLink:
   properties:
     subject:
       label: "Subject"
-      reverse: "Linked to"
+      reverse:
+        name: unknownLinkTo
+        label: "Linked to"
       type: entity
       schema: Thing
     object:
       label: "Object"
-      reverse: "Linked from"
+      reverse:
+        name: unknownLinkFrom
+        label: "Linked from"
       type: entity
       schema: Thing

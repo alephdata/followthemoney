@@ -9,10 +9,12 @@ Relationship:
   properties:
     person:
       label: "Person"
+      description: "The subject of the familial relation."
       type: entity
       schema: Person
-      reverse: "Related to"
-      description: "The subject of the familial relation."
+      reverse:
+        name: relationshipPerson
+        label: "Related to"
     relationship:
       label: "Relationship"
       description: "Nature of the relationship, from the *person's* perspective eg. 'mother', where 'relative' is mother of 'person'."

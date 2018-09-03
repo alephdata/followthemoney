@@ -10,11 +10,15 @@ CourtCaseParty:
   properties:
     party: 
       label: "Party"
-      reverse: "Court cases"
+      reverse:
+        name: courtCase
+        label: "Court cases"
       type: entity
       schema: Thing
     case:
       label: "Case"
-      reverse: "Parties"
+      reverse:
+        name: parties
+        label: "Parties"
       type: entity
       schema: CourtCase

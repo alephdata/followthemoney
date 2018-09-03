@@ -1,4 +1,4 @@
-from banal import ensure_list
+from banal import ensure_list, is_mapping
 from rdflib import URIRef
 
 from followthemoney.exc import InvalidModel
@@ -8,35 +8,44 @@ from followthemoney.util import gettext, NAMESPACE
 
 class Property(object):
 
-    def __init__(self, schema, name, data):
+    def __init__(self, schema, name, data, stub=False):
         self.schema = schema
         self.name = name.strip()
         self.qname = '%s:%s' % (schema.name, self.name)
         self.data = data
         self._label = data.get('label', name)
-        self._reverse = data.get('reverse')
         self._description = data.get('description')
         self.caption = data.get('caption', False)
         self.required = data.get('required', False)
-        self.type_name = data.get('type', 'text')
-        self.type = registry.get(self.type_name)
+        self._type = data.get('type', 'text')
+        self.type = registry.get(self._type)
         if self.type is None:
-            raise InvalidModel("Invalid type: %s" % self.type_name)
-        self.invert = self.type.group
-        self.range = data.get('schema', 'Thing')
+            raise InvalidModel("Invalid type: %s" % self._type)
+
+        self.range = None
+        self.reverse = None
+        self.stub = stub
 
         self.uri = NAMESPACE[self.qname]
         if 'rdf' in data:
             self.uri = URIRef(data.get('rdf'))
 
+    def generate(self):
+        range_ = self.data.get('schema', 'Thing')
+        if range_:
+            self.range = self.schema.model.get(range_)
+            if self.range is None:
+                raise InvalidModel("Cannot find range: %s" % self._range)
+
+        reverse_ = self.data.get('reverse')
+        if self.range and reverse_:
+            if not is_mapping(reverse_):
+                raise InvalidModel("Invalid reverse: %s" % self)
+            self.reverse = self.range._add_reverse(reverse_, self)
+
     @property
     def label(self):
         return gettext(self._label)
-
-    @property
-    def reverse(self):
-        if self._reverse is not None:
-            return gettext(self._reverse)
 
     @property
     def description(self):
@@ -53,11 +62,11 @@ class Property(object):
             if isinstance(val, dict):
                 val = val.get('id')
             if not self.type.validate(val):
-                error = "Invalid value"
+                error = gettext('Invalid value')
             else:
                 values.append(val)
         if self.required and not len(values):
-            error = 'Required'
+            error = gettext('Required')
         if error is not None:
             return ensure_list(data), error
         values = list(set(values))
@@ -76,11 +85,15 @@ class Property(object):
             'label': self.label,
             'description': self.description,
             'caption': self.caption,
-            'type': self.type_name
+            'uri': str(self.uri),
+            'type': self._type
         }
         if self.type == registry.entity:
-            data['range'] = self.range
-            data['reverse'] = self.reverse
+            data['stub'] = self.stub
+        if self.range:
+            data['schema'] = self.range.name
+        if self.reverse:
+            data['reverse'] = self.reverse.name
         return data
 
     def __repr__(self):

@@ -4,6 +4,7 @@ Person:
   plural: People
   icon: fa-user
   matchable: true
+  rdf: http://xmlns.com/foaf/0.1/Person
   featured:
     - name
     - nationality
@@ -11,8 +12,10 @@ Person:
   properties:
     title:
       label: Title
+      rdf: http://xmlns.com/foaf/0.1/title
     firstName:
       label: First name
+      rdf: http://xmlns.com/foaf/0.1/givenName
     secondName:
       label: Second name
     middleName:
@@ -23,9 +26,11 @@ Person:
       label: Matronymic
     lastName:
       label: Last name
+      rdf: http://xmlns.com/foaf/0.1/lastName
     birthDate:
       label: Birth date
       type: date
+      rdf: http://xmlns.com/foaf/0.1/birthday
     birthPlace:
       label: Place of birth
     deathDate:

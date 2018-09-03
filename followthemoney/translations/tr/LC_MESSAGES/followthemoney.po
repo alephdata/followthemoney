@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-08-24 15:02+0200\n"
+"POT-Creation-Date: 2018-09-03 08:15-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Turkish (https://www.transifex.com/aleph/teams/76591/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Generated-By: Babel 2.6.0\n"
 "Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: followthemoney/property.py:65
+msgid "Invalid value"
+msgstr ""
+
+#: followthemoney/property.py:69
+msgid "Required"
+msgstr ""
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
@@ -65,14 +73,14 @@ msgstr ""
 msgid "Non-family association between two people"
 msgstr ""
 
-#. Associate.properties.associate.reverse
-#: followthemoney/schema/Associate.yml
-msgid "Associates"
-msgstr ""
-
 #. Associate.properties.associate.description
 #: followthemoney/schema/Associate.yml
 msgid "An associate of the subject person."
+msgstr ""
+
+#. Associate.properties.associate.reverse.label
+#: followthemoney/schema/Associate.yml
+msgid "Associates"
 msgstr ""
 
 #. BankAccount.label
@@ -371,7 +379,7 @@ msgstr ""
 msgid "Contract authorities"
 msgstr ""
 
-#. Contract.properties.authority.reverse
+#. Contract.properties.authority.reverse.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contracts issued"
 msgstr ""
@@ -434,22 +442,22 @@ msgstr ""
 msgid "Supplier"
 msgstr ""
 
-#. ContractAward.properties.supplier.plural
-#: followthemoney/schema/ContractAward.yaml
-msgid "Suppliers"
-msgstr ""
-
-#. ContractAward.properties.supplier.reverse
-#: followthemoney/schema/ContractAward.yaml
-msgid "Contracts awarded"
-msgstr ""
-
 #. ContractAward.properties.supplier.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "The entity the contract was awarded to"
 msgstr ""
 
-#. ContractAward.properties.contract.reverse
+#. ContractAward.properties.supplier.plural
+#: followthemoney/schema/ContractAward.yaml
+msgid "Suppliers"
+msgstr ""
+
+#. ContractAward.properties.supplier.reverse.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "Contracts awarded"
+msgstr ""
+
+#. ContractAward.properties.contract.reverse.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Lots awarded"
 msgstr ""
@@ -512,7 +520,7 @@ msgid "Court case"
 msgstr ""
 
 #. CourtCase.plural
-#. CourtCaseParty.properties.party.reverse
+#. CourtCaseParty.properties.party.reverse.label
 #: followthemoney/schema/CourtCase.yaml
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Court cases"
@@ -579,7 +587,7 @@ msgstr ""
 msgid "Case"
 msgstr ""
 
-#. CourtCaseParty.properties.case.reverse
+#. CourtCaseParty.properties.case.reverse.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Parties"
 msgstr ""
@@ -594,7 +602,7 @@ msgstr ""
 msgid "Director"
 msgstr ""
 
-#. Directorship.properties.director.reverse
+#. Directorship.properties.director.reverse.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Directorships"
 msgstr ""
@@ -608,7 +616,7 @@ msgstr ""
 msgid "Organization"
 msgstr ""
 
-#. Directorship.properties.organization.reverse
+#. Directorship.properties.organization.reverse.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Directors"
 msgstr ""
@@ -738,6 +746,11 @@ msgstr ""
 #. Document.properties.parent.label
 #: followthemoney/schema/Document.yaml
 msgid "Parent document"
+msgstr ""
+
+#. Document.properties.parent.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "Child documents"
 msgstr ""
 
 #. Document.properties.namesMentioned.label
@@ -901,7 +914,7 @@ msgstr ""
 msgid "Associated contract"
 msgstr ""
 
-#. EconomicActivity.properties.contract.reverse
+#. EconomicActivity.properties.contract.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Used in customs"
 msgstr ""
@@ -979,14 +992,14 @@ msgstr ""
 msgid "Declarant"
 msgstr ""
 
-#. EconomicActivity.properties.declarant.reverse
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs declarations"
-msgstr ""
-
 #. EconomicActivity.properties.declarant.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarant"
+msgstr ""
+
+#. EconomicActivity.properties.declarant.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs declarations"
 msgstr ""
 
 #. EconomicActivity.properties.sender.label
@@ -994,14 +1007,14 @@ msgstr ""
 msgid "Sender"
 msgstr ""
 
-#. EconomicActivity.properties.sender.reverse
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Goods originated"
-msgstr ""
-
 #. EconomicActivity.properties.sender.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Origin of the goods"
+msgstr ""
+
+#. EconomicActivity.properties.sender.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Goods originated"
 msgstr ""
 
 #. EconomicActivity.properties.receiver.label
@@ -1009,14 +1022,14 @@ msgstr ""
 msgid "Receiver"
 msgstr ""
 
-#. EconomicActivity.properties.receiver.reverse
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Goods received"
-msgstr ""
-
 #. EconomicActivity.properties.receiver.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Destination of the goods"
+msgstr ""
+
+#. EconomicActivity.properties.receiver.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Goods received"
 msgstr ""
 
 #. EconomicActivity.properties.contractHolder.label
@@ -1024,14 +1037,14 @@ msgstr ""
 msgid "Contract holder"
 msgstr ""
 
-#. EconomicActivity.properties.contractHolder.reverse
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Economic activities"
-msgstr ""
-
 #. EconomicActivity.properties.contractHolder.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs formalities caretaker"
+msgstr ""
+
+#. EconomicActivity.properties.contractHolder.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Economic activities"
 msgstr ""
 
 #. EconomicActivity.properties.invoiceAmount.label
@@ -1167,7 +1180,7 @@ msgstr ""
 msgid "Relative"
 msgstr ""
 
-#. Family.properties.relative.reverse
+#. Family.properties.relative.reverse.label
 #: followthemoney/schema/Family.yml
 msgid "Relatives"
 msgstr ""
@@ -1378,16 +1391,22 @@ msgstr ""
 msgid "Parent company"
 msgstr ""
 
-#. LegalEntity.properties.parent.reverse
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Subsidiaries"
-msgstr ""
-
 #. LegalEntity.properties.parent.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid ""
 "If this entity is a subsidiary, another entity (company or organisation) is "
 "its parent"
+msgstr ""
+
+#. LegalEntity.properties.subsidiaries.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Subsidiaries"
+msgstr ""
+
+#. LegalEntity.properties.passport.label
+#. Passport.plural
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Passport.yaml
+msgid "Passports"
 msgstr ""
 
 #. Membership.label
@@ -1400,12 +1419,12 @@ msgstr ""
 msgid "Member"
 msgstr ""
 
-#. Membership.properties.member.reverse
+#. Membership.properties.member.reverse.label
 #: followthemoney/schema/Membership.yaml
 msgid "Memberships"
 msgstr ""
 
-#. Membership.properties.organization.reverse
+#. Membership.properties.organization.reverse.label
 #: followthemoney/schema/Membership.yaml
 msgid "Members"
 msgstr ""
@@ -1426,12 +1445,12 @@ msgstr ""
 msgid "Owner"
 msgstr ""
 
-#. Ownership.properties.owner.reverse
+#. Ownership.properties.owner.reverse.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Assets and shares"
 msgstr ""
 
-#. Ownership.properties.asset.reverse
+#. Ownership.properties.asset.reverse.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Owners"
 msgstr ""
@@ -1473,15 +1492,9 @@ msgstr ""
 
 #. Passport.label
 #. Passport.description
-#. Passport.properties.holder.reverse
 #. Person.properties.passportNumber.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
 msgid "Passport"
-msgstr ""
-
-#. Passport.plural
-#: followthemoney/schema/Passport.yaml
-msgid "Passports"
 msgstr ""
 
 #. Passport.properties.holder.label
@@ -1566,8 +1579,8 @@ msgstr ""
 msgid "Payer"
 msgstr ""
 
-#. Payment.properties.payer.reverse
-#. Payment.properties.payerAccount.reverse
+#. Payment.properties.payer.reverse.label
+#. Payment.properties.payerAccount.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payments made"
 msgstr ""
@@ -1582,8 +1595,8 @@ msgstr ""
 msgid "Beneficiary"
 msgstr ""
 
-#. Payment.properties.beneficiary.reverse
-#. Payment.properties.beneficiaryAccount.reverse
+#. Payment.properties.beneficiary.reverse.label
+#. Payment.properties.beneficiaryAccount.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payments received"
 msgstr ""
@@ -1745,14 +1758,14 @@ msgstr ""
 msgid "Person-to-person relationship"
 msgstr ""
 
-#. Relationship.properties.person.reverse
-#: followthemoney/schema/Relationship.yaml
-msgid "Related to"
-msgstr ""
-
 #. Relationship.properties.person.description
 #: followthemoney/schema/Relationship.yaml
 msgid "The subject of the familial relation."
+msgstr ""
+
+#. Relationship.properties.person.reverse.label
+#: followthemoney/schema/Relationship.yaml
+msgid "Related to"
 msgstr ""
 
 #. Relationship.properties.relationship.description
@@ -1795,7 +1808,7 @@ msgstr ""
 msgid "Agent"
 msgstr ""
 
-#. Representation.properties.agent.reverse
+#. Representation.properties.agent.reverse.label
 #: followthemoney/schema/Representation.yaml
 msgid "Agency clients"
 msgstr ""
@@ -1805,7 +1818,7 @@ msgstr ""
 msgid "Client"
 msgstr ""
 
-#. Representation.properties.client.reverse
+#. Representation.properties.client.reverse.label
 #: followthemoney/schema/Representation.yaml
 msgid "Agents"
 msgstr ""
@@ -1816,7 +1829,7 @@ msgid "Sanction"
 msgstr ""
 
 #. Sanction.plural
-#. Sanction.properties.entity.reverse
+#. Sanction.properties.entity.reverse.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanctions"
 msgstr ""
@@ -1831,7 +1844,7 @@ msgstr ""
 msgid "Sanctioning authority"
 msgstr ""
 
-#. Sanction.properties.authority.reverse
+#. Sanction.properties.authority.reverse.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Sanctioned entities"
 msgstr ""
@@ -1886,6 +1899,11 @@ msgstr ""
 msgid "Registered wealth"
 msgstr ""
 
+#. Thing.properties.sameAs.label
+#: followthemoney/schema/Thing.yaml
+msgid "Same as"
+msgstr ""
+
 #. Thing.properties.alias.label
 #: followthemoney/schema/Thing.yaml
 msgid "Other name"
@@ -1936,7 +1954,7 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-#. UnknownLink.properties.subject.reverse
+#. UnknownLink.properties.subject.reverse.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked to"
 msgstr ""
@@ -1946,7 +1964,7 @@ msgstr ""
 msgid "Object"
 msgstr ""
 
-#. UnknownLink.properties.object.reverse
+#. UnknownLink.properties.object.reverse.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked from"
 msgstr ""

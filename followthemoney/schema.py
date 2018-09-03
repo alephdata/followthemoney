@@ -1,7 +1,8 @@
 from rdflib import URIRef
-from banal import ensure_list
+from banal import ensure_list, as_bool
 
 from followthemoney.property import Property
+from followthemoney.types import registry
 from followthemoney.exc import InvalidData, InvalidModel
 from followthemoney.util import gettext, NAMESPACE
 
@@ -13,7 +14,7 @@ class Schema(object):
     """
 
     def __init__(self, model, name, data):
-        self._model = model
+        self.model = model
         self.name = name
         self.data = data
         self.icon = data.get('icon')
@@ -28,16 +29,43 @@ class Schema(object):
             self.uri = URIRef(data.get('rdf'))
 
         # Do not show in listings:
-        self.abstract = data.get('abstract', False)
+        self.abstract = as_bool(data.get('abstract'), False)
 
         # Try to perform fuzzy matching. Fuzzy similarity search does not
         # make sense for entities which have a lot of similar names, such
         # as land plots, assets etc.
-        self.matchable = data.get('matchable', True)
+        self.matchable = as_bool(data.get('matchable'), True)
 
         self._own_properties = []
         for name, prop in data.get('properties', {}).items():
             self._own_properties.append(Property(self, name, prop))
+
+    def generate(self):
+        for prop in self._own_properties:
+            prop.generate()
+
+        for featured in self.featured:
+            if self.get(featured) is None:
+                raise InvalidModel("Missing featured property: %s" % featured)
+
+    def _add_reverse(self, data, other):
+        name = data.pop('name', None)
+        if name is None:
+            raise InvalidModel("Unnamed reverse: %s" % other)
+
+        prop = self.get(name)
+        if prop is None:
+            data.update({
+                'type': 'entity',
+                'reverse': {'name': other.name},
+                'schema': other.schema.name
+            })
+            prop = Property(self, name, data, stub=True)
+            prop.generate()
+            self._own_properties.append(prop)
+            self._flush_properties()
+        assert prop.type == registry.entity, prop.type
+        return prop
 
     @property
     def label(self):
@@ -55,7 +83,7 @@ class Schema(object):
     def extends(self):
         """Return the inherited schemata."""
         for base in self._extends:
-            basecls = self._model.get(base)
+            basecls = self.model.get(base)
             if basecls is None:
                 raise InvalidModel("No such schema: %s" % base)
             yield basecls
@@ -73,7 +101,7 @@ class Schema(object):
 
     @property
     def descendants(self):
-        for schema in self._model:
+        for schema in self.model:
             if schema == self:
                 continue
             if self in schema.schemata:
@@ -105,17 +133,10 @@ class Schema(object):
                 return True
         return False
 
-    def __eq__(self, other):
-        other = self._model.get(other)
-        return other.name == self.name
-
-    def __hash__(self):
-        return hash(self.name)
-
     @property
     def properties(self):
         """Return properties, those defined locally and in ancestors."""
-        if not hasattr(self, '_properties'):
+        if not hasattr(self, '_properties') or self._properties is None:
             self._properties = {}
             for schema in self.extends:
                 for name, prop in schema.properties.items():
@@ -123,6 +144,11 @@ class Schema(object):
             for prop in self._own_properties:
                 self._properties[prop.name] = prop
         return self._properties
+
+    def _flush_properties(self):
+        for schema in self.descendants:
+            schema._flush_properties()
+        self._properties = None
 
     def get(self, name):
         return self.properties.get(name)
@@ -159,12 +185,13 @@ class Schema(object):
 
             # Add inverted properties. This takes all the properties
             # of a specific type (names, dates, emails etc.)
-            if prop.invert:
-                if prop.invert not in entity:
-                    entity[prop.invert] = []
-                for norm in prop.type.normalize(values, cleaned=cleaned):
-                    if norm not in entity[prop.invert]:
-                        entity[prop.invert].append(norm)
+            inverted = prop.type.group
+            if inverted:
+                if inverted not in entity:
+                    entity[inverted] = []
+                for norm in prop.type.normalize_set(values, cleaned=cleaned):
+                    if norm not in entity[inverted]:
+                        entity[inverted].append(norm)
 
         return entity
 
@@ -173,6 +200,7 @@ class Schema(object):
             'label': self.label,
             'plural': self.plural,
             'icon': self.icon,
+            'uri': str(self.uri),
             'abstract': self.abstract,
             'matchable': self.matchable,
             'description': self.description,
@@ -182,6 +210,13 @@ class Schema(object):
         for name, prop in self.properties.items():
             data['properties'][name] = prop.to_dict()
         return data
+
+    def __eq__(self, other):
+        other = self.model.get(other)
+        return other.name == self.name
+
+    def __hash__(self):
+        return hash(self.name)
 
     def __repr__(self):
         return '<Schema(%r)>' % self.name

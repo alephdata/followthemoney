@@ -12,9 +12,11 @@ Document:
       type: identifier
     title:
       label: "Title"
+      rdf: http://purl.org/dc/elements/1.1/title
     author:
       label: "Author"
       description: "The original author, not the uploader"
+      rdf: http://purl.org/dc/elements/1.1/creator
     generator:
       label: "Generator"
       description: "The program used to generate this file"
@@ -31,12 +33,15 @@ Document:
       label: "File encoding"
     mimeType:
       label: "MIME type"
+      rdf: http://purl.org/dc/terms/format
     language:
       label: "Language"
+      rdf: http://purl.org/dc/terms/language
     date:
       label: "Date"
       description: "If not otherwise specified"
       type: date
+      rdf: http://purl.org/dc/elements/1.1/date
     authoredAt:
       label: "Authored on"
       type: date
@@ -53,6 +58,10 @@ Document:
       label: "Parent document"
       type: entity
       schema: Folder
+      reverse:
+        name: children
+        label: "Child documents"
+      rdf: http://purl.org/dc/terms/isPartOf
     namesMentioned:
       label: "Mentioned names"
       type: name

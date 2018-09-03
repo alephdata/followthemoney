@@ -13,5 +13,7 @@ Family:
       label: "Relative"
       type: entity
       schema: Person
-      reverse: "Relatives"
+      reverse:
+        name: familyRelative
+        label: "Relatives"
       description: "The relative of the subject person."

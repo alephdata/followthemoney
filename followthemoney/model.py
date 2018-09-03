@@ -2,9 +2,10 @@ import os
 import yaml
 
 from followthemoney.schema import Schema
+from followthemoney.link import Link
 from followthemoney.mapping import QueryMapping
 from followthemoney.util import merge_data
-from followthemoney.exc import InvalidModel
+from followthemoney.exc import InvalidModel, InvalidData
 
 
 class Model(object):
@@ -12,23 +13,18 @@ class Model(object):
 
     def __init__(self, path):
         self.path = path
+        self.schemata = {}
+        for (path, _, filenames) in os.walk(self.path):
+            for filename in filenames:
+                self._load(os.path.join(path, filename))
+        self.generate()
 
-    @property
-    def schemata(self):
-        if not hasattr(self, '_schemata'):
-            self._schemata = {}
-            for (path, _, filenames) in os.walk(self.path):
-                for filename in filenames:
-                    self._load(os.path.join(path, filename))
-        return self._schemata
-
-    @property
-    def properties(self):
-        props = set()
+    def generate(self):
+        self.properties = set()
         for schema in self:
+            schema.generate()
             for prop in schema.properties.values():
-                props.add(prop)
-        return props
+                self.properties.add(prop)
 
     def _load(self, filepath):
         with open(filepath, 'r') as fh:
@@ -93,7 +89,7 @@ class Model(object):
                 if left == right:
                     return left
 
-        raise InvalidModel("No common ancestor: %s and %s" % (left, right))
+        raise InvalidData("No common ancestor: %s and %s" % (left, right))
 
     def merge(self, left, right):
         """Merge two entities and return a combined version."""
@@ -106,6 +102,15 @@ class Model(object):
             'schema': schema,
             'properties': properties
         }
+
+    def entity_links(self, entity):
+        yield from Link.from_entity(self, entity)
+
+    def entity_rdf(self, entity):
+        for link in self.entity_links(entity):
+            triple = link.rdf()
+            if triple is not None:
+                yield triple
 
     def to_dict(self):
         return {n: s.to_dict() for (n, s) in self.schemata.items()}

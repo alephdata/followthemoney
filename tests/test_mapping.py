@@ -20,6 +20,7 @@ class MappingTestCase(TestCase):
 
     def test_kek_map_single(self):
         mapping = model.make_mapping(self.kek_mapping)
+        assert len(mapping.source) == 2904, len(mapping.source)
         assert len(mapping.entities) == 3, mapping.entities
         assert len(mapping.refs) == 7, mapping.refs
         record = {

@@ -13,9 +13,10 @@ Passport:
   properties:
     holder:
       label: "Document holder"
-      reverse: "Passport"
       type: entity
       range: LegalEntity
+      reverse:
+        name: passport
     type:
       label: "Document type"
     country:

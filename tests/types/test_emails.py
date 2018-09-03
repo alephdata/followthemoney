@@ -23,3 +23,6 @@ class EmailsTest(unittest.TestCase):
         self.assertFalse(emails.validate('foo@pudo'))
         self.assertFalse(emails.validate('@pudo.org'))
         self.assertFalse(emails.validate('foo@'))
+
+    def test_specificity(self):
+        self.assertEqual(emails.specificity('foo@pudo.org'), 1)

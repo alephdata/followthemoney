@@ -10,11 +10,15 @@ Membership:
   properties:
     member:
       label: "Member"
-      reverse: "Memberships"
       type: entity
       schema: LegalEntity
+      reverse:
+        name: membershipMember
+        label: "Memberships"
     organization:
       label: "Organization"
-      reverse: "Members"
       type: entity
       schema: Organization
+      reverse:
+        name: membershipOrganization
+        label: "Members"
