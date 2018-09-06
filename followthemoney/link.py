@@ -78,6 +78,9 @@ class Link(object):
     def __repr__(self):
         return '<Link(%r, %r, %r)>' % (self.ref, self.prop, self.value)
 
+    def __hash__(self):
+        return hash((self.ref, self.prop, self.value, self.inverted))
+
     def __eq__(self, other):
         return self.ref == other.ref \
             and self.prop == other.prop \
