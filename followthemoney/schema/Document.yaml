@@ -171,6 +171,13 @@ Email:
   icon: fa-envelope-o
   hidden: true
   matchable: false
+  properties:
+    messageId:
+      label: "Message ID"
+      description: "Message ID of an email; unique in most cases"
+    inReplyTo:
+      label: "In Reply To"
+      description: "Message IDs of the preceding emails in the thread"
 
 Table:
   extends: Document
