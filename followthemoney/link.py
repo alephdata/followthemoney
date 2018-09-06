@@ -58,8 +58,9 @@ class Link(object):
     def unpack(cls, model, ref, packed):
         qname, qualifier, value = packed.split('>', 2)
         prop = model.get_qname(qname)
-        # TODO: parse qualifier
-        return cls(ref, prop, value)
+        if prop is not None:
+            # TODO: parse qualifier
+            return cls(ref, prop, value)
 
     @classmethod
     def from_entity(cls, model, entity):
@@ -71,7 +72,11 @@ class Link(object):
         properties = entity.get('properties', {})
         for prop in schema.properties.values():
             for value in ensure_list(properties.get(prop.name)):
-                yield cls(ref, prop, value)
+                if value is not None:
+                    yield cls(ref, prop, value)
+
+    def __repr__(self):
+        return '<Link(%r, %r, %r)>' % (self.ref, self.prop, self.value)
 
     def __eq__(self, other):
         return self.ref == other.ref \

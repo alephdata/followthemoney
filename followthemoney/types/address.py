@@ -28,4 +28,4 @@ class AddressType(PropertyType):
     #     return addresses
 
     def specificity(self, value):
-        return dampen(20, 50, value) * .6
+        return dampen(10, 50, value) * .6
