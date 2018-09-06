@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney',
-    version='1.1.1',
+    version='1.1.2',
     long_description="Data model and validator for investigative graph data.",
     author='Organized Crime and Corruption Reporting Project',
     author_email='pudo@occrp.org',
@@ -21,7 +21,7 @@ setup(
         'pyyaml',
         'requests[security] >= 2.18.4',
         'normality >= 0.6.1',
-        'sqlalchemy >= 1.1.14',
+        'sqlalchemy >= 1.1.24',
         'countrynames >= 1.6.0',
         'languagecodes >= 1.0.4',
         'phonenumbers >= 8.9.11',
