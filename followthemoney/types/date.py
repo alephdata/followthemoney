@@ -13,6 +13,8 @@ class DateType(PropertyType):
     # JS: '^([12]\\d{3}(-[01]?[1-9](-[0123]?[1-9])?)?)?$'
     DATE_RE = re.compile('^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$')  # noqa
     DATE_FULL = re.compile('\d{4}-\d{2}-\d{2}.*')
+    DATE_YEAR = re.compile(r'\d{4}')
+    YEAR_FORMAT = re.compile(r'%Y')
     CUT_ZEROES = re.compile(r'((\-00.*)|(.00:00:00))$')
     MAX_LENGTH = 19
 
@@ -66,7 +68,15 @@ class DateType(PropertyType):
         if text is None:
             return
 
-        if format is not None:
+        if format is not None and self.YEAR_FORMAT.fullmatch(format):
+            s = self.DATE_YEAR.search(text)
+            year = s.group(0)
+            try:
+                obj = datetime.strptime(year, format)
+                return stringify(obj.year)
+            except Exception:
+                return None
+        elif format is not None:
             # parse with a specified format
             try:
                 obj = datetime.strptime(text, format)
