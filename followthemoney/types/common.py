@@ -1,3 +1,4 @@
+from itertools import product
 from rdflib import Literal
 from banal import ensure_list, is_mapping
 from normality import stringify
@@ -42,6 +43,23 @@ class PropertyType(object):
 
     def specificity(self, value):
         return 0
+
+    def compare(self, left, right):
+        """Comparisons are a float between 0 and 1. They can assume
+        that the given data is cleaned, but not normalised."""
+        if left is None or right is None:
+            return 0
+        if left == right:
+            return 1 * self.specificity(left)
+        return 0
+
+    def compare_sets(self, left, right, func=max):
+        results = []
+        for (l, r) in product(ensure_list(left), ensure_list(right)):
+            results.append(self.compare(l, r))
+        if not len(results):
+            return 0
+        return func(results)
 
     def ref(self, value):
         """Generate a qualified form for storage in a triplestore."""
