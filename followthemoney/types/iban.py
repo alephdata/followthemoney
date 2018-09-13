@@ -29,5 +29,10 @@ class IbanType(PropertyType):
     def specificity(self, value):
         return 1
 
+    def country_hint(self, value):
+        value = stringify(value)
+        if value is not None:
+            return value[:2]
+
     def rdf(self, value):
         return URIRef('iban:%s' % value)

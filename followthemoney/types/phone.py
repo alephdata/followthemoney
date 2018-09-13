@@ -1,5 +1,6 @@
 from rdflib import URIRef
 from banal import ensure_list
+from phonenumbers import geocoder
 from phonenumbers import parse as parse_number
 from phonenumbers import is_possible_number, is_valid_number, format_number
 from phonenumbers import PhoneNumberFormat
@@ -43,6 +44,13 @@ class PhoneType(PropertyType):
 
     def specificity(self, value):
         return 1
+
+    def country_hint(self, value):
+        try:
+            number = parse_number(value)
+            return geocoder.region_code_for_number(number)
+        except NumberParseException:
+                pass
 
     def rdf(self, value):
         return URIRef('tel:%s' % value)

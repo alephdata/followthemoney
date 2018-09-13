@@ -20,6 +20,7 @@ setup(
         'banal',
         'pyyaml',
         'requests[security] >= 2.18.4',
+        'python-levenshtein >= 0.12.0',
         'normality >= 0.6.1',
         'sqlalchemy >= 1.1.24',
         'countrynames >= 1.6.0',

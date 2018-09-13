@@ -1,4 +1,5 @@
 import re
+import os
 import pytz
 from rdflib import Literal
 from rdflib.namespace import XSD
@@ -78,6 +79,10 @@ class DateType(PropertyType):
 
     def specificity(self, value):
         return dampen(5, self.MAX_LENGTH, value) * .5
+
+    def compare(self, left, right):
+        prefix = os.path.commonprefix([left, right])
+        return dampen(4, 10, prefix)
 
     def rdf(self, value):
         return Literal(value, datatype=XSD.dateTime)

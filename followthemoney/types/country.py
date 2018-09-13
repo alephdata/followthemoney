@@ -57,5 +57,8 @@ class CountryType(PropertyType):
         if country is not None:
             return country.lower()
 
+    def country_hint(self, value):
+        return value
+
     def rdf(self, value):
         return URIRef('iso-3166-1:%s' % value)
