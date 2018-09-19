@@ -46,5 +46,8 @@ class EmailType(PropertyType):
     def specificity(self, value):
         return 0 if value is None else 1
 
+    # def country_hint(self, value)
+    # TODO: do we want to use TLDs as country evidence?
+
     def rdf(self, value):
         return URIRef('mailto:%s' % value)
