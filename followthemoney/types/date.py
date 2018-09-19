@@ -15,6 +15,8 @@ class DateType(PropertyType):
     DATE_RE = re.compile('^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$')  # noqa
     DATE_FULL = re.compile('\d{4}-\d{2}-\d{2}.*')
     CUT_ZEROES = re.compile(r'((\-00.*)|(.00:00:00))$')
+    MONTH_FORMATS = re.compile(r'(%b|%B|%m|%c|%x)')
+    DAY_FORMATS = re.compile(r'(%d|%w|%c|%x)')
     MAX_LENGTH = 19
 
     name = 'date'
@@ -71,7 +73,12 @@ class DateType(PropertyType):
             # parse with a specified format
             try:
                 obj = datetime.strptime(text, format)
-                return obj.date().isoformat()
+                text = obj.date().isoformat()
+                if self.MONTH_FORMATS.search(format) is None:
+                    text = text[:4]
+                elif self.DAY_FORMATS.search(format) is None:
+                    text = text[:7]
+                return text
             except Exception:
                 return None
 
