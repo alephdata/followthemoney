@@ -12,7 +12,6 @@ class CountryType(PropertyType):
     prefix = 'country'
 
     def __init__(self, *args):
-        super(CountryType, self).__init__(*args)
         self._names = {}
         self.codes = self.names.keys()
 

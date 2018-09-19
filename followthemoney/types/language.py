@@ -11,7 +11,6 @@ class LanguageType(PropertyType):
     prefix = 'lang'
 
     def __init__(self, *args):
-        super(LanguageType, self).__init__(*args)
         self._names = {}
 
     @property

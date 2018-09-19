@@ -18,3 +18,7 @@ class PhonesTest(unittest.TestCase):
 
     def test_specificity(self):
         self.assertEqual(phones.specificity('+4917623423980'), 1)
+
+    def test_country_hint(self):
+        self.assertEqual(phones.country_hint('+4917623423980'), 'de')
+        self.assertEqual(phones.country_hint(None), None)

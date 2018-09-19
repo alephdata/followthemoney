@@ -93,3 +93,17 @@ class IbansTest(unittest.TestCase):
 
     def test_specificity(self):
         self.assertEqual(ibans.specificity('VG21PACG0000000123456789'), 1)
+
+    def test_country(self):
+        iban = 'AE460090000000123456789'
+        assert 'ae' == ibans.country_hint(iban)
+        assert ibans.country_hint('') is None
+
+    def test_compare(self):
+        iban = 'AE460090000000123456789'
+        comp = ibans.compare_safe(iban, iban)
+        assert comp == 1, comp
+        comp = ibans.compare_safe(iban, iban + 'X')
+        assert comp == 0, comp
+        comp = ibans.compare_safe(iban, None)
+        assert comp == 0, comp

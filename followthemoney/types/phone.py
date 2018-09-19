@@ -48,7 +48,7 @@ class PhoneType(PropertyType):
     def country_hint(self, value):
         try:
             number = parse_number(value)
-            return geocoder.region_code_for_number(number)
+            return geocoder.region_code_for_number(number).lower()
         except NumberParseException:
                 pass
 

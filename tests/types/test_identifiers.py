@@ -15,3 +15,11 @@ class IdentifiersTest(unittest.TestCase):
 
     def test_domain_validity(self):
         self.assertTrue(identifiers.validate('foo@pudo.org'))
+
+    def test_compare(self):
+        comp = identifiers.compare('AS98187', '98187')
+        assert comp == 0.7, comp
+        comp = identifiers.compare_safe(None, '98187')
+        assert comp == 0, comp
+        comp = identifiers.compare_sets(['AS98187'], ['98187'])
+        assert comp == 0.7, comp

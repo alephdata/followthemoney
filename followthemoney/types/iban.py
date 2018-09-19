@@ -32,7 +32,7 @@ class IbanType(PropertyType):
     def country_hint(self, value):
         value = stringify(value)
         if value is not None:
-            return value[:2]
+            return value[:2].lower()
 
     def rdf(self, value):
         return URIRef('iban:%s' % value)

@@ -74,13 +74,14 @@ class PropertyType(object):
 
     def ref(self, value):
         """Generate a qualified form for storage in a triplestore."""
+        if self.prefix is None:
+            return
+        if is_mapping(value):
+            value = value.get('id')
         value = stringify(value)
         if value is None:
             return
-        if self.prefix is not None:
-            if is_mapping(value):
-                value = value.get('id')
-            return ':'.join((self.prefix, value))
+        return ':'.join((self.prefix, value))
 
     def rdf(self, value):
         return Literal(value)
