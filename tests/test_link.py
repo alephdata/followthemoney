@@ -25,12 +25,12 @@ class LinkTestCase(TestCase):
     def test_link_pack(self):
         ref = registry.entity.ref('banana')
         prop = model.get_qname('Thing:name')
-        link = Link(ref, prop, "Theodore")
+        link = Link(ref, prop, "Theodore Böln")
         assert link.subject == 'banana'
-        assert link.value_ref == 'n:Theodore'
+        assert link.value_ref == 'n:Theodore Böln'
 
-        key, value = link.pack()
-        other = link.unpack(model, key, value)
+        value = link.pack()
+        other = link.unpack(model, link.ref, value)
         assert other == link, (link, other)
 
     def test_invert(self):

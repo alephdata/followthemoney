@@ -1,3 +1,4 @@
+import msgpack
 from banal import ensure_list
 
 from followthemoney.types import registry
@@ -39,24 +40,19 @@ class Link(object):
         return (subject_uri, self.prop.uri, value_obj)
 
     def pack(self):
-        weight = '' if self.weight >= 1.0 else str(self.weight)
-        inverted = 't' if self.inverted else ''
-        inferred = 't' if self.inverted else ''
-        fields = (self.prop.qname, weight, inverted, inferred, str(self.value))
-        return self.ref, '>'.join(fields)
+        values = (self.prop.qname, self.weight, self.inverted,
+                  self.inferred, self.value)
+        return msgpack.packb(values, use_bin_type=True)
 
     @classmethod
     def unpack(cls, model, ref, packed):
-        qname, weight, inverted, inferred, value = packed.split('>', 4)
+        data = msgpack.unpackb(packed, raw=False)
+        qname, weight, inverted, inferred, value = data
         prop = model.get_qname(qname)
-        if prop is not None:
-            weight = float(weight) if len(weight) else 1.0
-            inverted = inverted == 't'
-            inferred = inferred == 't'
-            return cls(ref, prop, value,
-                       weight=weight,
-                       inverted=inverted,
-                       inferred=inferred)
+        return cls(ref, prop, value,
+                   weight=weight,
+                   inverted=inverted,
+                   inferred=inferred)
 
     def invert(self):
         if not self.inverted and self.prop.reverse is not None:
