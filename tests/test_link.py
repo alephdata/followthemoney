@@ -29,9 +29,11 @@ class LinkTestCase(TestCase):
         assert link.subject == 'banana'
         assert link.value_ref == 'n:Theodore Böln'
 
-        value = link.pack()
-        other = link.unpack(model, link.ref, value)
+        value = link.to_tuple()
+        other = link.from_tuple(model, link.ref, value)
         assert other == link, (link, other)
+        assert hash(other) == hash(link)
+        assert repr(other) == repr(link)
 
     def test_invert(self):
         ref = registry.entity.ref('banana')

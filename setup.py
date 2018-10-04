@@ -19,7 +19,6 @@ setup(
         'babel',
         'banal',
         'pyyaml',
-        'msgpack >= 0.5.6',
         'requests[security] >= 2.18.4',
         'python-levenshtein >= 0.12.0',
         'normality >= 0.6.1',

@@ -1,8 +1,6 @@
-import msgpack
 from banal import ensure_list
 
 from followthemoney.types import registry
-# from followthemoney.exc import InvalidData
 
 
 class Link(object):
@@ -39,14 +37,12 @@ class Link(object):
         value_obj = self.prop.type.rdf(self.value)
         return (subject_uri, self.prop.uri, value_obj)
 
-    def pack(self):
-        values = (self.prop.qname, self.weight, self.inverted,
-                  self.inferred, self.value)
-        return msgpack.packb(values, use_bin_type=True)
+    def to_tuple(self):
+        return (self.prop.qname, self.weight, self.inverted, self.inferred,
+                self.value)
 
     @classmethod
-    def unpack(cls, model, ref, packed):
-        data = msgpack.unpackb(packed, raw=False)
+    def from_tuple(cls, model, ref, data):
         qname, weight, inverted, inferred, value = data
         prop = model.get_qname(qname)
         return cls(ref, prop, value,
@@ -83,7 +79,7 @@ class Link(object):
         return '<Link(%r, %r, %r)>' % (self.ref, self.prop, self.value)
 
     def __hash__(self):
-        return hash((self.ref, self.prop, self.value, self.inverted))
+        return hash(self.to_tuple())
 
     def __eq__(self, other):
         return self.ref == other.ref \
