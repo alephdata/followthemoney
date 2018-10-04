@@ -65,6 +65,12 @@ LegalEntity:
       label: Country of origin
       type: country
       description: "Primary country of this entity"
+    opencorporatesUrl:
+      label: OpenCorporates URL
+      type: identifier
+    bvdId:
+      label: Bureau van Dijk ID
+      type: identifier
     icijId:
       label: ICIJ ID
       description: "ID according to International Consortium for Investigative Journalists"
