@@ -11,12 +11,14 @@ class Link(object):
     for storage in a key/value store.
     """
 
-    def __init__(self, ref, prop, value, weight=1.0, inverted=False):
+    def __init__(self, ref, prop, value, weight=1.0,
+                 inverted=False, inferred=False):
         self.ref = ref
         self.prop = prop
         self.value = value
         self.weight = weight
         self.inverted = inverted
+        self.inferred = inferred
 
     @property
     def subject(self):
@@ -37,10 +39,24 @@ class Link(object):
         return (subject_uri, self.prop.uri, value_obj)
 
     def pack(self):
-        qualifier = '*' if self.inverted else ''
-        if self.weight < 1.0:
-            qualifier += self.weight
-        return self.ref, f'{self.prop.qname}>{qualifier}>{self.value}'
+        weight = '' if self.weight >= 1.0 else str(self.weight)
+        inverted = 't' if self.inverted else ''
+        inferred = 't' if self.inverted else ''
+        fields = (self.prop.qname, weight, inverted, inferred, str(self.value))
+        return self.ref, '>'.join(fields)
+
+    @classmethod
+    def unpack(cls, model, ref, packed):
+        qname, weight, inverted, inferred, value = packed.split('>', 4)
+        prop = model.get_qname(qname)
+        if prop is not None:
+            weight = float(weight) if len(weight) else 1.0
+            inverted = inverted == 't'
+            inferred = inferred == 't'
+            return cls(ref, prop, value,
+                       weight=weight,
+                       inverted=inverted,
+                       inferred=inferred)
 
     def invert(self):
         if not self.inverted and self.prop.reverse is not None:
@@ -53,14 +69,6 @@ class Link(object):
                     self.subject,
                     weight=self.weight,
                     inverted=not self.inverted)
-
-    @classmethod
-    def unpack(cls, model, ref, packed):
-        qname, qualifier, value = packed.split('>', 2)
-        prop = model.get_qname(qname)
-        if prop is not None:
-            # TODO: parse qualifier
-            return cls(ref, prop, value)
 
     @classmethod
     def from_entity(cls, model, entity):
