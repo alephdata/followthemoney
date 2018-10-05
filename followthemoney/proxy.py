@@ -1,6 +1,7 @@
 from hashlib import sha1
 from copy import deepcopy
 from banal import ensure_list
+from normality import stringify
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
@@ -16,7 +17,7 @@ class EntityProxy(object):
     def __init__(self, schema, data, key_prefix=None):
         self.schema = schema
         data = deepcopy(data)
-        self.id = data.pop('id', None)
+        self.id = stringify(data.pop('id', None))
         self._key_prefix = key_prefix
         self._properties = data.pop('properties', {})
         self._data = data
