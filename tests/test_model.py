@@ -56,22 +56,6 @@ class ModelTestCase(TestCase):
         with self.assertRaises(InvalidData):
             thing.validate({'name': None})
 
-    def test_schema_invert(self):
-        thing = model.schemata['Thing']
-        data = {
-            'schema': thing.name,
-            'properties': {
-                'name': ['Foo'],
-                'alias': ['Foobar'],
-                'country': ['de']
-            }
-        }
-        out = thing.invert(data)
-        # assert out['name'] == 'Foo', out
-        assert 'Foo' in out['names'], out
-        assert 'Foobar' in out['names'], out
-        assert 'de' in out['countries'], out
-
     def test_model_precise_schema(self):
         assert model.precise_schema('Thing', 'Thing') == 'Thing'
         assert model.precise_schema('Thing', 'Person') == 'Person'
@@ -97,6 +81,11 @@ class ModelTestCase(TestCase):
         merged = model.merge({'schema': 'Person'},
                              {'schema': 'Company'})
         assert merged['schema'] == 'LegalEntity'
+
+    def test_make_entity(self):
+        ent = model.make_entity('Person')
+        assert ent.id is None
+        assert ent.schema.name == 'Person'
 
     def test_model_to_dict(self):
         thing = model.schemata['Thing']

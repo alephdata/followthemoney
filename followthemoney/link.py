@@ -1,5 +1,3 @@
-from banal import ensure_list
-
 from followthemoney.types import registry
 
 
@@ -61,19 +59,6 @@ class Link(object):
                     self.subject,
                     weight=self.weight,
                     inverted=not self.inverted)
-
-    @classmethod
-    def from_entity(cls, model, entity):
-        ref = registry.entity.ref(entity.get('id'))
-        schema = model.get(entity.get('schema'))
-        if schema is None:
-            return
-
-        properties = entity.get('properties', {})
-        for prop in schema.properties.values():
-            for value in ensure_list(properties.get(prop.name)):
-                if value is not None:
-                    yield cls(ref, prop, value)
 
     def __repr__(self):
         return '<Link(%r, %r, %r)>' % (self.ref, self.prop, self.value)

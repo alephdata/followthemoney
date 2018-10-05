@@ -55,11 +55,12 @@ class LinkTestCase(TestCase):
         assert inv.prop == link.prop
 
     def test_make_links(self):
-        links = list(model.entity_links(ENTITY))
+        links = list(model.get_proxy(ENTITY).links)
         assert len(links) == 8, len(links)
 
     def test_rdf(self):
-        triples = list(model.entity_rdf(ENTITY))
+        links = list(model.get_proxy(ENTITY).links)
+        triples = [l.rdf() for l in links]
         assert len(triples) == 8, len(triples)
         for (s, p, o) in triples:
             assert 'test' in s, s
@@ -68,9 +69,3 @@ class LinkTestCase(TestCase):
             if p == registry.phone:
                 assert str(o) == 'tel:+12025557612', o
         # assert False, triples
-
-    def test_rdf_noschema(self):
-        entity = ENTITY.copy()
-        entity.pop('schema')
-        triples = list(model.entity_rdf(entity))
-        assert len(triples) == 0, triples

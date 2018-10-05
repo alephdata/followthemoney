@@ -5,6 +5,7 @@ from banal import ensure_list
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
+from followthemoney.link import Link
 from followthemoney.util import merge_data, key_bytes
 
 
@@ -14,8 +15,6 @@ class EntityProxy(object):
 
     def __init__(self, schema, data, key_prefix=None):
         self.schema = schema
-        if self.schema is None:
-            raise InvalidData('No schema for entity proxy.')
         data = deepcopy(data)
         self.id = data.pop('id', None)
         self._key_prefix = key_prefix
@@ -80,6 +79,13 @@ class EntityProxy(object):
             if len(values):
                 data[group] = values
         return data
+
+    @property
+    def links(self):
+        ref = registry.entity.ref(self.id)
+        for prop in self.iterprops():
+            for value in self.get(prop):
+                yield Link(ref, prop, value)
 
     def to_dict(self, inverted_index=False):
         data = deepcopy(self._data)

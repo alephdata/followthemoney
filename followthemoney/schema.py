@@ -173,27 +173,6 @@ class Schema(object):
             raise InvalidData(errors)
         return result
 
-    def invert(self, entity, cleaned=True):
-        """Invert the properties of an entity into their normalised form."""
-        properties = entity.get('properties', {})
-
-        # Generate inverted representations of the data stored in properties.
-        for name, prop in self.properties.items():
-            values = properties.get(name, [])
-            if not len(values):
-                continue
-
-            # Add inverted properties. This takes all the properties
-            # of a specific type (names, dates, emails etc.)
-            inverted = prop.type.group
-            if inverted:
-                if inverted not in entity:
-                    entity[inverted] = []
-                for norm in prop.type.normalize_set(values, cleaned=cleaned):
-                    if norm not in entity[inverted]:
-                        entity[inverted].append(norm)
-        return entity
-
     def to_dict(self):
         data = {
             'label': self.label,
