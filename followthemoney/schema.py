@@ -192,7 +192,6 @@ class Schema(object):
                 for norm in prop.type.normalize_set(values, cleaned=cleaned):
                     if norm not in entity[inverted]:
                         entity[inverted].append(norm)
-
         return entity
 
     def to_dict(self):
