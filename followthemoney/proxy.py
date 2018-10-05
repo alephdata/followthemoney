@@ -14,7 +14,10 @@ class EntityProxy(object):
 
     def __init__(self, schema, data, key_prefix=None):
         self.schema = schema
-        self.id = data.pop('id')
+        if self.schema is None:
+            raise InvalidData('No schema for entity proxy.')
+        data = deepcopy(data)
+        self.id = data.pop('id', None)
         self._key_prefix = key_prefix
         self._properties = data.pop('properties', {})
         self._data = data
@@ -23,9 +26,14 @@ class EntityProxy(object):
         digest = sha1()
         if self._key_prefix:
             digest.update(key_bytes(self._key_prefix))
+        base = digest.digest()
         for part in parts:
             digest.update(key_bytes(part))
+        if digest.digest() == base:
+            self.id = None
+            return
         self.id = digest.hexdigest()
+        return self.id
 
     def get(self, prop):
         if not isinstance(prop, Property):
@@ -73,16 +81,20 @@ class EntityProxy(object):
                 data[group] = values
         return data
 
-    def to_dict(self):
+    def to_dict(self, inverted_index=False):
         data = deepcopy(self._data)
         data['id'] = self.id
         data['schema'] = self.schema.name
         data['properties'] = self._properties
+        if inverted_index:
+            data.update(self.get_type_inverted())
         return data
 
     def merge(self, other):
         model = self.schema.model
+        other = self.from_dict(model, other)
         schema = model.precise_schema(self.schema, other.schema)
+        schema = model.get(schema)
         data = {
             'properties': merge_data(self._properties, other._properties)
         }
@@ -94,9 +106,14 @@ class EntityProxy(object):
     def __hash__(self):
         return hash(self.id)
 
+    def __eq__(self, other):
+        return self.id == other.id
+
     @classmethod
     def from_dict(cls, model, data):
         if isinstance(data, cls):
             return data
         schema = model.get(data.get('schema'))
+        if schema is None:
+            raise InvalidData('No schema for entity proxy.')
         return cls(schema, data)

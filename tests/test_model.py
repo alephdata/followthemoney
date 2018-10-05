@@ -98,9 +98,6 @@ class ModelTestCase(TestCase):
                              {'schema': 'Company'})
         assert merged['schema'] == 'LegalEntity'
 
-        merged = model.merge({}, {'id': 'banana'})
-        assert merged['id'] == 'banana'
-
     def test_model_to_dict(self):
         thing = model.schemata['Thing']
         data = thing.to_dict()

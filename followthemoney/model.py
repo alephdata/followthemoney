@@ -4,7 +4,7 @@ import yaml
 from followthemoney.schema import Schema
 from followthemoney.link import Link
 from followthemoney.mapping import QueryMapping
-from followthemoney.util import merge_data
+from followthemoney.proxy import EntityProxy
 from followthemoney.exc import InvalidModel, InvalidData
 
 
@@ -93,15 +93,9 @@ class Model(object):
 
     def merge(self, left, right):
         """Merge two entities and return a combined version."""
-        properties = merge_data(left.get('properties'),
-                                right.get('properties'))
-        schema = self.precise_schema(left.get('schema'),
-                                     right.get('schema'))
-        return {
-            'id': left.get('id', right.get('id')),
-            'schema': schema,
-            'properties': properties
-        }
+        left = EntityProxy.from_dict(self, left)
+        right = EntityProxy.from_dict(self, right)
+        return left.merge(right).to_dict()
 
     def entity_links(self, entity):
         yield from Link.from_entity(self, entity)
