@@ -37,9 +37,11 @@ class EntityProxy(object):
 
     def get(self, prop):
         if not isinstance(prop, Property):
+            name = prop
             prop = self.schema.get(prop)
             if prop is None:
-                raise InvalidData("Unknown property.")
+                msg = "Unknown property (%s): %s"
+                raise InvalidData(msg % (self.schema, name))
         return ensure_list(self._properties.get(prop.name))
 
     def add(self, prop, value, cleaned=False):
@@ -48,7 +50,7 @@ class EntityProxy(object):
             prop = self.schema.get(prop)
         for val in ensure_list(value):
             if not cleaned:
-                val = prop.type.clean(val)
+                val = prop.type.clean(val, countries=self.countries)
             if val is not None and val not in values:
                 values.append(val)
         self._properties[prop.name] = values
@@ -65,10 +67,13 @@ class EntityProxy(object):
 
     def get_type_values(self, type_, cleaned=True):
         values = []
-        for prop in self.iterprops():
+        for prop, value in self.itervalues():
             if prop.type == type_:
-                values.extend(self.get(prop))
-        return type_.normalize_set(values, cleaned=cleaned)
+                values.append(value)
+        kwargs = {'cleaned': cleaned}
+        if type_ != registry.country:
+            kwargs['countries'] = self.countries
+        return type_.normalize_set(values, **kwargs)
 
     @property
     def countries(self):
