@@ -1,6 +1,5 @@
 from hashlib import sha1
-from copy import deepcopy
-from banal import ensure_list
+from banal import ensure_list, is_mapping
 from normality import stringify
 
 from followthemoney.exc import InvalidData
@@ -13,19 +12,25 @@ from followthemoney.util import merge_data, key_bytes
 class EntityProxy(object):
     """A wrapper object for an entity, with utility functions for the
     introspection and manipulation of its properties."""
+    __slots__ = ['schema', 'id', 'key_prefix', '_properties',
+                 '_data', 'countries', 'names']
 
-    def __init__(self, schema, data, key_prefix=None):
+    def __init__(self, schema, id, properties, key_prefix=None):
         self.schema = schema
-        data = deepcopy(data)
-        self.id = stringify(data.pop('id', None))
-        self._key_prefix = key_prefix
-        self._properties = data.pop('properties', {})
-        self._data = data
+        self.id = stringify(id)
+        self.key_prefix = stringify(key_prefix)
+        self.countries = set()
+        self.names = set()
+        self._properties = {}
+
+        if is_mapping(properties):
+            for key, value in properties.items():
+                self.add(key, value, cleaned=True)
 
     def make_id(self, *parts):
         digest = sha1()
-        if self._key_prefix:
-            digest.update(key_bytes(self._key_prefix))
+        if self.key_prefix:
+            digest.update(key_bytes(self.key_prefix))
         base = digest.digest()
         for part in parts:
             digest.update(key_bytes(part))
@@ -35,60 +40,54 @@ class EntityProxy(object):
         self.id = digest.hexdigest()
         return self.id
 
-    def get(self, prop):
-        if not isinstance(prop, Property):
-            name = prop
-            prop = self.schema.get(prop)
-            if prop is None:
-                msg = "Unknown property (%s): %s"
-                raise InvalidData(msg % (self.schema, name))
-        return ensure_list(self._properties.get(prop.name))
+    def _get_prop(self, prop):
+        if isinstance(prop, Property):
+            return prop
+        if prop not in self.schema.properties:
+            msg = "Unknown property (%s): %s"
+            raise InvalidData(msg % (self.schema, prop))
+        return self.schema.get(prop)
 
-    def add(self, prop, value, cleaned=False):
-        values = self.get(prop)
-        if not isinstance(prop, Property):
-            prop = self.schema.get(prop)
-        for val in ensure_list(value):
+    def get(self, prop):
+        prop = self._get_prop(prop)
+        if prop not in self._properties:
+            return []
+        return list(self._properties.get(prop))
+
+    def add(self, prop, values, cleaned=False):
+        prop = self._get_prop(prop)
+        if prop not in self._properties:
+            self._properties[prop] = set()
+        for value in ensure_list(values):
             if not cleaned:
-                val = prop.type.clean(val, countries=self.countries)
-            if val is not None and val not in values:
-                values.append(val)
-        self._properties[prop.name] = values
+                value = prop.type.clean(value, countries=self.countries)
+            if value is None:
+                continue
+            self._properties[prop].add(value)
+            if prop.type == registry.name:
+                norm = prop.type.normalize(value, cleaned=True)
+                self.names.update(norm)
+            if prop.type == registry.country:
+                norm = prop.type.normalize(value, cleaned=True)
+                self.countries.update(norm)
 
     def iterprops(self):
         for prop in self.schema.properties.values():
             yield prop
 
     def itervalues(self):
-        for key, value in self._properties.items():
-            prop = self.schema.get(key)
-            for value in self.get(prop):
+        for prop, values in self._properties.items():
+            for value in values:
                 yield (prop, value)
 
     def get_type_values(self, type_, cleaned=True):
-        values = []
-        for prop, value in self.itervalues():
+        combined = set()
+        for prop, values in self._properties.items():
             if prop.type == type_:
-                values.append(value)
-        kwargs = {'cleaned': cleaned}
-        if type_ != registry.country:
-            kwargs['countries'] = self.countries
-        return type_.normalize_set(values, **kwargs)
-
-    @property
-    def countries(self):
-        return self.get_type_values(registry.country)
-
-    @property
-    def names(self):
-        return self.get_type_values(registry.name)
-
-    @property
-    def caption(self):
-        for prop in self.iterprops():
-            if prop.caption:
-                for value in self.get(prop):
-                    return value
+                combined.update(values)
+        return type_.normalize_set(combined,
+                                   cleaned=cleaned,
+                                   countries=self.countries)
 
     def get_type_inverted(self, cleaned=True):
         """Invert the properties of an entity into their normalised form."""
@@ -105,13 +104,28 @@ class EntityProxy(object):
         for prop, value in self.itervalues():
             yield Link(ref, prop, value)
 
+    @property
+    def caption(self):
+        for prop in self.iterprops():
+            if prop.caption:
+                for value in self.get(prop):
+                    return value
+
+    @property
+    def properties(self):
+        return {p.name: self.get(p) for p in self._properties.keys()}
+
     def to_dict(self, inverted_index=False):
-        data = deepcopy(self._data)
-        data['id'] = self.id
-        data['schema'] = self.schema.name
-        data['properties'] = self._properties
-        if inverted_index:
-            data.update(self.get_type_inverted())
+        return {
+            'id': self.id,
+            'schema': self.schema.name,
+            'properties': self.properties
+        }
+
+    def to_full_dict(self):
+        data = self.to_dict()
+        data['schemata'] = self.schema.names
+        data.update(self.get_type_inverted())
         return data
 
     def merge(self, other):
@@ -119,10 +133,8 @@ class EntityProxy(object):
         other = self.from_dict(model, other)
         schema = model.precise_schema(self.schema, other.schema)
         schema = model.get(schema)
-        data = {
-            'properties': merge_data(self._properties, other._properties)
-        }
-        return EntityProxy(schema, data)
+        properties = merge_data(self._properties, other._properties)
+        return EntityProxy(schema, self.id or other.id, properties)
 
     def __repr__(self):
         return '<EntityProxy(%r,%r)>' % (self.id, self.schema)
@@ -140,4 +152,4 @@ class EntityProxy(object):
         schema = model.get(data.get('schema'))
         if schema is None:
             raise InvalidData('No schema for entity proxy.')
-        return cls(schema, data)
+        return cls(schema, data.get('id'), data.get('properties'))

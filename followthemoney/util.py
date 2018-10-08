@@ -42,8 +42,6 @@ def merge_data(old, new):
     if is_sequence(old) or is_sequence(new):
         new = ensure_list(new)
         new.extend(ensure_list(old))
-        if not len(new):
-            return None
         return unique_list(new)
     if is_mapping(old) or is_mapping(new):
         old = old if is_mapping(old) else {}

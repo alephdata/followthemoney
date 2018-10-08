@@ -27,6 +27,7 @@ class ProxyTestCase(TestCase):
     def test_base_functions(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
         assert 'test' in repr(proxy), repr(proxy)
+        assert hash(proxy) == hash(proxy.id)
         assert proxy.get('name') == ['Ralph Tester']
         prop = model.get_qname('Thing:name')
         assert proxy.get(prop) == ['Ralph Tester']
@@ -35,8 +36,12 @@ class ProxyTestCase(TestCase):
         name = 'Ralph the Great'
         proxy.add('name', name)
         assert len(proxy.get('name')) == 2
+        proxy.add('name', None)
+        assert len(proxy.get('name')) == 2
         assert name in proxy.get('name')
         assert name in proxy.names, proxy.names
+
+        assert len(proxy.get('nationality')) == 0
 
         double = EntityProxy.from_dict(model, proxy)
         assert double == proxy
@@ -54,6 +59,10 @@ class ProxyTestCase(TestCase):
         assert data['schema'] == ENTITY['schema']
         assert 'idNumber' in data['properties']
 
+        data = proxy.to_full_dict()
+        assert ENTITY['schema'] in data['schemata']
+        assert 'Ralph Tester' in data['names']
+
     def test_inverted_props(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
         data = proxy.get_type_inverted()
@@ -66,14 +75,13 @@ class ProxyTestCase(TestCase):
         assert 'countries'in data
 
     def test_make_id(self):
-        thing = model.get('Thing')
-        proxy = EntityProxy(thing, {}, key_prefix=None)
+        proxy = model.make_entity('Thing')
         assert not proxy.make_id(None)
         assert proxy.make_id('banana')
         assert proxy.make_id('banana') == proxy.make_id('banana')
         ff = proxy.make_id(44)
         assert ff is not None
-        proxy = EntityProxy(thing, {}, key_prefix='foo')
+        proxy = model.make_entity('Thing', key_prefix='foo')
         assert proxy.make_id(44)
         assert proxy.make_id(44) != ff, proxy.make_id(44)
 
