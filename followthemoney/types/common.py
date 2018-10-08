@@ -87,9 +87,7 @@ class PropertyType(object):
         return Literal(value)
 
     def __eq__(self, other):
-        if isinstance(other, PropertyType):
-            return self.name == other.name
-        return self.name == other
+        return self.name == other.name
 
     def __hash__(self):
         return hash(self.name)

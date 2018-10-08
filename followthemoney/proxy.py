@@ -57,6 +57,12 @@ class EntityProxy(object):
         for prop in self.schema.properties.values():
             yield prop
 
+    def itervalues(self):
+        for key, value in self._properties.items():
+            prop = self.schema.get(key)
+            for value in self.get(prop):
+                yield (prop, value)
+
     def get_type_values(self, type_, cleaned=True):
         values = []
         for prop in self.iterprops():
@@ -72,6 +78,13 @@ class EntityProxy(object):
     def names(self):
         return self.get_type_values(registry.name)
 
+    @property
+    def caption(self):
+        for prop in self.iterprops():
+            if prop.caption:
+                for value in self.get(prop):
+                    return value
+
     def get_type_inverted(self, cleaned=True):
         """Invert the properties of an entity into their normalised form."""
         data = {}
@@ -84,9 +97,8 @@ class EntityProxy(object):
     @property
     def links(self):
         ref = registry.entity.ref(self.id)
-        for prop in self.iterprops():
-            for value in self.get(prop):
-                yield Link(ref, prop, value)
+        for prop, value in self.itervalues():
+            yield Link(ref, prop, value)
 
     def to_dict(self, inverted_index=False):
         data = deepcopy(self._data)

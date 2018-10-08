@@ -9,12 +9,14 @@ class EmailsTest(unittest.TestCase):
         self.assertEqual(emails.clean('foo@pudo.org'), 'foo@pudo.org')
         self.assertEqual(emails.clean('"foo@pudo.org"'), 'foo@pudo.org')
         self.assertEqual(emails.clean('pudo.org'), None)
+        self.assertEqual(emails.clean('foo@'), None)
         self.assertEqual(emails.clean(None), None)
         self.assertEqual(emails.clean(5), None)
         self.assertEqual(emails.clean('foo@PUDO.org'), 'foo@pudo.org')
         self.assertEqual(emails.clean('FOO@PUDO.org'), 'FOO@pudo.org')
 
     def test_normalize(self):
+        self.assertEqual(emails.normalize(None), [])
         self.assertEqual(emails.normalize('FOO@PUDO'), [])
         self.assertEqual(emails.normalize('FOO@PUDO.org'), ['foo@pudo.org'])
 

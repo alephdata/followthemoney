@@ -30,6 +30,7 @@ class ProxyTestCase(TestCase):
         assert proxy.get('name') == ['Ralph Tester']
         prop = model.get_qname('Thing:name')
         assert proxy.get(prop) == ['Ralph Tester']
+        assert proxy.caption == 'Ralph Tester'
 
         name = 'Ralph the Great'
         proxy.add('name', name)

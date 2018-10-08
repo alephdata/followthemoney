@@ -5,6 +5,9 @@ from followthemoney.types import names
 
 class NamesTest(unittest.TestCase):
 
+    def test_repr(self):
+        self.assertEqual(repr(names), '<NameType()>')
+
     def test_parse(self):
         self.assertEqual(names.clean('Hans Well'), 'Hans Well')
         self.assertEqual(names.clean('Hans   Well '), 'Hans Well')
