@@ -53,42 +53,34 @@ class EntityMapping(object):
             return digest.hexdigest()
 
     def map(self, record, entities):
-        properties = {}
+        proxy = self.model.make_entity(self.schema)
+        proxy.id = self.compute_key(record)
+        if proxy.id is None:
+            return
 
         # THIS IS HACKY
         # Some of the converters, e.g. for phone numbers, work better if they
         # know the country which the number is from. In order to provide that
         # detail, we are first running country fields, then making the data
         # from that accessible to phone and address parsers.
-        countries = set()
         for prop in self.properties:
             if prop.schema.type == registry.country:
-                values = prop.map(record, entities)
-                countries.update(values)
-                properties[prop.name] = values
+                proxy.add(prop.schema, prop.map(record, entities))
 
         for prop in self.properties:
-            values = properties.pop(prop.name, None)
-            if values is None:
-                values = prop.map(record, entities, countries=countries)
-            if len(values):
-                properties[prop.name] = values
-            if not len(values) and prop.required:
-                # This is a bit weird, it flags fields to be required in
-                # the mapping, not in the model. Basically it means: if
-                # this row of source data doesn't have that field, then do
-                # not map it again.
-                return
+            if prop.schema.type != registry.country:
+                proxy.add(prop.schema, prop.map(record, entities,
+                                                countries=proxy.countries))
 
-        key = self.compute_key(record)
-        if key is None:
-            return
-
-        return {
-            'id': key,
-            'schema': self.schema.name,
-            'properties': properties
-        }
+        for prop in self.properties:
+            if prop.required:
+                if not len(proxy.get(prop.schema)):
+                    # This is a bit weird, it flags fields to be required in
+                    # the mapping, not in the model. Basically it means: if
+                    # this row of source data doesn't have that field, then do
+                    # not map it again.
+                    return
+        return proxy
 
     def __repr__(self):
         return '<EntityMapping(%r)>' % self.name

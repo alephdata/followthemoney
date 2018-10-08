@@ -80,7 +80,7 @@ class PropertyMapping(object):
         if self.entity is not None:
             entity = entities.get(self.entity)
             if entity is not None:
-                return [entity.get('id')]
+                return [entity.id]
             return []
 
         # clean the values returned by the query, or by using literals, or

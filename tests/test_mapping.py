@@ -35,8 +35,8 @@ class MappingTestCase(TestCase):
         entities = mapping.map(record)
         assert len(entities) == 3, entities.keys()
         company = entities.get('company')
-        assert company['id'], company
-        assert record['comp.name'] in company['properties']['name'], company
+        assert company.id, company
+        assert record['comp.name'] in company.get('name'), company
 
     def test_mappings_with_links(self):
         url = 'file://' + os.path.join(self.fixture_path, 'links.csv')
@@ -119,12 +119,12 @@ class MappingTestCase(TestCase):
 
         entities = list(model.map_entities(mapping))
         assert len(entities) == 2, len(entities)
-        assert entities[0]['id'] != entities[1]['id'], entities
+        assert entities[0].id != entities[1].id, entities
 
     def test_kek_sqlite(self):
         entities = list(model.map_entities(self.kek_mapping))
         assert len(entities) == 8712, len(entities)
-        ids = set([e['id'] for e in entities])
+        ids = set([e.id for e in entities])
         assert len(ids) == 5607, len(ids)
 
     def test_local_csv_load(self):
@@ -206,7 +206,7 @@ class MappingTestCase(TestCase):
 
         entities = list(model.map_entities(mapping))
         assert len(entities) == 1, len(entities)
-        assert entities[0]['properties']['address'] == ['64, The Desert, 01234'], entities  # noqa
+        assert entities[0].get('address') == ['64, The Desert, 01234'], entities  # noqa
 
     def test_mapping_split(self):
         url = 'file://' + os.path.join(self.fixture_path, 'links.csv')
@@ -230,4 +230,4 @@ class MappingTestCase(TestCase):
 
         entities = list(model.map_entities(mapping))
         assert len(entities) == 1, len(entities)
-        assert entities[0]['properties']['notes'] == ['brown', 'black', 'blue'], entities  # noqa
+        self.assertCountEqual(entities[0].get('notes'), ['brown', 'black', 'blue'])  # noqa
