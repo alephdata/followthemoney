@@ -57,20 +57,16 @@ class Property(object):
         Since the types system doesn't really have validation, this currently
         tries to normalize the value to see if it passes strict parsing.
         """
-        values, error = [], None
+        values = []
         for val in ensure_list(data):
-            if isinstance(val, dict):
+            if is_mapping(val):
                 val = val.get('id')
             if not self.type.validate(val):
-                error = gettext('Invalid value')
-            else:
+                return gettext('Invalid value')
+            if val is not None:
                 values.append(val)
         if self.required and not len(values):
-            error = gettext('Required')
-        if error is not None:
-            return ensure_list(data), error
-        values = list(set(values))
-        return values, None
+            return gettext('Required')
 
     def __eq__(self, other):
         return self.qname == other.qname

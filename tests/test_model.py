@@ -49,12 +49,11 @@ class ModelTestCase(TestCase):
 
     def test_schema_validate(self):
         thing = model.schemata['Thing']
-        data = {'name': ['Banana']}
-        value = thing.validate(data)
-        assert value['name'] == data['name'], value
+        data = {'properties': {'name': ['Banana']}}
+        thing.validate(data)
 
         with self.assertRaises(InvalidData):
-            thing.validate({'name': None})
+            thing.validate({'properties': {'name': None}})
 
     def test_model_common_schema(self):
         assert model.common_schema('Thing', 'Thing') == 'Thing'
@@ -95,12 +94,10 @@ class ModelTestCase(TestCase):
         assert name.name in repr(name), repr(name)
         assert name.required, name.required
 
-        value, errors = name.validate('huhu')
-        assert not errors, errors
-
-        value, errors = name.validate(None)
-        assert errors, errors
-        assert not len(value), value
+        assert name.validate('huhu') is None
+        assert name.validate(None) is not None
+        assert name.validate([]) is not None
+        assert name.validate('') is not None
 
         person = model.get('Person')
         assert str(person.uri) == 'http://xmlns.com/foaf/0.1/Person'

@@ -52,19 +52,6 @@ class ProxyTestCase(TestCase):
         with assert_raises(InvalidData):
             EntityProxy.from_dict(model, {})
 
-    def test_validate(self):
-        proxy = EntityProxy.from_dict(model, ENTITY)
-        proxy.validate()
-
-        proxy.id = None
-        with assert_raises(InvalidData):
-            proxy.validate()
-
-        proxy = EntityProxy.from_dict(model, ENTITY)
-        proxy.pop('name')
-        with assert_raises(InvalidData):
-            proxy.validate()
-
     def test_dict_passthrough(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
         data = proxy.to_dict()

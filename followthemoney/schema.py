@@ -1,5 +1,5 @@
 from rdflib import URIRef
-from banal import ensure_list, as_bool
+from banal import ensure_list, ensure_dict, as_bool
 
 from followthemoney.property import Property
 from followthemoney.types import registry
@@ -155,23 +155,17 @@ class Schema(object):
 
     def validate(self, data):
         """Validate a dataset against the given schema.
-
         This will also drop keys which are not present as properties.
         """
-        result = {}
         errors = {}
+        properties = ensure_dict(data.get('properties'))
         for name, prop in self.properties.items():
-            if not prop.required and name not in data:
-                continue
-            values = data.get(name)
-            values, error = prop.validate(values)
+            values = properties.get(name)
+            error = prop.validate(values)
             if error is not None:
                 errors[name] = error
-            if len(values):
-                result[name] = values
         if len(errors):
-            raise InvalidData(errors)
-        return result
+            raise InvalidData({'properties': errors})
 
     def to_dict(self):
         data = {

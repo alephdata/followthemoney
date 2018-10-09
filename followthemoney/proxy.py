@@ -143,16 +143,6 @@ class EntityProxy(object):
         for prop, value in other.itervalues():
             self.add(prop, value)
 
-    def validate(self):
-        if self.id is None:
-            raise InvalidData(gettext("No ID for entity."))
-        for prop in self.iterprops():
-            if not prop.required:
-                continue
-            if prop not in self._properties:
-                msg = gettext("Missing required field: %s")
-                raise InvalidData(msg % prop.name)
-
     def __repr__(self):
         return '<EntityProxy(%r,%r)>' % (self.id, self.schema)
 

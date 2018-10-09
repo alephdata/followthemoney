@@ -17,7 +17,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'babel',
-        'banal',
+        'banal >= 0.3.8',
         'pyyaml',
         'requests[security] >= 2.18.4',
         'python-levenshtein >= 0.12.0',
