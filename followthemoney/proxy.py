@@ -6,7 +6,7 @@ from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
 from followthemoney.link import Link
-from followthemoney.util import key_bytes
+from followthemoney.util import key_bytes, gettext
 
 
 class EntityProxy(object):
@@ -44,7 +44,7 @@ class EntityProxy(object):
         if isinstance(prop, Property):
             return prop
         if prop not in self.schema.properties:
-            msg = "Unknown property (%s): %s"
+            msg = gettext("Unknown property (%s): %s")
             raise InvalidData(msg % (self.schema, prop))
         return self.schema.get(prop)
 
@@ -70,6 +70,10 @@ class EntityProxy(object):
             if prop.type == registry.country:
                 norm = prop.type.normalize(value, cleaned=True)
                 self.countries.update(norm)
+
+    def pop(self, prop):
+        prop = self._get_prop(prop)
+        return ensure_list(self._properties.pop(prop, []))
 
     def iterprops(self):
         for prop in self.schema.properties.values():
@@ -139,6 +143,16 @@ class EntityProxy(object):
         for prop, value in other.itervalues():
             self.add(prop, value)
 
+    def validate(self):
+        if self.id is None:
+            raise InvalidData(gettext("No ID for entity."))
+        for prop in self.iterprops():
+            if not prop.required:
+                continue
+            if prop not in self._properties:
+                msg = gettext("Missing required field: %s")
+                raise InvalidData(msg % prop.name)
+
     def __repr__(self):
         return '<EntityProxy(%r,%r)>' % (self.id, self.schema)
 
@@ -154,5 +168,5 @@ class EntityProxy(object):
             return data
         schema = model.get(data.get('schema'))
         if schema is None:
-            raise InvalidData('No schema for entity proxy.')
+            raise InvalidData(gettext('No schema for entity.'))
         return cls(schema, data.get('id'), data.get('properties'))
