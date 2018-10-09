@@ -22,7 +22,7 @@ setup(
         'requests[security] >= 2.18.4',
         'python-levenshtein >= 0.12.0',
         'normality >= 0.6.1',
-        'sqlalchemy >= 1.3.04',
+        'sqlalchemy >= 1.2.0',
         'countrynames >= 1.6.0',
         'languagecodes >= 1.0.4',
         'phonenumbers >= 8.9.11',
