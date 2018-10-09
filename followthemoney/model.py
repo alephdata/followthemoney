@@ -60,7 +60,7 @@ class Model(object):
             for entity in mapping.map(record).values():
                 yield entity
 
-    def precise_schema(self, left, right):
+    def common_schema(self, left, right):
         """Select the most narrow of two schemata.
 
         When indexing data from a dataset, an entity may be declared as a
@@ -68,33 +68,23 @@ class Model(object):
         will select the most specific of two schemata offered. In the example,
         that would be Person.
         """
-        if left == right:
+        left = self.get(left) or self.get(right)
+        right = self.get(right) or self.get(left)
+        left_schemata = list(left.schemata)
+        right_schemata = list(right.schemata)
+        if right in left_schemata:
             return left
-        lefts = self.get(left)
-        if lefts is None:
-            return right
-        if right in lefts.names:
-            return left
-
-        rights = self.get(right)
-        if rights is None:
-            return left
-        if left in rights.names:
+        if left in right_schemata:
             return right
 
         # Find a common ancestor:
-        for left in lefts.names:
-            for right in rights.names:
+        for left in left_schemata:
+            for right in right_schemata:
                 if left == right:
                     return left
 
-        raise InvalidData("No common ancestor: %s and %s" % (left, right))
-
-    def merge(self, left, right):
-        """Merge two entities and return a combined version."""
-        left = self.get_proxy(left)
-        right = self.get_proxy(right)
-        return left.merge(right).to_dict()
+        msg = "No common ancestor: %s and %s"
+        raise InvalidData(msg % (left, right))
 
     def make_entity(self, schema, key_prefix=None):
         schema = self.get(schema)

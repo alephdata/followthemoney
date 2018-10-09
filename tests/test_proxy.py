@@ -85,6 +85,14 @@ class ProxyTestCase(TestCase):
         assert proxy.make_id(44)
         assert proxy.make_id(44) != ff, proxy.make_id(44)
 
+    def test_clone(self):
+        proxy = EntityProxy.from_dict(model, ENTITY)
+        other = proxy.clone()
+        assert other == proxy
+        other.id = 'banana'
+        assert proxy.id == 'test'
+        assert other != proxy
+
     def test_merge(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
         other = {
@@ -94,6 +102,6 @@ class ProxyTestCase(TestCase):
             }
         }
         other = EntityProxy.from_dict(model, other)
-        merged = proxy.merge(other)
-        assert 'Ralph Tester' in merged.names, merged.names
-        assert 'gb' in merged.countries, merged.countries
+        proxy.merge(other)
+        assert 'Ralph Tester' in proxy.names, proxy.names
+        assert 'gb' in proxy.countries, proxy.countries

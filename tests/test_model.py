@@ -56,14 +56,15 @@ class ModelTestCase(TestCase):
         with self.assertRaises(InvalidData):
             thing.validate({'name': None})
 
-    def test_model_precise_schema(self):
-        assert model.precise_schema('Thing', 'Thing') == 'Thing'
-        assert model.precise_schema('Thing', 'Person') == 'Person'
-        assert model.precise_schema('Person', 'Thing') == 'Person'
-        assert model.precise_schema('Person', 'Company') == 'LegalEntity'
+    def test_model_common_schema(self):
+        assert model.common_schema('Thing', 'Thing') == 'Thing'
+        assert model.common_schema('Thing', 'Person') == 'Person'
+        assert model.common_schema('Person', 'Thing') == 'Person'
+        assert model.common_schema('Person', 'Company') == 'LegalEntity'
+        assert model.common_schema('LegalEntity', 'Company') == 'Company'
 
         with assert_raises(InvalidData):
-            model.precise_schema('Person', 'Directorship')
+            model.common_schema('Person', 'Directorship')
 
     def test_model_is_descendant(self):
         assert model['Thing'].is_a('Thing') is True
@@ -76,11 +77,6 @@ class ModelTestCase(TestCase):
         assert model['LegalEntity'].is_a('Vessel') is False
         assert model['Vessel'].is_a('LegalEntity') is False
         assert model['Ownership'].is_a('LegalEntity') is False
-
-    def test_model_merge(self):
-        merged = model.merge({'schema': 'Person'},
-                             {'schema': 'Company'})
-        assert merged['schema'] == 'LegalEntity'
 
     def test_make_entity(self):
         ent = model.make_entity('Person')

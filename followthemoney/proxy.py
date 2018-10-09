@@ -6,7 +6,7 @@ from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
 from followthemoney.link import Link
-from followthemoney.util import merge_data, key_bytes
+from followthemoney.util import key_bytes
 
 
 class EntityProxy(object):
@@ -128,13 +128,16 @@ class EntityProxy(object):
         data.update(self.get_type_inverted())
         return data
 
+    def clone(self):
+        return EntityProxy(self.schema, self.id, self._properties)
+
     def merge(self, other):
         model = self.schema.model
         other = self.from_dict(model, other)
-        schema = model.precise_schema(self.schema, other.schema)
-        schema = model.get(schema)
-        properties = merge_data(self._properties, other._properties)
-        return EntityProxy(schema, self.id or other.id, properties)
+        self.id = self.id or other.id
+        self.schema = model.common_schema(self.schema, other.schema)
+        for prop, value in other.itervalues():
+            self.add(prop, value)
 
     def __repr__(self):
         return '<EntityProxy(%r,%r)>' % (self.id, self.schema)

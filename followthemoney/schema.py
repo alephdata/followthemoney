@@ -190,8 +190,7 @@ class Schema(object):
         return data
 
     def __eq__(self, other):
-        other = self.model.get(other)
-        return other.name == self.name
+        return hash(other) == hash(self)
 
     def __hash__(self):
         return hash(self.name)

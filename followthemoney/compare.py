@@ -34,7 +34,7 @@ def compare(left, right):
     right_schema = model.get(right.get('schema'))
     if right_schema not in list(left_schema.matchable_schemata):
         return 0
-    schema = model.precise_schema(left_schema, right_schema)
+    schema = model.common_schema(left_schema, right_schema)
     score = compare_fingerprints(left, right) * FP_WEIGHT
     left_properties = left.get('properties', {})
     right_properties = right.get('properties', {})
