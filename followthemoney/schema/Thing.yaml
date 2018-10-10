@@ -38,6 +38,9 @@ Thing:
     sourceUrl:
       label: Source link
       type: url
+    alephUrl:
+      label: Federated Aleph link
+      type: url
     keywords:
       label: Keywords
     address:
