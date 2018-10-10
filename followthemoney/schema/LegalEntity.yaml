@@ -67,7 +67,7 @@ LegalEntity:
       description: "Primary country of this entity"
     opencorporatesUrl:
       label: OpenCorporates URL
-      type: identifier
+      type: url
     bvdId:
       label: Bureau van Dijk ID
       type: identifier

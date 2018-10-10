@@ -56,13 +56,13 @@ class EntityProxy(object):
 
     def add(self, prop, values, cleaned=False):
         prop = self._get_prop(prop)
-        if prop not in self._properties:
-            self._properties[prop] = set()
         for value in ensure_list(values):
             if not cleaned:
                 value = prop.type.clean(value, countries=self.countries)
             if value is None:
                 continue
+            if prop not in self._properties:
+                self._properties[prop] = set()
             self._properties[prop].add(value)
             if prop.type == registry.name:
                 norm = prop.type.normalize(value, cleaned=True)

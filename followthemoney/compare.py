@@ -1,9 +1,9 @@
 import itertools
 from Levenshtein import jaro
-from banal import ensure_list
-from followthemoney import model
+from normality import normalize
 from followthemoney.types import registry
 from followthemoney.util import dampen
+from followthemoney.exc import InvalidData
 
 # OK, Here's the plan: we have to find a way to get user judgements
 # on as many of these matches as we can, then build a regression
@@ -12,7 +12,7 @@ from followthemoney.util import dampen
 FP_WEIGHT = 0.6
 MATCH_WEIGHTS = {
     registry.text: 0,
-    registry.name: 0,  # because we already compare fingerprints
+    registry.name: 0,  # because we already compare names
     registry.identifier: 0.4,
     registry.url: 0.1,
     registry.email: 0.3,
@@ -26,33 +26,37 @@ MATCH_WEIGHTS = {
 }
 
 
-def compare(left, right):
+def compare(model, left, right):
     """Compare two entities and return number between 0 and 1.
     Returned number indicates probability that two entities are the same.
     """
-    left_schema = model.get(left.get('schema'))
-    right_schema = model.get(right.get('schema'))
-    if right_schema not in list(left_schema.matchable_schemata):
+    left = model.get_proxy(left)
+    right = model.get_proxy(right)
+    if right.schema not in list(left.schema.matchable_schemata):
         return 0
-    schema = model.common_schema(left_schema, right_schema)
-    score = compare_fingerprints(left, right) * FP_WEIGHT
-    left_properties = left.get('properties', {})
-    right_properties = right.get('properties', {})
+    schema = model.common_schema(left.schema, right.schema)
+    score = compare_names(left, right) * FP_WEIGHT
     for name, prop in schema.properties.items():
         weight = MATCH_WEIGHTS.get(prop.type, 0)
         if weight == 0:
             continue
-        left_values = left_properties.get(name)
-        right_values = right_properties.get(name)
+        try:
+            left_values = left.get(name)
+            right_values = right.get(name)
+        except InvalidData:
+            continue
+
+        if not len(left_values) or not len(right_values):
+            continue
         prop_score = prop.type.compare_sets(left_values, right_values)
-        score = score + prop_score * weight
+        score += (prop_score * weight)
     return max(0.0, min(1.0, score)) * 0.9
 
 
-def compare_fingerprints(left, right):
+def compare_names(left, right):
     result = 0
-    left_list = ensure_list(left.get('fingerprints'))
-    right_list = ensure_list(right.get('fingerprints'))
+    left_list = [normalize(n, latinize=True) for n in left.names]
+    right_list = [normalize(n, latinize=True) for n in right.names]
     for (left, right) in itertools.product(left_list, right_list):
         similarity = jaro(left, right)
         score = similarity * dampen(3, 20, min(left, right, key=len))
