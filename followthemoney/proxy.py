@@ -25,7 +25,7 @@ class EntityProxy(object):
 
         if is_mapping(properties):
             for key, value in properties.items():
-                self.add(key, value, cleaned=True)
+                self.add(key, value, cleaned=True, quiet=True)
 
     def make_id(self, *parts):
         digest = sha1()
@@ -40,22 +40,26 @@ class EntityProxy(object):
         self.id = digest.hexdigest()
         return self.id
 
-    def _get_prop(self, prop):
+    def _get_prop(self, prop, quiet=False):
         if isinstance(prop, Property):
             return prop
         if prop not in self.schema.properties:
+            if quiet:
+                return
             msg = gettext("Unknown property (%s): %s")
             raise InvalidData(msg % (self.schema, prop))
         return self.schema.get(prop)
 
-    def get(self, prop):
-        prop = self._get_prop(prop)
-        if prop not in self._properties:
+    def get(self, prop, quiet=False):
+        prop = self._get_prop(prop, quiet=quiet)
+        if prop is None or prop not in self._properties:
             return []
         return list(self._properties.get(prop))
 
-    def add(self, prop, values, cleaned=False):
-        prop = self._get_prop(prop)
+    def add(self, prop, values, cleaned=False, quiet=False):
+        prop = self._get_prop(prop, quiet=quiet)
+        if prop is None:
+            return
         for value in ensure_list(values):
             if not cleaned:
                 value = prop.type.clean(value, countries=self.countries)
@@ -71,8 +75,10 @@ class EntityProxy(object):
                 norm = prop.type.normalize(value, cleaned=True)
                 self.countries.update(norm)
 
-    def pop(self, prop):
-        prop = self._get_prop(prop)
+    def pop(self, prop, quiet=False):
+        prop = self._get_prop(prop, quiet=quiet)
+        if prop is None:
+            return []
         return ensure_list(self._properties.pop(prop, []))
 
     def iterprops(self):

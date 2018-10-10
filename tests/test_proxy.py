@@ -41,11 +41,16 @@ class ProxyTestCase(TestCase):
         assert name in proxy.get('name')
         assert name in proxy.names, proxy.names
 
+        with assert_raises(InvalidData):
+            proxy.get('banana')
+        assert [] == proxy.get('banana', quiet=True)
+
         assert len(proxy.get('nationality')) == 0
 
         double = EntityProxy.from_dict(model, proxy)
         assert double == proxy
 
+        proxy.add('banana', name, quiet=True)
         with assert_raises(InvalidData):
             proxy.add('banana', name)
 
