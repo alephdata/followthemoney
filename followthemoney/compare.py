@@ -59,6 +59,6 @@ def compare_names(left, right):
     right_list = [normalize(n, latinize=True) for n in right.names]
     for (left, right) in itertools.product(left_list, right_list):
         similarity = jaro(left, right)
-        score = similarity * dampen(3, 20, min(left, right, key=len))
+        score = similarity * dampen(2, 20, min(left, right, key=len))
         result = max(result, score)
     return result
