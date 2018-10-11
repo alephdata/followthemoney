@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-09-03 08:15-0700\n"
+"POT-Creation-Date: 2018-10-11 07:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Turkish (https://www.transifex.com/aleph/teams/76591/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -24,6 +24,15 @@ msgstr ""
 
 #: followthemoney/property.py:69
 msgid "Required"
+msgstr ""
+
+#: followthemoney/proxy.py:49
+#, python-format
+msgid "Unknown property (%s): %s"
+msgstr ""
+
+#: followthemoney/proxy.py:167
+msgid "No schema for entity."
 msgstr ""
 
 #. Airplane.label
@@ -320,32 +329,6 @@ msgstr ""
 #. Company.properties.oksmCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Russian (ОКСМ) countries classifer"
-msgstr ""
-
-#. Concession.label
-#: followthemoney/schema/Concession.yaml
-msgid "Concession"
-msgstr ""
-
-#. Concession.description
-#: followthemoney/schema/Concession.yaml
-msgid "A grant of land, rights or property. A type of Contract"
-msgstr ""
-
-#. Concession.plural
-#: followthemoney/schema/Concession.yaml
-msgid "Concessions"
-msgstr ""
-
-#. Concession.properties.area.label
-#. RealEstate.properties.area.label
-#: followthemoney/schema/Concession.yaml followthemoney/schema/RealEstate.yaml
-msgid "Area"
-msgstr ""
-
-#. Concession.properties.commodities.label
-#: followthemoney/schema/Concession.yaml
-msgid "Commodities"
 msgstr ""
 
 #. Contract.label
@@ -884,6 +867,26 @@ msgstr ""
 msgid "E-Mails"
 msgstr ""
 
+#. Email.properties.messageId.label
+#: followthemoney/schema/Document.yaml
+msgid "Message ID"
+msgstr ""
+
+#. Email.properties.messageId.description
+#: followthemoney/schema/Document.yaml
+msgid "Message ID of an email; unique in most cases"
+msgstr ""
+
+#. Email.properties.inReplyTo.label
+#: followthemoney/schema/Document.yaml
+msgid "In Reply To"
+msgstr ""
+
+#. Email.properties.inReplyTo.description
+#: followthemoney/schema/Document.yaml
+msgid "Message IDs of the preceding emails in the thread"
+msgstr ""
+
 #. Table.label
 #: followthemoney/schema/Document.yaml
 msgid "Table"
@@ -1356,6 +1359,16 @@ msgstr ""
 msgid "Primary country of this entity"
 msgstr ""
 
+#. LegalEntity.properties.opencorporatesUrl.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "OpenCorporates URL"
+msgstr ""
+
+#. LegalEntity.properties.bvdId.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Bureau van Dijk ID"
+msgstr ""
+
 #. LegalEntity.properties.icijId.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "ICIJ ID"
@@ -1407,6 +1420,37 @@ msgstr ""
 #. Passport.plural
 #: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Passport.yaml
 msgid "Passports"
+msgstr ""
+
+#. License.label
+#: followthemoney/schema/License.yaml
+msgid "License"
+msgstr ""
+
+#. License.description
+#: followthemoney/schema/License.yaml
+msgid "A grant of land, rights or property. A type of Contract"
+msgstr ""
+
+#. License.plural
+#: followthemoney/schema/License.yaml
+msgid "Licenses"
+msgstr ""
+
+#. License.properties.area.label
+#. RealEstate.properties.area.label
+#: followthemoney/schema/License.yaml followthemoney/schema/RealEstate.yaml
+msgid "Area"
+msgstr ""
+
+#. License.properties.commodities.label
+#: followthemoney/schema/License.yaml
+msgid "Commodities"
+msgstr ""
+
+#. License.properties.reviewDate.label
+#: followthemoney/schema/License.yaml
+msgid "License review date"
 msgstr ""
 
 #. Membership.label
@@ -1924,6 +1968,11 @@ msgstr ""
 msgid "Source link"
 msgstr ""
 
+#. Thing.properties.alephUrl.label
+#: followthemoney/schema/Thing.yaml
+msgid "Federated Aleph link"
+msgstr ""
+
 #. Thing.properties.keywords.label
 #: followthemoney/schema/Thing.yaml
 msgid "Keywords"
@@ -2104,50 +2153,50 @@ msgstr ""
 msgid "MMSI"
 msgstr ""
 
-#: followthemoney/types/country.py:25
+#: followthemoney/types/country.py:24
 msgid "Global"
 msgstr ""
 
-#: followthemoney/types/country.py:26
+#: followthemoney/types/country.py:25
 msgid "European Union"
 msgstr ""
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:26
 msgid "Kosovo"
 msgstr ""
 
-#: followthemoney/types/country.py:28
+#: followthemoney/types/country.py:27
 msgid "Yugoslavia"
 msgstr ""
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:28
 msgid "Serbia and Montenegro"
 msgstr ""
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:29
 msgid "Soviet Union"
 msgstr ""
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:30
 msgid "Abkhazia"
 msgstr ""
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:31
 msgid "South Ossetia"
 msgstr ""
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:32
 msgid "Somaliland"
 msgstr ""
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:33
 msgid "Wales"
 msgstr ""
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:34
 msgid "Scotland"
 msgstr ""
 
-#: followthemoney/types/country.py:36
+#: followthemoney/types/country.py:35
 msgid "Transnistria"
 msgstr ""
