@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-11 07:34+0200\n"
+"POT-Creation-Date: 2018-10-15 19:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:167
+#: followthemoney/proxy.py:170
 msgid "No schema for entity."
 msgstr ""
 
