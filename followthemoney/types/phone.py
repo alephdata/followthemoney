@@ -13,6 +13,7 @@ class PhoneType(PropertyType):
     name = 'phone'
     group = 'phones'
     prefix = 'tel'
+    strong = False
 
     def _clean_countries(self, countries, country):
         result = set([None])

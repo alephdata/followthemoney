@@ -7,6 +7,7 @@ class Link(object):
     support for packing, i.e. transforming the link to a form suitable
     for storage in a key/value store.
     """
+    __slots__ = ['ref', 'prop', 'value', 'weight', 'inverted', 'inferred']
 
     def __init__(self, ref, prop, value, weight=1.0,
                  inverted=False, inferred=False):

@@ -9,6 +9,7 @@ class IbanType(PropertyType):
     name = 'iban'
     group = 'ibans'
     prefix = 'iban'
+    strong = False
 
     def validate(self, iban, **kwargs):
         iban = stringify(iban)

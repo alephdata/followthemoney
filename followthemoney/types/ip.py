@@ -9,6 +9,7 @@ class IpType(PropertyType):
     name = 'ip'
     group = 'ips'
     prefix = 'ip'
+    strong = False
 
     def validate(self, ip, **kwargs):
         """Check to see if this is a valid ip address."""

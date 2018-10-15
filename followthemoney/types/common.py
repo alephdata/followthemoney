@@ -9,6 +9,7 @@ class PropertyType(object):
     name = None
     group = None
     prefix = None
+    strong = False
 
     def validate(self, text, **kwargs):
         """Returns a boolean to indicate if this is a valid instance of

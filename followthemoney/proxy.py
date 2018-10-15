@@ -152,6 +152,9 @@ class EntityProxy(object):
     def __repr__(self):
         return '<EntityProxy(%r,%r)>' % (self.id, self.schema)
 
+    def __str__(self):
+        return self.caption
+
     def __hash__(self):
         return hash(self.id)
 

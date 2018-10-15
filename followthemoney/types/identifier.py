@@ -10,6 +10,7 @@ class IdentifierType(PropertyType):
     name = 'identifier'
     group = 'identifiers'
     prefix = 'ident'
+    strong = False
 
     def normalize(self, text, **kwargs):
         """Normalize for comparison."""
