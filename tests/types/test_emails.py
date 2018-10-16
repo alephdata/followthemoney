@@ -23,6 +23,8 @@ class EmailsTest(unittest.TestCase):
     def test_domain_validity(self):
         self.assertTrue(emails.validate('foo@pudo.org'))
         self.assertFalse(emails.validate('foo@pudo'))
+        self.assertFalse(emails.validate(None))
+        self.assertFalse(emails.validate(''))
         self.assertFalse(emails.validate('@pudo.org'))
         self.assertFalse(emails.validate('foo@'))
 

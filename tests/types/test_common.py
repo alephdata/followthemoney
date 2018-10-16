@@ -3,7 +3,7 @@ import unittest
 from followthemoney.types import registry
 
 
-class UrlsTest(unittest.TestCase):
+class CommonTest(unittest.TestCase):
 
     def test_normalise_set(self):
         t = registry.name
@@ -25,3 +25,8 @@ class UrlsTest(unittest.TestCase):
         self.assertEqual(t.country_hint('banana'), None)
         self.assertEqual(str(t), 'name')
         self.assertEqual(hash(t), hash('name'))
+
+        self.assertGreater(t.compare_sets(['banana'], ['banana']), 0)
+        self.assertEqual(t.compare_sets(['banana'], []), 0)
+        self.assertIsNotNone(t.ref('banana'))
+        self.assertIsNone(registry.text.ref('banana'))

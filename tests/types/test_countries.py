@@ -9,9 +9,15 @@ class CountriesTest(unittest.TestCase):
         self.assertEqual(countries.clean('DE'), 'de')
         self.assertTrue(countries.validate('DE'))
         self.assertFalse(countries.validate('DEU'))
+        self.assertFalse(countries.validate(''))
+        self.assertFalse(countries.validate(None))
+        self.assertFalse(countries.validate(4))
         self.assertFalse(countries.validate('SU'))
         self.assertTrue(countries.validate('XK'))
         self.assertTrue(countries.validate('EU'))
+
+        self.assertEqual(countries.country_hint('eu'), 'eu')
+        assert 'iso-3166-1:eu' in countries.rdf('eu')
 
     def test_country_names(self):
         self.assertEqual(countries.clean(None), None)

@@ -32,11 +32,16 @@ class ProxyTestCase(TestCase):
         prop = model.get_qname('Thing:name')
         assert proxy.get(prop) == ['Ralph Tester']
         assert proxy.caption == 'Ralph Tester'
+        assert str(proxy) == 'Ralph Tester'
 
         name = 'Ralph the Great'
         proxy.add('name', name)
         assert len(proxy.get('name')) == 2
         proxy.add('name', None)
+        assert len(proxy.get('name')) == 2
+        proxy.add('name', '')
+        assert len(proxy.get('name')) == 2
+        proxy.add('name', [''])
         assert len(proxy.get('name')) == 2
         assert name in proxy.get('name')
         assert name in proxy.names, proxy.names
@@ -56,6 +61,19 @@ class ProxyTestCase(TestCase):
 
         with assert_raises(InvalidData):
             EntityProxy.from_dict(model, {})
+
+    def test_pop(self):
+        proxy = EntityProxy.from_dict(model, ENTITY)
+        get_ids = proxy.get('idNumber')
+        assert get_ids, get_ids
+        ids = proxy.pop('idNumber')
+        assert get_ids == ids, ids
+        assert not proxy.get('idNumber')
+        assert not proxy.pop('idNumber')
+
+        with assert_raises(InvalidData):
+            proxy.pop('banana')
+        assert not proxy.pop('banana', quiet=True)
 
     def test_dict_passthrough(self):
         proxy = EntityProxy.from_dict(model, ENTITY)

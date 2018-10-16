@@ -57,6 +57,7 @@ class DatesTest(unittest.TestCase):
     def test_parse_date(self):
         self.assertEquals(dates.clean(None), None)
         self.assertEquals(dates.clean(''), None)
+        self.assertEquals(dates.clean('banana'), None)
         self.assertEquals(dates.clean('2017-04-04'), '2017-04-04')
         self.assertEquals(dates.clean('2017-4-4'), '2017-04-04')
 
