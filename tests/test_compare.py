@@ -33,18 +33,36 @@ class CompareTestCase(TestCase):
         assert lr_score > 0.1, lr_score
         assert lr_score < same_score, (lr_score, same_score)
 
+    def test_compare_countries(self):
+        left = {
+            'schema': 'Person',
+            'properties': {
+                'name': ['Frank Banana'],
+                'nationality': ['ie']
+            }
+        }
+        data = {
+            'schema': 'Person',
+            'properties': {
+                'name': ['Frank Banana']
+            }
+        }
+        no_country = model.get_proxy(data)
+        baseline = compare(model, left, no_country)
+        self.assertGreater(compare(model, left, left), baseline)
+
     def test_compare_basic(self):
         best_score = compare(model, ENTITY, ENTITY)
         assert best_score > 0.5, best_score
-        comp = {'id': 'bla', 'schema': 'RealEstate'}
-        assert compare(model, ENTITY, comp) == 0
-        assert compare(model, comp, comp) == 0
+        comp = {'schema': 'RealEstate'}
+        self.assertEqual(compare(model, ENTITY, comp), 0)
+        self.assertEqual(compare(model, comp, comp), 0)
 
-        comp = {'id': 'bla', 'schema': 'Person'}
-        assert compare(model, ENTITY, comp) == 0
+        comp = {'schema': 'Person'}
+        self.assertEqual(compare(model, ENTITY, comp), 0)
 
-        comp = {'id': 'bla', 'schema': 'LegalEntity'}
-        assert compare(model, ENTITY, comp) == 0
+        comp = {'schema': 'LegalEntity'}
+        self.assertEqual(compare(model, ENTITY, comp), 0)
 
     def test_compare_quality(self):
         best_score = compare(model, ENTITY, ENTITY)

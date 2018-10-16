@@ -9,7 +9,8 @@ from followthemoney.exc import InvalidData
 # on as many of these matches as we can, then build a regression
 # model which properly weights the value of a matching property
 # based upon it's type.
-FP_WEIGHT = 0.6
+NAMES_WEIGHT = 0.5
+COUNTRIES_WEIGHT = 0.1
 MATCH_WEIGHTS = {
     registry.text: 0,
     registry.name: 0,  # because we already compare names
@@ -35,7 +36,8 @@ def compare(model, left, right):
     if right.schema not in list(left.schema.matchable_schemata):
         return 0
     schema = model.common_schema(left.schema, right.schema)
-    score = compare_names(left, right) * FP_WEIGHT
+    score = compare_names(left, right) * NAMES_WEIGHT
+    score += compare_countries(left, right) * COUNTRIES_WEIGHT
     for name, prop in schema.properties.items():
         weight = MATCH_WEIGHTS.get(prop.type, 0)
         if weight == 0:
@@ -62,3 +64,8 @@ def compare_names(left, right):
         score = similarity * dampen(2, 20, min(left, right, key=len))
         result = max(result, score)
     return result
+
+
+def compare_countries(left, right):
+    overlap = left.countries.intersection(right.countries)
+    return min(2.0, len(overlap))
