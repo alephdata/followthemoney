@@ -96,6 +96,8 @@ class ProxyTestCase(TestCase):
         assert 'vg' in proxy.countries
         data = proxy.get_type_inverted()
         assert 'countries'in data
+        assert 'vg' in proxy.country_hints, proxy.country_hints
+        assert 'us' in proxy.country_hints, proxy.country_hints
 
     def test_make_id(self):
         proxy = model.make_entity('Thing')

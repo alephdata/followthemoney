@@ -13,7 +13,7 @@ class EntityProxy(object):
     """A wrapper object for an entity, with utility functions for the
     introspection and manipulation of its properties."""
     __slots__ = ['schema', 'id', 'key_prefix', '_properties',
-                 '_data', 'countries', 'names']
+                 'countries', 'names']
 
     def __init__(self, schema, id, properties, key_prefix=None):
         self.schema = schema
@@ -120,6 +120,18 @@ class EntityProxy(object):
             if prop.caption:
                 for value in self.get(prop):
                     return value
+
+    @property
+    def country_hints(self):
+        """Some property types, such as phone numbers, and IBAN codes,
+        imply a country that may be associated with the entity.
+        """
+        countries = set(self.countries)
+        for (prop, value) in self.itervalues():
+            hint = prop.type.country_hint(value)
+            if hint is not None:
+                countries.add(hint)
+        return countries
 
     @property
     def properties(self):

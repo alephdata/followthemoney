@@ -1,10 +1,10 @@
 
-all: clean test dists release
+all: dev clean test dists release
 
 dev:
 	pip install -q ".[dev]"
 
-test: dev
+test:
 	nosetests --with-coverage --cover-package=followthemoney --cover-erase --cover-html --cover-html-dir=coverage-report
 
 dist:

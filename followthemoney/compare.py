@@ -67,5 +67,7 @@ def compare_names(left, right):
 
 
 def compare_countries(left, right):
-    overlap = left.countries.intersection(right.countries)
+    left = left.country_hints
+    right = right.country_hints
+    overlap = left.intersection(right)
     return min(2.0, len(overlap))
