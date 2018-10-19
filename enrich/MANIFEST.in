@@ -1,0 +1,2 @@
+recursive-include corpint/webui/templates *
+recursive-include corpint/webui/static *
