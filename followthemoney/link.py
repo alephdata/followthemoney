@@ -44,10 +44,11 @@ class Link(object):
     def from_tuple(cls, model, ref, data):
         qname, weight, inverted, inferred, value = data
         prop = model.get_qname(qname)
-        return cls(ref, prop, value,
-                   weight=weight,
-                   inverted=inverted,
-                   inferred=inferred)
+        if prop is not None:
+            return cls(ref, prop, value,
+                       weight=weight,
+                       inverted=inverted,
+                       inferred=inferred)
 
     def invert(self):
         if not self.inverted and self.prop.reverse is not None:
