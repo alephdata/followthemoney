@@ -4,7 +4,7 @@ import requests
 from urlnormalizer import normalize_url
 from banal import ensure_list, ensure_dict, is_mapping
 
-from corpint.common import Enricher, Result
+from followthemoney_enrich.common import Enricher, Result
 
 log = logging.getLogger(__name__)
 
@@ -24,9 +24,8 @@ class OpenCorporatesEnricher(Enricher):
             log.warning("OpenCorporates enricher has no API token")
 
     def get_api(self, url, params=None):
-        if not url.startswith('https://api.openc'):
-            url = url.replace('https://openc', 'https://api.openc')
-
+        url = url.replace('https://opencorporates.com/',
+                          'https://api.opencorporates.com/v0.4/')
         if is_mapping(params):
             params = params.items()
         if params is not None:
@@ -59,27 +58,32 @@ class OpenCorporatesEnricher(Enricher):
         entity.add('incorporationDate', data.get('incorporation_date'))
         entity.add('dissolutionDate', data.get('dissolution_date'))
         entity.add('status', data.get('current_status'))
-        entity.add('sector', data.get('industry_codes'))
         entity.add('registrationNumber', data.get('company_number'))
         entity.add('opencorporatesUrl', data.get('opencorporates_url'))
-        # entity.add('parent', data.get('controlling_entity'))
+        for code in ensure_list(data.get('industry_codes')):
+            code = code.get('industry_code', code)
+            entity.add('sector', code.get('description'))
         for previous in ensure_list(data.get('previous_names')):
             entity.add('previousName', previous.get('company_name'))
+        for alias in ensure_list(data.get('alternative_names')):
+            entity.add('alias', alias.get('company_name'))
         for officer in ensure_list(data.get('officers')):
             self.officer_entity(result, officer, company=entity)
         return entity
 
     def officer_entity(self, result, data, company=None):
         data = ensure_dict(data.get('officer', data))
-        officer = result.make_entity('Person')
+        person = data.get('occuptation') or data.get('date_of_birth')
+        schema = 'Person' if person else 'LegalEntity'
+        officer = result.make_entity(schema)
         officer.make_id(data.get('opencorporates_url'))
         officer.add('name', data.get('name'))
         officer.add('country', data.get('nationality'))
         officer.add('jurisdiction', data.get('jurisdiction_code'))
         officer.add('address', data.get('address'))
-        officer.add('birthDate', data.get('date_of_birth'))
+        officer.add('birthDate', data.get('date_of_birth'), quiet=True)
+        officer.add('position', data.get('occupation'), quiet=True)
         officer.add('opencorporatesUrl', data.get('opencorporates_url'))
-        # officer.add('idNumber', data.get('id'))
 
         if company is None:
             company = self.company_entity(result, data.get('company'))
@@ -132,5 +136,14 @@ class OpenCorporatesEnricher(Enricher):
         if schema in ['Company', 'Organization', 'LegalEntity']:
             yield from self.search_companies(params)
         if schema in ['Person', 'LegalEntity', 'Company', 'Organization']:
-            # officer search for companies??
             yield from self.search_officers(params)
+
+    def expand_entity(self, entity):
+        result = super(OpenCorporatesEnricher, self).expand_entity(entity)
+        for url in entity.get('opencorporatesUrl', quiet=True):
+            data = self.get_api(url)
+            if 'company' in data:
+                self.company_entity(result, data)
+            if 'officer' in data:
+                self.officer_entity(result, data)
+        return result

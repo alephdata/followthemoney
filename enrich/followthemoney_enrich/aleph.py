@@ -6,9 +6,9 @@ from pprint import pprint  # noqa
 from banal import is_mapping, ensure_dict, ensure_list, hash_data
 from urllib.parse import urljoin
 from urlnormalizer import normalize_url
-from followthemoney.exc import InvalidData
 
-from corpint.common import Enricher, Result
+from followthemoney.exc import InvalidData
+from followthemoney_enrich.common import Enricher, Result
 
 log = logging.getLogger(__name__)
 
@@ -55,14 +55,7 @@ class AlephEnricher(Enricher):
             self.cache.store(key, existing)
         return existing
 
-    def convert_entity(self, result, data):
-        data = ensure_dict(data)
-        try:
-            entity = result.make_entity(data.get('schema'))
-        except InvalidData:
-            log.error("Server model mismatch: %s" % data.get('schema'))
-            return
-
+    def update_entity(self, result, entity, data):
         links = ensure_dict(data.get('link'))
         entity.make_id(links.get('self'))
         entity.add('alephUrl', links.get('self'))
@@ -79,6 +72,15 @@ class AlephEnricher(Enricher):
                 except InvalidData:
                     msg = "Server property mismatch (%s): %s"
                     log.warning(msg % (entity.schema.name, prop))
+
+    def convert_entity(self, result, data):
+        data = ensure_dict(data)
+        try:
+            entity = result.make_entity(data.get('schema'))
+        except InvalidData:
+            log.error("Server model mismatch: %s" % data.get('schema'))
+            return
+        self.update_entity(result, entity, data)
         return entity
 
     def enrich_entity(self, entity):
@@ -99,3 +101,16 @@ class AlephEnricher(Enricher):
             url = data.get('next')
             if url is None:
                 break
+
+    def expand_entity(self, entity):
+        result = super(AlephEnricher, self).expand_entity(entity)
+        for url in entity.get('alephUrl', quiet=True):
+            _, entity_id = url.rsplit('/', 1)
+            data = self.get_api(url)
+            self.update_entity(result, entity, data)
+            search_api = urljoin(self.api_base, 'search')
+            params = {'filter:entities': entity_id}
+            entities = self.get_api(search_api, params=params)
+            for data in ensure_list(entities.get('results')):
+                self.convert_entity(result, data)
+        return result

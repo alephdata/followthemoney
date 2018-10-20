@@ -23,6 +23,7 @@ setup(
         'followthemoney >= 1.3.7',
         'followthemoney-enrich >= 1.3.7',
         'click',
+        'alephclient'
     ],
     test_suite='nose.collector',
     tests_require=['coverage', 'nose'],

@@ -23,7 +23,10 @@ class Enricher(object):
 
     def expand_entity(self, entity):
         """Get adjacent entities to an entity."""
-        pass
+        result = Result(self)
+        result.principal = entity
+        result.add_entity(entity)
+        return result
 
     def enrich_entity(self, entity):
         """Find possible candidates for an entity."""

@@ -162,10 +162,10 @@ class EntityProxy(object):
             self.add(prop, value)
 
     def __repr__(self):
-        return '<EntityProxy(%r,%r)>' % (self.id, self.schema)
+        return '<EntityProxy(%r,%r,%r)>' % (self.id, self.schema, self.caption)
 
     def __str__(self):
-        return self.caption
+        return self.caption or self.schema.name
 
     def __hash__(self):
         return hash(self.id)

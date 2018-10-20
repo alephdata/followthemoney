@@ -5,8 +5,9 @@ import json
 import logging
 from pprint import pprint  # noqa
 from normality import stringify
-from corpint.common import Enricher, Result
 from banal import ensure_list, ensure_dict
+
+from followthemoney_enrich.common import Enricher, Result
 
 log = logging.getLogger(__name__)
 logging.getLogger('zeep').setLevel(logging.WARNING)
