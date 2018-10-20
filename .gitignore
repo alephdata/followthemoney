@@ -3,6 +3,7 @@
 *.egg-info
 .vscode/
 .tox/
+.env
 .coverage
 build/*
 dist/*
