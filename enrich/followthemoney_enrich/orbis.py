@@ -17,8 +17,8 @@ class OrbisEnricher(Enricher):
     key_prefix = 'bvd'
 
     def __init__(self):
-        self.username = os.environ.get("CORPINT_ORBIS_USERNAME")
-        self.password = os.environ.get("CORPINT_ORBIS_PASSWORD")
+        self.username = os.environ.get("ENRICH_ORBIS_USERNAME")
+        self.password = os.environ.get("ENRICH_ORBIS_PASSWORD")
         self.credentials = self.username is not None
         self.credentials = self.credentials and self.password is not None
         if not self.credentials:

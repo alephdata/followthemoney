@@ -18,10 +18,10 @@ class AlephEnricher(Enricher):
     TYPE_CONSTRAINT = 'LegalEntity'
 
     def __init__(self):
-        self.host = os.environ.get('CORPINT_ALEPH_HOST',
+        self.host = os.environ.get('ENRICH_ALEPH_HOST',
                                    'https://data.occrp.org/')
         self.api_base = urljoin(self.host, '/api/2/')
-        self.api_key = os.environ.get('CORPINT_ALEPH_API_KEY')
+        self.api_key = os.environ.get('ENRICH_ALEPH_API_KEY')
         self.session = requests.Session()
         self.session.headers['X-Aleph-Session'] = str(uuid4())
         if self.api_key is not None:

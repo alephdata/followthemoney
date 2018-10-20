@@ -19,7 +19,7 @@ class OpenCorporatesEnricher(Enricher):
 
     def __init__(self):
         self.session = requests.Session()
-        self.api_token = os.environ.get('CORPINT_OPENCORPORATES_API_TOKEN')
+        self.api_token = os.environ.get('ENRICH_OPENCORPORATES_API_TOKEN')
         if self.api_token is None:
             log.warning("OpenCorporates enricher has no API token")
 
