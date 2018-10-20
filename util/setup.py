@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='followthemoney-enrich',
+    name='followthemoney-util',
     version='1.3.7',
-    long_description="Data enrichment toolkit",
+    long_description="FollowTheMoney command-line tool",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -21,12 +21,15 @@ setup(
     zip_safe=False,
     install_requires=[
         'followthemoney >= 1.3.7',
-        'mwclient',  # wikipedia
-        'rdflib',  # wikidata
-        'SPARQLWrapper',  # wikidata
-        'zeep',  # bvd orbis (soap)
-        'requests'
+        'followthemoney-enrich >= 1.3.7',
+        'click',
     ],
     test_suite='nose.collector',
-    tests_require=['coverage', 'nose']
+    tests_require=['coverage', 'nose'],
+    entry_points={
+        'console_scripts': [
+            'ftmutil = followthemoney_util.cli:cli',
+        ]
+    },
+    
 )
