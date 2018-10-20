@@ -39,8 +39,14 @@ Thing:
       label: Source link
       type: url
     alephUrl:
-      label: Federated Aleph link
+      label: Aleph URL
       type: url
+    wikipediaUrl:
+      label: Wikipedia Article
+      type: url
+    wikidataId:
+      label: Wikidata ID
+      type: identifier
     keywords:
       label: Keywords
     address:

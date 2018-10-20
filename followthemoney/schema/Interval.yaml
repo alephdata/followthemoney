@@ -21,3 +21,6 @@ Interval:
       label: "Record ID"
     sourceUrl:
       label: "Source URL"
+    alephUrl:
+      label: Aleph URL
+      type: url
