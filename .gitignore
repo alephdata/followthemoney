@@ -7,3 +7,5 @@
 build/*
 dist/*
 coverage-report/*
+util/dist/*
+enrich/dist/*

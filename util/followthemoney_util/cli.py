@@ -27,13 +27,16 @@ def map(mapping_yaml):
 def pretty():
     stdin = click.get_text_stream('stdin')
     stdout = click.get_text_stream('stdout')
-    while True:
-        line = stdin.readline()
-        if line is None:
-            break
-        data = json.loads(line)
-        data = json.dumps(data, indent=2)
-        stdout.write(data + '\n')
+    try:
+        while True:
+            line = stdin.readline()
+            if not line:
+                break
+            data = json.loads(line)
+            data = json.dumps(data, indent=2)
+            stdout.write(data + '\n')
+    except BrokenPipeError:
+        pass
 
 
 @cli.command('export-rdf', help="Export to RDF NTriples")
@@ -41,16 +44,19 @@ def export_rdf():
     from rdflib import Graph
     stdin = click.get_text_stream('stdin')
     stdout = click.get_text_stream('stdout')
-    while True:
-        line = stdin.readline()
-        if line is None:
-            break
-        entity = model.get_proxy(json.loads(line))
-        graph = Graph()
-        for link in entity.links:
-            triple = link.rdf()
-            if triple is None:
-                continue
-            graph.add(triple)
-        nt = graph.serialize(format='nt').strip()
-        stdout.write(nt.decode('utf-8') + '\n')
+    try:
+        while True:
+            line = stdin.readline()
+            if not line:
+                break
+            entity = model.get_proxy(json.loads(line))
+            graph = Graph()
+            for link in entity.links:
+                triple = link.rdf()
+                if triple is None:
+                    continue
+                graph.add(triple)
+            nt = graph.serialize(format='nt').strip()
+            stdout.write(nt.decode('utf-8') + '\n')
+    except BrokenPipeError:
+        pass
