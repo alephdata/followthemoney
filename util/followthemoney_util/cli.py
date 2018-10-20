@@ -3,6 +3,7 @@ import click
 
 from followthemoney import model
 from followthemoney_util.util import load_config_file, dict_list
+from followthemoney_util.util import read_entity, write_entity
 
 
 @click.group(help="Command-line utility for FollowTheMoney graph data")
@@ -19,8 +20,7 @@ def map(mapping_yaml):
         for mapping in dict_list(meta, 'queries', 'query'):
             entities = model.map_entities(mapping, key_prefix=dataset)
             for entity in entities:
-                data = json.dumps(entity.to_dict())
-                stream.write(data + '\n')
+                write_entity(stream, entity)
 
 
 @cli.command(help="Format a stream of entities to make it readable")
@@ -29,11 +29,10 @@ def pretty():
     stdout = click.get_text_stream('stdout')
     try:
         while True:
-            line = stdin.readline()
-            if not line:
+            entity = read_entity(stdin)
+            if entity is None:
                 break
-            data = json.loads(line)
-            data = json.dumps(data, indent=2)
+            data = json.dumps(entity.to_dict(), indent=2)
             stdout.write(data + '\n')
     except BrokenPipeError:
         pass

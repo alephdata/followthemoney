@@ -1,7 +1,21 @@
 import os
 import yaml
-
+import json
 from banal import ensure_list
+
+from followthemoney import model
+
+
+def write_entity(stream, entity):
+    data = json.dumps(entity.to_dict())
+    stream.write(data + '\n')
+
+
+def read_entity(stream):
+    line = stream.readline()
+    if not line:
+        return
+    return model.get_proxy(json.loads(line))
 
 
 def load_config_file(file_path):

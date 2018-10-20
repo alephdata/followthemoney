@@ -1,0 +1,25 @@
+import click
+
+from followthemoney_util.cli import cli
+from followthemoney_util.util import read_entity, write_entity
+
+
+@cli.command('aggregate', help="Aggregate multiple fragments of entities")
+def aggregate():
+    buffer = {}
+    try:
+        stdin = click.get_text_stream('stdin')
+        while True:
+            entity = read_entity(stdin)
+            if entity is None:
+                break
+            if entity.id in buffer:
+                buffer[entity.id].merge(entity)
+            else:
+                buffer[entity.id] = entity
+
+        stdout = click.get_text_stream('stdout')
+        for entity in buffer.values():
+            write_entity(stdout, entity)
+    except BrokenPipeError:
+        pass

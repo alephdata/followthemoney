@@ -1,9 +1,8 @@
-import json
 import click
 from rdflib import Graph
 
-from followthemoney import model
 from followthemoney_util.cli import cli
+from followthemoney_util.util import read_entity
 
 
 @cli.command('export-rdf', help="Export to RDF NTriples")
@@ -12,10 +11,9 @@ def export_rdf():
     stdout = click.get_text_stream('stdout')
     try:
         while True:
-            line = stdin.readline()
-            if not line:
+            entity = read_entity(stdin)
+            if entity is None:
                 break
-            entity = model.get_proxy(json.loads(line))
             graph = Graph()
             for link in entity.links:
                 triple = link.rdf()
