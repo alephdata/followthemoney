@@ -154,11 +154,13 @@ class EntityProxy(object):
         return EntityProxy(self.schema, self.id, self._properties)
 
     def merge(self, other):
+        if id(self) == id(other):
+            return
         model = self.schema.model
         other = self.from_dict(model, other)
         self.id = self.id or other.id
         self.schema = model.common_schema(self.schema, other.schema)
-        for prop, value in other.itervalues():
+        for prop, value in set(other.itervalues()):
             self.add(prop, value)
 
     def __repr__(self):
