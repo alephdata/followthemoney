@@ -27,6 +27,13 @@ setup(
         'zeep',  # bvd orbis (soap)
         'requests'
     ],
+    entry_points={
+        'followthemoney_enrich': [
+            'aleph = followthemoney_enrich.aleph:AlephEnricher',
+            'orbis = followthemoney_enrich.orbis:OrbisEnricher',
+            'opencorporates = followthemoney_enrich.opencorporates:OpenCorporatesEnricher',  # noqa
+        ],
+    },
     test_suite='nose.collector',
     tests_require=['coverage', 'nose']
 )

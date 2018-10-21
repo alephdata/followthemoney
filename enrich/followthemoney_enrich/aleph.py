@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 from urlnormalizer import normalize_url
 
 from followthemoney.exc import InvalidData
-from followthemoney_enrich.common import Enricher, Result
+from followthemoney_enrich.common import Enricher
 
 log = logging.getLogger(__name__)
 
@@ -55,9 +55,17 @@ class AlephEnricher(Enricher):
             self.cache.store(key, existing)
         return existing
 
-    def update_entity(self, result, entity, data):
+    def convert_entity(self, result, data):
+        data = ensure_dict(data)
+        if 'properties' not in data or 'schema' not in data:
+            return
+        try:
+            entity = result.make_entity(data.get('schema'))
+        except InvalidData:
+            log.error("Server model mismatch: %s" % data.get('schema'))
+            return
         links = ensure_dict(data.get('link'))
-        entity.make_id(links.get('self'))
+        entity.id = data.get('id')
         entity.add('alephUrl', links.get('self'))
         properties = ensure_dict(data.get('properties'))
         for prop, values in properties.items():
@@ -72,15 +80,7 @@ class AlephEnricher(Enricher):
                 except InvalidData:
                     msg = "Server property mismatch (%s): %s"
                     log.warning(msg % (entity.schema.name, prop))
-
-    def convert_entity(self, result, data):
-        data = ensure_dict(data)
-        try:
-            entity = result.make_entity(data.get('schema'))
-        except InvalidData:
-            log.error("Server model mismatch: %s" % data.get('schema'))
-            return
-        self.update_entity(result, entity, data)
+        result.add_entity(entity)
         return entity
 
     def enrich_entity(self, entity):
@@ -91,12 +91,11 @@ class AlephEnricher(Enricher):
         for page in range(10):
             data = self.post_match(url, entity)
             for res in data.get('results', []):
-                result = Result(self)
+                result = self.make_result(entity)
                 proxy = self.convert_entity(result, res)
-                if proxy is None:
-                    continue
-                result.principal = proxy
-                yield result
+                result.set_candidate(proxy)
+                if result.candidate is not None:
+                    yield result
 
             url = data.get('next')
             if url is None:
@@ -107,7 +106,7 @@ class AlephEnricher(Enricher):
         for url in entity.get('alephUrl', quiet=True):
             _, entity_id = url.rsplit('/', 1)
             data = self.get_api(url)
-            self.update_entity(result, entity, data)
+            self.convert_entity(result, data)
             search_api = urljoin(self.api_base, 'search')
             params = {'filter:entities': entity_id}
             entities = self.get_api(search_api, params=params)

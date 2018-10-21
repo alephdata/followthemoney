@@ -4,7 +4,7 @@ import requests
 from urlnormalizer import normalize_url
 from banal import ensure_list, ensure_dict, is_mapping
 
-from followthemoney_enrich.common import Enricher, Result
+from followthemoney_enrich.common import Enricher
 
 log = logging.getLogger(__name__)
 
@@ -99,26 +99,35 @@ class OpenCorporatesEnricher(Enricher):
             directorship.add('role', data.get('position'))
         return officer
 
-    def search_companies(self, params):
+    def get_query(self, entity):
+        name = ' OR '.join(entity.names)
+        params = {'q': name}
+        for jurisdiction in entity.get('jurisdiction'):
+            params['jurisdiction_code'] = jurisdiction.lower()
+        return params
+
+    def search_companies(self, entity):
+        params = self.get_query(entity)
         for page in range(1, 9):
-            # TODO aliases
             params['page'] = page
             results = self.get_api(self.COMPANY_SEARCH_API, params=params)
             for company in ensure_list(results.get('companies')):
-                result = Result(self)
-                result.principal = self.company_entity(result, company)
+                result = self.make_result(entity)
+                proxy = self.company_entity(result, company)
+                result.set_candidate(proxy)
                 yield result
             if page > results.get('total_pages', 1):
                 break
 
-    def search_officers(self, params):
+    def search_officers(self, entity):
+        params = self.get_query(entity)
         for page in range(1, 9):
-            # TODO aliases
             params['page'] = page
             results = self.get_api(self.OFFICER_SEARCH_API, params=params)
             for officer in ensure_list(results.get('officers')):
-                result = Result(self)
-                result.principal = self.officer_entity(result, officer)
+                result = self.make_result(entity)
+                proxy = self.officer_entity(result, officer)
+                result.set_candidate(proxy)
                 yield result
             if page > results.get('total_pages', 1):
                 break
@@ -127,16 +136,11 @@ class OpenCorporatesEnricher(Enricher):
         if self.api_token is None:
             return
 
-        name = ' OR '.join(entity.names)
-        params = {'q': name}
-        for jurisdiction in entity.get('jurisdiction'):
-            params['jurisdiction_code'] = jurisdiction.lower()
-
         schema = entity.schema.name
         if schema in ['Company', 'Organization', 'LegalEntity']:
-            yield from self.search_companies(params)
+            yield from self.search_companies(entity)
         if schema in ['Person', 'LegalEntity', 'Company', 'Organization']:
-            yield from self.search_officers(params)
+            yield from self.search_officers(entity)
 
     def expand_entity(self, entity):
         result = super(OpenCorporatesEnricher, self).expand_entity(entity)

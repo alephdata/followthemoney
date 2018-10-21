@@ -7,7 +7,7 @@ from pprint import pprint  # noqa
 from normality import stringify
 from banal import ensure_list, ensure_dict
 
-from followthemoney_enrich.common import Enricher, Result
+from followthemoney_enrich.common import Enricher
 
 log = logging.getLogger(__name__)
 logging.getLogger('zeep').setLevel(logging.WARNING)
@@ -39,9 +39,10 @@ class OrbisEnricher(Enricher):
             return
 
         for company in self.match_company(entity):
-            result = Result(self)
-            result.principal = self.company_entity(result, company)
-            yield result
+            result = self.make_result(entity)
+            result.set_candidate(self.company_entity(result, company))
+            if result.candidate is not None:
+                yield result
             # if 'Shareholders' in res:
             #     aligned_dicts.append(self.align_bvd_shareholders(res))
             # if 'guo_names' in res:
@@ -100,4 +101,5 @@ class OrbisEnricher(Enricher):
         entity.add('status', data.get('Status'))
         entity.add('idNumber', data.get('NationalId'))
         entity.add('bvdId', data.get('BvDID'))
+        result.add_entity(entity)
         return entity
