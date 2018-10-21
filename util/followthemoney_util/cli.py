@@ -16,11 +16,14 @@ def cli():
 def map(mapping_yaml):
     config = load_config_file(mapping_yaml)
     stream = click.get_text_stream('stdout')
-    for dataset, meta in config.items():
-        for mapping in dict_list(meta, 'queries', 'query'):
-            entities = model.map_entities(mapping, key_prefix=dataset)
-            for entity in entities:
-                write_entity(stream, entity)
+    try:
+        for dataset, meta in config.items():
+            for mapping in dict_list(meta, 'queries', 'query'):
+                entities = model.map_entities(mapping, key_prefix=dataset)
+                for entity in entities:
+                    write_entity(stream, entity)
+    except BrokenPipeError:
+        pass
 
 
 @cli.command(help="Format a stream of entities to make it readable")
