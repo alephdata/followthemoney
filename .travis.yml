@@ -17,4 +17,8 @@ after_success:
   - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then
       python setup.py sdist bdist_wheel ;
       twine upload dist/* ;
+      cd enrich && python setup.py sdist bdist_wheel ;
+      twine upload enrich/dist/* ;
+      cd util && python setup.py sdist bdist_wheel ;
+      twine upload util/dist/* ;
     fi
