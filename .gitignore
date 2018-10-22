@@ -9,4 +9,6 @@ build/*
 dist/*
 coverage-report/*
 util/dist/*
+util/build/*
 enrich/dist/*
+enrich/build/*
