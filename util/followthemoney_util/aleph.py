@@ -4,7 +4,7 @@ from alephclient.api import AlephAPI
 
 from followthemoney import model
 from followthemoney_util.cli import cli
-from followthemoney_util.util import write_entity
+from followthemoney_util.util import write_object
 
 
 @cli.command('load-aleph', help='Stream data from an aleph instance')
@@ -29,4 +29,4 @@ def load_aleph(foreign_id, api_url, api_key):
         entity = model.get_proxy(data)
         api_url = urljoin(api.base_url, 'entities/%s' % entity.id)
         entity.add('alephUrl', api_url, quiet=True)
-        write_entity(stdout, entity)
+        write_object(stdout, entity)

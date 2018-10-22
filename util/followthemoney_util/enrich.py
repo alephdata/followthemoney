@@ -1,7 +1,8 @@
 import click
+from banal import ensure_list
 
 from followthemoney_util.cli import cli
-from followthemoney_util.util import read_entity, write_entity
+from followthemoney_util.util import read_object, write_object
 from followthemoney_enrich import get_enricher
 
 
@@ -21,17 +22,17 @@ def enrich(enricher):
         stdin = click.get_text_stream('stdin')
         stdout = click.get_text_stream('stdout')
         while True:
-            entity = read_entity(stdin)
+            entity = read_object(stdin)
             if entity is None:
                 break
             has_result = False
             for result in enricher.enrich_entity(entity):
                 has_result = True
-                write_entity(stdout, result)
+                write_object(stdout, result)
             if not has_result:
                 # emit the original entity anyways for streaming.
                 result = enricher.make_result(entity)
-                write_entity(stdout, result)
+                write_object(stdout, result)
     except BrokenPipeError:
         pass
 
@@ -44,10 +45,25 @@ def expand(enricher):
         stdin = click.get_text_stream('stdin')
         stdout = click.get_text_stream('stdout')
         while True:
-            entity = read_entity(stdin)
+            entity = read_object(stdin)
             if entity is None:
                 break
             result = enricher.expand_entity(entity)
-            write_entity(stdout, result)
+            write_object(stdout, result)
+    except BrokenPipeError:
+        pass
+
+
+@cli.command('result-entities', help="Unnests results into entities")
+def result_entities():
+    try:
+        stdin = click.get_text_stream('stdin')
+        stdout = click.get_text_stream('stdout')
+        while True:
+            result = read_object(stdin)
+            if result is None:
+                break
+            for entity in ensure_list(result.get('entities')):
+                write_object(stdout, entity)
     except BrokenPipeError:
         pass

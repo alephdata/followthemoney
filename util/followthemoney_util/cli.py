@@ -1,29 +1,12 @@
 import json
 import click
 
-from followthemoney import model
-from followthemoney_util.util import load_config_file, dict_list
-from followthemoney_util.util import read_entity, write_entity
+from followthemoney_util.util import read_object
 
 
 @click.group(help="Command-line utility for FollowTheMoney graph data")
 def cli():
     pass
-
-
-@cli.command(help="Execute a mapping file and emit objects")
-@click.argument('mapping_yaml', type=click.Path(exists=True))
-def map(mapping_yaml):
-    config = load_config_file(mapping_yaml)
-    stream = click.get_text_stream('stdout')
-    try:
-        for dataset, meta in config.items():
-            for mapping in dict_list(meta, 'queries', 'query'):
-                entities = model.map_entities(mapping, key_prefix=dataset)
-                for entity in entities:
-                    write_entity(stream, entity)
-    except BrokenPipeError:
-        pass
 
 
 @cli.command(help="Format a stream of entities to make it readable")
@@ -32,7 +15,7 @@ def pretty():
     stdout = click.get_text_stream('stdout')
     try:
         while True:
-            entity = read_entity(stdin)
+            entity = read_object(stdin)
             if entity is None:
                 break
             data = json.dumps(entity.to_dict(), indent=2)
