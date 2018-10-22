@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney-enrich',
-    version='1.3.7',
+    version='1.3.8',
     long_description="Data enrichment toolkit",
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -20,7 +20,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'followthemoney >= 1.3.7',
+        'followthemoney >= 1.3.8',
         'mwclient',  # wikipedia
         'rdflib',  # wikidata
         'SPARQLWrapper',  # wikidata
