@@ -8,9 +8,9 @@ from followthemoney_util.cli import cli
 from followthemoney_util.util import write_object
 
 
-@cli.command(help="Execute a mapping file and emit objects")
+@cli.command('map', help="Execute a mapping file and emit objects")
 @click.argument('mapping_yaml', type=click.Path(exists=True))
-def map(mapping_yaml):
+def run_mapping(mapping_yaml):
     config = load_config_file(mapping_yaml)
     stream = click.get_text_stream('stdout')
     try:
