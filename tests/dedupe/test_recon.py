@@ -19,4 +19,3 @@ class ReconTestCase(TestCase):
         sio = io.StringIO(text)
         items = list(Recon.from_file(sio))
         assert len(items) == 1
-            

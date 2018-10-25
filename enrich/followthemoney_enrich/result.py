@@ -1,4 +1,7 @@
+from banal import ensure_list
+
 from followthemoney import model
+from followthemoney.compare import compare
 
 
 class Result(object):
@@ -6,8 +9,8 @@ class Result(object):
     def __init__(self, enricher, subject):
         self.enricher = enricher
         self._entities = {}
-        self.candidate = None
-        self.subject = None
+        self._candidate = None
+        self._subject = None
         self.set_subject(subject)
 
     def make_entity(self, schema):
@@ -25,22 +28,47 @@ class Result(object):
         if entity is None or entity.id is None:
             return
         self.add_entity(entity)
-        self.candidate = entity.id
+        self._candidate = entity.id
 
     def set_subject(self, entity):
         if entity is None or entity.id is None:
             return
         self.add_entity(entity)
-        self.subject = entity.id
+        self._subject = entity.id
 
     @property
     def entities(self):
         return self._entities.values()
 
+    @property
+    def subject(self):
+        return self._entities.get(self._subject)
+
+    @property
+    def candidate(self):
+        return self._entities.get(self._candidate)
+
+    @property
+    def score(self):
+        if self.subject is None or self.candidate is None:
+            return 0
+        return compare(self.subject, self.candidate)
+
     def to_dict(self):
         return {
             'entities': [e.to_dict() for e in self.entities],
-            'subject': self.subject,
-            'candidate': self.candidate,
+            'subject': self._subject,
+            'candidate': self._candidate,
             'enricher': self.enricher.name
         }
+
+    @classmethod
+    def from_dict(cls, enricher, data):
+        result = cls(enricher, None)
+        entities = ensure_list(data.get('entities'))
+        entities = [model.get_proxy(e) for e in entities]
+        entities = {e.id: e for e in entities}
+        result._entities = entities
+        result._subject = data.get('subject')
+        result._candidate = data.get('candidate')
+        return result

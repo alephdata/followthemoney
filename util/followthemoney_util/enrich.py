@@ -1,17 +1,7 @@
 import click
-from banal import ensure_list
 
 from followthemoney_util.cli import cli
-from followthemoney_util.util import read_object, write_object
-from followthemoney_enrich import get_enricher
-
-
-def load_enricher(enricher):
-    clazz = get_enricher(enricher)
-    if clazz is None:
-        raise click.BadParameter("Unknown enricher: %s" % enricher)
-    enricher = clazz()
-    return enricher
+from followthemoney_util.util import read_object, write_object, load_enricher
 
 
 @cli.command('enrich', help="Find matching entities remotely")
@@ -71,7 +61,7 @@ def result_entities():
             result = read_object(stdin)
             if result is None:
                 break
-            for entity in ensure_list(result.get('entities')):
+            for entity in result.entities:
                 write_object(stdout, entity)
     except BrokenPipeError:
         pass

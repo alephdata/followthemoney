@@ -1,7 +1,18 @@
 import json
+import click
 from banal import is_mapping
 
 from followthemoney import model
+from followthemoney_enrich import get_enricher
+from followthemoney_enrich.result import Result
+
+
+def load_enricher(enricher):
+    clazz = get_enricher(enricher)
+    if clazz is None:
+        raise click.BadParameter("Unknown enricher: %s" % enricher)
+    enricher = clazz()
+    return enricher
 
 
 def write_object(stream, obj):
@@ -18,4 +29,7 @@ def read_object(stream):
     data = json.loads(line)
     if is_mapping(data) and 'schema' in data:
         return model.get_proxy(data)
+    if is_mapping(data) and 'enricher' in data:
+        enricher = load_enricher(data.get('enricher'))
+        return Result.from_dict(enricher, data)
     return data
