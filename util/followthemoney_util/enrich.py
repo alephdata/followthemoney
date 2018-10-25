@@ -50,18 +50,3 @@ def expand(enricher):
         raise
     finally:
         enricher.close()
-
-
-@cli.command('result-entities', help="Unnests results into entities")
-def result_entities():
-    try:
-        stdin = click.get_text_stream('stdin')
-        stdout = click.get_text_stream('stdout')
-        while True:
-            result = read_object(stdin)
-            if result is None:
-                break
-            for entity in result.entities:
-                write_object(stdout, entity)
-    except BrokenPipeError:
-        pass

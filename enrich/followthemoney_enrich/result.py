@@ -51,8 +51,10 @@ class Result(object):
     @property
     def score(self):
         if self.subject is None or self.candidate is None:
-            return 0
-        return compare(self.subject, self.candidate)
+            return 0.0
+        if self.subject.id == self.candidate.id:
+            return 1.0
+        return compare(model, self.subject, self.candidate)
 
     def to_dict(self):
         return {

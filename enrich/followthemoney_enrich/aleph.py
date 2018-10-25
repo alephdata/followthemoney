@@ -70,8 +70,8 @@ class AlephEnricher(Enricher):
         except InvalidData:
             log.error("Server model mismatch: %s" % data.get('schema'))
             return
-        links = ensure_dict(data.get('link'))
         entity.id = data.get('id')
+        links = ensure_dict(data.get('links'))
         entity.add('alephUrl', links.get('self'))
         properties = ensure_dict(data.get('properties'))
         for prop, values in properties.items():

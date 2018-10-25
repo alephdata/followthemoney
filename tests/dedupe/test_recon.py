@@ -14,6 +14,7 @@ class ReconTestCase(TestCase):
         other = recon.from_json(text)
         assert other.subject == recon.subject
         assert other.canonical == recon.canonical
+        assert other.canonical != recon.subject
         assert other.judgement == recon.judgement
 
         sio = io.StringIO(text)

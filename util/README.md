@@ -23,7 +23,7 @@ following formats are used:
 
 ## Ideas for commands
 
-* ``apply-recon`` - Read a recon file and re-write entity files to
+* ``apply-recon`` - Read a recon file and re-write entity stream to
   their canonical ID. Should be followed by ``aggregate``.
 * ``filter-results`` - Read a recon file and emit only results where
   candidate and subject are confirmed matches.

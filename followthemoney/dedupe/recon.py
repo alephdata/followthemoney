@@ -1,4 +1,5 @@
 import json
+from followthemoney.util import get_entity_id
 
 
 class Recon(object):
@@ -9,8 +10,8 @@ class Recon(object):
     __slots__ = ['subject', 'canonical', 'judgement']
 
     def __init__(self, subject, canonical, judgement):
-        self.subject = subject
-        self.canonical = canonical
+        self.subject = get_entity_id(subject)
+        self.canonical = get_entity_id(canonical)
         self.judgement = judgement or self.UNSURE
 
     def to_dict(self):
