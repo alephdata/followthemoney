@@ -37,6 +37,17 @@ def key_bytes(key):
     return key.encode('utf-8')
 
 
+def get_entity_id(obj):
+    """Given an entity-ish object, try to get the ID."""
+    if isinstance(obj, str):
+        return obj
+    if is_mapping(obj):
+        return obj.get('id')
+    if hasattr(obj, 'id'):
+        return obj.id
+    # return obj
+
+
 def merge_data(old, new):
     """Extend the values of the new doc with extra values from the old."""
     if is_sequence(old) or is_sequence(new):

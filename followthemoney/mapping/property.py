@@ -4,6 +4,7 @@ from normality import stringify
 from banal import unique_list, ensure_list
 
 from followthemoney.exc import InvalidMapping
+from followthemoney.util import get_entity_id
 
 
 class PropertyMapping(object):
@@ -79,9 +80,7 @@ class PropertyMapping(object):
 
         if self.entity is not None:
             entity = entities.get(self.entity)
-            if entity is not None:
-                return [entity.id]
-            return []
+            return ensure_list(get_entity_id(entity))
 
         # clean the values returned by the query, or by using literals, or
         # formats.

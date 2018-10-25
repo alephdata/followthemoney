@@ -17,12 +17,19 @@ following formats are used:
   the entity being enriched (``subject``), the main match entity
   (``candidate``) and other entities that the remote API may have
   returned.
-* Linkage files. These files define a mapping from a source entity ID
+* Recon files. These files define a mapping from a source entity ID
   to a canonical entity ID, e.g. after a de-duplication process has
   been applied.
 
 ## Ideas for commands
 
-* ``translate-entities``
-* ``discard-results``
-
+* ``apply-recon`` - Read a recon file and re-write entity files to
+  their canonical ID. Should be followed by ``aggregate``.
+* ``filter-results`` - Read a recon file and emit only results where
+  candidate and subject are confirmed matches.
+* ``recon-auto`` - Write a recon file by marking all results above a
+  certain score as matches.
+* ``recon-tool`` - Interactive tool for making a recon file from a set
+  of results.
+* ``export-cypher`` - Dump a Neo4j script.
+* ``export-excel`` - Dump an Excel file, one sheet per schema.
