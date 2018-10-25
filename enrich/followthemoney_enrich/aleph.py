@@ -3,12 +3,13 @@ import logging
 import requests
 from uuid import uuid4
 from pprint import pprint  # noqa
+from requests.exceptions import RequestException
 from banal import is_mapping, ensure_dict, ensure_list, hash_data
 from urllib.parse import urljoin
-from urlnormalizer import normalize_url
 
 from followthemoney.exc import InvalidData
-from followthemoney_enrich.common import Enricher
+from followthemoney_enrich.enricher import Enricher
+from followthemoney_enrich.util import make_url
 
 log = logging.getLogger(__name__)
 
@@ -18,28 +19,29 @@ class AlephEnricher(Enricher):
     TYPE_CONSTRAINT = 'LegalEntity'
 
     def __init__(self):
-        self.host = os.environ.get('ENRICH_ALEPH_HOST',
-                                   'https://data.occrp.org/')
+        self.host = os.environ.get('ALEPH_HOST')
+        self.host = os.environ.get('ENRICH_ALEPH_HOST', self.host)
         self.api_base = urljoin(self.host, '/api/2/')
-        self.api_key = os.environ.get('ENRICH_ALEPH_API_KEY')
+        self.api_key = os.environ.get('ALEPH_API_KEY')
+        self.api_key = os.environ.get('ENRICH_ALEPH_API_KEY', self.api_key)
         self.session = requests.Session()
         self.session.headers['X-Aleph-Session'] = str(uuid4())
         if self.api_key is not None:
             self.session.headers['Authorization'] = 'ApiKey %s' % self.api_key
 
     def get_api(self, url, params=None):
-        if is_mapping(params):
-            params = params.items()
-        if params is not None:
-            url = normalize_url(url, extra_query_args=params)
-
+        url = make_url(url, params)
         data = self.cache.get(url)
         if data is None:
-            res = self.session.get(url)
-            if res.status_code != 200:
+            try:
+                res = self.session.get(url)
+                if res.status_code != 200:
+                    return {}
+                data = res.json()
+                self.cache.store(url, data)
+            except RequestException:
+                log.exception("Error calling Aleph API")
                 return {}
-            data = res.json()
-            self.cache.store(url, data)
         return data
 
     def post_match(self, url, proxy, params=None):
@@ -48,7 +50,11 @@ class AlephEnricher(Enricher):
         existing = self.cache.get(key)
         if existing is None:
             log.debug("Enrich [%s]: %s", self.host, proxy)
-            res = self.session.post(url, json=data)
+            try:
+                res = self.session.post(url, json=data)
+            except RequestException:
+                log.exception("Error calling Aleph matcher")
+                return {}
             if res.status_code != 200:
                 return {}
             existing = res.json()
@@ -113,3 +119,11 @@ class AlephEnricher(Enricher):
             for data in ensure_list(entities.get('results')):
                 self.convert_entity(result, data)
         return result
+
+
+class OccrpEnricher(AlephEnricher):
+
+    def __init__(self):
+        super(OccrpEnricher, self).__init__()
+        self.host = 'https://data.occrp.org'
+        self.api_base = urljoin(self.host, '/api/2/')

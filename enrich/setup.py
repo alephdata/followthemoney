@@ -30,6 +30,7 @@ setup(
     entry_points={
         'followthemoney_enrich': [
             'aleph = followthemoney_enrich.aleph:AlephEnricher',
+            'occrp = followthemoney_enrich.aleph:OccrpEnricher',
             'orbis = followthemoney_enrich.orbis:OrbisEnricher',
             'opencorporates = followthemoney_enrich.opencorporates:OpenCorporatesEnricher',  # noqa
         ],

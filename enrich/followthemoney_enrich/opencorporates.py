@@ -1,10 +1,11 @@
 import os
 import logging
 import requests
-from urlnormalizer import normalize_url
-from banal import ensure_list, ensure_dict, is_mapping
+from banal import ensure_list, ensure_dict
+from requests.exceptions import RequestException
 
-from followthemoney_enrich.common import Enricher
+from followthemoney_enrich.enricher import Enricher
+from followthemoney_enrich.util import make_url
 
 log = logging.getLogger(__name__)
 
@@ -26,18 +27,18 @@ class OpenCorporatesEnricher(Enricher):
     def get_api(self, url, params=None):
         url = url.replace('https://opencorporates.com/',
                           'https://api.opencorporates.com/v0.4/')
-        if is_mapping(params):
-            params = params.items()
-        if params is not None:
-            url = normalize_url(url, extra_query_args=params)
-
+        url = make_url(url, params)
         data = self.cache.get(url)
         if data is None:
             auth = {'api_token': self.api_token}
-            res = self.session.get(url, params=auth)
-            if res.status_code != 200:
+            try:
+                res = self.session.get(url, params=auth)
+                if res.status_code != 200:
+                    return {}
+                data = res.json()
+            except RequestException:
+                log.exception("OpenCorporates API Error")
                 return {}
-            data = res.json()
             self.cache.store(url, data)
         if 'error' in data:
             return {}

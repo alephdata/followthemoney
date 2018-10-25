@@ -35,6 +35,10 @@ def enrich(enricher):
                 write_object(stdout, result)
     except BrokenPipeError:
         pass
+    except Exception:
+        raise
+    finally:
+        enricher.close()
 
 
 @cli.command('expand', help="Expand enriched entities")
@@ -52,6 +56,10 @@ def expand(enricher):
             write_object(stdout, result)
     except BrokenPipeError:
         pass
+    except Exception:
+        raise
+    finally:
+        enricher.close()
 
 
 @cli.command('result-entities', help="Unnests results into entities")

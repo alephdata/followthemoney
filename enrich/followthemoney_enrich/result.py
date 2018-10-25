@@ -1,5 +1,4 @@
 from followthemoney import model
-from followthemoney_enrich.cache import Cache
 
 
 class Result(object):
@@ -42,20 +41,6 @@ class Result(object):
         return {
             'entities': [e.to_dict() for e in self.entities],
             'subject': self.subject,
-            'candidate': self.candidate
+            'candidate': self.candidate,
+            'enricher': self.enricher.name
         }
-
-
-class Enricher(object):
-    cache = Cache()
-
-    def make_result(self, subject):
-        return Result(self, subject)
-
-    def expand_entity(self, entity):
-        """Get adjacent entities to an entity."""
-        return self.make_result(entity)
-
-    def enrich_entity(self, entity):
-        """Find possible candidates for an entity."""
-        return []

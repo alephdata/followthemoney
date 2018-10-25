@@ -7,7 +7,7 @@ from pprint import pprint  # noqa
 from normality import stringify
 from banal import ensure_list, ensure_dict
 
-from followthemoney_enrich.common import Enricher
+from followthemoney_enrich.enricher import Enricher
 
 log = logging.getLogger(__name__)
 logging.getLogger('zeep').setLevel(logging.WARNING)
@@ -22,6 +22,7 @@ class OrbisEnricher(Enricher):
         self.password = os.environ.get("ENRICH_ORBIS_PASSWORD")
         self.credentials = self.username is not None
         self.credentials = self.credentials and self.password is not None
+        self._session = None
         if not self.credentials:
             log.warning("Orbis enricher has no credentials, will be disabled")
 
@@ -30,6 +31,24 @@ class OrbisEnricher(Enricher):
         if not hasattr(self, '_client'):
             self._client = zeep.Client(wsdl=self.WSDL)
         return self._client
+
+    @property
+    def service(self):
+        return self.client.service
+
+    @property
+    def session(self):
+        if self._session is None:
+            self._session = self.service.Open(self.username, self.password)
+        return self._session
+
+    def close(self):
+        if self._session is not None:
+            try:
+                self.client.service.Close(self._session)
+            except Exception:
+                log.exception("Error while closing BvD session.")
+        self._session = None
 
     def enrich_entity(self, entity):
         if not self.credentials:
@@ -59,18 +78,15 @@ class OrbisEnricher(Enricher):
 
         data = self.cache.get(ct)
         if data is None:
-            session = None
             try:
-                session = self.client.service.Open(self.username,
-                                                   self.password)
-                res = self.client.service.Match(session, ct, ['None'])
+                res = self.service.Match(self.session, ct, ['None'])
                 data = zeep.helpers.serialize_object(res)
                 # pprint(data)
                 data = json.loads(json.dumps(data))
                 self.cache.store(ct, data)
-            finally:
-                if session is not None:
-                    self.client.service.Close(session)
+            except Exception:
+                log.exception("Orbis match call error.")
+                self.close()
         return ensure_list(data)
 
     def join_address(self, data):
