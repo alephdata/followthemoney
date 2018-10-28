@@ -91,6 +91,10 @@ class EntityProxy(object):
                 yield (prop, value)
 
     def get_type_values(self, type_, cleaned=True):
+        if type_ == registry.name:
+            return self.names
+        if type_ == registry.country:
+            return self.countries
         combined = set()
         for prop, values in self._properties.items():
             if prop.type == type_:
@@ -110,9 +114,8 @@ class EntityProxy(object):
 
     @property
     def links(self):
-        ref = registry.entity.ref(self.id)
         for prop, value in self.itervalues():
-            yield Link(ref, prop, value)
+            yield Link(self.id, registry.entity, prop, value)
 
     @property
     def caption(self):

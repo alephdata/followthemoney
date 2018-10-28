@@ -23,35 +23,32 @@ ENTITY = {
 class LinkTestCase(TestCase):
 
     def test_link_pack(self):
-        ref = registry.entity.ref('banana')
         prop = model.get_qname('Thing:name')
-        link = Link(ref, prop, "Theodore Böln")
+        link = Link('banana', registry.entity, prop, "Theodore Böln")
         assert link.subject == 'banana'
-        assert link.value_ref == 'n:Theodore Böln'
+        assert link.subject_type == registry.entity
 
         value = link.to_tuple()
-        other = link.from_tuple(model, link.ref, value)
+        other = link.from_tuple(model, value)
         assert other == link, (link, other)
         assert hash(other) == hash(link)
         assert repr(other) == repr(link)
 
     def test_invert(self):
-        ref = registry.entity.ref('banana')
         prop = model.get_qname('Thing:name')
-        link = Link(ref, prop, "Theodore")
+        link = Link('banana', registry.entity, prop, "Theodore")
         assert not link.inverted
         inv = link.invert()
         assert inv.inverted
         assert inv.rdf() is None
 
-        banana = registry.entity.ref('banana')
+        banana = 'banana'
         peach = 'peach'
-        peach_ref = registry.entity.ref(peach)
         prop = model.get_qname('Thing:sameAs')
-        link = Link(banana, prop, peach)
+        link = Link(banana, registry.entity, prop, peach)
         inv = link.invert()
-        assert inv.ref == peach_ref
-        assert inv.value_ref == banana
+        assert inv.subject == peach
+        assert inv.value == banana
         assert inv.prop == link.prop
 
     def test_make_links(self):

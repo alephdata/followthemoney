@@ -1,6 +1,6 @@
 from itertools import product
 from rdflib import Literal
-from banal import ensure_list, is_mapping
+from banal import ensure_list
 from normality import stringify
 
 
@@ -73,17 +73,6 @@ class PropertyType(object):
         that it may be related to."""
         return None
 
-    def ref(self, value):
-        """Generate a qualified form for storage in a triplestore."""
-        if self.prefix is None:
-            return
-        if is_mapping(value):
-            value = value.get('id')
-        value = stringify(value)
-        if value is None:
-            return
-        return ':'.join((self.prefix, value))
-
     def rdf(self, value):
         return Literal(value)
 
@@ -121,7 +110,3 @@ class Registry(object):
             return getattr(self, name)
         except AttributeError:
             pass
-
-    def deref(self, ref):
-        prefix, value = ref.split(':', 1)
-        return self.prefixes.get(prefix), value
