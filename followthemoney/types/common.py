@@ -8,7 +8,6 @@ class PropertyType(object):
     """Base class for all types."""
     name = None
     group = None
-    prefix = None
     strong = False
 
     def validate(self, text, **kwargs):
