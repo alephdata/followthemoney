@@ -8,7 +8,6 @@ from followthemoney.types.common import PropertyType
 class IbanType(PropertyType):
     name = 'iban'
     group = 'ibans'
-    prefix = 'iban'
     strong = False
 
     def validate(self, iban, **kwargs):

@@ -8,7 +8,6 @@ from followthemoney.types.common import PropertyType
 class IpType(PropertyType):
     name = 'ip'
     group = 'ips'
-    prefix = 'ip'
     strong = False
 
     def validate(self, ip, **kwargs):

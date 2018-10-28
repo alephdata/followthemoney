@@ -92,21 +92,15 @@ class PropertyType(object):
 class Registry(object):
 
     def __init__(self):
-        self.prefixes = {}
         self.groups = {}
         self.names = {}
 
     def add(self, instance):
         setattr(self, instance.name, instance)
         self.names[instance.name] = instance
-        if instance.prefix is not None:
-            self.prefixes[instance.prefix] = instance
         if instance.group is not None:
             self.groups[instance.group] = instance
         return instance
 
     def get(self, name):
-        try:
-            return getattr(self, name)
-        except AttributeError:
-            pass
+        return self.names.get(name)

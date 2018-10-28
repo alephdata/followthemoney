@@ -120,6 +120,7 @@ class ProxyTestCase(TestCase):
 
     def test_merge(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
+        proxy.merge(proxy)
         other = {
             'schema': 'LegalEntity',
             'properties': {

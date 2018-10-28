@@ -8,7 +8,6 @@ from followthemoney.util import get_locale
 class LanguageType(PropertyType):
     name = 'language'
     group = 'languages'
-    prefix = 'lang'
 
     def __init__(self, *args):
         self._names = {}

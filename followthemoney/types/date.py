@@ -21,7 +21,6 @@ class DateType(PropertyType):
 
     name = 'date'
     group = 'dates'
-    prefix = 'date'
 
     def validate(self, obj, **kwargs):
         """Check if a thing is a valid date."""

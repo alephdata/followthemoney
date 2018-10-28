@@ -12,7 +12,6 @@ class EmailType(PropertyType):
     domains = DomainType()
     name = 'email'
     group = 'emails'
-    prefix = 'mail'
     strong = True
 
     def validate(self, email, **kwargs):

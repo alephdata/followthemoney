@@ -10,7 +10,6 @@ class AddressType(PropertyType):
     COMMATA = re.compile(r'(,\s?[,\.])')
     name = 'address'
     group = 'addresses'
-    prefix = 'addr'
 
     def clean_text(self, address, **kwargs):
         """Basic clean-up."""

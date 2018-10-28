@@ -9,7 +9,6 @@ class IdentifierType(PropertyType):
     COMPARE_CLEAN = re.compile('[\W_]+')
     name = 'identifier'
     group = 'identifiers'
-    prefix = 'ident'
     strong = False
 
     def normalize(self, text, **kwargs):

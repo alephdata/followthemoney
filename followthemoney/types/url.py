@@ -7,7 +7,6 @@ from followthemoney.types.common import PropertyType
 class UrlType(PropertyType):
     name = 'url'
     group = 'urls'
-    prefix = 'url'
 
     def validate(self, url, **kwargs):
         """Check if `url` is a valid URL."""

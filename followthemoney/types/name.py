@@ -8,7 +8,6 @@ from followthemoney.util import dampen
 class NameType(PropertyType):
     name = 'name'
     group = 'names'
-    prefix = 'n'
 
     def clean_text(self, name, **kwargs):
         """Basic clean-up."""

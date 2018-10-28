@@ -7,7 +7,6 @@ from followthemoney.types.common import PropertyType
 class EntityType(PropertyType):
     name = 'entity'
     group = 'entities'
-    prefix = 'e'
 
     def clean(self, text, **kwargs):
         if is_mapping(text):

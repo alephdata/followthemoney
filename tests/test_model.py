@@ -55,6 +55,15 @@ class ModelTestCase(TestCase):
         with self.assertRaises(InvalidData):
             thing.validate({'properties': {'name': None}})
 
+        data = {'properties': {
+            'name': ['Banana'],
+            'sameAs': {'id': 'Bananu'}
+        }}
+        thing.validate(data)
+        with self.assertRaises(InvalidData):
+            data = {'properties': {'name': {}}}
+            thing.validate(data)
+
     def test_model_common_schema(self):
         assert model.common_schema('Thing', 'Thing') == 'Thing'
         assert model.common_schema('Thing', 'Person') == 'Person'

@@ -9,7 +9,6 @@ from followthemoney.util import gettext, get_locale
 class CountryType(PropertyType):
     name = 'country'
     group = 'countries'
-    prefix = 'country'
 
     def __init__(self, *args):
         self._names = {}
