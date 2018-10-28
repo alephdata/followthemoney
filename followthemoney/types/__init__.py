@@ -11,7 +11,10 @@ from followthemoney.types.country import CountryType
 from followthemoney.types.language import LanguageType
 from followthemoney.types.identifier import IdentifierType
 from followthemoney.types.entity import EntityType
-from followthemoney.types.common import TextType, Registry
+from followthemoney.types.text import TextType
+from followthemoney.types.string import StringType
+from followthemoney.types.number import NumberType
+from followthemoney.types.common import Registry
 
 registry = Registry()
 urls = registry.add(UrlType())
@@ -27,4 +30,6 @@ languages = registry.add(LanguageType())
 identifiers = registry.add(IdentifierType())
 entities = registry.add(EntityType())
 texts = registry.add(TextType())
+strings = registry.add(StringType())
+number = registry.add(NumberType())
 names = registry.add(NameType())

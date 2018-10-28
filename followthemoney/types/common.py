@@ -100,10 +100,6 @@ class PropertyType(object):
         return '<%s()>' % type(self).__name__
 
 
-class TextType(PropertyType):
-    name = 'text'
-
-
 class Registry(object):
 
     def __init__(self):

@@ -17,7 +17,7 @@ class Property(object):
         self._description = data.get('description')
         self.caption = data.get('caption', False)
         self.required = data.get('required', False)
-        self._type = data.get('type', 'text')
+        self._type = data.get('type', 'string')
         self.type = registry.get(self._type)
         if self.type is None:
             raise InvalidModel("Invalid type: %s" % self._type)
