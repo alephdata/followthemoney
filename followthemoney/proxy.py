@@ -92,9 +92,9 @@ class EntityProxy(object):
 
     def get_type_values(self, type_, cleaned=True):
         if type_ == registry.name:
-            return self.names
+            return list(self.names)
         if type_ == registry.country:
-            return self.countries
+            return list(self.countries)
         combined = set()
         for prop, values in self._properties.items():
             if prop.type == type_:
