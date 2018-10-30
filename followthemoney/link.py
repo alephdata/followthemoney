@@ -1,4 +1,5 @@
 from followthemoney.types import registry
+from followthemoney.util import get_entity_id
 
 
 class Link(object):
@@ -12,10 +13,10 @@ class Link(object):
 
     def __init__(self, subject, subject_type, prop, value, weight=1.0,
                  inverted=False, inferred=False):
-        self.subject = subject
+        self.subject = get_entity_id(subject)
         self.subject_type = subject_type
         self.prop = prop
-        self.value = value
+        self.value = get_entity_id(value)
         self.weight = weight
         self.inverted = inverted
         self.inferred = inferred
@@ -62,6 +63,28 @@ class Link(object):
                     self.subject,
                     weight=self.weight,
                     inverted=not self.inverted)
+
+    # def to_nxgraph(self, graph):
+    #     if self.inverted:
+    #         return self.invert().to_nxgraph(graph)
+    #     subject_id = ':'.join((self.subject_type.name, self.subject))
+    #     value_id = ':'.join((self.value_type.name, self.value))
+    #     graph.add_node(subject_id, label=self.subject)
+    #     if self.prop.caption:
+    #         graph.nodes[subject_id]['label'] = self.value
+    #     if self.prop.type.group is None:
+    #         graph.nodes[subject_id][self.prop.name] = self.value
+    #         return
+    #     graph.add_node(value_id)
+    #     if 'label' not in graph.nodes[subject_id]:
+    #         graph.nodes[subject_id]['label'] = self.value
+    #     edge = {
+    #         'weight': self.weight,
+    #         'label': self.prop.label,
+    #         'prop': self.prop.qname,
+    #         'inferred': self.inferred
+    #     }
+    #     graph.add_edge(subject_id, value_id, **edge)
 
     def __repr__(self):
         return '<Link(%r, %r, %r)>' % (self.value, self.prop, self.value)
