@@ -1,5 +1,7 @@
 # Follow the Money
 
+[![Build Status](https://travis-ci.org/alephdata/followthemoney.png?branch=master)](https://travis-ci.org/alephdata/followthemoney)
+
 This repository contains a pragmatic data model for the entities most
 commonly used in investigative reporting: people, companies, assets,
 payments, court cases, etc.
@@ -17,10 +19,10 @@ to the code base require a pypi release to begin being used in `aleph`. To
 this end, here's the steps for making a release:
 
 ```bash
-$ git pull --rebase
-$ make test
-$ bumpversion patch
-$ git push --tags
+git pull --rebase
+make test
+bumpversion patch
+git push --tags
 ```
 
 This will create a new patch release and upload a distribution of it. If
