@@ -5,9 +5,12 @@ Value:
   properties:
     amount:
       label: "Amount"
+      type: number
     currency:
       label: "Currency"
     amountUsd:
       label: "Amount in USD"
+      type: number
     amountEur:
       label: "Amount in EUR"
+      type: number

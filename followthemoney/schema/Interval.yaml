@@ -17,6 +17,7 @@ Interval:
       type: date
     summary:
       label: "Summary"
+      type: text
     recordId:
       label: "Record ID"
     sourceUrl:

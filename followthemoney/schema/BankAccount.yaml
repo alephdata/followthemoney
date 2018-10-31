@@ -22,5 +22,6 @@ BankAccount:
       label: Account Type
     balance:
       label: Balance
+      type: number
     bankAddress:
       label: Bank Address

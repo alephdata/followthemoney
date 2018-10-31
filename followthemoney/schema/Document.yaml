@@ -25,6 +25,7 @@ Document:
       description: "The crawler used to acquire this file"
     fileSize:
       label: "File size"
+      type: number
     fileName:
       label: "File name"
     extension:

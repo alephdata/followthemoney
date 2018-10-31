@@ -1,7 +1,9 @@
 Contract:
   label: "Contract"
   plural: "Contracts"
-  description: "An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward)."
+  description: >
+    An contract or contract lot issued by an authority. Multiple lots
+    may be awarded to different suppliers (see ContractAward).
   extends:
     - Asset
     - Interval
@@ -23,7 +25,8 @@ Contract:
       schema: LegalEntity
     type:
       label: "Type"
-      description: "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
+      description: >
+        Type of contract. Potentially W (Works), U (Supplies), S (Services).
     contractDate:
       label: "Contract date"
       type: date

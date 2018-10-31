@@ -22,10 +22,16 @@ Vehicle:
       label: Owner
       type: entity
       range: LegalEntity
+      reverse:
+        name: ownedVehicles
+        label: "Vehicles owned"
     operator:
       label: Operator
       type: entity
       range: LegalEntity
+      reverse:
+        name: operatedVehicles
+        label: "Vehicles operated"
     buildDate:
       label: Build Date
       type: date

@@ -21,6 +21,7 @@ Thing:
         name: sameAs
     summary: # a short one-liner kind of description
       label: Summary
+      type: text
     description: # a longer description
       label: Description
     country:
@@ -34,7 +35,7 @@ Thing:
       label: Previous name
       type: name
     weakAlias:
-      label: Weak aliass
+      label: Weak alias
     sourceUrl:
       label: Source link
       type: url
@@ -56,3 +57,4 @@ Thing:
       label: Program
     notes:
       label: Notes
+      type: text

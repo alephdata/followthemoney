@@ -11,8 +11,10 @@ RealEstate:
   properties:
     latitude:
       label: Latitude
+      type: number
     longitude:
       label: Longitude
+      type: number
     censusBlock:
       label: Census block
     cadastralCode:
@@ -20,6 +22,7 @@ RealEstate:
       type: identifier
     area:
       label: Area
+      type: number
     registrationNumber:
       label: Registration number
       type: identifier
@@ -41,3 +44,13 @@ RealEstate:
     createDate:
       label: Record date
       type: date
+
+Land:
+  label: Land
+  plural: Lands
+  extends: RealEstate
+  icon: fa-map
+  matchable: false
+  featured:
+    - registrationNumber
+  properties: {}

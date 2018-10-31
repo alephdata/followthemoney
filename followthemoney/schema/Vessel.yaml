@@ -29,6 +29,7 @@ Vessel:
       label: Tonnage
     grossRegisteredTonnage:
       label: Gross Registered Tonnage
+      type: number
     nameChangeDate:
       label: Date of Name Change
       type: date
