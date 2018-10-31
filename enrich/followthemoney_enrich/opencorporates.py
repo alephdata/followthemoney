@@ -28,18 +28,21 @@ class OpenCorporatesEnricher(Enricher):
         url = url.replace('https://opencorporates.com/',
                           'https://api.opencorporates.com/v0.4/')
         url = make_url(url, params)
-        data = self.cache.get(url)
-        if data is None:
-            auth = {'api_token': self.api_token}
-            try:
-                res = self.session.get(url, params=auth)
-                if res.status_code != 200:
-                    return {}
-                data = res.json()
-            except RequestException:
-                log.exception("OpenCorporates API Error")
+        if self.cache.has(url):
+            return self.cache.get(url)
+
+        auth = {'api_token': self.api_token}
+        try:
+            log.info("Enrich: %s", url)
+            res = self.session.get(url, params=auth)
+            if res.status_code != 200:
+                log.warning("Non-200 response: %s", res.content)
                 return {}
-            self.cache.store(url, data)
+            data = res.json()
+        except RequestException:
+            log.exception("OpenCorporates API Error")
+            return {}
+        self.cache.store(url, data)
         if 'error' in data:
             return {}
         return data.get('results')
@@ -117,7 +120,7 @@ class OpenCorporatesEnricher(Enricher):
                 proxy = self.company_entity(result, company)
                 result.set_candidate(proxy)
                 yield result
-            if page > results.get('total_pages', 1):
+            if page >= results.get('total_pages', 0):
                 break
 
     def search_officers(self, entity):
@@ -130,7 +133,7 @@ class OpenCorporatesEnricher(Enricher):
                 proxy = self.officer_entity(result, officer)
                 result.set_candidate(proxy)
                 yield result
-            if page > results.get('total_pages', 1):
+            if page >= results.get('total_pages', 0):
                 break
 
     def enrich_entity(self, entity):

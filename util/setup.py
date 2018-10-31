@@ -20,8 +20,8 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'followthemoney >= 1.3.12',
-        'followthemoney-enrich >= 1.3.12',
+        'followthemoney',
+        'followthemoney-enrich',
         'click',
         'alephclient'
     ],
@@ -30,7 +30,7 @@ setup(
     entry_points={
         'console_scripts': [
             'ftmutil = followthemoney_util.cli:cli',
+            'ftm = followthemoney_util.cli:cli',
         ]
-    },
-    
+    }
 )

@@ -20,7 +20,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'followthemoney >= 1.3.12',
+        'followthemoney',
         'mwclient',  # wikipedia
         'rdflib',  # wikidata
         'SPARQLWrapper',  # wikidata

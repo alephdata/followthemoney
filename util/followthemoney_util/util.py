@@ -3,7 +3,7 @@ import click
 from banal import is_mapping
 
 from followthemoney import model
-from followthemoney_enrich import get_enricher
+from followthemoney_enrich import get_enricher, enricher_cache
 from followthemoney_enrich.result import Result
 
 
@@ -12,6 +12,7 @@ def load_enricher(enricher):
     if clazz is None:
         raise click.BadParameter("Unknown enricher: %s" % enricher)
     enricher = clazz()
+    enricher.cache = enricher_cache()
     return enricher
 
 

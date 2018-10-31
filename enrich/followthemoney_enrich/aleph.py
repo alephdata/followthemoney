@@ -44,22 +44,25 @@ class AlephEnricher(Enricher):
                 return {}
         return data
 
-    def post_match(self, url, proxy, params=None):
+    def post_match(self, url, proxy):
         data = proxy.to_dict()
-        key = hash_data((url, data))
-        existing = self.cache.get(key)
-        if existing is None:
-            log.debug("Enrich [%s]: %s", self.host, proxy)
-            try:
-                res = self.session.post(url, json=data)
-            except RequestException:
-                log.exception("Error calling Aleph matcher")
-                return {}
-            if res.status_code != 200:
-                return {}
-            existing = res.json()
-            self.cache.store(key, existing)
-        return existing
+        key = proxy.id or hash_data(data)
+        key = hash_data((url, key))
+        if self.cache.has(key):
+            # log.info("Cached [%s]: %s", self.host, proxy)
+            return self.cache.get(key)
+
+        log.info("Enrich [%s]: %s", self.host, proxy)
+        try:
+            res = self.session.post(url, json=data)
+        except RequestException:
+            log.exception("Error calling Aleph matcher")
+            return {}
+        if res.status_code != 200:
+            return {}
+        data = res.json()
+        self.cache.store(key, data)
+        return data
 
     def convert_entity(self, result, data):
         data = ensure_dict(data)

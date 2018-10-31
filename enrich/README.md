@@ -17,3 +17,9 @@ Environment variables used:
 * ENRICH_ORBIS_PASSWORD
 * ENRICH_OPENCORPORATES_API_TOKEN
 
+Caching can be configured programmatically when the framework is used as a library,
+or via a set of environment variables:
+
+* ENRICH_CACHE_REDIS_URL
+* ENRICH_CACHE_DATABASE_URL
+* ENRICH_CACHE_DATABASE_TABLE

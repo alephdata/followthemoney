@@ -38,6 +38,7 @@ class DatasetTableCache(Cache):
 
 
 class RedisCache(Cache):
+    EXPIRE = 84600 * 90
 
     def __init__(self, redis):
         self.redis = redis
@@ -47,10 +48,10 @@ class RedisCache(Cache):
 
     def store(self, key, value):
         key = self._prefix_key(key)
-        self.redis.set(key, json.dumps(value))
+        self.redis.set(key, json.dumps(value), ex=self.EXPIRE)
 
     def get(self, key):
-        value = self.redis.set(self._prefix_key(key))
+        value = self.redis.get(self._prefix_key(key))
         if value is not None:
             return json.loads(value)
 
