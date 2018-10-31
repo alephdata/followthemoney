@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-11 07:34+0200\n"
+"POT-Creation-Date: 2018-10-31 09:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Emina Muratovic <emina@occrp.org>, 2018\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -21,45 +21,45 @@ msgstr ""
 
 #: followthemoney/property.py:65
 msgid "Invalid value"
-msgstr ""
+msgstr "Nevažeća vrijednost"
 
 #: followthemoney/property.py:69
 msgid "Required"
-msgstr ""
+msgstr "Obavezno"
 
 #: followthemoney/proxy.py:49
 #, python-format
 msgid "Unknown property (%s): %s"
-msgstr ""
+msgstr "Nepoznat posjed (%s): %s"
 
-#: followthemoney/proxy.py:167
+#: followthemoney/proxy.py:196
 msgid "No schema for entity."
-msgstr ""
+msgstr "Nema scheme za entitet."
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
 msgid "Airplane"
-msgstr ""
+msgstr "Avion"
 
 #. Airplane.plural
 #: followthemoney/schema/Airplane.yaml
 msgid "Airplanes"
-msgstr ""
+msgstr "Avioni"
 
 #. Airplane.properties.serialNumber.label
 #: followthemoney/schema/Airplane.yaml
 msgid "Serial Number"
-msgstr ""
+msgstr "Serijski broj"
 
 #. Airplane.properties.icaoCode.label
 #: followthemoney/schema/Airplane.yaml
 msgid "ICAO aircraft type designator"
-msgstr ""
+msgstr "ICAO oznaka tipa aviona"
 
 #. Airplane.properties.manufacturer.label
 #: followthemoney/schema/Airplane.yaml
 msgid "Manufacturer"
-msgstr ""
+msgstr "Proizvođač"
 
 #. Asset.label
 #. Ownership.properties.asset.label
@@ -76,22 +76,22 @@ msgstr "Imovina"
 #. Associate.properties.associate.label
 #: followthemoney/schema/Associate.yml
 msgid "Associate"
-msgstr ""
+msgstr "Saradnik"
 
 #. Associate.description
 #: followthemoney/schema/Associate.yml
 msgid "Non-family association between two people"
-msgstr ""
+msgstr "Ne-porodična povezanost između dvije osobe"
 
 #. Associate.properties.associate.description
 #: followthemoney/schema/Associate.yml
 msgid "An associate of the subject person."
-msgstr ""
+msgstr "Saradnik subjekta."
 
 #. Associate.properties.associate.reverse.label
 #: followthemoney/schema/Associate.yml
 msgid "Associates"
-msgstr ""
+msgstr "Saradnici"
 
 #. BankAccount.label
 #. EconomicActivity.properties.bankAccount.label
@@ -118,7 +118,7 @@ msgstr "Broj računa"
 #. BankAccount.properties.iban.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
 #. BankAccount.properties.bic.label
 #: followthemoney/schema/BankAccount.yaml
@@ -247,7 +247,7 @@ msgstr "COD CAEM"
 #. Company.properties.caemCode.description
 #: followthemoney/schema/Company.yaml
 msgid "(RO) What kind of activity a legal entity is allowed to develop"
-msgstr ""
+msgstr "(RO) Koji tip aktivnosti legalnog entiteta je dozvoljeno razviti"
 
 #. Company.properties.kppCode.label
 #: followthemoney/schema/Company.yaml
@@ -257,18 +257,19 @@ msgstr "KPP"
 #. Company.properties.kppCode.description
 #: followthemoney/schema/Company.yaml
 msgid "(RU, КПП) in addition to INN for orgs; reason for registration at FNS"
-msgstr ""
+msgstr "(RU, КПП) dodatno za INN za orgs; razlog za registraciju u FNS"
 
 #. Company.properties.okvedCode.label
 #: followthemoney/schema/Company.yaml
 msgid "OKVED(2) Classifier"
-msgstr ""
+msgstr "OKVED(2) Klasifikator"
 
 #. Company.properties.okvedCode.description
 #: followthemoney/schema/Company.yaml
 msgid ""
 "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
 msgstr ""
+"(RU, ОКВЭД) Klasifikator ekonomske aktivnosti. OKVED2 je isto, samo novije"
 
 #. Company.properties.okopfCode.label
 #: followthemoney/schema/Company.yaml
@@ -278,7 +279,7 @@ msgstr "OKOPF"
 #. Company.properties.okopfCode.description
 #: followthemoney/schema/Company.yaml
 msgid "(RU, ОКОПФ) What kind of business entity"
-msgstr ""
+msgstr "(RU, ОКОПФ) Koji tip biznis entiteta"
 
 #. Company.properties.fnsCode.label
 #: followthemoney/schema/Company.yaml
@@ -321,6 +322,8 @@ msgid ""
 "(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is "
 "organisation region, BBB is district, CCCCCC number at a specific branch"
 msgstr ""
+"(RU, ПФР) Registarski broj penzionog fonda. AAA-BBB-CCCCCC, gdje je AAA "
+"organazacija regiona, BBB distrikt, CCCCCC broj na specifičnom ogranku"
 
 #. Company.properties.oksmCode.label
 #: followthemoney/schema/Company.yaml
@@ -330,7 +333,7 @@ msgstr "OKSM"
 #. Company.properties.oksmCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Russian (ОКСМ) countries classifer"
-msgstr ""
+msgstr "Ruski (ОКСМ) klasifikator zemalja"
 
 #. Contract.label
 #. ContractAward.properties.contract.label
@@ -350,18 +353,18 @@ msgstr "Ugovori"
 #: followthemoney/schema/Contract.yaml
 msgid ""
 "An contract or contract lot issued by an authority. Multiple lots may be "
-"awarded to different suppliers (see ContractAward)."
+"awarded to different suppliers (see ContractAward).\n"
 msgstr ""
 
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract authority"
-msgstr ""
+msgstr "Ugovorni autoritet"
 
 #. Contract.properties.authority.plural
 #: followthemoney/schema/Contract.yaml
 msgid "Contract authorities"
-msgstr ""
+msgstr "Ugovorni autoriteti"
 
 #. Contract.properties.authority.reverse.label
 #: followthemoney/schema/Contract.yaml
@@ -378,7 +381,7 @@ msgstr "Tip"
 
 #. Contract.properties.type.description
 #: followthemoney/schema/Contract.yaml
-msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
+msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services).\n"
 msgstr ""
 
 #. Contract.properties.contractDate.label
@@ -1235,15 +1238,11 @@ msgstr "ID zapisa"
 msgid "Source URL"
 msgstr "URL izvora"
 
-#. Land.label
-#: followthemoney/schema/Land.yml
-msgid "Land"
-msgstr "Zemljište"
-
-#. Land.plural
-#: followthemoney/schema/Land.yml
-msgid "Lands"
-msgstr "Zemljišta"
+#. Interval.properties.alephUrl.label
+#. Thing.properties.alephUrl.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
+msgid "Aleph URL"
+msgstr ""
 
 #. LegalEntity.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -1792,6 +1791,16 @@ msgstr ""
 msgid "Record date"
 msgstr "Datum zapisa"
 
+#. Land.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Land"
+msgstr "Zemljište"
+
+#. Land.plural
+#: followthemoney/schema/RealEstate.yaml
+msgid "Lands"
+msgstr "Zemljišta"
+
 #. Relationship.label
 #. Relationship.properties.relationship.label
 #: followthemoney/schema/Relationship.yaml
@@ -1961,7 +1970,7 @@ msgstr "Prethodno ime"
 
 #. Thing.properties.weakAlias.label
 #: followthemoney/schema/Thing.yaml
-msgid "Weak aliass"
+msgid "Weak alias"
 msgstr ""
 
 #. Thing.properties.sourceUrl.label
@@ -1969,9 +1978,14 @@ msgstr ""
 msgid "Source link"
 msgstr ""
 
-#. Thing.properties.alephUrl.label
+#. Thing.properties.wikipediaUrl.label
 #: followthemoney/schema/Thing.yaml
-msgid "Federated Aleph link"
+msgid "Wikipedia Article"
+msgstr ""
+
+#. Thing.properties.wikidataId.label
+#: followthemoney/schema/Thing.yaml
+msgid "Wikidata ID"
 msgstr ""
 
 #. Thing.properties.keywords.label
@@ -2064,9 +2078,19 @@ msgstr ""
 msgid "Model"
 msgstr ""
 
+#. Vehicle.properties.owner.reverse.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicles owned"
+msgstr ""
+
 #. Vehicle.properties.operator.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Operator"
+msgstr ""
+
+#. Vehicle.properties.operator.reverse.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicles operated"
 msgstr ""
 
 #. Vehicle.properties.buildDate.label
@@ -2154,50 +2178,50 @@ msgstr "Prošli tipovi"
 msgid "MMSI"
 msgstr ""
 
-#: followthemoney/types/country.py:24
+#: followthemoney/types/country.py:23
 msgid "Global"
 msgstr ""
 
-#: followthemoney/types/country.py:25
+#: followthemoney/types/country.py:24
 msgid "European Union"
 msgstr ""
 
-#: followthemoney/types/country.py:26
+#: followthemoney/types/country.py:25
 msgid "Kosovo"
 msgstr ""
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:26
 msgid "Yugoslavia"
 msgstr ""
 
-#: followthemoney/types/country.py:28
+#: followthemoney/types/country.py:27
 msgid "Serbia and Montenegro"
 msgstr ""
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:28
 msgid "Soviet Union"
 msgstr ""
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:29
 msgid "Abkhazia"
 msgstr ""
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:30
 msgid "South Ossetia"
 msgstr ""
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:31
 msgid "Somaliland"
 msgstr ""
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:32
 msgid "Wales"
 msgstr ""
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:33
 msgid "Scotland"
 msgstr ""
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:34
 msgid "Transnistria"
 msgstr ""

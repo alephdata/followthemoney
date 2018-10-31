@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-15 19:08+0200\n"
+"POT-Creation-Date: 2018-10-31 09:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -32,7 +32,7 @@ msgstr "Обязательное значение"
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
 
-#: followthemoney/proxy.py:170
+#: followthemoney/proxy.py:196
 msgid "No schema for entity."
 msgstr "Для сущности отсутствует схема."
 
@@ -352,11 +352,8 @@ msgstr "Контракты"
 #: followthemoney/schema/Contract.yaml
 msgid ""
 "An contract or contract lot issued by an authority. Multiple lots may be "
-"awarded to different suppliers (see ContractAward)."
+"awarded to different suppliers (see ContractAward).\n"
 msgstr ""
-"Контракт или лот, размещённый гос. органом. Исполнителями отдельных лотов в "
-"рамках одного контракта могут быть определены различные поставщики (см. "
-"Контракты)."
 
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
@@ -383,10 +380,8 @@ msgstr "Тип"
 
 #. Contract.properties.type.description
 #: followthemoney/schema/Contract.yaml
-msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services)."
+msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services).\n"
 msgstr ""
-"Тип контракта: W (Выполнение работ), U (Поставка товаров), S (Оказание "
-"услуг)."
 
 #. Contract.properties.contractDate.label
 #: followthemoney/schema/Contract.yaml
@@ -451,7 +446,7 @@ msgstr "Получено контрактов"
 #. ContractAward.properties.contract.reverse.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Lots awarded"
-msgstr "Получено лотов по гос. контрактам"
+msgstr "Лоты"
 
 #. ContractAward.properties.lotNumber.label
 #: followthemoney/schema/ContractAward.yaml
@@ -1245,15 +1240,11 @@ msgstr "ID записи"
 msgid "Source URL"
 msgstr "Ссылка на источник"
 
-#. Land.label
-#: followthemoney/schema/Land.yml
-msgid "Land"
-msgstr "Недвижимость"
-
-#. Land.plural
-#: followthemoney/schema/Land.yml
-msgid "Lands"
-msgstr "Недвижимость"
+#. Interval.properties.alephUrl.label
+#. Thing.properties.alephUrl.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
+msgid "Aleph URL"
+msgstr ""
 
 #. LegalEntity.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -1807,6 +1798,16 @@ msgstr "Назначение земельного участка"
 msgid "Record date"
 msgstr "Дата записи"
 
+#. Land.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Land"
+msgstr "Недвижимость"
+
+#. Land.plural
+#: followthemoney/schema/RealEstate.yaml
+msgid "Lands"
+msgstr "Недвижимость"
+
 #. Relationship.label
 #. Relationship.properties.relationship.label
 #: followthemoney/schema/Relationship.yaml
@@ -1980,18 +1981,23 @@ msgstr "Предыдущее название"
 
 #. Thing.properties.weakAlias.label
 #: followthemoney/schema/Thing.yaml
-msgid "Weak aliass"
-msgstr "Другое название"
+msgid "Weak alias"
+msgstr ""
 
 #. Thing.properties.sourceUrl.label
 #: followthemoney/schema/Thing.yaml
 msgid "Source link"
 msgstr "Ссылка на источник"
 
-#. Thing.properties.alephUrl.label
+#. Thing.properties.wikipediaUrl.label
 #: followthemoney/schema/Thing.yaml
-msgid "Federated Aleph link"
-msgstr "Федеративная ссылка"
+msgid "Wikipedia Article"
+msgstr ""
+
+#. Thing.properties.wikidataId.label
+#: followthemoney/schema/Thing.yaml
+msgid "Wikidata ID"
+msgstr ""
 
 #. Thing.properties.keywords.label
 #: followthemoney/schema/Thing.yaml
@@ -2083,10 +2089,20 @@ msgstr "Регистрационный номер"
 msgid "Model"
 msgstr "Модель"
 
+#. Vehicle.properties.owner.reverse.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicles owned"
+msgstr ""
+
 #. Vehicle.properties.operator.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Operator"
 msgstr "Оператор"
+
+#. Vehicle.properties.operator.reverse.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicles operated"
+msgstr ""
 
 #. Vehicle.properties.buildDate.label
 #: followthemoney/schema/Vehicle.yaml
@@ -2173,50 +2189,50 @@ msgstr "Предыдущие типы судна"
 msgid "MMSI"
 msgstr "MMSI"
 
-#: followthemoney/types/country.py:24
+#: followthemoney/types/country.py:23
 msgid "Global"
 msgstr "Все страны мира"
 
-#: followthemoney/types/country.py:25
+#: followthemoney/types/country.py:24
 msgid "European Union"
 msgstr "Европейский союз"
 
-#: followthemoney/types/country.py:26
+#: followthemoney/types/country.py:25
 msgid "Kosovo"
 msgstr "Косово"
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:26
 msgid "Yugoslavia"
 msgstr "Югославия"
 
-#: followthemoney/types/country.py:28
+#: followthemoney/types/country.py:27
 msgid "Serbia and Montenegro"
 msgstr "Сербия и Черногория"
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:28
 msgid "Soviet Union"
 msgstr "Советский Союз"
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:29
 msgid "Abkhazia"
 msgstr "Абхазия"
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:30
 msgid "South Ossetia"
 msgstr "Южная Осетия"
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:31
 msgid "Somaliland"
 msgstr "Сомалиленд"
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:32
 msgid "Wales"
 msgstr "Уэльс"
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:33
 msgid "Scotland"
 msgstr "Шотландия"
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:34
 msgid "Transnistria"
 msgstr "Приднестровье"
