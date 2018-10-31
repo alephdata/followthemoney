@@ -1,7 +1,10 @@
 import click
+import logging
 
 from followthemoney_util.cli import cli
 from followthemoney_util.util import read_object, write_object, load_enricher
+
+log = logging.getLogger(__name__)
 
 
 @cli.command('enrich', help="Find matching entities remotely")
@@ -15,18 +18,12 @@ def enrich(enricher):
             entity = read_object(stdin)
             if entity is None:
                 break
-            has_result = False
             for result in enricher.enrich_entity(entity):
-                has_result = True
-                write_object(stdout, result)
-            if not has_result:
-                # emit the original entity anyways for streaming.
-                result = enricher.make_result(entity)
                 write_object(stdout, result)
     except BrokenPipeError:
         pass
     except Exception:
-        raise
+        log.exception("Error during enrichment")
     finally:
         enricher.close()
 
@@ -47,6 +44,6 @@ def expand(enricher):
     except BrokenPipeError:
         pass
     except Exception:
-        raise
+        log.exception("Error during enrichment expansion")
     finally:
         enricher.close()

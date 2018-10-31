@@ -6,14 +6,18 @@ from followthemoney import model
 from followthemoney_enrich import get_enricher, enricher_cache
 from followthemoney_enrich.result import Result
 
+ENRICHERS = {}
 
-def load_enricher(enricher):
-    clazz = get_enricher(enricher)
-    if clazz is None:
-        raise click.BadParameter("Unknown enricher: %s" % enricher)
-    enricher = clazz()
-    enricher.cache = enricher_cache()
-    return enricher
+
+def load_enricher(name):
+    if name not in ENRICHERS:
+        clazz = get_enricher(name)
+        if clazz is None:
+            raise click.BadParameter("Unknown enricher: %s" % name)
+        enricher = clazz()
+        enricher.cache = enricher_cache()
+        ENRICHERS[name] = enricher
+    return ENRICHERS[name]
 
 
 def write_object(stream, obj):
