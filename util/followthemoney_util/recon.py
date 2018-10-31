@@ -24,7 +24,7 @@ def auto_match(threshold):
 
 @cli.command('apply-recon', help="Apply matches from a recon file")  # noqa
 @click.option('-r', '--recon', type=click.File('r'), required=True)  # noqa
-def auto_match(recon):
+def apply_recon(recon):
     try:
         linker = EntityLinker()
         for recon in Recon.from_file(recon):

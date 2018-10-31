@@ -29,7 +29,8 @@ setup(
         'schwifty >= 2018.4.1',
         'urlnormalizer >= 1.2.0',
         'pytz >= 2018.5',
-        'rdflib >= 4.1'
+        'rdflib >= 4.1',
+        'networkx >= 2.2'
     ],
     extras_require={
         'dev': [

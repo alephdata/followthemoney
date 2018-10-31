@@ -1,9 +1,10 @@
 # from nose.tools import assert_raises
 from unittest import TestCase
+from networkx import DiGraph
 
 from followthemoney import model
 from followthemoney.types import registry
-from followthemoney.link import Link
+from followthemoney.graph import Link, Node
 
 ENTITY = {
     'id': 'test',
@@ -22,11 +23,11 @@ ENTITY = {
 
 class LinkTestCase(TestCase):
 
-    def test_link_pack(self):
+    def test_base(self):
         prop = model.get_qname('Thing:name')
-        link = Link('banana', registry.entity, prop, "Theodore Böln")
-        assert link.subject == 'banana'
-        assert link.subject_type == registry.entity
+        node = Node(registry.entity, 'banana')
+        link = Link(node, prop, "Theodore Böln")
+        assert link.subject == node
 
         value = link.to_tuple()
         other = link.from_tuple(model, value)
@@ -36,19 +37,20 @@ class LinkTestCase(TestCase):
 
     def test_invert(self):
         prop = model.get_qname('Thing:name')
-        link = Link('banana', registry.entity, prop, "Theodore")
+        node = Node(registry.entity, 'banana')
+        link = Link(node, prop, "Theodore")
         assert not link.inverted
         inv = link.invert()
         assert inv.inverted
         assert inv.rdf() is None
 
-        banana = 'banana'
-        peach = 'peach'
+        banana = Node(registry.entity, 'banana')
+        peach = Node(registry.entity, 'peach')
         prop = model.get_qname('Thing:sameAs')
-        link = Link(banana, registry.entity, prop, peach)
+        link = Link(banana, prop, peach.value)
         inv = link.invert()
         assert inv.subject == peach
-        assert inv.value == banana
+        assert inv.value_node == banana
         assert inv.prop == link.prop
 
     def test_make_links(self):
@@ -66,3 +68,28 @@ class LinkTestCase(TestCase):
             if p == registry.phone:
                 assert str(o) == 'tel:+12025557612', o
         # assert False, triples
+
+    def test_graph(self):
+        g = DiGraph()
+        proxy = model.get_proxy(ENTITY)
+        node = proxy.node
+        self.assertEqual(str(node), node.id)
+        for link in proxy.links:
+            link.to_digraph(g)
+        self.assertEqual(g.number_of_edges(), 8)
+        self.assertEqual(g.number_of_nodes(), 9)
+        self.assertIn(node.id, g.nodes)
+
+        prop = model.get_qname('Thing:name')
+        link = Link(Node(registry.name, 'Bob'), prop, proxy.id, inverted=True)
+        link.to_digraph(g)
+        self.assertEqual(g.number_of_edges(), 9)
+
+        link = Link(node, prop, 'Blub', weight=0)
+        link.to_digraph(g)
+        self.assertEqual(g.number_of_edges(), 9)
+
+        prop = model.get_qname('Thing:summary')
+        link = Link(node, prop, 'This is a text')
+        link.to_digraph(g)
+        self.assertEqual(g.number_of_edges(), 9)

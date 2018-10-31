@@ -17,19 +17,3 @@ def result_entities():
                 write_object(stdout, entity)
     except BrokenPipeError:
         pass
-
-
-@cli.command('filter-results', help="Filter results based on a recon file")
-def filter_results():
-    # try:
-    #     stdin = click.get_text_stream('stdin')
-    #     stdout = click.get_text_stream('stdout')
-    #     while True:
-    #         result = read_object(stdin)
-    #         if result is None:
-    #             break
-    #         for entity in result.entities:
-    #             write_object(stdout, entity)
-    # except BrokenPipeError:
-    #     pass
-    pass

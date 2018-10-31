@@ -22,7 +22,9 @@ translate: dev
 	pybabel compile -d followthemoney/translations -D followthemoney -f
 
 clean:
-	rm -rf dist build .eggs
+	rm -rf dist build .eggs coverage-report .coverage
+	rm -rf enrich/dist enrich/build
+	rm -rf util/dist util/build
 	find . -name '*.egg-info' -exec rm -fr {} +
 	find . -name '*.egg' -exec rm -f {} +
 	find . -name '*.pyc' -exec rm -f {} +

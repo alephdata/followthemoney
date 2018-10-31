@@ -5,7 +5,7 @@ from normality import stringify
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
-from followthemoney.link import Link
+from followthemoney.graph import Link, Node
 from followthemoney.util import key_bytes, gettext
 
 
@@ -113,9 +113,18 @@ class EntityProxy(object):
         return data
 
     @property
+    def node(self):
+        if self.id is None:
+            return
+        return Node(registry.entity, self.id)
+
+    @property
     def links(self):
+        node = self.node
+        if node is None:
+            return
         for prop, value in self.itervalues():
-            yield Link(self.id, registry.entity, prop, value)
+            yield Link(node, prop, value)
 
     @property
     def caption(self):
