@@ -2,9 +2,9 @@
 test:
 	echo "nah"
 
-upload:
-	git push
-	python setup.py sdist bdist_wheel upload -r pypi
+upload: clean
+	python setup.py sdist bdist_wheel
+	twine upload dist/*
 
 clean:
 	rm -rf dist build
