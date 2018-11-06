@@ -17,10 +17,11 @@ class Property(object):
         self._description = data.get('description')
         self.caption = data.get('caption', False)
         self.required = data.get('required', False)
-        self._type = data.get('type', 'string')
-        self.type = registry.get(self._type)
+
+        type_name = data.get('type', 'string')
+        self.type = registry.get(type_name)
         if self.type is None:
-            raise InvalidModel("Invalid type: %s" % self._type)
+            raise InvalidModel("Invalid type: %s" % type_name)
 
         self.range = None
         self.reverse = None
@@ -82,7 +83,7 @@ class Property(object):
             'description': self.description,
             'caption': self.caption,
             'uri': str(self.uri),
-            'type': self._type
+            'type': self.type.name
         }
         if self.type == registry.entity:
             data['stub'] = self.stub
