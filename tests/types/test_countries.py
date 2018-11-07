@@ -1,11 +1,12 @@
 import unittest
 
-from followthemoney.types import countries
+from followthemoney.types import registry
 
 
 class CountriesTest(unittest.TestCase):
 
     def test_country_codes(self):
+        countries = registry.country
         self.assertEqual(countries.clean('DE'), 'de')
         self.assertTrue(countries.validate('DE'))
         self.assertFalse(countries.validate('DEU'))
@@ -20,6 +21,7 @@ class CountriesTest(unittest.TestCase):
         assert 'iso-3166-1:eu' in countries.rdf('eu')
 
     def test_country_names(self):
+        countries = registry.country
         self.assertEqual(countries.clean(None), None)
         self.assertEqual(countries.clean('Takatukaland', guess=False), None)
         self.assertEqual(countries.clean('Germany'), 'de')

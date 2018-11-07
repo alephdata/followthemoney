@@ -1,6 +1,8 @@
 import unittest
 
-from followthemoney.types import emails
+from followthemoney.types import registry
+
+emails = registry.email
 
 
 class EmailsTest(unittest.TestCase):

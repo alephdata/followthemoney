@@ -1,6 +1,8 @@
 import unittest
 
-from followthemoney.types import identifiers
+from followthemoney.types import registry
+
+identifiers = registry.identifier
 
 
 class IdentifiersTest(unittest.TestCase):

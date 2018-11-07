@@ -2,7 +2,9 @@
 import unittest
 from datetime import datetime
 
-from followthemoney.types import dates
+from followthemoney.types import registry
+
+dates = registry.date
 
 
 class DatesTest(unittest.TestCase):

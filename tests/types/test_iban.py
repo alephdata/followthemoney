@@ -1,6 +1,8 @@
 import unittest
 
-from followthemoney.types import ibans
+from followthemoney.types import registry
+
+ibans = registry.iban
 
 
 class IbansTest(unittest.TestCase):

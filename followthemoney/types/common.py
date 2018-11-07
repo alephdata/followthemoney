@@ -86,20 +86,3 @@ class PropertyType(object):
 
     def __repr__(self):
         return '<%s()>' % type(self).__name__
-
-
-class Registry(object):
-
-    def __init__(self):
-        self.groups = {}
-        self.names = {}
-
-    def add(self, instance):
-        setattr(self, instance.name, instance)
-        self.names[instance.name] = instance
-        if instance.group is not None:
-            self.groups[instance.group] = instance
-        return instance
-
-    def get(self, name):
-        return self.names.get(name)

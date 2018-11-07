@@ -50,6 +50,24 @@ setup(
     entry_points={
         'babel.extractors': {
             'ftmmodel = followthemoney.messages:extract_yaml'
+        },
+        'followthemoney.types': {
+            'url = followthemoney.types.url:UrlType',
+            'name = followthemoney.types.name:NameType',
+            'domain = followthemoney.types.domain:DomainType',
+            'email = followthemoney.types.email:EmailType',
+            'ip = followthemoney.types.ip:IpType',
+            'iban = followthemoney.types.iban:IbanType',
+            'address = followthemoney.types.address:AddressType',
+            'date = followthemoney.types.date:DateType',
+            'phone = followthemoney.types.phone:PhoneType',
+            'country = followthemoney.types.country:CountryType',
+            'language = followthemoney.types.language:LanguageType',
+            'identifier = followthemoney.types.identifier:IdentifierType',
+            'entity = followthemoney.types.entity:EntityType',
+            'text = followthemoney.types.text:TextType',
+            'string = followthemoney.types.string:StringType',
+            'number = followthemoney.types.number:NumberType'
         }
     },
     tests_require=['coverage', 'nose']

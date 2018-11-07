@@ -1,6 +1,8 @@
 import unittest
 
-from followthemoney.types import ips
+from followthemoney.types import registry
+
+ips = registry.ip
 
 
 class IPsTest(unittest.TestCase):

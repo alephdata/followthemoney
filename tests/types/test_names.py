@@ -1,6 +1,8 @@
 import unittest
 
-from followthemoney.types import names
+from followthemoney.types import registry
+
+names = registry.name
 
 
 class NamesTest(unittest.TestCase):

@@ -1,6 +1,8 @@
 import unittest
 
-from followthemoney.types import domains
+from followthemoney.types import registry
+
+domains = registry.domain
 
 
 class DomainsTest(unittest.TestCase):

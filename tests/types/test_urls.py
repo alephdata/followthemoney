@@ -1,16 +1,18 @@
 import unittest
 
-from followthemoney.types import urls
+from followthemoney.types import registry
 
 
 class UrlsTest(unittest.TestCase):
 
     def test_is_url(self):
+        urls = registry.url
         self.assertTrue(urls.validate('http://foo.org'))
         self.assertFalse(urls.validate(None))
         self.assertFalse(urls.validate('hello'))
 
     def test_parse_url(self):
+        urls = registry.url
         self.assertEqual(urls.clean('http://foo.com'), 'http://foo.com/')
         self.assertEqual(urls.clean('http://foo.com/#lala'), 'http://foo.com/')
 
@@ -20,4 +22,5 @@ class UrlsTest(unittest.TestCase):
         self.assertEqual(urls.clean('http://FOO.com/A'), 'http://foo.com/A')
 
     def test_specificity(self):
+        urls = registry.get('url')
         self.assertEqual(urls.specificity('http://foo.com/'), 1)

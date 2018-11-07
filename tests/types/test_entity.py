@@ -1,6 +1,8 @@
 import unittest
 
-from followthemoney.types import entities
+from followthemoney.types import registry
+
+entities = registry.entity
 
 
 class EntityTest(unittest.TestCase):
