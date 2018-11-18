@@ -1,0 +1,24 @@
+Succession:
+  label: "Succession"
+  extends: Interest
+  icon: fa-id-badge
+  matchable: false
+  featured:
+    - predecessor
+    - successor
+    - date
+  properties:
+    predecessor:
+      label: "Predecessor"
+      type: entity
+      schema: LegalEntity
+      reverse:
+        name: successors
+        label: "Successors" 
+    successor:
+      label: "Successor"
+      type: entity
+      schema: LegalEntity
+      reverse:
+        name: predecessors
+        label: "Predecessors"
