@@ -13,15 +13,18 @@ class Model(object):
     def __init__(self, path):
         self.path = path
         self.schemata = {}
+        self.properties = set()
+        self.qnames = {}
         for (path, _, filenames) in os.walk(self.path):
             for filename in filenames:
                 self._load(os.path.join(path, filename))
         self.generate()
 
     def generate(self):
-        self.properties = set()
         for schema in self:
             schema.generate()
+        for prop in self.properties:
+            self.qnames[prop.qname] = prop
 
     def _load(self, filepath):
         with open(filepath, 'r') as fh:
@@ -37,9 +40,7 @@ class Model(object):
         return self.schemata.get(name)
 
     def get_qname(self, qname):
-        if not hasattr(self, '_qnames'):
-            self._qnames = {p.qname: p for p in self.properties}
-        return self._qnames.get(qname)
+        return self.qnames.get(qname)
 
     def __getitem__(self, name):
         schema = self.get(name)
@@ -68,21 +69,20 @@ class Model(object):
         """
         left = self.get(left) or self.get(right)
         right = self.get(right) or self.get(left)
-        left_schemata = list(left.schemata)
-        right_schemata = list(right.schemata)
-        if right in left_schemata:
+        if left.is_a(right):
             return left
-        if left in right_schemata:
+        if right.is_a(left):
             return right
+        common = list(left.schemata.intersection(right.schemata))
+        if not len(common):
+            msg = "No common ancestor: %s and %s"
+            raise InvalidData(msg % (left, right))
 
-        # Find a common ancestor:
-        for left in left_schemata:
-            for right in right_schemata:
-                if left == right:
-                    return left
-
-        msg = "No common ancestor: %s and %s"
-        raise InvalidData(msg % (left, right))
+        specific = common[0]
+        for schema in common[1:]:
+            if schema.is_a(specific):
+                specific = schema
+        return specific
 
     def make_entity(self, schema, key_prefix=None):
         schema = self.get(schema)

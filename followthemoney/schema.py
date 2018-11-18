@@ -16,11 +16,11 @@ class Schema(object):
     def __init__(self, model, name, data):
         self.model = model
         self.name = name
+        self.data = data
         self.icon = data.get('icon')
         self._label = data.get('label', name)
         self._plural = data.get('plural', self.label)
         self._description = data.get('description')
-        self._extends = ensure_list(data.get('extends'))
         self.featured = ensure_list(data.get('featured'))
         self.uri = URIRef(data.get('rdf', NS[name]))
 
@@ -32,36 +32,48 @@ class Schema(object):
         # as land plots, assets etc.
         self.matchable = as_bool(data.get('matchable'), True)
 
-        self._own_properties = []
+        self.extends = set()
+        self.schemata = set([self])
+        self.names = set([self.name])
+        self.properties = {}
         for name, prop in data.get('properties', {}).items():
-            self._own_properties.append(Property(self, name, prop))
+            self.properties[name] = Property(self, name, prop)
 
     def generate(self):
-        for prop in self._own_properties:
+        for parent in ensure_list(self.data.get('extends')):
+            parent = self.model.get(parent)
+            parent.generate()
+
+            for name, prop in parent.properties.items():
+                if name not in self.properties:
+                    self.properties[name] = prop
+
+            self.extends.add(parent)
+            self.schemata.update(parent.schemata)
+            self.names.update(parent.names)
+
+        for prop in self.properties.values():
             prop.generate()
-            self.model.properties.add(prop)
 
         for featured in self.featured:
             if self.get(featured) is None:
                 raise InvalidModel("Missing featured property: %s" % featured)
 
     def _add_reverse(self, data, other):
-        name = data.pop('name', None)
+        name = data.get('name', None)
         if name is None:
             raise InvalidModel("Unnamed reverse: %s" % other)
 
         prop = self.get(name)
         if prop is None:
             data.update({
-                'type': 'entity',
+                'type': registry.entity.name,
                 'reverse': {'name': other.name},
-                'schema': other.schema.name
+                'schema': other.schema.name,
+                'stub': True
             })
-            prop = Property(self, name, data, stub=True)
+            prop = Property(self, name, data)
             prop.generate()
-            self._own_properties.append(prop)
-            self._flush_properties()
-        assert prop.type == registry.entity, prop.type
         return prop
 
     @property
@@ -75,26 +87,6 @@ class Schema(object):
     @property
     def description(self):
         return gettext(self._description)
-
-    @property
-    def extends(self):
-        """Return the inherited schemata."""
-        for base in self._extends:
-            basecls = self.model.get(base)
-            if basecls is None:
-                raise InvalidModel("No such schema: %s" % base)
-            yield basecls
-
-    @property
-    def schemata(self):
-        """Return the full inheritance chain."""
-        seen = set([self])
-        yield self
-        for base in self.extends:
-            for schema in base.schemata:
-                if schema not in seen:
-                    seen.add(schema)
-                    yield schema
 
     @property
     def descendants(self):
@@ -120,32 +112,8 @@ class Schema(object):
             if schema.matchable:
                 yield schema
 
-    @property
-    def names(self):
-        return [s.name for s in self.schemata]
-
     def is_a(self, parent):
-        for schema in self.schemata:
-            if schema == parent:
-                return True
-        return False
-
-    @property
-    def properties(self):
-        """Return properties, those defined locally and in ancestors."""
-        if not hasattr(self, '_properties') or self._properties is None:
-            self._properties = {}
-            for schema in self.extends:
-                for name, prop in schema.properties.items():
-                    self._properties[name] = prop
-            for prop in self._own_properties:
-                self._properties[prop.name] = prop
-        return self._properties
-
-    def _flush_properties(self):
-        for schema in self.descendants:
-            schema._flush_properties()
-        self._properties = None
+        return parent in self.schemata
 
     def get(self, name):
         return self.properties.get(name)
@@ -170,6 +138,8 @@ class Schema(object):
             'plural': self.plural,
             'icon': self.icon,
             'uri': str(self.uri),
+            'schemata': self.names,
+            'extends': [e.name for e in self.extends],
             'abstract': self.abstract,
             'matchable': self.matchable,
             'description': self.description,

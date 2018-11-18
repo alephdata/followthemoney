@@ -15,7 +15,7 @@ Thing:
     sameAs:
       label: "Same as"
       type: entity
-      range: Thing
+      schema: Thing
       rdf: http://www.w3.org/2002/07/owl#sameAs
       reverse:
         name: sameAs

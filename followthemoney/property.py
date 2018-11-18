@@ -9,8 +9,9 @@ from followthemoney.util import gettext, NS
 
 class Property(object):
 
-    def __init__(self, schema, name, data, stub=False):
+    def __init__(self, schema, name, data):
         self.schema = schema
+        self.model = schema.model
         self.name = stringify(name)
         self.qname = '%s:%s' % (schema.name, self.name)
         self.data = data
@@ -18,26 +19,25 @@ class Property(object):
         self._description = data.get('description')
         self.caption = data.get('caption', False)
         self.required = data.get('required', False)
+        self.stub = data.get('stub', False)
 
-        type_name = data.get('type', 'string')
-        self.type = registry.get(type_name)
+        type_ = data.get('type', 'string')
+        self.type = registry.get(type_)
         if self.type is None:
-            raise InvalidModel("Invalid type: %s" % type_name)
+            raise InvalidModel("Invalid type: %s" % type_)
 
         self.range = None
         self.reverse = None
-        self.stub = stub
         self.uri = URIRef(data.get('rdf', NS[self.qname]))
 
     def generate(self):
-        range_ = self.data.get('schema', 'Thing')
-        if range_:
-            self.range = self.schema.model.get(range_)
-            if self.range is None:
-                raise InvalidModel("Cannot find range: %s" % self._range)
+        self.model.properties.add(self)
+
+        if self.range is None and self.type == registry.entity:
+            self.range = self.model.get(self.data.get('schema'))
 
         reverse_ = self.data.get('reverse')
-        if self.range and reverse_:
+        if self.reverse is None and self.range and reverse_:
             if not is_mapping(reverse_):
                 raise InvalidModel("Invalid reverse: %s" % self)
             self.reverse = self.range._add_reverse(reverse_, self)
@@ -80,11 +80,10 @@ class Property(object):
             'label': self.label,
             'description': self.description,
             'caption': self.caption,
+            'stub': self.stub,
             'uri': str(self.uri),
             'type': self.type.name
         }
-        if self.type == registry.entity:
-            data['stub'] = self.stub
         if self.range:
             data['schema'] = self.range.name
         if self.reverse:
