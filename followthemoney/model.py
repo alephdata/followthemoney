@@ -22,8 +22,6 @@ class Model(object):
         self.properties = set()
         for schema in self:
             schema.generate()
-            for prop in schema.properties.values():
-                self.properties.add(prop)
 
     def _load(self, filepath):
         with open(filepath, 'r') as fh:

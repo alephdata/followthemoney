@@ -1,16 +1,17 @@
+from normality import stringify
 from banal import ensure_list, is_mapping
 from rdflib import URIRef
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry
-from followthemoney.util import gettext, NAMESPACE
+from followthemoney.util import gettext, NS
 
 
 class Property(object):
 
     def __init__(self, schema, name, data, stub=False):
         self.schema = schema
-        self.name = name.strip()
+        self.name = stringify(name)
         self.qname = '%s:%s' % (schema.name, self.name)
         self.data = data
         self._label = data.get('label', name)
@@ -26,10 +27,7 @@ class Property(object):
         self.range = None
         self.reverse = None
         self.stub = stub
-
-        self.uri = NAMESPACE[self.qname]
-        if 'rdf' in data:
-            self.uri = URIRef(data.get('rdf'))
+        self.uri = URIRef(data.get('rdf', NS[self.qname]))
 
     def generate(self):
         range_ = self.data.get('schema', 'Thing')
@@ -94,4 +92,4 @@ class Property(object):
         return data
 
     def __repr__(self):
-        return '<Property(%r, %r)>' % (self.schema, self.name)
+        return '<Property(%r)>' % self.qname

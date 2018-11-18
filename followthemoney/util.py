@@ -7,7 +7,7 @@ from rdflib import Namespace
 from banal import is_mapping, is_sequence
 from banal import unique_list, ensure_list
 
-NAMESPACE = Namespace('https://w3id.org/ftm#')
+NS = Namespace('https://w3id.org/ftm#')
 DEFAULT_LOCALE = 'en'
 i18n_path = os.path.join(os.path.dirname(__file__), 'translations')
 state = local()

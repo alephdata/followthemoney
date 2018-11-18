@@ -4,7 +4,7 @@ from banal import ensure_list, ensure_dict, as_bool
 from followthemoney.property import Property
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData, InvalidModel
-from followthemoney.util import gettext, NAMESPACE
+from followthemoney.util import gettext, NS
 
 
 class Schema(object):
@@ -16,17 +16,13 @@ class Schema(object):
     def __init__(self, model, name, data):
         self.model = model
         self.name = name
-        self.data = data
         self.icon = data.get('icon')
         self._label = data.get('label', name)
         self._plural = data.get('plural', self.label)
         self._description = data.get('description')
         self._extends = ensure_list(data.get('extends'))
         self.featured = ensure_list(data.get('featured'))
-
-        self.uri = NAMESPACE[name]
-        if 'rdf' in data:
-            self.uri = URIRef(data.get('rdf'))
+        self.uri = URIRef(data.get('rdf', NS[name]))
 
         # Do not show in listings:
         self.abstract = as_bool(data.get('abstract'), False)
@@ -43,6 +39,7 @@ class Schema(object):
     def generate(self):
         for prop in self._own_properties:
             prop.generate()
+            self.model.properties.add(prop)
 
         for featured in self.featured:
             if self.get(featured) is None:
