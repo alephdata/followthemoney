@@ -17,7 +17,6 @@ class Schema(object):
         self.model = model
         self.name = name
         self.data = data
-        self.icon = data.get('icon')
         self._label = data.get('label', name)
         self._plural = data.get('plural', self.label)
         self._description = data.get('description')
@@ -35,6 +34,7 @@ class Schema(object):
         self.extends = set()
         self.schemata = set([self])
         self.names = set([self.name])
+        self.descendants = set()
         self.properties = {}
         for name, prop in data.get('properties', {}).items():
             self.properties[name] = Property(self, name, prop)
@@ -49,8 +49,10 @@ class Schema(object):
                     self.properties[name] = prop
 
             self.extends.add(parent)
-            self.schemata.update(parent.schemata)
-            self.names.update(parent.names)
+            for ancestor in parent.schemata:
+                self.schemata.add(ancestor)
+                self.names.add(ancestor.name)
+                ancestor.descendants.add(self)
 
         for prop in self.properties.values():
             prop.generate()
@@ -89,14 +91,6 @@ class Schema(object):
         return gettext(self._description)
 
     @property
-    def descendants(self):
-        for schema in self.model:
-            if schema == self:
-                continue
-            if self in schema.schemata:
-                yield schema
-
-    @property
     def matchable_schemata(self):
         """The set of comparable types."""
         if not self.matchable:
@@ -106,8 +100,7 @@ class Schema(object):
         # example, a Company may be compared to a Legal Entity,
         # but it makes no sense to compare it to an Aircraft.
         matchable = set(self.schemata)
-        for schema in self.descendants:
-            matchable.add(schema)
+        matchable.update(self.descendants)
         for schema in matchable:
             if schema.matchable:
                 yield schema
@@ -136,7 +129,6 @@ class Schema(object):
         data = {
             'label': self.label,
             'plural': self.plural,
-            'icon': self.icon,
             'uri': str(self.uri),
             'schemata': self.names,
             'extends': [e.name for e in self.extends],
