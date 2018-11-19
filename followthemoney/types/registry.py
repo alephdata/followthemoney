@@ -33,5 +33,5 @@ class Registry(object):
     def __getattr__(self, name):
         type_ = self.get(name)
         if type_ is None:
-            raise AttributeError()
+            raise AttributeError(name)
         return type_
