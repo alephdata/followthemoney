@@ -1,12 +1,12 @@
 CourtCase:
   label: Court case
   plural: Court cases
-  extends: Interval
+  extends: Thing
   icon: fa-briefcase
   matchable: false
   featured:
     - name
-    - date
+    - fileDate
     - caseNumber
   properties:
     category:
@@ -15,12 +15,6 @@ CourtCase:
       label: Type
     status:
       label: Status
-    name:
-      label: Name
-      type: name
-    country:
-      label: Country
-      type: country
     caseNumber:
       label: Case number
       type: identifier
@@ -28,5 +22,7 @@ CourtCase:
       label: Court
     fileDate:
       label: File date
+      type: date
     closeDate:
       label: Close date
+      type: date
