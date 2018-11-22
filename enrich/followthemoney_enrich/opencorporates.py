@@ -104,8 +104,7 @@ class OpenCorporatesEnricher(Enricher):
         return officer
 
     def get_query(self, entity):
-        name = ' OR '.join(entity.names)
-        params = {'q': name}
+        params = {'q': entity.caption}
         for jurisdiction in entity.get('jurisdiction'):
             params['jurisdiction_code'] = jurisdiction.lower()
         return params

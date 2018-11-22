@@ -2,17 +2,16 @@ import io
 import os
 import logging
 import requests
-from csv import DictReader
 from banal import ensure_list
 from normality import stringify
 
-from followthemoney.mapping.source import Source
+from followthemoney.mapping.source import StreamSource
 from followthemoney.exc import InvalidMapping
 
 log = logging.getLogger(__name__)
 
 
-class CSVSource(Source):
+class CSVSource(StreamSource):
     """Special case for entity loading directly from a CSV URL"""
 
     def __init__(self, query, data):
@@ -26,7 +25,7 @@ class CSVSource(Source):
         if not len(self.urls):
             raise InvalidMapping("No CSV URLs are specified.")
 
-    def read_csv(self, url):
+    def read_csv_url(self, url):
         parsed_url = requests.utils.urlparse(url)
         log.info("Loading: %s", url)
         if parsed_url.scheme in ['http', 'https']:
@@ -37,27 +36,19 @@ class CSVSource(Source):
             res.encoding = 'utf-8'
             # log.info("Detected encoding: %s", res.encoding)
             lines = res.iter_lines(decode_unicode=True)
-            for row in DictReader(lines, skipinitialspace=True):
-                yield row
+            yield from self.read_csv(lines)
         else:
+            # XXX: This is a security issue in conjunction with the
+            # aleph mapping API because a user could map any file
+            # from the server file system. Remove???
             with io.open(parsed_url.path, 'r') as fh:
-                for row in DictReader(fh, skipinitialspace=True):
-                    yield row
-
-    def check_filters(self, data):
-        for (k, v) in self.filters:
-            if v != data.get(k):
-                return False
-        for (k, v) in self.filters_not:
-            if v == data.get(k):
-                return False
-        return True
+                yield from self.read_csv(fh)
 
     @property
     def records(self):
         """Iterate through the table applying filters on-the-go."""
         for url in self.urls:
-            for row in self.read_csv(url):
+            for row in self.read_csv_url(url):
                 data = {}
                 for ref in self.query.refs:
                     data[ref] = stringify(row.get(ref))

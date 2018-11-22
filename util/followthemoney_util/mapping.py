@@ -1,9 +1,10 @@
 import os
 import yaml
 import click
-from banal import ensure_list
+from banal import keys_values
 
 from followthemoney import model
+from followthemoney.mapping.source import StreamSource
 from followthemoney_util.cli import cli
 from followthemoney_util.util import write_object
 
@@ -15,10 +16,35 @@ def run_mapping(mapping_yaml):
     stream = click.get_text_stream('stdout')
     try:
         for dataset, meta in config.items():
-            for mapping in dict_list(meta, 'queries', 'query'):
+            for mapping in keys_values(meta, 'queries', 'query'):
                 entities = model.map_entities(mapping, key_prefix=dataset)
                 for entity in entities:
                     write_object(stream, entity)
+    except BrokenPipeError:
+        pass
+
+
+@cli.command('map-csv', help="Map CSV data from stdin and emit objects")
+@click.argument('mapping_yaml', type=click.Path(exists=True))
+def stream_mapping(mapping_yaml):
+    stdin = click.get_text_stream('stdin')
+    stdout = click.get_text_stream('stdout')
+
+    sources = []
+    config = load_config_file(mapping_yaml)
+    for dataset, meta in config.items():
+        for data in keys_values(meta, 'queries', 'query'):
+            query = model.make_mapping(data, key_prefix=dataset)
+            source = StreamSource(query, data)
+            sources.append(source)
+
+    try:
+        for record in StreamSource.read_csv(stdin):
+            for source in sources:
+                if source.check_filters(record):
+                    entities = source.query.map(record)
+                    for entity in entities.values():
+                        write_object(stdout, entity)
     except BrokenPipeError:
         pass
 
@@ -49,11 +75,3 @@ def resolve_includes(file_path, data):
         for key, value in data.items():
             data[key] = resolve_includes(file_path, value)
     return data
-
-
-def dict_list(data, *keys):
-    """Get an entry as a list from a dict. Provide a fallback key."""
-    for key in keys:
-        if key in data:
-            return ensure_list(data[key])
-    return []
