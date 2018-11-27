@@ -4,7 +4,7 @@ ContractAward:
   description: "A contract or contract lot as awarded to a supplier."
   extends:
     - Value
-    - Contract
+    - Interest
   icon: fa-handshake-o
   matchable: false
   featured:
