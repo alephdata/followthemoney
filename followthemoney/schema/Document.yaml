@@ -13,6 +13,10 @@ Document:
     title:
       label: "Title"
       rdf: http://purl.org/dc/elements/1.1/title
+    processingStatus:
+      label: "Processing status"
+    processingError:
+      label: "Error message"
     author:
       label: "Author"
       description: "The original author, not the uploader"
@@ -32,9 +36,14 @@ Document:
       label: "File extension"
     encoding:
       label: "File encoding"
+    messageId:
+      label: "Message ID"
+      description: "Message ID of a document; unique in most cases"
+      type: identifier
     mimeType:
       label: "MIME type"
       rdf: http://purl.org/dc/terms/format
+      type: mimetype
     language:
       label: "Language"
       rdf: http://purl.org/dc/terms/language
@@ -81,8 +90,11 @@ Document:
     emailMentioned:
       label: "E-Mail addresses"
       type: email
+    pdfAlternativeHash:
+      label: "PDF alternative version checksum"
+      hidden: true
+      type: identifier
     # Not included:
-    # * pdf version
     # * columns
     # * headers
 
@@ -95,6 +107,11 @@ PlainText:
   icon: fa-file-text-o
   hidden: true
   matchable: false
+  properties:
+    bodyText:
+      label: "Text"
+      hidden: true
+      type: "text"
 
 Pages:
   # Like PDF, word document, ...
@@ -161,6 +178,14 @@ HyperText:
   icon: fa-file-code-o
   hidden: true
   matchable: false
+  properties:
+    bodyText:
+      label: "Text"
+      hidden: true
+      type: "text"
+    bodyHtml:
+      label: "HTML"
+      hidden: true
 
 Email:
   extends:
@@ -173,10 +198,6 @@ Email:
   hidden: true
   matchable: false
   properties:
-    messageId:
-      label: "Message ID"
-      description: "Message ID of an email; unique in most cases"
-      type: identifier
     inReplyTo:
       label: "In Reply To"
       description: "Message IDs of the preceding emails in the thread"

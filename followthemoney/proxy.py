@@ -56,6 +56,12 @@ class EntityProxy(object):
             return []
         return list(self._properties.get(prop))
 
+    def has(self, prop, quiet=False):
+        prop = self._get_prop(prop, quiet=quiet)
+        if prop is None:
+            return False
+        return prop in self._properties
+
     def add(self, prop, values, cleaned=False, quiet=False):
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
@@ -74,6 +80,13 @@ class EntityProxy(object):
             if prop.type == registry.country:
                 norm = prop.type.normalize(value, cleaned=True)
                 self.countries.update(norm)
+
+    def set(self, prop, values, cleaned=False, quiet=False):
+        prop = self._get_prop(prop, quiet=quiet)
+        if prop is None:
+            return
+        self._properties.pop(prop, None)
+        return self.add(prop, values, cleaned=cleaned, quiet=quiet)
 
     def pop(self, prop, quiet=False):
         prop = self._get_prop(prop, quiet=quiet)

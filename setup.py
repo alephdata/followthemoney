@@ -28,6 +28,7 @@ setup(
         'phonenumbers >= 8.9.11',
         'schwifty >= 2018.4.1',
         'urlnormalizer >= 1.2.0',
+        'pantomime >= 0.3.2',
         'pytz >= 2018.5',
         'rdflib >= 4.1',
         'networkx >= 2.2'
@@ -63,6 +64,7 @@ setup(
             'phone = followthemoney.types.phone:PhoneType',
             'country = followthemoney.types.country:CountryType',
             'language = followthemoney.types.language:LanguageType',
+            'mimetype = followthemoney.types.mimetype:MimeType',
             'identifier = followthemoney.types.identifier:IdentifierType',
             'entity = followthemoney.types.entity:EntityType',
             'text = followthemoney.types.text:TextType',
