@@ -40,6 +40,9 @@ Document:
       label: "Message ID"
       description: "Message ID of a document; unique in most cases"
       type: identifier
+    headers:
+      label: "Raw headers"
+      hidden: true  
     mimeType:
       label: "MIME type"
       rdf: http://purl.org/dc/terms/format
@@ -198,6 +201,18 @@ Email:
   hidden: true
   matchable: false
   properties:
+    sender:
+      label: "Sender"
+      type: email
+    recipient:
+      label: "Recipient"
+      type: email
+    carbonCopy:
+      label: "Carbon copy"
+      type: email
+    blindCarbonCopy:
+      label: "Blind carbon copy"
+      type: email
     inReplyTo:
       label: "In Reply To"
       description: "Message IDs of the preceding emails in the thread"
