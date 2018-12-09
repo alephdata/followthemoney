@@ -150,3 +150,14 @@ class ProxyTestCase(TestCase):
         proxy.merge(other)
         assert 'Ralph Tester' in proxy.names, proxy.names
         assert 'gb' in proxy.countries, proxy.countries
+
+    def test_context(self):
+        data = {'fruit': 'banana', 'schema': 'Person'}
+        proxy = EntityProxy.from_dict(model, data)
+        res = proxy.clone().to_dict()
+        assert res['fruit'] == data['fruit'], res
+
+    def test_empty(self):
+        proxy = model.make_entity('Person')
+        assert proxy.node is None
+        assert 0 == len(list(proxy.links))

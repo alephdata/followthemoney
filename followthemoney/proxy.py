@@ -1,5 +1,5 @@
 from hashlib import sha1
-from banal import ensure_list, is_mapping
+from banal import ensure_list, is_mapping, ensure_dict
 from normality import stringify
 
 from followthemoney.exc import InvalidData
@@ -13,19 +13,24 @@ class EntityProxy(object):
     """A wrapper object for an entity, with utility functions for the
     introspection and manipulation of its properties."""
     __slots__ = ['schema', 'id', 'key_prefix', '_properties',
-                 'countries', 'names']
+                 'countries', 'names', 'context']
 
-    def __init__(self, schema, id, properties, key_prefix=None):
-        self.schema = schema
-        self.id = stringify(id)
+    def __init__(self, model, data, key_prefix=None):
+        data = dict(data)
+        properties = ensure_dict(data.pop('properties', {}))
+        self.schema = model.get(data.pop('schema', None))
+        if self.schema is None:
+            raise InvalidData(gettext('No schema for entity.'))
+        self.id = stringify(data.pop('id', None))
         self.key_prefix = stringify(key_prefix)
         self.countries = set()
         self.names = set()
+        self.context = data
         self._properties = {}
 
         if is_mapping(properties):
             for key, value in properties.items():
-                self.add(key, value, cleaned=True, quiet=True)
+                self.add(key, value, cleaned=True, quiet=True)        
 
     def make_id(self, *parts):
         digest = sha1()
@@ -162,12 +167,14 @@ class EntityProxy(object):
     def properties(self):
         return {p.name: self.get(p) for p in self._properties.keys()}
 
-    def to_dict(self, inverted_index=False):
-        return {
+    def to_dict(self):
+        data = dict(self.context)
+        data.update({
             'id': self.id,
             'schema': self.schema.name,
             'properties': self.properties
-        }
+        })
+        return data
 
     def to_full_dict(self):
         data = self.to_dict()
@@ -176,7 +183,7 @@ class EntityProxy(object):
         return data
 
     def clone(self):
-        return EntityProxy(self.schema, self.id, self._properties)
+        return EntityProxy(self.schema.model, self.to_dict())
 
     def merge(self, other):
         if id(self) == id(other):
@@ -185,6 +192,7 @@ class EntityProxy(object):
         other = self.from_dict(model, other)
         self.id = self.id or other.id
         self.schema = model.common_schema(self.schema, other.schema)
+        self.context.update(other.context)
         for prop, value in set(other.itervalues()):
             self.add(prop, value)
 
@@ -204,7 +212,4 @@ class EntityProxy(object):
     def from_dict(cls, model, data):
         if isinstance(data, cls):
             return data
-        schema = model.get(data.get('schema'))
-        if schema is None:
-            raise InvalidData(gettext('No schema for entity.'))
-        return cls(schema, data.get('id'), data.get('properties'))
+        return cls(model, data)
