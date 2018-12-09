@@ -75,6 +75,25 @@ class ProxyTestCase(TestCase):
             proxy.pop('banana')
         assert not proxy.pop('banana', quiet=True)
 
+    def test_has(self):
+        proxy = EntityProxy.from_dict(model, ENTITY)
+        assert not proxy.has('birthPlace')
+        proxy.add('birthPlace', 'Inferno')
+        assert proxy.has('birthPlace')
+        assert 1 == len(proxy.get('birthPlace'))
+        proxy.add('birthPlace', 'Hell')
+        assert 2 == len(proxy.get('birthPlace'))
+        proxy.set('birthPlace', 'Inferno')
+        assert 1 == len(proxy.get('birthPlace'))
+
+        with assert_raises(InvalidData):
+            proxy.set('banana', 'fruit')
+        assert not proxy.set('banana', 'fruit', quiet=True)
+
+        with assert_raises(InvalidData):
+            proxy.has('banana')
+        assert not proxy.has('banana', quiet=True)
+
     def test_dict_passthrough(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
         data = proxy.to_dict()
