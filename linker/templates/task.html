@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Company Enricher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <style>
+        .entity-name {
+            position: fixed;
+            top: 0px;
+            background: white;
+            width: 100%;
+            z-index: 100;
+            padding: 10px;
+            font-size: 1.2em;
+            height: 300px;
+            max-height: 300px;
+            overflow: scroll;
+            padding-left: 10%;
+        }
+        .candidates {
+            position: relative;
+            top: 300px;
+        }
+        .candidate {
+            padding: 10px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    {% if not matches %}
+    <h1>No tasks to show.</h1>
+    {% else %}
+    <div class='entity-name'>
+        <h1>Company Details</h1>
+        <p>
+            {% for key, val in entity.entity_data.properties.items() %}
+            <b>{{ key | capitalize }}</b> : {{ val | join(' ,') }}<br />
+            {% endfor %}
+            <b>Aliases</b> : {{ matches[0]["aliases"] }}<br />
+            <b>Min Date</b> : {{ matches[0]["min_date"] }}<br />
+            <b>Max Date</b> : {{ matches[0]["max_date"] }}<br />
+            <b>Amount in USD</b> : {{ matches[0]["amount_usd"] }}<br />
+            <b>Transaction Count</b> : {{ matches[0]["tx_count"] }}<br />
+            <b>Accounts</b> : {{ matches[0]["accounts"] }}<br />
+        </p>
+    </div>
+    <div class='container'>
+        <div class='row candidates'>
+            <div class="row">
+                <h1>Possible Matches. Do they match?</h1>
+            </div>
+            <form action="" method="POST" class='row'>
+                {% for match in matches %}
+                    <div class='candidate form-group border-top col-sm-4'>
+                        <p>
+                        {% for key, val in match.candidate_data.properties.items() %}
+                            <b>{{ key | capitalize }}</b> : {{ val | join(' ,') }}<br/>
+                        {% endfor %}
+                        </p>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="{{match.candidate_id}}" id="radio1" value="yes" required>
+                            <label class="form-check-label" for="radio1">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="{{match.candidate_id}}" id="radio2" value="no">
+                            <label class="form-check-label" for="radio2">No</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="{{match.candidate_id}}" id="radio3" value="maybe">
+                            <label class="form-check-label" for="radio3">May be</label>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="col-sm-12">
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>

@@ -5,7 +5,7 @@ setup(
     version='1.4.0',
     long_description="Data model and validator for investigative graph data.",
     author='Organized Crime and Corruption Reporting Project',
-    author_email='pudo@occrp.org',
+    author_email='data@occrp.org',
     url='https://occrp.org',
     license='MIT',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
