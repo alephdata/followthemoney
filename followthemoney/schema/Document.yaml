@@ -58,14 +58,8 @@ Document:
     authoredAt:
       label: "Authored on"
       type: date
-    modifiedAt:
-      label: "Modified on"
-      type: date
     publishedAt:
       label: "Published on"
-      type: date
-    retrievedAt:
-      label: "Retrieved on"
       type: date
     parent:
       label: "Parent document"

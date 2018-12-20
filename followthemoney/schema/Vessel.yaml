@@ -16,8 +16,6 @@ Vessel:
     crsNumber:
       label: CRS Number
       type: identifier
-    #type:
-    #  label: Type
     flag:
       label: Flag
       type: country

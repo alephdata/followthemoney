@@ -7,30 +7,27 @@ Sanction:
   featured:
     - entity
     - authority
+    - program
     - startDate
     - endDate
   properties:
     entity:
-      label: "Sanctioned entity"
+      label: "Entity"
       reverse:
         name: sanctionEntity
         label: "Sanctions"
       type: entity
       schema: Thing
     authority:
-      label: "Sanctioning authority"
-      reverse:
-        name: sanctionAuthority
-        label: "Sanctioned entities"
-      type: entity
-      schema: Thing
+      label: "Authority"
     program:
-      label: "Sanctions program"
-    sanctionStatus:
-      label: "Sanction status"
-    sanctionDuration:
-      label: "Sanction duration"
-    sanctionReason:
-      label: "Sanction reason"
-    sanctionOccurrence:
-      label: "Sanction occurrence"
+      label: "Program"
+    status:
+      label: "Status"
+    duration:
+      label: "Duration"
+    reason:
+      label: "Reason"
+    country:
+      label: "Country"
+      type: country

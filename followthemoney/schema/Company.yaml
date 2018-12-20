@@ -28,10 +28,6 @@ Company:
       label: "COATO / SOATO / OKATO"
       type: identifier
       descrption: "Soviet classifier for territories, regions, districts, villages. Aka. SOATO and same as OKATO"
-    vatCode:
-      label: "VAT Identifier"
-      description: "(EU) VAT number"
-      type: identifier
     irsCode:
       label: "IRS Number"
       description: "US tax ID"
@@ -77,6 +73,9 @@ Company:
       label: "OGRN"
       description: "Major State Registration Number"
       type: identifier
+    bikCode:
+      label: "BIK"
+      description: "Russian bank account code"
     pfrNumber:
       label: "PFR Number"
       description: "(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch"

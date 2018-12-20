@@ -26,3 +26,9 @@ Interval:
     alephUrl:
       label: Aleph URL
       type: url
+    modifiedAt:
+      label: "Modified on"
+      type: date
+    retrievedAt:
+      label: "Retrieved on"
+      type: date
