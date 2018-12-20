@@ -76,6 +76,7 @@ class Schema(object):
             })
             prop = Property(self, name, data)
             prop.generate()
+            self.properties[name] = prop
         return prop
 
     @property
