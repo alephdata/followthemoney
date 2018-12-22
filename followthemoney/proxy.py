@@ -125,6 +125,8 @@ class EntityProxy(object):
         """Invert the properties of an entity into their normalised form."""
         data = {}
         for group, type_ in registry.groups.items():
+            if group is None:
+                continue
             values = self.get_type_values(type_, cleaned=cleaned)
             if len(values):
                 data[group] = values
