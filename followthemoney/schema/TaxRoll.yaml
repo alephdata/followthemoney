@@ -1,8 +1,8 @@
 TaxRoll:
   label: "Tax Roll"
   plural: "Tax Rolls"
+  description: "A tax declaration of an individual"
   extends: Thing
-  icon: fa-bank
   matchable: false
   featured:
     - name

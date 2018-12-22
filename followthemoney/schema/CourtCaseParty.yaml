@@ -1,7 +1,6 @@
 CourtCaseParty:
   label: "Party"
   extends: Interest
-  icon: fa-birthday-cake
   matchable: false
   featured:
     - party

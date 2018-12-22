@@ -1,8 +1,8 @@
 RealEstate:
   label: Real estate
   plural: Real estates
+  description: "A piece of land or property."
   extends: Asset
-  icon: fa-map
   matchable: false
   featured:
     - registrationNumber
@@ -49,7 +49,6 @@ Land:
   label: Land
   plural: Lands
   extends: RealEstate
-  icon: fa-map
   matchable: false
   featured:
     - registrationNumber

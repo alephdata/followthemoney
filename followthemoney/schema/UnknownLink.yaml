@@ -1,8 +1,8 @@
 # Two entities are connected but the nature of the connection is tbd
 UnknownLink: 
   label: "Link"
+  plural: "Links"
   extends: Interest
-  icon: fa-user-circle
   matchable: false
   featured:
     - subject

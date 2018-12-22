@@ -1,7 +1,7 @@
 Membership:
   label: "Membership"
+  plural: "Memberships"
   extends: Interest
-  icon: fa-id-badge
   matchable: false
   featured:
     - member

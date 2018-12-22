@@ -1,6 +1,5 @@
 Interval:
   label: "Interval"
-  icon: fa-clock-o
   matchable: false
   featured:
     - startDate

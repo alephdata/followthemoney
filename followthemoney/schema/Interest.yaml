@@ -1,7 +1,6 @@
 Interest:
   label: "Interest"
   extends: Interval
-  icon: fa-certificate
   matchable: false
   featured:
     - role

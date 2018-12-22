@@ -1,10 +1,9 @@
 License:
   label: License
-  description: "A grant of land, rights or property. A type of Contract"
   plural: Licenses
+  description: "A grant of land, rights or property. A type of Contract"
   extends:
     - Contract
-  icon: fa-certificate
   matchable: false
   featured:
     - name

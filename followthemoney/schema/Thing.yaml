@@ -1,6 +1,5 @@
 Thing:
   abstract: true
-  icon: fa-circle
   matchable: false
   featured:
     - name

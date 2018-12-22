@@ -2,7 +2,6 @@ Airplane:
   label: Airplane
   plural: Airplanes
   extends: Vehicle
-  icon: fa-plane
   matchable: false
   featured:
     - type               # Airbus A320 214SL

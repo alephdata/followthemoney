@@ -1,8 +1,8 @@
 Representation:
   label: "Representation"
+  pkural: "Representations"
   description: "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity."
   extends: Interest
-  icon: fa-rocket
   matchable: false
   featured:
     - agent

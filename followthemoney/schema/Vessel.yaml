@@ -1,9 +1,8 @@
 Vessel:
   label: Vessel
   plural: Vessels
-  #extends: Asset
+  description: "A boat or ship"
   extends: Vehicle
-  icon: fa-ship
   matchable: false
   featured:
     - name

@@ -4,6 +4,5 @@ Asset:
   extends: 
     - Thing
     - Value
-  icon: fa-shopping-bag
   abstract: true
   matchable: false
