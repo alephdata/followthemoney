@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='followthemoney-linker',
-    version='1.4.0',
+    name='followthemoney-integrate',
+    version='1.4.3',
     long_description="FollowTheMoney record linkage UI",
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -29,7 +29,7 @@ setup(
     tests_require=['coverage', 'nose'],
     entry_points={
         'console_scripts': [
-            'ftmlinker = followthemoney_linker.cli:cli',
+            'ftmintegrate = followthemoney_linker.cli:cli',
         ]
     }
 )
