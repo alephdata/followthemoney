@@ -4,6 +4,7 @@ import logging
 
 from followthemoney.dedupe import Recon
 from followthemoney_util.util import read_object
+from followthemoney_integrate.views import app
 from followthemoney_integrate.model import metadata, Session, Entity, Match
 
 
@@ -31,9 +32,9 @@ def load_entities(entities):
             if entity is None:
                 break
             Entity.save(session, entities.name, entity)
-        session.commit()
     except BrokenPipeError:
         pass
+    session.commit()
 
 
 @cli.command('load-results', help="Load results")
@@ -45,8 +46,10 @@ def load_results(results):
             result = read_object(results)
             if result is None:
                 break
-            for entity in result.entities:
-                Entity.save(session, result.enricher.name, entity)
+            if result.subject is None or result.candidate is None:
+                continue
+            Entity.save(session, result.enricher.name, result.subject)
+            Entity.save(session, result.enricher.name, result.candidate)
             Match.save(session, result.subject, result.candidate,
                        score=result.score)
             session.flush()
@@ -74,3 +77,9 @@ def dump_recon(fh):
         if match.judgement is not None:
             recon = Recon(match.left, match.canonical, match.judgement)
             fh.write(recon.to_json())
+
+
+@cli.command('serve')
+def serve():
+    app.debug = True
+    app.run(host='0.0.0.0')

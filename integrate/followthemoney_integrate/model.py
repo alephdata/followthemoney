@@ -92,11 +92,11 @@ class Entity(Base):
 
 
 class Match(Base):
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    left = Column(String(255))
-    right = Column(String(255))
-    score = Column(Float)
-    judgement = Column(String(5))
+    id = Column(String(513), primary_key=True)
+    subject = Column(String(255))
+    candidate = Column(String(255))
+    score = Column(Float, nullable=True)
+    judgement = Column(String(5), nullable=True)
     created_at = Column(DateTime, default=now)
     updated_at = Column(DateTime, default=now, onupdate=now)
 
@@ -105,15 +105,13 @@ class Match(Base):
         return settings.DATABASE_PREFIX + '_match'
 
     @classmethod
-    def save(cls, session, left, right, score=None, judgement=None):
-        left = get_entity_id(left)
-        right = get_entity_id(right)
-        left, right = cls.keys(left, right)
-        obj = cls.by_keys(session, left, right)
+    def save(cls, session, subject, candidate, score=None, judgement=None):
+        obj = cls.by_id(session, subject, candidate)
         if obj is None:
             obj = cls()
-            obj.left = left
-            obj.right = right
+            obj.id = cls.make_id(subject, candidate)
+            obj.subject = get_entity_id(subject)
+            obj.candidate = get_entity_id(candidate)
         if score is not None:
             obj.score = score
         if judgement is not None:
@@ -122,20 +120,18 @@ class Match(Base):
         return obj
 
     @classmethod
-    def by_keys(cls, session, left, right):
-        left, right = cls.keys(left, right)
+    def by_id(cls, session, subject, candidate):
         q = session.query(cls)
-        q = q.filter(cls.left == left)
-        q = q.filter(cls.right == right)
+        q = q.filter(cls.id == cls.make_id(subject, candidate))
         return q.first()
 
     @classmethod
-    def keys(cls, left, right):
-        left = get_entity_id(left)
-        right = get_entity_id(right)
-        max_id = max((left, right))
-        min_id = min((left, right))
-        return (min_id, max_id)
+    def make_id(cls, subject, candidate):
+        subject = get_entity_id(subject)
+        candidate = get_entity_id(candidate)
+        max_id = max((subject, candidate))
+        min_id = min((subject, candidate))
+        return '.'.join((min_id, max_id))
 
     @classmethod
     def all(cls, session):
@@ -146,8 +142,7 @@ class Match(Base):
 
 class Vote(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
-    left = Column(String(255))
-    right = Column(String(255))
+    match_id = Column(String(513), index=True)
     user = Column(String(255))
     judgement = Column(String(5))
     created_at = Column(DateTime, default=now)

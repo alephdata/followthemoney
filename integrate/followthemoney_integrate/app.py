@@ -3,30 +3,7 @@ import json
 
 from flask import Flask, request, render_template, redirect
 
-import dataset
-
 app = Flask(__name__)
-
-DB_URI = os.getenv('DATAVAULT_URI', 'sqlite:///mydatabase.db')
-db = dataset.connect(DB_URI)
-
-
-def init():
-    match_table = db['zz_enrich_match']
-    votes_table = db['zz_enrich_votes']
-
-    match_table.create_column('total_votes', db.types.integer)
-    match_table.create_column('yes', db.types.integer)
-    match_table.create_column('no', db.types.integer)
-    match_table.create_column('maybe', db.types.integer)
-
-    votes_table.create_column('candidate_id', db.types.text)
-    votes_table.create_column('user_id', db.types.text)
-    votes_table.create_column('vote', db.types.text)
-    db.commit()
-
-
-init()
 
 
 def get_user_name():

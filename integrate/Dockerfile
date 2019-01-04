@@ -12,7 +12,7 @@ COPY followthemoney_integrate /app/followthemoney_integrate/
 RUN pip3 install -e /app
 WORKDIR /app
 
-ENV FTM_INTEGRATE_DATABASE_URI 'sqlite:///mydatabase.db'
+ENV INTEGRATE_DATABASE_URI 'sqlite:///mydatabase.db'
 
 EXPOSE 5000
-ENTRYPOINT gunicorn -b :5000 --access-logfile - --error-logfile - followthemoney_integrate.app:app
+ENTRYPOINT gunicorn -b :5000 --access-logfile - --error-logfile - followthemoney_integrate.views:app
