@@ -20,10 +20,10 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'click',
+        'alephclient',
         'followthemoney',
         'followthemoney-enrich',
-        'click',
-        'alephclient'
     ],
     test_suite='nose.collector',
     tests_require=['coverage', 'nose'],
