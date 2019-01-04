@@ -5,6 +5,8 @@
 .tox/
 .env
 .coverage
+*.sqlite3
+*.sqlite
 build/*
 dist/*
 coverage-report/*

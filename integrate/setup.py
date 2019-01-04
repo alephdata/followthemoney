@@ -18,9 +18,13 @@ setup(
     packages=find_packages(exclude=['ez_setup', 'examples', 'test']),
     namespace_packages=[],
     include_package_data=True,
+    package_data={
+        'followthemoney_integrate': ['templates/*.html']
+    },
     zip_safe=False,
     install_requires=[
         'followthemoney',
+        'followthemoney-util',
         'click',
         'flask',
         'sqlalchemy'
@@ -29,7 +33,7 @@ setup(
     tests_require=['coverage', 'nose'],
     entry_points={
         'console_scripts': [
-            'ftmintegrate = followthemoney_linker.cli:cli',
+            'ftmintegrate = followthemoney_integrate.cli:cli',
         ]
     }
 )

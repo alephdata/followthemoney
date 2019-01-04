@@ -6,7 +6,7 @@ import logging
 from followthemoney_util.util import read_object
 
 
-@click.group(help="Command-line utility for FollowTheMoney graph data")
+@click.group(help="Utility for FollowTheMoney graph data")
 def cli():
     fmt = '%(name)s [%(levelname)s] %(message)s'
     logging.basicConfig(stream=sys.stderr, level=logging.INFO, format=fmt)
