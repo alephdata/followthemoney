@@ -3,6 +3,7 @@ from banal import ensure_list
 from datetime import datetime
 from sqlalchemy import create_engine
 from sqlalchemy import Column, MetaData, String, Integer, Float, DateTime
+from sqlalchemy.sql.expression import func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.ext.hybrid import hybrid_property
@@ -86,9 +87,15 @@ class Entity(Base):
         q = q.filter(cls.id.in_(entity_ids))
         return {e.id: e for e in q}
 
-    # @classmethod
-    # def by_priority(cls, session, user):
-    #     dq = session.query(Decision)
+    @classmethod
+    def by_priority(cls, session, user):
+        # TODO: remove voted entities
+        q = session.query(Match.subject)
+        q = q.group_by(Match.subject)
+        q = q.order_by(func.sum(Match.score).desc())
+        q = q.limit(1)
+        for entity_id, in q.all():
+            return entity_id
 
 
 class Match(Base):
@@ -151,3 +158,7 @@ class Vote(Base):
     @declared_attr
     def __tablename__(cls):
         return settings.DATABASE_PREFIX + '_vote'
+
+    # @classmethod
+    # def decisions(cls, session):
+    #     q = session.query(Vote)

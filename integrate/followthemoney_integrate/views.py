@@ -1,8 +1,8 @@
 import os
-from flask import Flask, request, render_template, redirect
+from flask import Flask, url_for, request, render_template, redirect, abort
 
 from followthemoney_integrate import settings
-from followthemoney_integrate.model import Session
+from followthemoney_integrate.model import Session, Match, Entity, Vote
 
 
 dir_name = os.path.dirname(__file__)
@@ -36,3 +36,19 @@ def template_context():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/next')
+def next_entity():
+    entity_id = Entity.by_priority(request.session, request.user)
+    if entity_id is None:
+        return redirect(url_for('index'))
+    return redirect(url_for('entity', entity_id=entity_id))
+
+
+@app.route('/entity/<entity_id>')
+def entity(entity_id):
+    entity = Entity.by_id(request.session, entity_id)
+    if entity is None:
+        return abort(404)
+    return render_template('entity.html', entity=entity.proxy)

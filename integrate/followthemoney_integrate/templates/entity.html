@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% macro render_values(values) -%}
+    {% for value in values %}
+      {{value}}
+      {% if not loop.last %}
+        &middot;
+      {% endif -%}
+    {% endfor %}
+{%- endmacro %}
+
+
+{% block title %}{{entity.caption}}{% endblock %}
+
+{% block body %}
+  <h1>{{entity.caption}}</h1>
+  <table class="table table-sm table-striped">
+    {% for prop, values in entity._properties.items() %}
+      {% if not prop.hidden %}
+      <tr>
+        <th width="20%">{{prop.label}}</th>
+        <td>{{ render_values(values) }}</td>
+      </tr>
+      {% endif -%}
+    {% endfor %}
+  </table>
+{% endblock %}
