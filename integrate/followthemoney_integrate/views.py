@@ -14,7 +14,7 @@ app = Flask('ftmintegrate',
 
 def score_class(score):
     if score > 0.9:
-        return 'table-sucess'
+        return 'table-success'
     if score > 0.7:
         return 'table-warning'
     if score > 0.0:
