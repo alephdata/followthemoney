@@ -1,13 +1,5 @@
 {% extends "layout.html" %}
-
-{% macro render_values(values) -%}
-  {% for value in values %}
-    {{value}}
-    {% if not loop.last %}
-      &middot;
-    {% endif -%}
-  {% endfor %}
-{%- endmacro %}
+{% import 'macros.html' as macros with context %}
 
 {% macro form_buttons() -%}
   <div class="panel-footer">
@@ -31,56 +23,58 @@
 
 {% block body %}
   <h1>{{entity.caption}}</h1>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm">
     {% for prop, values in entity._properties.items() %}
       {% if not prop.hidden %}
       <tr>
         <th width="20%">{{prop.label}}</th>
-        <td>{{ render_values(values) }}</td>
+        <td>{{ macros.render_values(values) }}</td>
       </tr>
       {% endif -%}
     {% endfor %}
   </table>
 
-  <h3>Potential matches</h3>
-  <form action="{{url_for('vote')}}" method='POST'>
-    {{form_buttons()}}
-    <table class="table table-sm">
-      {% for match in matches %}
-        <tr class="table-primary">
-          <th width="20%"></th>
-          <th width="30%">Candidate</th>
-          <th width="30%">Reference</th>
-          <th width="5%">Score</th>
-          <th width="5%">Yes</th>
-          <th width="5%">No</th>
-          <th width="5%">DK</th>
-        </tr>
-        {% for prop in match.properties %}
-          <tr>
-            <th>{{prop.prop.label}}</th>
-            <td>{{render_values(prop.candidate)}}</td>
-            <td class="{{score_class(prop.score)}}">
-              {{render_values(prop.entity)}}
-            </td>
-            {% if loop.first %}
-              <th rowspan="{{match.properties | length}}">
-                {{ (match.score * 100) | round }}
-              </th>
-              <td rowspan="{{match.properties | length}}">
-                <input type="radio" name="{{match.id}}" {{valued_checked('t', match.judgement) | safe}}>
-              </td>
-              <td rowspan="{{match.properties | length}}">
-                <input type="radio" name="{{match.id}}" {{valued_checked('f', match.judgement) | safe}}>
-              </td>
-              <td rowspan="{{match.properties | length}}">
-                <input type="radio" name="{{match.id}}" {{valued_checked('?', match.judgement) | safe}}>
-              </td>
-            {% endif %}
+  {% if matches | length %}
+    <h3>Potential matches</h3>
+    <form action="{{url_for('vote')}}" method='POST'>
+      {{form_buttons()}}
+      <table class="table table-sm">
+        {% for match in matches %}
+          <tr class="table-primary">
+            <th width="20%"></th>
+            <th width="30%">Candidate</th>
+            <th width="30%">Reference</th>
+            <th width="5%">Score</th>
+            <th width="5%">Yes</th>
+            <th width="5%">No</th>
+            <th width="5%">DK</th>
           </tr>
+          {% for prop in match.properties %}
+            <tr>
+              <th>{{prop.prop.label}}</th>
+              <td>{{ macros.render_values(prop.candidate) }}</td>
+              <td class="{{score_class(prop.score)}}">
+                {{ macros.render_values(prop.entity) }}
+              </td>
+              {% if loop.first %}
+                <th rowspan="{{match.properties | length}}">
+                  {{ (match.score * 100) | round }}
+                </th>
+                <td rowspan="{{match.properties | length}}">
+                  <input type="radio" name="{{match.id}}" {{valued_checked('t', match.judgement) | safe}}>
+                </td>
+                <td rowspan="{{match.properties | length}}">
+                  <input type="radio" name="{{match.id}}" {{valued_checked('f', match.judgement) | safe}}>
+                </td>
+                <td rowspan="{{match.properties | length}}">
+                  <input type="radio" name="{{match.id}}" {{valued_checked('?', match.judgement) | safe}}>
+                </td>
+              {% endif %}
+            </tr>
+          {% endfor -%}
         {% endfor -%}
-      {% endfor -%}
-    </table>
-    {{form_buttons()}}
-  </form>
+      </table>
+      {{form_buttons()}}
+    </form>
+  {% endif %}
 {% endblock %}

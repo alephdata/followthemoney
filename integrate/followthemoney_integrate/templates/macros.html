@@ -1,0 +1,9 @@
+
+{% macro render_values(values) -%}
+  {% for value in values %}
+    {{value}}
+    {% if not loop.last %}
+      &middot;
+    {% endif -%}
+  {% endfor %}
+{%- endmacro %}

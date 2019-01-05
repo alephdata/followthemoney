@@ -5,7 +5,6 @@ import logging
 from followthemoney.dedupe import Recon
 from followthemoney_util.util import read_object
 from followthemoney_integrate.views import app
-from followthemoney_integrate.tally import tally_votes
 from followthemoney_integrate.model import metadata, Session, Entity, Match
 
 
@@ -73,7 +72,8 @@ def load_recon(recon):
 @click.option('-r', '--recon', type=click.File('w'), default='-')  # noqa
 def dump_recon(recon):
     session = Session()
-    tally_votes(session)
+    Match.tally(session)
+    session.commit()
     for match in Match.all(session):
         if match.judgement is not None:
             obj = Recon(match.subject, match.candidate, match.judgement)

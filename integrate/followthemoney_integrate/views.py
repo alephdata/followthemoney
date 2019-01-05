@@ -3,7 +3,6 @@ import logging
 from flask import Flask, url_for, request, render_template, redirect, abort
 
 from followthemoney_integrate import settings
-from followthemoney_integrate.tally import tally_votes
 from followthemoney_integrate.model import Session, Match, Entity, Vote
 
 log = logging.getLogger(__name__)
@@ -55,7 +54,15 @@ def template_context():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect(url_for('search'))
+
+
+@app.route('/search')
+def search():
+    query = request.args.get('q')
+    q = Entity.by_search(request.session, query)
+    q = q.limit(100)
+    return render_template('search.html', results=q, query=query)
 
 
 @app.route('/next')
@@ -75,7 +82,7 @@ def vote():
         log.info("[%s] voted %s on %s", request.user,
                  judgement, match_id)
         Vote.save(request.session, match_id, request.user, judgement)
-    tally_votes(request.session, updated=True)
+    Match.tally(request.session, updated=True)
     request.session.commit()
     if action == 'next':
         return redirect(url_for('next_entity'))

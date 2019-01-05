@@ -1,4 +1,5 @@
 import json
+import logging
 # from banal import ensure_list
 from datetime import datetime
 from sqlalchemy import create_engine
@@ -12,7 +13,9 @@ from followthemoney import model
 from followthemoney.util import get_entity_id
 
 from followthemoney_integrate import settings
+from followthemoney_integrate.util import index_text, text_parts
 
+log = logging.getLogger(__name__)
 now = datetime.utcnow
 engine = create_engine(settings.DATABASE_URI)
 metadata = MetaData(bind=engine)
@@ -26,6 +29,8 @@ class Entity(Base):
     origin = Column(String(255))
     properties = Column(String)
     context = Column(String)
+    search = Column(String)
+    priority = Column(Float, nullable=True)
     created_at = Column(DateTime, default=now)
     updated_at = Column(DateTime, default=now, onupdate=now)
 
@@ -61,6 +66,7 @@ class Entity(Base):
             obj = cls()
             obj.origin = origin
         obj.proxy = proxy
+        obj.search = index_text(proxy)
         obj.updated_at = now()
         session.add(obj)
         return obj
@@ -78,6 +84,15 @@ class Entity(Base):
         q = session.query(cls)
         for entity in q.yield_per(10000):
             yield entity
+
+    @classmethod
+    def by_search(cls, session, query):
+        q = session.query(cls)
+        for text in text_parts(query):
+            q = q.filter(cls.search.like('%%%s%%' % text))
+        q = q.order_by(cls.priority.desc())
+        q = q.order_by(cls.id.asc())
+        return q
 
     @classmethod
     def by_priority(cls, session, user):
@@ -100,6 +115,7 @@ class Match(Base):
     subject = Column(String(255))
     candidate = Column(String(255))
     score = Column(Float, nullable=True)
+    priority = Column(Float, nullable=True)
     judgement = Column(String(5), nullable=True)
     created_at = Column(DateTime, default=now)
     updated_at = Column(DateTime, default=now, onupdate=now)
@@ -130,6 +146,14 @@ class Match(Base):
         q = q.filter(cls.id == match_id)
         q.update({'judgement': judgement})
         session.execute(q)
+
+    @classmethod
+    def tally(cls, session, updated=False):
+        q = Vote.tally(session, updated=updated)
+        for (match_id, judgement, count) in q:
+            log.info("Decided: %s (%s w/ %d votes)",
+                     match_id, judgement, count)
+            cls.update(session, match_id, judgement)
 
     @classmethod
     def by_id(cls, session, subject, candidate):
