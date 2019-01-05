@@ -92,6 +92,13 @@ class Schema(object):
         return gettext(self._description)
 
     @property
+    def sorted_properties(self):
+        return sorted(self.properties.values(),
+                      key=lambda p: (not p.caption,
+                                     p.name not in self.featured,
+                                     p.label))
+
+    @property
     def matchable_schemata(self):
         """The set of comparable types."""
         if not self.matchable:

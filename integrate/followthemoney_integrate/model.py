@@ -1,5 +1,5 @@
 import json
-from banal import ensure_list
+# from banal import ensure_list
 from datetime import datetime
 from sqlalchemy import create_engine
 from sqlalchemy import Column, MetaData, String, Integer, Float, DateTime
@@ -79,18 +79,14 @@ class Entity(Base):
             yield entity
 
     @classmethod
-    def by_ids(cls, session, entity_ids):
-        entity_ids = ensure_list(entity_ids)
-        if not len(entity_ids):
-            return {}
-        q = session.query(cls)
-        q = q.filter(cls.id.in_(entity_ids))
-        return {e.id: e for e in q}
-
-    @classmethod
     def by_priority(cls, session, user):
         # TODO: remove voted entities
         q = session.query(Match.subject)
+        dq = session.query(Vote.match_id)
+        dq = dq.filter(Vote.match_id == Match.id)
+        dq = dq.filter(Vote.user == user)
+        q = q.filter(~dq.exists())
+        q = q.filter(Match.judgement == None)  # noqa
         q = q.group_by(Match.subject)
         q = q.order_by(func.sum(Match.score).desc())
         q = q.limit(1)
@@ -136,15 +132,21 @@ class Match(Base):
     def make_id(cls, subject, candidate):
         subject = get_entity_id(subject)
         candidate = get_entity_id(candidate)
-        max_id = max((subject, candidate))
-        min_id = min((subject, candidate))
-        return '.'.join((min_id, max_id))
+        return '.'.join((subject, candidate))
 
     @classmethod
     def all(cls, session):
         q = session.query(cls)
         for match in q.yield_per(10000):
             yield match
+
+    @classmethod
+    def by_entity(cls, session, entity_id):
+        q = session.query(Match, Entity)
+        q = q.filter(Match.subject == entity_id)
+        q = q.filter(Match.candidate == Entity.id)
+        q = q.order_by(Match.score.desc())
+        return q.limit(500)
 
 
 class Vote(Base):
@@ -159,6 +161,40 @@ class Vote(Base):
     def __tablename__(cls):
         return settings.DATABASE_PREFIX + '_vote'
 
-    # @classmethod
-    # def decisions(cls, session):
-    #     q = session.query(Vote)
+    @classmethod
+    def save(cls, session, match_id, user, judgement):
+        a, b = match_id.split('.', 1)
+        for (subject, candidate) in ((a, b), (b, a)):
+            q = session.query(cls)
+            q = q.filter(cls.match_id == Match.make_id(subject, candidate))
+            q = q.filter(cls.user == user)
+            obj = q.first()
+            if obj is None:
+                obj = cls()
+                obj.match_id = match_id
+                obj.user = user
+            obj.judgement = judgement
+            session.add(obj)
+
+    @classmethod
+    def by_entity(cls, session, user, entity_id):
+        q = session.query(Match.candidate, Vote.judgement)
+        q = q.filter(Match.subject == entity_id)
+        q = q.filter(Vote.match_id == Match.id)
+        q = q.filter(Vote.user == user)
+        return {e: j for (e, j) in q.all()}
+
+    @classmethod
+    def tally(cls, session):
+        dq = session.query(Vote.match_id.label('match_id'),
+                           Vote.judgement.label('judgement'))
+        dq = dq.group_by(Vote.match_id, Vote.judgement)
+        dq = dq.having(func.count(Vote.id) >= settings.QUORUM)
+        dq = dq.order_by(func.count(Vote.id).asc())
+        sq = dq.subquery()
+        q = session.query(Match.id)
+        q = q.filter(Match.id == sq.c.match_id)
+        q.update({
+            'judgement': sq.c.judgement
+        }, synchronize_session=False)
+        print(q)

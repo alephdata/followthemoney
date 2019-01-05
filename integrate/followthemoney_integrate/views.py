@@ -11,6 +11,22 @@ app = Flask('ftmintegrate',
             template_folder=os.path.join(dir_name, 'templates'))
 
 
+def score_class(score):
+    if score > 0.9:
+        return 'table-sucess'
+    if score > 0.7:
+        return 'table-warning'
+    if score > 0.0:
+        return 'table-danger'
+
+
+def valued_checked(value, checked):
+    text = 'value="%s" ' % value
+    if value == checked:
+        text += 'checked="checked"'
+    return text
+
+
 @app.before_request
 def before():
     request.session = Session()
@@ -29,7 +45,9 @@ def after(resp):
 def template_context():
     return {
         'user': request.user,
-        'project': settings.PROJECT_NAME
+        'project': settings.PROJECT_NAME,
+        'score_class': score_class,
+        'valued_checked': valued_checked
     }
 
 
@@ -46,9 +64,54 @@ def next_entity():
     return redirect(url_for('entity', entity_id=entity_id))
 
 
+@app.route('/vote', methods=['POST', 'PUT'])
+def vote():
+    print(request.form)
+    action = request.form.get('action', 'next')
+    for match_id, judgement in request.form.items():
+        if match_id == 'action':
+            continue
+        print(judgement)
+        Vote.save(request.session, match_id, request.user, judgement)
+    request.session.commit()
+    if action == 'next':
+        return redirect(url_for('next_entity'))
+    return redirect(url_for('entity', entity_id=action))
+
+
+def common_properties(entity, candidate):
+    properties = []
+    for prop in candidate.schema.sorted_properties:
+        values = candidate.get(prop)
+        if len(values):
+            other = entity.get(prop, quiet=True)
+            score = prop.type.compare_sets(values, other)
+            properties.append({
+                'prop': prop,
+                'entity': other,
+                'candidate': values,
+                'score': score
+            })
+    return properties
+
+
 @app.route('/entity/<entity_id>')
 def entity(entity_id):
     entity = Entity.by_id(request.session, entity_id)
     if entity is None:
         return abort(404)
-    return render_template('entity.html', entity=entity.proxy)
+    votes = Vote.by_entity(request.session, request.user, entity_id)
+    print(votes)
+    matches = []
+    for (match, candidate) in Match.by_entity(request.session, entity_id):
+        matches.append({
+            'id': match.id,
+            'score': match.score,
+            'candidate': candidate.proxy,
+            'properties': common_properties(entity.proxy, candidate.proxy),
+            'judgement': votes.get(candidate.id, '?')
+        })
+        # print(matches[-1])
+    return render_template('entity.html',
+                           entity=entity.proxy,
+                           matches=matches)

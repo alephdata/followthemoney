@@ -70,6 +70,9 @@ class Property(object):
     def __eq__(self, other):
         return self.qname == other.qname
 
+    def __lt__(self, other):
+        return (self.caption, self.label) < (other.caption, other.label)
+
     def __hash__(self):
         return hash(self.qname)
 
