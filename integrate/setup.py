@@ -19,7 +19,10 @@ setup(
     namespace_packages=[],
     include_package_data=True,
     package_data={
-        'followthemoney_integrate': ['templates/*.html']
+        'followthemoney_integrate': [
+            'templates/*.html',
+            'static/*.css',
+        ]
     },
     zip_safe=False,
     install_requires=[

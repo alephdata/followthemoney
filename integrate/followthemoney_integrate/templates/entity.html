@@ -2,7 +2,7 @@
 {% import 'macros.html' as macros with context %}
 
 {% macro form_buttons() -%}
-  <div class="panel-footer">
+  <div class="command-buttons">
     <div class="float-right">
       <div class="btn-group" role="group">
         <button class="btn btn-primary" type="submit"
@@ -40,7 +40,7 @@
       {{form_buttons()}}
       <table class="table table-sm">
         {% for match in matches %}
-          <tr class="table-primary">
+          <tr class="table-secondary">
             <th width="20%"></th>
             <th width="30%">Candidate</th>
             <th width="30%">Reference</th>
