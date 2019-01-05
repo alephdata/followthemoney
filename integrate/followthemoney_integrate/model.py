@@ -61,6 +61,7 @@ class Entity(Base):
             obj = cls()
             obj.origin = origin
         obj.proxy = proxy
+        obj.updated_at = now()
         session.add(obj)
         return obj
 
@@ -88,7 +89,7 @@ class Entity(Base):
         q = q.filter(~dq.exists())
         q = q.filter(Match.judgement == None)  # noqa
         q = q.group_by(Match.subject)
-        q = q.order_by(func.sum(Match.score).desc())
+        q = q.order_by(func.avg(Match.score).desc())
         q = q.limit(1)
         for entity_id, in q.all():
             return entity_id
@@ -119,8 +120,16 @@ class Match(Base):
             obj.score = score
         if judgement is not None:
             obj.judgement = judgement
+        obj.updated_at = now()
         session.add(obj)
         return obj
+
+    @classmethod
+    def update(cls, session, match_id, judgement):
+        q = session.query(cls)
+        q = q.filter(cls.id == match_id)
+        q.update({'judgement': judgement})
+        session.execute(q)
 
     @classmethod
     def by_id(cls, session, subject, candidate):
@@ -174,6 +183,7 @@ class Vote(Base):
                 obj.match_id = match_id
                 obj.user = user
             obj.judgement = judgement
+            obj.updated_at = now()
             session.add(obj)
 
     @classmethod
@@ -185,16 +195,16 @@ class Vote(Base):
         return {e: j for (e, j) in q.all()}
 
     @classmethod
-    def tally(cls, session):
+    def tally(cls, session, updated=False):
+        count = func.count(Vote.id).label('count')
         dq = session.query(Vote.match_id.label('match_id'),
-                           Vote.judgement.label('judgement'))
+                           Vote.judgement.label('judgement'),
+                           count)
+        # dq = dq.filter(Vote.judgement != '?')
+        if updated:
+            dq = dq.filter(Match.id == Vote.match_id)
+            dq = dq.filter(Match.updated_at <= Vote.updated_at)
         dq = dq.group_by(Vote.match_id, Vote.judgement)
-        dq = dq.having(func.count(Vote.id) >= settings.QUORUM)
-        dq = dq.order_by(func.count(Vote.id).asc())
-        sq = dq.subquery()
-        q = session.query(Match.id)
-        q = q.filter(Match.id == sq.c.match_id)
-        q.update({
-            'judgement': sq.c.judgement
-        }, synchronize_session=False)
-        print(q)
+        dq = dq.having(count >= settings.QUORUM)
+        dq = dq.order_by(count.asc())
+        return dq

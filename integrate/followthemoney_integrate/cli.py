@@ -76,8 +76,10 @@ def dump_recon(recon):
     tally_votes(session)
     for match in Match.all(session):
         if match.judgement is not None:
-            obj = Recon(match.left, match.canonical, match.judgement)
+            obj = Recon(match.subject, match.candidate, match.judgement)
             recon.write(obj.to_json())
+            recon.write('\n')
+            recon.flush()
 
 
 @cli.command('serve')

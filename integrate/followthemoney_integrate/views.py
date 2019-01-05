@@ -1,10 +1,12 @@
 import os
+import logging
 from flask import Flask, url_for, request, render_template, redirect, abort
 
 from followthemoney_integrate import settings
+from followthemoney_integrate.tally import tally_votes
 from followthemoney_integrate.model import Session, Match, Entity, Vote
 
-
+log = logging.getLogger(__name__)
 dir_name = os.path.dirname(__file__)
 app = Flask('ftmintegrate',
             static_folder=os.path.join(dir_name, 'static'),
@@ -66,13 +68,14 @@ def next_entity():
 
 @app.route('/vote', methods=['POST', 'PUT'])
 def vote():
-    print(request.form)
     action = request.form.get('action', 'next')
     for match_id, judgement in request.form.items():
         if match_id == 'action':
             continue
-        print(judgement)
+        log.info("[%s] voted %s on %s", request.user,
+                 judgement, match_id)
         Vote.save(request.session, match_id, request.user, judgement)
+    tally_votes(request.session, updated=True)
     request.session.commit()
     if action == 'next':
         return redirect(url_for('next_entity'))
@@ -101,7 +104,6 @@ def entity(entity_id):
     if entity is None:
         return abort(404)
     votes = Vote.by_entity(request.session, request.user, entity_id)
-    print(votes)
     matches = []
     for (match, candidate) in Match.by_entity(request.session, entity_id):
         matches.append({
@@ -111,7 +113,6 @@ def entity(entity_id):
             'properties': common_properties(entity.proxy, candidate.proxy),
             'judgement': votes.get(candidate.id, '?')
         })
-        # print(matches[-1])
     return render_template('entity.html',
                            entity=entity.proxy,
                            matches=matches)
