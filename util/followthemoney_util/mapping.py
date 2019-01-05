@@ -1,6 +1,6 @@
 import click
 from banal import keys_values
-from alephclient.tasks.util import load_config_file
+from alephclient.util import load_config_file
 
 from followthemoney import model
 from followthemoney.mapping.source import StreamSource

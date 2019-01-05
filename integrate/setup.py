@@ -34,6 +34,7 @@ setup(
     entry_points={
         'console_scripts': [
             'ftmintegrate = followthemoney_integrate.cli:cli',
+            'ftm-integrate = followthemoney_integrate.cli:cli',
         ]
     }
 )

@@ -25,7 +25,8 @@ setup(
         'rdflib',  # wikidata
         'SPARQLWrapper',  # wikidata
         'zeep',  # bvd orbis (soap)
-        'requests'
+        'requests',
+        'alephclient'
     ],
     entry_points={
         'followthemoney_enrich': [
