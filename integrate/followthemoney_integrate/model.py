@@ -223,6 +223,15 @@ class Vote(Base):
     def __tablename__(cls):
         return settings.DATABASE_PREFIX + '_vote'
 
+    def to_json(self):
+        return json.dumps({
+            'match_id': self.match_id,
+            'user': self.user,
+            'judgement': self.judgement,
+            'created_at': self.created_at.isoformat(),
+            'updated_at': self.updated_at.isoformat()
+        })
+
     @classmethod
     def save(cls, session, match_id, user, judgement):
         a, b = match_id.split('.', 1)
@@ -261,3 +270,9 @@ class Vote(Base):
         dq = dq.having(count >= settings.QUORUM)
         dq = dq.order_by(count.asc())
         return dq
+
+    @classmethod
+    def all(cls, session):
+        q = session.query(cls)
+        for vote in q.yield_per(10000):
+            yield vote

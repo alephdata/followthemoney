@@ -5,7 +5,7 @@ import logging
 from followthemoney.dedupe import Recon
 from followthemoney_util.util import read_object
 from followthemoney_integrate.views import app
-from followthemoney_integrate.model import metadata, Session, Entity, Match
+from followthemoney_integrate.model import metadata, Session, Entity, Match, Vote
 
 
 @click.group(help="Utility for the FollowTheMoney integration tool")
@@ -80,6 +80,16 @@ def dump_recon(recon):
             recon.write(obj.to_json())
             recon.write('\n')
             recon.flush()
+
+
+@cli.command('dump-votes', help="Export individual votes")
+@click.option('-v', '--votes', type=click.File('w'), default='-')  # noqa
+def dump_votes(votes):
+    session = Session()
+    for vote in Vote.all(session):
+        votes.write(vote.to_json())
+        votes.write('\n')
+        votes.flush()
 
 
 @cli.command('dedupe', help="Perform ultra-slow internal de-duplication")
