@@ -32,6 +32,10 @@
       </tr>
       {% endif -%}
     {% endfor %}
+    <tr>
+      <th>Metadata</th>
+      <td>{{macros.render_context(entity.context)}}</td>
+    </tr>
   </table>
 
   {% if matches | length %}
@@ -42,19 +46,24 @@
         {% for match in matches %}
           <tr class="table-secondary">
             <th width="20%"></th>
-            <th width="30%">Candidate</th>
-            <th width="30%">Reference</th>
+            <th width="30%">Reference ({{entity.schema.name}})</th>
+            <th width="30%">
+              Candidate ({{match.candidate.schema.name}})
+              <a href="{{url_for('entity', entity_id=match.candidate.id)}}">@</a>
+            </th>
             <th width="5%">Score</th>
-            <th width="5%">Yes</th>
-            <th width="5%">No</th>
-            <th width="5%">DK</th>
+            <th width="3%">Yes</th>
+            <th width="3%">No</th>
+            <th width="3%">DK</th>
           </tr>
           {% for prop in match.properties %}
             <tr>
               <th>{{prop.prop.label}}</th>
-              <td>{{ macros.render_values(prop.candidate) }}</td>
               <td class="{{score_class(prop.score)}}">
                 {{ macros.render_values(prop.entity) }}
+              </td>
+              <td class="{{score_class(prop.score)}}">
+                {{ macros.render_values(prop.candidate) }}
               </td>
               {% if loop.first %}
                 <th rowspan="{{match.properties | length}}">
@@ -72,6 +81,12 @@
               {% endif %}
             </tr>
           {% endfor -%}
+          <tr>
+            <th>Metadata</th>
+            <td>{{macros.render_context(entity.context)}}</td>
+            <td>{{macros.render_context(match.candidate.context)}}</td>
+            <td colspan="4"></td>
+          </tr>
         {% endfor -%}
       </table>
       {{form_buttons()}}

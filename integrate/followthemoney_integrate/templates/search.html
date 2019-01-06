@@ -19,6 +19,7 @@
   <table class="table table-sm">
     <tr>
       <th>Title</th>
+      <th>Schema</th>
       <th>Countries</th>
     </tr>
     {% for entity in results %}
@@ -27,6 +28,9 @@
           <a href="{{url_for('entity', entity_id=entity.id)}}">
             {{ entity.proxy.caption }}
           </a>
+        </td>
+        <td>
+          {{ entity.proxy.schema.label }}
         </td>
         <td>
           {{ macros.render_values(entity.proxy.countries) }}

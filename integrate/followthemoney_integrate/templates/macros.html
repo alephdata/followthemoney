@@ -7,3 +7,8 @@
     {% endif -%}
   {% endfor %}
 {%- endmacro %}
+
+
+{% macro render_context(ctx) -%}
+  <pre>{{ ctx | tojson}}</pre>
+{%- endmacro %}
