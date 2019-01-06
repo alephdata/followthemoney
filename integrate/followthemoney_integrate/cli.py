@@ -82,6 +82,14 @@ def dump_recon(recon):
             recon.flush()
 
 
+@cli.command('dedupe', help="Perform ultra-slow internal de-duplication")
+@click.option('-t', '--threshold', type=float, default=0.5)
+def dedupe(threshold):
+    session = Session()
+    Entity.dedupe(session, threshold=threshold)
+    session.commit()
+
+
 @cli.command('serve')
 def serve():
     app.debug = True

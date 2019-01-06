@@ -2,6 +2,7 @@ import json
 import logging
 # from banal import ensure_list
 from datetime import datetime
+from itertools import combinations
 from sqlalchemy import create_engine
 from sqlalchemy import Column, MetaData, String, Integer, Float, DateTime
 from sqlalchemy.sql.expression import func
@@ -10,6 +11,7 @@ from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import sessionmaker
 from followthemoney import model
+from followthemoney.compare import compare
 from followthemoney.util import get_entity_id
 
 from followthemoney_integrate import settings
@@ -21,6 +23,7 @@ engine = create_engine(settings.DATABASE_URI)
 metadata = MetaData(bind=engine)
 Session = sessionmaker(bind=engine)
 Base = declarative_base(bind=engine, metadata=metadata)
+Thing = model.get('Thing')
 
 
 class Entity(Base):
@@ -88,6 +91,8 @@ class Entity(Base):
     @classmethod
     def by_search(cls, session, query):
         q = session.query(cls)
+        schemata = [s.name for s in Thing.descendants]
+        q = q.filter(cls.schema.in_(schemata))
         for text in text_parts(query):
             q = q.filter(cls.search.like('%%%s%%' % text))
         q = q.order_by(cls.priority.desc())
@@ -104,10 +109,34 @@ class Entity(Base):
         q = q.filter(~dq.exists())
         q = q.filter(Match.judgement == None)  # noqa
         q = q.group_by(Match.subject)
-        q = q.order_by(func.avg(Match.score).desc())
+        q = q.order_by(func.max(Match.score).desc())
         q = q.limit(1)
         for entity_id, in q.all():
             return entity_id
+
+    @classmethod
+    def dedupe(cls, session, threshold=0.5):
+        entities = []
+        for entity in cls.all(session):
+            proxy = entity.proxy
+            if not proxy.schema.matchable:
+                continue
+            entities.append(proxy)
+        log.info("Loaded %s matchable entities", len(entities))
+        compares = 0
+        for (a, b) in combinations(entities, 2):
+            if a.id >= b.id:
+                continue
+            compares += 1
+            if compares % 10000 == 0:
+                log.info("Comparisons: %s", compares)
+                session.commit()
+
+            score = compare(model, a, b)
+            if score > threshold:
+                log.info("Potential match [%s]: %s ./. %s", score, a, b)
+                Match.save(session, a, b, score=score)
+                Match.save(session, b, a, score=score)
 
 
 class Match(Base):
