@@ -56,3 +56,6 @@ class EntityLinker(object):
                 value = self.resolve(value)
                 linked.add(prop, value)
         return linked
+
+    def __len__(self):
+        return len(self.linkages)
