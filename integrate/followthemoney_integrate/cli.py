@@ -5,7 +5,8 @@ import logging
 from followthemoney.dedupe import Recon
 from followthemoney_util.util import read_object
 from followthemoney_integrate.views import app
-from followthemoney_integrate.model import metadata, Session, Entity, Match, Vote
+from followthemoney_integrate.model import metadata, Session, Entity
+from followthemoney_integrate.model import Match, Vote
 
 
 @click.group(help="Utility for the FollowTheMoney integration tool")
@@ -48,10 +49,11 @@ def load_results(results):
                 break
             if result.subject is None or result.candidate is None:
                 continue
-            Entity.save(session, result.enricher.name, result.subject)
-            Entity.save(session, result.enricher.name, result.candidate)
+            se = Entity.save(session, result.enricher.name, result.subject)
+            ce = Entity.save(session, result.enricher.name, result.candidate)
+            priority = max((se.priority, ce.priority))
             Match.save(session, result.subject, result.candidate,
-                       score=result.score)
+                       score=result.score, priority=priority)
             session.flush()
     except BrokenPipeError:
         pass
@@ -80,6 +82,25 @@ def dump_recon(recon):
             recon.write(obj.to_json())
             recon.write('\n')
             recon.flush()
+
+
+@cli.command('load-votes', help="Import individual votes")
+@click.option('-v', '--votes', type=click.File('r'), default='-')  # noqa
+def load_votes(votes):
+    session = Session()
+    try:
+        while True:
+            data = read_object(votes)
+            if data is None:
+                break
+            Vote.save(session,
+                      data.get('match_id'),
+                      data.get('user'),
+                      data.get('judgement'))
+    except BrokenPipeError:
+        pass
+    Match.tally(session)
+    session.commit()
 
 
 @cli.command('dump-votes', help="Export individual votes")

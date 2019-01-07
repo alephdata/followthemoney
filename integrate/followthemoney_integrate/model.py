@@ -25,6 +25,8 @@ Session = sessionmaker(bind=engine)
 Base = declarative_base(bind=engine, metadata=metadata)
 Thing = model.get('Thing')
 
+DEFAULT_PRIORITY = 1.0
+
 
 class Entity(Base):
     id = Column(String(255), primary_key=True)
@@ -33,7 +35,7 @@ class Entity(Base):
     properties = Column(String)
     context = Column(String)
     search = Column(String)
-    priority = Column(Float, nullable=True)
+    priority = Column(Float, default=DEFAULT_PRIORITY)
     created_at = Column(DateTime, default=now)
     updated_at = Column(DateTime, default=now, onupdate=now)
 
@@ -63,13 +65,17 @@ class Entity(Base):
         self.context = json.dumps(proxy.context)
 
     @classmethod
-    def save(cls, session, origin, proxy):
+    def save(cls, session, origin, proxy, priority=None):
         obj = cls.by_id(session, proxy.id)
         if obj is None:
             obj = cls()
             obj.origin = origin
         obj.proxy = proxy
         obj.search = index_text(proxy)
+
+        priority = priority or proxy.context.get('priority')
+        if priority is not None:
+            obj.priority = priority
         obj.updated_at = now()
         session.add(obj)
         return obj
@@ -85,6 +91,8 @@ class Entity(Base):
     @classmethod
     def all(cls, session):
         q = session.query(cls)
+        q = q.order_by(cls.priority.desc())
+        q = q.order_by(cls.id.asc())
         for entity in q.yield_per(10000):
             yield entity
 
@@ -109,7 +117,7 @@ class Entity(Base):
         q = q.filter(~dq.exists())
         q = q.filter(Match.judgement == None)  # noqa
         q = q.group_by(Match.subject)
-        q = q.order_by(func.max(Match.score).desc())
+        q = q.order_by(func.max(Match.priority).desc())
         q = q.limit(1)
         for entity_id, in q.all():
             return entity_id
@@ -135,6 +143,7 @@ class Entity(Base):
             score = compare(model, a, b)
             if score > threshold:
                 log.info("Potential match [%s]: %s ./. %s", score, a, b)
+                # TODO: priority
                 Match.save(session, a, b, score=score)
                 Match.save(session, b, a, score=score)
 
@@ -154,15 +163,18 @@ class Match(Base):
         return settings.DATABASE_PREFIX + '_match'
 
     @classmethod
-    def save(cls, session, subject, candidate, score=None, judgement=None):
+    def save(cls, session, subject, candidate, score=None,
+             judgement=None, priority=None):
         obj = cls.by_id(session, subject, candidate)
         if obj is None:
             obj = cls()
             obj.id = cls.make_id(subject, candidate)
             obj.subject = get_entity_id(subject)
             obj.candidate = get_entity_id(candidate)
+        priority = priority or DEFAULT_PRIORITY
         if score is not None:
             obj.score = score
+            obj.priority = score * priority
         if judgement is not None:
             obj.judgement = judgement
         obj.updated_at = now()
@@ -171,6 +183,7 @@ class Match(Base):
 
     @classmethod
     def update(cls, session, match_id, judgement):
+        """Change the judgement for the given match_id."""
         q = session.query(cls)
         q = q.filter(cls.id == match_id)
         q.update({'judgement': judgement})
@@ -178,6 +191,8 @@ class Match(Base):
 
     @classmethod
     def tally(cls, session, updated=False):
+        """Aggregate individual votes to generate match decisions if the
+        defined quorum has been met."""
         q = Vote.tally(session, updated=updated)
         for (match_id, judgement, count) in q:
             log.info("Decided: %s (%s w/ %d votes)",
