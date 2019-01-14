@@ -6,7 +6,7 @@ TaxRoll:
   icon: fa-bank
   matchable: false
   featured:
-    - holder
+    - taxee
     - date
     - income
     - wealth
