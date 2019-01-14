@@ -1,11 +1,9 @@
 import os
 import logging
-import requests
-from uuid import uuid4
 from pprint import pprint  # noqa
+from alephclient.api import AlephAPI
 from requests.exceptions import RequestException
 from banal import is_mapping, ensure_dict, ensure_list, hash_data
-from urllib.parse import urljoin
 
 from followthemoney.exc import InvalidData
 from followthemoney_enrich.enricher import Enricher
@@ -18,23 +16,19 @@ class AlephEnricher(Enricher):
     key_prefix = 'aleph'
     TYPE_CONSTRAINT = 'LegalEntity'
 
-    def __init__(self):
-        self.host = os.environ.get('ALEPH_HOST')
-        self.host = os.environ.get('ENRICH_ALEPH_HOST', self.host)
-        self.api_base = urljoin(self.host, '/api/2/')
+    def __init__(self, host=None):
+        self.host = host or os.environ.get('ENRICH_ALEPH_HOST')
+        self.host = self.host or os.environ.get('ALEPH_HOST')
         self.api_key = os.environ.get('ALEPH_API_KEY')
         self.api_key = os.environ.get('ENRICH_ALEPH_API_KEY', self.api_key)
-        self.session = requests.Session()
-        self.session.headers['X-Aleph-Session'] = str(uuid4())
-        if self.api_key is not None:
-            self.session.headers['Authorization'] = 'ApiKey %s' % self.api_key
+        self.api = AlephAPI(self.host, self.api_key)
 
     def get_api(self, url, params=None):
         url = make_url(url, params)
         data = self.cache.get(url)
         if data is None:
             try:
-                res = self.session.get(url)
+                res = self.api.session.get(url)
                 if res.status_code != 200:
                     return {}
                 data = res.json()
@@ -54,7 +48,7 @@ class AlephEnricher(Enricher):
 
         log.info("Enrich [%s]: %s", self.host, proxy)
         try:
-            res = self.session.post(url, json=data)
+            res = self.api.session.post(url, json=data)
         except RequestException:
             log.exception("Error calling Aleph matcher")
             return {}
@@ -96,7 +90,7 @@ class AlephEnricher(Enricher):
         if not entity.schema.matchable:
             return
 
-        url = urljoin(self.api_base, 'match')
+        url = self.api._make_url('match')
         for page in range(10):
             data = self.post_match(url, entity)
             for res in data.get('results', []):
@@ -116,7 +110,7 @@ class AlephEnricher(Enricher):
             _, entity_id = url.rsplit('/', 1)
             data = self.get_api(url)
             self.convert_entity(result, data)
-            search_api = urljoin(self.api_base, 'search')
+            search_api = self.api._make_url('search')
             params = {'filter:entities': entity_id}
             entities = self.get_api(search_api, params=params)
             for data in ensure_list(entities.get('results')):
@@ -127,6 +121,5 @@ class AlephEnricher(Enricher):
 class OccrpEnricher(AlephEnricher):
 
     def __init__(self):
-        super(OccrpEnricher, self).__init__()
-        self.host = 'https://data.occrp.org'
-        self.api_base = urljoin(self.host, '/api/2/')
+        host = 'https://data.occrp.org'
+        super(OccrpEnricher, self).__init__(host=host)

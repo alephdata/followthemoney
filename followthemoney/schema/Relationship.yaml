@@ -1,5 +1,6 @@
 Relationship:
   label: "Relationship"
+  plural: "Relationships"
   description: "Person-to-person relationship"
   extends: Interval
   matchable: false

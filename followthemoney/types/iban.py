@@ -1,6 +1,7 @@
 from rdflib import URIRef
 from normality import stringify
-from schwifty import IBAN
+from stdnum import iban
+from stdnum.exceptions import ValidationError
 
 from followthemoney.types.common import PropertyType
 
@@ -10,15 +11,11 @@ class IbanType(PropertyType):
     group = 'ibans'
     strong = False
 
-    def validate(self, iban, **kwargs):
-        iban = stringify(iban)
-        if iban is None:
-            return False
+    def validate(self, text, **kwargs):
+        text = stringify(text)
         try:
-            IBAN(iban)
-            return True
-        except ValueError as ex:
-            print(ex)
+            return iban.validate(text)
+        except ValidationError as ex:
             return False
 
     def clean_text(self, text, **kwargs):

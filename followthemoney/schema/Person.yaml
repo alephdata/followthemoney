@@ -2,7 +2,7 @@ Person:
   extends: LegalEntity
   label: Person
   plural: People
-  icon: fa-user
+  description: "An individual"
   matchable: true
   rdf: http://xmlns.com/foaf/0.1/Person
   featured:

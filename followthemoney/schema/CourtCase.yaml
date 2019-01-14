@@ -2,7 +2,6 @@ CourtCase:
   label: Court case
   plural: Court cases
   extends: Thing
-  icon: fa-briefcase
   matchable: false
   featured:
     - name

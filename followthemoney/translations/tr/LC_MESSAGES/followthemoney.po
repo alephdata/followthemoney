@@ -8,31 +8,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-31 09:23+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2018-12-21 11:15+0100\n"
+"PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Language-Team: Turkish (https://www.transifex.com/aleph/teams/76591/tr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 "Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: followthemoney/property.py:65
+#: followthemoney/property.py:64
 msgid "Invalid value"
 msgstr ""
 
-#: followthemoney/property.py:69
+#: followthemoney/property.py:68
 msgid "Required"
 msgstr ""
 
-#: followthemoney/proxy.py:49
-#, python-format
-msgid "Unknown property (%s): %s"
+#: followthemoney/proxy.py:23
+msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:196
-msgid "No schema for entity."
+#: followthemoney/proxy.py:54
+#, python-format
+msgid "Unknown property (%s): %s"
 msgstr ""
 
 #. Airplane.label
@@ -183,16 +183,6 @@ msgstr ""
 msgid "COATO / SOATO / OKATO"
 msgstr ""
 
-#. Company.properties.vatCode.label
-#: followthemoney/schema/Company.yaml
-msgid "VAT Identifier"
-msgstr ""
-
-#. Company.properties.vatCode.description
-#: followthemoney/schema/Company.yaml
-msgid "(EU) VAT number"
-msgstr ""
-
 #. Company.properties.irsCode.label
 #: followthemoney/schema/Company.yaml
 msgid "IRS Number"
@@ -307,6 +297,16 @@ msgstr ""
 #. Company.properties.ogrnCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Major State Registration Number"
+msgstr ""
+
+#. Company.properties.bikCode.label
+#: followthemoney/schema/Company.yaml
+msgid "BIK"
+msgstr ""
+
+#. Company.properties.bikCode.description
+#: followthemoney/schema/Company.yaml
+msgid "Russian bank account code"
 msgstr ""
 
 #. Company.properties.pfrNumber.label
@@ -517,26 +517,10 @@ msgstr ""
 #. CourtCase.properties.status.label
 #. Interest.properties.status.label
 #. LegalEntity.properties.status.label
+#. Sanction.properties.status.label
 #: followthemoney/schema/CourtCase.yaml followthemoney/schema/Interest.yaml
-#: followthemoney/schema/LegalEntity.yaml
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Sanction.yaml
 msgid "Status"
-msgstr ""
-
-#. CourtCase.properties.name.label
-#. Thing.properties.name.label
-#: followthemoney/schema/CourtCase.yaml followthemoney/schema/Thing.yaml
-msgid "Name"
-msgstr ""
-
-#. CourtCase.properties.country.label
-#. Event.properties.country.label
-#. Passport.properties.country.label
-#. Thing.properties.country.label
-#. Vehicle.properties.country.label
-#: followthemoney/schema/CourtCase.yaml followthemoney/schema/Event.yaml
-#: followthemoney/schema/Passport.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/schema/Vehicle.yaml
-msgid "Country"
 msgstr ""
 
 #. CourtCase.properties.caseNumber.label
@@ -635,6 +619,16 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#. Document.properties.processingStatus.label
+#: followthemoney/schema/Document.yaml
+msgid "Processing status"
+msgstr ""
+
+#. Document.properties.processingError.label
+#: followthemoney/schema/Document.yaml
+msgid "Error message"
+msgstr ""
+
 #. Document.properties.author.label
 #: followthemoney/schema/Document.yaml
 msgid "Author"
@@ -685,6 +679,21 @@ msgstr ""
 msgid "File encoding"
 msgstr ""
 
+#. Document.properties.messageId.label
+#: followthemoney/schema/Document.yaml
+msgid "Message ID"
+msgstr ""
+
+#. Document.properties.messageId.description
+#: followthemoney/schema/Document.yaml
+msgid "Message ID of a document; unique in most cases"
+msgstr ""
+
+#. Document.properties.headers.label
+#: followthemoney/schema/Document.yaml
+msgid "Raw headers"
+msgstr ""
+
 #. Document.properties.mimeType.label
 #: followthemoney/schema/Document.yaml
 msgid "MIME type"
@@ -711,19 +720,9 @@ msgstr ""
 msgid "Authored on"
 msgstr ""
 
-#. Document.properties.modifiedAt.label
-#: followthemoney/schema/Document.yaml
-msgid "Modified on"
-msgstr ""
-
 #. Document.properties.publishedAt.label
 #: followthemoney/schema/Document.yaml
 msgid "Published on"
-msgstr ""
-
-#. Document.properties.retrievedAt.label
-#: followthemoney/schema/Document.yaml
-msgid "Retrieved on"
 msgstr ""
 
 #. Document.properties.parent.label
@@ -766,6 +765,11 @@ msgstr ""
 msgid "E-Mail addresses"
 msgstr ""
 
+#. Document.properties.pdfAlternativeHash.label
+#: followthemoney/schema/Document.yaml
+msgid "PDF alternative version checksum"
+msgstr ""
+
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
 msgid "Text file"
@@ -776,8 +780,16 @@ msgstr ""
 msgid "Text files"
 msgstr ""
 
+#. PlainText.properties.bodyText.label
+#. HyperText.properties.bodyText.label
+#. Page.properties.bodyText.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
+msgid "Text"
+msgstr ""
+
 #. Pages.label
-#: followthemoney/schema/Document.yaml
+#. Page.properties.document.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
 msgid "Document"
 msgstr ""
 
@@ -856,6 +868,11 @@ msgstr ""
 msgid "Web pages"
 msgstr ""
 
+#. HyperText.properties.bodyHtml.label
+#: followthemoney/schema/Document.yaml
+msgid "HTML"
+msgstr ""
+
 #. Email.label
 #. LegalEntity.properties.email.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/LegalEntity.yaml
@@ -867,14 +884,26 @@ msgstr ""
 msgid "E-Mails"
 msgstr ""
 
-#. Email.properties.messageId.label
+#. Email.properties.sender.label
+#. EconomicActivity.properties.sender.label
 #: followthemoney/schema/Document.yaml
-msgid "Message ID"
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Sender"
 msgstr ""
 
-#. Email.properties.messageId.description
+#. Email.properties.recipient.label
 #: followthemoney/schema/Document.yaml
-msgid "Message ID of an email; unique in most cases"
+msgid "Recipient"
+msgstr ""
+
+#. Email.properties.carbonCopy.label
+#: followthemoney/schema/Document.yaml
+msgid "Carbon copy"
+msgstr ""
+
+#. Email.properties.blindCarbonCopy.label
+#: followthemoney/schema/Document.yaml
+msgid "Blind carbon copy"
 msgstr ""
 
 #. Email.properties.inReplyTo.label
@@ -888,7 +917,8 @@ msgid "Message IDs of the preceding emails in the thread"
 msgstr ""
 
 #. Table.label
-#: followthemoney/schema/Document.yaml
+#. Row.properties.table.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
 msgid "Table"
 msgstr ""
 
@@ -1003,11 +1033,6 @@ msgstr ""
 #. EconomicActivity.properties.declarant.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations"
-msgstr ""
-
-#. EconomicActivity.properties.sender.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Sender"
 msgstr ""
 
 #. EconomicActivity.properties.sender.description
@@ -1168,6 +1193,17 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
+#. Event.properties.country.label
+#. Passport.properties.country.label
+#. Sanction.properties.country.label
+#. Thing.properties.country.label
+#. Vehicle.properties.country.label
+#: followthemoney/schema/Event.yaml followthemoney/schema/Passport.yaml
+#: followthemoney/schema/Sanction.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/schema/Vehicle.yaml
+msgid "Country"
+msgstr ""
+
 #. Family.label
 #: followthemoney/schema/Family.yml
 msgid "Family"
@@ -1238,6 +1274,18 @@ msgstr ""
 #. Thing.properties.alephUrl.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Aleph URL"
+msgstr ""
+
+#. Interval.properties.modifiedAt.label
+#. Thing.properties.modifiedAt.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
+msgid "Modified on"
+msgstr ""
+
+#. Interval.properties.retrievedAt.label
+#. Thing.properties.retrievedAt.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
+msgid "Retrieved on"
 msgstr ""
 
 #. LegalEntity.label
@@ -1345,6 +1393,16 @@ msgstr ""
 msgid "Tax ID number"
 msgstr ""
 
+#. LegalEntity.properties.vatCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "V.A.T. Identifier"
+msgstr ""
+
+#. LegalEntity.properties.vatCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "(EU) VAT number"
+msgstr ""
+
 #. LegalEntity.properties.jurisdiction.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Country or region in which this entity operates"
@@ -1393,6 +1451,26 @@ msgstr ""
 #. LegalEntity.properties.innCode.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Russian company ID"
+msgstr ""
+
+#. LegalEntity.properties.dunsCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "D-U-N-S"
+msgstr ""
+
+#. LegalEntity.properties.dunsCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Dun & Bradstreet identifier"
+msgstr ""
+
+#. LegalEntity.properties.swiftBic.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "SWIFT/BIC"
+msgstr ""
+
+#. LegalEntity.properties.swiftBic.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Bank identifier code"
 msgstr ""
 
 #. LegalEntity.properties.parent.label
@@ -1580,7 +1658,8 @@ msgid "Personal number"
 msgstr ""
 
 #. Passport.properties.authority.label
-#: followthemoney/schema/Passport.yaml
+#. Sanction.properties.authority.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
 msgid "Authority"
 msgstr ""
 
@@ -1797,6 +1876,48 @@ msgstr ""
 msgid "Lands"
 msgstr ""
 
+#. Record.label
+#: followthemoney/schema/Record.yaml
+msgid "Record"
+msgstr ""
+
+#. Record.plural
+#: followthemoney/schema/Record.yaml
+msgid "Records"
+msgstr ""
+
+#. Record.properties.index.label
+#: followthemoney/schema/Record.yaml
+msgid "Index"
+msgstr ""
+
+#. Row.label
+#: followthemoney/schema/Record.yaml
+msgid "Row"
+msgstr ""
+
+#. Row.plural
+#. Row.properties.table.reverse.label
+#: followthemoney/schema/Record.yaml
+msgid "Rows"
+msgstr ""
+
+#. Row.properties.cells.label
+#: followthemoney/schema/Record.yaml
+msgid "Cells"
+msgstr ""
+
+#. Page.label
+#: followthemoney/schema/Record.yaml
+msgid "Page"
+msgstr ""
+
+#. Page.plural
+#. Page.properties.document.reverse.label
+#: followthemoney/schema/Record.yaml
+msgid "Pages"
+msgstr ""
+
 #. Relationship.label
 #. Relationship.properties.relationship.label
 #: followthemoney/schema/Relationship.yaml
@@ -1886,42 +2007,48 @@ msgstr ""
 
 #. Sanction.properties.entity.label
 #: followthemoney/schema/Sanction.yaml
-msgid "Sanctioned entity"
-msgstr ""
-
-#. Sanction.properties.authority.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Sanctioning authority"
-msgstr ""
-
-#. Sanction.properties.authority.reverse.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Sanctioned entities"
+msgid "Entity"
 msgstr ""
 
 #. Sanction.properties.program.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Sanctions program"
+#. Thing.properties.program.label
+#: followthemoney/schema/Sanction.yaml followthemoney/schema/Thing.yaml
+msgid "Program"
 msgstr ""
 
-#. Sanction.properties.sanctionStatus.label
+#. Sanction.properties.duration.label
 #: followthemoney/schema/Sanction.yaml
-msgid "Sanction status"
+msgid "Duration"
 msgstr ""
 
-#. Sanction.properties.sanctionDuration.label
+#. Sanction.properties.reason.label
 #: followthemoney/schema/Sanction.yaml
-msgid "Sanction duration"
+msgid "Reason"
 msgstr ""
 
-#. Sanction.properties.sanctionReason.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Sanction reason"
+#. Succession.label
+#: followthemoney/schema/Succession.yaml
+msgid "Succession"
 msgstr ""
 
-#. Sanction.properties.sanctionOccurrence.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Sanction occurrence"
+#. Succession.properties.predecessor.label
+#: followthemoney/schema/Succession.yaml
+msgid "Predecessor"
+msgstr ""
+
+#. Succession.properties.predecessor.reverse.label
+#: followthemoney/schema/Succession.yaml
+msgid "Successors"
+msgstr ""
+
+#. Succession.properties.successor.label
+#: followthemoney/schema/Succession.yaml
+msgid "Successor"
+msgstr ""
+
+#. Succession.properties.successor.reverse.label
+#: followthemoney/schema/Succession.yaml
+msgid "Predecessors"
 msgstr ""
 
 #. TaxRoll.label
@@ -1947,6 +2074,11 @@ msgstr ""
 #. TaxRoll.properties.wealth.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Registered wealth"
+msgstr ""
+
+#. Thing.properties.name.label
+#: followthemoney/schema/Thing.yaml
+msgid "Name"
 msgstr ""
 
 #. Thing.properties.sameAs.label
@@ -1992,11 +2124,6 @@ msgstr ""
 #. Thing.properties.address.label
 #: followthemoney/schema/Thing.yaml
 msgid "Address"
-msgstr ""
-
-#. Thing.properties.program.label
-#: followthemoney/schema/Thing.yaml
-msgid "Program"
 msgstr ""
 
 #. Thing.properties.notes.label

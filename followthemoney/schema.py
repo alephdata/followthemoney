@@ -76,6 +76,7 @@ class Schema(object):
             })
             prop = Property(self, name, data)
             prop.generate()
+            self.properties[name] = prop
         return prop
 
     @property
@@ -89,6 +90,13 @@ class Schema(object):
     @property
     def description(self):
         return gettext(self._description)
+
+    @property
+    def sorted_properties(self):
+        return sorted(self.properties.values(),
+                      key=lambda p: (not p.caption,
+                                     p.name not in self.featured,
+                                     p.label))
 
     @property
     def matchable_schemata(self):

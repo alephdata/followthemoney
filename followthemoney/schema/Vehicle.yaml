@@ -2,7 +2,6 @@ Vehicle:
   label: Vehicle
   plural: Vehicles
   extends: Asset
-  icon: fa-bicycle
   matchable: false
   featured:
     - type

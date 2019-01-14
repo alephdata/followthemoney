@@ -1,9 +1,10 @@
 Payment:
   label: "Payment"
+  plural: "Payments"
+  description: "A monetary payment between two parties."
   extends: 
     - Interval
     - Value
-  icon: fa-usd
   matchable: false
   featured:
     - payer

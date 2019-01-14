@@ -5,6 +5,9 @@
 .tox/
 .env
 .coverage
+*.sqlite3
+*.sqlite
+*.recon
 build/*
 dist/*
 coverage-report/*
@@ -12,3 +15,5 @@ util/dist/*
 util/build/*
 enrich/dist/*
 enrich/build/*
+integrate/dist/*
+integrate/build/*

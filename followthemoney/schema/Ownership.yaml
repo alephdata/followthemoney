@@ -1,7 +1,7 @@
 Ownership:
   label: "Ownership"
+  plural: "Ownerships"
   extends: Interest
-  icon: fa-shopping-bag
   matchable: false
   featured:
     - owner

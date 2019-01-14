@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney-enrich',
-    version='1.4.1',
+    version='1.4.3',
     long_description="Data enrichment toolkit",
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -25,7 +25,8 @@ setup(
         'rdflib',  # wikidata
         'SPARQLWrapper',  # wikidata
         'zeep',  # bvd orbis (soap)
-        'requests'
+        'requests',
+        'alephclient'
     ],
     entry_points={
         'followthemoney_enrich': [

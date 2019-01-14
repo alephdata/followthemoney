@@ -2,5 +2,4 @@ Organization:
   extends: LegalEntity
   label: Organization
   plural: Organizations
-  icon: fa-university
   matchable: true

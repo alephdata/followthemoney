@@ -1,7 +1,8 @@
 Succession:
   label: "Succession"
+  plural: "Successions"
+  description: "Two entities that legally succeed each other."
   extends: Interest
-  icon: fa-id-badge
   matchable: false
   featured:
     - predecessor

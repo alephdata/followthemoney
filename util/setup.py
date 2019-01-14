@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney-util',
-    version='1.4.1',
+    version='1.4.3',
     long_description="FollowTheMoney command-line tool",
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -20,10 +20,10 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'click',
+        'alephclient',
         'followthemoney',
         'followthemoney-enrich',
-        'click',
-        'alephclient'
     ],
     test_suite='nose.collector',
     tests_require=['coverage', 'nose'],

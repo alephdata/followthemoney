@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='followthemoney-linker',
-    version='1.4.0',
+    name='followthemoney-integrate',
+    version='1.4.3',
     long_description="FollowTheMoney record linkage UI",
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -18,9 +18,16 @@ setup(
     packages=find_packages(exclude=['ez_setup', 'examples', 'test']),
     namespace_packages=[],
     include_package_data=True,
+    package_data={
+        'followthemoney_integrate': [
+            'templates/*.html',
+            'static/*.css',
+        ]
+    },
     zip_safe=False,
     install_requires=[
         'followthemoney',
+        'followthemoney-util',
         'click',
         'flask',
         'sqlalchemy'
@@ -29,7 +36,8 @@ setup(
     tests_require=['coverage', 'nose'],
     entry_points={
         'console_scripts': [
-            'ftmlinker = followthemoney_linker.cli:cli',
+            'ftmintegrate = followthemoney_integrate.cli:cli',
+            'ftm-integrate = followthemoney_integrate.cli:cli',
         ]
     }
 )

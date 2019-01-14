@@ -1,6 +1,6 @@
 PublicBody:
   label: Public body
   plural: Public bodies
-  icon: fa-building
+  description: "A public body, such as a ministry, department or state company."
   extends: Organization
   matchable: true

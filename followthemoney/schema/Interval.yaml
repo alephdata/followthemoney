@@ -1,6 +1,5 @@
 Interval:
   label: "Interval"
-  icon: fa-clock-o
   matchable: false
   featured:
     - startDate
@@ -26,3 +25,9 @@ Interval:
     alephUrl:
       label: Aleph URL
       type: url
+    modifiedAt:
+      label: "Modified on"
+      type: date
+    retrievedAt:
+      label: "Retrieved on"
+      type: date

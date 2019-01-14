@@ -3,7 +3,6 @@ Passport:
   plural: "Passports"
   description: "Passport"
   extends: Interval
-  icon: fa-id-card-o
   matchable: false
   featured:
     - type

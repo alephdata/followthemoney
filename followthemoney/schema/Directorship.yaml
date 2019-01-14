@@ -1,7 +1,6 @@
 Directorship:
   label: "Directorship"
   extends: Interest
-  icon: fa-user-circle
   matchable: false
   featured:
     - director

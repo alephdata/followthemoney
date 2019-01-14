@@ -1,8 +1,11 @@
 import click
+import logging
 
 from followthemoney.dedupe import Recon, EntityLinker
 from followthemoney_util.cli import cli
 from followthemoney_util.util import read_object, write_object
+
+log = logging.getLogger(__name__)
 
 
 @cli.command('auto-match', help="Generate result matches based purely on score")  # noqa
@@ -30,14 +33,17 @@ def apply_recon(recon):
         for recon in Recon.from_file(recon):
             if recon.judgement == Recon.MATCH:
                 linker.add(recon.subject, recon.canonical)
+        log.info("Linker: %s clusters.", len(linker))
         stdin = click.get_text_stream('stdin')
         stdout = click.get_text_stream('stdout')
         while True:
             entity = read_object(stdin)
             if entity is None:
                 break
-            entity = linker.apply(entity)
-            write_object(stdout, entity)
+            outgoing = linker.apply(entity)
+            if outgoing.id != entity.id:
+                outgoing.add('sameAs', entity.id, quiet=True)
+            write_object(stdout, outgoing)
     except BrokenPipeError:
         pass
 

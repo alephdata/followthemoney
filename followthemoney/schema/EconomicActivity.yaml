@@ -5,7 +5,6 @@ EconomicActivity:
   matchable: false
   extends:
     - Interval
-  icon: fa-truck
   featured:
     - sender
     - receiver

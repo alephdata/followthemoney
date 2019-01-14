@@ -1,4 +1,4 @@
-# FollowTheMoney Linker Tool
+# FollowTheMoney data integration tool
 
 A web user interface for record linkage on raw FtM data. The idea is
 to generate reconciliation (recon) mappings that document if two

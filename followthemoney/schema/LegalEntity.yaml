@@ -2,7 +2,6 @@ LegalEntity:
   extends: Thing
   label: Legal entity
   plural: Legal entities
-  icon: fa-user-secret
   description: "A legal entity may be a person or a company."
   matchable: true
   featured:
@@ -57,6 +56,10 @@ LegalEntity:
       label: Tax ID Number
       type: identifier
       description: "Tax ID number"
+    vatCode:
+      label: "V.A.T. Identifier"
+      description: "(EU) VAT number"
+      type: identifier
     jurisdiction:
       label: Jurisdiction
       type: country
@@ -81,6 +84,14 @@ LegalEntity:
     innCode:
       label: "INN"
       description: "Russian company ID"
+      type: identifier
+    dunsCode:
+      label: "D-U-N-S"
+      description: "Dun & Bradstreet identifier"
+      type: identifier
+    swiftBic:
+      label: "SWIFT/BIC"
+      description: "Bank identifier code"
       type: identifier
     parent:
       label: "Parent company"

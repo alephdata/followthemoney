@@ -1,6 +1,5 @@
 Thing:
   abstract: true
-  icon: fa-circle
   matchable: false
   featured:
     - name
@@ -58,3 +57,9 @@ Thing:
     notes:
       label: Notes
       type: text
+    modifiedAt:
+      label: "Modified on"
+      type: date
+    retrievedAt:
+      label: "Retrieved on"
+      type: date

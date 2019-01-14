@@ -1,5 +1,4 @@
 import click
-from urllib.parse import urljoin
 from alephclient.api import AlephAPI
 
 from followthemoney import model
@@ -27,6 +26,6 @@ def load_aleph(foreign_id, api_url, api_key):
         if 'properties' not in data:
             continue
         entity = model.get_proxy(data)
-        api_url = urljoin(api.base_url, 'entities/%s' % entity.id)
+        api_url = api._make_url('entities/%s' % entity.id)
         entity.add('alephUrl', api_url, quiet=True)
         write_object(stdout, entity)

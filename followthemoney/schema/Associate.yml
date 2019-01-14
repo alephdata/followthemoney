@@ -2,7 +2,6 @@ Associate:
   label: "Associate"
   description: "Non-family association between two people"
   extends: Relationship
-  icon: fa-hand-holding-usd
   matchable: false
   featured:
     - person

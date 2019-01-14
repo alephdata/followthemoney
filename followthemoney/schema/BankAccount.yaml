@@ -2,7 +2,6 @@ BankAccount:
   label: Bank Account
   plural: Bank Accounts
   extends: Asset
-  icon: fa-bank
   matchable: false
   featured:
     - accountNumber
