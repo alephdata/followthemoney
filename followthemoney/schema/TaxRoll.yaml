@@ -1,22 +1,36 @@
 TaxRoll:
-  label: Tax Roll
-  plural: Tax Rolls
+  label: "Tax Roll"
+  plural: "Tax Rolls"
+  description: "Tax Roll"
   extends: Interval
   icon: fa-bank
   matchable: false
   featured:
+    - holder
     - date
     - income
     - wealth
     - taxPaid
   properties:
-    person:
-      label: Person
+    taxee:
+      label: "Taxee"
       type: entity
-      schema: Person
+      range: LegalEntity
+      reverse:
+        name: "tax roll"
+    country:
+      label: "Country"
+      type: country
+    surname:
+      label: "Surname"
+    givenName:
+      label: "Given name"
+    birthDate:
+      label: "Date of birth"
+      type: date
     income:
-      label: Registered income
+      label: "Registered income"
     taxPaid:
-      label: Amount of tax paid
+      label: "Amount of tax paid"
     wealth:
-      label: Registered wealth
+      label: "Registered wealth"
