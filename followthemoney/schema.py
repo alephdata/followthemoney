@@ -20,7 +20,6 @@ class Schema(object):
         self._label = data.get('label', name)
         self._plural = data.get('plural', self.label)
         self._description = data.get('description')
-        self.featured = ensure_list(data.get('featured'))
         self.uri = URIRef(data.get('rdf', NS[name]))
 
         # Do not show in listings:
@@ -30,6 +29,16 @@ class Schema(object):
         # make sense for entities which have a lot of similar names, such
         # as land plots, assets etc.
         self.matchable = as_bool(data.get('matchable'), True)
+
+        # Mark a set of properties as important, i.e. they should be shown
+        # first, or in an abridged view of the entity.
+        self.featured = ensure_list(data.get('featured'))
+
+        # A transform of the entity into an edge for its representation in
+        # the context of a property graph representation like Neo4J/Gephi.
+        self.edge_source = data.get('edgeSource')
+        self.edge_target = data.get('edgeTarget')
+        self.edge = self.edge_source and self.edge_target
 
         self.extends = set()
         self.schemata = set([self])
