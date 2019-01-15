@@ -5,15 +5,14 @@ from normality import stringify
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
-from followthemoney.graph import Link, Node
+from followthemoney.graph import Statement, Node
 from followthemoney.util import key_bytes, gettext
 
 
 class EntityProxy(object):
     """A wrapper object for an entity, with utility functions for the
     introspection and manipulation of its properties."""
-    __slots__ = ['schema', 'id', 'key_prefix', '_properties',
-                 'countries', 'names', 'context']
+    __slots__ = ['schema', 'id', 'key_prefix', '_properties', 'context']
 
     def __init__(self, model, data, key_prefix=None):
         data = dict(data)
@@ -23,8 +22,6 @@ class EntityProxy(object):
             raise InvalidData(gettext('No schema for entity.'))
         self.id = stringify(data.pop('id', None))
         self.key_prefix = stringify(key_prefix)
-        self.countries = set()
-        self.names = set()
         self.context = data
         self._properties = {}
 
@@ -79,12 +76,6 @@ class EntityProxy(object):
             if prop not in self._properties:
                 self._properties[prop] = set()
             self._properties[prop].add(value)
-            if prop.type == registry.name:
-                norm = prop.type.normalize(value, cleaned=True)
-                self.names.update(norm)
-            if prop.type == registry.country:
-                norm = prop.type.normalize(value, cleaned=True)
-                self.countries.update(norm)
 
     def set(self, prop, values, cleaned=False, quiet=False):
         prop = self._get_prop(prop, quiet=quiet)
@@ -109,17 +100,16 @@ class EntityProxy(object):
                 yield (prop, value)
 
     def get_type_values(self, type_, cleaned=True):
-        if type_ == registry.name:
-            return list(self.names)
-        if type_ == registry.country:
-            return list(self.countries)
+        """All values of a particular type associated with a the entity."""
         combined = set()
         for prop, values in self._properties.items():
             if prop.type == type_:
                 combined.update(values)
-        return type_.normalize_set(combined,
-                                   cleaned=cleaned,
-                                   countries=self.countries)
+        countries = []
+        if type_ != registry.country:
+            countries = self.get_type_values(registry.country)
+        return type_.normalize_set(combined, cleaned=cleaned,
+                                   countries=countries)
 
     def get_type_inverted(self, cleaned=True):
         """Invert the properties of an entity into their normalised form."""
@@ -139,12 +129,12 @@ class EntityProxy(object):
         return Node(registry.entity, self.id)
 
     @property
-    def links(self):
+    def statements(self):
         node = self.node
         if node is None:
             return
         for prop, value in self.itervalues():
-            yield Link(node, prop, value)
+            yield Statement(node, prop, value)
 
     @property
     def caption(self):
@@ -152,6 +142,14 @@ class EntityProxy(object):
             if prop.caption:
                 for value in self.get(prop):
                     return value
+
+    @property
+    def names(self):
+        return self.get_type_values(registry.name)
+
+    @property
+    def countries(self):
+        return self.get_type_values(registry.country)
 
     @property
     def country_hints(self):
