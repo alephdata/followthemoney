@@ -82,6 +82,7 @@ class Property(object):
             'qname': self.qname,
             'label': self.label,
             'description': self.description,
+            'required': self.required,
             'caption': self.caption,
             'stub': self.stub,
             'uri': str(self.uri),
