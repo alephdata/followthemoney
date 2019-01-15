@@ -2,11 +2,9 @@ from followthemoney.util import get_entity_id
 from followthemoney.graph.node import Node
 
 
-class Link(object):
+class Statement(object):
     """A wrapper object for an RDF-like statement, similar to a triple
-    but with weighting and some other metadata. This has built-in
-    support for packing, i.e. transforming the link to a form suitable
-    for storage in a key/value store.
+    but with weighting and some other metadata.
     """
     __slots__ = ['subject', 'prop', 'value', 'weight',
                  'inverted', 'inferred']
@@ -47,15 +45,17 @@ class Link(object):
 
     def invert(self):
         if not self.inverted and self.prop.reverse is not None:
-            return Link(self.value_node,
-                        self.prop.reverse,
-                        self.subject.value,
-                        weight=self.weight)
-        return Link(self.value_node,
-                    self.prop,
-                    self.subject.value,
-                    weight=self.weight,
-                    inverted=not self.inverted)
+            return Statement(self.value_node,
+                             self.prop.reverse,
+                             self.subject.value,
+                             weight=self.weight,
+                             inferred=self.inferred)
+        return Statement(self.value_node,
+                         self.prop,
+                         self.subject.value,
+                         weight=self.weight,
+                         inverted=not self.inverted,
+                         inferred=self.inferred)
 
     def to_digraph(self, graph):
         if self.inverted:
@@ -69,7 +69,6 @@ class Link(object):
             return
         if self.weight == 0:
             return
-
         value_id = self.value_node.id
         graph.add_node(value_id)
         if self.prop.caption:
@@ -83,7 +82,8 @@ class Link(object):
         graph.add_edge(subject_id, value_id, **edge)
 
     def __repr__(self):
-        return '<Link(%r, %r, %r)>' % (self.subject, self.prop, self.value)
+        return '<Statement(%r, %r, %r)>' % \
+            (self.subject, self.prop, self.value)
 
     def __hash__(self):
         return hash(self.to_tuple())
