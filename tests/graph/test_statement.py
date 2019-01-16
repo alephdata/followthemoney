@@ -21,7 +21,7 @@ ENTITY = {
 }
 
 
-class LinkTestCase(TestCase):
+class StatementTestCase(TestCase):
 
     def test_base(self):
         prop = model.get_qname('Thing:name')
