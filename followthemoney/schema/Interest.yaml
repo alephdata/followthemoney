@@ -2,6 +2,7 @@ Interest:
   label: "Interest"
   extends: Interval
   matchable: false
+  abstract: true
   featured:
     - role
     - startDate
