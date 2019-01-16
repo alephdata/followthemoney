@@ -1,6 +1,5 @@
 # from nose.tools import assert_raises
 from unittest import TestCase
-from networkx import DiGraph
 
 from followthemoney import model
 from followthemoney.types import registry
@@ -68,29 +67,3 @@ class StatementTestCase(TestCase):
             if p == registry.phone:
                 assert str(o) == 'tel:+12025557612', o
         # assert False, triples
-
-    def test_graph(self):
-        g = DiGraph()
-        proxy = model.get_proxy(ENTITY)
-        node = proxy.node
-        self.assertEqual(str(node), node.id)
-        for stmt in proxy.statements:
-            stmt.to_digraph(g)
-        self.assertEqual(g.number_of_edges(), 8)
-        self.assertEqual(g.number_of_nodes(), 9)
-        self.assertIn(node.id, g.nodes)
-
-        prop = model.get_qname('Thing:name')
-        stmt = Statement(Node(registry.name, 'Bob'), prop, proxy.id,
-                         inverted=True)
-        stmt.to_digraph(g)
-        self.assertEqual(g.number_of_edges(), 9)
-
-        stmt = Statement(node, prop, 'Blub', weight=0)
-        stmt.to_digraph(g)
-        self.assertEqual(g.number_of_edges(), 9)
-
-        prop = model.get_qname('Thing:summary')
-        stmt = Statement(node, prop, 'This is a text')
-        stmt.to_digraph(g)
-        self.assertEqual(g.number_of_edges(), 9)

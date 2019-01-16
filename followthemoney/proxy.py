@@ -1,6 +1,7 @@
 from hashlib import sha1
-from banal import ensure_list, is_mapping, ensure_dict
+from itertools import product
 from normality import stringify
+from banal import ensure_list, is_mapping, ensure_dict
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
@@ -27,9 +28,12 @@ class EntityProxy(object):
 
         if is_mapping(properties):
             for key, value in properties.items():
-                self.add(key, value, cleaned=True, quiet=True)        
+                self.add(key, value, cleaned=True, quiet=True)
 
     def make_id(self, *parts):
+        """Generate a (hopefully unique) ID for the given entity, composed
+        of the given components, and the key_prefix defined in the proxy.
+        """
         digest = sha1()
         if self.key_prefix:
             digest.update(key_bytes(self.key_prefix))
@@ -98,6 +102,15 @@ class EntityProxy(object):
         for prop, values in self._properties.items():
             for value in values:
                 yield (prop, value)
+
+    def edgepairs(self):
+        """If the given schema allows for an edge representation of
+        the given entity."""
+        if self.schema.edge:
+            sources = self.get(self.schema.edge_source)
+            targets = self.get(self.schema.edge_target)
+            for (source, target) in product(sources, targets):
+                yield (source, target)
 
     def get_type_values(self, type_, cleaned=True):
         """All values of a particular type associated with a the entity."""
