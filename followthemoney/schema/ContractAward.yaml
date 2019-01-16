@@ -12,6 +12,9 @@ ContractAward:
     - amount
     - lotNumber
     - decisionReason
+  edge:
+    source: contract
+    target: supplier
   properties:
     supplier:
       label: "Supplier"

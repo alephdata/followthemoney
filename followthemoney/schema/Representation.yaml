@@ -8,6 +8,9 @@ Representation:
     - agent
     - client
     - role
+  edge:
+    source: client
+    target: agent
   properties:
     agent: # aka representative / incorporation agent
       label: "Agent"

@@ -8,6 +8,9 @@ UnknownLink:
     - subject
     - object
     - role
+  edge:
+    source: subject
+    target: object
   properties:
     subject:
       label: "Subject"

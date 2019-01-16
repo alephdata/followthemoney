@@ -8,6 +8,9 @@ Directorship:
     - role
     - startDate
     - endDate
+  edge:
+    source: organization
+    target: director
   properties:
     director:
       label: "Director"

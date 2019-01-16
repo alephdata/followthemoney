@@ -6,6 +6,9 @@ CourtCaseParty:
     - party
     - case
     - role
+  edge:
+    source: party
+    target: case
   properties:
     party: 
       label: "Party"

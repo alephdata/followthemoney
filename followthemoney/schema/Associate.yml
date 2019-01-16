@@ -7,6 +7,9 @@ Associate:
     - person
     - associate
     - relationship
+  edge:
+    source: person
+    target: associate
   properties:
     associate:
       label: "Associate"

@@ -11,6 +11,9 @@ Payment:
     - beneficiary
     - amount
     - purpose
+  edge:
+    source: payer
+    target: beneficiary
   properties:
     sequenceNumber:
       label: "Sequence number"
