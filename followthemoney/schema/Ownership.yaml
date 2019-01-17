@@ -9,6 +9,9 @@ Ownership:
     - percentage
     - startDate
     - endDate
+  edge:
+    source: asset
+    target: owner
   properties:
     owner:
       label: "Owner"

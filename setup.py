@@ -18,6 +18,7 @@ setup(
     install_requires=[
         'babel',
         'banal >= 0.4.2',
+        'stringcase',
         'pyyaml >= 3.13',
         'requests[security] >= 2.20.0',
         'python-levenshtein >= 0.12.0',

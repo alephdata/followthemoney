@@ -8,6 +8,9 @@ Succession:
     - predecessor
     - successor
     - date
+  edge:
+    source: predecessor
+    target: successor
   properties:
     predecessor:
       label: "Predecessor"

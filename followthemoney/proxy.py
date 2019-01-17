@@ -1,19 +1,19 @@
 from hashlib import sha1
-from banal import ensure_list, is_mapping, ensure_dict
+from itertools import product
 from normality import stringify
+from banal import ensure_list, is_mapping, ensure_dict
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
-from followthemoney.graph import Link, Node
+from followthemoney.graph import Statement, Node
 from followthemoney.util import key_bytes, gettext
 
 
 class EntityProxy(object):
     """A wrapper object for an entity, with utility functions for the
     introspection and manipulation of its properties."""
-    __slots__ = ['schema', 'id', 'key_prefix', '_properties',
-                 'countries', 'names', 'context']
+    __slots__ = ['schema', 'id', 'key_prefix', '_properties', 'context']
 
     def __init__(self, model, data, key_prefix=None):
         data = dict(data)
@@ -23,16 +23,17 @@ class EntityProxy(object):
             raise InvalidData(gettext('No schema for entity.'))
         self.id = stringify(data.pop('id', None))
         self.key_prefix = stringify(key_prefix)
-        self.countries = set()
-        self.names = set()
         self.context = data
         self._properties = {}
 
         if is_mapping(properties):
             for key, value in properties.items():
-                self.add(key, value, cleaned=True, quiet=True)        
+                self.add(key, value, cleaned=True, quiet=True)
 
     def make_id(self, *parts):
+        """Generate a (hopefully unique) ID for the given entity, composed
+        of the given components, and the key_prefix defined in the proxy.
+        """
         digest = sha1()
         if self.key_prefix:
             digest.update(key_bytes(self.key_prefix))
@@ -79,12 +80,6 @@ class EntityProxy(object):
             if prop not in self._properties:
                 self._properties[prop] = set()
             self._properties[prop].add(value)
-            if prop.type == registry.name:
-                norm = prop.type.normalize(value, cleaned=True)
-                self.names.update(norm)
-            if prop.type == registry.country:
-                norm = prop.type.normalize(value, cleaned=True)
-                self.countries.update(norm)
 
     def set(self, prop, values, cleaned=False, quiet=False):
         prop = self._get_prop(prop, quiet=quiet)
@@ -108,18 +103,26 @@ class EntityProxy(object):
             for value in values:
                 yield (prop, value)
 
+    def edgepairs(self):
+        """If the given schema allows for an edge representation of
+        the given entity."""
+        if self.schema.edge:
+            sources = self.get(self.schema.edge_source)
+            targets = self.get(self.schema.edge_target)
+            for (source, target) in product(sources, targets):
+                yield (source, target)
+
     def get_type_values(self, type_, cleaned=True):
-        if type_ == registry.name:
-            return list(self.names)
-        if type_ == registry.country:
-            return list(self.countries)
+        """All values of a particular type associated with a the entity."""
         combined = set()
         for prop, values in self._properties.items():
             if prop.type == type_:
                 combined.update(values)
-        return type_.normalize_set(combined,
-                                   cleaned=cleaned,
-                                   countries=self.countries)
+        countries = []
+        if type_ != registry.country:
+            countries = self.get_type_values(registry.country)
+        return type_.normalize_set(combined, cleaned=cleaned,
+                                   countries=countries)
 
     def get_type_inverted(self, cleaned=True):
         """Invert the properties of an entity into their normalised form."""
@@ -139,12 +142,12 @@ class EntityProxy(object):
         return Node(registry.entity, self.id)
 
     @property
-    def links(self):
+    def statements(self):
         node = self.node
         if node is None:
             return
         for prop, value in self.itervalues():
-            yield Link(node, prop, value)
+            yield Statement(node, prop, value)
 
     @property
     def caption(self):
@@ -152,6 +155,14 @@ class EntityProxy(object):
             if prop.caption:
                 for value in self.get(prop):
                     return value
+
+    @property
+    def names(self):
+        return self.get_type_values(registry.name)
+
+    @property
+    def countries(self):
+        return self.get_type_values(registry.country)
 
     @property
     def country_hints(self):

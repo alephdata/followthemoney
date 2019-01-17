@@ -7,6 +7,9 @@ Membership:
     - member
     - organization
     - role
+  edge:
+    source: organization
+    target: member
   properties:
     member:
       label: "Member"

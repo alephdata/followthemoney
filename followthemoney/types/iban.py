@@ -15,7 +15,7 @@ class IbanType(PropertyType):
         text = stringify(text)
         try:
             return iban.validate(text)
-        except ValidationError as ex:
+        except ValidationError:
             return False
 
     def clean_text(self, text, **kwargs):

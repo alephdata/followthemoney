@@ -15,8 +15,8 @@ def export_rdf():
             if entity is None:
                 break
             graph = Graph()
-            for link in entity.links:
-                triple = link.rdf()
+            for stmt in entity.statements:
+                triple = stmt.rdf()
                 if triple is None:
                     continue
                 graph.add(triple)

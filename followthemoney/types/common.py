@@ -41,6 +41,10 @@ class PropertyType(object):
             values.update(self.normalize(item, **kwargs))
         return list(values)
 
+    def join(self, values):
+        values = ensure_list(values)
+        return '; '.join(values)
+
     def specificity(self, value):
         return 0
 

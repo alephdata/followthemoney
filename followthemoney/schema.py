@@ -20,7 +20,6 @@ class Schema(object):
         self._label = data.get('label', name)
         self._plural = data.get('plural', self.label)
         self._description = data.get('description')
-        self.featured = ensure_list(data.get('featured'))
         self.uri = URIRef(data.get('rdf', NS[name]))
 
         # Do not show in listings:
@@ -30,6 +29,17 @@ class Schema(object):
         # make sense for entities which have a lot of similar names, such
         # as land plots, assets etc.
         self.matchable = as_bool(data.get('matchable'), True)
+
+        # Mark a set of properties as important, i.e. they should be shown
+        # first, or in an abridged view of the entity.
+        self.featured = ensure_list(data.get('featured'))
+
+        # A transform of the entity into an edge for its representation in
+        # the context of a property graph representation like Neo4J/Gephi.
+        edge = data.get('edge', {})
+        self.edge_source = edge.get('source')
+        self.edge_target = edge.get('target')
+        self.edge = self.edge_source and self.edge_target
 
         self.extends = set()
         self.schemata = set([self])
@@ -60,6 +70,15 @@ class Schema(object):
         for featured in self.featured:
             if self.get(featured) is None:
                 raise InvalidModel("Missing featured property: %s" % featured)
+
+        if self.edge:
+            if self.get(self.edge_source) is None:
+                msg = "Missing edge source: %s" % self.edge_source
+                raise InvalidModel(msg)
+
+            if self.get(self.edge_target) is None:
+                msg = "Missing edge target: %s" % self.edge_target
+                raise InvalidModel(msg)
 
     def _add_reverse(self, data, other):
         name = data.get('name', None)
@@ -142,6 +161,10 @@ class Schema(object):
             'extends': [e.name for e in self.extends],
             'abstract': self.abstract,
             'matchable': self.matchable,
+            'edge': {
+                'source': self.edge_source,
+                'target': self.edge_target,
+            },
             'description': self.description,
             'featured': self.featured,
             'properties': {}

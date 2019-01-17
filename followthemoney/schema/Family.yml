@@ -7,6 +7,9 @@ Family:
     - person
     - relative
     - relationship
+  edge:
+    source: person
+    target: relative
   properties:
     relative:
       label: "Relative"

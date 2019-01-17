@@ -160,4 +160,4 @@ class ProxyTestCase(TestCase):
     def test_empty(self):
         proxy = model.make_entity('Person')
         assert proxy.node is None
-        assert 0 == len(list(proxy.links))
+        assert 0 == len(list(proxy.statements))
