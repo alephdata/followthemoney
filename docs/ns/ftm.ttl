@@ -6,6 +6,12 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://xmlns.com/foaf/0.1/Person> a rdfs:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "An individual" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:LegalEntity .
+
 ftm:Airplane a rdfs:Class ;
     rdfs:label "Airplane" ;
     rdfs:isDefinedBy ftm: ;
@@ -39,15 +45,10 @@ ftm:Company a rdfs:Class ;
     rdfs:subClassOf ftm:Asset,
         ftm:Organization .
 
-ftm:Concession a rdfs:Class ;
-    rdfs:label "Concession" ;
-    rdfs:comment "A grant of land, rights or property. A type of Contract" ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Contract .
-
 ftm:Contract a rdfs:Class ;
     rdfs:label "Contract" ;
-    rdfs:comment "An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward)." ;
+    rdfs:comment """An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward).
+""" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Asset .
 
@@ -61,7 +62,7 @@ ftm:ContractAward a rdfs:Class ;
 ftm:CourtCase a rdfs:Class ;
     rdfs:label "Court case" ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Interval .
+    rdfs:subClassOf ftm:Thing .
 
 ftm:CourtCaseParty a rdfs:Class ;
     rdfs:label "Party" ;
@@ -137,6 +138,12 @@ ftm:LegalEntity a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Thing .
 
+ftm:License a rdfs:Class ;
+    rdfs:label "License" ;
+    rdfs:comment "A grant of land, rights or property. A type of Contract" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Contract .
+
 ftm:Membership a rdfs:Class ;
     rdfs:label "Membership" ;
     rdfs:isDefinedBy ftm: ;
@@ -157,6 +164,11 @@ ftm:Package a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Folder .
 
+ftm:Page a rdfs:Class ;
+    rdfs:label "Page" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Record .
+
 ftm:Pages a rdfs:Class ;
     rdfs:label "Document" ;
     rdfs:isDefinedBy ftm: ;
@@ -170,14 +182,10 @@ ftm:Passport a rdfs:Class ;
 
 ftm:Payment a rdfs:Class ;
     rdfs:label "Payment" ;
+    rdfs:comment "A monetary payment between two parties." ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interval,
         ftm:Value .
-
-ftm:Person a rdfs:Class ;
-    rdfs:label "Person" ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:LegalEntity .
 
 ftm:PlainText a rdfs:Class ;
     rdfs:label "Text file" ;
@@ -186,13 +194,19 @@ ftm:PlainText a rdfs:Class ;
 
 ftm:PublicBody a rdfs:Class ;
     rdfs:label "Public body" ;
+    rdfs:comment "A public body, such as a ministry, department or state company." ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Organization .
 
 ftm:RealEstate a rdfs:Class ;
     rdfs:label "Real estate" ;
+    rdfs:comment "A piece of land or property." ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Asset .
+
+ftm:Record a rdfs:Class ;
+    rdfs:label "Record" ;
+    rdfs:isDefinedBy ftm: .
 
 ftm:Relationship a rdfs:Class ;
     rdfs:label "Relationship" ;
@@ -206,10 +220,22 @@ ftm:Representation a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
 
+ftm:Row a rdfs:Class ;
+    rdfs:label "Row" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Record .
+
 ftm:Sanction a rdfs:Class ;
     rdfs:label "Sanction" ;
+    rdfs:comment "A sanction designation" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interval .
+
+ftm:Succession a rdfs:Class ;
+    rdfs:label "Succession" ;
+    rdfs:comment "Two entities that legally succeed each other." ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Interest .
 
 ftm:Table a rdfs:Class ;
     rdfs:label "Table" ;
@@ -218,6 +244,7 @@ ftm:Table a rdfs:Class ;
 
 ftm:TaxRoll a rdfs:Class ;
     rdfs:label "Tax Roll" ;
+    rdfs:comment "A tax declaration of an individual" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interval .
 
@@ -241,6 +268,7 @@ ftm:Vehicle a rdfs:Class ;
 
 ftm:Vessel a rdfs:Class ;
     rdfs:label "Vessel" ;
+    rdfs:comment "A boat or ship" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Vehicle .
 
@@ -254,1160 +282,1742 @@ ftm:Workbook a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Folder .
 
-ftm:accountNumber a rdf:Property ;
-    rdfs:label "Account Number" ;
-    rdfs:domain ftm:BankAccount ;
+<http://purl.org/dc/elements/1.1/creator> a rdf:Property ;
+    rdfs:label "Author" ;
+    rdfs:comment "The original author, not the uploader" ;
+    rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
-ftm:accountType a rdf:Property ;
-    rdfs:label "Account Type" ;
-    rdfs:domain ftm:BankAccount ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:address a rdf:Property ;
-    rdfs:label "Address" ;
-    rdfs:domain ftm:Thing ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:agent a rdf:Property ;
-    rdfs:label "Agent" ;
-    rdfs:domain ftm:Representation ;
+<http://purl.org/dc/elements/1.1/date> a rdf:Property ;
+    rdfs:label "Date" ;
+    rdfs:comment "If not otherwise specified" ;
+    rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
+    rdfs:range xsd:dateTime .
 
-ftm:alias a rdf:Property ;
+<http://purl.org/dc/elements/1.1/title> a rdf:Property ;
+    rdfs:label "Title" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+dct:format a rdf:Property ;
+    rdfs:label "MIME type" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+dct:isPartOf a rdf:Property ;
+    rdfs:label "Document",
+        "Parent document",
+        "Table" ;
+    rdfs:domain ftm:Document,
+        ftm:Page,
+        ftm:Row ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Folder,
+        ftm:Pages,
+        ftm:Table .
+
+dct:language a rdf:Property ;
+    rdfs:label "Language" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+owl:sameAs a rdf:Property ;
+    rdfs:label "Same as" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
+<http://www.w3.org/2004/02/skos/core#altLabel> a rdf:Property ;
     rdfs:label "Other name" ;
     rdfs:domain ftm:Thing ;
     rdfs:isDefinedBy ftm: .
 
-ftm:amended a rdf:Property ;
-    rdfs:label "Amended?" ;
-    rdfs:comment "Was this award amended, modified or updated by a subsequent document?" ;
-    rdfs:domain ftm:ContractAward ;
+<http://www.w3.org/2004/02/skos/core#prefLabel> a rdf:Property ;
+    rdfs:label "Name" ;
+    rdfs:domain ftm:Thing ;
     rdfs:isDefinedBy ftm: .
 
-ftm:amount a rdf:Property ;
-    rdfs:label "Amount" ;
-    rdfs:domain ftm:Value ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:amountEur a rdf:Property ;
-    rdfs:label "Amount in EUR" ;
-    rdfs:domain ftm:Value ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:amountUsd a rdf:Property ;
-    rdfs:label "Amount in USD" ;
-    rdfs:domain ftm:Value ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:area a rdf:Property ;
-    rdfs:label "Area" ;
-    rdfs:domain ftm:Concession,
-        ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:asset a rdf:Property ;
-    rdfs:label "Asset" ;
-    rdfs:domain ftm:Ownership ;
+<http://xmlns.com/foaf/0.1/birthday> a rdf:Property ;
+    rdfs:label "Birth date" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Asset .
+    rdfs:range xsd:dateTime .
 
-ftm:associate a rdf:Property ;
+<http://xmlns.com/foaf/0.1/givenName> a rdf:Property ;
+    rdfs:label "First name" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<http://xmlns.com/foaf/0.1/lastName> a rdf:Property ;
+    rdfs:label "Last name" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<http://xmlns.com/foaf/0.1/title> a rdf:Property ;
+    rdfs:label "Title" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Airplane:icaoCode> a rdf:Property ;
+    rdfs:label "ICAO aircraft type designator" ;
+    rdfs:domain ftm:Airplane ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Airplane:manufacturer> a rdf:Property ;
+    rdfs:label "Manufacturer" ;
+    rdfs:domain ftm:Airplane ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Airplane:serialNumber> a rdf:Property ;
+    rdfs:label "Serial Number" ;
+    rdfs:domain ftm:Airplane ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Asset:ownershipAsset> a rdf:Property ;
+    rdfs:label "Owners" ;
+    rdfs:domain ftm:Asset ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Ownership .
+
+<https://w3id.org/ftm#Associate:associate> a rdf:Property ;
     rdfs:label "Associate" ;
     rdfs:comment "An associate of the subject person." ;
     rdfs:domain ftm:Associate ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Person .
+    rdfs:range <http://xmlns.com/foaf/0.1/Person> .
 
-ftm:authority a rdf:Property ;
-    rdfs:label "Authority",
-        "Contract authority",
-        "Sanctioning authority" ;
-    rdfs:domain ftm:Contract,
-        ftm:Passport,
-        ftm:Sanction ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity,
-        ftm:Thing .
+<https://w3id.org/ftm#BankAccount:accountNumber> a rdf:Property ;
+    rdfs:label "Account Number" ;
+    rdfs:domain ftm:BankAccount ;
+    rdfs:isDefinedBy ftm: .
 
-ftm:balance a rdf:Property ;
+<https://w3id.org/ftm#BankAccount:accountType> a rdf:Property ;
+    rdfs:label "Account Type" ;
+    rdfs:domain ftm:BankAccount ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#BankAccount:balance> a rdf:Property ;
     rdfs:label "Balance" ;
     rdfs:domain ftm:BankAccount ;
     rdfs:isDefinedBy ftm: .
 
-ftm:bankAccount a rdf:Property ;
-    rdfs:label "Bank Account" ;
-    rdfs:comment "Bank account of the contract" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:bankAddress a rdf:Property ;
+<https://w3id.org/ftm#BankAccount:bankAddress> a rdf:Property ;
     rdfs:label "Bank Address" ;
     rdfs:domain ftm:BankAccount ;
     rdfs:isDefinedBy ftm: .
 
-ftm:bankForeign a rdf:Property ;
-    rdfs:label "Foreign currency bank" ;
-    rdfs:comment "Bank account for payments in foreign currency" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:bankName a rdf:Property ;
+<https://w3id.org/ftm#BankAccount:bankName> a rdf:Property ;
     rdfs:label "Bank Name" ;
     rdfs:domain ftm:BankAccount ;
     rdfs:isDefinedBy ftm: .
 
-ftm:bankRub a rdf:Property ;
-    rdfs:label "Rouble bank" ;
-    rdfs:comment "Bank account for payments in roubles" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:beneficiary a rdf:Property ;
-    rdfs:label "Beneficiary" ;
-    rdfs:domain ftm:Payment ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
-
-ftm:beneficiaryAccount a rdf:Property ;
-    rdfs:label "Beneficiary bank account" ;
-    rdfs:domain ftm:Payment ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:BankAccount .
-
-ftm:bic a rdf:Property ;
+<https://w3id.org/ftm#BankAccount:bic> a rdf:Property ;
     rdfs:label "Bank Identifier Code" ;
     rdfs:domain ftm:BankAccount ;
     rdfs:isDefinedBy ftm: .
 
-ftm:birthDate a rdf:Property ;
-    rdfs:label "Birth date",
-        "Date of birth" ;
-    rdfs:domain ftm:Passport,
-        ftm:Person ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:birthPlace a rdf:Property ;
-    rdfs:label "Place of birth" ;
-    rdfs:domain ftm:Passport,
-        ftm:Person ;
+<https://w3id.org/ftm#BankAccount:iban> a rdf:Property ;
+    rdfs:label "IBAN" ;
+    rdfs:domain ftm:BankAccount ;
     rdfs:isDefinedBy ftm: .
 
-ftm:buildDate a rdf:Property ;
-    rdfs:label "Build Date" ;
-    rdfs:domain ftm:Vehicle ;
+<https://w3id.org/ftm#BankAccount:paymentBeneficiaryAccount> a rdf:Property ;
+    rdfs:label "Payments received" ;
+    rdfs:domain ftm:BankAccount ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
+    rdfs:range ftm:Payment .
 
-ftm:cadastralCode a rdf:Property ;
-    rdfs:label "Cadastral code" ;
-    rdfs:domain ftm:RealEstate ;
+<https://w3id.org/ftm#BankAccount:paymentPayerAccount> a rdf:Property ;
+    rdfs:label "Payments made" ;
+    rdfs:domain ftm:BankAccount ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Payment .
+
+<https://w3id.org/ftm#Company:bikCode> a rdf:Property ;
+    rdfs:label "BIK" ;
+    rdfs:comment "Russian bank account code" ;
+    rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:caemCode a rdf:Property ;
+<https://w3id.org/ftm#Company:caemCode> a rdf:Property ;
     rdfs:label "COD CAEM" ;
     rdfs:comment "(RO) What kind of activity a legal entity is allowed to develop" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:callSign a rdf:Property ;
-    rdfs:label "Call Sign" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:cancelled a rdf:Property ;
-    rdfs:label "Cancelled?" ;
-    rdfs:domain ftm:Contract ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:capital a rdf:Property ;
+<https://w3id.org/ftm#Company:capital> a rdf:Property ;
     rdfs:label "Capital" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:case a rdf:Property ;
-    rdfs:label "Case" ;
-    rdfs:domain ftm:CourtCaseParty ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:CourtCase .
-
-ftm:caseNumber a rdf:Property ;
-    rdfs:label "Case number" ;
-    rdfs:domain ftm:CourtCase ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:category a rdf:Property ;
-    rdfs:label "Category" ;
-    rdfs:domain ftm:CourtCase ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:ccdNumber a rdf:Property ;
-    rdfs:label "Customs Cargo Declaration Number" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:ccdValue a rdf:Property ;
-    rdfs:label "CCD Value" ;
-    rdfs:comment "Declaration Value" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:censusBlock a rdf:Property ;
-    rdfs:label "Census block" ;
-    rdfs:domain ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:cikCode a rdf:Property ;
+<https://w3id.org/ftm#Company:cikCode> a rdf:Property ;
     rdfs:label "SEC Central Index Key" ;
     rdfs:comment "US SEC Central Index Key" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:classification a rdf:Property ;
-    rdfs:label "Classification" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:client a rdf:Property ;
-    rdfs:label "Client" ;
-    rdfs:domain ftm:Representation ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
-
-ftm:closeDate a rdf:Property ;
-    rdfs:label "Close date" ;
-    rdfs:domain ftm:CourtCase ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:coatoCode a rdf:Property ;
+<https://w3id.org/ftm#Company:coatoCode> a rdf:Property ;
     rdfs:label "COATO / SOATO / OKATO" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:commodities a rdf:Property ;
-    rdfs:label "Commodities" ;
-    rdfs:domain ftm:Concession ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:contract a rdf:Property ;
-    rdfs:label "Associated contract",
-        "Contract" ;
-    rdfs:domain ftm:ContractAward,
-        ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Contract,
-        ftm:Thing .
-
-ftm:contractDate a rdf:Property ;
-    rdfs:label "Contract date" ;
-    rdfs:domain ftm:Contract ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:contractHolder a rdf:Property ;
-    rdfs:label "Contract holder" ;
-    rdfs:comment "Customs formalities caretaker" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:country a rdf:Property ;
-    rdfs:label "Country" ;
-    rdfs:domain ftm:CourtCase,
-        ftm:Event,
-        ftm:Passport,
-        ftm:Thing,
-        ftm:Vehicle ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:court a rdf:Property ;
-    rdfs:label "Court" ;
-    rdfs:domain ftm:CourtCase ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:cpvCode a rdf:Property ;
-    rdfs:label "CPV Code" ;
-    rdfs:comment "Contract Procurement Vocabulary (what type of goods/services, EU)" ;
-    rdfs:domain ftm:ContractAward ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:createDate a rdf:Property ;
-    rdfs:label "Record date" ;
-    rdfs:domain ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:crsNumber a rdf:Property ;
-    rdfs:label "CRS Number" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:currency a rdf:Property ;
-    rdfs:label "Currency" ;
-    rdfs:domain ftm:Value ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:customsAmount a rdf:Property ;
-    rdfs:label "Customs Value Amount" ;
-    rdfs:comment "Customs Value of goods" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:customsProcedure a rdf:Property ;
-    rdfs:label "Customs Procedure" ;
-    rdfs:comment "Customs Procedure — type of customs clearance" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:date a rdf:Property ;
-    rdfs:label "Date" ;
-    rdfs:domain ftm:Interval ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:deathDate a rdf:Property ;
-    rdfs:label "Death date" ;
-    rdfs:domain ftm:Person ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:decisionReason a rdf:Property ;
-    rdfs:label "Decision reason" ;
-    rdfs:domain ftm:ContractAward ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:declarant a rdf:Property ;
-    rdfs:label "Declarant" ;
-    rdfs:comment "Customs declarant" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:departureCountry a rdf:Property ;
-    rdfs:label "Country of departure" ;
-    rdfs:comment "Country out of which the goods are transported" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:description a rdf:Property ;
-    rdfs:label "Description" ;
-    rdfs:domain ftm:Thing ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:destinationCountry a rdf:Property ;
-    rdfs:label "Country of destination" ;
-    rdfs:comment "Final destination for the goods" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:directionOfTransportation a rdf:Property ;
-    rdfs:label "Direction of transportation" ;
-    rdfs:comment "Direction of transportation (import/export)" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:director a rdf:Property ;
-    rdfs:label "Director" ;
-    rdfs:domain ftm:Directorship ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
-
-ftm:dissolutionDate a rdf:Property ;
-    rdfs:label "Dissolution date" ;
-    rdfs:comment "The date the legal entity was dissolved, if applicable" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:documentNumber a rdf:Property ;
-    rdfs:label "Document number" ;
-    rdfs:domain ftm:ContractAward ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:documentType a rdf:Property ;
-    rdfs:label "Document type" ;
-    rdfs:domain ftm:ContractAward ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:dollarExchRate a rdf:Property ;
-    rdfs:label "USD Exchange Rate" ;
-    rdfs:comment "USD Exchange Rate for the activity" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:email a rdf:Property ;
-    rdfs:label "E-Mail" ;
-    rdfs:comment "Email address" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:encumbrance a rdf:Property ;
-    rdfs:label "Encumbrance" ;
-    rdfs:comment """An encumbrance is a right to, interest in, or legal liability on real property that does not prohibit passing title to the property but that diminishes its value.
-""" ;
-    rdfs:domain ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:endDate a rdf:Property ;
-    rdfs:label "End date" ;
-    rdfs:domain ftm:Interval ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:entity a rdf:Property ;
-    rdfs:label "Sanctioned entity" ;
-    rdfs:domain ftm:Sanction ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:fatherName a rdf:Property ;
-    rdfs:label "Patronymic" ;
-    rdfs:domain ftm:Person ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:fileDate a rdf:Property ;
-    rdfs:label "File date" ;
-    rdfs:domain ftm:CourtCase ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:firstName a rdf:Property ;
-    rdfs:label "First name" ;
-    rdfs:domain ftm:Person ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:flag a rdf:Property ;
-    rdfs:label "Flag" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:fnsCode a rdf:Property ;
+<https://w3id.org/ftm#Company:fnsCode> a rdf:Property ;
     rdfs:label "Federal tax service code" ;
     rdfs:comment "(RU, ФНС) Federal Tax Service related info" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:fssCode a rdf:Property ;
+<https://w3id.org/ftm#Company:fssCode> a rdf:Property ;
     rdfs:label "FSS" ;
     rdfs:comment "(RU, ФСС) Social Security" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:gender a rdf:Property ;
-    rdfs:label "Gender" ;
-    rdfs:domain ftm:Passport,
-        ftm:Person ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:givenName a rdf:Property ;
-    rdfs:label "Given name" ;
-    rdfs:domain ftm:Passport ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:goodsDescription a rdf:Property ;
-    rdfs:label "Description" ;
-    rdfs:comment "Description of goods" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:grossRegisteredTonnage a rdf:Property ;
-    rdfs:label "Gross Registered Tonnage" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:holder a rdf:Property ;
-    rdfs:label "Document holder" ;
-    rdfs:domain ftm:Passport ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:iban a rdf:Property ;
-    rdfs:label "IBAN" ;
-    rdfs:domain ftm:BankAccount ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:ibcRuc a rdf:Property ;
+<https://w3id.org/ftm#Company:ibcRuc> a rdf:Property ;
     rdfs:label "ibcRUC" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:icaoCode a rdf:Property ;
-    rdfs:label "ICAO aircraft type designator" ;
-    rdfs:domain ftm:Airplane ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:icijId a rdf:Property ;
-    rdfs:label "ICIJ ID" ;
-    rdfs:comment "ID according to International Consortium for Investigative Journalists" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:idNumber a rdf:Property ;
-    rdfs:label "ID Number" ;
-    rdfs:comment "ID number of any applicable ID" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:imoNumber a rdf:Property ;
-    rdfs:label "IMO Number" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:income a rdf:Property ;
-    rdfs:label "Registered income" ;
-    rdfs:domain ftm:TaxRoll ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:incorporationDate a rdf:Property ;
-    rdfs:label "Incorporation date" ;
-    rdfs:comment "The date the legal entity was incorporated" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:innCode a rdf:Property ;
-    rdfs:label "INN" ;
-    rdfs:comment "Russian company ID" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:invoiceAmount a rdf:Property ;
-    rdfs:label "Invoice Value Amount" ;
-    rdfs:comment "Invoice Value of goods" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:ipoCode a rdf:Property ;
+<https://w3id.org/ftm#Company:ipoCode> a rdf:Property ;
     rdfs:label "IPO" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:irsCode a rdf:Property ;
+<https://w3id.org/ftm#Company:irsCode> a rdf:Property ;
     rdfs:label "IRS Number" ;
     rdfs:comment "US tax ID" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:jibCode a rdf:Property ;
+<https://w3id.org/ftm#Company:jibCode> a rdf:Property ;
     rdfs:label "JIB" ;
     rdfs:comment "Yugoslavia company ID" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:jurisdiction a rdf:Property ;
+<https://w3id.org/ftm#Company:jurisdiction> a rdf:Property ;
     rdfs:label "Jurisdiction" ;
-    rdfs:comment "Country or region in which this entity operates" ;
-    rdfs:domain ftm:Company,
-        ftm:LegalEntity ;
+    rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:keywords a rdf:Property ;
-    rdfs:label "Keywords" ;
-    rdfs:domain ftm:Thing ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:kppCode a rdf:Property ;
+<https://w3id.org/ftm#Company:kppCode> a rdf:Property ;
     rdfs:label "KPP" ;
     rdfs:comment "(RU, КПП) in addition to INN for orgs; reason for registration at FNS" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:landType a rdf:Property ;
-    rdfs:label "Land type" ;
-    rdfs:domain ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:lastName a rdf:Property ;
-    rdfs:label "Last name" ;
-    rdfs:domain ftm:Person ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:latitude a rdf:Property ;
-    rdfs:label "Latitude" ;
-    rdfs:domain ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:legalBasis a rdf:Property ;
-    rdfs:label "Legal basis" ;
-    rdfs:domain ftm:Ownership ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:legalForm a rdf:Property ;
-    rdfs:label "Legal form" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:location a rdf:Property ;
-    rdfs:label "Location" ;
-    rdfs:domain ftm:Event ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:longitude a rdf:Property ;
-    rdfs:label "Longitude" ;
-    rdfs:domain ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:lotNumber a rdf:Property ;
-    rdfs:label "Lot number" ;
-    rdfs:domain ftm:ContractAward ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:mainCountry a rdf:Property ;
-    rdfs:label "Country of origin" ;
-    rdfs:comment "Primary country of this entity" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:manufacturer a rdf:Property ;
-    rdfs:label "Manufacturer" ;
-    rdfs:domain ftm:Airplane ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:mbsCode a rdf:Property ;
+<https://w3id.org/ftm#Company:mbsCode> a rdf:Property ;
     rdfs:label "MBS" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:member a rdf:Property ;
-    rdfs:label "Member" ;
-    rdfs:domain ftm:Membership ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
-
-ftm:middleName a rdf:Property ;
-    rdfs:label "Middle name" ;
-    rdfs:domain ftm:Person ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:mmsi a rdf:Property ;
-    rdfs:label "MMSI" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:model a rdf:Property ;
-    rdfs:label "Model" ;
-    rdfs:domain ftm:Vehicle ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:motherName a rdf:Property ;
-    rdfs:label "Matronymic" ;
-    rdfs:domain ftm:Person ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:name a rdf:Property ;
-    rdfs:label "Name" ;
-    rdfs:domain ftm:CourtCase,
-        ftm:Thing ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:nameChangeDate a rdf:Property ;
-    rdfs:label "Date of Name Change" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:nationality a rdf:Property ;
-    rdfs:label "Nationality" ;
-    rdfs:domain ftm:Person ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:navigationArea a rdf:Property ;
-    rdfs:label "Navigation Area" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:notes a rdf:Property ;
-    rdfs:label "Notes" ;
-    rdfs:domain ftm:Thing ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:noticeId a rdf:Property ;
-    rdfs:label "Contract Award Notice ID" ;
-    rdfs:domain ftm:Contract ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:numberAwards a rdf:Property ;
-    rdfs:label "Number of awards" ;
-    rdfs:domain ftm:Contract ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:nutsCode a rdf:Property ;
-    rdfs:label "NUTS Code" ;
-    rdfs:comment "Nomencalture of Territorial Units for Statistics (NUTS)" ;
-    rdfs:domain ftm:ContractAward ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:object a rdf:Property ;
-    rdfs:label "Object" ;
-    rdfs:domain ftm:UnknownLink ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:ogrnCode a rdf:Property ;
+<https://w3id.org/ftm#Company:ogrnCode> a rdf:Property ;
     rdfs:label "OGRN" ;
     rdfs:comment "Major State Registration Number" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:okopfCode a rdf:Property ;
+<https://w3id.org/ftm#Company:okopfCode> a rdf:Property ;
     rdfs:label "OKOPF" ;
     rdfs:comment "(RU, ОКОПФ) What kind of business entity" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:okpoCode a rdf:Property ;
-    rdfs:label "OKPO" ;
-    rdfs:comment "Russian industry classifier" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:oksmCode a rdf:Property ;
+<https://w3id.org/ftm#Company:oksmCode> a rdf:Property ;
     rdfs:label "OKSM" ;
     rdfs:comment "Russian (ОКСМ) countries classifer" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:okvedCode a rdf:Property ;
+<https://w3id.org/ftm#Company:okvedCode> a rdf:Property ;
     rdfs:label "OKVED(2) Classifier" ;
     rdfs:comment "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:operator a rdf:Property ;
-    rdfs:label "Operator" ;
-    rdfs:domain ftm:Vehicle ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:organization a rdf:Property ;
-    rdfs:label "Organization" ;
-    rdfs:domain ftm:Directorship,
-        ftm:Membership ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Organization .
-
-ftm:originCountry a rdf:Property ;
-    rdfs:label "Country of origin" ;
-    rdfs:comment "Country of origin of goods" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:owner a rdf:Property ;
-    rdfs:label "Owner" ;
-    rdfs:domain ftm:Ownership,
-        ftm:Vehicle ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity,
-        ftm:Thing .
-
-ftm:ownershipType a rdf:Property ;
-    rdfs:label "Type of ownership" ;
-    rdfs:domain ftm:Ownership ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:parent a rdf:Property ;
-    rdfs:label "Parent company" ;
-    rdfs:comment "If this entity is a subsidiary, another entity (company or organisation) is its parent" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
-
-ftm:party a rdf:Property ;
-    rdfs:label "Party" ;
-    rdfs:domain ftm:CourtCaseParty ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:passportNumber a rdf:Property ;
-    rdfs:label "Passport",
-        "Passport number" ;
-    rdfs:domain ftm:Passport,
-        ftm:Person ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:pastFlags a rdf:Property ;
-    rdfs:label "Past Flags" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:pastNames a rdf:Property ;
-    rdfs:label "Past Names" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:pastTypes a rdf:Property ;
-    rdfs:label "Past Types" ;
-    rdfs:domain ftm:Vessel ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:payer a rdf:Property ;
-    rdfs:label "Payer" ;
-    rdfs:domain ftm:Payment ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:LegalEntity .
-
-ftm:payerAccount a rdf:Property ;
-    rdfs:label "Payer bank account" ;
-    rdfs:domain ftm:Payment ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:BankAccount .
-
-ftm:percentage a rdf:Property ;
-    rdfs:label "Percentage held" ;
-    rdfs:domain ftm:Ownership ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:person a rdf:Property ;
-    rdfs:label "Person" ;
-    rdfs:comment "The subject of the familial relation." ;
-    rdfs:domain ftm:Relationship,
-        ftm:TaxRoll ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Person .
-
-ftm:personalNumber a rdf:Property ;
-    rdfs:label "Personal number" ;
-    rdfs:domain ftm:Passport ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:pfrNumber a rdf:Property ;
+<https://w3id.org/ftm#Company:pfrNumber> a rdf:Property ;
     rdfs:label "PFR Number" ;
     rdfs:comment "(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch" ;
     rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:phone a rdf:Property ;
-    rdfs:label "Phone" ;
-    rdfs:comment "Phone number" ;
-    rdfs:domain ftm:LegalEntity ;
+<https://w3id.org/ftm#Company:registrationNumber> a rdf:Property ;
+    rdfs:label "Registration number" ;
+    rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:position a rdf:Property ;
-    rdfs:label "Position" ;
-    rdfs:domain ftm:Person ;
+<https://w3id.org/ftm#Company:voenCode> a rdf:Property ;
+    rdfs:label "VOEN" ;
+    rdfs:comment "Azerbaijan taxpayer ID" ;
+    rdfs:domain ftm:Company ;
     rdfs:isDefinedBy ftm: .
 
-ftm:previousName a rdf:Property ;
-    rdfs:label "Previous name" ;
-    rdfs:domain ftm:Thing ;
+<https://w3id.org/ftm#Contract:authority> a rdf:Property ;
+    rdfs:label "Contract authority" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Contract:awards> a rdf:Property ;
+    rdfs:label "Lots awarded" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:ContractAward .
+
+<https://w3id.org/ftm#Contract:cancelled> a rdf:Property ;
+    rdfs:label "Cancelled?" ;
+    rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: .
 
-ftm:procedureNumber a rdf:Property ;
+<https://w3id.org/ftm#Contract:contractDate> a rdf:Property ;
+    rdfs:label "Contract date" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Contract:noticeId> a rdf:Property ;
+    rdfs:label "Contract Award Notice ID" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Contract:numberAwards> a rdf:Property ;
+    rdfs:label "Number of awards" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Contract:procedureNumber> a rdf:Property ;
     rdfs:label "Procedure number" ;
     rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: .
 
-ftm:program a rdf:Property ;
-    rdfs:label "Program",
-        "Sanctions program" ;
-    rdfs:domain ftm:Sanction,
-        ftm:Thing ;
+<https://w3id.org/ftm#Contract:type> a rdf:Property ;
+    rdfs:label "Type" ;
+    rdfs:comment """Type of contract. Potentially W (Works), U (Supplies), S (Services).
+""" ;
+    rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: .
 
-ftm:programme a rdf:Property ;
-    rdfs:label "Payment programme" ;
-    rdfs:comment "Programme name, funding code, category identifier, etc." ;
-    rdfs:domain ftm:Payment ;
+<https://w3id.org/ftm#ContractAward:amended> a rdf:Property ;
+    rdfs:label "Amended?" ;
+    rdfs:comment "Was this award amended, modified or updated by a subsequent document?" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
-ftm:propertyType a rdf:Property ;
-    rdfs:label "Property type" ;
-    rdfs:domain ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:purpose a rdf:Property ;
-    rdfs:label "Payment purpose" ;
-    rdfs:domain ftm:Payment ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:receiver a rdf:Property ;
-    rdfs:label "Receiver" ;
-    rdfs:comment "Destination of the goods" ;
-    rdfs:domain ftm:EconomicActivity ;
+<https://w3id.org/ftm#ContractAward:contract> a rdf:Property ;
+    rdfs:label "Contract" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
+    rdfs:range ftm:Contract .
 
-ftm:recordId a rdf:Property ;
-    rdfs:label "Record ID" ;
-    rdfs:domain ftm:Interval ;
+<https://w3id.org/ftm#ContractAward:cpvCode> a rdf:Property ;
+    rdfs:label "CPV Code" ;
+    rdfs:comment "Contract Procurement Vocabulary (what type of goods/services, EU)" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
-ftm:registrationDate a rdf:Property ;
-    rdfs:label "Registration Date" ;
-    rdfs:domain ftm:Vehicle ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:registrationNumber a rdf:Property ;
-    rdfs:label "Registration Number",
-        "Registration number" ;
-    rdfs:comment "Company registration number" ;
-    rdfs:domain ftm:Company,
-        ftm:LegalEntity,
-        ftm:RealEstate,
-        ftm:Vehicle ;
+<https://w3id.org/ftm#ContractAward:decisionReason> a rdf:Property ;
+    rdfs:label "Decision reason" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
-ftm:registrationPort a rdf:Property ;
-    rdfs:label "Port of Registration" ;
-    rdfs:domain ftm:Vessel ;
+<https://w3id.org/ftm#ContractAward:documentNumber> a rdf:Property ;
+    rdfs:label "Document number" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
-ftm:relationship a rdf:Property ;
-    rdfs:label "Relationship" ;
-    rdfs:comment "Nature of the relationship, from the *person's* perspective eg. 'mother', where 'relative' is mother of 'person'." ;
-    rdfs:domain ftm:Relationship ;
+<https://w3id.org/ftm#ContractAward:documentType> a rdf:Property ;
+    rdfs:label "Document type" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
-ftm:relative a rdf:Property ;
-    rdfs:label "Relative" ;
-    rdfs:comment "The relative of the subject person." ;
-    rdfs:domain ftm:Family ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Person .
-
-ftm:role a rdf:Property ;
-    rdfs:label "Role" ;
-    rdfs:domain ftm:Interest ;
+<https://w3id.org/ftm#ContractAward:lotNumber> a rdf:Property ;
+    rdfs:label "Lot number" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
-ftm:sanctionDuration a rdf:Property ;
-    rdfs:label "Sanction duration" ;
-    rdfs:domain ftm:Sanction ;
+<https://w3id.org/ftm#ContractAward:nutsCode> a rdf:Property ;
+    rdfs:label "NUTS Code" ;
+    rdfs:comment "Nomencalture of Territorial Units for Statistics (NUTS)" ;
+    rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
-ftm:sanctionOccurrence a rdf:Property ;
-    rdfs:label "Sanction occurrence" ;
-    rdfs:domain ftm:Sanction ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:sanctionReason a rdf:Property ;
-    rdfs:label "Sanction reason" ;
-    rdfs:domain ftm:Sanction ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:sanctionStatus a rdf:Property ;
-    rdfs:label "Sanction status" ;
-    rdfs:domain ftm:Sanction ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:secondName a rdf:Property ;
-    rdfs:label "Second name" ;
-    rdfs:domain ftm:Person ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:secretary a rdf:Property ;
-    rdfs:label "Secretary" ;
-    rdfs:domain ftm:Directorship ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:sector a rdf:Property ;
-    rdfs:label "Sector" ;
-    rdfs:domain ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:sender a rdf:Property ;
-    rdfs:label "Sender" ;
-    rdfs:comment "Origin of the goods" ;
-    rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:sequenceNumber a rdf:Property ;
-    rdfs:label "Sequence number" ;
-    rdfs:domain ftm:Payment ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:serialNumber a rdf:Property ;
-    rdfs:label "Serial Number" ;
-    rdfs:domain ftm:Airplane ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:sharesCount a rdf:Property ;
-    rdfs:label "Number of shares" ;
-    rdfs:domain ftm:Ownership ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:sharesCurrency a rdf:Property ;
-    rdfs:label "Currency of shares" ;
-    rdfs:domain ftm:Ownership ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:sharesType a rdf:Property ;
-    rdfs:label "Type of shares" ;
-    rdfs:domain ftm:Ownership ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:sharesValue a rdf:Property ;
-    rdfs:label "Value of shares" ;
-    rdfs:domain ftm:Ownership ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:sourceUrl a rdf:Property ;
-    rdfs:label "Source URL",
-        "Source link" ;
-    rdfs:domain ftm:Interval,
-        ftm:Thing ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:startDate a rdf:Property ;
-    rdfs:label "Start date" ;
-    rdfs:domain ftm:Interval ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
-
-ftm:status a rdf:Property ;
-    rdfs:label "Status" ;
-    rdfs:domain ftm:CourtCase,
-        ftm:Interest,
-        ftm:LegalEntity ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:subject a rdf:Property ;
-    rdfs:label "Subject" ;
-    rdfs:domain ftm:UnknownLink ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:summary a rdf:Property ;
-    rdfs:label "Summary" ;
-    rdfs:domain ftm:Interval,
-        ftm:Thing ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:supplier a rdf:Property ;
+<https://w3id.org/ftm#ContractAward:supplier> a rdf:Property ;
     rdfs:label "Supplier" ;
     rdfs:comment "The entity the contract was awarded to" ;
     rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:LegalEntity .
 
-ftm:supportingDocumentNumber a rdf:Property ;
-    rdfs:label "Supporting document number" ;
-    rdfs:domain ftm:Relationship ;
+<https://w3id.org/ftm#CourtCase:caseNumber> a rdf:Property ;
+    rdfs:label "Case number" ;
+    rdfs:domain ftm:CourtCase ;
     rdfs:isDefinedBy ftm: .
 
-ftm:supportingDocumentType a rdf:Property ;
-    rdfs:label "Supporting document" ;
-    rdfs:comment "Eg. birth certificate, marriage license. This is *not* just the data source." ;
-    rdfs:domain ftm:Relationship ;
+<https://w3id.org/ftm#CourtCase:category> a rdf:Property ;
+    rdfs:label "Category" ;
+    rdfs:domain ftm:CourtCase ;
     rdfs:isDefinedBy ftm: .
 
-ftm:surname a rdf:Property ;
-    rdfs:label "Surname" ;
-    rdfs:domain ftm:Passport ;
+<https://w3id.org/ftm#CourtCase:closeDate> a rdf:Property ;
+    rdfs:label "Close date" ;
+    rdfs:domain ftm:CourtCase ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#CourtCase:court> a rdf:Property ;
+    rdfs:label "Court" ;
+    rdfs:domain ftm:CourtCase ;
     rdfs:isDefinedBy ftm: .
 
-ftm:taxNumber a rdf:Property ;
-    rdfs:label "Tax ID Number" ;
-    rdfs:comment "Tax ID number" ;
-    rdfs:domain ftm:LegalEntity ;
+<https://w3id.org/ftm#CourtCase:fileDate> a rdf:Property ;
+    rdfs:label "File date" ;
+    rdfs:domain ftm:CourtCase ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#CourtCase:parties> a rdf:Property ;
+    rdfs:label "Parties" ;
+    rdfs:domain ftm:CourtCase ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:CourtCaseParty .
+
+<https://w3id.org/ftm#CourtCase:status> a rdf:Property ;
+    rdfs:label "Status" ;
+    rdfs:domain ftm:CourtCase ;
     rdfs:isDefinedBy ftm: .
 
-ftm:taxPaid a rdf:Property ;
-    rdfs:label "Amount of tax paid" ;
-    rdfs:domain ftm:TaxRoll ;
+<https://w3id.org/ftm#CourtCase:type> a rdf:Property ;
+    rdfs:label "Type" ;
+    rdfs:domain ftm:CourtCase ;
     rdfs:isDefinedBy ftm: .
 
-ftm:taxStatus a rdf:Property ;
-    rdfs:label "Tax status" ;
-    rdfs:domain ftm:LegalEntity ;
+<https://w3id.org/ftm#CourtCaseParty:case> a rdf:Property ;
+    rdfs:label "Case" ;
+    rdfs:domain ftm:CourtCaseParty ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:CourtCase .
+
+<https://w3id.org/ftm#CourtCaseParty:party> a rdf:Property ;
+    rdfs:label "Party" ;
+    rdfs:domain ftm:CourtCaseParty ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
+<https://w3id.org/ftm#Directorship:director> a rdf:Property ;
+    rdfs:label "Director" ;
+    rdfs:domain ftm:Directorship ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Directorship:organization> a rdf:Property ;
+    rdfs:label "Organization" ;
+    rdfs:domain ftm:Directorship ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Organization .
+
+<https://w3id.org/ftm#Directorship:secretary> a rdf:Property ;
+    rdfs:label "Secretary" ;
+    rdfs:domain ftm:Directorship ;
     rdfs:isDefinedBy ftm: .
 
-ftm:tenure a rdf:Property ;
-    rdfs:label "Tenure" ;
-    rdfs:domain ftm:RealEstate ;
+<https://w3id.org/ftm#Document:authoredAt> a rdf:Property ;
+    rdfs:label "Authored on" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Document:contentHash> a rdf:Property ;
+    rdfs:label "Content checksum" ;
+    rdfs:comment "SHA1 hash of the data" ;
+    rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
-ftm:title a rdf:Property ;
-    rdfs:label "Title" ;
-    rdfs:domain ftm:Person ;
+<https://w3id.org/ftm#Document:crawler> a rdf:Property ;
+    rdfs:label "Crawler" ;
+    rdfs:comment "The crawler used to acquire this file" ;
+    rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
-ftm:titleNumber a rdf:Property ;
-    rdfs:label "Title number" ;
-    rdfs:domain ftm:RealEstate ;
+<https://w3id.org/ftm#Document:emailMentioned> a rdf:Property ;
+    rdfs:label "E-Mail addresses" ;
+    rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
-ftm:tonnage a rdf:Property ;
-    rdfs:label "Tonnage" ;
-    rdfs:domain ftm:Vessel ;
+<https://w3id.org/ftm#Document:encoding> a rdf:Property ;
+    rdfs:label "File encoding" ;
+    rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
-ftm:tradingCountry a rdf:Property ;
+<https://w3id.org/ftm#Document:extension> a rdf:Property ;
+    rdfs:label "File extension" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:fileName> a rdf:Property ;
+    rdfs:label "File name" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:fileSize> a rdf:Property ;
+    rdfs:label "File size" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:generator> a rdf:Property ;
+    rdfs:label "Generator" ;
+    rdfs:comment "The program used to generate this file" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:headers> a rdf:Property ;
+    rdfs:label "Raw headers" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:ibanMentioned> a rdf:Property ;
+    rdfs:label "IBANs" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:ipMentioned> a rdf:Property ;
+    rdfs:label "IP addresses" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:locationMentioned> a rdf:Property ;
+    rdfs:label "Locations" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:messageId> a rdf:Property ;
+    rdfs:label "Message ID" ;
+    rdfs:comment "Message ID of a document; unique in most cases" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:namesMentioned> a rdf:Property ;
+    rdfs:label "Mentioned names" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:pdfAlternativeHash> a rdf:Property ;
+    rdfs:label "PDF alternative version checksum" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:phoneMentioned> a rdf:Property ;
+    rdfs:label "Phone numbers" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:processingError> a rdf:Property ;
+    rdfs:label "Error message" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:processingStatus> a rdf:Property ;
+    rdfs:label "Processing status" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:publishedAt> a rdf:Property ;
+    rdfs:label "Published on" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#EconomicActivity:bankAccount> a rdf:Property ;
+    rdfs:label "Bank Account" ;
+    rdfs:comment "Bank account of the contract" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:bankForeign> a rdf:Property ;
+    rdfs:label "Foreign currency bank" ;
+    rdfs:comment "Bank account for payments in foreign currency" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:bankRub> a rdf:Property ;
+    rdfs:label "Rouble bank" ;
+    rdfs:comment "Bank account for payments in roubles" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:ccdNumber> a rdf:Property ;
+    rdfs:label "Customs Cargo Declaration Number" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:ccdValue> a rdf:Property ;
+    rdfs:label "CCD Value" ;
+    rdfs:comment "Declaration Value" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:contract> a rdf:Property ;
+    rdfs:label "Associated contract" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:contractHolder> a rdf:Property ;
+    rdfs:label "Contract holder" ;
+    rdfs:comment "Customs formalities caretaker" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:customsAmount> a rdf:Property ;
+    rdfs:label "Customs Value Amount" ;
+    rdfs:comment "Customs Value of goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:customsProcedure> a rdf:Property ;
+    rdfs:label "Customs Procedure" ;
+    rdfs:comment "Customs Procedure — type of customs clearance" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:declarant> a rdf:Property ;
+    rdfs:label "Declarant" ;
+    rdfs:comment "Customs declarant" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:departureCountry> a rdf:Property ;
+    rdfs:label "Country of departure" ;
+    rdfs:comment "Country out of which the goods are transported" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:destinationCountry> a rdf:Property ;
+    rdfs:label "Country of destination" ;
+    rdfs:comment "Final destination for the goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:directionOfTransportation> a rdf:Property ;
+    rdfs:label "Direction of transportation" ;
+    rdfs:comment "Direction of transportation (import/export)" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:dollarExchRate> a rdf:Property ;
+    rdfs:label "USD Exchange Rate" ;
+    rdfs:comment "USD Exchange Rate for the activity" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:goodsDescription> a rdf:Property ;
+    rdfs:label "Description" ;
+    rdfs:comment "Description of goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:invoiceAmount> a rdf:Property ;
+    rdfs:label "Invoice Value Amount" ;
+    rdfs:comment "Invoice Value of goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:originCountry> a rdf:Property ;
+    rdfs:label "Country of origin" ;
+    rdfs:comment "Country of origin of goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:receiver> a rdf:Property ;
+    rdfs:label "Receiver" ;
+    rdfs:comment "Destination of the goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:sender> a rdf:Property ;
+    rdfs:label "Sender" ;
+    rdfs:comment "Origin of the goods" ;
+    rdfs:domain ftm:EconomicActivity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#EconomicActivity:tradingCountry> a rdf:Property ;
     rdfs:label "Trading Country" ;
     rdfs:comment "Trading Country of the company which transports the goods via Russian border" ;
     rdfs:domain ftm:EconomicActivity ;
     rdfs:isDefinedBy ftm: .
 
-ftm:transactionNumber a rdf:Property ;
-    rdfs:label "Transaction number" ;
-    rdfs:domain ftm:Payment ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:transport a rdf:Property ;
+<https://w3id.org/ftm#EconomicActivity:transport> a rdf:Property ;
     rdfs:label "Transport" ;
     rdfs:comment "Means of transportation" ;
     rdfs:domain ftm:EconomicActivity ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Thing .
-
-ftm:type a rdf:Property ;
-    rdfs:label "Document type",
-        "Type" ;
-    rdfs:comment "Type of contract. Potentially W (Works), U (Supplies), S (Services)." ;
-    rdfs:domain ftm:Contract,
-        ftm:CourtCase,
-        ftm:Passport,
-        ftm:Vehicle ;
     rdfs:isDefinedBy ftm: .
 
-ftm:vatCode a rdf:Property ;
-    rdfs:label "VAT Identifier" ;
-    rdfs:comment "(EU) VAT number" ;
-    rdfs:domain ftm:Company ;
-    rdfs:isDefinedBy ftm: .
-
-ftm:vedCode a rdf:Property ;
+<https://w3id.org/ftm#EconomicActivity:vedCode> a rdf:Property ;
     rdfs:label "FEAC Code" ;
     rdfs:comment "(Код ТН ВЭД) Foreign Economic Activity Commodity Code" ;
     rdfs:domain ftm:EconomicActivity ;
     rdfs:isDefinedBy ftm: .
 
-ftm:vedCodeDescription a rdf:Property ;
+<https://w3id.org/ftm#EconomicActivity:vedCodeDescription> a rdf:Property ;
     rdfs:label "FEAC Code description" ;
     rdfs:comment "(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description" ;
     rdfs:domain ftm:EconomicActivity ;
     rdfs:isDefinedBy ftm: .
 
-ftm:voenCode a rdf:Property ;
-    rdfs:label "VOEN" ;
-    rdfs:comment "Azerbaijan taxpayer ID" ;
-    rdfs:domain ftm:Company ;
+<https://w3id.org/ftm#Email:blindCarbonCopy> a rdf:Property ;
+    rdfs:label "Blind carbon copy" ;
+    rdfs:domain ftm:Email ;
     rdfs:isDefinedBy ftm: .
 
-ftm:weakAlias a rdf:Property ;
-    rdfs:label "Weak alias" ;
-    rdfs:domain ftm:Thing ;
+<https://w3id.org/ftm#Email:carbonCopy> a rdf:Property ;
+    rdfs:label "Carbon copy" ;
+    rdfs:domain ftm:Email ;
     rdfs:isDefinedBy ftm: .
 
-ftm:wealth a rdf:Property ;
-    rdfs:label "Registered wealth" ;
-    rdfs:domain ftm:TaxRoll ;
+<https://w3id.org/ftm#Email:inReplyTo> a rdf:Property ;
+    rdfs:label "In Reply To" ;
+    rdfs:comment "Message IDs of the preceding emails in the thread" ;
+    rdfs:domain ftm:Email ;
     rdfs:isDefinedBy ftm: .
 
-ftm:website a rdf:Property ;
+<https://w3id.org/ftm#Email:recipient> a rdf:Property ;
+    rdfs:label "Recipient" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Email:sender> a rdf:Property ;
+    rdfs:label "Sender" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Event:country> a rdf:Property ;
+    rdfs:label "Country" ;
+    rdfs:domain ftm:Event ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Event:location> a rdf:Property ;
+    rdfs:label "Location" ;
+    rdfs:domain ftm:Event ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Family:relative> a rdf:Property ;
+    rdfs:label "Relative" ;
+    rdfs:comment "The relative of the subject person." ;
+    rdfs:domain ftm:Family ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range <http://xmlns.com/foaf/0.1/Person> .
+
+<https://w3id.org/ftm#Folder:children> a rdf:Property ;
+    rdfs:label "Child documents" ;
+    rdfs:domain ftm:Folder ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Document .
+
+<https://w3id.org/ftm#HyperText:bodyHtml> a rdf:Property ;
+    rdfs:label "HTML" ;
+    rdfs:domain ftm:HyperText ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#HyperText:bodyText> a rdf:Property ;
+    rdfs:label "Text" ;
+    rdfs:domain ftm:HyperText ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Interest:role> a rdf:Property ;
+    rdfs:label "Role" ;
+    rdfs:domain ftm:Interest ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Interest:status> a rdf:Property ;
+    rdfs:label "Status" ;
+    rdfs:domain ftm:Interest ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Interval:alephUrl> a rdf:Property ;
+    rdfs:label "Aleph URL" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Interval:date> a rdf:Property ;
+    rdfs:label "Date" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Interval:endDate> a rdf:Property ;
+    rdfs:label "End date" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Interval:modifiedAt> a rdf:Property ;
+    rdfs:label "Modified on" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Interval:recordId> a rdf:Property ;
+    rdfs:label "Record ID" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Interval:retrievedAt> a rdf:Property ;
+    rdfs:label "Retrieved on" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Interval:sourceUrl> a rdf:Property ;
+    rdfs:label "Source URL" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Interval:startDate> a rdf:Property ;
+    rdfs:label "Start date" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Interval:summary> a rdf:Property ;
+    rdfs:label "Summary" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:agencyClient> a rdf:Property ;
+    rdfs:label "Agency clients" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Representation .
+
+<https://w3id.org/ftm#LegalEntity:agentRepresentation> a rdf:Property ;
+    rdfs:label "Agents" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Representation .
+
+<https://w3id.org/ftm#LegalEntity:bvdId> a rdf:Property ;
+    rdfs:label "Bureau van Dijk ID" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:classification> a rdf:Property ;
+    rdfs:label "Classification" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:contractAuthority> a rdf:Property ;
+    rdfs:label "Contracts issued" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Contract .
+
+<https://w3id.org/ftm#LegalEntity:contractAwardSupplier> a rdf:Property ;
+    rdfs:label "Contracts awarded" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:ContractAward .
+
+<https://w3id.org/ftm#LegalEntity:directorshipDirector> a rdf:Property ;
+    rdfs:label "Directorships" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Directorship .
+
+<https://w3id.org/ftm#LegalEntity:dissolutionDate> a rdf:Property ;
+    rdfs:label "Dissolution date" ;
+    rdfs:comment "The date the legal entity was dissolved, if applicable" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#LegalEntity:dunsCode> a rdf:Property ;
+    rdfs:label "D-U-N-S" ;
+    rdfs:comment "Dun & Bradstreet identifier" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:email> a rdf:Property ;
+    rdfs:label "E-Mail" ;
+    rdfs:comment "Email address" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:icijId> a rdf:Property ;
+    rdfs:label "ICIJ ID" ;
+    rdfs:comment "ID according to International Consortium for Investigative Journalists" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:idNumber> a rdf:Property ;
+    rdfs:label "ID Number" ;
+    rdfs:comment "ID number of any applicable ID" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:incorporationDate> a rdf:Property ;
+    rdfs:label "Incorporation date" ;
+    rdfs:comment "The date the legal entity was incorporated" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#LegalEntity:innCode> a rdf:Property ;
+    rdfs:label "INN" ;
+    rdfs:comment "Russian company ID" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:jurisdiction> a rdf:Property ;
+    rdfs:label "Jurisdiction" ;
+    rdfs:comment "Country or region in which this entity operates" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:legalForm> a rdf:Property ;
+    rdfs:label "Legal form" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:mainCountry> a rdf:Property ;
+    rdfs:label "Country of origin" ;
+    rdfs:comment "Primary country of this entity" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:membershipMember> a rdf:Property ;
+    rdfs:label "Memberships" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Membership .
+
+<https://w3id.org/ftm#LegalEntity:okpoCode> a rdf:Property ;
+    rdfs:label "OKPO" ;
+    rdfs:comment "Russian industry classifier" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:opencorporatesUrl> a rdf:Property ;
+    rdfs:label "OpenCorporates URL" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:ownershipOwner> a rdf:Property ;
+    rdfs:label "Assets and shares" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Ownership .
+
+<https://w3id.org/ftm#LegalEntity:parent> a rdf:Property ;
+    rdfs:label "Parent company" ;
+    rdfs:comment "If this entity is a subsidiary, another entity (company or organisation) is its parent" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#LegalEntity:passport> a rdf:Property ;
+    rdfs:label "Passports" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Passport .
+
+<https://w3id.org/ftm#LegalEntity:paymentBeneficiary> a rdf:Property ;
+    rdfs:label "Payments received" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Payment .
+
+<https://w3id.org/ftm#LegalEntity:paymentPayer> a rdf:Property ;
+    rdfs:label "Payments made" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Payment .
+
+<https://w3id.org/ftm#LegalEntity:phone> a rdf:Property ;
+    rdfs:label "Phone" ;
+    rdfs:comment "Phone number" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:predecessors> a rdf:Property ;
+    rdfs:label "Predecessors" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Succession .
+
+<https://w3id.org/ftm#LegalEntity:registrationNumber> a rdf:Property ;
+    rdfs:label "Registration number" ;
+    rdfs:comment "Company registration number" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:sector> a rdf:Property ;
+    rdfs:label "Sector" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:status> a rdf:Property ;
+    rdfs:label "Status" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:subsidiaries> a rdf:Property ;
+    rdfs:label "Subsidiaries" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#LegalEntity:successors> a rdf:Property ;
+    rdfs:label "Successors" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Succession .
+
+<https://w3id.org/ftm#LegalEntity:swiftBic> a rdf:Property ;
+    rdfs:label "SWIFT/BIC" ;
+    rdfs:comment "Bank identifier code" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:taxNumber> a rdf:Property ;
+    rdfs:label "Tax ID Number" ;
+    rdfs:comment "Tax ID number" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:taxStatus> a rdf:Property ;
+    rdfs:label "Tax status" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:vatCode> a rdf:Property ;
+    rdfs:label "V.A.T. Identifier" ;
+    rdfs:comment "(EU) VAT number" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#LegalEntity:website> a rdf:Property ;
     rdfs:label "Website" ;
     rdfs:comment "Website address" ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#License:area> a rdf:Property ;
+    rdfs:label "Area" ;
+    rdfs:domain ftm:License ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#License:commodities> a rdf:Property ;
+    rdfs:label "Commodities" ;
+    rdfs:domain ftm:License ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#License:reviewDate> a rdf:Property ;
+    rdfs:label "License review date" ;
+    rdfs:domain ftm:License ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Membership:member> a rdf:Property ;
+    rdfs:label "Member" ;
+    rdfs:domain ftm:Membership ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Membership:organization> a rdf:Property ;
+    rdfs:label "Organization" ;
+    rdfs:domain ftm:Membership ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Organization .
+
+<https://w3id.org/ftm#Organization:directorshipOrganization> a rdf:Property ;
+    rdfs:label "Directors" ;
+    rdfs:domain ftm:Organization ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Directorship .
+
+<https://w3id.org/ftm#Organization:membershipOrganization> a rdf:Property ;
+    rdfs:label "Members" ;
+    rdfs:domain ftm:Organization ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Membership .
+
+<https://w3id.org/ftm#Ownership:asset> a rdf:Property ;
+    rdfs:label "Asset" ;
+    rdfs:domain ftm:Ownership ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Asset .
+
+<https://w3id.org/ftm#Ownership:legalBasis> a rdf:Property ;
+    rdfs:label "Legal basis" ;
+    rdfs:domain ftm:Ownership ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Ownership:owner> a rdf:Property ;
+    rdfs:label "Owner" ;
+    rdfs:domain ftm:Ownership ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Ownership:ownershipType> a rdf:Property ;
+    rdfs:label "Type of ownership" ;
+    rdfs:domain ftm:Ownership ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Ownership:percentage> a rdf:Property ;
+    rdfs:label "Percentage held" ;
+    rdfs:domain ftm:Ownership ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Ownership:sharesCount> a rdf:Property ;
+    rdfs:label "Number of shares" ;
+    rdfs:domain ftm:Ownership ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Ownership:sharesCurrency> a rdf:Property ;
+    rdfs:label "Currency of shares" ;
+    rdfs:domain ftm:Ownership ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Ownership:sharesType> a rdf:Property ;
+    rdfs:label "Type of shares" ;
+    rdfs:domain ftm:Ownership ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Ownership:sharesValue> a rdf:Property ;
+    rdfs:label "Value of shares" ;
+    rdfs:domain ftm:Ownership ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Page:bodyText> a rdf:Property ;
+    rdfs:label "Text" ;
+    rdfs:domain ftm:Page ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Pages:pages> a rdf:Property ;
+    rdfs:label "Pages" ;
+    rdfs:domain ftm:Pages ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Page .
+
+<https://w3id.org/ftm#Passport:authority> a rdf:Property ;
+    rdfs:label "Authority" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Passport:birthDate> a rdf:Property ;
+    rdfs:label "Date of birth" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Passport:birthPlace> a rdf:Property ;
+    rdfs:label "Place of birth" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Passport:country> a rdf:Property ;
+    rdfs:label "Country" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Passport:gender> a rdf:Property ;
+    rdfs:label "Gender" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Passport:givenName> a rdf:Property ;
+    rdfs:label "Given name" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Passport:holder> a rdf:Property ;
+    rdfs:label "Document holder" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Passport:passportNumber> a rdf:Property ;
+    rdfs:label "Passport number" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Passport:personalNumber> a rdf:Property ;
+    rdfs:label "Personal number" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Passport:surname> a rdf:Property ;
+    rdfs:label "Surname" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Passport:type> a rdf:Property ;
+    rdfs:label "Document type" ;
+    rdfs:domain ftm:Passport ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Payment:beneficiary> a rdf:Property ;
+    rdfs:label "Beneficiary" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Payment:beneficiaryAccount> a rdf:Property ;
+    rdfs:label "Beneficiary bank account" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:BankAccount .
+
+<https://w3id.org/ftm#Payment:payer> a rdf:Property ;
+    rdfs:label "Payer" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Payment:payerAccount> a rdf:Property ;
+    rdfs:label "Payer bank account" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:BankAccount .
+
+<https://w3id.org/ftm#Payment:programme> a rdf:Property ;
+    rdfs:label "Payment programme" ;
+    rdfs:comment "Programme name, funding code, category identifier, etc." ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Payment:purpose> a rdf:Property ;
+    rdfs:label "Payment purpose" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Payment:sequenceNumber> a rdf:Property ;
+    rdfs:label "Sequence number" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Payment:transactionNumber> a rdf:Property ;
+    rdfs:label "Transaction number" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Person:associates> a rdf:Property ;
+    rdfs:label "Associates" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Associate .
+
+<https://w3id.org/ftm#Person:birthPlace> a rdf:Property ;
+    rdfs:label "Place of birth" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Person:deathDate> a rdf:Property ;
+    rdfs:label "Death date" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Person:familyRelative> a rdf:Property ;
+    rdfs:label "Relatives" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Family .
+
+<https://w3id.org/ftm#Person:fatherName> a rdf:Property ;
+    rdfs:label "Patronymic" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Person:gender> a rdf:Property ;
+    rdfs:label "Gender" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Person:middleName> a rdf:Property ;
+    rdfs:label "Middle name" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Person:motherName> a rdf:Property ;
+    rdfs:label "Matronymic" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Person:nationality> a rdf:Property ;
+    rdfs:label "Nationality" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Person:passportNumber> a rdf:Property ;
+    rdfs:label "Passport" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Person:position> a rdf:Property ;
+    rdfs:label "Position" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Person:relationshipPerson> a rdf:Property ;
+    rdfs:label "Related to" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Relationship .
+
+<https://w3id.org/ftm#Person:secondName> a rdf:Property ;
+    rdfs:label "Second name" ;
+    rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#PlainText:bodyText> a rdf:Property ;
+    rdfs:label "Text" ;
+    rdfs:domain ftm:PlainText ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:area> a rdf:Property ;
+    rdfs:label "Area" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:cadastralCode> a rdf:Property ;
+    rdfs:label "Cadastral code" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:censusBlock> a rdf:Property ;
+    rdfs:label "Census block" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:createDate> a rdf:Property ;
+    rdfs:label "Record date" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#RealEstate:encumbrance> a rdf:Property ;
+    rdfs:label "Encumbrance" ;
+    rdfs:comment """An encumbrance is a right to, interest in, or legal liability on real property that does not prohibit passing title to the property but that diminishes its value.
+""" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:landType> a rdf:Property ;
+    rdfs:label "Land type" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:latitude> a rdf:Property ;
+    rdfs:label "Latitude" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:longitude> a rdf:Property ;
+    rdfs:label "Longitude" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:propertyType> a rdf:Property ;
+    rdfs:label "Property type" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:registrationNumber> a rdf:Property ;
+    rdfs:label "Registration number" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:tenure> a rdf:Property ;
+    rdfs:label "Tenure" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#RealEstate:titleNumber> a rdf:Property ;
+    rdfs:label "Title number" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Record:index> a rdf:Property ;
+    rdfs:label "Index" ;
+    rdfs:domain ftm:Record ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Relationship:person> a rdf:Property ;
+    rdfs:label "Person" ;
+    rdfs:comment "The subject of the familial relation." ;
+    rdfs:domain ftm:Relationship ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range <http://xmlns.com/foaf/0.1/Person> .
+
+<https://w3id.org/ftm#Relationship:relationship> a rdf:Property ;
+    rdfs:label "Relationship" ;
+    rdfs:comment "Nature of the relationship, from the *person's* perspective eg. 'mother', where 'relative' is mother of 'person'." ;
+    rdfs:domain ftm:Relationship ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Relationship:supportingDocumentNumber> a rdf:Property ;
+    rdfs:label "Supporting document number" ;
+    rdfs:domain ftm:Relationship ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Relationship:supportingDocumentType> a rdf:Property ;
+    rdfs:label "Supporting document" ;
+    rdfs:comment "Eg. birth certificate, marriage license. This is *not* just the data source." ;
+    rdfs:domain ftm:Relationship ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Representation:agent> a rdf:Property ;
+    rdfs:label "Agent" ;
+    rdfs:domain ftm:Representation ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Representation:client> a rdf:Property ;
+    rdfs:label "Client" ;
+    rdfs:domain ftm:Representation ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Row:cells> a rdf:Property ;
+    rdfs:label "Cells" ;
+    rdfs:domain ftm:Row ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Sanction:authority> a rdf:Property ;
+    rdfs:label "Authority" ;
+    rdfs:domain ftm:Sanction ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Sanction:country> a rdf:Property ;
+    rdfs:label "Country" ;
+    rdfs:domain ftm:Sanction ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Sanction:duration> a rdf:Property ;
+    rdfs:label "Duration" ;
+    rdfs:domain ftm:Sanction ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Sanction:entity> a rdf:Property ;
+    rdfs:label "Entity" ;
+    rdfs:domain ftm:Sanction ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
+<https://w3id.org/ftm#Sanction:program> a rdf:Property ;
+    rdfs:label "Program" ;
+    rdfs:domain ftm:Sanction ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Sanction:reason> a rdf:Property ;
+    rdfs:label "Reason" ;
+    rdfs:domain ftm:Sanction ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Sanction:status> a rdf:Property ;
+    rdfs:label "Status" ;
+    rdfs:domain ftm:Sanction ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Succession:predecessor> a rdf:Property ;
+    rdfs:label "Predecessor" ;
+    rdfs:domain ftm:Succession ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Succession:successor> a rdf:Property ;
+    rdfs:label "Successor" ;
+    rdfs:domain ftm:Succession ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity .
+
+<https://w3id.org/ftm#Table:rows> a rdf:Property ;
+    rdfs:label "Rows" ;
+    rdfs:domain ftm:Table ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Row .
+
+<https://w3id.org/ftm#TaxRoll:birthDate> a rdf:Property ;
+    rdfs:label "Date of birth" ;
+    rdfs:domain ftm:TaxRoll ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#TaxRoll:country> a rdf:Property ;
+    rdfs:label "Country" ;
+    rdfs:domain ftm:TaxRoll ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#TaxRoll:givenName> a rdf:Property ;
+    rdfs:label "Given name" ;
+    rdfs:domain ftm:TaxRoll ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#TaxRoll:income> a rdf:Property ;
+    rdfs:label "Registered income" ;
+    rdfs:domain ftm:TaxRoll ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#TaxRoll:surname> a rdf:Property ;
+    rdfs:label "Surname" ;
+    rdfs:domain ftm:TaxRoll ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#TaxRoll:taxPaid> a rdf:Property ;
+    rdfs:label "Amount of tax paid" ;
+    rdfs:domain ftm:TaxRoll ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#TaxRoll:taxee> a rdf:Property ;
+    rdfs:label "Taxee" ;
+    rdfs:domain ftm:TaxRoll ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#TaxRoll:wealth> a rdf:Property ;
+    rdfs:label "Registered wealth" ;
+    rdfs:domain ftm:TaxRoll ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:address> a rdf:Property ;
+    rdfs:label "Address" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:alephUrl> a rdf:Property ;
+    rdfs:label "Aleph URL" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:country> a rdf:Property ;
+    rdfs:label "Country" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:courtCase> a rdf:Property ;
+    rdfs:label "Court cases" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:CourtCaseParty .
+
+<https://w3id.org/ftm#Thing:description> a rdf:Property ;
+    rdfs:label "Description" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:keywords> a rdf:Property ;
+    rdfs:label "Keywords" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:modifiedAt> a rdf:Property ;
+    rdfs:label "Modified on" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Thing:notes> a rdf:Property ;
+    rdfs:label "Notes" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:previousName> a rdf:Property ;
+    rdfs:label "Previous name" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:program> a rdf:Property ;
+    rdfs:label "Program" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:retrievedAt> a rdf:Property ;
+    rdfs:label "Retrieved on" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Thing:sanctionEntity> a rdf:Property ;
+    rdfs:label "Sanctions" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Sanction .
+
+<https://w3id.org/ftm#Thing:sourceUrl> a rdf:Property ;
+    rdfs:label "Source link" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:summary> a rdf:Property ;
+    rdfs:label "Summary" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:unknownLinkFrom> a rdf:Property ;
+    rdfs:label "Linked from" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:UnknownLink .
+
+<https://w3id.org/ftm#Thing:unknownLinkTo> a rdf:Property ;
+    rdfs:label "Linked to" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:UnknownLink .
+
+<https://w3id.org/ftm#Thing:weakAlias> a rdf:Property ;
+    rdfs:label "Weak alias" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:wikidataId> a rdf:Property ;
+    rdfs:label "Wikidata ID" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Thing:wikipediaUrl> a rdf:Property ;
+    rdfs:label "Wikipedia Article" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#UnknownLink:object> a rdf:Property ;
+    rdfs:label "Object" ;
+    rdfs:domain ftm:UnknownLink ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
+<https://w3id.org/ftm#UnknownLink:subject> a rdf:Property ;
+    rdfs:label "Subject" ;
+    rdfs:domain ftm:UnknownLink ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing .
+
+<https://w3id.org/ftm#Value:amount> a rdf:Property ;
+    rdfs:label "Amount" ;
+    rdfs:domain ftm:Value ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Value:amountEur> a rdf:Property ;
+    rdfs:label "Amount in EUR" ;
+    rdfs:domain ftm:Value ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Value:amountUsd> a rdf:Property ;
+    rdfs:label "Amount in USD" ;
+    rdfs:domain ftm:Value ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Value:currency> a rdf:Property ;
+    rdfs:label "Currency" ;
+    rdfs:domain ftm:Value ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vehicle:buildDate> a rdf:Property ;
+    rdfs:label "Build Date" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Vehicle:country> a rdf:Property ;
+    rdfs:label "Country" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vehicle:model> a rdf:Property ;
+    rdfs:label "Model" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vehicle:operator> a rdf:Property ;
+    rdfs:label "Operator" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vehicle:owner> a rdf:Property ;
+    rdfs:label "Owner" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vehicle:registrationDate> a rdf:Property ;
+    rdfs:label "Registration Date" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Vehicle:registrationNumber> a rdf:Property ;
+    rdfs:label "Registration Number" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vehicle:type> a rdf:Property ;
+    rdfs:label "Type" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:callSign> a rdf:Property ;
+    rdfs:label "Call Sign" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:crsNumber> a rdf:Property ;
+    rdfs:label "CRS Number" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:flag> a rdf:Property ;
+    rdfs:label "Flag" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:grossRegisteredTonnage> a rdf:Property ;
+    rdfs:label "Gross Registered Tonnage" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:imoNumber> a rdf:Property ;
+    rdfs:label "IMO Number" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:mmsi> a rdf:Property ;
+    rdfs:label "MMSI" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:nameChangeDate> a rdf:Property ;
+    rdfs:label "Date of Name Change" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Vessel:navigationArea> a rdf:Property ;
+    rdfs:label "Navigation Area" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:pastFlags> a rdf:Property ;
+    rdfs:label "Past Flags" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:pastNames> a rdf:Property ;
+    rdfs:label "Past Names" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:pastTypes> a rdf:Property ;
+    rdfs:label "Past Types" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:registrationPort> a rdf:Property ;
+    rdfs:label "Port of Registration" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Vessel:tonnage> a rdf:Property ;
+    rdfs:label "Tonnage" ;
+    rdfs:domain ftm:Vessel ;
+    rdfs:isDefinedBy ftm: .
+
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2018-08-23T18:06:33"^^xsd:dateTime ;
-    rdfs:comment "A vocabulary for investigative reporting, based on real life." .
+    dct:modified "2019-01-17T12:12:00"^^xsd:dateTime .
 

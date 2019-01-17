@@ -13,6 +13,9 @@ dist:
 release: clean dist
 	twine upload dist/*
 
+namespace:
+	python followthemoney/ontology.py docs/ns
+
 # initalize a new language:
 # pybabel init -i followthemoney/translations/messages.pot -d followthemoney/translations -l de -D followthemoney
 translate: dev
@@ -29,6 +32,3 @@ clean:
 	find . -name '*.egg' -exec rm -f {} +
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
-
-namespace:
-	python ns/ontology.py https://w3id.org/ftm# docs/ns
