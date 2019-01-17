@@ -19,4 +19,5 @@ after_success:
       twine upload dist/* ;
       cd enrich && python setup.py sdist bdist_wheel && twine upload dist/* ;
       cd ../util && python setup.py sdist bdist_wheel && twine upload dist/* ;
+      cd ../integrate && python setup.py sdist bdist_wheel && twine upload dist/* ;
     fi
