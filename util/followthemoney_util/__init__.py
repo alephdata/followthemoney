@@ -1,7 +1,6 @@
 from followthemoney_util.aleph import load_aleph
 from followthemoney_util.rdf import export_rdf
-from followthemoney_util.graph import export_gexf
-from followthemoney_util.cypher import export_cypher
+from followthemoney_util.graph import export_gexf, export_cypher
 from followthemoney_util.aggregate import aggregate
 from followthemoney_util.enrich import enrich, expand
 from followthemoney_util.results import result_entities
