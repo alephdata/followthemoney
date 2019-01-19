@@ -32,7 +32,7 @@ def valued_checked(value, checked):
 def before():
     request.session = Session()
     request.user = 'anonymous'
-    request.user = request.headers.get("KEYCLOAK_USERNAME") or request.user
+    request.user = request.headers.get("X-Auth-Userid") or request.user
 
 
 @app.after_request

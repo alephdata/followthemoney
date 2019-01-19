@@ -70,6 +70,7 @@ class Entity(Base):
         if obj is None:
             obj = cls()
             obj.origin = origin
+            obj.priority = 1.0
         obj.proxy = proxy
         obj.search = index_text(proxy)
 
