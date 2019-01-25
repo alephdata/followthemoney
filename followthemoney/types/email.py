@@ -12,7 +12,6 @@ class EmailType(PropertyType):
     domains = DomainType()
     name = 'email'
     group = 'emails'
-    strong = True
 
     def validate(self, email, **kwargs):
         """Check to see if this is a valid email address."""

@@ -6,10 +6,9 @@ from followthemoney.types.common import PropertyType
 
 class IdentifierType(PropertyType):
     """Used for registration numbers, codes etc."""
-    COMPARE_CLEAN = re.compile('[\W_]+')
+    COMPARE_CLEAN = re.compile(r'[\W_]+')
     name = 'identifier'
     group = 'identifiers'
-    strong = False
 
     def normalize(self, text, **kwargs):
         """Normalize for comparison."""

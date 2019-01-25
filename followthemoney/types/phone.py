@@ -12,7 +12,6 @@ from followthemoney.types.common import PropertyType
 class PhoneType(PropertyType):
     name = 'phone'
     group = 'phones'
-    strong = False
 
     def _clean_countries(self, countries, country):
         result = set([None])
