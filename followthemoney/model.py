@@ -48,6 +48,15 @@ class Model(object):
             raise KeyError("No such schema: %s" % name)
         return schema
 
+    def get_type_schemata(self, type_):
+        """Return all the schemata which have a property of the given type."""
+        schemata = set()
+        for schema in self.schemata.values():
+            for prop in schema.properties.values():
+                if prop.type == type_:
+                    schemata.add(schema)
+        return schemata
+
     def make_mapping(self, mapping, key_prefix=None):
         """Parse a mapping that applies (tabular) source data to the model."""
         return QueryMapping(self, mapping, key_prefix=key_prefix)

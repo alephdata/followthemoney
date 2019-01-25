@@ -1,6 +1,7 @@
 from nose.tools import assert_raises
 from unittest import TestCase
 from followthemoney import model
+from followthemoney.types import registry
 from followthemoney.exc import InvalidData
 
 
@@ -25,6 +26,11 @@ class ModelTestCase(TestCase):
         props = list(model.properties)
         assert len(props), props
         assert thing.get('name') in props, props
+
+    def test_model_type_schemata(self):
+        schema = model.get_type_schemata(registry.iban)
+        assert model.get('BankAccount') in schema, schema
+        assert model.get('CourtCase') not in schema, schema
 
     def test_schema_basics(self):
         thing = model.schemata['Thing']
