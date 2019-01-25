@@ -137,7 +137,7 @@ class ModelTestCase(TestCase):
         assert prop.range == person, prop
         assert prop.reverse is not None
         rev = prop.reverse
-        assert rev.range == assoc, rev
+        assert rev.range == assoc, (rev.range, assoc)
         assert rev.stub is True, rev
         assert rev.reverse == prop, rev
 

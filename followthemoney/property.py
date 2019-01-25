@@ -89,7 +89,7 @@ class Property(object):
             'type': self.type.name
         }
         if self.range:
-            data['schema'] = self.range.name
+            data['range'] = self.range.name
         if self.reverse:
             data['reverse'] = self.reverse.name
         return data

@@ -90,7 +90,7 @@ class Schema(object):
             data.update({
                 'type': registry.entity.name,
                 'reverse': {'name': other.name},
-                'schema': other.schema.name,
+                'range': other.schema.name,
                 'stub': True
             })
             prop = Property(self, name, data)
