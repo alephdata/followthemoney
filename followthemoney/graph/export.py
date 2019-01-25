@@ -111,7 +111,7 @@ class CypherGraphExport(GraphExport):
 
     def _make_node(self, attributes, label):
         cypher = 'MERGE (p { %(id)s }) ' \
-                 'SET p += { %(map)s } SET p:%(label)s;\n'
+                 'SET p += { %(map)s } SET p :%(label)s;\n'
         self.fh.write(cypher % {
             'id': self._to_map({'id': attributes.get('id')}),
             'map': self._to_map(attributes),
