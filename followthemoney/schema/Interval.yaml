@@ -23,6 +23,11 @@ Interval:
     sourceUrl:
       label: "Source URL"
       type: url
+    publisher:
+      label: "Publishing source"
+    publisherUrl:
+      label: "Publishing source URL"
+      type: url
     alephUrl:
       label: Aleph URL
       type: url

@@ -64,6 +64,10 @@ class OpenCorporatesEnricher(Enricher):
         entity.add('status', data.get('current_status'))
         entity.add('registrationNumber', data.get('company_number'))
         entity.add('opencorporatesUrl', data.get('opencorporates_url'))
+        source = data.get('source', {})
+        entity.add('publisher', source.get('publisher'))
+        entity.add('publisherUrl', source.get('url'))
+        entity.add('retrievedAt', source.get('retrieved_at'))
         for code in ensure_list(data.get('industry_codes')):
             code = code.get('industry_code', code)
             entity.add('sector', code.get('description'))
@@ -88,6 +92,10 @@ class OpenCorporatesEnricher(Enricher):
         officer.add('birthDate', data.get('date_of_birth'), quiet=True)
         officer.add('position', data.get('occupation'), quiet=True)
         officer.add('opencorporatesUrl', data.get('opencorporates_url'))
+        source = data.get('source', {})
+        officer.add('publisher', source.get('publisher'))
+        officer.add('publisherUrl', source.get('url'))
+        officer.add('retrievedAt', source.get('retrieved_at'))
 
         if company is None:
             company = self.company_entity(result, data.get('company'))

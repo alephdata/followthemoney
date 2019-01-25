@@ -69,7 +69,14 @@ class AlephEnricher(Enricher):
             return
         entity.id = data.get('id')
         links = ensure_dict(data.get('links'))
-        entity.add('alephUrl', links.get('self'))
+        entity.add('alephUrl', links.get('self'),
+                   quiet=True, cleaned=True)
+        collection = data.get('collection', {})
+        entity.add('publisher', collection.get('label'),
+                   quiet=True, cleaned=True)
+        clinks = collection.get('links', {})
+        entity.add('publisherUrl', clinks.get('ui'),
+                   quiet=True, cleaned=True)
         properties = ensure_dict(data.get('properties'))
         for prop, values in properties.items():
             for value in ensure_list(values):
