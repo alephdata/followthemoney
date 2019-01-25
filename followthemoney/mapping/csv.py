@@ -52,5 +52,5 @@ class CSVSource(StreamSource):
                 data = {}
                 for ref in self.query.refs:
                     data[ref] = stringify(row.get(ref))
-                if self.check_filters(data):
+                if self.check_filters(row):
                     yield data
