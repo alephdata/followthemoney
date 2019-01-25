@@ -31,25 +31,25 @@ Payment:
         name: paymentPayer
         label: "Payments made"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
     payerAccount:
       label: "Payer bank account"
       reverse:
         name: paymentPayerAccount
         label: "Payments made"
       type: entity
-      schema: BankAccount
+      range: BankAccount
     beneficiary:
       label: "Beneficiary"
       reverse:
         name: paymentBeneficiary
         label: "Payments received"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
     beneficiaryAccount:
       label: "Beneficiary bank account"
       reverse:
         name: paymentBeneficiaryAccount
         label: "Payments received"
       type: entity
-      schema: BankAccount
+      range: BankAccount

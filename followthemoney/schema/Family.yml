@@ -14,7 +14,7 @@ Family:
     relative:
       label: "Relative"
       type: entity
-      schema: Person
+      range: Person
       reverse:
         name: familyRelative
         label: "Relatives"

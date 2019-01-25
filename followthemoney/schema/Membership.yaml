@@ -14,14 +14,14 @@ Membership:
     member:
       label: "Member"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
       reverse:
         name: membershipMember
         label: "Memberships"
     organization:
       label: "Organization"
       type: entity
-      schema: Organization
+      range: Organization
       reverse:
         name: membershipOrganization
         label: "Members"

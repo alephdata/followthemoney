@@ -24,7 +24,7 @@ ContractAward:
         name: contractAwardSupplier
         label: "Contracts awarded"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
     contract:
       label: "Contract"
       plural: "Contracts"
@@ -32,7 +32,7 @@ ContractAward:
         name: awards
         label: "Lots awarded"
       type: entity
-      schema: Contract
+      range: Contract
     lotNumber:
       label: "Lot number"
     documentNumber:

@@ -18,11 +18,11 @@ UnknownLink:
         name: unknownLinkTo
         label: "Linked to"
       type: entity
-      schema: Thing
+      range: Thing
     object:
       label: "Object"
       reverse:
         name: unknownLinkFrom
         label: "Linked from"
       type: entity
-      schema: Thing
+      range: Thing

@@ -15,14 +15,14 @@ Succession:
     predecessor:
       label: "Predecessor"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
       reverse:
         name: successors
         label: "Successors" 
     successor:
       label: "Successor"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
       reverse:
         name: predecessors
         label: "Predecessors"

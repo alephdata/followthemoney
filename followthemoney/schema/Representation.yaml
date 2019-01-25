@@ -15,14 +15,14 @@ Representation:
     agent: # aka representative / incorporation agent
       label: "Agent"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
       reverse:
         name: agencyClient
         label: "Agency clients"
     client:
       label: "Client"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
       reverse:
         name: agentRepresentation
         label: "Agents"

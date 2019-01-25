@@ -19,14 +19,14 @@ Ownership:
         name: ownershipOwner
         label: "Assets and shares"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
     asset:
       label: "Asset"
       reverse:
         name: ownershipAsset
         label: "Owners"
       type: entity
-      schema: Asset
+      range: Asset
     percentage:
       label: "Percentage held"
     sharesCount:

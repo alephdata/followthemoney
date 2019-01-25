@@ -18,13 +18,13 @@ Directorship:
         name: directorshipDirector
         label: "Directorships"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
     organization:
       label: "Organization"
       reverse:
         name: directorshipOrganization
         label: "Directors"
       type: entity
-      schema: Organization
+      range: Organization
     secretary:
       label: "Secretary"

@@ -19,7 +19,7 @@ Row:
     table:
       label: "Table"
       type: entity
-      schema: Table
+      range: Table
       reverse:
         name: rows
         label: "Rows"
@@ -36,7 +36,7 @@ Page:
     document:
       label: "Document"
       type: entity
-      schema: Pages
+      range: Pages
       reverse:
         name: pages
         label: "Pages"

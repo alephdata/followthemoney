@@ -16,11 +16,11 @@ CourtCaseParty:
         name: courtCase
         label: "Court cases"
       type: entity
-      schema: Thing
+      range: Thing
     case:
       label: "Case"
       reverse:
         name: parties
         label: "Parties"
       type: entity
-      schema: CourtCase
+      range: CourtCase

@@ -19,7 +19,7 @@ Contract:
         name: contractAuthority
         label: "Contracts issued"
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
     type:
       label: "Type"
       description: >

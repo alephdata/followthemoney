@@ -63,7 +63,7 @@ Document:
     parent:
       label: "Parent document"
       type: entity
-      schema: Folder
+      range: Folder
       reverse:
         name: children
         label: "Child documents"

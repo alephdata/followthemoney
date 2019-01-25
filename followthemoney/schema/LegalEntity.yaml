@@ -98,17 +98,17 @@ LegalEntity:
       reverse:
         name: subsidiaries
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
       description: "If this entity is a subsidiary, another entity (company or organisation) is its parent"
     subsidiaries:
       label: "Subsidiaries"
       reverse:
         name: parent
       type: entity
-      schema: LegalEntity
+      range: LegalEntity
     passport:
       label: "Passports"
-      schema: Passport
+      type: entity
+      range: Passport
       reverse:
         name: holder
-      type: entity

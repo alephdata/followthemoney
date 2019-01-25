@@ -34,7 +34,7 @@ class Property(object):
         self.model.properties.add(self)
 
         if self.range is None and self.type == registry.entity:
-            self.range = self.model.get(self.data.get('schema'))
+            self.range = self.model.get(self.data.get('range'))
 
         reverse_ = self.data.get('reverse')
         if self.reverse is None and self.range and reverse_:

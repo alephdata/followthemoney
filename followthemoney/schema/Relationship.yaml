@@ -12,7 +12,7 @@ Relationship:
       label: "Person"
       description: "The subject of the familial relation."
       type: entity
-      schema: Person
+      range: Person
       reverse:
         name: relationshipPerson
         label: "Related to"

@@ -17,7 +17,7 @@ Sanction:
         name: sanctionEntity
         label: "Sanctions"
       type: entity
-      schema: Thing
+      range: Thing
     authority:
       label: "Authority"
     program:
