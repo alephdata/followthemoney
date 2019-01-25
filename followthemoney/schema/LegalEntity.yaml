@@ -24,6 +24,7 @@ LegalEntity:
     legalForm:
       label: Legal form
       # description: ""
+      matchable: false
     incorporationDate:
       label: Incorporation date
       type: date
@@ -35,15 +36,19 @@ LegalEntity:
     taxStatus:
       label: Tax status
       # description: "Tax status, eg. ??"
+      matchable: false
     status:
       label: Status
       # description: "Status, eg. ??"
+      matchable: false
     sector:
       label: Sector
       # description: "Sector, eg. ??"
+      matchable: false
     classification:
       label: Classification
       # description: "Classification, eg. ??"
+      matchable: false
     registrationNumber:
       label: Registration number
       type: identifier

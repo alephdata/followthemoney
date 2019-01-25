@@ -10,6 +10,7 @@ class AddressType(PropertyType):
     COMMATA = re.compile(r'(,\s?[,\.])')
     name = 'address'
     group = 'addresses'
+    matchable = True
 
     def clean_text(self, address, **kwargs):
         """Basic clean-up."""
@@ -26,5 +27,5 @@ class AddressType(PropertyType):
     #     addresses = super(AddressType, self).normalize(address, **kwargs)
     #     return addresses
 
-    def specificity(self, value):
-        return dampen(10, 50, value) * .6
+    def _specificity(self, value):
+        return dampen(10, 60, value)

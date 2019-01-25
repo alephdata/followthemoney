@@ -27,6 +27,7 @@ Company:
       label: "COATO / SOATO / OKATO"
       type: identifier
       descrption: "Soviet classifier for territories, regions, districts, villages. Aka. SOATO and same as OKATO"
+      matchable: false
     irsCode:
       label: "IRS Number"
       description: "US tax ID"
@@ -58,9 +59,11 @@ Company:
     okvedCode:
       label: "OKVED(2) Classifier"
       description: "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
+      matchable: false
     okopfCode:
       label: "OKOPF"
       description: "(RU, ОКОПФ) What kind of business entity"
+      matchable: false
     fnsCode:
       label: "Federal tax service code"
       description: "(RU, ФНС) Federal Tax Service related info"
@@ -82,3 +85,4 @@ Company:
     oksmCode:
       label: OKSM
       description: "Russian (ОКСМ) countries classifer"
+      matchable: false

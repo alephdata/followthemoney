@@ -8,6 +8,7 @@ class PropertyType(object):
     """Base class for all types."""
     name = None
     group = None
+    matchable = True
 
     def validate(self, text, **kwargs):
         """Returns a boolean to indicate if this is a valid instance of
@@ -44,22 +45,27 @@ class PropertyType(object):
         values = ensure_list(values)
         return '; '.join(values)
 
+    def _specificity(self, value):
+        return 1.0
+
     def specificity(self, value):
-        return 0
+        if not self.matchable or value is None:
+            return 0.0
+        return self._specificity(value)
 
     def compare_safe(self, left, right):
         left = stringify(left)
         right = stringify(right)
         if left is None or right is None:
-            return 0
+            return 0.0
         return self.compare(left, right)
 
     def compare(self, left, right):
         """Comparisons are a float between 0 and 1. They can assume
         that the given data is cleaned, but not normalised."""
         if left.lower() == right.lower():
-            return 1 * self.specificity(left)
-        return 0
+            return 1.0 * self.specificity(left)
+        return 0.0
 
     def compare_sets(self, left, right, func=max):
         """Compare two sets of values and select a specific result."""

@@ -8,6 +8,7 @@ from followthemoney.util import dampen
 class NameType(PropertyType):
     name = 'name'
     group = 'names'
+    matchable = True
 
     def clean_text(self, name, **kwargs):
         """Basic clean-up."""
@@ -15,9 +16,9 @@ class NameType(PropertyType):
         name = collapse_spaces(name)
         return name
 
-    def specificity(self, value):
+    def _specificity(self, value):
         # TODO: insert artificial intelligence here.
-        return dampen(3, 50, value) * .8
+        return dampen(3, 50, value)
 
     def compare(self, left, right):
         return jaro_winkler(left, right)

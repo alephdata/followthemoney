@@ -3,7 +3,7 @@ Vessel:
   plural: Vessels
   description: "A boat or ship"
   extends: Vehicle
-  matchable: false
+  matchable: true
   featured:
     - name
     - imoNumber

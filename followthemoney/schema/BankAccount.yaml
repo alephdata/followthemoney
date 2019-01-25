@@ -2,7 +2,7 @@ BankAccount:
   label: Bank Account
   plural: Bank Accounts
   extends: Asset
-  matchable: false
+  matchable: true
   featured:
     - accountNumber
     - bankName

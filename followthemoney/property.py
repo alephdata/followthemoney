@@ -26,6 +26,7 @@ class Property(object):
         if self.type is None:
             raise InvalidModel("Invalid type: %s" % type_)
 
+        self.matchable = data.get('matchable', self.type.matchable)
         self.range = None
         self.reverse = None
         self.uri = URIRef(data.get('rdf', NS[self.qname]))

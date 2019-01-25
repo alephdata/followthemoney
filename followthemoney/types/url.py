@@ -7,6 +7,7 @@ from followthemoney.types.common import PropertyType
 class UrlType(PropertyType):
     name = 'url'
     group = 'urls'
+    matchable = True
 
     def validate(self, url, **kwargs):
         """Check if `url` is a valid URL."""
@@ -18,9 +19,6 @@ class UrlType(PropertyType):
             return normalize_url(url)
         except UnicodeDecodeError:
             return None
-
-    def specificity(self, value):
-        return 1
 
     def rdf(self, value):
         return URIRef(value)

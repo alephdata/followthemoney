@@ -16,14 +16,13 @@ MATCH_WEIGHTS = {
     registry.name: 0,  # because we already compare names
     registry.identifier: 0.4,
     registry.url: 0.1,
-    registry.email: 0.3,
+    registry.email: 0.2,
     registry.ip: 0.1,
     registry.iban: 0.3,
     registry.address: 0.2,
     registry.date: 0.3,
-    registry.phone: 0.1,
-    registry.country: 0.1,
-    registry.language: 0.1,
+    registry.phone: 0.3,
+    registry.country: 0.2,
 }
 
 
@@ -40,7 +39,7 @@ def compare(model, left, right):
     score += compare_countries(left, right) * COUNTRIES_WEIGHT
     for name, prop in schema.properties.items():
         weight = MATCH_WEIGHTS.get(prop.type, 0)
-        if weight == 0:
+        if weight == 0 or not prop.matchable:
             continue
         try:
             left_values = left.get(name)
@@ -52,7 +51,7 @@ def compare(model, left, right):
             continue
         prop_score = prop.type.compare_sets(left_values, right_values)
         score += (prop_score * weight)
-    return max(0.0, min(1.0, score)) * 0.9
+    return score
 
 
 def compare_names(left, right):

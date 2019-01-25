@@ -7,6 +7,7 @@ from followthemoney.types.common import PropertyType
 class EntityType(PropertyType):
     name = 'entity'
     group = 'entities'
+    matchable = True
 
     def clean(self, text, **kwargs):
         if is_mapping(text):
@@ -14,9 +15,6 @@ class EntityType(PropertyType):
         if hasattr(text, 'id'):
             text = text.id
         return super(EntityType, self).clean(text, **kwargs)
-
-    def specificity(self, value):
-        return 1
 
     def rdf(self, value):
         return URIRef('urn:entity:%s' % value)

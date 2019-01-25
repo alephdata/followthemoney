@@ -12,6 +12,7 @@ class EmailType(PropertyType):
     domains = DomainType()
     name = 'email'
     group = 'emails'
+    matchable = True
 
     def validate(self, email, **kwargs):
         """Check to see if this is a valid email address."""
@@ -41,9 +42,6 @@ class EmailType(PropertyType):
         """Normalize for comparison."""
         emails = super(EmailType, self).normalize(email, **kwargs)
         return [e.lower() for e in emails]
-
-    def specificity(self, value):
-        return 0 if value is None else 1
 
     # def country_hint(self, value)
     # TODO: do we want to use TLDs as country evidence?

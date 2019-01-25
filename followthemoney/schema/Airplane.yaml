@@ -2,7 +2,7 @@ Airplane:
   label: Airplane
   plural: Airplanes
   extends: Vehicle
-  matchable: false
+  matchable: true
   featured:
     - type               # Airbus A320 214SL
     - registrationNumber # A7-LAE

@@ -38,6 +38,7 @@ Person:
       type: date
     position:
       label: Position
+      matchable: false
     nationality:
       label: Nationality
       type: country

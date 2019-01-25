@@ -9,6 +9,7 @@ from followthemoney.types.common import PropertyType
 class IbanType(PropertyType):
     name = 'iban'
     group = 'ibans'
+    matchable = True
 
     def validate(self, text, **kwargs):
         text = stringify(text)
@@ -21,9 +22,6 @@ class IbanType(PropertyType):
         """Create a more clean, but still user-facing version of an
         instance of the type."""
         return text.replace(" ", "").upper()
-
-    def specificity(self, value):
-        return 1
 
     def country_hint(self, value):
         value = stringify(value)

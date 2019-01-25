@@ -2,6 +2,7 @@ import re
 from normality import normalize
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import dampen
 
 
 class IdentifierType(PropertyType):
@@ -9,6 +10,7 @@ class IdentifierType(PropertyType):
     COMPARE_CLEAN = re.compile(r'[\W_]+')
     name = 'identifier'
     group = 'identifiers'
+    matchable = True
 
     def normalize(self, text, **kwargs):
         """Normalize for comparison."""
@@ -23,10 +25,13 @@ class IdentifierType(PropertyType):
     def compare(self, left, right):
         left = self.clean_compare(left)
         right = self.clean_compare(right)
+        shortest = min((left, right), key=len)
+        specificity = self.specificity(shortest)
         if left == right:
-            return .9
-        if left in right:
-            return .7
-        if right in left:
-            return .7
+            return specificity
+        if left in right or right in left:
+            return .8 * specificity
         return 0
+
+    def _specificity(self, value):
+        return dampen(4, 10, value)
