@@ -1,7 +1,7 @@
 # Translations template for PROJECT.
-# Copyright (C) 2018 ORGANIZATION
+# Copyright (C) 2019 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 # 
 # Translators:
 # Emina Muratovic <emina@occrp.org>, 2018
@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-12-21 11:15+0100\n"
+"POT-Creation-Date: 2019-01-26 10:30+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Emina Muratovic <emina@occrp.org>, 2018\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: followthemoney/property.py:64
+#: followthemoney/property.py:65
 msgid "Invalid value"
 msgstr "Nevažeća vrijednost"
 
-#: followthemoney/property.py:68
+#: followthemoney/property.py:69
 msgid "Required"
 msgstr "Obavezno"
 
@@ -34,7 +34,7 @@ msgstr "Obavezno"
 msgid "No schema for entity."
 msgstr "Nema scheme za entitet."
 
-#: followthemoney/proxy.py:54
+#: followthemoney/proxy.py:55
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Nepoznat posjed (%s): %s"
@@ -1203,11 +1203,12 @@ msgstr "Lokacija"
 #. Event.properties.country.label
 #. Passport.properties.country.label
 #. Sanction.properties.country.label
+#. TaxRoll.properties.country.label
 #. Thing.properties.country.label
 #. Vehicle.properties.country.label
 #: followthemoney/schema/Event.yaml followthemoney/schema/Passport.yaml
-#: followthemoney/schema/Sanction.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/schema/Vehicle.yaml
+#: followthemoney/schema/Sanction.yaml followthemoney/schema/TaxRoll.yaml
+#: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
 msgid "Country"
 msgstr "Država"
 
@@ -1276,6 +1277,18 @@ msgstr "ID zapisa"
 #: followthemoney/schema/Interval.yaml
 msgid "Source URL"
 msgstr "URL izvora"
+
+#. Interval.properties.publisher.label
+#. Thing.properties.publisher.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
+msgid "Publishing source"
+msgstr ""
+
+#. Interval.properties.publisherUrl.label
+#. Thing.properties.publisherUrl.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
+msgid "Publishing source URL"
+msgstr ""
 
 #. Interval.properties.alephUrl.label
 #. Thing.properties.alephUrl.label
@@ -1508,14 +1521,14 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#. License.description
-#: followthemoney/schema/License.yaml
-msgid "A grant of land, rights or property. A type of Contract"
-msgstr ""
-
 #. License.plural
 #: followthemoney/schema/License.yaml
 msgid "Licenses"
+msgstr ""
+
+#. License.description
+#: followthemoney/schema/License.yaml
+msgid "A grant of land, rights or property. A type of Contract"
 msgstr ""
 
 #. License.properties.area.label
@@ -1539,15 +1552,16 @@ msgstr ""
 msgid "Membership"
 msgstr "Članstvo"
 
-#. Membership.properties.member.label
-#: followthemoney/schema/Membership.yaml
-msgid "Member"
-msgstr "Član"
-
+#. Membership.plural
 #. Membership.properties.member.reverse.label
 #: followthemoney/schema/Membership.yaml
 msgid "Memberships"
 msgstr "Članstvo"
+
+#. Membership.properties.member.label
+#: followthemoney/schema/Membership.yaml
+msgid "Member"
+msgstr "Član"
 
 #. Membership.properties.organization.reverse.label
 #: followthemoney/schema/Membership.yaml
@@ -1563,6 +1577,11 @@ msgstr "Organizacije"
 #: followthemoney/schema/Ownership.yaml
 msgid "Ownership"
 msgstr "Vlasništvo"
+
+#. Ownership.plural
+#: followthemoney/schema/Ownership.yaml
+msgid "Ownerships"
+msgstr ""
 
 #. Ownership.properties.owner.label
 #. Vehicle.properties.owner.label
@@ -1633,17 +1652,20 @@ msgid "Passport number"
 msgstr ""
 
 #. Passport.properties.surname.label
-#: followthemoney/schema/Passport.yaml
+#. TaxRoll.properties.surname.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/TaxRoll.yaml
 msgid "Surname"
 msgstr ""
 
 #. Passport.properties.givenName.label
-#: followthemoney/schema/Passport.yaml
+#. TaxRoll.properties.givenName.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/TaxRoll.yaml
 msgid "Given name"
 msgstr ""
 
 #. Passport.properties.birthDate.label
-#: followthemoney/schema/Passport.yaml
+#. TaxRoll.properties.birthDate.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/TaxRoll.yaml
 msgid "Date of birth"
 msgstr ""
 
@@ -1674,6 +1696,16 @@ msgstr ""
 #: followthemoney/schema/Payment.yaml
 msgid "Payment"
 msgstr "Plaćanje"
+
+#. Payment.plural
+#: followthemoney/schema/Payment.yaml
+msgid "Payments"
+msgstr ""
+
+#. Payment.description
+#: followthemoney/schema/Payment.yaml
+msgid "A monetary payment between two parties."
+msgstr ""
 
 #. Payment.properties.sequenceNumber.label
 #: followthemoney/schema/Payment.yaml
@@ -1734,9 +1766,7 @@ msgstr "Bankovni račun korisnika"
 
 #. Person.label
 #. Relationship.properties.person.label
-#. TaxRoll.properties.person.label
 #: followthemoney/schema/Person.yaml followthemoney/schema/Relationship.yaml
-#: followthemoney/schema/TaxRoll.yaml
 msgid "Person"
 msgstr "Osoba"
 
@@ -1744,6 +1774,11 @@ msgstr "Osoba"
 #: followthemoney/schema/Person.yaml
 msgid "People"
 msgstr "Ljudi"
+
+#. Person.description
+#: followthemoney/schema/Person.yaml
+msgid "An individual"
+msgstr ""
 
 #. Person.properties.firstName.label
 #: followthemoney/schema/Person.yaml
@@ -1805,6 +1840,11 @@ msgstr "Javno tijelo"
 msgid "Public bodies"
 msgstr "Javna tijela"
 
+#. PublicBody.description
+#: followthemoney/schema/PublicBody.yaml
+msgid "A public body, such as a ministry, department or state company."
+msgstr ""
+
 #. RealEstate.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Real estate"
@@ -1814,6 +1854,11 @@ msgstr "Nekretnina"
 #: followthemoney/schema/RealEstate.yaml
 msgid "Real estates"
 msgstr "Nekretnine"
+
+#. RealEstate.description
+#: followthemoney/schema/RealEstate.yaml
+msgid "A piece of land or property."
+msgstr ""
 
 #. RealEstate.properties.latitude.label
 #: followthemoney/schema/RealEstate.yaml
@@ -1931,6 +1976,11 @@ msgstr ""
 msgid "Relationship"
 msgstr ""
 
+#. Relationship.plural
+#: followthemoney/schema/Relationship.yaml
+msgid "Relationships"
+msgstr ""
+
 #. Relationship.description
 #: followthemoney/schema/Relationship.yaml
 msgid "Person-to-person relationship"
@@ -2012,6 +2062,11 @@ msgstr "Sankcija"
 msgid "Sanctions"
 msgstr "Sankcije"
 
+#. Sanction.description
+#: followthemoney/schema/Sanction.yaml
+msgid "A sanction designation"
+msgstr ""
+
 #. Sanction.properties.entity.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Entity"
@@ -2036,6 +2091,16 @@ msgstr ""
 #. Succession.label
 #: followthemoney/schema/Succession.yaml
 msgid "Succession"
+msgstr ""
+
+#. Succession.plural
+#: followthemoney/schema/Succession.yaml
+msgid "Successions"
+msgstr ""
+
+#. Succession.description
+#: followthemoney/schema/Succession.yaml
+msgid "Two entities that legally succeed each other."
 msgstr ""
 
 #. Succession.properties.predecessor.label
@@ -2064,8 +2129,19 @@ msgid "Tax Roll"
 msgstr ""
 
 #. TaxRoll.plural
+#. TaxRoll.properties.taxee.reverse.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Tax Rolls"
+msgstr ""
+
+#. TaxRoll.description
+#: followthemoney/schema/TaxRoll.yaml
+msgid "A tax declaration of an individual"
+msgstr ""
+
+#. TaxRoll.properties.taxee.label
+#: followthemoney/schema/TaxRoll.yaml
+msgid "Taxee"
 msgstr ""
 
 #. TaxRoll.properties.income.label
@@ -2142,6 +2218,11 @@ msgstr "Bilješke"
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Link"
 msgstr "Link"
+
+#. UnknownLink.plural
+#: followthemoney/schema/UnknownLink.yaml
+msgid "Links"
+msgstr ""
 
 #. UnknownLink.properties.subject.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -2243,6 +2324,11 @@ msgstr ""
 msgid "Vessels"
 msgstr ""
 
+#. Vessel.description
+#: followthemoney/schema/Vessel.yaml
+msgid "A boat or ship"
+msgstr ""
+
 #. Vessel.properties.imoNumber.label
 #: followthemoney/schema/Vessel.yaml
 msgid "IMO Number"
@@ -2308,50 +2394,50 @@ msgstr "Prošli tipovi"
 msgid "MMSI"
 msgstr ""
 
-#: followthemoney/types/country.py:23
+#: followthemoney/types/country.py:24
 msgid "Global"
 msgstr ""
 
-#: followthemoney/types/country.py:24
+#: followthemoney/types/country.py:25
 msgid "European Union"
 msgstr ""
 
-#: followthemoney/types/country.py:25
+#: followthemoney/types/country.py:26
 msgid "Kosovo"
 msgstr ""
 
-#: followthemoney/types/country.py:26
+#: followthemoney/types/country.py:27
 msgid "Yugoslavia"
 msgstr ""
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:28
 msgid "Serbia and Montenegro"
 msgstr ""
 
-#: followthemoney/types/country.py:28
+#: followthemoney/types/country.py:29
 msgid "Soviet Union"
 msgstr ""
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:30
 msgid "Abkhazia"
 msgstr ""
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:31
 msgid "South Ossetia"
 msgstr ""
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:32
 msgid "Somaliland"
 msgstr ""
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:33
 msgid "Wales"
 msgstr ""
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:34
 msgid "Scotland"
 msgstr ""
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:35
 msgid "Transnistria"
 msgstr ""
