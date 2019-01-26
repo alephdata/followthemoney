@@ -2,27 +2,27 @@ import itertools
 from Levenshtein import jaro
 from normality import normalize
 from followthemoney.types import registry
-from followthemoney.util import dampen
+from followthemoney.util import dampen, shortest
 from followthemoney.exc import InvalidData
 
 # OK, Here's the plan: we have to find a way to get user judgements
 # on as many of these matches as we can, then build a regression
 # model which properly weights the value of a matching property
 # based upon it's type.
-NAMES_WEIGHT = 0.5
+NAMES_WEIGHT = 0.6
 COUNTRIES_WEIGHT = 0.1
 MATCH_WEIGHTS = {
     registry.text: 0,
     registry.name: 0,  # because we already compare names
-    registry.identifier: 0.4,
+    registry.identifier: 0.3,
     registry.url: 0.1,
     registry.email: 0.2,
     registry.ip: 0.1,
     registry.iban: 0.3,
-    registry.address: 0.2,
-    registry.date: 0.3,
+    registry.address: 0.3,
+    registry.date: 0.2,
     registry.phone: 0.3,
-    registry.country: 0.2,
+    registry.country: 0.1,
 }
 
 
@@ -60,7 +60,7 @@ def compare_names(left, right):
     right_list = [normalize(n, latinize=True) for n in right.names]
     for (left, right) in itertools.product(left_list, right_list):
         similarity = jaro(left, right)
-        score = similarity * dampen(2, 20, min(left, right, key=len))
+        score = similarity * dampen(2, 20, shortest(left, right))
         result = max(result, score)
     return result
 

@@ -112,11 +112,13 @@ class EntityProxy(object):
             for (source, target) in product(sources, targets):
                 yield (source, target)
 
-    def get_type_values(self, type_, cleaned=True):
+    def get_type_values(self, type_, cleaned=True, matchable=False):
         """All values of a particular type associated with a the entity."""
         combined = set()
         for prop, values in self._properties.items():
             if prop.type == type_:
+                if matchable and not prop.matchable:
+                    continue
                 combined.update(values)
         countries = []
         if type_ != registry.country:
@@ -124,13 +126,15 @@ class EntityProxy(object):
         return type_.normalize_set(combined, cleaned=cleaned,
                                    countries=countries)
 
-    def get_type_inverted(self, cleaned=True):
+    def get_type_inverted(self, cleaned=True, matchable=False):
         """Invert the properties of an entity into their normalised form."""
         data = {}
         for group, type_ in registry.groups.items():
             if group is None:
                 continue
-            values = self.get_type_values(type_, cleaned=cleaned)
+            values = self.get_type_values(type_,
+                                          cleaned=cleaned,
+                                          matchable=matchable)
             if len(values):
                 data[group] = values
         return data

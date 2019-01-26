@@ -72,3 +72,7 @@ def dampen(short, long, text):
     length = len(text) - short
     baseline = max(1.0, (long - short))
     return max(0, min(1.0, (length / baseline)))
+
+
+def shortest(*texts):
+    return min(texts, key=len)

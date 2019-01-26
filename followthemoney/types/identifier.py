@@ -2,7 +2,7 @@ import re
 from normality import normalize
 
 from followthemoney.types.common import PropertyType
-from followthemoney.util import dampen
+from followthemoney.util import dampen, shortest
 
 
 class IdentifierType(PropertyType):
@@ -25,8 +25,7 @@ class IdentifierType(PropertyType):
     def compare(self, left, right):
         left = self.clean_compare(left)
         right = self.clean_compare(right)
-        shortest = min((left, right), key=len)
-        specificity = self.specificity(shortest)
+        specificity = self.specificity(shortest(left, right))
         if left == right:
             return specificity
         if left in right or right in left:

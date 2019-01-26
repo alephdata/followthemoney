@@ -17,7 +17,8 @@ TaxRoll:
       type: entity
       range: LegalEntity
       reverse:
-        name: "tax roll"
+        name: taxRolls
+        label: "Tax Rolls"
     country:
       label: "Country"
       type: country
