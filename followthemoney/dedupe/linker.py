@@ -1,5 +1,30 @@
+import uuid
+from hashlib import sha1
+
 from followthemoney.types import registry
 from followthemoney.util import get_entity_id
+
+
+class Cluster(object):
+
+    def __init__(self, *entities):
+        self._id = None
+        self.entities = set(entities)
+
+    def update(self, entities):
+        self._id = None
+        self.entities.update(entities)
+
+    @property
+    def id(self):
+        if len(self.entities) == 1:
+            return self.entities.get
+        if self._id is None:
+            key = ''.join(sorted(self.entities))
+            if isinstance(key, str):
+                key = key.encode('utf-8')
+            self._id = sha1(key).hexdigest()
+        return self._id
 
 
 class EntityLinker(object):
@@ -7,7 +32,7 @@ class EntityLinker(object):
     identical in a recon file."""
 
     def __init__(self):
-        self.linkages = {}
+        self.clusters = {}
 
     def add(self, subject, canonical):
         subject = get_entity_id(subject)
@@ -18,44 +43,46 @@ class EntityLinker(object):
             return
         if subject is None or canonical is None:
             return
-        resolved = self.resolve(canonical)
 
-        # Circular dependencies
-        if resolved == subject:
-            resolved = max(subject, canonical)
-            subject = min(subject, canonical)
+        cluster = Cluster(canonical, subject)
+        cluster = self.clusters.get(canonical, cluster)
+        if subject in self.clusters:
+            previous = self.clusters.get(subject)
+            cluster.update(previous.entities)
 
-        # Find existing references
-        subjects = [subject]
-        for (src, dst) in self.linkages.items():
-            if dst == subject:
-                subjects.append(src)
-        for sub in subjects:
-            if sub != resolved:
-                self.linkages[sub] = resolved
+        for entity in cluster.entities:
+            self.clusters[entity] = cluster
 
     def has(self, subject):
         subject = get_entity_id(subject)
-        return subject in self.linkages
+        return subject in self.clusters
 
     def resolve(self, subject):
         """Given an entity or entity ID, return the canonicalised ID that
         should be used going forward."""
         subject = get_entity_id(subject)
-        return self.linkages.get(subject, subject)
+        cluster = self.clusters.get(subject)
+        if cluster is None:
+            return subject
+        return cluster.id
 
     def apply(self, proxy):
         """Rewrite an entity proxy so that both its own ID and any references
         to other entities in the properties are canonicalised."""
         linked = proxy.clone()
-        linked.id = self.resolve(proxy.id)
+        cluster = self.clusters.get(proxy.id)
+        if cluster is not None:
+            linked.id = cluster.id
+            linked.add('sameAs', cluster.entities, quiet=True)
         for prop in proxy.iterprops():
             if prop.type != registry.entity:
                 continue
             for value in linked.pop(prop):
-                value = self.resolve(value)
-                linked.add(prop, value)
+                if prop.name == 'sameAs':
+                    linked.add(prop, value)
+                else:
+                    linked.add(prop, self.resolve(value))
         return linked
 
     def __len__(self):
-        return len(self.linkages)
+        return len(self.clusters)
