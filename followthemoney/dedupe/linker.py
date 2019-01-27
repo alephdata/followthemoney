@@ -1,4 +1,3 @@
-import uuid
 from hashlib import sha1
 
 from followthemoney.types import registry
@@ -17,8 +16,6 @@ class Cluster(object):
 
     @property
     def id(self):
-        if len(self.entities) == 1:
-            return self.entities.get
         if self._id is None:
             key = ''.join(sorted(self.entities))
             if isinstance(key, str):
@@ -83,6 +80,3 @@ class EntityLinker(object):
                 else:
                     linked.add(prop, self.resolve(value))
         return linked
-
-    def __len__(self):
-        return len(self.clusters)

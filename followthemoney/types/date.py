@@ -85,7 +85,7 @@ class DateType(PropertyType):
         return self._clean_text(text)
 
     def _specificity(self, value):
-        return dampen(5, self.MAX_LENGTH, value)
+        return dampen(5, 13, value)
 
     def compare(self, left, right):
         prefix = os.path.commonprefix([left, right])

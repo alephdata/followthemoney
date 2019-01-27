@@ -151,6 +151,22 @@ class ModelTestCase(TestCase):
         assert le in matchable, matchable
         assert doc not in matchable, matchable
 
+    def test_specificity_name(self):
+        company = model.schemata['Company']
+        name = company.get('name')
+        assert 0 == name.specificity('AA')
+        assert 0.4 <= name.specificity('Church of Jesus Christ of the Latter Day Saints')  # noqa
+
+    def test_specificity_date(self):
+        company = model.schemata['Company']
+        date = company.get('incorporationDate')
+        spec = date.specificity('2011-01-01')
+        assert 0.5 <= spec, spec
+
+        date = company.get('retrievedAt')
+        spec = date.specificity('2011-01-01')
+        assert 0.0 == spec, spec
+
     def test_model_featured_properties(self):
         interval = model.schemata['Interval']
         interest = model.schemata['Interest']
@@ -158,3 +174,6 @@ class ModelTestCase(TestCase):
             interval.featured, interval
         assert 'startDate' in interest.featured and 'endDate' in \
             interest.featured and 'role' in interest.featured, interest
+
+        sprops = list(interval.sorted_properties)
+        assert len(sprops) == len(interval.properties), sprops
