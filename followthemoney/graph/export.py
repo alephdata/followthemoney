@@ -41,7 +41,7 @@ class GraphExport(object):
                 if prop.type not in self.edge_types:
                     continue
                 for value in ensure_list(values):
-                    weight = prop.type.specificity(value)
+                    weight = prop.specificity(value)
                     if weight == 0:
                         continue
                     self.write_link(proxy, prop, value, weight)
