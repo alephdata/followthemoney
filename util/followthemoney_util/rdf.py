@@ -15,10 +15,7 @@ def export_rdf():
             if entity is None:
                 break
             graph = Graph()
-            for stmt in entity.statements:
-                triple = stmt.rdf()
-                if triple is None:
-                    continue
+            for triple in entity.triples:
                 graph.add(triple)
             nt = graph.serialize(format='nt').strip()
             stdout.write(nt.decode('utf-8') + '\n')

@@ -1,3 +1,4 @@
+from rdflib import RDF
 from hashlib import sha1
 from itertools import product
 from normality import stringify
@@ -147,11 +148,19 @@ class EntityProxy(object):
 
     @property
     def statements(self):
-        node = self.node
-        if node is None:
+        if self.id is None:
             return
+        node = self.node
         for prop, value in self.itervalues():
             yield Statement(node, prop, value)
+
+    @property
+    def triples(self):
+        if self.id is None or self.schema is None:
+            return
+        yield (self.node.uri, RDF.type, self.schema.uri)
+        for statement in self.statements:
+            yield statement.rdf()
 
     @property
     def caption(self):
