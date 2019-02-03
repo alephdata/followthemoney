@@ -66,6 +66,7 @@ setup(
             'country = followthemoney.types.country:CountryType',
             'language = followthemoney.types.language:LanguageType',
             'mimetype = followthemoney.types.mimetype:MimeType',
+            'checksum = followthemoney.types.checksum:ChecksumType',
             'identifier = followthemoney.types.identifier:IdentifierType',
             'entity = followthemoney.types.entity:EntityType',
             'text = followthemoney.types.text:TextType',

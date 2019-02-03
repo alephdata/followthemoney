@@ -2,20 +2,15 @@ Document:
   extends: Thing
   label: File
   plural: Files
-  hidden: true
   matchable: false
   properties:
     contentHash:
       label: "Content checksum"
       description: "SHA1 hash of the data"
-      type: identifier
+      type: checksum
     title:
       label: "Title"
       rdf: http://purl.org/dc/elements/1.1/title
-    processingStatus:
-      label: "Processing status"
-    processingError:
-      label: "Error message"
     author:
       label: "Author"
       description: "The original author, not the uploader"
@@ -39,9 +34,6 @@ Document:
       label: "Message ID"
       description: "Message ID of a document; unique in most cases"
       type: identifier
-    headers:
-      label: "Raw headers"
-      hidden: true  
     mimeType:
       label: "MIME type"
       rdf: http://purl.org/dc/terms/format
@@ -68,31 +60,39 @@ Document:
         name: children
         label: "Child documents"
       rdf: http://purl.org/dc/terms/isPartOf
+    ancestors:
+      label: "Ancestors"
+      type: entity
+      hidden: true
+      range: Folder
+      reverse:
+        name: descendants
+        hidden: true
+        label: "Descendant documents"
     namesMentioned:
       label: "Mentioned names"
+      hidden: true
       type: name
     ibanMentioned:
       label: "IBANs"
+      hidden: true
       type: iban
     ipMentioned:
       label: "IP addresses"
+      hidden: true
       type: ip
     locationMentioned:
       label: "Locations"
+      hidden: true
       type: address
     phoneMentioned:
       label: "Phone numbers"
+      hidden: true
       type: phone
     emailMentioned:
       label: "E-Mail addresses"
-      type: email
-    pdfAlternativeHash:
-      label: "PDF alternative version checksum"
       hidden: true
-      type: identifier
-    # Not included:
-    # * columns
-    # * headers
+      type: email
 
 
 PlainText:
@@ -115,6 +115,11 @@ Pages:
   plural: Documents
   hidden: true
   matchable: false
+  properties:
+    pdfAlternativeHash:
+      label: "PDF alternative version checksum"
+      hidden: true
+      type: checksum
 
 Folder:
   extends: Document
@@ -200,6 +205,9 @@ Email:
       label: "In Reply To"
       description: "Message IDs of the preceding emails in the thread"
       type: identifier
+    headers:
+      label: "Raw headers"
+      hidden: true  
 
 Table:
   extends: Document
