@@ -1,7 +1,8 @@
-from rdflib import RDF
 from hashlib import sha1
 from itertools import product
 from normality import stringify
+from rdflib import Literal
+from rdflib.namespace import RDF, SKOS
 from banal import ensure_list, is_mapping, ensure_dict
 
 from followthemoney.exc import InvalidData
@@ -159,6 +160,9 @@ class EntityProxy(object):
         if self.id is None or self.schema is None:
             return
         yield (self.node.uri, RDF.type, self.schema.uri)
+        caption = self.caption
+        if caption is not None:
+            yield (self.node.uri, SKOS.prefLabel, Literal(caption))
         for statement in self.statements:
             yield statement.rdf()
 

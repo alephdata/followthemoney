@@ -167,7 +167,7 @@ class ProxyTestCase(TestCase):
         statements = list(proxy.statements)
         assert 8 == len(statements), len(statements)
         triples = list(proxy.triples)
-        count = len(statements) + 1
+        count = len(statements) + 2
         assert count == len(triples), len(triples)
 
         proxy = model.make_entity('Person')
