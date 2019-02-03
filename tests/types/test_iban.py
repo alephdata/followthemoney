@@ -11,6 +11,10 @@ class IbansTest(unittest.TestCase):
         self.assertEqual(ibans.clean('GB29 NWBK 6016 1331 9268 19'),
                          'GB29NWBK60161331926819')
 
+    def test_rdf(self):
+        rdf = ibans.rdf('GB29NWBK60161331926819')
+        assert 'iban:GB29NWBK60161331926819' in rdf
+
     def test_domain_validity(self):
         self.assertTrue(ibans.validate('GB29 NWBK 6016 1331 9268 19'))
         self.assertTrue(ibans.validate('GB29NWBK60161331926819'))

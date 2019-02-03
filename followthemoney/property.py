@@ -19,6 +19,7 @@ class Property(object):
         self._description = data.get('description')
         self.caption = data.get('caption', False)
         self.required = data.get('required', False)
+        self.hidden = data.get('hidden', False)
         self.stub = data.get('stub', False)
 
         type_ = data.get('type', 'string')
@@ -77,9 +78,6 @@ class Property(object):
     def __eq__(self, other):
         return self.qname == other.qname
 
-    def __lt__(self, other):
-        return (self.caption, self.label) < (other.caption, other.label)
-
     def __hash__(self):
         return hash(self.qname)
 
@@ -93,7 +91,8 @@ class Property(object):
             'caption': self.caption,
             'stub': self.stub,
             'uri': str(self.uri),
-            'type': self.type.name
+            'type': self.type.name,
+            'hidden': self.hidden
         }
         if self.range:
             data['range'] = self.range.name
