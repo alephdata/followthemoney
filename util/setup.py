@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney-util',
-    version='1.5.5',
+    version='1.5.6',
     long_description="FollowTheMoney command-line tool",
     classifiers=[
         "Development Status :: 3 - Alpha",
