@@ -59,10 +59,16 @@ class EntityProxy(object):
         return self.schema.get(prop)
 
     def get(self, prop, quiet=False):
+        """Get all values of a property."""
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None or prop not in self._properties:
             return []
         return list(self._properties.get(prop))
+
+    def first(self, prop, quiet=False):
+        """Get only the first (random) value, or None."""
+        for value in self.get(prop, quiet=quiet):
+            return value
 
     def has(self, prop, quiet=False):
         prop = self._get_prop(prop, quiet=quiet)

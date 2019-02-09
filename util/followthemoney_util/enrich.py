@@ -21,9 +21,7 @@ def enrich(enricher):
             for result in enricher.enrich_entity(entity):
                 write_object(stdout, result)
     except BrokenPipeError:
-        pass
-    except Exception:
-        log.exception("Error during enrichment")
+        return
     finally:
         enricher.close()
 
@@ -42,8 +40,6 @@ def expand(enricher):
             result = enricher.expand_entity(entity)
             write_object(stdout, result)
     except BrokenPipeError:
-        pass
-    except Exception:
-        log.exception("Error during enrichment expansion")
+        return
     finally:
         enricher.close()

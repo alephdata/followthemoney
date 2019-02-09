@@ -116,7 +116,7 @@ Pages:
   hidden: true
   matchable: false
   properties:
-    pdfAlternativeHash:
+    pdfHash:
       label: "PDF alternative version checksum"
       hidden: true
       type: checksum

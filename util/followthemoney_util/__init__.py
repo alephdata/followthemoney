@@ -1,4 +1,3 @@
-from followthemoney_util.aleph import load_aleph
 from followthemoney_util.rdf import export_rdf
 from followthemoney_util.graph import export_gexf, export_cypher
 from followthemoney_util.aggregate import aggregate
@@ -8,7 +7,6 @@ from followthemoney_util.recon import auto_match
 from followthemoney_util.mapping import run_mapping
 
 __all__ = [
-    load_aleph,
     export_rdf,
     export_gexf,
     export_cypher,
