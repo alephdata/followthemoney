@@ -13,6 +13,7 @@ Row:
   extends: Record
   label: Row
   plural: Rows
+  matchable: false
   properties:
     cells:
       label: "Cells"
@@ -29,6 +30,7 @@ Page:
   extends: Record
   label: Page
   plural: Pages
+  matchable: false
   properties:
     bodyText:
       label: "Text"
