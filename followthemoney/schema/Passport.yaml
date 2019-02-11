@@ -5,6 +5,8 @@ Passport:
   extends: Interval
   matchable: false
   featured:
+    - passportNumber
+    - country
     - type
     - holder
     - startDate

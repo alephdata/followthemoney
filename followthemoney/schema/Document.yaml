@@ -36,10 +36,11 @@ Document:
       type: identifier
     mimeType:
       label: "MIME type"
-      rdf: http://purl.org/dc/terms/format
       type: mimetype
+      rdf: http://purl.org/dc/terms/format
     language:
       label: "Language"
+      type: language
       rdf: http://purl.org/dc/terms/language
     date:
       label: "Date"
