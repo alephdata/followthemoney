@@ -17,6 +17,7 @@ Row:
   properties:
     cells:
       label: "Cells"
+      type: text
     table:
       label: "Table"
       type: entity

@@ -23,6 +23,7 @@ Thing:
       type: text
     description: # a longer description
       label: Description
+      type: text
     country:
       label: Country
       type: country

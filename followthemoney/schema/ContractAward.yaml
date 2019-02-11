@@ -41,6 +41,7 @@ ContractAward:
       label: "Document type"
     decisionReason:
       label: "Decision reason"
+      type: text
     cpvCode:
       label: "CPV Code"
       description: "Contract Procurement Vocabulary (what type of goods/services, EU)"

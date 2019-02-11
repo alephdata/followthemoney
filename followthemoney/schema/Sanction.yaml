@@ -28,6 +28,7 @@ Sanction:
       label: "Duration"
     reason:
       label: "Reason"
+      type: text
     country:
       label: "Country"
       type: country

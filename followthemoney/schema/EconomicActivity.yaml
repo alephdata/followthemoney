@@ -42,6 +42,7 @@ EconomicActivity:
     goodsDescription:
       label: "Description"
       description: "Description of goods"
+      type: text
     declarant:
       label: "Declarant"
       description: "Customs declarant"
