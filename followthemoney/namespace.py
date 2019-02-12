@@ -1,6 +1,5 @@
 import hmac
 import hashlib
-import binascii
 
 from followthemoney.util import key_bytes
 
@@ -11,8 +10,8 @@ class Namespace(object):
     SEP = '.'
 
     def __init__(self, name=None):
-        self.name = name
         self.bname = key_bytes(name)
+        self.hmac = hmac.new(self.bname, digestmod='sha1')
 
     def parse(self, entity_id):
         if entity_id is None:
@@ -24,15 +23,15 @@ class Namespace(object):
             return (entity_id, None)
 
     def signature(self, entity_id):
-        if self.name is None or entity_id is None:
+        if not len(self.bname) or entity_id is None:
             return None
-        entity_id = key_bytes(entity_id)
-        digest = hmac.digest(self.bname, entity_id, 'sha1')
-        return binascii.hexlify(digest).decode('ascii')
+        digest = self.hmac.copy()
+        digest.update(key_bytes(entity_id))
+        return digest.hexdigest()
 
     def sign(self, entity_id):
         entity_id, _ = self.parse(entity_id)
-        if self.name is None:
+        if not len(self.bname):
             return entity_id
         if entity_id is None:
             return None
@@ -62,4 +61,4 @@ class Namespace(object):
         return self.bname == other.bname
 
     def __repr__(self):
-        return '<Namespace(%r)>' % self.name
+        return '<Namespace(%r)>' % self.bname
