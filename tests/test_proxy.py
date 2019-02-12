@@ -29,6 +29,7 @@ class ProxyTestCase(TestCase):
         assert 'test' in repr(proxy), repr(proxy)
         assert hash(proxy) == hash(proxy.id)
         assert proxy.get('name') == ['Ralph Tester']
+        assert proxy.first('name') == 'Ralph Tester'
         prop = model.get_qname('Thing:name')
         assert proxy.get(prop) == ['Ralph Tester']
         assert proxy.caption == 'Ralph Tester'
@@ -47,8 +48,16 @@ class ProxyTestCase(TestCase):
         assert name in proxy.names, proxy.names
 
         with assert_raises(InvalidData):
+            proxy.add('banana', 'yellow')
+        proxy.add('banana', 'yellow', quiet=True)
+
+        with assert_raises(InvalidData):
             proxy.get('banana')
         assert [] == proxy.get('banana', quiet=True)
+
+        with assert_raises(InvalidData):
+            proxy.first('banana')
+        assert proxy.first('banana', quiet=True) is None
 
         assert len(proxy.get('nationality')) == 0
 

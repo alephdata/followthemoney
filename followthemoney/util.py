@@ -33,19 +33,19 @@ def get_locale():
 
 def key_bytes(key):
     """Convert the given data to a value appropriate for hashing."""
+    if isinstance(key, bytes):
+        return key
     key = stringify(key) or ''
     return key.encode('utf-8')
 
 
 def get_entity_id(obj):
     """Given an entity-ish object, try to get the ID."""
-    if isinstance(obj, str):
-        return obj
     if is_mapping(obj):
-        return obj.get('id')
-    if hasattr(obj, 'id'):
-        return obj.id
-    # return obj
+        obj = obj.get('id')
+    elif hasattr(obj, 'id'):
+        obj = obj.id
+    return stringify(obj)
 
 
 def merge_data(old, new):

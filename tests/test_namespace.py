@@ -1,0 +1,45 @@
+# from nose.tools import assert_raises
+from unittest import TestCase
+from followthemoney.namespace import Namespace
+# from followthemoney.exc import InvalidData
+
+
+class NamespaceTestCase(TestCase):
+
+    def test_basic(self):
+        ns = Namespace.make('banana')
+        assert Namespace.make(ns) == ns
+        assert Namespace(b'banana') == ns
+        assert 'banana' in repr(ns), repr(ns)
+        assert ns == Namespace('banana'), Namespace('banana')
+
+    def test_sign(self):
+        ns = Namespace('banana')
+        x = ns.sign('split')
+        assert x.startswith('split'), x
+        assert ns.sign(None) is None
+        assert x.endswith(ns.signature('split'))
+        assert ns.signature(None) is None
+
+    def test_sign_null(self):
+        null = Namespace(None)
+        assert null.sign('split') == 'split', null.sign('split')
+        assert null.signature('split') is None
+
+    def test_verify(self):
+        ns = Namespace('banana')
+        x = ns.sign('split')
+        assert Namespace.SEP in x
+        assert ns.verify(x)
+        assert not ns.verify('split')
+        assert not ns.verify(None)
+
+    def test_generate(self):
+        ns = Namespace(None)
+        assert None is ns.generate(None)
+        assert len(ns.generate('fish')) == 40, ns.generate('fish')
+        assert len(ns.generate('fowl')) == 40, ns.generate('fowl')
+        nsb = Namespace('banana')
+        assert None is nsb.generate(None)
+        assert len(nsb.generate('fish')) == 81, nsb.generate('fish')
+        assert nsb.generate('fish').startswith(nsb.generate('fish'))
