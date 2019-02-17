@@ -223,3 +223,8 @@ Table:
   plural: Tables
   hidden: true
   matchable: false
+  properties:
+    columns:
+      label: "Column headings"
+      hidden: true
+      type: text
