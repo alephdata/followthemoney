@@ -1,5 +1,6 @@
-from followthemoney.types import registry
 from followthemoney.util import get_entity_id
+from followthemoney.types import registry
+from followthemoney.namespace import Namespace
 
 
 class Cluster(object):
@@ -26,8 +27,8 @@ class EntityLinker(object):
         self.clusters = {}
 
     def add(self, subject, canonical):
-        subject = get_entity_id(subject)
-        canonical = get_entity_id(canonical)
+        subject, _ = Namespace.parse(get_entity_id(subject))
+        canonical, _ = Namespace.parse(get_entity_id(canonical))
 
         # Don't do no-ops.
         if subject == canonical:

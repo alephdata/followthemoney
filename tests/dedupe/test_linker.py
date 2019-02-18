@@ -33,6 +33,12 @@ class LinkerTestCase(TestCase):
         self.assertFalse(linker.has('x'))
         self.assertFalse(linker.has(None))
 
+    def test_remove_ns(self):
+        linker = EntityLinker()
+        linker.add('a.xxx', 'b.xxx')
+        self.assertEquals(linker.resolve('b'), linker.resolve('a'))
+        self.assertEquals(linker.resolve('b'), 'a')
+
     def test_linker_apply(self):
         linker = EntityLinker()
         linker.add('foo', 'fox')

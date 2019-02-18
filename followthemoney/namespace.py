@@ -15,13 +15,14 @@ class Namespace(object):
         self.bname = key_bytes(name)
         self.hmac = hmac.new(self.bname, digestmod='sha1')
 
-    def parse(self, entity_id):
+    @classmethod
+    def parse(cls, entity_id):
         """Split up an entity ID into the plain ID and the namespace
         signature. If either part is missing, return None instead."""
         if entity_id is None:
             return (None, None)
         try:
-            plain_id, checksum = entity_id.rsplit(self.SEP, 1)
+            plain_id, checksum = entity_id.rsplit(cls.SEP, 1)
             return (plain_id, checksum)
         except ValueError:
             return (entity_id, None)

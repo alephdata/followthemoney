@@ -13,6 +13,7 @@ from sqlalchemy.orm import sessionmaker
 from followthemoney import model
 from followthemoney.compare import compare
 from followthemoney.util import get_entity_id
+from followthemoney.namespace import Namespace
 
 from followthemoney_integrate import settings
 from followthemoney_integrate.util import index_text, text_parts
@@ -24,6 +25,7 @@ metadata = MetaData(bind=engine)
 Session = sessionmaker(bind=engine)
 Base = declarative_base(bind=engine, metadata=metadata)
 Thing = model.get('Thing')
+NS = Namespace(None)
 
 DEFAULT_PRIORITY = 1.0
 
@@ -58,6 +60,7 @@ class Entity(Base):
 
     @proxy.setter
     def proxy(self, proxy):
+        proxy = NS.apply(proxy)
         self._proxy = proxy
         self.id = proxy.id
         self.schema = proxy.schema.name
@@ -170,8 +173,8 @@ class Match(Base):
         if obj is None:
             obj = cls()
             obj.id = cls.make_id(subject, candidate)
-            obj.subject = get_entity_id(subject)
-            obj.candidate = get_entity_id(candidate)
+            obj.subject, _ = Namespace.parse(get_entity_id(subject))
+            obj.candidate, _ = Namespace.parse(get_entity_id(candidate))
         priority = priority or DEFAULT_PRIORITY
         if score is not None:
             obj.score = score
@@ -208,8 +211,8 @@ class Match(Base):
 
     @classmethod
     def make_id(cls, subject, candidate):
-        subject = get_entity_id(subject)
-        candidate = get_entity_id(candidate)
+        subject, _ = Namespace.parse(get_entity_id(subject))
+        candidate, _ = Namespace.parse(get_entity_id(candidate))
         return '.'.join((subject, candidate))
 
     @classmethod
