@@ -33,6 +33,12 @@ class LinkerTestCase(TestCase):
         self.assertFalse(linker.has('x'))
         self.assertFalse(linker.has(None))
 
+    def test_remove_ns(self):
+        linker = EntityLinker()
+        linker.add('a.xxx', 'b.xxx')
+        self.assertEquals(linker.resolve('b'), linker.resolve('a'))
+        self.assertEquals(linker.resolve('b'), 'a')
+
     def test_linker_apply(self):
         linker = EntityLinker()
         linker.add('foo', 'fox')
@@ -47,8 +53,7 @@ class LinkerTestCase(TestCase):
             }
         })
         linked = linker.apply(entity)
-        merkle = 'e7e3f333d2a42e772f7c2c3de35a69ac3c196fba'
-        self.assertEquals(linked.id, merkle)
+        self.assertEquals(linked.id, 'bar')
         self.assertIn('bar', linked.get('sameAs'))
         self.assertIn('banana', linked.get('sameAs'))
         self.assertIn('qux', linked.get('sameAs'))
