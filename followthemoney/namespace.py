@@ -2,6 +2,7 @@ import hmac
 import hashlib
 
 from followthemoney.util import key_bytes
+from followthemoney.types import registry
 
 
 class Namespace(object):
@@ -59,6 +60,23 @@ class Namespace(object):
             return None
         entity_id = hashlib.sha1(parts).hexdigest()
         return self.sign(entity_id)
+
+    def apply(self, proxy):
+        """Rewrite an entity proxy so all IDs mentioned are limited to
+        the namespace.
+
+        An exception is made for sameAs declarations."""
+        linked = proxy.clone()
+        linked.add('sameAs', linked.id, quiet=True)
+        linked.id = self.sign(linked.id)
+        for prop in proxy.iterprops():
+            if prop.type != registry.entity:
+                continue
+            for value in linked.pop(prop):
+                linked.add(prop, self.sign(value))
+                if prop.name == 'sameAs':
+                    linked.add(prop, value)
+        return linked
 
     @classmethod
     def make(cls, name):

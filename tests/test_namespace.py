@@ -1,5 +1,7 @@
 # from nose.tools import assert_raises
 from unittest import TestCase
+
+from followthemoney import model
 from followthemoney.namespace import Namespace
 # from followthemoney.exc import InvalidData
 
@@ -43,3 +45,19 @@ class NamespaceTestCase(TestCase):
         assert None is nsb.generate(None)
         assert len(nsb.generate('fish')) == 81, nsb.generate('fish')
         assert nsb.generate('fish').startswith(nsb.generate('fish'))
+
+    def test_apply(self):
+        entity = {
+            'id': 'banana',
+            'schema': 'LegalEntity',
+            'properties': {
+                'sameAs': ['kumkwat'],
+                'parent': ['pretzel']
+            }
+        }
+        proxy = model.get_proxy(entity)
+        assert proxy.id == 'banana', proxy.id
+        ns = Namespace('fruit')
+        out = ns.apply(proxy)
+        assert out.id == ns.sign(proxy.id), out
+        assert proxy.id in out.get('sameAs'), out

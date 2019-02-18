@@ -47,8 +47,7 @@ class LinkerTestCase(TestCase):
             }
         })
         linked = linker.apply(entity)
-        merkle = 'e7e3f333d2a42e772f7c2c3de35a69ac3c196fba'
-        self.assertEquals(linked.id, merkle)
+        self.assertEquals(linked.id, 'bar')
         self.assertIn('bar', linked.get('sameAs'))
         self.assertIn('banana', linked.get('sameAs'))
         self.assertIn('qux', linked.get('sameAs'))
