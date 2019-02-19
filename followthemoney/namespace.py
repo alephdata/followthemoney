@@ -77,6 +77,7 @@ class Namespace(object):
                 linked.add(prop, self.sign(value))
                 if prop.name == 'sameAs':
                     linked.add(prop, value)
+        linked.remove('sameAs', linked.id)
         return linked
 
     @classmethod

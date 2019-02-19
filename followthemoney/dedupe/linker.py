@@ -74,4 +74,5 @@ class EntityLinker(object):
                     linked.add(prop, value)
                 else:
                     linked.add(prop, self.resolve(value))
+        linked.remove('sameAs', linked.id)
         return linked

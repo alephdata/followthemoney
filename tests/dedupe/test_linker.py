@@ -54,6 +54,6 @@ class LinkerTestCase(TestCase):
         })
         linked = linker.apply(entity)
         self.assertEquals(linked.id, 'bar')
-        self.assertIn('bar', linked.get('sameAs'))
+        self.assertNotIn('bar', linked.get('sameAs'))
         self.assertIn('banana', linked.get('sameAs'))
         self.assertIn('qux', linked.get('sameAs'))

@@ -71,12 +71,14 @@ class EntityProxy(object):
             return value
 
     def has(self, prop, quiet=False):
+        """Check to see that the property has at least one value set."""
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
             return False
         return prop in self._properties
 
     def add(self, prop, values, cleaned=False, quiet=False):
+        """Add the given value(s) to the property if they are not empty."""
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
             return
@@ -90,17 +92,28 @@ class EntityProxy(object):
             self._properties[prop].add(value)
 
     def set(self, prop, values, cleaned=False, quiet=False):
+        """Replace the values of the property with the given value(s)."""
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
             return
         self._properties.pop(prop, None)
         return self.add(prop, values, cleaned=cleaned, quiet=quiet)
 
-    def pop(self, prop, quiet=False):
+    def pop(self, prop, quiet=True):
+        """Remove all the values from the given property and return them."""
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
             return []
         return ensure_list(self._properties.pop(prop, []))
+
+    def remove(self, prop, value, quiet=True):
+        """Remove a single element from the given property if it
+        exists. If it is not there, no action."""
+        prop = self._get_prop(prop, quiet=quiet)
+        try:
+            self._properties[prop].remove(value)
+        except KeyError:
+            pass
 
     def iterprops(self):
         for prop in self.schema.properties.values():

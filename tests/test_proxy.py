@@ -80,9 +80,25 @@ class ProxyTestCase(TestCase):
         assert not proxy.get('idNumber')
         assert not proxy.pop('idNumber')
 
+        # new in 1.6.1: pop is quiet by default
+        assert not proxy.pop('banana')
         with assert_raises(InvalidData):
-            proxy.pop('banana')
-        assert not proxy.pop('banana', quiet=True)
+            proxy.pop('banana', quiet=False)
+
+    def test_remove(self):
+        proxy = EntityProxy.from_dict(model, ENTITY)
+        assert '9177171' in proxy.get('idNumber')
+        proxy.remove('idNumber', '9177171')
+        assert '9177171' not in proxy.get('idNumber')
+        assert proxy.has('idNumber')
+
+        proxy.remove('idNumber', 'banana')
+        assert proxy.has('idNumber')
+
+        proxy.remove('fruit', 'banana')        
+
+        with assert_raises(InvalidData):
+            proxy.remove('fruit', 'banana', quiet=False)
 
     def test_has(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
