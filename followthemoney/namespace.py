@@ -1,5 +1,4 @@
 import hmac
-import hashlib
 
 from followthemoney.util import key_bytes
 from followthemoney.types import registry
@@ -53,15 +52,6 @@ class Namespace(object):
             return False
         return hmac.compare_digest(digest, self.signature(entity_id))
 
-    def generate(self, *parts):
-        """Generate an actual entity ID from the given components, and
-        apply a signature to it."""
-        parts = b''.join([key_bytes(p) for p in parts])
-        if not len(parts):
-            return None
-        entity_id = hashlib.sha1(parts).hexdigest()
-        return self.sign(entity_id)
-
     def apply(self, proxy):
         """Rewrite an entity proxy so all IDs mentioned are limited to
         the namespace.
@@ -74,7 +64,7 @@ class Namespace(object):
                 continue
             for value in linked.pop(prop):
                 linked.add(prop, self.sign(value))
-        linked.add('sameAs', proxy.id, quiet=True)
+        # linked.add('sameAs', proxy.id, quiet=True)
         linked.remove('sameAs', linked.id)
         return linked
 

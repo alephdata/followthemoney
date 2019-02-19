@@ -94,8 +94,8 @@ class ProxyTestCase(TestCase):
 
         proxy.remove('idNumber', 'banana')
         assert proxy.has('idNumber')
-
-        proxy.remove('fruit', 'banana')        
+        proxy.remove('idNumber', 'banana', quiet=False)
+        proxy.remove('fruit', 'banana')
 
         with assert_raises(InvalidData):
             proxy.remove('fruit', 'banana', quiet=False)
