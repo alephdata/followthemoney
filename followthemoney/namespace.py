@@ -68,15 +68,13 @@ class Namespace(object):
 
         An exception is made for sameAs declarations."""
         linked = proxy.clone()
-        linked.add('sameAs', linked.id, quiet=True)
         linked.id = self.sign(linked.id)
         for prop in proxy.iterprops():
             if prop.type != registry.entity:
                 continue
             for value in linked.pop(prop):
                 linked.add(prop, self.sign(value))
-                if prop.name == 'sameAs':
-                    linked.add(prop, value)
+        linked.add('sameAs', proxy.id, quiet=True)
         linked.remove('sameAs', linked.id)
         return linked
 
