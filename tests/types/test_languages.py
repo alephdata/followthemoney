@@ -14,9 +14,9 @@ class LanguagesTest(unittest.TestCase):
 
     def test_cleam(self):
         languages = registry.language
-        self.assertEquals(languages.clean('de'), 'de')
-        self.assertEquals(languages.clean('xx'), None)
-        self.assertEquals(languages.clean(None), None)
+        self.assertEqual(languages.clean('de'), 'de')
+        self.assertEqual(languages.clean('xx'), None)
+        self.assertEqual(languages.clean(None), None)
 
     def test_funcs(self):
         languages = registry.language

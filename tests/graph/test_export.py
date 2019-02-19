@@ -55,8 +55,8 @@ class ExportTestCase(TestCase):
             proxy = model.get_proxy(entity)
             exporter.write(proxy)
 
-        self.assertEquals(len(g.nodes), 3)
-        self.assertEquals(len(g.edges), 2)
+        self.assertEqual(len(g.nodes), 3)
+        self.assertEqual(len(g.edges), 2)
 
     def test_nxgraph_full(self):
         g = DiGraph()
@@ -66,8 +66,8 @@ class ExportTestCase(TestCase):
             proxy = model.get_proxy(entity)
             exporter.write(proxy)
 
-        self.assertEquals(len(g.nodes), 5)
-        self.assertEquals(len(g.edges), 4)
+        self.assertEqual(len(g.nodes), 5)
+        self.assertEqual(len(g.edges), 4)
 
     def test_cypher_simple(self):
         sio = io.StringIO()

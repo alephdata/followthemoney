@@ -34,38 +34,38 @@ class DatesTest(unittest.TestCase):
         self.assertFalse(dates.validate('2017-20-01'))
 
     def test_chop_dates(self):
-        self.assertEquals(dates.clean('2017-00-00'), '2017')
-        self.assertEquals(dates.clean('2017-00-00T00:00:00'), '2017')
-        self.assertEquals(dates.clean('2017-00-00T12:03:49'), '2017')
-        self.assertEquals(dates.clean('2017-01-01T00:00:00'), '2017-01-01')
+        self.assertEqual(dates.clean('2017-00-00'), '2017')
+        self.assertEqual(dates.clean('2017-00-00T00:00:00'), '2017')
+        self.assertEqual(dates.clean('2017-00-00T12:03:49'), '2017')
+        self.assertEqual(dates.clean('2017-01-01T00:00:00'), '2017-01-01')
 
     def test_patch_dates(self):
-        self.assertEquals(dates.clean('2017-1-3'), '2017-01-03')
-        self.assertEquals(dates.clean('2017-3'), '2017-03')
-        self.assertEquals(dates.clean('2017-0'), '2017')
-        self.assertEquals(dates.clean('2017-5-2T00:00:00'), '2017-05-02')
-        self.assertEquals(dates.clean('2017-5-2T10:00:00'), '2017-05-02T10:00:00')  # noqa
+        self.assertEqual(dates.clean('2017-1-3'), '2017-01-03')
+        self.assertEqual(dates.clean('2017-3'), '2017-03')
+        self.assertEqual(dates.clean('2017-0'), '2017')
+        self.assertEqual(dates.clean('2017-5-2T00:00:00'), '2017-05-02')
+        self.assertEqual(dates.clean('2017-5-2T10:00:00'), '2017-05-02T10:00:00')  # noqa
 
     def test_convert_datetime(self):
         dt = datetime.utcnow()
         iso, _ = dt.isoformat().split('.', 1)
-        self.assertEquals(dates.clean(dt), iso)
+        self.assertEqual(dates.clean(dt), iso)
         self.assertTrue(dates.validate(iso))
 
         dt = datetime.utcnow().date()
         iso = dt.isoformat()
-        self.assertEquals(dates.clean(dt), iso)
+        self.assertEqual(dates.clean(dt), iso)
 
     def test_parse_date(self):
-        self.assertEquals(dates.clean(None), None)
-        self.assertEquals(dates.clean(''), None)
-        self.assertEquals(dates.clean('banana'), None)
-        self.assertEquals(dates.clean('2017-04-04'), '2017-04-04')
-        self.assertEquals(dates.clean('2017-4-4'), '2017-04-04')
+        self.assertEqual(dates.clean(None), None)
+        self.assertEqual(dates.clean(''), None)
+        self.assertEqual(dates.clean('banana'), None)
+        self.assertEqual(dates.clean('2017-04-04'), '2017-04-04')
+        self.assertEqual(dates.clean('2017-4-4'), '2017-04-04')
 
-        self.assertEquals(dates.clean('4/2017', format="%m/%Y"), '2017-04')
-        self.assertEquals(dates.clean('4/2017', format="4/%Y"), '2017')
-        self.assertEquals(dates.clean('4/2xx017', format="%m/%Y"), None)
+        self.assertEqual(dates.clean('4/2017', format="%m/%Y"), '2017-04')
+        self.assertEqual(dates.clean('4/2017', format="4/%Y"), '2017')
+        self.assertEqual(dates.clean('4/2xx017', format="%m/%Y"), None)
 
     def test_specificity(self):
         self.assertEqual(dates.specificity('2011'), 0)
