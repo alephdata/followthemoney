@@ -45,7 +45,7 @@ class OpenCorporatesEnricher(Enricher):
         self.cache.store(url, data)
         if 'error' in data:
             return {}
-        return data.get('results')
+        return data
 
     def company_entity(self, result, data):
         data = ensure_dict(data.get('company', data))
@@ -122,7 +122,8 @@ class OpenCorporatesEnricher(Enricher):
         for page in range(1, 9):
             params['page'] = page
             results = self.get_api(self.COMPANY_SEARCH_API, params=params)
-            for company in ensure_list(results.get('companies')):
+            companies = results.get('results', {}).get('companies')
+            for company in ensure_list(companies):
                 result = self.make_result(entity)
                 proxy = self.company_entity(result, company)
                 result.set_candidate(proxy)
@@ -135,7 +136,8 @@ class OpenCorporatesEnricher(Enricher):
         for page in range(1, 9):
             params['page'] = page
             results = self.get_api(self.OFFICER_SEARCH_API, params=params)
-            for officer in ensure_list(results.get('officers')):
+            officers = results.get('results', {}).get('officers')
+            for officer in ensure_list(officers):
                 result = self.make_result(entity)
                 proxy = self.officer_entity(result, officer)
                 result.set_candidate(proxy)
@@ -156,7 +158,7 @@ class OpenCorporatesEnricher(Enricher):
     def expand_entity(self, entity):
         result = super(OpenCorporatesEnricher, self).expand_entity(entity)
         for url in entity.get('opencorporatesUrl', quiet=True):
-            data = self.get_api(url)
+            data = self.get_api(url).get('results', {})
             if 'company' in data:
                 self.company_entity(result, data)
             if 'officer' in data:

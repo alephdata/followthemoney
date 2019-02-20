@@ -50,6 +50,7 @@ class Entity(Base):
         data['id'] = self.id
         data['schema'] = self.schema
         data['properties'] = json.loads(self.properties)
+        data['priority'] = self.priority
         return data
 
     @hybrid_property
@@ -66,20 +67,18 @@ class Entity(Base):
         self.schema = proxy.schema.name
         self.properties = json.dumps(proxy.properties)
         self.context = json.dumps(proxy.context)
+        if 'priority' in proxy.context:
+            self.priority = proxy.context.get('priority')
 
     @classmethod
-    def save(cls, session, origin, proxy, priority=None):
+    def save(cls, session, origin, proxy):
         obj = cls.by_id(session, proxy.id)
         if obj is None:
             obj = cls()
             obj.origin = origin
-            obj.priority = 1.0
+            obj.priority = DEFAULT_PRIORITY
         obj.proxy = proxy
         obj.search = index_text(proxy)
-
-        priority = priority or proxy.context.get('priority')
-        if priority is not None:
-            obj.priority = priority
         obj.updated_at = now()
         session.add(obj)
         return obj
