@@ -280,7 +280,7 @@ class Vote(Base):
         dq = session.query(Vote.match_id.label('match_id'),
                            Vote.judgement.label('judgement'),
                            count)
-        # dq = dq.filter(Vote.judgement != '?')
+        dq = dq.filter(Vote.judgement != '?')
         if updated:
             dq = dq.filter(Match.id == Vote.match_id)
             dq = dq.filter(Match.updated_at <= Vote.updated_at)
