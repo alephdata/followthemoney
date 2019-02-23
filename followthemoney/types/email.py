@@ -34,7 +34,8 @@ class EmailType(PropertyType):
         email = strip_quotes(email)
         mailbox, domain = email.rsplit('@', 1)
         domain = self.domains.clean(domain, **kwargs)
-        return '@'.join((mailbox, domain))
+        if domain is not None and mailbox is not None:
+            return '@'.join((mailbox, domain))
 
     def normalize(self, email, **kwargs):
         """Normalize for comparison."""

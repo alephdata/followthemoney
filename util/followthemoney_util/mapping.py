@@ -21,6 +21,8 @@ def run_mapping(mapping_yaml):
                     write_object(stream, entity)
     except BrokenPipeError:
         raise click.Abort()
+    except Exception as exc:
+        raise click.ClickException(str(exc))
 
 
 @cli.command('map-csv', help="Map CSV data from stdin and emit objects")
