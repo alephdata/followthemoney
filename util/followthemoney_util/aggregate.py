@@ -25,4 +25,4 @@ def aggregate():
         for entity in buffer.values():
             write_object(stdout, entity)
     except BrokenPipeError:
-        pass
+        raise click.Abort()

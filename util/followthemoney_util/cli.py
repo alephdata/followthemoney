@@ -24,4 +24,4 @@ def pretty():
             data = json.dumps(entity.to_dict(), indent=2)
             stdout.write(data + '\n')
     except BrokenPipeError:
-        pass
+        raise click.Abort()

@@ -21,7 +21,7 @@ def enrich(enricher):
             for result in enricher.enrich_entity(entity):
                 write_object(stdout, result)
     except BrokenPipeError:
-        return
+        raise click.Abort()
     finally:
         enricher.close()
 
@@ -40,6 +40,6 @@ def expand(enricher):
             result = enricher.expand_entity(entity)
             write_object(stdout, result)
     except BrokenPipeError:
-        return
+        raise click.Abort()
     finally:
         enricher.close()

@@ -20,7 +20,7 @@ def run_mapping(mapping_yaml):
                 for entity in entities:
                     write_object(stream, entity)
     except BrokenPipeError:
-        pass
+        raise click.Abort()
 
 
 @cli.command('map-csv', help="Map CSV data from stdin and emit objects")
@@ -45,4 +45,4 @@ def stream_mapping(mapping_yaml):
                     for entity in entities.values():
                         write_object(stdout, entity)
     except BrokenPipeError:
-        pass
+        raise click.Abort()

@@ -22,7 +22,7 @@ def auto_match(threshold):
                 recon = Recon(result.subject, result.candidate, Recon.MATCH)
                 write_object(stdout, recon)
     except BrokenPipeError:
-        pass
+        raise click.Abort()
 
 
 @cli.command('apply-recon', help="Apply matches from a recon file")  # noqa
@@ -45,7 +45,7 @@ def apply_recon(recon):
                 outgoing.add('sameAs', entity.id, quiet=True)
             write_object(stdout, outgoing)
     except BrokenPipeError:
-        pass
+        raise click.Abort()
 
 
 @cli.command('filter-results', help="Filter results to those matching a recon")  # noqa
@@ -67,4 +67,4 @@ def filter_results(recon):
             if result.candidate.id in matches:
                 write_object(stdout, result)
     except BrokenPipeError:
-        pass
+        raise click.Abort()

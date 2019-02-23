@@ -21,7 +21,7 @@ def export_gexf():
                 break
             exporter.write(entity)
     except BrokenPipeError:
-        pass
+        raise click.Abort()
 
     for line in generate_gexf(graph, prettyprint=False):
         stdout.write(line)
@@ -39,4 +39,4 @@ def export_cypher():
                 break
             exporter.write(entity)
     except BrokenPipeError:
-        pass
+        raise click.Abort()

@@ -16,4 +16,4 @@ def result_entities():
             for entity in result.entities:
                 write_object(stdout, entity)
     except BrokenPipeError:
-        pass
+        raise click.Abort()

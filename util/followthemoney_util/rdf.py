@@ -20,4 +20,4 @@ def export_rdf():
             nt = graph.serialize(format='nt').strip()
             stdout.write(nt.decode('utf-8') + '\n')
     except BrokenPipeError:
-        pass
+        raise click.Abort()
