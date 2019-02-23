@@ -8,7 +8,7 @@ from followthemoney.types.common import PropertyType
 
 class DomainType(PropertyType):
     name = 'domain'
-    group = 'domains'
+    group = None
     matchable = True
 
     # def _check_exists(self, domain):

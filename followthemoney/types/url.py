@@ -15,10 +15,7 @@ class UrlType(PropertyType):
 
     def clean_text(self, url, **kwargs):
         """Perform intensive care on URLs, see `urlnormalizer`."""
-        try:
-            return normalize_url(url)
-        except UnicodeDecodeError:
-            return None
+        return normalize_url(url)
 
     def rdf(self, value):
         return URIRef(value)

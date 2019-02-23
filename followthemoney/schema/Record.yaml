@@ -17,7 +17,8 @@ Row:
   properties:
     cells:
       label: "Cells"
-      type: text
+      hidden: true
+      type: json
     table:
       label: "Table"
       type: entity
@@ -35,6 +36,7 @@ Page:
   properties:
     bodyText:
       label: "Text"
+      hidden: true
       type: text
     document:
       label: "Document"

@@ -69,6 +69,7 @@ setup(
             'checksum = followthemoney.types.checksum:ChecksumType',
             'identifier = followthemoney.types.identifier:IdentifierType',
             'entity = followthemoney.types.entity:EntityType',
+            'json = followthemoney.types.json:JsonType',
             'text = followthemoney.types.text:TextType',
             'string = followthemoney.types.string:StringType',
             'number = followthemoney.types.number:NumberType'
