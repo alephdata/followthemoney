@@ -5,6 +5,7 @@ from followthemoney_util.enrich import enrich, expand
 from followthemoney_util.results import result_entities
 from followthemoney_util.recon import auto_match
 from followthemoney_util.mapping import run_mapping
+from followthemoney_util.csv import export_csv
 
 __all__ = [
     export_rdf,
@@ -15,5 +16,6 @@ __all__ = [
     expand,
     run_mapping,
     result_entities,
-    auto_match
+    auto_match,
+    export_csv,
 ]
