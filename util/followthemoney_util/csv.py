@@ -1,4 +1,5 @@
 import csv
+import os
 
 import click
 
@@ -6,11 +7,12 @@ from followthemoney_util.cli import cli
 from followthemoney_util.util import read_object
 
 
-def _get_csv_handler(schema, handlers):
+def _get_csv_handler(outdir, schema, handlers):
     fh = handlers.get(schema.name)
     if fh is None:
         name = "{0}.csv".format(schema.plural)
-        handlers[schema.name] = fh = open(name, 'w')
+        path = os.path.join(outdir, name)
+        handlers[schema.name] = fh = open(path, 'w')
         fieldnames = [prop.label for prop in schema.sorted_properties]
         writer = csv.DictWriter(fh, fieldnames=fieldnames)
         writer.writeheader()
@@ -27,7 +29,9 @@ def _write_entity(fh, entity):
 
 
 @cli.command('export-csv', help="Export to CSV")
-def export_csv():
+@click.option('--outdir', type=click.Path(exists=True), default='.',
+              help="output directory")
+def export_csv(outdir):
     stdin = click.get_text_stream('stdin')
     handlers = {}
     try:
@@ -35,7 +39,7 @@ def export_csv():
             entity = read_object(stdin)
             if entity is None:
                 break
-            fh = _get_csv_handler(entity.schema, handlers)
+            fh = _get_csv_handler(outdir, entity.schema, handlers)
             _write_entity(fh, entity)
     except BrokenPipeError:
         raise click.Abort()
