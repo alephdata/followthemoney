@@ -150,7 +150,8 @@ class Schema(object):
             if error is not None:
                 errors[name] = error
         if len(errors):
-            raise InvalidData({'properties': errors})
+            msg = gettext("Entity failed validation")
+            raise InvalidData(msg, errors={'properties': errors})
 
     def to_dict(self):
         data = {
