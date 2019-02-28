@@ -2,6 +2,7 @@ from hashlib import sha1
 from itertools import product
 from normality import stringify
 from rdflib import Literal
+from collections.abc import Hashable
 from rdflib.namespace import RDF, SKOS
 from banal import ensure_list, is_mapping, ensure_dict
 
@@ -85,7 +86,7 @@ class EntityProxy(object):
         for value in ensure_list(values):
             if not cleaned:
                 value = prop.type.clean(value, countries=self.countries)
-            if value is None:
+            if value is None or not isinstance(value, Hashable):
                 continue
             if prop not in self._properties:
                 self._properties[prop] = set()

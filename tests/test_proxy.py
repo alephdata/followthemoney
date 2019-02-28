@@ -44,6 +44,8 @@ class ProxyTestCase(TestCase):
         assert len(proxy.get('name')) == 2
         proxy.add('name', [''])
         assert len(proxy.get('name')) == 2
+        proxy.add('name', {'name': 'banana'}, cleaned=True)
+        assert len(proxy.get('name')) == 2
         assert name in proxy.get('name')
         assert name in proxy.names, proxy.names
 
