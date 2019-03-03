@@ -1,5 +1,6 @@
 from followthemoney_util.rdf import export_rdf
 from followthemoney_util.graph import export_gexf, export_cypher
+from followthemoney_util.ocds import import_ocds
 from followthemoney_util.aggregate import aggregate
 from followthemoney_util.enrich import enrich, expand
 from followthemoney_util.results import result_entities
@@ -10,6 +11,7 @@ __all__ = [
     export_rdf,
     export_gexf,
     export_cypher,
+    import_ocds,
     aggregate,
     enrich,
     expand,
