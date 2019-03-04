@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-26 10:30+0100\n"
+"POT-Creation-Date: 2019-03-04 18:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: followthemoney/property.py:65
+#: followthemoney/property.py:72
 msgid "Invalid value"
 msgstr ""
 
-#: followthemoney/property.py:69
+#: followthemoney/property.py:76
 msgid "Required"
 msgstr ""
 
-#: followthemoney/proxy.py:23
+#: followthemoney/proxy.py:26
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:55
+#: followthemoney/proxy.py:58
 #, python-format
 msgid "Unknown property (%s): %s"
+msgstr ""
+
+#: followthemoney/schema.py:153
+msgid "Entity failed validation"
 msgstr ""
 
 #. Airplane.label
@@ -600,7 +604,7 @@ msgstr ""
 
 #. Document.properties.contentHash.label
 #: followthemoney/schema/Document.yaml
-msgid "Content checksum"
+msgid "Checksum"
 msgstr ""
 
 #. Document.properties.contentHash.description
@@ -612,16 +616,6 @@ msgstr ""
 #. Person.properties.title.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
 msgid "Title"
-msgstr ""
-
-#. Document.properties.processingStatus.label
-#: followthemoney/schema/Document.yaml
-msgid "Processing status"
-msgstr ""
-
-#. Document.properties.processingError.label
-#: followthemoney/schema/Document.yaml
-msgid "Error message"
 msgstr ""
 
 #. Document.properties.author.label
@@ -684,11 +678,6 @@ msgstr ""
 msgid "Message ID of a document; unique in most cases"
 msgstr ""
 
-#. Document.properties.headers.label
-#: followthemoney/schema/Document.yaml
-msgid "Raw headers"
-msgstr ""
-
 #. Document.properties.mimeType.label
 #: followthemoney/schema/Document.yaml
 msgid "MIME type"
@@ -730,6 +719,16 @@ msgstr ""
 msgid "Child documents"
 msgstr ""
 
+#. Document.properties.ancestors.label
+#: followthemoney/schema/Document.yaml
+msgid "Ancestors"
+msgstr ""
+
+#. Document.properties.ancestors.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "Descendant documents"
+msgstr ""
+
 #. Document.properties.namesMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Mentioned names"
@@ -760,11 +759,6 @@ msgstr ""
 msgid "E-Mail addresses"
 msgstr ""
 
-#. Document.properties.pdfAlternativeHash.label
-#: followthemoney/schema/Document.yaml
-msgid "PDF alternative version checksum"
-msgstr ""
-
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
 msgid "Text file"
@@ -776,6 +770,7 @@ msgid "Text files"
 msgstr ""
 
 #. PlainText.properties.bodyText.label
+#. Image.properties.bodyText.label
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
@@ -791,6 +786,11 @@ msgstr ""
 #. Pages.plural
 #: followthemoney/schema/Document.yaml
 msgid "Documents"
+msgstr ""
+
+#. Pages.properties.pdfHash.label
+#: followthemoney/schema/Document.yaml
+msgid "PDF alternative version checksum"
 msgstr ""
 
 #. Folder.label
@@ -879,28 +879,6 @@ msgstr ""
 msgid "E-Mails"
 msgstr ""
 
-#. Email.properties.sender.label
-#. EconomicActivity.properties.sender.label
-#: followthemoney/schema/Document.yaml
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Sender"
-msgstr ""
-
-#. Email.properties.recipient.label
-#: followthemoney/schema/Document.yaml
-msgid "Recipient"
-msgstr ""
-
-#. Email.properties.carbonCopy.label
-#: followthemoney/schema/Document.yaml
-msgid "Carbon copy"
-msgstr ""
-
-#. Email.properties.blindCarbonCopy.label
-#: followthemoney/schema/Document.yaml
-msgid "Blind carbon copy"
-msgstr ""
-
 #. Email.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml
 msgid "In Reply To"
@@ -909,6 +887,11 @@ msgstr ""
 #. Email.properties.inReplyTo.description
 #: followthemoney/schema/Document.yaml
 msgid "Message IDs of the preceding emails in the thread"
+msgstr ""
+
+#. Email.properties.headers.label
+#: followthemoney/schema/Document.yaml
+msgid "Raw headers"
 msgstr ""
 
 #. Table.label
@@ -920,6 +903,11 @@ msgstr ""
 #. Table.plural
 #: followthemoney/schema/Document.yaml
 msgid "Tables"
+msgstr ""
+
+#. Table.properties.columns.label
+#: followthemoney/schema/Document.yaml
+msgid "Column headings"
 msgstr ""
 
 #. EconomicActivity.label
@@ -1028,6 +1016,11 @@ msgstr ""
 #. EconomicActivity.properties.declarant.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations"
+msgstr ""
+
+#. EconomicActivity.properties.sender.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Sender"
 msgstr ""
 
 #. EconomicActivity.properties.sender.description

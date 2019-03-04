@@ -5,16 +5,16 @@
 # 
 # Translators:
 # Olga Gein <chloe@occrp.org>, 2018
-# jen occrp <jen@occrp.org>, 2018
+# jen occrp <jen@occrp.org>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-26 10:30+0100\n"
+"POT-Creation-Date: 2019-03-04 18:02+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
-"Last-Translator: jen occrp <jen@occrp.org>, 2018\n"
+"Last-Translator: jen occrp <jen@occrp.org>, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,22 +23,26 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: followthemoney/property.py:65
+#: followthemoney/property.py:72
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
-#: followthemoney/property.py:69
+#: followthemoney/property.py:76
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/proxy.py:23
+#: followthemoney/proxy.py:26
 msgid "No schema for entity."
 msgstr "Для сущности отсутствует схема."
 
-#: followthemoney/proxy.py:55
+#: followthemoney/proxy.py:58
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
+
+#: followthemoney/schema.py:153
+msgid "Entity failed validation"
+msgstr ""
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
@@ -617,8 +621,8 @@ msgstr "Файлы"
 
 #. Document.properties.contentHash.label
 #: followthemoney/schema/Document.yaml
-msgid "Content checksum"
-msgstr "Контрольная сумма"
+msgid "Checksum"
+msgstr ""
 
 #. Document.properties.contentHash.description
 #: followthemoney/schema/Document.yaml
@@ -630,16 +634,6 @@ msgstr "Хеш-сумма (SHA1)"
 #: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
 msgid "Title"
 msgstr "Титул"
-
-#. Document.properties.processingStatus.label
-#: followthemoney/schema/Document.yaml
-msgid "Processing status"
-msgstr "Статус"
-
-#. Document.properties.processingError.label
-#: followthemoney/schema/Document.yaml
-msgid "Error message"
-msgstr "Сообщение об ошибке"
 
 #. Document.properties.author.label
 #: followthemoney/schema/Document.yaml
@@ -701,11 +695,6 @@ msgstr "Message-ID"
 msgid "Message ID of a document; unique in most cases"
 msgstr "Message-ID документа; уникален в большинстве случаев"
 
-#. Document.properties.headers.label
-#: followthemoney/schema/Document.yaml
-msgid "Raw headers"
-msgstr "Заголовки"
-
 #. Document.properties.mimeType.label
 #: followthemoney/schema/Document.yaml
 msgid "MIME type"
@@ -747,6 +736,16 @@ msgstr "Родительский документ"
 msgid "Child documents"
 msgstr "Дочерние документы"
 
+#. Document.properties.ancestors.label
+#: followthemoney/schema/Document.yaml
+msgid "Ancestors"
+msgstr ""
+
+#. Document.properties.ancestors.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "Descendant documents"
+msgstr ""
+
 #. Document.properties.namesMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Mentioned names"
@@ -777,11 +776,6 @@ msgstr "Номера телефонов"
 msgid "E-Mail addresses"
 msgstr "Эл. адреса"
 
-#. Document.properties.pdfAlternativeHash.label
-#: followthemoney/schema/Document.yaml
-msgid "PDF alternative version checksum"
-msgstr "Дополнительная контрольная сумма для PDF"
-
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
 msgid "Text file"
@@ -793,6 +787,7 @@ msgid "Text files"
 msgstr "Текстовые файлы"
 
 #. PlainText.properties.bodyText.label
+#. Image.properties.bodyText.label
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
@@ -809,6 +804,11 @@ msgstr "Документ"
 #: followthemoney/schema/Document.yaml
 msgid "Documents"
 msgstr "Документы"
+
+#. Pages.properties.pdfHash.label
+#: followthemoney/schema/Document.yaml
+msgid "PDF alternative version checksum"
+msgstr "Дополнительная контрольная сумма для PDF"
 
 #. Folder.label
 #: followthemoney/schema/Document.yaml
@@ -896,28 +896,6 @@ msgstr "Эл. письмо"
 msgid "E-Mails"
 msgstr "Эл. письма"
 
-#. Email.properties.sender.label
-#. EconomicActivity.properties.sender.label
-#: followthemoney/schema/Document.yaml
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Sender"
-msgstr "Отправитель"
-
-#. Email.properties.recipient.label
-#: followthemoney/schema/Document.yaml
-msgid "Recipient"
-msgstr "Получатель"
-
-#. Email.properties.carbonCopy.label
-#: followthemoney/schema/Document.yaml
-msgid "Carbon copy"
-msgstr "Копия письма"
-
-#. Email.properties.blindCarbonCopy.label
-#: followthemoney/schema/Document.yaml
-msgid "Blind carbon copy"
-msgstr "Скрытая копия"
-
 #. Email.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml
 msgid "In Reply To"
@@ -927,6 +905,11 @@ msgstr "In-Reply-To"
 #: followthemoney/schema/Document.yaml
 msgid "Message IDs of the preceding emails in the thread"
 msgstr "Указатель Message-ID, для которого это письмо является ответом"
+
+#. Email.properties.headers.label
+#: followthemoney/schema/Document.yaml
+msgid "Raw headers"
+msgstr "Заголовки"
 
 #. Table.label
 #. Row.properties.table.label
@@ -938,6 +921,11 @@ msgstr "Таблица"
 #: followthemoney/schema/Document.yaml
 msgid "Tables"
 msgstr "Таблицы"
+
+#. Table.properties.columns.label
+#: followthemoney/schema/Document.yaml
+msgid "Column headings"
+msgstr ""
 
 #. EconomicActivity.label
 #: followthemoney/schema/EconomicActivity.yaml
@@ -1048,6 +1036,11 @@ msgstr "Таможенный декларант"
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations"
 msgstr "Таможенные декларации"
+
+#. EconomicActivity.properties.sender.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Sender"
+msgstr "Отправитель"
 
 #. EconomicActivity.properties.sender.description
 #: followthemoney/schema/EconomicActivity.yaml
@@ -1290,13 +1283,13 @@ msgstr "Ссылка на источник"
 #. Thing.properties.publisher.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Publishing source"
-msgstr ""
+msgstr "Источник данных"
 
 #. Interval.properties.publisherUrl.label
 #. Thing.properties.publisherUrl.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Publishing source URL"
-msgstr ""
+msgstr "Ссылка на источник данных"
 
 #. Interval.properties.alephUrl.label
 #. Thing.properties.alephUrl.label
@@ -1591,7 +1584,7 @@ msgstr "Структура собственности"
 #. Ownership.plural
 #: followthemoney/schema/Ownership.yaml
 msgid "Ownerships"
-msgstr ""
+msgstr "Собственность"
 
 #. Ownership.properties.owner.label
 #. Vehicle.properties.owner.label
@@ -1710,12 +1703,12 @@ msgstr "Платеж"
 #. Payment.plural
 #: followthemoney/schema/Payment.yaml
 msgid "Payments"
-msgstr ""
+msgstr "Платежи"
 
 #. Payment.description
 #: followthemoney/schema/Payment.yaml
 msgid "A monetary payment between two parties."
-msgstr ""
+msgstr "Денежные платежи между двумя участниками."
 
 #. Payment.properties.sequenceNumber.label
 #: followthemoney/schema/Payment.yaml
@@ -1788,7 +1781,7 @@ msgstr "Физические лица"
 #. Person.description
 #: followthemoney/schema/Person.yaml
 msgid "An individual"
-msgstr ""
+msgstr "Физическое лицо"
 
 #. Person.properties.firstName.label
 #: followthemoney/schema/Person.yaml
@@ -1853,7 +1846,7 @@ msgstr "Государственные органы"
 #. PublicBody.description
 #: followthemoney/schema/PublicBody.yaml
 msgid "A public body, such as a ministry, department or state company."
-msgstr ""
+msgstr "Орган власти (министерство, ведомство или государственная компания)."
 
 #. RealEstate.label
 #: followthemoney/schema/RealEstate.yaml
@@ -1868,7 +1861,7 @@ msgstr "Недвижимость"
 #. RealEstate.description
 #: followthemoney/schema/RealEstate.yaml
 msgid "A piece of land or property."
-msgstr ""
+msgstr "Объект недвижимости"
 
 #. RealEstate.properties.latitude.label
 #: followthemoney/schema/RealEstate.yaml
@@ -1992,7 +1985,7 @@ msgstr "Тип связи или родства"
 #. Relationship.plural
 #: followthemoney/schema/Relationship.yaml
 msgid "Relationships"
-msgstr ""
+msgstr "Связи"
 
 #. Relationship.description
 #: followthemoney/schema/Relationship.yaml
@@ -2082,7 +2075,7 @@ msgstr "Санкции"
 #. Sanction.description
 #: followthemoney/schema/Sanction.yaml
 msgid "A sanction designation"
-msgstr ""
+msgstr "Внесение в санкционный список"
 
 #. Sanction.properties.entity.label
 #: followthemoney/schema/Sanction.yaml
@@ -2113,12 +2106,12 @@ msgstr "Правопреемство"
 #. Succession.plural
 #: followthemoney/schema/Succession.yaml
 msgid "Successions"
-msgstr ""
+msgstr "Правопреемство"
 
 #. Succession.description
 #: followthemoney/schema/Succession.yaml
 msgid "Two entities that legally succeed each other."
-msgstr ""
+msgstr "Переход прав, обязанностей от одного юридического лица к другому."
 
 #. Succession.properties.predecessor.label
 #: followthemoney/schema/Succession.yaml
@@ -2154,12 +2147,12 @@ msgstr "Налоговые ведомости"
 #. TaxRoll.description
 #: followthemoney/schema/TaxRoll.yaml
 msgid "A tax declaration of an individual"
-msgstr ""
+msgstr "Налоговая декларация физического лица"
 
 #. TaxRoll.properties.taxee.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Taxee"
-msgstr ""
+msgstr "Налогоплательщик"
 
 #. TaxRoll.properties.income.label
 #: followthemoney/schema/TaxRoll.yaml
@@ -2239,7 +2232,7 @@ msgstr "Связь"
 #. UnknownLink.plural
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Links"
-msgstr ""
+msgstr "Прочие связи"
 
 #. UnknownLink.properties.subject.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -2344,7 +2337,7 @@ msgstr "Суда"
 #. Vessel.description
 #: followthemoney/schema/Vessel.yaml
 msgid "A boat or ship"
-msgstr ""
+msgstr "Судно"
 
 #. Vessel.properties.imoNumber.label
 #: followthemoney/schema/Vessel.yaml
