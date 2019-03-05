@@ -50,7 +50,8 @@ def convert_party(party):
     address = party.pop('address', {})
     entity.add('country', address.pop('countryName', None))
     address_text = make_address(address.pop('streetAddress', None),
-                                address.pop('postalCode', None))
+                                address.pop('postalCode', None),
+                                address.pop('region', None))
     entity.add('address', address_text)
     if len(address):
         log.info("Unknown address part: %r", address.keys())
