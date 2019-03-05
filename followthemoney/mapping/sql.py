@@ -2,7 +2,7 @@ import os
 import six
 import logging
 from uuid import uuid4
-from banal import ensure_list
+from banal import ensure_list, is_listish
 from normality import stringify
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy import select, func
@@ -66,9 +66,15 @@ class SQLSource(Source):
 
     def apply_filters(self, q):
         for col, val in self.filters:
-            q = q.where(self.get_column(col) == val)
+            if is_listish(val):
+                q = q.where(self.get_column(col).in_(val))
+            else:
+                q = q.where(self.get_column(col) == val)
         for col, val in self.filters_not:
-            q = q.where(self.get_column(col) != val)
+            if is_listish(val):
+                q = q.where(self.get_column(col).notin_(val))
+            else:
+                q = q.where(self.get_column(col) != val)
         # not sure this is a great idea:
         # if self.data.get('where'):
         #    q = q.where(sql_text(self.data.get('where')))

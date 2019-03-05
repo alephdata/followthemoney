@@ -10,10 +10,8 @@ class MappingTestCase(TestCase):
 
     def setUp(self):
         self.fixture_path = os.path.join(os.path.dirname(__file__), 'fixtures')
-
         db_path = os.path.join(self.fixture_path, 'kek.sqlite')
         os.environ['FTM_TEST_DATABASE_URI'] = 'sqlite:///' + db_path
-
         mapping_path = os.path.join(self.fixture_path, 'kek.yml')
         with open(mapping_path, 'r') as fh:
             self.kek_mapping = yaml.load(fh)
@@ -116,7 +114,6 @@ class MappingTestCase(TestCase):
                 }
             }
         }
-
         entities = list(model.map_entities(mapping))
         assert len(entities) == 2, len(entities)
         assert entities[0].id != entities[1].id, entities
@@ -159,6 +156,10 @@ class MappingTestCase(TestCase):
         mapping['filters_not'] = {'nationality': 'Portugal'}
         entities = list(model.map_entities(mapping))
         assert len(entities) == 7, len(entities)
+
+        mapping['filters_not'] = {'nationality': ['Portugal', 'Spain']}
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 5, len(entities)
 
     @responses.activate
     def test_http_csv_load(self):

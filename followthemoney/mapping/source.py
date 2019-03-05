@@ -1,4 +1,5 @@
 from csv import DictReader
+from banal import is_listish
 
 
 class Source(object):
@@ -14,12 +15,18 @@ class Source(object):
 
 class StreamSource(Source):
 
+    def apply_filter(self, data, key, pred):
+        value = data.get(key)
+        if is_listish(pred):
+            return value in pred
+        return value == pred
+
     def check_filters(self, data):
         for (k, v) in self.filters:
-            if v != data.get(k):
+            if not self.apply_filter(data, k, v):
                 return False
         for (k, v) in self.filters_not:
-            if v == data.get(k):
+            if self.apply_filter(data, k, v):
                 return False
         return True
 
