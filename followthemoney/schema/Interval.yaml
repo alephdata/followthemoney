@@ -31,6 +31,14 @@ Interval:
     alephUrl:
       label: Aleph URL
       type: url
+    indexText:
+      # This is a leaked abstraction from aleph. The idea is to have some
+      # additional text field that can be used to associate searchable text
+      # with an entity. This will be removed as a property upon indexing so
+      # that it can never be retrieved.
+      label: Index text
+      hidden: true
+      type: text
     modifiedAt:
       label: "Modified on"
       type: date
