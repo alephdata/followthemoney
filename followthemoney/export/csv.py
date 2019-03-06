@@ -1,18 +1,21 @@
 import csv
 
 
-def write_entity(fh, entity):
+def write_entity(fh, entity, extra_fields=dict()):
     fieldnames = [prop.label for prop in entity.schema.sorted_properties]
-    fieldnames = ['id', ] + fieldnames
+    fieldnames = ['id'] + list(extra_fields.keys()) + fieldnames
     writer = csv.DictWriter(fh, fieldnames=fieldnames)
-    prop_dict = {'id': entity.id}
+    prop_dict = {
+        'id': entity.id,
+        **extra_fields
+    }
     for prop in entity.schema.sorted_properties:
         prop_dict[prop.label] = prop.type.join(entity.get(prop))
     writer.writerow(prop_dict)
 
 
-def write_headers(fh, schema):
+def write_headers(fh, schema, extra_headers=list()):
     fieldnames = [prop.label for prop in schema.sorted_properties]
-    fieldnames = ['id', ] + fieldnames
+    fieldnames = ['id'] + extra_headers + fieldnames
     writer = csv.DictWriter(fh, fieldnames=fieldnames)
     writer.writeheader()
