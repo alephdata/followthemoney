@@ -1,16 +1,10 @@
-import csv
 import os
 
 import click
 
 from followthemoney_util.cli import cli
 from followthemoney_util.util import read_object
-
-
-def write_headers(fh, schema):
-    fieldnames = [prop.label for prop in schema.sorted_properties]
-    writer = csv.DictWriter(fh, fieldnames=fieldnames)
-    writer.writeheader()
+from followthemoney.export.csv import write_entity, write_headers
 
 
 def _get_csv_handler(outdir, schema, handlers):
@@ -21,15 +15,6 @@ def _get_csv_handler(outdir, schema, handlers):
         handlers[schema.name] = fh = open(path, 'w')
         write_headers(fh, schema)
     return fh
-
-
-def write_entity(fh, entity):
-    fieldnames = [prop.label for prop in entity.schema.sorted_properties]
-    writer = csv.DictWriter(fh, fieldnames=fieldnames)
-    prop_dict = {}
-    for prop in entity.schema.sorted_properties:
-        prop_dict[prop.label] = prop.type.join(entity.get(prop))
-    writer.writerow(prop_dict)
 
 
 @cli.command('export-csv', help="Export to CSV")

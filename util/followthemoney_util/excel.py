@@ -1,27 +1,10 @@
 import os
 
 import click
-from openpyxl import Workbook
 
 from followthemoney_util.cli import cli
 from followthemoney_util.util import read_object
-
-
-def _get_sheet(schema, workbook):
-    try:
-        sheet = workbook.get_sheet_by_name(name=schema.plural)
-    except KeyError:
-        sheet = workbook.create_sheet(title=schema.plural)
-        fieldnames = [prop.label for prop in schema.sorted_properties]
-        sheet.append(fieldnames)
-    return sheet
-
-
-def _write_entity(sheet, entity):
-    prop_dict = {}
-    for prop in entity.schema.sorted_properties:
-        prop_dict[prop.label] = prop.type.join(entity.get(prop))
-    sheet.append(list(prop_dict.values()))
+from followthemoney.export.excel import get_workbook, get_sheet, write_entity
 
 
 @cli.command('export-excel', help="Export to Excel")
@@ -31,15 +14,14 @@ def _write_entity(sheet, entity):
               help="output directory")
 def export_excel(filename, outdir):
     stdin = click.get_text_stream('stdin')
-    workbook = Workbook()
-    workbook.remove_sheet(workbook.active)
+    workbook = get_workbook()
     try:
         while True:
             entity = read_object(stdin)
             if entity is None:
                 break
-            sheet = _get_sheet(entity.schema, workbook)
-            _write_entity(sheet, entity)
+            sheet = get_sheet(entity.schema, workbook)
+            write_entity(sheet, entity)
     except BrokenPipeError:
         raise click.Abort()
     finally:
