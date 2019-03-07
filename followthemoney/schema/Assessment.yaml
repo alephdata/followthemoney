@@ -1,0 +1,23 @@
+Assessment:
+  label: Assessment
+  plural: Assessments
+  extends: Thing
+  matchable: false
+  featured:
+    - name
+    - publishDate
+    - author
+  properties:
+    publishDate:
+      label: "Date of publishing"
+      type: date
+    assessmentId:
+      label: "Assessment ID"
+    author:
+      label: "Author"
+      plural: "Authors"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: authoredAssessments
+        label: "Assessments authored"
