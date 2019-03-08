@@ -4,14 +4,13 @@ import click
 
 from followthemoney_util.cli import cli
 from followthemoney_util.util import read_object
-from followthemoney.export.excel import get_workbook, get_sheet, write_entity
+from followthemoney.export.excel import get_workbook, write_entity
 
 
 @cli.command('export-excel', help="Export to Excel")
-@click.option('--filename', default='export.xlsx',
-              help="name of the excel file")
-@click.option('--outdir', type=click.Path(exists=True), default='.',
-              help="output directory")
+@click.option('--out', type=click.Path(),
+              default='./export.xlsx',
+              help="output file path")
 def export_excel(filename, outdir):
     stdin = click.get_text_stream('stdin')
     workbook = get_workbook()
@@ -20,8 +19,7 @@ def export_excel(filename, outdir):
             entity = read_object(stdin)
             if entity is None:
                 break
-            sheet = get_sheet(entity.schema, workbook)
-            write_entity(sheet, entity)
+            write_entity(workbook, entity)
     except BrokenPipeError:
         raise click.Abort()
     finally:

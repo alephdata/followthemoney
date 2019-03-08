@@ -8,18 +8,18 @@ def get_workbook():
     return workbook
 
 
-def get_sheet(schema, workbook, extra_headers=list()):
+def write_entity(workbook, entity, extra_headers=None, extra_fields=None):
+    if extra_headers is None:
+        extra_headers = []
     try:
-        sheet = workbook.get_sheet_by_name(name=schema.plural)
+        sheet = workbook.get_sheet_by_name(name=entity.schema.plural)
     except KeyError:
-        sheet = workbook.create_sheet(title=schema.plural)
-        fieldnames = [prop.label for prop in schema.sorted_properties]
+        sheet = workbook.create_sheet(title=entity.schema.plural)
+        fieldnames = [prop.label for prop in entity.schema.sorted_properties]
         fieldnames = ['id', ] + extra_headers + fieldnames
         sheet.append(fieldnames)
-    return sheet
-
-
-def write_entity(sheet, entity, extra_fields=dict()):
+    if extra_fields is None:
+        extra_fields = dict()
     prop_dict = {
         'id': entity.id,
         **extra_fields
