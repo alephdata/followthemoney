@@ -8,10 +8,9 @@ from followthemoney.export.excel import get_workbook, write_entity
 
 
 @cli.command('export-excel', help="Export to Excel")
-@click.option('--out', type=click.Path(),
-              default='./export.xlsx',
-              help="output file path")
-def export_excel(filename, outdir):
+@click.option('-f', '--filename', type=click.Path(),
+              default='export.xlsx', help="output file path")
+def export_excel(filename):
     stdin = click.get_text_stream('stdin')
     workbook = get_workbook()
     try:
@@ -20,8 +19,6 @@ def export_excel(filename, outdir):
             if entity is None:
                 break
             write_entity(workbook, entity)
+        workbook.save(filename)
     except BrokenPipeError:
         raise click.Abort()
-    finally:
-        path = os.path.join(outdir, filename)
-        workbook.save(path)
