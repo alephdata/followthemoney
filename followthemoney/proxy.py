@@ -31,7 +31,7 @@ class EntityProxy(object):
 
         if is_mapping(properties):
             for key, value in properties.items():
-                self.add(key, value, cleaned=True, quiet=True)
+                self.add(key, value, cleaned=False, quiet=True)
 
     def make_id(self, *parts):
         """Generate a (hopefully unique) ID for the given entity, composed

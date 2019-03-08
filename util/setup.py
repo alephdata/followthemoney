@@ -24,6 +24,7 @@ setup(
         'alephclient',
         'followthemoney',
         'followthemoney-enrich',
+        'openpyxl',
     ],
     test_suite='nose.collector',
     tests_require=['coverage', 'nose'],
