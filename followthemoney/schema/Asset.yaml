@@ -4,5 +4,5 @@ Asset:
   extends: 
     - Thing
     - Value
-  abstract: true
+  abstract: false
   matchable: false
