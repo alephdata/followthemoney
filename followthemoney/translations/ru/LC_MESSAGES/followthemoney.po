@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-04 18:02+0100\n"
+"POT-Creation-Date: 2019-03-08 15:16+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -42,7 +42,7 @@ msgstr "Неизвестный параметр (1%s): 1%s"
 
 #: followthemoney/schema.py:153
 msgid "Entity failed validation"
-msgstr ""
+msgstr "Сущность не прошла валидацию"
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
@@ -68,6 +68,42 @@ msgstr "ИКАО Код самолёта"
 #: followthemoney/schema/Airplane.yaml
 msgid "Manufacturer"
 msgstr "Изготовитель"
+
+#. Assessment.label
+#: followthemoney/schema/Assessment.yaml
+msgid "Assessment"
+msgstr ""
+
+#. Assessment.plural
+#: followthemoney/schema/Assessment.yaml
+msgid "Assessments"
+msgstr ""
+
+#. Assessment.properties.publishDate.label
+#: followthemoney/schema/Assessment.yaml
+msgid "Date of publishing"
+msgstr ""
+
+#. Assessment.properties.assessmentId.label
+#: followthemoney/schema/Assessment.yaml
+msgid "Assessment ID"
+msgstr ""
+
+#. Assessment.properties.author.label
+#. Document.properties.author.label
+#: followthemoney/schema/Assessment.yaml followthemoney/schema/Document.yaml
+msgid "Author"
+msgstr "Автор"
+
+#. Assessment.properties.author.plural
+#: followthemoney/schema/Assessment.yaml
+msgid "Authors"
+msgstr ""
+
+#. Assessment.properties.author.reverse.label
+#: followthemoney/schema/Assessment.yaml
+msgid "Assessments authored"
+msgstr ""
 
 #. Asset.label
 #. Ownership.properties.asset.label
@@ -622,7 +658,7 @@ msgstr "Файлы"
 #. Document.properties.contentHash.label
 #: followthemoney/schema/Document.yaml
 msgid "Checksum"
-msgstr ""
+msgstr "Контрольная сумма"
 
 #. Document.properties.contentHash.description
 #: followthemoney/schema/Document.yaml
@@ -634,11 +670,6 @@ msgstr "Хеш-сумма (SHA1)"
 #: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
 msgid "Title"
 msgstr "Титул"
-
-#. Document.properties.author.label
-#: followthemoney/schema/Document.yaml
-msgid "Author"
-msgstr "Автор"
 
 #. Document.properties.author.description
 #: followthemoney/schema/Document.yaml
@@ -739,12 +770,12 @@ msgstr "Дочерние документы"
 #. Document.properties.ancestors.label
 #: followthemoney/schema/Document.yaml
 msgid "Ancestors"
-msgstr ""
+msgstr "Родительские сущности"
 
 #. Document.properties.ancestors.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Descendant documents"
-msgstr ""
+msgstr "Дочерние документы"
 
 #. Document.properties.namesMentioned.label
 #: followthemoney/schema/Document.yaml
@@ -925,7 +956,7 @@ msgstr "Таблицы"
 #. Table.properties.columns.label
 #: followthemoney/schema/Document.yaml
 msgid "Column headings"
-msgstr ""
+msgstr "Заголовки столбцов"
 
 #. EconomicActivity.label
 #: followthemoney/schema/EconomicActivity.yaml
@@ -1296,6 +1327,14 @@ msgstr "Ссылка на источник данных"
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Aleph URL"
 msgstr "Aleph URL"
+
+#. Interval.properties.indexText.label
+#. Record.properties.indexText.label
+#. Thing.properties.indexText.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Record.yaml
+#: followthemoney/schema/Thing.yaml
+msgid "Index text"
+msgstr ""
 
 #. Interval.properties.modifiedAt.label
 #. Thing.properties.modifiedAt.label

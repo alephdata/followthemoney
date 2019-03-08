@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-04 18:02+0100\n"
+"POT-Creation-Date: 2019-03-08 15:16+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Language-Team: Turkish (https://www.transifex.com/aleph/teams/76591/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -62,6 +62,42 @@ msgstr ""
 #. Airplane.properties.manufacturer.label
 #: followthemoney/schema/Airplane.yaml
 msgid "Manufacturer"
+msgstr ""
+
+#. Assessment.label
+#: followthemoney/schema/Assessment.yaml
+msgid "Assessment"
+msgstr ""
+
+#. Assessment.plural
+#: followthemoney/schema/Assessment.yaml
+msgid "Assessments"
+msgstr ""
+
+#. Assessment.properties.publishDate.label
+#: followthemoney/schema/Assessment.yaml
+msgid "Date of publishing"
+msgstr ""
+
+#. Assessment.properties.assessmentId.label
+#: followthemoney/schema/Assessment.yaml
+msgid "Assessment ID"
+msgstr ""
+
+#. Assessment.properties.author.label
+#. Document.properties.author.label
+#: followthemoney/schema/Assessment.yaml followthemoney/schema/Document.yaml
+msgid "Author"
+msgstr ""
+
+#. Assessment.properties.author.plural
+#: followthemoney/schema/Assessment.yaml
+msgid "Authors"
+msgstr ""
+
+#. Assessment.properties.author.reverse.label
+#: followthemoney/schema/Assessment.yaml
+msgid "Assessments authored"
 msgstr ""
 
 #. Asset.label
@@ -621,11 +657,6 @@ msgstr ""
 #. Person.properties.title.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
 msgid "Title"
-msgstr ""
-
-#. Document.properties.author.label
-#: followthemoney/schema/Document.yaml
-msgid "Author"
 msgstr ""
 
 #. Document.properties.author.description
@@ -1280,6 +1311,14 @@ msgstr ""
 #. Thing.properties.alephUrl.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Aleph URL"
+msgstr ""
+
+#. Interval.properties.indexText.label
+#. Record.properties.indexText.label
+#. Thing.properties.indexText.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Record.yaml
+#: followthemoney/schema/Thing.yaml
+msgid "Index text"
 msgstr ""
 
 #. Interval.properties.modifiedAt.label
