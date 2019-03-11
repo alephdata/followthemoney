@@ -1,5 +1,3 @@
-import os
-
 import click
 
 from followthemoney_util.cli import cli
