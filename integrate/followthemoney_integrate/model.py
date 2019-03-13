@@ -72,6 +72,7 @@ class Entity(Base):
 
     @classmethod
     def save(cls, session, origin, proxy):
+        proxy = NS.apply(proxy)
         obj = cls.by_id(session, proxy.id)
         if obj is None:
             obj = cls()
