@@ -28,7 +28,7 @@ class Model(object):
 
     def _load(self, filepath):
         with open(filepath, 'r') as fh:
-            data = yaml.load(fh)
+            data = yaml.safe_load(fh)
             if not isinstance(data, dict):
                 raise InvalidModel('Model file is not a mapping.')
             for name, config in data.items():
