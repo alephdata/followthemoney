@@ -15,7 +15,7 @@ class MappingKeysTestCase(TestCase):
 
         mapping_path = os.path.join(self.fixture_path, 'kek.yml')
         with open(mapping_path, 'r') as fh:
-            self.kek_mapping = yaml.load(fh)
+            self.kek_mapping = yaml.safe_load(fh)
 
     def test_key_generation(self):
         mapping = model.make_mapping({

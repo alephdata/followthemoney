@@ -14,7 +14,7 @@ class MappingTestCase(TestCase):
         os.environ['FTM_TEST_DATABASE_URI'] = 'sqlite:///' + db_path
         mapping_path = os.path.join(self.fixture_path, 'kek.yml')
         with open(mapping_path, 'r') as fh:
-            self.kek_mapping = yaml.load(fh)
+            self.kek_mapping = yaml.safe_load(fh)
 
     def test_kek_map_single(self):
         mapping = model.make_mapping(self.kek_mapping)
