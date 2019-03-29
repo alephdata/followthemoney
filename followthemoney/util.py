@@ -19,6 +19,10 @@ def gettext(*args, **kwargs):
     return state.translation.gettext(*args, **kwargs)
 
 
+def defer(text):
+    return text
+
+
 def set_model_locale(locale):
     state.locale = locale
     state.translation = translation('followthemoney', i18n_path, [locale],

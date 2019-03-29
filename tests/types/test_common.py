@@ -19,3 +19,8 @@ class CommonTest(unittest.TestCase):
 
         self.assertGreater(t.compare_sets(['banana'], ['banana']), 0)
         self.assertEqual(t.compare_sets(['banana'], []), 0)
+
+    def test_dict(self):
+        data = registry.name.to_dict()
+        assert data.get('name') == 'name'
+        assert data.get('group') == 'names'

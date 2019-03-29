@@ -3,11 +3,14 @@ from normality import stringify
 from ipaddress import ip_address
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import defer as _
 
 
 class IpType(PropertyType):
     name = 'ip'
     group = 'ips'
+    label = _('IP-Address')
+    plural = _('IP-Addresses')
     matchable = True
 
     def validate(self, ip, **kwargs):

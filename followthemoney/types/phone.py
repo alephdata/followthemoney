@@ -7,12 +7,15 @@ from phonenumbers import PhoneNumberFormat
 from phonenumbers.phonenumberutil import NumberParseException
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import defer as _
 from followthemoney.util import dampen
 
 
 class PhoneType(PropertyType):
     name = 'phone'
     group = 'phones'
+    label = _('Phone number')
+    plural = _('Phone numbers')
     matchable = True
 
     def _clean_countries(self, countries, country):
@@ -48,7 +51,7 @@ class PhoneType(PropertyType):
             number = parse_number(value)
             return geocoder.region_code_for_number(number).lower()
         except NumberParseException:
-                pass
+            pass
 
     def _specificity(self, value):
         # TODO: insert artificial intelligence here.

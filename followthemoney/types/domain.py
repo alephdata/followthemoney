@@ -4,11 +4,14 @@ from normality import stringify
 from urllib.parse import urlparse
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import defer as _
 
 
 class DomainType(PropertyType):
     name = 'domain'
     group = None
+    label = _('Domain')
+    plural = _('Domains')
     matchable = True
 
     # def _check_exists(self, domain):

@@ -1,6 +1,7 @@
 import os
 import yaml
 
+from followthemoney.types import registry
 from followthemoney.schema import Schema
 from followthemoney.mapping import QueryMapping
 from followthemoney.proxy import EntityProxy
@@ -100,7 +101,10 @@ class Model(object):
         return EntityProxy.from_dict(self, data)
 
     def to_dict(self):
-        return {n: s.to_dict() for (n, s) in self.schemata.items()}
+        return {
+            'schemata': [s.to_dict() for s in self],
+            'types': [t.to_dict() for t in registry.types]
+        }
 
     def __iter__(self):
         return iter(self.schemata.values())

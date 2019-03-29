@@ -2,6 +2,7 @@ import re
 from normality.cleaning import collapse_spaces
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import defer as _
 from followthemoney.util import dampen
 
 
@@ -10,6 +11,8 @@ class AddressType(PropertyType):
     COMMATA = re.compile(r'(,\s?[,\.])')
     name = 'address'
     group = 'addresses'
+    label = _('Address')
+    plural = _('Addresses')
     matchable = True
 
     def clean_text(self, address, **kwargs):

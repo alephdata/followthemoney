@@ -2,11 +2,13 @@ import json  # yay Python 3
 from banal import ensure_list
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import defer as _
 
 
 class JsonType(PropertyType):
     name = 'raw'
     group = None
+    label = _('Nested data')
     matchable = False
 
     def pack(self, obj):

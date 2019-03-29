@@ -4,11 +4,14 @@ from normality import stringify
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import gettext, get_locale
+from followthemoney.util import defer as _
 
 
 class CountryType(PropertyType):
     name = 'country'
     group = 'countries'
+    label = _('Country')
+    plural = _('Countries')
     matchable = True
 
     def __init__(self, *args):

@@ -155,6 +155,7 @@ class Schema(object):
 
     def to_dict(self):
         data = {
+            'name': self.name,
             'label': self.label,
             'plural': self.plural,
             'uri': str(self.uri),

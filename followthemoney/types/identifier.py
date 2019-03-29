@@ -3,6 +3,7 @@ from normality import normalize
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen, shortest
+from followthemoney.util import defer as _
 
 
 class IdentifierType(PropertyType):
@@ -10,6 +11,8 @@ class IdentifierType(PropertyType):
     COMPARE_CLEAN = re.compile(r'[\W_]+')
     name = 'identifier'
     group = 'identifiers'
+    label = _('Identifier')
+    plural = _('Identifiers')
     matchable = True
 
     def normalize(self, text, **kwargs):

@@ -2,12 +2,15 @@ from rdflib import URIRef
 from normality import stringify
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import defer as _
 from followthemoney.util import get_locale
 
 
 class LanguageType(PropertyType):
     name = 'language'
     group = 'languages'
+    label = _('Language')
+    plural = _('Languages')
     matchable = False
 
     def __init__(self, *args):

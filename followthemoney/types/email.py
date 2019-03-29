@@ -5,6 +5,7 @@ from normality.cleaning import strip_quotes
 
 from followthemoney.types.common import PropertyType
 from followthemoney.types.domain import DomainType
+from followthemoney.util import defer as _
 
 
 class EmailType(PropertyType):
@@ -12,6 +13,8 @@ class EmailType(PropertyType):
     domains = DomainType()
     name = 'email'
     group = 'emails'
+    label = _('E-Mail Address')
+    plural = _('E-Mail Addresses')
     matchable = True
 
     def validate(self, email, **kwargs):

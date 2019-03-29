@@ -4,11 +4,14 @@ from stdnum import iban
 from stdnum.exceptions import ValidationError
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import defer as _
 
 
 class IbanType(PropertyType):
     name = 'iban'
     group = 'ibans'
+    label = _('IBAN')
+    plural = _('IBANs')
     matchable = True
 
     def validate(self, text, **kwargs):

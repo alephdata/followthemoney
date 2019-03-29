@@ -85,6 +85,7 @@ class Property(object):
         data = {
             'name': self.name,
             'qname': self.qname,
+            'schema': self.schema.name,
             'label': self.label,
             'description': self.description,
             'required': self.required,

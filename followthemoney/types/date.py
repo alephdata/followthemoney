@@ -7,6 +7,7 @@ from normality import stringify
 from datetime import datetime, date
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import defer as _
 from followthemoney.util import dampen
 
 
@@ -21,6 +22,8 @@ class DateType(PropertyType):
 
     name = 'date'
     group = 'dates'
+    label = _('Date')
+    plural = _('Dates')
     matchable = True
 
     def validate(self, obj, **kwargs):

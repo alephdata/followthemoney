@@ -3,11 +3,15 @@ from rdflib import Literal
 from banal import ensure_list
 from normality import stringify
 
+from followthemoney.util import gettext
+
 
 class PropertyType(object):
     """Base class for all types."""
     name = None
     group = None
+    label = None
+    plural = None
     matchable = True
 
     def validate(self, text, **kwargs):
@@ -83,6 +87,16 @@ class PropertyType(object):
 
     def rdf(self, value):
         return Literal(value)
+
+    def to_dict(self):
+        label = gettext(self.label) or self.name
+        return {
+            'name': self.name,
+            'label': label,
+            'plural': gettext(self.plural) or label,
+            'group': self.group,
+            'matchable': self.matchable,
+        }
 
     def __eq__(self, other):
         return self.name == other.name

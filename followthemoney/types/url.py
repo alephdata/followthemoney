@@ -2,11 +2,14 @@ from rdflib import URIRef
 from urlnormalizer import normalize_url, is_valid_url
 
 from followthemoney.types.common import PropertyType
+from followthemoney.util import defer as _
 
 
 class UrlType(PropertyType):
     name = 'url'
     group = 'urls'
+    label = _('URL')
+    plural = _('URLs')
     matchable = True
 
     def validate(self, url, **kwargs):
