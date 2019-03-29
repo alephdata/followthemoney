@@ -102,8 +102,8 @@ class Model(object):
 
     def to_dict(self):
         return {
-            'schemata': [s.to_dict() for s in self],
-            'types': [t.to_dict() for t in registry.types]
+            'schemata': {s.name: s.to_dict() for s in self.schemata.values()},
+            'types': {t.name: t.to_dict() for t in registry.types}
         }
 
     def __iter__(self):

@@ -18,8 +18,11 @@ class ModelTestCase(TestCase):
         data = model.to_dict()
         assert 'schemata' in data, data
         assert len(data['schemata']) == len(model.schemata)
+        assert 'Thing' in data['schemata']
         assert 'types' in data, data
         assert len(data['types']) == len(list(registry.types))
+        assert 'name' in data['types']
+        assert 'entity' in data['types']
 
         with assert_raises(KeyError):
             model['Banana']
