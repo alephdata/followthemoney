@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-08 15:18+0100\n"
+"POT-Creation-Date: 2019-03-29 11:31+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2019\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -126,6 +126,24 @@ msgstr "Bekannter"
 msgid "Non-family association between two people"
 msgstr "Nichtfamiliäre Beziehung zwischen zwei Menschen"
 
+#. Associate.properties.person.label
+#. Family.properties.person.label
+#. Person.label
+#: followthemoney/schema/Associate.yml followthemoney/schema/Family.yml
+#: followthemoney/schema/Person.yaml
+msgid "Person"
+msgstr "Person"
+
+#. Associate.properties.person.description
+#: followthemoney/schema/Associate.yml
+msgid "The subject of the association."
+msgstr "Teil der Partnerschaft"
+
+#. Associate.properties.person.reverse.label
+#: followthemoney/schema/Associate.yml
+msgid "Associates"
+msgstr "Bekannte"
+
 #. Associate.properties.associate.description
 #: followthemoney/schema/Associate.yml
 msgid "An associate of the subject person."
@@ -133,8 +151,19 @@ msgstr "Ein Bekannter der Person"
 
 #. Associate.properties.associate.reverse.label
 #: followthemoney/schema/Associate.yml
-msgid "Associates"
-msgstr "Bekannte"
+msgid "Associations"
+msgstr "Partnerschaften"
+
+#. Associate.properties.relationship.label
+#. Family.properties.relationship.label
+#: followthemoney/schema/Associate.yml followthemoney/schema/Family.yml
+msgid "Relationship"
+msgstr "Beziehung"
+
+#. Associate.properties.relationship.description
+#: followthemoney/schema/Associate.yml
+msgid "Nature of the association"
+msgstr "Art der Partnerschaft"
 
 #. BankAccount.label
 #. EconomicActivity.properties.bankAccount.label
@@ -159,7 +188,7 @@ msgid "Account Number"
 msgstr "Kontonummer"
 
 #. BankAccount.properties.iban.label
-#: followthemoney/schema/BankAccount.yaml
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/iban.py:13
 msgid "IBAN"
 msgstr "IBAN"
 
@@ -654,7 +683,7 @@ msgid "Files"
 msgstr "Dateien"
 
 #. Document.properties.contentHash.label
-#: followthemoney/schema/Document.yaml
+#: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:11
 msgid "Checksum"
 msgstr "Prüfsumme"
 
@@ -730,13 +759,14 @@ msgid "MIME type"
 msgstr "MIME-Typ"
 
 #. Document.properties.language.label
-#: followthemoney/schema/Document.yaml
+#: followthemoney/schema/Document.yaml followthemoney/types/language.py:12
 msgid "Language"
 msgstr "Sprache"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
+#: followthemoney/types/date.py:25
 msgid "Date"
 msgstr "Datum"
 
@@ -781,7 +811,7 @@ msgid "Mentioned names"
 msgstr "Erwähnte Namen"
 
 #. Document.properties.ibanMentioned.label
-#: followthemoney/schema/Document.yaml
+#: followthemoney/schema/Document.yaml followthemoney/types/iban.py:14
 msgid "IBANs"
 msgstr "IBANs"
 
@@ -796,7 +826,7 @@ msgid "Locations"
 msgstr "Orte"
 
 #. Document.properties.phoneMentioned.label
-#: followthemoney/schema/Document.yaml
+#: followthemoney/schema/Document.yaml followthemoney/types/phone.py:18
 msgid "Phone numbers"
 msgstr "Telefonnummern"
 
@@ -820,6 +850,7 @@ msgstr "Textdateien"
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
+#: followthemoney/types/text.py:7
 msgid "Text"
 msgstr "Text"
 
@@ -1238,10 +1269,12 @@ msgstr "Ort"
 #: followthemoney/schema/Event.yaml followthemoney/schema/Passport.yaml
 #: followthemoney/schema/Sanction.yaml followthemoney/schema/TaxRoll.yaml
 #: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
+#: followthemoney/types/country.py:13
 msgid "Country"
 msgstr "Land"
 
 #. Family.label
+#. Family.properties.person.reverse.label
 #: followthemoney/schema/Family.yml
 msgid "Family"
 msgstr "Familie"
@@ -1250,6 +1283,11 @@ msgstr "Familie"
 #: followthemoney/schema/Family.yml
 msgid "Family relationship between two people"
 msgstr "Familiäre Beziehung zwischen zwei Menschen"
+
+#. Family.properties.person.description
+#: followthemoney/schema/Family.yml
+msgid "The subject of the familial relation."
+msgstr "Person in einer familiären Beziehung"
 
 #. Family.properties.relative.label
 #: followthemoney/schema/Family.yml
@@ -1265,6 +1303,13 @@ msgstr "Verwandte"
 #: followthemoney/schema/Family.yml
 msgid "The relative of the subject person."
 msgstr "Verwandter der Person"
+
+#. Family.properties.relationship.description
+#: followthemoney/schema/Family.yml
+msgid ""
+"Nature of the relationship, from the person's perspective eg. 'mother', "
+"where 'relative' is mother of 'person'."
+msgstr "Art der Beziehung."
 
 #. Interest.label
 #: followthemoney/schema/Interest.yaml
@@ -1371,7 +1416,7 @@ msgid "Phone"
 msgstr "Telefon"
 
 #. LegalEntity.properties.phone.description
-#: followthemoney/schema/LegalEntity.yaml
+#: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:17
 msgid "Phone number"
 msgstr "Telefonnummer"
 
@@ -1803,16 +1848,10 @@ msgstr "Empfangene Zahlungen"
 msgid "Beneficiary bank account"
 msgstr "Bankkonto des Empfängers"
 
-#. Person.label
-#. Relationship.properties.person.label
-#: followthemoney/schema/Person.yaml followthemoney/schema/Relationship.yaml
-msgid "Person"
-msgstr "Person"
-
 #. Person.plural
 #: followthemoney/schema/Person.yaml
 msgid "People"
-msgstr "Person"
+msgstr "Personen"
 
 #. Person.description
 #: followthemoney/schema/Person.yaml
@@ -2013,55 +2052,6 @@ msgstr "Seite"
 msgid "Pages"
 msgstr "Seiten"
 
-#. Relationship.label
-#. Relationship.properties.relationship.label
-#: followthemoney/schema/Relationship.yaml
-msgid "Relationship"
-msgstr "Beziehung"
-
-#. Relationship.plural
-#: followthemoney/schema/Relationship.yaml
-msgid "Relationships"
-msgstr "Beziehungen"
-
-#. Relationship.description
-#: followthemoney/schema/Relationship.yaml
-msgid "Person-to-person relationship"
-msgstr "Interpersonelle Beziehung"
-
-#. Relationship.properties.person.description
-#: followthemoney/schema/Relationship.yaml
-msgid "The subject of the familial relation."
-msgstr "Person in einer familiären Beziehung"
-
-#. Relationship.properties.person.reverse.label
-#: followthemoney/schema/Relationship.yaml
-msgid "Related to"
-msgstr "Verwandt mit"
-
-#. Relationship.properties.relationship.description
-#: followthemoney/schema/Relationship.yaml
-msgid ""
-"Nature of the relationship, from the *person's* perspective eg. 'mother', "
-"where 'relative' is mother of 'person'."
-msgstr "Art der Beziehung"
-
-#. Relationship.properties.supportingDocumentType.label
-#: followthemoney/schema/Relationship.yaml
-msgid "Supporting document"
-msgstr "Beweisdokument"
-
-#. Relationship.properties.supportingDocumentType.description
-#: followthemoney/schema/Relationship.yaml
-msgid ""
-"Eg. birth certificate, marriage license. This is *not* just the data source."
-msgstr "z.B. Ehe- oder Geburtsurkunde"
-
-#. Relationship.properties.supportingDocumentNumber.label
-#: followthemoney/schema/Relationship.yaml
-msgid "Supporting document number"
-msgstr "Beweisdokumentnummer"
-
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
 msgid "Representation"
@@ -2112,7 +2102,7 @@ msgid "A sanction designation"
 msgstr "Eine Sanktionseintragung"
 
 #. Sanction.properties.entity.label
-#: followthemoney/schema/Sanction.yaml
+#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:11
 msgid "Entity"
 msgstr "Entität"
 
@@ -2204,7 +2194,7 @@ msgid "Registered wealth"
 msgstr "Besteuerte Vermögenswerte"
 
 #. Thing.properties.name.label
-#: followthemoney/schema/Thing.yaml
+#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:12
 msgid "Name"
 msgstr "Name"
 
@@ -2249,7 +2239,7 @@ msgid "Keywords"
 msgstr "Schlüsselworte"
 
 #. Thing.properties.address.label
-#: followthemoney/schema/Thing.yaml
+#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:14
 msgid "Address"
 msgstr "Adresse"
 
@@ -2438,50 +2428,146 @@ msgstr "Vorherige Typen"
 msgid "MMSI"
 msgstr "MMSI"
 
-#: followthemoney/types/country.py:24
+#: followthemoney/types/address.py:15
+msgid "Addresses"
+msgstr "Adressen"
+
+#: followthemoney/types/checksum.py:12
+msgid "Checksums"
+msgstr "Prüfsummen"
+
+#: followthemoney/types/country.py:14
+msgid "Countries"
+msgstr "Länder"
+
+#: followthemoney/types/country.py:27
 msgid "Global"
 msgstr "Global"
 
-#: followthemoney/types/country.py:25
+#: followthemoney/types/country.py:28
 msgid "European Union"
 msgstr "Europäische Union"
 
-#: followthemoney/types/country.py:26
+#: followthemoney/types/country.py:29
 msgid "Kosovo"
 msgstr "Kosovo"
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:30
 msgid "Yugoslavia"
 msgstr "Jugoslawien"
 
-#: followthemoney/types/country.py:28
+#: followthemoney/types/country.py:31
 msgid "Serbia and Montenegro"
 msgstr "Serbien und Montenegro"
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:32
 msgid "Soviet Union"
 msgstr "Sowietunion"
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:33
 msgid "Abkhazia"
 msgstr "Abkhazien"
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:34
 msgid "South Ossetia"
 msgstr "Südossetien"
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:35
 msgid "Somaliland"
 msgstr "Somaliland"
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:36
 msgid "Wales"
 msgstr "Wales"
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:37
 msgid "Scotland"
 msgstr "Schottland"
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:38
 msgid "Transnistria"
 msgstr "Transnistrien"
+
+#: followthemoney/types/date.py:26
+msgid "Dates"
+msgstr "Daten"
+
+#: followthemoney/types/domain.py:13
+msgid "Domain"
+msgstr "Domäne"
+
+#: followthemoney/types/domain.py:14
+msgid "Domains"
+msgstr "Domänen"
+
+#: followthemoney/types/email.py:16
+msgid "E-Mail Address"
+msgstr "E-Mail-Adresse"
+
+#: followthemoney/types/email.py:17
+msgid "E-Mail Addresses"
+msgstr "E-Mail-Adressen"
+
+#: followthemoney/types/entity.py:12
+msgid "Entities"
+msgstr "Entitäten"
+
+#: followthemoney/types/identifier.py:14
+msgid "Identifier"
+msgstr "Kennzeichen"
+
+#: followthemoney/types/identifier.py:15
+msgid "Identifiers"
+msgstr "Kennzeichen"
+
+#: followthemoney/types/ip.py:12
+msgid "IP-Address"
+msgstr "IP-Adresse"
+
+#: followthemoney/types/ip.py:13
+msgid "IP-Addresses"
+msgstr "IP-Adressen"
+
+#: followthemoney/types/json.py:11
+msgid "Nested data"
+msgstr "Verschachtelte Daten"
+
+#: followthemoney/types/language.py:13
+msgid "Languages"
+msgstr "Sprachen"
+
+#: followthemoney/types/mimetype.py:11
+msgid "MIME-Type"
+msgstr "MIME-Typ"
+
+#: followthemoney/types/mimetype.py:12
+msgid "MIME-Types"
+msgstr "MIME-Typen"
+
+#: followthemoney/types/name.py:13
+msgid "Names"
+msgstr "Namen"
+
+#: followthemoney/types/number.py:7
+msgid "Number"
+msgstr "Zahl"
+
+#: followthemoney/types/number.py:8
+msgid "Numbers"
+msgstr "Zahlen"
+
+#: followthemoney/types/string.py:7
+msgid "Label"
+msgstr "Bezeichnung"
+
+#: followthemoney/types/string.py:8
+msgid "Labels"
+msgstr "Bezeichnungen"
+
+#: followthemoney/types/url.py:11
+msgid "URL"
+msgstr "URL"
+
+#: followthemoney/types/url.py:12
+msgid "URLs"
+msgstr "URLs"

@@ -15,5 +15,5 @@ def extract_object(data, path):
 
 
 def extract_yaml(fileobj, keywords, comment_tags, options):
-    data = yaml.load(fileobj)
+    data = yaml.safe_load(fileobj)
     return extract_object(data, [])
