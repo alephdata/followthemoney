@@ -1,0 +1,30 @@
+language: node_js
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
+node_js:
+  - '11'
+jobs:
+  include:
+  - stage: test
+    name: linting and unit-testing, reporting coverage
+    script: npm run test:prod &&  npm run report-coverage
+  - stage: build
+    script: npm run build
+  - stage: release
+    name: Semantic release
+    script: npm run build && npm run semantic-release
+  - if: branch = master
+    script: npm run build:docs && npm run deploy-docs
+    name: deploying documentation
+
+stages:
+- test
+- build
+- name: release
+  if: type != pull_request
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
