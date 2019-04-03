@@ -22,5 +22,5 @@ class CommonTest(unittest.TestCase):
 
     def test_dict(self):
         data = registry.name.to_dict()
-        assert data.get('name') == 'name'
+        assert data.get('label') == 'Name'
         assert data.get('group') == 'names'
