@@ -23,6 +23,6 @@ matrix:
       cache: npm
       node_js: "11"
       install:
-        - npm install
+        - cd js && npm install
       script:
-        - npm run test:prod &&  npm run report-coverage
+        - cd js && npm run test:prod &&  npm run report-coverage
