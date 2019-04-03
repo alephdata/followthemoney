@@ -34,5 +34,5 @@ matrix:
         - npm run test:prod && npm run lint
       after_success:
         - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then
-            npm publish $TRAVIS_TAG ;
+            npm publish @alephdata/followthemoney@$TRAVIS_TAG ;
           fi
