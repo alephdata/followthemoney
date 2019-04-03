@@ -1,7 +1,9 @@
 *.pyc
+*.log
 .DS_Store
 *.egg-info
 .vscode/
+.idea
 .tox/
 .env
 .coverage
@@ -17,3 +19,10 @@ enrich/dist/*
 enrich/build/*
 integrate/dist/*
 integrate/build/*
+js/dist/*
+js/node_modules/*
+js/coverage/*
+js/.nyc_output
+js/compiled
+js/.awcache
+js/.rpt2_cache
