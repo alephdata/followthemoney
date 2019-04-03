@@ -10,6 +10,7 @@ const entityDatum = {
     role: ['Indirect Ownership']
   }
 }
+
 describe('ftm/Entity class', () => {
   const model = new Model(modelData)
   const entity = model.getEntity(entityDatum)
@@ -42,6 +43,5 @@ describe('ftm/Entity class', () => {
     it('should serialise to a string', function() {
       expect(entity.toString()).toContain('ade69374e3f57d2')
     })
-    
   })
 })

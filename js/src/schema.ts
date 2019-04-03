@@ -38,7 +38,7 @@ export class Schema {
   public readonly extends: string[]
   public readonly edge?: IEdgeSpecification
   public readonly isEdge: boolean
-  public properties: Map<string, Property> = new Map()
+  private properties: Map<string, Property> = new Map()
 
   constructor(model: Model, schemaName: string, config: ISchemaDatum) {
     this.model = model
@@ -69,15 +69,32 @@ export class Schema {
     return this.isA(Schema.DOCUMENT)
   }
 
+  getExtends(): Array<Schema> {
+    return this.extends.map(name => this.model.getSchema(name))
+  }
+
+  getProperties(): Map<string, Property> {
+    const properties = new Map<string, Property>()
+    this.getExtends().forEach((schema) => {
+      schema.getProperties().forEach((prop, name) => {
+        properties.set(name, prop)
+      })
+    })
+    this.properties.forEach((prop, name) => {
+      properties.set(name, prop)
+    })
+    return properties
+  }
+
   getFeaturedProperties() {
-    return this.featured.map(name => this.properties.get(name))
+    return this.featured.map(name => this.getProperty(name))
   }
 
   hasProperty(prop: string | Property): boolean {
     if (prop instanceof Property) {
-      return this.properties.has(prop.name)
+      return this.getProperties().has(prop.name)
     }
-    return this.properties.has(prop)
+    return this.getProperties().has(prop)
   }
 
   /**
@@ -91,7 +108,7 @@ export class Schema {
       return prop
     }
     if (this.hasProperty(prop)) {
-      return this.properties.get(prop) as Property
+      return this.getProperties().get(prop) as Property
     } else {
       throw new Error('Property does not exist: ' + prop)
     }

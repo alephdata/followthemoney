@@ -3,9 +3,10 @@ import { Schema } from '../src/schema'
 import { Entity } from '../src'
 import modelData from '../src/defaultModel.json'
 
+
 describe('ftm/Model class', () => {
   it('should be instantiable', () => {
-    const model = {schemata: [], types: []}
+    const model = {schemata: {}, types: {}}
     expect(new Model(model)).toBeInstanceOf(Model)
   })
   describe('getSchema method', () => {

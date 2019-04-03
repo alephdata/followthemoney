@@ -6,8 +6,8 @@ const uuid = require('uuid/v4')
 
 
 export interface IModelDatum {
-  schemata: Array<ISchemaDatum>
-  types: Array<IPropertyTypeDatum>
+  schemata: { [name: string]: ISchemaDatum }
+  types: { [name: string]: IPropertyTypeDatum }
 }
 
 export class Model {
@@ -18,7 +18,7 @@ export class Model {
     this.types = {}
     Object.entries(config.types).forEach(
       ([typeName, typeData]) => {
-        this.types[typeName] = new PropertyType(typeData)
+        this.types[typeName] = new PropertyType(typeName, typeData)
       }
     )
 

@@ -4,10 +4,10 @@
       "label": "Vehicle",
       "plural": "Vehicles",
       "schemata": [
-        "Vehicle",
         "Thing",
+        "Value",
         "Asset",
-        "Value"
+        "Vehicle"
       ],
       "extends": [
         "Asset"
@@ -126,9 +126,9 @@
       "label": "Representation",
       "plural": "Representation",
       "schemata": [
+        "Interest",
         "Representation",
-        "Interval",
-        "Interest"
+        "Interval"
       ],
       "extends": [
         "Interest"
@@ -190,8 +190,8 @@
       "label": "Row",
       "plural": "Rows",
       "schemata": [
-        "Record",
-        "Row"
+        "Row",
+        "Record"
       ],
       "extends": [
         "Record"
@@ -284,9 +284,9 @@
       "label": "Membership",
       "plural": "Memberships",
       "schemata": [
-        "Membership",
+        "Interest",
         "Interval",
-        "Interest"
+        "Membership"
       ],
       "extends": [
         "Interest"
@@ -323,12 +323,12 @@
       "label": "Company",
       "plural": "Companies",
       "schemata": [
-        "Asset",
-        "LegalEntity",
-        "Company",
-        "Organization",
+        "Value",
         "Thing",
-        "Value"
+        "LegalEntity",
+        "Asset",
+        "Organization",
+        "Company"
       ],
       "extends": [
         "Organization",
@@ -488,8 +488,8 @@
       "label": "Court case",
       "plural": "Court cases",
       "schemata": [
-        "Thing",
-        "CourtCase"
+        "CourtCase",
+        "Thing"
       ],
       "extends": [
         "Thing"
@@ -592,8 +592,8 @@
       "label": "Passport",
       "plural": "Passports",
       "schemata": [
-        "Passport",
-        "Interval"
+        "Interval",
+        "Passport"
       ],
       "extends": [
         "Interval"
@@ -682,10 +682,10 @@
       "label": "Public body",
       "plural": "Public bodies",
       "schemata": [
+        "PublicBody",
         "Organization",
-        "Thing",
         "LegalEntity",
-        "PublicBody"
+        "Thing"
       ],
       "extends": [
         "Organization"
@@ -769,9 +769,9 @@
       "label": "Ownership",
       "plural": "Ownerships",
       "schemata": [
+        "Interest",
         "Interval",
-        "Ownership",
-        "Interest"
+        "Ownership"
       ],
       "extends": [
         "Interest"
@@ -917,9 +917,9 @@
       "label": "Directorship",
       "plural": "Directorship",
       "schemata": [
-        "Directorship",
+        "Interest",
         "Interval",
-        "Interest"
+        "Directorship"
       ],
       "extends": [
         "Interest"
@@ -964,9 +964,9 @@
       "label": "Person",
       "plural": "People",
       "schemata": [
-        "Thing",
         "LegalEntity",
-        "Person"
+        "Person",
+        "Thing"
       ],
       "extends": [
         "LegalEntity"
@@ -1105,11 +1105,11 @@
       "label": "Vessel",
       "plural": "Vessels",
       "schemata": [
-        "Vessel",
-        "Asset",
+        "Value",
         "Vehicle",
         "Thing",
-        "Value"
+        "Vessel",
+        "Asset"
       ],
       "extends": [
         "Vehicle"
@@ -1231,14 +1231,14 @@
       "label": "Contract Lot Award",
       "plural": "Contract Awards",
       "schemata": [
-        "ContractAward",
-        "Interval",
         "Interest",
-        "Value"
+        "Value",
+        "Interval",
+        "ContractAward"
       ],
       "extends": [
-        "Interest",
-        "Value"
+        "Value",
+        "Interest"
       ],
       "properties": {
         "supplier": {
@@ -1321,8 +1321,8 @@
       "label": "Legal entity",
       "plural": "Legal entities",
       "schemata": [
-        "Thing",
-        "LegalEntity"
+        "LegalEntity",
+        "Thing"
       ],
       "extends": [
         "Thing"
@@ -1691,9 +1691,9 @@
       "label": "Succession",
       "plural": "Successions",
       "schemata": [
+        "Interest",
         "Succession",
-        "Interval",
-        "Interest"
+        "Interval"
       ],
       "extends": [
         "Interest"
@@ -1913,11 +1913,11 @@
       "label": "License",
       "plural": "Licenses",
       "schemata": [
-        "Asset",
-        "License",
-        "Thing",
         "Contract",
-        "Value"
+        "Value",
+        "Thing",
+        "License",
+        "Asset"
       ],
       "extends": [
         "Contract"
@@ -1955,13 +1955,13 @@
       "label": "Payment",
       "plural": "Payments",
       "schemata": [
-        "Payment",
+        "Value",
         "Interval",
-        "Value"
+        "Payment"
       ],
       "extends": [
-        "Interval",
-        "Value"
+        "Value",
+        "Interval"
       ],
       "properties": {
         "sequenceNumber": {
@@ -2039,8 +2039,8 @@
       "plural": "Organizations",
       "schemata": [
         "Organization",
-        "Thing",
-        "LegalEntity"
+        "LegalEntity",
+        "Thing"
       ],
       "extends": [
         "LegalEntity"
@@ -2150,10 +2150,10 @@
       "label": "Bank Account",
       "plural": "Bank Accounts",
       "schemata": [
-        "Thing",
-        "Asset",
+        "BankAccount",
         "Value",
-        "BankAccount"
+        "Asset",
+        "Thing"
       ],
       "extends": [
         "Asset"
@@ -2230,8 +2230,8 @@
       "label": "File",
       "plural": "Files",
       "schemata": [
-        "Thing",
-        "Document"
+        "Document",
+        "Thing"
       ],
       "extends": [
         "Thing"
@@ -2398,9 +2398,9 @@
       "label": "Text file",
       "plural": "Text files",
       "schemata": [
-        "Thing",
+        "Document",
         "PlainText",
-        "Document"
+        "Thing"
       ],
       "extends": [
         "Document"
@@ -2450,8 +2450,8 @@
       "plural": "Folders",
       "schemata": [
         "Folder",
-        "Thing",
-        "Document"
+        "Document",
+        "Thing"
       ],
       "extends": [
         "Document"
@@ -2482,8 +2482,8 @@
       "label": "Package",
       "plural": "Packages",
       "schemata": [
-        "Folder",
         "Thing",
+        "Folder",
         "Document",
         "Package"
       ],
@@ -2496,10 +2496,10 @@
       "label": "Workbook",
       "plural": "Workbooks",
       "schemata": [
+        "Thing",
         "Folder",
-        "Workbook",
         "Document",
-        "Thing"
+        "Workbook"
       ],
       "extends": [
         "Folder"
@@ -2510,9 +2510,9 @@
       "label": "Image",
       "plural": "Images",
       "schemata": [
-        "Thing",
         "Document",
-        "Image"
+        "Image",
+        "Thing"
       ],
       "extends": [
         "Document"
@@ -2532,8 +2532,8 @@
       "plural": "Videos",
       "schemata": [
         "Thing",
-        "Video",
-        "Document"
+        "Document",
+        "Video"
       ],
       "extends": [
         "Document"
@@ -2544,9 +2544,9 @@
       "label": "Audio",
       "plural": "Audio files",
       "schemata": [
+        "Document",
         "Audio",
-        "Thing",
-        "Document"
+        "Thing"
       ],
       "extends": [
         "Document"
@@ -2557,9 +2557,9 @@
       "label": "Web page",
       "plural": "Web pages",
       "schemata": [
-        "Thing",
+        "HyperText",
         "Document",
-        "HyperText"
+        "Thing"
       ],
       "extends": [
         "Document"
@@ -2586,11 +2586,11 @@
       "plural": "E-Mails",
       "schemata": [
         "Folder",
-        "Document",
         "Thing",
-        "PlainText",
         "HyperText",
-        "Email"
+        "PlainText",
+        "Email",
+        "Document"
       ],
       "extends": [
         "Folder",
@@ -2618,9 +2618,9 @@
       "label": "Table",
       "plural": "Tables",
       "schemata": [
-        "Thing",
         "Document",
-        "Table"
+        "Table",
+        "Thing"
       ],
       "extends": [
         "Document"
@@ -2648,13 +2648,13 @@
       "label": "Asset",
       "plural": "Assets",
       "schemata": [
-        "Thing",
+        "Value",
         "Asset",
-        "Value"
+        "Thing"
       ],
       "extends": [
-        "Thing",
-        "Value"
+        "Value",
+        "Thing"
       ],
       "properties": {
         "ownershipAsset": {
@@ -2672,10 +2672,10 @@
       "label": "Contract",
       "plural": "Contracts",
       "schemata": [
-        "Thing",
-        "Asset",
         "Contract",
-        "Value"
+        "Value",
+        "Asset",
+        "Thing"
       ],
       "extends": [
         "Asset"
@@ -2757,11 +2757,11 @@
       "label": "Airplane",
       "plural": "Airplanes",
       "schemata": [
-        "Airplane",
-        "Asset",
-        "Vehicle",
+        "Value",
         "Thing",
-        "Value"
+        "Vehicle",
+        "Airplane",
+        "Asset"
       ],
       "extends": [
         "Vehicle"
@@ -2799,9 +2799,9 @@
       "label": "Party",
       "plural": "Party",
       "schemata": [
-        "Interval",
+        "Interest",
         "CourtCaseParty",
-        "Interest"
+        "Interval"
       ],
       "extends": [
         "Interest"
@@ -2838,9 +2838,9 @@
       "label": "Link",
       "plural": "Links",
       "schemata": [
+        "Interest",
         "UnknownLink",
-        "Interval",
-        "Interest"
+        "Interval"
       ],
       "extends": [
         "Interest"
@@ -2965,10 +2965,10 @@
       "label": "Real estate",
       "plural": "Real estates",
       "schemata": [
-        "Thing",
-        "Asset",
+        "Value",
         "RealEstate",
-        "Value"
+        "Asset",
+        "Thing"
       ],
       "extends": [
         "Asset"
@@ -3059,11 +3059,11 @@
       "label": "Land",
       "plural": "Lands",
       "schemata": [
-        "Land",
-        "Asset",
-        "RealEstate",
+        "Value",
         "Thing",
-        "Value"
+        "Land",
+        "RealEstate",
+        "Asset"
       ],
       "extends": [
         "RealEstate"
@@ -3271,133 +3271,103 @@
   },
   "types": {
     "address": {
-      "name": "address",
       "label": "Address",
       "plural": "Addresses",
       "group": "addresses",
       "matchable": true
     },
     "checksum": {
-      "name": "checksum",
       "label": "Checksum",
       "plural": "Checksums",
       "group": "checksums",
       "matchable": true
     },
     "country": {
-      "name": "country",
       "label": "Country",
       "plural": "Countries",
       "group": "countries",
       "matchable": true
     },
     "date": {
-      "name": "date",
       "label": "Date",
       "plural": "Dates",
       "group": "dates",
       "matchable": true
     },
     "domain": {
-      "name": "domain",
       "label": "Domain",
       "plural": "Domains",
-      "group": null,
       "matchable": true
     },
     "email": {
-      "name": "email",
       "label": "E-Mail Address",
       "plural": "E-Mail Addresses",
       "group": "emails",
       "matchable": true
     },
     "entity": {
-      "name": "entity",
       "label": "Entity",
       "plural": "Entities",
       "group": "entities",
       "matchable": true
     },
     "iban": {
-      "name": "iban",
       "label": "IBAN",
       "plural": "IBANs",
       "group": "ibans",
       "matchable": true
     },
     "identifier": {
-      "name": "identifier",
       "label": "Identifier",
       "plural": "Identifiers",
       "group": "identifiers",
       "matchable": true
     },
     "ip": {
-      "name": "ip",
       "label": "IP-Address",
       "plural": "IP-Addresses",
       "group": "ips",
       "matchable": true
     },
     "raw": {
-      "name": "raw",
       "label": "Nested data",
-      "plural": "Nested data",
-      "group": null,
-      "matchable": false
+      "plural": null
     },
     "language": {
-      "name": "language",
       "label": "Language",
       "plural": "Languages",
-      "group": "languages",
-      "matchable": false
+      "group": "languages"
     },
     "mimetype": {
-      "name": "mimetype",
       "label": "MIME-Type",
       "plural": "MIME-Types",
-      "group": "mimetypes",
-      "matchable": false
+      "group": "mimetypes"
     },
     "name": {
-      "name": "name",
       "label": "Name",
       "plural": "Names",
       "group": "names",
       "matchable": true
     },
     "number": {
-      "name": "number",
       "label": "Number",
-      "plural": "Numbers",
-      "group": null,
-      "matchable": false
+      "plural": "Numbers"
     },
     "phone": {
-      "name": "phone",
       "label": "Phone number",
       "plural": "Phone numbers",
       "group": "phones",
       "matchable": true
     },
     "string": {
-      "name": "string",
       "label": "Label",
-      "plural": "Labels",
-      "group": null,
-      "matchable": false
+      "plural": "Labels"
     },
     "text": {
-      "name": "text",
       "label": "Text",
-      "plural": "Text",
-      "group": null,
-      "matchable": false
+      "plural": null
     },
     "url": {
-      "name": "url",
       "label": "URL",
       "plural": "URLs",
       "group": "urls",

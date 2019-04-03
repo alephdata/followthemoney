@@ -1,4 +1,4 @@
-import { Schema, Model } from '../src'
+import { Schema, Model, IModelDatum } from '../src'
 import modelData from '../src/defaultModel.json'
 
 
@@ -11,7 +11,7 @@ describe('ftm/Schema class', () => {
   let schema: Schema
   beforeEach(() => {
     const model = new Model(modelData)
-    schema = new Schema(model, modelData.schemata.Airplane)
+    schema = new Schema(model, 'Airplane', modelData.schemata.Airplane)
   })
   const requiredProperties = ['name', 'label', 'schemata', 'featured', 'properties']
   requiredProperties.forEach(propertyName => {
@@ -30,14 +30,14 @@ describe('ftm/Schema class', () => {
       expect(schema.isThing()).toBe(true)
     })
     it('should return false for Intervals', () => {
-      const theSchema = new Schema(schema.model, modelData.schemata.Interval)
+      const theSchema = new Schema(schema.model, 'Interval', modelData.schemata.Interval)
       expect(theSchema.isThing()).toBe(false)
     })
   })
   describe('method isDocument', () => {
     let document: Schema
     beforeEach(() => {
-      document = new Schema(schema.model, modelData.schemata.Audio)
+      document = new Schema(schema.model, 'Audio', modelData.schemata.Audio)
     })
     it('should exist', () => {
       expect(document.isDocument).toBeDefined()
@@ -49,7 +49,7 @@ describe('ftm/Schema class', () => {
       expect(document.isDocument()).toBe(true)
     })
     it('should return false for non-documents', () => {
-      const nonDocument = new Schema(schema.model, modelData.schemata.Interval)
+      const nonDocument = new Schema(schema.model, 'Interval', modelData.schemata.Interval)
       expect(nonDocument.isDocument()).toBe(false)
     })
   })

@@ -89,14 +89,15 @@ class PropertyType(object):
         return Literal(value)
 
     def to_dict(self):
-        label = gettext(self.label) or self.name
-        return {
-            'name': self.name,
-            'label': label,
-            'plural': gettext(self.plural) or label,
-            'group': self.group,
-            'matchable': self.matchable,
+        data = {
+            'label': gettext(self.label),
+            'plural': gettext(self.plural)
         }
+        if self.group:
+            data['group'] = self.group
+        if self.matchable:
+            data['matchable'] = True
+        return data
 
     def __eq__(self, other):
         return self.name == other.name
