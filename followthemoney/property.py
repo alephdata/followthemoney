@@ -85,16 +85,19 @@ class Property(object):
         data = {
             'name': self.name,
             'qname': self.qname,
-            'schema': self.schema.name,
             'label': self.label,
-            'description': self.description,
-            'required': self.required,
-            'caption': self.caption,
-            'stub': self.stub,
-            'uri': str(self.uri),
             'type': self.type.name,
-            'hidden': self.hidden
         }
+        if self.description:
+            data['description'] = self.description
+        if self.stub:
+            data['stub'] = True
+        if self.required:
+            data['required'] = True
+        if self.caption:
+            data['caption'] = True
+        if self.hidden:
+            data['hidden'] = True
         if self.range:
             data['range'] = self.range.name
         if self.reverse:

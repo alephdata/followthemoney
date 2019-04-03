@@ -155,24 +155,28 @@ class Schema(object):
 
     def to_dict(self):
         data = {
-            'name': self.name,
             'label': self.label,
             'plural': self.plural,
-            'uri': str(self.uri),
-            'schemata': self.names,
+            'schemata': list(self.names),
             'extends': [e.name for e in self.extends],
-            'abstract': self.abstract,
-            'matchable': self.matchable,
-            'edge': {
-                'source': self.edge_source,
-                'target': self.edge_target,
-            },
-            'description': self.description,
-            'featured': self.featured,
             'properties': {}
         }
+        if self.edge_source and self.edge_target:
+            data['edge'] = {
+                'source': self.edge_source,
+                'target': self.edge_target,
+            }
+        if len(self.featured):
+            data['featured'] = self.featured
+        if self.description:
+            data['description'] = self.description
+        if self.abstract:
+            data['abstract'] = True
+        if self.matchable:
+            data['matchable'] = True
         for name, prop in self.properties.items():
-            data['properties'][name] = prop.to_dict()
+            if prop.schema == self:
+                data['properties'][name] = prop.to_dict()
         return data
 
     def __eq__(self, other):

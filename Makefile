@@ -13,12 +13,17 @@ dist:
 release: clean dist
 	twine upload dist/*
 
+build: namespace default-model translate
+
 namespace:
 	python followthemoney/ontology.py docs/ns
 
+default-model:
+	ftm dump-model -o js/src/defaultModel.json
+
 # initalize a new language:
 # pybabel init -i followthemoney/translations/messages.pot -d followthemoney/translations -l de -D followthemoney
-translate: dev
+translate:
 	pybabel extract -F babel.cfg -o followthemoney/translations/messages.pot followthemoney
 	tx push --source
 	tx pull --all

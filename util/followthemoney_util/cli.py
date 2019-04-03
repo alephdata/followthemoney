@@ -3,6 +3,7 @@ import json
 import click
 import logging
 
+from followthemoney import model
 from followthemoney_util.util import read_object
 
 
@@ -10,6 +11,12 @@ from followthemoney_util.util import read_object
 def cli():
     fmt = '%(name)s [%(levelname)s] %(message)s'
     logging.basicConfig(stream=sys.stderr, level=logging.INFO, format=fmt)
+
+
+@cli.command('dump-model', help="Export the current schema model")
+@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+def dump_model(outfile):
+    outfile.write(json.dumps(model.to_dict(), indent=2))
 
 
 @cli.command(help="Format a stream of entities to make it readable")
