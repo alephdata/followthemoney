@@ -29,10 +29,11 @@ matrix:
         - cd js
       install:
         - npm install
-        - npm build
+        - npm run build
       script:
         - npm run test:prod && npm run lint
       after_success:
         - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then
+            npm run build ;
             npm publish @alephdata/followthemoney@$TRAVIS_TAG ;
           fi

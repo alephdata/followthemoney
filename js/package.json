@@ -12,7 +12,7 @@
   "author": "OCCRP Data <data@occrp.org>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alephdata/followthemoney.js"
+    "url": "https://github.com/alephdata/followthemoney"
   },
   "license": "MIT",
   "engines": {
