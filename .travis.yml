@@ -1,12 +1,15 @@
 matrix:
   include:
     - language: python
-      python: "3.7"
+      python: "3.6"
       cache: pip
+      addons:
+        apt:
+          packages:
+            - libicu-dev
       before_install:
-        - sudo apt-get -qq update
-        - sudo apt-get install -y libicu-dev
-      install:
+        # - sudo apt-get -qq update
+        # - sudo apt-get install -y libicu-dev
         - pip install -e ".[dev]"
       script:
         - nosetests --with-coverage --cover-package=followthemoney --cover-erase
@@ -22,7 +25,9 @@ matrix:
     - language: node_js
       cache: npm
       node_js: "11"
+      before_install:
+        - cd js
       install:
-        - cd js && npm install
+        - npm install
       script:
-        - cd js && npm run test:prod &&  npm run report-coverage
+        - npm run test:prod &&  npm run report-coverage
