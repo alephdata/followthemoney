@@ -5,13 +5,12 @@ export interface IPropertyDatum {
   name: string
   qname: string
   label: string
-  description: string | null
-  caption: boolean
-  stub: boolean
-  uri: string
   type: string
-  hidden: boolean
-  required: boolean
+  description?: string
+  stub?: boolean
+  caption?: boolean
+  hidden?: boolean
+  required?: boolean
   range?: string | null
   reverse?: string
 }
@@ -32,7 +31,6 @@ export class Property {
   public readonly description: string | null
   public readonly stub: boolean
   public readonly hasReverse: boolean
-  public readonly uri: string
   private readonly range: string | null
   private readonly reverse: string | null
 
@@ -41,11 +39,10 @@ export class Property {
     this.name = property.name
     this.qname = property.qname
     this.label = property.label
-    this.caption = property.caption
+    this.caption = !!property.caption
     this.hidden = !!property.hidden
-    this.description = property.description
-    this.stub = property.stub
-    this.uri = property.uri
+    this.description = property.description || null
+    this.stub = !!property.stub
     this.required = !!property.required
     this.range = property.range || null
     this.reverse = property.reverse || null

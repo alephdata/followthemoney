@@ -1,5 +1,6 @@
-import { modelData } from './_model'
 import { Schema, Model } from '../src'
+import modelData from '../src/defaultModel.json'
+
 
 describe('ftm/Schema class', () => {
   /*`Schema`

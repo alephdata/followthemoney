@@ -1,7 +1,7 @@
 import { Model } from '../src/model'
-import { modelData } from './_model'
 import { Schema } from '../src/schema'
 import { Entity } from '../src'
+import modelData from '../src/defaultModel.json'
 
 describe('ftm/Model class', () => {
   it('should be instantiable', () => {

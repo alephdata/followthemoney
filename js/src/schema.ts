@@ -7,18 +7,16 @@ interface IEdgeSpecification {
 }
 
 export interface ISchemaDatum {
-  name: string
   label: string
-  required: boolean
   plural: string
-  // uri: string
   schemata: string[]
   extends: string[]
-  abstract: boolean
-  matchable: boolean
-  description: string | null
-  edge: IEdgeSpecification
-  featured: string[]
+  required?: boolean
+  abstract?: boolean
+  matchable?: boolean
+  description?: string
+  edge?: IEdgeSpecification
+  featured?: string[]
   properties: {
     [x: string]: IPropertyDatum
   }
@@ -38,23 +36,23 @@ export class Schema {
   public readonly featured: string[]
   public readonly schemata: string[]
   public readonly extends: string[]
-  public readonly edge: IEdgeSpecification
+  public readonly edge?: IEdgeSpecification
   public readonly isEdge: boolean
   public properties: Map<string, Property> = new Map()
 
-  constructor(model: Model, config: ISchemaDatum) {
-    this.name = config.name
+  constructor(model: Model, schemaName: string, config: ISchemaDatum) {
     this.model = model
+    this.name = schemaName
     this.label = config.label || this.name;
     this.plural = config.plural || this.label;
-    this.featured = config.featured
     this.schemata = config.schemata
     this.extends = config.extends
+    this.featured = config.featured || new Array()
     this.abstract = !!config.abstract
     this.matchable = !!config.matchable
-    this.description = config.description
+    this.description = config.description || null
+    this.isEdge = !!config.edge
     this.edge = config.edge
-    this.isEdge = !!config.edge.source && !!config.edge.target
 
     Object.entries(config.properties).forEach(
       ([propertyName, property]) => {

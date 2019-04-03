@@ -1,10 +1,10 @@
 
 export interface IPropertyTypeDatum {
     name: string
-    group: string | null
+    group?: string
     label: string
     plural: string
-    matchable: boolean
+    matchable?: boolean
 }
 
 /**
@@ -15,7 +15,7 @@ export class PropertyType {
     static ENTITY = 'entity';
 
     public name: string
-    public group: string | null
+    public group?: string | null
     public grouped: boolean
     public label: string
     public plural: string
@@ -23,11 +23,11 @@ export class PropertyType {
 
     constructor(data: IPropertyTypeDatum) {
         this.name = data.name
-        this.group = data.group
+        this.group = data.group || null
         this.grouped = data.group !== null
         this.label = data.label
         this.plural = data.plural
-        this.matchable = data.matchable
+        this.matchable = !!data.matchable
     }
 
     toString(): string {

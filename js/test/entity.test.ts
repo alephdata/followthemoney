@@ -1,5 +1,5 @@
-import { Model, Entity } from '../src/followthemoney'
-import { modelData } from './_model'
+import { Model } from '../src/followthemoney'
+import modelData from '../src/defaultModel.json'
 
 const entityDatum = {
   id: 'ade69374e3f57d2dfed29ca456e4f4105e9537fe',

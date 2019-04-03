@@ -1,5 +1,6 @@
 import { Property, Model } from '../src'
-import { modelData } from './_model'
+import modelData from '../src/defaultModel.json'
+
 
 describe('ftm/Property class', () => {
   let property: Property

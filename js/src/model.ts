@@ -25,7 +25,7 @@ export class Model {
     this.schemata = {}
     Object.entries(config.schemata).forEach(
       ([schemaName, schema]) => {
-        this.schemata[schemaName] = new Schema(this, schema)
+        this.schemata[schemaName] = new Schema(this, schemaName, schema)
       }
     )
   }
