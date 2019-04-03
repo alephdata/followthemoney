@@ -31,3 +31,7 @@ matrix:
         - npm install
       script:
         - npm run test:prod && npm run lint
+      after_success:
+        - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then
+            npm publish $TRAVIS_TAG
+          fi
