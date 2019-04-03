@@ -1,23 +1,28 @@
-language: python
-python:
-  - "3.6"
-
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y libicu-dev
-
-install:
-  - pip install -e ".[dev]"
-
-script:
-  - nosetests --with-coverage --cover-package=followthemoney --cover-erase
-
-after_success:
-  # push tag as well
-  - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then
-      python setup.py sdist bdist_wheel ;
-      twine upload dist/* ;
-      cd enrich && python setup.py sdist bdist_wheel && twine upload dist/* ;
-      cd ../util && python setup.py sdist bdist_wheel && twine upload dist/* ;
-      cd ../integrate && python setup.py sdist bdist_wheel && twine upload dist/* ;
-    fi
+matrix:
+  include:
+    - language: python
+      python: "3.7"
+      cache: pip
+      before_install:
+        - sudo apt-get -qq update
+        - sudo apt-get install -y libicu-dev
+      install:
+        - pip install -e ".[dev]"
+      script:
+        - nosetests --with-coverage --cover-package=followthemoney --cover-erase
+      after_success:
+        # push tag as well
+        - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then
+            python setup.py sdist bdist_wheel ;
+            twine upload dist/* ;
+            cd enrich && python setup.py sdist bdist_wheel && twine upload dist/* ;
+            cd ../util && python setup.py sdist bdist_wheel && twine upload dist/* ;
+            cd ../integrate && python setup.py sdist bdist_wheel && twine upload dist/* ;
+          fi
+    - language: node_js
+      cache: npm
+      node_js: "11"
+      install:
+        - npm install
+      script:
+        - npm run test:prod &&  npm run report-coverage
