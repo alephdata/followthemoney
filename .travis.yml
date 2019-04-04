@@ -27,6 +27,7 @@ matrix:
       node_js: "11"
       before_install:
         - cd js
+        - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
       install:
         - npm install
         - npm run build
