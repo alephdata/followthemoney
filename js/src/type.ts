@@ -19,6 +19,7 @@ export class PropertyType {
     public label: string
     public plural: string
     public matchable: boolean
+    private isEntity: boolean;
 
     constructor(name: string, data: IPropertyTypeDatum) {
         this.name = name
@@ -27,9 +28,11 @@ export class PropertyType {
         this.group = data.group || null
         this.grouped = data.group !== undefined
         this.matchable = !!data.matchable
+        this.isEntity = name === PropertyType.ENTITY;
     }
 
     toString(): string {
         return this.name
     }
+
 }
