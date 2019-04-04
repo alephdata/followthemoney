@@ -19,7 +19,7 @@ export class PropertyType {
     public label: string
     public plural: string
     public matchable: boolean
-    private isEntity: boolean;
+    public isEntity: boolean;
 
     constructor(name: string, data: IPropertyTypeDatum) {
         this.name = name
