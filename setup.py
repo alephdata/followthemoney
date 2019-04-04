@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney',
-    version='1.11.3',
+    version='1.11.4',
     long_description="Data model and validator for investigative graph data.",
     author='Organized Crime and Corruption Reporting Project',
     author_email='data@occrp.org',
