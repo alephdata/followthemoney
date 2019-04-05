@@ -1,8 +1,7 @@
 import { Schema, ISchemaDatum } from './schema'
 import { Entity, IEntityDatum } from './entity'
 import { PropertyType, IPropertyTypeDatum } from './type'
-
-const uuid = require('uuid/v4')
+import uuid from 'uuid/v4';
 
 
 export interface IModelDatum {
