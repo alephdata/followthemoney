@@ -44,8 +44,16 @@ export class Model {
     return schema;
   }
 
-  getType(typeName: string): PropertyType {
-    return this.types[typeName]
+  /**
+   * Get a particular property type.
+   * 
+   * @param type name of the type
+   */
+  getType(type: string | PropertyType): PropertyType {
+    if (type instanceof PropertyType) {
+      return type;
+    }
+    return this.types[type]
   }
 
   /**
