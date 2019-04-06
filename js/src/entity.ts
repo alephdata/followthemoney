@@ -87,7 +87,7 @@ export class Entity {
     const values = new Array<Value>()
     for (let property of this.getProperties()) {
       if (!matchableOnly || property.matchable) {
-        if (property.type.toString() == propType.toString()) {
+        if (property.type.toString() === propType.toString()) {
           values.push(...this.getProperty(property))
         }
       }
