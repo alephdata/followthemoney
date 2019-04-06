@@ -36,5 +36,5 @@ matrix:
       after_success:
         - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then
             npm run build ;
-            npm publish --tag @alephdata/followthemoney@$TRAVIS_TAG ;
+            npm publish ;
           fi

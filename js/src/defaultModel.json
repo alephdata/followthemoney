@@ -4,9 +4,9 @@
       "label": "Vehicle",
       "plural": "Vehicles",
       "schemata": [
+        "Asset",
         "Thing",
         "Value",
-        "Asset",
         "Vehicle"
       ],
       "extends": [
@@ -17,7 +17,8 @@
           "name": "registrationNumber",
           "qname": "Vehicle:registrationNumber",
           "label": "Registration Number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "type": {
           "name": "type",
@@ -36,6 +37,7 @@
           "qname": "Vehicle:owner",
           "label": "Owner",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "ownedVehicles"
         },
@@ -44,6 +46,7 @@
           "qname": "Vehicle:operator",
           "label": "Operator",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "operatedVehicles"
         },
@@ -51,19 +54,22 @@
           "name": "buildDate",
           "qname": "Vehicle:buildDate",
           "label": "Build Date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "country": {
           "name": "country",
           "qname": "Vehicle:country",
           "label": "Country",
-          "type": "country"
+          "type": "country",
+          "matchable": true
         },
         "registrationDate": {
           "name": "registrationDate",
           "qname": "Vehicle:registrationDate",
           "label": "Registration Date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         }
       },
       "featured": [
@@ -91,6 +97,7 @@
           "label": "Person",
           "type": "entity",
           "description": "The subject of the association.",
+          "matchable": true,
           "range": "Person",
           "reverse": "associates"
         },
@@ -100,6 +107,7 @@
           "label": "Associate",
           "type": "entity",
           "description": "An associate of the subject person.",
+          "matchable": true,
           "range": "Person",
           "reverse": "associations"
         },
@@ -126,9 +134,9 @@
       "label": "Representation",
       "plural": "Representation",
       "schemata": [
+        "Interval",
         "Interest",
-        "Representation",
-        "Interval"
+        "Representation"
       ],
       "extends": [
         "Interest"
@@ -139,6 +147,7 @@
           "qname": "Representation:agent",
           "label": "Agent",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "agencyClient"
         },
@@ -147,6 +156,7 @@
           "qname": "Representation:client",
           "label": "Client",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "agentRepresentation"
         }
@@ -209,6 +219,7 @@
           "qname": "Row:table",
           "label": "Table",
           "type": "entity",
+          "matchable": true,
           "range": "Table",
           "reverse": "rows"
         }
@@ -237,6 +248,7 @@
           "qname": "Page:document",
           "label": "Document",
           "type": "entity",
+          "matchable": true,
           "range": "Pages",
           "reverse": "pages"
         }
@@ -257,7 +269,8 @@
           "name": "publishDate",
           "qname": "Assessment:publishDate",
           "label": "Date of publishing",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "assessmentId": {
           "name": "assessmentId",
@@ -270,6 +283,7 @@
           "qname": "Assessment:author",
           "label": "Author",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "authoredAssessments"
         }
@@ -284,8 +298,8 @@
       "label": "Membership",
       "plural": "Memberships",
       "schemata": [
-        "Interest",
         "Interval",
+        "Interest",
         "Membership"
       ],
       "extends": [
@@ -297,6 +311,7 @@
           "qname": "Membership:member",
           "label": "Member",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "membershipMember"
         },
@@ -305,6 +320,7 @@
           "qname": "Membership:organization",
           "label": "Organization",
           "type": "entity",
+          "matchable": true,
           "range": "Organization",
           "reverse": "membershipOrganization"
         }
@@ -323,29 +339,31 @@
       "label": "Company",
       "plural": "Companies",
       "schemata": [
-        "Value",
+        "Company",
         "Thing",
-        "LegalEntity",
         "Asset",
         "Organization",
-        "Company"
+        "Value",
+        "LegalEntity"
       ],
       "extends": [
-        "Organization",
-        "Asset"
+        "Asset",
+        "Organization"
       ],
       "properties": {
         "jurisdiction": {
           "name": "jurisdiction",
           "qname": "Company:jurisdiction",
           "label": "Jurisdiction",
-          "type": "country"
+          "type": "country",
+          "matchable": true
         },
         "registrationNumber": {
           "name": "registrationNumber",
           "qname": "Company:registrationNumber",
           "label": "Registration number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "capital": {
           "name": "capital",
@@ -358,7 +376,8 @@
           "qname": "Company:voenCode",
           "label": "VOEN",
           "type": "identifier",
-          "description": "Azerbaijan taxpayer ID"
+          "description": "Azerbaijan taxpayer ID",
+          "matchable": true
         },
         "coatoCode": {
           "name": "coatoCode",
@@ -371,39 +390,45 @@
           "qname": "Company:irsCode",
           "label": "IRS Number",
           "type": "identifier",
-          "description": "US tax ID"
+          "description": "US tax ID",
+          "matchable": true
         },
         "ipoCode": {
           "name": "ipoCode",
           "qname": "Company:ipoCode",
           "label": "IPO",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "cikCode": {
           "name": "cikCode",
           "qname": "Company:cikCode",
           "label": "SEC Central Index Key",
           "type": "identifier",
-          "description": "US SEC Central Index Key"
+          "description": "US SEC Central Index Key",
+          "matchable": true
         },
         "jibCode": {
           "name": "jibCode",
           "qname": "Company:jibCode",
           "label": "JIB",
           "type": "identifier",
-          "description": "Yugoslavia company ID"
+          "description": "Yugoslavia company ID",
+          "matchable": true
         },
         "mbsCode": {
           "name": "mbsCode",
           "qname": "Company:mbsCode",
           "label": "MBS",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "ibcRuc": {
           "name": "ibcRuc",
           "qname": "Company:ibcRuc",
           "label": "ibcRUC",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "caemCode": {
           "name": "caemCode",
@@ -417,7 +442,8 @@
           "qname": "Company:kppCode",
           "label": "KPP",
           "type": "identifier",
-          "description": "(RU, \u041a\u041f\u041f) in addition to INN for orgs; reason for registration at FNS"
+          "description": "(RU, \u041a\u041f\u041f) in addition to INN for orgs; reason for registration at FNS",
+          "matchable": true
         },
         "okvedCode": {
           "name": "okvedCode",
@@ -438,7 +464,8 @@
           "qname": "Company:fnsCode",
           "label": "Federal tax service code",
           "type": "identifier",
-          "description": "(RU, \u0424\u041d\u0421) Federal Tax Service related info"
+          "description": "(RU, \u0424\u041d\u0421) Federal Tax Service related info",
+          "matchable": true
         },
         "fssCode": {
           "name": "fssCode",
@@ -452,7 +479,8 @@
           "qname": "Company:ogrnCode",
           "label": "OGRN",
           "type": "identifier",
-          "description": "Major State Registration Number"
+          "description": "Major State Registration Number",
+          "matchable": true
         },
         "bikCode": {
           "name": "bikCode",
@@ -466,7 +494,8 @@
           "qname": "Company:pfrNumber",
           "label": "PFR Number",
           "type": "identifier",
-          "description": "(RU, \u041f\u0424\u0420) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch"
+          "description": "(RU, \u041f\u0424\u0420) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch",
+          "matchable": true
         },
         "oksmCode": {
           "name": "oksmCode",
@@ -517,7 +546,8 @@
           "name": "caseNumber",
           "qname": "CourtCase:caseNumber",
           "label": "Case number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "court": {
           "name": "court",
@@ -529,13 +559,15 @@
           "name": "fileDate",
           "qname": "CourtCase:fileDate",
           "label": "File date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "closeDate": {
           "name": "closeDate",
           "qname": "CourtCase:closeDate",
           "label": "Close date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "parties": {
           "name": "parties",
@@ -543,6 +575,7 @@
           "label": "Parties",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "CourtCaseParty",
           "reverse": "case"
         }
@@ -604,6 +637,7 @@
           "qname": "Passport:holder",
           "label": "Document holder",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "passport"
         },
@@ -617,13 +651,15 @@
           "name": "country",
           "qname": "Passport:country",
           "label": "Country",
-          "type": "country"
+          "type": "country",
+          "matchable": true
         },
         "passportNumber": {
           "name": "passportNumber",
           "qname": "Passport:passportNumber",
           "label": "Passport number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "surname": {
           "name": "surname",
@@ -641,7 +677,8 @@
           "name": "birthDate",
           "qname": "Passport:birthDate",
           "label": "Date of birth",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "birthPlace": {
           "name": "birthPlace",
@@ -659,7 +696,8 @@
           "name": "personalNumber",
           "qname": "Passport:personalNumber",
           "label": "Personal number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "authority": {
           "name": "authority",
@@ -682,10 +720,10 @@
       "label": "Public body",
       "plural": "Public bodies",
       "schemata": [
-        "PublicBody",
-        "Organization",
         "LegalEntity",
-        "Thing"
+        "Thing",
+        "PublicBody",
+        "Organization"
       ],
       "extends": [
         "Organization"
@@ -710,6 +748,7 @@
           "qname": "TaxRoll:taxee",
           "label": "Taxee",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "taxRolls"
         },
@@ -717,7 +756,8 @@
           "name": "country",
           "qname": "TaxRoll:country",
           "label": "Country",
-          "type": "country"
+          "type": "country",
+          "matchable": true
         },
         "surname": {
           "name": "surname",
@@ -735,7 +775,8 @@
           "name": "birthDate",
           "qname": "TaxRoll:birthDate",
           "label": "Date of birth",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "income": {
           "name": "income",
@@ -769,9 +810,9 @@
       "label": "Ownership",
       "plural": "Ownerships",
       "schemata": [
-        "Interest",
         "Interval",
-        "Ownership"
+        "Ownership",
+        "Interest"
       ],
       "extends": [
         "Interest"
@@ -782,6 +823,7 @@
           "qname": "Ownership:owner",
           "label": "Owner",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "ownershipOwner"
         },
@@ -790,6 +832,7 @@
           "qname": "Ownership:asset",
           "label": "Asset",
           "type": "entity",
+          "matchable": true,
           "range": "Asset",
           "reverse": "ownershipAsset"
         },
@@ -864,6 +907,7 @@
           "qname": "Sanction:entity",
           "label": "Entity",
           "type": "entity",
+          "matchable": true,
           "range": "Thing",
           "reverse": "sanctionEntity"
         },
@@ -901,7 +945,8 @@
           "name": "country",
           "qname": "Sanction:country",
           "label": "Country",
-          "type": "country"
+          "type": "country",
+          "matchable": true
         }
       },
       "featured": [
@@ -917,9 +962,9 @@
       "label": "Directorship",
       "plural": "Directorship",
       "schemata": [
-        "Interest",
         "Interval",
-        "Directorship"
+        "Directorship",
+        "Interest"
       ],
       "extends": [
         "Interest"
@@ -930,6 +975,7 @@
           "qname": "Directorship:director",
           "label": "Director",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "directorshipDirector"
         },
@@ -938,6 +984,7 @@
           "qname": "Directorship:organization",
           "label": "Organization",
           "type": "entity",
+          "matchable": true,
           "range": "Organization",
           "reverse": "directorshipOrganization"
         },
@@ -964,8 +1011,8 @@
       "label": "Person",
       "plural": "People",
       "schemata": [
-        "LegalEntity",
         "Person",
+        "LegalEntity",
         "Thing"
       ],
       "extends": [
@@ -1018,7 +1065,8 @@
           "name": "birthDate",
           "qname": "Person:birthDate",
           "label": "Birth date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "birthPlace": {
           "name": "birthPlace",
@@ -1030,7 +1078,8 @@
           "name": "deathDate",
           "qname": "Person:deathDate",
           "label": "Death date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "position": {
           "name": "position",
@@ -1042,7 +1091,8 @@
           "name": "nationality",
           "qname": "Person:nationality",
           "label": "Nationality",
-          "type": "country"
+          "type": "country",
+          "matchable": true
         },
         "gender": {
           "name": "gender",
@@ -1054,7 +1104,8 @@
           "name": "passportNumber",
           "qname": "Person:passportNumber",
           "label": "Passport",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "associates": {
           "name": "associates",
@@ -1062,6 +1113,7 @@
           "label": "Associates",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Associate",
           "reverse": "person"
         },
@@ -1071,6 +1123,7 @@
           "label": "Associations",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Associate",
           "reverse": "associate"
         },
@@ -1080,6 +1133,7 @@
           "label": "Family",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Family",
           "reverse": "person"
         },
@@ -1089,6 +1143,7 @@
           "label": "Relatives",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Family",
           "reverse": "relative"
         }
@@ -1105,11 +1160,11 @@
       "label": "Vessel",
       "plural": "Vessels",
       "schemata": [
-        "Value",
-        "Vehicle",
-        "Thing",
         "Vessel",
-        "Asset"
+        "Thing",
+        "Vehicle",
+        "Asset",
+        "Value"
       ],
       "extends": [
         "Vehicle"
@@ -1119,19 +1174,22 @@
           "name": "imoNumber",
           "qname": "Vessel:imoNumber",
           "label": "IMO Number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "crsNumber": {
           "name": "crsNumber",
           "qname": "Vessel:crsNumber",
           "label": "CRS Number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "flag": {
           "name": "flag",
           "qname": "Vessel:flag",
           "label": "Flag",
-          "type": "country"
+          "type": "country",
+          "matchable": true
         },
         "registrationPort": {
           "name": "registrationPort",
@@ -1161,19 +1219,22 @@
           "name": "nameChangeDate",
           "qname": "Vessel:nameChangeDate",
           "label": "Date of Name Change",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "callSign": {
           "name": "callSign",
           "qname": "Vessel:callSign",
           "label": "Call Sign",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "pastNames": {
           "name": "pastNames",
           "qname": "Vessel:pastNames",
           "label": "Past Names",
-          "type": "name"
+          "type": "name",
+          "matchable": true
         },
         "pastFlags": {
           "name": "pastFlags",
@@ -1191,7 +1252,8 @@
           "name": "mmsi",
           "qname": "Vessel:mmsi",
           "label": "MMSI",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         }
       },
       "featured": [
@@ -1206,8 +1268,8 @@
       "label": "Event",
       "plural": "Event",
       "schemata": [
-        "Event",
-        "Interval"
+        "Interval",
+        "Event"
       ],
       "extends": [
         "Interval"
@@ -1223,7 +1285,8 @@
           "name": "country",
           "qname": "Event:country",
           "label": "Country",
-          "type": "country"
+          "type": "country",
+          "matchable": true
         }
       }
     },
@@ -1231,14 +1294,14 @@
       "label": "Contract Lot Award",
       "plural": "Contract Awards",
       "schemata": [
-        "Interest",
-        "Value",
         "Interval",
-        "ContractAward"
+        "Interest",
+        "ContractAward",
+        "Value"
       ],
       "extends": [
-        "Value",
-        "Interest"
+        "Interest",
+        "Value"
       ],
       "properties": {
         "supplier": {
@@ -1247,6 +1310,7 @@
           "label": "Supplier",
           "type": "entity",
           "description": "The entity the contract was awarded to",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "contractAwardSupplier"
         },
@@ -1255,6 +1319,7 @@
           "qname": "ContractAward:contract",
           "label": "Contract",
           "type": "entity",
+          "matchable": true,
           "range": "Contract",
           "reverse": "awards"
         },
@@ -1333,21 +1398,24 @@
           "qname": "LegalEntity:email",
           "label": "E-Mail",
           "type": "email",
-          "description": "Email address"
+          "description": "Email address",
+          "matchable": true
         },
         "phone": {
           "name": "phone",
           "qname": "LegalEntity:phone",
           "label": "Phone",
           "type": "phone",
-          "description": "Phone number"
+          "description": "Phone number",
+          "matchable": true
         },
         "website": {
           "name": "website",
           "qname": "LegalEntity:website",
           "label": "Website",
           "type": "url",
-          "description": "Website address"
+          "description": "Website address",
+          "matchable": true
         },
         "legalForm": {
           "name": "legalForm",
@@ -1360,14 +1428,16 @@
           "qname": "LegalEntity:incorporationDate",
           "label": "Incorporation date",
           "type": "date",
-          "description": "The date the legal entity was incorporated"
+          "description": "The date the legal entity was incorporated",
+          "matchable": true
         },
         "dissolutionDate": {
           "name": "dissolutionDate",
           "qname": "LegalEntity:dissolutionDate",
           "label": "Dissolution date",
           "type": "date",
-          "description": "The date the legal entity was dissolved, if applicable"
+          "description": "The date the legal entity was dissolved, if applicable",
+          "matchable": true
         },
         "taxStatus": {
           "name": "taxStatus",
@@ -1398,54 +1468,62 @@
           "qname": "LegalEntity:registrationNumber",
           "label": "Registration number",
           "type": "identifier",
-          "description": "Company registration number"
+          "description": "Company registration number",
+          "matchable": true
         },
         "idNumber": {
           "name": "idNumber",
           "qname": "LegalEntity:idNumber",
           "label": "ID Number",
           "type": "identifier",
-          "description": "ID number of any applicable ID"
+          "description": "ID number of any applicable ID",
+          "matchable": true
         },
         "taxNumber": {
           "name": "taxNumber",
           "qname": "LegalEntity:taxNumber",
           "label": "Tax ID Number",
           "type": "identifier",
-          "description": "Tax ID number"
+          "description": "Tax ID number",
+          "matchable": true
         },
         "vatCode": {
           "name": "vatCode",
           "qname": "LegalEntity:vatCode",
           "label": "V.A.T. Identifier",
           "type": "identifier",
-          "description": "(EU) VAT number"
+          "description": "(EU) VAT number",
+          "matchable": true
         },
         "jurisdiction": {
           "name": "jurisdiction",
           "qname": "LegalEntity:jurisdiction",
           "label": "Jurisdiction",
           "type": "country",
-          "description": "Country or region in which this entity operates"
+          "description": "Country or region in which this entity operates",
+          "matchable": true
         },
         "mainCountry": {
           "name": "mainCountry",
           "qname": "LegalEntity:mainCountry",
           "label": "Country of origin",
           "type": "country",
-          "description": "Primary country of this entity"
+          "description": "Primary country of this entity",
+          "matchable": true
         },
         "opencorporatesUrl": {
           "name": "opencorporatesUrl",
           "qname": "LegalEntity:opencorporatesUrl",
           "label": "OpenCorporates URL",
-          "type": "url"
+          "type": "url",
+          "matchable": true
         },
         "bvdId": {
           "name": "bvdId",
           "qname": "LegalEntity:bvdId",
           "label": "Bureau van Dijk ID",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "icijId": {
           "name": "icijId",
@@ -1459,28 +1537,32 @@
           "qname": "LegalEntity:okpoCode",
           "label": "OKPO",
           "type": "identifier",
-          "description": "Russian industry classifier"
+          "description": "Russian industry classifier",
+          "matchable": true
         },
         "innCode": {
           "name": "innCode",
           "qname": "LegalEntity:innCode",
           "label": "INN",
           "type": "identifier",
-          "description": "Russian company ID"
+          "description": "Russian company ID",
+          "matchable": true
         },
         "dunsCode": {
           "name": "dunsCode",
           "qname": "LegalEntity:dunsCode",
           "label": "D-U-N-S",
           "type": "identifier",
-          "description": "Dun & Bradstreet identifier"
+          "description": "Dun & Bradstreet identifier",
+          "matchable": true
         },
         "swiftBic": {
           "name": "swiftBic",
           "qname": "LegalEntity:swiftBic",
           "label": "SWIFT/BIC",
           "type": "identifier",
-          "description": "Bank identifier code"
+          "description": "Bank identifier code",
+          "matchable": true
         },
         "parent": {
           "name": "parent",
@@ -1488,6 +1570,7 @@
           "label": "Parent company",
           "type": "entity",
           "description": "If this entity is a subsidiary, another entity (company or organisation) is its parent",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "subsidiaries"
         },
@@ -1496,6 +1579,7 @@
           "qname": "LegalEntity:subsidiaries",
           "label": "Subsidiaries",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "parent"
         },
@@ -1504,6 +1588,7 @@
           "qname": "LegalEntity:passport",
           "label": "Passports",
           "type": "entity",
+          "matchable": true,
           "range": "Passport",
           "reverse": "holder"
         },
@@ -1513,6 +1598,7 @@
           "label": "Vehicles owned",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Vehicle",
           "reverse": "owner"
         },
@@ -1522,6 +1608,7 @@
           "label": "Vehicles operated",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Vehicle",
           "reverse": "operator"
         },
@@ -1531,6 +1618,7 @@
           "label": "Agency clients",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Representation",
           "reverse": "agent"
         },
@@ -1540,6 +1628,7 @@
           "label": "Agents",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Representation",
           "reverse": "client"
         },
@@ -1549,6 +1638,7 @@
           "label": "Assessments authored",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Assessment",
           "reverse": "author"
         },
@@ -1558,6 +1648,7 @@
           "label": "Memberships",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Membership",
           "reverse": "member"
         },
@@ -1567,6 +1658,7 @@
           "label": "Tax Rolls",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "TaxRoll",
           "reverse": "taxee"
         },
@@ -1576,6 +1668,7 @@
           "label": "Assets and shares",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Ownership",
           "reverse": "owner"
         },
@@ -1585,6 +1678,7 @@
           "label": "Directorships",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Directorship",
           "reverse": "director"
         },
@@ -1594,6 +1688,7 @@
           "label": "Contracts awarded",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "ContractAward",
           "reverse": "supplier"
         },
@@ -1603,6 +1698,7 @@
           "label": "Successors",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Succession",
           "reverse": "predecessor"
         },
@@ -1612,6 +1708,7 @@
           "label": "Predecessors",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Succession",
           "reverse": "successor"
         },
@@ -1621,6 +1718,7 @@
           "label": "Contracts issued",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Contract",
           "reverse": "authority"
         },
@@ -1630,6 +1728,7 @@
           "label": "Payments made",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Payment",
           "reverse": "payer"
         },
@@ -1639,6 +1738,7 @@
           "label": "Payments received",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Payment",
           "reverse": "beneficiary"
         },
@@ -1648,6 +1748,7 @@
           "label": "Customs declarations",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "EconomicActivity",
           "reverse": "declarant"
         },
@@ -1657,6 +1758,7 @@
           "label": "Goods originated",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "EconomicActivity",
           "reverse": "sender"
         },
@@ -1666,6 +1768,7 @@
           "label": "Goods received",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "EconomicActivity",
           "reverse": "receiver"
         },
@@ -1675,6 +1778,7 @@
           "label": "Economic activities",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "EconomicActivity",
           "reverse": "contractHolder"
         }
@@ -1691,9 +1795,9 @@
       "label": "Succession",
       "plural": "Successions",
       "schemata": [
+        "Interval",
         "Interest",
-        "Succession",
-        "Interval"
+        "Succession"
       ],
       "extends": [
         "Interest"
@@ -1704,6 +1808,7 @@
           "qname": "Succession:predecessor",
           "label": "Predecessor",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "successors"
         },
@@ -1712,6 +1817,7 @@
           "qname": "Succession:successor",
           "label": "Successor",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "predecessors"
         }
@@ -1741,13 +1847,15 @@
           "label": "Name",
           "type": "name",
           "required": true,
-          "caption": true
+          "caption": true,
+          "matchable": true
         },
         "sameAs": {
           "name": "sameAs",
           "qname": "Thing:sameAs",
           "label": "Same as",
           "type": "entity",
+          "matchable": true,
           "range": "Thing",
           "reverse": "sameAs"
         },
@@ -1767,19 +1875,22 @@
           "name": "country",
           "qname": "Thing:country",
           "label": "Country",
-          "type": "country"
+          "type": "country",
+          "matchable": true
         },
         "alias": {
           "name": "alias",
           "qname": "Thing:alias",
           "label": "Other name",
-          "type": "name"
+          "type": "name",
+          "matchable": true
         },
         "previousName": {
           "name": "previousName",
           "qname": "Thing:previousName",
           "label": "Previous name",
-          "type": "name"
+          "type": "name",
+          "matchable": true
         },
         "weakAlias": {
           "name": "weakAlias",
@@ -1809,19 +1920,22 @@
           "name": "alephUrl",
           "qname": "Thing:alephUrl",
           "label": "Aleph URL",
-          "type": "url"
+          "type": "url",
+          "matchable": true
         },
         "wikipediaUrl": {
           "name": "wikipediaUrl",
           "qname": "Thing:wikipediaUrl",
           "label": "Wikipedia Article",
-          "type": "url"
+          "type": "url",
+          "matchable": true
         },
         "wikidataId": {
           "name": "wikidataId",
           "qname": "Thing:wikidataId",
           "label": "Wikidata ID",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "keywords": {
           "name": "keywords",
@@ -1833,7 +1947,8 @@
           "name": "address",
           "qname": "Thing:address",
           "label": "Address",
-          "type": "address"
+          "type": "address",
+          "matchable": true
         },
         "program": {
           "name": "program",
@@ -1872,6 +1987,7 @@
           "label": "Sanctions",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Sanction",
           "reverse": "entity"
         },
@@ -1881,6 +1997,7 @@
           "label": "Court cases",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "CourtCaseParty",
           "reverse": "party"
         },
@@ -1890,6 +2007,7 @@
           "label": "Linked to",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "UnknownLink",
           "reverse": "subject"
         },
@@ -1899,6 +2017,7 @@
           "label": "Linked from",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "UnknownLink",
           "reverse": "object"
         }
@@ -1913,11 +2032,11 @@
       "label": "License",
       "plural": "Licenses",
       "schemata": [
-        "Contract",
-        "Value",
         "Thing",
         "License",
-        "Asset"
+        "Contract",
+        "Asset",
+        "Value"
       ],
       "extends": [
         "Contract"
@@ -1955,13 +2074,13 @@
       "label": "Payment",
       "plural": "Payments",
       "schemata": [
-        "Value",
+        "Payment",
         "Interval",
-        "Payment"
+        "Value"
       ],
       "extends": [
-        "Value",
-        "Interval"
+        "Interval",
+        "Value"
       ],
       "properties": {
         "sequenceNumber": {
@@ -1994,6 +2113,7 @@
           "qname": "Payment:payer",
           "label": "Payer",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "paymentPayer"
         },
@@ -2002,6 +2122,7 @@
           "qname": "Payment:payerAccount",
           "label": "Payer bank account",
           "type": "entity",
+          "matchable": true,
           "range": "BankAccount",
           "reverse": "paymentPayerAccount"
         },
@@ -2010,6 +2131,7 @@
           "qname": "Payment:beneficiary",
           "label": "Beneficiary",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "paymentBeneficiary"
         },
@@ -2018,6 +2140,7 @@
           "qname": "Payment:beneficiaryAccount",
           "label": "Beneficiary bank account",
           "type": "entity",
+          "matchable": true,
           "range": "BankAccount",
           "reverse": "paymentBeneficiaryAccount"
         }
@@ -2038,9 +2161,9 @@
       "label": "Organization",
       "plural": "Organizations",
       "schemata": [
-        "Organization",
         "LegalEntity",
-        "Thing"
+        "Thing",
+        "Organization"
       ],
       "extends": [
         "LegalEntity"
@@ -2052,6 +2175,7 @@
           "label": "Members",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Membership",
           "reverse": "organization"
         },
@@ -2061,6 +2185,7 @@
           "label": "Directors",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Directorship",
           "reverse": "organization"
         }
@@ -2071,8 +2196,8 @@
       "label": "Family",
       "plural": "Family",
       "schemata": [
-        "Interval",
-        "Family"
+        "Family",
+        "Interval"
       ],
       "extends": [
         "Interval"
@@ -2084,6 +2209,7 @@
           "label": "Person",
           "type": "entity",
           "description": "The subject of the familial relation.",
+          "matchable": true,
           "range": "Person",
           "reverse": "familyPerson"
         },
@@ -2093,6 +2219,7 @@
           "label": "Relative",
           "type": "entity",
           "description": "The relative of the subject person.",
+          "matchable": true,
           "range": "Person",
           "reverse": "familyRelative"
         },
@@ -2150,10 +2277,10 @@
       "label": "Bank Account",
       "plural": "Bank Accounts",
       "schemata": [
-        "BankAccount",
-        "Value",
         "Asset",
-        "Thing"
+        "Thing",
+        "Value",
+        "BankAccount"
       ],
       "extends": [
         "Asset"
@@ -2169,13 +2296,15 @@
           "name": "accountNumber",
           "qname": "BankAccount:accountNumber",
           "label": "Account Number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "iban": {
           "name": "iban",
           "qname": "BankAccount:iban",
           "label": "IBAN",
-          "type": "iban"
+          "type": "iban",
+          "matchable": true
         },
         "bic": {
           "name": "bic",
@@ -2207,6 +2336,7 @@
           "label": "Payments made",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Payment",
           "reverse": "payerAccount"
         },
@@ -2216,6 +2346,7 @@
           "label": "Payments received",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Payment",
           "reverse": "beneficiaryAccount"
         }
@@ -2230,8 +2361,8 @@
       "label": "File",
       "plural": "Files",
       "schemata": [
-        "Document",
-        "Thing"
+        "Thing",
+        "Document"
       ],
       "extends": [
         "Thing"
@@ -2242,7 +2373,8 @@
           "qname": "Document:contentHash",
           "label": "Checksum",
           "type": "checksum",
-          "description": "SHA1 hash of the data"
+          "description": "SHA1 hash of the data",
+          "matchable": true
         },
         "title": {
           "name": "title",
@@ -2300,7 +2432,8 @@
           "qname": "Document:messageId",
           "label": "Message ID",
           "type": "identifier",
-          "description": "Message ID of a document; unique in most cases"
+          "description": "Message ID of a document; unique in most cases",
+          "matchable": true
         },
         "mimeType": {
           "name": "mimeType",
@@ -2319,25 +2452,29 @@
           "qname": "Document:date",
           "label": "Date",
           "type": "date",
-          "description": "If not otherwise specified"
+          "description": "If not otherwise specified",
+          "matchable": true
         },
         "authoredAt": {
           "name": "authoredAt",
           "qname": "Document:authoredAt",
           "label": "Authored on",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "publishedAt": {
           "name": "publishedAt",
           "qname": "Document:publishedAt",
           "label": "Published on",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "parent": {
           "name": "parent",
           "qname": "Document:parent",
           "label": "Parent document",
           "type": "entity",
+          "matchable": true,
           "range": "Folder",
           "reverse": "children"
         },
@@ -2346,6 +2483,7 @@
           "qname": "Document:ancestors",
           "label": "Ancestors",
           "type": "entity",
+          "matchable": true,
           "hidden": true,
           "range": "Folder",
           "reverse": "descendants"
@@ -2355,6 +2493,7 @@
           "qname": "Document:namesMentioned",
           "label": "Mentioned names",
           "type": "name",
+          "matchable": true,
           "hidden": true
         },
         "ibanMentioned": {
@@ -2362,6 +2501,7 @@
           "qname": "Document:ibanMentioned",
           "label": "IBANs",
           "type": "iban",
+          "matchable": true,
           "hidden": true
         },
         "ipMentioned": {
@@ -2369,6 +2509,7 @@
           "qname": "Document:ipMentioned",
           "label": "IP addresses",
           "type": "ip",
+          "matchable": true,
           "hidden": true
         },
         "locationMentioned": {
@@ -2376,6 +2517,7 @@
           "qname": "Document:locationMentioned",
           "label": "Locations",
           "type": "address",
+          "matchable": true,
           "hidden": true
         },
         "phoneMentioned": {
@@ -2383,6 +2525,7 @@
           "qname": "Document:phoneMentioned",
           "label": "Phone numbers",
           "type": "phone",
+          "matchable": true,
           "hidden": true
         },
         "emailMentioned": {
@@ -2390,6 +2533,7 @@
           "qname": "Document:emailMentioned",
           "label": "E-Mail addresses",
           "type": "email",
+          "matchable": true,
           "hidden": true
         }
       }
@@ -2398,9 +2542,9 @@
       "label": "Text file",
       "plural": "Text files",
       "schemata": [
-        "Document",
         "PlainText",
-        "Thing"
+        "Thing",
+        "Document"
       ],
       "extends": [
         "Document"
@@ -2420,8 +2564,8 @@
       "plural": "Documents",
       "schemata": [
         "Thing",
-        "Document",
-        "Pages"
+        "Pages",
+        "Document"
       ],
       "extends": [
         "Document"
@@ -2432,6 +2576,7 @@
           "qname": "Pages:pdfHash",
           "label": "PDF alternative version checksum",
           "type": "checksum",
+          "matchable": true,
           "hidden": true
         },
         "pages": {
@@ -2440,6 +2585,7 @@
           "label": "Pages",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Page",
           "reverse": "document"
         }
@@ -2450,8 +2596,8 @@
       "plural": "Folders",
       "schemata": [
         "Folder",
-        "Document",
-        "Thing"
+        "Thing",
+        "Document"
       ],
       "extends": [
         "Document"
@@ -2463,6 +2609,7 @@
           "label": "Child documents",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Document",
           "reverse": "parent"
         },
@@ -2472,6 +2619,7 @@
           "label": "Descendant documents",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "hidden": true,
           "range": "Document",
           "reverse": "ancestors"
@@ -2484,8 +2632,8 @@
       "schemata": [
         "Thing",
         "Folder",
-        "Document",
-        "Package"
+        "Package",
+        "Document"
       ],
       "extends": [
         "Folder"
@@ -2496,10 +2644,10 @@
       "label": "Workbook",
       "plural": "Workbooks",
       "schemata": [
-        "Thing",
         "Folder",
-        "Document",
-        "Workbook"
+        "Thing",
+        "Workbook",
+        "Document"
       ],
       "extends": [
         "Folder"
@@ -2510,9 +2658,9 @@
       "label": "Image",
       "plural": "Images",
       "schemata": [
+        "Thing",
         "Document",
-        "Image",
-        "Thing"
+        "Image"
       ],
       "extends": [
         "Document"
@@ -2544,9 +2692,9 @@
       "label": "Audio",
       "plural": "Audio files",
       "schemata": [
+        "Thing",
         "Document",
-        "Audio",
-        "Thing"
+        "Audio"
       ],
       "extends": [
         "Document"
@@ -2558,8 +2706,8 @@
       "plural": "Web pages",
       "schemata": [
         "HyperText",
-        "Document",
-        "Thing"
+        "Thing",
+        "Document"
       ],
       "extends": [
         "Document"
@@ -2585,16 +2733,16 @@
       "label": "E-Mail",
       "plural": "E-Mails",
       "schemata": [
-        "Folder",
-        "Thing",
-        "HyperText",
         "PlainText",
+        "HyperText",
+        "Thing",
         "Email",
+        "Folder",
         "Document"
       ],
       "extends": [
-        "Folder",
         "PlainText",
+        "Folder",
         "HyperText"
       ],
       "properties": {
@@ -2603,7 +2751,8 @@
           "qname": "Email:inReplyTo",
           "label": "In Reply To",
           "type": "identifier",
-          "description": "Message IDs of the preceding emails in the thread"
+          "description": "Message IDs of the preceding emails in the thread",
+          "matchable": true
         },
         "headers": {
           "name": "headers",
@@ -2618,9 +2767,9 @@
       "label": "Table",
       "plural": "Tables",
       "schemata": [
-        "Document",
+        "Thing",
         "Table",
-        "Thing"
+        "Document"
       ],
       "extends": [
         "Document"
@@ -2639,6 +2788,7 @@
           "label": "Rows",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Row",
           "reverse": "table"
         }
@@ -2648,13 +2798,13 @@
       "label": "Asset",
       "plural": "Assets",
       "schemata": [
-        "Value",
         "Asset",
-        "Thing"
+        "Thing",
+        "Value"
       ],
       "extends": [
-        "Value",
-        "Thing"
+        "Thing",
+        "Value"
       ],
       "properties": {
         "ownershipAsset": {
@@ -2663,6 +2813,7 @@
           "label": "Owners",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "Ownership",
           "reverse": "asset"
         }
@@ -2672,10 +2823,10 @@
       "label": "Contract",
       "plural": "Contracts",
       "schemata": [
-        "Contract",
-        "Value",
         "Asset",
-        "Thing"
+        "Thing",
+        "Contract",
+        "Value"
       ],
       "extends": [
         "Asset"
@@ -2686,6 +2837,7 @@
           "qname": "Contract:authority",
           "label": "Contract authority",
           "type": "entity",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "contractAuthority"
         },
@@ -2700,7 +2852,8 @@
           "name": "contractDate",
           "qname": "Contract:contractDate",
           "label": "Contract date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "procedureNumber": {
           "name": "procedureNumber",
@@ -2732,6 +2885,7 @@
           "label": "Lots awarded",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "ContractAward",
           "reverse": "contract"
         },
@@ -2741,6 +2895,7 @@
           "label": "Used in customs",
           "type": "entity",
           "stub": true,
+          "matchable": true,
           "range": "EconomicActivity",
           "reverse": "contract"
         }
@@ -2757,11 +2912,11 @@
       "label": "Airplane",
       "plural": "Airplanes",
       "schemata": [
-        "Value",
         "Thing",
         "Vehicle",
+        "Asset",
         "Airplane",
-        "Asset"
+        "Value"
       ],
       "extends": [
         "Vehicle"
@@ -2771,7 +2926,8 @@
           "name": "serialNumber",
           "qname": "Airplane:serialNumber",
           "label": "Serial Number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "icaoCode": {
           "name": "icaoCode",
@@ -2799,9 +2955,9 @@
       "label": "Party",
       "plural": "Party",
       "schemata": [
-        "Interest",
+        "Interval",
         "CourtCaseParty",
-        "Interval"
+        "Interest"
       ],
       "extends": [
         "Interest"
@@ -2812,6 +2968,7 @@
           "qname": "CourtCaseParty:party",
           "label": "Party",
           "type": "entity",
+          "matchable": true,
           "range": "Thing",
           "reverse": "courtCase"
         },
@@ -2820,6 +2977,7 @@
           "qname": "CourtCaseParty:case",
           "label": "Case",
           "type": "entity",
+          "matchable": true,
           "range": "CourtCase",
           "reverse": "parties"
         }
@@ -2838,9 +2996,9 @@
       "label": "Link",
       "plural": "Links",
       "schemata": [
+        "Interval",
         "Interest",
-        "UnknownLink",
-        "Interval"
+        "UnknownLink"
       ],
       "extends": [
         "Interest"
@@ -2851,6 +3009,7 @@
           "qname": "UnknownLink:subject",
           "label": "Subject",
           "type": "entity",
+          "matchable": true,
           "range": "Thing",
           "reverse": "unknownLinkTo"
         },
@@ -2859,6 +3018,7 @@
           "qname": "UnknownLink:object",
           "label": "Object",
           "type": "entity",
+          "matchable": true,
           "range": "Thing",
           "reverse": "unknownLinkFrom"
         }
@@ -2885,19 +3045,22 @@
           "name": "startDate",
           "qname": "Interval:startDate",
           "label": "Start date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "endDate": {
           "name": "endDate",
           "qname": "Interval:endDate",
           "label": "End date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "date": {
           "name": "date",
           "qname": "Interval:date",
           "label": "Date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "summary": {
           "name": "summary",
@@ -2915,7 +3078,8 @@
           "name": "sourceUrl",
           "qname": "Interval:sourceUrl",
           "label": "Source URL",
-          "type": "url"
+          "type": "url",
+          "matchable": true
         },
         "publisher": {
           "name": "publisher",
@@ -2927,13 +3091,15 @@
           "name": "publisherUrl",
           "qname": "Interval:publisherUrl",
           "label": "Publishing source URL",
-          "type": "url"
+          "type": "url",
+          "matchable": true
         },
         "alephUrl": {
           "name": "alephUrl",
           "qname": "Interval:alephUrl",
           "label": "Aleph URL",
-          "type": "url"
+          "type": "url",
+          "matchable": true
         },
         "indexText": {
           "name": "indexText",
@@ -2946,13 +3112,15 @@
           "name": "modifiedAt",
           "qname": "Interval:modifiedAt",
           "label": "Modified on",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         },
         "retrievedAt": {
           "name": "retrievedAt",
           "qname": "Interval:retrievedAt",
           "label": "Retrieved on",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         }
       },
       "featured": [
@@ -2965,10 +3133,10 @@
       "label": "Real estate",
       "plural": "Real estates",
       "schemata": [
-        "Value",
-        "RealEstate",
         "Asset",
-        "Thing"
+        "Thing",
+        "Value",
+        "RealEstate"
       ],
       "extends": [
         "Asset"
@@ -2996,7 +3164,8 @@
           "name": "cadastralCode",
           "qname": "RealEstate:cadastralCode",
           "label": "Cadastral code",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "area": {
           "name": "area",
@@ -3008,13 +3177,15 @@
           "name": "registrationNumber",
           "qname": "RealEstate:registrationNumber",
           "label": "Registration number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "titleNumber": {
           "name": "titleNumber",
           "qname": "RealEstate:titleNumber",
           "label": "Title number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "tenure": {
           "name": "tenure",
@@ -3045,7 +3216,8 @@
           "name": "createDate",
           "qname": "RealEstate:createDate",
           "label": "Record date",
-          "type": "date"
+          "type": "date",
+          "matchable": true
         }
       },
       "featured": [
@@ -3059,11 +3231,11 @@
       "label": "Land",
       "plural": "Lands",
       "schemata": [
-        "Value",
         "Thing",
-        "Land",
         "RealEstate",
-        "Asset"
+        "Asset",
+        "Land",
+        "Value"
       ],
       "extends": [
         "RealEstate"
@@ -3077,8 +3249,8 @@
       "label": "Economic Activity",
       "plural": "Economic Activities",
       "schemata": [
-        "EconomicActivity",
-        "Interval"
+        "Interval",
+        "EconomicActivity"
       ],
       "extends": [
         "Interval"
@@ -3089,6 +3261,7 @@
           "qname": "EconomicActivity:contract",
           "label": "Associated contract",
           "type": "entity",
+          "matchable": true,
           "range": "Contract",
           "reverse": "economicActivityContract"
         },
@@ -3096,7 +3269,8 @@
           "name": "ccdNumber",
           "qname": "EconomicActivity:ccdNumber",
           "label": "Customs Cargo Declaration Number",
-          "type": "identifier"
+          "type": "identifier",
+          "matchable": true
         },
         "ccdValue": {
           "name": "ccdValue",
@@ -3124,7 +3298,8 @@
           "qname": "EconomicActivity:vedCode",
           "label": "FEAC Code",
           "type": "identifier",
-          "description": "(\u041a\u043e\u0434 \u0422\u041d \u0412\u042d\u0414) Foreign Economic Activity Commodity Code"
+          "description": "(\u041a\u043e\u0434 \u0422\u041d \u0412\u042d\u0414) Foreign Economic Activity Commodity Code",
+          "matchable": true
         },
         "vedCodeDescription": {
           "name": "vedCodeDescription",
@@ -3146,6 +3321,7 @@
           "label": "Declarant",
           "type": "entity",
           "description": "Customs declarant",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "economicActivityDeclarant"
         },
@@ -3155,6 +3331,7 @@
           "label": "Sender",
           "type": "entity",
           "description": "Origin of the goods",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "economicActivitySender"
         },
@@ -3164,6 +3341,7 @@
           "label": "Receiver",
           "type": "entity",
           "description": "Destination of the goods",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "economicActivityReceiver"
         },
@@ -3173,6 +3351,7 @@
           "label": "Contract holder",
           "type": "entity",
           "description": "Customs formalities caretaker",
+          "matchable": true,
           "range": "LegalEntity",
           "reverse": "economicActivityHolder"
         },
@@ -3202,28 +3381,32 @@
           "qname": "EconomicActivity:tradingCountry",
           "label": "Trading Country",
           "type": "country",
-          "description": "Trading Country of the company which transports the goods via Russian border"
+          "description": "Trading Country of the company which transports the goods via Russian border",
+          "matchable": true
         },
         "departureCountry": {
           "name": "departureCountry",
           "qname": "EconomicActivity:departureCountry",
           "label": "Country of departure",
           "type": "country",
-          "description": "Country out of which the goods are transported"
+          "description": "Country out of which the goods are transported",
+          "matchable": true
         },
         "destinationCountry": {
           "name": "destinationCountry",
           "qname": "EconomicActivity:destinationCountry",
           "label": "Country of destination",
           "type": "country",
-          "description": "Final destination for the goods"
+          "description": "Final destination for the goods",
+          "matchable": true
         },
         "originCountry": {
           "name": "originCountry",
           "qname": "EconomicActivity:originCountry",
           "label": "Country of origin",
           "type": "country",
-          "description": "Country of origin of goods"
+          "description": "Country of origin of goods",
+          "matchable": true
         },
         "bankAccount": {
           "name": "bankAccount",
@@ -3231,6 +3414,7 @@
           "label": "Bank Account",
           "type": "entity",
           "description": "Bank account of the contract",
+          "matchable": true,
           "range": "BankAccount"
         },
         "bankRub": {
@@ -3239,6 +3423,7 @@
           "label": "Rouble bank",
           "type": "entity",
           "description": "Bank account for payments in roubles",
+          "matchable": true,
           "range": "BankAccount"
         },
         "bankForeign": {
@@ -3247,6 +3432,7 @@
           "label": "Foreign currency bank",
           "type": "entity",
           "description": "Bank account for payments in foreign currency",
+          "matchable": true,
           "range": "BankAccount"
         },
         "transport": {
@@ -3255,6 +3441,7 @@
           "label": "Transport",
           "type": "entity",
           "description": "Means of transportation",
+          "matchable": true,
           "range": "Vehicle"
         }
       },

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-29 11:23+0100\n"
+"POT-Creation-Date: 2019-04-06 13:40+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -138,7 +138,7 @@ msgstr "Физическое лицо"
 #. Associate.properties.person.description
 #: followthemoney/schema/Associate.yml
 msgid "The subject of the association."
-msgstr ""
+msgstr "Субъект отношений"
 
 #. Associate.properties.person.reverse.label
 #: followthemoney/schema/Associate.yml
@@ -153,7 +153,7 @@ msgstr "Знакомый субъекта"
 #. Associate.properties.associate.reverse.label
 #: followthemoney/schema/Associate.yml
 msgid "Associations"
-msgstr ""
+msgstr "Отношения"
 
 #. Associate.properties.relationship.label
 #. Family.properties.relationship.label
@@ -164,7 +164,7 @@ msgstr "Тип связи или родства"
 #. Associate.properties.relationship.description
 #: followthemoney/schema/Associate.yml
 msgid "Nature of the association"
-msgstr ""
+msgstr "Природа отношений"
 
 #. BankAccount.label
 #. EconomicActivity.properties.bankAccount.label
@@ -1313,6 +1313,8 @@ msgid ""
 "Nature of the relationship, from the person's perspective eg. 'mother', "
 "where 'relative' is mother of 'person'."
 msgstr ""
+"Природа отношений, с точки зрения *субъекта*, например, \"мать\", где "
+"\"родственник\" — это мать \"субъекта\"."
 
 #. Interest.label
 #: followthemoney/schema/Interest.yaml
@@ -2431,15 +2433,15 @@ msgstr "MMSI"
 
 #: followthemoney/types/address.py:15
 msgid "Addresses"
-msgstr ""
+msgstr "Адреса"
 
 #: followthemoney/types/checksum.py:12
 msgid "Checksums"
-msgstr ""
+msgstr "Контрольные суммы"
 
 #: followthemoney/types/country.py:14
 msgid "Countries"
-msgstr ""
+msgstr "Страны"
 
 #: followthemoney/types/country.py:27
 msgid "Global"
@@ -2491,84 +2493,84 @@ msgstr "Приднестровье"
 
 #: followthemoney/types/date.py:26
 msgid "Dates"
-msgstr ""
+msgstr "Даты"
 
 #: followthemoney/types/domain.py:13
 msgid "Domain"
-msgstr ""
+msgstr "Домен"
 
 #: followthemoney/types/domain.py:14
 msgid "Domains"
-msgstr ""
+msgstr "Домены"
 
 #: followthemoney/types/email.py:16
 msgid "E-Mail Address"
-msgstr ""
+msgstr "Эл. адрес"
 
 #: followthemoney/types/email.py:17
 msgid "E-Mail Addresses"
-msgstr ""
+msgstr "Эл. адреса"
 
 #: followthemoney/types/entity.py:12
 msgid "Entities"
-msgstr ""
+msgstr "Сущность"
 
 #: followthemoney/types/identifier.py:14
 msgid "Identifier"
-msgstr ""
+msgstr "Идентификатор"
 
 #: followthemoney/types/identifier.py:15
 msgid "Identifiers"
-msgstr ""
+msgstr "Идентификаторы"
 
 #: followthemoney/types/ip.py:12
 msgid "IP-Address"
-msgstr ""
+msgstr "IP-адрес"
 
 #: followthemoney/types/ip.py:13
 msgid "IP-Addresses"
-msgstr ""
+msgstr "IP-адреса"
 
 #: followthemoney/types/json.py:11
 msgid "Nested data"
-msgstr ""
+msgstr "Сгруппированные данные"
 
 #: followthemoney/types/language.py:13
 msgid "Languages"
-msgstr ""
+msgstr "Языки"
 
 #: followthemoney/types/mimetype.py:11
 msgid "MIME-Type"
-msgstr ""
+msgstr "MIME-тип"
 
 #: followthemoney/types/mimetype.py:12
 msgid "MIME-Types"
-msgstr ""
+msgstr "MIME-типы"
 
 #: followthemoney/types/name.py:13
 msgid "Names"
-msgstr ""
+msgstr "Имена"
 
 #: followthemoney/types/number.py:7
 msgid "Number"
-msgstr ""
+msgstr "Номер"
 
 #: followthemoney/types/number.py:8
 msgid "Numbers"
-msgstr ""
+msgstr "Номера"
 
 #: followthemoney/types/string.py:7
 msgid "Label"
-msgstr ""
+msgstr "Название"
 
 #: followthemoney/types/string.py:8
 msgid "Labels"
-msgstr ""
+msgstr "Названия"
 
 #: followthemoney/types/url.py:11
 msgid "URL"
-msgstr ""
+msgstr "Ссылка"
 
 #: followthemoney/types/url.py:12
 msgid "URLs"
-msgstr ""
+msgstr "Ссылки"

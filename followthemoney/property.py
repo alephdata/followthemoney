@@ -96,6 +96,8 @@ class Property(object):
             data['required'] = True
         if self.caption:
             data['caption'] = True
+        if self.matchable:
+            data['matchable'] = True
         if self.hidden:
             data['hidden'] = True
         if self.range:
