@@ -22,6 +22,8 @@ describe('ftm/Model class', () => {
     it('should return `Schema` instance for associated name', () => {
       const schema = modelInstance.getSchema('Thing')
       expect(schema).toBeInstanceOf(Schema)
+      const other = modelInstance.getSchema(schema);
+      expect(other).toBe(schema)
     })
 
     it('should fail for unknown schema', () => {

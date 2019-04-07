@@ -42,10 +42,10 @@ export class Entity {
       return values;
     }
     if (typeof(value) !== 'string') {
-      value = this.schema.model.getEntity(value)
+      value = this.schema.model.getEntity(value);
     }
-    values.push(value)
-    this.properties.set(property, values)
+    values.push(value);
+    this.properties.set(property, values);
     return values
   }
 
@@ -68,6 +68,18 @@ export class Entity {
     } catch {
       return [];
     }
+  }
+
+  /**
+   * The first value of a property only.
+   * 
+   * @param prop A property name or object
+   */
+  getFirst(prop: string | Property): Value | null {
+    for (let value of this.getProperty(prop)) {
+      return value;
+    }
+    return null;
   }
 
   /** 

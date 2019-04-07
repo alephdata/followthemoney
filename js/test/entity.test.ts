@@ -56,6 +56,10 @@ describe('ftm/Entity class', () => {
     it('can get a text caption', function() {
       expect(person.getCaption()).toBe("Karl Marx")
     })
+    it('can get a single property value', function() {
+      expect(person.getFirst('name')).toBe("Karl Marx")
+      expect(person.getFirst('previousName')).toBe(null)
+    })
     it('can get all typed values', function() {
       expect(person.getTypeValues('name')).toHaveLength(1)
       expect(person.getTypeValues('name', true)).toHaveLength(1)
