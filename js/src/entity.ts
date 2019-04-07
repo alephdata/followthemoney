@@ -32,28 +32,42 @@ export class Entity {
     })
   }
 
-  setProperty(prop: string | Property, value: Value | IEntityDatum): Values {
+  setProperty(prop: string | Property, value: Value | IEntityDatum | undefined | null): Values {
     const property = this.schema.getProperty(prop)
+    const values = this.properties.get(property) || []
+    if (value === undefined || value === null) {
+      return values;
+    }
+    if (typeof(value) === 'string' && value.trim().length === 0) {
+      return values;
+    }
     if (typeof(value) !== 'string') {
       value = this.schema.model.getEntity(value)
     }
-    const values = this.properties.get(property) || []
     values.push(value)
     this.properties.set(property, values)
     return values
   }
 
   hasProperty(prop: string | Property): boolean {
-    const property = this.schema.getProperty(prop)
-    return this.properties.has(property)
+    try {
+      const property = this.schema.getProperty(prop)
+      return this.properties.has(property)
+    } catch {
+      return false
+    }
   }
 
   getProperty(prop: string | Property): Values {
-    const property = this.schema.getProperty(prop)
-    if(!this.properties.has(property)) {
-      return []
+    try {
+      const property = this.schema.getProperty(prop);
+      if(!this.properties.has(property)) {
+        return []
+      }
+      return this.properties.get(property) as Values
+    } catch {
+      return [];
     }
-    return this.properties.get(property) as Values
   }
 
   /** 

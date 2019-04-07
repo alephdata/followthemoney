@@ -26,19 +26,21 @@ describe('ftm/Entity class', () => {
     it('should return a an array', function() {
       expect(entity.getProperty('owner')).toBeInstanceOf(Array)
       expect(entity.getProperty('owner')).toHaveLength(1)
-      expect(() => {
-        entity.hasProperty('banana')
-      }).toThrow(Error)
+      expect(entity.getProperty('startDate')).toHaveLength(0)
+      expect(entity.getProperty('banana')).toHaveLength(0)
     })
     it('can check a property', function() {
       expect(entity.hasProperty('owner')).toBeTruthy()
       expect(entity.hasProperty('startDate')).toBeFalsy()
-      expect(() => {
-        entity.hasProperty('banana')
-      }).toThrow(Error)
+      expect(entity.hasProperty('banana')).toBeFalsy()
     })
     it('lets you get set a property', function() {
       expect(entity.setProperty('summary', 'The Owner')).toBeInstanceOf(Array)
+      expect(entity.setProperty('startDate', '')).toHaveLength(0)
+      expect(entity.setProperty('startDate', '  ')).toHaveLength(0)
+      expect(entity.setProperty('startDate', null)).toHaveLength(0)
+      expect(entity.setProperty('startDate', undefined)).toHaveLength(0)
+      expect(entity.setProperty('owner', otherEntity)).toHaveLength(2)
       expect(() => {
         entity.setProperty('fruit', 'banana')
       }).toThrow(Error)
@@ -56,6 +58,7 @@ describe('ftm/Entity class', () => {
     })
     it('can get all typed values', function() {
       expect(person.getTypeValues('name')).toHaveLength(1)
+      expect(person.getTypeValues('name', true)).toHaveLength(1)
       expect(person.getTypeValues('date')).toHaveLength(0)
     })
     it('can get all typed values', function() {
