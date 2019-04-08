@@ -1,22 +1,33 @@
-import { Schema, Model, IModelDatum } from '../src'
-import modelData from '../src/defaultModel.json'
+import { Schema, Model, defaultModel } from '../src'
 
 
 describe('ftm/Schema class', () => {
-  /*`Schema`
-   * `name`, `label`
-   * `is_a`, `schemata`, `descendants`
-   * `featured`, `sorted` (properties)
-   * `isDocument`, `isThing`*/
+  const model = new Model(defaultModel)
   let schema: Schema
-  beforeEach(() => {
-    const model = new Model(modelData)
-    schema = new Schema(model, 'Airplane', modelData.schemata.Airplane)
+  beforeEach(() => {  
+    schema = new Schema(model, 'Airplane', defaultModel.schemata.Airplane)
   })
   const requiredProperties = ['name', 'label', 'schemata', 'featured', 'properties']
   requiredProperties.forEach(propertyName => {
     it(`should have property ${propertyName}`, () => {
       expect(schema).toHaveProperty(propertyName)
+    })
+  })
+  describe('method isA', () => {
+    it('should work for a different inputs', () => {
+      expect(schema.isA('Thing')).toBe(true)
+      expect(schema.isA('Directorship')).toBe(false)
+      expect(schema.isA(null)).toBe(false)
+      expect(schema.isA(undefined)).toBe(false)
+      const ex = model.getSchema('Thing')
+      expect(schema.isA(ex)).toBe(true)
+    })
+  })
+  describe('method isAny', () => {
+    it('should work for a different inputs', () => {
+      expect(schema.isAny(['Thing'])).toBe(true)
+      expect(schema.isAny(['Directorship'])).toBe(false)
+      expect(schema.isAny(['Banana'])).toBe(false)
     })
   })
   describe('method isThing', () => {
@@ -30,14 +41,14 @@ describe('ftm/Schema class', () => {
       expect(schema.isThing()).toBe(true)
     })
     it('should return false for Intervals', () => {
-      const theSchema = new Schema(schema.model, 'Interval', modelData.schemata.Interval)
+      const theSchema = new Schema(schema.model, 'Interval', defaultModel.schemata.Interval)
       expect(theSchema.isThing()).toBe(false)
     })
   })
   describe('method isDocument', () => {
     let document: Schema
     beforeEach(() => {
-      document = new Schema(schema.model, 'Audio', modelData.schemata.Audio)
+      document = new Schema(schema.model, 'Audio', defaultModel.schemata.Audio)
     })
     it('should exist', () => {
       expect(document.isDocument).toBeDefined()
@@ -49,7 +60,7 @@ describe('ftm/Schema class', () => {
       expect(document.isDocument()).toBe(true)
     })
     it('should return false for non-documents', () => {
-      const nonDocument = new Schema(schema.model, 'Interval', modelData.schemata.Interval)
+      const nonDocument = new Schema(schema.model, 'Interval', defaultModel.schemata.Interval)
       expect(nonDocument.isDocument()).toBe(false)
     })
   })

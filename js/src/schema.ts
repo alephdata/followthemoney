@@ -6,6 +6,8 @@ interface IEdgeSpecification {
   target: string
 }
 
+export type SchemaSpec = string | null | undefined | Schema;
+
 export interface ISchemaDatum {
   label: string
   plural: string
@@ -114,8 +116,22 @@ export class Schema {
     }
   }
 
-  isA(schemaName: string) {
-    return !!~this.schemata.indexOf(schemaName)
+  isA(schema: SchemaSpec) {
+    try {
+      schema = this.model.getSchema(schema)
+      return !!~this.schemata.indexOf(schema.name)
+    } catch (error) {
+      return false;
+    }
+  }
+
+  isAny(schemata: Array<SchemaSpec>) {
+    for (let schema of schemata) {
+      if (this.isA(schema)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   toString(): string {
