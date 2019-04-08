@@ -114,7 +114,11 @@ export class Entity {
     for (let property of this.getProperties()) {
       if (!matchableOnly || property.matchable) {
         if (property.type.toString() === propType.toString()) {
-          values.push(...this.getProperty(property))
+          for (let value of this.getProperty(property)) {
+            if (values.indexOf(value) === -1) {
+              values.push(value);
+            }
+          }
         }
       }
     }
