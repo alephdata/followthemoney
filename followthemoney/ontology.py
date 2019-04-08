@@ -55,7 +55,9 @@ class Ontology(object):
         if prop.range is not None:
             range_uri = model.get(prop.range).uri
             self.graph.add((prop.uri, RDFS.range, range_uri))
-        elif prop.type == registry.date:
+        if prop.reverse is not None:
+            self.graph.add((prop.uri, OWL.inverseOf, prop.reverse.uri))
+        if prop.type == registry.date:
             self.graph.add((prop.uri, RDFS.range, XSD.dateTime))
 
     def serialize(self, format='n3'):
