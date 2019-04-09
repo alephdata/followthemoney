@@ -55,12 +55,12 @@ Document:
       label: "Published on"
       type: date
     parent:
-      label: "Parent document"
+      label: "Folder"
       type: entity
       range: Folder
       reverse:
         name: children
-        label: "Child documents"
+        label: "Children"
       rdf: http://purl.org/dc/terms/isPartOf
     ancestors:
       label: "Ancestors"
@@ -95,6 +95,14 @@ Document:
       label: "E-Mail addresses"
       hidden: true
       type: email
+    processingStatus:
+      label: "Processing status"
+      hidden: true
+    processingError:
+      label: "Processing error"
+      hidden: true
+      type: text
+      
 
 
 PlainText:
