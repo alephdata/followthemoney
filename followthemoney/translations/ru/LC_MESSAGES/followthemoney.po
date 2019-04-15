@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-04-06 13:40+0200\n"
+"POT-Creation-Date: 2019-04-15 16:20+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -788,14 +788,15 @@ msgid "Published on"
 msgstr "Дата публикации"
 
 #. Document.properties.parent.label
+#. Folder.label
 #: followthemoney/schema/Document.yaml
-msgid "Parent document"
-msgstr "Родительский документ"
+msgid "Folder"
+msgstr "Папка"
 
 #. Document.properties.parent.reverse.label
 #: followthemoney/schema/Document.yaml
-msgid "Child documents"
-msgstr "Дочерние документы"
+msgid "Children"
+msgstr ""
 
 #. Document.properties.ancestors.label
 #: followthemoney/schema/Document.yaml
@@ -837,6 +838,16 @@ msgstr "Номера телефонов"
 msgid "E-Mail addresses"
 msgstr "Эл. адреса"
 
+#. Document.properties.processingStatus.label
+#: followthemoney/schema/Document.yaml
+msgid "Processing status"
+msgstr ""
+
+#. Document.properties.processingError.label
+#: followthemoney/schema/Document.yaml
+msgid "Processing error"
+msgstr ""
+
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
 msgid "Text file"
@@ -871,11 +882,6 @@ msgstr "Документы"
 #: followthemoney/schema/Document.yaml
 msgid "PDF alternative version checksum"
 msgstr "Дополнительная контрольная сумма для PDF"
-
-#. Folder.label
-#: followthemoney/schema/Document.yaml
-msgid "Folder"
-msgstr "Папка"
 
 #. Folder.plural
 #: followthemoney/schema/Document.yaml

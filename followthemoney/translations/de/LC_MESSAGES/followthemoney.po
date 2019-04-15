@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-29 11:31+0100\n"
+"POT-Creation-Date: 2019-04-15 16:22+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2019\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -786,14 +786,15 @@ msgid "Published on"
 msgstr "Veröffentlicht am"
 
 #. Document.properties.parent.label
+#. Folder.label
 #: followthemoney/schema/Document.yaml
-msgid "Parent document"
-msgstr "Elterndokument"
+msgid "Folder"
+msgstr "Ordner"
 
 #. Document.properties.parent.reverse.label
 #: followthemoney/schema/Document.yaml
-msgid "Child documents"
-msgstr "Enthaltene Dokumente"
+msgid "Children"
+msgstr "Kinder"
 
 #. Document.properties.ancestors.label
 #: followthemoney/schema/Document.yaml
@@ -835,6 +836,16 @@ msgstr "Telefonnummern"
 msgid "E-Mail addresses"
 msgstr "E-Mail-Adressen"
 
+#. Document.properties.processingStatus.label
+#: followthemoney/schema/Document.yaml
+msgid "Processing status"
+msgstr "Verarbeitungsstatus"
+
+#. Document.properties.processingError.label
+#: followthemoney/schema/Document.yaml
+msgid "Processing error"
+msgstr "Verarbeitungsfehler"
+
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
 msgid "Text file"
@@ -869,11 +880,6 @@ msgstr "Dokumente"
 #: followthemoney/schema/Document.yaml
 msgid "PDF alternative version checksum"
 msgstr "Prüfsumme der PDF-Fassung"
-
-#. Folder.label
-#: followthemoney/schema/Document.yaml
-msgid "Folder"
-msgstr "Ordner"
 
 #. Folder.plural
 #: followthemoney/schema/Document.yaml

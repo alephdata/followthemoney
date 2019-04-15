@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-29 11:23+0100\n"
+"POT-Creation-Date: 2019-04-15 16:20+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: John Ospina <jmospina@gmail.com>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -785,13 +785,14 @@ msgid "Published on"
 msgstr ""
 
 #. Document.properties.parent.label
+#. Folder.label
 #: followthemoney/schema/Document.yaml
-msgid "Parent document"
+msgid "Folder"
 msgstr ""
 
 #. Document.properties.parent.reverse.label
 #: followthemoney/schema/Document.yaml
-msgid "Child documents"
+msgid "Children"
 msgstr ""
 
 #. Document.properties.ancestors.label
@@ -834,6 +835,16 @@ msgstr ""
 msgid "E-Mail addresses"
 msgstr ""
 
+#. Document.properties.processingStatus.label
+#: followthemoney/schema/Document.yaml
+msgid "Processing status"
+msgstr ""
+
+#. Document.properties.processingError.label
+#: followthemoney/schema/Document.yaml
+msgid "Processing error"
+msgstr ""
+
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
 msgid "Text file"
@@ -867,11 +878,6 @@ msgstr ""
 #. Pages.properties.pdfHash.label
 #: followthemoney/schema/Document.yaml
 msgid "PDF alternative version checksum"
-msgstr ""
-
-#. Folder.label
-#: followthemoney/schema/Document.yaml
-msgid "Folder"
 msgstr ""
 
 #. Folder.plural
