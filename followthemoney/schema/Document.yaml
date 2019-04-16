@@ -12,6 +12,7 @@ Document:
     title:
       label: "Title"
       rdf: http://purl.org/dc/elements/1.1/title
+      caption: true
     author:
       label: "Author"
       description: "The original author, not the uploader"
