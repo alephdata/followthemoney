@@ -126,11 +126,4 @@ export class Entity {
     }
     return values
   }
-
-  /**
-   * Return a unique ID for the entity, not ideal for presentation.
-   */
-  toString(): string {
-    return this.schema.name + this.id
-  }
 }

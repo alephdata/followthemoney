@@ -19,7 +19,7 @@ setup(
         'babel',
         'banal >= 0.4.2',
         'stringcase',
-        'pyyaml >= 3.13',
+        'pyyaml >= 5.1',
         'requests[security] >= 2.21.0',
         'python-levenshtein >= 0.12.0',
         'normality >= 1.0.0',
