@@ -1,14 +1,14 @@
 import { Schema } from './schema'
 import { Model } from './model'
 import { Property } from './property'
-import { PropertyType } from './type';
+import { PropertyType } from './type'
 
 export type Value = string | Entity
 export type Values = Array<Value>
 
 export interface IEntityDatum {
   schema: Schema | string
-  properties: { [prop: string]: Array<Value | IEntityDatum> }
+  properties?: { [prop: string]: Array<Value | IEntityDatum> }
   id: string
 }
 
@@ -25,27 +25,29 @@ export class Entity {
     this.schema = model.getSchema(data.schema)
     this.id = data.id
 
-    Object.entries(data.properties).forEach(([prop, values]) => {
-      values.forEach((value) => {
-        this.setProperty(prop, value)
+    if (data.properties) {
+      Object.entries(data.properties).forEach(([prop, values]) => {
+        values.forEach((value) => {
+          this.setProperty(prop, value)
+        })
       })
-    })
+    }
   }
 
   setProperty(prop: string | Property, value: Value | IEntityDatum | undefined | null): Values {
     const property = this.schema.getProperty(prop)
     const values = this.properties.get(property) || []
     if (value === undefined || value === null) {
-      return values;
+      return values
     }
-    if (typeof(value) === 'string' && value.trim().length === 0) {
-      return values;
+    if (typeof (value) === 'string' && value.trim().length === 0) {
+      return values
     }
-    if (typeof(value) !== 'string') {
-      value = this.schema.model.getEntity(value);
+    if (typeof (value) !== 'string') {
+      value = this.schema.model.getEntity(value)
     }
-    values.push(value);
-    this.properties.set(property, values);
+    values.push(value)
+    this.properties.set(property, values)
     return values
   }
 
@@ -60,30 +62,30 @@ export class Entity {
 
   getProperty(prop: string | Property): Values {
     try {
-      const property = this.schema.getProperty(prop);
-      if(!this.properties.has(property)) {
+      const property = this.schema.getProperty(prop)
+      if (!this.properties.has(property)) {
         return []
       }
       return this.properties.get(property) as Values
     } catch {
-      return [];
+      return []
     }
   }
 
   /**
    * The first value of a property only.
-   * 
+   *
    * @param prop A property name or object
    */
   getFirst(prop: string | Property): Value | null {
     for (let value of this.getProperty(prop)) {
-      return value;
+      return value
     }
-    return null;
+    return null
   }
 
-  /** 
-   * List all properties for which this entity has values set. This 
+  /**
+   * List all properties for which this entity has values set. This
    * does not include unset properties.
    */
   getProperties(): Array<Property> {
@@ -97,7 +99,7 @@ export class Entity {
     for (let property of this.getProperties()) {
       if (property.caption) {
         for (let value of this.getProperty(property)) {
-          return value as string;
+          return value as string
         }
       }
     }
@@ -116,7 +118,7 @@ export class Entity {
         if (property.type.toString() === propType.toString()) {
           for (let value of this.getProperty(property)) {
             if (values.indexOf(value) === -1) {
-              values.push(value);
+              values.push(value)
             }
           }
         }
