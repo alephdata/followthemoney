@@ -1,3 +1,4 @@
+import logging
 from hashlib import sha1
 from itertools import product
 from normality import stringify
@@ -11,6 +12,8 @@ from followthemoney.types import registry
 from followthemoney.property import Property
 from followthemoney.graph import Statement, Node
 from followthemoney.util import key_bytes, gettext
+
+log = logging.getLogger(__name__)
 
 
 class EntityProxy(object):
@@ -90,6 +93,17 @@ class EntityProxy(object):
                 continue
             if prop not in self._properties:
                 self._properties[prop] = set()
+
+            # Somewhat hacky: limit the maximum size of any particular
+            # field to avoid overloading upstream aleph/elasticsearch.
+            if prop.type.max_size is not None:
+                existing_size = prop.type.values_size(self._properties[prop])
+                new_size = existing_size + prop.type.values_size(value)
+                if new_size > prop.type.max_size:
+                    msg = "[%s] too large. Rejecting additional values."
+                    log.warning(msg, prop.name)
+                    continue
+
             self._properties[prop].add(value)
 
     def set(self, prop, values, cleaned=False, quiet=False):

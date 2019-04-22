@@ -4,6 +4,7 @@ from followthemoney.exc import InvalidData
 
 
 from followthemoney import model
+from followthemoney.types import registry
 from followthemoney.proxy import EntityProxy
 
 
@@ -120,6 +121,23 @@ class ProxyTestCase(TestCase):
         with assert_raises(InvalidData):
             proxy.has('banana')
         assert not proxy.has('banana', quiet=True)
+
+    def test_max_size(self):
+        t = registry.name
+        prev_size = t.max_size
+        proxy = EntityProxy.from_dict(model, ENTITY)
+        t.max_size = 10
+        assert len(proxy.get('name')) == 1
+        proxy.add('name', 'Louis George Maurice Adolphe Roche Albert Abel')
+        assert len(proxy.get('name')) == 1
+
+        proxy.set('name', 'Louis')
+        assert len(proxy.get('name')) == 1, proxy.get('name')
+        proxy.add('name', 'A')
+        assert len(proxy.get('name')) == 2, proxy.get('name')
+        proxy.add('name', 'George')
+        assert len(proxy.get('name')) == 2, proxy.get('name')
+        t.max_size = prev_size
 
     def test_dict_passthrough(self):
         proxy = EntityProxy.from_dict(model, ENTITY)

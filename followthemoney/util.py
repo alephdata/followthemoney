@@ -8,6 +8,7 @@ from banal import is_mapping, is_sequence
 from banal import unique_list, ensure_list
 
 NS = Namespace('https://w3id.org/ftm#')
+MEGABYTE = 1024 * 1024
 DEFAULT_LOCALE = 'en'
 i18n_path = os.path.join(os.path.dirname(__file__), 'translations')
 state = local()

@@ -5,7 +5,8 @@
 #
 # If anyone were to swap out the default model radically, this would
 # probably be the first place to break.
-from followthemoney import model
+
+# from followthemoney import model
 from followthemoney.types import registry
 
 
