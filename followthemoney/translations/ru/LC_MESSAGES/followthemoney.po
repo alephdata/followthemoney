@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-04-15 16:20+0200\n"
+"POT-Creation-Date: 2019-04-22 15:30+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp <jen@occrp.org>, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -31,11 +31,11 @@ msgstr "Недопустимое значение"
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/proxy.py:26
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr "Для сущности отсутствует схема."
 
-#: followthemoney/proxy.py:58
+#: followthemoney/proxy.py:61
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
@@ -796,7 +796,7 @@ msgstr "Папка"
 #. Document.properties.parent.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Children"
-msgstr ""
+msgstr "Дочерние документы"
 
 #. Document.properties.ancestors.label
 #: followthemoney/schema/Document.yaml
@@ -841,12 +841,12 @@ msgstr "Эл. адреса"
 #. Document.properties.processingStatus.label
 #: followthemoney/schema/Document.yaml
 msgid "Processing status"
-msgstr ""
+msgstr "Статус обработки"
 
 #. Document.properties.processingError.label
 #: followthemoney/schema/Document.yaml
 msgid "Processing error"
-msgstr ""
+msgstr "Ошибка обработки"
 
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
@@ -863,7 +863,7 @@ msgstr "Текстовые файлы"
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
-#: followthemoney/types/text.py:7
+#: followthemoney/types/text.py:8
 msgid "Text"
 msgstr "Текст"
 
@@ -2537,7 +2537,7 @@ msgstr "IP-адрес"
 msgid "IP-Addresses"
 msgstr "IP-адреса"
 
-#: followthemoney/types/json.py:11
+#: followthemoney/types/json.py:12
 msgid "Nested data"
 msgstr "Сгруппированные данные"
 

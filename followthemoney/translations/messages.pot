@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-04-15 16:22+0200\n"
+"POT-Creation-Date: 2019-04-22 15:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: followthemoney/proxy.py:26
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:58
+#: followthemoney/proxy.py:61
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
@@ -846,7 +846,7 @@ msgstr ""
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
-#: followthemoney/types/text.py:7
+#: followthemoney/types/text.py:8
 msgid "Text"
 msgstr ""
 
@@ -2511,7 +2511,7 @@ msgstr ""
 msgid "IP-Addresses"
 msgstr ""
 
-#: followthemoney/types/json.py:11
+#: followthemoney/types/json.py:12
 msgid "Nested data"
 msgstr ""
 

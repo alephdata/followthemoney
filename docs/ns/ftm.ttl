@@ -719,6 +719,16 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Document:processingError> a rdf:Property ;
+    rdfs:label "Processing error" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:processingStatus> a rdf:Property ;
+    rdfs:label "Processing status" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Document:publishedAt> a rdf:Property ;
     rdfs:label "Published on" ;
     rdfs:domain ftm:Document ;
@@ -1818,7 +1828,7 @@ owl:sameAs a rdf:Property ;
     owl:inverseOf <https://w3id.org/ftm#Person:familyRelative> .
 
 <https://w3id.org/ftm#Folder:children> a rdf:Property ;
-    rdfs:label "Child documents" ;
+    rdfs:label "Children" ;
     rdfs:domain ftm:Folder ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Document ;
@@ -2205,7 +2215,7 @@ owl:sameAs a rdf:Property ;
 
 dct:isPartOf a rdf:Property ;
     rdfs:label "Document",
-        "Parent document",
+        "Folder",
         "Table" ;
     rdfs:domain ftm:Document,
         ftm:Page,
@@ -2220,5 +2230,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2019-04-08T10:10:35"^^xsd:dateTime .
+    dct:modified "2019-04-22T15:03:31"^^xsd:dateTime .
 
