@@ -69,8 +69,5 @@ describe('ftm/Entity class', () => {
       const type = model.getType('name')
       expect(person.getTypeValues(type)).toHaveLength(1)
     })
-    it('should serialise to a string', function() {
-      expect(entity.toString()).toContain('ade69374e3f57d2')
-    })
   })
 })
