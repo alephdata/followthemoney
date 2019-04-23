@@ -12,6 +12,7 @@
 *.recon
 build/*
 dist/*
+balkhashdb/*
 coverage-report/*
 util/dist/*
 util/build/*
