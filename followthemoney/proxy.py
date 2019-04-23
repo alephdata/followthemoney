@@ -34,7 +34,7 @@ class EntityProxy(object):
 
         if is_mapping(properties):
             for key, value in properties.items():
-                self.add(key, value, cleaned=False, quiet=True)
+                self.add(key, value, cleaned=True, quiet=True)
 
     def make_id(self, *parts):
         """Generate a (hopefully unique) ID for the given entity, composed
@@ -249,15 +249,13 @@ class EntityProxy(object):
         return EntityProxy(self.schema.model, self.to_dict())
 
     def merge(self, other):
-        if id(self) == id(other):
-            return
         model = self.schema.model
         other = self.from_dict(model, other)
         self.id = self.id or other.id
         self.schema = model.common_schema(self.schema, other.schema)
         self.context.update(other.context)
         for prop, value in set(other.itervalues()):
-            self.add(prop, value)
+            self.add(prop, value, cleaned=True, quiet=True)
 
     def __repr__(self):
         return '<EntityProxy(%r,%r,%r)>' % (self.id, self.schema, self.caption)
