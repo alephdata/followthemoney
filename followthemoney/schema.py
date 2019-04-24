@@ -93,6 +93,7 @@ class Schema(object):
                 'range': other.schema.name,
                 'stub': True
             })
+            data['hidden'] = data.get('hidden', other.hidden)
             prop = Property(self, name, data)
             prop.generate()
             self.properties[name] = prop

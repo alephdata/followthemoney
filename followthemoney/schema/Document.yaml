@@ -71,7 +71,7 @@ Document:
       reverse:
         name: descendants
         hidden: true
-        label: "Descendant documents"
+        label: "Descendants"
     namesMentioned:
       label: "Mentioned names"
       hidden: true
