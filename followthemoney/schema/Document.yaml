@@ -62,6 +62,7 @@ Document:
       reverse:
         name: children
         label: "Children"
+        hidden: true
       rdf: http://purl.org/dc/terms/isPartOf
     ancestors:
       label: "Ancestors"

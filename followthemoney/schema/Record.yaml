@@ -31,10 +31,10 @@ Row:
       label: "Table"
       type: entity
       range: Table
-      hidden: true
       reverse:
         name: rows
         label: "Rows"
+        hidden: true
       rdf: http://purl.org/dc/terms/isPartOf
 
 Page:
@@ -51,8 +51,8 @@ Page:
       label: "Document"
       type: entity
       range: Pages
-      hidden: true
       reverse:
         name: pages
         label: "Pages"
+        hidden: true
       rdf: http://purl.org/dc/terms/isPartOf
