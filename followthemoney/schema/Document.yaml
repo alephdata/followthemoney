@@ -172,6 +172,11 @@ Video:
   plural: Videos
   hidden: true
   matchable: false
+  properties:
+    duration:
+      label: "Duration"
+      description: "Duration of the video in ms"
+      type: number
 
 Audio:
   extends: Document
@@ -179,6 +184,15 @@ Audio:
   plural: Audio files
   hidden: true
   matchable: false
+  properties:
+    duration:
+      label: "Duration"
+      description: "Duration of the audio in ms"
+      type: number
+    samplingRate:
+      label: "Sampling Rate"
+      description: "Sampling rate of the audio in Hz"
+      type: number
 
 HyperText:
   # HTML document
