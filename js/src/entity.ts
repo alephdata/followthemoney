@@ -126,4 +126,43 @@ export class Entity {
     }
     return values
   }
+
+  /**
+   * Serialise the entity to a plain JSON object, suitable for feeding to the
+   * JSON.stringify() call.
+   */
+  toJSON(): IEntityDatum {
+    const properties = {} as any
+    this.properties.forEach((values, prop) => {
+      properties[prop.name] = values.map((value) => 
+        Entity.isEntity(value) ? (value as Entity).toJSON() : value
+      )
+    })
+    return {
+      id: this.id,
+      schema: this.schema.name,
+      properties: properties
+    }
+  }
+
+  /**
+   * Make a copy of the entity with no shared object identity.
+   */
+  clone(): Entity {
+    return Entity.fromJSON(this.schema.model, this.toJSON())
+  }
+
+  /**
+   * Shortcut helper function.
+   * 
+   * @param model active FollowTheMoney model
+   * @param data the raw blob, which must match IEntityDatum
+   */
+  static fromJSON(model: Model, data: any) {
+    return model.getEntity(data)
+  }
+
+  static isEntity(value: Value): boolean {
+    return typeof (value) !== 'string'
+  }
 }
