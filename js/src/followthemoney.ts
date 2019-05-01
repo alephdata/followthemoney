@@ -3,6 +3,8 @@ export * from './model'
 export * from './property'
 export * from './schema'
 export * from './type'
+export * from './icons'
+
 
 import defaultModel_ from './defaultModel.json';
 import { IModelDatum } from './model';
