@@ -10,7 +10,7 @@ fs.readdir('./icons', null, async function(error, list) {
   } else {
     const iconsPaths = buildPathsObject(list.map(l => l.replace(/\.svg$/, '')));
 
-    writeLinesToFile('./generated/icons.json', "{",
+    writeLinesToFile('./src/generated/icons.json', "{",
       (await iconsPaths).join(','),
       "}");
   }
