@@ -260,6 +260,12 @@ class EntityProxy(object):
     def __repr__(self):
         return '<EntityProxy(%r,%r,%r)>' % (self.id, self.schema, self.caption)
 
+    def __len__(self):
+        total = 0
+        for prop in self.iterprops():
+            total += prop.type.values_size(self.get(prop, quiet=True))
+        return total
+
     def __str__(self):
         return self.caption or self.schema.name
 

@@ -139,6 +139,13 @@ class ProxyTestCase(TestCase):
         assert len(proxy.get('name')) == 2, proxy.get('name')
         t.max_size = prev_size
 
+    def test_len(self):
+        proxy = EntityProxy.from_dict(model, ENTITY)
+        proxy_len = len(proxy)
+        assert proxy_len > 0, proxy_len
+        proxy.add('name', "Some text")
+        assert len(proxy) > proxy_len, (len(proxy), proxy_len)
+
     def test_dict_passthrough(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
         data = proxy.to_dict()
