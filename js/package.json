@@ -20,10 +20,11 @@
   },
   "scripts": {
     "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && npm run build:icons",
+    "build:icons": "node scripts/buildIcons.js",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "build:docs": "typedoc --out docs --target es6 --excludeExternals  --theme minimal --mode file src",
-    "start": "rollup -c rollup.config.ts -w",
+    "start": "npm run build:icons && rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache"
@@ -85,7 +86,8 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.14.2",
-    "typescript": "^3.3.1"
+    "typescript": "^3.3.1",
+    "svgo": "^1.2.2"
   },
   "dependencies": {
     "@types/uuid": "^3.4.4",
