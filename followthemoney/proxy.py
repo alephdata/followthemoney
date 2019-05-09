@@ -257,17 +257,17 @@ class EntityProxy(object):
         for prop, value in set(other.itervalues()):
             self.add(prop, value, cleaned=True, quiet=True)
 
+    def __str__(self):
+        return self.caption or self.schema.name
+
     def __repr__(self):
-        return '<EntityProxy(%r,%r,%r)>' % (self.id, self.schema, self.caption)
+        return '<E(%r,%r)>' % (self.id, str(self))
 
     def __len__(self):
         total = 0
         for prop in self.iterprops():
             total += prop.type.values_size(self.get(prop, quiet=True))
         return total
-
-    def __str__(self):
-        return self.caption or self.schema.name
 
     def __hash__(self):
         return hash(self.id)
