@@ -58,7 +58,7 @@ ftm:Contract a rdfs:Class ;
     rdfs:subClassOf ftm:Asset .
 
 ftm:ContractAward a rdfs:Class ;
-    rdfs:label "Contract Lot Award" ;
+    rdfs:label "Contract award" ;
     rdfs:comment "A contract or contract lot as awarded to a supplier." ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest,
@@ -70,7 +70,7 @@ ftm:CourtCase a rdfs:Class ;
     rdfs:subClassOf ftm:Thing .
 
 ftm:CourtCaseParty a rdfs:Class ;
-    rdfs:label "Party" ;
+    rdfs:label "Case party" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
 
@@ -85,7 +85,7 @@ ftm:Document a rdfs:Class ;
     rdfs:subClassOf ftm:Thing .
 
 ftm:EconomicActivity a rdfs:Class ;
-    rdfs:label "Economic Activity" ;
+    rdfs:label "Customs declaration" ;
     rdfs:comment "An economic activity" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interval .
@@ -242,7 +242,7 @@ ftm:Table a rdfs:Class ;
     rdfs:subClassOf ftm:Document .
 
 ftm:TaxRoll a rdfs:Class ;
-    rdfs:label "Tax Roll" ;
+    rdfs:label "Tax roll" ;
     rdfs:comment "A tax declaration of an individual" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interval .
@@ -252,7 +252,7 @@ ftm:Thing a rdfs:Class ;
     rdfs:isDefinedBy ftm: .
 
 ftm:UnknownLink a rdfs:Class ;
-    rdfs:label "Link" ;
+    rdfs:label "Other link" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
 
@@ -370,6 +370,18 @@ dct:language a rdf:Property ;
     rdfs:label "Relationship" ;
     rdfs:comment "Nature of the association" ;
     rdfs:domain ftm:Associate ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Audio:duration> a rdf:Property ;
+    rdfs:label "Duration" ;
+    rdfs:comment "Duration of the audio in ms" ;
+    rdfs:domain ftm:Audio ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Audio:samplingRate> a rdf:Property ;
+    rdfs:label "Sampling Rate" ;
+    rdfs:comment "Sampling rate of the audio in Hz" ;
+    rdfs:domain ftm:Audio ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#BankAccount:accountNumber> a rdf:Property ;
@@ -560,13 +572,13 @@ dct:language a rdf:Property ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#ContractAward:amended> a rdf:Property ;
-    rdfs:label "Amended?" ;
+    rdfs:label "Amended" ;
     rdfs:comment "Was this award amended, modified or updated by a subsequent document?" ;
     rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#ContractAward:cpvCode> a rdf:Property ;
-    rdfs:label "CPV Code" ;
+    rdfs:label "CPV code" ;
     rdfs:comment "Contract Procurement Vocabulary (what type of goods/services, EU)" ;
     rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
@@ -592,7 +604,7 @@ dct:language a rdf:Property ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#ContractAward:nutsCode> a rdf:Property ;
-    rdfs:label "NUTS Code" ;
+    rdfs:label "NUTS code" ;
     rdfs:comment "Nomencalture of Territorial Units for Statistics (NUTS)" ;
     rdfs:domain ftm:ContractAward ;
     rdfs:isDefinedBy ftm: .
@@ -1643,6 +1655,12 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Vessel ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Video:duration> a rdf:Property ;
+    rdfs:label "Duration" ;
+    rdfs:comment "Duration of the video in ms" ;
+    rdfs:domain ftm:Video ;
+    rdfs:isDefinedBy ftm: .
+
 owl:sameAs a rdf:Property ;
     rdfs:label "Same as" ;
     rdfs:domain ftm:Thing ;
@@ -1835,7 +1853,7 @@ owl:sameAs a rdf:Property ;
     owl:inverseOf dct:isPartOf .
 
 <https://w3id.org/ftm#Folder:descendants> a rdf:Property ;
-    rdfs:label "Descendant documents" ;
+    rdfs:label "Descendants" ;
     rdfs:domain ftm:Folder ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Document ;
@@ -1990,7 +2008,7 @@ owl:sameAs a rdf:Property ;
     owl:inverseOf <https://w3id.org/ftm#Succession:predecessor> .
 
 <https://w3id.org/ftm#LegalEntity:taxRolls> a rdf:Property ;
-    rdfs:label "Tax Rolls" ;
+    rdfs:label "Tax rolls" ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:TaxRoll ;
@@ -2095,7 +2113,7 @@ owl:sameAs a rdf:Property ;
     owl:inverseOf <https://w3id.org/ftm#Associate:associate> .
 
 <https://w3id.org/ftm#Person:familyPerson> a rdf:Property ;
-    rdfs:label "Family" ;
+    rdfs:label "Family members" ;
     rdfs:domain <http://xmlns.com/foaf/0.1/Person> ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Family ;
@@ -2230,5 +2248,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2019-04-22T15:03:31"^^xsd:dateTime .
+    dct:modified "2019-05-12T14:02:31"^^xsd:dateTime .
 

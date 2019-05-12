@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-04-15 16:20+0200\n"
+"POT-Creation-Date: 2019-05-12 14:23+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: John Ospina <jmospina@gmail.com>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -30,16 +30,16 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: followthemoney/proxy.py:26
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:58
+#: followthemoney/proxy.py:61
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:153
+#: followthemoney/schema.py:157
 msgid "Entity failed validation"
 msgstr ""
 
@@ -121,6 +121,12 @@ msgstr "Activos"
 msgid "Associate"
 msgstr ""
 
+#. Associate.plural
+#. Associate.properties.person.reverse.label
+#: followthemoney/schema/Associate.yml
+msgid "Associates"
+msgstr ""
+
 #. Associate.description
 #: followthemoney/schema/Associate.yml
 msgid "Non-family association between two people"
@@ -137,11 +143,6 @@ msgstr ""
 #. Associate.properties.person.description
 #: followthemoney/schema/Associate.yml
 msgid "The subject of the association."
-msgstr ""
-
-#. Associate.properties.person.reverse.label
-#: followthemoney/schema/Associate.yml
-msgid "Associates"
 msgstr ""
 
 #. Associate.properties.associate.description
@@ -485,12 +486,12 @@ msgstr ""
 
 #. ContractAward.label
 #: followthemoney/schema/ContractAward.yaml
-msgid "Contract Lot Award"
+msgid "Contract award"
 msgstr ""
 
 #. ContractAward.plural
 #: followthemoney/schema/ContractAward.yaml
-msgid "Contract Awards"
+msgid "Contract awards"
 msgstr ""
 
 #. ContractAward.description
@@ -547,7 +548,7 @@ msgstr ""
 
 #. ContractAward.properties.cpvCode.label
 #: followthemoney/schema/ContractAward.yaml
-msgid "CPV Code"
+msgid "CPV code"
 msgstr ""
 
 #. ContractAward.properties.cpvCode.description
@@ -557,7 +558,7 @@ msgstr ""
 
 #. ContractAward.properties.nutsCode.label
 #: followthemoney/schema/ContractAward.yaml
-msgid "NUTS Code"
+msgid "NUTS code"
 msgstr ""
 
 #. ContractAward.properties.nutsCode.description
@@ -567,7 +568,7 @@ msgstr ""
 
 #. ContractAward.properties.amended.label
 #: followthemoney/schema/ContractAward.yaml
-msgid "Amended?"
+msgid "Amended"
 msgstr ""
 
 #. ContractAward.properties.amended.description
@@ -622,6 +623,15 @@ msgid "Close date"
 msgstr ""
 
 #. CourtCaseParty.label
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "Case party"
+msgstr ""
+
+#. CourtCaseParty.plural
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "Case parties"
+msgstr ""
+
 #. CourtCaseParty.properties.party.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Party"
@@ -642,14 +652,15 @@ msgstr ""
 msgid "Directorship"
 msgstr ""
 
-#. Directorship.properties.director.label
-#: followthemoney/schema/Directorship.yaml
-msgid "Director"
-msgstr ""
-
+#. Directorship.plural
 #. Directorship.properties.director.reverse.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Directorships"
+msgstr ""
+
+#. Directorship.properties.director.label
+#: followthemoney/schema/Directorship.yaml
+msgid "Director"
 msgstr ""
 
 #. Directorship.properties.organization.label
@@ -802,7 +813,7 @@ msgstr ""
 
 #. Document.properties.ancestors.reverse.label
 #: followthemoney/schema/Document.yaml
-msgid "Descendant documents"
+msgid "Descendants"
 msgstr ""
 
 #. Document.properties.namesMentioned.label
@@ -860,7 +871,7 @@ msgstr ""
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
-#: followthemoney/types/text.py:7
+#: followthemoney/types/text.py:8
 msgid "Text"
 msgstr ""
 
@@ -925,6 +936,18 @@ msgstr ""
 msgid "Videos"
 msgstr ""
 
+#. Video.properties.duration.label
+#. Audio.properties.duration.label
+#. Sanction.properties.duration.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Sanction.yaml
+msgid "Duration"
+msgstr ""
+
+#. Video.properties.duration.description
+#: followthemoney/schema/Document.yaml
+msgid "Duration of the video in ms"
+msgstr ""
+
 #. Audio.label
 #: followthemoney/schema/Document.yaml
 msgid "Audio"
@@ -933,6 +956,21 @@ msgstr ""
 #. Audio.plural
 #: followthemoney/schema/Document.yaml
 msgid "Audio files"
+msgstr ""
+
+#. Audio.properties.duration.description
+#: followthemoney/schema/Document.yaml
+msgid "Duration of the audio in ms"
+msgstr ""
+
+#. Audio.properties.samplingRate.label
+#: followthemoney/schema/Document.yaml
+msgid "Sampling Rate"
+msgstr ""
+
+#. Audio.properties.samplingRate.description
+#: followthemoney/schema/Document.yaml
+msgid "Sampling rate of the audio in Hz"
 msgstr ""
 
 #. HyperText.label
@@ -994,12 +1032,13 @@ msgstr ""
 
 #. EconomicActivity.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Economic Activity"
+msgid "Customs declaration"
 msgstr ""
 
 #. EconomicActivity.plural
+#. EconomicActivity.properties.declarant.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Economic Activities"
+msgid "Customs declarations"
 msgstr ""
 
 #. EconomicActivity.description
@@ -1093,11 +1132,6 @@ msgstr ""
 #. EconomicActivity.properties.declarant.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarant"
-msgstr ""
-
-#. EconomicActivity.properties.declarant.reverse.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Customs declarations"
 msgstr ""
 
 #. EconomicActivity.properties.sender.label
@@ -1258,6 +1292,11 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
+#. Event.plural
+#: followthemoney/schema/Event.yaml
+msgid "Events"
+msgstr ""
+
 #. Event.properties.location.label
 #: followthemoney/schema/Event.yaml
 msgid "Location"
@@ -1277,9 +1316,14 @@ msgid "Country"
 msgstr ""
 
 #. Family.label
-#. Family.properties.person.reverse.label
 #: followthemoney/schema/Family.yml
 msgid "Family"
+msgstr ""
+
+#. Family.plural
+#. Family.properties.person.reverse.label
+#: followthemoney/schema/Family.yml
+msgid "Family members"
 msgstr ""
 
 #. Family.description
@@ -2113,11 +2157,6 @@ msgstr ""
 msgid "Program"
 msgstr "Programa"
 
-#. Sanction.properties.duration.label
-#: followthemoney/schema/Sanction.yaml
-msgid "Duration"
-msgstr ""
-
 #. Sanction.properties.reason.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Reason"
@@ -2160,13 +2199,13 @@ msgstr ""
 
 #. TaxRoll.label
 #: followthemoney/schema/TaxRoll.yaml
-msgid "Tax Roll"
+msgid "Tax roll"
 msgstr ""
 
 #. TaxRoll.plural
 #. TaxRoll.properties.taxee.reverse.label
 #: followthemoney/schema/TaxRoll.yaml
-msgid "Tax Rolls"
+msgid "Tax rolls"
 msgstr ""
 
 #. TaxRoll.description
@@ -2251,12 +2290,12 @@ msgstr "Notas"
 
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
-msgid "Link"
-msgstr "Vincular"
+msgid "Other link"
+msgstr ""
 
 #. UnknownLink.plural
 #: followthemoney/schema/UnknownLink.yaml
-msgid "Links"
+msgid "Other links"
 msgstr ""
 
 #. UnknownLink.properties.subject.label
@@ -2283,6 +2322,11 @@ msgstr "Vinculado desde"
 #: followthemoney/schema/Value.yaml
 msgid "Value"
 msgstr "Valor"
+
+#. Value.plural
+#: followthemoney/schema/Value.yaml
+msgid "Values"
+msgstr ""
 
 #. Value.properties.amount.label
 #: followthemoney/schema/Value.yaml
@@ -2529,7 +2573,7 @@ msgstr ""
 msgid "IP-Addresses"
 msgstr ""
 
-#: followthemoney/types/json.py:11
+#: followthemoney/types/json.py:12
 msgid "Nested data"
 msgstr ""
 
