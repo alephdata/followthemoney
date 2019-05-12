@@ -175,12 +175,9 @@ class ModelTestCase(TestCase):
         assert 0.0 == spec, spec
 
     def test_model_featured_properties(self):
-        interval = model.schemata['Interval']
-        interest = model.schemata['Interest']
-        assert 'startDate' in interval.featured and 'endDate' in \
-            interval.featured, interval
-        assert 'startDate' in interest.featured and 'endDate' in \
-            interest.featured and 'role' in interest.featured, interest
+        directorship = model.schemata['Directorship']
+        assert 'startDate' in directorship.featured and 'endDate' in \
+            directorship.featured, directorship
 
-        sprops = list(interval.sorted_properties)
-        assert len(sprops) == len(interval.properties), sprops
+        sprops = list(directorship.sorted_properties)
+        assert len(sprops) == len(directorship.properties), sprops
