@@ -100,7 +100,7 @@ export class Entity {
     entity.getProperties().forEach((prop) => {
       if (this.schema.hasProperty(prop)) {
         const localProp = this.schema.getProperty(prop.name)
-        if (localProp.qname == prop.qname) {
+        if (localProp.qname === prop.qname) {
           entity.getProperty(prop).forEach((value) => {
             this.setProperty(localProp, value)
           })

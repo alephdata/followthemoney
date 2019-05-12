@@ -33,7 +33,7 @@ export class PropertyType {
     this.isEntity = name === PropertyType.ENTITY
     this.values = new Map<string, string>()
 
-    if (!!data.values) {
+    if (data.values) {
       Object.entries(data.values).forEach(([value, label]) => {
         this.values.set(value, label)
       })
