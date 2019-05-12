@@ -40,7 +40,7 @@ export class Property {
     this.schema = schema
     this.name = property.name
     this.qname = property.qname
-    this.label = property.label
+    this.label = property.label || property.name
     this.caption = !!property.caption
     this.hidden = !!property.hidden
     this.description = property.description || null

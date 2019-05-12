@@ -16,6 +16,7 @@ export interface ISchemaDatum {
   required?: boolean
   abstract?: boolean
   matchable?: boolean
+  generated?: boolean
   description?: string
   edge?: IEdgeSpecification
   featured?: string[]
@@ -34,12 +35,14 @@ export class Schema {
   public readonly plural: string
   public readonly abstract: boolean
   public readonly matchable: boolean
+  public readonly generated: boolean
   public readonly description: string | null
   public readonly featured: string[]
   public readonly schemata: string[]
   public readonly extends: string[]
   public readonly edge?: IEdgeSpecification
   public readonly isEdge: boolean
+  public readonly isCreateable: boolean
   private properties: Map<string, Property> = new Map()
 
   constructor(model: Model, schemaName: string, config: ISchemaDatum) {
@@ -52,8 +55,10 @@ export class Schema {
     this.featured = config.featured || new Array()
     this.abstract = !!config.abstract
     this.matchable = !!config.matchable
+    this.generated = !!config.generated
     this.description = config.description || null
     this.isEdge = !!config.edge
+    this.isCreateable = !(this.abstract || this.generated)
     this.edge = config.edge
 
     Object.entries(config.properties).forEach(

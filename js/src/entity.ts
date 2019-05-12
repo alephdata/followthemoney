@@ -93,9 +93,26 @@ export class Entity {
   }
 
   /**
+   * Copy the properties from a given entity that match the local
+   * schema to this entity.
+   */
+  copyProperties(entity: Entity) {
+    entity.getProperties().forEach((prop) => {
+      if (this.schema.hasProperty(prop)) {
+        const localProp = this.schema.getProperty(prop.name)
+        if (localProp.qname == prop.qname) {
+          entity.getProperty(prop).forEach((value) => {
+            this.setProperty(localProp, value)
+          })
+        }
+      }
+    })
+  }
+
+  /**
    * Get the designated label for the given entity.
    */
-  getCaption(): string | null {
+  getCaption(): string {
     for (let property of this.getProperties()) {
       if (property.caption) {
         for (let value of this.getProperty(property)) {
@@ -103,7 +120,7 @@ export class Entity {
         }
       }
     }
-    return null
+    return this.schema.label
   }
 
   /**
