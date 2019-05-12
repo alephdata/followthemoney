@@ -7,8 +7,8 @@ Company:
     - Asset
   featured:
     - name
-    - registrationNumber
     - jurisdiction
+    - registrationNumber
     - incorporationDate
   properties:
     jurisdiction:

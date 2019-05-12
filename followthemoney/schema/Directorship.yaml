@@ -1,5 +1,6 @@
 Directorship:
   label: "Directorship"
+  plural: "Directorships"
   extends: Interest
   matchable: false
   featured:

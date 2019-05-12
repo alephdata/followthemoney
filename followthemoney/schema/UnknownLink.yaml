@@ -1,7 +1,7 @@
 # Two entities are connected but the nature of the connection is tbd
 UnknownLink: 
-  label: "Link"
-  plural: "Links"
+  label: "Other link"
+  plural: "Other links"
   extends: Interest
   matchable: false
   featured:

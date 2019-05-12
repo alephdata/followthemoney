@@ -1,6 +1,6 @@
 ContractAward:
-  label: "Contract Lot Award"
-  plural: "Contract Awards"
+  label: "Contract award"
+  plural: "Contract awards"
   description: "A contract or contract lot as awarded to a supplier."
   extends:
     - Value
@@ -43,11 +43,11 @@ ContractAward:
       label: "Decision reason"
       type: text
     cpvCode:
-      label: "CPV Code"
+      label: "CPV code"
       description: "Contract Procurement Vocabulary (what type of goods/services, EU)"
     nutsCode:
-      label: "NUTS Code"
+      label: "NUTS code"
       description: "Nomencalture of Territorial Units for Statistics (NUTS)"
     amended:
-      label: "Amended?"
+      label: "Amended"
       description: "Was this award amended, modified or updated by a subsequent document?"

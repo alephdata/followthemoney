@@ -1,6 +1,6 @@
 TaxRoll:
-  label: "Tax Roll"
-  plural: "Tax Rolls"
+  label: "Tax roll"
+  plural: "Tax rolls"
   description: "A tax declaration of an individual"
   extends: Interval
   icon: fa-bank
@@ -18,7 +18,7 @@ TaxRoll:
       range: LegalEntity
       reverse:
         name: taxRolls
-        label: "Tax Rolls"
+        label: "Tax rolls"
     country:
       label: "Country"
       type: country

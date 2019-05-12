@@ -4,6 +4,7 @@ Record:
   hidden: true
   abstract: true
   matchable: false
+  generated: true
   properties:
     index:
       label: "Index"
@@ -22,6 +23,7 @@ Row:
   label: Row
   plural: Rows
   matchable: false
+  generated: true
   properties:
     cells:
       label: "Cells"
@@ -42,6 +44,7 @@ Page:
   label: Page
   plural: Pages
   matchable: false
+  generated: true
   properties:
     bodyText:
       label: "Text"

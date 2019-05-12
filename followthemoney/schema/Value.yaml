@@ -1,5 +1,6 @@
 Value:
   label: "Value"
+  plural: "Values"
   abstract: true
   matchable: false
   properties:

@@ -7,6 +7,8 @@ Membership:
     - member
     - organization
     - role
+    - startDate
+    - endDate
   edge:
     source: organization
     target: member

@@ -1,6 +1,6 @@
 EconomicActivity:
-  label: "Economic Activity"
-  plural: "Economic Activities"
+  label: "Customs declaration"
+  plural: "Customs declarations"
   description: "An economic activity"
   matchable: false
   extends:

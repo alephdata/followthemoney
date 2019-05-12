@@ -3,3 +3,7 @@ Organization:
   label: Organization
   plural: Organizations
   matchable: true
+  featured:
+    - name
+    - legalForm
+    - country

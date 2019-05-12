@@ -9,6 +9,7 @@ Payment:
   featured:
     - payer
     - beneficiary
+    - date
     - amount
     - purpose
   edge:

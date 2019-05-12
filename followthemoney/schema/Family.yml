@@ -1,5 +1,6 @@
 Family:
   label: "Family"
+  plural: "Family members"
   description: "Family relationship between two people"
   extends: Interval
   matchable: false
@@ -18,7 +19,7 @@ Family:
       range: Person
       reverse:
         name: familyPerson
-        label: "Family"
+        label: "Family members"
     relative:
       label: "Relative"
       type: entity
