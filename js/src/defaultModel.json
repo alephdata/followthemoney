@@ -2560,6 +2560,12 @@
           "hidden": true
         }
       },
+      "featured": [
+        "title",
+        "fileName",
+        "mimeType",
+        "parent"
+      ],
       "generated": true
     },
     "PlainText": {
@@ -2582,6 +2588,12 @@
           "hidden": true
         }
       },
+      "featured": [
+        "title",
+        "fileName",
+        "mimeType",
+        "parent"
+      ],
       "generated": true
     },
     "Pages": {
@@ -2616,6 +2628,12 @@
           "reverse": "document"
         }
       },
+      "featured": [
+        "title",
+        "fileName",
+        "mimeType",
+        "parent"
+      ],
       "generated": true
     },
     "Folder": {
@@ -2653,6 +2671,10 @@
           "reverse": "ancestors"
         }
       },
+      "featured": [
+        "title",
+        "parent"
+      ],
       "generated": true
     },
     "Package": {
@@ -2668,6 +2690,12 @@
         "Folder"
       ],
       "properties": {},
+      "featured": [
+        "title",
+        "fileName",
+        "mimeType",
+        "parent"
+      ],
       "generated": true
     },
     "Workbook": {
@@ -2683,6 +2711,11 @@
         "Folder"
       ],
       "properties": {},
+      "featured": [
+        "title",
+        "fileName",
+        "parent"
+      ],
       "generated": true
     },
     "Image": {
@@ -2705,6 +2738,12 @@
           "hidden": true
         }
       },
+      "featured": [
+        "title",
+        "fileName",
+        "mimeType",
+        "parent"
+      ],
       "generated": true
     },
     "Video": {
@@ -2727,6 +2766,12 @@
           "description": "Duration of the video in ms"
         }
       },
+      "featured": [
+        "title",
+        "fileName",
+        "mimeType",
+        "parent"
+      ],
       "generated": true
     },
     "Audio": {
@@ -2756,6 +2801,12 @@
           "description": "Sampling rate of the audio in Hz"
         }
       },
+      "featured": [
+        "title",
+        "fileName",
+        "mimeType",
+        "parent"
+      ],
       "generated": true
     },
     "HyperText": {
@@ -2785,6 +2836,12 @@
           "hidden": true
         }
       },
+      "featured": [
+        "title",
+        "fileName",
+        "mimeType",
+        "parent"
+      ],
       "generated": true
     },
     "Email": {
@@ -2820,6 +2877,10 @@
           "hidden": true
         }
       },
+      "featured": [
+        "title",
+        "parent"
+      ],
       "generated": true
     },
     "Table": {
@@ -2853,6 +2914,12 @@
           "reverse": "table"
         }
       },
+      "featured": [
+        "title",
+        "fileName",
+        "mimeType",
+        "parent"
+      ],
       "generated": true
     },
     "Asset": {

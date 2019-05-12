@@ -4,6 +4,11 @@ Document:
   plural: Files
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
   properties:
     contentHash:
       label: "Checksum"
@@ -116,6 +121,11 @@ PlainText:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
   properties:
     bodyText:
       label: "Text"
@@ -130,6 +140,11 @@ Pages:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
   properties:
     pdfHash:
       label: "PDF alternative version checksum"
@@ -143,6 +158,9 @@ Folder:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - parent
 
 Package:
   extends: Folder
@@ -151,6 +169,11 @@ Package:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
 
 Workbook:
   extends: Folder
@@ -159,6 +182,11 @@ Workbook:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    # - mimeType
+    - parent
 
 Image:
   extends: Document
@@ -167,6 +195,11 @@ Image:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
   properties:
     bodyText:
       label: "Text"
@@ -180,6 +213,11 @@ Video:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
   properties:
     duration:
       label: "Duration"
@@ -193,6 +231,11 @@ Audio:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
   properties:
     duration:
       label: "Duration"
@@ -211,6 +254,11 @@ HyperText:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
   properties:
     bodyText:
       label: "Text"
@@ -231,6 +279,9 @@ Email:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - parent
   properties:
     # sender:
     #   label: "Sender"
@@ -260,6 +311,11 @@ Table:
   hidden: true
   matchable: false
   generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
   properties:
     columns:
       label: "Column headings"
