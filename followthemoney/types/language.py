@@ -38,3 +38,8 @@ class LanguageType(PropertyType):
 
     def rdf(self, value):
         return URIRef('iso-639:%s' % value)
+
+    def to_dict(self):
+        data = super(LanguageType, self).to_dict()
+        data['values'] = self.names
+        return data
