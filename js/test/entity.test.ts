@@ -51,7 +51,7 @@ describe('ftm/Entity class', () => {
       expect(fresh.getProperties()).toHaveLength(3)
     })
     it('can get a null caption', function() {
-      expect(entity.getCaption()).toBeFalsy()
+      expect(entity.getCaption()).toBe(entity.schema.label)
     })
     it('can get a text caption', function() {
       expect(person.getCaption()).toBe("Karl Marx")
