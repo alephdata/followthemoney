@@ -6,6 +6,7 @@ interface IIconStorage {
 }
 
 export const IconRegistry = {
+  SIZE: 24,
   storage: icons as IIconStorage,
 
   getIcon(iconName: string): string[] {

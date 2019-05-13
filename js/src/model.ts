@@ -1,5 +1,6 @@
 import { Schema, ISchemaDatum } from './schema'
 import { Entity, IEntityDatum } from './entity'
+import { Property } from './property'
 import { PropertyType, IPropertyTypeDatum } from './type'
 import uuid from 'uuid/v4';
 
@@ -41,6 +42,27 @@ export class Model {
       throw new Error('No such schema: ' + schemaName)
     }
     return schema;
+  }
+
+  /**
+   * Get a list of all schemata.
+   */
+  getSchemata(): Schema[] {
+    return Object.keys(this.schemata)
+                 .map((name) => this.schemata[name]) as Schema[]
+  }
+
+  /**
+   * Get a list of all unique properties.
+   */
+  getProperties(): Property[] {
+    const qnames = new Map<string, Property>()
+    this.getSchemata().forEach((schema) => {
+      schema.getProperties().forEach((prop) => {
+        qnames.set(prop.qname, prop)
+      })
+    })
+    return Array.from(qnames.values())
   }
 
   /**
