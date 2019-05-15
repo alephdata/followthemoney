@@ -7,4 +7,4 @@ class TextType(PropertyType):
     name = 'text'
     label = _('Text')
     matchable = False
-    max_size = 50 * MEGABYTE
+    max_size = 20 * MEGABYTE

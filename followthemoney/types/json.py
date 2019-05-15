@@ -11,7 +11,7 @@ class JsonType(PropertyType):
     group = None
     label = _('Nested data')
     matchable = False
-    max_size = 50 * MEGABYTE
+    max_size = 10 * MEGABYTE
 
     def pack(self, obj):
         """Encode a given value to JSON."""
