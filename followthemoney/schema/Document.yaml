@@ -17,6 +17,7 @@ Document:
       type: checksum
     title:
       label: "Title"
+      type: string
       rdf: http://purl.org/dc/elements/1.1/title
       caption: true
     author:
@@ -110,15 +111,12 @@ Document:
       label: "Processing error"
       hidden: true
       type: text
-      
-
 
 PlainText:
   # Text files, like .txt or source code.
   extends: Document
   label: Text file
   plural: Text files
-  hidden: true
   matchable: false
   generated: true
   featured:
@@ -137,7 +135,6 @@ Pages:
   extends: Document
   label: Document
   plural: Documents
-  hidden: true
   matchable: false
   generated: true
   featured:
@@ -155,7 +152,6 @@ Folder:
   extends: Document
   label: Folder
   plural: Folders
-  hidden: true
   matchable: false
   generated: true
   featured:
@@ -166,7 +162,6 @@ Package:
   extends: Folder
   label: Package
   plural: Packages
-  hidden: true
   matchable: false
   generated: true
   featured:
@@ -179,7 +174,6 @@ Workbook:
   extends: Folder
   label: Workbook
   plural: Workbooks
-  hidden: true
   matchable: false
   generated: true
   featured:
@@ -192,7 +186,6 @@ Image:
   extends: Document
   label: Image
   plural: Images
-  hidden: true
   matchable: false
   generated: true
   featured:
@@ -203,14 +196,13 @@ Image:
   properties:
     bodyText:
       label: "Text"
-      hidden: true
       type: "text"
+      hidden: true
 
 Video:
   extends: Document
   label: Video
   plural: Videos
-  hidden: true
   matchable: false
   generated: true
   featured:
@@ -228,7 +220,6 @@ Audio:
   extends: Document
   label: Audio
   plural: Audio files
-  hidden: true
   matchable: false
   generated: true
   featured:
@@ -251,7 +242,6 @@ HyperText:
   extends: Document
   label: Web page
   plural: Web pages
-  hidden: true
   matchable: false
   generated: true
   featured:
@@ -262,12 +252,12 @@ HyperText:
   properties:
     bodyText:
       label: "Text"
-      hidden: true
       type: "text"
+      hidden: true
     bodyHtml:
       label: "HTML"
-      hidden: true
       type: text
+      hidden: true
 
 Email:
   extends:
@@ -276,29 +266,53 @@ Email:
     - HyperText
   label: E-Mail
   plural: E-Mails
-  hidden: true
   matchable: false
   generated: true
   featured:
-    - title
+    - subject
     - parent
   properties:
-    # sender:
-    #   label: "Sender"
-    #   type: email
-    # recipient:
-    #   label: "Recipient"
-    #   type: email
-    # carbonCopy:
-    #   label: "Carbon copy"
-    #   type: email
-    # blindCarbonCopy:
-    #   label: "Blind carbon copy"
-    #   type: email
+    subject:
+      label: Subject
+      type: string
+      caption: true
+    sender:
+      label: "Sender"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: emailsSent
+        label: "E-Mails sent"
+    recipients:
+      label: "Recipients"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: emailsReceived
+        label: "E-Mails received"
+    to:
+      label: "To"
+      type: string
+    cc:
+      label: "CC"
+      description: "Carbon copy"
+      type: string
+    bcc:
+      label: "BCC"
+      description: "Blind carbon copy"
+      type: string
     inReplyTo:
       label: "In Reply To"
       description: "Message IDs of the preceding emails in the thread"
       type: identifier
+      hidden: true
+    inReplyToEmail:
+      label: Responding to
+      type: entity
+      range: Email
+      reverse:
+        name: responses
+        label: "Responses"
     headers:
       label: "Raw headers"
       hidden: true
@@ -308,7 +322,6 @@ Table:
   extends: Document
   label: Table
   plural: Tables
-  hidden: true
   matchable: false
   generated: true
   featured:
