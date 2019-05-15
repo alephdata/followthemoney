@@ -67,7 +67,7 @@ class Schema(object):
                 self.names.add(ancestor.name)
                 ancestor.descendants.add(self)
 
-        for prop in self.properties.values():
+        for prop in list(self.properties.values()):
             prop.generate()
 
         for featured in self.featured:

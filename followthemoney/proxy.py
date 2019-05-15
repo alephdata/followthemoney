@@ -86,11 +86,22 @@ class EntityProxy(object):
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
             return
+
+        # Don't allow setting the reverse properties:
+        if prop.stub:
+            if quiet:
+                return
+            msg = gettext("Stub property (%s): %s")
+            raise InvalidData(msg % (self.schema, prop))
+
         for value in ensure_list(values):
             if not cleaned:
                 value = prop.type.clean(value, countries=self.countries)
             if value is None or not isinstance(value, Hashable):
                 continue
+            if prop.type == registry.entity and value == self.id:
+                msg = gettext("Self-relationship (%s): %s")
+                raise InvalidData(msg % (self.schema, prop))
             if prop not in self._properties:
                 self._properties[prop] = set()
 

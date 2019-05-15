@@ -65,7 +65,8 @@ class EntityLinker(object):
         cluster = self.clusters.get(proxy.id)
         if cluster is not None:
             linked.id = cluster.id
-            linked.add('sameAs', cluster.entities, quiet=True)
+            entities = [e for e in cluster.entities if e != cluster.id]
+            linked.add('sameAs', entities, quiet=True)
         for prop in proxy.iterprops():
             if prop.type != registry.entity:
                 continue

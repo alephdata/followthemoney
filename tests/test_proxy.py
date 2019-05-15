@@ -54,6 +54,14 @@ class ProxyTestCase(TestCase):
             proxy.add('banana', 'yellow')
         proxy.add('banana', 'yellow', quiet=True)
 
+        mem = model.make_entity('Membership')
+        mem.id = 'foo'
+        with assert_raises(InvalidData):
+            proxy.add('directorshipDirector', mem)
+
+        with assert_raises(InvalidData):
+            proxy.add('sameAs', proxy)
+
         with assert_raises(InvalidData):
             proxy.get('banana')
         assert [] == proxy.get('banana', quiet=True)
