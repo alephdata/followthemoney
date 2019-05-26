@@ -132,9 +132,9 @@ class ProxyTestCase(TestCase):
 
     def test_max_size(self):
         t = registry.name
-        prev_size = t.max_size
         proxy = EntityProxy.from_dict(model, ENTITY)
-        t.max_size = 10
+        prev_size = t.max_size
+        t.max_size = len(proxy) + 10
         assert len(proxy.get('name')) == 1
         proxy.add('name', 'Louis George Maurice Adolphe Roche Albert Abel')
         assert len(proxy.get('name')) == 1

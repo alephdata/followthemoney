@@ -19,7 +19,8 @@ log = logging.getLogger(__name__)
 class EntityProxy(object):
     """A wrapper object for an entity, with utility functions for the
     introspection and manipulation of its properties."""
-    __slots__ = ['schema', 'id', 'key_prefix', '_properties', 'context']
+    __slots__ = ['schema', 'id', 'key_prefix', 'context',
+                 '_properties', '_size']
 
     def __init__(self, model, data, key_prefix=None):
         data = dict(data)
@@ -31,6 +32,7 @@ class EntityProxy(object):
         self.key_prefix = stringify(key_prefix)
         self.context = data
         self._properties = {}
+        self._size = 0
 
         if is_mapping(properties):
             for key, value in properties.items():
@@ -102,19 +104,19 @@ class EntityProxy(object):
             if prop.type == registry.entity and value == self.id:
                 msg = gettext("Self-relationship (%s): %s")
                 raise InvalidData(msg % (self.schema, prop))
-            if prop not in self._properties:
-                self._properties[prop] = set()
 
             # Somewhat hacky: limit the maximum size of any particular
             # field to avoid overloading upstream aleph/elasticsearch.
+            value_size = prop.type.values_size(value)
             if prop.type.max_size is not None:
-                existing_size = prop.type.values_size(self._properties[prop])
-                new_size = existing_size + prop.type.values_size(value)
-                if new_size > prop.type.max_size:
+                if self._size + value_size > prop.type.max_size:
                     msg = "[%s] too large. Rejecting additional values."
                     log.warning(msg, prop.name)
                     continue
+            self._size += value_size
 
+            if prop not in self._properties:
+                self._properties[prop] = set()
             self._properties[prop].add(value)
 
     def set(self, prop, values, cleaned=False, quiet=False):
@@ -275,10 +277,7 @@ class EntityProxy(object):
         return '<E(%r,%r)>' % (self.id, str(self))
 
     def __len__(self):
-        total = 0
-        for prop in self.iterprops():
-            total += prop.type.values_size(self.get(prop, quiet=True))
-        return total
+        return self._size
 
     def __hash__(self):
         return hash(self.id)

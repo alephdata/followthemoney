@@ -18,7 +18,7 @@ setup(
     install_requires=[
         'babel',
         'banal >= 0.4.2',
-        'stringcase',
+        'stringcase >= 1.2.0',
         'pyyaml >= 5.1',
         'requests[security] >= 2.21.0',
         'python-levenshtein >= 0.12.0',
@@ -31,8 +31,8 @@ setup(
         'urlnormalizer >= 1.2.0',
         'pantomime >= 0.3.2',
         'pytz >= 2018.5',
-        'rdflib >= 4.1',
-        'networkx >= 2.2',
+        'rdflib >= 4.2.2',
+        'networkx >= 2.3',
         'openpyxl >= 2.6.0',
     ],
     extras_require={
