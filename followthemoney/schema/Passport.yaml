@@ -11,6 +11,8 @@ Passport:
     - holder
     - startDate
     - endDate
+  caption:
+    - passportNumber
   properties:
     holder:
       label: "Document holder"

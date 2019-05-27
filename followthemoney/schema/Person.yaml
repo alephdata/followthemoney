@@ -9,6 +9,9 @@ Person:
     - name
     - nationality
     - birthDate
+  caption:
+    - name
+    - lastName
   properties:
     title:
       label: Title

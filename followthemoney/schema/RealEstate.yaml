@@ -8,6 +8,9 @@ RealEstate:
     - registrationNumber
     - address
     - country
+  caption:
+    - name
+    - registrationNumber
   properties:
     latitude:
       label: Latitude

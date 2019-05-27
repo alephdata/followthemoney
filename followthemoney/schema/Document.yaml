@@ -9,6 +9,9 @@ Document:
     - fileName
     - mimeType
     - parent
+  caption:
+    - fileName
+    - title
   properties:
     contentHash:
       label: "Checksum"
@@ -124,6 +127,9 @@ PlainText:
     - fileName
     - mimeType
     - parent
+  caption:
+    - fileName
+    - title
   properties:
     bodyText:
       label: "Text"
@@ -142,6 +148,9 @@ Pages:
     - fileName
     - mimeType
     - parent
+  caption:
+    - fileName
+    - title
   properties:
     pdfHash:
       label: "PDF alternative version checksum"
@@ -157,6 +166,9 @@ Folder:
   featured:
     - title
     - parent
+  caption:
+    - fileName
+    - title
 
 Package:
   extends: Folder
@@ -169,6 +181,9 @@ Package:
     - fileName
     - mimeType
     - parent
+  caption:
+    - fileName
+    - title
 
 Workbook:
   extends: Folder
@@ -181,6 +196,9 @@ Workbook:
     - fileName
     # - mimeType
     - parent
+  caption:
+    - fileName
+    - title
 
 Image:
   extends: Document
@@ -193,6 +211,9 @@ Image:
     - fileName
     - mimeType
     - parent
+  caption:
+    - fileName
+    - title
   properties:
     bodyText:
       label: "Text"
@@ -210,6 +231,9 @@ Video:
     - fileName
     - mimeType
     - parent
+  caption:
+    - fileName
+    - title
   properties:
     duration:
       label: "Duration"
@@ -227,6 +251,9 @@ Audio:
     - fileName
     - mimeType
     - parent
+  caption:
+    - fileName
+    - title
   properties:
     duration:
       label: "Duration"
@@ -249,6 +276,9 @@ HyperText:
     - fileName
     - mimeType
     - parent
+  caption:
+    - title
+    - fileName
   properties:
     bodyText:
       label: "Text"
@@ -271,6 +301,10 @@ Email:
   featured:
     - subject
     - parent
+  caption:
+    - subject
+    - title
+    - fileName
   properties:
     subject:
       label: Subject
@@ -329,6 +363,9 @@ Table:
     - fileName
     - mimeType
     - parent
+  caption:
+    - title
+    - fileName
   properties:
     columns:
       label: "Column headings"

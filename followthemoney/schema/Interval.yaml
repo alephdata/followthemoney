@@ -2,9 +2,6 @@ Interval:
   label: "Interval"
   matchable: false
   abstract: true
-  # featured:
-  #   - startDate
-  #   - endDate
   properties:
     startDate:
       label: "Start date"

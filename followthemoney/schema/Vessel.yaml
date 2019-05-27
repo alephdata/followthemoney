@@ -9,6 +9,9 @@ Vessel:
     - imoNumber
     - type
     - flag
+  caption:
+    - name
+    - imoNumber
   properties:
     imoNumber:
       label: IMO Number

@@ -211,10 +211,10 @@ class EntityProxy(object):
 
     @property
     def caption(self):
-        for prop in self.iterprops():
-            if prop.caption:
-                for value in self.get(prop):
-                    return value
+        for prop in self.schema.caption:
+            for value in self.get(prop):
+                return value
+        return self.schema.label
 
     @property
     def names(self):
@@ -271,7 +271,7 @@ class EntityProxy(object):
             self.add(prop, value, cleaned=True, quiet=True)
 
     def __str__(self):
-        return self.caption or self.schema.name
+        return self.caption
 
     def __repr__(self):
         return '<E(%r,%r)>' % (self.id, str(self))

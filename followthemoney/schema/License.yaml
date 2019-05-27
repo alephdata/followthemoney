@@ -11,6 +11,8 @@ License:
     - authority
     - contractDate
     - commodities
+  caption:
+    - name
   properties:
     area:
       label: "Area"

@@ -37,6 +37,11 @@ class Schema(object):
         # first, or in an abridged view of the entity.
         self.featured = ensure_list(data.get('featured'))
 
+        # Mark a set of properties to be used for the entity's caption.
+        # They will be checked in order and the first existant value will
+        # be used.
+        self.caption = ensure_list(data.get('caption'))
+
         # A transform of the entity into an edge for its representation in
         # the context of a property graph representation like Neo4J/Gephi.
         edge = data.get('edge', {})
@@ -73,6 +78,10 @@ class Schema(object):
         for featured in self.featured:
             if self.get(featured) is None:
                 raise InvalidModel("Missing featured property: %s" % featured)
+
+        for caption in self.caption:
+            if self.get(caption) is None:
+                raise InvalidModel("Missing caption property: %s" % caption)
 
         if self.edge:
             if self.get(self.edge_source) is None:
@@ -172,6 +181,8 @@ class Schema(object):
             }
         if len(self.featured):
             data['featured'] = self.featured
+        if len(self.caption):
+            data['caption'] = self.caption
         if self.description:
             data['description'] = self.description
         if self.abstract:

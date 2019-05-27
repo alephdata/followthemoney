@@ -11,6 +11,8 @@ Contract:
     - amount
     - authority
     - contractDate
+  caption:
+    - name
   properties:
     authority:
       label: "Contract authority"

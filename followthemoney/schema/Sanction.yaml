@@ -10,6 +10,8 @@ Sanction:
     - program
     - startDate
     - endDate
+  caption:
+    - program
   properties:
     entity:
       label: "Entity"

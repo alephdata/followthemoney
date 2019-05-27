@@ -17,7 +17,6 @@ class Property(object):
         self.data = data
         self._label = data.get('label', name)
         self._description = data.get('description')
-        self.caption = data.get('caption', False)
         self.required = data.get('required', False)
         self.hidden = data.get('hidden', False)
         self.stub = data.get('stub', False)
@@ -94,8 +93,6 @@ class Property(object):
             data['stub'] = True
         if self.required:
             data['required'] = True
-        if self.caption:
-            data['caption'] = True
         if self.matchable:
             data['matchable'] = True
         if self.hidden:

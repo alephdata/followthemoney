@@ -7,6 +7,9 @@ CourtCase:
     - name
     - fileDate
     - caseNumber
+  caption:
+    - name
+    - caseNumber
   properties:
     category:
       label: Category

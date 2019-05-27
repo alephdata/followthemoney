@@ -6,6 +6,10 @@ BankAccount:
   featured:
     - accountNumber
     - bankName
+  caption:
+    - name
+    - iban
+    - accountNumber
   properties:
     bankName:
       label: Bank Name

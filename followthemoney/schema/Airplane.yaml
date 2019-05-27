@@ -9,6 +9,9 @@ Airplane:
     - country            # Qatar
     - operator           # Qatar Airways
     - owner              # Qatar Airways
+  caption:
+    - name
+    - registrationNumber
   properties:
     serialNumber:           # 36576093870
       label: Serial Number

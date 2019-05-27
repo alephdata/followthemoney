@@ -10,6 +10,8 @@ Company:
     - jurisdiction
     - registrationNumber
     - incorporationDate
+  caption:
+    - name
   properties:
     jurisdiction:
       label: Jurisdiction

@@ -8,6 +8,9 @@ LegalEntity:
     - name
     - legalForm
     - country
+  caption:
+    - name
+    - registrationNumber
   properties:
     email:
       label: E-Mail

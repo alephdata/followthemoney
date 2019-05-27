@@ -9,6 +9,9 @@ Vehicle:
     - registrationNumber    
     - country
     - owner
+  caption:
+    - name
+    - registrationNumber
   properties:
     registrationNumber:
       label: Registration Number
