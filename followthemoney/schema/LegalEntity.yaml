@@ -10,6 +10,7 @@ LegalEntity:
     - country
   caption:
     - name
+    - email
     - registrationNumber
   properties:
     email:
