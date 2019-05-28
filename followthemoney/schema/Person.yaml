@@ -12,6 +12,7 @@ Person:
   caption:
     - name
     - lastName
+    - email
   properties:
     title:
       label: Title

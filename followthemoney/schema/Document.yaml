@@ -304,6 +304,7 @@ Email:
   caption:
     - subject
     - title
+    - name
     - fileName
   properties:
     subject:
@@ -365,6 +366,7 @@ Table:
     - parent
   caption:
     - title
+    - name
     - fileName
   properties:
     columns:
