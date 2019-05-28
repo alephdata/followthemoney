@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-05-27 17:30+0200\n"
+"POT-Creation-Date: 2019-05-28 10:32+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2019\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -42,12 +42,12 @@ msgstr "Unbekannte Eigenschaft (%s): %s"
 #: followthemoney/proxy.py:96
 #, python-format
 msgid "Stub property (%s): %s"
-msgstr ""
+msgstr "Pseudofeld (%s): %s"
 
 #: followthemoney/proxy.py:105
 #, python-format
 msgid "Self-relationship (%s): %s"
-msgstr ""
+msgstr "Selbst-Beziehung (%s): %s"
 
 #: followthemoney/schema.py:166
 msgid "Entity failed validation"
@@ -497,12 +497,12 @@ msgstr "Abgebrochen?"
 #. ContractAward.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract award"
-msgstr ""
+msgstr "Vergabezuschlag"
 
 #. ContractAward.plural
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract awards"
-msgstr ""
+msgstr "Vergabezuschläge"
 
 #. ContractAward.description
 #: followthemoney/schema/ContractAward.yaml
@@ -559,7 +559,7 @@ msgstr "Entscheidungsgrund"
 #. ContractAward.properties.cpvCode.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "CPV code"
-msgstr ""
+msgstr "CPV-Code"
 
 #. ContractAward.properties.cpvCode.description
 #: followthemoney/schema/ContractAward.yaml
@@ -569,7 +569,7 @@ msgstr "Gemeinsames Vergabevokabular (Art der Dienstleistung oder des Gutes)"
 #. ContractAward.properties.nutsCode.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "NUTS code"
-msgstr ""
+msgstr "NUTS-Code"
 
 #. ContractAward.properties.nutsCode.description
 #: followthemoney/schema/ContractAward.yaml
@@ -579,7 +579,7 @@ msgstr "Nomenklatur der Einheiten Territorialer Statistik (NUTS)"
 #. ContractAward.properties.amended.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Amended"
-msgstr ""
+msgstr "Ergänzt"
 
 #. ContractAward.properties.amended.description
 #: followthemoney/schema/ContractAward.yaml
@@ -636,12 +636,12 @@ msgstr "Schlussdatum"
 #. CourtCaseParty.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case party"
-msgstr ""
+msgstr "Prozessbeteiligter"
 
 #. CourtCaseParty.plural
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case parties"
-msgstr ""
+msgstr "Prozessbeteiligte"
 
 #. CourtCaseParty.properties.party.label
 #: followthemoney/schema/CourtCaseParty.yaml
@@ -825,7 +825,7 @@ msgstr "Ahnen"
 #. Document.properties.ancestors.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Descendants"
-msgstr ""
+msgstr "Abkömmlinge"
 
 #. Document.properties.namesMentioned.label
 #: followthemoney/schema/Document.yaml
@@ -957,7 +957,7 @@ msgstr "Dauer"
 #. Video.properties.duration.description
 #: followthemoney/schema/Document.yaml
 msgid "Duration of the video in ms"
-msgstr ""
+msgstr "Videolänge in ms"
 
 #. Audio.label
 #: followthemoney/schema/Document.yaml
@@ -972,17 +972,17 @@ msgstr "Audiodateien"
 #. Audio.properties.duration.description
 #: followthemoney/schema/Document.yaml
 msgid "Duration of the audio in ms"
-msgstr ""
+msgstr "Audiolänge in ms"
 
 #. Audio.properties.samplingRate.label
 #: followthemoney/schema/Document.yaml
 msgid "Sampling Rate"
-msgstr ""
+msgstr "Sample-Rate"
 
 #. Audio.properties.samplingRate.description
 #: followthemoney/schema/Document.yaml
 msgid "Sampling rate of the audio in Hz"
-msgstr ""
+msgstr "Sample-Rate der Audiodatei in Hertz"
 
 #. HyperText.label
 #: followthemoney/schema/Document.yaml
@@ -1026,42 +1026,42 @@ msgstr "Absender"
 #. Email.properties.sender.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "E-Mails sent"
-msgstr ""
+msgstr "Gesendete E-Mails"
 
 #. Email.properties.recipients.label
 #: followthemoney/schema/Document.yaml
 msgid "Recipients"
-msgstr ""
+msgstr "Empfänger"
 
 #. Email.properties.recipients.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "E-Mails received"
-msgstr ""
+msgstr "Empfangene E-Mails"
 
 #. Email.properties.to.label
 #: followthemoney/schema/Document.yaml
 msgid "To"
-msgstr ""
+msgstr "An"
 
 #. Email.properties.cc.label
 #: followthemoney/schema/Document.yaml
 msgid "CC"
-msgstr ""
+msgstr "CC"
 
 #. Email.properties.cc.description
 #: followthemoney/schema/Document.yaml
 msgid "Carbon copy"
-msgstr ""
+msgstr "Kopie"
 
 #. Email.properties.bcc.label
 #: followthemoney/schema/Document.yaml
 msgid "BCC"
-msgstr ""
+msgstr "BCC"
 
 #. Email.properties.bcc.description
 #: followthemoney/schema/Document.yaml
 msgid "Blind carbon copy"
-msgstr ""
+msgstr "Blindkopie"
 
 #. Email.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml
@@ -1076,12 +1076,12 @@ msgstr "Nachrichten-IDs der vorangegangenen Nachrichten in dem Thread"
 #. Email.properties.inReplyToEmail.label
 #: followthemoney/schema/Document.yaml
 msgid "Responding to"
-msgstr ""
+msgstr "Beantwortet"
 
 #. Email.properties.inReplyToEmail.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Responses"
-msgstr ""
+msgstr "Antworten"
 
 #. Email.properties.headers.label
 #: followthemoney/schema/Document.yaml
@@ -1107,7 +1107,7 @@ msgstr "Spaltentitel"
 #. EconomicActivity.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declaration"
-msgstr ""
+msgstr "Zollerklärungen"
 
 #. EconomicActivity.plural
 #. EconomicActivity.properties.declarant.reverse.label
@@ -1366,7 +1366,7 @@ msgstr "Ereignis"
 #. Event.plural
 #: followthemoney/schema/Event.yaml
 msgid "Events"
-msgstr ""
+msgstr "Ereignisse"
 
 #. Event.properties.location.label
 #: followthemoney/schema/Event.yaml
@@ -1395,7 +1395,7 @@ msgstr "Familie"
 #. Family.properties.person.reverse.label
 #: followthemoney/schema/Family.yml
 msgid "Family members"
-msgstr ""
+msgstr "Familienmitglieder"
 
 #. Family.description
 #: followthemoney/schema/Family.yml
@@ -2273,13 +2273,13 @@ msgstr "Vorgänger"
 #. TaxRoll.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Tax roll"
-msgstr ""
+msgstr "Steuererklärung"
 
 #. TaxRoll.plural
 #. TaxRoll.properties.taxee.reverse.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Tax rolls"
-msgstr ""
+msgstr "Steuererklärungen"
 
 #. TaxRoll.description
 #: followthemoney/schema/TaxRoll.yaml
@@ -2364,17 +2364,17 @@ msgstr "Notizen"
 #. Thing.properties.indexUpdatedAt.label
 #: followthemoney/schema/Thing.yaml
 msgid "Index updated at"
-msgstr ""
+msgstr "Index-Aktualisierungsdatum"
 
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
-msgstr ""
+msgstr "Andere Verbindung"
 
 #. UnknownLink.plural
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other links"
-msgstr ""
+msgstr "Andere Verbindungen"
 
 #. UnknownLink.properties.subject.reverse.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -2399,7 +2399,7 @@ msgstr "Wert"
 #. Value.plural
 #: followthemoney/schema/Value.yaml
 msgid "Values"
-msgstr ""
+msgstr "Werte"
 
 #. Value.properties.amount.label
 #: followthemoney/schema/Value.yaml
