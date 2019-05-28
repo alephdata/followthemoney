@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-05-12 14:23+0200\n"
+"POT-Creation-Date: 2019-05-27 17:30+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2019\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -22,24 +22,34 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: followthemoney/property.py:72
+#: followthemoney/property.py:71
 msgid "Invalid value"
 msgstr "Ungültiger Wert"
 
-#: followthemoney/property.py:76
+#: followthemoney/property.py:75
 msgid "Required"
 msgstr "Erforderlich"
 
-#: followthemoney/proxy.py:29
+#: followthemoney/proxy.py:30
 msgid "No schema for entity."
 msgstr "Diese Entität hat kein Schema"
 
-#: followthemoney/proxy.py:61
+#: followthemoney/proxy.py:63
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Unbekannte Eigenschaft (%s): %s"
 
-#: followthemoney/schema.py:157
+#: followthemoney/proxy.py:96
+#, python-format
+msgid "Stub property (%s): %s"
+msgstr ""
+
+#: followthemoney/proxy.py:105
+#, python-format
+msgid "Self-relationship (%s): %s"
+msgstr ""
+
+#: followthemoney/schema.py:166
 msgid "Entity failed validation"
 msgstr "Die Entität konnte nicht validiert werden"
 
@@ -1000,6 +1010,59 @@ msgstr "E-Mail"
 msgid "E-Mails"
 msgstr "E-Mails"
 
+#. Email.properties.subject.label
+#. UnknownLink.properties.subject.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/UnknownLink.yaml
+msgid "Subject"
+msgstr "Subjekt"
+
+#. Email.properties.sender.label
+#. EconomicActivity.properties.sender.label
+#: followthemoney/schema/Document.yaml
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Sender"
+msgstr "Absender"
+
+#. Email.properties.sender.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails sent"
+msgstr ""
+
+#. Email.properties.recipients.label
+#: followthemoney/schema/Document.yaml
+msgid "Recipients"
+msgstr ""
+
+#. Email.properties.recipients.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails received"
+msgstr ""
+
+#. Email.properties.to.label
+#: followthemoney/schema/Document.yaml
+msgid "To"
+msgstr ""
+
+#. Email.properties.cc.label
+#: followthemoney/schema/Document.yaml
+msgid "CC"
+msgstr ""
+
+#. Email.properties.cc.description
+#: followthemoney/schema/Document.yaml
+msgid "Carbon copy"
+msgstr ""
+
+#. Email.properties.bcc.label
+#: followthemoney/schema/Document.yaml
+msgid "BCC"
+msgstr ""
+
+#. Email.properties.bcc.description
+#: followthemoney/schema/Document.yaml
+msgid "Blind carbon copy"
+msgstr ""
+
 #. Email.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml
 msgid "In Reply To"
@@ -1009,6 +1072,16 @@ msgstr "Als Antwort auf"
 #: followthemoney/schema/Document.yaml
 msgid "Message IDs of the preceding emails in the thread"
 msgstr "Nachrichten-IDs der vorangegangenen Nachrichten in dem Thread"
+
+#. Email.properties.inReplyToEmail.label
+#: followthemoney/schema/Document.yaml
+msgid "Responding to"
+msgstr ""
+
+#. Email.properties.inReplyToEmail.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "Responses"
+msgstr ""
 
 #. Email.properties.headers.label
 #: followthemoney/schema/Document.yaml
@@ -1135,11 +1208,6 @@ msgstr "Anmelder"
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarant"
 msgstr "Zollanmelder"
-
-#. EconomicActivity.properties.sender.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Sender"
-msgstr "Absender"
 
 #. EconomicActivity.properties.sender.description
 #: followthemoney/schema/EconomicActivity.yaml
@@ -2293,6 +2361,11 @@ msgstr "Adresse"
 msgid "Notes"
 msgstr "Notizen"
 
+#. Thing.properties.indexUpdatedAt.label
+#: followthemoney/schema/Thing.yaml
+msgid "Index updated at"
+msgstr ""
+
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
@@ -2302,11 +2375,6 @@ msgstr ""
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other links"
 msgstr ""
-
-#. UnknownLink.properties.subject.label
-#: followthemoney/schema/UnknownLink.yaml
-msgid "Subject"
-msgstr "Subjekt"
 
 #. UnknownLink.properties.subject.reverse.label
 #: followthemoney/schema/UnknownLink.yaml

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-05-12 14:23+0200\n"
+"POT-Creation-Date: 2019-05-27 17:30+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -23,24 +23,34 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: followthemoney/property.py:72
+#: followthemoney/property.py:71
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
-#: followthemoney/property.py:76
+#: followthemoney/property.py:75
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/proxy.py:29
+#: followthemoney/proxy.py:30
 msgid "No schema for entity."
 msgstr "Для сущности отсутствует схема."
 
-#: followthemoney/proxy.py:61
+#: followthemoney/proxy.py:63
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
 
-#: followthemoney/schema.py:157
+#: followthemoney/proxy.py:96
+#, python-format
+msgid "Stub property (%s): %s"
+msgstr ""
+
+#: followthemoney/proxy.py:105
+#, python-format
+msgid "Self-relationship (%s): %s"
+msgstr ""
+
+#: followthemoney/schema.py:166
 msgid "Entity failed validation"
 msgstr "Сущность не прошла валидацию"
 
@@ -490,12 +500,12 @@ msgstr "Отменен?"
 #. ContractAward.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract award"
-msgstr ""
+msgstr "Гос. контракт"
 
 #. ContractAward.plural
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract awards"
-msgstr ""
+msgstr "Гос. контракты"
 
 #. ContractAward.description
 #: followthemoney/schema/ContractAward.yaml
@@ -552,7 +562,7 @@ msgstr "Причина решения"
 #. ContractAward.properties.cpvCode.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "CPV code"
-msgstr ""
+msgstr "CPV-код"
 
 #. ContractAward.properties.cpvCode.description
 #: followthemoney/schema/ContractAward.yaml
@@ -562,7 +572,7 @@ msgstr "Единый закупочный классификатор (класс
 #. ContractAward.properties.nutsCode.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "NUTS code"
-msgstr ""
+msgstr "NUTS-код"
 
 #. ContractAward.properties.nutsCode.description
 #: followthemoney/schema/ContractAward.yaml
@@ -572,7 +582,7 @@ msgstr "Номенклатура территориальных единиц (NU
 #. ContractAward.properties.amended.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Amended"
-msgstr ""
+msgstr "Изменения"
 
 #. ContractAward.properties.amended.description
 #: followthemoney/schema/ContractAward.yaml
@@ -628,12 +638,12 @@ msgstr "Дата закрытия"
 #. CourtCaseParty.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case party"
-msgstr ""
+msgstr "Сторона"
 
 #. CourtCaseParty.plural
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case parties"
-msgstr ""
+msgstr "Стороны"
 
 #. CourtCaseParty.properties.party.label
 #: followthemoney/schema/CourtCaseParty.yaml
@@ -817,7 +827,7 @@ msgstr "Родительские сущности"
 #. Document.properties.ancestors.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Descendants"
-msgstr ""
+msgstr "Дочерние документы"
 
 #. Document.properties.namesMentioned.label
 #: followthemoney/schema/Document.yaml
@@ -949,7 +959,7 @@ msgstr "Продолжительность"
 #. Video.properties.duration.description
 #: followthemoney/schema/Document.yaml
 msgid "Duration of the video in ms"
-msgstr ""
+msgstr "Продолжительность видео (мс)"
 
 #. Audio.label
 #: followthemoney/schema/Document.yaml
@@ -964,17 +974,17 @@ msgstr "Аудиозаписи"
 #. Audio.properties.duration.description
 #: followthemoney/schema/Document.yaml
 msgid "Duration of the audio in ms"
-msgstr ""
+msgstr "Продолжительность аудиозаписи (мс)"
 
 #. Audio.properties.samplingRate.label
 #: followthemoney/schema/Document.yaml
 msgid "Sampling Rate"
-msgstr ""
+msgstr "Частота кадров"
 
 #. Audio.properties.samplingRate.description
 #: followthemoney/schema/Document.yaml
 msgid "Sampling rate of the audio in Hz"
-msgstr ""
+msgstr "Частота дискретизации аудио (Гц)"
 
 #. HyperText.label
 #: followthemoney/schema/Document.yaml
@@ -1002,6 +1012,59 @@ msgstr "Эл. письмо"
 msgid "E-Mails"
 msgstr "Эл. письма"
 
+#. Email.properties.subject.label
+#. UnknownLink.properties.subject.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/UnknownLink.yaml
+msgid "Subject"
+msgstr "Субъект"
+
+#. Email.properties.sender.label
+#. EconomicActivity.properties.sender.label
+#: followthemoney/schema/Document.yaml
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Sender"
+msgstr "Отправитель"
+
+#. Email.properties.sender.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails sent"
+msgstr ""
+
+#. Email.properties.recipients.label
+#: followthemoney/schema/Document.yaml
+msgid "Recipients"
+msgstr ""
+
+#. Email.properties.recipients.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails received"
+msgstr ""
+
+#. Email.properties.to.label
+#: followthemoney/schema/Document.yaml
+msgid "To"
+msgstr ""
+
+#. Email.properties.cc.label
+#: followthemoney/schema/Document.yaml
+msgid "CC"
+msgstr ""
+
+#. Email.properties.cc.description
+#: followthemoney/schema/Document.yaml
+msgid "Carbon copy"
+msgstr ""
+
+#. Email.properties.bcc.label
+#: followthemoney/schema/Document.yaml
+msgid "BCC"
+msgstr ""
+
+#. Email.properties.bcc.description
+#: followthemoney/schema/Document.yaml
+msgid "Blind carbon copy"
+msgstr ""
+
 #. Email.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml
 msgid "In Reply To"
@@ -1011,6 +1074,16 @@ msgstr "In-Reply-To"
 #: followthemoney/schema/Document.yaml
 msgid "Message IDs of the preceding emails in the thread"
 msgstr "Указатель Message-ID, для которого это письмо является ответом"
+
+#. Email.properties.inReplyToEmail.label
+#: followthemoney/schema/Document.yaml
+msgid "Responding to"
+msgstr ""
+
+#. Email.properties.inReplyToEmail.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "Responses"
+msgstr ""
 
 #. Email.properties.headers.label
 #: followthemoney/schema/Document.yaml
@@ -1036,7 +1109,7 @@ msgstr "Заголовки столбцов"
 #. EconomicActivity.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declaration"
-msgstr ""
+msgstr "Таможенная декларация"
 
 #. EconomicActivity.plural
 #. EconomicActivity.properties.declarant.reverse.label
@@ -1138,11 +1211,6 @@ msgstr "Декларант"
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarant"
 msgstr "Таможенный декларант"
-
-#. EconomicActivity.properties.sender.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Sender"
-msgstr "Отправитель"
 
 #. EconomicActivity.properties.sender.description
 #: followthemoney/schema/EconomicActivity.yaml
@@ -1301,7 +1369,7 @@ msgstr "Событие"
 #. Event.plural
 #: followthemoney/schema/Event.yaml
 msgid "Events"
-msgstr ""
+msgstr "События"
 
 #. Event.properties.location.label
 #: followthemoney/schema/Event.yaml
@@ -1330,7 +1398,7 @@ msgstr "Семья"
 #. Family.properties.person.reverse.label
 #: followthemoney/schema/Family.yml
 msgid "Family members"
-msgstr ""
+msgstr "Члены семьи"
 
 #. Family.description
 #: followthemoney/schema/Family.yml
@@ -2208,13 +2276,13 @@ msgstr "Правопредшественники"
 #. TaxRoll.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Tax roll"
-msgstr ""
+msgstr "Налоговая ведомость"
 
 #. TaxRoll.plural
 #. TaxRoll.properties.taxee.reverse.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Tax rolls"
-msgstr ""
+msgstr "Налоговые ведомости"
 
 #. TaxRoll.description
 #: followthemoney/schema/TaxRoll.yaml
@@ -2296,20 +2364,20 @@ msgstr "Адрес"
 msgid "Notes"
 msgstr "Примечания"
 
+#. Thing.properties.indexUpdatedAt.label
+#: followthemoney/schema/Thing.yaml
+msgid "Index updated at"
+msgstr ""
+
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
-msgstr ""
+msgstr "Связь"
 
 #. UnknownLink.plural
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other links"
-msgstr ""
-
-#. UnknownLink.properties.subject.label
-#: followthemoney/schema/UnknownLink.yaml
-msgid "Subject"
-msgstr "Субъект"
+msgstr "Связи"
 
 #. UnknownLink.properties.subject.reverse.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -2334,7 +2402,7 @@ msgstr "Стоимость"
 #. Value.plural
 #: followthemoney/schema/Value.yaml
 msgid "Values"
-msgstr ""
+msgstr "Стоимость"
 
 #. Value.properties.amount.label
 #: followthemoney/schema/Value.yaml

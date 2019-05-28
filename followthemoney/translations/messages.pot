@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-05-12 14:31+0200\n"
+"POT-Creation-Date: 2019-05-27 17:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: followthemoney/property.py:72
+#: followthemoney/property.py:71
 msgid "Invalid value"
 msgstr ""
 
-#: followthemoney/property.py:76
+#: followthemoney/property.py:75
 msgid "Required"
 msgstr ""
 
-#: followthemoney/proxy.py:29
+#: followthemoney/proxy.py:30
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:61
+#: followthemoney/proxy.py:63
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:157
+#: followthemoney/proxy.py:96
+#, python-format
+msgid "Stub property (%s): %s"
+msgstr ""
+
+#: followthemoney/proxy.py:105
+#, python-format
+msgid "Self-relationship (%s): %s"
+msgstr ""
+
+#: followthemoney/schema.py:166
 msgid "Entity failed validation"
 msgstr ""
 
@@ -985,6 +995,59 @@ msgstr ""
 msgid "E-Mails"
 msgstr ""
 
+#. Email.properties.subject.label
+#. UnknownLink.properties.subject.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/UnknownLink.yaml
+msgid "Subject"
+msgstr ""
+
+#. Email.properties.sender.label
+#. EconomicActivity.properties.sender.label
+#: followthemoney/schema/Document.yaml
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Sender"
+msgstr ""
+
+#. Email.properties.sender.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails sent"
+msgstr ""
+
+#. Email.properties.recipients.label
+#: followthemoney/schema/Document.yaml
+msgid "Recipients"
+msgstr ""
+
+#. Email.properties.recipients.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails received"
+msgstr ""
+
+#. Email.properties.to.label
+#: followthemoney/schema/Document.yaml
+msgid "To"
+msgstr ""
+
+#. Email.properties.cc.label
+#: followthemoney/schema/Document.yaml
+msgid "CC"
+msgstr ""
+
+#. Email.properties.cc.description
+#: followthemoney/schema/Document.yaml
+msgid "Carbon copy"
+msgstr ""
+
+#. Email.properties.bcc.label
+#: followthemoney/schema/Document.yaml
+msgid "BCC"
+msgstr ""
+
+#. Email.properties.bcc.description
+#: followthemoney/schema/Document.yaml
+msgid "Blind carbon copy"
+msgstr ""
+
 #. Email.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml
 msgid "In Reply To"
@@ -993,6 +1056,16 @@ msgstr ""
 #. Email.properties.inReplyTo.description
 #: followthemoney/schema/Document.yaml
 msgid "Message IDs of the preceding emails in the thread"
+msgstr ""
+
+#. Email.properties.inReplyToEmail.label
+#: followthemoney/schema/Document.yaml
+msgid "Responding to"
+msgstr ""
+
+#. Email.properties.inReplyToEmail.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "Responses"
 msgstr ""
 
 #. Email.properties.headers.label
@@ -1118,11 +1191,6 @@ msgstr ""
 #. EconomicActivity.properties.declarant.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarant"
-msgstr ""
-
-#. EconomicActivity.properties.sender.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Sender"
 msgstr ""
 
 #. EconomicActivity.properties.sender.description
@@ -2270,6 +2338,11 @@ msgstr ""
 msgid "Notes"
 msgstr ""
 
+#. Thing.properties.indexUpdatedAt.label
+#: followthemoney/schema/Thing.yaml
+msgid "Index updated at"
+msgstr ""
+
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
@@ -2278,11 +2351,6 @@ msgstr ""
 #. UnknownLink.plural
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other links"
-msgstr ""
-
-#. UnknownLink.properties.subject.label
-#: followthemoney/schema/UnknownLink.yaml
-msgid "Subject"
 msgstr ""
 
 #. UnknownLink.properties.subject.reverse.label

@@ -78,6 +78,10 @@
         "registrationNumber",
         "country",
         "owner"
+      ],
+      "caption": [
+        "name",
+        "registrationNumber"
       ]
     },
     "Associate": {
@@ -516,6 +520,9 @@
         "registrationNumber",
         "incorporationDate"
       ],
+      "caption": [
+        "name"
+      ],
       "matchable": true
     },
     "CourtCase": {
@@ -588,6 +595,10 @@
       "featured": [
         "name",
         "fileDate",
+        "caseNumber"
+      ],
+      "caption": [
+        "name",
         "caseNumber"
       ]
     },
@@ -719,6 +730,9 @@
         "startDate",
         "endDate"
       ],
+      "caption": [
+        "passportNumber"
+      ],
       "description": "Passport"
     },
     "PublicBody": {
@@ -734,6 +748,9 @@
         "Organization"
       ],
       "properties": {},
+      "caption": [
+        "name"
+      ],
       "description": "A public body, such as a ministry, department or state company.",
       "matchable": true
     },
@@ -961,6 +978,9 @@
         "startDate",
         "endDate"
       ],
+      "caption": [
+        "program"
+      ],
       "description": "A sanction designation"
     },
     "Directorship": {
@@ -1158,6 +1178,10 @@
         "nationality",
         "birthDate"
       ],
+      "caption": [
+        "name",
+        "lastName"
+      ],
       "description": "An individual",
       "matchable": true
     },
@@ -1266,6 +1290,10 @@
         "imoNumber",
         "type",
         "flag"
+      ],
+      "caption": [
+        "name",
+        "imoNumber"
       ],
       "description": "A boat or ship",
       "matchable": true
@@ -1749,6 +1777,26 @@
           "range": "Payment",
           "reverse": "beneficiary"
         },
+        "emailsSent": {
+          "name": "emailsSent",
+          "qname": "LegalEntity:emailsSent",
+          "label": "E-Mails sent",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Email",
+          "reverse": "sender"
+        },
+        "emailsReceived": {
+          "name": "emailsReceived",
+          "qname": "LegalEntity:emailsReceived",
+          "label": "E-Mails received",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Email",
+          "reverse": "recipients"
+        },
         "economicActivityDeclarant": {
           "name": "economicActivityDeclarant",
           "qname": "LegalEntity:economicActivityDeclarant",
@@ -1794,6 +1842,10 @@
         "name",
         "legalForm",
         "country"
+      ],
+      "caption": [
+        "name",
+        "registrationNumber"
       ],
       "description": "A legal entity may be a person or a company.",
       "matchable": true
@@ -1854,7 +1906,6 @@
           "label": "Name",
           "type": "name",
           "required": true,
-          "caption": true,
           "matchable": true
         },
         "sameAs": {
@@ -1976,6 +2027,13 @@
           "type": "text",
           "hidden": true
         },
+        "indexUpdatedAt": {
+          "name": "indexUpdatedAt",
+          "qname": "Thing:indexUpdatedAt",
+          "label": "Index updated at",
+          "type": "date",
+          "hidden": true
+        },
         "modifiedAt": {
           "name": "modifiedAt",
           "qname": "Thing:modifiedAt",
@@ -2074,6 +2132,9 @@
         "authority",
         "contractDate",
         "commodities"
+      ],
+      "caption": [
+        "name"
       ],
       "description": "A grant of land, rights or property. A type of Contract"
     },
@@ -2202,6 +2263,9 @@
         "name",
         "legalForm",
         "country"
+      ],
+      "caption": [
+        "name"
       ],
       "matchable": true
     },
@@ -2363,6 +2427,11 @@
         "accountNumber",
         "bankName"
       ],
+      "caption": [
+        "name",
+        "iban",
+        "accountNumber"
+      ],
       "matchable": true
     },
     "Document": {
@@ -2388,8 +2457,7 @@
           "name": "title",
           "qname": "Document:title",
           "label": "Title",
-          "type": "string",
-          "caption": true
+          "type": "string"
         },
         "author": {
           "name": "author",
@@ -2566,6 +2634,10 @@
         "mimeType",
         "parent"
       ],
+      "caption": [
+        "fileName",
+        "title"
+      ],
       "generated": true
     },
     "PlainText": {
@@ -2593,6 +2665,10 @@
         "fileName",
         "mimeType",
         "parent"
+      ],
+      "caption": [
+        "fileName",
+        "title"
       ],
       "generated": true
     },
@@ -2633,6 +2709,10 @@
         "fileName",
         "mimeType",
         "parent"
+      ],
+      "caption": [
+        "fileName",
+        "title"
       ],
       "generated": true
     },
@@ -2675,6 +2755,10 @@
         "title",
         "parent"
       ],
+      "caption": [
+        "fileName",
+        "title"
+      ],
       "generated": true
     },
     "Package": {
@@ -2696,6 +2780,10 @@
         "mimeType",
         "parent"
       ],
+      "caption": [
+        "fileName",
+        "title"
+      ],
       "generated": true
     },
     "Workbook": {
@@ -2715,6 +2803,10 @@
         "title",
         "fileName",
         "parent"
+      ],
+      "caption": [
+        "fileName",
+        "title"
       ],
       "generated": true
     },
@@ -2744,6 +2836,10 @@
         "mimeType",
         "parent"
       ],
+      "caption": [
+        "fileName",
+        "title"
+      ],
       "generated": true
     },
     "Video": {
@@ -2771,6 +2867,10 @@
         "fileName",
         "mimeType",
         "parent"
+      ],
+      "caption": [
+        "fileName",
+        "title"
       ],
       "generated": true
     },
@@ -2807,6 +2907,10 @@
         "mimeType",
         "parent"
       ],
+      "caption": [
+        "fileName",
+        "title"
+      ],
       "generated": true
     },
     "HyperText": {
@@ -2842,6 +2946,10 @@
         "mimeType",
         "parent"
       ],
+      "caption": [
+        "title",
+        "fileName"
+      ],
       "generated": true
     },
     "Email": {
@@ -2861,13 +2969,67 @@
         "PlainText"
       ],
       "properties": {
+        "subject": {
+          "name": "subject",
+          "qname": "Email:subject",
+          "label": "Subject",
+          "type": "string"
+        },
+        "sender": {
+          "name": "sender",
+          "qname": "Email:sender",
+          "label": "Sender",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "emailsSent"
+        },
+        "recipients": {
+          "name": "recipients",
+          "qname": "Email:recipients",
+          "label": "Recipients",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "emailsReceived"
+        },
+        "to": {
+          "name": "to",
+          "qname": "Email:to",
+          "label": "To",
+          "type": "string"
+        },
+        "cc": {
+          "name": "cc",
+          "qname": "Email:cc",
+          "label": "CC",
+          "type": "string",
+          "description": "Carbon copy"
+        },
+        "bcc": {
+          "name": "bcc",
+          "qname": "Email:bcc",
+          "label": "BCC",
+          "type": "string",
+          "description": "Blind carbon copy"
+        },
         "inReplyTo": {
           "name": "inReplyTo",
           "qname": "Email:inReplyTo",
           "label": "In Reply To",
           "type": "identifier",
           "description": "Message IDs of the preceding emails in the thread",
-          "matchable": true
+          "matchable": true,
+          "hidden": true
+        },
+        "inReplyToEmail": {
+          "name": "inReplyToEmail",
+          "qname": "Email:inReplyToEmail",
+          "label": "Responding to",
+          "type": "entity",
+          "matchable": true,
+          "range": "Email",
+          "reverse": "responses"
         },
         "headers": {
           "name": "headers",
@@ -2875,11 +3037,26 @@
           "label": "Raw headers",
           "type": "raw",
           "hidden": true
+        },
+        "responses": {
+          "name": "responses",
+          "qname": "Email:responses",
+          "label": "Responses",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Email",
+          "reverse": "inReplyToEmail"
         }
       },
       "featured": [
-        "title",
+        "subject",
         "parent"
+      ],
+      "caption": [
+        "subject",
+        "title",
+        "fileName"
       ],
       "generated": true
     },
@@ -2919,6 +3096,10 @@
         "fileName",
         "mimeType",
         "parent"
+      ],
+      "caption": [
+        "title",
+        "fileName"
       ],
       "generated": true
     },
@@ -3034,6 +3215,9 @@
         "authority",
         "contractDate"
       ],
+      "caption": [
+        "name"
+      ],
       "description": "An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward).\n"
     },
     "Airplane": {
@@ -3076,6 +3260,10 @@
         "country",
         "operator",
         "owner"
+      ],
+      "caption": [
+        "name",
+        "registrationNumber"
       ],
       "matchable": true
     },
@@ -3348,6 +3536,10 @@
         "registrationNumber",
         "address",
         "country"
+      ],
+      "caption": [
+        "name",
+        "registrationNumber"
       ],
       "description": "A piece of land or property."
     },

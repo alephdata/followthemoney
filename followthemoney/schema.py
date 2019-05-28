@@ -126,7 +126,7 @@ class Schema(object):
     @property
     def sorted_properties(self):
         return sorted(self.properties.values(),
-                      key=lambda p: (not p.caption,
+                      key=lambda p: (p.name not in self.caption,
                                      p.name not in self.featured,
                                      p.label))
 

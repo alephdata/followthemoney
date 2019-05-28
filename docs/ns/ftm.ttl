@@ -858,6 +858,18 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:EconomicActivity ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Email:bcc> a rdf:Property ;
+    rdfs:label "BCC" ;
+    rdfs:comment "Blind carbon copy" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Email:cc> a rdf:Property ;
+    rdfs:label "CC" ;
+    rdfs:comment "Carbon copy" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Email:headers> a rdf:Property ;
     rdfs:label "Raw headers" ;
     rdfs:domain ftm:Email ;
@@ -866,6 +878,16 @@ dct:language a rdf:Property ;
 <https://w3id.org/ftm#Email:inReplyTo> a rdf:Property ;
     rdfs:label "In Reply To" ;
     rdfs:comment "Message IDs of the preceding emails in the thread" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Email:subject> a rdf:Property ;
+    rdfs:label "Subject" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Email:to> a rdf:Property ;
+    rdfs:label "To" ;
     rdfs:domain ftm:Email ;
     rdfs:isDefinedBy ftm: .
 
@@ -1470,6 +1492,12 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Thing ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Thing:indexUpdatedAt> a rdf:Property ;
+    rdfs:label "Index updated at" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range xsd:dateTime .
+
 <https://w3id.org/ftm#Thing:keywords> a rdf:Property ;
     rdfs:label "Keywords" ;
     rdfs:domain ftm:Thing ;
@@ -1829,6 +1857,34 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:LegalEntity ;
     owl:inverseOf <https://w3id.org/ftm#LegalEntity:economicActivitySender> .
 
+<https://w3id.org/ftm#Email:inReplyToEmail> a rdf:Property ;
+    rdfs:label "Responding to" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Email ;
+    owl:inverseOf <https://w3id.org/ftm#Email:responses> .
+
+<https://w3id.org/ftm#Email:recipients> a rdf:Property ;
+    rdfs:label "Recipients" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:emailsReceived> .
+
+<https://w3id.org/ftm#Email:responses> a rdf:Property ;
+    rdfs:label "Responses" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Email ;
+    owl:inverseOf <https://w3id.org/ftm#Email:inReplyToEmail> .
+
+<https://w3id.org/ftm#Email:sender> a rdf:Property ;
+    rdfs:label "Sender" ;
+    rdfs:domain ftm:Email ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:emailsSent> .
+
 <https://w3id.org/ftm#Family:person> a rdf:Property ;
     rdfs:label "Person" ;
     rdfs:comment "The subject of the familial relation." ;
@@ -1928,6 +1984,20 @@ owl:sameAs a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:EconomicActivity ;
     owl:inverseOf <https://w3id.org/ftm#EconomicActivity:sender> .
+
+<https://w3id.org/ftm#LegalEntity:emailsReceived> a rdf:Property ;
+    rdfs:label "E-Mails received" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Email ;
+    owl:inverseOf <https://w3id.org/ftm#Email:recipients> .
+
+<https://w3id.org/ftm#LegalEntity:emailsSent> a rdf:Property ;
+    rdfs:label "E-Mails sent" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Email ;
+    owl:inverseOf <https://w3id.org/ftm#Email:sender> .
 
 <https://w3id.org/ftm#LegalEntity:membershipMember> a rdf:Property ;
     rdfs:label "Memberships" ;
@@ -2248,5 +2318,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2019-05-12T14:02:31"^^xsd:dateTime .
+    dct:modified "2019-05-27T17:05:31"^^xsd:dateTime .
 
