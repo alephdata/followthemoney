@@ -20,6 +20,7 @@ export interface ISchemaDatum {
   description?: string
   edge?: IEdgeSpecification
   featured?: string[]
+  caption?: string[]
   properties: {
     [x: string]: IPropertyDatum
   }
@@ -40,6 +41,7 @@ export class Schema {
   public readonly featured: string[]
   public readonly schemata: string[]
   public readonly extends: string[]
+  public readonly caption: string[]
   public readonly edge?: IEdgeSpecification
   public readonly isEdge: boolean
   public readonly isCreateable: boolean
@@ -53,6 +55,7 @@ export class Schema {
     this.schemata = config.schemata
     this.extends = config.extends
     this.featured = config.featured || new Array()
+    this.caption = config.caption || new Array()
     this.abstract = !!config.abstract
     this.matchable = !!config.matchable
     this.generated = !!config.generated

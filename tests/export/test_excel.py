@@ -19,11 +19,13 @@ ENTITY = {
 
 
 class ExcelExportTestCase(TestCase):
+
     def test_excel_export(self):
         entity = model.get_proxy(ENTITY)
         workbook = get_workbook()
         write_entity(
-            workbook, entity, extra_headers=['source'],
+            workbook, entity,
+            extra_headers=['source'],
             extra_fields={'source': 'test'}
         )
         self.assertListEqual(workbook.sheetnames, ['People'])
