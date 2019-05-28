@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-05-27 17:30+0200\n"
+"POT-Creation-Date: 2019-05-28 16:40+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -43,12 +43,12 @@ msgstr "Неизвестный параметр (1%s): 1%s"
 #: followthemoney/proxy.py:96
 #, python-format
 msgid "Stub property (%s): %s"
-msgstr ""
+msgstr "Неизвестное свойство (1%s): 1%s"
 
 #: followthemoney/proxy.py:105
 #, python-format
 msgid "Self-relationship (%s): %s"
-msgstr ""
+msgstr "Самосоединение ( 1 %s): 1%s"
 
 #: followthemoney/schema.py:166
 msgid "Entity failed validation"
@@ -1028,42 +1028,42 @@ msgstr "Отправитель"
 #. Email.properties.sender.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "E-Mails sent"
-msgstr ""
+msgstr "Отправленные эл. письма"
 
 #. Email.properties.recipients.label
 #: followthemoney/schema/Document.yaml
 msgid "Recipients"
-msgstr ""
+msgstr "Получатели"
 
 #. Email.properties.recipients.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "E-Mails received"
-msgstr ""
+msgstr "Полученные эл. письма"
 
 #. Email.properties.to.label
 #: followthemoney/schema/Document.yaml
 msgid "To"
-msgstr ""
+msgstr "Кому"
 
 #. Email.properties.cc.label
 #: followthemoney/schema/Document.yaml
 msgid "CC"
-msgstr ""
+msgstr "CC"
 
 #. Email.properties.cc.description
 #: followthemoney/schema/Document.yaml
 msgid "Carbon copy"
-msgstr ""
+msgstr "Копия письма"
 
 #. Email.properties.bcc.label
 #: followthemoney/schema/Document.yaml
 msgid "BCC"
-msgstr ""
+msgstr "BCC"
 
 #. Email.properties.bcc.description
 #: followthemoney/schema/Document.yaml
 msgid "Blind carbon copy"
-msgstr ""
+msgstr "Скрытая копия"
 
 #. Email.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml
@@ -1078,12 +1078,12 @@ msgstr "Указатель Message-ID, для которого это письм
 #. Email.properties.inReplyToEmail.label
 #: followthemoney/schema/Document.yaml
 msgid "Responding to"
-msgstr ""
+msgstr "В ответ на"
 
 #. Email.properties.inReplyToEmail.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Responses"
-msgstr ""
+msgstr "Ответы"
 
 #. Email.properties.headers.label
 #: followthemoney/schema/Document.yaml
@@ -2367,7 +2367,7 @@ msgstr "Примечания"
 #. Thing.properties.indexUpdatedAt.label
 #: followthemoney/schema/Thing.yaml
 msgid "Index updated at"
-msgstr ""
+msgstr "Индекс обновлён"
 
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
