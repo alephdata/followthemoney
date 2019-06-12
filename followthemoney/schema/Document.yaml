@@ -373,6 +373,9 @@ Table:
       label: "Column headings"
       hidden: true
       type: json
+    rowCount:
+      label: "Number of rows"
+      type: number
     csvHash:
       label: "CSV alternative version checksum"
       hidden: true
