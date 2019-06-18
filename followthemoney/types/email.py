@@ -19,9 +19,10 @@ class EmailType(PropertyType):
 
     def validate(self, email, **kwargs):
         """Check to see if this is a valid email address."""
+        # TODO: adopt email.utils.parseaddr
         email = stringify(email)
         if email is None:
-            return
+            return False
         if not self.EMAIL_REGEX.match(email):
             return False
         mailbox, domain = email.rsplit('@', 1)
