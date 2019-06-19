@@ -300,9 +300,11 @@ Email:
   generated: true
   featured:
     - subject
-    - parent
+    - date
+    - from
   caption:
     - subject
+    - threadTopic
     - title
     - name
     - fileName
