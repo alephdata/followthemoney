@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-05-27 17:30+0200\n"
+"POT-Creation-Date: 2019-06-20 12:27+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Language-Team: Turkish (https://www.transifex.com/aleph/teams/76591/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -1006,6 +1006,11 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
+#. Email.properties.threadTopic.label
+#: followthemoney/schema/Document.yaml
+msgid "Thread topic"
+msgstr ""
+
 #. Email.properties.sender.label
 #. EconomicActivity.properties.sender.label
 #: followthemoney/schema/Document.yaml
@@ -1013,19 +1018,9 @@ msgstr ""
 msgid "Sender"
 msgstr ""
 
-#. Email.properties.sender.reverse.label
+#. Email.properties.from.label
 #: followthemoney/schema/Document.yaml
-msgid "E-Mails sent"
-msgstr ""
-
-#. Email.properties.recipients.label
-#: followthemoney/schema/Document.yaml
-msgid "Recipients"
-msgstr ""
-
-#. Email.properties.recipients.reverse.label
-#: followthemoney/schema/Document.yaml
-msgid "E-Mails received"
+msgid "From"
 msgstr ""
 
 #. Email.properties.to.label
@@ -1051,6 +1046,26 @@ msgstr ""
 #. Email.properties.bcc.description
 #: followthemoney/schema/Document.yaml
 msgid "Blind carbon copy"
+msgstr ""
+
+#. Email.properties.emitters.label
+#: followthemoney/schema/Document.yaml
+msgid "Emitter"
+msgstr ""
+
+#. Email.properties.emitters.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails sent"
+msgstr ""
+
+#. Email.properties.recipients.label
+#: followthemoney/schema/Document.yaml
+msgid "Recipients"
+msgstr ""
+
+#. Email.properties.recipients.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails received"
 msgstr ""
 
 #. Email.properties.inReplyTo.label
@@ -1092,6 +1107,16 @@ msgstr ""
 #. Table.properties.columns.label
 #: followthemoney/schema/Document.yaml
 msgid "Column headings"
+msgstr ""
+
+#. Table.properties.rowCount.label
+#: followthemoney/schema/Document.yaml
+msgid "Number of rows"
+msgstr ""
+
+#. Table.properties.csvHash.label
+#: followthemoney/schema/Document.yaml
+msgid "CSV alternative version checksum"
 msgstr ""
 
 #. EconomicActivity.label

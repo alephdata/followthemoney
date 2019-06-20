@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-05-28 16:40+0200\n"
+"POT-Creation-Date: 2019-06-20 12:27+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -1018,6 +1018,11 @@ msgstr "Эл. письма"
 msgid "Subject"
 msgstr "Субъект"
 
+#. Email.properties.threadTopic.label
+#: followthemoney/schema/Document.yaml
+msgid "Thread topic"
+msgstr ""
+
 #. Email.properties.sender.label
 #. EconomicActivity.properties.sender.label
 #: followthemoney/schema/Document.yaml
@@ -1025,20 +1030,10 @@ msgstr "Субъект"
 msgid "Sender"
 msgstr "Отправитель"
 
-#. Email.properties.sender.reverse.label
+#. Email.properties.from.label
 #: followthemoney/schema/Document.yaml
-msgid "E-Mails sent"
-msgstr "Отправленные эл. письма"
-
-#. Email.properties.recipients.label
-#: followthemoney/schema/Document.yaml
-msgid "Recipients"
-msgstr "Получатели"
-
-#. Email.properties.recipients.reverse.label
-#: followthemoney/schema/Document.yaml
-msgid "E-Mails received"
-msgstr "Полученные эл. письма"
+msgid "From"
+msgstr ""
 
 #. Email.properties.to.label
 #: followthemoney/schema/Document.yaml
@@ -1064,6 +1059,26 @@ msgstr "BCC"
 #: followthemoney/schema/Document.yaml
 msgid "Blind carbon copy"
 msgstr "Скрытая копия"
+
+#. Email.properties.emitters.label
+#: followthemoney/schema/Document.yaml
+msgid "Emitter"
+msgstr ""
+
+#. Email.properties.emitters.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails sent"
+msgstr "Отправленные эл. письма"
+
+#. Email.properties.recipients.label
+#: followthemoney/schema/Document.yaml
+msgid "Recipients"
+msgstr "Получатели"
+
+#. Email.properties.recipients.reverse.label
+#: followthemoney/schema/Document.yaml
+msgid "E-Mails received"
+msgstr "Полученные эл. письма"
 
 #. Email.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml
@@ -1105,6 +1120,16 @@ msgstr "Таблицы"
 #: followthemoney/schema/Document.yaml
 msgid "Column headings"
 msgstr "Заголовки столбцов"
+
+#. Table.properties.rowCount.label
+#: followthemoney/schema/Document.yaml
+msgid "Number of rows"
+msgstr ""
+
+#. Table.properties.csvHash.label
+#: followthemoney/schema/Document.yaml
+msgid "CSV alternative version checksum"
+msgstr ""
 
 #. EconomicActivity.label
 #: followthemoney/schema/EconomicActivity.yaml
