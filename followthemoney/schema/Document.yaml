@@ -286,7 +286,7 @@ HyperText:
       hidden: true
     bodyHtml:
       label: "HTML"
-      type: text
+      type: html
       hidden: true
 
 Email:

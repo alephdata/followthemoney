@@ -71,7 +71,8 @@ setup(
             'identifier = followthemoney.types.identifier:IdentifierType',
             'entity = followthemoney.types.entity:EntityType',
             'json = followthemoney.types.json:JsonType',
-            'text = followthemoney.types.text:TextType',
+            'text = followthemoney.types.string:TextType',
+            'html = followthemoney.types.string:HTMLType',
             'string = followthemoney.types.string:StringType',
             'number = followthemoney.types.number:NumberType'
         }
