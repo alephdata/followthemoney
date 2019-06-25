@@ -1,7 +1,7 @@
 import re
 from copy import deepcopy
+from banal import ensure_list
 from normality import stringify
-from banal import unique_list, ensure_list
 
 from followthemoney.exc import InvalidMapping
 from followthemoney.util import get_entity_id
@@ -12,13 +12,13 @@ class PropertyMapping(object):
     schema form."""
     FORMAT_PATTERN = re.compile('{{([^(}})]*)}}')
 
-    def __init__(self, query, data, schema):
+    def __init__(self, query, data, prop):
         self.query = query
         data = deepcopy(data)
         self.data = data
-        self.schema = schema
-        self.name = schema.name
-        self.type = schema.type
+        self.prop = prop
+        self.name = prop.name
+        self.type = prop.type
 
         self.refs = ensure_list(data.pop('column', []))
         self.refs.extend(ensure_list(data.pop('columns', [])))
@@ -40,8 +40,8 @@ class PropertyMapping(object):
                 self.replacements['{{%s}}' % ref] = ref
 
     def bind(self):
-        if self.schema.stub:
-            raise InvalidMapping("Property for [%s] is a stub" % self.name)
+        if self.prop.stub:
+            raise InvalidMapping("Property for [%r] is a stub" % self.prop)
 
         if self.entity is None:
             return
@@ -53,13 +53,13 @@ class PropertyMapping(object):
         for entity in self.query.entities:
             if entity.name != self.entity:
                 continue
-            if not entity.schema.is_a(self.schema.range):
-                raise InvalidMapping("The entity [%s] must be a %s (not %s)" %
-                                     (self.name, self.schema.range, entity.schema.name))  # noqa
+            if not entity.schema.is_a(self.prop.range):
+                raise InvalidMapping("The entity [%r] must be a %s (not %s)" %
+                                     (self.prop, self.prop.range, entity.schema.name))  # noqa
             return
 
-        raise InvalidMapping("No entity [%s] for property [%s]"
-                             % (self.entity, self.name))
+        raise InvalidMapping("No entity [%s] for property [%r]"
+                             % (self.entity, self.prop))
 
     def record_values(self, record):
         if self.template is not None:
@@ -75,12 +75,21 @@ class PropertyMapping(object):
         values.extend([record.get(r) for r in self.refs])
         return values
 
-    def map(self, record, entities, **kwargs):
+    def map(self, proxy, record, entities, **kwargs):
         kwargs.update(self.data)
 
         if self.entity is not None:
             entity = entities.get(self.entity)
-            return ensure_list(get_entity_id(entity))
+            if entity is None:
+                return
+            proxy.add(self.prop, get_entity_id(entity))
+
+            # This is really bad in theory, but really useful in practice.
+            # So shoot me.
+            text = proxy.schema.get('indexText')
+            if text is not None:
+                for caption in entity.schema.caption:
+                    proxy.add(text, entity.get(caption))
 
         # clean the values returned by the query, or by using literals, or
         # formats.
@@ -99,4 +108,4 @@ class PropertyMapping(object):
                 splote = splote + value.split(self.split)
             values = splote
 
-        return unique_list(values)
+        proxy.add(self.prop, values)
