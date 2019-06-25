@@ -67,6 +67,13 @@ Thing:
     notes:
       label: Notes
       type: text
+    proof:
+      label: Source document
+      reverse:
+        name: proven
+        label: "Extracted entities"
+      type: entity
+      range: Document
     indexText:
       # This is a leaked abstraction from aleph. The idea is to have some
       # additional text field that can be used to associate searchable text
