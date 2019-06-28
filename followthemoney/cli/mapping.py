@@ -1,17 +1,16 @@
 import click
 from banal import keys_values
-from alephclient.util import load_config_file
 
 from followthemoney import model
 from followthemoney.mapping.source import StreamSource
 from followthemoney.cli.cli import cli
-from followthemoney.cli.util import read_entity
+from followthemoney.cli.util import read_entity, load_mapping_file
 
 
 @cli.command('map', help="Execute a mapping file and emit objects")
 @click.argument('mapping_yaml', type=click.Path(exists=True))
 def run_mapping(mapping_yaml):
-    config = load_config_file(mapping_yaml)
+    config = load_mapping_file(mapping_yaml)
     stream = click.get_text_stream('stdout')
     try:
         for dataset, meta in config.items():
@@ -32,7 +31,7 @@ def stream_mapping(mapping_yaml):
     stdout = click.get_text_stream('stdout')
 
     sources = []
-    config = load_config_file(mapping_yaml)
+    config = load_mapping_file(mapping_yaml)
     for dataset, meta in config.items():
         for data in keys_values(meta, 'queries', 'query'):
             query = model.make_mapping(data, key_prefix=dataset)
