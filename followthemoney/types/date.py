@@ -3,12 +3,11 @@ import os
 import pytz
 from rdflib import Literal
 from rdflib.namespace import XSD
-from normality import stringify
 from datetime import datetime, date
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
-from followthemoney.util import dampen
+from followthemoney.util import dampen, sanitize_text
 
 
 class DateType(PropertyType):
@@ -28,7 +27,7 @@ class DateType(PropertyType):
 
     def validate(self, obj, **kwargs):
         """Check if a thing is a valid date."""
-        obj = stringify(obj)
+        obj = sanitize_text(obj)
         if obj is None:
             return False
         return self.DATE_RE.match(obj) is not None
@@ -68,7 +67,7 @@ class DateType(PropertyType):
         if date is not None:
             return date
 
-        text = stringify(text)
+        text = sanitize_text(text)
         if text is None:
             return
 

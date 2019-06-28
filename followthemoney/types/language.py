@@ -1,9 +1,8 @@
 from rdflib import URIRef
-from normality import stringify
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
-from followthemoney.util import get_locale
+from followthemoney.util import sanitize_text, get_locale
 
 
 class LanguageType(PropertyType):
@@ -26,7 +25,7 @@ class LanguageType(PropertyType):
         return self._names[locale]
 
     def validate(self, text, **kwargs):
-        text = stringify(text)
+        text = sanitize_text(text)
         if text is None:
             return False
         return text.lower() in self.names

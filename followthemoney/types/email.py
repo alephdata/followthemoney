@@ -1,11 +1,10 @@
 import re
 from rdflib import URIRef
-from normality import stringify
 from normality.cleaning import strip_quotes
 
 from followthemoney.types.common import PropertyType
 from followthemoney.types.domain import DomainType
-from followthemoney.util import defer as _
+from followthemoney.util import sanitize_text, defer as _
 
 
 class EmailType(PropertyType):
@@ -20,7 +19,7 @@ class EmailType(PropertyType):
     def validate(self, email, **kwargs):
         """Check to see if this is a valid email address."""
         # TODO: adopt email.utils.parseaddr
-        email = stringify(email)
+        email = sanitize_text(email)
         if email is None:
             return False
         if not self.EMAIL_REGEX.match(email):

@@ -2,7 +2,7 @@ import json  # yay Python 3
 from banal import ensure_list
 
 from followthemoney.types.common import PropertyType
-from followthemoney.util import defer as _
+from followthemoney.util import sanitize_text, defer as _
 from followthemoney.util import MEGABYTE
 
 
@@ -31,6 +31,8 @@ class JsonType(PropertyType):
     def clean(self, obj, **kwargs):
         if not isinstance(obj, str):
             obj = self.pack(obj)
+        else:
+            obj = sanitize_text(obj)
         return obj
 
     def normalize(self, obj, cleaned=False, **kwargs):

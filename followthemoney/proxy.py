@@ -1,8 +1,7 @@
 import logging
 from hashlib import sha1
-from itertools import product
-from normality import stringify
 from rdflib import Literal
+from itertools import product
 from collections.abc import Hashable
 from rdflib.namespace import RDF, SKOS
 from banal import ensure_list, is_mapping, ensure_dict
@@ -11,7 +10,7 @@ from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
 from followthemoney.graph import Statement, Node
-from followthemoney.util import key_bytes, gettext
+from followthemoney.util import sanitize_text, key_bytes, gettext
 
 log = logging.getLogger(__name__)
 
@@ -28,8 +27,8 @@ class EntityProxy(object):
         self.schema = model.get(data.pop('schema', None))
         if self.schema is None:
             raise InvalidData(gettext('No schema for entity.'))
-        self.id = stringify(data.pop('id', None))
-        self.key_prefix = stringify(key_prefix)
+        self.id = sanitize_text(data.pop('id', None))
+        self.key_prefix = sanitize_text(key_prefix)
         self.context = data
         self._properties = {}
         self._size = 0

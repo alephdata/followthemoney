@@ -1,10 +1,9 @@
 from rdflib import URIRef
-from normality import stringify
 from stdnum import iban
 from stdnum.exceptions import ValidationError
 
 from followthemoney.types.common import PropertyType
-from followthemoney.util import defer as _
+from followthemoney.util import sanitize_text, defer as _
 
 
 class IbanType(PropertyType):
@@ -15,7 +14,7 @@ class IbanType(PropertyType):
     matchable = True
 
     def validate(self, text, **kwargs):
-        text = stringify(text)
+        text = sanitize_text(text)
         try:
             return iban.validate(text)
         except ValidationError:
@@ -27,9 +26,7 @@ class IbanType(PropertyType):
         return text.replace(" ", "").upper()
 
     def country_hint(self, value):
-        value = stringify(value)
-        if value is not None:
-            return value[:2].lower()
+        return value[:2].lower()
 
     def rdf(self, value):
         return URIRef('iban:%s' % value)

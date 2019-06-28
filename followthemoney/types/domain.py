@@ -1,10 +1,9 @@
 # TODO: https://pypi.python.org/pypi/publicsuffix/
 # import socket
-from normality import stringify
 from urllib.parse import urlparse
 
 from followthemoney.types.common import PropertyType
-from followthemoney.util import defer as _
+from followthemoney.util import sanitize_text, defer as _
 
 
 class DomainType(PropertyType):
@@ -25,7 +24,7 @@ class DomainType(PropertyType):
 
     def validate(self, obj, **kwargs):
         """Check if a thing is a valid domain name."""
-        text = stringify(obj)
+        text = sanitize_text(obj)
         if text is None:
             return False
         if '.' not in text:

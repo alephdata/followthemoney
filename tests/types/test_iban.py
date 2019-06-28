@@ -103,7 +103,6 @@ class IbansTest(unittest.TestCase):
     def test_country(self):
         iban = 'AE460090000000123456789'
         assert 'ae' == ibans.country_hint(iban)
-        assert ibans.country_hint('') is None
 
     def test_compare(self):
         iban = 'AE460090000000123456789'

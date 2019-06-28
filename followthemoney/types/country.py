@@ -1,10 +1,9 @@
 import countrynames
 from rdflib import URIRef
-from normality import stringify
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import gettext, get_locale
-from followthemoney.util import defer as _
+from followthemoney.util import sanitize_text, defer as _
 
 
 class CountryType(PropertyType):
@@ -42,7 +41,7 @@ class CountryType(PropertyType):
         return self._names[locale]
 
     def validate(self, country, **kwargs):
-        country = stringify(country)
+        country = sanitize_text(country)
         if country is None:
             return False
         return country.lower() in self.codes

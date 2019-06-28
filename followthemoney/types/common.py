@@ -3,7 +3,7 @@ from rdflib import Literal
 from banal import ensure_list
 from normality import stringify
 
-from followthemoney.util import gettext
+from followthemoney.util import gettext, sanitize_text
 
 
 class PropertyType(object):
@@ -24,7 +24,7 @@ class PropertyType(object):
     def clean(self, text, **kwargs):
         """Create a more clean, but still user-facing version of an
         instance of the type."""
-        text = stringify(text)
+        text = sanitize_text(text)
         if text is not None:
             return self.clean_text(text, **kwargs)
 

@@ -1,6 +1,7 @@
 import os
 from threading import local
 from normality import stringify
+from normality.cleaning import remove_unsafe_chars
 from babel import Locale
 from gettext import translation
 from rdflib import Namespace
@@ -10,6 +11,7 @@ from banal import unique_list, ensure_list
 NS = Namespace('https://w3id.org/ftm#')
 MEGABYTE = 1024 * 1024
 DEFAULT_LOCALE = 'en'
+DEFAULT_ENCODING = 'utf-8'
 i18n_path = os.path.join(os.path.dirname(__file__), 'translations')
 state = local()
 
@@ -36,6 +38,16 @@ def get_locale():
     return Locale(state.locale)
 
 
+def sanitize_text(text, encoding=DEFAULT_ENCODING):
+    text = stringify(text, encoding_default=encoding)
+    text = remove_unsafe_chars(text)
+    if text is None:
+        return
+    text = text.encode(encoding, 'replace')
+    text = text.decode(encoding, 'strict')
+    return text
+
+
 def key_bytes(key):
     """Convert the given data to a value appropriate for hashing."""
     if isinstance(key, bytes):
@@ -50,7 +62,7 @@ def get_entity_id(obj):
         obj = obj.get('id')
     elif hasattr(obj, 'id'):
         obj = obj.id
-    return stringify(obj)
+    return sanitize_text(obj)
 
 
 def merge_data(old, new):
