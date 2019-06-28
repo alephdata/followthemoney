@@ -1,7 +1,7 @@
 import click
 
-from followthemoney_util.cli import cli
-from followthemoney_util.util import read_object
+from followthemoney.cli.cli import cli
+from followthemoney.cli.util import read_entity
 from followthemoney.export.excel import get_workbook, write_entity
 
 
@@ -13,7 +13,7 @@ def export_excel(filename):
     workbook = get_workbook()
     try:
         while True:
-            entity = read_object(stdin)
+            entity = read_entity(stdin)
             if entity is None:
                 break
             write_entity(workbook, entity)

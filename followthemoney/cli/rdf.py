@@ -1,8 +1,8 @@
 import click
 from rdflib import Graph
 
-from followthemoney_util.cli import cli
-from followthemoney_util.util import read_object
+from followthemoney.cli.cli import cli
+from followthemoney.cli.util import read_entity
 
 
 @cli.command('export-rdf', help="Export to RDF NTriples")
@@ -11,7 +11,7 @@ def export_rdf():
     stdout = click.get_text_stream('stdout')
     try:
         while True:
-            entity = read_object(stdin)
+            entity = read_entity(stdin)
             if entity is None:
                 break
             graph = Graph()

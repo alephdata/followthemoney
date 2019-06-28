@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 
 
 def get_enrichers():
-    for ep in iter_entry_points('followthemoney_enrich'):
+    for ep in iter_entry_points('followthemoney.enrich'):
         clazz = ep.load()
         clazz.name = ep.name
         yield clazz

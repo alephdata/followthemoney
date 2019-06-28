@@ -29,11 +29,14 @@ setup(
         'alephclient'
     ],
     entry_points={
-        'followthemoney_enrich': [
+        'followthemoney.enrich': [
             'aleph = followthemoney_enrich.aleph:AlephEnricher',
             'occrp = followthemoney_enrich.aleph:OccrpEnricher',
             'orbis = followthemoney_enrich.orbis:OrbisEnricher',
             'opencorporates = followthemoney_enrich.opencorporates:OpenCorporatesEnricher',  # noqa
+        ],
+        'followthemoney.cli': [
+            'enrich = followthemoney_enrich.cli:enrich',
         ],
     },
     test_suite='nose.collector',

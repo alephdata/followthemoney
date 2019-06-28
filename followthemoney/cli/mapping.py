@@ -4,8 +4,8 @@ from alephclient.util import load_config_file
 
 from followthemoney import model
 from followthemoney.mapping.source import StreamSource
-from followthemoney_util.cli import cli
-from followthemoney_util.util import write_object
+from followthemoney.cli.cli import cli
+from followthemoney.cli.util import read_entity
 
 
 @cli.command('map', help="Execute a mapping file and emit objects")
@@ -18,7 +18,7 @@ def run_mapping(mapping_yaml):
             for mapping in keys_values(meta, 'queries', 'query'):
                 entities = model.map_entities(mapping, key_prefix=dataset)
                 for entity in entities:
-                    write_object(stream, entity)
+                    read_entity(stream, entity)
     except BrokenPipeError:
         raise click.Abort()
     except Exception as exc:
@@ -45,6 +45,6 @@ def stream_mapping(mapping_yaml):
                 if source.check_filters(record):
                     entities = source.query.map(record)
                     for entity in entities.values():
-                        write_object(stdout, entity)
+                        read_entity(stdout, entity)
     except BrokenPipeError:
         raise click.Abort()

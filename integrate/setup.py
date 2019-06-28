@@ -27,7 +27,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'followthemoney',
-        'followthemoney-util',
+        'followthemoney-enrich',
         'click',
         'flask',
         'sqlalchemy'

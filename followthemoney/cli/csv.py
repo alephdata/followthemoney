@@ -2,8 +2,8 @@ import os
 
 import click
 
-from followthemoney_util.cli import cli
-from followthemoney_util.util import read_object
+from followthemoney.cli.cli import cli
+from followthemoney.cli.util import read_entity
 from followthemoney.export.csv import write_entity, write_headers
 
 
@@ -25,7 +25,7 @@ def export_csv(outdir):
     handlers = {}
     try:
         while True:
-            entity = read_object(stdin)
+            entity = read_entity(stdin)
             if entity is None:
                 break
             fh = _get_csv_handler(outdir, entity.schema, handlers)

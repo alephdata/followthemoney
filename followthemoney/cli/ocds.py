@@ -4,8 +4,8 @@ import logging
 from pprint import pprint  # noqa
 
 from followthemoney import model
-from followthemoney_util.cli import cli
-from followthemoney_util.util import write_object
+from followthemoney.cli.cli import cli
+from followthemoney.cli.util import write_object
 
 log = logging.getLogger(__name__)
 IDENTIFIERS = {

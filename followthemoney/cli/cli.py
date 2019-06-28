@@ -4,7 +4,7 @@ import click
 import logging
 
 from followthemoney import model
-from followthemoney_util.util import read_object
+from followthemoney.cli.util import read_entity
 
 
 @click.group(help="Utility for FollowTheMoney graph data")
@@ -25,7 +25,7 @@ def pretty():
     stdout = click.get_text_stream('stdout')
     try:
         while True:
-            entity = read_object(stdin)
+            entity = read_entity(stdin)
             if entity is None:
                 break
             data = json.dumps(entity.to_dict(), indent=2)

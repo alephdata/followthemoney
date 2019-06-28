@@ -4,8 +4,8 @@ from networkx.readwrite.gexf import generate_gexf
 
 from followthemoney.graph.export import CypherGraphExport
 from followthemoney.graph.export import NXGraphExport
-from followthemoney_util.cli import cli
-from followthemoney_util.util import read_object
+from followthemoney.cli.cli import cli
+from followthemoney.cli.util import read_entity
 
 
 @cli.command('export-gexf', help="Export to GEXF (Gephi) format")
@@ -16,7 +16,7 @@ def export_gexf():
     exporter = NXGraphExport(graph)
     try:
         while True:
-            entity = read_object(stdin)
+            entity = read_entity(stdin)
             if entity is None:
                 break
             exporter.write(entity)
@@ -34,7 +34,7 @@ def export_cypher():
     exporter = CypherGraphExport(stdout)
     try:
         while True:
-            entity = read_object(stdin)
+            entity = read_entity(stdin)
             if entity is None:
                 break
             exporter.write(entity)

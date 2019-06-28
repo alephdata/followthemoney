@@ -18,6 +18,7 @@ setup(
     install_requires=[
         'babel',
         'banal >= 0.4.2',
+        'click >= 7.0',
         'stringcase >= 1.2.0',
         'pyyaml >= 5.1',
         'requests[security] >= 2.21.0',
@@ -75,7 +76,21 @@ setup(
             'html = followthemoney.types.string:HTMLType',
             'string = followthemoney.types.string:StringType',
             'number = followthemoney.types.number:NumberType'
-        }
+        },
+        'followthemoney.cli': {
+            'aggregate = followthemoney.cli.aggregate:aggregate',
+            'rdf = followthemoney.cli.rdf:export_rdf',
+            'gexf = followthemoney.cli.graph:export_gexf',
+            'cypher = followthemoney.cli.graph:export_cypher',
+            'ocds = followthemoney.cli.ocds:import_ocds',
+            'mapping = followthemoney.cli.mapping:run_mapping',
+            'csv = followthemoney.cli.csv:export_csv',
+            'excel = followthemoney.cli.excel:export_excel',
+        },
+        'console_scripts': [
+            'ftmutil = followthemoney.cli.cli:cli',
+            'ftm = followthemoney.cli.cli:cli',
+        ]
     },
     tests_require=['coverage', 'nose']
 )

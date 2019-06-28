@@ -3,7 +3,8 @@ import click
 import logging
 
 from followthemoney.dedupe import Recon
-from followthemoney_util.util import read_object
+from followthemoney.cli.util import read_entity
+from followthemoney_enrich.cli import read_result
 from followthemoney_integrate.views import app
 from followthemoney_integrate.model import metadata, Session, Entity
 from followthemoney_integrate.model import Match, Vote
@@ -29,7 +30,7 @@ def load_entities(entities):
     session = Session()
     try:
         while True:
-            entity = read_object(entities)
+            entity = read_entity(entities)
             if entity is None:
                 break
             Entity.save(session, entities.name, entity)
@@ -44,7 +45,7 @@ def load_results(results):
     session = Session()
     try:
         while True:
-            result = read_object(results)
+            result = read_result(results)
             if result is None:
                 break
             if result.subject is None or result.candidate is None:
@@ -90,7 +91,7 @@ def load_votes(votes):
     session = Session()
     try:
         while True:
-            data = read_object(votes)
+            data = read_entity(votes)
             if data is None:
                 break
             Vote.save(session,
