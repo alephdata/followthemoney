@@ -4,7 +4,7 @@ from banal import keys_values
 from followthemoney import model
 from followthemoney.mapping.source import StreamSource
 from followthemoney.cli.cli import cli
-from followthemoney.cli.util import read_entity, load_mapping_file
+from followthemoney.cli.util import write_object, load_mapping_file
 
 
 @cli.command('map', help="Execute a mapping file and emit objects")
@@ -17,7 +17,7 @@ def run_mapping(mapping_yaml):
             for mapping in keys_values(meta, 'queries', 'query'):
                 entities = model.map_entities(mapping, key_prefix=dataset)
                 for entity in entities:
-                    read_entity(stream, entity)
+                    write_object(stream, entity)
     except BrokenPipeError:
         raise click.Abort()
     except Exception as exc:
@@ -44,6 +44,6 @@ def stream_mapping(mapping_yaml):
                 if source.check_filters(record):
                     entities = source.query.map(record)
                     for entity in entities.values():
-                        read_entity(stdout, entity)
+                        write_object(stdout, entity)
     except BrokenPipeError:
         raise click.Abort()
