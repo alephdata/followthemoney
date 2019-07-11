@@ -37,3 +37,18 @@ matrix:
             npm run build ;
             npm publish ;
           fi
+    - language: python
+      name: "docker build"
+      services:
+        - docker
+      script:
+        - docker build -t alephdata/followthemoney:$TRAVIS_COMMIT .
+      after_success:
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker push alephdata/followthemoney:$TRAVIS_COMMIT
+        - if [[ $TRAVIS_TAG = $TRAVIS_BRANCH ]]; then
+            docker build -t alephdata/followthemoney:$TRAVIS_TAG . ;
+            docker push alephdata/followthemoney:$TRAVIS_TAG ;
+            docker build -t alephdata/followthemoney:latest . ;
+            docker push alephdata/followthemoney:latest ;
+          fi
