@@ -4,7 +4,7 @@ import { Schema, Model, defaultModel } from '../src'
 describe('ftm/Schema class', () => {
   const model = new Model(defaultModel)
   let schema: Schema
-  beforeEach(() => {  
+  beforeEach(() => {
     schema = new Schema(model, 'Airplane', defaultModel.schemata.Airplane)
   })
   const requiredProperties = ['name', 'label', 'schemata', 'featured', 'properties']
@@ -62,6 +62,26 @@ describe('ftm/Schema class', () => {
     it('should return false for non-documents', () => {
       const nonDocument = new Schema(schema.model, 'Interval', defaultModel.schemata.Interval)
       expect(nonDocument.isDocument()).toBe(false)
+    })
+  })
+  describe('method getEditableProperties', () => {
+    let document: Schema
+    beforeEach(() => {
+      document = new Schema(schema.model, 'Audio', defaultModel.schemata.Audio)
+    })
+    it('should exist', () => {
+      expect(document.getEditableProperties).toBeDefined()
+    })
+    it('should be a function', () => {
+      expect(document.getEditableProperties).toBeInstanceOf(Function)
+    })
+    it('should return an array' , () => {
+      expect(document.getEditableProperties()).toBeInstanceOf(Array)
+    })
+    it('should not return non-editable properties' , () => {
+      const shouldBeHidden = document.getEditableProperties()
+        .filter(prop => prop.hidden || prop.stub)
+      expect(shouldBeHidden).toHaveLength(0)
     })
   })
 })
