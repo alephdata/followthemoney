@@ -96,6 +96,11 @@ export class Schema {
     return properties
   }
 
+  getEditableProperties(): Array<Property> {
+    return Array.from(this.getProperties().values())
+      .filter(prop => !prop.hidden && !prop.stub)
+  }
+
   getFeaturedProperties() {
     return this.featured.map(name => this.getProperty(name))
   }
@@ -110,7 +115,7 @@ export class Schema {
   /**
    * Get the value of a property. If it's not defined, return an
    * empty array. If it's not a valid property, raise an error.
-   * 
+   *
    * @param prop name or Property
    */
   getProperty(prop: string | Property): Property {
