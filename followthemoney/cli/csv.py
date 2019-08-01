@@ -10,7 +10,7 @@ from followthemoney.export.csv import write_entity, write_headers
 def _get_csv_handler(outdir, schema, handlers):
     fh = handlers.get(schema.name)
     if fh is None:
-        name = "{0}.csv".format(schema.plural)
+        name = "{0}.csv".format(schema.name)
         path = os.path.join(outdir, name)
         handlers[schema.name] = fh = open(path, 'w')
         write_headers(fh, schema)
