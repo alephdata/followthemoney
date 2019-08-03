@@ -1,8 +1,8 @@
 FROM alpine:3.10
 
-RUN apk add --no-cache python3 py3-icu py3-lxml py3-psycopg2 py3-cryptography
-RUN apk add --no-cache --virtual=build_deps python3-dev g++ musl-dev && \
-    pip3 install --no-cache-dir python-levenshtein && \
+RUN apk add --no-cache python3 py3-icu py3-lxml py3-cryptography libpq leveldb
+RUN apk add --no-cache --virtual=build_deps python3-dev g++ musl-dev leveldb-dev postgresql-dev && \
+    pip3 install --no-cache-dir python-levenshtein plyvel psycopg2-binary && \
     apk del build_deps
 
 RUN addgroup -g 1000 app && \
