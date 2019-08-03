@@ -1,8 +1,11 @@
 import click
+import logging
 from rdflib import Graph
 
 from followthemoney.cli.cli import cli
 from followthemoney.cli.util import read_entity
+
+log = logging.getLogger(__name__)
 
 
 @cli.command('export-rdf', help="Export to RDF NTriples")
@@ -17,7 +20,10 @@ def export_rdf():
             graph = Graph()
             for triple in entity.triples:
                 graph.add(triple)
-            nt = graph.serialize(format='nt').strip()
-            stdout.write(nt.decode('utf-8') + '\n')
+            try:
+                nt = graph.serialize(format='nt').strip()
+                stdout.write(nt.decode('utf-8') + '\n')
+            except Exception:
+                log.exception("Failed to serialize ntriples.")
     except BrokenPipeError:
         raise click.Abort()

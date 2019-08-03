@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 
 class EmailType(PropertyType):
-    EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
+    EMAIL_REGEX = re.compile(r"^[^@\s]+@[^@\s]+\.\w+$")
     domains = DomainType()
     name = 'email'
     group = 'emails'
@@ -27,7 +27,7 @@ class EmailType(PropertyType):
             return False
         if not self.EMAIL_REGEX.match(email):
             return False
-        mailbox, domain = email.rsplit('@', 1)
+        _, domain = email.rsplit('@', 1)
         return self.domains.validate(domain, **kwargs)
 
     def clean_text(self, email, **kwargs):
@@ -52,7 +52,4 @@ class EmailType(PropertyType):
     # TODO: do we want to use TLDs as country evidence?
 
     def rdf(self, value):
-        try:
-            return URIRef('mailto:%s' % value)
-        except Exception:
-            log.exception("Cannot convert to RDF node")
+        return URIRef('mailto:%s' % value)
