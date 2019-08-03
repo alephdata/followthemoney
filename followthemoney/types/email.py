@@ -35,9 +35,9 @@ class EmailType(PropertyType):
 
         Returns None if this is not an email address.
         """
+        email = strip_quotes(email)
         if not self.EMAIL_REGEX.match(email):
             return None
-        email = strip_quotes(email)
         mailbox, domain = email.rsplit('@', 1)
         domain = self.domains.clean(domain, **kwargs)
         if domain is not None and mailbox is not None:
