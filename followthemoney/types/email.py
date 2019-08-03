@@ -1,10 +1,13 @@
 import re
+import logging
 from rdflib import URIRef
 from normality.cleaning import strip_quotes
 
 from followthemoney.types.common import PropertyType
 from followthemoney.types.domain import DomainType
 from followthemoney.util import sanitize_text, defer as _
+
+log = logging.getLogger(__name__)
 
 
 class EmailType(PropertyType):
@@ -49,4 +52,7 @@ class EmailType(PropertyType):
     # TODO: do we want to use TLDs as country evidence?
 
     def rdf(self, value):
-        return URIRef('mailto:%s' % value)
+        try:
+            return URIRef('mailto:%s' % value)
+        except Exception:
+            log.exception("Cannot convert to RDF node")

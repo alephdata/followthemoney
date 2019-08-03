@@ -203,10 +203,12 @@ class EntityProxy(object):
             return
         yield (self.node.uri, RDF.type, self.schema.uri)
         caption = self.caption
-        if caption is not None:
+        if caption != self.schema.label:
             yield (self.node.uri, SKOS.prefLabel, Literal(caption))
         for statement in self.statements:
-            yield statement.rdf()
+            triple = statement.rdf()
+            if None not in triple:
+                yield triple
 
     @property
     def caption(self):
