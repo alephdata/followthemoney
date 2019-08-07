@@ -73,3 +73,12 @@ class DatesTest(unittest.TestCase):
 
     def test_compare(self):
         self.assertGreater(dates.compare('2011-01-01', '2011-01-01'), 0.9)
+
+    def test_cast_num(self):
+        self.assertEqual(dates._cast_num('2017-04-04 10:30:29'), 1491282029.0)
+        self.assertEqual(dates._cast_num('2017-04-04 10:30'), 1491282000.0)
+        self.assertEqual(dates._cast_num('2017-04-04 10'), 1491280200.0)
+        self.assertEqual(dates._cast_num('2017-04-04'), 1491244200.0)
+        self.assertEqual(dates._cast_num('2017-4-4'), 1491244200.0)
+        self.assertEqual(dates._cast_num('2017-4'), 1490985000.0)
+        self.assertEqual(dates._cast_num('2017'), 1483209000.0)
