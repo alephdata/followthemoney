@@ -7,3 +7,6 @@ class NumberType(PropertyType):
     label = _('Number')
     plural = _('Numbers')
     matchable = False
+
+    def _cast_num(self, value):
+        return float(value)

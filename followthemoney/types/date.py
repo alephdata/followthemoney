@@ -95,3 +95,23 @@ class DateType(PropertyType):
 
     def rdf(self, value):
         return Literal(value, datatype=XSD.dateTime)
+
+    def _cast_num(self, value):
+        formats = [
+            "%Y-%m-%d %H:%M:%S",
+            "%Y-%m-%d %H:%M",
+            "%Y-%m-%d %H",
+            "%Y-%m-%d",
+            "%Y-%m",
+            "%Y",
+        ]
+        date = None
+        for fmt in formats:
+            try:
+                date = datetime.strptime(value, fmt)
+            except Exception:
+                continue
+        if date:
+            return date.timestamp()
+        else:
+            return 0

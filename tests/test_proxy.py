@@ -22,6 +22,15 @@ ENTITY = {
     }
 }
 
+DOC = {
+    'id': 'testdoc',
+    'schema': 'Page',
+    'properties': {
+        'index': '20',
+        'indexText': 'hello world',
+    }
+}
+
 
 class ProxyTestCase(TestCase):
 
@@ -164,6 +173,19 @@ class ProxyTestCase(TestCase):
         data = proxy.to_full_dict()
         assert ENTITY['schema'] in data['schemata']
         assert 'Ralph Tester' in data['names']
+
+    def test_property_casting(self):
+        proxy = EntityProxy.from_dict(model, DOC)
+        data = proxy.to_dict()
+        assert 'index.num' in data['properties']
+        assert 20.0 in data['properties']['index.num']
+        proxy2 = EntityProxy.from_dict(model, data)
+        assert 'index.num' not in proxy2._properties
+
+        proxy = EntityProxy.from_dict(model, ENTITY)
+        data = proxy.to_dict()
+        assert 'birthDate.num' in data['properties']
+        assert 73506600.0 in data['properties']['birthDate.num']
 
     def test_inverted_props(self):
         proxy = EntityProxy.from_dict(model, ENTITY)

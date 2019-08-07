@@ -55,6 +55,9 @@ class EntityProxy(object):
     def _get_prop(self, prop, quiet=False):
         if isinstance(prop, Property):
             return prop
+        # Ignore sub-properties
+        if '.' in prop:
+            return
         if prop not in self.schema.properties:
             if quiet:
                 return
@@ -227,7 +230,15 @@ class EntityProxy(object):
 
     @property
     def properties(self):
-        return {p.name: self.get(p) for p in self._properties.keys()}
+        properties = {}
+        for prop in self._properties.keys():
+            vals = self.get(prop)
+            properties[prop.name] = vals
+            sub_props = prop.get_subprop_values(vals)
+            if sub_props:
+                for k, v in sub_props.items():
+                    properties[k] = v
+        return properties
 
     def to_dict(self):
         data = dict(self.context)
