@@ -112,6 +112,6 @@ class DateType(PropertyType):
             except Exception:
                 continue
         if date:
-            return date.timestamp()
+            return pytz.utc.localize(date).timestamp()
         else:
             return 0

@@ -185,7 +185,7 @@ class ProxyTestCase(TestCase):
         proxy = EntityProxy.from_dict(model, ENTITY)
         data = proxy.to_dict()
         assert 'birthDate.num' in data['properties']
-        assert 73506600.0 in data['properties']['birthDate.num']
+        assert 73526400.0 in data['properties']['birthDate.num']
 
     def test_inverted_props(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
