@@ -1,7 +1,8 @@
 import os
+import re
 from threading import local
 from normality import stringify
-from normality.cleaning import remove_unsafe_chars
+from normality.cleaning import compose_nfc
 from babel import Locale
 from gettext import translation
 from rdflib import Namespace
@@ -12,6 +13,7 @@ NS = Namespace('https://w3id.org/ftm#')
 MEGABYTE = 1024 * 1024
 DEFAULT_LOCALE = 'en'
 DEFAULT_ENCODING = 'utf-8'
+SANITIZE_REMOVE = re.compile(r'^\ufeff|[\x00-\x08\x0b-\x0c\x0e-\x1f\x7f\x80-\x9f]')
 i18n_path = os.path.join(os.path.dirname(__file__), 'translations')
 state = local()
 
@@ -40,11 +42,11 @@ def get_locale():
 
 def sanitize_text(text, encoding=DEFAULT_ENCODING):
     text = stringify(text, encoding_default=encoding)
-    text = remove_unsafe_chars(text)
-    if text is None:
-        return
-    text = text.encode(encoding, 'replace')
-    text = text.decode(encoding, 'strict')
+    if text is not None:
+        text = compose_nfc(text)
+        text = SANITIZE_REMOVE.sub('', text)
+        text = text.encode(DEFAULT_ENCODING, 'replace')
+        text = text.decode(DEFAULT_ENCODING, 'replace')
     return text
 
 
