@@ -217,18 +217,10 @@ class ProxyTestCase(TestCase):
         res = proxy.clone().to_dict()
         assert res['fruit'] == data['fruit'], res
 
-    def test_empty(self):
-        proxy = model.make_entity('Person')
-        assert proxy.node is None
-        assert 0 == len(list(proxy.statements))
-
     def test_rdf(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
-        statements = list(proxy.statements)
-        assert 8 == len(statements), len(statements)
-        triples = list(proxy.triples)
-        count = len(statements) + 2
-        assert count == len(triples), len(triples)
+        triples = list(proxy.triples())
+        assert 10 == len(triples), len(triples)
 
         proxy = model.make_entity('Person')
-        assert 0 == len(list(proxy.triples))
+        assert 0 == len(list(proxy.triples()))

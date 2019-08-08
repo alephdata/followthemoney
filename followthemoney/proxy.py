@@ -9,7 +9,6 @@ from banal import ensure_list, is_mapping, ensure_dict
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
-from followthemoney.graph import Statement, Node
 from followthemoney.util import sanitize_text, key_bytes, gettext
 
 log = logging.getLogger(__name__)
@@ -183,32 +182,16 @@ class EntityProxy(object):
                 data[group] = values
         return data
 
-    @property
-    def node(self):
-        if self.id is None:
-            return
-        return Node(registry.entity, self.id)
-
-    @property
-    def statements(self):
-        if self.id is None:
-            return
-        node = self.node
-        for prop, value in self.itervalues():
-            yield Statement(node, prop, value)
-
-    @property
     def triples(self):
         if self.id is None or self.schema is None:
             return
-        yield (self.node.uri, RDF.type, self.schema.uri)
+        uri = registry.entity.rdf(self.id)
+        yield (uri, RDF.type, self.schema.uri)
         caption = self.caption
         if caption != self.schema.label:
-            yield (self.node.uri, SKOS.prefLabel, Literal(caption))
-        for statement in self.statements:
-            triple = statement.rdf()
-            if None not in triple:
-                yield triple
+            yield (uri, SKOS.prefLabel, Literal(caption))
+        for prop, value in self.itervalues():
+            yield (uri, prop.uri, prop.type.rdf(value))
 
     @property
     def caption(self):
