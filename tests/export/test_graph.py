@@ -77,7 +77,7 @@ class ExportTestCase(TestCase):
             exporter.write(proxy)
 
         value = sio.getvalue()
-        assert '<urn:entity:company>' in value, value
+        assert '<entity:company>' in value, value
         assert 'startDate: "2003-04-01"' in value, value
         assert '<tel:+12025557612>' not in value, value
 
@@ -90,5 +90,5 @@ class ExportTestCase(TestCase):
             exporter.write(proxy)
 
         value = sio.getvalue()
-        assert '<urn:entity:company>' in value, value
+        assert '<entity:company>' in value, value
         assert '<tel:+12025557612>' in value, value
