@@ -4,7 +4,7 @@ import click
 import logging
 
 from followthemoney import model
-from followthemoney.cli.util import read_entity
+from followthemoney.cli.util import read_entity, write_object
 
 
 @click.group(help="Utility for FollowTheMoney graph data")
@@ -17,6 +17,25 @@ def cli():
 @click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
 def dump_model(outfile):
     outfile.write(json.dumps(model.to_dict(), indent=2))
+
+
+@cli.command('validate', help="Re-parse and validate the given data")
+@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+def validate(outfile):
+    try:
+        stdin = click.get_text_stream('stdin')
+        while True:
+            entity = read_entity(stdin)
+            if entity is None:
+                break
+            clean = model.make_entity(entity.schema)
+            clean.id = entity.id
+            for (prop, value) in entity.itervalues():
+                clean.add(prop, value)
+            write_object(outfile, clean)
+    except BrokenPipeError:
+        raise click.Abort()
+    
 
 
 @cli.command(help="Format a stream of entities to make it readable")
