@@ -17,18 +17,18 @@ IDENTIFIERS = {
 
 
 @cli.command('import-ocds', help="Import open contracting data")
-def import_ocds():
-    stdin = click.get_text_stream('stdin')
-    stdout = click.get_text_stream('stdout')
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+def import_ocds(infile, outfile):
     try:
         while True:
-            line = stdin.readline()
+            line = infile.readline()
             if not line:
                 return
             record = json.loads(line)
             for entity in convert_record(record):
                 if entity.id is not None:
-                    write_object(stdout, entity)
+                    write_object(outfile, entity)
     except BrokenPipeError:
         raise click.Abort()
 

@@ -6,13 +6,14 @@ from followthemoney.cli.util import read_entity, write_object
 
 
 @cli.command('aggregate', help="Aggregate multiple fragments of entities")
-def aggregate():
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+def aggregate(infile, outfile):
     buffer = {}
     namespace = Namespace(None)
     try:
-        stdin = click.get_text_stream('stdin')
         while True:
-            entity = read_entity(stdin)
+            entity = read_entity(infile)
             if entity is None:
                 break
             entity = namespace.apply(entity)
@@ -21,8 +22,7 @@ def aggregate():
             else:
                 buffer[entity.id] = entity
 
-        stdout = click.get_text_stream('stdout')
         for entity in buffer.values():
-            write_object(stdout, entity)
+            write_object(outfile, entity)
     except BrokenPipeError:
         raise click.Abort()

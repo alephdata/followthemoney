@@ -6,17 +6,16 @@ from followthemoney.export.excel import get_workbook, write_entity
 
 
 @cli.command('export-excel', help="Export to Excel")
-@click.option('-f', '--filename', type=click.Path(),
-              default='export.xlsx', help="output file path")
-def export_excel(filename):
-    stdin = click.get_text_stream('stdin')
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outfile', type=click.Path(), required=True)  # noqa
+def export_excel(infile, outfile):
     workbook = get_workbook()
     try:
         while True:
-            entity = read_entity(stdin)
+            entity = read_entity(infile)
             if entity is None:
                 break
             write_entity(workbook, entity)
-        workbook.save(filename)
+        workbook.save(outfile)
     except BrokenPipeError:
         raise click.Abort()

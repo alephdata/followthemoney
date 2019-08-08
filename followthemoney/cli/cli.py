@@ -20,12 +20,12 @@ def dump_model(outfile):
 
 
 @cli.command('validate', help="Re-parse and validate the given data")
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
 @click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
-def validate(outfile):
+def validate(infile, outfile):
     try:
-        stdin = click.get_text_stream('stdin')
         while True:
-            entity = read_entity(stdin)
+            entity = read_entity(infile)
             if entity is None:
                 break
             clean = model.make_entity(entity.schema)
@@ -39,12 +39,12 @@ def validate(outfile):
 
 
 @cli.command(help="Format a stream of entities to make it readable")
-def pretty():
-    stdin = click.get_text_stream('stdin')
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+def pretty(infile):
     stdout = click.get_text_stream('stdout')
     try:
         while True:
-            entity = read_entity(stdin)
+            entity = read_entity(infile)
             if entity is None:
                 break
             data = json.dumps(entity.to_dict(), indent=2)

@@ -18,14 +18,13 @@ def _get_csv_handler(outdir, schema, handlers):
 
 
 @cli.command('export-csv', help="Export to CSV")
-@click.option('--outdir', type=click.Path(exists=True), default='.',
-              help="output directory")
-def export_csv(outdir):
-    stdin = click.get_text_stream('stdin')
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outdir', type=click.Path(exists=True, file_okay=False, writable=True), default='.', help="output directory")  # noqa
+def export_csv(infile, outdir):
     handlers = {}
     try:
         while True:
-            entity = read_entity(stdin)
+            entity = read_entity(infile)
             if entity is None:
                 break
             fh = _get_csv_handler(outdir, entity.schema, handlers)

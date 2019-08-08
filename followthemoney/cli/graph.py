@@ -2,21 +2,21 @@ import click
 import networkx as nx
 from networkx.readwrite.gexf import generate_gexf
 
-from followthemoney.graph.export import CypherGraphExport
-from followthemoney.graph.export import NXGraphExport
+from followthemoney.export.graph import CypherGraphExport
+from followthemoney.export.graph import NXGraphExport
 from followthemoney.cli.cli import cli
 from followthemoney.cli.util import read_entity
 
 
 @cli.command('export-gexf', help="Export to GEXF (Gephi) format")
-def export_gexf():
-    stdin = click.get_text_stream('stdin')
-    stdout = click.get_text_stream('stdout')
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+def export_gexf(infile, outfile):
     graph = nx.MultiDiGraph()
     exporter = NXGraphExport(graph)
     try:
         while True:
-            entity = read_entity(stdin)
+            entity = read_entity(infile)
             if entity is None:
                 break
             exporter.write(entity)
@@ -24,17 +24,17 @@ def export_gexf():
         raise click.Abort()
 
     for line in generate_gexf(graph, prettyprint=False):
-        stdout.write(line)
+        outfile.write(line)
 
 
 @cli.command('export-cypher', help="Export to Cypher script")
-def export_cypher():
-    stdin = click.get_text_stream('stdin')
-    stdout = click.get_text_stream('stdout')
-    exporter = CypherGraphExport(stdout)
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+def export_cypher(infile, outfile):
+    exporter = CypherGraphExport(outfile)
     try:
         while True:
-            entity = read_entity(stdin)
+            entity = read_entity(infile)
             if entity is None:
                 break
             exporter.write(entity)
