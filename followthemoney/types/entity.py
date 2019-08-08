@@ -16,4 +16,4 @@ class EntityType(PropertyType):
         return get_entity_id(text)
 
     def rdf(self, value):
-        return URIRef('urn:entity:%s' % value)
+        return URIRef('entity:%s' % value)

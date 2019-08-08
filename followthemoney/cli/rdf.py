@@ -9,7 +9,8 @@ log = logging.getLogger(__name__)
 
 
 @cli.command('export-rdf', help="Export to RDF NTriples")
-def export_rdf():
+@click.option('--external', is_flag=True, default=True, help='Generate full predicates')  # noqa
+def export_rdf(external=True):
     stdin = click.get_text_stream('stdin')
     stdout = click.get_text_stream('stdout')
     try:
@@ -18,7 +19,7 @@ def export_rdf():
             if entity is None:
                 break
             graph = Graph()
-            for triple in entity.triples:
+            for triple in entity.triples(external=external):
                 graph.add(triple)
             try:
                 nt = graph.serialize(format='nt').strip()

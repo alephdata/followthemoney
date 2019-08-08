@@ -1,7 +1,7 @@
 import logging
 from hashlib import sha1
-from rdflib import Literal
 from itertools import product
+from rdflib import Literal, URIRef
 from collections.abc import Hashable
 from rdflib.namespace import RDF, SKOS
 from banal import ensure_list, is_mapping, ensure_dict
@@ -182,16 +182,21 @@ class EntityProxy(object):
                 data[group] = values
         return data
 
-    def triples(self):
+    def triples(self, external=True):
         if self.id is None or self.schema is None:
             return
         uri = registry.entity.rdf(self.id)
         yield (uri, RDF.type, self.schema.uri)
-        caption = self.caption
-        if caption != self.schema.label:
-            yield (uri, SKOS.prefLabel, Literal(caption))
+        if external:
+            caption = self.caption
+            if caption != self.schema.label:
+                yield (uri, SKOS.prefLabel, Literal(caption))
         for prop, value in self.itervalues():
-            yield (uri, prop.uri, prop.type.rdf(value))
+            value = prop.type.rdf(value)
+            if external:
+                yield (uri, prop.uri, value)
+            else:
+                yield (uri, URIRef(prop.name), value)
 
     @property
     def caption(self):
