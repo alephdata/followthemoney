@@ -54,6 +54,9 @@ Document:
       label: "Language"
       type: language
       rdf: http://purl.org/dc/terms/language
+    detectedLanguage:
+      label: "Auto-detected language"
+      type: language
     date:
       label: "Date"
       description: "If not otherwise specified"
@@ -349,7 +352,7 @@ Email:
         label: "E-Mails received"
     inReplyTo:
       label: "In Reply To"
-      description: "Message IDs of the preceding emails in the thread"
+      description: "Message ID of the preceding email in the thread"
       type: identifier
       hidden: true
     inReplyToEmail:
