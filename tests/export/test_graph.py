@@ -4,7 +4,7 @@ from networkx import DiGraph
 
 from followthemoney import model
 from followthemoney.types import registry
-from followthemoney.graph.export import NXGraphExport, CypherGraphExport
+from followthemoney.export.graph import NXGraphExport, CypherGraphExport
 
 ENTITIES = [
     {

@@ -24,7 +24,7 @@ class GraphExport(object):
         return attributes
 
     def get_id(self, type_, value):
-        return type_.rdf(value).n3()
+        return '%s:%s' % (type_.name, value)
 
     def write_edges(self, proxy):
         attributes = self.get_attributes(proxy)
