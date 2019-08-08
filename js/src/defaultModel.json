@@ -1180,7 +1180,8 @@
       ],
       "caption": [
         "name",
-        "lastName"
+        "lastName",
+        "email"
       ],
       "description": "An individual",
       "matchable": true
@@ -1785,7 +1786,7 @@
           "stub": true,
           "matchable": true,
           "range": "Email",
-          "reverse": "sender"
+          "reverse": "emitters"
         },
         "emailsReceived": {
           "name": "emailsReceived",
@@ -1845,6 +1846,7 @@
       ],
       "caption": [
         "name",
+        "email",
         "registrationNumber"
       ],
       "description": "A legal entity may be a person or a company.",
@@ -2019,6 +2021,15 @@
           "qname": "Thing:notes",
           "label": "Notes",
           "type": "text"
+        },
+        "proof": {
+          "name": "proof",
+          "qname": "Thing:proof",
+          "label": "Source document",
+          "type": "entity",
+          "matchable": true,
+          "range": "Document",
+          "reverse": "proven"
         },
         "indexText": {
           "name": "indexText",
@@ -2524,6 +2535,12 @@
           "label": "Language",
           "type": "language"
         },
+        "detectedLanguage": {
+          "name": "detectedLanguage",
+          "qname": "Document:detectedLanguage",
+          "label": "Auto-detected language",
+          "type": "language"
+        },
         "date": {
           "name": "date",
           "qname": "Document:date",
@@ -2626,6 +2643,16 @@
           "label": "Processing error",
           "type": "text",
           "hidden": true
+        },
+        "proven": {
+          "name": "proven",
+          "qname": "Document:proven",
+          "label": "Extracted entities",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Thing",
+          "reverse": "proof"
         }
       },
       "featured": [
@@ -2936,7 +2963,7 @@
           "name": "bodyHtml",
           "qname": "HyperText:bodyHtml",
           "label": "HTML",
-          "type": "text",
+          "type": "html",
           "hidden": true
         }
       },
@@ -2975,23 +3002,23 @@
           "label": "Subject",
           "type": "string"
         },
+        "threadTopic": {
+          "name": "threadTopic",
+          "qname": "Email:threadTopic",
+          "label": "Thread topic",
+          "type": "string"
+        },
         "sender": {
           "name": "sender",
           "qname": "Email:sender",
           "label": "Sender",
-          "type": "entity",
-          "matchable": true,
-          "range": "LegalEntity",
-          "reverse": "emailsSent"
+          "type": "string"
         },
-        "recipients": {
-          "name": "recipients",
-          "qname": "Email:recipients",
-          "label": "Recipients",
-          "type": "entity",
-          "matchable": true,
-          "range": "LegalEntity",
-          "reverse": "emailsReceived"
+        "from": {
+          "name": "from",
+          "qname": "Email:from",
+          "label": "From",
+          "type": "string"
         },
         "to": {
           "name": "to",
@@ -3013,12 +3040,30 @@
           "type": "string",
           "description": "Blind carbon copy"
         },
+        "emitters": {
+          "name": "emitters",
+          "qname": "Email:emitters",
+          "label": "Emitter",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "emailsSent"
+        },
+        "recipients": {
+          "name": "recipients",
+          "qname": "Email:recipients",
+          "label": "Recipients",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "emailsReceived"
+        },
         "inReplyTo": {
           "name": "inReplyTo",
           "qname": "Email:inReplyTo",
           "label": "In Reply To",
           "type": "identifier",
-          "description": "Message IDs of the preceding emails in the thread",
+          "description": "Message ID of the preceding email in the thread",
           "matchable": true,
           "hidden": true
         },
@@ -3051,11 +3096,14 @@
       },
       "featured": [
         "subject",
-        "parent"
+        "date",
+        "from"
       ],
       "caption": [
         "subject",
+        "threadTopic",
         "title",
+        "name",
         "fileName"
       ],
       "generated": true
@@ -3079,6 +3127,20 @@
           "type": "raw",
           "hidden": true
         },
+        "rowCount": {
+          "name": "rowCount",
+          "qname": "Table:rowCount",
+          "label": "Number of rows",
+          "type": "number"
+        },
+        "csvHash": {
+          "name": "csvHash",
+          "qname": "Table:csvHash",
+          "label": "CSV alternative version checksum",
+          "type": "checksum",
+          "matchable": true,
+          "hidden": true
+        },
         "rows": {
           "name": "rows",
           "qname": "Table:rows",
@@ -3099,6 +3161,7 @@
       ],
       "caption": [
         "title",
+        "name",
         "fileName"
       ],
       "generated": true
@@ -3983,11 +4046,11 @@
         "mf": "St. Martin",
         "mg": "Madagascar",
         "mh": "Marshall Islands",
-        "mk": "Macedonia",
+        "mk": "North Macedonia",
         "ml": "Mali",
         "mm": "Myanmar (Burma)",
         "mn": "Mongolia",
-        "mo": "Macau SAR China",
+        "mo": "Macao SAR China",
         "mp": "Northern Mariana Islands",
         "mq": "Martinique",
         "mr": "Mauritania",
@@ -4053,7 +4116,7 @@
         "sv": "El Salvador",
         "sx": "Sint Maarten",
         "sy": "Syria",
-        "sz": "Swaziland",
+        "sz": "Eswatini",
         "ta": "Tristan da Cunha",
         "tc": "Turks & Caicos Islands",
         "td": "Chad",
@@ -4087,6 +4150,8 @@
         "vu": "Vanuatu",
         "wf": "Wallis & Futuna",
         "ws": "Samoa",
+        "xa": "Pseudo-Accents",
+        "xb": "Pseudo-Bidi",
         "ye": "Yemen",
         "yt": "Mayotte",
         "za": "South Africa",
@@ -4116,6 +4181,10 @@
       "plural": "Entities",
       "group": "entities",
       "matchable": true
+    },
+    "html": {
+      "label": "HTML",
+      "plural": null
     },
     "iban": {
       "label": "IBAN",
