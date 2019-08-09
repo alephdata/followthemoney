@@ -57,21 +57,6 @@ class Property(object):
             return 0
         return self.type.specificity(value)
 
-    def get_subprop_keys(self):
-        sub_props = []
-        if self.type in (registry.number, registry.date):
-            sub_props.append("%s.num" % self.name)
-        return sub_props
-
-    def get_subprop_values(self, value):
-        sub_props = {}
-        if self.type in (registry.number, registry.date):
-            # Add a numeric representation for numeric types
-            num_sub_prop = "%s.num" % self.name
-            num_vals = [self.type._cast_num(v) for v in ensure_list(value)]
-            sub_props[num_sub_prop] = num_vals
-        return sub_props
-
     def validate(self, data):
         """Validate that the data should be stored.
 
