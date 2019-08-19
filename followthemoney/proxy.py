@@ -55,9 +55,6 @@ class EntityProxy(object):
     def _get_prop(self, prop, quiet=False):
         if isinstance(prop, Property):
             return prop
-        # Ignore sub-properties
-        if ':' in prop:
-            return
         if prop not in self.schema.properties:
             if quiet:
                 return

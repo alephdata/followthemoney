@@ -12,7 +12,7 @@ from followthemoney.util import dampen, sanitize_text
 
 class DateType(PropertyType):
     # JS: '^([12]\\d{3}(-[01]?[1-9](-[0123]?[1-9])?)?)?$'
-    DATE_RE = re.compile('^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$')  # noqa
+    DATE_RE = re.compile(r'^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$')  # noqa
     DATE_FULL = re.compile(r'\d{4}-\d{2}-\d{2}.*')
     CUT_ZEROES = re.compile(r'((\-00.*)|(.00:00:00))$')
     MONTH_FORMATS = re.compile(r'(%b|%B|%m|%c|%x)')
@@ -114,15 +114,14 @@ class DateType(PropertyType):
     def rdf(self, value):
         return Literal(value, datatype=XSD.dateTime)
 
-    def _cast_num(self, value):
-        date = None
-        formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), [])
-        for fmt in formats:
+    def to_datetime(self, value):
+        for fmt in self.DATE_PATTERNS_BY_LENGTH.get(len(value), []):
             try:
-                date = datetime.strptime(value, fmt)
+                return datetime.strptime(value, fmt)
             except Exception:
                 continue
-        if date:
+
+    def to_number(self, value):
+        date = self.to_datetime(value)
+        if date is not None:
             return pytz.utc.localize(date).timestamp()
-        else:
-            return 0
