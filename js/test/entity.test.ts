@@ -18,10 +18,18 @@ const otherEntity = {
   }
 }
 
+const passportEntity = {
+  id: 'fa02de2d07a1062c7da8187e831010086de8c37',
+  schema: 'Passport',
+  properties: {
+  }
+}
+
 describe('ftm/Entity class', () => {
   const model = new Model(defaultModel)
   const entity = model.getEntity(entityDatum)
   const person = model.getEntity(otherEntity)
+  const passport = model.getEntity(passportEntity)
   describe('entity', () => {
     it('should return a an array', function() {
       expect(entity.getProperty('owner')).toBeInstanceOf(Array)
@@ -68,6 +76,11 @@ describe('ftm/Entity class', () => {
     it('can get all typed values', function() {
       const type = model.getType('name')
       expect(person.getTypeValues(type)).toHaveLength(1)
+    })
+    it('can set a text caption', function() {
+      const testNumber = '25289010'
+      passport.setCaption(testNumber)
+      expect(passport.getCaption()).toBe(testNumber)
     })
   })
 })
