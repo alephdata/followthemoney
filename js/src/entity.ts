@@ -122,6 +122,16 @@ export class Entity {
   }
 
   /**
+   * Set the designated label as the first caption prop for the given entity.
+   */
+  setCaption(value: string) {
+    const captionProperties = this.schema.caption
+    if (captionProperties && captionProperties.length > 0) {
+      this.setProperty(captionProperties[0], value)
+    }
+  }
+
+  /**
    * Get all the values of a particular type, irrespective of
    * which property it is associated with.
    */
@@ -149,7 +159,7 @@ export class Entity {
   toJSON(): IEntityDatum {
     const properties = {} as any
     this.properties.forEach((values, prop) => {
-      properties[prop.name] = values.map((value) => 
+      properties[prop.name] = values.map((value) =>
         Entity.isEntity(value) ? (value as Entity).toJSON() : value
       )
     })
@@ -169,7 +179,7 @@ export class Entity {
 
   /**
    * Shortcut helper function.
-   * 
+   *
    * @param model active FollowTheMoney model
    * @param data the raw blob, which must match IEntityDatum
    */
