@@ -18,6 +18,24 @@ class DateType(PropertyType):
     MONTH_FORMATS = re.compile(r'(%b|%B|%m|%c|%x)')
     DAY_FORMATS = re.compile(r'(%d|%w|%c|%x)')
     MAX_LENGTH = 19
+    DATE_PATTERNS_BY_LENGTH = {
+        19: ["%Y-%m-%d %H:%M:%S"],
+        18: ["%Y-%m-%d %H:%M:%S"],
+        17: ["%Y-%m-%d %H:%M:%S"],
+        16: ["%Y-%m-%d %H:%M", "%Y-%m-%d %H:%M:%S"],
+        15: ["%Y-%m-%d %H:%M", "%Y-%m-%d %H:%M:%S"],
+        14: ["%Y-%m-%d %H:%M", "%Y-%m-%d %H:%M:%S"],
+        13: ["%Y-%m-%d %H", "%Y-%m-%d %H:%M"],
+        12: ["%Y-%m-%d %H", "%Y-%m-%d %H:%M"],
+        11: ["%Y-%m-%d %H"],
+        10: ["%Y-%m-%d", "%Y-%m-%d %H"],
+        9: ["%Y-%m-%d"],
+        8: ["%Y-%m-%d"],
+        7: ["%Y-%m"],
+        6: ["%Y-%m"],
+        5: [],
+        4: ["%Y"],
+    }
 
     name = 'date'
     group = 'dates'
@@ -97,15 +115,8 @@ class DateType(PropertyType):
         return Literal(value, datatype=XSD.dateTime)
 
     def _cast_num(self, value):
-        formats = [
-            "%Y-%m-%d %H:%M:%S",
-            "%Y-%m-%d %H:%M",
-            "%Y-%m-%d %H",
-            "%Y-%m-%d",
-            "%Y-%m",
-            "%Y",
-        ]
         date = None
+        formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), [])
         for fmt in formats:
             try:
                 date = datetime.strptime(value, fmt)
