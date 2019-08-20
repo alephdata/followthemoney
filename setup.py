@@ -85,7 +85,7 @@ setup(
             'ocds = followthemoney.cli.ocds:import_ocds',
             'mapping = followthemoney.cli.mapping:run_mapping',
             'csv = followthemoney.cli.csv:export_csv',
-            'excel = followthemoney.cli.excel:export_excel',
+            'excel = followthemoney.cli.csv:export_excel',
         },
         'console_scripts': [
             'ftmutil = followthemoney.cli.cli:cli',

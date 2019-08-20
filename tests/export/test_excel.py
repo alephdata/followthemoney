@@ -1,7 +1,10 @@
+import os
 from unittest import TestCase
+from tempfile import mkstemp
+from openpyxl import load_workbook
 
 from followthemoney import model
-from followthemoney.export.excel import get_workbook, write_entity
+from followthemoney.export.excel import ExcelExporter
 
 
 ENTITY = {
@@ -20,20 +23,24 @@ ENTITY = {
 
 class ExcelExportTestCase(TestCase):
 
+    def setUp(self):
+        _, self.temp = mkstemp(suffix='.xlsx')
+
+    def tearDown(self):
+        os.unlink(self.temp)
+
     def test_excel_export(self):
         entity = model.get_proxy(ENTITY)
-        workbook = get_workbook()
-        write_entity(
-            workbook, entity,
-            extra_headers=['source'],
-            extra_fields={'source': 'test'}
-        )
+        exporter = ExcelExporter(self.temp, extra=['source'])
+        exporter.write(entity, extra=['test'])
+        exporter.finalize()
+        workbook = load_workbook(self.temp)
         self.assertListEqual(workbook.sheetnames, ['People'])
         sheet = workbook["People"]
         rows = list(sheet)
         self.assertListEqual(
             [cell.value for cell in rows[0]],
-            ['id', 'source'] +
+            ['ID', 'source'] +
             [prop.label for prop in entity.schema.sorted_properties]
         )
         self.assertListEqual(
