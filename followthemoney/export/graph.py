@@ -160,10 +160,12 @@ class CypherGraphExporter(GraphExporter):
     def write_link(self, proxy, prop, value, weight):
         node_id = self.get_id(registry.entity, proxy.id)
         other_id = self.get_id(prop.type, value)
-        if prop.range:
-            self._make_node({'id': other_id}, prop.range.name)
+        label = prop.type.name.capitalize()
+        attributes = {'id': other_id}
+        if prop.type == registry.entity and prop.range:
+            label = prop.range.name
         else:
-            attributes = {'id': other_id, 'name': value}
-            self._make_node({'id': other_id}, prop.type.name)
+            attributes['name'] = value
+        self._make_node(attributes, label)
         attributes = {'weight': weight}
         self._make_edge(node_id, other_id, attributes, prop.name)
