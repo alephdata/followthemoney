@@ -28,10 +28,11 @@ class ExcelWriter(object):
         sheet.append(cells)
         return sheet
 
-    def get_bytes(self):
+    def get_bytesio(self):
         buffer = BytesIO()
         self.workbook.save(buffer)
-        return buffer.getvalue()
+        buffer.seek(0)
+        return buffer
 
 
 class ExcelExporter(ExcelWriter, Exporter):
