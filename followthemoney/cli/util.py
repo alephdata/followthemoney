@@ -1,6 +1,7 @@
 import os
 import json
 import yaml
+import click
 from banal import is_mapping, is_listish, ensure_list
 
 from followthemoney import model
@@ -21,6 +22,19 @@ def read_entity(stream):
     if is_mapping(data) and 'schema' in data:
         return model.get_proxy(data)
     return data
+
+
+def export_stream(exporter, stream):
+    try:
+        while True:
+            entity = read_entity(stream)
+            if entity is None:
+                break
+            exporter.write(entity)
+    except BrokenPipeError:
+        raise click.Abort()
+    finally:
+        exporter.finalize()
 
 
 def load_mapping_file(file_path):

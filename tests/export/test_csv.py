@@ -1,9 +1,11 @@
 import io
 import csv
+import shutil
+from tempfile import mkdtemp
 from unittest import TestCase
 
 from followthemoney import model
-from followthemoney.export.csv import write_headers, write_entity
+from followthemoney.export.csv import CSVExporter
 
 
 ENTITY = {
@@ -21,18 +23,26 @@ ENTITY = {
 
 
 class CSVExportTestCase(TestCase):
+
+    def setUp(self):
+        self.outdir = mkdtemp()
+
+    def tearDown(self):
+        shutil.rmtree(self.outdir)
+
     def test_csv_export(self):
         entity = model.get_proxy(ENTITY)
-        buff = io.StringIO()
-        write_headers(buff, entity.schema, extra_headers=['source'])
-        write_entity(buff, entity, extra_fields={'source': 'test'})
-
-        buff.seek(0)
-        csv_reader = csv.reader(buff, delimiter=',')
+        exporter = CSVExporter(self.outdir, extra=['source'])
+        exporter.write(entity, extra=['test'])
+        fh, writer = exporter.handles[entity.schema]
+        outfile = fh.name
+        exporter.finalize()
+        fh = open(outfile, 'r')
+        csv_reader = csv.reader(fh)
         rows = list(csv_reader)
         self.assertListEqual(
             rows[0],
             ['id', 'source'] +
-            [prop.label for prop in entity.schema.sorted_properties]
+            [prop.name for prop in entity.schema.sorted_properties]
         )
         self.assertListEqual(rows[1][:3], ['person', 'test', 'Ralph Tester'])

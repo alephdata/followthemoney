@@ -1,25 +1,45 @@
 import csv
+from pathlib import Path
+
+from followthemoney.export.common import Exporter
 
 
-def write_entity(fh, entity, extra_fields=None):
-    if extra_fields is None:
-        extra_fields = dict()
-    fieldnames = [prop.label for prop in entity.schema.sorted_properties]
-    fieldnames = ['id'] + list(extra_fields.keys()) + fieldnames
-    writer = csv.DictWriter(fh, fieldnames=fieldnames)
-    prop_dict = {
-        'id': entity.id,
-        **extra_fields
-    }
-    for prop in entity.schema.sorted_properties:
-        prop_dict[prop.label] = prop.type.join(entity.get(prop))
-    writer.writerow(prop_dict)
+class CSVExporter(Exporter):
 
+    def __init__(self, directory, dialect=csv.unix_dialect, extra=None):
+        self.directory = Path(directory)
+        self.dialect = dialect
+        self.extra = extra or []
+        self.handles = {}
 
-def write_headers(fh, schema, extra_headers=None):
-    if extra_headers is None:
-        extra_headers = []
-    fieldnames = [prop.label for prop in schema.sorted_properties]
-    fieldnames = ['id'] + extra_headers + fieldnames
-    writer = csv.DictWriter(fh, fieldnames=fieldnames)
-    writer.writeheader()
+    def _write_header(self, writer, schema):
+        headers = ['id']
+        headers.extend(self.extra)
+        for prop in schema.sorted_properties:
+            # Not using label to make it more machine-readable:
+            headers.append(prop.name)
+        writer.writerow(headers)
+
+    def _get_writer(self, schema):
+        if schema not in self.handles:
+            self.directory.mkdir(parents=True, exist_ok=True)
+            name = "{0}.csv".format(schema.name)
+            file_path = self.directory.joinpath(name)
+            handle = open(file_path, mode='w')
+            writer = csv.writer(handle, dialect=self.dialect)
+            self.handles[schema] = (handle, writer)
+            self._write_header(writer, schema)
+        handle, writer = self.handles[schema]
+        return writer
+
+    def write(self, proxy, extra=None):
+        writer = self._get_writer(proxy.schema)
+        cells = [proxy.id]
+        cells.extend(extra or [])
+        for prop in proxy.schema.sorted_properties:
+            cells.append(prop.type.join(proxy.get(prop)))
+        writer.writerow(cells)
+
+    def finalize(self):
+        for (handle, writer) in self.handles.values():
+            handle.close()
