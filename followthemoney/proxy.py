@@ -182,18 +182,18 @@ class EntityProxy(object):
                 data[group] = values
         return data
 
-    def triples(self, external=True):
+    def triples(self, qualified=True):
         if self.id is None or self.schema is None:
             return
         uri = registry.entity.rdf(self.id)
         yield (uri, RDF.type, self.schema.uri)
-        if external:
+        if qualified:
             caption = self.caption
             if caption != self.schema.label:
                 yield (uri, SKOS.prefLabel, Literal(caption))
         for prop, value in self.itervalues():
             value = prop.type.rdf(value)
-            if external:
+            if qualified:
                 yield (uri, prop.uri, value)
             else:
                 yield (uri, URIRef(prop.name), value)

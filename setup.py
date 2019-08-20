@@ -79,13 +79,13 @@ setup(
         },
         'followthemoney.cli': {
             'aggregate = followthemoney.cli.aggregate:aggregate',
-            'rdf = followthemoney.cli.rdf:export_rdf',
-            'gexf = followthemoney.cli.graph:export_gexf',
-            'cypher = followthemoney.cli.graph:export_cypher',
             'ocds = followthemoney.cli.ocds:import_ocds',
             'mapping = followthemoney.cli.mapping:run_mapping',
-            'csv = followthemoney.cli.csv:export_csv',
-            'excel = followthemoney.cli.csv:export_excel',
+            'csv = followthemoney.cli.exports:export_csv',
+            'excel = followthemoney.cli.exports:export_excel',
+            'rdf = followthemoney.cli.exports:export_rdf',
+            'gexf = followthemoney.cli.exports:export_gexf',
+            'cypher = followthemoney.cli.exports:export_cypher',
         },
         'console_scripts': [
             'ftmutil = followthemoney.cli.cli:cli',

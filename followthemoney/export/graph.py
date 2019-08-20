@@ -1,30 +1,36 @@
 import json
 import stringcase
+import networkx as nx
 from pprint import pprint  # noqa
 from banal import ensure_list
+from networkx.readwrite.gexf import generate_gexf
 
 from followthemoney.types import registry
+from followthemoney.export.common import Exporter
+
+DEFAULT_EDGE_TYPES = (registry.entity.name,)
 
 
-class GraphExport(object):
+def edge_types():
+    return [t.name for t in registry.types if t.matchable]
+
+
+class GraphExporter(Exporter):
     """Base functions for exporting a property graph from a stream
     of entities."""
 
-    DEFAULT_TYPES = (registry.entity,)
-    COMPLETE = list(registry.types)
-
-    def __init__(self, edge_types=DEFAULT_TYPES):
+    def __init__(self, edge_types=DEFAULT_EDGE_TYPES):
         self.edge_types = edge_types
 
     def get_attributes(self, proxy):
         attributes = {}
         for prop, values in proxy._properties.items():
-            if prop.type not in self.edge_types:
+            if prop.type.name not in self.edge_types:
                 attributes[prop.name] = prop.type.join(values)
         return attributes
 
     def get_id(self, type_, value):
-        return type_.rdf(value).n3()
+        return str(type_.rdf(value))
 
     def write_edges(self, proxy):
         attributes = self.get_attributes(proxy)
@@ -38,7 +44,7 @@ class GraphExport(object):
         else:
             self.write_node(proxy)
             for prop, values in proxy._properties.items():
-                if prop.type not in self.edge_types:
+                if prop.type.name not in self.edge_types:
                     continue
                 for value in ensure_list(values):
                     weight = prop.specificity(value)
@@ -47,13 +53,14 @@ class GraphExport(object):
                     self.write_link(proxy, prop, value, weight)
 
 
-class NXGraphExport(GraphExport):
+class NXGraphExporter(GraphExporter):
     """Write to NetworkX data structure, which in turn can be exported
     to the file formats for Gephi (GEXF) and D3."""
 
-    def __init__(self, graph, edge_types=GraphExport.DEFAULT_TYPES):
-        super(NXGraphExport, self).__init__(edge_types=edge_types)
-        self.graph = graph
+    def __init__(self, fh, edge_types=DEFAULT_EDGE_TYPES):
+        super(NXGraphExporter, self).__init__(edge_types=edge_types)
+        self.graph = nx.MultiDiGraph()
+        self.fh = fh
 
     def _make_node(self, id, attributes):
         if not self.graph.has_node(id):
@@ -90,16 +97,20 @@ class NXGraphExport(GraphExport):
                             weight=weight,
                             schema=prop.qname)
 
+    def finalize(self):
+        for line in generate_gexf(self.graph, prettyprint=False):
+            self.fh.write(line)
 
-class CypherGraphExport(GraphExport):
+
+class CypherGraphExporter(GraphExporter):
     """Cypher query format, used for import to Neo4J. This is a bit like
     writing SQL with individual statements - so for large datasets it
     might be a better idea to do a CSV-based import."""
     # https://www.opencypher.org/
     # MATCH (n) DETACH DELETE n;
 
-    def __init__(self, fh, edge_types=GraphExport.DEFAULT_TYPES):
-        super(CypherGraphExport, self).__init__(edge_types=edge_types)
+    def __init__(self, fh, edge_types=DEFAULT_EDGE_TYPES):
+        super(CypherGraphExporter, self).__init__(edge_types=edge_types)
         self.fh = fh
 
     def _to_map(self, data):

@@ -35,7 +35,6 @@ def validate(infile, outfile):
             write_object(outfile, clean)
     except BrokenPipeError:
         raise click.Abort()
-    
 
 
 @cli.command(help="Format a stream of entities to make it readable")
