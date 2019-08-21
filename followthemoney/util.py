@@ -1,4 +1,5 @@
 import os
+import logging
 from threading import local
 from normality import stringify
 from normality.cleaning import compose_nfkc
@@ -15,6 +16,7 @@ DEFAULT_LOCALE = 'en'
 DEFAULT_ENCODING = 'utf-8'
 i18n_path = os.path.join(os.path.dirname(__file__), 'translations')
 state = local()
+log = logging.getLogger(__name__)
 
 
 def gettext(*args, **kwargs):
@@ -42,7 +44,11 @@ def get_locale():
 def sanitize_text(text, encoding=DEFAULT_ENCODING):
     text = stringify(text, encoding_default=encoding)
     if text is not None:
-        text = compose_nfkc(text)
+        try:
+            text = compose_nfkc(text)
+        except (SystemError, Exception) as ex:
+            log.warning("Cannot NFKC text: %s", ex)
+            return None
         text = remove_unsafe_chars(text)
         text = text.encode(DEFAULT_ENCODING, 'replace')
         text = text.decode(DEFAULT_ENCODING, 'replace')
