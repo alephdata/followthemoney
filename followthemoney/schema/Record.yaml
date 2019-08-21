@@ -59,3 +59,6 @@ Page:
         label: "Pages"
         hidden: true
       rdf: http://purl.org/dc/terms/isPartOf
+    detectedLanguage:
+      label: "Auto-detected language"
+      type: language
