@@ -15,10 +15,11 @@ class LanguageType(PropertyType):
 
     # Language whitelist
     LANGUAGES = ['eng', 'fra', 'deu', 'rus', 'spa', 'nld', 'ron', 'kat',
-                 'ara', 'tur', 'ltz', 'ell', 'lut', 'ukr', 'zho', 'bel',
+                 'ara', 'tur', 'ltz', 'ell', 'lit', 'ukr', 'zho', 'bel',
                  'bul', 'bos', 'jpn', 'ces', 'lav', 'por', 'pol', 'hye',
                  'hrv', 'hin', 'heb', 'uzb', 'mon', 'urd', 'sqi', 'kor',
-                 'isl', 'ita', 'est', 'nor', 'fas', 'swa', 'slv', 'aze']
+                 'isl', 'ita', 'est', 'nor', 'fas', 'swa', 'slv', 'aze',
+                 'tgk', 'kaz', 'tuk', 'swa']
     LANGUAGES = get_env_list('FTM_LANGUAGES', LANGUAGES)
     LANGUAGES = [l.lower().strip() for l in LANGUAGES]
 
@@ -33,8 +34,9 @@ class LanguageType(PropertyType):
             for lang in self.LANGUAGES:
                 self._names[locale][lang] = lang
             for code, label in locale.languages.items():
+                code = iso_639_alpha3(code)
                 if code in self.LANGUAGES:
-                    self._names[locale][code.lower()] = label
+                    self._names[locale][code] = label
         return self._names[locale]
 
     def validate(self, text, **kwargs):
