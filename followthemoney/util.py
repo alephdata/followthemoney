@@ -4,6 +4,7 @@ from threading import local
 from normality import stringify
 from normality.cleaning import compose_nfc
 from normality.cleaning import remove_unsafe_chars
+from normality.encoding import DEFAULT_ENCODING
 from babel import Locale
 from gettext import translation
 from rdflib import Namespace
@@ -13,7 +14,6 @@ from banal import unique_list, ensure_list
 NS = Namespace('https://w3id.org/ftm#')
 MEGABYTE = 1024 * 1024
 DEFAULT_LOCALE = 'en'
-DEFAULT_ENCODING = 'utf-8'
 i18n_path = os.path.join(os.path.dirname(__file__), 'translations')
 state = local()
 log = logging.getLogger(__name__)
@@ -60,8 +60,7 @@ def sanitize_text(text, encoding=DEFAULT_ENCODING):
             return None
         text = remove_unsafe_chars(text)
         text = text.encode(DEFAULT_ENCODING, 'replace')
-        text = text.decode(DEFAULT_ENCODING, 'replace')
-    return text
+        return text.decode(DEFAULT_ENCODING, 'replace')
 
 
 def key_bytes(key):
