@@ -75,9 +75,9 @@ class DatesTest(unittest.TestCase):
         self.assertGreater(dates.compare('2011-01-01', '2011-01-01'), 0.9)
 
     def test_cast_num(self):
-        self.assertEqual(dates.to_number('2017-04-04 10:30:29'), 1491301829.0)
-        self.assertEqual(dates.to_number('2017-04-04 10:30'), 1491301800.0)
-        self.assertEqual(dates.to_number('2017-04-04 10'), 1491300000.0)
+        self.assertEqual(dates.to_number('2017-04-04T10:30:29'), 1491301829.0)
+        self.assertEqual(dates.to_number('2017-04-04T10:30'), 1491301800.0)
+        self.assertEqual(dates.to_number('2017-04-04T10'), 1491300000.0)
         self.assertEqual(dates.to_number('2017-04-04'), 1491264000.0)
         self.assertEqual(dates.to_number('2017-4-4'), 1491264000.0)
         self.assertEqual(dates.to_number('2017-4'), 1491004800.0)
