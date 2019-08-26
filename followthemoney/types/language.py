@@ -1,8 +1,9 @@
 from rdflib import URIRef
+from languagecodes import iso_639_alpha3
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
-from followthemoney.util import sanitize_text, get_locale
+from followthemoney.util import sanitize_text, get_locale, get_env_list
 
 
 class LanguageType(PropertyType):
@@ -12,6 +13,15 @@ class LanguageType(PropertyType):
     plural = _('Languages')
     matchable = False
 
+    # Language whitelist
+    LANGUAGES = ['eng', 'fra', 'deu', 'rus', 'spa', 'nld', 'ron', 'kat',
+                 'ara', 'tur', 'ltz', 'ell', 'lut', 'ukr', 'zho', 'bel',
+                 'bul', 'bos', 'jpn', 'ces', 'lav', 'por', 'pol', 'hye',
+                 'hrv', 'hin', 'heb', 'uzb', 'mon', 'urd', 'sqi', 'kor',
+                 'isl', 'ita', 'est', 'nor', 'fas', 'swa', 'slv', 'aze']
+    LANGUAGES = get_env_list('FTM_LANGUAGES', LANGUAGES)
+    LANGUAGES = [l.lower().strip() for l in LANGUAGES]
+
     def __init__(self, *args):
         self._names = {}
 
@@ -20,19 +30,22 @@ class LanguageType(PropertyType):
         locale = get_locale()
         if locale not in self._names:
             self._names[locale] = {}
+            for lang in self.LANGUAGES:
+                self._names[locale][lang] = lang
             for code, label in locale.languages.items():
-                self._names[locale][code.lower()] = label
+                if code in self.LANGUAGES:
+                    self._names[locale][code.lower()] = label
         return self._names[locale]
 
     def validate(self, text, **kwargs):
         text = sanitize_text(text)
         if text is None:
             return False
-        return text.lower() in self.names
+        return text in self.LANGUAGES
 
     def clean_text(self, text, **kwargs):
-        code = text.lower().strip()
-        if code in self.names:
+        code = iso_639_alpha3(text)
+        if code in self.LANGUAGES:
             return code
 
     def rdf(self, value):

@@ -2,7 +2,7 @@ import os
 import logging
 from threading import local
 from normality import stringify
-from normality.cleaning import compose_nfkc
+from normality.cleaning import compose_nfc
 from normality.cleaning import remove_unsafe_chars
 from babel import Locale
 from gettext import translation
@@ -41,13 +41,22 @@ def get_locale():
     return Locale(state.locale)
 
 
+def get_env_list(name, default=[]):
+    value = stringify(os.environ.get(name))
+    if value is not None:
+        values = value.split(':')
+        if len(values):
+            return values
+    return default
+
+
 def sanitize_text(text, encoding=DEFAULT_ENCODING):
     text = stringify(text, encoding_default=encoding)
     if text is not None:
         try:
-            text = compose_nfkc(text)
+            text = compose_nfc(text)
         except (SystemError, Exception) as ex:
-            log.warning("Cannot NFKC text: %s", ex)
+            log.warning("Cannot NFC text: %s", ex)
             return None
         text = remove_unsafe_chars(text)
         text = text.encode(DEFAULT_ENCODING, 'replace')
