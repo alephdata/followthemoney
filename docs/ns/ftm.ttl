@@ -1205,6 +1205,11 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Page ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Page:detectedLanguage> a rdf:Property ;
+    rdfs:label "Auto-detected language" ;
+    rdfs:domain ftm:Page ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Pages:pdfHash> a rdf:Property ;
     rdfs:label "PDF alternative version checksum" ;
     rdfs:domain ftm:Pages ;
@@ -2362,5 +2367,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2019-08-08T16:04:57"^^xsd:dateTime .
+    dct:modified "2019-08-26T20:08:17"^^xsd:dateTime .
 

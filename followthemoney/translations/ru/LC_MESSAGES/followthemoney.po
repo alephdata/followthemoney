@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-08-08 16:56+0200\n"
+"POT-Creation-Date: 2019-08-26 20:09+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -782,19 +782,20 @@ msgid "MIME type"
 msgstr "MIME-тип"
 
 #. Document.properties.language.label
-#: followthemoney/schema/Document.yaml followthemoney/types/language.py:11
+#: followthemoney/schema/Document.yaml followthemoney/types/language.py:12
 msgid "Language"
 msgstr "Язык"
 
 #. Document.properties.detectedLanguage.label
-#: followthemoney/schema/Document.yaml
+#. Page.properties.detectedLanguage.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
 msgid "Auto-detected language"
-msgstr ""
+msgstr "Автоматически определённый язык"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:24
+#: followthemoney/types/date.py:42
 msgid "Date"
 msgstr "Дата"
 
@@ -1093,7 +1094,7 @@ msgstr "In-Reply-To"
 #. Email.properties.inReplyTo.description
 #: followthemoney/schema/Document.yaml
 msgid "Message ID of the preceding email in the thread"
-msgstr ""
+msgstr "Message-ID для предшествующего письма"
 
 #. Email.properties.inReplyToEmail.label
 #: followthemoney/schema/Document.yaml
@@ -2397,12 +2398,12 @@ msgstr "Примечания"
 #. Thing.properties.proof.label
 #: followthemoney/schema/Thing.yaml
 msgid "Source document"
-msgstr ""
+msgstr "Исходный документ"
 
 #. Thing.properties.proof.reverse.label
 #: followthemoney/schema/Thing.yaml
 msgid "Extracted entities"
-msgstr ""
+msgstr "Обнаруженные сущности"
 
 #. Thing.properties.indexUpdatedAt.label
 #: followthemoney/schema/Thing.yaml
@@ -2609,47 +2610,51 @@ msgstr "Все страны мира"
 msgid "European Union"
 msgstr "Европейский союз"
 
-#: followthemoney/types/country.py:28
+#: followthemoney/types/country.py:29
+msgid "Czech Republic"
+msgstr ""
+
+#: followthemoney/types/country.py:30
 msgid "Kosovo"
 msgstr "Косово"
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:31
 msgid "Yugoslavia"
 msgstr "Югославия"
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:32
 msgid "Serbia and Montenegro"
 msgstr "Сербия и Черногория"
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:33
 msgid "Soviet Union"
 msgstr "Советский Союз"
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:34
 msgid "Abkhazia"
 msgstr "Абхазия"
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:35
 msgid "South Ossetia"
 msgstr "Южная Осетия"
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:36
 msgid "Somaliland"
 msgstr "Сомалиленд"
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:37
 msgid "Wales"
 msgstr "Уэльс"
 
-#: followthemoney/types/country.py:36
+#: followthemoney/types/country.py:38
 msgid "Scotland"
 msgstr "Шотландия"
 
-#: followthemoney/types/country.py:37
+#: followthemoney/types/country.py:39
 msgid "Transnistria"
 msgstr "Приднестровье"
 
-#: followthemoney/types/date.py:25
+#: followthemoney/types/date.py:43
 msgid "Dates"
 msgstr "Даты"
 
@@ -2693,7 +2698,7 @@ msgstr "IP-адреса"
 msgid "Nested data"
 msgstr "Сгруппированные данные"
 
-#: followthemoney/types/language.py:12
+#: followthemoney/types/language.py:13
 msgid "Languages"
 msgstr "Языки"
 
@@ -2709,11 +2714,11 @@ msgstr "MIME-типы"
 msgid "Names"
 msgstr "Имена"
 
-#: followthemoney/types/number.py:7
+#: followthemoney/types/number.py:10
 msgid "Number"
 msgstr "Номер"
 
-#: followthemoney/types/number.py:8
+#: followthemoney/types/number.py:11
 msgid "Numbers"
 msgstr "Номера"
 

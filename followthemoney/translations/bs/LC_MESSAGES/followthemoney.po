@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-08-08 16:56+0200\n"
+"POT-Creation-Date: 2019-08-26 20:09+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Tajna Biscevic <tajna@occrp.org>, 2019\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -778,19 +778,20 @@ msgid "MIME type"
 msgstr ""
 
 #. Document.properties.language.label
-#: followthemoney/schema/Document.yaml followthemoney/types/language.py:11
+#: followthemoney/schema/Document.yaml followthemoney/types/language.py:12
 msgid "Language"
 msgstr "Jezik"
 
 #. Document.properties.detectedLanguage.label
-#: followthemoney/schema/Document.yaml
+#. Page.properties.detectedLanguage.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
 msgid "Auto-detected language"
 msgstr ""
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:24
+#: followthemoney/types/date.py:42
 msgid "Date"
 msgstr "Datum"
 
@@ -2595,47 +2596,51 @@ msgstr ""
 msgid "European Union"
 msgstr "Evropska unija"
 
-#: followthemoney/types/country.py:28
-msgid "Kosovo"
-msgstr ""
-
 #: followthemoney/types/country.py:29
-msgid "Yugoslavia"
+msgid "Czech Republic"
 msgstr ""
 
 #: followthemoney/types/country.py:30
-msgid "Serbia and Montenegro"
+msgid "Kosovo"
 msgstr ""
 
 #: followthemoney/types/country.py:31
-msgid "Soviet Union"
+msgid "Yugoslavia"
 msgstr ""
 
 #: followthemoney/types/country.py:32
-msgid "Abkhazia"
+msgid "Serbia and Montenegro"
 msgstr ""
 
 #: followthemoney/types/country.py:33
-msgid "South Ossetia"
+msgid "Soviet Union"
 msgstr ""
 
 #: followthemoney/types/country.py:34
-msgid "Somaliland"
+msgid "Abkhazia"
 msgstr ""
 
 #: followthemoney/types/country.py:35
-msgid "Wales"
+msgid "South Ossetia"
 msgstr ""
 
 #: followthemoney/types/country.py:36
-msgid "Scotland"
+msgid "Somaliland"
 msgstr ""
 
 #: followthemoney/types/country.py:37
+msgid "Wales"
+msgstr ""
+
+#: followthemoney/types/country.py:38
+msgid "Scotland"
+msgstr ""
+
+#: followthemoney/types/country.py:39
 msgid "Transnistria"
 msgstr ""
 
-#: followthemoney/types/date.py:25
+#: followthemoney/types/date.py:43
 msgid "Dates"
 msgstr ""
 
@@ -2679,7 +2684,7 @@ msgstr ""
 msgid "Nested data"
 msgstr ""
 
-#: followthemoney/types/language.py:12
+#: followthemoney/types/language.py:13
 msgid "Languages"
 msgstr ""
 
@@ -2695,11 +2700,11 @@ msgstr ""
 msgid "Names"
 msgstr ""
 
-#: followthemoney/types/number.py:7
+#: followthemoney/types/number.py:10
 msgid "Number"
 msgstr ""
 
-#: followthemoney/types/number.py:8
+#: followthemoney/types/number.py:11
 msgid "Numbers"
 msgstr ""
 
