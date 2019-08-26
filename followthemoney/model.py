@@ -97,8 +97,8 @@ class Model(object):
     def make_entity(self, schema, key_prefix=None):
         return EntityProxy(self, {'schema': schema}, key_prefix=key_prefix)
 
-    def get_proxy(self, data):
-        return EntityProxy.from_dict(self, data)
+    def get_proxy(self, data, cleaned=True):
+        return EntityProxy.from_dict(self, data, cleaned=cleaned)
 
     def to_dict(self):
         return {

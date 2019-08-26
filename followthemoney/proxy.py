@@ -20,7 +20,7 @@ class EntityProxy(object):
     __slots__ = ['schema', 'id', 'key_prefix', 'context',
                  '_properties', '_size']
 
-    def __init__(self, model, data, key_prefix=None):
+    def __init__(self, model, data, key_prefix=None, cleaned=True):
         data = dict(data)
         properties = ensure_dict(data.pop('properties', {}))
         self.schema = model.get(data.pop('schema', None))
@@ -34,7 +34,7 @@ class EntityProxy(object):
 
         if is_mapping(properties):
             for key, value in properties.items():
-                self.add(key, value, cleaned=True, quiet=True)
+                self.add(key, value, cleaned=cleaned, quiet=True)
 
     def make_id(self, *parts):
         """Generate a (hopefully unique) ID for the given entity, composed
@@ -275,7 +275,7 @@ class EntityProxy(object):
         return self.id == other.id
 
     @classmethod
-    def from_dict(cls, model, data):
+    def from_dict(cls, model, data, cleaned=True):
         if isinstance(data, cls):
             return data
-        return cls(model, data)
+        return cls(model, data, cleaned=cleaned)
