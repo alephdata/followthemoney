@@ -25,6 +25,8 @@ class CountryType(PropertyType):
             self._names[locale] = {
                 'zz': gettext('Global'),
                 'eu': gettext('European Union'),
+                # Overwrite "Czechia" label:
+                'cz': gettext('Czech Republic'),
                 'xk': gettext('Kosovo'),
                 'yucs': gettext('Yugoslavia'),
                 'csxx': gettext('Serbia and Montenegro'),
@@ -37,7 +39,10 @@ class CountryType(PropertyType):
                 'md-pmr': gettext('Transnistria')
             }
             for code, label in locale.territories.items():
-                self._names[locale][code.lower()] = label
+                try:
+                    int(code)
+                except ValueError:
+                    self._names[locale][code.lower()] = label
         return self._names[locale]
 
     def validate(self, country, **kwargs):
