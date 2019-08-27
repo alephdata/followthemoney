@@ -20,6 +20,12 @@ class NamesTest(unittest.TestCase):
         self.assertEqual(names.normalize('xx '), ['xx'])
         self.assertEqual(names.normalize(' '), [])
 
+    def test_pick(self):
+        values = ['Banana', 'banana', 'nanana', 'Batman']
+        self.assertEqual(names.pick(values), 'Banana')
+        self.assertEqual(names.pick('Banana'), 'Banana')
+        self.assertEqual(names.pick([]), None)
+
     def test_domain_validity(self):
         self.assertTrue(names.validate('huhu'))
         self.assertFalse(names.validate(''))
