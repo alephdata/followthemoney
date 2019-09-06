@@ -80,16 +80,15 @@ class PropertyMapping(object):
 
         if self.entity is not None:
             entity = entities.get(self.entity)
-            if entity is None:
-                return
-            proxy.add(self.prop, get_entity_id(entity))
+            if entity is not None:
+                proxy.add(self.prop, get_entity_id(entity))
 
-            # This is really bad in theory, but really useful in practice.
-            # So shoot me.
-            text = proxy.schema.get('indexText')
-            if text is not None:
-                for caption in entity.schema.caption:
-                    proxy.add(text, entity.get(caption))
+                # This is really bad in theory, but really useful
+                # in practice. Shoot me.
+                text = proxy.schema.get('indexText')
+                if text is not None:
+                    for caption in entity.schema.caption:
+                        proxy.add(text, entity.get(caption))
 
         # clean the values returned by the query, or by using literals, or
         # formats.
