@@ -18,6 +18,7 @@ class Namespace(object):
     def parse(cls, entity_id):
         """Split up an entity ID into the plain ID and the namespace
         signature. If either part is missing, return None instead."""
+        entity_id = registry.entity.clean(entity_id)
         if entity_id is None:
             return (None, None)
         try:
