@@ -12,6 +12,9 @@ class EntityTest(unittest.TestCase):
         self.assertEqual(entities.clean(88), '88')
         self.assertEqual(entities.clean({'id': 88}), '88')
         self.assertEqual(entities.clean(None), None)
+        self.assertEqual(entities.clean('With spaces'), None)
+        self.assertEqual(entities.clean('With!special'), None)
+        self.assertEqual(entities.clean('with.dot'), 'with.dot')
 
     def test_normalize(self):
         self.assertEqual(entities.normalize('FOO'), ['FOO'])
