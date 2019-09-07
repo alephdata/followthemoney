@@ -47,3 +47,10 @@ class ExcelExportTestCase(TestCase):
             [cell.value for cell in rows[1][:3]],
             ['person', 'test', 'Ralph Tester']
         )
+
+    def test_excel_bytesio(self):
+        entity = model.get_proxy(ENTITY)
+        exporter = ExcelExporter(self.temp, extra=['source'])
+        exporter.write(entity, extra=['test'])
+        buffer = exporter.get_bytesio()
+        assert len(buffer.getvalue()) > 100
