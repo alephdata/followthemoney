@@ -12,6 +12,17 @@ rather to have a working data structure for researchers.
 `followthemoney` also contains code used to validate and normalize many
 of the elements of data, and to map tabular data into the model.
 
+## Documentation
+
+For a general introduction to `followthemoney`, check the main documentation:
+
+* https://docs.alephdata.org/developers/followthemoney
+
+Part of this package is a command-line tool that can be used to process and
+transform data in various ways. This is documented here:
+
+* https://docs.alephdata.org/developers/ftm
+
 ## Releasing
 
 We release a lot of version of `followthemoney` because even small changes
