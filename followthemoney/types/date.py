@@ -1,6 +1,7 @@
 import re
 import os
 import pytz
+import logging
 from rdflib import Literal
 from rdflib.namespace import XSD
 from datetime import datetime, date
@@ -8,6 +9,8 @@ from datetime import datetime, date
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
 from followthemoney.util import dampen, sanitize_text
+
+log = logging.getLogger(__name__)
 
 
 class DateType(PropertyType):
@@ -115,13 +118,15 @@ class DateType(PropertyType):
         return Literal(value, datatype=XSD.dateTime)
 
     def to_datetime(self, value):
-        for fmt in self.DATE_PATTERNS_BY_LENGTH.get(len(value), []):
+        formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), [])
+        for fmt in formats:
             try:
                 return datetime.strptime(value, fmt)
             except Exception:
                 continue
+        log.debug('Date cannot be parsed %r: %s', formats, value)
 
     def to_number(self, value):
         date = self.to_datetime(value)
         if date is not None:
-            return pytz.utc.localize(date).timestamp()
+            return date.timestamp()
