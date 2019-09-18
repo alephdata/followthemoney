@@ -1,9 +1,13 @@
+import logging
 from io import BytesIO
 from openpyxl import Workbook
 from openpyxl.cell import WriteOnlyCell
 from openpyxl.styles import Font, PatternFill
+from openpyxl.utils.exceptions import IllegalCharacterError
 
 from followthemoney.export.common import Exporter
+
+log = logging.getLogger(__name__)
 
 
 class ExcelWriter(object):
@@ -53,11 +57,14 @@ class ExcelExporter(ExcelWriter, Exporter):
             sheet = self.make_sheet(title, headers)
             self.sheets[proxy.schema] = sheet
         sheet = self.sheets.get(proxy.schema)
-        cells = [proxy.id]
-        cells.extend(extra or [])
-        for prop in proxy.schema.sorted_properties:
-            cells.append(prop.type.join(proxy.get(prop)))
-        sheet.append(cells)
+        try:
+            cells = [proxy.id]
+            cells.extend(extra or [])
+            for prop in proxy.schema.sorted_properties:
+                cells.append(prop.type.join(proxy.get(prop)))
+            sheet.append(cells)
+        except IllegalCharacterError as ice:
+            log.error("Invalid text for Excel export: %s", ice)
 
     def finalize(self):
         self.workbook.save(self.file_path)
