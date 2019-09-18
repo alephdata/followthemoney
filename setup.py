@@ -6,7 +6,7 @@ setup(
     long_description="Data model and validator for investigative graph data.",
     author='Organized Crime and Corruption Reporting Project',
     author_email='data@occrp.org',
-    url='https://occrp.org',
+    url='https://docs.alephdata.org/developers/followthemoney',
     license='MIT',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     namespace_packages=[],
