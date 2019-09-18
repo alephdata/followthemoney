@@ -1,0 +1,11 @@
+gb_parliament57:
+  queries:
+  - csv_url: http://bit.ly/uk-mps-csv
+    entities:
+      member:
+        schema: Person
+        keys:
+        - id
+        properties:
+          name:
+            column: name
