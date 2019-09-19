@@ -6,6 +6,7 @@ from openpyxl.styles import Font, PatternFill
 from openpyxl.utils.exceptions import IllegalCharacterError
 
 from followthemoney.export.common import Exporter
+from followthemoney.util import sanitize_text
 
 log = logging.getLogger(__name__)
 
@@ -25,6 +26,7 @@ class ExcelWriter(object):
         sheet.sheet_properties.filterMode = True
         cells = []
         for header in headers:
+            header = sanitize_text(header)
             cell = WriteOnlyCell(sheet, value=header)
             cell.font = self.HEADER_FONT
             cell.fill = self.HEADER_FILL
