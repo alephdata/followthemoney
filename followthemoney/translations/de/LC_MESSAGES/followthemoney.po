@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-08-26 20:12+0200\n"
+"POT-Creation-Date: 2019-09-22 22:44+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2019\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -32,7 +32,7 @@ msgstr "Erforderlich"
 
 #: followthemoney/proxy.py:28
 msgid "No schema for entity."
-msgstr "Diese Entität hat kein Schema"
+msgstr "Der Entität ist kein Schema zugeordnet."
 
 #: followthemoney/proxy.py:61
 #, python-format
@@ -51,7 +51,7 @@ msgstr "Selbst-Beziehung (%s): %s"
 
 #: followthemoney/schema.py:166
 msgid "Entity failed validation"
-msgstr "Die Entität konnte nicht validiert werden"
+msgstr "Die Entität ist ungültig"
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
@@ -158,7 +158,7 @@ msgstr "Teil der Partnerschaft"
 #. Associate.properties.associate.description
 #: followthemoney/schema/Associate.yml
 msgid "An associate of the subject person."
-msgstr "Ein Bekannter der Person"
+msgstr "Ein Bekannter der Zielperson"
 
 #. Associate.properties.associate.reverse.label
 #: followthemoney/schema/Associate.yml
@@ -285,12 +285,12 @@ msgstr "IPO"
 #. Company.properties.cikCode.label
 #: followthemoney/schema/Company.yaml
 msgid "SEC Central Index Key"
-msgstr "SEC Zentraler Indexschlüssel"
+msgstr "Zentraler SEC-Indexschlüssel"
 
 #. Company.properties.cikCode.description
 #: followthemoney/schema/Company.yaml
 msgid "US SEC Central Index Key"
-msgstr "SEC Zentraler Index-Schlüssel"
+msgstr "Zentraler US-SEC-Index-Schlüssel"
 
 #. Company.properties.jibCode.label
 #: followthemoney/schema/Company.yaml
@@ -439,7 +439,8 @@ msgid ""
 "An contract or contract lot issued by an authority. Multiple lots may be "
 "awarded to different suppliers (see ContractAward).\n"
 msgstr ""
-"Ein Vertrag oder Teilvertrag einer öffentlichen Stelle (siehe Zuschlag)\n"
+"Ein Vertrag oder Teilvertrag einer öffentlichen Stelle der an mehrere "
+"Lieferanten vergeben sein kann (siehe Zuschlag)\n"
 
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
@@ -467,7 +468,7 @@ msgstr "Art"
 #. Contract.properties.type.description
 #: followthemoney/schema/Contract.yaml
 msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services).\n"
-msgstr "Art des Vertrags (Dienstleistung, Lieferungen)\n"
+msgstr "Art des Vertrags W (Arbeiten), U (Lieferungen), S (Dienstleistungen)\n"
 
 #. Contract.properties.contractDate.label
 #: followthemoney/schema/Contract.yaml
@@ -785,15 +786,19 @@ msgid "Language"
 msgstr "Sprache"
 
 #. Document.properties.detectedLanguage.label
-#. Page.properties.detectedLanguage.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
-msgid "Auto-detected language"
-msgstr "Automatisch erkannte Sprache"
+#: followthemoney/schema/Document.yaml
+msgid "Detected language"
+msgstr "Erkannte Sprache"
+
+#. Document.properties.detectedCountry.label
+#: followthemoney/schema/Document.yaml
+msgid "Detected country"
+msgstr "Erkanntes Land"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:42
+#: followthemoney/types/date.py:45
 msgid "Date"
 msgstr "Datum"
 
@@ -835,33 +840,33 @@ msgstr "Abkömmlinge"
 
 #. Document.properties.namesMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "Mentioned names"
-msgstr "Erwähnte Namen"
+msgid "Detected names"
+msgstr "Erkannte Namen"
 
 #. Document.properties.ibanMentioned.label
-#: followthemoney/schema/Document.yaml followthemoney/types/iban.py:13
-msgid "IBANs"
-msgstr "IBANs"
+#: followthemoney/schema/Document.yaml
+msgid "Detected IBANs"
+msgstr "Erkannte IBANs"
 
 #. Document.properties.ipMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "IP addresses"
-msgstr "IP-Adressen"
+msgid "Detected IP addresses"
+msgstr "Erkannte IP-Adressen"
 
 #. Document.properties.locationMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "Locations"
-msgstr "Orte"
+msgid "Detected locations"
+msgstr "Erkannte Orte"
 
 #. Document.properties.phoneMentioned.label
-#: followthemoney/schema/Document.yaml followthemoney/types/phone.py:18
-msgid "Phone numbers"
-msgstr "Telefonnummern"
+#: followthemoney/schema/Document.yaml
+msgid "Detected phones"
+msgstr "Erkannte Telefonnummern"
 
 #. Document.properties.emailMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "E-Mail addresses"
-msgstr "E-Mail-Adressen"
+msgid "Detected e-mail addresses"
+msgstr "Erkannte E-Mail-Adressen"
 
 #. Document.properties.processingStatus.label
 #: followthemoney/schema/Document.yaml
@@ -1020,7 +1025,7 @@ msgstr "E-Mails"
 #. UnknownLink.properties.subject.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/UnknownLink.yaml
 msgid "Subject"
-msgstr "Subjekt"
+msgstr "Betreff"
 
 #. Email.properties.threadTopic.label
 #: followthemoney/schema/Document.yaml
@@ -1451,7 +1456,7 @@ msgstr "Verwandte"
 #. Family.properties.relative.description
 #: followthemoney/schema/Family.yml
 msgid "The relative of the subject person."
-msgstr "Verwandter der Person"
+msgstr "Verwandter der Zielperson"
 
 #. Family.properties.relationship.description
 #: followthemoney/schema/Family.yml
@@ -1525,7 +1530,7 @@ msgstr "Aleph-URL"
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Record.yaml
 #: followthemoney/schema/Thing.yaml
 msgid "Index text"
-msgstr "Index text"
+msgstr "Indextext"
 
 #. Interval.properties.modifiedAt.label
 #. Thing.properties.modifiedAt.label
@@ -1652,7 +1657,7 @@ msgstr "USt-ID"
 #. LegalEntity.properties.vatCode.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "(EU) VAT number"
-msgstr "EU USt-ID"
+msgstr "(EU) USt-ID"
 
 #. LegalEntity.properties.jurisdiction.description
 #: followthemoney/schema/LegalEntity.yaml
@@ -1747,7 +1752,7 @@ msgstr "Tochtergesellschaften"
 #. Passport.plural
 #: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Passport.yaml
 msgid "Passports"
-msgstr "Pässe"
+msgstr "Reisepässe"
 
 #. License.label
 #: followthemoney/schema/License.yaml
@@ -1872,7 +1877,7 @@ msgstr "Art des Eigentums"
 #. Person.properties.passportNumber.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
 msgid "Passport"
-msgstr "Pass"
+msgstr "Reisepass"
 
 #. Passport.properties.holder.label
 #: followthemoney/schema/Passport.yaml
@@ -2055,7 +2060,7 @@ msgstr "Stellung"
 #. Person.properties.nationality.label
 #: followthemoney/schema/Person.yaml
 msgid "Nationality"
-msgstr "Nationnalität"
+msgstr "Nationalität"
 
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
@@ -2201,6 +2206,11 @@ msgstr "Seite"
 msgid "Pages"
 msgstr "Seiten"
 
+#. Page.properties.detectedLanguage.label
+#: followthemoney/schema/Record.yaml
+msgid "Auto-detected language"
+msgstr "Automatisch erkannte Sprache"
+
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
 msgid "Representation"
@@ -2251,7 +2261,7 @@ msgid "A sanction designation"
 msgstr "Eine Sanktionseintragung"
 
 #. Sanction.properties.entity.label
-#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:11
+#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:13
 msgid "Entity"
 msgstr "Entität"
 
@@ -2330,7 +2340,7 @@ msgstr "Versteuertes Einkommen"
 #. TaxRoll.properties.taxPaid.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Amount of tax paid"
-msgstr "Steuerbetrag"
+msgstr "Steuerzahlbetrag"
 
 #. TaxRoll.properties.wealth.label
 #: followthemoney/schema/TaxRoll.yaml
@@ -2338,7 +2348,7 @@ msgid "Registered wealth"
 msgstr "Besteuerte Vermögenswerte"
 
 #. Thing.properties.name.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:12
+#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:13
 msgid "Name"
 msgstr "Name"
 
@@ -2425,7 +2435,7 @@ msgstr "Verbunden mit"
 #. UnknownLink.properties.object.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Object"
-msgstr "Objekt"
+msgstr "Gegenstand"
 
 #. UnknownLink.properties.object.reverse.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -2460,7 +2470,7 @@ msgstr "Betrag in USD"
 #. Value.properties.amountEur.label
 #: followthemoney/schema/Value.yaml
 msgid "Amount in EUR"
-msgstr "Betrag in Euro"
+msgstr "Betrag in EUR"
 
 #. Vehicle.label
 #: followthemoney/schema/Vehicle.yaml
@@ -2520,7 +2530,7 @@ msgstr "Schiffe"
 #. Vessel.description
 #: followthemoney/schema/Vessel.yaml
 msgid "A boat or ship"
-msgstr "Ein Schiff"
+msgstr "Ein Boot oder Schiff"
 
 #. Vessel.properties.imoNumber.label
 #: followthemoney/schema/Vessel.yaml
@@ -2575,7 +2585,7 @@ msgstr "Vorherige Namen"
 #. Vessel.properties.pastFlags.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Flags"
-msgstr "Vorherige Flaggen"
+msgstr "Vorherige Ausflaggung"
 
 #. Vessel.properties.pastTypes.label
 #: followthemoney/schema/Vessel.yaml
@@ -2609,7 +2619,7 @@ msgstr "Europäische Union"
 
 #: followthemoney/types/country.py:29
 msgid "Czech Republic"
-msgstr "Tschechien"
+msgstr "Tschechische Republik"
 
 #: followthemoney/types/country.py:30
 msgid "Kosovo"
@@ -2651,7 +2661,7 @@ msgstr "Schottland"
 msgid "Transnistria"
 msgstr "Transnistrien"
 
-#: followthemoney/types/date.py:43
+#: followthemoney/types/date.py:46
 msgid "Dates"
 msgstr "Daten"
 
@@ -2671,9 +2681,13 @@ msgstr "E-Mail-Adresse"
 msgid "E-Mail Addresses"
 msgstr "E-Mail-Adressen"
 
-#: followthemoney/types/entity.py:12
+#: followthemoney/types/entity.py:14
 msgid "Entities"
 msgstr "Entitäten"
+
+#: followthemoney/types/iban.py:13
+msgid "IBANs"
+msgstr "IBANs"
 
 #: followthemoney/types/identifier.py:14
 msgid "Identifier"
@@ -2707,7 +2721,7 @@ msgstr "MIME-Typ"
 msgid "MIME-Types"
 msgstr "MIME-Typen"
 
-#: followthemoney/types/name.py:13
+#: followthemoney/types/name.py:14
 msgid "Names"
 msgstr "Namen"
 
@@ -2718,6 +2732,10 @@ msgstr "Zahl"
 #: followthemoney/types/number.py:11
 msgid "Numbers"
 msgstr "Zahlen"
+
+#: followthemoney/types/phone.py:18
+msgid "Phone numbers"
+msgstr "Telefonnummern"
 
 #: followthemoney/types/string.py:8
 msgid "Label"

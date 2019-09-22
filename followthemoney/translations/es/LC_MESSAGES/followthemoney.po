@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-08-26 20:09+0200\n"
+"POT-Creation-Date: 2019-09-22 22:28+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: John Ospina <jmospina@gmail.com>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -784,15 +784,19 @@ msgid "Language"
 msgstr ""
 
 #. Document.properties.detectedLanguage.label
-#. Page.properties.detectedLanguage.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
-msgid "Auto-detected language"
+#: followthemoney/schema/Document.yaml
+msgid "Detected language"
+msgstr ""
+
+#. Document.properties.detectedCountry.label
+#: followthemoney/schema/Document.yaml
+msgid "Detected country"
 msgstr ""
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:42
+#: followthemoney/types/date.py:45
 msgid "Date"
 msgstr ""
 
@@ -834,32 +838,32 @@ msgstr ""
 
 #. Document.properties.namesMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "Mentioned names"
+msgid "Detected names"
 msgstr ""
 
 #. Document.properties.ibanMentioned.label
-#: followthemoney/schema/Document.yaml followthemoney/types/iban.py:13
-msgid "IBANs"
+#: followthemoney/schema/Document.yaml
+msgid "Detected IBANs"
 msgstr ""
 
 #. Document.properties.ipMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "IP addresses"
+msgid "Detected IP addresses"
 msgstr ""
 
 #. Document.properties.locationMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "Locations"
+msgid "Detected locations"
 msgstr ""
 
 #. Document.properties.phoneMentioned.label
-#: followthemoney/schema/Document.yaml followthemoney/types/phone.py:18
-msgid "Phone numbers"
+#: followthemoney/schema/Document.yaml
+msgid "Detected phones"
 msgstr ""
 
 #. Document.properties.emailMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "E-Mail addresses"
+msgid "Detected e-mail addresses"
 msgstr ""
 
 #. Document.properties.processingStatus.label
@@ -2195,6 +2199,11 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
+#. Page.properties.detectedLanguage.label
+#: followthemoney/schema/Record.yaml
+msgid "Auto-detected language"
+msgstr ""
+
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
 msgid "Representation"
@@ -2246,7 +2255,7 @@ msgid "A sanction designation"
 msgstr ""
 
 #. Sanction.properties.entity.label
-#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:11
+#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:13
 msgid "Entity"
 msgstr ""
 
@@ -2333,7 +2342,7 @@ msgid "Registered wealth"
 msgstr ""
 
 #. Thing.properties.name.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:12
+#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:13
 msgid "Name"
 msgstr ""
 
@@ -2646,7 +2655,7 @@ msgstr ""
 msgid "Transnistria"
 msgstr ""
 
-#: followthemoney/types/date.py:43
+#: followthemoney/types/date.py:46
 msgid "Dates"
 msgstr ""
 
@@ -2666,8 +2675,12 @@ msgstr ""
 msgid "E-Mail Addresses"
 msgstr ""
 
-#: followthemoney/types/entity.py:12
+#: followthemoney/types/entity.py:14
 msgid "Entities"
+msgstr ""
+
+#: followthemoney/types/iban.py:13
+msgid "IBANs"
 msgstr ""
 
 #: followthemoney/types/identifier.py:14
@@ -2702,7 +2715,7 @@ msgstr ""
 msgid "MIME-Types"
 msgstr ""
 
-#: followthemoney/types/name.py:13
+#: followthemoney/types/name.py:14
 msgid "Names"
 msgstr ""
 
@@ -2712,6 +2725,10 @@ msgstr ""
 
 #: followthemoney/types/number.py:11
 msgid "Numbers"
+msgstr ""
+
+#: followthemoney/types/phone.py:18
+msgid "Phone numbers"
 msgstr ""
 
 #: followthemoney/types/string.py:8

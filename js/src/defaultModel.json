@@ -2544,8 +2544,15 @@
         "detectedLanguage": {
           "name": "detectedLanguage",
           "qname": "Document:detectedLanguage",
-          "label": "Auto-detected language",
+          "label": "Detected language",
           "type": "language"
+        },
+        "detectedCountry": {
+          "name": "detectedCountry",
+          "qname": "Document:detectedCountry",
+          "label": "Detected country",
+          "type": "country",
+          "matchable": true
         },
         "date": {
           "name": "date",
@@ -2591,7 +2598,7 @@
         "namesMentioned": {
           "name": "namesMentioned",
           "qname": "Document:namesMentioned",
-          "label": "Mentioned names",
+          "label": "Detected names",
           "type": "name",
           "matchable": true,
           "hidden": true
@@ -2599,7 +2606,7 @@
         "ibanMentioned": {
           "name": "ibanMentioned",
           "qname": "Document:ibanMentioned",
-          "label": "IBANs",
+          "label": "Detected IBANs",
           "type": "iban",
           "matchable": true,
           "hidden": true
@@ -2607,7 +2614,7 @@
         "ipMentioned": {
           "name": "ipMentioned",
           "qname": "Document:ipMentioned",
-          "label": "IP addresses",
+          "label": "Detected IP addresses",
           "type": "ip",
           "matchable": true,
           "hidden": true
@@ -2615,7 +2622,7 @@
         "locationMentioned": {
           "name": "locationMentioned",
           "qname": "Document:locationMentioned",
-          "label": "Locations",
+          "label": "Detected locations",
           "type": "address",
           "matchable": true,
           "hidden": true
@@ -2623,7 +2630,7 @@
         "phoneMentioned": {
           "name": "phoneMentioned",
           "qname": "Document:phoneMentioned",
-          "label": "Phone numbers",
+          "label": "Detected phones",
           "type": "phone",
           "matchable": true,
           "hidden": true
@@ -2631,7 +2638,7 @@
         "emailMentioned": {
           "name": "emailMentioned",
           "qname": "Document:emailMentioned",
-          "label": "E-Mail addresses",
+          "label": "Detected e-mail addresses",
           "type": "email",
           "matchable": true,
           "hidden": true

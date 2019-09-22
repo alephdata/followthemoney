@@ -669,13 +669,18 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Document:detectedCountry> a rdf:Property ;
+    rdfs:label "Detected country" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Document:detectedLanguage> a rdf:Property ;
-    rdfs:label "Auto-detected language" ;
+    rdfs:label "Detected language" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Document:emailMentioned> a rdf:Property ;
-    rdfs:label "E-Mail addresses" ;
+    rdfs:label "Detected e-mail addresses" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
@@ -706,17 +711,17 @@ dct:language a rdf:Property ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Document:ibanMentioned> a rdf:Property ;
-    rdfs:label "IBANs" ;
+    rdfs:label "Detected IBANs" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Document:ipMentioned> a rdf:Property ;
-    rdfs:label "IP addresses" ;
+    rdfs:label "Detected IP addresses" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Document:locationMentioned> a rdf:Property ;
-    rdfs:label "Locations" ;
+    rdfs:label "Detected locations" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
@@ -727,12 +732,12 @@ dct:language a rdf:Property ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Document:namesMentioned> a rdf:Property ;
-    rdfs:label "Mentioned names" ;
+    rdfs:label "Detected names" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Document:phoneMentioned> a rdf:Property ;
-    rdfs:label "Phone numbers" ;
+    rdfs:label "Detected phones" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
@@ -2367,5 +2372,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2019-08-26T20:08:17"^^xsd:dateTime .
+    dct:modified "2019-09-22T22:10:44"^^xsd:dateTime .
 

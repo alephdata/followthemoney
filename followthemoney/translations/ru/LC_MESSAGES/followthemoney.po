@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-08-26 20:09+0200\n"
+"POT-Creation-Date: 2019-09-22 22:28+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -787,15 +787,19 @@ msgid "Language"
 msgstr "Язык"
 
 #. Document.properties.detectedLanguage.label
-#. Page.properties.detectedLanguage.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
-msgid "Auto-detected language"
-msgstr "Автоматически определённый язык"
+#: followthemoney/schema/Document.yaml
+msgid "Detected language"
+msgstr ""
+
+#. Document.properties.detectedCountry.label
+#: followthemoney/schema/Document.yaml
+msgid "Detected country"
+msgstr ""
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:42
+#: followthemoney/types/date.py:45
 msgid "Date"
 msgstr "Дата"
 
@@ -837,33 +841,33 @@ msgstr "Дочерние документы"
 
 #. Document.properties.namesMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "Mentioned names"
-msgstr "Упоминаемые имена"
+msgid "Detected names"
+msgstr ""
 
 #. Document.properties.ibanMentioned.label
-#: followthemoney/schema/Document.yaml followthemoney/types/iban.py:13
-msgid "IBANs"
-msgstr "Международные номера банковских счетов (IBAN)"
+#: followthemoney/schema/Document.yaml
+msgid "Detected IBANs"
+msgstr ""
 
 #. Document.properties.ipMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "IP addresses"
-msgstr "IP-адреса"
+msgid "Detected IP addresses"
+msgstr ""
 
 #. Document.properties.locationMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "Locations"
-msgstr "Адреса"
+msgid "Detected locations"
+msgstr ""
 
 #. Document.properties.phoneMentioned.label
-#: followthemoney/schema/Document.yaml followthemoney/types/phone.py:18
-msgid "Phone numbers"
-msgstr "Номера телефонов"
+#: followthemoney/schema/Document.yaml
+msgid "Detected phones"
+msgstr ""
 
 #. Document.properties.emailMentioned.label
 #: followthemoney/schema/Document.yaml
-msgid "E-Mail addresses"
-msgstr "Эл. адреса"
+msgid "Detected e-mail addresses"
+msgstr ""
 
 #. Document.properties.processingStatus.label
 #: followthemoney/schema/Document.yaml
@@ -2205,6 +2209,11 @@ msgstr "Страница"
 msgid "Pages"
 msgstr "Страницы"
 
+#. Page.properties.detectedLanguage.label
+#: followthemoney/schema/Record.yaml
+msgid "Auto-detected language"
+msgstr "Автоматически определённый язык"
+
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
 msgid "Representation"
@@ -2254,7 +2263,7 @@ msgid "A sanction designation"
 msgstr "Внесение в санкционный список"
 
 #. Sanction.properties.entity.label
-#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:11
+#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:13
 msgid "Entity"
 msgstr "Субъект"
 
@@ -2341,7 +2350,7 @@ msgid "Registered wealth"
 msgstr "Денежное состояние"
 
 #. Thing.properties.name.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:12
+#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:13
 msgid "Name"
 msgstr "Имя"
 
@@ -2612,7 +2621,7 @@ msgstr "Европейский союз"
 
 #: followthemoney/types/country.py:29
 msgid "Czech Republic"
-msgstr ""
+msgstr "Чешская Республика"
 
 #: followthemoney/types/country.py:30
 msgid "Kosovo"
@@ -2654,7 +2663,7 @@ msgstr "Шотландия"
 msgid "Transnistria"
 msgstr "Приднестровье"
 
-#: followthemoney/types/date.py:43
+#: followthemoney/types/date.py:46
 msgid "Dates"
 msgstr "Даты"
 
@@ -2674,9 +2683,13 @@ msgstr "Эл. адрес"
 msgid "E-Mail Addresses"
 msgstr "Эл. адреса"
 
-#: followthemoney/types/entity.py:12
+#: followthemoney/types/entity.py:14
 msgid "Entities"
 msgstr "Сущность"
+
+#: followthemoney/types/iban.py:13
+msgid "IBANs"
+msgstr "Международные номера банковских счетов (IBAN)"
 
 #: followthemoney/types/identifier.py:14
 msgid "Identifier"
@@ -2710,7 +2723,7 @@ msgstr "MIME-тип"
 msgid "MIME-Types"
 msgstr "MIME-типы"
 
-#: followthemoney/types/name.py:13
+#: followthemoney/types/name.py:14
 msgid "Names"
 msgstr "Имена"
 
@@ -2721,6 +2734,10 @@ msgstr "Номер"
 #: followthemoney/types/number.py:11
 msgid "Numbers"
 msgstr "Номера"
+
+#: followthemoney/types/phone.py:18
+msgid "Phone numbers"
+msgstr "Номера телефонов"
 
 #: followthemoney/types/string.py:8
 msgid "Label"

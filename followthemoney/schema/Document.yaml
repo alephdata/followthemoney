@@ -55,8 +55,11 @@ Document:
       type: language
       rdf: http://purl.org/dc/terms/language
     detectedLanguage:
-      label: "Auto-detected language"
+      label: "Detected language"
       type: language
+    detectedCountry:
+      label: "Detected country"
+      type: country
     date:
       label: "Date"
       description: "If not otherwise specified"
@@ -87,27 +90,27 @@ Document:
         hidden: true
         label: "Descendants"
     namesMentioned:
-      label: "Mentioned names"
+      label: "Detected names"
       hidden: true
       type: name
     ibanMentioned:
-      label: "IBANs"
+      label: "Detected IBANs"
       hidden: true
       type: iban
     ipMentioned:
-      label: "IP addresses"
+      label: "Detected IP addresses"
       hidden: true
       type: ip
     locationMentioned:
-      label: "Locations"
+      label: "Detected locations"
       hidden: true
       type: address
     phoneMentioned:
-      label: "Phone numbers"
+      label: "Detected phones"
       hidden: true
       type: phone
     emailMentioned:
-      label: "E-Mail addresses"
+      label: "Detected e-mail addresses"
       hidden: true
       type: email
     processingStatus:
