@@ -121,7 +121,8 @@ class DateType(PropertyType):
         formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), [])
         for fmt in formats:
             try:
-                return datetime.strptime(value, fmt)
+                dt = datetime.strptime(value, fmt)
+                return dt.replace(tzinfo=pytz.UTC)
             except Exception:
                 continue
         log.debug('Date cannot be parsed %r: %s', formats, value)
