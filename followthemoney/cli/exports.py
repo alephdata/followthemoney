@@ -2,7 +2,7 @@ import click
 
 from followthemoney.cli.cli import cli
 from followthemoney.cli.util import export_stream
-from followthemoney.export.csv import CSVExporter
+from followthemoney.export.csv import CSVExporter, Neo4JCSVExporter
 from followthemoney.export.rdf import RDFExporter
 from followthemoney.export.excel import ExcelExporter
 from followthemoney.export.graph import edge_types, DEFAULT_EDGE_TYPES
@@ -13,8 +13,13 @@ from followthemoney.export.graph import CypherGraphExporter
 @cli.command('export-csv', help="Export to CSV")
 @click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
 @click.option('-o', '--outdir', type=click.Path(file_okay=False, writable=True), default='.', help="output directory")  # noqa
-def export_csv(infile, outdir):
-    exporter = CSVExporter(outdir)
+@click.option('--add-neo4j-import-script/--dont-add-neo4j-import-script', is_flag=True, default=False, help='Generate import script for ')  # noqa
+def export_csv(infile, outdir, add_neo4j_import_script=False):
+    if add_neo4j_import_script:
+        exporter = Neo4JCSVExporter(outdir)
+    else:
+        exporter = CSVExporter(outdir)
+
     export_stream(exporter, infile)
 
 
