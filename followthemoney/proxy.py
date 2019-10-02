@@ -254,7 +254,12 @@ class EntityProxy(object):
         model = self.schema.model
         other = self.from_dict(model, other)
         self.id = self.id or other.id
-        self.schema = model.common_schema(self.schema, other.schema)
+        try:
+            self.schema = model.common_schema(self.schema, other.schema)
+        except InvalidData as e:
+            msg = "Cannot merge entities with id %s: %s"
+            raise InvalidData(msg % (self.id, e))
+
         self.context.update(other.context)
         for prop, value in set(other.itervalues()):
             self.add(prop, value, cleaned=True, quiet=True)
