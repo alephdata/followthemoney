@@ -2,24 +2,20 @@ import click
 
 from followthemoney.cli.cli import cli
 from followthemoney.cli.util import export_stream
-from followthemoney.export.csv import CSVExporter, Neo4JCSVExporter
+from followthemoney.export.csv import CSVExporter
 from followthemoney.export.rdf import RDFExporter
 from followthemoney.export.excel import ExcelExporter
 from followthemoney.export.graph import edge_types, DEFAULT_EDGE_TYPES
 from followthemoney.export.graph import NXGraphExporter
-from followthemoney.export.graph import CypherGraphExporter
+from followthemoney.export.neo4j import Neo4JCSVExporter
+from followthemoney.export.neo4j import CypherGraphExporter
 
 
 @cli.command('export-csv', help="Export to CSV")
 @click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
 @click.option('-o', '--outdir', type=click.Path(file_okay=False, writable=True), default='.', help="output directory")  # noqa
-@click.option('--add-neo4j-import-script/--dont-add-neo4j-import-script', is_flag=True, default=False, help='Generate import script for ')  # noqa
-def export_csv(infile, outdir, add_neo4j_import_script=False):
-    if add_neo4j_import_script:
-        exporter = Neo4JCSVExporter(outdir)
-    else:
-        exporter = CSVExporter(outdir)
-
+def export_csv(infile, outdir):
+    exporter = CSVExporter(outdir)
     export_stream(exporter, infile)
 
 
@@ -59,4 +55,15 @@ def export_gexf(infile, outfile, edge_types):
               help="Property types to be reified into graph edges.")
 def export_cypher(infile, outfile, edge_types):
     exporter = CypherGraphExporter(outfile, edge_types=edge_types)
+    export_stream(exporter, infile)
+
+
+@cli.command('export-neo4j-bulk', help="Export to Neo4J bulk import")
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outdir', type=click.Path(file_okay=False, writable=True), default='.', help="output directory")  # noqa
+@click.option('-e', '--edge-types', type=click.Choice(edge_types()),
+              multiple=True, default=DEFAULT_EDGE_TYPES,
+              help="Property types to be reified into graph edges.")
+def export_neo4j_bulk(infile, outdir, edge_types):
+    exporter = Neo4JCSVExporter(outdir, edge_types=edge_types)
     export_stream(exporter, infile)

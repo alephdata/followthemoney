@@ -4,8 +4,6 @@ from unittest import TestCase
 from followthemoney import model
 from followthemoney.types import registry
 from followthemoney.export.graph import NXGraphExporter
-from followthemoney.export.graph import CypherGraphExporter
-from followthemoney.export.graph import edge_types
 
 ENTITIES = [
     {
@@ -75,26 +73,3 @@ class ExportTestCase(TestCase):
 
         self.assertEqual(len(exporter.graph.nodes), 5)
         self.assertEqual(len(exporter.graph.edges), 4)
-
-    def test_cypher_simple(self):
-        sio = io.StringIO()
-        exporter = CypherGraphExporter(sio)
-        for entity in ENTITIES:
-            proxy = model.get_proxy(entity)
-            exporter.write(proxy)
-
-        value = sio.getvalue()
-        assert 'entity:company' in value, value
-        assert 'startDate: "2003-04-01"' in value, value
-        assert 'tel:+12025557612' not in value, value
-
-    def test_cypher_full(self):
-        sio = io.StringIO()
-        exporter = CypherGraphExporter(sio, edge_types=edge_types())
-        for entity in ENTITIES:
-            proxy = model.get_proxy(entity)
-            exporter.write(proxy)
-
-        value = sio.getvalue()
-        assert 'entity:company' in value, value
-        assert 'tel:+12025557612' in value, value

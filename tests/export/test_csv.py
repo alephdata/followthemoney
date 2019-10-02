@@ -1,4 +1,3 @@
-import io
 import csv
 import shutil
 from tempfile import mkdtemp

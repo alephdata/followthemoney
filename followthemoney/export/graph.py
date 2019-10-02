@@ -1,5 +1,3 @@
-import json
-import stringcase
 import networkx as nx
 from pprint import pprint  # noqa
 from banal import ensure_list
@@ -100,72 +98,3 @@ class NXGraphExporter(GraphExporter):
     def finalize(self):
         for line in generate_gexf(self.graph, prettyprint=False):
             self.fh.write(line)
-
-
-class CypherGraphExporter(GraphExporter):
-    """Cypher query format, used for import to Neo4J. This is a bit like
-    writing SQL with individual statements - so for large datasets it
-    might be a better idea to do a CSV-based import."""
-    # https://www.opencypher.org/
-    # MATCH (n) DETACH DELETE n;
-
-    def __init__(self, fh, edge_types=DEFAULT_EDGE_TYPES):
-        super(CypherGraphExporter, self).__init__(edge_types=edge_types)
-        self.fh = fh
-
-    def _to_map(self, data):
-        values = []
-        for key, value in data.items():
-            value = '%s: %s' % (key, json.dumps(value))
-            values.append(value)
-        return ', '.join(values)
-
-    def _make_node(self, attributes, label):
-        cypher = 'MERGE (p { %(id)s }) ' \
-                 'SET p += { %(map)s } SET p :%(label)s;\n'
-        self.fh.write(cypher % {
-            'id': self._to_map({'id': attributes.get('id')}),
-            'map': self._to_map(attributes),
-            'label': ':'.join(ensure_list(label))
-        })
-
-    def _make_edge(self, source, target, attributes, label):
-        cypher = 'MATCH (s { %(source)s }), (t { %(target)s }) ' \
-                 'MERGE (s)-[:%(label)s { %(map)s }]->(t);\n'
-        label = [stringcase.constcase(l) for l in ensure_list(label)]
-        self.fh.write(cypher % {
-            'source': self._to_map({'id': source}),
-            'target': self._to_map({'id': target}),
-            'label': ':'.join(label),
-            'map': self._to_map(attributes),
-        })
-
-    def write_edge(self, proxy, source, target, attributes):
-        source = self.get_id(registry.entity, source)
-        source_prop = proxy.schema.get(proxy.schema.edge_source)
-        self._make_node({'id': source}, source_prop.range.name)
-
-        target = self.get_id(registry.entity, target)
-        target_prop = proxy.schema.get(proxy.schema.edge_target)
-        self._make_node({'id': target}, target_prop.range.name)
-        self._make_edge(source, target, attributes, proxy.schema.name)
-
-    def write_node(self, proxy):
-        node_id = self.get_id(registry.entity, proxy.id)
-        attributes = self.get_attributes(proxy)
-        attributes['name'] = proxy.caption
-        attributes['id'] = node_id
-        self._make_node(attributes, proxy.schema.names)
-
-    def write_link(self, proxy, prop, value, weight):
-        node_id = self.get_id(registry.entity, proxy.id)
-        other_id = self.get_id(prop.type, value)
-        label = prop.type.name
-        attributes = {'id': other_id}
-        if prop.type == registry.entity and prop.range:
-            label = prop.range.name
-        else:
-            attributes['name'] = value
-        self._make_node(attributes, label)
-        attributes = {'weight': weight}
-        self._make_edge(node_id, other_id, attributes, prop.name)
