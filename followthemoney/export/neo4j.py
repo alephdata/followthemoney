@@ -12,7 +12,7 @@ NEO4J_ADMIN_PATH = os.environ.get('NEO4J_ADMIN_PATH', 'bin/neo4j-admin')
 NEO4J_DATABASE_NAME = os.environ.get('NEO4J_DATABASE_NAME', 'graph.db')
 
 
-class Neo4JCSVExporter(CSVExporter):
+class Neo4JCSVExporter(CSVExporter, GraphExporter):
     def __init__(
         self,
         directory,
@@ -23,93 +23,96 @@ class Neo4JCSVExporter(CSVExporter):
         self.edge_types = edge_types
         super().__init__(directory, dialect, extra)
 
-        self.links_handler, self.links_writer = self._open_csv_file('__links')
-        self.links_writer.writerow([':START_ID', ':END_ID', 'weight'])
+        self.links_handler, self.links_writer = self._open_csv_file('_links')
+        self.links_writer.writerow([':TYPE', ':START_ID', ':END_ID', 'weight'])
+
+        self.nodes_handler, self.nodes_writer = self._open_csv_file('_nodes')
+        self.nodes_writer.writerow(['id:ID', ':LABEL', 'name'])
+        self.nodes_seen = set()
 
     def _write_header(self, writer, schema):
         headers = []
-
         if not schema.edge:
             headers = ['id:ID', ':LABEL']
         else:
-            headers = ['id', ':TYPE']
+            headers = ['id', ':TYPE', ':START_ID', ':END_ID']
 
         headers.extend(self.extra)
-
-        source_prop = schema.get(schema.edge_source)
-        target_prop = schema.get(schema.edge_target)
-
         for prop in schema.sorted_properties:
-            if source_prop is not None and prop == source_prop:
-                # TODO: check if we need/can add field name as well
-                headers.append(':START_ID')
-            elif target_prop is not None and prop == target_prop:
-                headers.append(':END_ID')
-            else:
-                headers.append(prop.name)
+            if prop.hidden or prop.type == registry.entity:
+                continue
+            headers.append(prop.name)
         writer.writerow(headers)
 
     def write_edges(self, proxy, extra):
         writer = self._get_writer(proxy.schema)
-
-        source_prop = proxy.schema.get(proxy.schema.edge_source)
-        target_prop = proxy.schema.get(proxy.schema.edge_target)
-
         # Thing is, one interval might connect more than one pair of nodes,
         # so we are unrolling them
         for (source, target) in proxy.edgepairs():
-            cells = [proxy.id, proxy.schema.name.upper()]
+            cells = [proxy.id, proxy.schema.name.upper(), source, target]
             cells.extend(extra or [])
 
             for prop in proxy.schema.sorted_properties:
-                if prop == source_prop:
-                    cells.append(source)
-                elif prop == target_prop:
-                    cells.append(target)
-                else:
-                    cells.append(prop.type.join(proxy.get(prop)))
+                if prop.hidden or prop.type == registry.entity:
+                    continue
+                cells.append(prop.type.join(proxy.get(prop)))
 
             writer.writerow(cells)
+
+    def write_link(self, proxy, prop, value):
+        if prop.type.name not in self.edge_types:
+            return
+
+        weight = prop.specificity(value)
+        if weight == 0:
+            return
+
+        other_id = self.get_id(prop.type, value)
+        if prop.type != registry.entity and other_id not in self.nodes_seen:
+            row = [other_id, prop.type.name, value]
+            self.nodes_writer.writerow(row)
+            self.nodes_seen.add(other_id)
+
+        type_ = stringcase.constcase(prop.name)
+        row = [type_, proxy.id, other_id, weight]
+        self.links_writer.writerow(row)
 
     def write(self, proxy, extra=None):
         if proxy.schema.edge:
-            # Exporting Interval descendants in a slighthly different manner
-            self.write_edges(proxy, extra)
-        else:
-            writer = self._get_writer(proxy.schema)
-            cells = [proxy.id, ';'.join(ensure_list(proxy.schema.names))]
-            cells.extend(extra or [])
-            for prop in proxy.schema.sorted_properties:
-                cells.append(prop.type.join(proxy.get(prop)))
-            writer.writerow(cells)
+            return self.write_edges(proxy, extra)
 
-            for prop, values in proxy._properties.items():
-                if prop.type.name not in self.edge_types:
-                    continue
-                for value in ensure_list(values):
-                    weight = prop.specificity(value)
-                    if weight == 0:
-                        continue
+        writer = self._get_writer(proxy.schema)
+        cells = [proxy.id, ';'.join(ensure_list(proxy.schema.names))]
+        cells.extend(extra or [])
+        for prop in proxy.schema.sorted_properties:
+            if prop.hidden or prop.type == registry.entity:
+                continue
+            cells.append(prop.type.join(proxy.get(prop)))
+        writer.writerow(cells)
 
-                    self.links_writer.writerow([proxy.id, value, weight])
+        for prop, values in proxy._properties.items():
+            for value in ensure_list(values):
+                self.write_link(proxy, prop, value)
 
     def finalize(self):
         script_path = self.directory.joinpath('neo4j_import.sh')
         with open(script_path, mode='w') as fp:
             cmd = '{} import --id-type=STRING --database={} \\\n'
             fp.write(cmd.format(NEO4J_ADMIN_PATH, NEO4J_DATABASE_NAME))
-            fp.write('--multiline-fields=true \\\n')
-            cmd = '\t--relationships:LINKS={} \\\n'
+            fp.write('\t--multiline-fields=true \\\n')
+            cmd = '\t--relationships={} \\\n'
             fp.write(cmd.format(os.path.basename(self.links_handler.name)))
+            cmd = '\t--nodes={} \\\n'
+            fp.write(cmd.format(os.path.basename(self.nodes_handler.name)))
 
             for schema, (handle, writer) in self.handles.items():
                 file_name = os.path.basename(handle.name)
                 if schema.edge:
-                    cmd = '\t--relationships:{}={} \\\n'
-                    fp.write(cmd.format(schema.name.upper(), file_name))
+                    cmd = '\t--relationships={} \\\n'
+                    fp.write(cmd.format(file_name))
                 else:
-                    cmd = '\t--nodes:{}={} \\\n'
-                    fp.write(cmd.format(schema.name, file_name))
+                    cmd = '\t--nodes={} \\\n'
+                    fp.write(cmd.format(file_name))
 
         self.links_handler.close()
         super().finalize()
@@ -142,14 +145,13 @@ class CypherGraphExporter(GraphExporter):
             'label': ':'.join(ensure_list(label))
         })
 
-    def _make_edge(self, source, target, attributes, label):
+    def _make_edge(self, source, target, attributes, type_):
         cypher = 'MATCH (s { %(source)s }), (t { %(target)s }) ' \
-                 'MERGE (s)-[:%(label)s { %(map)s }]->(t);\n'
-        label = [stringcase.constcase(l) for l in ensure_list(label)]
+                 'MERGE (s)-[:%(type)s { %(map)s }]->(t);\n'
         self.fh.write(cypher % {
             'source': self._to_map({'id': source}),
             'target': self._to_map({'id': target}),
-            'label': ':'.join(label),
+            'type': stringcase.constcase(type_),
             'map': self._to_map(attributes),
         })
 

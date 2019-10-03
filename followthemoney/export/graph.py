@@ -23,6 +23,8 @@ class GraphExporter(Exporter):
     def get_attributes(self, proxy):
         attributes = {}
         for prop, values in proxy._properties.items():
+            if prop.hidden or prop.stub:
+                continue
             if prop.type.name not in self.edge_types:
                 attributes[prop.name] = prop.type.join(values)
         return attributes
@@ -86,11 +88,11 @@ class NXGraphExporter(GraphExporter):
     def write_link(self, proxy, prop, value, weight):
         node_id = self.get_id(registry.entity, proxy.id)
         other_id = self.get_id(prop.type, value)
-        attributes = {}
         if prop.type != registry.entity:
-            attributes['label'] = value
-            attributes['schema'] = prop.type.name
-        self._make_node(node_id, attributes)
+            self._make_node(node_id, {
+                'label': value,
+                'schema': prop.type.name
+            })
         self.graph.add_edge(node_id, other_id,
                             weight=weight,
                             schema=prop.qname)
