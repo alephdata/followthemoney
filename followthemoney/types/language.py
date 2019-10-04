@@ -19,7 +19,7 @@ class LanguageType(PropertyType):
                  'bul', 'bos', 'jpn', 'ces', 'lav', 'por', 'pol', 'hye',
                  'hrv', 'hin', 'heb', 'uzb', 'mon', 'urd', 'sqi', 'kor',
                  'isl', 'ita', 'est', 'nor', 'fas', 'swa', 'slv', 'aze',
-                 'tgk', 'kaz', 'tuk', 'swa']
+                 'tgk', 'kaz', 'tuk', 'swa', 'kir']
     LANGUAGES = get_env_list('FTM_LANGUAGES', LANGUAGES)
     LANGUAGES = [l.lower().strip() for l in LANGUAGES]
 

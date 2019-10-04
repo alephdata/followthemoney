@@ -22,6 +22,7 @@ class NameType(PropertyType):
 
     def pick(self, values):
         values = [sanitize_text(v) for v in ensure_list(values)]
+        values = [v for v in values if v is not None]
         if not len(values):
             return None
         if 1 == len(values):
