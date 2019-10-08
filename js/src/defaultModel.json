@@ -125,7 +125,10 @@
       },
       "edge": {
         "source": "person",
-        "target": "associate"
+        "target": "associate",
+        "caption": [
+          "relationship"
+        ]
       },
       "featured": [
         "person",
@@ -167,7 +170,10 @@
       },
       "edge": {
         "source": "client",
-        "target": "agent"
+        "target": "agent",
+        "caption": [
+          "role"
+        ]
       },
       "featured": [
         "agent",
@@ -340,7 +346,10 @@
       },
       "edge": {
         "source": "organization",
-        "target": "member"
+        "target": "member",
+        "caption": [
+          "role"
+        ]
       },
       "featured": [
         "member",
@@ -909,7 +918,10 @@
       },
       "edge": {
         "source": "asset",
-        "target": "owner"
+        "target": "owner",
+        "caption": [
+          "percentage"
+        ]
       },
       "featured": [
         "owner",
@@ -1028,7 +1040,10 @@
       },
       "edge": {
         "source": "organization",
-        "target": "director"
+        "target": "director",
+        "caption": [
+          "role"
+        ]
       },
       "featured": [
         "director",
@@ -1413,7 +1428,10 @@
       },
       "edge": {
         "source": "contract",
-        "target": "supplier"
+        "target": "supplier",
+        "caption": [
+          "lotNumber"
+        ]
       },
       "featured": [
         "supplier",
@@ -1423,6 +1441,53 @@
         "decisionReason"
       ],
       "description": "A contract or contract lot as awarded to a supplier."
+    },
+    "Debt": {
+      "label": "Debt",
+      "plural": "Debts",
+      "schemata": [
+        "Debt",
+        "Interval",
+        "Value"
+      ],
+      "extends": [
+        "Interval",
+        "Value"
+      ],
+      "properties": {
+        "debtor": {
+          "name": "debtor",
+          "qname": "Debt:debtor",
+          "label": "Debtor",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "debtDebtor"
+        },
+        "creditor": {
+          "name": "creditor",
+          "qname": "Debt:creditor",
+          "label": "creditor",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "debtCreditor"
+        }
+      },
+      "edge": {
+        "source": "debtor",
+        "target": "creditor",
+        "caption": [
+          "amount"
+        ]
+      },
+      "featured": [
+        "debtor",
+        "creditor",
+        "date",
+        "amount"
+      ],
+      "description": "A monetary debt between two parties."
     },
     "LegalEntity": {
       "label": "Legal entity",
@@ -1734,6 +1799,26 @@
           "range": "ContractAward",
           "reverse": "supplier"
         },
+        "debtDebtor": {
+          "name": "debtDebtor",
+          "qname": "LegalEntity:debtDebtor",
+          "label": "Debts",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Debt",
+          "reverse": "debtor"
+        },
+        "debtCreditor": {
+          "name": "debtCreditor",
+          "qname": "LegalEntity:debtCreditor",
+          "label": "Credits",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Debt",
+          "reverse": "creditor"
+        },
         "successors": {
           "name": "successors",
           "qname": "LegalEntity:successors",
@@ -1891,7 +1976,10 @@
       },
       "edge": {
         "source": "predecessor",
-        "target": "successor"
+        "target": "successor",
+        "caption": [
+          "date"
+        ]
       },
       "featured": [
         "predecessor",
@@ -2232,7 +2320,12 @@
       },
       "edge": {
         "source": "payer",
-        "target": "beneficiary"
+        "target": "beneficiary",
+        "caption": [
+          "amount",
+          "date",
+          "purpose"
+        ]
       },
       "featured": [
         "payer",
@@ -2327,7 +2420,10 @@
       },
       "edge": {
         "source": "person",
-        "target": "relative"
+        "target": "relative",
+        "caption": [
+          "relationship"
+        ]
       },
       "featured": [
         "person",
@@ -3376,7 +3472,10 @@
       },
       "edge": {
         "source": "party",
-        "target": "case"
+        "target": "case",
+        "caption": [
+          "role"
+        ]
       },
       "featured": [
         "party",
@@ -3417,7 +3516,10 @@
       },
       "edge": {
         "source": "subject",
-        "target": "object"
+        "target": "object",
+        "caption": [
+          "role"
+        ]
       },
       "featured": [
         "subject",
@@ -4237,7 +4339,8 @@
         "aze": "Azerbaijani",
         "tgk": "Tajik",
         "kaz": "Kazakh",
-        "tuk": "Turkmen"
+        "tuk": "Turkmen",
+        "kir": "Kyrgyz"
       }
     },
     "mimetype": {

@@ -74,6 +74,13 @@ ftm:CourtCaseParty a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
 
+ftm:Debt a rdfs:Class ;
+    rdfs:label "Debt" ;
+    rdfs:comment "A monetary debt between two parties." ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Interval,
+        ftm:Value .
+
 ftm:Directorship a rdfs:Class ;
     rdfs:label "Directorship" ;
     rdfs:isDefinedBy ftm: ;
@@ -1837,6 +1844,20 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:Thing ;
     owl:inverseOf <https://w3id.org/ftm#Thing:courtCase> .
 
+<https://w3id.org/ftm#Debt:creditor> a rdf:Property ;
+    rdfs:label "creditor" ;
+    rdfs:domain ftm:Debt ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:debtCreditor> .
+
+<https://w3id.org/ftm#Debt:debtor> a rdf:Property ;
+    rdfs:label "Debtor" ;
+    rdfs:domain ftm:Debt ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:debtDebtor> .
+
 <https://w3id.org/ftm#Directorship:director> a rdf:Property ;
     rdfs:label "Director" ;
     rdfs:domain ftm:Directorship ;
@@ -1996,6 +2017,20 @@ owl:sameAs a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:ContractAward ;
     owl:inverseOf <https://w3id.org/ftm#ContractAward:supplier> .
+
+<https://w3id.org/ftm#LegalEntity:debtCreditor> a rdf:Property ;
+    rdfs:label "Credits" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Debt ;
+    owl:inverseOf <https://w3id.org/ftm#Debt:creditor> .
+
+<https://w3id.org/ftm#LegalEntity:debtDebtor> a rdf:Property ;
+    rdfs:label "Debts" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Debt ;
+    owl:inverseOf <https://w3id.org/ftm#Debt:debtor> .
 
 <https://w3id.org/ftm#LegalEntity:directorshipDirector> a rdf:Property ;
     rdfs:label "Directorships" ;
@@ -2372,5 +2407,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2019-09-22T22:10:44"^^xsd:dateTime .
+    dct:modified "2019-10-08T09:09:32"^^xsd:dateTime .
 

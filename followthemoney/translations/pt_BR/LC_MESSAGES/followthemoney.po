@@ -2,20 +2,21 @@
 # Copyright (C) 2019 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-10-08 09:32+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2018-03-14 22:03+0000\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/aleph/teams/76591/pt_BR/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: followthemoney/property.py:71
 msgid "Invalid value"
@@ -334,7 +335,8 @@ msgstr ""
 
 #. Company.properties.okvedCode.description
 #: followthemoney/schema/Company.yaml
-msgid "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
+msgid ""
+"(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
 msgstr ""
 
 #. Company.properties.okopfCode.label
@@ -411,13 +413,15 @@ msgstr ""
 
 #. Contract.label
 #. ContractAward.properties.contract.label
-#: followthemoney/schema/Contract.yaml followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/Contract.yaml
+#: followthemoney/schema/ContractAward.yaml
 msgid "Contract"
 msgstr ""
 
 #. Contract.plural
 #. ContractAward.properties.contract.plural
-#: followthemoney/schema/Contract.yaml followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/Contract.yaml
+#: followthemoney/schema/ContractAward.yaml
 msgid "Contracts"
 msgstr ""
 
@@ -533,7 +537,8 @@ msgstr ""
 
 #. ContractAward.properties.documentType.label
 #. Passport.properties.type.label
-#: followthemoney/schema/ContractAward.yaml followthemoney/schema/Passport.yaml
+#: followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/Passport.yaml
 msgid "Document type"
 msgstr ""
 
@@ -1234,13 +1239,13 @@ msgstr ""
 #. EconomicActivity.properties.vedCodeDescription.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid ""
-"(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code "
-"description"
+"(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
 msgstr ""
 
 #. EconomicActivity.properties.goodsDescription.label
 #. Thing.properties.description.label
-#: followthemoney/schema/EconomicActivity.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/schema/EconomicActivity.yaml
+#: followthemoney/schema/Thing.yaml
 msgid "Description"
 msgstr ""
 
@@ -1337,8 +1342,7 @@ msgstr ""
 #. EconomicActivity.properties.tradingCountry.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid ""
-"Trading Country of the company which transports the goods via Russian "
-"border"
+"Trading Country of the company which transports the goods via Russian border"
 msgstr ""
 
 #. EconomicActivity.properties.departureCountry.label
@@ -1751,8 +1755,8 @@ msgstr ""
 #. LegalEntity.properties.parent.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid ""
-"If this entity is a subsidiary, another entity (company or organisation) "
-"is its parent"
+"If this entity is a subsidiary, another entity (company or organisation) is "
+"its parent"
 msgstr ""
 
 #. LegalEntity.properties.subsidiaries.label
@@ -2227,8 +2231,8 @@ msgstr ""
 #. Representation.description
 #: followthemoney/schema/Representation.yaml
 msgid ""
-"A mediatory, intermediary, middleman, or broker acting on behalf of a "
-"legal entity."
+"A mediatory, intermediary, middleman, or broker acting on behalf of a legal "
+"entity."
 msgstr ""
 
 #. Representation.properties.agent.label
@@ -2759,4 +2763,3 @@ msgstr ""
 #: followthemoney/types/url.py:12
 msgid "URLs"
 msgstr ""
-

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-09-22 22:28+0200\n"
+"POT-Creation-Date: 2019-10-08 09:32+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -50,7 +50,7 @@ msgstr "Неизвестное свойство (1%s): 1%s"
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
 
-#: followthemoney/schema.py:166
+#: followthemoney/schema.py:167
 msgid "Entity failed validation"
 msgstr "Сущность не прошла валидацию"
 
@@ -660,6 +660,37 @@ msgstr "Дело"
 msgid "Parties"
 msgstr "Стороны"
 
+#. Debt.label
+#: followthemoney/schema/Debt.yaml
+msgid "Debt"
+msgstr ""
+
+#. Debt.plural
+#. Debt.properties.debtor.reverse.label
+#: followthemoney/schema/Debt.yaml
+msgid "Debts"
+msgstr ""
+
+#. Debt.description
+#: followthemoney/schema/Debt.yaml
+msgid "A monetary debt between two parties."
+msgstr ""
+
+#. Debt.properties.debtor.label
+#: followthemoney/schema/Debt.yaml
+msgid "Debtor"
+msgstr ""
+
+#. Debt.properties.creditor.label
+#: followthemoney/schema/Debt.yaml
+msgid "creditor"
+msgstr ""
+
+#. Debt.properties.creditor.reverse.label
+#: followthemoney/schema/Debt.yaml
+msgid "Credits"
+msgstr ""
+
 #. Directorship.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Directorship"
@@ -789,12 +820,12 @@ msgstr "Язык"
 #. Document.properties.detectedLanguage.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected language"
-msgstr ""
+msgstr "Найденные названия языков"
 
 #. Document.properties.detectedCountry.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected country"
-msgstr ""
+msgstr "Найденные названия стран"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
@@ -842,32 +873,32 @@ msgstr "Дочерние документы"
 #. Document.properties.namesMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected names"
-msgstr ""
+msgstr "Найденные имена"
 
 #. Document.properties.ibanMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected IBANs"
-msgstr ""
+msgstr "Найденные IBAN-коды"
 
 #. Document.properties.ipMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected IP addresses"
-msgstr ""
+msgstr "Найденные IP-адреса"
 
 #. Document.properties.locationMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected locations"
-msgstr ""
+msgstr "Найденные названия мест"
 
 #. Document.properties.phoneMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected phones"
-msgstr ""
+msgstr "Наденные телефонные номера"
 
 #. Document.properties.emailMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected e-mail addresses"
-msgstr ""
+msgstr "Найденные эл. адреса"
 
 #. Document.properties.processingStatus.label
 #: followthemoney/schema/Document.yaml
