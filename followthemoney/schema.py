@@ -47,6 +47,7 @@ class Schema(object):
         edge = data.get('edge', {})
         self.edge_source = edge.get('source')
         self.edge_target = edge.get('target')
+        self.edge_caption = ensure_list(edge.get('caption'))
         self.edge = self.edge_source and self.edge_target
 
         self.extends = set()
@@ -178,6 +179,7 @@ class Schema(object):
             data['edge'] = {
                 'source': self.edge_source,
                 'target': self.edge_target,
+                'caption': self.edge_caption,
             }
         if len(self.featured):
             data['featured'] = self.featured

@@ -11,6 +11,7 @@ Succession:
   edge:
     source: predecessor
     target: successor
+    caption: date
   properties:
     predecessor:
       label: "Predecessor"

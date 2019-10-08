@@ -12,6 +12,7 @@ Ownership:
   edge:
     source: asset
     target: owner
+    caption: percentage
   properties:
     owner:
       label: "Owner"

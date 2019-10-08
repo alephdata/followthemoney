@@ -12,6 +12,7 @@ Membership:
   edge:
     source: organization
     target: member
+    caption: role
   properties:
     member:
       label: "Member"

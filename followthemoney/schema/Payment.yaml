@@ -15,6 +15,10 @@ Payment:
   edge:
     source: payer
     target: beneficiary
+    caption: 
+      - amount
+      - date
+      - purpose
   properties:
     sequenceNumber:
       label: "Sequence number"

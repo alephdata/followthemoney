@@ -15,6 +15,7 @@ ContractAward:
   edge:
     source: contract
     target: supplier
+    caption: lotNumber
   properties:
     supplier:
       label: "Supplier"

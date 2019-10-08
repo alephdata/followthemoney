@@ -12,6 +12,7 @@ Directorship:
   edge:
     source: organization
     target: director
+    caption: role
   properties:
     director:
       label: "Director"

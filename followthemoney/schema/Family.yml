@@ -11,6 +11,7 @@ Family:
   edge:
     source: person
     target: relative
+    caption: relationship
   properties:
     person:
       label: "Person"

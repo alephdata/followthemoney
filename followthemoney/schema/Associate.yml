@@ -11,6 +11,7 @@ Associate:
   edge:
     source: person
     target: associate
+    caption: relationship
   properties:
     person:
       label: "Person"

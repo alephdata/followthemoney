@@ -11,6 +11,7 @@ Representation:
   edge:
     source: client
     target: agent
+    caption: role
   properties:
     agent: # aka representative / incorporation agent
       label: "Agent"

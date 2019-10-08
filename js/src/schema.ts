@@ -4,6 +4,7 @@ import { Model } from './model'
 interface IEdgeSpecification {
   source: string
   target: string
+  caption: string[]
 }
 
 export type SchemaSpec = string | null | undefined | Schema;

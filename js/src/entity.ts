@@ -132,6 +132,19 @@ export class Entity {
   }
 
   /**
+   * Get the designated label for the given entity.
+   */
+  getEdgeCaption(): string {
+    const captions = this.schema.edge ? this.schema.edge.caption : []
+    for (const property of captions) {
+      for (const value of this.getProperty(property)) {
+        return value as string
+      }
+    }
+    return this.schema.label
+  }
+
+  /**
    * Get all the values of a particular type, irrespective of
    * which property it is associated with.
    */
