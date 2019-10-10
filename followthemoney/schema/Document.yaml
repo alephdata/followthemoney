@@ -93,6 +93,14 @@ Document:
       label: "Detected names"
       hidden: true
       type: name
+    peopleMentioned:
+      label: "Detected people"
+      hidden: true
+      type: name
+    companiesMentioned:
+      label: "Detected companies"
+      hidden: true
+      type: name
     ibanMentioned:
       label: "Detected IBANs"
       hidden: true
