@@ -94,11 +94,11 @@ Document:
       hidden: true
       type: name
     peopleMentioned:
-      label: "Detected names"
+      label: "Detected people"
       hidden: true
       type: name
     companiesMentioned:
-      label: "Detected names"
+      label: "Detected companies"
       hidden: true
       type: name
     ibanMentioned:
