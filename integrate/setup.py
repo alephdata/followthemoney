@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='followthemoney-integrate',
-    version='1.21.3',
+    version='1.21.4',
     long_description="FollowTheMoney record linkage UI",
     classifiers=[
         "Development Status :: 3 - Alpha",
