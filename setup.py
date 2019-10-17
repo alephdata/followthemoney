@@ -33,7 +33,7 @@ setup(
         'pantomime >= 0.3.2',
         'pytz >= 2018.5',
         'rdflib >= 4.2.2',
-        'networkx >= 2.3',
+        'networkx >= 2.4',
         'openpyxl >= 2.6.0',
     ],
     extras_require={

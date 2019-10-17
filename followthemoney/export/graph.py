@@ -66,7 +66,7 @@ class NXGraphExporter(GraphExporter):
         if not self.graph.has_node(id):
             self.graph.add_node(id, **attributes)
         else:
-            self.graph.node[id].update(attributes)
+            self.graph.nodes[id].update(attributes)
 
     def write_edge(self, proxy, source, target, attributes):
         source = self.get_id(registry.entity, source)
