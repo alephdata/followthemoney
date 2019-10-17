@@ -45,7 +45,6 @@ Document:
     messageId:
       label: "Message ID"
       description: "Message ID of a document; unique in most cases"
-      type: identifier
     mimeType:
       label: "MIME type"
       type: mimetype
@@ -364,7 +363,6 @@ Email:
     inReplyTo:
       label: "In Reply To"
       description: "Message ID of the preceding email in the thread"
-      type: identifier
       hidden: true
     inReplyToEmail:
       label: Responding to

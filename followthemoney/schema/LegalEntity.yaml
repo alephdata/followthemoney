@@ -62,9 +62,9 @@ LegalEntity:
       type: identifier
       description: "ID number of any applicable ID"
     taxNumber:
-      label: Tax ID Number
+      label: Tax Number
       type: identifier
-      description: "Tax ID number"
+      description: "Tax identification number"
     vatCode:
       label: "V.A.T. Identifier"
       description: "(EU) VAT number"
