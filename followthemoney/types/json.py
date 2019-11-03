@@ -3,7 +3,6 @@ from banal import ensure_list
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import sanitize_text, defer as _
-from followthemoney.util import MEGABYTE
 
 
 class JsonType(PropertyType):
@@ -11,7 +10,6 @@ class JsonType(PropertyType):
     group = None
     label = _('Nested data')
     matchable = False
-    max_size = 10 * MEGABYTE
 
     def pack(self, obj):
         """Encode a given value to JSON."""
