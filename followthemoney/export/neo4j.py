@@ -68,7 +68,7 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
             return
 
         other_id = self.get_id(prop.type, value)
-        if prop.type != registry.entity and other_id not in self.nodes_seen:
+        if other_id not in self.nodes_seen:
             row = [other_id, prop.type.name, value]
             self.nodes_writer.writerow(row)
             self.nodes_seen.add(other_id)
