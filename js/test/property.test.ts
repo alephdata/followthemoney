@@ -5,7 +5,7 @@ describe('ftm/Property class', () => {
   const model = new Model(defaultModel)
   const schema = model.getSchema('Thing')
   let property: Property
-  beforeEach(() => {  
+  beforeEach(() => {
     property = new Property(schema, defaultModel.schemata.Thing.properties.address)
   })
   const requiredProperties = ['name', 'label', 'type']
@@ -21,6 +21,7 @@ describe('ftm/Property class', () => {
     const sameAs = schema.getProperty('sameAs');
     expect(sameAs).toBeInstanceOf(Property)
     expect(sameAs.hasReverse).toBeTruthy()
+    expect(sameAs.hasRange).toBeTruthy()
     expect(sameAs.getRange()).toBe(schema)
     expect(sameAs.getReverse()).toBe(sameAs)
   })
@@ -29,6 +30,7 @@ describe('ftm/Property class', () => {
     const nameProp = schema.getProperty('name');
     expect(nameProp).toBeInstanceOf(Property)
     expect(nameProp.hasReverse).toBeFalsy()
+    expect(nameProp.hasRange).toBeFalsy()
     expect(() => {
       nameProp.getRange()
     }).toThrow(Error)
