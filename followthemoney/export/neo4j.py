@@ -115,6 +115,7 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
                     fp.write(cmd.format(file_name))
 
         self.links_handler.close()
+        self.nodes_handler.close()
         super().finalize()
 
 
