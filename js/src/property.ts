@@ -31,6 +31,7 @@ export class Property {
   public readonly description: string | null
   public readonly stub: boolean
   public readonly hasReverse: boolean
+  public readonly hasRange: boolean
   private readonly range: string | null
   private readonly reverse: string | null
 
@@ -47,6 +48,7 @@ export class Property {
     this.range = property.range || null
     this.reverse = property.reverse || null
     this.type = schema.model.getType(property.type)
+    this.hasRange = this.range !== null
     this.hasReverse = this.range !== null && this.reverse !== null
   }
 
