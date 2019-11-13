@@ -1,4 +1,5 @@
 import re
+from normality import slugify
 from normality.cleaning import collapse_spaces
 
 from followthemoney.types.common import PropertyType
@@ -32,3 +33,6 @@ class AddressType(PropertyType):
 
     def _specificity(self, value):
         return dampen(10, 60, value)
+
+    def node_id(self, value):
+        return 'addr:%s' % slugify(value)

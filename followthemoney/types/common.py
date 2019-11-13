@@ -92,6 +92,12 @@ class PropertyType(object):
     def rdf(self, value):
         return Literal(value)
 
+    def node_id(self, value):
+        return str(self.rdf(value))
+
+    def caption(self, value):
+        return value
+
     def to_dict(self):
         data = {
             'label': gettext(self.label),

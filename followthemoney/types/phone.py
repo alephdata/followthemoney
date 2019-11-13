@@ -59,3 +59,7 @@ class PhoneType(PropertyType):
 
     def rdf(self, value):
         return URIRef('tel:%s' % value)
+
+    def caption(self, value):
+        number = parse_number(value)
+        return format_number(number, PhoneNumberFormat.INTERNATIONAL)

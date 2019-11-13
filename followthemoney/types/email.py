@@ -52,4 +52,4 @@ class EmailType(PropertyType):
     # TODO: do we want to use TLDs as country evidence?
 
     def rdf(self, value):
-        return URIRef('mailto:%s' % value)
+        return URIRef('mailto:%s' % value.lower())

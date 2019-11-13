@@ -1,4 +1,5 @@
 from banal import ensure_list
+from normality import slugify
 from Levenshtein import jaro_winkler, setmedian
 from normality.cleaning import collapse_spaces, strip_quotes
 
@@ -35,3 +36,6 @@ class NameType(PropertyType):
 
     def compare(self, left, right):
         return jaro_winkler(left, right)
+
+    def node_id(self, value):
+        return 'name:%s' % slugify(value)

@@ -22,3 +22,6 @@ class UrlType(PropertyType):
 
     def rdf(self, value):
         return URIRef(value)
+
+    def node_id(self, value):
+        return 'url:%s' % value
