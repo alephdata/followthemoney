@@ -21,13 +21,14 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
         edge_types=DEFAULT_EDGE_TYPES,
     ):
         self.edge_types = edge_types
+        extra = ['caption'] + ensure_list(extra)
         super().__init__(directory, dialect, extra)
 
         self.links_handler, self.links_writer = self._open_csv_file('_links')
         self.links_writer.writerow([':TYPE', ':START_ID', ':END_ID', 'weight'])
 
         self.nodes_handler, self.nodes_writer = self._open_csv_file('_nodes')
-        self.nodes_writer.writerow(['id:ID', ':LABEL', 'name'])
+        self.nodes_writer.writerow(['id:ID', ':LABEL', 'caption'])
         self.nodes_seen = set()
 
     def _write_header(self, writer, schema):
@@ -49,7 +50,8 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
         # Thing is, one interval might connect more than one pair of nodes,
         # so we are unrolling them
         for (source, target) in proxy.edgepairs():
-            cells = [proxy.id, proxy.schema.name.upper(), source, target]
+            type_ = proxy.schema.name.upper()
+            cells = [proxy.id, type_, source, target, proxy.caption]
             cells.extend(extra or [])
 
             for prop in proxy.schema.sorted_properties:
@@ -69,12 +71,15 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
 
         other_id = self.get_id(prop.type, value)
         if prop.type != registry.entity and other_id not in self.nodes_seen:
-            row = [other_id, prop.type.name, value]
+            row = [other_id, prop.type.name, prop.type.caption(value)]
             self.nodes_writer.writerow(row)
             self.nodes_seen.add(other_id)
 
         type_ = stringcase.constcase(prop.name)
-        row = [type_, proxy.id, other_id, weight]
+        proxy_id = self.get_id(registry.entity, proxy.id)
+        if proxy_id is None:
+            return
+        row = [type_, proxy_id, other_id, weight]
         self.links_writer.writerow(row)
 
     def write(self, proxy, extra=None):
@@ -82,7 +87,11 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
             return self.write_edges(proxy, extra)
 
         writer = self._get_writer(proxy.schema)
-        cells = [proxy.id, ';'.join(ensure_list(proxy.schema.names))]
+        proxy_id = self.get_id(registry.entity, proxy.id)
+        if proxy_id is None:
+            return
+        label = ';'.join(ensure_list(proxy.schema.names))
+        cells = [proxy_id, label, proxy.caption]
         cells.extend(extra or [])
         for prop in proxy.schema.sorted_properties:
             if prop.hidden or prop.type == registry.entity:
@@ -115,6 +124,7 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
                     fp.write(cmd.format(file_name))
 
         self.links_handler.close()
+        self.nodes_handler.close()
         super().finalize()
 
 
@@ -137,15 +147,20 @@ class CypherGraphExporter(GraphExporter):
         return ', '.join(values)
 
     def _make_node(self, attributes, label):
+        node_id = attributes.get('id')
+        if node_id is None:
+            return
         cypher = 'MERGE (p { %(id)s }) ' \
                  'SET p += { %(map)s } SET p :%(label)s;\n'
         self.fh.write(cypher % {
-            'id': self._to_map({'id': attributes.get('id')}),
+            'id': self._to_map({'id': node_id}),
             'map': self._to_map(attributes),
             'label': ':'.join(ensure_list(label))
         })
 
     def _make_edge(self, source, target, attributes, type_):
+        if source is None or target is None:
+            return
         cypher = 'MATCH (s { %(source)s }), (t { %(target)s }) ' \
                  'MERGE (s)-[:%(type)s { %(map)s }]->(t);\n'
         self.fh.write(cypher % {
@@ -168,7 +183,7 @@ class CypherGraphExporter(GraphExporter):
     def write_node(self, proxy):
         node_id = self.get_id(registry.entity, proxy.id)
         attributes = self.get_attributes(proxy)
-        attributes['name'] = proxy.caption
+        attributes['caption'] = proxy.caption
         attributes['id'] = node_id
         self._make_node(attributes, proxy.schema.names)
 
@@ -180,7 +195,7 @@ class CypherGraphExporter(GraphExporter):
         if prop.type == registry.entity and prop.range:
             label = prop.range.name
         else:
-            attributes['name'] = value
+            attributes['caption'] = prop.type.caption(value)
         self._make_node(attributes, label)
         attributes = {'weight': weight}
         self._make_edge(node_id, other_id, attributes, prop.name)

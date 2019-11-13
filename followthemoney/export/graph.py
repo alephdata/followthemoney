@@ -30,7 +30,9 @@ class GraphExporter(Exporter):
         return attributes
 
     def get_id(self, type_, value):
-        return str(type_.rdf(value))
+        if value is None:
+            return None
+        return type_.node_id(value)
 
     def write_edges(self, proxy):
         attributes = self.get_attributes(proxy)
@@ -90,7 +92,7 @@ class NXGraphExporter(GraphExporter):
         other_id = self.get_id(prop.type, value)
         if prop.type != registry.entity:
             self._make_node(node_id, {
-                'label': value,
+                'label': prop.type.caption(value),
                 'schema': prop.type.name
             })
         self.graph.add_edge(node_id, other_id,
