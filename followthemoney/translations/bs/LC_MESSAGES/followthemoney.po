@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-08 09:32+0200\n"
+"POT-Creation-Date: 2019-11-14 09:45+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Tajna Biscevic <tajna@occrp.org>, 2019\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -871,6 +871,16 @@ msgstr ""
 msgid "Detected names"
 msgstr ""
 
+#. Document.properties.peopleMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "Detected people"
+msgstr ""
+
+#. Document.properties.companiesMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "Detected companies"
+msgstr ""
+
 #. Document.properties.ibanMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected IBANs"
@@ -1034,7 +1044,7 @@ msgid "Web pages"
 msgstr "Web stranice"
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:22
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
 msgid "HTML"
 msgstr ""
 
@@ -1667,13 +1677,13 @@ msgstr ""
 
 #. LegalEntity.properties.taxNumber.label
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Tax ID Number"
-msgstr "ID Broj Poreza"
+msgid "Tax Number"
+msgstr ""
 
 #. LegalEntity.properties.taxNumber.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Tax ID number"
-msgstr "ID broj poreza"
+msgid "Tax identification number"
+msgstr ""
 
 #. LegalEntity.properties.vatCode.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -2367,7 +2377,7 @@ msgid "Registered wealth"
 msgstr ""
 
 #. Thing.properties.name.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:13
+#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:14
 msgid "Name"
 msgstr "Naziv"
 
@@ -2412,7 +2422,7 @@ msgid "Keywords"
 msgstr "Ključne riječi"
 
 #. Thing.properties.address.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:14
+#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:15
 msgid "Address"
 msgstr "Adresa"
 
@@ -2616,7 +2626,7 @@ msgstr "Prošli tipovi"
 msgid "MMSI"
 msgstr ""
 
-#: followthemoney/types/address.py:15
+#: followthemoney/types/address.py:16
 msgid "Addresses"
 msgstr ""
 
@@ -2724,7 +2734,7 @@ msgstr ""
 msgid "IP-Addresses"
 msgstr ""
 
-#: followthemoney/types/json.py:12
+#: followthemoney/types/json.py:11
 msgid "Nested data"
 msgstr ""
 
@@ -2740,7 +2750,7 @@ msgstr ""
 msgid "MIME-Types"
 msgstr ""
 
-#: followthemoney/types/name.py:14
+#: followthemoney/types/name.py:15
 msgid "Names"
 msgstr ""
 

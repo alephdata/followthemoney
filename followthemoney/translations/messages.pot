@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-08 09:32+0200\n"
+"POT-Creation-Date: 2019-11-14 09:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -858,6 +858,16 @@ msgstr ""
 msgid "Detected names"
 msgstr ""
 
+#. Document.properties.peopleMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "Detected people"
+msgstr ""
+
+#. Document.properties.companiesMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "Detected companies"
+msgstr ""
+
 #. Document.properties.ibanMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected IBANs"
@@ -1021,7 +1031,7 @@ msgid "Web pages"
 msgstr ""
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:22
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
 msgid "HTML"
 msgstr ""
 
@@ -1655,12 +1665,12 @@ msgstr ""
 
 #. LegalEntity.properties.taxNumber.label
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Tax ID Number"
+msgid "Tax Number"
 msgstr ""
 
 #. LegalEntity.properties.taxNumber.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Tax ID number"
+msgid "Tax identification number"
 msgstr ""
 
 #. LegalEntity.properties.vatCode.label
@@ -2355,7 +2365,7 @@ msgid "Registered wealth"
 msgstr ""
 
 #. Thing.properties.name.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:13
+#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:14
 msgid "Name"
 msgstr ""
 
@@ -2400,7 +2410,7 @@ msgid "Keywords"
 msgstr ""
 
 #. Thing.properties.address.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:14
+#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:15
 msgid "Address"
 msgstr ""
 
@@ -2604,7 +2614,7 @@ msgstr ""
 msgid "MMSI"
 msgstr ""
 
-#: followthemoney/types/address.py:15
+#: followthemoney/types/address.py:16
 msgid "Addresses"
 msgstr ""
 
@@ -2712,7 +2722,7 @@ msgstr ""
 msgid "IP-Addresses"
 msgstr ""
 
-#: followthemoney/types/json.py:12
+#: followthemoney/types/json.py:11
 msgid "Nested data"
 msgstr ""
 
@@ -2728,7 +2738,7 @@ msgstr ""
 msgid "MIME-Types"
 msgstr ""
 
-#: followthemoney/types/name.py:14
+#: followthemoney/types/name.py:15
 msgid "Names"
 msgstr ""
 

@@ -1589,9 +1589,9 @@
         "taxNumber": {
           "name": "taxNumber",
           "qname": "LegalEntity:taxNumber",
-          "label": "Tax ID Number",
+          "label": "Tax Number",
           "type": "identifier",
-          "description": "Tax ID number",
+          "description": "Tax identification number",
           "matchable": true
         },
         "vatCode": {
@@ -2621,9 +2621,8 @@
           "name": "messageId",
           "qname": "Document:messageId",
           "label": "Message ID",
-          "type": "identifier",
-          "description": "Message ID of a document; unique in most cases",
-          "matchable": true
+          "type": "string",
+          "description": "Message ID of a document; unique in most cases"
         },
         "mimeType": {
           "name": "mimeType",
@@ -2695,6 +2694,22 @@
           "name": "namesMentioned",
           "qname": "Document:namesMentioned",
           "label": "Detected names",
+          "type": "name",
+          "matchable": true,
+          "hidden": true
+        },
+        "peopleMentioned": {
+          "name": "peopleMentioned",
+          "qname": "Document:peopleMentioned",
+          "label": "Detected people",
+          "type": "name",
+          "matchable": true,
+          "hidden": true
+        },
+        "companiesMentioned": {
+          "name": "companiesMentioned",
+          "qname": "Document:companiesMentioned",
+          "label": "Detected companies",
           "type": "name",
           "matchable": true,
           "hidden": true
@@ -3171,9 +3186,8 @@
           "name": "inReplyTo",
           "qname": "Email:inReplyTo",
           "label": "In Reply To",
-          "type": "identifier",
+          "type": "string",
           "description": "Message ID of the preceding email in the thread",
-          "matchable": true,
           "hidden": true
         },
         "inReplyToEmail": {

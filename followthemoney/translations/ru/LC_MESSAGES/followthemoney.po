@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-08 09:32+0200\n"
+"POT-Creation-Date: 2019-11-14 09:45+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -663,33 +663,33 @@ msgstr "Стороны"
 #. Debt.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debt"
-msgstr ""
+msgstr "Долг"
 
 #. Debt.plural
 #. Debt.properties.debtor.reverse.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debts"
-msgstr ""
+msgstr "Долги"
 
 #. Debt.description
 #: followthemoney/schema/Debt.yaml
 msgid "A monetary debt between two parties."
-msgstr ""
+msgstr "Кредитно-денежные отношения двух сторон."
 
 #. Debt.properties.debtor.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debtor"
-msgstr ""
+msgstr "Должник"
 
 #. Debt.properties.creditor.label
 #: followthemoney/schema/Debt.yaml
 msgid "creditor"
-msgstr ""
+msgstr "Кредитор"
 
 #. Debt.properties.creditor.reverse.label
 #: followthemoney/schema/Debt.yaml
 msgid "Credits"
-msgstr ""
+msgstr "Кредиты"
 
 #. Directorship.label
 #: followthemoney/schema/Directorship.yaml
@@ -875,6 +875,16 @@ msgstr "Дочерние документы"
 msgid "Detected names"
 msgstr "Найденные имена"
 
+#. Document.properties.peopleMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "Detected people"
+msgstr ""
+
+#. Document.properties.companiesMentioned.label
+#: followthemoney/schema/Document.yaml
+msgid "Detected companies"
+msgstr ""
+
 #. Document.properties.ibanMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected IBANs"
@@ -1038,7 +1048,7 @@ msgid "Web pages"
 msgstr "Веб-страницы"
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:22
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
 msgid "HTML"
 msgstr "HTML"
 
@@ -1676,13 +1686,13 @@ msgstr "Номер действующего ID"
 
 #. LegalEntity.properties.taxNumber.label
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Tax ID Number"
-msgstr "Номер налогоплательщика"
+msgid "Tax Number"
+msgstr ""
 
 #. LegalEntity.properties.taxNumber.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Tax ID number"
-msgstr "Номер налогоплательщика"
+msgid "Tax identification number"
+msgstr ""
 
 #. LegalEntity.properties.vatCode.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -2381,7 +2391,7 @@ msgid "Registered wealth"
 msgstr "Денежное состояние"
 
 #. Thing.properties.name.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:13
+#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:14
 msgid "Name"
 msgstr "Имя"
 
@@ -2426,7 +2436,7 @@ msgid "Keywords"
 msgstr "Ключевые слова"
 
 #. Thing.properties.address.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:14
+#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:15
 msgid "Address"
 msgstr "Адрес"
 
@@ -2630,7 +2640,7 @@ msgstr "Предыдущие типы судна"
 msgid "MMSI"
 msgstr "MMSI"
 
-#: followthemoney/types/address.py:15
+#: followthemoney/types/address.py:16
 msgid "Addresses"
 msgstr "Адреса"
 
@@ -2738,7 +2748,7 @@ msgstr "IP-адрес"
 msgid "IP-Addresses"
 msgstr "IP-адреса"
 
-#: followthemoney/types/json.py:12
+#: followthemoney/types/json.py:11
 msgid "Nested data"
 msgstr "Сгруппированные данные"
 
@@ -2754,7 +2764,7 @@ msgstr "MIME-тип"
 msgid "MIME-Types"
 msgstr "MIME-типы"
 
-#: followthemoney/types/name.py:14
+#: followthemoney/types/name.py:15
 msgid "Names"
 msgstr "Имена"
 

@@ -664,6 +664,11 @@ dct:language a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
 
+<https://w3id.org/ftm#Document:companiesMentioned> a rdf:Property ;
+    rdfs:label "Detected companies" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Document:contentHash> a rdf:Property ;
     rdfs:label "Checksum" ;
     rdfs:comment "SHA1 hash of the data" ;
@@ -740,6 +745,11 @@ dct:language a rdf:Property ;
 
 <https://w3id.org/ftm#Document:namesMentioned> a rdf:Property ;
     rdfs:label "Detected names" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:peopleMentioned> a rdf:Property ;
+    rdfs:label "Detected people" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
@@ -1140,8 +1150,8 @@ dct:language a rdf:Property ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#LegalEntity:taxNumber> a rdf:Property ;
-    rdfs:label "Tax ID Number" ;
-    rdfs:comment "Tax ID number" ;
+    rdfs:label "Tax Number" ;
+    rdfs:comment "Tax identification number" ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: .
 
@@ -2407,5 +2417,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2019-10-08T09:09:32"^^xsd:dateTime .
+    dct:modified "2019-11-14T09:09:45"^^xsd:dateTime .
 
