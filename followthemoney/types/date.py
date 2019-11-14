@@ -117,6 +117,9 @@ class DateType(PropertyType):
     def rdf(self, value):
         return Literal(value, datatype=XSD.dateTime)
 
+    def node_id(self, value):
+        return 'date:%s' % value
+
     def to_datetime(self, value):
         formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), [])
         for fmt in formats:

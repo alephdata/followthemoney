@@ -16,9 +16,15 @@ class TextType(PropertyType):
     matchable = False
     max_size = 30 * MEGABYTE
 
+    def node_id(self, value):
+        return None
+
 
 class HTMLType(PropertyType):
     name = 'html'
     label = _('HTML')
     matchable = False
     max_size = 30 * MEGABYTE
+
+    def node_id(self, value):
+        return None

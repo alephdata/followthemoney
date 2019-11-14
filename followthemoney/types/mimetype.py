@@ -1,5 +1,5 @@
 from rdflib import URIRef
-from pantomime import normalize_mimetype, DEFAULT
+from pantomime import normalize_mimetype, parse_mimetype, DEFAULT
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
@@ -19,3 +19,6 @@ class MimeType(PropertyType):
 
     def rdf(self, value):
         return URIRef('urn:mimetype:%s' % value)
+
+    def caption(self, value):
+        return parse_mimetype(value).label

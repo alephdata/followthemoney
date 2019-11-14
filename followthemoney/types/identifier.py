@@ -37,3 +37,6 @@ class IdentifierType(PropertyType):
 
     def _specificity(self, value):
         return dampen(4, 10, value)
+
+    def node_id(self, value):
+        return 'id:%s' % value

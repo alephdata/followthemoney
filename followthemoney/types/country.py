@@ -69,6 +69,9 @@ class CountryType(PropertyType):
     def rdf(self, value):
         return URIRef('iso-3166-1:%s' % value)
 
+    def caption(self, value):
+        return self.names.get(value, value)
+
     def to_dict(self):
         data = super(CountryType, self).to_dict()
         data['values'] = self.names

@@ -40,3 +40,6 @@ class JsonType(PropertyType):
         """Turn multiple values into a JSON array."""
         values = [self.unpack(v) for v in ensure_list(values)]
         return self.pack(values)
+
+    def node_id(self, value):
+        return None
