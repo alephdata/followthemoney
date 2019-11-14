@@ -40,6 +40,7 @@ class CSVExporter(Exporter):
         cells.extend(extra or [])
         for prop in proxy.schema.sorted_properties:
             cells.append(prop.type.join(proxy.get(prop)))
+
         writer.writerow(cells)
 
     def finalize(self):

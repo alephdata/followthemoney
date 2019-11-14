@@ -49,9 +49,18 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
         writer = self._get_writer(proxy.schema)
         # Thing is, one interval might connect more than one pair of nodes,
         # so we are unrolling them
+        source_type = proxy.schema.get(proxy.schema.edge_source).type
+        target_type = proxy.schema.get(proxy.schema.edge_target).type
+
+
         for (source, target) in proxy.edgepairs():
             type_ = proxy.schema.name.upper()
-            cells = [proxy.id, type_, source, target, proxy.caption]
+
+            source_id = self.get_id(source_type, source)
+            target_id = self.get_id(target_type, source)
+
+            # That potentially may lead to multiple edges with same id
+            cells = [proxy.id, type_, source_id, target_id, proxy.caption]
             cells.extend(extra or [])
 
             for prop in proxy.schema.sorted_properties:
