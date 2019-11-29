@@ -55,10 +55,13 @@ jobs:
         npm install
         npm run build
     - name: Run the tests
-      run: npm run test:prod && npm run lint
+      run: |
+        cd js
+        npm run test:prod && npm run lint
     - name: Publish to NPM
       if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
       run: |
+        cd js
         npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
         npm run build
         npm publish
