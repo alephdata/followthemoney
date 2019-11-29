@@ -1,0 +1,89 @@
+name: memorious
+
+on: [push]
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Show ref
+      run: |
+        echo "$GITHUB_REF"
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo apt-get install -y -qq libicu-dev
+        pip install wheel
+        pip install -e ".[dev]"
+    - name: Run the tests
+      run: |
+        nosetests --with-coverage --cover-package=followthemoney --cover-erase
+    - name: Build a distribution
+      run: |
+        python setup.py sdist bdist_wheel
+        python enrich/setup.py sdist bdist_wheel
+        python integrate/setup.py sdist bdist_wheel
+    - name: Publish a Python distribution to PyPI
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: __token__
+        password: ${{ secrets.pypi_password }}
+
+  nodejs:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: |
+        npm install
+        npm run build
+    - name: Run the tests
+      run: npm run test:prod && npm run lint
+    - name: Publish to NPM
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+      run: |
+        npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
+        npm run build
+        npm publish
+      env:
+        CI: true
+        NPM_AUTH_TOKEN: ${{ secrets.npm_auth_token }}
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Show ref
+      run: |
+        echo "$GITHUB_REF"
+    - name: Build docker image
+      run: |
+        docker build -t alephdata/followthemoney:latest .
+    - name: Push docker image for commit hashes
+      run: |
+        docker login -u ${{ secrets.docker_user }} -p ${{ secrets.docker_password }}
+        docker build -t alephdata/followthemoney:${GITHUB_SHA} .
+        docker push alephdata/followthemoney:${GITHUB_SHA}
+    - name: Push docker image for tags
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+      run: |
+        docker login -u ${{ secrets.docker_user }} -p ${{ secrets.docker_password }}
+        docker build -t alephdata/followthemoney:${GITHUB_REF/refs\/tags\//} .
+        docker push alephdata/followthemoney:${GITHUB_REF/refs\/tags\//}
+        docker push alephdata/followthemoney:latest
