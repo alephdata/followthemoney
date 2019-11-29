@@ -1,4 +1,4 @@
-name: memorious
+name: ftm-build
 
 on: [push]
 
@@ -51,6 +51,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
       run: |
+        cd js
         npm install
         npm run build
     - name: Run the tests
