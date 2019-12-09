@@ -2,13 +2,14 @@ Thing:
   abstract: true
   matchable: false
   featured:
-    - name
-    - country
+  - name
+  - country
+  caption:
+  - name
   properties:
     name:
       label: Name
       type: name
-      caption: true
       required: true
       rdf: http://www.w3.org/2004/02/skos/core#prefLabel
     sameAs:
