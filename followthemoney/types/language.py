@@ -18,8 +18,10 @@ class LanguageType(PropertyType):
                  'ara', 'tur', 'ltz', 'ell', 'lit', 'ukr', 'zho', 'bel',
                  'bul', 'bos', 'jpn', 'ces', 'lav', 'por', 'pol', 'hye',
                  'hrv', 'hin', 'heb', 'uzb', 'mon', 'urd', 'sqi', 'kor',
-                 'isl', 'ita', 'est', 'nor', 'fas', 'swa', 'slv', 'aze',
-                 'tgk', 'kaz', 'tuk', 'swa', 'kir']
+                 'isl', 'ita', 'est', 'nor', 'fas', 'swa', 'slv', 'slk',
+                 'aze', 'tgk', 'kaz', 'tuk', 'kir', 'hun', 'dan', 'afr',
+                 'swe', 'srp', 'ind', 'kan', 'mkd', 'mlt', 'msa', 'fin',
+                 'cat']
     LANGUAGES = get_env_list('FTM_LANGUAGES', LANGUAGES)
     LANGUAGES = [l.lower().strip() for l in LANGUAGES]
 
