@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-11-14 09:45+0100\n"
+"POT-Creation-Date: 2019-12-19 21:23+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2019\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -662,33 +662,33 @@ msgstr "Parteien"
 #. Debt.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debt"
-msgstr ""
+msgstr "Schuld"
 
 #. Debt.plural
 #. Debt.properties.debtor.reverse.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debts"
-msgstr ""
+msgstr "Schulden"
 
 #. Debt.description
 #: followthemoney/schema/Debt.yaml
 msgid "A monetary debt between two parties."
-msgstr ""
+msgstr "Eine Geldschuld zwischen zwei Parteien."
 
 #. Debt.properties.debtor.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debtor"
-msgstr ""
+msgstr "Schuldner"
 
 #. Debt.properties.creditor.label
 #: followthemoney/schema/Debt.yaml
 msgid "creditor"
-msgstr ""
+msgstr "Kreditgeber"
 
 #. Debt.properties.creditor.reverse.label
 #: followthemoney/schema/Debt.yaml
 msgid "Credits"
-msgstr ""
+msgstr "Kredite"
 
 #. Directorship.label
 #: followthemoney/schema/Directorship.yaml
@@ -877,12 +877,12 @@ msgstr "Erkannte Namen"
 #. Document.properties.peopleMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected people"
-msgstr ""
+msgstr "Erkannte Personen"
 
 #. Document.properties.companiesMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected companies"
-msgstr ""
+msgstr "Erkannte Firmen"
 
 #. Document.properties.ibanMentioned.label
 #: followthemoney/schema/Document.yaml
@@ -1683,12 +1683,12 @@ msgstr "ID-Nummer eines Ausweises"
 #. LegalEntity.properties.taxNumber.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax Number"
-msgstr ""
+msgstr "Steuernummer"
 
 #. LegalEntity.properties.taxNumber.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax identification number"
-msgstr ""
+msgstr "Steueridentifikationsnummer"
 
 #. LegalEntity.properties.vatCode.label
 #: followthemoney/schema/LegalEntity.yaml

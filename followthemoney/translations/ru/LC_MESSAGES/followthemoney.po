@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-11-14 09:45+0100\n"
+"POT-Creation-Date: 2019-12-19 21:19+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -878,12 +878,12 @@ msgstr "Найденные имена"
 #. Document.properties.peopleMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected people"
-msgstr ""
+msgstr "Найденные люди"
 
 #. Document.properties.companiesMentioned.label
 #: followthemoney/schema/Document.yaml
 msgid "Detected companies"
-msgstr ""
+msgstr "Найденные компании"
 
 #. Document.properties.ibanMentioned.label
 #: followthemoney/schema/Document.yaml
@@ -1687,12 +1687,12 @@ msgstr "Номер действующего ID"
 #. LegalEntity.properties.taxNumber.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax Number"
-msgstr ""
+msgstr "Номер налогоплательщика"
 
 #. LegalEntity.properties.taxNumber.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax identification number"
-msgstr ""
+msgstr "Идентификационный номер налогоплательщика"
 
 #. LegalEntity.properties.vatCode.label
 #: followthemoney/schema/LegalEntity.yaml
