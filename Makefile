@@ -13,7 +13,10 @@ dist:
 release: clean dist
 	twine upload dist/*
 
-build: namespace default-model translate
+docker:
+	docker build -t alephdata/followthemoney .
+
+build: namespace default-model translate docker
 
 namespace:
 	python followthemoney/ontology.py docs/ns
