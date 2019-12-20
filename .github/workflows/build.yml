@@ -24,17 +24,40 @@ jobs:
     - name: Run the tests
       run: |
         nosetests --with-coverage --cover-package=followthemoney --cover-erase
-    - name: Build a distribution
+    - name: Build a followthemoney distribution
       run: |
         python setup.py sdist bdist_wheel
-        python enrich/setup.py sdist bdist_wheel
-        python integrate/setup.py sdist bdist_wheel
-    - name: Publish a Python distribution to PyPI
+        cd enrich && python setup.py sdist bdist_wheel && cp dist/* ../dist && cd ..
+        cd integrate && python setup.py sdist bdist_wheel && cp dist/* ../dist && cd ..
+    - name: Build a followthemoney-enrich distribution
+      working-directory: ./enrich
+      run: |
+        python setup.py sdist bdist_wheel
+    - name: Build a followthemoney-integrate distribution
+      working-directory: ./integrate
+      run: |
+        python setup.py sdist bdist_wheel
+    - name: Publish followthemoney to PyPI
       if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@master
       with:
         user: __token__
         password: ${{ secrets.pypi_password }}
+        packages_dir: dist/
+    - name: Publish followthemoney-enrich to PyPI
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: __token__
+        password: ${{ secrets.pypi_password }}
+        packages_dir: enrich/dist/
+    - name: Publish followthemoney-integrate to PyPI
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: __token__
+        password: ${{ secrets.pypi_password }}
+        packages_dir: integrate/dist/
 
   nodejs:
     runs-on: ubuntu-latest
