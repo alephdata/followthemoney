@@ -20,7 +20,7 @@ def remove_checksums(proxy):
     """
     for prop in proxy.iterprops():
         if prop.type == registry.checksum:
-            proxy.pop(prop, quiet=True)
+            proxy.pop(prop)
     return proxy
 
 

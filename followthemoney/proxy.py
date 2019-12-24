@@ -142,8 +142,7 @@ class EntityProxy(object):
             pass
 
     def iterprops(self):
-        for prop in self.schema.properties.values():
-            yield prop
+        return list(self._properties.keys())
 
     def itervalues(self):
         for prop, values in self._properties.items():
