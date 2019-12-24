@@ -1,6 +1,6 @@
 import re
 from copy import deepcopy
-from banal import ensure_list
+from banal import keys_values
 from normality import stringify
 
 from followthemoney.exc import InvalidMapping
@@ -20,12 +20,8 @@ class PropertyMapping(object):
         self.name = prop.name
         self.type = prop.type
 
-        self.refs = ensure_list(data.pop('column', []))
-        self.refs.extend(ensure_list(data.pop('columns', [])))
-
-        self.literals = ensure_list(data.pop('literal', []))
-        self.literals.extend(ensure_list(data.pop('literals', [])))
-
+        self.refs = keys_values(data, 'column', 'columns')
+        self.literals = keys_values(data, 'literal', 'literals')
         self.join = data.pop('join', None)
         self.split = data.pop('split', None)
         self.entity = data.pop('entity', None)

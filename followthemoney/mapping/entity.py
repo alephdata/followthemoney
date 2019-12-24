@@ -1,5 +1,5 @@
 from hashlib import sha1
-from banal import ensure_list
+from banal import keys_values
 
 from followthemoney.mapping.property import PropertyMapping
 from followthemoney.types import registry
@@ -17,8 +17,7 @@ class EntityMapping(object):
         self.seed = sha1(key_bytes(key_prefix))
         self.seed.update(key_bytes(data.get('key_literal')))
 
-        self.keys = ensure_list(data.get('key'))
-        self.keys.extend(ensure_list(data.get('keys')))
+        self.keys = keys_values(data, 'key', 'keys')
         if not len(self.keys):
             raise InvalidMapping("No keys: %r" % name)
 

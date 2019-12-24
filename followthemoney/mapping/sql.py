@@ -2,7 +2,7 @@ import os
 import six
 import logging
 from uuid import uuid4
-from banal import ensure_list, is_listish
+from banal import ensure_list, is_listish, keys_values
 from normality import stringify
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy import select, func
@@ -53,8 +53,7 @@ class SQLSource(Source):
         self.meta = MetaData()
         self.meta.bind = self.engine
 
-        tables = ensure_list(data.get('table'))
-        tables.extend(ensure_list(data.get('tables')))
+        tables = keys_values(data, 'table', 'tables')
         self.tables = [QueryTable(self, f) for f in tables]
         self.joins = ensure_list(data.get('joins'))
 

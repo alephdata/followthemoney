@@ -2,7 +2,7 @@ import io
 import os
 import logging
 import requests
-from banal import ensure_list
+from banal import keys_values
 from normality import stringify
 
 from followthemoney.mapping.source import StreamSource
@@ -16,10 +16,8 @@ class CSVSource(StreamSource):
 
     def __init__(self, query, data):
         super(CSVSource, self).__init__(query, data)
-        urls = ensure_list(data.get('csv_url'))
-        urls.extend(ensure_list(data.get('csv_urls')))
         self.urls = set()
-        for url in urls:
+        for url in keys_values(data, 'csv_url', 'csv_urls'):
             self.urls.add(os.path.expandvars(url))
 
         if not len(self.urls):
@@ -38,9 +36,6 @@ class CSVSource(StreamSource):
             lines = res.iter_lines(decode_unicode=True)
             yield from self.read_csv(lines)
         else:
-            # XXX: This is a security issue in conjunction with the
-            # aleph mapping API because a user could map any file
-            # from the server file system. Remove???
             with io.open(parsed_url.path, 'r') as fh:
                 yield from self.read_csv(fh)
 

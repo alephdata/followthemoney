@@ -9,7 +9,6 @@ class QueryMapping(object):
     def __init__(self, model, data, key_prefix=None):
         self.model = model
         self.data = data
-
         self.refs = set()
         self.entities = []
         for name, data in data.get('entities', {}).items():

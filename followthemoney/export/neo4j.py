@@ -52,10 +52,8 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
         source_type = proxy.schema.get(proxy.schema.edge_source).type
         target_type = proxy.schema.get(proxy.schema.edge_target).type
 
-
         for (source, target) in proxy.edgepairs():
             type_ = proxy.schema.name.upper()
-
             source_id = self.get_id(source_type, source)
             target_id = self.get_id(target_type, source)
 
