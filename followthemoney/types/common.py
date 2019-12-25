@@ -95,6 +95,10 @@ class PropertyType(object):
     def node_id(self, value):
         return str(self.rdf(value))
 
+    def node_id_safe(self, value):
+        if value is not None:
+            return self.node_id(value)
+
     def caption(self, value):
         return value
 

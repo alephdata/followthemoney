@@ -30,9 +30,7 @@ class GraphExporter(Exporter):
         return attributes
 
     def get_id(self, type_, value):
-        if value is None:
-            return None
-        return type_.node_id(value)
+        return type_.node_id_safe(value)
 
     def write_edges(self, proxy):
         attributes = self.get_attributes(proxy)
