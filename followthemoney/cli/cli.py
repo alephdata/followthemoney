@@ -4,6 +4,7 @@ import click
 import logging
 
 from followthemoney import model
+from followthemoney.namespace import Namespace
 from followthemoney.cli.util import read_entity, write_object
 
 
@@ -33,6 +34,23 @@ def validate(infile, outfile):
             for (prop, value) in entity.itervalues():
                 clean.add(prop, value)
             write_object(outfile, clean)
+    except BrokenPipeError:
+        raise click.Abort()
+
+
+@cli.command('sign', help="Apply an HMAC signature to entity IDs")
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+@click.option('-s', '--signature', default=None, help='HMAC signature key')  # noqa
+def sign(infile, outfile, signature):
+    ns = Namespace(signature)
+    try:
+        while True:
+            entity = read_entity(infile)
+            if entity is None:
+                break
+            signed = ns.apply(entity)
+            write_object(outfile, signed)
     except BrokenPipeError:
         raise click.Abort()
 

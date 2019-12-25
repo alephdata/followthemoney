@@ -11,7 +11,7 @@ class Namespace(object):
     SEP = '.'
 
     def __init__(self, name=None):
-        self.bname = key_bytes(name)
+        self.bname = key_bytes(name) if name else b''
         self.hmac = hmac.new(self.bname, digestmod='sha1')
 
     @classmethod
