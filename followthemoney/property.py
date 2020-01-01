@@ -8,12 +8,17 @@ from followthemoney.util import gettext, NS
 
 
 class Property(object):
+    RESERVED = ['id', 'caption', 'schema', 'schemata']
 
     def __init__(self, schema, name, data):
         self.schema = schema
         self.model = schema.model
+
         self.name = stringify(name)
         self.qname = '%s:%s' % (schema.name, self.name)
+        if self.name in self.RESERVED:
+            raise InvalidModel("Reserved name: %s" % self.name)
+
         self.data = data
         self._label = data.get('label', name)
         self._description = data.get('description')
@@ -105,3 +110,6 @@ class Property(object):
 
     def __repr__(self):
         return '<Property(%r)>' % self.qname
+
+    def __str__(self):
+        return self.qname
