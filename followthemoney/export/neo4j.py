@@ -1,28 +1,21 @@
 import os
-import csv
 import json
+import logging
 import stringcase
-from banal import ensure_list
 
-from followthemoney.types import registry
-from followthemoney.export.csv import CSVExporter
+from followthemoney.export.csv import CSVMixin
 from followthemoney.export.graph import GraphExporter, DEFAULT_EDGE_TYPES
 
+log = logging.getLogger(__name__)
 NEO4J_ADMIN_PATH = os.environ.get('NEO4J_ADMIN_PATH', 'bin/neo4j-admin')
 NEO4J_DATABASE_NAME = os.environ.get('NEO4J_DATABASE_NAME', 'graph.db')
 
 
-class Neo4JCSVExporter(CSVExporter, GraphExporter):
-    def __init__(
-        self,
-        directory,
-        dialect=csv.unix_dialect,
-        extra=None,
-        edge_types=DEFAULT_EDGE_TYPES,
-    ):
-        self.edge_types = edge_types
-        extra = ['caption'] + ensure_list(extra)
-        super().__init__(directory, dialect, extra)
+class Neo4JCSVExporter(CSVMixin, GraphExporter):
+
+    def __init__(self, directory, extra=None, edge_types=DEFAULT_EDGE_TYPES):
+        super(Neo4JCSVExporter, self).__init__(edge_types=edge_types)
+        self._configure(directory, extra=extra)
 
         self.links_handler, self.links_writer = self._open_csv_file('_links')
         self.links_writer.writerow([':TYPE', ':START_ID', ':END_ID', 'weight'])
@@ -34,83 +27,57 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
     def _write_header(self, writer, schema):
         headers = []
         if not schema.edge:
-            headers = ['id:ID', ':LABEL']
+            headers = ['id:ID', ':LABEL', 'caption']
         else:
             headers = ['id', ':TYPE', ':START_ID', ':END_ID']
 
         headers.extend(self.extra)
-        for prop in schema.sorted_properties:
-            if prop.hidden or prop.type == registry.entity:
-                continue
+        for prop in self.exportable_properties(schema):
             headers.append(prop.name)
         writer.writerow(headers)
 
-    def write_edges(self, proxy, extra):
-        writer = self._get_writer(proxy.schema)
-        # Thing is, one interval might connect more than one pair of nodes,
-        # so we are unrolling them
-        source_type = proxy.schema.get(proxy.schema.edge_source).type
-        target_type = proxy.schema.get(proxy.schema.edge_target).type
+    def write_graph(self, extra=None):
+        for node in self.graph.iternodes():
+            self.write_node(node, extra)
 
-        for (source, target) in proxy.edgepairs():
-            type_ = proxy.schema.name.upper()
-            source_id = self.get_id(source_type, source)
-            target_id = self.get_id(target_type, source)
+        for edge in self.graph.iteredges():
+            self.write_edge(edge, extra)
 
-            # That potentially may lead to multiple edges with same id
-            cells = [proxy.id, type_, source_id, target_id, proxy.caption]
+        self.graph.flush()
+
+    def write_node(self, node, extra):
+        if not node.is_entity and node.id not in self.nodes_seen:
+            row = [node.id, node.type.name, node.caption]
+            self.nodes_writer.writerow(row)
+            self.nodes_seen.add(node.id)
+        if node.proxy is not None:
+            label = ';'.join(node.schema.names)
+            cells = [node.id, label, node.caption]
             cells.extend(extra or [])
-
-            for prop in proxy.schema.sorted_properties:
-                if prop.hidden or prop.type == registry.entity:
-                    continue
-                cells.append(prop.type.join(proxy.get(prop)))
-
+            for prop, values in self.exportable_fields(node.proxy):
+                cells.append(prop.type.join(values))
+            writer = self._get_writer(node.schema)
             writer.writerow(cells)
 
-    def write_link(self, proxy, prop, value):
-        if prop.type.name not in self.edge_types:
-            return
+    def write_edge(self, edge, extra):
+        if edge.prop is not None:
+            type_ = stringcase.constcase(edge.prop.name)
+            row = [type_, edge.source_id, edge.target_id, edge.weight]
+            self.links_writer.writerow(row)
+        if edge.proxy is not None:
+            proxy = edge.proxy
+            type_ = stringcase.constcase(proxy.schema.name)
+            # That potentially may lead to multiple edges with same id
+            cells = [proxy.id, type_, edge.source_id, edge.target_id]
+            cells.extend(extra or [])
 
-        weight = prop.specificity(value)
-        if weight == 0:
-            return
+            for prop, values in self.exportable_fields(edge.proxy):
+                cells.append(prop.type.join(values))
 
-        other_id = self.get_id(prop.type, value)
-        if prop.type != registry.entity and other_id not in self.nodes_seen:
-            row = [other_id, prop.type.name, prop.type.caption(value)]
-            self.nodes_writer.writerow(row)
-            self.nodes_seen.add(other_id)
+            writer = self._get_writer(proxy.schema)
+            writer.writerow(cells)
 
-        type_ = stringcase.constcase(prop.name)
-        proxy_id = self.get_id(registry.entity, proxy.id)
-        if proxy_id is None:
-            return
-        row = [type_, proxy_id, other_id, weight]
-        self.links_writer.writerow(row)
-
-    def write(self, proxy, extra=None):
-        if proxy.schema.edge:
-            return self.write_edges(proxy, extra)
-
-        writer = self._get_writer(proxy.schema)
-        proxy_id = self.get_id(registry.entity, proxy.id)
-        if proxy_id is None:
-            return
-        label = ';'.join(ensure_list(proxy.schema.names))
-        cells = [proxy_id, label, proxy.caption]
-        cells.extend(extra or [])
-        for prop in proxy.schema.sorted_properties:
-            if prop.hidden or prop.type == registry.entity:
-                continue
-            cells.append(prop.type.join(proxy.get(prop)))
-        writer.writerow(cells)
-
-        for prop, values in proxy._properties.items():
-            for value in ensure_list(values):
-                self.write_link(proxy, prop, value)
-
-    def finalize(self):
+    def finalize_graph(self):
         script_path = self.directory.joinpath('neo4j_import.sh')
         with open(script_path, mode='w') as fp:
             cmd = '{} import --id-type=STRING --database={} \\\n'
@@ -132,7 +99,7 @@ class Neo4JCSVExporter(CSVExporter, GraphExporter):
 
         self.links_handler.close()
         self.nodes_handler.close()
-        super().finalize()
+        self.close()
 
 
 class CypherGraphExporter(GraphExporter):
@@ -145,6 +112,7 @@ class CypherGraphExporter(GraphExporter):
     def __init__(self, fh, edge_types=DEFAULT_EDGE_TYPES):
         super(CypherGraphExporter, self).__init__(edge_types=edge_types)
         self.fh = fh
+        self.proxy_nodes = set()
 
     def _to_map(self, data):
         values = []
@@ -153,56 +121,40 @@ class CypherGraphExporter(GraphExporter):
             values.append(value)
         return ', '.join(values)
 
-    def _make_node(self, attributes, label):
-        node_id = attributes.get('id')
-        if node_id is None:
-            return
-        cypher = 'MERGE (p { %(id)s }) ' \
-                 'SET p += { %(map)s } SET p :%(label)s;\n'
-        self.fh.write(cypher % {
-            'id': self._to_map({'id': node_id}),
-            'map': self._to_map(attributes),
-            'label': ':'.join(ensure_list(label))
-        })
+    def write_graph(self):
+        """Export queries for each graph element."""
+        for node in self.graph.iternodes():
+            if node.value in self.proxy_nodes:
+                continue
+            if node.proxy is not None:
+                self.proxy_nodes.add(node.value)
+            attributes = self.get_attributes(node)
+            attributes['id'] = node.id
+            if node.caption is not None:
+                attributes['caption'] = node.caption
+            if node.schema:
+                labels = node.schema.names
+            else:
+                labels = [node.type.name]
+            cypher = 'MERGE (p { %(id)s }) ' \
+                     'SET p += { %(map)s } SET p :%(label)s;\n'
+            self.fh.write(cypher % {
+                'id': self._to_map({'id': node.id}),
+                'map': self._to_map(attributes),
+                'label': ':'.join(labels)
+            })
 
-    def _make_edge(self, source, target, attributes, type_):
-        if source is None or target is None:
-            return
-        cypher = 'MATCH (s { %(source)s }), (t { %(target)s }) ' \
-                 'MERGE (s)-[:%(type)s { %(map)s }]->(t);\n'
-        self.fh.write(cypher % {
-            'source': self._to_map({'id': source}),
-            'target': self._to_map({'id': target}),
-            'type': stringcase.constcase(type_),
-            'map': self._to_map(attributes),
-        })
+        for edge in self.graph.iteredges():
+            attributes = self.get_attributes(edge)
+            attributes['id'] = edge.id
+            attributes['weight'] = edge.weight
+            cypher = 'MATCH (s { %(source)s }), (t { %(target)s }) ' \
+                     'MERGE (s)-[:%(type)s { %(map)s }]->(t);\n'
+            self.fh.write(cypher % {
+                'source': self._to_map({'id': edge.source_id}),
+                'target': self._to_map({'id': edge.target_id}),
+                'type': stringcase.constcase(edge.type_name),
+                'map': self._to_map(attributes),
+            })
 
-    def write_edge(self, proxy, source, target, attributes):
-        source = self.get_id(registry.entity, source)
-        source_prop = proxy.schema.get(proxy.schema.edge_source)
-        self._make_node({'id': source}, source_prop.range.name)
-
-        target = self.get_id(registry.entity, target)
-        target_prop = proxy.schema.get(proxy.schema.edge_target)
-        self._make_node({'id': target}, target_prop.range.name)
-        self._make_edge(source, target, attributes, proxy.schema.name)
-
-    def write_node(self, proxy):
-        node_id = self.get_id(registry.entity, proxy.id)
-        attributes = self.get_attributes(proxy)
-        attributes['caption'] = proxy.caption
-        attributes['id'] = node_id
-        self._make_node(attributes, proxy.schema.names)
-
-    def write_link(self, proxy, prop, value, weight):
-        node_id = self.get_id(registry.entity, proxy.id)
-        other_id = self.get_id(prop.type, value)
-        label = prop.type.name
-        attributes = {'id': other_id}
-        if prop.type == registry.entity and prop.range:
-            label = prop.range.name
-        else:
-            attributes['caption'] = prop.type.caption(value)
-        self._make_node(attributes, label)
-        attributes = {'weight': weight}
-        self._make_edge(node_id, other_id, attributes, prop.name)
+        self.graph.flush()

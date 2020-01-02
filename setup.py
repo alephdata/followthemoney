@@ -34,7 +34,7 @@ setup(
         'pytz >= 2018.5',
         'rdflib >= 4.2.2',
         'networkx >= 2.4',
-        'openpyxl >= 2.6.0',
+        'openpyxl >= 3.0.1',
     ],
     extras_require={
         'dev': [

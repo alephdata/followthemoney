@@ -51,19 +51,18 @@ class ExcelExporter(ExcelWriter, Exporter):
 
     def write(self, proxy, extra=None, **kwargs):
         if proxy.schema not in self.sheets:
-            title = proxy.schema.plural
             headers = ['ID']
             headers.extend(self.extra)
-            for prop in proxy.schema.sorted_properties:
+            for prop in self.exportable_properties(proxy.schema):
                 headers.append(prop.label)
-            sheet = self.make_sheet(title, headers)
+            sheet = self.make_sheet(proxy.schema.plural, headers)
             self.sheets[proxy.schema] = sheet
         sheet = self.sheets.get(proxy.schema)
         try:
             cells = [proxy.id]
             cells.extend(extra or [])
-            for prop in proxy.schema.sorted_properties:
-                cells.append(prop.type.join(proxy.get(prop)))
+            for prop, values in self.exportable_fields(proxy):
+                cells.append(prop.type.join(values))
             sheet.append(cells)
         except IllegalCharacterError as ice:
             log.error("Invalid text for Excel export: %s", ice)

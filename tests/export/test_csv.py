@@ -39,9 +39,10 @@ class CSVExportTestCase(TestCase):
         fh = open(outfile, 'r')
         csv_reader = csv.reader(fh)
         rows = list(csv_reader)
+        props = exporter.exportable_properties(entity.schema)
         self.assertListEqual(
             rows[0],
             ['id', 'source'] +
-            [prop.name for prop in entity.schema.sorted_properties]
+            [prop.name for prop in props]
         )
         self.assertListEqual(rows[1][:3], ['person', 'test', 'Ralph Tester'])
