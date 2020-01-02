@@ -1,23 +1,17 @@
 import csv
 from pathlib import Path
+from banal import ensure_list
 
 from followthemoney.export.common import Exporter
 
 
-class CSVExporter(Exporter):
-    def __init__(self, directory, dialect=csv.unix_dialect, extra=None):
-        self.directory = Path(directory)
-        self.dialect = dialect
-        self.extra = extra or []
-        self.handles = {}
+class CSVMixin(object):
 
-    def _write_header(self, writer, schema):
-        headers = ['id']
-        headers.extend(self.extra)
-        for prop in schema.sorted_properties:
-            # Not using label to make it more machine-readable:
-            headers.append(prop.name)
-        writer.writerow(headers)
+    def _configure(self, directory, dialect=csv.unix_dialect, extra=None):
+        self.directory = Path(directory)
+        self.extra = ensure_list(extra)
+        self.dialect = dialect
+        self.handles = {}
 
     def _open_csv_file(self, name):
         self.directory.mkdir(parents=True, exist_ok=True)
@@ -34,6 +28,24 @@ class CSVExporter(Exporter):
         handle, writer = self.handles[schema]
         return writer
 
+    def close(self):
+        for (handle, writer) in self.handles.values():
+            handle.close()
+
+
+class CSVExporter(Exporter, CSVMixin):
+
+    def __init__(self, directory, extra=None):
+        self._configure(directory, extra=extra)
+
+    def _write_header(self, writer, schema):
+        headers = ['id']
+        headers.extend(self.extra)
+        for prop in schema.sorted_properties:
+            # Not using label to make it more machine-readable:
+            headers.append(prop.name)
+        writer.writerow(headers)
+
     def write(self, proxy, extra=None):
         writer = self._get_writer(proxy.schema)
         cells = [proxy.id]
@@ -44,5 +56,4 @@ class CSVExporter(Exporter):
         writer.writerow(cells)
 
     def finalize(self):
-        for (handle, writer) in self.handles.values():
-            handle.close()
+        self.close()

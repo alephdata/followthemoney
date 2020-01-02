@@ -1,8 +1,8 @@
 import networkx as nx
 from pprint import pprint  # noqa
-from banal import ensure_list
 from networkx.readwrite.gexf import generate_gexf
 
+from followthemoney.graph import Graph
 from followthemoney.types import registry
 from followthemoney.export.common import Exporter
 
@@ -19,38 +19,31 @@ class GraphExporter(Exporter):
 
     def __init__(self, edge_types=DEFAULT_EDGE_TYPES):
         self.edge_types = edge_types
+        self.graph = Graph(edge_types=edge_types)
 
-    def get_attributes(self, proxy):
+    def get_attributes(self, element):
         attributes = {}
-        for prop, values in proxy._properties.items():
-            if prop.hidden or prop.stub:
-                continue
-            if prop.type.name not in self.edge_types:
-                attributes[prop.name] = prop.type.join(values)
+        if element.proxy:
+            for prop in element.proxy.iterprops():
+                if prop.hidden or prop.stub:
+                    continue
+                values = prop.type.join(element.proxy.get(prop))
+                attributes[prop.name] = values
         return attributes
 
-    def get_id(self, type_, value):
-        return type_.node_id_safe(value)
+    def write(self, proxy, **kwargs):
+        self.graph.add(proxy)
+        self.write_graph(**kwargs)
 
-    def write_edges(self, proxy):
-        attributes = self.get_attributes(proxy)
-        attributes['weight'] = 1
-        for (source, target) in proxy.edgepairs():
-            self.write_edge(proxy, source, target, attributes)
+    def finalize(self):
+        self.finalize_graph()
+        self.graph.flush()
 
-    def write(self, proxy):
-        if proxy.schema.edge:
-            self.write_edges(proxy)
-        else:
-            self.write_node(proxy)
-            for prop, values in proxy._properties.items():
-                if prop.type.name not in self.edge_types:
-                    continue
-                for value in ensure_list(values):
-                    weight = prop.specificity(value)
-                    if weight == 0:
-                        continue
-                    self.write_link(proxy, prop, value, weight)
+    def write_graph(self, **kwargs):
+        pass
+
+    def finalize_graph(self):
+        pass
 
 
 class NXGraphExporter(GraphExporter):
@@ -59,44 +52,28 @@ class NXGraphExporter(GraphExporter):
 
     def __init__(self, fh, edge_types=DEFAULT_EDGE_TYPES):
         super(NXGraphExporter, self).__init__(edge_types=edge_types)
-        self.graph = nx.MultiDiGraph()
         self.fh = fh
 
-    def _make_node(self, id, attributes):
-        if not self.graph.has_node(id):
-            self.graph.add_node(id, **attributes)
-        else:
-            self.graph.nodes[id].update(attributes)
+    def finalize_graph(self):
+        """Convert from FtM graph model to NetworkX directed graph."""
+        digraph = nx.MultiDiGraph()
 
-    def write_edge(self, proxy, source, target, attributes):
-        source = self.get_id(registry.entity, source)
-        self._make_node(source, {})
+        for node in self.graph.iternodes():
+            attributes = self.get_attributes(node)
+            attributes['schema'] = node.type.name
+            if node.caption is not None:
+                attributes['label'] = node.caption
+            if node.is_entity:
+                attributes['schema'] = node.schema.name
+            digraph.add_node(node.id, **attributes)
 
-        target = self.get_id(registry.entity, target)
-        self._make_node(target, {})
+        for edge in self.graph.iteredges():
+            attributes = self.get_attributes(edge)
+            attributes['schema'] = edge.type_name
+            attributes['weight'] = edge.weight
+            digraph.add_edge(edge.source_id, edge.target_id,
+                             key=edge.id, **attributes)
 
-        attributes['schema'] = proxy.schema.name
-        self.graph.add_edge(source, target, **attributes)
-
-    def write_node(self, proxy):
-        node_id = self.get_id(registry.entity, proxy.id)
-        attributes = self.get_attributes(proxy)
-        attributes['label'] = proxy.caption
-        attributes['schema'] = proxy.schema.name
-        self._make_node(node_id, attributes)
-
-    def write_link(self, proxy, prop, value, weight):
-        node_id = self.get_id(registry.entity, proxy.id)
-        other_id = self.get_id(prop.type, value)
-        if prop.type != registry.entity:
-            self._make_node(node_id, {
-                'label': prop.type.caption(value),
-                'schema': prop.type.name
-            })
-        self.graph.add_edge(node_id, other_id,
-                            weight=weight,
-                            schema=prop.qname)
-
-    def finalize(self):
-        for line in generate_gexf(self.graph, prettyprint=False):
+        for line in generate_gexf(digraph, prettyprint=True):
             self.fh.write(line)
+            self.fh.write('\n')
