@@ -24,11 +24,8 @@ class GraphExporter(Exporter):
     def get_attributes(self, element):
         attributes = {}
         if element.proxy:
-            for prop in element.proxy.iterprops():
-                if prop.hidden or prop.stub:
-                    continue
-                values = prop.type.join(element.proxy.get(prop))
-                attributes[prop.name] = values
+            for prop, values in self.exportable_fields(element.proxy):
+                attributes[prop.name] = prop.type.join(values)
         return attributes
 
     def write(self, proxy, **kwargs):

@@ -38,10 +38,11 @@ class ExcelExportTestCase(TestCase):
         self.assertListEqual(workbook.sheetnames, ['People'])
         sheet = workbook["People"]
         rows = list(sheet)
+        props = exporter.exportable_properties(entity.schema)
         self.assertListEqual(
             [cell.value for cell in rows[0]],
             ['ID', 'source'] +
-            [prop.label for prop in entity.schema.sorted_properties]
+            [prop.label for prop in props]
         )
         self.assertListEqual(
             [cell.value for cell in rows[1][:3]],

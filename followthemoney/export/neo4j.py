@@ -3,7 +3,6 @@ import json
 import logging
 import stringcase
 
-from followthemoney.types import registry
 from followthemoney.export.csv import CSVMixin
 from followthemoney.export.graph import GraphExporter, DEFAULT_EDGE_TYPES
 
@@ -13,6 +12,7 @@ NEO4J_DATABASE_NAME = os.environ.get('NEO4J_DATABASE_NAME', 'graph.db')
 
 
 class Neo4JCSVExporter(CSVMixin, GraphExporter):
+
     def __init__(self, directory, extra=None, edge_types=DEFAULT_EDGE_TYPES):
         super(Neo4JCSVExporter, self).__init__(edge_types=edge_types)
         self._configure(directory, extra=extra)
@@ -32,9 +32,7 @@ class Neo4JCSVExporter(CSVMixin, GraphExporter):
             headers = ['id', ':TYPE', ':START_ID', ':END_ID']
 
         headers.extend(self.extra)
-        for prop in schema.sorted_properties:
-            if prop.hidden or prop.type == registry.entity:
-                continue
+        for prop in self.exportable_properties(schema):
             headers.append(prop.name)
         writer.writerow(headers)
 
@@ -56,10 +54,8 @@ class Neo4JCSVExporter(CSVMixin, GraphExporter):
             label = ';'.join(node.schema.names)
             cells = [node.id, label, node.caption]
             cells.extend(extra or [])
-            for prop in node.schema.sorted_properties:
-                if prop.hidden or prop.type == registry.entity:
-                    continue
-                cells.append(prop.type.join(node.proxy.get(prop)))
+            for prop, values in self.exportable_fields(node.proxy):
+                cells.append(prop.type.join(values))
             writer = self._get_writer(node.schema)
             writer.writerow(cells)
 
@@ -75,10 +71,8 @@ class Neo4JCSVExporter(CSVMixin, GraphExporter):
             cells = [proxy.id, type_, edge.source_id, edge.target_id]
             cells.extend(extra or [])
 
-            for prop in proxy.schema.sorted_properties:
-                if prop.hidden or prop.type == registry.entity:
-                    continue
-                cells.append(prop.type.join(proxy.get(prop)))
+            for prop, values in self.exportable_fields(edge.proxy):
+                cells.append(prop.type.join(values))
 
             writer = self._get_writer(proxy.schema)
             writer.writerow(cells)

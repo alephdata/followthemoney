@@ -41,7 +41,7 @@ class CSVExporter(Exporter, CSVMixin):
     def _write_header(self, writer, schema):
         headers = ['id']
         headers.extend(self.extra)
-        for prop in schema.sorted_properties:
+        for prop in self.exportable_properties(schema):
             # Not using label to make it more machine-readable:
             headers.append(prop.name)
         writer.writerow(headers)
@@ -50,8 +50,8 @@ class CSVExporter(Exporter, CSVMixin):
         writer = self._get_writer(proxy.schema)
         cells = [proxy.id]
         cells.extend(extra or [])
-        for prop in proxy.schema.sorted_properties:
-            cells.append(prop.type.join(proxy.get(prop)))
+        for prop, values in self.exportable_fields(proxy):
+            cells.append(prop.type.join(values))
 
         writer.writerow(cells)
 
