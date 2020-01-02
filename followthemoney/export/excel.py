@@ -51,12 +51,11 @@ class ExcelExporter(ExcelWriter, Exporter):
 
     def write(self, proxy, extra=None, **kwargs):
         if proxy.schema not in self.sheets:
-            title = proxy.schema.plural
             headers = ['ID']
             headers.extend(self.extra)
             for prop in proxy.schema.sorted_properties:
                 headers.append(prop.label)
-            sheet = self.make_sheet(title, headers)
+            sheet = self.make_sheet(proxy.schema.plural, headers)
             self.sheets[proxy.schema] = sheet
         sheet = self.sheets.get(proxy.schema)
         try:
