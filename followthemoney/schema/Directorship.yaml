@@ -9,9 +9,9 @@ Directorship:
     - role
     - startDate
     - endDate
-  edge:
-    source: organization
-    target: director
+  edge: # DIRECTOR directs ORGANIZATION
+    source: director
+    target: organization
     caption: role
   properties:
     director:

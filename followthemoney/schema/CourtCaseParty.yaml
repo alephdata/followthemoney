@@ -7,7 +7,7 @@ CourtCaseParty:
     - party
     - case
     - role
-  edge:
+  edge: # PARTY is party to CASE
     source: party
     target: case
     caption: role

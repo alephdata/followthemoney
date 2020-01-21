@@ -12,8 +12,8 @@ Debt:
     - date
     - amount
   edge:
-    source: debtor
-    target: creditor
+    source: creditor
+    target: debtor
     caption: amount
   properties:
     debtor:

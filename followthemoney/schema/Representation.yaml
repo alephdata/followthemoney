@@ -8,9 +8,9 @@ Representation:
     - agent
     - client
     - role
-  edge:
-    source: client
-    target: agent
+  edge: # AGENT represents CLIENT
+    source: agent
+    target: client
     caption: role
   properties:
     agent: # aka representative / incorporation agent
@@ -19,7 +19,7 @@ Representation:
       range: LegalEntity
       reverse:
         name: agencyClient
-        label: "Agency clients"
+        label: "Clients"
     client:
       label: "Client"
       type: entity

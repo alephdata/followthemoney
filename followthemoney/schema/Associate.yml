@@ -8,7 +8,7 @@ Associate:
     - person
     - associate
     - relationship
-  edge:
+  edge: # PERSON is associated with ASSOCIATE
     source: person
     target: associate
     caption: relationship

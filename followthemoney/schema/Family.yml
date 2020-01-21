@@ -8,7 +8,7 @@ Family:
     - person
     - relative
     - relationship
-  edge:
+  edge: # PERSON is related to RELATIVE
     source: person
     target: relative
     caption: relationship

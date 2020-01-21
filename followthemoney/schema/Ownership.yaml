@@ -9,9 +9,9 @@ Ownership:
     - percentage
     - startDate
     - endDate
-  edge:
-    source: asset
-    target: owner
+  edge: # OWNER owns ASSET
+    source: owner
+    target: asset
     caption: percentage
   properties:
     owner:
