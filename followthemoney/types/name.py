@@ -1,6 +1,6 @@
-from banal import ensure_list
+from banal import ensure_list, first
 from normality import slugify
-from Levenshtein import jaro_winkler, setmedian
+from Levenshtein import jaro_winkler, quickmedian
 from normality.cleaning import collapse_spaces, strip_quotes
 
 from followthemoney.types.common import PropertyType
@@ -24,11 +24,9 @@ class NameType(PropertyType):
     def pick(self, values):
         values = [sanitize_text(v) for v in ensure_list(values)]
         values = [v for v in values if v is not None]
-        if not len(values):
-            return None
-        if 1 == len(values):
-            return values[0]
-        return setmedian(values)
+        if len(values) < 2:
+            return first(values)
+        return quickmedian(values)
 
     def _specificity(self, value):
         # TODO: insert artificial intelligence here.
