@@ -12,14 +12,11 @@
 *.recon
 build/*
 dist/*
+docs/*.json
 balkhashdb/*
 coverage-report/*
-util/dist/*
-util/build/*
 enrich/dist/*
 enrich/build/*
-integrate/dist/*
-integrate/build/*
 js/dist/*
 js/node_modules/*
 js/coverage/*
