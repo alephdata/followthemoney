@@ -169,8 +169,8 @@
         }
       },
       "edge": {
-        "source": "client",
-        "target": "agent",
+        "source": "agent",
+        "target": "client",
         "caption": [
           "role"
         ]
@@ -345,8 +345,8 @@
         }
       },
       "edge": {
-        "source": "organization",
-        "target": "member",
+        "source": "member",
+        "target": "organization",
         "caption": [
           "role"
         ]
@@ -917,8 +917,8 @@
         }
       },
       "edge": {
-        "source": "asset",
-        "target": "owner",
+        "source": "owner",
+        "target": "asset",
         "caption": [
           "percentage"
         ]
@@ -1039,8 +1039,8 @@
         }
       },
       "edge": {
-        "source": "organization",
-        "target": "director",
+        "source": "director",
+        "target": "organization",
         "caption": [
           "role"
         ]
@@ -1475,8 +1475,8 @@
         }
       },
       "edge": {
-        "source": "debtor",
-        "target": "creditor",
+        "source": "creditor",
+        "target": "debtor",
         "caption": [
           "amount"
         ]
@@ -1722,7 +1722,7 @@
         "agencyClient": {
           "name": "agencyClient",
           "qname": "LegalEntity:agencyClient",
-          "label": "Agency clients",
+          "label": "Clients",
           "type": "entity",
           "stub": true,
           "matchable": true,
@@ -1975,8 +1975,8 @@
         }
       },
       "edge": {
-        "source": "predecessor",
-        "target": "successor",
+        "source": "successor",
+        "target": "predecessor",
         "caption": [
           "date"
         ]

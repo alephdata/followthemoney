@@ -1994,7 +1994,7 @@ owl:sameAs a rdf:Property ;
     owl:inverseOf <https://w3id.org/ftm#Document:ancestors> .
 
 <https://w3id.org/ftm#LegalEntity:agencyClient> a rdf:Property ;
-    rdfs:label "Agency clients" ;
+    rdfs:label "Clients" ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Representation ;
@@ -2417,5 +2417,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2019-12-24T20:08:38"^^xsd:dateTime .
+    dct:modified "2020-01-23T09:09:12"^^xsd:dateTime .
 
