@@ -1,12 +1,16 @@
 from setuptools import setup, find_packages
 
+with open('README.md') as f:
+    long_description = f.read()
+
 setup(
     name='followthemoney',
     version='1.24.1',
-    long_description="Data model and validator for investigative graph data.",
     author='Organized Crime and Corruption Reporting Project',
     author_email='data@occrp.org',
     url='https://docs.alephdata.org/developers/followthemoney',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     license='MIT',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     namespace_packages=[],
