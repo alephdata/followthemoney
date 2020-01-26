@@ -69,7 +69,8 @@ def name_entity(entity):
         names = entity.get('name')
         if len(names) > 1:
             name = registry.name.pick(names)
-            names.remove(name)
+            if name in names:
+                names.remove(name)
             entity.set('name', name)
             entity.add('alias', names)
     return entity

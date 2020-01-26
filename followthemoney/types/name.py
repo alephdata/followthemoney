@@ -1,6 +1,6 @@
 from banal import ensure_list, first
 from normality import slugify
-from Levenshtein import jaro_winkler, quickmedian
+from Levenshtein import jaro_winkler, setmedian
 from normality.cleaning import collapse_spaces, strip_quotes
 
 from followthemoney.types.common import PropertyType
@@ -26,7 +26,7 @@ class NameType(PropertyType):
         values = [v for v in values if v is not None]
         if len(values) < 2:
             return first(values)
-        return quickmedian(values)
+        return setmedian(values)
 
     def _specificity(self, value):
         # TODO: insert artificial intelligence here.
