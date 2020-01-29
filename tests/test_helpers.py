@@ -81,7 +81,7 @@ class HelpersTestCase(TestCase):
             'id': 'banana',
             'schema': 'Person',
             'properties': {
-                'name': ['Carl', 'Karl', 'Carlo', 'CARL'],
+                'name': ['Carl', 'Karl', 'Carlo', 'CARL', 'carl'],
             }
         })
         name_entity(proxy)
