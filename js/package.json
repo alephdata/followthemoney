@@ -65,7 +65,7 @@
     "@types/node": "^13.1.2",
     "colors": "^1.4.0",
     "coveralls": "^3.0.6",
-    "cross-env": "^6.0.3",
+    "cross-env": "^7.0.0",
     "jest": "^24.9.0",
     "jest-config": "^25.1.0",
     "lint-staged": "^10.0.4",
