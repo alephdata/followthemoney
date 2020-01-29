@@ -24,9 +24,9 @@ class NameType(PropertyType):
     def pick(self, values):
         values = [sanitize_text(v) for v in ensure_list(values)]
         values = [v for v in values if v is not None]
-        if len(values) < 2:
+        if len(values) <= 1:
             return first(values)
-        return setmedian(values)
+        return setmedian(sorted(values))
 
     def _specificity(self, value):
         # TODO: insert artificial intelligence here.

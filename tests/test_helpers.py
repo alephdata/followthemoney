@@ -81,12 +81,13 @@ class HelpersTestCase(TestCase):
             'id': 'banana',
             'schema': 'Person',
             'properties': {
-                'name': ['Carl', 'Karl', 'Carlo', 'CARL', 'carl'],
+                'name': ['Carl', 'Karl', 'Carlo', 'CARL'],
             }
         })
         name_entity(proxy)
-        assert ['Carl'] == proxy.get('name'), proxy.get('name')
-        assert 'Karl' in proxy.get('alias'), proxy.get('alias')
+        name = proxy.get('name')
+        assert 1 == len(name), name
+        assert name[0] not in proxy.get('alias'), proxy.get('alias')
 
         proxy = model.get_proxy({
             'id': 'banana',
