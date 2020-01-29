@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-22 10:15+0100\n"
+"POT-Creation-Date: 2020-01-29 18:31+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2020\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -49,7 +49,7 @@ msgstr "Pseudofeld (%s): %s"
 msgid "Self-relationship (%s): %s"
 msgstr "Selbst-Beziehung (%s): %s"
 
-#: followthemoney/schema.py:167
+#: followthemoney/schema.py:173
 msgid "Entity failed validation"
 msgstr "Die Entität ist ungültig"
 
@@ -141,6 +141,11 @@ msgstr "Bekannte"
 #: followthemoney/schema/Associate.yml
 msgid "Non-family association between two people"
 msgstr "Nichtfamiliäre Beziehung zwischen zwei Menschen"
+
+#. Associate.edge.label
+#: followthemoney/schema/Associate.yml
+msgid "associated with"
+msgstr "assoziiert mit"
 
 #. Associate.properties.person.label
 #. Family.properties.person.label
@@ -510,6 +515,11 @@ msgstr "Vergabezuschläge"
 msgid "A contract or contract lot as awarded to a supplier."
 msgstr "Ein Vertrag oder Zuschlag an einen Lieferanten"
 
+#. ContractAward.edge.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "awarded to"
+msgstr "vergeben an"
+
 #. ContractAward.properties.supplier.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Supplier"
@@ -644,6 +654,11 @@ msgstr "Prozessbeteiligter"
 msgid "Case parties"
 msgstr "Prozessbeteiligte"
 
+#. CourtCaseParty.edge.label
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "involved in"
+msgstr "Partei von"
+
 #. CourtCaseParty.properties.party.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Party"
@@ -675,6 +690,11 @@ msgstr "Schulden"
 msgid "A monetary debt between two parties."
 msgstr "Eine Geldschuld zwischen zwei Parteien."
 
+#. Debt.edge.label
+#: followthemoney/schema/Debt.yaml
+msgid "owes"
+msgstr "schuldet"
+
 #. Debt.properties.debtor.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debtor"
@@ -700,6 +720,11 @@ msgstr "Geschäftsführung"
 #: followthemoney/schema/Directorship.yaml
 msgid "Directorships"
 msgstr "Geschäftsführungen"
+
+#. Directorship.edge.label
+#: followthemoney/schema/Directorship.yaml
+msgid "directs"
+msgstr "verwaltet"
 
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
@@ -1479,6 +1504,11 @@ msgstr "Familienmitglieder"
 msgid "Family relationship between two people"
 msgstr "Familiäre Beziehung zwischen zwei Menschen"
 
+#. Family.edge.label
+#: followthemoney/schema/Family.yml
+msgid "related to"
+msgstr "verwandt mit"
+
 #. Family.properties.person.description
 #: followthemoney/schema/Family.yml
 msgid "The subject of the familial relation."
@@ -1837,6 +1867,11 @@ msgstr "Mitgliedschaft"
 msgid "Memberships"
 msgstr "Mitgliedschaften"
 
+#. Membership.edge.label
+#: followthemoney/schema/Membership.yaml
+msgid "belongs to"
+msgstr "ist Teil von"
+
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
 msgid "Member"
@@ -1861,6 +1896,11 @@ msgstr "Eigentum"
 #: followthemoney/schema/Ownership.yaml
 msgid "Ownerships"
 msgstr "Eigentümer"
+
+#. Ownership.edge.label
+#: followthemoney/schema/Ownership.yaml
+msgid "owns"
+msgstr "besitzt"
 
 #. Ownership.properties.owner.label
 #. Vehicle.properties.owner.label
@@ -1985,6 +2025,11 @@ msgstr "Zahlungen"
 #: followthemoney/schema/Payment.yaml
 msgid "A monetary payment between two parties."
 msgstr "Eine geldwerte Zahlung zwischen zwei Parteien"
+
+#. Payment.edge.label
+#: followthemoney/schema/Payment.yaml
+msgid "paid"
+msgstr "bezahlte"
 
 #. Payment.properties.sequenceNumber.label
 #: followthemoney/schema/Payment.yaml
@@ -2265,6 +2310,11 @@ msgid ""
 msgstr ""
 "Ein Unterhändler oder Broker der im Auftrag einer Rechtsperson handelt"
 
+#. Representation.edge.label
+#: followthemoney/schema/Representation.yaml
+msgid "represents"
+msgstr "repräsentiert"
+
 #. Representation.properties.agent.label
 #: followthemoney/schema/Representation.yaml
 msgid "Agent"
@@ -2331,6 +2381,11 @@ msgstr "Nachfolgen"
 #: followthemoney/schema/Succession.yaml
 msgid "Two entities that legally succeed each other."
 msgstr "Zwei Rechtspersonen die in Rechtsfolge stehen."
+
+#. Succession.edge.label
+#: followthemoney/schema/Succession.yaml
+msgid "preceeds"
+msgstr "ersetzt"
 
 #. Succession.properties.predecessor.label
 #: followthemoney/schema/Succession.yaml
@@ -2467,6 +2522,11 @@ msgstr "Andere Verbindung"
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other links"
 msgstr "Andere Verbindungen"
+
+#. UnknownLink.edge.label
+#: followthemoney/schema/UnknownLink.yaml
+msgid "linked to"
+msgstr "verknüpft mit"
 
 #. UnknownLink.properties.subject.reverse.label
 #: followthemoney/schema/UnknownLink.yaml

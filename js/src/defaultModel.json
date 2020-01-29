@@ -128,7 +128,9 @@
         "target": "associate",
         "caption": [
           "relationship"
-        ]
+        ],
+        "label": "associated with",
+        "directed": false
       },
       "featured": [
         "person",
@@ -173,7 +175,9 @@
         "target": "client",
         "caption": [
           "role"
-        ]
+        ],
+        "label": "represents",
+        "directed": true
       },
       "featured": [
         "agent",
@@ -349,7 +353,9 @@
         "target": "organization",
         "caption": [
           "role"
-        ]
+        ],
+        "label": "belongs to",
+        "directed": true
       },
       "featured": [
         "member",
@@ -921,7 +927,9 @@
         "target": "asset",
         "caption": [
           "percentage"
-        ]
+        ],
+        "label": "owns",
+        "directed": true
       },
       "featured": [
         "owner",
@@ -1043,7 +1051,9 @@
         "target": "organization",
         "caption": [
           "role"
-        ]
+        ],
+        "label": "directs",
+        "directed": true
       },
       "featured": [
         "director",
@@ -1431,7 +1441,9 @@
         "target": "supplier",
         "caption": [
           "lotNumber"
-        ]
+        ],
+        "label": "awarded to",
+        "directed": true
       },
       "featured": [
         "supplier",
@@ -1475,11 +1487,13 @@
         }
       },
       "edge": {
-        "source": "creditor",
-        "target": "debtor",
+        "source": "debtor",
+        "target": "creditor",
         "caption": [
           "amount"
-        ]
+        ],
+        "label": "owes",
+        "directed": true
       },
       "featured": [
         "debtor",
@@ -1975,11 +1989,13 @@
         }
       },
       "edge": {
-        "source": "successor",
-        "target": "predecessor",
+        "source": "predecessor",
+        "target": "successor",
         "caption": [
           "date"
-        ]
+        ],
+        "label": "preceeds",
+        "directed": true
       },
       "featured": [
         "predecessor",
@@ -2328,7 +2344,9 @@
           "amount",
           "date",
           "purpose"
-        ]
+        ],
+        "label": "paid",
+        "directed": true
       },
       "featured": [
         "payer",
@@ -2426,7 +2444,9 @@
         "target": "relative",
         "caption": [
           "relationship"
-        ]
+        ],
+        "label": "related to",
+        "directed": false
       },
       "featured": [
         "person",
@@ -3492,7 +3512,9 @@
         "target": "case",
         "caption": [
           "role"
-        ]
+        ],
+        "label": "involved in",
+        "directed": true
       },
       "featured": [
         "party",
@@ -3536,7 +3558,9 @@
         "target": "object",
         "caption": [
           "role"
-        ]
+        ],
+        "label": "linked to",
+        "directed": false
       },
       "featured": [
         "subject",

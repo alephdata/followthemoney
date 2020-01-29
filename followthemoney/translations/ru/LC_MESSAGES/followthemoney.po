@@ -5,16 +5,16 @@
 # 
 # Translators:
 # Olga Gein <chloe@occrp.org>, 2018
-# jen occrp, 2019
+# jen occrp, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-22 09:26+0100\n"
+"POT-Creation-Date: 2020-01-29 18:24+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
-"Last-Translator: jen occrp, 2019\n"
+"Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,7 +50,7 @@ msgstr "Неизвестное свойство (1%s): 1%s"
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
 
-#: followthemoney/schema.py:167
+#: followthemoney/schema.py:173
 msgid "Entity failed validation"
 msgstr "Сущность не прошла валидацию"
 
@@ -142,6 +142,11 @@ msgstr "Знакомые"
 #: followthemoney/schema/Associate.yml
 msgid "Non-family association between two people"
 msgstr "Внесемейные отношения между двумя людьми"
+
+#. Associate.edge.label
+#: followthemoney/schema/Associate.yml
+msgid "associated with"
+msgstr ""
 
 #. Associate.properties.person.label
 #. Family.properties.person.label
@@ -512,6 +517,11 @@ msgstr "Гос. контракты"
 msgid "A contract or contract lot as awarded to a supplier."
 msgstr "Контракт или лот, заключенный с поставщиком"
 
+#. ContractAward.edge.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "awarded to"
+msgstr ""
+
 #. ContractAward.properties.supplier.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Supplier"
@@ -645,6 +655,11 @@ msgstr "Сторона"
 msgid "Case parties"
 msgstr "Стороны"
 
+#. CourtCaseParty.edge.label
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "involved in"
+msgstr ""
+
 #. CourtCaseParty.properties.party.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Party"
@@ -676,6 +691,11 @@ msgstr "Долги"
 msgid "A monetary debt between two parties."
 msgstr "Кредитно-денежные отношения двух сторон."
 
+#. Debt.edge.label
+#: followthemoney/schema/Debt.yaml
+msgid "owes"
+msgstr ""
+
 #. Debt.properties.debtor.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debtor"
@@ -701,6 +721,11 @@ msgstr "Руководство"
 #: followthemoney/schema/Directorship.yaml
 msgid "Directorships"
 msgstr "Состав директоров"
+
+#. Directorship.edge.label
+#: followthemoney/schema/Directorship.yaml
+msgid "directs"
+msgstr ""
 
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
@@ -1481,6 +1506,11 @@ msgstr "Члены семьи"
 msgid "Family relationship between two people"
 msgstr "Родственные отношения между двумя людьми"
 
+#. Family.edge.label
+#: followthemoney/schema/Family.yml
+msgid "related to"
+msgstr ""
+
 #. Family.properties.person.description
 #: followthemoney/schema/Family.yml
 msgid "The subject of the familial relation."
@@ -1841,6 +1871,11 @@ msgstr "Членство"
 msgid "Memberships"
 msgstr "Участие"
 
+#. Membership.edge.label
+#: followthemoney/schema/Membership.yaml
+msgid "belongs to"
+msgstr ""
+
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
 msgid "Member"
@@ -1865,6 +1900,11 @@ msgstr "Структура собственности"
 #: followthemoney/schema/Ownership.yaml
 msgid "Ownerships"
 msgstr "Собственность"
+
+#. Ownership.edge.label
+#: followthemoney/schema/Ownership.yaml
+msgid "owns"
+msgstr ""
 
 #. Ownership.properties.owner.label
 #. Vehicle.properties.owner.label
@@ -1989,6 +2029,11 @@ msgstr "Платежи"
 #: followthemoney/schema/Payment.yaml
 msgid "A monetary payment between two parties."
 msgstr "Денежные платежи между двумя участниками."
+
+#. Payment.edge.label
+#: followthemoney/schema/Payment.yaml
+msgid "paid"
+msgstr ""
 
 #. Payment.properties.sequenceNumber.label
 #: followthemoney/schema/Payment.yaml
@@ -2267,6 +2312,11 @@ msgid ""
 "entity."
 msgstr "Медиатор, посредник или брокер юридического лица"
 
+#. Representation.edge.label
+#: followthemoney/schema/Representation.yaml
+msgid "represents"
+msgstr ""
+
 #. Representation.properties.agent.label
 #: followthemoney/schema/Representation.yaml
 msgid "Agent"
@@ -2275,7 +2325,7 @@ msgstr "Уполномоченное лицо"
 #. Representation.properties.agent.reverse.label
 #: followthemoney/schema/Representation.yaml
 msgid "Clients"
-msgstr ""
+msgstr "Клиенты"
 
 #. Representation.properties.client.label
 #: followthemoney/schema/Representation.yaml
@@ -2333,6 +2383,11 @@ msgstr "Правопреемство"
 #: followthemoney/schema/Succession.yaml
 msgid "Two entities that legally succeed each other."
 msgstr "Переход прав, обязанностей от одного юридического лица к другому."
+
+#. Succession.edge.label
+#: followthemoney/schema/Succession.yaml
+msgid "preceeds"
+msgstr ""
 
 #. Succession.properties.predecessor.label
 #: followthemoney/schema/Succession.yaml
@@ -2469,6 +2524,11 @@ msgstr "Связь"
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other links"
 msgstr "Связи"
+
+#. UnknownLink.edge.label
+#: followthemoney/schema/UnknownLink.yaml
+msgid "linked to"
+msgstr ""
 
 #. UnknownLink.properties.subject.reverse.label
 #: followthemoney/schema/UnknownLink.yaml

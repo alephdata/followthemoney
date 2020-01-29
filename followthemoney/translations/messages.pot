@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-23 09:12+0100\n"
+"POT-Creation-Date: 2020-01-29 22:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Self-relationship (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:167
+#: followthemoney/schema.py:173
 msgid "Entity failed validation"
 msgstr ""
 
@@ -135,6 +135,11 @@ msgstr ""
 #. Associate.description
 #: followthemoney/schema/Associate.yml
 msgid "Non-family association between two people"
+msgstr ""
+
+#. Associate.edge.label
+#: followthemoney/schema/Associate.yml
+msgid "associated with"
 msgstr ""
 
 #. Associate.properties.person.label
@@ -496,6 +501,11 @@ msgstr ""
 msgid "A contract or contract lot as awarded to a supplier."
 msgstr ""
 
+#. ContractAward.edge.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "awarded to"
+msgstr ""
+
 #. ContractAward.properties.supplier.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Supplier"
@@ -628,6 +638,11 @@ msgstr ""
 msgid "Case parties"
 msgstr ""
 
+#. CourtCaseParty.edge.label
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "involved in"
+msgstr ""
+
 #. CourtCaseParty.properties.party.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Party"
@@ -659,6 +674,11 @@ msgstr ""
 msgid "A monetary debt between two parties."
 msgstr ""
 
+#. Debt.edge.label
+#: followthemoney/schema/Debt.yaml
+msgid "owes"
+msgstr ""
+
 #. Debt.properties.debtor.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debtor"
@@ -683,6 +703,11 @@ msgstr ""
 #. Directorship.properties.director.reverse.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Directorships"
+msgstr ""
+
+#. Directorship.edge.label
+#: followthemoney/schema/Directorship.yaml
+msgid "directs"
 msgstr ""
 
 #. Directorship.properties.director.label
@@ -1462,6 +1487,11 @@ msgstr ""
 msgid "Family relationship between two people"
 msgstr ""
 
+#. Family.edge.label
+#: followthemoney/schema/Family.yml
+msgid "related to"
+msgstr ""
+
 #. Family.properties.person.description
 #: followthemoney/schema/Family.yml
 msgid "The subject of the familial relation."
@@ -1818,6 +1848,11 @@ msgstr ""
 msgid "Memberships"
 msgstr ""
 
+#. Membership.edge.label
+#: followthemoney/schema/Membership.yaml
+msgid "belongs to"
+msgstr ""
+
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
 msgid "Member"
@@ -1841,6 +1876,11 @@ msgstr ""
 #. Ownership.plural
 #: followthemoney/schema/Ownership.yaml
 msgid "Ownerships"
+msgstr ""
+
+#. Ownership.edge.label
+#: followthemoney/schema/Ownership.yaml
+msgid "owns"
 msgstr ""
 
 #. Ownership.properties.owner.label
@@ -1965,6 +2005,11 @@ msgstr ""
 #. Payment.description
 #: followthemoney/schema/Payment.yaml
 msgid "A monetary payment between two parties."
+msgstr ""
+
+#. Payment.edge.label
+#: followthemoney/schema/Payment.yaml
+msgid "paid"
 msgstr ""
 
 #. Payment.properties.sequenceNumber.label
@@ -2241,6 +2286,11 @@ msgid ""
 "legal entity."
 msgstr ""
 
+#. Representation.edge.label
+#: followthemoney/schema/Representation.yaml
+msgid "represents"
+msgstr ""
+
 #. Representation.properties.agent.label
 #: followthemoney/schema/Representation.yaml
 msgid "Agent"
@@ -2306,6 +2356,11 @@ msgstr ""
 #. Succession.description
 #: followthemoney/schema/Succession.yaml
 msgid "Two entities that legally succeed each other."
+msgstr ""
+
+#. Succession.edge.label
+#: followthemoney/schema/Succession.yaml
+msgid "preceeds"
 msgstr ""
 
 #. Succession.properties.predecessor.label
@@ -2442,6 +2497,11 @@ msgstr ""
 #. UnknownLink.plural
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other links"
+msgstr ""
+
+#. UnknownLink.edge.label
+#: followthemoney/schema/UnknownLink.yaml
+msgid "linked to"
 msgstr ""
 
 #. UnknownLink.properties.subject.reverse.label
