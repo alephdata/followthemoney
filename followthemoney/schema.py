@@ -47,8 +47,10 @@ class Schema(object):
         edge = data.get('edge', {})
         self.edge_source = edge.get('source')
         self.edge_target = edge.get('target')
-        self.edge_caption = ensure_list(edge.get('caption'))
         self.edge = self.edge_source and self.edge_target
+        self.edge_caption = ensure_list(edge.get('caption'))
+        self._edge_label = edge.get('label', self._label)
+        self.edge_directed = edge.get('directed', True)
 
         self.extends = set()
         self.schemata = set([self])
@@ -125,6 +127,10 @@ class Schema(object):
         return gettext(self._description)
 
     @property
+    def edge_label(self):
+        return gettext(self._edge_label)
+
+    @property
     def sorted_properties(self):
         return sorted(self.properties.values(),
                       key=lambda p: (p.name not in self.caption,
@@ -180,6 +186,8 @@ class Schema(object):
                 'source': self.edge_source,
                 'target': self.edge_target,
                 'caption': self.edge_caption,
+                'label': self.edge_label,
+                'directed': self.edge_directed
             }
         if len(self.featured):
             data['featured'] = self.featured

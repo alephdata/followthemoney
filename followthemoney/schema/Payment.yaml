@@ -14,8 +14,10 @@ Payment:
     - purpose
   edge:
     source: payer
+    label: "paid"
     target: beneficiary
-    caption: 
+    directed: true
+    caption:
       - amount
       - date
       - purpose

@@ -10,7 +10,9 @@ Succession:
     - date
   edge: # PREDECESSOR preceeds SUCCESSOR
     source: predecessor
+    label: "preceeds"
     target: successor
+    directed: true
     caption: date
   properties:
     predecessor:

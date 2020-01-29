@@ -8,9 +8,11 @@ Family:
     - person
     - relative
     - relationship
-  edge: # PERSON is related to RELATIVE
+  edge:
     source: person
+    label: "related to"
     target: relative
+    directed: false
     caption: relationship
   properties:
     person:

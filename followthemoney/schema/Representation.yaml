@@ -10,7 +10,9 @@ Representation:
     - role
   edge: # AGENT represents CLIENT
     source: agent
+    label: "represents"
     target: client
+    directed: true
     caption: role
   properties:
     agent: # aka representative / incorporation agent

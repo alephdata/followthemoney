@@ -9,9 +9,11 @@ Membership:
     - role
     - startDate
     - endDate
-  edge: # MEMBER is a member of ORGANIZATION
+  edge:
     source: member
+    label: "belongs to"
     target: organization
+    directed: true
     caption: role
   properties:
     member:

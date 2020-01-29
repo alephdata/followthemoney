@@ -14,7 +14,9 @@ ContractAward:
     - decisionReason
   edge:
     source: contract
+    label: "awarded to"
     target: supplier
+    directed: true
     caption: lotNumber
   properties:
     supplier:

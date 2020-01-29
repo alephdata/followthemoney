@@ -11,7 +11,9 @@ Ownership:
     - endDate
   edge: # OWNER owns ASSET
     source: owner
+    label: "owns"
     target: asset
+    directed: true
     caption: percentage
   properties:
     owner:

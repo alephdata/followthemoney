@@ -12,8 +12,10 @@ Debt:
     - date
     - amount
   edge:
-    source: creditor
-    target: debtor
+    source: debtor
+    label: "owes"
+    target: creditor
+    directed: true
     caption: amount
   properties:
     debtor:

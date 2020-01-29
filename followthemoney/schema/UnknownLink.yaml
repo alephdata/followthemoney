@@ -10,7 +10,9 @@ UnknownLink:
     - role
   edge:
     source: subject
+    label: "linked to"
     target: object
+    directed: false
     caption: role
   properties:
     subject:

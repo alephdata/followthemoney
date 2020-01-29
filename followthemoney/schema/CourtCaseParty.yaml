@@ -7,9 +7,11 @@ CourtCaseParty:
     - party
     - case
     - role
-  edge: # PARTY is party to CASE
+  edge:
     source: party
+    label: "involved in"
     target: case
+    directed: true
     caption: role
   properties:
     party: 

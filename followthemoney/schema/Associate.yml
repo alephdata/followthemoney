@@ -8,9 +8,11 @@ Associate:
     - person
     - associate
     - relationship
-  edge: # PERSON is associated with ASSOCIATE
+  edge:
     source: person
+    label: "associated with"
     target: associate
+    directed: false
     caption: relationship
   properties:
     person:
