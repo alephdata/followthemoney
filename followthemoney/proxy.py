@@ -5,6 +5,7 @@ from rdflib import Literal, URIRef
 from collections.abc import Hashable
 from rdflib.namespace import RDF, SKOS
 from banal import ensure_list, is_mapping, ensure_dict
+from ordered_set import OrderedSet
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
@@ -114,7 +115,7 @@ class EntityProxy(object):
             self._size += value_size
 
             if prop not in self._properties:
-                self._properties[prop] = set()
+                self._properties[prop] = OrderedSet()
             self._properties[prop].add(value)
 
     def set(self, prop, values, cleaned=False, quiet=False):
