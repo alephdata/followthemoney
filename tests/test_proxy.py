@@ -224,3 +224,9 @@ class ProxyTestCase(TestCase):
 
         proxy = model.make_entity('Person')
         assert 0 == len(list(proxy.triples()))
+
+    def test_properties_maintain_order(self):
+        proxy = EntityProxy.from_dict(model, ENTITY)
+        countries = ['gb', 'us', 'nl', 'in', 'jp', 'au', 'nz', 'sl']
+        proxy.set('country', countries)
+        assert proxy.get('country') == countries, proxy.get('country')
