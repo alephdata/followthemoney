@@ -4,6 +4,8 @@ import { Model } from './model'
 interface IEdgeSpecification {
   source: string
   target: string
+  directed: boolean
+  label?: string
   caption: string[]
 }
 
