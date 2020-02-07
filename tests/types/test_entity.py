@@ -8,11 +8,12 @@ entities = registry.entity
 class EntityTest(unittest.TestCase):
 
     def test_parse(self):
-        self.assertEqual(entities.clean('88'), '88')
-        self.assertEqual(entities.clean(88), '88')
-        self.assertEqual(entities.clean({'id': 88}), '88')
+        self.assertEqual(entities.clean('888'), '888')
+        self.assertEqual(entities.clean(888), '888')
+        self.assertEqual(entities.clean({'id': 888}), '888')
         self.assertEqual(entities.clean(None), None)
         self.assertEqual(entities.clean('With spaces'), None)
+        self.assertEqual(entities.clean('With-dash'), 'With-dash')
         self.assertEqual(entities.clean('With!special'), None)
         self.assertEqual(entities.clean('with.dot'), 'with.dot')
 
