@@ -1,7 +1,7 @@
 import hmac
 
-from followthemoney.util import key_bytes
 from followthemoney.types import registry
+from followthemoney.util import key_bytes, get_entity_id
 
 
 class Namespace(object):
@@ -64,6 +64,7 @@ class Namespace(object):
             if prop.type != registry.entity:
                 continue
             for value in linked.pop(prop):
+                value = get_entity_id(value)
                 linked.add(prop, self.sign(value))
         # linked.add('sameAs', proxy.id, quiet=True)
         linked.remove('sameAs', linked.id)
