@@ -1,17 +1,19 @@
 Document:
-  extends: Thing
+  extends: 
+  - Thing
+  - Analyzable
   label: File
   plural: Files
   matchable: false
   generated: true
   featured:
-    - title
-    - fileName
-    - mimeType
-    - parent
+  - title
+  - fileName
+  - mimeType
+  - parent
   caption:
-    - fileName
-    - title
+  - fileName
+  - title
   properties:
     contentHash:
       label: "Checksum"
@@ -53,12 +55,6 @@ Document:
       label: "Language"
       type: language
       rdf: http://purl.org/dc/terms/language
-    detectedLanguage:
-      label: "Detected language"
-      type: language
-    detectedCountry:
-      label: "Detected country"
-      type: country
     date:
       label: "Date"
       description: "If not otherwise specified"
@@ -88,38 +84,6 @@ Document:
         name: descendants
         hidden: true
         label: "Descendants"
-    namesMentioned:
-      label: "Detected names"
-      hidden: true
-      type: name
-    peopleMentioned:
-      label: "Detected people"
-      hidden: true
-      type: name
-    companiesMentioned:
-      label: "Detected companies"
-      hidden: true
-      type: name
-    ibanMentioned:
-      label: "Detected IBANs"
-      hidden: true
-      type: iban
-    ipMentioned:
-      label: "Detected IP addresses"
-      hidden: true
-      type: ip
-    locationMentioned:
-      label: "Detected locations"
-      hidden: true
-      type: address
-    phoneMentioned:
-      label: "Detected phones"
-      hidden: true
-      type: phone
-    emailMentioned:
-      label: "Detected e-mail addresses"
-      hidden: true
-      type: email
     processingStatus:
       label: "Processing status"
       hidden: true
