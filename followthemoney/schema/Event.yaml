@@ -4,14 +4,14 @@ Event:
   extends: 
   - Interval
   - Analyzable
+  - Thing
   matchable: false
   # generated: true
   caption:
-  - title
+  - name
   - summary
+  - date
   properties:
-    title:
-      label: "Title"
     location:
       label: "Location"
       type: address
