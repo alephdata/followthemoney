@@ -1,17 +1,21 @@
 EconomicActivity:
   label: "Customs declaration"
   plural: "Customs declarations"
-  description: "An economic activity"
+  description: "A foreign economic activity"
   matchable: false
   extends:
-    - Interval
+  - Interval
   featured:
-    - sender
-    - receiver
-    - contract
-    - goodsDescription
-    - startDate
-    - endDate
+  - sender
+  - receiver
+  - contract
+  - goodsDescription
+  - startDate
+  - endDate
+  caption:
+  - summary
+  - goodsDescription
+  - ccdNumber
   properties:
     contract:
       label: "Associated contract"
@@ -46,35 +50,35 @@ EconomicActivity:
     declarant:
       label: "Declarant"
       description: "Customs declarant"
+      type: entity
+      range: LegalEntity
       reverse:
         name: economicActivityDeclarant
         label: "Customs declarations"
-      type: entity
-      range: LegalEntity
     sender:
       label: "Sender"
       description: "Origin of the goods"
+      type: entity
+      range: LegalEntity
       reverse:
         name: economicActivitySender
         label: "Goods originated"
-      type: entity
-      range: LegalEntity
     receiver:
       label: "Receiver"
       description: "Destination of the goods"
+      type: entity
+      range: LegalEntity
       reverse:
         name: economicActivityReceiver
         label: "Goods received"
-      type: entity
-      range: LegalEntity
     contractHolder:
       label: "Contract holder"
       description: "Customs formalities caretaker"
-      reverse:
-        name: economicActivityHolder
-        label: "Economic activities"
       type: entity
       range: LegalEntity
+      reverse:
+        name: economicActivityHolder
+        label: "Customs declarations facilitated"
     invoiceAmount:
       label: "Invoice Value Amount"
       description: "Invoice Value of goods"
@@ -105,18 +109,30 @@ EconomicActivity:
       description: "Bank account of the contract"
       type: entity
       range: BankAccount
+      reverse:
+        name: contractBankAccount
+        label: "Customs declarations"
     bankRub:
       label: "Rouble bank"
       description: "Bank account for payments in roubles"
       type: entity
       range: BankAccount
+      reverse:
+        name: rubBankAccount
+        label: "Customs declarations (as rouble bank)"
     bankForeign:
       label: "Foreign currency bank"
       description: "Bank account for payments in foreign currency"
       type: entity
       range: BankAccount
+      reverse:
+        name: foreignBankAccount
+        label: "Customs declarations (as foreign bank)"
     transport:
       label: "Transport"
       description: "Means of transportation"
       type: entity
       range: Vehicle
+      reverse:
+        name: declaredCustoms
+        label: "Customs declarations"
