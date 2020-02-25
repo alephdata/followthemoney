@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-29 18:24+0100\n"
+"POT-Creation-Date: 2020-02-25 07:57+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -31,21 +31,21 @@ msgstr "Недопустимое значение"
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/proxy.py:28
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr "Для сущности отсутствует схема."
 
-#: followthemoney/proxy.py:61
+#: followthemoney/proxy.py:62
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
 
-#: followthemoney/proxy.py:94
+#: followthemoney/proxy.py:95
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/proxy.py:103
+#: followthemoney/proxy.py:104
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
@@ -146,7 +146,7 @@ msgstr "Внесемейные отношения между двумя людь
 #. Associate.edge.label
 #: followthemoney/schema/Associate.yml
 msgid "associated with"
-msgstr ""
+msgstr "сообщник(-ца)"
 
 #. Associate.properties.person.label
 #. Family.properties.person.label
@@ -520,7 +520,7 @@ msgstr "Контракт или лот, заключенный с поставщ
 #. ContractAward.edge.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "awarded to"
-msgstr ""
+msgstr "заказ/контракт предоставлен"
 
 #. ContractAward.properties.supplier.label
 #: followthemoney/schema/ContractAward.yaml
@@ -658,7 +658,7 @@ msgstr "Стороны"
 #. CourtCaseParty.edge.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "involved in"
-msgstr ""
+msgstr "участвует в"
 
 #. CourtCaseParty.properties.party.label
 #: followthemoney/schema/CourtCaseParty.yaml
@@ -694,7 +694,7 @@ msgstr "Кредитно-денежные отношения двух сторо
 #. Debt.edge.label
 #: followthemoney/schema/Debt.yaml
 msgid "owes"
-msgstr ""
+msgstr "владеет"
 
 #. Debt.properties.debtor.label
 #: followthemoney/schema/Debt.yaml
@@ -725,7 +725,7 @@ msgstr "Состав директоров"
 #. Directorship.edge.label
 #: followthemoney/schema/Directorship.yaml
 msgid "directs"
-msgstr ""
+msgstr "руководит"
 
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
@@ -775,7 +775,7 @@ msgstr "Хеш-сумма (SHA1)"
 #. Person.properties.title.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
 msgid "Title"
-msgstr "Титул"
+msgstr "Название"
 
 #. Document.properties.author.description
 #: followthemoney/schema/Document.yaml
@@ -1214,14 +1214,16 @@ msgstr "Таможенная декларация"
 
 #. EconomicActivity.plural
 #. EconomicActivity.properties.declarant.reverse.label
+#. EconomicActivity.properties.bankAccount.reverse.label
+#. EconomicActivity.properties.transport.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations"
 msgstr "Таможенные декларации"
 
 #. EconomicActivity.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "An economic activity"
-msgstr "Внешнеэкономическая деятельность"
+msgid "A foreign economic activity"
+msgstr ""
 
 #. EconomicActivity.properties.contract.label
 #: followthemoney/schema/EconomicActivity.yaml
@@ -1350,8 +1352,8 @@ msgstr "Сторона, осуществляющая таможенные, на�
 
 #. EconomicActivity.properties.contractHolder.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Economic activities"
-msgstr "Внешнеэкономическая деятельность"
+msgid "Customs declarations facilitated"
+msgstr ""
 
 #. EconomicActivity.properties.invoiceAmount.label
 #: followthemoney/schema/EconomicActivity.yaml
@@ -1442,6 +1444,11 @@ msgstr "Наименование банка (рубли)"
 msgid "Bank account for payments in roubles"
 msgstr "Наименование банка для расчётов в рублях"
 
+#. EconomicActivity.properties.bankRub.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs declarations (as rouble bank)"
+msgstr ""
+
 #. EconomicActivity.properties.bankForeign.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Foreign currency bank"
@@ -1451,6 +1458,11 @@ msgstr "Наименование банка (валюта)"
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank account for payments in foreign currency"
 msgstr "Наименование банка для расчётов в валюте"
+
+#. EconomicActivity.properties.bankForeign.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs declarations (as foreign bank)"
+msgstr ""
 
 #. EconomicActivity.properties.transport.label
 #: followthemoney/schema/EconomicActivity.yaml
@@ -1509,7 +1521,7 @@ msgstr "Родственные отношения между двумя людь
 #. Family.edge.label
 #: followthemoney/schema/Family.yml
 msgid "related to"
-msgstr ""
+msgstr "родственник(-ца)"
 
 #. Family.properties.person.description
 #: followthemoney/schema/Family.yml
@@ -1874,7 +1886,7 @@ msgstr "Участие"
 #. Membership.edge.label
 #: followthemoney/schema/Membership.yaml
 msgid "belongs to"
-msgstr ""
+msgstr "принадлежит"
 
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
@@ -1904,7 +1916,7 @@ msgstr "Собственность"
 #. Ownership.edge.label
 #: followthemoney/schema/Ownership.yaml
 msgid "owns"
-msgstr ""
+msgstr "владеет"
 
 #. Ownership.properties.owner.label
 #. Vehicle.properties.owner.label
@@ -2033,7 +2045,7 @@ msgstr "Денежные платежи между двумя участника
 #. Payment.edge.label
 #: followthemoney/schema/Payment.yaml
 msgid "paid"
-msgstr ""
+msgstr "заплатил(-а)"
 
 #. Payment.properties.sequenceNumber.label
 #: followthemoney/schema/Payment.yaml
@@ -2315,7 +2327,7 @@ msgstr "Медиатор, посредник или брокер юридиче�
 #. Representation.edge.label
 #: followthemoney/schema/Representation.yaml
 msgid "represents"
-msgstr ""
+msgstr "представляет"
 
 #. Representation.properties.agent.label
 #: followthemoney/schema/Representation.yaml
@@ -2387,7 +2399,7 @@ msgstr "Переход прав, обязанностей от одного юр
 #. Succession.edge.label
 #: followthemoney/schema/Succession.yaml
 msgid "preceeds"
-msgstr ""
+msgstr "предшествует"
 
 #. Succession.properties.predecessor.label
 #: followthemoney/schema/Succession.yaml
@@ -2528,7 +2540,7 @@ msgstr "Связи"
 #. UnknownLink.edge.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "linked to"
-msgstr ""
+msgstr "связь с"
 
 #. UnknownLink.properties.subject.reverse.label
 #: followthemoney/schema/UnknownLink.yaml

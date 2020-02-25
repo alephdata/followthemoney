@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-29 22:15+0100\n"
+"POT-Creation-Date: 2020-02-25 07:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,21 +25,21 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: followthemoney/proxy.py:28
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:61
+#: followthemoney/proxy.py:62
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:94
+#: followthemoney/proxy.py:95
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:103
+#: followthemoney/proxy.py:104
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr ""
@@ -1197,13 +1197,15 @@ msgstr ""
 
 #. EconomicActivity.plural
 #. EconomicActivity.properties.declarant.reverse.label
+#. EconomicActivity.properties.bankAccount.reverse.label
+#. EconomicActivity.properties.transport.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations"
 msgstr ""
 
 #. EconomicActivity.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "An economic activity"
+msgid "A foreign economic activity"
 msgstr ""
 
 #. EconomicActivity.properties.contract.label
@@ -1331,7 +1333,7 @@ msgstr ""
 
 #. EconomicActivity.properties.contractHolder.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Economic activities"
+msgid "Customs declarations facilitated"
 msgstr ""
 
 #. EconomicActivity.properties.invoiceAmount.label
@@ -1423,6 +1425,11 @@ msgstr ""
 msgid "Bank account for payments in roubles"
 msgstr ""
 
+#. EconomicActivity.properties.bankRub.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs declarations (as rouble bank)"
+msgstr ""
+
 #. EconomicActivity.properties.bankForeign.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Foreign currency bank"
@@ -1431,6 +1438,11 @@ msgstr ""
 #. EconomicActivity.properties.bankForeign.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank account for payments in foreign currency"
+msgstr ""
+
+#. EconomicActivity.properties.bankForeign.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs declarations (as foreign bank)"
 msgstr ""
 
 #. EconomicActivity.properties.transport.label

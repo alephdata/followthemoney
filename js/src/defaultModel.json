@@ -70,6 +70,16 @@
           "label": "Registration Date",
           "type": "date",
           "matchable": true
+        },
+        "declaredCustoms": {
+          "name": "declaredCustoms",
+          "qname": "Vehicle:declaredCustoms",
+          "label": "Customs declarations",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "EconomicActivity",
+          "reverse": "transport"
         }
       },
       "featured": [
@@ -1936,7 +1946,7 @@
         "economicActivityHolder": {
           "name": "economicActivityHolder",
           "qname": "LegalEntity:economicActivityHolder",
-          "label": "Economic activities",
+          "label": "Customs declarations facilitated",
           "type": "entity",
           "stub": true,
           "matchable": true,
@@ -2557,6 +2567,36 @@
           "matchable": true,
           "range": "Payment",
           "reverse": "beneficiaryAccount"
+        },
+        "contractBankAccount": {
+          "name": "contractBankAccount",
+          "qname": "BankAccount:contractBankAccount",
+          "label": "Customs declarations",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "EconomicActivity",
+          "reverse": "bankAccount"
+        },
+        "rubBankAccount": {
+          "name": "rubBankAccount",
+          "qname": "BankAccount:rubBankAccount",
+          "label": "Customs declarations (as rouble bank)",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "EconomicActivity",
+          "reverse": "bankRub"
+        },
+        "foreignBankAccount": {
+          "name": "foreignBankAccount",
+          "qname": "BankAccount:foreignBankAccount",
+          "label": "Customs declarations (as foreign bank)",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "EconomicActivity",
+          "reverse": "bankForeign"
         }
       },
       "featured": [
@@ -3950,7 +3990,8 @@
           "type": "entity",
           "description": "Bank account of the contract",
           "matchable": true,
-          "range": "BankAccount"
+          "range": "BankAccount",
+          "reverse": "contractBankAccount"
         },
         "bankRub": {
           "name": "bankRub",
@@ -3959,7 +4000,8 @@
           "type": "entity",
           "description": "Bank account for payments in roubles",
           "matchable": true,
-          "range": "BankAccount"
+          "range": "BankAccount",
+          "reverse": "rubBankAccount"
         },
         "bankForeign": {
           "name": "bankForeign",
@@ -3968,7 +4010,8 @@
           "type": "entity",
           "description": "Bank account for payments in foreign currency",
           "matchable": true,
-          "range": "BankAccount"
+          "range": "BankAccount",
+          "reverse": "foreignBankAccount"
         },
         "transport": {
           "name": "transport",
@@ -3977,7 +4020,8 @@
           "type": "entity",
           "description": "Means of transportation",
           "matchable": true,
-          "range": "Vehicle"
+          "range": "Vehicle",
+          "reverse": "declaredCustoms"
         }
       },
       "featured": [
@@ -3988,7 +4032,12 @@
         "startDate",
         "endDate"
       ],
-      "description": "An economic activity"
+      "caption": [
+        "summary",
+        "goodsDescription",
+        "ccdNumber"
+      ],
+      "description": "A foreign economic activity"
     }
   },
   "types": {
