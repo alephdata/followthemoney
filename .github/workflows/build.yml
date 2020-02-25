@@ -18,6 +18,7 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
+        sudo apt-get update -y -qq
         sudo apt-get install -y -qq libicu-dev
         pip install wheel pyicu
         pip install -e ".[dev]"
