@@ -38,10 +38,10 @@ Call:
     duration:
       label: "Call Duration in seconds"
       type: number
-    recording:
-      label: "Recording of the call"
-      type: entity
-      range: Audio
-      reverse:
-        name: "recordedCall"
-        label: "Recording of"
+    # recording:
+    #   label: "Recording of the call"
+    #   type: entity
+    #   range: Audio
+    #   reverse:
+    #     name: "recordedCall"
+    #     label: "Recording of"
