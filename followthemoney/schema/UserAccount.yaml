@@ -1,0 +1,39 @@
+UserAccount:
+  extends:
+  - Thing
+  label: "UserAccount"
+  plural: "UserAccounts"
+  matchable: true
+  generated: true
+  featured:
+  - username
+  - service
+  - email
+  - owner
+  caption:
+  - username
+  - email
+  - service
+  properties:
+    owner:
+      label: "Owner"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: userAccounts
+        label: "User Accounts"
+    service:
+      label: "Service"
+      type: string
+    email:
+      label: "E-mail"
+      type: email
+    number:
+      label: "Phone Number"
+      type: phone
+    username:
+      label: "Username"
+      type: string
+    password:
+      label: "Password"
+      type: string

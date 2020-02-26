@@ -1,0 +1,47 @@
+Call:
+  extends:
+  - Interval
+  label: "Call"
+  plural: "Calls"
+  matchable: false
+  generated: true
+  featured:
+  - callerNumber
+  - caller
+  - receiverNumber
+  - receiver
+  - date
+  caption:
+  - callerNumber
+  - receiverNumber
+  properties:
+    caller:
+      label: "Caller"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: callsMade
+        label: "Calls made"
+    callerNumber:
+      label: "Caller's Number"
+      type: phone
+    receiver:
+      label: "Receiver"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: callsReceived
+        label: "Calls received"
+    receiverNumber:
+      label: "Receiver's Number"
+      type: phone
+    duration:
+      label: "Call Duration in seconds"
+      type: number
+    # recording:
+    #   label: "Recording of the call"
+    #   type: entity
+    #   range: Audio
+    #   reverse:
+    #     name: "recordedCall"
+    #     label: "Recording of"
