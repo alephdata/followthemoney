@@ -1,0 +1,44 @@
+Analyzable:
+  label: Analyzable
+  plural: Analyzables
+  matchable: false
+  generated: true
+  properties:
+    detectedLanguage:
+      label: "Detected language"
+      type: language
+    detectedCountry:
+      label: "Detected country"
+      type: country
+    namesMentioned:
+      label: "Detected names"
+      hidden: true
+      type: name
+    peopleMentioned:
+      label: "Detected people"
+      hidden: true
+      type: name
+    companiesMentioned:
+      label: "Detected companies"
+      hidden: true
+      type: name
+    ibanMentioned:
+      label: "Detected IBANs"
+      hidden: true
+      type: iban
+    ipMentioned:
+      label: "Detected IP addresses"
+      hidden: true
+      type: ip
+    locationMentioned:
+      label: "Detected locations"
+      hidden: true
+      type: address
+    phoneMentioned:
+      label: "Detected phones"
+      hidden: true
+      type: phone
+    emailMentioned:
+      label: "Detected e-mail addresses"
+      hidden: true
+      type: email
