@@ -1,0 +1,71 @@
+Message:
+  extends:
+    - Interval
+    - Folder
+    - PlainText
+    - HyperText
+  label: Message
+  plural: Messages
+  matchable: false
+  generated: true
+  featured:
+    - subject
+    - threadTopic
+    - date
+    - sender
+    - recipients
+  caption:
+    - subject
+    - threadTopic
+    - title
+    - fileName
+  properties:
+    subject:
+      label: Subject
+      type: string
+    threadTopic:
+      label: Thread topic
+      type: string
+    sender:
+      label: "Sender"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: messagesSent
+        label: "Messages sent"
+    senderAccount:
+      label: "Sender Account"
+      type: entity
+      range: UserAccount
+      reverse:
+        name: messagesSent
+        label: "Messages sent"
+    recipients:
+      label: "Recipients"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: messagesReceived
+        label: "messages received"
+    recipientAccount:
+      label: "Recipient Account"
+      type: entity
+      range: UserAccount
+      reverse:
+        name: messagesReceived
+        label: "Messages received"
+    inReplyTo:
+      label: "In Reply To"
+      description: "Message ID of the preceding message in the thread"
+      hidden: true
+    inReplyToMessage:
+      label: Responding to
+      type: entity
+      range: Message
+      reverse:
+        name: responses
+        label: "Responses"
+    metadata:
+      label: "Metadata"
+      hidden: true
+      type: json
