@@ -20,7 +20,7 @@ UserAccount:
       type: entity
       range: LegalEntity
       reverse:
-        name: useraccounts
+        name: userAccounts
         label: "User Accounts"
     service:
       label: "Service"
