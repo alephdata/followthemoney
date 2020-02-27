@@ -18,6 +18,7 @@ class GraphExporter(Exporter):
     of entities."""
 
     def __init__(self, edge_types=DEFAULT_EDGE_TYPES):
+        super(GraphExporter, self).__init__()
         self.edge_types = edge_types
         self.graph = Graph(edge_types=edge_types)
 

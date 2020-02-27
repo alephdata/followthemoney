@@ -9,6 +9,7 @@ log = logging.getLogger(__name__)
 class RDFExporter(Exporter):
 
     def __init__(self, fh, qualified=True):
+        super(RDFExporter, self).__init__()
         self.fh = fh
         self.qualified = qualified
 

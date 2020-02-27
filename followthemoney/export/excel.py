@@ -44,7 +44,8 @@ class ExcelWriter(object):
 class ExcelExporter(ExcelWriter, Exporter):
 
     def __init__(self, file_path, extra=None):
-        super(ExcelExporter, self).__init__()
+        ExcelWriter.__init__(self)
+        Exporter.__init__(self)
         self.file_path = file_path
         self.extra = extra or []
         self.sheets = {}

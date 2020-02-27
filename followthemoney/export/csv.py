@@ -35,7 +35,8 @@ class CSVMixin(object):
 
 class CSVExporter(Exporter, CSVMixin):
 
-    def __init__(self, directory, extra=None):
+    def __init__(self, directory, export_all=True, extra=None):
+        Exporter.__init__(self, export_all=True)
         self._configure(directory, extra=extra)
 
     def _write_header(self, writer, schema):
