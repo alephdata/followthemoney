@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-02-25 07:57+0100\n"
+"POT-Creation-Date: 2020-02-27 16:22+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -78,6 +78,66 @@ msgstr "ИКАО Код самолёта"
 #: followthemoney/schema/Airplane.yaml
 msgid "Manufacturer"
 msgstr "Изготовитель"
+
+#. Analyzable.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Analyzable"
+msgstr ""
+
+#. Analyzable.plural
+#: followthemoney/schema/Analyzable.yaml
+msgid "Analyzables"
+msgstr ""
+
+#. Analyzable.properties.detectedLanguage.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected language"
+msgstr "Найденные названия языков"
+
+#. Analyzable.properties.detectedCountry.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected country"
+msgstr "Найденные названия стран"
+
+#. Analyzable.properties.namesMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected names"
+msgstr "Найденные имена"
+
+#. Analyzable.properties.peopleMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected people"
+msgstr "Найденные люди"
+
+#. Analyzable.properties.companiesMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected companies"
+msgstr "Найденные компании"
+
+#. Analyzable.properties.ibanMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected IBANs"
+msgstr "Найденные IBAN-коды"
+
+#. Analyzable.properties.ipMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected IP addresses"
+msgstr "Найденные IP-адреса"
+
+#. Analyzable.properties.locationMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected locations"
+msgstr "Найденные названия мест"
+
+#. Analyzable.properties.phoneMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected phones"
+msgstr "Наденные телефонные номера"
+
+#. Analyzable.properties.emailMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected e-mail addresses"
+msgstr "Найденные эл. адреса"
 
 #. Assessment.label
 #: followthemoney/schema/Assessment.yaml
@@ -228,6 +288,52 @@ msgstr "Баланс"
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Address"
 msgstr "Адрес банка"
+
+#. Call.label
+#: followthemoney/schema/Call.yaml
+msgid "Call"
+msgstr ""
+
+#. Call.plural
+#: followthemoney/schema/Call.yaml
+msgid "Calls"
+msgstr ""
+
+#. Call.properties.caller.label
+#: followthemoney/schema/Call.yaml
+msgid "Caller"
+msgstr ""
+
+#. Call.properties.caller.reverse.label
+#: followthemoney/schema/Call.yaml
+msgid "Calls made"
+msgstr ""
+
+#. Call.properties.callerNumber.label
+#: followthemoney/schema/Call.yaml
+msgid "Caller's Number"
+msgstr ""
+
+#. Call.properties.receiver.label
+#. EconomicActivity.properties.receiver.label
+#: followthemoney/schema/Call.yaml followthemoney/schema/EconomicActivity.yaml
+msgid "Receiver"
+msgstr "Получатель"
+
+#. Call.properties.receiver.reverse.label
+#: followthemoney/schema/Call.yaml
+msgid "Calls received"
+msgstr ""
+
+#. Call.properties.receiverNumber.label
+#: followthemoney/schema/Call.yaml
+msgid "Receiver's Number"
+msgstr ""
+
+#. Call.properties.duration.label
+#: followthemoney/schema/Call.yaml
+msgid "Call Duration in seconds"
+msgstr ""
 
 #. Company.label
 #: followthemoney/schema/Company.yaml
@@ -842,16 +948,6 @@ msgstr "MIME-тип"
 msgid "Language"
 msgstr "Язык"
 
-#. Document.properties.detectedLanguage.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected language"
-msgstr "Найденные названия языков"
-
-#. Document.properties.detectedCountry.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected country"
-msgstr "Найденные названия стран"
-
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
@@ -894,46 +990,6 @@ msgstr "Родительские сущности"
 #: followthemoney/schema/Document.yaml
 msgid "Descendants"
 msgstr "Дочерние документы"
-
-#. Document.properties.namesMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected names"
-msgstr "Найденные имена"
-
-#. Document.properties.peopleMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected people"
-msgstr "Найденные люди"
-
-#. Document.properties.companiesMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected companies"
-msgstr "Найденные компании"
-
-#. Document.properties.ibanMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected IBANs"
-msgstr "Найденные IBAN-коды"
-
-#. Document.properties.ipMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected IP addresses"
-msgstr "Найденные IP-адреса"
-
-#. Document.properties.locationMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected locations"
-msgstr "Найденные названия мест"
-
-#. Document.properties.phoneMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected phones"
-msgstr "Наденные телефонные номера"
-
-#. Document.properties.emailMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected e-mail addresses"
-msgstr "Найденные эл. адреса"
 
 #. Document.properties.processingStatus.label
 #: followthemoney/schema/Document.yaml
@@ -1089,20 +1145,25 @@ msgid "E-Mails"
 msgstr "Эл. письма"
 
 #. Email.properties.subject.label
+#. Message.properties.subject.label
 #. UnknownLink.properties.subject.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/UnknownLink.yaml
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
+#: followthemoney/schema/UnknownLink.yaml
 msgid "Subject"
 msgstr "Субъект"
 
 #. Email.properties.threadTopic.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.threadTopic.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Thread topic"
 msgstr "Тема ветви дискуссии"
 
 #. Email.properties.sender.label
 #. EconomicActivity.properties.sender.label
+#. Message.properties.sender.label
 #: followthemoney/schema/Document.yaml
 #: followthemoney/schema/EconomicActivity.yaml
+#: followthemoney/schema/Message.yaml
 msgid "Sender"
 msgstr "Отправитель"
 
@@ -1147,7 +1208,8 @@ msgid "E-Mails sent"
 msgstr "Отправленные эл. письма"
 
 #. Email.properties.recipients.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.recipients.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Recipients"
 msgstr "Получатели"
 
@@ -1157,7 +1219,8 @@ msgid "E-Mails received"
 msgstr "Полученные эл. письма"
 
 #. Email.properties.inReplyTo.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.inReplyTo.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "In Reply To"
 msgstr "In-Reply-To"
 
@@ -1167,12 +1230,14 @@ msgid "Message ID of the preceding email in the thread"
 msgstr "Message-ID для предшествующего письма"
 
 #. Email.properties.inReplyToEmail.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.inReplyToMessage.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Responding to"
 msgstr "В ответ на"
 
 #. Email.properties.inReplyToEmail.reverse.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.inReplyToMessage.reverse.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Responses"
 msgstr "Ответы"
 
@@ -1325,11 +1390,6 @@ msgstr "Отправитель товаров"
 msgid "Goods originated"
 msgstr "Отправитель товаров"
 
-#. EconomicActivity.properties.receiver.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Receiver"
-msgstr "Получатель"
-
 #. EconomicActivity.properties.receiver.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Destination of the goods"
@@ -1480,6 +1540,7 @@ msgid "Event"
 msgstr "Событие"
 
 #. Event.plural
+#. Event.properties.involved.reverse.label
 #: followthemoney/schema/Event.yaml
 msgid "Events"
 msgstr "События"
@@ -1501,6 +1562,26 @@ msgstr "Местоположение"
 #: followthemoney/types/country.py:12
 msgid "Country"
 msgstr "Страна"
+
+#. Event.properties.important.label
+#: followthemoney/schema/Event.yaml
+msgid "Important"
+msgstr ""
+
+#. Event.properties.organizer.label
+#: followthemoney/schema/Event.yaml
+msgid "Organizer"
+msgstr ""
+
+#. Event.properties.organizer.reverse.label
+#: followthemoney/schema/Event.yaml
+msgid "Organized events"
+msgstr ""
+
+#. Event.properties.involved.label
+#: followthemoney/schema/Event.yaml
+msgid "Involved"
+msgstr ""
 
 #. Family.label
 #: followthemoney/schema/Family.yml
@@ -1898,6 +1979,52 @@ msgstr "Член"
 msgid "Members"
 msgstr "Участники"
 
+#. Message.label
+#: followthemoney/schema/Message.yaml
+msgid "Message"
+msgstr ""
+
+#. Message.plural
+#: followthemoney/schema/Message.yaml
+msgid "Messages"
+msgstr ""
+
+#. Message.properties.sender.reverse.label
+#. Message.properties.senderAccount.reverse.label
+#: followthemoney/schema/Message.yaml
+msgid "Messages sent"
+msgstr ""
+
+#. Message.properties.senderAccount.label
+#: followthemoney/schema/Message.yaml
+msgid "Sender Account"
+msgstr ""
+
+#. Message.properties.recipients.reverse.label
+#: followthemoney/schema/Message.yaml
+msgid "messages received"
+msgstr ""
+
+#. Message.properties.recipientAccount.label
+#: followthemoney/schema/Message.yaml
+msgid "Recipient Account"
+msgstr ""
+
+#. Message.properties.recipientAccount.reverse.label
+#: followthemoney/schema/Message.yaml
+msgid "Messages received"
+msgstr ""
+
+#. Message.properties.inReplyTo.description
+#: followthemoney/schema/Message.yaml
+msgid "Message ID of the preceding message in the thread"
+msgstr ""
+
+#. Message.properties.metadata.label
+#: followthemoney/schema/Message.yaml
+msgid "Metadata"
+msgstr ""
+
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
 msgid "Organizations"
@@ -1919,8 +2046,10 @@ msgid "owns"
 msgstr "владеет"
 
 #. Ownership.properties.owner.label
+#. UserAccount.properties.owner.label
 #. Vehicle.properties.owner.label
-#: followthemoney/schema/Ownership.yaml followthemoney/schema/Vehicle.yaml
+#: followthemoney/schema/Ownership.yaml followthemoney/schema/UserAccount.yaml
+#: followthemoney/schema/Vehicle.yaml
 msgid "Owner"
 msgstr "Владелец"
 
@@ -2556,6 +2685,46 @@ msgstr "Объект"
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked from"
 msgstr "Связь (от)"
+
+#. UserAccount.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "UserAccount"
+msgstr ""
+
+#. UserAccount.plural
+#: followthemoney/schema/UserAccount.yaml
+msgid "UserAccounts"
+msgstr ""
+
+#. UserAccount.properties.owner.reverse.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "User Accounts"
+msgstr ""
+
+#. UserAccount.properties.service.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "Service"
+msgstr ""
+
+#. UserAccount.properties.email.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "E-mail"
+msgstr ""
+
+#. UserAccount.properties.number.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "Phone Number"
+msgstr ""
+
+#. UserAccount.properties.username.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "Username"
+msgstr ""
+
+#. UserAccount.properties.password.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "Password"
+msgstr ""
 
 #. Value.label
 #: followthemoney/schema/Value.yaml

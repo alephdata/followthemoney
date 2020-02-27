@@ -785,6 +785,93 @@
       "description": "A public body, such as a ministry, department or state company.",
       "matchable": true
     },
+    "UserAccount": {
+      "label": "UserAccount",
+      "plural": "UserAccounts",
+      "schemata": [
+        "Thing",
+        "UserAccount"
+      ],
+      "extends": [
+        "Thing"
+      ],
+      "properties": {
+        "owner": {
+          "name": "owner",
+          "qname": "UserAccount:owner",
+          "label": "Owner",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "userAccounts"
+        },
+        "service": {
+          "name": "service",
+          "qname": "UserAccount:service",
+          "label": "Service",
+          "type": "string"
+        },
+        "email": {
+          "name": "email",
+          "qname": "UserAccount:email",
+          "label": "E-mail",
+          "type": "email",
+          "matchable": true
+        },
+        "number": {
+          "name": "number",
+          "qname": "UserAccount:number",
+          "label": "Phone Number",
+          "type": "phone",
+          "matchable": true
+        },
+        "username": {
+          "name": "username",
+          "qname": "UserAccount:username",
+          "label": "Username",
+          "type": "string"
+        },
+        "password": {
+          "name": "password",
+          "qname": "UserAccount:password",
+          "label": "Password",
+          "type": "string"
+        },
+        "messagesSent": {
+          "name": "messagesSent",
+          "qname": "UserAccount:messagesSent",
+          "label": "Messages sent",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Message",
+          "reverse": "senderAccount"
+        },
+        "messagesReceived": {
+          "name": "messagesReceived",
+          "qname": "UserAccount:messagesReceived",
+          "label": "Messages received",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Message",
+          "reverse": "recipientAccount"
+        }
+      },
+      "featured": [
+        "username",
+        "service",
+        "email",
+        "owner"
+      ],
+      "caption": [
+        "username",
+        "email",
+        "service"
+      ],
+      "generated": true,
+      "matchable": true
+    },
     "TaxRoll": {
       "label": "Tax roll",
       "plural": "Tax rolls",
@@ -1340,22 +1427,90 @@
       "description": "A boat or ship",
       "matchable": true
     },
-    "Event": {
-      "label": "Event",
-      "plural": "Events",
+    "Call": {
+      "label": "Call",
+      "plural": "Calls",
       "schemata": [
-        "Event",
+        "Call",
         "Interval"
       ],
       "extends": [
         "Interval"
       ],
       "properties": {
+        "caller": {
+          "name": "caller",
+          "qname": "Call:caller",
+          "label": "Caller",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "callsMade"
+        },
+        "callerNumber": {
+          "name": "callerNumber",
+          "qname": "Call:callerNumber",
+          "label": "Caller's Number",
+          "type": "phone",
+          "matchable": true
+        },
+        "receiver": {
+          "name": "receiver",
+          "qname": "Call:receiver",
+          "label": "Receiver",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "callsReceived"
+        },
+        "receiverNumber": {
+          "name": "receiverNumber",
+          "qname": "Call:receiverNumber",
+          "label": "Receiver's Number",
+          "type": "phone",
+          "matchable": true
+        },
+        "duration": {
+          "name": "duration",
+          "qname": "Call:duration",
+          "label": "Call Duration in seconds",
+          "type": "number"
+        }
+      },
+      "featured": [
+        "callerNumber",
+        "caller",
+        "receiverNumber",
+        "receiver",
+        "date"
+      ],
+      "caption": [
+        "callerNumber",
+        "receiverNumber"
+      ],
+      "generated": true
+    },
+    "Event": {
+      "label": "Event",
+      "plural": "Events",
+      "schemata": [
+        "Analyzable",
+        "Event",
+        "Interval",
+        "Thing"
+      ],
+      "extends": [
+        "Analyzable",
+        "Interval",
+        "Thing"
+      ],
+      "properties": {
         "location": {
           "name": "location",
           "qname": "Event:location",
           "label": "Location",
-          "type": "string"
+          "type": "address",
+          "matchable": true
         },
         "country": {
           "name": "country",
@@ -1363,9 +1518,37 @@
           "label": "Country",
           "type": "country",
           "matchable": true
+        },
+        "important": {
+          "name": "important",
+          "qname": "Event:important",
+          "label": "Important",
+          "type": "string"
+        },
+        "organizer": {
+          "name": "organizer",
+          "qname": "Event:organizer",
+          "label": "Organizer",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "eventsOrganized"
+        },
+        "involved": {
+          "name": "involved",
+          "qname": "Event:involved",
+          "label": "Involved",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "eventsInvolved"
         }
       },
-      "generated": true
+      "caption": [
+        "name",
+        "summary",
+        "date"
+      ]
     },
     "ContractAward": {
       "label": "Contract award",
@@ -1783,6 +1966,16 @@
           "range": "Membership",
           "reverse": "member"
         },
+        "userAccounts": {
+          "name": "userAccounts",
+          "qname": "LegalEntity:userAccounts",
+          "label": "User Accounts",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "UserAccount",
+          "reverse": "owner"
+        },
         "taxRolls": {
           "name": "taxRolls",
           "qname": "LegalEntity:taxRolls",
@@ -1812,6 +2005,46 @@
           "matchable": true,
           "range": "Directorship",
           "reverse": "director"
+        },
+        "callsMade": {
+          "name": "callsMade",
+          "qname": "LegalEntity:callsMade",
+          "label": "Calls made",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Call",
+          "reverse": "caller"
+        },
+        "callsReceived": {
+          "name": "callsReceived",
+          "qname": "LegalEntity:callsReceived",
+          "label": "Calls received",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Call",
+          "reverse": "receiver"
+        },
+        "eventsOrganized": {
+          "name": "eventsOrganized",
+          "qname": "LegalEntity:eventsOrganized",
+          "label": "Organized events",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Event",
+          "reverse": "organizer"
+        },
+        "eventsInvolved": {
+          "name": "eventsInvolved",
+          "qname": "LegalEntity:eventsInvolved",
+          "label": "Events",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Event",
+          "reverse": "involved"
         },
         "contractAwardSupplier": {
           "name": "contractAwardSupplier",
@@ -1911,6 +2144,26 @@
           "stub": true,
           "matchable": true,
           "range": "Email",
+          "reverse": "recipients"
+        },
+        "messagesSent": {
+          "name": "messagesSent",
+          "qname": "LegalEntity:messagesSent",
+          "label": "Messages sent",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Message",
+          "reverse": "sender"
+        },
+        "messagesReceived": {
+          "name": "messagesReceived",
+          "qname": "LegalEntity:messagesReceived",
+          "label": "messages received",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Message",
           "reverse": "recipients"
         },
         "economicActivityDeclarant": {
@@ -2226,6 +2479,94 @@
         "name"
       ],
       "abstract": true
+    },
+    "Analyzable": {
+      "label": "Analyzable",
+      "plural": "Analyzables",
+      "schemata": [
+        "Analyzable"
+      ],
+      "extends": [],
+      "properties": {
+        "detectedLanguage": {
+          "name": "detectedLanguage",
+          "qname": "Analyzable:detectedLanguage",
+          "label": "Detected language",
+          "type": "language"
+        },
+        "detectedCountry": {
+          "name": "detectedCountry",
+          "qname": "Analyzable:detectedCountry",
+          "label": "Detected country",
+          "type": "country",
+          "matchable": true
+        },
+        "namesMentioned": {
+          "name": "namesMentioned",
+          "qname": "Analyzable:namesMentioned",
+          "label": "Detected names",
+          "type": "name",
+          "matchable": true,
+          "hidden": true
+        },
+        "peopleMentioned": {
+          "name": "peopleMentioned",
+          "qname": "Analyzable:peopleMentioned",
+          "label": "Detected people",
+          "type": "name",
+          "matchable": true,
+          "hidden": true
+        },
+        "companiesMentioned": {
+          "name": "companiesMentioned",
+          "qname": "Analyzable:companiesMentioned",
+          "label": "Detected companies",
+          "type": "name",
+          "matchable": true,
+          "hidden": true
+        },
+        "ibanMentioned": {
+          "name": "ibanMentioned",
+          "qname": "Analyzable:ibanMentioned",
+          "label": "Detected IBANs",
+          "type": "iban",
+          "matchable": true,
+          "hidden": true
+        },
+        "ipMentioned": {
+          "name": "ipMentioned",
+          "qname": "Analyzable:ipMentioned",
+          "label": "Detected IP addresses",
+          "type": "ip",
+          "matchable": true,
+          "hidden": true
+        },
+        "locationMentioned": {
+          "name": "locationMentioned",
+          "qname": "Analyzable:locationMentioned",
+          "label": "Detected locations",
+          "type": "address",
+          "matchable": true,
+          "hidden": true
+        },
+        "phoneMentioned": {
+          "name": "phoneMentioned",
+          "qname": "Analyzable:phoneMentioned",
+          "label": "Detected phones",
+          "type": "phone",
+          "matchable": true,
+          "hidden": true
+        },
+        "emailMentioned": {
+          "name": "emailMentioned",
+          "qname": "Analyzable:emailMentioned",
+          "label": "Detected e-mail addresses",
+          "type": "email",
+          "matchable": true,
+          "hidden": true
+        }
+      },
+      "generated": true
     },
     "License": {
       "label": "License",
@@ -2614,10 +2955,12 @@
       "label": "File",
       "plural": "Files",
       "schemata": [
+        "Analyzable",
         "Document",
         "Thing"
       ],
       "extends": [
+        "Analyzable",
         "Thing"
       ],
       "properties": {
@@ -2699,19 +3042,6 @@
           "label": "Language",
           "type": "language"
         },
-        "detectedLanguage": {
-          "name": "detectedLanguage",
-          "qname": "Document:detectedLanguage",
-          "label": "Detected language",
-          "type": "language"
-        },
-        "detectedCountry": {
-          "name": "detectedCountry",
-          "qname": "Document:detectedCountry",
-          "label": "Detected country",
-          "type": "country",
-          "matchable": true
-        },
         "date": {
           "name": "date",
           "qname": "Document:date",
@@ -2752,70 +3082,6 @@
           "hidden": true,
           "range": "Folder",
           "reverse": "descendants"
-        },
-        "namesMentioned": {
-          "name": "namesMentioned",
-          "qname": "Document:namesMentioned",
-          "label": "Detected names",
-          "type": "name",
-          "matchable": true,
-          "hidden": true
-        },
-        "peopleMentioned": {
-          "name": "peopleMentioned",
-          "qname": "Document:peopleMentioned",
-          "label": "Detected people",
-          "type": "name",
-          "matchable": true,
-          "hidden": true
-        },
-        "companiesMentioned": {
-          "name": "companiesMentioned",
-          "qname": "Document:companiesMentioned",
-          "label": "Detected companies",
-          "type": "name",
-          "matchable": true,
-          "hidden": true
-        },
-        "ibanMentioned": {
-          "name": "ibanMentioned",
-          "qname": "Document:ibanMentioned",
-          "label": "Detected IBANs",
-          "type": "iban",
-          "matchable": true,
-          "hidden": true
-        },
-        "ipMentioned": {
-          "name": "ipMentioned",
-          "qname": "Document:ipMentioned",
-          "label": "Detected IP addresses",
-          "type": "ip",
-          "matchable": true,
-          "hidden": true
-        },
-        "locationMentioned": {
-          "name": "locationMentioned",
-          "qname": "Document:locationMentioned",
-          "label": "Detected locations",
-          "type": "address",
-          "matchable": true,
-          "hidden": true
-        },
-        "phoneMentioned": {
-          "name": "phoneMentioned",
-          "qname": "Document:phoneMentioned",
-          "label": "Detected phones",
-          "type": "phone",
-          "matchable": true,
-          "hidden": true
-        },
-        "emailMentioned": {
-          "name": "emailMentioned",
-          "qname": "Document:emailMentioned",
-          "label": "Detected e-mail addresses",
-          "type": "email",
-          "matchable": true,
-          "hidden": true
         },
         "processingStatus": {
           "name": "processingStatus",
@@ -2858,6 +3124,7 @@
       "label": "Text file",
       "plural": "Text files",
       "schemata": [
+        "Analyzable",
         "Document",
         "PlainText",
         "Thing"
@@ -2890,6 +3157,7 @@
       "label": "Document",
       "plural": "Documents",
       "schemata": [
+        "Analyzable",
         "Document",
         "Pages",
         "Thing"
@@ -2934,6 +3202,7 @@
       "label": "Folder",
       "plural": "Folders",
       "schemata": [
+        "Analyzable",
         "Document",
         "Folder",
         "Thing"
@@ -2979,6 +3248,7 @@
       "label": "Package",
       "plural": "Packages",
       "schemata": [
+        "Analyzable",
         "Document",
         "Folder",
         "Package",
@@ -3004,6 +3274,7 @@
       "label": "Workbook",
       "plural": "Workbooks",
       "schemata": [
+        "Analyzable",
         "Document",
         "Folder",
         "Thing",
@@ -3028,6 +3299,7 @@
       "label": "Image",
       "plural": "Images",
       "schemata": [
+        "Analyzable",
         "Document",
         "Image",
         "Thing"
@@ -3060,6 +3332,7 @@
       "label": "Video",
       "plural": "Videos",
       "schemata": [
+        "Analyzable",
         "Document",
         "Thing",
         "Video"
@@ -3092,6 +3365,7 @@
       "label": "Audio",
       "plural": "Audio files",
       "schemata": [
+        "Analyzable",
         "Audio",
         "Document",
         "Thing"
@@ -3131,6 +3405,7 @@
       "label": "Web page",
       "plural": "Web pages",
       "schemata": [
+        "Analyzable",
         "Document",
         "HyperText",
         "Thing"
@@ -3170,6 +3445,7 @@
       "label": "E-Mail",
       "plural": "E-Mails",
       "schemata": [
+        "Analyzable",
         "Document",
         "Email",
         "Folder",
@@ -3298,6 +3574,7 @@
       "label": "Table",
       "plural": "Tables",
       "schemata": [
+        "Analyzable",
         "Document",
         "Table",
         "Thing"
@@ -3376,6 +3653,124 @@
           "reverse": "asset"
         }
       }
+    },
+    "Message": {
+      "label": "Message",
+      "plural": "Messages",
+      "schemata": [
+        "Analyzable",
+        "Document",
+        "Folder",
+        "HyperText",
+        "Interval",
+        "Message",
+        "PlainText",
+        "Thing"
+      ],
+      "extends": [
+        "Folder",
+        "HyperText",
+        "Interval",
+        "PlainText"
+      ],
+      "properties": {
+        "subject": {
+          "name": "subject",
+          "qname": "Message:subject",
+          "label": "Subject",
+          "type": "string"
+        },
+        "threadTopic": {
+          "name": "threadTopic",
+          "qname": "Message:threadTopic",
+          "label": "Thread topic",
+          "type": "string"
+        },
+        "sender": {
+          "name": "sender",
+          "qname": "Message:sender",
+          "label": "Sender",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "messagesSent"
+        },
+        "senderAccount": {
+          "name": "senderAccount",
+          "qname": "Message:senderAccount",
+          "label": "Sender Account",
+          "type": "entity",
+          "matchable": true,
+          "range": "UserAccount",
+          "reverse": "messagesSent"
+        },
+        "recipients": {
+          "name": "recipients",
+          "qname": "Message:recipients",
+          "label": "Recipients",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "messagesReceived"
+        },
+        "recipientAccount": {
+          "name": "recipientAccount",
+          "qname": "Message:recipientAccount",
+          "label": "Recipient Account",
+          "type": "entity",
+          "matchable": true,
+          "range": "UserAccount",
+          "reverse": "messagesReceived"
+        },
+        "inReplyTo": {
+          "name": "inReplyTo",
+          "qname": "Message:inReplyTo",
+          "label": "In Reply To",
+          "type": "string",
+          "description": "Message ID of the preceding message in the thread",
+          "hidden": true
+        },
+        "inReplyToMessage": {
+          "name": "inReplyToMessage",
+          "qname": "Message:inReplyToMessage",
+          "label": "Responding to",
+          "type": "entity",
+          "matchable": true,
+          "range": "Message",
+          "reverse": "responses"
+        },
+        "metadata": {
+          "name": "metadata",
+          "qname": "Message:metadata",
+          "label": "Metadata",
+          "type": "raw",
+          "hidden": true
+        },
+        "responses": {
+          "name": "responses",
+          "qname": "Message:responses",
+          "label": "Responses",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Message",
+          "reverse": "inReplyToMessage"
+        }
+      },
+      "featured": [
+        "subject",
+        "threadTopic",
+        "date",
+        "sender",
+        "recipients"
+      ],
+      "caption": [
+        "subject",
+        "threadTopic",
+        "title",
+        "fileName"
+      ],
+      "generated": true
     },
     "Contract": {
       "label": "Contract",

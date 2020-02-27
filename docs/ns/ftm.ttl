@@ -17,6 +17,10 @@ ftm:Airplane a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Vehicle .
 
+ftm:Analyzable a rdfs:Class ;
+    rdfs:label "Analyzable" ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:Assessment a rdfs:Class ;
     rdfs:label "Assessment" ;
     rdfs:isDefinedBy ftm: ;
@@ -43,6 +47,11 @@ ftm:BankAccount a rdfs:Class ;
     rdfs:label "Bank Account" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Asset .
+
+ftm:Call a rdfs:Class ;
+    rdfs:label "Call" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Interval .
 
 ftm:Company a rdfs:Class ;
     rdfs:label "Company" ;
@@ -89,7 +98,8 @@ ftm:Directorship a rdfs:Class ;
 ftm:Document a rdfs:Class ;
     rdfs:label "File" ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Thing .
+    rdfs:subClassOf ftm:Analyzable,
+        ftm:Thing .
 
 ftm:EconomicActivity a rdfs:Class ;
     rdfs:label "Customs declaration" ;
@@ -107,7 +117,9 @@ ftm:Email a rdfs:Class ;
 ftm:Event a rdfs:Class ;
     rdfs:label "Event" ;
     rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Interval .
+    rdfs:subClassOf ftm:Analyzable,
+        ftm:Interval,
+        ftm:Thing .
 
 ftm:Family a rdfs:Class ;
     rdfs:label "Family" ;
@@ -160,6 +172,14 @@ ftm:Membership a rdfs:Class ;
     rdfs:label "Membership" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
+
+ftm:Message a rdfs:Class ;
+    rdfs:label "Message" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Folder,
+        ftm:HyperText,
+        ftm:Interval,
+        ftm:PlainText .
 
 ftm:Organization a rdfs:Class ;
     rdfs:label "Organization" ;
@@ -263,6 +283,11 @@ ftm:UnknownLink a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
 
+ftm:UserAccount a rdfs:Class ;
+    rdfs:label "UserAccount" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Thing .
+
 ftm:Value a rdfs:Class ;
     rdfs:label "Value" ;
     rdfs:isDefinedBy ftm: .
@@ -362,6 +387,56 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Airplane ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Analyzable:companiesMentioned> a rdf:Property ;
+    rdfs:label "Detected companies" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Analyzable:detectedCountry> a rdf:Property ;
+    rdfs:label "Detected country" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Analyzable:detectedLanguage> a rdf:Property ;
+    rdfs:label "Detected language" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Analyzable:emailMentioned> a rdf:Property ;
+    rdfs:label "Detected e-mail addresses" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Analyzable:ibanMentioned> a rdf:Property ;
+    rdfs:label "Detected IBANs" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Analyzable:ipMentioned> a rdf:Property ;
+    rdfs:label "Detected IP addresses" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Analyzable:locationMentioned> a rdf:Property ;
+    rdfs:label "Detected locations" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Analyzable:namesMentioned> a rdf:Property ;
+    rdfs:label "Detected names" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Analyzable:peopleMentioned> a rdf:Property ;
+    rdfs:label "Detected people" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Analyzable:phoneMentioned> a rdf:Property ;
+    rdfs:label "Detected phones" ;
+    rdfs:domain ftm:Analyzable ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Assessment:assessmentId> a rdf:Property ;
     rdfs:label "Assessment ID" ;
     rdfs:domain ftm:Assessment ;
@@ -424,6 +499,21 @@ dct:language a rdf:Property ;
 <https://w3id.org/ftm#BankAccount:iban> a rdf:Property ;
     rdfs:label "IBAN" ;
     rdfs:domain ftm:BankAccount ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Call:callerNumber> a rdf:Property ;
+    rdfs:label "Caller's Number" ;
+    rdfs:domain ftm:Call ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Call:duration> a rdf:Property ;
+    rdfs:label "Call Duration in seconds" ;
+    rdfs:domain ftm:Call ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Call:receiverNumber> a rdf:Property ;
+    rdfs:label "Receiver's Number" ;
+    rdfs:domain ftm:Call ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Company:bikCode> a rdf:Property ;
@@ -664,11 +754,6 @@ dct:language a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
 
-<https://w3id.org/ftm#Document:companiesMentioned> a rdf:Property ;
-    rdfs:label "Detected companies" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
 <https://w3id.org/ftm#Document:contentHash> a rdf:Property ;
     rdfs:label "Checksum" ;
     rdfs:comment "SHA1 hash of the data" ;
@@ -678,21 +763,6 @@ dct:language a rdf:Property ;
 <https://w3id.org/ftm#Document:crawler> a rdf:Property ;
     rdfs:label "Crawler" ;
     rdfs:comment "The crawler used to acquire this file" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Document:detectedCountry> a rdf:Property ;
-    rdfs:label "Detected country" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Document:detectedLanguage> a rdf:Property ;
-    rdfs:label "Detected language" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Document:emailMentioned> a rdf:Property ;
-    rdfs:label "Detected e-mail addresses" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
@@ -722,39 +792,9 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
-<https://w3id.org/ftm#Document:ibanMentioned> a rdf:Property ;
-    rdfs:label "Detected IBANs" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Document:ipMentioned> a rdf:Property ;
-    rdfs:label "Detected IP addresses" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Document:locationMentioned> a rdf:Property ;
-    rdfs:label "Detected locations" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
 <https://w3id.org/ftm#Document:messageId> a rdf:Property ;
     rdfs:label "Message ID" ;
     rdfs:comment "Message ID of a document; unique in most cases" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Document:namesMentioned> a rdf:Property ;
-    rdfs:label "Detected names" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Document:peopleMentioned> a rdf:Property ;
-    rdfs:label "Detected people" ;
-    rdfs:domain ftm:Document ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Document:phoneMentioned> a rdf:Property ;
-    rdfs:label "Detected phones" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
@@ -907,6 +947,11 @@ dct:language a rdf:Property ;
 
 <https://w3id.org/ftm#Event:country> a rdf:Property ;
     rdfs:label "Country" ;
+    rdfs:domain ftm:Event ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Event:important> a rdf:Property ;
+    rdfs:label "Important" ;
     rdfs:domain ftm:Event ;
     rdfs:isDefinedBy ftm: .
 
@@ -1157,6 +1202,27 @@ dct:language a rdf:Property ;
 <https://w3id.org/ftm#License:reviewDate> a rdf:Property ;
     rdfs:label "License review date" ;
     rdfs:domain ftm:License ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Message:inReplyTo> a rdf:Property ;
+    rdfs:label "In Reply To" ;
+    rdfs:comment "Message ID of the preceding message in the thread" ;
+    rdfs:domain ftm:Message ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Message:metadata> a rdf:Property ;
+    rdfs:label "Metadata" ;
+    rdfs:domain ftm:Message ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Message:subject> a rdf:Property ;
+    rdfs:label "Subject" ;
+    rdfs:domain ftm:Message ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Message:threadTopic> a rdf:Property ;
+    rdfs:label "Thread topic" ;
+    rdfs:domain ftm:Message ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Ownership:legalBasis> a rdf:Property ;
@@ -1594,6 +1660,31 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Thing ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#UserAccount:email> a rdf:Property ;
+    rdfs:label "E-mail" ;
+    rdfs:domain ftm:UserAccount ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#UserAccount:number> a rdf:Property ;
+    rdfs:label "Phone Number" ;
+    rdfs:domain ftm:UserAccount ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#UserAccount:password> a rdf:Property ;
+    rdfs:label "Password" ;
+    rdfs:domain ftm:UserAccount ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#UserAccount:service> a rdf:Property ;
+    rdfs:label "Service" ;
+    rdfs:domain ftm:UserAccount ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#UserAccount:username> a rdf:Property ;
+    rdfs:label "Username" ;
+    rdfs:domain ftm:UserAccount ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Value:amount> a rdf:Property ;
     rdfs:label "Amount" ;
     rdfs:domain ftm:Value ;
@@ -1789,6 +1880,20 @@ owl:sameAs a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:EconomicActivity ;
     owl:inverseOf <https://w3id.org/ftm#EconomicActivity:bankRub> .
+
+<https://w3id.org/ftm#Call:caller> a rdf:Property ;
+    rdfs:label "Caller" ;
+    rdfs:domain ftm:Call ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:callsMade> .
+
+<https://w3id.org/ftm#Call:receiver> a rdf:Property ;
+    rdfs:label "Receiver" ;
+    rdfs:domain ftm:Call ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:callsReceived> .
 
 <https://w3id.org/ftm#Contract:authority> a rdf:Property ;
     rdfs:label "Contract authority" ;
@@ -1988,6 +2093,20 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:Email ;
     owl:inverseOf <https://w3id.org/ftm#Email:inReplyToEmail> .
 
+<https://w3id.org/ftm#Event:involved> a rdf:Property ;
+    rdfs:label "Involved" ;
+    rdfs:domain ftm:Event ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:eventsInvolved> .
+
+<https://w3id.org/ftm#Event:organizer> a rdf:Property ;
+    rdfs:label "Organizer" ;
+    rdfs:domain ftm:Event ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:eventsOrganized> .
+
 <https://w3id.org/ftm#Family:person> a rdf:Property ;
     rdfs:label "Person" ;
     rdfs:comment "The subject of the familial relation." ;
@@ -2038,6 +2157,20 @@ owl:sameAs a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Assessment ;
     owl:inverseOf <https://w3id.org/ftm#Assessment:author> .
+
+<https://w3id.org/ftm#LegalEntity:callsMade> a rdf:Property ;
+    rdfs:label "Calls made" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Call ;
+    owl:inverseOf <https://w3id.org/ftm#Call:caller> .
+
+<https://w3id.org/ftm#LegalEntity:callsReceived> a rdf:Property ;
+    rdfs:label "Calls received" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Call ;
+    owl:inverseOf <https://w3id.org/ftm#Call:receiver> .
 
 <https://w3id.org/ftm#LegalEntity:contractAuthority> a rdf:Property ;
     rdfs:label "Contracts issued" ;
@@ -2116,12 +2249,40 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:Email ;
     owl:inverseOf <https://w3id.org/ftm#Email:emitters> .
 
+<https://w3id.org/ftm#LegalEntity:eventsInvolved> a rdf:Property ;
+    rdfs:label "Events" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Event ;
+    owl:inverseOf <https://w3id.org/ftm#Event:involved> .
+
+<https://w3id.org/ftm#LegalEntity:eventsOrganized> a rdf:Property ;
+    rdfs:label "Organized events" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Event ;
+    owl:inverseOf <https://w3id.org/ftm#Event:organizer> .
+
 <https://w3id.org/ftm#LegalEntity:membershipMember> a rdf:Property ;
     rdfs:label "Memberships" ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Membership ;
     owl:inverseOf <https://w3id.org/ftm#Membership:member> .
+
+<https://w3id.org/ftm#LegalEntity:messagesReceived> a rdf:Property ;
+    rdfs:label "messages received" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Message ;
+    owl:inverseOf <https://w3id.org/ftm#Message:recipients> .
+
+<https://w3id.org/ftm#LegalEntity:messagesSent> a rdf:Property ;
+    rdfs:label "Messages sent" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Message ;
+    owl:inverseOf <https://w3id.org/ftm#Message:sender> .
 
 <https://w3id.org/ftm#LegalEntity:operatedVehicles> a rdf:Property ;
     rdfs:label "Vehicles operated" ;
@@ -2201,6 +2362,13 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:TaxRoll ;
     owl:inverseOf <https://w3id.org/ftm#TaxRoll:taxee> .
 
+<https://w3id.org/ftm#LegalEntity:userAccounts> a rdf:Property ;
+    rdfs:label "User Accounts" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:UserAccount ;
+    owl:inverseOf <https://w3id.org/ftm#UserAccount:owner> .
+
 <https://w3id.org/ftm#Membership:member> a rdf:Property ;
     rdfs:label "Member" ;
     rdfs:domain ftm:Membership ;
@@ -2214,6 +2382,48 @@ owl:sameAs a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Organization ;
     owl:inverseOf <https://w3id.org/ftm#Organization:membershipOrganization> .
+
+<https://w3id.org/ftm#Message:inReplyToMessage> a rdf:Property ;
+    rdfs:label "Responding to" ;
+    rdfs:domain ftm:Message ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Message ;
+    owl:inverseOf <https://w3id.org/ftm#Message:responses> .
+
+<https://w3id.org/ftm#Message:recipientAccount> a rdf:Property ;
+    rdfs:label "Recipient Account" ;
+    rdfs:domain ftm:Message ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:UserAccount ;
+    owl:inverseOf <https://w3id.org/ftm#UserAccount:messagesReceived> .
+
+<https://w3id.org/ftm#Message:recipients> a rdf:Property ;
+    rdfs:label "Recipients" ;
+    rdfs:domain ftm:Message ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:messagesReceived> .
+
+<https://w3id.org/ftm#Message:responses> a rdf:Property ;
+    rdfs:label "Responses" ;
+    rdfs:domain ftm:Message ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Message ;
+    owl:inverseOf <https://w3id.org/ftm#Message:inReplyToMessage> .
+
+<https://w3id.org/ftm#Message:sender> a rdf:Property ;
+    rdfs:label "Sender" ;
+    rdfs:domain ftm:Message ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:messagesSent> .
+
+<https://w3id.org/ftm#Message:senderAccount> a rdf:Property ;
+    rdfs:label "Sender Account" ;
+    rdfs:domain ftm:Message ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:UserAccount ;
+    owl:inverseOf <https://w3id.org/ftm#UserAccount:messagesSent> .
 
 <https://w3id.org/ftm#Organization:directorshipOrganization> a rdf:Property ;
     rdfs:label "Directors" ;
@@ -2411,6 +2621,27 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:Thing ;
     owl:inverseOf <https://w3id.org/ftm#Thing:unknownLinkTo> .
 
+<https://w3id.org/ftm#UserAccount:messagesReceived> a rdf:Property ;
+    rdfs:label "Messages received" ;
+    rdfs:domain ftm:UserAccount ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Message ;
+    owl:inverseOf <https://w3id.org/ftm#Message:recipientAccount> .
+
+<https://w3id.org/ftm#UserAccount:messagesSent> a rdf:Property ;
+    rdfs:label "Messages sent" ;
+    rdfs:domain ftm:UserAccount ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Message ;
+    owl:inverseOf <https://w3id.org/ftm#Message:senderAccount> .
+
+<https://w3id.org/ftm#UserAccount:owner> a rdf:Property ;
+    rdfs:label "Owner" ;
+    rdfs:domain ftm:UserAccount ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:userAccounts> .
+
 <https://w3id.org/ftm#Vehicle:declaredCustoms> a rdf:Property ;
     rdfs:label "Customs declarations" ;
     rdfs:domain ftm:Vehicle ;
@@ -2449,5 +2680,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-02-25T07:07:56"^^xsd:dateTime .
+    dct:modified "2020-02-27T16:04:22"^^xsd:dateTime .
 
