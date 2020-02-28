@@ -47,7 +47,6 @@ export class Schema {
   public readonly caption: string[]
   public readonly edge?: IEdgeSpecification
   public readonly isEdge: boolean
-  public readonly isCreateable: boolean
   private properties: Map<string, Property> = new Map()
 
   constructor(model: Model, schemaName: string, config: ISchemaDatum) {
@@ -64,7 +63,6 @@ export class Schema {
     this.generated = !!config.generated
     this.description = config.description || null
     this.isEdge = !!config.edge
-    this.isCreateable = !(this.abstract || this.generated)
     this.edge = config.edge
 
     Object.entries(config.properties).forEach(
