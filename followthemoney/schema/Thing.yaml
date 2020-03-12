@@ -60,6 +60,9 @@ Thing:
       type: identifier
     keywords:
       label: Keywords
+    topics:
+      label: Topics
+      type: topic
     address:
       label: Address
       type: address

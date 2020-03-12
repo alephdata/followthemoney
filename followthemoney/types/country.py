@@ -1,55 +1,41 @@
 import countrynames
 from rdflib import URIRef
 
-from followthemoney.types.common import PropertyType
-from followthemoney.util import gettext, get_locale
-from followthemoney.util import sanitize_text, defer as _
+from followthemoney.types.common import EnumType
+from followthemoney.util import gettext, defer as _
 
 
-class CountryType(PropertyType):
+class CountryType(EnumType):
     name = 'country'
     group = 'countries'
     label = _('Country')
     plural = _('Countries')
     matchable = True
 
-    def __init__(self, *args):
-        self._names = {}
-        self.codes = self.names.keys()
-
-    @property
-    def names(self):
-        locale = get_locale()
-        if locale not in self._names:
-            # extra territories that OCCRP is interested in.
-            self._names[locale] = {
-                'zz': gettext('Global'),
-                'eu': gettext('European Union'),
-                # Overwrite "Czechia" label:
-                'cz': gettext('Czech Republic'),
-                'xk': gettext('Kosovo'),
-                'yucs': gettext('Yugoslavia'),
-                'csxx': gettext('Serbia and Montenegro'),
-                'suhh': gettext('Soviet Union'),
-                'ge-ab': gettext('Abkhazia'),
-                'x-so': gettext('South Ossetia'),
-                'so-som': gettext('Somaliland'),
-                'gb-wls': gettext('Wales'),
-                'gb-sct': gettext('Scotland'),
-                'md-pmr': gettext('Transnistria')
-            }
-            for code, label in locale.territories.items():
-                try:
-                    int(code)
-                except ValueError:
-                    self._names[locale][code.lower()] = label
-        return self._names[locale]
-
-    def validate(self, country, **kwargs):
-        country = sanitize_text(country)
-        if country is None:
-            return False
-        return country.lower() in self.codes
+    def _locale_names(self, locale):
+        # extra territories that OCCRP is interested in.
+        names = {
+            'zz': gettext('Global'),
+            'eu': gettext('European Union'),
+            # Overwrite "Czechia" label:
+            'cz': gettext('Czech Republic'),
+            'xk': gettext('Kosovo'),
+            'yucs': gettext('Yugoslavia'),
+            'csxx': gettext('Serbia and Montenegro'),
+            'suhh': gettext('Soviet Union'),
+            'ge-ab': gettext('Abkhazia'),
+            'x-so': gettext('South Ossetia'),
+            'so-som': gettext('Somaliland'),
+            'gb-wls': gettext('Wales'),
+            'gb-sct': gettext('Scotland'),
+            'md-pmr': gettext('Transnistria')
+        }
+        for code, label in locale.territories.items():
+            try:
+                int(code)
+            except ValueError:
+                names[code.lower()] = label
+        return names
 
     def clean_text(self, country, guess=False, **kwargs):
         """Determine a two-letter country code based on an input.
@@ -68,11 +54,3 @@ class CountryType(PropertyType):
 
     def rdf(self, value):
         return URIRef('iso-3166-1:%s' % value)
-
-    def caption(self, value):
-        return self.names.get(value, value)
-
-    def to_dict(self):
-        data = super(CountryType, self).to_dict()
-        data['values'] = self.names
-        return data

@@ -3,6 +3,7 @@ from rdflib import Literal
 from banal import ensure_list
 from normality import stringify
 
+from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
 
 
@@ -124,3 +125,42 @@ class PropertyType(object):
 
     def __repr__(self):
         return '<%s()>' % type(self).__name__
+
+
+class EnumType(PropertyType):
+
+    def __init__(self, *args):
+        self._names = {}
+
+    def _locale_names(self, locale):
+        return {}
+
+    @property
+    def names(self):
+        locale = get_locale()
+        if locale not in self._names:
+            self._names[locale] = self._locale_names(locale)
+        return self._names[locale]
+
+    @property
+    def codes(self):
+        return self.names.keys()
+
+    def validate(self, code, **kwargs):
+        code = sanitize_text(code)
+        if code is None:
+            return False
+        return code.lower() in self.codes
+
+    def clean_text(self, code, guess=False, **kwargs):
+        code = code.lower().strip()
+        if code in self.codes:
+            return code
+
+    def caption(self, value):
+        return self.names.get(value, value)
+
+    def to_dict(self):
+        data = super(EnumType, self).to_dict()
+        data['values'] = self.names
+        return data
