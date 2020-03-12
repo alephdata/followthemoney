@@ -90,7 +90,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@types/uuid": "^3.4.5",
-    "uuid": "^7.0.1"
+    "@types/uuid": "^7.0.0",
+    "uuid": "^7.0.2"
   }
 }

@@ -2,7 +2,7 @@ import { Schema, ISchemaDatum } from './schema'
 import { Entity, IEntityDatum } from './entity'
 import { Property } from './property'
 import { PropertyType, IPropertyTypeDatum } from './type'
-import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 
 export interface IModelDatum {
@@ -98,7 +98,7 @@ export class Model {
    */
   createEntity(schema: string | Schema): Entity {
     return this.getEntity({
-      id: uuid(),
+      id: uuidv4(),
       schema: schema,
       properties: {}
     })
