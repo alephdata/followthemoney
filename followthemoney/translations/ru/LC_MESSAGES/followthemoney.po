@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-02-27 16:22+0100\n"
+"POT-Creation-Date: 2020-03-13 12:37+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -188,7 +188,7 @@ msgstr "Активы"
 
 #. Associate.label
 #. Associate.properties.associate.label
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yml followthemoney/types/topic.py:39
 msgid "Associate"
 msgstr "Знакомый/знакомая"
 
@@ -1559,7 +1559,7 @@ msgstr "Местоположение"
 #: followthemoney/schema/Event.yaml followthemoney/schema/Passport.yaml
 #: followthemoney/schema/Sanction.yaml followthemoney/schema/TaxRoll.yaml
 #: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
-#: followthemoney/types/country.py:12
+#: followthemoney/types/country.py:11
 msgid "Country"
 msgstr "Страна"
 
@@ -2001,18 +2001,14 @@ msgid "Sender Account"
 msgstr ""
 
 #. Message.properties.recipients.reverse.label
+#. Message.properties.recipientAccount.reverse.label
 #: followthemoney/schema/Message.yaml
-msgid "messages received"
+msgid "Messages received"
 msgstr ""
 
 #. Message.properties.recipientAccount.label
 #: followthemoney/schema/Message.yaml
 msgid "Recipient Account"
-msgstr ""
-
-#. Message.properties.recipientAccount.reverse.label
-#: followthemoney/schema/Message.yaml
-msgid "Messages received"
 msgstr ""
 
 #. Message.properties.inReplyTo.description
@@ -2631,6 +2627,11 @@ msgstr "Wikidata ID"
 msgid "Keywords"
 msgstr "Ключевые слова"
 
+#. Thing.properties.topics.label
+#: followthemoney/schema/Thing.yaml followthemoney/types/topic.py:11
+msgid "Topics"
+msgstr ""
+
 #. Thing.properties.address.label
 #: followthemoney/schema/Thing.yaml followthemoney/types/address.py:15
 msgid "Address"
@@ -2688,17 +2689,13 @@ msgstr "Связь (от)"
 
 #. UserAccount.label
 #: followthemoney/schema/UserAccount.yaml
-msgid "UserAccount"
+msgid "User account"
 msgstr ""
 
 #. UserAccount.plural
-#: followthemoney/schema/UserAccount.yaml
-msgid "UserAccounts"
-msgstr ""
-
 #. UserAccount.properties.owner.reverse.label
 #: followthemoney/schema/UserAccount.yaml
-msgid "User Accounts"
+msgid "User accounts"
 msgstr ""
 
 #. UserAccount.properties.service.label
@@ -2889,59 +2886,59 @@ msgstr "Адреса"
 msgid "Checksums"
 msgstr "Контрольные суммы"
 
-#: followthemoney/types/country.py:13
+#: followthemoney/types/country.py:12
 msgid "Countries"
 msgstr "Страны"
 
-#: followthemoney/types/country.py:26
+#: followthemoney/types/country.py:18
 msgid "Global"
 msgstr "Все страны мира"
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:19
 msgid "European Union"
 msgstr "Европейский союз"
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:21
 msgid "Czech Republic"
 msgstr "Чешская Республика"
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:22
 msgid "Kosovo"
 msgstr "Косово"
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:23
 msgid "Yugoslavia"
 msgstr "Югославия"
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:24
 msgid "Serbia and Montenegro"
 msgstr "Сербия и Черногория"
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:25
 msgid "Soviet Union"
 msgstr "Советский Союз"
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:26
 msgid "Abkhazia"
 msgstr "Абхазия"
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:27
 msgid "South Ossetia"
 msgstr "Южная Осетия"
 
-#: followthemoney/types/country.py:36
+#: followthemoney/types/country.py:28
 msgid "Somaliland"
 msgstr "Сомалиленд"
 
-#: followthemoney/types/country.py:37
+#: followthemoney/types/country.py:29
 msgid "Wales"
 msgstr "Уэльс"
 
-#: followthemoney/types/country.py:38
+#: followthemoney/types/country.py:30
 msgid "Scotland"
 msgstr "Шотландия"
 
-#: followthemoney/types/country.py:39
+#: followthemoney/types/country.py:31
 msgid "Transnistria"
 msgstr "Приднестровье"
 
@@ -3028,6 +3025,158 @@ msgstr "Название"
 #: followthemoney/types/string.py:9
 msgid "Labels"
 msgstr "Названия"
+
+#: followthemoney/types/topic.py:10
+msgid "Topic"
+msgstr ""
+
+#: followthemoney/types/topic.py:15
+msgid "Crime"
+msgstr ""
+
+#: followthemoney/types/topic.py:16
+msgid "Fraud"
+msgstr ""
+
+#: followthemoney/types/topic.py:17
+msgid "Cybercrime"
+msgstr ""
+
+#: followthemoney/types/topic.py:18
+msgid "Financial crime"
+msgstr ""
+
+#: followthemoney/types/topic.py:19
+msgid "Theft"
+msgstr ""
+
+#: followthemoney/types/topic.py:20
+msgid "War crimes"
+msgstr ""
+
+#: followthemoney/types/topic.py:21
+msgid "Criminal leadership"
+msgstr ""
+
+#: followthemoney/types/topic.py:22
+msgid "Terrorism"
+msgstr ""
+
+#: followthemoney/types/topic.py:23
+msgid "Trafficking"
+msgstr ""
+
+#: followthemoney/types/topic.py:24
+msgid "Drug trafficking"
+msgstr ""
+
+#: followthemoney/types/topic.py:25
+msgid "Human trafficking"
+msgstr ""
+
+#: followthemoney/types/topic.py:26
+msgid "Offshore"
+msgstr ""
+
+#: followthemoney/types/topic.py:27
+msgid "Shell company"
+msgstr ""
+
+#: followthemoney/types/topic.py:28
+msgid "Government"
+msgstr ""
+
+#: followthemoney/types/topic.py:29
+msgid "National government"
+msgstr ""
+
+#: followthemoney/types/topic.py:30
+msgid "State government"
+msgstr ""
+
+#: followthemoney/types/topic.py:31
+msgid "Municipal government"
+msgstr ""
+
+#: followthemoney/types/topic.py:32
+msgid "State-owned enterprise"
+msgstr ""
+
+#: followthemoney/types/topic.py:33
+msgid "Intergovernmental organization"
+msgstr ""
+
+#: followthemoney/types/topic.py:34
+msgid "Financial services"
+msgstr ""
+
+#: followthemoney/types/topic.py:35
+msgid "Bank"
+msgstr ""
+
+#: followthemoney/types/topic.py:36
+msgid "Fund"
+msgstr ""
+
+#: followthemoney/types/topic.py:37
+msgid "Financial advisor"
+msgstr ""
+
+#: followthemoney/types/topic.py:38
+msgid "Politician"
+msgstr ""
+
+#: followthemoney/types/topic.py:40
+msgid "Judge"
+msgstr ""
+
+#: followthemoney/types/topic.py:41
+msgid "Diplomat"
+msgstr ""
+
+#: followthemoney/types/topic.py:42
+msgid "Lawyer"
+msgstr ""
+
+#: followthemoney/types/topic.py:43
+msgid "Spy"
+msgstr ""
+
+#: followthemoney/types/topic.py:44
+msgid "Journalist"
+msgstr ""
+
+#: followthemoney/types/topic.py:45
+msgid "Activist"
+msgstr ""
+
+#: followthemoney/types/topic.py:46
+msgid "Political party"
+msgstr ""
+
+#: followthemoney/types/topic.py:47
+msgid "Union"
+msgstr ""
+
+#: followthemoney/types/topic.py:48
+msgid "Religion"
+msgstr ""
+
+#: followthemoney/types/topic.py:49
+msgid "Military"
+msgstr ""
+
+#: followthemoney/types/topic.py:50
+msgid "Frozen asset"
+msgstr ""
+
+#: followthemoney/types/topic.py:51
+msgid "Sanctioned entity"
+msgstr ""
+
+#: followthemoney/types/topic.py:52
+msgid "Person of interest"
+msgstr ""
 
 #: followthemoney/types/url.py:11
 msgid "URL"

@@ -284,7 +284,7 @@ ftm:UnknownLink a rdfs:Class ;
     rdfs:subClassOf ftm:Interest .
 
 ftm:UserAccount a rdfs:Class ;
-    rdfs:label "UserAccount" ;
+    rdfs:label "User account" ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Thing .
 
@@ -1645,6 +1645,11 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Thing ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Thing:topics> a rdf:Property ;
+    rdfs:label "Topics" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Thing:weakAlias> a rdf:Property ;
     rdfs:label "Weak alias" ;
     rdfs:domain ftm:Thing ;
@@ -2271,7 +2276,7 @@ owl:sameAs a rdf:Property ;
     owl:inverseOf <https://w3id.org/ftm#Membership:member> .
 
 <https://w3id.org/ftm#LegalEntity:messagesReceived> a rdf:Property ;
-    rdfs:label "messages received" ;
+    rdfs:label "Messages received" ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Message ;
@@ -2363,7 +2368,7 @@ owl:sameAs a rdf:Property ;
     owl:inverseOf <https://w3id.org/ftm#TaxRoll:taxee> .
 
 <https://w3id.org/ftm#LegalEntity:userAccounts> a rdf:Property ;
-    rdfs:label "User Accounts" ;
+    rdfs:label "User accounts" ;
     rdfs:domain ftm:LegalEntity ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:UserAccount ;
@@ -2680,5 +2685,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-02-27T16:04:22"^^xsd:dateTime .
+    dct:modified "2020-03-13T12:12:39"^^xsd:dateTime .
 

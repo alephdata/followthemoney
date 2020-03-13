@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-22 09:26+0100\n"
+"POT-Creation-Date: 2020-03-13 12:37+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/aleph/teams/76591/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -26,26 +26,26 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: followthemoney/proxy.py:28
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:61
+#: followthemoney/proxy.py:62
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:94
+#: followthemoney/proxy.py:95
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:103
+#: followthemoney/proxy.py:104
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:167
+#: followthemoney/schema.py:173
 msgid "Entity failed validation"
 msgstr ""
 
@@ -72,6 +72,66 @@ msgstr ""
 #. Airplane.properties.manufacturer.label
 #: followthemoney/schema/Airplane.yaml
 msgid "Manufacturer"
+msgstr ""
+
+#. Analyzable.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Analyzable"
+msgstr ""
+
+#. Analyzable.plural
+#: followthemoney/schema/Analyzable.yaml
+msgid "Analyzables"
+msgstr ""
+
+#. Analyzable.properties.detectedLanguage.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected language"
+msgstr ""
+
+#. Analyzable.properties.detectedCountry.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected country"
+msgstr ""
+
+#. Analyzable.properties.namesMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected names"
+msgstr ""
+
+#. Analyzable.properties.peopleMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected people"
+msgstr ""
+
+#. Analyzable.properties.companiesMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected companies"
+msgstr ""
+
+#. Analyzable.properties.ibanMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected IBANs"
+msgstr ""
+
+#. Analyzable.properties.ipMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected IP addresses"
+msgstr ""
+
+#. Analyzable.properties.locationMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected locations"
+msgstr ""
+
+#. Analyzable.properties.phoneMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected phones"
+msgstr ""
+
+#. Analyzable.properties.emailMentioned.label
+#: followthemoney/schema/Analyzable.yaml
+msgid "Detected e-mail addresses"
 msgstr ""
 
 #. Assessment.label
@@ -123,7 +183,7 @@ msgstr ""
 
 #. Associate.label
 #. Associate.properties.associate.label
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yml followthemoney/types/topic.py:39
 msgid "Associate"
 msgstr ""
 
@@ -136,6 +196,11 @@ msgstr ""
 #. Associate.description
 #: followthemoney/schema/Associate.yml
 msgid "Non-family association between two people"
+msgstr ""
+
+#. Associate.edge.label
+#: followthemoney/schema/Associate.yml
+msgid "associated with"
 msgstr ""
 
 #. Associate.properties.person.label
@@ -217,6 +282,52 @@ msgstr ""
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Address"
+msgstr ""
+
+#. Call.label
+#: followthemoney/schema/Call.yaml
+msgid "Call"
+msgstr ""
+
+#. Call.plural
+#: followthemoney/schema/Call.yaml
+msgid "Calls"
+msgstr ""
+
+#. Call.properties.caller.label
+#: followthemoney/schema/Call.yaml
+msgid "Caller"
+msgstr ""
+
+#. Call.properties.caller.reverse.label
+#: followthemoney/schema/Call.yaml
+msgid "Calls made"
+msgstr ""
+
+#. Call.properties.callerNumber.label
+#: followthemoney/schema/Call.yaml
+msgid "Caller's Number"
+msgstr ""
+
+#. Call.properties.receiver.label
+#. EconomicActivity.properties.receiver.label
+#: followthemoney/schema/Call.yaml followthemoney/schema/EconomicActivity.yaml
+msgid "Receiver"
+msgstr ""
+
+#. Call.properties.receiver.reverse.label
+#: followthemoney/schema/Call.yaml
+msgid "Calls received"
+msgstr ""
+
+#. Call.properties.receiverNumber.label
+#: followthemoney/schema/Call.yaml
+msgid "Receiver's Number"
+msgstr ""
+
+#. Call.properties.duration.label
+#: followthemoney/schema/Call.yaml
+msgid "Call Duration in seconds"
 msgstr ""
 
 #. Company.label
@@ -500,6 +611,11 @@ msgstr ""
 msgid "A contract or contract lot as awarded to a supplier."
 msgstr ""
 
+#. ContractAward.edge.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "awarded to"
+msgstr ""
+
 #. ContractAward.properties.supplier.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Supplier"
@@ -633,6 +749,11 @@ msgstr ""
 msgid "Case parties"
 msgstr ""
 
+#. CourtCaseParty.edge.label
+#: followthemoney/schema/CourtCaseParty.yaml
+msgid "involved in"
+msgstr ""
+
 #. CourtCaseParty.properties.party.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Party"
@@ -664,6 +785,11 @@ msgstr ""
 msgid "A monetary debt between two parties."
 msgstr ""
 
+#. Debt.edge.label
+#: followthemoney/schema/Debt.yaml
+msgid "owes"
+msgstr ""
+
 #. Debt.properties.debtor.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debtor"
@@ -688,6 +814,11 @@ msgstr ""
 #. Directorship.properties.director.reverse.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Directorships"
+msgstr ""
+
+#. Directorship.edge.label
+#: followthemoney/schema/Directorship.yaml
+msgid "directs"
 msgstr ""
 
 #. Directorship.properties.director.label
@@ -805,16 +936,6 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#. Document.properties.detectedLanguage.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected language"
-msgstr ""
-
-#. Document.properties.detectedCountry.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected country"
-msgstr ""
-
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
@@ -856,46 +977,6 @@ msgstr ""
 #. Document.properties.ancestors.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Descendants"
-msgstr ""
-
-#. Document.properties.namesMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected names"
-msgstr ""
-
-#. Document.properties.peopleMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected people"
-msgstr ""
-
-#. Document.properties.companiesMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected companies"
-msgstr ""
-
-#. Document.properties.ibanMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected IBANs"
-msgstr ""
-
-#. Document.properties.ipMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected IP addresses"
-msgstr ""
-
-#. Document.properties.locationMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected locations"
-msgstr ""
-
-#. Document.properties.phoneMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected phones"
-msgstr ""
-
-#. Document.properties.emailMentioned.label
-#: followthemoney/schema/Document.yaml
-msgid "Detected e-mail addresses"
 msgstr ""
 
 #. Document.properties.processingStatus.label
@@ -1052,20 +1133,25 @@ msgid "E-Mails"
 msgstr ""
 
 #. Email.properties.subject.label
+#. Message.properties.subject.label
 #. UnknownLink.properties.subject.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/UnknownLink.yaml
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
+#: followthemoney/schema/UnknownLink.yaml
 msgid "Subject"
 msgstr ""
 
 #. Email.properties.threadTopic.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.threadTopic.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Thread topic"
 msgstr ""
 
 #. Email.properties.sender.label
 #. EconomicActivity.properties.sender.label
+#. Message.properties.sender.label
 #: followthemoney/schema/Document.yaml
 #: followthemoney/schema/EconomicActivity.yaml
+#: followthemoney/schema/Message.yaml
 msgid "Sender"
 msgstr ""
 
@@ -1110,7 +1196,8 @@ msgid "E-Mails sent"
 msgstr ""
 
 #. Email.properties.recipients.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.recipients.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Recipients"
 msgstr ""
 
@@ -1120,7 +1207,8 @@ msgid "E-Mails received"
 msgstr ""
 
 #. Email.properties.inReplyTo.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.inReplyTo.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "In Reply To"
 msgstr ""
 
@@ -1130,12 +1218,14 @@ msgid "Message ID of the preceding email in the thread"
 msgstr ""
 
 #. Email.properties.inReplyToEmail.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.inReplyToMessage.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Responding to"
 msgstr ""
 
 #. Email.properties.inReplyToEmail.reverse.label
-#: followthemoney/schema/Document.yaml
+#. Message.properties.inReplyToMessage.reverse.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Responses"
 msgstr ""
 
@@ -1177,13 +1267,15 @@ msgstr ""
 
 #. EconomicActivity.plural
 #. EconomicActivity.properties.declarant.reverse.label
+#. EconomicActivity.properties.bankAccount.reverse.label
+#. EconomicActivity.properties.transport.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations"
 msgstr ""
 
 #. EconomicActivity.description
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "An economic activity"
+msgid "A foreign economic activity"
 msgstr ""
 
 #. EconomicActivity.properties.contract.label
@@ -1284,11 +1376,6 @@ msgstr ""
 msgid "Goods originated"
 msgstr ""
 
-#. EconomicActivity.properties.receiver.label
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Receiver"
-msgstr ""
-
 #. EconomicActivity.properties.receiver.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Destination of the goods"
@@ -1311,7 +1398,7 @@ msgstr ""
 
 #. EconomicActivity.properties.contractHolder.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
-msgid "Economic activities"
+msgid "Customs declarations facilitated"
 msgstr ""
 
 #. EconomicActivity.properties.invoiceAmount.label
@@ -1402,6 +1489,11 @@ msgstr ""
 msgid "Bank account for payments in roubles"
 msgstr ""
 
+#. EconomicActivity.properties.bankRub.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs declarations (as rouble bank)"
+msgstr ""
+
 #. EconomicActivity.properties.bankForeign.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Foreign currency bank"
@@ -1410,6 +1502,11 @@ msgstr ""
 #. EconomicActivity.properties.bankForeign.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank account for payments in foreign currency"
+msgstr ""
+
+#. EconomicActivity.properties.bankForeign.reverse.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Customs declarations (as foreign bank)"
 msgstr ""
 
 #. EconomicActivity.properties.transport.label
@@ -1428,6 +1525,7 @@ msgid "Event"
 msgstr ""
 
 #. Event.plural
+#. Event.properties.involved.reverse.label
 #: followthemoney/schema/Event.yaml
 msgid "Events"
 msgstr ""
@@ -1446,8 +1544,28 @@ msgstr ""
 #: followthemoney/schema/Event.yaml followthemoney/schema/Passport.yaml
 #: followthemoney/schema/Sanction.yaml followthemoney/schema/TaxRoll.yaml
 #: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
-#: followthemoney/types/country.py:12
+#: followthemoney/types/country.py:11
 msgid "Country"
+msgstr ""
+
+#. Event.properties.important.label
+#: followthemoney/schema/Event.yaml
+msgid "Important"
+msgstr ""
+
+#. Event.properties.organizer.label
+#: followthemoney/schema/Event.yaml
+msgid "Organizer"
+msgstr ""
+
+#. Event.properties.organizer.reverse.label
+#: followthemoney/schema/Event.yaml
+msgid "Organized events"
+msgstr ""
+
+#. Event.properties.involved.label
+#: followthemoney/schema/Event.yaml
+msgid "Involved"
 msgstr ""
 
 #. Family.label
@@ -1464,6 +1582,11 @@ msgstr ""
 #. Family.description
 #: followthemoney/schema/Family.yml
 msgid "Family relationship between two people"
+msgstr ""
+
+#. Family.edge.label
+#: followthemoney/schema/Family.yml
+msgid "related to"
 msgstr ""
 
 #. Family.properties.person.description
@@ -1822,6 +1945,11 @@ msgstr ""
 msgid "Memberships"
 msgstr ""
 
+#. Membership.edge.label
+#: followthemoney/schema/Membership.yaml
+msgid "belongs to"
+msgstr ""
+
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
 msgid "Member"
@@ -1830,6 +1958,48 @@ msgstr ""
 #. Membership.properties.organization.reverse.label
 #: followthemoney/schema/Membership.yaml
 msgid "Members"
+msgstr ""
+
+#. Message.label
+#: followthemoney/schema/Message.yaml
+msgid "Message"
+msgstr ""
+
+#. Message.plural
+#: followthemoney/schema/Message.yaml
+msgid "Messages"
+msgstr ""
+
+#. Message.properties.sender.reverse.label
+#. Message.properties.senderAccount.reverse.label
+#: followthemoney/schema/Message.yaml
+msgid "Messages sent"
+msgstr ""
+
+#. Message.properties.senderAccount.label
+#: followthemoney/schema/Message.yaml
+msgid "Sender Account"
+msgstr ""
+
+#. Message.properties.recipients.reverse.label
+#. Message.properties.recipientAccount.reverse.label
+#: followthemoney/schema/Message.yaml
+msgid "Messages received"
+msgstr ""
+
+#. Message.properties.recipientAccount.label
+#: followthemoney/schema/Message.yaml
+msgid "Recipient Account"
+msgstr ""
+
+#. Message.properties.inReplyTo.description
+#: followthemoney/schema/Message.yaml
+msgid "Message ID of the preceding message in the thread"
+msgstr ""
+
+#. Message.properties.metadata.label
+#: followthemoney/schema/Message.yaml
+msgid "Metadata"
 msgstr ""
 
 #. Organization.plural
@@ -1847,9 +2017,16 @@ msgstr ""
 msgid "Ownerships"
 msgstr ""
 
+#. Ownership.edge.label
+#: followthemoney/schema/Ownership.yaml
+msgid "owns"
+msgstr ""
+
 #. Ownership.properties.owner.label
+#. UserAccount.properties.owner.label
 #. Vehicle.properties.owner.label
-#: followthemoney/schema/Ownership.yaml followthemoney/schema/Vehicle.yaml
+#: followthemoney/schema/Ownership.yaml followthemoney/schema/UserAccount.yaml
+#: followthemoney/schema/Vehicle.yaml
 msgid "Owner"
 msgstr ""
 
@@ -1969,6 +2146,11 @@ msgstr ""
 #. Payment.description
 #: followthemoney/schema/Payment.yaml
 msgid "A monetary payment between two parties."
+msgstr ""
+
+#. Payment.edge.label
+#: followthemoney/schema/Payment.yaml
+msgid "paid"
 msgstr ""
 
 #. Payment.properties.sequenceNumber.label
@@ -2245,6 +2427,11 @@ msgid ""
 "entity."
 msgstr ""
 
+#. Representation.edge.label
+#: followthemoney/schema/Representation.yaml
+msgid "represents"
+msgstr ""
+
 #. Representation.properties.agent.label
 #: followthemoney/schema/Representation.yaml
 msgid "Agent"
@@ -2310,6 +2497,11 @@ msgstr ""
 #. Succession.description
 #: followthemoney/schema/Succession.yaml
 msgid "Two entities that legally succeed each other."
+msgstr ""
+
+#. Succession.edge.label
+#: followthemoney/schema/Succession.yaml
+msgid "preceeds"
 msgstr ""
 
 #. Succession.properties.predecessor.label
@@ -2413,6 +2605,11 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
+#. Thing.properties.topics.label
+#: followthemoney/schema/Thing.yaml followthemoney/types/topic.py:11
+msgid "Topics"
+msgstr ""
+
 #. Thing.properties.address.label
 #: followthemoney/schema/Thing.yaml followthemoney/types/address.py:15
 msgid "Address"
@@ -2448,6 +2645,11 @@ msgstr ""
 msgid "Other links"
 msgstr ""
 
+#. UnknownLink.edge.label
+#: followthemoney/schema/UnknownLink.yaml
+msgid "linked to"
+msgstr ""
+
 #. UnknownLink.properties.subject.reverse.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked to"
@@ -2461,6 +2663,42 @@ msgstr ""
 #. UnknownLink.properties.object.reverse.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Linked from"
+msgstr ""
+
+#. UserAccount.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "User account"
+msgstr ""
+
+#. UserAccount.plural
+#. UserAccount.properties.owner.reverse.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "User accounts"
+msgstr ""
+
+#. UserAccount.properties.service.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "Service"
+msgstr ""
+
+#. UserAccount.properties.email.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "E-mail"
+msgstr ""
+
+#. UserAccount.properties.number.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "Phone Number"
+msgstr ""
+
+#. UserAccount.properties.username.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "Username"
+msgstr ""
+
+#. UserAccount.properties.password.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "Password"
 msgstr ""
 
 #. Value.label
@@ -2626,59 +2864,59 @@ msgstr ""
 msgid "Checksums"
 msgstr ""
 
-#: followthemoney/types/country.py:13
+#: followthemoney/types/country.py:12
 msgid "Countries"
 msgstr ""
 
-#: followthemoney/types/country.py:26
+#: followthemoney/types/country.py:18
 msgid "Global"
 msgstr ""
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:19
 msgid "European Union"
 msgstr ""
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:21
 msgid "Czech Republic"
 msgstr ""
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:22
 msgid "Kosovo"
 msgstr ""
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:23
 msgid "Yugoslavia"
 msgstr ""
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:24
 msgid "Serbia and Montenegro"
 msgstr ""
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:25
 msgid "Soviet Union"
 msgstr ""
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:26
 msgid "Abkhazia"
 msgstr ""
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:27
 msgid "South Ossetia"
 msgstr ""
 
-#: followthemoney/types/country.py:36
+#: followthemoney/types/country.py:28
 msgid "Somaliland"
 msgstr ""
 
-#: followthemoney/types/country.py:37
+#: followthemoney/types/country.py:29
 msgid "Wales"
 msgstr ""
 
-#: followthemoney/types/country.py:38
+#: followthemoney/types/country.py:30
 msgid "Scotland"
 msgstr ""
 
-#: followthemoney/types/country.py:39
+#: followthemoney/types/country.py:31
 msgid "Transnistria"
 msgstr ""
 
@@ -2764,6 +3002,158 @@ msgstr ""
 
 #: followthemoney/types/string.py:9
 msgid "Labels"
+msgstr ""
+
+#: followthemoney/types/topic.py:10
+msgid "Topic"
+msgstr ""
+
+#: followthemoney/types/topic.py:15
+msgid "Crime"
+msgstr ""
+
+#: followthemoney/types/topic.py:16
+msgid "Fraud"
+msgstr ""
+
+#: followthemoney/types/topic.py:17
+msgid "Cybercrime"
+msgstr ""
+
+#: followthemoney/types/topic.py:18
+msgid "Financial crime"
+msgstr ""
+
+#: followthemoney/types/topic.py:19
+msgid "Theft"
+msgstr ""
+
+#: followthemoney/types/topic.py:20
+msgid "War crimes"
+msgstr ""
+
+#: followthemoney/types/topic.py:21
+msgid "Criminal leadership"
+msgstr ""
+
+#: followthemoney/types/topic.py:22
+msgid "Terrorism"
+msgstr ""
+
+#: followthemoney/types/topic.py:23
+msgid "Trafficking"
+msgstr ""
+
+#: followthemoney/types/topic.py:24
+msgid "Drug trafficking"
+msgstr ""
+
+#: followthemoney/types/topic.py:25
+msgid "Human trafficking"
+msgstr ""
+
+#: followthemoney/types/topic.py:26
+msgid "Offshore"
+msgstr ""
+
+#: followthemoney/types/topic.py:27
+msgid "Shell company"
+msgstr ""
+
+#: followthemoney/types/topic.py:28
+msgid "Government"
+msgstr ""
+
+#: followthemoney/types/topic.py:29
+msgid "National government"
+msgstr ""
+
+#: followthemoney/types/topic.py:30
+msgid "State government"
+msgstr ""
+
+#: followthemoney/types/topic.py:31
+msgid "Municipal government"
+msgstr ""
+
+#: followthemoney/types/topic.py:32
+msgid "State-owned enterprise"
+msgstr ""
+
+#: followthemoney/types/topic.py:33
+msgid "Intergovernmental organization"
+msgstr ""
+
+#: followthemoney/types/topic.py:34
+msgid "Financial services"
+msgstr ""
+
+#: followthemoney/types/topic.py:35
+msgid "Bank"
+msgstr ""
+
+#: followthemoney/types/topic.py:36
+msgid "Fund"
+msgstr ""
+
+#: followthemoney/types/topic.py:37
+msgid "Financial advisor"
+msgstr ""
+
+#: followthemoney/types/topic.py:38
+msgid "Politician"
+msgstr ""
+
+#: followthemoney/types/topic.py:40
+msgid "Judge"
+msgstr ""
+
+#: followthemoney/types/topic.py:41
+msgid "Diplomat"
+msgstr ""
+
+#: followthemoney/types/topic.py:42
+msgid "Lawyer"
+msgstr ""
+
+#: followthemoney/types/topic.py:43
+msgid "Spy"
+msgstr ""
+
+#: followthemoney/types/topic.py:44
+msgid "Journalist"
+msgstr ""
+
+#: followthemoney/types/topic.py:45
+msgid "Activist"
+msgstr ""
+
+#: followthemoney/types/topic.py:46
+msgid "Political party"
+msgstr ""
+
+#: followthemoney/types/topic.py:47
+msgid "Union"
+msgstr ""
+
+#: followthemoney/types/topic.py:48
+msgid "Religion"
+msgstr ""
+
+#: followthemoney/types/topic.py:49
+msgid "Military"
+msgstr ""
+
+#: followthemoney/types/topic.py:50
+msgid "Frozen asset"
+msgstr ""
+
+#: followthemoney/types/topic.py:51
+msgid "Sanctioned entity"
+msgstr ""
+
+#: followthemoney/types/topic.py:52
+msgid "Person of interest"
 msgstr ""
 
 #: followthemoney/types/url.py:11

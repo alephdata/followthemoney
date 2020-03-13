@@ -786,8 +786,8 @@
       "matchable": true
     },
     "UserAccount": {
-      "label": "UserAccount",
-      "plural": "UserAccounts",
+      "label": "User account",
+      "plural": "User accounts",
       "schemata": [
         "Thing",
         "UserAccount"
@@ -1969,7 +1969,7 @@
         "userAccounts": {
           "name": "userAccounts",
           "qname": "LegalEntity:userAccounts",
-          "label": "User Accounts",
+          "label": "User accounts",
           "type": "entity",
           "stub": true,
           "matchable": true,
@@ -2159,7 +2159,7 @@
         "messagesReceived": {
           "name": "messagesReceived",
           "qname": "LegalEntity:messagesReceived",
-          "label": "messages received",
+          "label": "Messages received",
           "type": "entity",
           "stub": true,
           "matchable": true,
@@ -2375,6 +2375,12 @@
           "qname": "Thing:keywords",
           "label": "Keywords",
           "type": "string"
+        },
+        "topics": {
+          "name": "topics",
+          "qname": "Thing:topics",
+          "label": "Topics",
+          "type": "topic"
         },
         "address": {
           "name": "address",
@@ -3094,7 +3100,7 @@
           "name": "processingError",
           "qname": "Document:processingError",
           "label": "Processing error",
-          "type": "text",
+          "type": "string",
           "hidden": true
         },
         "proven": {
@@ -4869,6 +4875,51 @@
     "text": {
       "label": "Text",
       "plural": null
+    },
+    "topic": {
+      "label": "Topic",
+      "plural": "Topics",
+      "group": "topics",
+      "values": {
+        "crime": "Crime",
+        "crime.fraud": "Fraud",
+        "crime.cyber": "Cybercrime",
+        "crime.fin": "Financial crime",
+        "crime.theft": "Theft",
+        "crime.war": "War crimes",
+        "crime.boss": "Criminal leadership",
+        "crime.terror": "Terrorism",
+        "crime.traffick": "Trafficking",
+        "crime.traffick.drug": "Drug trafficking",
+        "crime.traffick.human": "Human trafficking",
+        "corp.offshore": "Offshore",
+        "corp.shell": "Shell company",
+        "gov": "Government",
+        "gov.national": "National government",
+        "gov.state": "State government",
+        "gov.muni": "Municipal government",
+        "gov.soe": "State-owned enterprise",
+        "gov.igo": "Intergovernmental organization",
+        "fin": "Financial services",
+        "fin.bank": "Bank",
+        "fin.fund": "Fund",
+        "fin.adivsor": "Financial advisor",
+        "role.pep": "Politician",
+        "role.rca": "Associate",
+        "role.judge": "Judge",
+        "role.diplo": "Diplomat",
+        "role.lawyer": "Lawyer",
+        "role.spy": "Spy",
+        "role.journo": "Journalist",
+        "role.act": "Activist",
+        "pol.party": "Political party",
+        "pol.union": "Union",
+        "rel": "Religion",
+        "mil": "Military",
+        "asset.frozen": "Frozen asset",
+        "ctx.sanctioned": "Sanctioned entity",
+        "ctx.poi": "Person of interest"
+      }
     },
     "url": {
       "label": "URL",

@@ -46,7 +46,7 @@ Message:
       range: LegalEntity
       reverse:
         name: messagesReceived
-        label: "messages received"
+        label: "Messages received"
     recipientAccount:
       label: "Recipient Account"
       type: entity

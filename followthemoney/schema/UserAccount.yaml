@@ -1,8 +1,8 @@
 UserAccount:
   extends:
   - Thing
-  label: "UserAccount"
-  plural: "UserAccounts"
+  label: "User account"
+  plural: "User accounts"
   matchable: true
   generated: true
   featured:
@@ -21,7 +21,7 @@ UserAccount:
       range: LegalEntity
       reverse:
         name: userAccounts
-        label: "User Accounts"
+        label: "User accounts"
     service:
       label: "Service"
       type: string
