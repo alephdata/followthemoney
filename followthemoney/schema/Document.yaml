@@ -90,7 +90,6 @@ Document:
     processingError:
       label: "Processing error"
       hidden: true
-      type: text
 
 PlainText:
   # Text files, like .txt or source code.
