@@ -1,6 +1,7 @@
 Analyzable:
   label: Analyzable
   plural: Analyzables
+  abstract: true
   matchable: false
   generated: true
   properties:
