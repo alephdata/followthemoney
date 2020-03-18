@@ -10,13 +10,14 @@ Message:
   generated: true
   featured:
     - subject
-    - threadTopic
+    - bodyText
     - date
     - sender
     - recipients
   caption:
     - subject
     - threadTopic
+    - bodyText
     - title
     - fileName
   properties:
