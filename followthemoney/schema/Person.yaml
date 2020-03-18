@@ -6,13 +6,14 @@ Person:
   matchable: true
   rdf: http://xmlns.com/foaf/0.1/Person
   featured:
-    - name
-    - nationality
-    - birthDate
+  - name
+  - nationality
+  - birthDate
   caption:
-    - name
-    - lastName
-    - email
+  - name
+  - lastName
+  - email
+  - phone
   properties:
     title:
       label: Title

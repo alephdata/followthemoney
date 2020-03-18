@@ -5,13 +5,14 @@ LegalEntity:
   description: "A legal entity may be a person or a company."
   matchable: true
   featured:
-    - name
-    - legalForm
-    - country
+  - name
+  - legalForm
+  - country
   caption:
-    - name
-    - email
-    - registrationNumber
+  - name
+  - email
+  - phone
+  - registrationNumber
   properties:
     email:
       label: E-Mail

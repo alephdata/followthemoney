@@ -1,25 +1,25 @@
 Message:
   extends:
-    - Interval
-    - Folder
-    - PlainText
-    - HyperText
+  - Interval
+  - Folder
+  - PlainText
+  - HyperText
   label: Message
   plural: Messages
   matchable: false
   generated: true
   featured:
-    - subject
-    - bodyText
-    - date
-    - sender
-    - recipients
+  - subject
+  - bodyText
+  - date
+  - sender
+  - recipients
   caption:
-    - subject
-    - threadTopic
-    - bodyText
-    - title
-    - fileName
+  - subject
+  - bodyText
+  - title
+  - threadTopic
+  - fileName
   properties:
     subject:
       label: Subject
