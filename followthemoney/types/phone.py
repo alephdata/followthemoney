@@ -28,7 +28,7 @@ class PhoneType(PropertyType):
                 result.add(country)
         return result
 
-    def clean_text(self, number, countries=None, country=None, **kwargs):
+    def _parse_number(self, number, countries=None, country=None, **kwargs):
         """Parse a phone number and return in international format.
 
         If no valid phone number can be detected, None is returned. If
@@ -39,12 +39,20 @@ class PhoneType(PropertyType):
         """
         for code in self._clean_countries(countries, country):
             try:
-                num = parse_number(number, code)
-                if is_possible_number(num):
-                    if is_valid_number(num):
-                        return format_number(num, PhoneNumberFormat.E164)
+                yield parse_number(number, code)
             except NumberParseException:
                 pass
+
+    def clean_text(self, number, **kwargs):
+        for num in self._parse_number(number, **kwargs):
+            if is_possible_number(num):
+                return format_number(num, PhoneNumberFormat.E164)
+
+    def validate(self, number, **kwargs):
+        for num in self._parse_number(number, **kwargs):
+            if is_possible_number(num) and is_valid_number(num):
+                return True
+        return False
 
     def country_hint(self, value):
         try:
