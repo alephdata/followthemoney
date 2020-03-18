@@ -2,7 +2,7 @@ from rdflib import URIRef
 from banal import ensure_list
 from phonenumbers import geocoder
 from phonenumbers import parse as parse_number
-from phonenumbers import is_possible_number, is_valid_number, format_number
+from phonenumbers import is_valid_number, format_number
 from phonenumbers import PhoneNumberFormat
 from phonenumbers.phonenumberutil import NumberParseException
 
@@ -45,12 +45,12 @@ class PhoneType(PropertyType):
 
     def clean_text(self, number, **kwargs):
         for num in self._parse_number(number, **kwargs):
-            if is_possible_number(num):
+            if is_valid_number(num):
                 return format_number(num, PhoneNumberFormat.E164)
 
     def validate(self, number, **kwargs):
         for num in self._parse_number(number, **kwargs):
-            if is_possible_number(num) and is_valid_number(num):
+            if is_valid_number(num):
                 return True
         return False
 
