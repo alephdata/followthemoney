@@ -11,6 +11,11 @@ Event:
   - name
   - summary
   - date
+  featured:
+  - name
+  - summary
+  - date
+  - location
   properties:
     location:
       label: "Location"
