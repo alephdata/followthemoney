@@ -127,25 +127,26 @@ class Graph(object):
         if edge.weight > 0:
             self.edges[edge.id] = edge
 
-    def _add_node(self, proxy):
+    def _add_node(self, proxy, expand_properties=True):
         """Derive a node and its value edges from the given proxy."""
         entity = Node(registry.entity, proxy.id, proxy=proxy)
         self.nodes[entity.id] = entity
         for prop, value in proxy.itervalues():
             if prop.type.name not in self.edge_types:
                 continue
-            node = self._get_node_stub(value, prop)
-            edge = Edge(self, entity, node, prop=prop, value=value)
-            if edge.weight > 0:
-                self.edges[edge.id] = edge
+            if expand_properties:
+                node = self._get_node_stub(value, prop)
+                edge = Edge(self, entity, node, prop=prop, value=value)
+                if edge.weight > 0:
+                    self.edges[edge.id] = edge
 
-    def add(self, proxy):
+    def add(self, proxy, expand_properties=True):
         self.queue(proxy.id, proxy)
         if proxy.schema.edge:
             for (source, target) in proxy.edgepairs():
                 self._add_edge(proxy, source, target)
         else:
-            self._add_node(proxy)
+            self._add_node(proxy, expand_properties=expand_properties)
 
     def iternodes(self):
         return self.nodes.values()
