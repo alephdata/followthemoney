@@ -95,7 +95,8 @@ class Graph(object):
     """
 
     def __init__(self, edge_types=None):
-        self.edge_types = edge_types
+        edge_types = registry.get_types(edge_types)
+        self.edge_types = [t for t in edge_types if t.matchable]
         self.flush()
 
     def flush(self):
@@ -132,7 +133,7 @@ class Graph(object):
         entity = Node(registry.entity, proxy.id, proxy=proxy)
         self.nodes[entity.id] = entity
         for prop, value in proxy.itervalues():
-            if prop.type.name not in self.edge_types:
+            if prop.type not in self.edge_types:
                 continue
             node = self._get_node_stub(value, prop)
             edge = Edge(self, entity, node, prop=prop, value=value)

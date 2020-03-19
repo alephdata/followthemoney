@@ -117,8 +117,9 @@ class CypherGraphExporter(GraphExporter):
     def _to_map(self, data):
         values = []
         for key, value in data.items():
-            value = '%s: %s' % (key, json.dumps(value))
-            values.append(value)
+            if value:
+                value = '%s: %s' % (key, json.dumps(value))
+                values.append(value)
         return ', '.join(values)
 
     def write_graph(self):

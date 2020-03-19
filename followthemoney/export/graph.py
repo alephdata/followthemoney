@@ -10,7 +10,7 @@ DEFAULT_EDGE_TYPES = (registry.entity.name,)
 
 
 def edge_types():
-    return [t.name for t in registry.types if t.matchable]
+    return [t.name for t in registry.matchable]
 
 
 class GraphExporter(Exporter):
@@ -19,7 +19,6 @@ class GraphExporter(Exporter):
 
     def __init__(self, edge_types=DEFAULT_EDGE_TYPES):
         super(GraphExporter, self).__init__()
-        self.edge_types = edge_types
         self.graph = Graph(edge_types=edge_types)
 
     def get_attributes(self, element):
