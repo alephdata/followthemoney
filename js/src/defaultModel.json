@@ -1309,7 +1309,8 @@
       "caption": [
         "name",
         "lastName",
-        "email"
+        "email",
+        "phone"
       ],
       "description": "An individual",
       "matchable": true
@@ -1544,6 +1545,12 @@
           "reverse": "eventsInvolved"
         }
       },
+      "featured": [
+        "name",
+        "summary",
+        "date",
+        "location"
+      ],
       "caption": [
         "name",
         "summary",
@@ -2215,6 +2222,7 @@
       "caption": [
         "name",
         "email",
+        "phone",
         "registrationNumber"
       ],
       "description": "A legal entity may be a person or a company.",
@@ -2572,6 +2580,7 @@
           "hidden": true
         }
       },
+      "abstract": true,
       "generated": true
     },
     "License": {
@@ -3765,15 +3774,16 @@
       },
       "featured": [
         "subject",
-        "threadTopic",
+        "bodyText",
         "date",
         "sender",
         "recipients"
       ],
       "caption": [
         "subject",
-        "threadTopic",
+        "bodyText",
         "title",
+        "threadTopic",
         "fileName"
       ],
       "generated": true
@@ -4442,16 +4452,82 @@
     }
   },
   "types": {
+    "domain": {
+      "label": "Domain",
+      "plural": "Domains",
+      "matchable": true
+    },
+    "date": {
+      "label": "Date",
+      "plural": "Dates",
+      "group": "dates",
+      "matchable": true
+    },
+    "email": {
+      "label": "E-Mail Address",
+      "plural": "E-Mail Addresses",
+      "group": "emails",
+      "matchable": true
+    },
+    "topic": {
+      "label": "Topic",
+      "plural": "Topics",
+      "group": "topics",
+      "values": {
+        "crime": "Crime",
+        "crime.fraud": "Fraud",
+        "crime.cyber": "Cybercrime",
+        "crime.fin": "Financial crime",
+        "crime.theft": "Theft",
+        "crime.war": "War crimes",
+        "crime.boss": "Criminal leadership",
+        "crime.terror": "Terrorism",
+        "crime.traffick": "Trafficking",
+        "crime.traffick.drug": "Drug trafficking",
+        "crime.traffick.human": "Human trafficking",
+        "corp.offshore": "Offshore",
+        "corp.shell": "Shell company",
+        "gov": "Government",
+        "gov.national": "National government",
+        "gov.state": "State government",
+        "gov.muni": "Municipal government",
+        "gov.soe": "State-owned enterprise",
+        "gov.igo": "Intergovernmental organization",
+        "fin": "Financial services",
+        "fin.bank": "Bank",
+        "fin.fund": "Fund",
+        "fin.adivsor": "Financial advisor",
+        "role.pep": "Politician",
+        "role.rca": "Associate",
+        "role.judge": "Judge",
+        "role.diplo": "Diplomat",
+        "role.lawyer": "Lawyer",
+        "role.spy": "Spy",
+        "role.journo": "Journalist",
+        "role.act": "Activist",
+        "pol.party": "Political party",
+        "pol.union": "Union",
+        "rel": "Religion",
+        "mil": "Military",
+        "asset.frozen": "Frozen asset",
+        "ctx.sanctioned": "Sanctioned entity",
+        "ctx.poi": "Person of interest"
+      }
+    },
     "address": {
       "label": "Address",
       "plural": "Addresses",
       "group": "addresses",
       "matchable": true
     },
-    "checksum": {
-      "label": "Checksum",
-      "plural": "Checksums",
-      "group": "checksums",
+    "text": {
+      "label": "Text",
+      "plural": null
+    },
+    "entity": {
+      "label": "Entity",
+      "plural": "Entities",
+      "group": "entities",
       "matchable": true
     },
     "country": {
@@ -4734,33 +4810,6 @@
         "zw": "Zimbabwe"
       }
     },
-    "date": {
-      "label": "Date",
-      "plural": "Dates",
-      "group": "dates",
-      "matchable": true
-    },
-    "domain": {
-      "label": "Domain",
-      "plural": "Domains",
-      "matchable": true
-    },
-    "email": {
-      "label": "E-Mail Address",
-      "plural": "E-Mail Addresses",
-      "group": "emails",
-      "matchable": true
-    },
-    "entity": {
-      "label": "Entity",
-      "plural": "Entities",
-      "group": "entities",
-      "matchable": true
-    },
-    "html": {
-      "label": "HTML",
-      "plural": null
-    },
     "iban": {
       "label": "IBAN",
       "plural": "IBANs",
@@ -4772,6 +4821,29 @@
       "plural": "Identifiers",
       "group": "identifiers",
       "matchable": true
+    },
+    "phone": {
+      "label": "Phone number",
+      "plural": "Phone numbers",
+      "group": "phones",
+      "matchable": true
+    },
+    "html": {
+      "label": "HTML",
+      "plural": null
+    },
+    "string": {
+      "label": "Label",
+      "plural": "Labels"
+    },
+    "number": {
+      "label": "Number",
+      "plural": "Numbers"
+    },
+    "mimetype": {
+      "label": "MIME-Type",
+      "plural": "MIME-Types",
+      "group": "mimetypes"
     },
     "ip": {
       "label": "IP-Address",
@@ -4847,84 +4919,22 @@
         "cat": "Catalan"
       }
     },
-    "mimetype": {
-      "label": "MIME-Type",
-      "plural": "MIME-Types",
-      "group": "mimetypes"
+    "url": {
+      "label": "URL",
+      "plural": "URLs",
+      "group": "urls",
+      "matchable": true
+    },
+    "checksum": {
+      "label": "Checksum",
+      "plural": "Checksums",
+      "group": "checksums",
+      "matchable": true
     },
     "name": {
       "label": "Name",
       "plural": "Names",
       "group": "names",
-      "matchable": true
-    },
-    "number": {
-      "label": "Number",
-      "plural": "Numbers"
-    },
-    "phone": {
-      "label": "Phone number",
-      "plural": "Phone numbers",
-      "group": "phones",
-      "matchable": true
-    },
-    "string": {
-      "label": "Label",
-      "plural": "Labels"
-    },
-    "text": {
-      "label": "Text",
-      "plural": null
-    },
-    "topic": {
-      "label": "Topic",
-      "plural": "Topics",
-      "group": "topics",
-      "values": {
-        "crime": "Crime",
-        "crime.fraud": "Fraud",
-        "crime.cyber": "Cybercrime",
-        "crime.fin": "Financial crime",
-        "crime.theft": "Theft",
-        "crime.war": "War crimes",
-        "crime.boss": "Criminal leadership",
-        "crime.terror": "Terrorism",
-        "crime.traffick": "Trafficking",
-        "crime.traffick.drug": "Drug trafficking",
-        "crime.traffick.human": "Human trafficking",
-        "corp.offshore": "Offshore",
-        "corp.shell": "Shell company",
-        "gov": "Government",
-        "gov.national": "National government",
-        "gov.state": "State government",
-        "gov.muni": "Municipal government",
-        "gov.soe": "State-owned enterprise",
-        "gov.igo": "Intergovernmental organization",
-        "fin": "Financial services",
-        "fin.bank": "Bank",
-        "fin.fund": "Fund",
-        "fin.adivsor": "Financial advisor",
-        "role.pep": "Politician",
-        "role.rca": "Associate",
-        "role.judge": "Judge",
-        "role.diplo": "Diplomat",
-        "role.lawyer": "Lawyer",
-        "role.spy": "Spy",
-        "role.journo": "Journalist",
-        "role.act": "Activist",
-        "pol.party": "Political party",
-        "pol.union": "Union",
-        "rel": "Religion",
-        "mil": "Military",
-        "asset.frozen": "Frozen asset",
-        "ctx.sanctioned": "Sanctioned entity",
-        "ctx.poi": "Person of interest"
-      }
-    },
-    "url": {
-      "label": "URL",
-      "plural": "URLs",
-      "group": "urls",
       "matchable": true
     }
   }
