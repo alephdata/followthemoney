@@ -38,8 +38,10 @@ class TopicType(EnumType):
         'role.pep': _('Politician'),  # don't FATF-splain me, bro.
         'role.rca': _('Associate'),
         'role.judge': _('Judge'),
+        'role.civil': _('Civil servant'),
         'role.diplo': _('Diplomat'),
         'role.lawyer': _('Lawyer'),
+        'role.acct': _('Accountant'),
         'role.spy': _('Spy'),
         'role.journo': _('Journalist'),
         'role.act': _('Activist'),
