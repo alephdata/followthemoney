@@ -1,4 +1,3 @@
-import os
 import logging
 from pprint import pprint  # noqa
 from alephclient.api import AlephAPI
@@ -16,12 +15,8 @@ class AlephEnricher(Enricher):
     key_prefix = 'aleph'
     TYPE_CONSTRAINT = 'LegalEntity'
 
-    def __init__(self, host=None):
-        self.host = host or os.environ.get('ENRICH_ALEPH_HOST')
-        self.host = self.host or os.environ.get('ALEPH_HOST')
-        self.api_key = os.environ.get('ALEPH_API_KEY')
-        self.api_key = os.environ.get('ENRICH_ALEPH_API_KEY', self.api_key)
-        self.api = AlephAPI(self.host, self.api_key)
+    def __init__(self):
+        self.api = AlephAPI()
 
     def get_api(self, url, params=None):
         url = make_url(url, params)
@@ -123,10 +118,3 @@ class AlephEnricher(Enricher):
             for data in ensure_list(entities.get('results')):
                 self.convert_entity(result, data)
         return result
-
-
-class OccrpEnricher(AlephEnricher):
-
-    def __init__(self):
-        host = 'https://data.occrp.org'
-        super(OccrpEnricher, self).__init__(host=host)

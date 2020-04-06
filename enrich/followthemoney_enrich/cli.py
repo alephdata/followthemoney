@@ -75,9 +75,6 @@ def expand(enricher):
         enricher.close()
 
 
-
-
-
 @cli.command('auto-match', help="Generate result matches based purely on score")  # noqa
 @click.option('-t', '--threshold', type=float, default=0.8)
 def auto_match(threshold):

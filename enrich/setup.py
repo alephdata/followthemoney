@@ -21,17 +21,16 @@ setup(
     zip_safe=False,
     install_requires=[
         'followthemoney',
+        'alephclient',
+        'requests',
         'mwclient',  # wikipedia
         'rdflib',  # wikidata
-        'SPARQLWrapper',  # wikidata
+        'redis',
         'zeep',  # bvd orbis (soap)
-        'requests',
-        'alephclient'
     ],
     entry_points={
         'followthemoney.enrich': [
             'aleph = followthemoney_enrich.aleph:AlephEnricher',
-            'occrp = followthemoney_enrich.aleph:OccrpEnricher',
             'orbis = followthemoney_enrich.orbis:OrbisEnricher',
             'opencorporates = followthemoney_enrich.opencorporates:OpenCorporatesEnricher',  # noqa
         ],
