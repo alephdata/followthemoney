@@ -27,6 +27,11 @@ class Namespace(object):
         except ValueError:
             return (entity_id, None)
 
+    @classmethod
+    def strip(cls, entity_id):
+        plain_id, _ = cls.parse(entity_id)
+        return plain_id
+
     def signature(self, entity_id):
         """Generate a namespace-specific signature."""
         if not len(self.bname) or entity_id is None:
