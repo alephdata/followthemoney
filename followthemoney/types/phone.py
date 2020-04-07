@@ -17,6 +17,7 @@ class PhoneType(PropertyType):
     label = _('Phone number')
     plural = _('Phone numbers')
     matchable = True
+    pivot = True
 
     def _clean_countries(self, countries, country):
         result = set([None])

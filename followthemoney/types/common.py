@@ -14,6 +14,7 @@ class PropertyType(object):
     label = None
     plural = None
     matchable = True
+    pivot = False
     max_size = None
 
     def validate(self, text, **kwargs):
@@ -112,6 +113,8 @@ class PropertyType(object):
             data['group'] = self.group
         if self.matchable:
             data['matchable'] = True
+        if self.pivot:
+            data['pivot'] = True
         return data
 
     def __eq__(self, other):

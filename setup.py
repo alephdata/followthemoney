@@ -60,29 +60,6 @@ setup(
         'babel.extractors': {
             'ftmmodel = followthemoney.messages:extract_yaml'
         },
-        'followthemoney.types': {
-            'url = followthemoney.types.url:UrlType',
-            'name = followthemoney.types.name:NameType',
-            'domain = followthemoney.types.domain:DomainType',
-            'email = followthemoney.types.email:EmailType',
-            'ip = followthemoney.types.ip:IpType',
-            'iban = followthemoney.types.iban:IbanType',
-            'address = followthemoney.types.address:AddressType',
-            'date = followthemoney.types.date:DateType',
-            'phone = followthemoney.types.phone:PhoneType',
-            'country = followthemoney.types.country:CountryType',
-            'language = followthemoney.types.language:LanguageType',
-            'mimetype = followthemoney.types.mimetype:MimeType',
-            'checksum = followthemoney.types.checksum:ChecksumType',
-            'identifier = followthemoney.types.identifier:IdentifierType',
-            'entity = followthemoney.types.entity:EntityType',
-            'topic = followthemoney.types.topic:TopicType',
-            'json = followthemoney.types.json:JsonType',
-            'text = followthemoney.types.string:TextType',
-            'html = followthemoney.types.string:HTMLType',
-            'string = followthemoney.types.string:StringType',
-            'number = followthemoney.types.number:NumberType'
-        },
         'followthemoney.cli': {
             'aggregate = followthemoney.cli.aggregate:aggregate',
             'sieve = followthemoney.cli.sieve:sieve',
@@ -98,6 +75,7 @@ setup(
         'console_scripts': [
             'ftmutil = followthemoney.cli.cli:cli',
             'ftm = followthemoney.cli.cli:cli',
+            'followthemoney = followthemoney.cli.cli:cli',
         ]
     },
     tests_require=['coverage', 'nose']

@@ -15,6 +15,7 @@ class AddressType(PropertyType):
     label = _('Address')
     plural = _('Addresses')
     matchable = True
+    pivot = True
 
     def clean_text(self, address, **kwargs):
         """Basic clean-up."""

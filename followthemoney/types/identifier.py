@@ -14,6 +14,7 @@ class IdentifierType(PropertyType):
     label = _('Identifier')
     plural = _('Identifiers')
     matchable = True
+    pivot = True
 
     def normalize(self, text, **kwargs):
         """Normalize for comparison."""

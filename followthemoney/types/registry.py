@@ -1,5 +1,3 @@
-from pkg_resources import iter_entry_points
-
 from followthemoney.types.common import PropertyType
 
 
@@ -10,23 +8,24 @@ class Registry(object):
 
     def __init__(self):
         self._types = {}
-        self._all = set()
 
-    def entry_points(self):
-        yield from iter_entry_points('followthemoney.types')
+    def add(self, clazz):
+        if issubclass(clazz, PropertyType):
+            self._types[clazz.name] = clazz()
 
     @property
     def types(self):
         """Return all types known to the system."""
-        if not self._all:
-            for ep in self.entry_points():
-                self._all.add(self.get(ep.name))
-        return self._all
+        return list(self._types.values())
 
     @property
     def matchable(self):
         """Return all matchable property types."""
         return [t for t in self.types if t.matchable]
+
+    @property
+    def pivots(self):
+        return [t for t in self.types if t.pivot]
 
     @property
     def groups(self):
@@ -37,12 +36,6 @@ class Registry(object):
         # Allow transparent re-checking.
         if isinstance(name, PropertyType):
             return name
-        if name not in self._types:
-            for ep in self.entry_points():
-                if ep.name == name:
-                    clazz = ep.load()
-                    if issubclass(clazz, PropertyType):
-                        self._types[ep.name] = clazz()
         return self._types.get(name)
 
     def get_types(self, names):

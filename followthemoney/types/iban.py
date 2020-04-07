@@ -12,6 +12,7 @@ class IbanType(PropertyType):
     label = _('IBAN')
     plural = _('IBANs')
     matchable = True
+    pivot = True
 
     def validate(self, text, **kwargs):
         text = sanitize_text(text)
