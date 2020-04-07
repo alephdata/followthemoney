@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-03-13 12:37+0100\n"
+"POT-Creation-Date: 2020-04-07 13:22+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -3131,50 +3131,58 @@ msgid "Judge"
 msgstr ""
 
 #: followthemoney/types/topic.py:41
-msgid "Diplomat"
+msgid "Civil servant"
 msgstr ""
 
 #: followthemoney/types/topic.py:42
-msgid "Lawyer"
+msgid "Diplomat"
 msgstr ""
 
 #: followthemoney/types/topic.py:43
-msgid "Spy"
+msgid "Lawyer"
 msgstr ""
 
 #: followthemoney/types/topic.py:44
-msgid "Journalist"
+msgid "Accountant"
 msgstr ""
 
 #: followthemoney/types/topic.py:45
-msgid "Activist"
+msgid "Spy"
 msgstr ""
 
 #: followthemoney/types/topic.py:46
-msgid "Political party"
+msgid "Journalist"
 msgstr ""
 
 #: followthemoney/types/topic.py:47
-msgid "Union"
+msgid "Activist"
 msgstr ""
 
 #: followthemoney/types/topic.py:48
-msgid "Religion"
+msgid "Political party"
 msgstr ""
 
 #: followthemoney/types/topic.py:49
-msgid "Military"
+msgid "Union"
 msgstr ""
 
 #: followthemoney/types/topic.py:50
-msgid "Frozen asset"
+msgid "Religion"
 msgstr ""
 
 #: followthemoney/types/topic.py:51
-msgid "Sanctioned entity"
+msgid "Military"
 msgstr ""
 
 #: followthemoney/types/topic.py:52
+msgid "Frozen asset"
+msgstr ""
+
+#: followthemoney/types/topic.py:53
+msgid "Sanctioned entity"
+msgstr ""
+
+#: followthemoney/types/topic.py:54
 msgid "Person of interest"
 msgstr ""
 
