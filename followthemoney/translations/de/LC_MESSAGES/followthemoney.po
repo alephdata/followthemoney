@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-03-13 12:39+0100\n"
+"POT-Creation-Date: 2020-04-07 13:22+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2020\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -3129,50 +3129,58 @@ msgid "Judge"
 msgstr "Richter"
 
 #: followthemoney/types/topic.py:41
+msgid "Civil servant"
+msgstr ""
+
+#: followthemoney/types/topic.py:42
 msgid "Diplomat"
 msgstr "Diplomat"
 
-#: followthemoney/types/topic.py:42
+#: followthemoney/types/topic.py:43
 msgid "Lawyer"
 msgstr "Rechtsanwalt"
 
-#: followthemoney/types/topic.py:43
+#: followthemoney/types/topic.py:44
+msgid "Accountant"
+msgstr ""
+
+#: followthemoney/types/topic.py:45
 msgid "Spy"
 msgstr "Spion"
 
-#: followthemoney/types/topic.py:44
+#: followthemoney/types/topic.py:46
 msgid "Journalist"
 msgstr "Journalist"
 
-#: followthemoney/types/topic.py:45
+#: followthemoney/types/topic.py:47
 msgid "Activist"
 msgstr "Aktivist"
 
-#: followthemoney/types/topic.py:46
+#: followthemoney/types/topic.py:48
 msgid "Political party"
 msgstr "Politische Partei"
 
-#: followthemoney/types/topic.py:47
+#: followthemoney/types/topic.py:49
 msgid "Union"
 msgstr "Gewerkschaft"
 
-#: followthemoney/types/topic.py:48
+#: followthemoney/types/topic.py:50
 msgid "Religion"
 msgstr "Religion"
 
-#: followthemoney/types/topic.py:49
+#: followthemoney/types/topic.py:51
 msgid "Military"
 msgstr "Militär"
 
-#: followthemoney/types/topic.py:50
+#: followthemoney/types/topic.py:52
 msgid "Frozen asset"
 msgstr "Gesperrte Guthaben"
 
-#: followthemoney/types/topic.py:51
+#: followthemoney/types/topic.py:53
 msgid "Sanctioned entity"
 msgstr "Sanktionierte Entität"
 
-#: followthemoney/types/topic.py:52
+#: followthemoney/types/topic.py:54
 msgid "Person of interest"
 msgstr "Zielperson"
 

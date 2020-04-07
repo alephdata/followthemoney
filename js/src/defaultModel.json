@@ -236,7 +236,7 @@
           "name": "cells",
           "qname": "Row:cells",
           "label": "Cells",
-          "type": "raw",
+          "type": "json",
           "hidden": true
         },
         "table": {
@@ -3557,7 +3557,7 @@
           "name": "headers",
           "qname": "Email:headers",
           "label": "Raw headers",
-          "type": "raw",
+          "type": "json",
           "hidden": true
         },
         "responses": {
@@ -3602,7 +3602,7 @@
           "name": "columns",
           "qname": "Table:columns",
           "label": "Column headings",
-          "type": "raw",
+          "type": "json",
           "hidden": true
         },
         "rowCount": {
@@ -3758,7 +3758,7 @@
           "name": "metadata",
           "qname": "Message:metadata",
           "label": "Metadata",
-          "type": "raw",
+          "type": "json",
           "hidden": true
         },
         "responses": {
@@ -4452,10 +4452,51 @@
     }
   },
   "types": {
+    "url": {
+      "label": "URL",
+      "plural": "URLs",
+      "group": "urls",
+      "matchable": true,
+      "pivot": true
+    },
+    "name": {
+      "label": "Name",
+      "plural": "Names",
+      "group": "names",
+      "matchable": true,
+      "pivot": true
+    },
     "domain": {
       "label": "Domain",
       "plural": "Domains",
       "matchable": true
+    },
+    "email": {
+      "label": "E-Mail Address",
+      "plural": "E-Mail Addresses",
+      "group": "emails",
+      "matchable": true,
+      "pivot": true
+    },
+    "ip": {
+      "label": "IP-Address",
+      "plural": "IP-Addresses",
+      "group": "ips",
+      "matchable": true
+    },
+    "iban": {
+      "label": "IBAN",
+      "plural": "IBANs",
+      "group": "ibans",
+      "matchable": true,
+      "pivot": true
+    },
+    "address": {
+      "label": "Address",
+      "plural": "Addresses",
+      "group": "addresses",
+      "matchable": true,
+      "pivot": true
     },
     "date": {
       "label": "Date",
@@ -4463,72 +4504,12 @@
       "group": "dates",
       "matchable": true
     },
-    "email": {
-      "label": "E-Mail Address",
-      "plural": "E-Mail Addresses",
-      "group": "emails",
-      "matchable": true
-    },
-    "topic": {
-      "label": "Topic",
-      "plural": "Topics",
-      "group": "topics",
-      "values": {
-        "crime": "Crime",
-        "crime.fraud": "Fraud",
-        "crime.cyber": "Cybercrime",
-        "crime.fin": "Financial crime",
-        "crime.theft": "Theft",
-        "crime.war": "War crimes",
-        "crime.boss": "Criminal leadership",
-        "crime.terror": "Terrorism",
-        "crime.traffick": "Trafficking",
-        "crime.traffick.drug": "Drug trafficking",
-        "crime.traffick.human": "Human trafficking",
-        "corp.offshore": "Offshore",
-        "corp.shell": "Shell company",
-        "gov": "Government",
-        "gov.national": "National government",
-        "gov.state": "State government",
-        "gov.muni": "Municipal government",
-        "gov.soe": "State-owned enterprise",
-        "gov.igo": "Intergovernmental organization",
-        "fin": "Financial services",
-        "fin.bank": "Bank",
-        "fin.fund": "Fund",
-        "fin.adivsor": "Financial advisor",
-        "role.pep": "Politician",
-        "role.rca": "Associate",
-        "role.judge": "Judge",
-        "role.diplo": "Diplomat",
-        "role.lawyer": "Lawyer",
-        "role.spy": "Spy",
-        "role.journo": "Journalist",
-        "role.act": "Activist",
-        "pol.party": "Political party",
-        "pol.union": "Union",
-        "rel": "Religion",
-        "mil": "Military",
-        "asset.frozen": "Frozen asset",
-        "ctx.sanctioned": "Sanctioned entity",
-        "ctx.poi": "Person of interest"
-      }
-    },
-    "address": {
-      "label": "Address",
-      "plural": "Addresses",
-      "group": "addresses",
-      "matchable": true
-    },
-    "text": {
-      "label": "Text",
-      "plural": null
-    },
-    "entity": {
-      "label": "Entity",
-      "plural": "Entities",
-      "group": "entities",
-      "matchable": true
+    "phone": {
+      "label": "Phone number",
+      "plural": "Phone numbers",
+      "group": "phones",
+      "matchable": true,
+      "pivot": true
     },
     "country": {
       "label": "Country",
@@ -4810,51 +4791,6 @@
         "zw": "Zimbabwe"
       }
     },
-    "iban": {
-      "label": "IBAN",
-      "plural": "IBANs",
-      "group": "ibans",
-      "matchable": true
-    },
-    "identifier": {
-      "label": "Identifier",
-      "plural": "Identifiers",
-      "group": "identifiers",
-      "matchable": true
-    },
-    "phone": {
-      "label": "Phone number",
-      "plural": "Phone numbers",
-      "group": "phones",
-      "matchable": true
-    },
-    "html": {
-      "label": "HTML",
-      "plural": null
-    },
-    "string": {
-      "label": "Label",
-      "plural": "Labels"
-    },
-    "number": {
-      "label": "Number",
-      "plural": "Numbers"
-    },
-    "mimetype": {
-      "label": "MIME-Type",
-      "plural": "MIME-Types",
-      "group": "mimetypes"
-    },
-    "ip": {
-      "label": "IP-Address",
-      "plural": "IP-Addresses",
-      "group": "ips",
-      "matchable": true
-    },
-    "raw": {
-      "label": "Nested data",
-      "plural": null
-    },
     "language": {
       "label": "Language",
       "plural": "Languages",
@@ -4919,11 +4855,10 @@
         "cat": "Catalan"
       }
     },
-    "url": {
-      "label": "URL",
-      "plural": "URLs",
-      "group": "urls",
-      "matchable": true
+    "mimetype": {
+      "label": "MIME-Type",
+      "plural": "MIME-Types",
+      "group": "mimetypes"
     },
     "checksum": {
       "label": "Checksum",
@@ -4931,11 +4866,85 @@
       "group": "checksums",
       "matchable": true
     },
-    "name": {
-      "label": "Name",
-      "plural": "Names",
-      "group": "names",
+    "identifier": {
+      "label": "Identifier",
+      "plural": "Identifiers",
+      "group": "identifiers",
+      "matchable": true,
+      "pivot": true
+    },
+    "entity": {
+      "label": "Entity",
+      "plural": "Entities",
+      "group": "entities",
       "matchable": true
+    },
+    "topic": {
+      "label": "Topic",
+      "plural": "Topics",
+      "group": "topics",
+      "values": {
+        "crime": "Crime",
+        "crime.fraud": "Fraud",
+        "crime.cyber": "Cybercrime",
+        "crime.fin": "Financial crime",
+        "crime.theft": "Theft",
+        "crime.war": "War crimes",
+        "crime.boss": "Criminal leadership",
+        "crime.terror": "Terrorism",
+        "crime.traffick": "Trafficking",
+        "crime.traffick.drug": "Drug trafficking",
+        "crime.traffick.human": "Human trafficking",
+        "corp.offshore": "Offshore",
+        "corp.shell": "Shell company",
+        "gov": "Government",
+        "gov.national": "National government",
+        "gov.state": "State government",
+        "gov.muni": "Municipal government",
+        "gov.soe": "State-owned enterprise",
+        "gov.igo": "Intergovernmental organization",
+        "fin": "Financial services",
+        "fin.bank": "Bank",
+        "fin.fund": "Fund",
+        "fin.adivsor": "Financial advisor",
+        "role.pep": "Politician",
+        "role.rca": "Associate",
+        "role.judge": "Judge",
+        "role.civil": "Civil servant",
+        "role.diplo": "Diplomat",
+        "role.lawyer": "Lawyer",
+        "role.acct": "Accountant",
+        "role.spy": "Spy",
+        "role.journo": "Journalist",
+        "role.act": "Activist",
+        "pol.party": "Political party",
+        "pol.union": "Union",
+        "rel": "Religion",
+        "mil": "Military",
+        "asset.frozen": "Frozen asset",
+        "ctx.sanctioned": "Sanctioned entity",
+        "ctx.poi": "Person of interest"
+      }
+    },
+    "json": {
+      "label": "Nested data",
+      "plural": null
+    },
+    "text": {
+      "label": "Text",
+      "plural": null
+    },
+    "html": {
+      "label": "HTML",
+      "plural": null
+    },
+    "string": {
+      "label": "Label",
+      "plural": "Labels"
+    },
+    "number": {
+      "label": "Number",
+      "plural": "Numbers"
     }
   }
 }
