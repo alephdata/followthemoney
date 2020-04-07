@@ -18,6 +18,7 @@ class EmailType(PropertyType):
     label = _('E-Mail Address')
     plural = _('E-Mail Addresses')
     matchable = True
+    pivot = True
 
     def validate(self, email, **kwargs):
         """Check to see if this is a valid email address."""

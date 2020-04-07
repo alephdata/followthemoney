@@ -11,6 +11,7 @@ class UrlType(PropertyType):
     label = _('URL')
     plural = _('URLs')
     matchable = True
+    pivot = True
 
     def validate(self, url, **kwargs):
         """Check if `url` is a valid URL."""

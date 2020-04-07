@@ -6,7 +6,7 @@ from followthemoney.util import sanitize_text, defer as _
 
 
 class JsonType(PropertyType):
-    name = 'raw'
+    name = 'json'
     group = None
     label = _('Nested data')
     matchable = False

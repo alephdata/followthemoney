@@ -14,6 +14,7 @@ class NameType(PropertyType):
     label = _('Name')
     plural = _('Names')
     matchable = True
+    pivot = True
 
     def clean_text(self, name, **kwargs):
         """Basic clean-up."""
