@@ -30,6 +30,18 @@ class Node(object):
             return self.proxy.caption
         return self.value
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'type': self.type.name,
+            'value': self.value,
+            'caption': self.caption
+        }
+
+    @classmethod
+    def from_proxy(cls, proxy):
+        return cls(registry.entity, proxy.id, proxy=proxy)
+
     def __str__(self):
         return self.caption
 
@@ -75,6 +87,14 @@ class Edge(object):
     @property
     def type_name(self):
         return self.prop.name if self.proxy is None else self.proxy.schema.name
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'source_id': self.source_id,
+            'target_id': self.target_id,
+            'type_name': self.type_name
+        }
 
     def __repr__(self):
         return '<Edge(%r)>' % self.id
@@ -130,7 +150,7 @@ class Graph(object):
 
     def _add_node(self, proxy):
         """Derive a node and its value edges from the given proxy."""
-        entity = Node(registry.entity, proxy.id, proxy=proxy)
+        entity = Node.from_proxy(proxy)
         self.nodes[entity.id] = entity
         for prop, value in proxy.itervalues():
             if prop.type not in self.edge_types:
@@ -141,6 +161,8 @@ class Graph(object):
                 self.edges[edge.id] = edge
 
     def add(self, proxy):
+        if proxy is None:
+            return
         self.queue(proxy.id, proxy)
         if proxy.schema.edge:
             for (source, target) in proxy.edgepairs():
@@ -153,3 +175,9 @@ class Graph(object):
 
     def iteredges(self):
         return self.edges.values()
+
+    def to_dict(self):
+        return {
+            'nodes': [n.to_dict() for n in self.iternodes()],
+            'edges': [e.to_dict() for e in self.iteredges()]
+        }
