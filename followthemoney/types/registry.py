@@ -1,3 +1,4 @@
+from banal import ensure_list
 from followthemoney.types.common import PropertyType
 
 
@@ -39,6 +40,7 @@ class Registry(object):
         return self._types.get(name)
 
     def get_types(self, names):
+        names = ensure_list(names)
         return [self.get(n) for n in names if self.get(n) is not None]
 
     def __getattr__(self, name):
