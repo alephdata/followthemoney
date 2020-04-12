@@ -113,13 +113,8 @@ class ModelTestCase(TestCase):
         thing = model.schemata['Thing']
         name = thing.get('name')
         assert name.name in repr(name), repr(name)
-        assert name.required, name.required
         assert not name.hidden, name.hidden
-
         assert name.validate('huhu') is None
-        assert name.validate(None) is not None
-        assert name.validate([]) is not None
-        assert name.validate('') is not None
 
         person = model.get('Person')
         assert str(person.uri) == 'http://xmlns.com/foaf/0.1/Person'

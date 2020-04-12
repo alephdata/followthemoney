@@ -7,6 +7,7 @@ interface IEdgeSpecification {
   directed: boolean
   label?: string
   caption: string[]
+  required?: string[]
 }
 
 export type SchemaSpec = string | null | undefined | Schema;
@@ -16,7 +17,6 @@ export interface ISchemaDatum {
   plural: string
   schemata: string[]
   extends: string[]
-  required?: boolean
   abstract?: boolean
   matchable?: boolean
   generated?: boolean
@@ -24,6 +24,7 @@ export interface ISchemaDatum {
   edge?: IEdgeSpecification
   featured?: string[]
   caption?: string[]
+  required?: string[]
   properties: {
     [x: string]: IPropertyDatum
   }
@@ -45,6 +46,7 @@ export class Schema {
   public readonly schemata: string[]
   public readonly extends: string[]
   public readonly caption: string[]
+  public readonly required: string[]
   public readonly edge?: IEdgeSpecification
   public readonly isEdge: boolean
   private properties: Map<string, Property> = new Map()
@@ -58,6 +60,7 @@ export class Schema {
     this.extends = config.extends
     this.featured = config.featured || new Array()
     this.caption = config.caption || new Array()
+    this.required = config.required || new Array()
     this.abstract = !!config.abstract
     this.matchable = !!config.matchable
     this.generated = !!config.generated

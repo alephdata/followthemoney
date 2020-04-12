@@ -37,6 +37,11 @@ class Schema(object):
         # first, or in an abridged view of the entity.
         self.featured = ensure_list(data.get('featured'))
 
+        # Mark a set of properties as required. This is applied only when
+        # an entity is created by the user - bulk created entities will
+        # slip through even if it is technically invalid.
+        self.required = ensure_list(data.get('required'))
+
         # Mark a set of properties to be used for the entity's caption.
         # They will be checked in order and the first existant value will
         # be used.
@@ -165,8 +170,11 @@ class Schema(object):
         errors = {}
         properties = ensure_dict(data.get('properties'))
         for name, prop in self.properties.items():
-            values = properties.get(name)
+            values = ensure_list(properties.get(name))
             error = prop.validate(values)
+            if error is None and not len(values):
+                if prop.name in self.required:
+                    error = gettext('Required')
             if error is not None:
                 errors[name] = error
         if len(errors):
@@ -191,6 +199,8 @@ class Schema(object):
             }
         if len(self.featured):
             data['featured'] = self.featured
+        if len(self.required):
+            data['required'] = self.required
         if len(self.caption):
             data['caption'] = self.caption
         if self.description:
