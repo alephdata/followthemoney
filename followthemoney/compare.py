@@ -27,9 +27,7 @@ MATCH_WEIGHTS = {
 
 
 def compare(model, left, right):
-    """Compare two entities and return number between 0 and 1.
-    Returned number indicates probability that two entities are the same.
-    """
+    """Compare two entities and return a match score."""
     left = model.get_proxy(left)
     right = model.get_proxy(right)
     if right.schema not in list(left.schema.matchable_schemata):

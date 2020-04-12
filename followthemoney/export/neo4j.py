@@ -7,7 +7,7 @@ from followthemoney.export.csv import CSVMixin
 from followthemoney.export.graph import GraphExporter, DEFAULT_EDGE_TYPES
 
 log = logging.getLogger(__name__)
-NEO4J_ADMIN_PATH = os.environ.get('NEO4J_ADMIN_PATH', 'bin/neo4j-admin')
+NEO4J_ADMIN_PATH = os.environ.get('NEO4J_ADMIN_PATH', 'neo4j-admin')
 NEO4J_DATABASE_NAME = os.environ.get('NEO4J_DATABASE_NAME', 'graph.db')
 
 
