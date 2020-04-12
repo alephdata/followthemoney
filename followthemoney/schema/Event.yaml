@@ -11,6 +11,8 @@ Event:
   - name
   - summary
   - date
+  required:
+  - name
   featured:
   - name
   - summary

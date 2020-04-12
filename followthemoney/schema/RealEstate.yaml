@@ -5,12 +5,15 @@ RealEstate:
   extends: Asset
   matchable: false
   featured:
-    - registrationNumber
-    - address
-    - country
+  - registrationNumber
+  - address
+  - country
+  # required:
+  # - address
   caption:
-    - name
-    - registrationNumber
+  - name
+  - address
+  - registrationNumber
   properties:
     latitude:
       label: Latitude

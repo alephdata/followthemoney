@@ -4,9 +4,12 @@ CourtCaseParty:
   extends: Interest
   matchable: false
   featured:
-    - party
-    - case
-    - role
+  - party
+  - case
+  - role
+  required:
+  - case
+  - party
   edge:
     source: party
     label: "involved in"

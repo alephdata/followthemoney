@@ -5,9 +5,12 @@ Associate:
   extends: Interval
   matchable: false
   featured:
-    - person
-    - associate
-    - relationship
+  - person
+  - associate
+  - relationship
+  required:
+  - person
+  - associate
   edge:
     source: person
     label: "associated with"
