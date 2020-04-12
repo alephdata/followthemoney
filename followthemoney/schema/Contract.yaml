@@ -7,12 +7,15 @@ Contract:
   extends: Asset
   matchable: false
   featured:
-    - name
-    - amount
-    - authority
-    - contractDate
+  - name
+  - amount
+  - authority
+  - contractDate
+  required:
+  - name
+  # - authority
   caption:
-    - name
+  - name
   properties:
     authority:
       label: "Contract authority"

@@ -4,13 +4,14 @@ Thing:
   featured:
   - name
   - country
+  required:
+  - name
   caption:
   - name
   properties:
     name:
       label: Name
       type: name
-      required: true
       rdf: http://www.w3.org/2004/02/skos/core#prefLabel
     sameAs:
       label: "Same as"

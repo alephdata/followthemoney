@@ -4,11 +4,16 @@ Membership:
   extends: Interest
   matchable: false
   featured:
-    - member
-    - organization
-    - role
-    - startDate
-    - endDate
+  - member
+  - organization
+  - role
+  - startDate
+  - endDate
+  required:
+  - member
+  - organization
+  caption:
+  - role
   edge:
     source: member
     label: "belongs to"

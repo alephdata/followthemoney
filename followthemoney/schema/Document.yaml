@@ -11,6 +11,8 @@ Document:
   - fileName
   - mimeType
   - parent
+  required:
+  - fileName
   caption:
   - fileName
   - title

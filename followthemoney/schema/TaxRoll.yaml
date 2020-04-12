@@ -6,11 +6,13 @@ TaxRoll:
   icon: fa-bank
   matchable: false
   featured:
-    - taxee
-    - date
-    - income
-    - wealth
-    - taxPaid
+  - taxee
+  - date
+  - income
+  - wealth
+  - taxPaid
+  required:
+  - taxee
   properties:
     taxee:
       label: "Taxee"

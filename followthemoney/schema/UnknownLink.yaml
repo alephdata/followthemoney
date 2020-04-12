@@ -5,9 +5,12 @@ UnknownLink:
   extends: Interest
   matchable: false
   featured:
-    - subject
-    - object
-    - role
+  - subject
+  - object
+  - role
+  required:
+  - subject
+  - object
   edge:
     source: subject
     label: "linked to"

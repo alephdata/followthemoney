@@ -2,7 +2,7 @@ Asset:
   label: Asset
   plural: Assets
   extends: 
-    - Thing
-    - Value
+  - Thing
+  - Value
   abstract: false
   matchable: false

@@ -9,6 +9,8 @@ Person:
   - name
   - nationality
   - birthDate
+  required:
+  - name
   caption:
   - name
   - lastName

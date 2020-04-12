@@ -5,4 +5,6 @@ PublicBody:
   extends: Organization
   matchable: true
   caption:
-    - name
+  - name
+  required:
+  - name

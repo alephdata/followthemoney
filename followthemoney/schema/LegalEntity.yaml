@@ -8,6 +8,8 @@ LegalEntity:
   - name
   - legalForm
   - country
+  required:
+  - name
   caption:
   - name
   - email
