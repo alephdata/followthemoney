@@ -1,59 +1,61 @@
 from unittest import TestCase
+from copy import deepcopy
 
 from followthemoney import model
-from followthemoney.dedupe import EntityLinker
+from followthemoney.dedupe import Linker, Match
+
+SAMPLE = {
+    'decision': False,
+    'canonical': {
+        'id': 'can',
+        'schema': 'Person',
+        'properties': {
+            'name': ['Tom']
+        }
+    },
+    'entity': {
+        'id': 'ent',
+        'schema': 'LegalEntity',
+        'properties': {
+            'name': ['Thomas']
+        }
+    }
+}
 
 
 class LinkerTestCase(TestCase):
 
     def test_linker(self):
-        linker = EntityLinker()
-        self.assertEqual(linker.resolve('abc'), 'abc')
-        self.assertEqual(linker.resolve({'id': 'abc'}), 'abc')
-        linker.add('abc', 'bbc')
-        linker.add('abc', None)
-        linker.add('abc', 'abc')
-        self.assertEqual(linker.resolve('abc'), linker.resolve('bbc'))
-        self.assertEqual(linker.resolve('bbc'), linker.resolve('abc'))
-        linker.add('bbc', 'ccc')
-        self.assertEqual(linker.resolve('abc'), linker.resolve('ccc'))
-        self.assertEqual(linker.resolve('bbc'), linker.resolve('ccc'))
-        linker.add('bbc', 'abc')
-        self.assertEqual(linker.resolve('abc'), linker.resolve('ccc'))
-        self.assertEqual(linker.resolve('bbc'), linker.resolve('ccc'))
-        linker.add('ccc', 'abc')
-        self.assertEqual(linker.resolve('abc'), linker.resolve('ccc'))
-        self.assertEqual(linker.resolve('bbc'), linker.resolve('ccc'))
-        linker.add('ccc', 'cdc')
-        self.assertEqual(linker.resolve('abc'), linker.resolve('cdc'))
-        self.assertEqual(linker.resolve('bbc'), linker.resolve('cdc'))
-
-        self.assertTrue(linker.has('abc'))
-        self.assertTrue(linker.has('cdc'))
-        self.assertFalse(linker.has('x'))
-        self.assertFalse(linker.has(None))
-
-    def test_remove_ns(self):
-        linker = EntityLinker()
-        linker.add('abc.xxx', 'bbc.xxx')
-        self.assertEqual(linker.resolve('bbc'), linker.resolve('abc'))
-        self.assertEqual(linker.resolve('bbc'), 'abc')
-
-    def test_linker_apply(self):
-        linker = EntityLinker()
-        linker.add('foo', 'fox')
-        linker.add('fox', 'bar')
-        linker.add('qux', 'quux')
-
-        entity = model.get_proxy({
-            'id': 'foo',
-            'schema': 'Company',
+        match = Match(model, deepcopy(SAMPLE))
+        match.decision = True
+        passport = model.get_proxy({
+            'id': 'pass',
+            'schema': 'Passport',
             'properties': {
-                'sameAs': ['qux', 'banana']
+                'holder': ['ent']
             }
         })
-        linked = linker.apply(entity)
-        self.assertEqual(linked.id, 'bar')
-        self.assertNotIn('bar', linked.get('sameAs'))
-        self.assertIn('banana', linked.get('sameAs'))
-        self.assertIn('qux', linked.get('sameAs'))
+        linker = Linker(model)
+        linker.add(match)
+        out = linker.apply(match.entity)
+        assert out.id == 'can', out
+        out = linker.apply(passport)
+        assert 'can' in out.get('holder'), out
+        assert 'ent' not in out.get('holder'), out
+
+    def test_linker_noop(self):
+        match = Match(model, deepcopy(SAMPLE))
+        passport = model.get_proxy({
+            'id': 'pass',
+            'schema': 'Passport',
+            'properties': {
+                'holder': ['ent']
+            }
+        })
+        linker = Linker(model)
+        linker.add(match)
+        out = linker.apply(match.entity)
+        assert out.id == 'ent', out
+        out = linker.apply(passport)
+        assert 'ent' in out.get('holder'), out
+        assert 'can' not in out.get('holder'), out
