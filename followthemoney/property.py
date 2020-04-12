@@ -1,10 +1,10 @@
 from normality import stringify
-from banal import ensure_list, is_mapping
+from banal import is_mapping
 from rdflib import URIRef
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry
-from followthemoney.util import gettext, NS
+from followthemoney.util import gettext, NS, get_entity_id
 
 
 class Property(object):
@@ -22,7 +22,6 @@ class Property(object):
         self.data = data
         self._label = data.get('label', name)
         self._description = data.get('description')
-        self.required = data.get('required', False)
         self.hidden = data.get('hidden', False)
         self.stub = data.get('stub', False)
 
@@ -69,15 +68,12 @@ class Property(object):
         tries to normalize the value to see if it passes strict parsing.
         """
         values = []
-        for val in ensure_list(data):
-            if is_mapping(val):
-                val = val.get('id')
+        for val in data:
+            val = get_entity_id(val)
             if not self.type.validate(val):
                 return gettext('Invalid value')
             if val is not None:
                 values.append(val)
-        if self.required and not len(values):
-            return gettext('Required')
 
     def __eq__(self, other):
         return self.qname == other.qname
@@ -96,8 +92,6 @@ class Property(object):
             data['description'] = self.description
         if self.stub:
             data['stub'] = True
-        if self.required:
-            data['required'] = True
         if self.matchable:
             data['matchable'] = True
         if self.hidden:
