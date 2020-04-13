@@ -23,15 +23,11 @@ setup(
         'followthemoney',
         'alephclient',
         'requests',
-        'mwclient',  # wikipedia
-        'rdflib',  # wikidata
         'redis',
-        'zeep',  # bvd orbis (soap)
     ],
     entry_points={
         'followthemoney.enrich': [
             'aleph = followthemoney_enrich.aleph:AlephEnricher',
-            'orbis = followthemoney_enrich.orbis:OrbisEnricher',
             'opencorporates = followthemoney_enrich.opencorporates:OpenCorporatesEnricher',  # noqa
         ],
         'followthemoney.cli': [

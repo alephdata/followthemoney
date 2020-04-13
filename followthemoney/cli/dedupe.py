@@ -27,3 +27,35 @@ def link(infile, outfile, matches):
             write_object(outfile, entity)
     except BrokenPipeError:
         raise click.Abort()
+
+
+@cli.command('match-decide', help="Generate match decisions based purely on score")  # noqa
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+@click.option('-t', '--threshold', type=float, default=0.8)
+def auto_match(infile, outfile, threshold):
+    try:
+        for match in Match.from_file(model, infile):
+            if match.decision is None:
+                if match.score is not None and match.score > threshold:
+                    match.decision = True
+            write_object(outfile, match)
+    except BrokenPipeError:
+        raise click.Abort()
+
+
+@cli.command('match-entities', help="Unnests matches into entities")
+@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+@click.option('-a', '--all', type=bool, default=False, help='Unnest non-positive matches')  # noqa
+def result_entities(infile, outfile, all):
+    try:
+        for match in Match.from_file(model, infile):
+            if not all and match.decision is not True:
+                continue
+            if match.canonical is not None:
+                write_object(outfile, match.canonical)
+            if match.entity is not None:
+                write_object(outfile, match.entity)
+    except BrokenPipeError:
+        raise click.Abort()

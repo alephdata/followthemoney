@@ -21,7 +21,7 @@ class RedisCache(Cache):
         self.redis = redis
 
     def _prefix_key(self, key):
-        return 'enrich:%s' % stringify(key)
+        return 'ftm:enrich:%s' % stringify(key)
 
     def store(self, key, value):
         key = self._prefix_key(key)

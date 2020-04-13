@@ -1,8 +1,9 @@
 import logging
 from pprint import pprint  # noqa
 
+from followthemoney import model
+from followthemoney.dedupe import Match
 from followthemoney_enrich.cache import Cache
-from followthemoney_enrich.result import Result
 
 log = logging.getLogger(__name__)
 
@@ -11,16 +12,16 @@ class Enricher(object):
     cache = Cache()
     name = None
 
-    def make_result(self, subject):
-        return Result(self, subject)
+    def make_match(self, canonical, entity):
+        match = Match(model, {})
+        match.canonical = model.get_proxy(canonical)
+        match.entity = model.get_proxy(entity)
+        return match
 
     def expand_entity(self, entity):
         """Get adjacent entities to an entity."""
-        return self.make_result(entity)
+        return []
 
     def enrich_entity(self, entity):
         """Find possible candidates for an entity."""
         return []
-
-    def close(self):
-        pass
