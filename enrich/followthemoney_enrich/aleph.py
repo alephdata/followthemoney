@@ -7,19 +7,16 @@ from banal import is_mapping, ensure_dict, ensure_list, hash_data
 from followthemoney import model
 from followthemoney.exc import InvalidData
 from followthemoney_enrich.enricher import Enricher
-from followthemoney_enrich.util import make_url
 
 log = logging.getLogger(__name__)
 
 
 class AlephEnricher(Enricher):
-    TYPE_CONSTRAINT = 'LegalEntity'
 
     def __init__(self):
         self.api = AlephAPI()
 
-    def get_api(self, url, params=None):
-        url = make_url(url, params)
+    def get_api(self, url):
         data = self.cache.get(url)
         if data is not None:
             return data
@@ -39,10 +36,10 @@ class AlephEnricher(Enricher):
         key = proxy.id or hash_data(data)
         key = hash_data((url, key))
         if self.cache.has(key):
-            # log.info("Cached [%s]: %s", self.host, proxy)
+            log.info("Cached [%s]: %s", key, url)
             return self.cache.get(key)
 
-        log.info("Enrich [%s]: %s", self.host, proxy)
+        log.info("Enrich: %r", proxy)
         try:
             res = self.api.session.post(url, json=data)
         except RequestException:
@@ -75,23 +72,16 @@ class AlephEnricher(Enricher):
                    quiet=True, cleaned=True)
         return entity
 
-    def convert_nested(self, entity, data):
+    def convert_nested(self, data):
+        entity = self.convert_entity(data)
         properties = ensure_dict(data.get('properties'))
         for prop, values in properties.items():
             for value in ensure_list(values):
                 if is_mapping(value):
                     yield self.convert_entity(value)
-                try:
-                    entity.add(prop, value, cleaned=False)
-                except InvalidData:
-                    msg = "Server property mismatch (%s): %s"
-                    log.warning(msg % (entity.schema.name, prop))
         yield entity
 
     def enrich_entity(self, entity):
-        if not entity.schema.matchable:
-            return
-
         url = self.api._make_url('match')
         for page in range(10):
             data = self.post_match(url, entity)
@@ -104,17 +94,18 @@ class AlephEnricher(Enricher):
                 break
 
     def expand_entity(self, entity):
-        result = super(AlephEnricher, self).expand_entity(entity)
         for url in entity.get('alephUrl', quiet=True):
-            _, entity_id = url.rsplit('/', 1)
             data = self.get_api(url)
-            for entity in self.convert_nested(entity, data):
-                yield entity
-            self.convert_entity(result, data)
-            search_api = self.api._make_url('search')
-            params = {'filter:entities': entity_id}
-            entities = self.get_api(search_api, params=params)
-            for data in ensure_list(entities.get('results')):
-                linked = self.convert_entity(data)
-                for entity in self.convert_nested(linked, data):
-                    yield linked
+            yield from self.convert_nested(data)
+
+            _, entity_id = url.rsplit('/', 1)
+            filters = (('entities', entity_id),)
+            search_api = self.api._make_url('entities', filters=filters)
+            while True:
+                res = self.get_api(search_api)
+                for data in ensure_list(res.get('results')):
+                    yield from self.convert_nested(data)
+
+                search_api = res.get('next')
+                if search_api is None:
+                    break

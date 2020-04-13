@@ -22,6 +22,11 @@ class Enricher(object):
         """Get adjacent entities to an entity."""
         return []
 
+    def enrich_entity_raw(self, entity):
+        if not entity.schema.matchable:
+            return
+        yield from self.enrich_entity(entity)
+
     def enrich_entity(self, entity):
         """Find possible candidates for an entity."""
         return []

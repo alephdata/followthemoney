@@ -1,4 +1,6 @@
+import os
 import json
+from redis import Redis
 from normality import stringify
 
 
@@ -16,9 +18,10 @@ class Cache(object):
 
 class RedisCache(Cache):
     EXPIRE = 84600 * 90
+    URL = os.environ.get('ENRICH_REDIS_URL')
 
-    def __init__(self, redis):
-        self.redis = redis
+    def __init__(self):
+        self.redis = Redis.from_url(self.URL)
 
     def _prefix_key(self, key):
         return 'ftm:enrich:%s' % stringify(key)

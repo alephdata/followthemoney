@@ -31,7 +31,7 @@ def enrich(infile, outfile, enricher):
             entity = read_entity(infile)
             if entity is None:
                 break
-            for match in enricher.enrich_entity(entity):
+            for match in enricher.enrich_entity_raw(entity):
                 write_object(outfile, match)
     except BrokenPipeError:
         raise click.Abort()

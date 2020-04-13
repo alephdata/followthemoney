@@ -1,12 +1,12 @@
 import os
 import logging
 import requests
+from urllib.parse import urlencode
 from banal import ensure_list, ensure_dict
 from requests.exceptions import RequestException
 
 from followthemoney import model
 from followthemoney_enrich.enricher import Enricher
-from followthemoney_enrich.util import make_url
 
 log = logging.getLogger(__name__)
 
@@ -14,23 +14,30 @@ log = logging.getLogger(__name__)
 class OpenCorporatesEnricher(Enricher):
     COMPANY_SEARCH_API = 'https://api.opencorporates.com/v0.4/companies/search'
     OFFICER_SEARCH_API = 'https://api.opencorporates.com/v0.4/officers/search'
-    COMPANY_NO_API = 'https://api.opencorporates.com/v0.4/companies/'
-    GROUPING_API = 'https://api.opencorporates.com/v0.4/corporate_groupings/search'  # noqa
+    UI_PART = '://opencorporates.com/'
+    API_PART = '://api.opencorporates.com/v0.4/'
 
     def __init__(self):
         self.session = requests.Session()
-        self.api_token = os.environ.get('ENRICH_OPENCORPORATES_API_TOKEN')
+        env_var = 'ENRICH_OPENCORPORATES_API_TOKEN'
+        self.api_token = os.environ.get(env_var)
         if self.api_token is None:
-            log.warning("OpenCorporates enricher has no API token")
+            log.warning("OpenCorporates has no API token ($%s)" % env_var)
 
-    def get_api(self, url, params=None):
-        url = url.replace('https://opencorporates.com/',
-                          'https://api.opencorporates.com/v0.4/')
-        url = make_url(url, params)
+    def make_url(self, url, params=None):
+        url = url.replace(self.UI_PART, self.API_PART)
+        if params is not None:
+            query = urlencode(params)
+            url = '%s?%s' % (url, query)
+        return url
+
+    def get_api(self, url):
         if self.cache.has(url):
             return self.cache.get(url)
 
-        auth = {'api_token': self.api_token}
+        auth = {}
+        if self.api_token:
+            auth['api_token'] = self.api_token
         try:
             log.info("Enrich: %s", url)
             res = self.session.get(url, params=auth)
@@ -99,7 +106,7 @@ class OpenCorporatesEnricher(Enricher):
         return entity
 
     def get_query(self, entity):
-        params = {'q': entity.caption}
+        params = {'q': entity.caption, 'sparse': True}
         for jurisdiction in entity.get('jurisdiction'):
             params['jurisdiction_code'] = jurisdiction.lower()
         return params
@@ -108,7 +115,8 @@ class OpenCorporatesEnricher(Enricher):
         params = self.get_query(entity)
         for page in range(1, 9):
             params['page'] = page
-            results = self.get_api(self.COMPANY_SEARCH_API, params=params)
+            url = self.make_url(self.COMPANY_SEARCH_API, params)
+            results = self.get_api(url)
             companies = results.get('results', {}).get('companies')
             for company in ensure_list(companies):
                 proxy = self.company_entity(company)
@@ -120,7 +128,8 @@ class OpenCorporatesEnricher(Enricher):
         params = self.get_query(entity)
         for page in range(1, 9):
             params['page'] = page
-            results = self.get_api(self.OFFICER_SEARCH_API, params=params)
+            url = self.make_url(self.OFFICER_SEARCH_API, params)
+            results = self.get_api(url)
             officers = results.get('results', {}).get('officers')
             for officer in ensure_list(officers):
                 proxy = self.officer_entity(officer)
@@ -129,8 +138,6 @@ class OpenCorporatesEnricher(Enricher):
                 break
 
     def enrich_entity(self, entity):
-        if self.api_token is None:
-            return
         schema = entity.schema.name
         if schema in ['Company', 'Organization', 'LegalEntity']:
             yield from self.search_companies(entity)
@@ -156,15 +163,16 @@ class OpenCorporatesEnricher(Enricher):
             directorship = model.make_entity('Directorship')
             directorship.make_id(data.get('opencorporates_url'),
                                  'Directorship')
-            directorship.add('director', entity.id)
+            directorship.add('director', entity)
             directorship.add('startDate', data.get('start_date'))
             directorship.add('endDate', data.get('end_date'))
-            directorship.add('organization', company.id)
+            directorship.add('organization', company)
             directorship.add('role', data.get('position'))
             yield directorship
 
     def expand_entity(self, entity):
         for url in entity.get('opencorporatesUrl', quiet=True):
+            url = self.make_url(url)
             data = self.get_api(url).get('results', {})
             if 'company' in data:
                 yield from self.expand_company(entity, data)

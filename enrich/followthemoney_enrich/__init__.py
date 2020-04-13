@@ -1,13 +1,9 @@
 import logging
-from os import environ
-from redis import Redis
 from pkg_resources import iter_entry_points
 
-from followthemoney_enrich.aleph import AlephEnricher
-from followthemoney_enrich.opencorporates import OpenCorporatesEnricher
+from followthemoney_enrich.aleph import AlephEnricher  # noqa
+from followthemoney_enrich.opencorporates import OpenCorporatesEnricher  # noqa
 from followthemoney_enrich.cache import Cache, RedisCache
-
-REDIS_URL = environ.get('ENRICH_CACHE_REDIS_URL')
 
 log = logging.getLogger(__name__)
 
@@ -27,13 +23,6 @@ def get_enricher(name):
 
 def enricher_cache():
     cache = Cache()
-    if REDIS_URL is not None:
-        redis = Redis.from_url(REDIS_URL)
-        cache = RedisCache(redis)
+    if RedisCache.URL is not None:
+        cache = RedisCache()
     return cache
-
-
-__all__ = [
-    OpenCorporatesEnricher,
-    AlephEnricher,
-]
