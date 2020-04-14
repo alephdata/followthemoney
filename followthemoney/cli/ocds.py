@@ -73,7 +73,7 @@ def convert_party(party):
     return entity
 
 
-def convert_release(release):
+def convert_item(release):
     for party in release.pop('parties', []):
         yield convert_party(party)
 
@@ -85,7 +85,7 @@ def convert_release(release):
 
     tender = release.pop('tender', {})
     contract = model.make_entity('Contract')
-    contract.make_id(release.pop('ocid', None))
+    contract.make_id(release.pop('ocid', release.pop('id', None)))
     contract.add('authority', authority)
     contract.add('name', tender.pop('title', None))
     if not contract.has('name'):
@@ -141,18 +141,18 @@ def convert_record(record):
     published_date = clean_date(record.pop('publishedDate', None))
     publisher = record.pop('publisher', {}).get('name')
     if record.get('tag'):
-        for entity in convert_release(record):
+        for entity in convert_item(record):
             entity.add('publisher', publisher, quiet=True)
             entity.add('modifiedAt', published_date, quiet=True)
             yield entity
     elif record.get('compiledRelease'):
-        for entity in convert_release(record.get('compiledRelease', {})):
+        for entity in convert_item(record.get('compiledRelease', {})):
             entity.add('publisher', publisher, quiet=True)
             entity.add('modifiedAt', published_date, quiet=True)
             yield entity
     elif record.get('releases'):
         for release in record.get('releases', []):
-            for entity in convert_release(release):
+            for entity in convert_item(release):
                 entity.add('publisher', publisher, quiet=True)
                 entity.add('modifiedAt', published_date, quiet=True)
                 yield entity
