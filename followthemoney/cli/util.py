@@ -10,7 +10,7 @@ from followthemoney import model
 def write_object(stream, obj):
     if hasattr(obj, 'to_dict'):
         obj = obj.to_dict()
-    data = json.dumps(obj)
+    data = json.dumps(obj, sort_keys=True)
     stream.write(data + '\n')
 
 

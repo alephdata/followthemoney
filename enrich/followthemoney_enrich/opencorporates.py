@@ -1,37 +1,43 @@
 import os
 import logging
 import requests
+from urllib.parse import urlencode
 from banal import ensure_list, ensure_dict
 from requests.exceptions import RequestException
 
+from followthemoney import model
 from followthemoney_enrich.enricher import Enricher
-from followthemoney_enrich.util import make_url
 
 log = logging.getLogger(__name__)
 
 
 class OpenCorporatesEnricher(Enricher):
-    key_prefix = 'opencorporates'
-
     COMPANY_SEARCH_API = 'https://api.opencorporates.com/v0.4/companies/search'
     OFFICER_SEARCH_API = 'https://api.opencorporates.com/v0.4/officers/search'
-    COMPANY_NO_API = 'https://api.opencorporates.com/v0.4/companies/'
-    GROUPING_API = 'https://api.opencorporates.com/v0.4/corporate_groupings/search'  # noqa
+    UI_PART = '://opencorporates.com/'
+    API_PART = '://api.opencorporates.com/v0.4/'
 
     def __init__(self):
         self.session = requests.Session()
-        self.api_token = os.environ.get('ENRICH_OPENCORPORATES_API_TOKEN')
+        env_var = 'ENRICH_OPENCORPORATES_API_TOKEN'
+        self.api_token = os.environ.get(env_var)
         if self.api_token is None:
-            log.warning("OpenCorporates enricher has no API token")
+            log.warning("OpenCorporates has no API token ($%s)" % env_var)
 
-    def get_api(self, url, params=None):
-        url = url.replace('https://opencorporates.com/',
-                          'https://api.opencorporates.com/v0.4/')
-        url = make_url(url, params)
+    def make_url(self, url, params=None):
+        url = url.replace(self.UI_PART, self.API_PART)
+        if params is not None:
+            query = urlencode(params)
+            url = '%s?%s' % (url, query)
+        return url
+
+    def get_api(self, url):
         if self.cache.has(url):
             return self.cache.get(url)
 
-        auth = {'api_token': self.api_token}
+        auth = {}
+        if self.api_token:
+            auth['api_token'] = self.api_token
         try:
             log.info("Enrich: %s", url)
             res = self.session.get(url, params=auth)
@@ -47,10 +53,12 @@ class OpenCorporatesEnricher(Enricher):
             return {}
         return data
 
-    def company_entity(self, result, data):
-        data = ensure_dict(data.get('company', data))
-        entity = result.make_entity('Company')
-        entity.make_id(data.get('opencorporates_url'))
+    def company_entity(self, data, entity=None):
+        if 'company' in data:
+            data = ensure_dict(data.get('company', data))
+        if entity is None:
+            entity = model.make_entity('Company')
+            entity.make_id(data.get('opencorporates_url'))
         entity.add('name', data.get('name'))
         address = ensure_dict(data.get('registered_address'))
         entity.add('country', address.get('country'))
@@ -75,44 +83,30 @@ class OpenCorporatesEnricher(Enricher):
             entity.add('previousName', previous.get('company_name'))
         for alias in ensure_list(data.get('alternative_names')):
             entity.add('alias', alias.get('company_name'))
-        for officer in ensure_list(data.get('officers')):
-            self.officer_entity(result, officer, company=entity)
         return entity
 
-    def officer_entity(self, result, data, company=None):
-        data = ensure_dict(data.get('officer', data))
-        person = data.get('occuptation') or data.get('date_of_birth')
+    def officer_entity(self, data, entity=None):
+        if 'officer' in data:
+            data = ensure_dict(data.get('officer', data))
+        person = data.get('occupation') or data.get('date_of_birth')
         schema = 'Person' if person else 'LegalEntity'
-        officer = result.make_entity(schema)
-        officer.make_id(data.get('opencorporates_url'))
-        officer.add('name', data.get('name'))
-        officer.add('country', data.get('nationality'))
-        officer.add('jurisdiction', data.get('jurisdiction_code'))
-        officer.add('address', data.get('address'))
-        officer.add('birthDate', data.get('date_of_birth'), quiet=True)
-        officer.add('position', data.get('occupation'), quiet=True)
-        officer.add('opencorporatesUrl', data.get('opencorporates_url'))
+        entity = model.make_entity(schema)
+        entity.make_id(data.get('opencorporates_url'))
+        entity.add('name', data.get('name'))
+        entity.add('country', data.get('nationality'))
+        entity.add('jurisdiction', data.get('jurisdiction_code'))
+        entity.add('address', data.get('address'))
+        entity.add('birthDate', data.get('date_of_birth'), quiet=True)
+        entity.add('position', data.get('occupation'), quiet=True)
+        entity.add('opencorporatesUrl', data.get('opencorporates_url'))
         source = data.get('source', {})
-        officer.add('publisher', source.get('publisher'))
-        officer.add('publisherUrl', source.get('url'))
-        officer.add('retrievedAt', source.get('retrieved_at'))
-
-        if company is None:
-            company = self.company_entity(result, data.get('company'))
-
-        if company.id and officer.id:
-            directorship = result.make_entity('Directorship')
-            directorship.make_id(data.get('opencorporates_url'),
-                                 'Directorship')
-            directorship.add('director', officer.id)
-            directorship.add('startDate', data.get('start_date'))
-            directorship.add('endDate', data.get('end_date'))
-            directorship.add('organization', company.id)
-            directorship.add('role', data.get('position'))
-        return officer
+        entity.add('publisher', source.get('publisher'))
+        entity.add('publisherUrl', source.get('url'))
+        entity.add('retrievedAt', source.get('retrieved_at'))
+        return entity
 
     def get_query(self, entity):
-        params = {'q': entity.caption}
+        params = {'q': entity.caption, 'sparse': True}
         for jurisdiction in entity.get('jurisdiction'):
             params['jurisdiction_code'] = jurisdiction.lower()
         return params
@@ -121,13 +115,12 @@ class OpenCorporatesEnricher(Enricher):
         params = self.get_query(entity)
         for page in range(1, 9):
             params['page'] = page
-            results = self.get_api(self.COMPANY_SEARCH_API, params=params)
+            url = self.make_url(self.COMPANY_SEARCH_API, params)
+            results = self.get_api(url)
             companies = results.get('results', {}).get('companies')
             for company in ensure_list(companies):
-                result = self.make_result(entity)
-                proxy = self.company_entity(result, company)
-                result.set_candidate(proxy)
-                yield result
+                proxy = self.company_entity(company)
+                yield self.make_match(entity, proxy)
             if page >= results.get('total_pages', 0):
                 break
 
@@ -135,32 +128,53 @@ class OpenCorporatesEnricher(Enricher):
         params = self.get_query(entity)
         for page in range(1, 9):
             params['page'] = page
-            results = self.get_api(self.OFFICER_SEARCH_API, params=params)
+            url = self.make_url(self.OFFICER_SEARCH_API, params)
+            results = self.get_api(url)
             officers = results.get('results', {}).get('officers')
             for officer in ensure_list(officers):
-                result = self.make_result(entity)
-                proxy = self.officer_entity(result, officer)
-                result.set_candidate(proxy)
-                yield result
+                proxy = self.officer_entity(officer)
+                yield self.make_match(entity, proxy)
             if page >= results.get('total_pages', 0):
                 break
 
     def enrich_entity(self, entity):
-        if self.api_token is None:
-            return
-
         schema = entity.schema.name
         if schema in ['Company', 'Organization', 'LegalEntity']:
             yield from self.search_companies(entity)
         if schema in ['Person', 'LegalEntity', 'Company', 'Organization']:
             yield from self.search_officers(entity)
 
+    def expand_company(self, entity, data):
+        data = ensure_dict(data.get('company', data))
+        entity = self.company_entity(data, entity=entity)
+        for officer in ensure_list(data.get('officers')):
+            yield from self.expand_officer(officer, company=entity)
+        yield entity
+
+    def expand_officer(self, data, entity=None, company=None):
+        data = ensure_dict(data.get('officer', data))
+        entity = self.officer_entity(data, entity=entity)
+        yield entity
+
+        company = self.company_entity(data.get('company'), entity=company)
+        yield company
+
+        if company.id and entity.id:
+            directorship = model.make_entity('Directorship')
+            directorship.make_id(data.get('opencorporates_url'),
+                                 'Directorship')
+            directorship.add('director', entity)
+            directorship.add('startDate', data.get('start_date'))
+            directorship.add('endDate', data.get('end_date'))
+            directorship.add('organization', company)
+            directorship.add('role', data.get('position'))
+            yield directorship
+
     def expand_entity(self, entity):
-        result = super(OpenCorporatesEnricher, self).expand_entity(entity)
         for url in entity.get('opencorporatesUrl', quiet=True):
+            url = self.make_url(url)
             data = self.get_api(url).get('results', {})
             if 'company' in data:
-                self.company_entity(result, data)
+                yield from self.expand_company(entity, data)
             if 'officer' in data:
-                self.officer_entity(result, data)
-        return result
+                yield from self.expand_officer(data, officer=entity)

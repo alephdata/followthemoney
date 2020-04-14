@@ -1,4 +1,4 @@
-from followthemoney.dedupe.recon import Recon
-from followthemoney.dedupe.linker import EntityLinker
+from followthemoney.dedupe.match import Match
+from followthemoney.dedupe.linker import Linker
 
-__all__ = [Recon, EntityLinker]
+__all__ = [Match, Linker]

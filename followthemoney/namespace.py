@@ -27,6 +27,11 @@ class Namespace(object):
         except ValueError:
             return (entity_id, None)
 
+    @classmethod
+    def strip(cls, entity_id):
+        plain_id, _ = cls.parse(entity_id)
+        return plain_id
+
     def signature(self, entity_id):
         """Generate a namespace-specific signature."""
         if not len(self.bname) or entity_id is None:
@@ -58,17 +63,17 @@ class Namespace(object):
         the namespace.
 
         An exception is made for sameAs declarations."""
-        linked = proxy.clone()
-        linked.id = self.sign(linked.id)
+        signed = proxy.clone()
+        signed.id = self.sign(proxy.id)
         for prop in proxy.iterprops():
             if prop.type != registry.entity:
                 continue
-            for value in linked.pop(prop):
+            for value in signed.pop(prop):
                 value = get_entity_id(value)
-                linked.add(prop, self.sign(value))
+                signed.add(prop, self.sign(value))
         # linked.add('sameAs', proxy.id, quiet=True)
-        linked.remove('sameAs', linked.id)
-        return linked
+        signed.remove('sameAs', signed.id)
+        return signed
 
     @classmethod
     def make(cls, name):
