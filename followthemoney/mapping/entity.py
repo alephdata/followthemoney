@@ -18,14 +18,17 @@ class EntityMapping(object):
         self.seed.update(key_bytes(data.get('key_literal')))
 
         self.keys = keys_values(data, 'key', 'keys')
-        if not len(self.keys):
+        self.key_column = data.get('key_column')
+        if not len(self.keys) and self.key_column is None:
             raise InvalidMapping("No keys: %r" % name)
+        if len(self.keys) and self.key_column is not None:
+            raise InvalidMapping("Please use only keys or key_column, not both: %r" % name)
 
         self.schema = model.get(data.get('schema'))
         if self.schema is None:
             raise InvalidMapping("Invalid schema: %s" % data.get('schema'))
 
-        self.refs = set(self.keys)
+        self.refs = set(self.keys) or set([self.key_column])
         self.dependencies = set()
         self.properties = []
         for name, mapping in data.get('properties', {}).items():
@@ -44,6 +47,8 @@ class EntityMapping(object):
 
     def compute_key(self, record):
         """Generate a key for this entity, based on the given fields."""
+        if self.key_column is not None:
+            return record.get(self.key_column)
         values = [key_bytes(record.get(k)) for k in self.keys]
         digest = self.seed.copy()
         for value in sorted(values):
