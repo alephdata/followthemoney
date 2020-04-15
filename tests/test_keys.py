@@ -3,6 +3,7 @@ import yaml
 from hashlib import sha1
 from unittest import TestCase
 from followthemoney import model
+from followthemoney.exc import InvalidMapping
 
 
 class MappingKeysTestCase(TestCase):
@@ -82,3 +83,43 @@ class MappingKeysTestCase(TestCase):
         ent0 = entities.get('test')
         assert ent0.id == sha1(b'testaaabbb').hexdigest(), ent0
         # assert False, sha1('test').hexdigest()
+
+    def test_key_column(self):
+        mapping = {
+            'csv_url': 'file://' + os.path.join(self.fixture_path, 'experts.csv'),
+            'entities': {
+                'expert': {
+                    'schema': 'Person',
+                    'key': 'id',
+                    'key_column': 'id',
+                    'properties': {
+                        'name': {'column': 'name'},
+                        'nationality': {'column': 'nationality'},
+                        'gender': {'column': 'gender'},
+                    }
+                }
+            }
+        }
+
+        # only use key/keys or key_column
+        with self.assertRaises(InvalidMapping):
+            list(model.map_entities(mapping))
+
+        del mapping['entities']['expert']['key']
+
+        entities = list(model.map_entities(mapping))
+        self.assertEqual(len(entities), 14)
+        self.assertEqual(entities[0].id, '1')
+        self.assertEqual(entities[-1].id, '42')
+
+    def test_key_column_from_sql(self):
+        mapping = self.kek_mapping
+        del mapping['entities']['company']['keys']
+        mapping['entities']['company']['key_column'] = 'comp.id'
+
+        mapped = model.make_mapping(mapping)
+        assert len(mapped.source) == 2904, len(mapped.source)
+        assert len(mapped.entities) == 3, mapped.entities
+        assert len(mapped.refs) == 7, mapped.refs
+        entities = list(model.map_entities(mapping))
+        self.assertGreaterEqual(int(entities[0].id), 3000)  # FIXME?
