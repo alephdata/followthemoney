@@ -154,8 +154,8 @@ class EntityProxy(object):
         """If the given schema allows for an edge representation of
         the given entity."""
         if self.schema.edge:
-            sources = self.get(self.schema.edge_source)
-            targets = self.get(self.schema.edge_target)
+            sources = self.get(self.schema.source_prop)
+            targets = self.get(self.schema.target_prop)
             for (source, target) in product(sources, targets):
                 yield (source, target)
 
@@ -175,8 +175,6 @@ class EntityProxy(object):
         """Invert the properties of an entity into their normalised form."""
         data = {}
         for group, type_ in registry.groups.items():
-            if group is None:
-                continue
             values = self.get_type_values(type_, cleaned=cleaned)
             if len(values):
                 data[group] = values
@@ -242,8 +240,6 @@ class EntityProxy(object):
         data = self.to_dict()
         data['schemata'] = list(self.schema.names)
         data['name'] = self.caption
-        if not data['name']:
-            data.pop('name')
         data.update(self.get_type_inverted())
         return data
 

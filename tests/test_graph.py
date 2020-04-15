@@ -6,7 +6,7 @@ from followthemoney.graph import Graph, Node
 
 
 ENTITY = {
-    'id': 'test',
+    'id': 'ralph',
     'schema': 'Person',
     'properties': {
         'name': 'Ralph Tester',
@@ -17,6 +17,24 @@ ENTITY = {
         'email': 'info@ralphtester.me',
         'passport': 'passportEntityId',
         'topics': 'role.spy'
+    }
+}
+
+ENTITY2 = {
+    'id': 'jodie',
+    'schema': 'Person',
+    'properties': {
+        'name': 'Jodie Tester',
+        'birthDate': '1972-05-01',
+    }
+}
+
+REL = {
+    'id': 'jodie2ralph',
+    'schema': 'Family',
+    'properties': {
+        'person': ['jodie'],
+        'relative': ['ralph'],
     }
 }
 
@@ -33,6 +51,33 @@ class GraphTestCase(TestCase):
         graph.add(None)
         assert len(graph.proxies) == 1, graph.proxies
         assert len(graph.queued) == 0, graph.proxies
+
+    def test_adjacent(self):
+        graph = Graph(edge_types=registry.pivots)
+        graph.add(model.get_proxy(ENTITY))
+        graph.add(model.get_proxy(ENTITY2))
+        graph.add(model.get_proxy(REL))
+        node = Node(registry.entity, 'jodie')
+        adj = list(graph.get_adjacent(node))
+        assert len(adj) == 2, adj
+        node = Node(registry.entity, 'ralph')
+        adj = list(graph.get_adjacent(node))
+        assert len(adj) == 7, adj
+
+        node = Node(registry.entity, 'jodie')
+        prop = model.get_qname('Person:familyPerson')
+        adj = list(graph.get_adjacent(node, prop))
+        assert len(adj) == 1, adj
+        assert adj[0].source_prop == prop, adj[0].source_prop
+
+        node = Node(registry.entity, 'ralph')
+        prop = model.get_qname('Person:familyRelative')
+        adj2 = list(graph.get_adjacent(node, prop))
+        assert len(adj2) == 1, adj2
+        assert adj2[0].target_prop == prop, adj2[0].target_prop
+
+        assert adj[0] == adj2[0], (adj[0], adj2[0])
+        assert adj[0].id in repr(adj[0]), repr(adj[0])
 
     def test_to_dict(self):
         proxy = model.get_proxy(ENTITY)

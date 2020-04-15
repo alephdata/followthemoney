@@ -58,7 +58,7 @@ class Node(object):
 class Edge(object):
     """A link between two nodes."""
     __slots__ = ['id', 'weight', 'source_id', 'target_id',
-                 'prop', 'proxy', 'graph']
+                 'prop', 'proxy', 'schema', 'graph']
 
     def __init__(self, graph, source, target, proxy=None, prop=None, value=None):  # noqa
         self.graph = graph
@@ -68,25 +68,39 @@ class Edge(object):
         self.weight = 1.0
         self.prop = prop
         self.proxy = proxy
+        self.schema = None
         if prop is not None:
             self.weight = prop.specificity(value)
             self.id = f"{source.id}:{target.id}"
-        elif proxy is not None:
-            self.id = f"{proxy.id}:{source.id}:{target.id}"
         else:
-            raise RuntimeError()
+            self.id = f"{proxy.id}:{source.id}:{target.id}"
+            self.schema = proxy.schema
 
     @property
     def source(self):
         return self.graph.nodes.get(self.source_id)
 
     @property
+    def source_prop(self):
+        """Get the entity property originating this edge."""
+        if self.schema is not None:
+            return self.schema.source_prop.reverse
+        return self.prop
+
+    @property
     def target(self):
         return self.graph.nodes.get(self.target_id)
 
     @property
+    def target_prop(self):
+        """Get the entity property originating this edge."""
+        if self.schema is not None:
+            return self.schema.target_prop.reverse
+        # NOTE: this edge points at a value node.
+
+    @property
     def type_name(self):
-        return self.prop.name if self.proxy is None else self.proxy.schema.name
+        return self.prop.name if self.schema is None else self.schema.name
 
     def to_dict(self):
         return {
@@ -175,6 +189,27 @@ class Graph(object):
 
     def iteredges(self):
         return self.edges.values()
+
+    def get_outbound(self, node, prop=None):
+        "Get all edges pointed out from the given node."
+        for edge in self.iteredges():
+            if edge.source == node:
+                if prop and edge.source_prop != prop:
+                    continue
+                yield edge
+
+    def get_inbound(self, node, prop=None):
+        "Get all edges pointed at the given node."
+        for edge in self.iteredges():
+            if edge.target == node:
+                if prop and edge.target_prop != prop:
+                    continue
+                yield edge
+
+    def get_adjacent(self, node, prop=None):
+        "Get all edges of the given node."
+        yield from self.get_outbound(node, prop=prop)
+        yield from self.get_inbound(node, prop=prop)
 
     def to_dict(self):
         return {

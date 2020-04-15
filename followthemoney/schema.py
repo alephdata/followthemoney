@@ -136,6 +136,14 @@ class Schema(object):
         return gettext(self._edge_label)
 
     @property
+    def source_prop(self):
+        return self.get(self.edge_source)
+
+    @property
+    def target_prop(self):
+        return self.get(self.edge_target)
+
+    @property
     def sorted_properties(self):
         return sorted(self.properties.values(),
                       key=lambda p: (p.name not in self.caption,
