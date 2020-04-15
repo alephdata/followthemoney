@@ -85,13 +85,14 @@ class MappingKeysTestCase(TestCase):
         # assert False, sha1('test').hexdigest()
 
     def test_key_column(self):
+        csv_url = os.path.join(self.fixture_path, 'experts.csv')
         mapping = {
-            'csv_url': 'file://' + os.path.join(self.fixture_path, 'experts.csv'),
+            'csv_url': 'file://' + csv_url,
             'entities': {
                 'expert': {
                     'schema': 'Person',
                     'key': 'id',
-                    'key_column': 'id',
+                    'id_column': 'id',
                     'properties': {
                         'name': {'column': 'name'},
                         'nationality': {'column': 'nationality'},
@@ -115,7 +116,7 @@ class MappingKeysTestCase(TestCase):
     def test_key_column_from_sql(self):
         mapping = self.kek_mapping
         del mapping['entities']['company']['keys']
-        mapping['entities']['company']['key_column'] = 'comp.id'
+        mapping['entities']['company']['id_column'] = 'comp.id'
 
         mapped = model.make_mapping(mapping)
         assert len(mapped.source) == 2904, len(mapped.source)
