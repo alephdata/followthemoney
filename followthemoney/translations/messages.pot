@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-07 13:22+0200\n"
+"POT-Creation-Date: 2020-04-15 18:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: followthemoney/property.py:76
+#: followthemoney/property.py:74
 msgid "Invalid value"
-msgstr ""
-
-#: followthemoney/property.py:80
-msgid "Required"
 msgstr ""
 
 #: followthemoney/proxy.py:29
@@ -44,7 +40,11 @@ msgstr ""
 msgid "Self-relationship (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:173
+#: followthemoney/schema.py:185
+msgid "Required"
+msgstr ""
+
+#: followthemoney/schema.py:189
 msgid "Entity failed validation"
 msgstr ""
 

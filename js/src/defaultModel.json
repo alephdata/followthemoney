@@ -147,6 +147,10 @@
         "associate",
         "relationship"
       ],
+      "required": [
+        "person",
+        "associate"
+      ],
       "description": "Non-family association between two people"
     },
     "Representation": {
@@ -193,6 +197,10 @@
         "agent",
         "client",
         "role"
+      ],
+      "required": [
+        "agent",
+        "client"
       ],
       "description": "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity."
     },
@@ -325,6 +333,9 @@
         "name",
         "publishDate",
         "author"
+      ],
+      "required": [
+        "name"
       ]
     },
     "Membership": {
@@ -373,6 +384,13 @@
         "role",
         "startDate",
         "endDate"
+      ],
+      "required": [
+        "member",
+        "organization"
+      ],
+      "caption": [
+        "role"
       ]
     },
     "Company": {
@@ -551,6 +569,9 @@
         "registrationNumber",
         "incorporationDate"
       ],
+      "required": [
+        "name"
+      ],
       "caption": [
         "name"
       ],
@@ -627,6 +648,9 @@
         "name",
         "fileDate",
         "caseNumber"
+      ],
+      "required": [
+        "name"
       ],
       "caption": [
         "name",
@@ -761,6 +785,10 @@
         "startDate",
         "endDate"
       ],
+      "required": [
+        "holder",
+        "passportNumber"
+      ],
       "caption": [
         "passportNumber"
       ],
@@ -779,6 +807,9 @@
         "Organization"
       ],
       "properties": {},
+      "required": [
+        "name"
+      ],
       "caption": [
         "name"
       ],
@@ -864,6 +895,9 @@
         "email",
         "owner"
       ],
+      "required": [
+        "username"
+      ],
       "caption": [
         "username",
         "email",
@@ -943,6 +977,9 @@
         "income",
         "wealth",
         "taxPaid"
+      ],
+      "required": [
+        "taxee"
       ],
       "description": "A tax declaration of an individual"
     },
@@ -1034,6 +1071,10 @@
         "percentage",
         "startDate",
         "endDate"
+      ],
+      "required": [
+        "owner",
+        "asset"
       ]
     },
     "Sanction": {
@@ -1101,6 +1142,9 @@
         "startDate",
         "endDate"
       ],
+      "required": [
+        "entity"
+      ],
       "caption": [
         "program"
       ],
@@ -1158,6 +1202,13 @@
         "role",
         "startDate",
         "endDate"
+      ],
+      "required": [
+        "director",
+        "organization"
+      ],
+      "caption": [
+        "role"
       ]
     },
     "Person": {
@@ -1306,6 +1357,9 @@
         "nationality",
         "birthDate"
       ],
+      "required": [
+        "name"
+      ],
       "caption": [
         "name",
         "lastName",
@@ -1420,6 +1474,9 @@
         "imoNumber",
         "type",
         "flag"
+      ],
+      "required": [
+        "name"
       ],
       "caption": [
         "name",
@@ -1551,6 +1608,9 @@
         "date",
         "location"
       ],
+      "required": [
+        "name"
+      ],
       "caption": [
         "name",
         "summary",
@@ -1652,6 +1712,10 @@
         "lotNumber",
         "decisionReason"
       ],
+      "required": [
+        "supplier",
+        "contract"
+      ],
       "description": "A contract or contract lot as awarded to a supplier."
     },
     "Debt": {
@@ -1700,6 +1764,9 @@
         "creditor",
         "date",
         "amount"
+      ],
+      "required": [
+        "debtor"
       ],
       "description": "A monetary debt between two parties."
     },
@@ -2219,6 +2286,9 @@
         "legalForm",
         "country"
       ],
+      "required": [
+        "name"
+      ],
       "caption": [
         "name",
         "email",
@@ -2273,6 +2343,10 @@
         "successor",
         "date"
       ],
+      "required": [
+        "predecessor",
+        "successor"
+      ],
       "description": "Two entities that legally succeed each other."
     },
     "Thing": {
@@ -2288,7 +2362,6 @@
           "qname": "Thing:name",
           "label": "Name",
           "type": "name",
-          "required": true,
           "matchable": true
         },
         "sameAs": {
@@ -2489,6 +2562,9 @@
         "name",
         "country"
       ],
+      "required": [
+        "name"
+      ],
       "caption": [
         "name"
       ],
@@ -2623,6 +2699,10 @@
         "contractDate",
         "commodities"
       ],
+      "required": [
+        "name",
+        "authority"
+      ],
       "caption": [
         "name"
       ],
@@ -2721,6 +2801,13 @@
         "amount",
         "purpose"
       ],
+      "required": [
+        "payer",
+        "beneficiary"
+      ],
+      "caption": [
+        "amount"
+      ],
       "description": "A monetary payment between two parties."
     },
     "Organization": {
@@ -2760,6 +2847,9 @@
         "name",
         "legalForm",
         "country"
+      ],
+      "required": [
+        "name"
       ],
       "caption": [
         "name"
@@ -2818,6 +2908,10 @@
         "person",
         "relative",
         "relationship"
+      ],
+      "required": [
+        "person",
+        "relative"
       ],
       "description": "Family relationship between two people"
     },
@@ -3128,6 +3222,9 @@
         "fileName",
         "mimeType",
         "parent"
+      ],
+      "required": [
+        "fileName"
       ],
       "caption": [
         "fileName",
@@ -3779,6 +3876,10 @@
         "sender",
         "recipients"
       ],
+      "required": [
+        "bodyText",
+        "sender"
+      ],
       "caption": [
         "subject",
         "bodyText",
@@ -3874,6 +3975,9 @@
         "amount",
         "authority",
         "contractDate"
+      ],
+      "required": [
+        "name"
       ],
       "caption": [
         "name"
@@ -3971,6 +4075,10 @@
         "party",
         "case",
         "role"
+      ],
+      "required": [
+        "case",
+        "party"
       ]
     },
     "UnknownLink": {
@@ -4017,6 +4125,10 @@
         "subject",
         "object",
         "role"
+      ],
+      "required": [
+        "subject",
+        "object"
       ]
     },
     "Interval": {
@@ -4209,6 +4321,7 @@
       ],
       "caption": [
         "name",
+        "address",
         "registrationNumber"
       ],
       "description": "A piece of land or property."
