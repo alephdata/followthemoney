@@ -91,6 +91,10 @@ class Schema(object):
             if self.get(caption) is None:
                 raise InvalidModel("Missing caption property: %s" % caption)
 
+        for required in self.required:
+            if self.get(required) is None:
+                raise InvalidModel("Missing required property: %s" % required)
+
         if self.edge:
             if self.get(self.edge_source) is None:
                 msg = "Missing edge source: %s" % self.edge_source
@@ -186,7 +190,7 @@ class Schema(object):
             if error is not None:
                 errors[name] = error
         if len(errors):
-            msg = gettext("Entity failed validation")
+            msg = gettext("Entity validation failed")
             raise InvalidData(msg, errors={'properties': errors})
 
     def to_dict(self):

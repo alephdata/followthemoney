@@ -69,6 +69,8 @@ class Property(object):
         """
         values = []
         for val in data:
+            if self.stub:
+                return gettext('Property cannot be written')
             val = get_entity_id(val)
             if not self.type.validate(val):
                 return gettext('Invalid value')
