@@ -28,13 +28,17 @@ class CountryType(EnumType):
             'so-som': gettext('Somaliland'),
             'gb-wls': gettext('Wales'),
             'gb-sct': gettext('Scotland'),
+            'gb-nir': gettext('Northern Ireland'),
             'md-pmr': gettext('Transnistria')
         }
         for code, label in locale.territories.items():
+            code = code.lower()
+            if code in names:
+                continue
             try:
                 int(code)
             except ValueError:
-                names[code.lower()] = label
+                names[code] = label
         return names
 
     def clean_text(self, country, guess=False, **kwargs):

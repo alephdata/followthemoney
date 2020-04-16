@@ -21,10 +21,10 @@ setup(
     zip_safe=False,
     install_requires=[
         'babel',
+        'pyyaml',
         'banal >= 0.4.2',
         'click >= 7.0',
         'stringcase >= 1.2.0',
-        'pyyaml >= 5.1',
         'requests >= 2.21.0',
         'python-levenshtein >= 0.12.0',
         'normality >= 2.0.0',
