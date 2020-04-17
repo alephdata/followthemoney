@@ -96,6 +96,8 @@ class Edge(object):
         """Get the entity property originating this edge."""
         if self.schema is not None:
             return self.schema.target_prop.reverse
+        if self.prop is not None:
+            return self.prop.reverse
         # NOTE: this edge points at a value node.
 
     @property

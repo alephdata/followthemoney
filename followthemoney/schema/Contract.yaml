@@ -8,15 +8,23 @@ Contract:
   matchable: false
   featured:
   - name
+  - title
   - amount
   - authority
   - contractDate
   required:
-  - name
-  # - authority
+  - title
   caption:
+  - title
   - name
+  - procedureNumber
   properties:
+    name: # TODO: phase this out and use 'title'
+      label: "Contract name"
+      type: string
+    title:
+      label: "Contract title"
+      type: string
     authority:
       label: "Contract authority"
       plural: "Contract authorities"
@@ -38,5 +46,18 @@ Contract:
       label: "Contract Award Notice ID"
     numberAwards:
       label: "Number of awards"
+    status:
+      label: "Procurement status"
+    method:
+      label: "Procurement method"
+    criteria:
+      label: Contract award criteria
+    classification:
+      label: Classification
+      type: text
     cancelled:
       label: "Cancelled?"
+    language:
+      label: "Language"
+      type: language
+      rdf: http://purl.org/dc/terms/language

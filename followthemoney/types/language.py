@@ -21,7 +21,7 @@ class LanguageType(EnumType):
                  'isl', 'ita', 'est', 'nor', 'fas', 'swa', 'slv', 'slk',
                  'aze', 'tgk', 'kaz', 'tuk', 'kir', 'hun', 'dan', 'afr',
                  'swe', 'srp', 'ind', 'kan', 'mkd', 'mlt', 'msa', 'fin',
-                 'cat']
+                 'cat', 'npi']
     LANGUAGES = get_env_list('FTM_LANGUAGES', LANGUAGES)
     LANGUAGES = [l.lower().strip() for l in LANGUAGES]
 
