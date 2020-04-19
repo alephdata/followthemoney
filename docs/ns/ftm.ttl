@@ -338,7 +338,8 @@ dct:format a rdf:Property ;
 
 dct:language a rdf:Property ;
     rdfs:label "Language" ;
-    rdfs:domain ftm:Document ;
+    rdfs:domain ftm:Contract,
+        ftm:Document ;
     rdfs:isDefinedBy ftm: .
 
 <http://www.w3.org/2004/02/skos/core#altLabel> a rdf:Property ;
@@ -640,11 +641,31 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Contract:classification> a rdf:Property ;
+    rdfs:label "Classification" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Contract:contractDate> a rdf:Property ;
     rdfs:label "Contract date" ;
     rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Contract:criteria> a rdf:Property ;
+    rdfs:label "Contract award criteria" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Contract:method> a rdf:Property ;
+    rdfs:label "Procurement method" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Contract:name> a rdf:Property ;
+    rdfs:label "Contract name" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Contract:noticeId> a rdf:Property ;
     rdfs:label "Contract Award Notice ID" ;
@@ -658,6 +679,16 @@ dct:language a rdf:Property ;
 
 <https://w3id.org/ftm#Contract:procedureNumber> a rdf:Property ;
     rdfs:label "Procedure number" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Contract:status> a rdf:Property ;
+    rdfs:label "Procurement status" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Contract:title> a rdf:Property ;
+    rdfs:label "Contract title" ;
     rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: .
 
@@ -2685,5 +2716,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-04-15T18:06:18"^^xsd:dateTime .
+    dct:modified "2020-04-19T14:02:57"^^xsd:dateTime .
 

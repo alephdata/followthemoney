@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-07 13:22+0200\n"
+"POT-Creation-Date: 2020-04-19 14:48+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -23,13 +23,13 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: followthemoney/property.py:73
+msgid "Property cannot be written"
+msgstr ""
+
 #: followthemoney/property.py:76
 msgid "Invalid value"
 msgstr "Недопустимое значение"
-
-#: followthemoney/property.py:80
-msgid "Required"
-msgstr "Обязательное значение"
 
 #: followthemoney/proxy.py:29
 msgid "No schema for entity."
@@ -50,9 +50,13 @@ msgstr "Неизвестное свойство (1%s): 1%s"
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
 
-#: followthemoney/schema.py:173
-msgid "Entity failed validation"
-msgstr "Сущность не прошла валидацию"
+#: followthemoney/schema.py:189
+msgid "Required"
+msgstr "Обязательное значение"
+
+#: followthemoney/schema.py:193
+msgid "Entity validation failed"
+msgstr ""
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
@@ -553,6 +557,16 @@ msgstr ""
 "рамках одного контракта могут быть определены различные поставщики (см. "
 "Контракты).\n"
 
+#. Contract.properties.name.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract name"
+msgstr ""
+
+#. Contract.properties.title.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract title"
+msgstr ""
+
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract authority"
@@ -603,10 +617,38 @@ msgstr "Номер извещения о выборе поставщика"
 msgid "Number of awards"
 msgstr "Количество контрактов"
 
+#. Contract.properties.status.label
+#: followthemoney/schema/Contract.yaml
+msgid "Procurement status"
+msgstr ""
+
+#. Contract.properties.method.label
+#: followthemoney/schema/Contract.yaml
+msgid "Procurement method"
+msgstr ""
+
+#. Contract.properties.criteria.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract award criteria"
+msgstr ""
+
+#. Contract.properties.classification.label
+#. LegalEntity.properties.classification.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/LegalEntity.yaml
+msgid "Classification"
+msgstr "Классификация"
+
 #. Contract.properties.cancelled.label
 #: followthemoney/schema/Contract.yaml
 msgid "Cancelled?"
 msgstr "Отменен?"
+
+#. Contract.properties.language.label
+#. Document.properties.language.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/Document.yaml
+#: followthemoney/types/language.py:12
+msgid "Language"
+msgstr "Язык"
 
 #. ContractAward.label
 #: followthemoney/schema/ContractAward.yaml
@@ -942,11 +984,6 @@ msgstr "Message-ID документа; уникален в большинств�
 #: followthemoney/schema/Document.yaml
 msgid "MIME type"
 msgstr "MIME-тип"
-
-#. Document.properties.language.label
-#: followthemoney/schema/Document.yaml followthemoney/types/language.py:12
-msgid "Language"
-msgstr "Язык"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
@@ -1787,11 +1824,6 @@ msgstr "Налоговый статус"
 msgid "Sector"
 msgstr "Отрасль"
 
-#. LegalEntity.properties.classification.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Classification"
-msgstr "Классификация"
-
 #. LegalEntity.properties.registrationNumber.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Company registration number"
@@ -1911,16 +1943,10 @@ msgstr ""
 "Если эта организация — дочерняя, то связанная с ней компания или организация"
 " — родительская."
 
-#. LegalEntity.properties.subsidiaries.label
+#. LegalEntity.properties.parent.reverse.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Subsidiaries"
 msgstr "Дочерние структуры"
-
-#. LegalEntity.properties.passport.label
-#. Passport.plural
-#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Passport.yaml
-msgid "Passports"
-msgstr "Паспорта"
 
 #. License.label
 #: followthemoney/schema/License.yaml
@@ -2100,6 +2126,12 @@ msgstr "Характер собственности"
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
 msgid "Passport"
 msgstr "Паспорт"
+
+#. Passport.plural
+#. Passport.properties.holder.reverse.label
+#: followthemoney/schema/Passport.yaml
+msgid "Passports"
+msgstr "Паспорта"
 
 #. Passport.properties.holder.label
 #: followthemoney/schema/Passport.yaml
@@ -2939,6 +2971,10 @@ msgid "Scotland"
 msgstr "Шотландия"
 
 #: followthemoney/types/country.py:31
+msgid "Northern Ireland"
+msgstr ""
+
+#: followthemoney/types/country.py:32
 msgid "Transnistria"
 msgstr "Приднестровье"
 

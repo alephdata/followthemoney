@@ -1962,24 +1962,6 @@
           "range": "LegalEntity",
           "reverse": "subsidiaries"
         },
-        "subsidiaries": {
-          "name": "subsidiaries",
-          "qname": "LegalEntity:subsidiaries",
-          "label": "Subsidiaries",
-          "type": "entity",
-          "matchable": true,
-          "range": "LegalEntity",
-          "reverse": "parent"
-        },
-        "passport": {
-          "name": "passport",
-          "qname": "LegalEntity:passport",
-          "label": "Passports",
-          "type": "entity",
-          "matchable": true,
-          "range": "Passport",
-          "reverse": "holder"
-        },
         "ownedVehicles": {
           "name": "ownedVehicles",
           "qname": "LegalEntity:ownedVehicles",
@@ -2039,6 +2021,26 @@
           "matchable": true,
           "range": "Membership",
           "reverse": "member"
+        },
+        "subsidiaries": {
+          "name": "subsidiaries",
+          "qname": "LegalEntity:subsidiaries",
+          "label": "Subsidiaries",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "parent"
+        },
+        "passport": {
+          "name": "passport",
+          "qname": "LegalEntity:passport",
+          "label": "Passports",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Passport",
+          "reverse": "holder"
         },
         "userAccounts": {
           "name": "userAccounts",
@@ -3902,6 +3904,18 @@
         "Asset"
       ],
       "properties": {
+        "name": {
+          "name": "name",
+          "qname": "Contract:name",
+          "label": "Contract name",
+          "type": "string"
+        },
+        "title": {
+          "name": "title",
+          "qname": "Contract:title",
+          "label": "Contract title",
+          "type": "string"
+        },
         "authority": {
           "name": "authority",
           "qname": "Contract:authority",
@@ -3943,11 +3957,41 @@
           "label": "Number of awards",
           "type": "string"
         },
+        "status": {
+          "name": "status",
+          "qname": "Contract:status",
+          "label": "Procurement status",
+          "type": "string"
+        },
+        "method": {
+          "name": "method",
+          "qname": "Contract:method",
+          "label": "Procurement method",
+          "type": "string"
+        },
+        "criteria": {
+          "name": "criteria",
+          "qname": "Contract:criteria",
+          "label": "Contract award criteria",
+          "type": "string"
+        },
+        "classification": {
+          "name": "classification",
+          "qname": "Contract:classification",
+          "label": "Classification",
+          "type": "text"
+        },
         "cancelled": {
           "name": "cancelled",
           "qname": "Contract:cancelled",
           "label": "Cancelled?",
           "type": "string"
+        },
+        "language": {
+          "name": "language",
+          "qname": "Contract:language",
+          "label": "Language",
+          "type": "language"
         },
         "awards": {
           "name": "awards",
@@ -3971,16 +4015,18 @@
         }
       },
       "featured": [
-        "name",
+        "title",
         "amount",
         "authority",
         "contractDate"
       ],
       "required": [
-        "name"
+        "title"
       ],
       "caption": [
-        "name"
+        "title",
+        "name",
+        "procedureNumber"
       ],
       "description": "An contract or contract lot issued by an authority. Multiple lots may be awarded to different suppliers (see ContractAward).\n"
     },
@@ -4630,9 +4676,9 @@
       "group": "countries",
       "matchable": true,
       "values": {
-        "zz": "Unknown Region",
+        "zz": "Global",
         "eu": "European Union",
-        "cz": "Czechia",
+        "cz": "Czech Republic",
         "xk": "Kosovo",
         "yucs": "Yugoslavia",
         "csxx": "Serbia and Montenegro",
@@ -4642,6 +4688,7 @@
         "so-som": "Somaliland",
         "gb-wls": "Wales",
         "gb-sct": "Scotland",
+        "gb-nir": "Northern Ireland",
         "md-pmr": "Transnistria",
         "ac": "Ascension Island",
         "ad": "Andorra",
@@ -4965,7 +5012,8 @@
         "mlt": "Maltese",
         "msa": "Malay",
         "fin": "Finnish",
-        "cat": "Catalan"
+        "cat": "Catalan",
+        "npi": "npi"
       }
     },
     "mimetype": {
@@ -4990,7 +5038,8 @@
       "label": "Entity",
       "plural": "Entities",
       "group": "entities",
-      "matchable": true
+      "matchable": true,
+      "pivot": true
     },
     "topic": {
       "label": "Topic",

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-07 13:22+0200\n"
+"POT-Creation-Date: 2020-04-19 14:48+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Language-Team: French (https://www.transifex.com/aleph/teams/76591/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: followthemoney/property.py:76
-msgid "Invalid value"
+#: followthemoney/property.py:73
+msgid "Property cannot be written"
 msgstr ""
 
-#: followthemoney/property.py:80
-msgid "Required"
+#: followthemoney/property.py:76
+msgid "Invalid value"
 msgstr ""
 
 #: followthemoney/proxy.py:29
@@ -45,8 +45,12 @@ msgstr ""
 msgid "Self-relationship (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:173
-msgid "Entity failed validation"
+#: followthemoney/schema.py:189
+msgid "Required"
+msgstr ""
+
+#: followthemoney/schema.py:193
+msgid "Entity validation failed"
 msgstr ""
 
 #. Airplane.label
@@ -543,6 +547,16 @@ msgid ""
 "awarded to different suppliers (see ContractAward).\n"
 msgstr ""
 
+#. Contract.properties.name.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract name"
+msgstr ""
+
+#. Contract.properties.title.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract title"
+msgstr ""
+
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract authority"
@@ -591,9 +605,37 @@ msgstr ""
 msgid "Number of awards"
 msgstr ""
 
+#. Contract.properties.status.label
+#: followthemoney/schema/Contract.yaml
+msgid "Procurement status"
+msgstr ""
+
+#. Contract.properties.method.label
+#: followthemoney/schema/Contract.yaml
+msgid "Procurement method"
+msgstr ""
+
+#. Contract.properties.criteria.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract award criteria"
+msgstr ""
+
+#. Contract.properties.classification.label
+#. LegalEntity.properties.classification.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/LegalEntity.yaml
+msgid "Classification"
+msgstr ""
+
 #. Contract.properties.cancelled.label
 #: followthemoney/schema/Contract.yaml
 msgid "Cancelled?"
+msgstr ""
+
+#. Contract.properties.language.label
+#. Document.properties.language.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/Document.yaml
+#: followthemoney/types/language.py:12
+msgid "Language"
 msgstr ""
 
 #. ContractAward.label
@@ -929,11 +971,6 @@ msgstr ""
 #. Document.properties.mimeType.label
 #: followthemoney/schema/Document.yaml
 msgid "MIME type"
-msgstr ""
-
-#. Document.properties.language.label
-#: followthemoney/schema/Document.yaml followthemoney/types/language.py:12
-msgid "Language"
 msgstr ""
 
 #. Document.properties.date.label
@@ -1770,11 +1807,6 @@ msgstr ""
 msgid "Sector"
 msgstr ""
 
-#. LegalEntity.properties.classification.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Classification"
-msgstr ""
-
 #. LegalEntity.properties.registrationNumber.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Company registration number"
@@ -1892,15 +1924,9 @@ msgid ""
 "its parent"
 msgstr ""
 
-#. LegalEntity.properties.subsidiaries.label
+#. LegalEntity.properties.parent.reverse.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Subsidiaries"
-msgstr ""
-
-#. LegalEntity.properties.passport.label
-#. Passport.plural
-#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Passport.yaml
-msgid "Passports"
 msgstr ""
 
 #. License.label
@@ -2080,6 +2106,12 @@ msgstr ""
 #. Person.properties.passportNumber.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
 msgid "Passport"
+msgstr ""
+
+#. Passport.plural
+#. Passport.properties.holder.reverse.label
+#: followthemoney/schema/Passport.yaml
+msgid "Passports"
 msgstr ""
 
 #. Passport.properties.holder.label
@@ -2917,6 +2949,10 @@ msgid "Scotland"
 msgstr ""
 
 #: followthemoney/types/country.py:31
+msgid "Northern Ireland"
+msgstr ""
+
+#: followthemoney/types/country.py:32
 msgid "Transnistria"
 msgstr ""
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-07 13:22+0200\n"
+"POT-Creation-Date: 2020-04-19 14:48+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Tajna Biscevic <tajna@occrp.org>, 2019\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -23,13 +23,13 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#: followthemoney/property.py:73
+msgid "Property cannot be written"
+msgstr ""
+
 #: followthemoney/property.py:76
 msgid "Invalid value"
 msgstr "Nevažeća vrijednost"
-
-#: followthemoney/property.py:80
-msgid "Required"
-msgstr "Obavezno"
 
 #: followthemoney/proxy.py:29
 msgid "No schema for entity."
@@ -50,8 +50,12 @@ msgstr ""
 msgid "Self-relationship (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:173
-msgid "Entity failed validation"
+#: followthemoney/schema.py:189
+msgid "Required"
+msgstr "Obavezno"
+
+#: followthemoney/schema.py:193
+msgid "Entity validation failed"
 msgstr ""
 
 #. Airplane.label
@@ -551,6 +555,16 @@ msgid ""
 "awarded to different suppliers (see ContractAward).\n"
 msgstr ""
 
+#. Contract.properties.name.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract name"
+msgstr ""
+
+#. Contract.properties.title.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract title"
+msgstr ""
+
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract authority"
@@ -599,10 +613,38 @@ msgstr ""
 msgid "Number of awards"
 msgstr "Broj nagrada"
 
+#. Contract.properties.status.label
+#: followthemoney/schema/Contract.yaml
+msgid "Procurement status"
+msgstr ""
+
+#. Contract.properties.method.label
+#: followthemoney/schema/Contract.yaml
+msgid "Procurement method"
+msgstr ""
+
+#. Contract.properties.criteria.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract award criteria"
+msgstr ""
+
+#. Contract.properties.classification.label
+#. LegalEntity.properties.classification.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/LegalEntity.yaml
+msgid "Classification"
+msgstr "Klasifikacija"
+
 #. Contract.properties.cancelled.label
 #: followthemoney/schema/Contract.yaml
 msgid "Cancelled?"
 msgstr "Otkazan?"
+
+#. Contract.properties.language.label
+#. Document.properties.language.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/Document.yaml
+#: followthemoney/types/language.py:12
+msgid "Language"
+msgstr "Jezik"
 
 #. ContractAward.label
 #: followthemoney/schema/ContractAward.yaml
@@ -938,11 +980,6 @@ msgstr ""
 #: followthemoney/schema/Document.yaml
 msgid "MIME type"
 msgstr ""
-
-#. Document.properties.language.label
-#: followthemoney/schema/Document.yaml followthemoney/types/language.py:12
-msgid "Language"
-msgstr "Jezik"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
@@ -1778,11 +1815,6 @@ msgstr "Status poreza"
 msgid "Sector"
 msgstr "Sektor"
 
-#. LegalEntity.properties.classification.label
-#: followthemoney/schema/LegalEntity.yaml
-msgid "Classification"
-msgstr "Klasifikacija"
-
 #. LegalEntity.properties.registrationNumber.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Company registration number"
@@ -1900,15 +1932,9 @@ msgid ""
 "its parent"
 msgstr ""
 
-#. LegalEntity.properties.subsidiaries.label
+#. LegalEntity.properties.parent.reverse.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Subsidiaries"
-msgstr ""
-
-#. LegalEntity.properties.passport.label
-#. Passport.plural
-#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Passport.yaml
-msgid "Passports"
 msgstr ""
 
 #. License.label
@@ -2089,6 +2115,12 @@ msgstr "Tip vlasništva"
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
 msgid "Passport"
 msgstr "Pasoš"
+
+#. Passport.plural
+#. Passport.properties.holder.reverse.label
+#: followthemoney/schema/Passport.yaml
+msgid "Passports"
+msgstr ""
 
 #. Passport.properties.holder.label
 #: followthemoney/schema/Passport.yaml
@@ -2925,6 +2957,10 @@ msgid "Scotland"
 msgstr ""
 
 #: followthemoney/types/country.py:31
+msgid "Northern Ireland"
+msgstr ""
+
+#: followthemoney/types/country.py:32
 msgid "Transnistria"
 msgstr ""
 
