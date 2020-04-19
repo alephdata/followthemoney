@@ -38,6 +38,15 @@ REL = {
     }
 }
 
+PASS = {
+    'id': 'passpoat',
+    'schema': 'Passport',
+    'properties': {
+        'holder': ['jodie'],
+        'passportNumber': ['HJSJHAS']
+    }
+}
+
 
 class GraphTestCase(TestCase):
 
@@ -57,12 +66,23 @@ class GraphTestCase(TestCase):
         graph.add(model.get_proxy(ENTITY))
         graph.add(model.get_proxy(ENTITY2))
         graph.add(model.get_proxy(REL))
+        graph.add(model.get_proxy(PASS))
         node = Node(registry.entity, 'jodie')
         adj = list(graph.get_adjacent(node))
-        assert len(adj) == 2, adj
+        assert len(adj) == 3, adj
         node = Node(registry.entity, 'ralph')
         adj = list(graph.get_adjacent(node))
         assert len(adj) == 7, adj
+        node = Node(registry.entity, 'passpoat')
+        adj = list(graph.get_adjacent(node))
+        assert len(adj) == 2, adj
+
+        node = Node(registry.entity, 'passpoat')
+        prop = model.get_qname('Passport:holder')
+        adj = list(graph.get_adjacent(node, prop))
+        assert len(adj) == 1, adj
+        assert adj[0].source_prop == prop, adj[0].source_prop
+        assert adj[0].target_prop == prop.reverse, adj[0].target_prop
 
         node = Node(registry.entity, 'jodie')
         prop = model.get_qname('Person:familyPerson')

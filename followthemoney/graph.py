@@ -62,7 +62,7 @@ class Edge(object):
 
     def __init__(self, graph, source, target, proxy=None, prop=None, value=None):  # noqa
         self.graph = graph
-        self.id = None
+        self.id = f"{source.id}<>{target.id}"
         self.source_id = source.id
         self.target_id = target.id
         self.weight = 1.0
@@ -71,9 +71,8 @@ class Edge(object):
         self.schema = None
         if prop is not None:
             self.weight = prop.specificity(value)
-            self.id = f"{source.id}:{target.id}"
-        else:
-            self.id = f"{proxy.id}:{source.id}:{target.id}"
+        if proxy is not None:
+            self.id = f"{source.id}<{proxy.id}>{target.id}"
             self.schema = proxy.schema
 
     @property
@@ -148,7 +147,7 @@ class Graph(object):
     def queued(self):
         return [i for (i, p) in self.proxies.items() if p is None]
 
-    def _get_node_stub(self, value, prop):
+    def _get_node_stub(self, prop, value):
         if prop.type == registry.entity:
             self.queue(value)
         node = Node(prop.type, value, schema=prop.range)
@@ -157,12 +156,10 @@ class Graph(object):
         return self.nodes[node.id]
 
     def _add_edge(self, proxy, source, target):
-        schema = proxy.schema
-        source = self._get_node_stub(source, schema.get(schema.edge_source))
-        target = self._get_node_stub(target, schema.get(schema.edge_target))
+        source = self._get_node_stub(proxy.schema.source_prop, source)
+        target = self._get_node_stub(proxy.schema.target_prop, target)
         edge = Edge(self, source, target, proxy=proxy)
-        if edge.weight > 0:
-            self.edges[edge.id] = edge
+        self.edges[edge.id] = edge
 
     def _add_node(self, proxy):
         """Derive a node and its value edges from the given proxy."""
@@ -171,7 +168,7 @@ class Graph(object):
         for prop, value in proxy.itervalues():
             if prop.type not in self.edge_types:
                 continue
-            node = self._get_node_stub(value, prop)
+            node = self._get_node_stub(prop, value)
             edge = Edge(self, entity, node, prop=prop, value=value)
             if edge.weight > 0:
                 self.edges[edge.id] = edge

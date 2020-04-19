@@ -96,11 +96,11 @@ class Schema(object):
                 raise InvalidModel("Missing required property: %s" % required)
 
         if self.edge:
-            if self.get(self.edge_source) is None:
+            if self.source_prop is None:
                 msg = "Missing edge source: %s" % self.edge_source
                 raise InvalidModel(msg)
 
-            if self.get(self.edge_target) is None:
+            if self.target_prop is None:
                 msg = "Missing edge target: %s" % self.edge_target
                 raise InvalidModel(msg)
 

@@ -26,6 +26,10 @@ class Model(object):
             schema.generate()
         for prop in self.properties:
             self.qnames[prop.qname] = prop
+            # FIXME: stubs are not correctly assigned
+            for schema in prop.schema.descendants:
+                if prop.name not in schema.properties:
+                    schema.properties[prop.name] = prop
 
     def _load(self, filepath):
         with open(filepath, 'r') as fh:

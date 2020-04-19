@@ -13,7 +13,8 @@ Thing:
       label: Name
       type: name
       rdf: http://www.w3.org/2004/02/skos/core#prefLabel
-    sameAs: # This is clever but doesn't query correctly
+    sameAs:
+      # This is clever but doesn't query correctly
       label: "Same as"
       type: entity
       range: Thing
