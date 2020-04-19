@@ -130,7 +130,7 @@ class Graph(object):
     backends, like Aleph.
     """
 
-    def __init__(self, edge_types=None):
+    def __init__(self, edge_types=registry.pivots):
         edge_types = registry.get_types(edge_types)
         self.edge_types = [t for t in edge_types if t.matchable]
         self.flush()

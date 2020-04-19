@@ -18,7 +18,6 @@ ENTITY = {
         'website': 'https://ralphtester.me',
         'phone': '+12025557612',
         'email': 'info@ralphtester.me',
-        'passport': 'passportEntityId',
         'topics': 'role.spy'
     }
 }
@@ -221,7 +220,7 @@ class ProxyTestCase(TestCase):
     def test_rdf(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
         triples = list(proxy.triples())
-        assert 11 == len(triples), len(triples)
+        assert 10 == len(triples), len(triples)
 
         proxy = model.make_entity('Person')
         assert 0 == len(list(proxy.triples()))
