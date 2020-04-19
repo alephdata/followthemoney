@@ -13,6 +13,7 @@ class EntityType(PropertyType):
     label = _('Entity')
     plural = _('Entities')
     matchable = True
+    pivot = True
 
     def validate(self, text, **kwargs):
         text = sanitize_text(text)
