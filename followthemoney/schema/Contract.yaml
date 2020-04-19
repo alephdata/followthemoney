@@ -7,7 +7,6 @@ Contract:
   extends: Asset
   matchable: false
   featured:
-  - name
   - title
   - amount
   - authority
