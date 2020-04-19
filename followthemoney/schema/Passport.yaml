@@ -22,6 +22,7 @@ Passport:
       type: entity
       range: LegalEntity
       reverse:
+        label: "Passports"
         name: passport
     type:
       label: "Document type"

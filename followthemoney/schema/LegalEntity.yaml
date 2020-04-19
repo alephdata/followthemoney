@@ -107,20 +107,9 @@ LegalEntity:
       type: identifier
     parent:
       label: "Parent company"
+      description: "If this entity is a subsidiary, another entity (company or organisation) is its parent"
       reverse:
+        label: "Subsidiaries"
         name: subsidiaries
       type: entity
       range: LegalEntity
-      description: "If this entity is a subsidiary, another entity (company or organisation) is its parent"
-    subsidiaries:
-      label: "Subsidiaries"
-      reverse:
-        name: parent
-      type: entity
-      range: LegalEntity
-    passport:
-      label: "Passports"
-      type: entity
-      range: Passport
-      reverse:
-        name: holder
