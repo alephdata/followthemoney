@@ -27,7 +27,7 @@ class Match(object):
     def entity(self):
         if self._entity is None:
             data = self._data.get('entity')
-            if is_mapping(data):
+            if is_mapping(data) and 'schema' in data:
                 self._entity = self.model.get_proxy(data)
         return self._entity
 
@@ -40,7 +40,7 @@ class Match(object):
     def canonical(self):
         if self._canonical is None:
             data = self._data.get('canonical')
-            if is_mapping(data):
+            if is_mapping(data) and 'schema' in data:
                 self._canonical = self.model.get_proxy(data)
         return self._canonical
 

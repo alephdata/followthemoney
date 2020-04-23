@@ -34,6 +34,7 @@ class Linker(object):
         # data intgration.
         linked = self.ns.apply(proxy)
         linked.id = self.resolve(linked.id)
+        linked.context = {}
         for prop in proxy.iterprops():
             if prop.type != registry.entity:
                 continue

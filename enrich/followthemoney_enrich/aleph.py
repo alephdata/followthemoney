@@ -21,6 +21,7 @@ class AlephEnricher(Enricher):
         if data is not None:
             return data
         try:
+            log.info("Aleph fetch: %s", url)
             res = self.api.session.get(url)
             if res.status_code != 200:
                 return {}
