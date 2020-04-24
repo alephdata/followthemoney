@@ -41,6 +41,8 @@ Contract:
       type: date
     procedureNumber:
       label: "Procedure number"
+    procedure:
+      label: "Contract procedure"
     noticeId:
       label: "Contract Award Notice ID"
     numberAwards:
