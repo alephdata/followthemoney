@@ -15,6 +15,9 @@ Interval:
     summary:
       label: "Summary"
       type: text
+    description:
+      label: Description
+      type: text
     recordId:
       label: "Record ID"
     sourceUrl:
