@@ -10,7 +10,6 @@ Message:
   generated: true
   featured:
   - subject
-  - bodyText
   - date
   - sender
   - recipients
@@ -19,7 +18,6 @@ Message:
   - sender
   caption:
   - subject
-  - bodyText
   - title
   - threadTopic
   - fileName
