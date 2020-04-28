@@ -1,4 +1,4 @@
-from nose.tools import assert_raises
+from nose.tools import assert_raises  # type: ignore
 from unittest import TestCase
 from followthemoney import model
 from followthemoney.types import registry

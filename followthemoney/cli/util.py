@@ -2,7 +2,7 @@ import os
 import json
 import yaml
 import click
-from banal import is_mapping, is_listish, ensure_list
+from banal import is_mapping, is_listish, ensure_list  # type: ignore
 
 from followthemoney import model
 

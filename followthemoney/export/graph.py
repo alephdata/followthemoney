@@ -1,6 +1,6 @@
-import networkx as nx
+import networkx as nx  # type: ignore
 from pprint import pprint  # noqa
-from networkx.readwrite.gexf import generate_gexf
+from networkx.readwrite.gexf import generate_gexf  # type: ignore
 
 from followthemoney.graph import Graph
 from followthemoney.types import registry

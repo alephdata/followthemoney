@@ -2,8 +2,8 @@ import re
 import os
 import pytz
 import logging
-from rdflib import Literal
-from rdflib.namespace import XSD
+from rdflib import Literal  # type: ignore
+from rdflib.namespace import XSD  # type: ignore
 from datetime import datetime, date
 
 from followthemoney.types.common import PropertyType

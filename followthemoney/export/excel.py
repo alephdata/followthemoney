@@ -1,9 +1,9 @@
 import logging
 from io import BytesIO
-from openpyxl import Workbook
-from openpyxl.cell import WriteOnlyCell
-from openpyxl.styles import Font, PatternFill
-from openpyxl.utils.exceptions import IllegalCharacterError
+from openpyxl import Workbook  # type: ignore
+from openpyxl.cell import WriteOnlyCell  # type: ignore
+from openpyxl.styles import Font, PatternFill  # type: ignore
+from openpyxl.utils.exceptions import IllegalCharacterError  # type: ignore
 
 from followthemoney.export.common import Exporter
 from followthemoney.util import sanitize_text

@@ -1,6 +1,6 @@
 import csv
 from pathlib import Path
-from banal import ensure_list
+from banal import ensure_list  # type: ignore
 
 from followthemoney.export.common import Exporter
 

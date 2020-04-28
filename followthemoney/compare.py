@@ -1,6 +1,6 @@
 import itertools
-from Levenshtein import jaro
-from normality import normalize
+from Levenshtein import jaro  # type: ignore
+from normality import normalize  # type: ignore
 from followthemoney.types import registry
 from followthemoney.util import dampen, shortest
 from followthemoney.exc import InvalidData

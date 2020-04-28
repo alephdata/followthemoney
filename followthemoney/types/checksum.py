@@ -1,4 +1,4 @@
-from rdflib import URIRef
+from rdflib import URIRef  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _

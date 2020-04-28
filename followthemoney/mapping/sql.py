@@ -2,13 +2,13 @@ import os
 import six
 import logging
 from uuid import uuid4
-from banal import ensure_list, is_listish, keys_values
-from normality import stringify
-from sqlalchemy import create_engine, MetaData
+from banal import ensure_list, is_listish, keys_values  # type: ignore
+from normality import stringify  # type: ignore
+from sqlalchemy import create_engine, MetaData  # type: ignore
 from sqlalchemy import select, func
 # from sqlalchemy import text as sql_text
-from sqlalchemy.pool import NullPool
-from sqlalchemy.schema import Table
+from sqlalchemy.pool import NullPool  # type: ignore
+from sqlalchemy.schema import Table  # type: ignore
 
 from followthemoney.mapping.source import Source
 from followthemoney.exc import InvalidMapping

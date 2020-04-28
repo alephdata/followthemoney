@@ -1,5 +1,5 @@
 import re
-from rdflib import URIRef
+from rdflib import URIRef   # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import get_entity_id, sanitize_text

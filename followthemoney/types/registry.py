@@ -1,4 +1,4 @@
-from banal import ensure_list
+from banal import ensure_list  # type: ignore
 from followthemoney.types.common import PropertyType
 
 
