@@ -1,5 +1,5 @@
-from rdflib import URIRef
-from banal import ensure_list, ensure_dict, as_bool
+from rdflib import URIRef  # type: ignore
+from banal import ensure_list, ensure_dict, as_bool  # type: ignore
 
 from followthemoney.property import Property
 from followthemoney.types import registry

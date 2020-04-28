@@ -1,6 +1,6 @@
 import re
-from normality import slugify
-from normality.cleaning import collapse_spaces
+from normality import slugify  # type: ignore
+from normality.cleaning import collapse_spaces  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _

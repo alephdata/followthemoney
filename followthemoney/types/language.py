@@ -1,5 +1,5 @@
-from rdflib import URIRef
-from languagecodes import iso_639_alpha3
+from rdflib import URIRef  # type: ignore
+from languagecodes import iso_639_alpha3  # type: ignore
 
 from followthemoney.types.common import EnumType
 from followthemoney.util import defer as _

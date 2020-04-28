@@ -1,21 +1,23 @@
 from itertools import product
-from rdflib import Literal
-from banal import ensure_list
-from normality import stringify
+from rdflib import Literal  # type: ignore
+from banal import ensure_list  # type: ignore
+from normality import stringify  # type: ignore
 
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
 
+from typing import Optional
+
 
 class PropertyType(object):
     """Base class for all types."""
-    name = None
-    group = None
+    name: Optional[str] = None
+    group: Optional[str] = None
     label = None
     plural = None
     matchable = True
     pivot = False
-    max_size = None
+    max_size: Optional[int] = None
 
     def validate(self, text, **kwargs):
         """Returns a boolean to indicate if this is a valid instance of

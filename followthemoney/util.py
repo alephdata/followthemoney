@@ -1,14 +1,14 @@
 import os
 import logging
 from threading import local
-from normality import stringify
-from normality.cleaning import compose_nfc
+from normality import stringify  # type: ignore
+from normality.cleaning import compose_nfc  # type: ignore
 from normality.cleaning import remove_unsafe_chars
-from normality.encoding import DEFAULT_ENCODING
-from babel import Locale
+from normality.encoding import DEFAULT_ENCODING  # type: ignore
+from babel import Locale  # type: ignore
 from gettext import translation
-from rdflib import Namespace
-from banal import is_mapping, is_sequence
+from rdflib import Namespace  # type: ignore
+from banal import is_mapping, is_sequence  # type: ignore
 from banal import unique_list, ensure_list
 
 NS = Namespace('https://w3id.org/ftm#')

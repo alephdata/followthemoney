@@ -1,7 +1,7 @@
 import os
 import json
 import logging
-import stringcase
+import stringcase  # type: ignore
 
 from followthemoney.export.csv import CSVMixin
 from followthemoney.export.graph import GraphExporter, DEFAULT_EDGE_TYPES

@@ -1,4 +1,4 @@
-from rdflib import URIRef
+from rdflib import URIRef  # type: ignore
 
 from followthemoney.types.common import EnumType
 from followthemoney.util import gettext, defer as _

@@ -1,4 +1,4 @@
-from rdflib import URIRef
+from rdflib import URIRef  # type: ignore
 from ipaddress import ip_address
 
 from followthemoney.types.common import PropertyType

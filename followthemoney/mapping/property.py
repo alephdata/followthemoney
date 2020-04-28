@@ -1,7 +1,7 @@
 import re
 from copy import deepcopy
-from banal import keys_values
-from normality import stringify
+from banal import keys_values  # type: ignore
+from normality import stringify  # type: ignore
 
 from followthemoney.exc import InvalidMapping
 from followthemoney.util import get_entity_id

@@ -1,7 +1,7 @@
-from banal import ensure_list, first
-from normality import slugify
-from Levenshtein import jaro_winkler, setmedian
-from normality.cleaning import collapse_spaces, strip_quotes
+from banal import ensure_list, first  # type: ignore
+from normality import slugify  # type: ignore
+from Levenshtein import jaro_winkler, setmedian  # type: ignore
+from normality.cleaning import collapse_spaces, strip_quotes  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen, sanitize_text

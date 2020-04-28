@@ -1,7 +1,7 @@
 import os
 from unittest import TestCase
 from tempfile import mkstemp
-from openpyxl import load_workbook
+from openpyxl import load_workbook  # type: ignore
 
 from followthemoney import model
 from followthemoney.export.excel import ExcelExporter
@@ -18,7 +18,7 @@ ENTITY = {
         'phone': '+12025557612',
         'email': 'info@ralphtester.me'
     }
-    }
+}
 
 
 class ExcelExportTestCase(TestCase):
@@ -41,8 +41,7 @@ class ExcelExportTestCase(TestCase):
         props = exporter.exportable_properties(entity.schema)
         self.assertListEqual(
             [cell.value for cell in rows[0]],
-            ['ID', 'source'] +
-            [prop.label for prop in props]
+            ['ID', 'source'] + [prop.label for prop in props]
         )
         self.assertListEqual(
             [cell.value for cell in rows[1][:3]],

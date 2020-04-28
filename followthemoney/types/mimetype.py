@@ -1,5 +1,5 @@
-from rdflib import URIRef
-from pantomime import normalize_mimetype, parse_mimetype, DEFAULT
+from rdflib import URIRef  # type: ignore
+from pantomime import normalize_mimetype, parse_mimetype, DEFAULT  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _

@@ -1,5 +1,5 @@
 from hashlib import sha1
-from banal import keys_values
+from banal import keys_values  # type: ignore
 
 from followthemoney.mapping.property import PropertyMapping
 from followthemoney.types import registry

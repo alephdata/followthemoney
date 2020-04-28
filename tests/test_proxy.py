@@ -1,5 +1,5 @@
 from unittest import TestCase
-from nose.tools import assert_raises
+from nose.tools import assert_raises  # type: ignore
 from followthemoney.exc import InvalidData
 
 

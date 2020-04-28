@@ -1,5 +1,5 @@
 from csv import DictReader
-from banal import is_listish
+from banal import is_listish  # type: ignore
 
 
 class Source(object):

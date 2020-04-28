@@ -1,6 +1,6 @@
 import os
 import yaml
-import responses
+import responses  # type: ignore
 from unittest import TestCase
 from followthemoney import model
 from followthemoney.exc import InvalidMapping

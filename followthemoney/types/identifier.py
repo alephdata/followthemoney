@@ -1,5 +1,5 @@
 import re
-from normality import normalize
+from normality import normalize  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen, shortest
