@@ -7,6 +7,8 @@ Assessment:
   - name
   - publishDate
   - author
+  caption:
+  - name
   required:
   - name
   properties:

@@ -1,0 +1,33 @@
+Documentation: 
+  label: "Documentation"
+  plural: "Documentations"
+  extends: Interest
+  matchable: false
+  featured:
+  - document
+  - entity
+  - role
+  required:
+  - document
+  - entity
+  edge:
+    source: document
+    label: "documents"
+    target: entity
+    directed: false
+    caption: role
+  properties:
+    document:
+      label: "Document"
+      reverse:
+        name: relatedEntities
+        label: "Related entities"
+      type: entity
+      range: Document
+    entity:
+      label: "Entity"
+      reverse:
+        name: documentedBy
+        label: "Documents"
+      type: entity
+      range: Thing
