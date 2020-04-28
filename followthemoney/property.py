@@ -1,7 +1,10 @@
 from normality import stringify  # type: ignore
 from banal import is_mapping  # type: ignore
 from rdflib import URIRef  # type: ignore
+from typing import Dict, Any
 
+from followthemoney.model import Model
+from followthemoney.schema import Schema
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry
 from followthemoney.util import gettext, NS, get_entity_id
@@ -10,9 +13,9 @@ from followthemoney.util import gettext, NS, get_entity_id
 class Property(object):
     RESERVED = ['id', 'caption', 'schema', 'schemata']
 
-    def __init__(self, schema, name, data):
-        self.schema = schema
-        self.model = schema.model
+    def __init__(self, schema: Schema, name: str, data: Dict[str, Any]):
+        self.schema: Schema = schema
+        self.model: Model = schema.model
 
         self.name = stringify(name)
         self.qname = '%s:%s' % (schema.name, self.name)

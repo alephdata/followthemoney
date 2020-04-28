@@ -1,8 +1,10 @@
 import os
 import yaml
+from typing import Dict
 
 from followthemoney.types import registry
 from followthemoney.schema import Schema
+from followthemoney.property import Property
 from followthemoney.mapping import QueryMapping
 from followthemoney.proxy import EntityProxy
 from followthemoney.exc import InvalidModel, InvalidData
@@ -11,11 +13,11 @@ from followthemoney.exc import InvalidModel, InvalidData
 class Model(object):
     """A collection of schemata."""
 
-    def __init__(self, path):
-        self.path = path
-        self.schemata = {}
-        self.properties = set()
-        self.qnames = {}
+    def __init__(self, path: str):
+        self.path: str = path
+        self.schemata: Dict[str, Schema] = {}
+        self.properties: Dict[str, Property] = {}
+        self.qnames: Dict[str, str] = {}
         for (path, _, filenames) in os.walk(self.path):
             for filename in filenames:
                 self._load(os.path.join(path, filename))

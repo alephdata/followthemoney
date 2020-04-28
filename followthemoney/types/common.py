@@ -6,43 +6,44 @@ from normality import stringify  # type: ignore
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
 
-from typing import Optional
+from typing import Optional, List, Any, Dict
 
 
 class PropertyType(object):
     """Base class for all types."""
     name: Optional[str] = None
     group: Optional[str] = None
-    label = None
-    plural = None
-    matchable = True
-    pivot = False
+    label: Optional[str] = None
+    plural: Optional[str] = None
+    matchable: bool = True
+    pivot: bool = False
     max_size: Optional[int] = None
 
-    def validate(self, text, **kwargs):
+    def validate(self, text, **kwargs) -> bool:
         """Returns a boolean to indicate if this is a valid instance of
         the type."""
         cleaned = self.clean(text, **kwargs)
         return cleaned is not None
 
-    def clean(self, text, **kwargs):
+    def clean(self, text, **kwargs) -> Optional[Any]:
         """Create a more clean, but still user-facing version of an
         instance of the type."""
         text = sanitize_text(text)
         if text is not None:
             return self.clean_text(text, **kwargs)
+        return None
 
-    def clean_text(self, text, **kwargs):
+    def clean_text(self, text, **kwargs) -> Any:
         return text
 
-    def normalize(self, text, cleaned=False, **kwargs):
+    def normalize(self, text, cleaned=False, **kwargs) -> List:
         """Create a represenation ideal for comparisons, but not to be
         shown to the user."""
         if not cleaned:
             text = self.clean(text, **kwargs)
         return ensure_list(text)
 
-    def normalize_set(self, items, **kwargs):
+    def normalize_set(self, items, **kwargs) -> List:
         """Utility to normalize a whole set of values and get unique
         values."""
         values = set()
@@ -50,26 +51,26 @@ class PropertyType(object):
             values.update(self.normalize(item, **kwargs))
         return list(values)
 
-    def join(self, values):
+    def join(self, values) -> str:
         values = ensure_list(values)
         return '; '.join(values)
 
-    def _specificity(self, value):
+    def _specificity(self, value) -> float:
         return 1.0
 
-    def specificity(self, value):
+    def specificity(self, value) -> float:
         if not self.matchable or value is None:
             return 0.0
         return self._specificity(value)
 
-    def compare_safe(self, left, right):
+    def compare_safe(self, left, right) -> float:
         left = stringify(left)
         right = stringify(right)
         if left is None or right is None:
             return 0.0
         return self.compare(left, right)
 
-    def compare(self, left, right):
+    def compare(self, left, right) -> float:
         """Comparisons are a float between 0 and 1. They can assume
         that the given data is cleaned, but not normalised."""
         if left.lower() == right.lower():
@@ -85,28 +86,29 @@ class PropertyType(object):
             return 0
         return func(results)
 
-    def country_hint(self, value):
+    def country_hint(self, value) -> None:
         """Determine if the given value allows us to infer a country
         that it may be related to."""
         return None
 
-    def values_size(self, values):
+    def values_size(self, values) -> int:
         return sum((len(v) for v in ensure_list(values)))
 
     def rdf(self, value):
         return Literal(value)
 
-    def node_id(self, value):
+    def node_id(self, value) -> str:
         return str(self.rdf(value))
 
-    def node_id_safe(self, value):
+    def node_id_safe(self, value) -> Optional[str]:
         if value is not None:
             return self.node_id(value)
+        return None
 
     def caption(self, value):
         return value
 
-    def to_dict(self):
+    def to_dict(self) -> Dict:
         data = {
             'label': gettext(self.label),
             'plural': gettext(self.plural)
