@@ -24,7 +24,7 @@ Documentation:
         label: "Related entities"
       type: entity
       range: Document
-    object:
+    entity:
       label: "Entity"
       reverse:
         name: documentedBy
