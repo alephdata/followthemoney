@@ -25,6 +25,7 @@ jobs:
     - name: Run the tests
       run: |
         nosetests --with-coverage --cover-package=followthemoney --cover-erase
+        mypy .
     - name: Build a followthemoney distribution
       run: |
         python setup.py sdist bdist_wheel
@@ -46,7 +47,7 @@ jobs:
         user: __token__
         password: ${{ secrets.pypi_password }}
         packages_dir: enrich/dist/
-  
+
   nodejs:
     runs-on: ubuntu-latest
     strategy:
