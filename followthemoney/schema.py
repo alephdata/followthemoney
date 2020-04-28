@@ -1,6 +1,8 @@
 from rdflib import URIRef  # type: ignore
 from banal import ensure_list, ensure_dict, as_bool  # type: ignore
+from typing import Optional, Dict, Any, Set
 
+from followthemoney.model import Model
 from followthemoney.property import Property
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData, InvalidModel
@@ -13,13 +15,13 @@ class Schema(object):
     Schema items define the entities and links available in the model.
     """
 
-    def __init__(self, model, name, data):
-        self.model = model
-        self.name = name
-        self.data = data
-        self._label = data.get('label', name)
-        self._plural = data.get('plural', self.label)
-        self._description = data.get('description')
+    def __init__(self, model: Model, name: str, data: Dict[str, Any]):
+        self.model: Model = model
+        self.name: str = name
+        self.data: Dict[str, Any] = data
+        self._label: Optional[str] = data.get('label', name)
+        self._plural: Optional[str] = data.get('plural', self.label)
+        self._description: Optional[str] = data.get('description')
         self.uri = URIRef(data.get('rdf', NS[name]))
 
         # Do not show in listings:
@@ -57,11 +59,11 @@ class Schema(object):
         self._edge_label = edge.get('label', self._label)
         self.edge_directed = edge.get('directed', True)
 
-        self.extends = set()
+        self.extends: Set[str] = set()
         self.schemata = set([self])
         self.names = set([self.name])
-        self.descendants = set()
-        self.properties = {}
+        self.descendants: Set[str] = set()
+        self.properties: Dict[str, Property] = {}
         for name, prop in data.get('properties', {}).items():
             self.properties[name] = Property(self, name, prop)
 
