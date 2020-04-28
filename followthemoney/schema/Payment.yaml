@@ -65,3 +65,11 @@ Payment:
         label: "Payments received"
       type: entity
       range: BankAccount
+    contract:
+      label: "Contract"
+      plural: "Contracts"
+      reverse:
+        name: paymentContract
+        label: "Contractual payments"
+      type: entity
+      range: Contract
