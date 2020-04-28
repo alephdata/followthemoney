@@ -52,7 +52,8 @@ setup(
             'transifex-client',
             'responses>=0.9.0',
             'coverage>=4.1',
-            'recommonmark>=0.4.0'
+            'recommonmark>=0.4.0',
+            'mypy'
         ]
     },
     test_suite='nose.collector',
