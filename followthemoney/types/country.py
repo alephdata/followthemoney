@@ -1,3 +1,5 @@
+from typing import Dict, Optional
+
 import countrynames  # type: ignore
 from rdflib import URIRef  # type: ignore
 
@@ -6,13 +8,13 @@ from followthemoney.util import gettext, defer as _
 
 
 class CountryType(EnumType):
-    name = 'country'
-    group = 'countries'
-    label = _('Country')
-    plural = _('Countries')
-    matchable = True
+    name: str = 'country'
+    group: str = 'countries'
+    label: str = _('Country')
+    plural: str = _('Countries')
+    matchable: bool = True
 
-    def _locale_names(self, locale):
+    def _locale_names(self, locale) -> Dict[str, str]:
         # extra territories that OCCRP is interested in.
         names = {
             'zz': gettext('Global'),
@@ -41,7 +43,7 @@ class CountryType(EnumType):
                 names[code] = label
         return names
 
-    def clean_text(self, country, guess=False, **kwargs):
+    def clean_text(self, country: str, guess: bool=False, **kwargs) -> Optional[str]: # type: ignore[override] # noqa
         """Determine a two-letter country code based on an input.
 
         The input may be a country code, a country name, etc.
@@ -52,9 +54,10 @@ class CountryType(EnumType):
         country = countrynames.to_code(country, fuzzy=guess)
         if country is not None:
             return country.lower()
+        return None
 
-    def country_hint(self, value):
+    def country_hint(self, value: str) -> str:
         return value
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> URIRef:
         return URIRef('iso-3166-1:%s' % value)

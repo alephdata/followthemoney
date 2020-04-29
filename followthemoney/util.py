@@ -1,6 +1,8 @@
 import os
 import logging
 from threading import local
+from typing import Any, Union, List, Optional, Dict
+
 from normality import stringify  # type: ignore
 from normality.cleaning import compose_nfc  # type: ignore
 from normality.cleaning import remove_unsafe_chars
@@ -8,7 +10,7 @@ from normality.encoding import DEFAULT_ENCODING  # type: ignore
 from babel import Locale  # type: ignore
 from gettext import translation
 from rdflib import Namespace  # type: ignore
-from banal import is_mapping, is_sequence  # type: ignore
+from banal import is_mapping, is_sequence
 from banal import unique_list, ensure_list
 
 NS = Namespace('https://w3id.org/ftm#')
@@ -25,7 +27,7 @@ def gettext(*args, **kwargs):
     return state.translation.gettext(*args, **kwargs)
 
 
-def defer(text):
+def defer(text: Any) -> Any:
     return text
 
 
@@ -35,13 +37,13 @@ def set_model_locale(locale):
                                     fallback=True)
 
 
-def get_locale():
+def get_locale() -> Locale:
     if not hasattr(state, 'locale'):
         return Locale(DEFAULT_LOCALE)
     return Locale(state.locale)
 
 
-def get_env_list(name, default=[]):
+def get_env_list(name, default=[]) -> List[str]:
     value = stringify(os.environ.get(name))
     if value is not None:
         values = value.split(':')
@@ -50,7 +52,7 @@ def get_env_list(name, default=[]):
     return default
 
 
-def sanitize_text(text, encoding=DEFAULT_ENCODING):
+def sanitize_text(text: Any, encoding=DEFAULT_ENCODING) -> Optional[str]:
     text = stringify(text, encoding_default=encoding)
     if text is not None:
         try:
@@ -61,9 +63,10 @@ def sanitize_text(text, encoding=DEFAULT_ENCODING):
         text = remove_unsafe_chars(text)
         text = text.encode(DEFAULT_ENCODING, 'replace')
         return text.decode(DEFAULT_ENCODING, 'replace')
+    return None
 
 
-def key_bytes(key):
+def key_bytes(key: Union[bytes, Any]) -> bytes:
     """Convert the given data to a value appropriate for hashing."""
     if isinstance(key, bytes):
         return key
@@ -71,7 +74,7 @@ def key_bytes(key):
     return key.encode('utf-8')
 
 
-def get_entity_id(obj):
+def get_entity_id(obj) -> Optional[str]:
     """Given an entity-ish object, try to get the ID."""
     if is_mapping(obj):
         obj = obj.get('id')
@@ -80,7 +83,7 @@ def get_entity_id(obj):
     return sanitize_text(obj)
 
 
-def merge_data(old, new):
+def merge_data(old, new) -> Union[List, Dict]:
     """Extend the values of the new doc with extra values from the old."""
     if is_sequence(old) or is_sequence(new):
         new = ensure_list(new)
@@ -100,7 +103,7 @@ def merge_data(old, new):
     return new or old
 
 
-def dampen(short, long, text):
+def dampen(short: float, long: float, text: str) -> float:
     length = len(text) - short
     baseline = max(1.0, (long - short))
     return max(0, min(1.0, (length / baseline)))

@@ -1,6 +1,6 @@
 import re
 from copy import deepcopy
-from banal import keys_values  # type: ignore
+from banal import keys_values
 from normality import stringify  # type: ignore
 
 from followthemoney.exc import InvalidMapping

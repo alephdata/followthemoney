@@ -5,6 +5,7 @@ import logging
 from rdflib import Literal  # type: ignore
 from rdflib.namespace import XSD  # type: ignore
 from datetime import datetime, date
+from typing import Any, Union, Optional, Dict, List
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
@@ -21,7 +22,7 @@ class DateType(PropertyType):
     MONTH_FORMATS = re.compile(r'(%b|%B|%m|%c|%x)')
     DAY_FORMATS = re.compile(r'(%d|%w|%c|%x)')
     MAX_LENGTH = 19
-    DATE_PATTERNS_BY_LENGTH = {
+    DATE_PATTERNS_BY_LENGTH: Dict[int, List[str]] = {
         19: ["%Y-%m-%dT%H:%M:%S"],
         18: ["%Y-%m-%dT%H:%M:%S"],
         17: ["%Y-%m-%dT%H:%M:%S"],
@@ -40,30 +41,30 @@ class DateType(PropertyType):
         4: ["%Y"],
     }
 
-    name = 'date'
-    group = 'dates'
-    label = _('Date')
-    plural = _('Dates')
-    matchable = True
+    name: str = 'date'
+    group: str = 'dates'
+    label: str = _('Date')
+    plural: str = _('Dates')
+    matchable: bool = True
 
-    def validate(self, obj, **kwargs):
+    def validate(self, obj: Any, **kwargs) -> bool:  # type: ignore[override] # noqa
         """Check if a thing is a valid date."""
         obj = sanitize_text(obj)
         if obj is None:
             return False
         return self.DATE_RE.match(obj) is not None
 
-    def _clean_datetime(self, obj):
+    def _clean_datetime(self, obj: Union[datetime, date]) -> str:
         """Python objects want to be text."""
         if isinstance(obj, datetime):
             # if it's not naive, put it on zulu time first:
             if obj.tzinfo is not None:
                 obj = obj.astimezone(pytz.utc)
             return obj.isoformat()[:self.MAX_LENGTH]
-        if isinstance(obj, date):
+        else:
             return obj.isoformat()
 
-    def _clean_text(self, text):
+    def _clean_text(self, text: str) -> Optional[str]:
         # limit to the date part of a presumed date string
         # FIXME: this may get us rid of TZ info?
         text = text[:self.MAX_LENGTH]
@@ -81,16 +82,15 @@ class DateType(PropertyType):
         text = self.CUT_ZEROES.sub('', text)
         return text
 
-    def clean(self, text, format=None, **kwargs):
+    def clean(self, text: Any, format: str=None, **kwargs) -> Optional[str]:
         """The classic: date parsing, every which way."""
         # handle date/datetime before converting to text.
-        date = self._clean_datetime(text)
-        if date is not None:
-            return date
+        if isinstance(text, (date, datetime)):
+            return self._clean_datetime(text)
 
         text = sanitize_text(text)
         if text is None:
-            return
+            return None
 
         if format is not None:
             # parse with a specified format
@@ -107,20 +107,20 @@ class DateType(PropertyType):
 
         return self._clean_text(text)
 
-    def _specificity(self, value):
+    def _specificity(self, value: str) -> float:
         return dampen(5, 13, value)
 
-    def compare(self, left, right):
+    def compare(self, left: str, right: str) -> float:
         prefix = os.path.commonprefix([left, right])
         return dampen(4, 10, prefix)
 
-    def rdf(self, value):
+    def rdf(self, value) -> Literal:
         return Literal(value, datatype=XSD.dateTime)
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> str:
         return 'date:%s' % value
 
-    def to_datetime(self, value):
+    def to_datetime(self, value: str) -> Optional[datetime]:
         formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), [])
         for fmt in formats:
             try:
@@ -129,6 +129,7 @@ class DateType(PropertyType):
             except Exception:
                 continue
         log.debug('Date cannot be parsed %r: %s', formats, value)
+        return None
 
     def to_number(self, value):
         date = self.to_datetime(value)

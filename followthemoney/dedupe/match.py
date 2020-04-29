@@ -1,5 +1,5 @@
 import json
-from banal import is_mapping  # type: ignore
+from banal import is_mapping
 
 from followthemoney.compare import compare
 from followthemoney.util import get_entity_id

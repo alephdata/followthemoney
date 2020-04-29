@@ -1,5 +1,5 @@
 import click
-from banal import keys_values  # type: ignore
+from banal import keys_values
 
 from followthemoney import model
 from followthemoney.namespace import Namespace

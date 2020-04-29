@@ -1,4 +1,6 @@
-from banal import ensure_list  # type: ignore
+from typing import List, Dict, Union
+
+from banal import ensure_list
 from followthemoney.types.common import PropertyType
 
 
@@ -8,43 +10,40 @@ class Registry(object):
     then clean, validate or format values of that type."""
 
     def __init__(self):
-        self._types = {}
+        self._types: Dict[str, PropertyType] = {}
 
-    def add(self, clazz):
+    def add(self, clazz: type):
         if issubclass(clazz, PropertyType):
             self._types[clazz.name] = clazz()
 
     @property
-    def types(self):
+    def types(self) -> List[PropertyType]:
         """Return all types known to the system."""
         return list(self._types.values())
 
     @property
-    def matchable(self):
+    def matchable(self) -> List[PropertyType]:
         """Return all matchable property types."""
         return [t for t in self.types if t.matchable]
 
     @property
-    def pivots(self):
+    def pivots(self) -> List[PropertyType]:
         return [t for t in self.types if t.pivot]
 
     @property
-    def groups(self):
+    def groups(self) -> Dict[str, PropertyType]:
         return {t.group: t for t in self.types if t.group is not None}
 
-    def get(self, name):
+    def get(self, name: Union[str, PropertyType]) -> PropertyType:
         """For a given property type name, get its handling object."""
         # Allow transparent re-checking.
         if isinstance(name, PropertyType):
             return name
-        return self._types.get(name)
+        return self._types[name]
 
-    def get_types(self, names):
+    def get_types(self, names: List[Union[str, PropertyType]]) -> List[PropertyType]:
         names = ensure_list(names)
-        return [self.get(n) for n in names if self.get(n) is not None]
+        return [self.get(n) for n in names if self.get(n)]
 
-    def __getattr__(self, name):
-        type_ = self.get(name)
-        if type_ is None:
-            raise AttributeError(name)
-        return type_
+    def __getattr__(self, name) -> PropertyType:
+        return self.get(name)

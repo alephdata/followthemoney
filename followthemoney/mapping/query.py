@@ -1,16 +1,19 @@
+from typing import List, Set
+
 from followthemoney.mapping.entity import EntityMapping
 from followthemoney.mapping.sql import SQLSource
 from followthemoney.mapping.csv import CSVSource
 from followthemoney.exc import InvalidMapping
+from followthemoney.model import Model
 
 
 class QueryMapping(object):
 
-    def __init__(self, model, data, key_prefix=None):
-        self.model = model
+    def __init__(self, model: Model, data, key_prefix=None):
+        self.model: Model = model
         self.data = data
         self.refs = set()
-        self.entities = []
+        self.entities: List[EntityMapping] = []
         for name, data in data.get('entities', {}).items():
             entity = EntityMapping(model, self, name, data,
                                    key_prefix=key_prefix)
@@ -31,7 +34,7 @@ class QueryMapping(object):
         # in dependent entities.
         entities = self.entities
         self.entities = []
-        resolved = set()
+        resolved: Set[str] = set()
         while len(entities) > 0:
             before = len(entities)
             for entity in entities:

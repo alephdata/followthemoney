@@ -1,7 +1,10 @@
 from hashlib import sha1
-from banal import keys_values  # type: ignore
+from banal import keys_values
+from typing import Any, Dict, Optional
 
 from followthemoney.mapping.property import PropertyMapping
+from followthemoney.mapping.query import QueryMapping
+from followthemoney.model import Model
 from followthemoney.types import registry
 from followthemoney.util import key_bytes
 from followthemoney.exc import InvalidMapping
@@ -9,10 +12,11 @@ from followthemoney.exc import InvalidMapping
 
 class EntityMapping(object):
 
-    def __init__(self, model, query, name, data, key_prefix=None):
-        self.model = model
-        self.name = name
-        self.data = data
+    def __init__(self, model: Model, query: QueryMapping, name: str,
+                 data: Dict[str, Any], key_prefix: Optional[Any]=None):
+        self.model: Model = model
+        self.name: str = name
+        self.data: Dict[str, Any] = data
 
         self.seed = sha1(key_bytes(key_prefix))
         self.seed.update(key_bytes(data.get('key_literal')))
@@ -25,7 +29,10 @@ class EntityMapping(object):
             msg = "Please use only keys or id_column, not both: %r" % name
             raise InvalidMapping(msg)
 
-        self.schema = model.get(data.get('schema'))
+        if 'schema' not in data:
+            raise InvalidMapping("Invalid data: %s" % data)
+
+        self.schema = model.get(data['schema'])
         if self.schema is None:
             raise InvalidMapping("Invalid schema: %s" % data.get('schema'))
 

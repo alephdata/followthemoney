@@ -6,11 +6,11 @@ from followthemoney.util import defer as _
 
 class ChecksumType(PropertyType):
     """Used for content hashes, usually SHA1 (I know, I know)."""
-    name = 'checksum'
-    group = 'checksums'
-    label = _('Checksum')
-    plural = _('Checksums')
-    matchable = True
+    name: str = 'checksum'
+    group: str = 'checksums'
+    label: str = _('Checksum')
+    plural: str = _('Checksums')
+    matchable: bool = True
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> URIRef:
         return URIRef('hash:%s' % value)
