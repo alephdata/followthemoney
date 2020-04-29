@@ -336,6 +336,9 @@
       ],
       "required": [
         "name"
+      ],
+      "caption": [
+        "name"
       ]
     },
     "Membership": {
@@ -2558,6 +2561,16 @@
           "matchable": true,
           "range": "UnknownLink",
           "reverse": "object"
+        },
+        "documentedBy": {
+          "name": "documentedBy",
+          "qname": "Thing:documentedBy",
+          "label": "Documents",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Documentation",
+          "reverse": "entity"
         }
       },
       "featured": [
@@ -2783,6 +2796,15 @@
           "matchable": true,
           "range": "BankAccount",
           "reverse": "paymentBeneficiaryAccount"
+        },
+        "contract": {
+          "name": "contract",
+          "qname": "Payment:contract",
+          "label": "Contract",
+          "type": "entity",
+          "matchable": true,
+          "range": "Contract",
+          "reverse": "paymentContract"
         }
       },
       "edge": {
@@ -3217,6 +3239,16 @@
           "matchable": true,
           "range": "Thing",
           "reverse": "proof"
+        },
+        "relatedEntities": {
+          "name": "relatedEntities",
+          "qname": "Document:relatedEntities",
+          "label": "Related entities",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Documentation",
+          "reverse": "document"
         }
       },
       "featured": [
@@ -3873,7 +3905,6 @@
       },
       "featured": [
         "subject",
-        "bodyText",
         "date",
         "sender",
         "recipients"
@@ -3884,7 +3915,6 @@
       ],
       "caption": [
         "subject",
-        "bodyText",
         "title",
         "threadTopic",
         "fileName"
@@ -3945,6 +3975,12 @@
           "label": "Procedure number",
           "type": "string"
         },
+        "procedure": {
+          "name": "procedure",
+          "qname": "Contract:procedure",
+          "label": "Contract procedure",
+          "type": "string"
+        },
         "noticeId": {
           "name": "noticeId",
           "qname": "Contract:noticeId",
@@ -4001,6 +4037,16 @@
           "stub": true,
           "matchable": true,
           "range": "ContractAward",
+          "reverse": "contract"
+        },
+        "paymentContract": {
+          "name": "paymentContract",
+          "qname": "Contract:paymentContract",
+          "label": "Contractual payments",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Payment",
           "reverse": "contract"
         },
         "economicActivityContract": {
@@ -4210,6 +4256,12 @@
           "name": "summary",
           "qname": "Interval:summary",
           "label": "Summary",
+          "type": "text"
+        },
+        "description": {
+          "name": "description",
+          "qname": "Interval:description",
+          "label": "Description",
           "type": "text"
         },
         "recordId": {
@@ -4608,6 +4660,56 @@
         "ccdNumber"
       ],
       "description": "A foreign economic activity"
+    },
+    "Documentation": {
+      "label": "Documentation",
+      "plural": "Documentations",
+      "schemata": [
+        "Documentation",
+        "Interest",
+        "Interval"
+      ],
+      "extends": [
+        "Interest"
+      ],
+      "properties": {
+        "document": {
+          "name": "document",
+          "qname": "Documentation:document",
+          "label": "Document",
+          "type": "entity",
+          "matchable": true,
+          "range": "Document",
+          "reverse": "relatedEntities"
+        },
+        "entity": {
+          "name": "entity",
+          "qname": "Documentation:entity",
+          "label": "Entity",
+          "type": "entity",
+          "matchable": true,
+          "range": "Thing",
+          "reverse": "documentedBy"
+        }
+      },
+      "edge": {
+        "source": "document",
+        "target": "entity",
+        "caption": [
+          "role"
+        ],
+        "label": "documents",
+        "directed": false
+      },
+      "featured": [
+        "document",
+        "entity",
+        "role"
+      ],
+      "required": [
+        "document",
+        "entity"
+      ]
     }
   },
   "types": {

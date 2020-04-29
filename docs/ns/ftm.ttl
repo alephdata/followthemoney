@@ -101,6 +101,11 @@ ftm:Document a rdfs:Class ;
     rdfs:subClassOf ftm:Analyzable,
         ftm:Thing .
 
+ftm:Documentation a rdfs:Class ;
+    rdfs:label "Documentation" ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:subClassOf ftm:Interest .
+
 ftm:EconomicActivity a rdfs:Class ;
     rdfs:label "Customs declaration" ;
     rdfs:comment "A foreign economic activity" ;
@@ -677,6 +682,11 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Contract:procedure> a rdf:Property ;
+    rdfs:label "Contract procedure" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Contract:procedureNumber> a rdf:Property ;
     rdfs:label "Procedure number" ;
     rdfs:domain ftm:Contract ;
@@ -1032,6 +1042,11 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Interval ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
+
+<https://w3id.org/ftm#Interval:description> a rdf:Property ;
+    rdfs:label "Description" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Interval:endDate> a rdf:Property ;
     rdfs:label "End date" ;
@@ -1952,6 +1967,13 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:EconomicActivity ;
     owl:inverseOf <https://w3id.org/ftm#EconomicActivity:contract> .
 
+<https://w3id.org/ftm#Contract:paymentContract> a rdf:Property ;
+    rdfs:label "Contractual payments" ;
+    rdfs:domain ftm:Contract ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Payment ;
+    owl:inverseOf <https://w3id.org/ftm#Payment:contract> .
+
 <https://w3id.org/ftm#ContractAward:contract> a rdf:Property ;
     rdfs:label "Contract" ;
     rdfs:domain ftm:ContractAward ;
@@ -2029,6 +2051,27 @@ owl:sameAs a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Thing ;
     owl:inverseOf <https://w3id.org/ftm#Thing:proof> .
+
+<https://w3id.org/ftm#Document:relatedEntities> a rdf:Property ;
+    rdfs:label "Related entities" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Documentation ;
+    owl:inverseOf <https://w3id.org/ftm#Documentation:document> .
+
+<https://w3id.org/ftm#Documentation:document> a rdf:Property ;
+    rdfs:label "Document" ;
+    rdfs:domain ftm:Documentation ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Document ;
+    owl:inverseOf <https://w3id.org/ftm#Document:relatedEntities> .
+
+<https://w3id.org/ftm#Documentation:entity> a rdf:Property ;
+    rdfs:label "Entity" ;
+    rdfs:domain ftm:Documentation ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Thing ;
+    owl:inverseOf <https://w3id.org/ftm#Thing:documentedBy> .
 
 <https://w3id.org/ftm#EconomicActivity:bankAccount> a rdf:Property ;
     rdfs:label "Bank Account" ;
@@ -2517,6 +2560,13 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:BankAccount ;
     owl:inverseOf <https://w3id.org/ftm#BankAccount:paymentBeneficiaryAccount> .
 
+<https://w3id.org/ftm#Payment:contract> a rdf:Property ;
+    rdfs:label "Contract" ;
+    rdfs:domain ftm:Payment ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Contract ;
+    owl:inverseOf <https://w3id.org/ftm#Contract:paymentContract> .
+
 <https://w3id.org/ftm#Payment:payer> a rdf:Property ;
     rdfs:label "Payer" ;
     rdfs:domain ftm:Payment ;
@@ -2614,6 +2664,13 @@ owl:sameAs a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:CourtCaseParty ;
     owl:inverseOf <https://w3id.org/ftm#CourtCaseParty:party> .
+
+<https://w3id.org/ftm#Thing:documentedBy> a rdf:Property ;
+    rdfs:label "Documents" ;
+    rdfs:domain ftm:Thing ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Documentation ;
+    owl:inverseOf <https://w3id.org/ftm#Documentation:entity> .
 
 <https://w3id.org/ftm#Thing:proof> a rdf:Property ;
     rdfs:label "Source document" ;
@@ -2716,5 +2773,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-04-19T14:02:57"^^xsd:dateTime .
+    dct:modified "2020-04-29T11:11:09"^^xsd:dateTime .
 

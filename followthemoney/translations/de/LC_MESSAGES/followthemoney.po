@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-19 14:48+0200\n"
+"POT-Creation-Date: 2020-04-29 11:09+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2020\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -536,15 +536,17 @@ msgstr "Russische Landeskennzeichung (OKCM)"
 
 #. Contract.label
 #. ContractAward.properties.contract.label
+#. Payment.properties.contract.label
 #: followthemoney/schema/Contract.yaml
-#: followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/ContractAward.yaml followthemoney/schema/Payment.yaml
 msgid "Contract"
 msgstr "Vertrag"
 
 #. Contract.plural
 #. ContractAward.properties.contract.plural
+#. Payment.properties.contract.plural
 #: followthemoney/schema/Contract.yaml
-#: followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/ContractAward.yaml followthemoney/schema/Payment.yaml
 msgid "Contracts"
 msgstr "Verträge"
 
@@ -604,6 +606,11 @@ msgstr "Vertragsdatum"
 #: followthemoney/schema/Contract.yaml
 msgid "Procedure number"
 msgstr "Vorgangsnummer"
+
+#. Contract.properties.procedure.label
+#: followthemoney/schema/Contract.yaml
+msgid "Contract procedure"
+msgstr ""
 
 #. Contract.properties.noticeId.label
 #: followthemoney/schema/Contract.yaml
@@ -1057,13 +1064,16 @@ msgid "Text"
 msgstr "Text"
 
 #. Pages.label
+#. Documentation.properties.document.label
 #. Page.properties.document.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
+#: followthemoney/schema/Document.yaml followthemoney/schema/Documentation.yml
+#: followthemoney/schema/Record.yaml
 msgid "Document"
 msgstr "Dokument"
 
 #. Pages.plural
-#: followthemoney/schema/Document.yaml
+#. Documentation.properties.entity.reverse.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Documentation.yml
 msgid "Documents"
 msgstr "Dokumente"
 
@@ -1308,6 +1318,33 @@ msgstr "Zeilenzahl"
 msgid "CSV alternative version checksum"
 msgstr "Prüfsumme der CSV-Version"
 
+#. Documentation.label
+#: followthemoney/schema/Documentation.yml
+msgid "Documentation"
+msgstr ""
+
+#. Documentation.plural
+#: followthemoney/schema/Documentation.yml
+msgid "Documentations"
+msgstr ""
+
+#. Documentation.edge.label
+#: followthemoney/schema/Documentation.yml
+msgid "documents"
+msgstr ""
+
+#. Documentation.properties.document.reverse.label
+#: followthemoney/schema/Documentation.yml
+msgid "Related entities"
+msgstr ""
+
+#. Documentation.properties.entity.label
+#. Sanction.properties.entity.label
+#: followthemoney/schema/Documentation.yml followthemoney/schema/Sanction.yaml
+#: followthemoney/types/entity.py:13
+msgid "Entity"
+msgstr "Entität"
+
 #. EconomicActivity.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declaration"
@@ -1394,9 +1431,10 @@ msgstr ""
 "(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
 
 #. EconomicActivity.properties.goodsDescription.label
+#. Interval.properties.description.label
 #. Thing.properties.description.label
 #: followthemoney/schema/EconomicActivity.yaml
-#: followthemoney/schema/Thing.yaml
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -2257,6 +2295,11 @@ msgstr "Empfangene Zahlungen"
 msgid "Beneficiary bank account"
 msgstr "Bankkonto des Empfängers"
 
+#. Payment.properties.contract.reverse.label
+#: followthemoney/schema/Payment.yaml
+msgid "Contractual payments"
+msgstr ""
+
 #. Person.plural
 #: followthemoney/schema/Person.yaml
 msgid "People"
@@ -2519,11 +2562,6 @@ msgstr "Sanktionen"
 #: followthemoney/schema/Sanction.yaml
 msgid "A sanction designation"
 msgstr "Eine Sanktionseintragung"
-
-#. Sanction.properties.entity.label
-#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:13
-msgid "Entity"
-msgstr "Entität"
 
 #. Sanction.properties.program.label
 #. Thing.properties.program.label
