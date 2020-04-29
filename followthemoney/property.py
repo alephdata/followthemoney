@@ -1,7 +1,7 @@
 from normality import stringify  # type: ignore
-from banal import is_mapping  # type: ignore
+from banal import is_mapping
 from rdflib import URIRef  # type: ignore
-from typing import Dict, Any
+from typing import Dict, Any, Mapping
 
 from followthemoney.model import Model
 from followthemoney.schema import Schema
@@ -13,12 +13,12 @@ from followthemoney.util import gettext, NS, get_entity_id
 class Property(object):
     RESERVED = ['id', 'caption', 'schema', 'schemata']
 
-    def __init__(self, schema: Schema, name: str, data: Dict[str, Any]):
+    def __init__(self, schema: Schema, name: str, data: Mapping[str, Any]):
         self.schema: Schema = schema
         self.model: Model = schema.model
 
-        self.name = stringify(name)
-        self.qname = '%s:%s' % (schema.name, self.name)
+        self.name: str = stringify(name)
+        self.qname: str = '%s:%s' % (schema.name, self.name)
         if self.name in self.RESERVED:
             raise InvalidModel("Reserved name: %s" % self.name)
 
@@ -86,7 +86,7 @@ class Property(object):
     def __hash__(self):
         return hash(self.qname)
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         data = {
             'name': self.name,
             'qname': self.qname,

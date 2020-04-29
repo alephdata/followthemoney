@@ -1,5 +1,5 @@
 import json  # yay Python 3
-from banal import ensure_list  # type: ignore
+from banal import ensure_list
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import sanitize_text, defer as _

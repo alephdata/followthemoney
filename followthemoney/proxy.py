@@ -1,15 +1,19 @@
 import logging
 from hashlib import sha1
 from itertools import product
+from typing import Mapping, Dict, Optional, Union, Any, Set
+
 from rdflib import Literal, URIRef  # type: ignore
 from collections.abc import Hashable
 from rdflib.namespace import RDF, SKOS  # type: ignore
-from banal import ensure_list, is_mapping, ensure_dict  # type: ignore
+from banal import ensure_list, is_mapping, ensure_dict
 from ordered_set import OrderedSet  # type: ignore
 
+from followthemoney.model import Model
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
+from followthemoney.schema import Schema
 from followthemoney.util import sanitize_text, key_bytes, gettext
 
 log = logging.getLogger(__name__)
@@ -21,16 +25,18 @@ class EntityProxy(object):
     __slots__ = ['schema', 'id', 'key_prefix', 'context',
                  '_properties', '_size']
 
-    def __init__(self, model, data, key_prefix=None, cleaned=True):
+    def __init__(self, model: Model, data: Mapping, key_prefix: Any=None,
+                 cleaned: bool=True):
         data = dict(data)
         properties = ensure_dict(data.pop('properties', {}))
-        self.schema = model.get(data.pop('schema', None))
-        if self.schema is None:
+        schema: Optional[Schema] = model.get(data.pop('schema', None))
+        if schema is None:
             raise InvalidData(gettext('No schema for entity.'))
+        self.schema = schema
         self.id = sanitize_text(data.pop('id', None))
         self.key_prefix = sanitize_text(key_prefix)
         self.context = data
-        self._properties = {}
+        self._properties: Dict = {}
         self._size = 0
 
         if is_mapping(properties):
@@ -53,12 +59,12 @@ class EntityProxy(object):
         self.id = digest.hexdigest()
         return self.id
 
-    def _get_prop(self, prop, quiet=False):
+    def _get_prop(self, prop: Union[Property, str], quiet: bool=False) -> Optional[Property]:
         if isinstance(prop, Property):
             return prop
         if prop not in self.schema.properties:
             if quiet:
-                return
+                return None
             msg = gettext("Unknown property (%s): %s")
             raise InvalidData(msg % (self.schema, prop))
         return self.schema.get(prop)
@@ -212,7 +218,7 @@ class EntityProxy(object):
         return self.get_type_values(registry.country)
 
     @property
-    def country_hints(self):
+    def country_hints(self) -> Set:
         """Some property types, such as phone numbers, and IBAN codes,
         imply a country that may be associated with the entity.
         """

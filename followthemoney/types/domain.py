@@ -1,17 +1,18 @@
 # TODO: https://pypi.python.org/pypi/publicsuffix/
 # import socket
 from urllib.parse import urlparse
+from typing import Optional, Any
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import sanitize_text, defer as _
 
 
 class DomainType(PropertyType):
-    name = 'domain'
-    group = None
-    label = _('Domain')
-    plural = _('Domains')
-    matchable = True
+    name: str = 'domain'
+    group: Optional[str] = None
+    label: str = _('Domain')
+    plural: str = _('Domains')
+    matchable: bool = True
 
     # def _check_exists(self, domain):
     #     """Actually try to resolve a domain name."""
@@ -22,7 +23,7 @@ class DomainType(PropertyType):
     #     except:
     #         return False
 
-    def validate(self, obj, **kwargs):
+    def validate(self, obj: Any, **kwargs) -> bool:  # type: ignore[override] # noqa
         """Check if a thing is a valid domain name."""
         text = sanitize_text(obj)
         if text is None:
@@ -35,7 +36,7 @@ class DomainType(PropertyType):
             return False
         return True
 
-    def clean_text(self, domain, **kwargs):
+    def clean_text(self, domain: str, **kwargs) -> Optional[str]:  # type: ignore[override] # noqa
         """Try to extract only the domain bit from the """
         try:
             # handle URLs by extracting the domain name
@@ -50,3 +51,4 @@ class DomainType(PropertyType):
             return None
         if self.validate(domain):
             return domain
+        return None

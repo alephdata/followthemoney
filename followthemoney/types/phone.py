@@ -1,5 +1,5 @@
 from rdflib import URIRef  # type: ignore
-from banal import ensure_list  # type: ignore
+from banal import ensure_list
 from phonenumbers import geocoder  # type: ignore
 from phonenumbers import parse as parse_number
 from phonenumbers import is_valid_number, format_number

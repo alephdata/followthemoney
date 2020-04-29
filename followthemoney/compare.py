@@ -1,6 +1,11 @@
 import itertools
+from typing import Mapping, Dict
+from followthemoney.types.common import PropertyType
+
 from Levenshtein import jaro  # type: ignore
 from normality import normalize  # type: ignore
+from followthemoney.model import Model
+from followthemoney.proxy import EntityProxy
 from followthemoney.types import registry
 from followthemoney.util import dampen, shortest
 from followthemoney.exc import InvalidData
@@ -9,9 +14,9 @@ from followthemoney.exc import InvalidData
 # on as many of these matches as we can, then build a regression
 # model which properly weights the value of a matching property
 # based upon it's type.
-NAMES_WEIGHT = 0.6
-COUNTRIES_WEIGHT = 0.1
-MATCH_WEIGHTS = {
+NAMES_WEIGHT: float = 0.6
+COUNTRIES_WEIGHT: float = 0.1
+MATCH_WEIGHTS: Dict[PropertyType, float] = {
     registry.text: 0,
     registry.name: 0,  # because we already compare names
     registry.identifier: 0.3,
@@ -26,22 +31,22 @@ MATCH_WEIGHTS = {
 }
 
 
-def compare(model, left, right):
+def compare(model: Model, left: Mapping, right: Mapping) -> float:
     """Compare two entities and return a match score."""
-    left = model.get_proxy(left)
-    right = model.get_proxy(right)
-    if right.schema not in list(left.schema.matchable_schemata):
+    entity_left = model.get_proxy(left)
+    entity_right = model.get_proxy(right)
+    if entity_right.schema not in list(entity_left.schema.matchable_schemata):
         return 0
-    schema = model.common_schema(left.schema, right.schema)
-    score = compare_names(left, right) * NAMES_WEIGHT
-    score += compare_countries(left, right) * COUNTRIES_WEIGHT
+    schema = model.common_schema(entity_left.schema, entity_right.schema)
+    score = compare_names(entity_left, entity_right) * NAMES_WEIGHT
+    score += compare_countries(entity_left, entity_right) * COUNTRIES_WEIGHT
     for name, prop in schema.properties.items():
         weight = MATCH_WEIGHTS.get(prop.type, 0)
         if weight == 0 or not prop.matchable:
             continue
         try:
-            left_values = left.get(name)
-            right_values = right.get(name)
+            left_values = entity_left.get(name)
+            right_values = entity_right.get(name)
         except InvalidData:
             continue
 
@@ -52,7 +57,7 @@ def compare(model, left, right):
     return score
 
 
-def compare_names(left, right):
+def compare_names(left: EntityProxy, right: EntityProxy) -> float:
     result = 0
     left_list = [normalize(n, latinize=True) for n in left.names]
     right_list = [normalize(n, latinize=True) for n in right.names]
@@ -63,8 +68,8 @@ def compare_names(left, right):
     return result
 
 
-def compare_countries(left, right):
-    left = left.country_hints
-    right = right.country_hints
-    overlap = left.intersection(right)
+def compare_countries(left: EntityProxy, right: EntityProxy) -> float:
+    left_set = left.country_hints
+    right_set = right.country_hints
+    overlap = left_set.intersection(right_set)
     return min(2.0, len(overlap))

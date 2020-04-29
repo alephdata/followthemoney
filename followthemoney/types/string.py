@@ -4,27 +4,27 @@ from followthemoney.util import MEGABYTE
 
 
 class StringType(PropertyType):
-    name = 'string'
-    label = _('Label')
-    plural = _('Labels')
-    matchable = False
+    name: str = 'string'
+    label: str = _('Label')
+    plural: str = _('Labels')
+    matchable: bool = False
 
 
 class TextType(PropertyType):
-    name = 'text'
-    label = _('Text')
-    matchable = False
-    max_size = 30 * MEGABYTE
+    name: str = 'text'
+    label: str = _('Text')
+    matchable: bool = False
+    max_size: int = 30 * MEGABYTE
 
     def node_id(self, value):
         return None
 
 
 class HTMLType(PropertyType):
-    name = 'html'
-    label = _('HTML')
-    matchable = False
-    max_size = 30 * MEGABYTE
+    name: str = 'html'
+    label: str = _('HTML')
+    matchable: bool = False
+    max_size: int = 30 * MEGABYTE
 
     def node_id(self, value):
         return None

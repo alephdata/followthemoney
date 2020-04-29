@@ -23,7 +23,7 @@ def sieve_entity(entity, schemata, properties, types):
 @click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
 @click.option('-s', '--schema', type=click.Choice(model.schemata.keys()), multiple=True, help="Filter out the given schemata.")  # noqa
 @click.option('-p', '--property', multiple=True, help="Filter out the given property names.")  # noqa
-@click.option('-t', '--type', type=click.Choice([t.name for t in registry.types]), multiple=True, help="Filter out the given property types.")  # noqa
+@click.option('-t', '--type', type=click.Choice([t.name for t in registry.types if t.name]), multiple=True, help="Filter out the given property types.")  # noqa
 def sieve(infile, outfile, schema, property, type):
     try:
         while True:
