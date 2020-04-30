@@ -6,7 +6,7 @@ from normality import stringify  # type: ignore
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
 
-from typing import Optional, List, Any, Dict, Callable
+from typing import Optional, List, Any, Dict, Callable, Iterable
 
 
 class PropertyType(object):
@@ -36,7 +36,7 @@ class PropertyType(object):
     def clean_text(self, text: str, **kwargs) -> Optional[str]:
         return text
 
-    def normalize(self, text, cleaned=False, **kwargs) -> List:
+    def normalize(self, text, cleaned: bool=False, **kwargs) -> List:
         """Create a represenation ideal for comparisons, but not to be
         shown to the user."""
         if not cleaned:
@@ -51,7 +51,7 @@ class PropertyType(object):
             values.update(self.normalize(item, **kwargs))
         return list(values)
 
-    def join(self, values) -> str:
+    def join(self, values: Iterable[Any]) -> Optional[str]:
         values = ensure_list(values)
         return '; '.join(values)
 

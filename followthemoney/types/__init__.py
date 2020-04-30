@@ -21,7 +21,7 @@ from followthemoney.types.string import HTMLType
 from followthemoney.types.string import StringType
 from followthemoney.types.number import NumberType
 
-registry = Registry()
+registry: Registry = Registry()
 registry.add(UrlType)
 registry.add(NameType)
 registry.add(DomainType)

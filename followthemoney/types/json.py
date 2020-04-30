@@ -1,45 +1,47 @@
 import json  # yay Python 3
 from banal import ensure_list
+from typing import Optional, Any, Iterable, List
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import sanitize_text, defer as _
 
 
 class JsonType(PropertyType):
-    name = 'json'
-    group = None
-    label = _('Nested data')
-    matchable = False
+    name: str = 'json'
+    group: Optional[str] = None
+    label: str = _('Nested data')
+    matchable: bool = False
 
-    def pack(self, obj):
+    def pack(self, obj: Any) -> Optional[str]:
         """Encode a given value to JSON."""
         # TODO: use a JSON encoder that handles more types?
         if obj is not None:
             return json.dumps(obj)
+        return None
 
-    def unpack(self, obj):
+    def unpack(self, obj: str) -> Any:
         """Decode a given JSON object."""
         if obj is None:
-            return
+            return None
         try:
             return json.loads(obj)
         except Exception:
             return obj
 
-    def clean(self, obj, **kwargs):
+    def clean(self, obj: Any, **kwargs) -> Optional[str]:  # type: ignore[override] # noqa
         if not isinstance(obj, str):
-            obj = self.pack(obj)
+            _obj = self.pack(obj)
         else:
-            obj = sanitize_text(obj)
-        return obj
+            _obj = sanitize_text(obj)
+        return _obj
 
-    def normalize(self, obj, cleaned=False, **kwargs):
+    def normalize(self, obj: Any, cleaned: bool=False, **kwargs) -> List:  # type: ignore[override] # noqa
         return [] if obj is None else [obj]
 
-    def join(self, values):
+    def join(self, values: Iterable[Any]) -> Optional[str]:
         """Turn multiple values into a JSON array."""
         values = [self.unpack(v) for v in ensure_list(values)]
         return self.pack(values)
 
-    def node_id(self, value):
+    def node_id(self, value) -> None:  # type: ignore[override] # noqa
         return None

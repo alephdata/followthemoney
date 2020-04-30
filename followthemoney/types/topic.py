@@ -1,3 +1,5 @@
+from typing import Dict
+
 from rdflib import URIRef  # type: ignore
 
 from followthemoney.types.common import EnumType
@@ -5,13 +7,13 @@ from followthemoney.util import gettext, defer as _
 
 
 class TopicType(EnumType):
-    name = 'topic'
-    group = 'topics'
-    label = _('Topic')
-    plural = _('Topics')
-    matchable = False
+    name: str = 'topic'
+    group: str = 'topics'
+    label: str = _('Topic')
+    plural: str = _('Topics')
+    matchable: bool = False
 
-    _TOPICS = {
+    _TOPICS: Dict[str, str] = {
         'crime': _('Crime'),
         'crime.fraud': _('Fraud'),
         'crime.cyber': _('Cybercrime'),
@@ -54,8 +56,8 @@ class TopicType(EnumType):
         'ctx.poi': _('Person of interest'),
     }
 
-    def _locale_names(self, locale):
+    def _locale_names(self, locale) -> Dict[str, str]:
         return {k: gettext(v) for (k, v) in self._TOPICS.items()}
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> URIRef:
         return URIRef('ftm:topic:%s' % value)
