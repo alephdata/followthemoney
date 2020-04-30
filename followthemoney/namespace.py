@@ -77,8 +77,13 @@ class Namespace(object):
             if prop.type != registry.entity:
                 continue
             for value in signed.pop(prop):
-                value = get_entity_id(value)
-                signed.add(prop, self.sign(value))
+                _value = get_entity_id(value)
+                signature = self.sign(_value)
+                if signature:
+                    signed.add(prop, signature)
+                else:
+                    # FIXME signature can be None. do we want to add it?
+                    raise Exception('MAYBE?')
         # linked.add('sameAs', proxy.id, quiet=True)
         signed.remove('sameAs', signed.id)
         return signed

@@ -6,13 +6,17 @@
 # If anyone were to swap out the default model, this would
 # probably be the first place to break.
 from os.path import splitext
+from typing import Optional
+
 from normality import safe_filename  # type: ignore
 from mimetypes import guess_extension
 
 from followthemoney.types import registry
+from followthemoney.types.name import NameType
+from followthemoney.proxy import EntityProxy
 
 
-def remove_checksums(proxy):
+def remove_checksums(proxy: EntityProxy) -> EntityProxy:
     """When accepting entities via a web API, it would consistute
     a security risk to allow a user to submit checksum-type properties
     because these can be traded in for access to said files if they
@@ -26,7 +30,7 @@ def remove_checksums(proxy):
     return proxy
 
 
-def simplify_provenance(proxy):
+def simplify_provenance(proxy: EntityProxy) -> EntityProxy:
     """If there are multiple dates given for some of the provenance
     fields, we can logically conclude which one is the most meaningful."""
     for prop_name in ['modifiedAt', 'retrievedAt']:
@@ -40,7 +44,8 @@ def simplify_provenance(proxy):
     return proxy
 
 
-def entity_filename(proxy, base_name=None, extension=None):
+def entity_filename(proxy: EntityProxy, base_name: Optional[str]=None,
+                    extension: Optional[str]=None) -> str:
     """Derive a safe filename for the given entity."""
     if proxy.schema.is_a('Document'):
         for extension_ in proxy.get('extension', quiet=True):
@@ -61,16 +66,17 @@ def entity_filename(proxy, base_name=None, extension=None):
     return safe_filename(base_name, extension=extension)
 
 
-def name_entity(entity):
+def name_entity(entity: EntityProxy) -> EntityProxy:
     """If an entity has multiple names, pick the most central one
     and set all the others as aliases. This is awkward given that
     names aren't special and may not always be the caption."""
     if entity.schema.is_a('Thing'):
         names = entity.get('name')
         if len(names) > 1:
-            name = registry.name.pick(names)
-            if name in names:
-                names.remove(name)
-            entity.set('name', name)
-            entity.add('alias', names)
+            if isinstance(registry.name, NameType):
+                name = registry.name.pick(names)
+                if name in names:
+                    names.remove(name)
+                entity.set('name', name)
+                entity.add('alias', names)
     return entity

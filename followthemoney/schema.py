@@ -1,6 +1,6 @@
 from rdflib import URIRef  # type: ignore
 from banal import ensure_list, ensure_dict, as_bool
-from typing import Optional, Dict, Any, Set, List, Mapping
+from typing import Optional, Dict, Any, Set, List, Mapping, Union
 
 from followthemoney.model import Model
 from followthemoney.property import Property
@@ -171,7 +171,7 @@ class Schema(object):
             if schema.matchable:
                 yield schema
 
-    def is_a(self, parent: 'Schema') -> bool:
+    def is_a(self, parent: Union['Schema', str]) -> bool:
         return parent in self.schemata
 
     def get(self, name) -> Optional[Property]:

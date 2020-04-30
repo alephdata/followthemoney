@@ -1,7 +1,7 @@
 import logging
 from hashlib import sha1
 from itertools import product
-from typing import Mapping, Dict, Optional, Union, Any, Set, List, Iterable
+from typing import Mapping, Dict, Optional, Union, Any, Set, List, Iterable, Iterator, Tuple
 
 from rdflib import Literal, URIRef  # type: ignore
 from collections.abc import Hashable
@@ -13,6 +13,7 @@ from followthemoney.model import Model
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
+from followthemoney.types.common import PropertyType
 from followthemoney.schema import Schema
 from followthemoney.util import sanitize_text, key_bytes, gettext
 
@@ -27,23 +28,23 @@ class EntityProxy(object):
 
     def __init__(self, model: Model, data: Mapping, key_prefix: Any=None,
                  cleaned: bool=True):
-        data = dict(data)
-        properties = ensure_dict(data.pop('properties', {}))
-        schema = model.get(data.pop('schema', None))
+        _data = dict(data)
+        properties = ensure_dict(_data.pop('properties', {}))
+        schema = model.get(_data.pop('schema', None))
         if schema is None:
             raise InvalidData(gettext('No schema for entity.'))
         self.schema: Schema = schema
-        self.id = sanitize_text(data.pop('id', None))
+        self.id = sanitize_text(_data.pop('id', None))
         self.key_prefix = sanitize_text(key_prefix)
-        self.context = data
-        self._properties: Dict[Property, Iterable[str]] = {}
+        self.context = _data
+        self._properties: Dict[Property, Set[str]] = {}
         self._size = 0
 
         if is_mapping(properties):
             for key, value in properties.items():
                 self.add(key, value, cleaned=cleaned, quiet=True)
 
-    def make_id(self, *parts) -> Optional[str]:
+    def make_id(self, *parts: Iterable[Any]) -> Optional[str]:
         """Generate a (hopefully unique) ID for the given entity, composed
         of the given components, and the key_prefix defined in the proxy.
         """
@@ -76,96 +77,105 @@ class EntityProxy(object):
             return []
         return list(self._properties[_prop])
 
-    def first(self, prop: Union[Property, str], quiet: bool=False):
+    def first(self, prop: Union[Property, str], quiet: bool=False) -> Optional[str]:
         """Get only the first (random) value, or None."""
         for value in self.get(prop, quiet=quiet):
             return value
+        return None
 
-    def has(self, prop, quiet=False):
+    def has(self, prop: str, quiet: bool=False) -> bool:
         """Check to see that the property has at least one value set."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is None:
+        _prop = self._get_prop(prop, quiet=quiet)
+        if _prop is None:
             return False
-        return prop in self._properties
+        return _prop in self._properties
 
-    def add(self, prop, values, cleaned=False, quiet=False):
+    def add(self, prop: Union[Property, str], values: Iterable, cleaned: bool=False,
+            quiet: bool=False) -> None:
         """Add the given value(s) to the property if they are not empty."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is None:
+        _property = self._get_prop(prop, quiet=quiet)
+        if _property is None:
             return
 
         # Don't allow setting the reverse properties:
-        if prop.stub:
+        if _property.stub:
             if quiet:
                 return
             msg = gettext("Stub property (%s): %s")
-            raise InvalidData(msg % (self.schema, prop))
+            raise InvalidData(msg % (self.schema, _property))
 
-        for value in ensure_list(values):
+        for _value in ensure_list(values):
             if not cleaned:
-                value = prop.type.clean(value, countries=self.countries)
-            if value is None or not isinstance(value, Hashable):
+                cleaned_value = _property.type.clean(_value, countries=self.countries)
+            else:
+                cleaned_value = _value
+            if cleaned_value is None or not isinstance(cleaned_value, Hashable):
                 continue
-            if prop.type == registry.entity and value == self.id:
+            if _property.type == registry.entity and cleaned_value == self.id:
                 msg = gettext("Self-relationship (%s): %s")
-                raise InvalidData(msg % (self.schema, prop))
+                raise InvalidData(msg % (self.schema, _property))
 
             # Somewhat hacky: limit the maximum size of any particular
             # field to avoid overloading upstream aleph/elasticsearch.
-            value_size = prop.type.values_size(value)
-            if prop.type.max_size is not None:
-                if self._size + value_size > prop.type.max_size:
+            value_size = _property.type.values_size(cleaned_value)
+            if _property.type.max_size is not None:
+                if self._size + value_size > _property.type.max_size:
                     msg = "[%s] too large. Rejecting additional values."
-                    log.warning(msg, prop.name)
+                    log.warning(msg, _property.name)
                     continue
             self._size += value_size
 
             if prop not in self._properties:
-                self._properties[prop] = OrderedSet()
-            self._properties[prop].add(value)
+                self._properties[_property] = OrderedSet()
+            self._properties[_property].add(cleaned_value)
 
-    def set(self, prop, values, cleaned=False, quiet=False):
+    def set(self, prop: Union[Property, str], values: Iterable,
+            cleaned: bool=False, quiet: bool=False) -> None:
         """Replace the values of the property with the given value(s)."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is None:
+        _prop = self._get_prop(prop, quiet=quiet)
+        if _prop is None:
             return
-        self._properties.pop(prop, None)
-        return self.add(prop, values, cleaned=cleaned, quiet=quiet)
+        self._properties.pop(_prop, None)
+        return self.add(_prop, values, cleaned=cleaned, quiet=quiet)
 
-    def pop(self, prop, quiet=True):
+    def pop(self, prop: Union[Property, str], quiet: bool=True) -> Iterable[Property]:
         """Remove all the values from the given property and return them."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is None:
+        _prop = self._get_prop(prop, quiet=quiet)
+        if _prop is None:
             return []
-        return ensure_list(self._properties.pop(prop, []))
+        return ensure_list(self._properties.pop(_prop, []))
 
-    def remove(self, prop, value, quiet=True):
+    def remove(self, prop: Union[Property, str], value: Any, quiet: bool=True) -> None:
         """Remove a single element from the given property if it
         exists. If it is not there, no action."""
-        prop = self._get_prop(prop, quiet=quiet)
+        _prop = self._get_prop(prop, quiet=quiet)
+        if _prop is None:
+            return
         try:
-            self._properties[prop].remove(value)
+            self._properties[_prop].remove(value)
         except KeyError:
             pass
 
-    def iterprops(self):
+    def iterprops(self) -> List[Property]:
         return list(self._properties.keys())
 
-    def itervalues(self):
+    def itervalues(self) -> Iterator[Tuple[Property, Any]]:
         for prop, values in self._properties.items():
             for value in values:
                 yield (prop, value)
 
-    def edgepairs(self):
+    def edgepairs(self) -> Iterator[Tuple[str, str]]:
         """If the given schema allows for an edge representation of
         the given entity."""
         if self.schema.edge:
-            sources = self.get(self.schema.source_prop)
-            targets = self.get(self.schema.target_prop)
-            for (source, target) in product(sources, targets):
-                yield (source, target)
+            if (isinstance(self.schema.source_prop, Property)
+                    and isinstance(self.schema.target_prop, Property)):
+                sources = self.get(self.schema.source_prop)
+                targets = self.get(self.schema.target_prop)
+                for (source, target) in product(sources, targets):
+                    yield (source, target)
 
-    def get_type_values(self, type_, cleaned=True):
+    def get_type_values(self, type_: PropertyType, cleaned: bool=True) -> List:
         """All values of a particular type associated with a the entity."""
         combined = set()
         for prop, values in self._properties.items():
@@ -177,16 +187,16 @@ class EntityProxy(object):
         return type_.normalize_set(combined, cleaned=cleaned,
                                    countries=countries)
 
-    def get_type_inverted(self, cleaned=True):
+    def get_type_inverted(self, cleaned: bool=True) -> Dict[str, List]:
         """Invert the properties of an entity into their normalised form."""
-        data = {}
+        data: Dict[str, List] = {}
         for group, type_ in registry.groups.items():
             values = self.get_type_values(type_, cleaned=cleaned)
             if len(values):
                 data[group] = values
         return data
 
-    def triples(self, qualified=True):
+    def triples(self, qualified: bool=True) -> Iterable[Tuple[Literal, URIRef, URIRef]]:
         if self.id is None or self.schema is None:
             return
         uri = registry.entity.rdf(self.id)
@@ -210,11 +220,11 @@ class EntityProxy(object):
         return self.schema.label
 
     @property
-    def names(self):
+    def names(self) -> List:
         return self.get_type_values(registry.name)
 
     @property
-    def countries(self):
+    def countries(self) -> List:
         return self.get_type_values(registry.country)
 
     @property
@@ -230,10 +240,10 @@ class EntityProxy(object):
         return countries
 
     @property
-    def properties(self):
+    def properties(self) -> Dict[str, List[str]]:
         return {p.name: self.get(p) for p in self._properties.keys()}
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         data = dict(self.context)
         data.update({
             'id': self.id,
@@ -242,17 +252,17 @@ class EntityProxy(object):
         })
         return data
 
-    def to_full_dict(self):
+    def to_full_dict(self) -> Dict:
         data = self.to_dict()
         data['schemata'] = list(self.schema.names)
         data['name'] = self.caption
         data.update(self.get_type_inverted())
         return data
 
-    def clone(self):
+    def clone(self) -> 'EntityProxy':
         return EntityProxy(self.schema.model, self.to_dict())
 
-    def merge(self, other):
+    def merge(self, other: 'EntityProxy'):
         model = self.schema.model
         other = self.from_dict(model, other)
         self.id = self.id or other.id
@@ -282,7 +292,7 @@ class EntityProxy(object):
         return self.id == other.id
 
     @classmethod
-    def from_dict(cls, model, data, cleaned=True):
+    def from_dict(cls, model: Model, data, cleaned: bool=True):
         if isinstance(data, cls):
             return data
         return cls(model, data, cleaned=cleaned)
