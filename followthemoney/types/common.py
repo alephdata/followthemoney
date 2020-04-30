@@ -25,7 +25,7 @@ class PropertyType(object):
         cleaned = self.clean(text, **kwargs)
         return cleaned is not None
 
-    def clean(self, text: str, **kwargs) -> Optional[Any]:
+    def clean(self, text: Optional[str], **kwargs) -> Optional[str]:
         """Create a more clean, but still user-facing version of an
         instance of the type."""
         s_text = sanitize_text(text)
@@ -58,7 +58,7 @@ class PropertyType(object):
     def _specificity(self, value: str) -> float:
         return 1.0
 
-    def specificity(self, value: str) -> float:
+    def specificity(self, value: Optional[str]) -> float:
         if not self.matchable or value is None:
             return 0.0
         return self._specificity(value)
@@ -106,7 +106,7 @@ class PropertyType(object):
             return self.node_id(value)
         return None
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: Optional[str]) -> Optional[str]:
         return value
 
     def to_dict(self) -> Dict[str, Any]:

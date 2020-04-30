@@ -1,6 +1,6 @@
 from rdflib import URIRef  # type: ignore
 from banal import ensure_list, ensure_dict, as_bool
-from typing import Optional, Dict, Any, Set
+from typing import Optional, Dict, Any, Set, List, Mapping
 
 from followthemoney.model import Model
 from followthemoney.property import Property
@@ -15,10 +15,10 @@ class Schema(object):
     Schema items define the entities and links available in the model.
     """
 
-    def __init__(self, model: Model, name: str, data: Dict[str, Any]):
+    def __init__(self, model: Model, name: str, data: Mapping[str, Any]):
         self.model: Model = model
         self.name: str = name
-        self.data: Dict[str, Any] = data
+        self.data: Mapping[str, Any] = data
         self._label: Optional[str] = data.get('label', name)
         self._plural: Optional[str] = data.get('plural', self.label)
         self._description: Optional[str] = data.get('description')
@@ -47,7 +47,7 @@ class Schema(object):
         # Mark a set of properties to be used for the entity's caption.
         # They will be checked in order and the first existant value will
         # be used.
-        self.caption = ensure_list(data.get('caption'))
+        self.caption: List[str] = ensure_list(data.get('caption'))
 
         # A transform of the entity into an edge for its representation in
         # the context of a property graph representation like Neo4J/Gephi.
@@ -106,7 +106,7 @@ class Schema(object):
                 msg = "Missing edge target: %s" % self.edge_target
                 raise InvalidModel(msg)
 
-    def _add_reverse(self, data, other):
+    def _add_reverse(self, data, other) -> Property:
         name = data.get('name', None)
         if name is None:
             raise InvalidModel("Unnamed reverse: %s" % other)
@@ -142,11 +142,11 @@ class Schema(object):
         return gettext(self._edge_label)
 
     @property
-    def source_prop(self):
+    def source_prop(self) -> Optional[Property]:
         return self.get(self.edge_source)
 
     @property
-    def target_prop(self):
+    def target_prop(self) -> Optional[Property]:
         return self.get(self.edge_target)
 
     @property
@@ -174,7 +174,7 @@ class Schema(object):
     def is_a(self, parent: 'Schema') -> bool:
         return parent in self.schemata
 
-    def get(self, name):
+    def get(self, name) -> Optional[Property]:
         return self.properties.get(name)
 
     def validate(self, data):

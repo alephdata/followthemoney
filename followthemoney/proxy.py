@@ -1,7 +1,7 @@
 import logging
 from hashlib import sha1
 from itertools import product
-from typing import Mapping, Dict, Optional, Union, Any, Set
+from typing import Mapping, Dict, Optional, Union, Any, Set, List, Iterable
 
 from rdflib import Literal, URIRef  # type: ignore
 from collections.abc import Hashable
@@ -29,21 +29,21 @@ class EntityProxy(object):
                  cleaned: bool=True):
         data = dict(data)
         properties = ensure_dict(data.pop('properties', {}))
-        schema: Optional[Schema] = model.get(data.pop('schema', None))
+        schema = model.get(data.pop('schema', None))
         if schema is None:
             raise InvalidData(gettext('No schema for entity.'))
-        self.schema = schema
+        self.schema: Schema = schema
         self.id = sanitize_text(data.pop('id', None))
         self.key_prefix = sanitize_text(key_prefix)
         self.context = data
-        self._properties: Dict = {}
+        self._properties: Dict[Property, Iterable[str]] = {}
         self._size = 0
 
         if is_mapping(properties):
             for key, value in properties.items():
                 self.add(key, value, cleaned=cleaned, quiet=True)
 
-    def make_id(self, *parts):
+    def make_id(self, *parts) -> Optional[str]:
         """Generate a (hopefully unique) ID for the given entity, composed
         of the given components, and the key_prefix defined in the proxy.
         """
@@ -55,7 +55,7 @@ class EntityProxy(object):
             digest.update(key_bytes(part))
         if digest.digest() == base:
             self.id = None
-            return
+            return None
         self.id = digest.hexdigest()
         return self.id
 
@@ -69,14 +69,14 @@ class EntityProxy(object):
             raise InvalidData(msg % (self.schema, prop))
         return self.schema.get(prop)
 
-    def get(self, prop, quiet=False):
+    def get(self, prop: Union[Property, str], quiet: bool=False) -> List[str]:
         """Get all values of a property."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is None or prop not in self._properties:
+        _prop = self._get_prop(prop, quiet=quiet)
+        if _prop is None or _prop not in self._properties:
             return []
-        return list(self._properties.get(prop))
+        return list(self._properties[_prop])
 
-    def first(self, prop, quiet=False):
+    def first(self, prop: Union[Property, str], quiet: bool=False):
         """Get only the first (random) value, or None."""
         for value in self.get(prop, quiet=quiet):
             return value
@@ -203,7 +203,7 @@ class EntityProxy(object):
                 yield (uri, URIRef(prop.name), value)
 
     @property
-    def caption(self):
+    def caption(self) -> str:
         for prop in self.schema.caption:
             for value in self.get(prop):
                 return value
@@ -218,7 +218,7 @@ class EntityProxy(object):
         return self.get_type_values(registry.country)
 
     @property
-    def country_hints(self) -> Set:
+    def country_hints(self) -> Set[str]:
         """Some property types, such as phone numbers, and IBAN codes,
         imply a country that may be associated with the entity.
         """

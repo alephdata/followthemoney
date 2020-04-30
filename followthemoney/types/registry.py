@@ -1,4 +1,4 @@
-from typing import List, Dict, Union
+from typing import List, Dict, Union, Sequence
 
 from banal import ensure_list
 from followthemoney.types.common import PropertyType
@@ -41,9 +41,9 @@ class Registry(object):
             return name
         return self._types[name]
 
-    def get_types(self, names: List[Union[str, PropertyType]]) -> List[PropertyType]:
+    def get_types(self, names: Sequence[Union[str, PropertyType]]) -> List[PropertyType]:
         names = ensure_list(names)
         return [self.get(n) for n in names if self.get(n)]
 
-    def __getattr__(self, name) -> PropertyType:
+    def __getattr__(self, name: str) -> PropertyType:
         return self.get(name)

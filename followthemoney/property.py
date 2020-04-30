@@ -1,11 +1,12 @@
 from normality import stringify  # type: ignore
 from banal import is_mapping
 from rdflib import URIRef  # type: ignore
-from typing import Dict, Any, Mapping
+from typing import Dict, Any, Mapping, Optional
 
 from followthemoney.model import Model
 from followthemoney.schema import Schema
 from followthemoney.exc import InvalidModel
+from followthemoney.types.common import PropertyType
 from followthemoney.types import registry
 from followthemoney.util import gettext, NS, get_entity_id
 
@@ -23,17 +24,13 @@ class Property(object):
             raise InvalidModel("Reserved name: %s" % self.name)
 
         self.data = data
-        self._label = data.get('label', name)
-        self._description = data.get('description')
-        self.hidden = data.get('hidden', False)
-        self.stub = data.get('stub', False)
+        self._label: str = data.get('label', name)
+        self._description: Optional[str] = data.get('description')
+        self.hidden: bool = data.get('hidden', False)
+        self.stub: bool = data.get('stub', False)
 
-        type_ = data.get('type', 'string')
-        self.type = registry.get(type_)
-        if self.type is None:
-            raise InvalidModel("Invalid type: %s" % type_)
-
-        self.matchable = data.get('matchable', self.type.matchable)
+        self.type: PropertyType = registry.get(data.get('type', 'string'))
+        self.matchable: bool = data.get('matchable', self.type.matchable)
         self.range = None
         self.reverse = None
         self.uri = URIRef(data.get('rdf', NS[self.qname]))

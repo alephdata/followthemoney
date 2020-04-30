@@ -1,6 +1,11 @@
 import logging
+from typing import Optional, Dict, List, Union, Sequence, Iterable, Iterator
 
+from followthemoney.schema import Schema
+from followthemoney.proxy import EntityProxy
+from followthemoney.property import Property
 from followthemoney.types import registry
+from followthemoney.types.common import PropertyType
 
 log = logging.getLogger(__name__)
 
@@ -11,26 +16,31 @@ class Node(object):
     address or phone number."""
     __slots__ = ['type', 'value', 'id', 'proxy', 'schema']
 
-    def __init__(self, type_, value, proxy=None, schema=None):
-        self.type = type_
-        self.value = value
-        self.id = type_.node_id_safe(value)
-        self.proxy = proxy
-        self.schema = schema if proxy is None else proxy.schema
+    def __init__(self, type_: PropertyType, value: str,
+                 proxy: Optional[EntityProxy]=None,
+                 schema: Optional[Schema]=None):
+        self.type: PropertyType = type_
+        self.value: Optional[str] = value
+        node_id = type_.node_id_safe(value)
+        if node_id is None:
+            raise Exception('<FIXME>')
+        self.id: str = node_id
+        self.proxy: Optional[EntityProxy] = proxy
+        self.schema: Optional[Schema] = schema if proxy is None else proxy.schema
 
     @property
-    def is_entity(self):
+    def is_entity(self) -> bool:
         return self.type == registry.entity
 
     @property
-    def caption(self):
+    def caption(self) -> Optional[str]:
         if self.type != registry.entity:
             return self.type.caption(self.value)
         if self.proxy is not None:
             return self.proxy.caption
         return self.value
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Optional[str]]:
         return {
             'id': self.id,
             'type': self.type.name,
@@ -39,7 +49,9 @@ class Node(object):
         }
 
     @classmethod
-    def from_proxy(cls, proxy):
+    def from_proxy(cls, proxy: EntityProxy) -> 'Node':
+        if proxy.id is None:
+            raise Exception('<FIXME>')
         return cls(registry.entity, proxy.id, proxy=proxy)
 
     def __str__(self):
@@ -60,15 +72,17 @@ class Edge(object):
     __slots__ = ['id', 'weight', 'source_id', 'target_id',
                  'prop', 'proxy', 'schema', 'graph']
 
-    def __init__(self, graph, source, target, proxy=None, prop=None, value=None):  # noqa
+    def __init__(self, graph: 'Graph', source: Node, target: Node,
+                 proxy: Optional[EntityProxy]=None, prop: Optional[Property]=None,
+                 value: Optional[str]=None):  # noqa
         self.graph = graph
         self.id = f"{source.id}<>{target.id}"
         self.source_id = source.id
         self.target_id = target.id
         self.weight = 1.0
-        self.prop = prop
-        self.proxy = proxy
-        self.schema = None
+        self.prop: Optional[Property] = prop
+        self.proxy: Optional[EntityProxy] = proxy
+        self.schema: Optional[Schema] = None
         if prop is not None:
             self.weight = prop.specificity(value)
         if proxy is not None:
@@ -76,34 +90,41 @@ class Edge(object):
             self.schema = proxy.schema
 
     @property
-    def source(self):
+    def source(self) -> Optional[Node]:
         return self.graph.nodes.get(self.source_id)
 
     @property
-    def source_prop(self):
+    def source_prop(self) -> Optional[Property]:
         """Get the entity property originating this edge."""
-        if self.schema is not None:
+        if self.schema is not None and self.schema.source_prop is not None:
             return self.schema.source_prop.reverse
         return self.prop
 
     @property
-    def target(self):
+    def target(self) -> Optional[Node]:
         return self.graph.nodes.get(self.target_id)
 
     @property
-    def target_prop(self):
+    def target_prop(self) -> Optional[Property]:
         """Get the entity property originating this edge."""
-        if self.schema is not None:
+        if self.schema is not None and self.schema.target_prop is not None:
             return self.schema.target_prop.reverse
         if self.prop is not None:
             return self.prop.reverse
+        return None
         # NOTE: this edge points at a value node.
 
     @property
-    def type_name(self):
-        return self.prop.name if self.schema is None else self.schema.name
+    def type_name(self) -> Optional[str]:
+        if self.schema is None:
+            if self.prop is not None:
+                return self.prop.name
+            else:
+                return None
+        else:
+            return self.schema.name
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Optional[str]]:
         return {
             'id': self.id,
             'source_id': self.source_id,
@@ -129,25 +150,25 @@ class Graph(object):
     backends, like Aleph.
     """
 
-    def __init__(self, edge_types=registry.pivots):
-        edge_types = registry.get_types(edge_types)
-        self.edge_types = [t for t in edge_types if t.matchable]
+    def __init__(self, edge_types: Sequence[Union[str, PropertyType]]=registry.pivots):
+        _edge_types = registry.get_types(edge_types)
+        self.edge_types: List[PropertyType] = [t for t in _edge_types if t.matchable]
         self.flush()
 
     def flush(self):
-        self.edges = {}
-        self.nodes = {}
-        self.proxies = {}
+        self.edges: Dict[str, Edge] = {}
+        self.nodes: Dict[str, Node] = {}
+        self.proxies: Dict[str, Optional[EntityProxy]] = {}
 
-    def queue(self, id_, proxy=None):
+    def queue(self, id_: str, proxy: Optional[EntityProxy]=None):
         if id_ not in self.proxies or proxy is not None:
             self.proxies[id_] = proxy
 
     @property
-    def queued(self):
+    def queued(self) -> List[str]:
         return [i for (i, p) in self.proxies.items() if p is None]
 
-    def _get_node_stub(self, prop, value):
+    def _get_node_stub(self, prop: Property, value: str) -> Node:
         if prop.type == registry.entity:
             self.queue(value)
         node = Node(prop.type, value, schema=prop.range)
@@ -155,13 +176,15 @@ class Graph(object):
             self.nodes[node.id] = node
         return self.nodes[node.id]
 
-    def _add_edge(self, proxy, source, target):
-        source = self._get_node_stub(proxy.schema.source_prop, source)
-        target = self._get_node_stub(proxy.schema.target_prop, target)
-        edge = Edge(self, source, target, proxy=proxy)
+    def _add_edge(self, proxy: EntityProxy, source: str, target: str):
+        if proxy.schema.source_prop is None or proxy.schema.target_prop is None:
+            raise Exception('<FIXME>')
+        _source = self._get_node_stub(proxy.schema.source_prop, source)
+        _target = self._get_node_stub(proxy.schema.target_prop, target)
+        edge = Edge(self, _source, _target, proxy=proxy)
         self.edges[edge.id] = edge
 
-    def _add_node(self, proxy):
+    def _add_node(self, proxy: EntityProxy):
         """Derive a node and its value edges from the given proxy."""
         entity = Node.from_proxy(proxy)
         self.nodes[entity.id] = entity
@@ -173,8 +196,8 @@ class Graph(object):
             if edge.weight > 0:
                 self.edges[edge.id] = edge
 
-    def add(self, proxy):
-        if proxy is None:
+    def add(self, proxy: Optional[EntityProxy]):
+        if proxy is None or proxy.id is None:
             return
         self.queue(proxy.id, proxy)
         if proxy.schema.edge:
@@ -183,13 +206,13 @@ class Graph(object):
         else:
             self._add_node(proxy)
 
-    def iternodes(self):
+    def iternodes(self) -> Iterable[Node]:
         return self.nodes.values()
 
-    def iteredges(self):
+    def iteredges(self) -> Iterable[Edge]:
         return self.edges.values()
 
-    def get_outbound(self, node, prop=None):
+    def get_outbound(self, node: Node, prop: Optional[Property]=None) -> Iterable[Edge]:
         "Get all edges pointed out from the given node."
         for edge in self.iteredges():
             if edge.source == node:
@@ -197,7 +220,7 @@ class Graph(object):
                     continue
                 yield edge
 
-    def get_inbound(self, node, prop=None):
+    def get_inbound(self, node: Node, prop: Optional[Property]=None) -> Iterable[Edge]:
         "Get all edges pointed at the given node."
         for edge in self.iteredges():
             if edge.target == node:
@@ -205,12 +228,12 @@ class Graph(object):
                     continue
                 yield edge
 
-    def get_adjacent(self, node, prop=None):
+    def get_adjacent(self, node: Node, prop: Optional[Property]=None) -> Iterator[Edge]:
         "Get all edges of the given node."
         yield from self.get_outbound(node, prop=prop)
         yield from self.get_inbound(node, prop=prop)
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, List[Dict]]:
         return {
             'nodes': [n.to_dict() for n in self.iternodes()],
             'edges': [e.to_dict() for e in self.iteredges()]
