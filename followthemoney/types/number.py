@@ -7,10 +7,10 @@ from followthemoney.util import defer as _
 
 class NumberType(PropertyType):
     CAST_RE = re.compile(r'[^0-9\-\.]')
-    name = 'number'
-    label = _('Number')
-    plural = _('Numbers')
-    matchable = False
+    name: str = 'number'
+    label: str = _('Number')
+    plural: str = _('Numbers')
+    matchable: bool = False
 
     def to_number(self, value: Any) -> Optional[float]:
         try:

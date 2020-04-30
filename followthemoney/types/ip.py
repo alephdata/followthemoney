@@ -1,18 +1,19 @@
 from rdflib import URIRef  # type: ignore
 from ipaddress import ip_address
+from typing import Optional
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
 
 
 class IpType(PropertyType):
-    name = 'ip'
-    group = 'ips'
-    label = _('IP-Address')
-    plural = _('IP-Addresses')
-    matchable = True
+    name: str = 'ip'
+    group: str = 'ips'
+    label: str = _('IP-Address')
+    plural: str = _('IP-Addresses')
+    matchable: bool = True
 
-    def validate(self, ip, **kwargs):
+    def validate(self, ip: str, **kwargs) -> bool:  # type: ignore[override] # noqa
         """Check to see if this is a valid ip address."""
         try:
             ip_address(ip)
@@ -20,7 +21,7 @@ class IpType(PropertyType):
         except ValueError:
             return False
 
-    def clean_text(self, text, **kwargs):
+    def clean_text(self, text: str, **kwargs) -> Optional[str]:  # type: ignore[override] # noqa
         """Create a more clean, but still user-facing version of an
         instance of the type."""
         try:
@@ -28,5 +29,5 @@ class IpType(PropertyType):
         except ValueError:
             return None
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> URIRef:
         return URIRef('ip:%s' % value)

@@ -21,7 +21,7 @@ class DateType(PropertyType):
     CUT_ZEROES = re.compile(r'((\-00.*)|(.00:00:00))$')
     MONTH_FORMATS = re.compile(r'(%b|%B|%m|%c|%x)')
     DAY_FORMATS = re.compile(r'(%d|%w|%c|%x)')
-    MAX_LENGTH = 19
+    MAX_LENGTH: int = 19
     DATE_PATTERNS_BY_LENGTH: Dict[int, List[str]] = {
         19: ["%Y-%m-%dT%H:%M:%S"],
         18: ["%Y-%m-%dT%H:%M:%S"],
@@ -131,7 +131,8 @@ class DateType(PropertyType):
         log.debug('Date cannot be parsed %r: %s', formats, value)
         return None
 
-    def to_number(self, value):
+    def to_number(self, value: str) -> Optional[float]:
         date = self.to_datetime(value)
         if date is not None:
             return date.timestamp()
+        return None

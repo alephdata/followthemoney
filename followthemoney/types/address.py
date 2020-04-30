@@ -37,5 +37,5 @@ class AddressType(PropertyType):
     def _specificity(self, value: str) -> float:
         return dampen(10, 60, value)
 
-    def node_id(self, value: str):
+    def node_id(self, value: str) -> str:
         return 'addr:%s' % slugify(value)
