@@ -90,7 +90,7 @@ class EntityProxy(object):
             return False
         return _prop in self._properties
 
-    def add(self, prop: Union[Property, str], values: Iterable, cleaned: bool=False,
+    def add(self, prop: Union[Property, str], values: Optional[Iterable], cleaned: bool=False,
             quiet: bool=False) -> None:
         """Add the given value(s) to the property if they are not empty."""
         _property = self._get_prop(prop, quiet=quiet)

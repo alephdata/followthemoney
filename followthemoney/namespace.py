@@ -79,11 +79,7 @@ class Namespace(object):
             for value in signed.pop(prop):
                 _value = get_entity_id(value)
                 signature = self.sign(_value)
-                if signature:
-                    signed.add(prop, signature)
-                else:
-                    # FIXME signature can be None. do we want to add it?
-                    raise Exception('MAYBE?')
+                signed.add(prop, signature)
         # linked.add('sameAs', proxy.id, quiet=True)
         signed.remove('sameAs', signed.id)
         return signed

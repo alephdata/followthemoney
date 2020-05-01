@@ -16,8 +16,8 @@ class Model(object):
     def __init__(self, path: str):
         self.path: str = path
         self.schemata: Dict[str, Schema] = {}
-        self.properties: Dict[str, Property] = {}
-        self.qnames: Dict[str, str] = {}
+        self.properties: Set[Property] = set()
+        self.qnames: Dict[str, Property] = {}
         for (path, _, filenames) in os.walk(self.path):
             for filename in filenames:
                 self._load(os.path.join(path, filename))
@@ -46,7 +46,7 @@ class Model(object):
             return name
         return self.schemata.get(name)
 
-    def get_qname(self, qname: str) -> Optional[str]:
+    def get_qname(self, qname: str) -> Optional[Property]:
         return self.qnames.get(qname)
 
     def __getitem__(self, name: str) -> Schema:
@@ -110,7 +110,7 @@ class Model(object):
                 specific = schema
         return specific
 
-    def make_entity(self, schema: Mapping, key_prefix=None) -> EntityProxy:
+    def make_entity(self, schema: Union[str, Schema], key_prefix=None) -> EntityProxy:
         return EntityProxy(self, {'schema': schema}, key_prefix=key_prefix)
 
     def get_proxy(self, data: Mapping, cleaned=True) -> EntityProxy:
