@@ -51,7 +51,7 @@ class PropertyType(object):
             values.update(self.normalize(item, **kwargs))
         return list(values)
 
-    def join(self, values: Iterable[Any]) -> Optional[str]:
+    def join(self, values: Iterable[Any]) -> str:
         values = ensure_list(values)
         return '; '.join(values)
 

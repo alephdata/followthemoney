@@ -20,13 +20,16 @@ class Node(object):
                  proxy: Optional[EntityProxy]=None,
                  schema: Optional[Schema]=None):
         self.type: PropertyType = type_
-        self.value: Optional[str] = value
+        self.value: str = value
         node_id = type_.node_id_safe(value)
         if node_id is None:
             raise Exception('<FIXME>')
         self.id: str = node_id
         self.proxy: Optional[EntityProxy] = proxy
-        self.schema: Optional[Schema] = schema if proxy is None else proxy.schema
+        _schema = schema if proxy is None else proxy.schema
+        if _schema is None:
+            raise Exception('<FIXME>')
+        self.schema: Schema = _schema
 
     @property
     def is_entity(self) -> bool:

@@ -10,7 +10,7 @@ from followthemoney.proxy import EntityProxy
 
 class CSVMixin(Exporter):
 
-    def _configure(self, directory, dialect=csv.unix_dialect,
+    def _configure(self, directory: Union[str, Path], dialect=csv.unix_dialect,
                    extra: Optional[str]=None):
         self.directory = Path(directory)
         self.extra = ensure_list(extra)

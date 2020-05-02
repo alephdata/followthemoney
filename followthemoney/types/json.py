@@ -38,7 +38,7 @@ class JsonType(PropertyType):
     def normalize(self, obj: Any, cleaned: bool=False, **kwargs) -> List:  # type: ignore[override] # noqa
         return [] if obj is None else [obj]
 
-    def join(self, values: Iterable[Any]) -> Optional[str]:
+    def join(self, values: Iterable[Any]) -> Optional[str]:  # type: ignore[override] # noqa
         """Turn multiple values into a JSON array."""
         values = [self.unpack(v) for v in ensure_list(values)]
         return self.pack(values)
