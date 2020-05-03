@@ -9,7 +9,7 @@ from typing import Iterator, Tuple, List, Any
 class Exporter(object):
 
     def __init__(self, export_all: bool=False):
-        self.export_all = export_all
+        self.export_all: bool = export_all
 
     def exportable_properties(self, schema: Schema) -> Iterator[Property]:
         for prop in schema.sorted_properties:

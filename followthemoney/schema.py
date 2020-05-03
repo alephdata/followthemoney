@@ -1,12 +1,14 @@
 from rdflib import URIRef  # type: ignore
 from banal import ensure_list, ensure_dict, as_bool
-from typing import Optional, Dict, Any, Set, List, Mapping, Union
+from typing import Optional, Dict, Any, Set, List, Mapping, Union, TYPE_CHECKING
 
-from followthemoney.model import Model
 from followthemoney.property import Property
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData, InvalidModel
 from followthemoney.util import gettext, NS
+
+if TYPE_CHECKING:
+    from followthemoney.model import Model
 
 
 class Schema(object):
@@ -15,8 +17,8 @@ class Schema(object):
     Schema items define the entities and links available in the model.
     """
 
-    def __init__(self, model: Model, name: str, data: Mapping[str, Any]):
-        self.model: Model = model
+    def __init__(self, model: 'Model', name: str, data: Mapping[str, Any]):
+        self.model: 'Model' = model
         self.name: str = name
         self.data: Mapping[str, Any] = data
         self._label: Optional[str] = data.get('label', name)

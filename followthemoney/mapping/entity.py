@@ -1,18 +1,20 @@
 from hashlib import sha1
 from banal import keys_values
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, TYPE_CHECKING
 
 from followthemoney.mapping.property import PropertyMapping
-from followthemoney.mapping.query import QueryMapping
-from followthemoney.model import Model
 from followthemoney.types import registry
 from followthemoney.util import key_bytes
 from followthemoney.exc import InvalidMapping
 
+if TYPE_CHECKING:
+    from followthemoney.model import Model
+    from followthemoney.mapping.query import QueryMapping
+
 
 class EntityMapping(object):
 
-    def __init__(self, model: Model, query: QueryMapping, name: str,
+    def __init__(self, model: 'Model', query: 'QueryMapping', name: str,
                  data: Dict[str, Any], key_prefix: Optional[Any]=None):
         self.model: Model = model
         self.name: str = name

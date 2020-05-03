@@ -1,16 +1,18 @@
-from typing import List, Set
+from typing import List, Set, TYPE_CHECKING
 
 from followthemoney.mapping.entity import EntityMapping
 from followthemoney.mapping.sql import SQLSource
 from followthemoney.mapping.csv import CSVSource
 from followthemoney.exc import InvalidMapping
-from followthemoney.model import Model
+
+if TYPE_CHECKING:
+    from followthemoney.model import Model
 
 
 class QueryMapping(object):
 
-    def __init__(self, model: Model, data, key_prefix=None):
-        self.model: Model = model
+    def __init__(self, model: 'Model', data, key_prefix=None):
+        self.model: 'Model' = model
         self.data = data
         self.refs = set()
         self.entities: List[EntityMapping] = []

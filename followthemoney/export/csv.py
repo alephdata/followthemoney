@@ -1,7 +1,7 @@
 import csv
 from pathlib import Path
 from banal import ensure_list
-from typing import Union, Optional, Dict, Tuple, Any, TextIO, Iterable
+from typing import Union, Optional, Dict, Tuple, Any, TextIO, Iterable, List
 
 from followthemoney.export.common import Exporter
 from followthemoney.schema import Schema
@@ -12,8 +12,8 @@ class CSVMixin(Exporter):
 
     def _configure(self, directory: Union[str, Path], dialect=csv.unix_dialect,
                    extra: Optional[str]=None):
-        self.directory = Path(directory)
-        self.extra = ensure_list(extra)
+        self.directory: Path = Path(directory)
+        self.extra: List = ensure_list(extra)
         self.dialect = dialect
         self.handles: Dict[Schema, Tuple[TextIO, Any]] = {}
 

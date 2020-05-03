@@ -1,7 +1,7 @@
 import logging
 from hashlib import sha1
 from itertools import product
-from typing import Mapping, Dict, Optional, Union, Any, Set, List, Iterable, Iterator, Tuple
+from typing import Mapping, Dict, Optional, Union, Any, Set, List, Iterable, Iterator, Tuple, TYPE_CHECKING
 
 from rdflib import Literal, URIRef  # type: ignore
 from collections.abc import Hashable
@@ -9,13 +9,16 @@ from rdflib.namespace import RDF, SKOS  # type: ignore
 from banal import ensure_list, is_mapping, ensure_dict
 from ordered_set import OrderedSet  # type: ignore
 
-from followthemoney.model import Model
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
 from followthemoney.types.common import PropertyType
 from followthemoney.schema import Schema
 from followthemoney.util import sanitize_text, key_bytes, gettext
+
+if TYPE_CHECKING:
+    from followthemoney.model import Model
+
 
 log = logging.getLogger(__name__)
 
@@ -26,7 +29,7 @@ class EntityProxy(object):
     __slots__ = ['schema', 'id', 'key_prefix', 'context',
                  '_properties', '_size']
 
-    def __init__(self, model: Model, data: Mapping, key_prefix: Any=None,
+    def __init__(self, model: 'Model', data: Mapping, key_prefix: Any=None,
                  cleaned: bool=True):
         _data = dict(data)
         properties = ensure_dict(_data.pop('properties', {}))
@@ -292,7 +295,7 @@ class EntityProxy(object):
         return self.id == other.id
 
     @classmethod
-    def from_dict(cls, model: Model, data, cleaned: bool=True):
+    def from_dict(cls, model: 'Model', data, cleaned: bool=True):
         if isinstance(data, cls):
             return data
         return cls(model, data, cleaned=cleaned)
