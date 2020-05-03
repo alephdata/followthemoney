@@ -106,7 +106,7 @@ class PropertyType(object):
             return self.node_id(value)
         return None
 
-    def caption(self, value: Optional[str]) -> Optional[str]:
+    def caption(self, value: str) -> str:
         return value
 
     def to_dict(self) -> Dict[str, Any]:

@@ -36,7 +36,7 @@ class Node(object):
         return self.type == registry.entity
 
     @property
-    def caption(self) -> Optional[str]:
+    def caption(self) -> str:
         if self.type != registry.entity:
             return self.type.caption(self.value)
         if self.proxy is not None:

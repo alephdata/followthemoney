@@ -33,5 +33,5 @@ class EntityType(PropertyType):
     def rdf(self, value: str) -> URIRef:
         return URIRef('entity:%s' % value)
 
-    def caption(self, value: Optional[str]) -> Optional[str]:
-        return None
+    def caption(self, value: str) -> str:
+        return ''
