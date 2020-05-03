@@ -93,14 +93,18 @@ class Edge(object):
             self.schema = proxy.schema
 
     @property
-    def source(self) -> Optional[Node]:
-        return self.graph.nodes.get(self.source_id)
+    def source(self) -> Node:
+        return self.graph.nodes[self.source_id]
 
     @property
-    def source_prop(self) -> Optional[Property]:
+    def source_prop(self) -> Property:
         """Get the entity property originating this edge."""
-        if self.schema is not None and self.schema.source_prop is not None:
+        if (self.schema is not None
+                and self.schema.source_prop is not None
+                and self.schema.source_prop.reverse is not None):
             return self.schema.source_prop.reverse
+        if self.prop is None:
+            raise Exception('<FIXME>')
         return self.prop
 
     @property
