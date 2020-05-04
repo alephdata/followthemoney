@@ -128,7 +128,7 @@ class EntityProxy(object):
                     continue
             self._size += value_size
 
-            if prop not in self._properties:
+            if _property not in self._properties:
                 self._properties[_property] = OrderedSet()
             self._properties[_property].add(cleaned_value)
 
