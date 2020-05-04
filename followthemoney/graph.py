@@ -23,13 +23,11 @@ class Node(object):
         self.value: str = value
         node_id = type_.node_id_safe(value)
         if node_id is None:
-            raise Exception('<FIXME>')
+            raise Exception('No Node ID.')
         self.id: str = node_id
         self.proxy: Optional[EntityProxy] = proxy
-        _schema = schema if proxy is None else proxy.schema
-        if _schema is None:
-            raise Exception('<FIXME>')
-        self.schema: Schema = _schema
+        # NOTE: the Node can be representing a property, so it has no schema
+        self.schema: Optional[Schema] = schema if self.proxy is None else self.proxy.schema
 
     @property
     def is_entity(self) -> bool:

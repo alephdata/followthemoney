@@ -59,12 +59,13 @@ class Neo4JCSVExporter(CSVMixin, GraphExporter):
             self.nodes_writer.writerow(row)
             self.nodes_seen.add(node.id)
         if node.proxy is not None:
-            label = ';'.join(node.schema.names)
+            # NOTE: if node.proxy is not none, node.schema is also not None.
+            label = ';'.join(node.schema.names)  # type: ignore
             cells = [node.id, label, node.caption]
             cells.extend(extra or [])
             for prop, values in self.exportable_fields(node.proxy):
                 cells.append(prop.type.join(values))
-            writer = self._get_writer(node.schema)
+            writer = self._get_writer(node.schema)  # type: ignore
             writer.writerow(cells)
 
     def write_edge(self, edge: Edge, extra: Iterator):
