@@ -3,7 +3,7 @@ from followthemoney.schema import Schema
 from followthemoney.property import Property
 from followthemoney.proxy import EntityProxy
 
-from typing import Iterator, Tuple, List, Any
+from typing import Iterator, Tuple, List
 
 
 class Exporter(object):
@@ -18,7 +18,7 @@ class Exporter(object):
                     continue
             yield prop
 
-    def exportable_fields(self, proxy: EntityProxy) -> Iterator[Tuple[Property, List[Any]]]:
+    def exportable_fields(self, proxy: EntityProxy) -> Iterator[Tuple[Property, List[str]]]:
         for prop in self.exportable_properties(proxy.schema):
             yield prop, proxy.get(prop)
 
