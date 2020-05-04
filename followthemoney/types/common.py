@@ -160,7 +160,7 @@ class EnumType(PropertyType):
             return False
         return s_code.lower() in self.codes
 
-    def clean_text(self, code: str, guess: bool, **kwargs) -> Optional[str]:  # type: ignore[override] # noqa
+    def clean_text(self, code: str, guess: bool=False, **kwargs) -> Optional[str]:  # type: ignore[override] # noqa
         code = code.lower().strip()
         if code in self.codes:
             return code
