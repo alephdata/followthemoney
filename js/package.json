@@ -68,7 +68,7 @@
     "coveralls": "^3.0.6",
     "cross-env": "^7.0.0",
     "jest": "^25.1.0",
-    "jest-config": "^25.1.0",
+    "jest-config": "^26.0.0",
     "lint-staged": "^10.0.4",
     "prettier": "^2.0.2",
     "prompt": "^1.0.0",
