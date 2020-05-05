@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-29 11:09+0200\n"
+"POT-Creation-Date: 2020-05-05 10:44+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -612,7 +612,7 @@ msgstr "Номер процедуры"
 #. Contract.properties.procedure.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract procedure"
-msgstr ""
+msgstr "Процедура присуждения контракта"
 
 #. Contract.properties.noticeId.label
 #: followthemoney/schema/Contract.yaml
@@ -1322,22 +1322,22 @@ msgstr "Дополнительная контрольная сумма для CS
 #. Documentation.label
 #: followthemoney/schema/Documentation.yml
 msgid "Documentation"
-msgstr ""
+msgstr "Документация"
 
 #. Documentation.plural
 #: followthemoney/schema/Documentation.yml
 msgid "Documentations"
-msgstr ""
+msgstr "Документация"
 
 #. Documentation.edge.label
 #: followthemoney/schema/Documentation.yml
 msgid "documents"
-msgstr ""
+msgstr "документы"
 
 #. Documentation.properties.document.reverse.label
 #: followthemoney/schema/Documentation.yml
 msgid "Related entities"
-msgstr ""
+msgstr "Связанные сущности"
 
 #. Documentation.properties.entity.label
 #. Sanction.properties.entity.label
@@ -2302,7 +2302,7 @@ msgstr "Банковский счет бенефициара"
 #. Payment.properties.contract.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Contractual payments"
-msgstr ""
+msgstr "Платежи по договору"
 
 #. Person.plural
 #: followthemoney/schema/Person.yaml
