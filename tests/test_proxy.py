@@ -162,7 +162,6 @@ class ProxyTestCase(TestCase):
         assert 'idNumber' in data['properties']
 
         data = proxy.to_full_dict()
-        assert ENTITY['schema'] in data['schemata']
         assert 'Ralph Tester' in data['names']
 
     def test_inverted_props(self):

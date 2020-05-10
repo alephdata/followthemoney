@@ -257,8 +257,6 @@ class EntityProxy(object):
 
     def to_full_dict(self) -> Dict:
         data = self.to_dict()
-        data['schemata'] = list(self.schema.names)
-        data['name'] = self.caption
         data.update(self.get_type_inverted())
         return data
 
