@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 import os
 import logging
 from threading import local
-from rdflib import Identifier  # type: ignore
+from rdflib.term import Identifier  # type: ignore
 from typing import Any, Union, List, Optional, Dict, Tuple, Mapping
 from typing import TYPE_CHECKING
 
@@ -26,8 +28,8 @@ log = logging.getLogger(__name__)
 if TYPE_CHECKING:
     from followthemoney.proxy import EntityProxy
 
-TripleType = Tuple[Identifier, Identifier, Identifier]
-ProxyData = Union[EntityProxy, Mapping]
+    TripleType = Tuple[Identifier, Identifier, Identifier]
+    ProxyData = Union[EntityProxy, Mapping]
 
 
 def gettext(*args, **kwargs):

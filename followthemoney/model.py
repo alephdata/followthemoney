@@ -1,14 +1,16 @@
+from __future__ import annotations
 import os
 import yaml
-from typing import Dict, Union, Set, Optional, Any
+from typing import Dict, Union, Set, Optional, Any, TYPE_CHECKING
 
 from followthemoney.types import registry
 from followthemoney.schema import Schema
 from followthemoney.property import Property
 from followthemoney.mapping import QueryMapping
 from followthemoney.proxy import EntityProxy
-from followthemoney.util import ProxyData
 from followthemoney.exc import InvalidModel, InvalidData
+if TYPE_CHECKING:
+    from followthemoney.util import ProxyData
 
 SchemaName = Union[str, Schema]
 

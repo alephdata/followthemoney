@@ -1,3 +1,4 @@
+from __future__ import annotations
 from itertools import product
 from rdflib import Literal  # type: ignore
 from banal import ensure_list
