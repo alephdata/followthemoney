@@ -24,3 +24,4 @@ js/.nyc_output
 js/compiled
 js/.awcache
 js/.rpt2_cache
+.mypy_cache
