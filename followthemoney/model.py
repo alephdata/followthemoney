@@ -52,7 +52,7 @@ class Model(object):
     def get_qname(self, qname: str) -> Optional[Property]:
         return self.qnames.get(qname)
 
-    def __getitem__(self, name: str) -> Schema:
+    def __getitem__(self, name: SchemaName) -> Schema:
         schema = self.get(name)
         if schema is None:
             raise KeyError("No such schema: %s" % name)

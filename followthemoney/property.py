@@ -57,10 +57,10 @@ class Property(object):
     def description(self):
         return gettext(self._description)
 
-    def specificity(self, value):
+    def specificity(self, value) -> float:
         """Return a measure of how precise the given value is."""
         if not self.matchable:
-            return 0
+            return 0.0
         return self.type.specificity(value)
 
     def validate(self, data):

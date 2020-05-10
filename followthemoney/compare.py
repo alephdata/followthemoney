@@ -1,5 +1,5 @@
 import itertools
-from typing import Mapping, Dict
+from typing import Dict
 from followthemoney.types.common import PropertyType
 
 from Levenshtein import jaro  # type: ignore
@@ -8,6 +8,7 @@ from followthemoney.model import Model
 from followthemoney.proxy import EntityProxy
 from followthemoney.types import registry
 from followthemoney.util import dampen, shortest
+from followthemoney.util import ProxyData
 from followthemoney.exc import InvalidData
 
 # OK, Here's the plan: we have to find a way to get user judgements
@@ -31,7 +32,7 @@ MATCH_WEIGHTS: Dict[PropertyType, float] = {
 }
 
 
-def compare(model: Model, left: Mapping, right: Mapping) -> float:
+def compare(model: Model, left: ProxyData, right: ProxyData) -> float:
     """Compare two entities and return a match score."""
     entity_left = model.get_proxy(left)
     entity_right = model.get_proxy(right)
