@@ -7,6 +7,7 @@ from followthemoney.schema import Schema
 from followthemoney.property import Property
 from followthemoney.mapping import QueryMapping
 from followthemoney.proxy import EntityProxy
+from followthemoney.util import ProxyData
 from followthemoney.exc import InvalidModel, InvalidData
 
 
@@ -110,10 +111,11 @@ class Model(object):
                 specific = schema
         return specific
 
-    def make_entity(self, schema: Union[str, Schema], key_prefix=None) -> EntityProxy:
+    def make_entity(self, schema: Union[str, Schema],
+                    key_prefix=None) -> EntityProxy:
         return EntityProxy(self, {'schema': schema}, key_prefix=key_prefix)
 
-    def get_proxy(self, data: Mapping, cleaned=True) -> EntityProxy:
+    def get_proxy(self, data: ProxyData, cleaned=True) -> EntityProxy:
         return EntityProxy.from_dict(self, data, cleaned=cleaned)
 
     def to_dict(self) -> Dict[str, Any]:

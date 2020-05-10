@@ -32,8 +32,8 @@ class PhoneType(PropertyType):
                 result.add(country)
         return result
 
-    def _parse_number(self, number: str, countries: Iterable=None,
-                      country: Iterable=None, **kwargs) -> Iterator[str]:
+    def _parse_number(self, number: str, countries: Iterable = None,
+                      country: Iterable = None, **kwargs) -> Iterator[str]:
         """Parse a phone number and return in international format.
 
         If no valid phone number can be detected, None is returned. If

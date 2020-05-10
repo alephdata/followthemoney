@@ -35,7 +35,8 @@ class JsonType(PropertyType):
             _obj = sanitize_text(obj)
         return _obj
 
-    def normalize(self, obj: Any, cleaned: bool=False, **kwargs) -> List:  # type: ignore[override] # noqa
+    def normalize(self, obj: Any, cleaned: bool = False,
+                  **kwargs) -> List:  # type: ignore[override] # noqa
         return [] if obj is None else [obj]
 
     def join(self, values: Iterable[Any]) -> Optional[str]:  # type: ignore[override] # noqa

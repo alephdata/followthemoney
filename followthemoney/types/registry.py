@@ -41,7 +41,8 @@ class Registry(object):
             return name
         return self._types[name]
 
-    def get_types(self, names: Sequence[Union[str, PropertyType]]) -> List[PropertyType]:
+    def get_types(self, names: Sequence[Union[str, PropertyType]]
+                  ) -> List[PropertyType]:
         names = ensure_list(names)
         return [self.get(n) for n in names if self.get(n)]
 

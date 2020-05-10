@@ -43,7 +43,7 @@ class CountryType(EnumType):
                 names[code] = label
         return names
 
-    def clean_text(self, country: str, guess: bool=False, **kwargs) -> Optional[str]: # type: ignore[override] # noqa
+    def clean_text(self, country: str, guess: bool = False, **kwargs) -> Optional[str]:  # type: ignore[override] # noqa
         """Determine a two-letter country code based on an input.
 
         The input may be a country code, a country name, etc.

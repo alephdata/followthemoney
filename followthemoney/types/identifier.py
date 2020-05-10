@@ -17,7 +17,7 @@ class IdentifierType(PropertyType):
     matchable: bool = True
     pivot: bool = True
 
-    def normalize(self, text, cleaned: bool=False, **kwargs) -> List:
+    def normalize(self, text, cleaned: bool = False, **kwargs) -> List:
         """Normalize for comparison."""
         ids = super(IdentifierType, self).normalize(text, **kwargs)
         return [normalize(i) for i in ids]

@@ -44,8 +44,8 @@ def simplify_provenance(proxy: EntityProxy) -> EntityProxy:
     return proxy
 
 
-def entity_filename(proxy: EntityProxy, base_name: Optional[str]=None,
-                    extension: Optional[str]=None) -> str:
+def entity_filename(proxy: EntityProxy, base_name: Optional[str] = None,
+                    extension: Optional[str] = None) -> str:
     """Derive a safe filename for the given entity."""
     if proxy.schema.is_a('Document'):
         for extension_ in proxy.get('extension', quiet=True):

@@ -1,6 +1,7 @@
 from rdflib import URIRef  # type: ignore
 from banal import ensure_list, ensure_dict, as_bool
-from typing import Optional, Dict, Any, Set, List, Mapping, Union, TYPE_CHECKING
+from typing import Optional, Dict, Any, Set, List, Mapping, Union
+from typing import TYPE_CHECKING
 
 from followthemoney.property import Property
 from followthemoney.types import registry
@@ -61,7 +62,7 @@ class Schema(object):
         self._edge_label = edge.get('label', self._label)
         self.edge_directed = edge.get('directed', True)
 
-        self.extends: Set[str] = set()
+        self.extends: Set['Schema'] = set()
         self.schemata = set([self])
         self.names = set([self.name])
         self.descendants: Set[str] = set()
@@ -179,7 +180,7 @@ class Schema(object):
     def get(self, name) -> Optional[Property]:
         return self.properties.get(name)
 
-    def validate(self, data):
+    def validate(self, data: Mapping):
         """Validate a dataset against the given schema.
         This will also drop keys which are not present as properties.
         """
@@ -197,7 +198,7 @@ class Schema(object):
             msg = gettext("Entity validation failed")
             raise InvalidData(msg, errors={'properties': errors})
 
-    def to_dict(self):
+    def to_dict(self) -> Mapping:
         data = {
             'label': self.label,
             'plural': self.plural,

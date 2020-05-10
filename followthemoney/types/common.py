@@ -36,7 +36,7 @@ class PropertyType(object):
     def clean_text(self, text: str, **kwargs) -> Optional[str]:
         return text
 
-    def normalize(self, text, cleaned: bool=False, **kwargs) -> List:
+    def normalize(self, text, cleaned: bool = False, **kwargs) -> List:
         """Create a represenation ideal for comparisons, but not to be
         shown to the user."""
         if not cleaned:
@@ -78,7 +78,7 @@ class PropertyType(object):
         return 0.0
 
     def compare_sets(self, left: List, right: List,
-                     func: Callable[[List], float]=max) -> float:
+                     func: Callable[[List], float] = max) -> float:
         """Compare two sets of values and select a specific result."""
         results: List[float] = []
         for (l, r) in product(ensure_list(left), ensure_list(right)):
@@ -160,7 +160,8 @@ class EnumType(PropertyType):
             return False
         return s_code.lower() in self.codes
 
-    def clean_text(self, code: str, guess: bool=False, **kwargs) -> Optional[str]:  # type: ignore[override] # noqa
+    def clean_text(self, code: str, guess: bool = False, **kwargs
+                   ) -> Optional[str]:  # type: ignore[override] # noqa
         code = code.lower().strip()
         if code in self.codes:
             return code

@@ -82,7 +82,7 @@ class DateType(PropertyType):
         text = self.CUT_ZEROES.sub('', text)
         return text
 
-    def clean(self, text: Any, format: str=None, **kwargs) -> Optional[str]:
+    def clean(self, text: Any, format: str = None, **kwargs) -> Optional[str]:
         """The classic: date parsing, every which way."""
         # handle date/datetime before converting to text.
         if isinstance(text, (date, datetime)):

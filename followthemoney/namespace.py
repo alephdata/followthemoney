@@ -13,12 +13,13 @@ class Namespace(object):
     # cf. https://github.com/alephdata/followthemoney/issues/35
     SEP: str = '.'
 
-    def __init__(self, name: Optional[str]=None):
+    def __init__(self, name: Optional[str] = None):
         self.bname: bytes = key_bytes(name) if name else b''
         self.hmac: HMAC = hmac.new(self.bname, digestmod='sha1')
 
     @classmethod
-    def parse(cls, entity_id: Optional[str]) -> Tuple[Optional[str], Optional[str]]:
+    def parse(cls, entity_id: Optional[str]
+              ) -> Tuple[Optional[str], Optional[str]]:
         """Split up an entity ID into the plain ID and the namespace
         signature. If either part is missing, return None instead."""
         e_id = registry.entity.clean(entity_id)

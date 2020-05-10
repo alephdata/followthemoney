@@ -1,7 +1,9 @@
 import os
 import logging
 from threading import local
-from typing import Any, Union, List, Optional, Dict
+from rdflib import Identifier  # type: ignore
+from typing import Any, Union, List, Optional, Dict, Tuple, Mapping
+from typing import TYPE_CHECKING
 
 from normality import stringify  # type: ignore
 from normality.cleaning import compose_nfc  # type: ignore
@@ -19,6 +21,13 @@ DEFAULT_LOCALE = 'en'
 i18n_path = os.path.join(os.path.dirname(__file__), 'translations')
 state = local()
 log = logging.getLogger(__name__)
+
+# Type aliases:
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
+
+TripleType = Tuple[Identifier, Identifier, Identifier]
+ProxyData = Union[EntityProxy, Mapping]
 
 
 def gettext(*args, **kwargs):
@@ -74,7 +83,7 @@ def key_bytes(key: Union[bytes, Any]) -> bytes:
     return key.encode('utf-8')
 
 
-def get_entity_id(obj) -> Optional[str]:
+def get_entity_id(obj: Any) -> Optional[str]:
     """Given an entity-ish object, try to get the ID."""
     if is_mapping(obj):
         obj = obj.get('id')
@@ -109,5 +118,5 @@ def dampen(short: float, long: float, text: str) -> float:
     return max(0, min(1.0, (length / baseline)))
 
 
-def shortest(*texts):
+def shortest(*texts) -> str:
     return min(texts, key=len)
