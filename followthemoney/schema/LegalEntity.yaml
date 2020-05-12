@@ -6,8 +6,9 @@ LegalEntity:
   matchable: true
   featured:
   - name
-  - legalForm
   - country
+  - legalForm
+  - status
   required:
   - name
   caption:

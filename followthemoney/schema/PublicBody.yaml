@@ -4,6 +4,11 @@ PublicBody:
   description: "A public body, such as a ministry, department or state company."
   extends: Organization
   matchable: true
+  featured:
+  - name
+  - country
+  - legalForm
+  - status
   caption:
   - name
   required:
