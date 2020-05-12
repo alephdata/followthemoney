@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-29 11:09+0200\n"
+"POT-Creation-Date: 2020-05-12 17:09+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2020\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: followthemoney/property.py:73
 msgid "Property cannot be written"
-msgstr ""
+msgstr "Eigenschaft darf nicht direkt gesetzt werden."
 
 #: followthemoney/property.py:76
 msgid "Invalid value"
@@ -55,7 +55,7 @@ msgstr "Erforderlich"
 
 #: followthemoney/schema.py:193
 msgid "Entity validation failed"
-msgstr ""
+msgstr "Prüfung fehlgeschlagen"
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
@@ -562,12 +562,12 @@ msgstr ""
 #. Contract.properties.name.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract name"
-msgstr ""
+msgstr "Vertragsname"
 
 #. Contract.properties.title.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract title"
-msgstr ""
+msgstr "Vertragstitel"
 
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
@@ -610,7 +610,7 @@ msgstr "Vorgangsnummer"
 #. Contract.properties.procedure.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract procedure"
-msgstr ""
+msgstr "Vertragsprozedur"
 
 #. Contract.properties.noticeId.label
 #: followthemoney/schema/Contract.yaml
@@ -625,17 +625,17 @@ msgstr "Anzahl der Zuschläge"
 #. Contract.properties.status.label
 #: followthemoney/schema/Contract.yaml
 msgid "Procurement status"
-msgstr ""
+msgstr "Vergabestatus"
 
 #. Contract.properties.method.label
 #: followthemoney/schema/Contract.yaml
 msgid "Procurement method"
-msgstr ""
+msgstr "Vergabemethode"
 
 #. Contract.properties.criteria.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract award criteria"
-msgstr ""
+msgstr "Vergabekriterien"
 
 #. Contract.properties.classification.label
 #. LegalEntity.properties.classification.label
@@ -1321,22 +1321,22 @@ msgstr "Prüfsumme der CSV-Version"
 #. Documentation.label
 #: followthemoney/schema/Documentation.yml
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentation"
 
 #. Documentation.plural
 #: followthemoney/schema/Documentation.yml
 msgid "Documentations"
-msgstr ""
+msgstr "Dokumentationen"
 
 #. Documentation.edge.label
 #: followthemoney/schema/Documentation.yml
 msgid "documents"
-msgstr ""
+msgstr "dokumentiert"
 
 #. Documentation.properties.document.reverse.label
 #: followthemoney/schema/Documentation.yml
 msgid "Related entities"
-msgstr ""
+msgstr "Verbundene Objekte"
 
 #. Documentation.properties.entity.label
 #. Sanction.properties.entity.label
@@ -2298,7 +2298,7 @@ msgstr "Bankkonto des Empfängers"
 #. Payment.properties.contract.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Contractual payments"
-msgstr ""
+msgstr "Vertragszahlungen"
 
 #. Person.plural
 #: followthemoney/schema/Person.yaml
@@ -3008,7 +3008,7 @@ msgstr "Schottland"
 
 #: followthemoney/types/country.py:31
 msgid "Northern Ireland"
-msgstr ""
+msgstr "Nordirland"
 
 #: followthemoney/types/country.py:32
 msgid "Transnistria"
@@ -3204,7 +3204,7 @@ msgstr "Richter"
 
 #: followthemoney/types/topic.py:41
 msgid "Civil servant"
-msgstr ""
+msgstr "Beamter"
 
 #: followthemoney/types/topic.py:42
 msgid "Diplomat"
@@ -3216,7 +3216,7 @@ msgstr "Rechtsanwalt"
 
 #: followthemoney/types/topic.py:44
 msgid "Accountant"
-msgstr ""
+msgstr "Buchhalter"
 
 #: followthemoney/types/topic.py:45
 msgid "Spy"
