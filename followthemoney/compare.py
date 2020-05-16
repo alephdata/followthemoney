@@ -1,5 +1,6 @@
+from __future__ import annotations
 import itertools
-from typing import Dict
+from typing import Dict, TYPE_CHECKING
 from followthemoney.types.common import PropertyType
 
 from Levenshtein import jaro  # type: ignore
@@ -8,8 +9,9 @@ from followthemoney.model import Model
 from followthemoney.proxy import EntityProxy
 from followthemoney.types import registry
 from followthemoney.util import dampen, shortest
-from followthemoney.util import ProxyData
 from followthemoney.exc import InvalidData
+if TYPE_CHECKING:
+    from followthemoney.util import ProxyData
 
 # OK, Here's the plan: we have to find a way to get user judgements
 # on as many of these matches as we can, then build a regression

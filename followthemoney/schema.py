@@ -1,3 +1,4 @@
+from __future__ import annotations
 from rdflib import URIRef  # type: ignore
 from banal import ensure_list, ensure_dict, as_bool
 from typing import Optional, Dict, Any, Set, List, Mapping, Union

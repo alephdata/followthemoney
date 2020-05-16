@@ -1,16 +1,17 @@
+from __future__ import annotations
 from normality import stringify  # type: ignore
 from banal import is_mapping
 from rdflib import URIRef  # type: ignore
 from typing import Dict, Any, Mapping, Optional, TYPE_CHECKING
 
 from followthemoney.exc import InvalidModel
-from followthemoney.types.common import PropertyType
 from followthemoney.types import registry
 from followthemoney.util import gettext, NS, get_entity_id
 
 if TYPE_CHECKING:
     from followthemoney.schema import Schema
     from followthemoney.model import Model
+    from followthemoney.types.common import PropertyType
 
 
 class Property(object):

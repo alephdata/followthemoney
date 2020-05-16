@@ -1,3 +1,4 @@
+from __future__ import annotations
 import logging
 from hashlib import sha1
 from itertools import product
@@ -16,10 +17,10 @@ from followthemoney.property import Property
 from followthemoney.types.common import PropertyType
 from followthemoney.schema import Schema
 from followthemoney.util import sanitize_text, key_bytes, gettext
-from followthemoney.util import TripleType, ProxyData
 
 if TYPE_CHECKING:
     from followthemoney.model import Model
+    from followthemoney.util import TripleType, ProxyData
 
 
 log = logging.getLogger(__name__)
