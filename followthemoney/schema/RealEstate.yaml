@@ -15,6 +15,9 @@ RealEstate:
   - address
   - registrationNumber
   properties:
+    name:
+      label: "Real estate name"
+      type: string
     latitude:
       label: Latitude
       type: number
