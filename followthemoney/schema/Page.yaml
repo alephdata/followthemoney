@@ -1,0 +1,33 @@
+Page:
+  label: Page
+  plural: Pages
+  matchable: false
+  generated: true
+  properties:
+    index:
+      label: "Index"
+      type: number
+    bodyText:
+      label: "Text"
+      hidden: true
+      type: text
+    document:
+      label: "Document"
+      type: entity
+      range: Pages
+      reverse:
+        name: pages
+        label: "Pages"
+        hidden: true
+      rdf: http://purl.org/dc/terms/isPartOf
+    detectedLanguage:
+      label: "Auto-detected language"
+      type: language
+    indexText:
+      # This is a leaked abstraction from aleph. The idea is to have some
+      # additional text field that can be used to associate searchable text
+      # with an entity. This will be removed as a property upon indexing so
+      # that it can never be retrieved.
+      label: Index text
+      hidden: true
+      type: text
