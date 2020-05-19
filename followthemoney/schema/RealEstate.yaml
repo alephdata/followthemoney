@@ -1,22 +1,20 @@
 RealEstate:
+  extends: Asset
   label: Real estate
   plural: Real estates
   description: "A piece of land or property."
-  extends: Asset
   matchable: false
   featured:
   - registrationNumber
   - address
   - country
-  # required:
-  # - address
   caption:
   - name
   - address
   - registrationNumber
   properties:
     name:
-      label: "Real estate name"
+      label: "Name"
       type: string
     latitude:
       label: Latitude
@@ -59,6 +57,7 @@ Land:
   plural: Lands
   extends: RealEstate
   matchable: false
+  generated: true
   featured:
-    - registrationNumber
+  - registrationNumber
   properties: {}
