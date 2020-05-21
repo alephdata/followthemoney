@@ -51,13 +51,3 @@ RealEstate:
     createDate:
       label: Record date
       type: date
-
-Land:
-  label: Land
-  plural: Lands
-  extends: RealEstate
-  matchable: false
-  generated: true
-  featured:
-  - registrationNumber
-  properties: {}
