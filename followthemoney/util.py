@@ -1,15 +1,14 @@
 import os
 import logging
+from babel import Locale
+from gettext import translation
+from rdflib import Namespace
 from threading import local
 from normality import stringify
 from normality.cleaning import compose_nfc
 from normality.cleaning import remove_unsafe_chars
 from normality.encoding import DEFAULT_ENCODING
-from babel import Locale
-from gettext import translation
-from rdflib import Namespace
-from banal import is_mapping, is_sequence
-from banal import unique_list, ensure_list
+from banal import is_mapping, unique_list, ensure_list
 
 NS = Namespace('https://w3id.org/ftm#')
 MEGABYTE = 1024 * 1024
@@ -80,24 +79,16 @@ def get_entity_id(obj):
     return sanitize_text(obj)
 
 
-def merge_data(old, new):
-    """Extend the values of the new doc with extra values from the old."""
-    if is_sequence(old) or is_sequence(new):
-        new = ensure_list(new)
-        new.extend(ensure_list(old))
-        return unique_list(new)
-    if is_mapping(old) or is_mapping(new):
-        old = old if is_mapping(old) else {}
-        new = new if is_mapping(new) else {}
-        keys = set(new.keys())
-        keys.update(old.keys())
-        combined = {}
-        for key in keys:
-            value = merge_data(old.get(key), new.get(key))
-            if value is not None:
-                combined[key] = value
-        return combined
-    return new or old
+def merge_context(left, right):
+    """When merging two entities, we make lists of all the
+    duplicate context keys."""
+    combined = {}
+    keys = [*left.keys(), *right.keys()]
+    for key in set(keys):
+        lval = ensure_list(left.get(key))
+        rval = ensure_list(right.get(key))
+        combined[key] = unique_list([*lval, *rval])
+    return combined
 
 
 def dampen(short, long, text):

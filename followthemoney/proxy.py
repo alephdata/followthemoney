@@ -11,6 +11,7 @@ from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
 from followthemoney.util import sanitize_text, key_bytes, gettext
+from followthemoney.util import merge_context
 
 log = logging.getLogger(__name__)
 
@@ -254,9 +255,10 @@ class EntityProxy(object):
             msg = "Cannot merge entities with id %s: %s"
             raise InvalidData(msg % (self.id, e))
 
-        self.context.update(other.context)
+        self.context = merge_context(self.context, other.context)
         for prop, value in set(other.itervalues()):
             self.add(prop, value, cleaned=True, quiet=True)
+        return self
 
     def __str__(self):
         return self.caption

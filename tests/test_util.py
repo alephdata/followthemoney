@@ -1,5 +1,5 @@
 from unittest import TestCase
-from followthemoney.util import merge_data
+from followthemoney.util import merge_context
 
 
 class UtilTestCase(TestCase):
@@ -11,8 +11,8 @@ class UtilTestCase(TestCase):
         new = {
             'foo': 'quux',
         }
-        result = merge_data(old, new)
-        assert result['foo'] == 'quux', result
+        result = merge_context(old, new)
+        assert result['foo'] == ['bar', 'quux'], result
 
     def test_merge_different(self):
         old = {
@@ -21,33 +21,6 @@ class UtilTestCase(TestCase):
         new = {
             'bar': 'quux',
         }
-        result = merge_data(old, new)
-        assert result['foo'] == 'quux', result
-        assert result['bar'] == 'quux', result
-
-    def test_merge_list(self):
-        old = {
-            'lst': ['a', 'b', 'c']
-        }
-        new = {
-            'lst': ['c', 'd', 'e']
-        }
-        result = merge_data(old, new)
-        assert 'a' in result['lst'], result
-        assert 'c' in result['lst'], result
-        assert 'e' in result['lst'], result
-
-    def test_merge_objects(self):
-        old = {
-            'data': {
-                'nested': True
-            }
-        }
-        new = {
-            'data': {
-                'banana': 'hello'
-            }
-        }
-        result = merge_data(old, new)
-        assert result['data']['nested'], result
-        assert result['data']['banana'], result
+        result = merge_context(old, new)
+        assert result['foo'] == ['quux'], result
+        assert result['bar'] == ['quux'], result
