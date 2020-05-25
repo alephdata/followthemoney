@@ -31,8 +31,8 @@ describe('ftm/Namespace class', () => {
     it('should exist', () => {
       expect(namespaceInstance).toHaveProperty('sign')
     })
-    it('should return null if input id is null', function() {
-      expect(namespaceInstance.sign('')).toBe(null);
+    it('should return the input if input id is empty', function() {
+      expect(namespaceInstance.sign('')).toBe('');
     })
     it('should return the input id if no namespace given', function() {
       const emptyNamespace = new Namespace('');

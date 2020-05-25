@@ -21,13 +21,13 @@ export class Namespace {
       .digest('hex');
   }
 
-  sign(id: string) {
+  sign(id: string): string {
     const [namespace, entityId] = this.parse(id);
+    if (!entityId) {
+      return id;
+    }
     if (!this.namespaceKey.length) {
       return entityId;
-    }
-    if (!entityId) {
-      return null;
     }
     const digest = this.signature(entityId);
 
