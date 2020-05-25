@@ -9,13 +9,11 @@ import { v4 as uuidv4 } from 'uuid';
 export interface IModelDatum {
   schemata: { [name: string]: ISchemaDatum }
   types: { [name: string]: IPropertyTypeDatum }
-  namespace?: Namespace
 }
 
 export class Model {
   public readonly schemata: { [x: string]: Schema | undefined } = {}
   public readonly types: { [x: string]: PropertyType } = {}
-  public readonly namespace?: Namespace
 
   constructor(config: IModelDatum) {
     this.types = {}
@@ -31,7 +29,6 @@ export class Model {
         this.schemata[schemaName] = new Schema(this, schemaName, schema)
       }
     )
-    this.namespace = config.namespace;
   }
 
   getSchema(schemaName: string | null | undefined | Schema): Schema {
@@ -100,9 +97,9 @@ export class Model {
    *
    * @param schema Schema name or object
    */
-  createEntity(schema: string | Schema): Entity {
+  createEntity(schema: string | Schema, namespace?: Namespace): Entity {
     const rawId = uuidv4();
-    const id = this.namespace ? this.namespace.sign(rawId) : rawId;
+    const id = namespace ? namespace.sign(rawId) : rawId;
     return this.getEntity({
       id,
       schema: schema,
