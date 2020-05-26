@@ -5,15 +5,16 @@
 # 
 # Translators:
 # John Ospina <jmospina@gmail.com>, 2018
+# Miguel Sojo <miguelsojo@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-29 11:09+0200\n"
+"POT-Creation-Date: 2020-05-12 17:09+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
-"Last-Translator: John Ospina <jmospina@gmail.com>, 2018\n"
+"Last-Translator: Miguel Sojo <miguelsojo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,11 +29,11 @@ msgstr ""
 
 #: followthemoney/property.py:76
 msgid "Invalid value"
-msgstr ""
+msgstr "Valor inválido"
 
 #: followthemoney/proxy.py:29
 msgid "No schema for entity."
-msgstr ""
+msgstr "No hay esquema para la entidad."
 
 #: followthemoney/proxy.py:62
 #, python-format
@@ -2332,22 +2333,22 @@ msgstr ""
 #. Person.properties.lastName.label
 #: followthemoney/schema/Person.yaml
 msgid "Last name"
-msgstr ""
+msgstr "Apellido"
 
 #. Person.properties.birthDate.label
 #: followthemoney/schema/Person.yaml
 msgid "Birth date"
-msgstr ""
+msgstr "Fecha de nacimiento"
 
 #. Person.properties.deathDate.label
 #: followthemoney/schema/Person.yaml
 msgid "Death date"
-msgstr ""
+msgstr "Fecha de defunción"
 
 #. Person.properties.position.label
 #: followthemoney/schema/Person.yaml
 msgid "Position"
-msgstr ""
+msgstr "Cargo"
 
 #. Person.properties.nationality.label
 #: followthemoney/schema/Person.yaml

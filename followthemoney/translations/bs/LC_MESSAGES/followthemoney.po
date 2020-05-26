@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-04-29 11:09+0200\n"
+"POT-Creation-Date: 2020-05-26 16:57+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Tajna Biscevic <tajna@occrp.org>, 2019\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -31,21 +31,21 @@ msgstr ""
 msgid "Invalid value"
 msgstr "Nevažeća vrijednost"
 
-#: followthemoney/proxy.py:29
+#: followthemoney/proxy.py:30
 msgid "No schema for entity."
 msgstr "Nema scheme za entitet."
 
-#: followthemoney/proxy.py:62
+#: followthemoney/proxy.py:63
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Nepoznat posjed (%s): %s"
 
-#: followthemoney/proxy.py:95
+#: followthemoney/proxy.py:96
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:104
+#: followthemoney/proxy.py:105
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr ""
@@ -192,57 +192,57 @@ msgstr "Imovina"
 
 #. Associate.label
 #. Associate.properties.associate.label
-#: followthemoney/schema/Associate.yml followthemoney/types/topic.py:39
+#: followthemoney/schema/Associate.yaml followthemoney/types/topic.py:39
 msgid "Associate"
 msgstr "Saradnik"
 
 #. Associate.plural
 #. Associate.properties.person.reverse.label
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "Associates"
 msgstr "Saradnici"
 
 #. Associate.description
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "Non-family association between two people"
 msgstr "Ne-porodična povezanost između dvije osobe"
 
 #. Associate.edge.label
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "associated with"
 msgstr ""
 
 #. Associate.properties.person.label
 #. Family.properties.person.label
 #. Person.label
-#: followthemoney/schema/Associate.yml followthemoney/schema/Family.yml
+#: followthemoney/schema/Associate.yaml followthemoney/schema/Family.yaml
 #: followthemoney/schema/Person.yaml
 msgid "Person"
 msgstr "Osoba"
 
 #. Associate.properties.person.description
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "The subject of the association."
 msgstr ""
 
 #. Associate.properties.associate.description
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "An associate of the subject person."
 msgstr "Saradnik subjekta."
 
 #. Associate.properties.associate.reverse.label
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "Associations"
 msgstr ""
 
 #. Associate.properties.relationship.label
 #. Family.properties.relationship.label
-#: followthemoney/schema/Associate.yml followthemoney/schema/Family.yml
+#: followthemoney/schema/Associate.yaml followthemoney/schema/Family.yaml
 msgid "Relationship"
 msgstr ""
 
 #. Associate.properties.relationship.description
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "Nature of the association"
 msgstr ""
 
@@ -1055,7 +1055,7 @@ msgstr "Tekstualni fajlovi"
 #. Image.properties.bodyText.label
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
+#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 #: followthemoney/types/string.py:15
 msgid "Text"
 msgstr ""
@@ -1064,7 +1064,7 @@ msgstr ""
 #. Documentation.properties.document.label
 #. Page.properties.document.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Documentation.yml
-#: followthemoney/schema/Record.yaml
+#: followthemoney/schema/Page.yaml
 msgid "Document"
 msgstr "Dokument"
 
@@ -1290,8 +1290,7 @@ msgid "Raw headers"
 msgstr ""
 
 #. Table.label
-#. Row.properties.table.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
+#: followthemoney/schema/Document.yaml
 msgid "Table"
 msgstr "Tabela"
 
@@ -1652,48 +1651,48 @@ msgid "Involved"
 msgstr ""
 
 #. Family.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Family"
 msgstr ""
 
 #. Family.plural
 #. Family.properties.person.reverse.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Family members"
 msgstr ""
 
 #. Family.description
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Family relationship between two people"
 msgstr ""
 
 #. Family.edge.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "related to"
 msgstr ""
 
 #. Family.properties.person.description
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "The subject of the familial relation."
 msgstr ""
 
 #. Family.properties.relative.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Relative"
 msgstr ""
 
 #. Family.properties.relative.reverse.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Relatives"
 msgstr ""
 
 #. Family.properties.relative.description
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "The relative of the subject person."
 msgstr ""
 
 #. Family.properties.relationship.description
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid ""
 "Nature of the relationship, from the person's perspective eg. 'mother', "
 "where 'relative' is mother of 'person'."
@@ -1759,9 +1758,9 @@ msgid "Aleph URL"
 msgstr ""
 
 #. Interval.properties.indexText.label
-#. Record.properties.indexText.label
+#. Page.properties.indexText.label
 #. Thing.properties.indexText.label
-#: followthemoney/schema/Interval.yaml followthemoney/schema/Record.yaml
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Page.yaml
 #: followthemoney/schema/Thing.yaml
 msgid "Index text"
 msgstr ""
@@ -2147,6 +2146,27 @@ msgstr ""
 msgid "Type of ownership"
 msgstr "Tip vlasništva"
 
+#. Page.label
+#: followthemoney/schema/Page.yaml
+msgid "Page"
+msgstr ""
+
+#. Page.plural
+#. Page.properties.document.reverse.label
+#: followthemoney/schema/Page.yaml
+msgid "Pages"
+msgstr ""
+
+#. Page.properties.index.label
+#: followthemoney/schema/Page.yaml
+msgid "Index"
+msgstr ""
+
+#. Page.properties.detectedLanguage.label
+#: followthemoney/schema/Page.yaml
+msgid "Auto-detected language"
+msgstr ""
+
 #. Passport.label
 #. Passport.description
 #. Person.properties.passportNumber.label
@@ -2383,6 +2403,13 @@ msgstr "Nekretnine"
 msgid "A piece of land or property."
 msgstr ""
 
+#. RealEstate.properties.name.label
+#. Thing.properties.name.label
+#: followthemoney/schema/RealEstate.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/types/name.py:14
+msgid "Name"
+msgstr "Naziv"
+
 #. RealEstate.properties.latitude.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Latitude"
@@ -2440,63 +2467,6 @@ msgstr ""
 #: followthemoney/schema/RealEstate.yaml
 msgid "Record date"
 msgstr "Datum zapisa"
-
-#. Land.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Land"
-msgstr "Zemljište"
-
-#. Land.plural
-#: followthemoney/schema/RealEstate.yaml
-msgid "Lands"
-msgstr "Zemljišta"
-
-#. Record.label
-#: followthemoney/schema/Record.yaml
-msgid "Record"
-msgstr ""
-
-#. Record.plural
-#: followthemoney/schema/Record.yaml
-msgid "Records"
-msgstr ""
-
-#. Record.properties.index.label
-#: followthemoney/schema/Record.yaml
-msgid "Index"
-msgstr ""
-
-#. Row.label
-#: followthemoney/schema/Record.yaml
-msgid "Row"
-msgstr ""
-
-#. Row.plural
-#. Row.properties.table.reverse.label
-#: followthemoney/schema/Record.yaml
-msgid "Rows"
-msgstr ""
-
-#. Row.properties.cells.label
-#: followthemoney/schema/Record.yaml
-msgid "Cells"
-msgstr ""
-
-#. Page.label
-#: followthemoney/schema/Record.yaml
-msgid "Page"
-msgstr ""
-
-#. Page.plural
-#. Page.properties.document.reverse.label
-#: followthemoney/schema/Record.yaml
-msgid "Pages"
-msgstr ""
-
-#. Page.properties.detectedLanguage.label
-#: followthemoney/schema/Record.yaml
-msgid "Auto-detected language"
-msgstr ""
 
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
@@ -2637,11 +2607,6 @@ msgstr ""
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Registered wealth"
 msgstr ""
-
-#. Thing.properties.name.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:14
-msgid "Name"
-msgstr "Naziv"
 
 #. Thing.properties.sameAs.label
 #: followthemoney/schema/Thing.yaml
@@ -2817,6 +2782,11 @@ msgstr ""
 #. Vehicle.plural
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicles"
+msgstr ""
+
+#. Vehicle.properties.name.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicle name"
 msgstr ""
 
 #. Vehicle.properties.registrationNumber.label
