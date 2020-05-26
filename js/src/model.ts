@@ -2,6 +2,7 @@ import { Schema, ISchemaDatum } from './schema'
 import { Entity, IEntityDatum } from './entity'
 import { Property } from './property'
 import { PropertyType, IPropertyTypeDatum } from './type'
+import { Namespace } from './namespace';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -67,7 +68,7 @@ export class Model {
 
   /**
    * Get a particular property type.
-   * 
+   *
    * @param type name of the type
    */
   getType(type: string | PropertyType): PropertyType {
@@ -79,7 +80,7 @@ export class Model {
 
   /**
    * Convert a raw JSON object to an entity proxy.
-   * 
+   *
    * @param raw entity source data
    */
   getEntity(raw: IEntityDatum | Entity): Entity {
@@ -93,15 +94,16 @@ export class Model {
   /**
    * Make a new object with the given schema, and generate a random ID for
    * it.
-   * 
+   *
    * @param schema Schema name or object
    */
-  createEntity(schema: string | Schema): Entity {
+  createEntity(schema: string | Schema, namespace?: Namespace): Entity {
+    const rawId = uuidv4();
+    const id = namespace ? namespace.sign(rawId) : rawId;
     return this.getEntity({
-      id: uuidv4(),
+      id,
       schema: schema,
       properties: {}
     })
   }
 }
-
