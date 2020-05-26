@@ -110,8 +110,8 @@ class EntityProxy(object):
             value_size = prop.type.values_size(value)
             if prop.type.max_size is not None:
                 if self._size + value_size > prop.type.max_size:
-                    msg = "[%s] too large. Rejecting additional values."
-                    log.warning(msg, prop.name)
+                    # msg = "[%s] too large. Rejecting additional values."
+                    # log.warning(msg, prop.name)
                     continue
             self._size += value_size
 
