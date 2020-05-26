@@ -9,10 +9,7 @@ export class Namespace {
   }
 
   parse(id: string) {
-    if (id.includes(this.separator)) {
-      return id.split(this.separator);
-    }
-    return [null, id];
+    return id.split(this.separator);
   }
 
   signature(id: string) {
@@ -22,7 +19,7 @@ export class Namespace {
   }
 
   sign(id: string): string {
-    const [namespace, entityId] = this.parse(id);
+    const [entityId, _] = this.parse(id);
     if (!entityId) {
       return id;
     }
@@ -31,6 +28,6 @@ export class Namespace {
     }
     const digest = this.signature(entityId);
 
-    return [digest, entityId].join(this.separator);
+    return [entityId, digest].join(this.separator);
   }
 }
