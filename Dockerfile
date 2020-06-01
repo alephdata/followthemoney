@@ -1,6 +1,6 @@
-FROM alpine:3.11
+FROM alpine:3.12
 
-RUN apk add --no-cache python3 py3-icu py3-lxml py3-cryptography libpq leveldb curl make
+RUN apk add --no-cache python3 py3-pip py3-icu py3-lxml py3-cryptography libpq leveldb curl make
 RUN apk add --no-cache --virtual=build_deps python3-dev g++ musl-dev libffi-dev leveldb-dev postgresql-dev && \
     pip3 install --upgrade --no-cache-dir cryptography python-levenshtein plyvel psycopg2-binary && \
     apk del build_deps
