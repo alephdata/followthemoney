@@ -13,6 +13,12 @@
         "Asset"
       ],
       "properties": {
+        "name": {
+          "name": "name",
+          "qname": "Vehicle:name",
+          "label": "Vehicle name",
+          "type": "string"
+        },
         "registrationNumber": {
           "name": "registrationNumber",
           "qname": "Vehicle:registrationNumber",
@@ -94,6 +100,103 @@
         "registrationNumber"
       ]
     },
+    "Representation": {
+      "label": "Representation",
+      "plural": "Representation",
+      "schemata": [
+        "Interest",
+        "Interval",
+        "Representation"
+      ],
+      "extends": [
+        "Interest"
+      ],
+      "properties": {
+        "agent": {
+          "name": "agent",
+          "qname": "Representation:agent",
+          "label": "Agent",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "agencyClient"
+        },
+        "client": {
+          "name": "client",
+          "qname": "Representation:client",
+          "label": "Client",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "agentRepresentation"
+        }
+      },
+      "edge": {
+        "source": "agent",
+        "target": "client",
+        "caption": [
+          "role"
+        ],
+        "label": "represents",
+        "directed": true
+      },
+      "featured": [
+        "agent",
+        "client",
+        "role"
+      ],
+      "required": [
+        "agent",
+        "client"
+      ],
+      "description": "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity."
+    },
+    "Assessment": {
+      "label": "Assessment",
+      "plural": "Assessments",
+      "schemata": [
+        "Assessment",
+        "Thing"
+      ],
+      "extends": [
+        "Thing"
+      ],
+      "properties": {
+        "publishDate": {
+          "name": "publishDate",
+          "qname": "Assessment:publishDate",
+          "label": "Date of publishing",
+          "type": "date",
+          "matchable": true
+        },
+        "assessmentId": {
+          "name": "assessmentId",
+          "qname": "Assessment:assessmentId",
+          "label": "Assessment ID",
+          "type": "string"
+        },
+        "author": {
+          "name": "author",
+          "qname": "Assessment:author",
+          "label": "Author",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "authoredAssessments"
+        }
+      },
+      "featured": [
+        "name",
+        "publishDate",
+        "author"
+      ],
+      "required": [
+        "name"
+      ],
+      "caption": [
+        "name"
+      ]
+    },
     "Associate": {
       "label": "Associate",
       "plural": "Associates",
@@ -152,194 +255,6 @@
         "associate"
       ],
       "description": "Non-family association between two people"
-    },
-    "Representation": {
-      "label": "Representation",
-      "plural": "Representation",
-      "schemata": [
-        "Interest",
-        "Interval",
-        "Representation"
-      ],
-      "extends": [
-        "Interest"
-      ],
-      "properties": {
-        "agent": {
-          "name": "agent",
-          "qname": "Representation:agent",
-          "label": "Agent",
-          "type": "entity",
-          "matchable": true,
-          "range": "LegalEntity",
-          "reverse": "agencyClient"
-        },
-        "client": {
-          "name": "client",
-          "qname": "Representation:client",
-          "label": "Client",
-          "type": "entity",
-          "matchable": true,
-          "range": "LegalEntity",
-          "reverse": "agentRepresentation"
-        }
-      },
-      "edge": {
-        "source": "agent",
-        "target": "client",
-        "caption": [
-          "role"
-        ],
-        "label": "represents",
-        "directed": true
-      },
-      "featured": [
-        "agent",
-        "client",
-        "role"
-      ],
-      "required": [
-        "agent",
-        "client"
-      ],
-      "description": "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity."
-    },
-    "Record": {
-      "label": "Record",
-      "plural": "Records",
-      "schemata": [
-        "Record"
-      ],
-      "extends": [],
-      "properties": {
-        "index": {
-          "name": "index",
-          "qname": "Record:index",
-          "label": "Index",
-          "type": "number"
-        },
-        "indexText": {
-          "name": "indexText",
-          "qname": "Record:indexText",
-          "label": "Index text",
-          "type": "text",
-          "hidden": true
-        }
-      },
-      "abstract": true,
-      "generated": true
-    },
-    "Row": {
-      "label": "Row",
-      "plural": "Rows",
-      "schemata": [
-        "Record",
-        "Row"
-      ],
-      "extends": [
-        "Record"
-      ],
-      "properties": {
-        "cells": {
-          "name": "cells",
-          "qname": "Row:cells",
-          "label": "Cells",
-          "type": "json",
-          "hidden": true
-        },
-        "table": {
-          "name": "table",
-          "qname": "Row:table",
-          "label": "Table",
-          "type": "entity",
-          "matchable": true,
-          "range": "Table",
-          "reverse": "rows"
-        }
-      },
-      "generated": true
-    },
-    "Page": {
-      "label": "Page",
-      "plural": "Pages",
-      "schemata": [
-        "Page",
-        "Record"
-      ],
-      "extends": [
-        "Record"
-      ],
-      "properties": {
-        "bodyText": {
-          "name": "bodyText",
-          "qname": "Page:bodyText",
-          "label": "Text",
-          "type": "text",
-          "hidden": true
-        },
-        "document": {
-          "name": "document",
-          "qname": "Page:document",
-          "label": "Document",
-          "type": "entity",
-          "matchable": true,
-          "range": "Pages",
-          "reverse": "pages"
-        },
-        "detectedLanguage": {
-          "name": "detectedLanguage",
-          "qname": "Page:detectedLanguage",
-          "label": "Auto-detected language",
-          "type": "language"
-        }
-      },
-      "generated": true
-    },
-    "Assessment": {
-      "label": "Assessment",
-      "plural": "Assessments",
-      "schemata": [
-        "Assessment",
-        "Thing"
-      ],
-      "extends": [
-        "Thing"
-      ],
-      "properties": {
-        "publishDate": {
-          "name": "publishDate",
-          "qname": "Assessment:publishDate",
-          "label": "Date of publishing",
-          "type": "date",
-          "matchable": true
-        },
-        "assessmentId": {
-          "name": "assessmentId",
-          "qname": "Assessment:assessmentId",
-          "label": "Assessment ID",
-          "type": "string"
-        },
-        "author": {
-          "name": "author",
-          "qname": "Assessment:author",
-          "label": "Author",
-          "type": "entity",
-          "matchable": true,
-          "range": "LegalEntity",
-          "reverse": "authoredAssessments"
-        }
-      },
-      "featured": [
-        "name",
-        "publishDate",
-        "author"
-      ],
-      "required": [
-        "name"
-      ],
-      "caption": [
-        "name"
-      ]
     },
     "Membership": {
       "label": "Membership",
@@ -810,6 +725,12 @@
         "Organization"
       ],
       "properties": {},
+      "featured": [
+        "name",
+        "country",
+        "legalForm",
+        "status"
+      ],
       "required": [
         "name"
       ],
@@ -2288,8 +2209,9 @@
       },
       "featured": [
         "name",
+        "country",
         "legalForm",
-        "country"
+        "status"
       ],
       "required": [
         "name"
@@ -2865,12 +2787,23 @@
           "matchable": true,
           "range": "Directorship",
           "reverse": "organization"
+        },
+        "bankAccounts": {
+          "name": "bankAccounts",
+          "qname": "Organization:bankAccounts",
+          "label": "Bank accounts",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "BankAccount",
+          "reverse": "bank"
         }
       },
       "featured": [
         "name",
+        "country",
         "legalForm",
-        "country"
+        "status"
       ],
       "required": [
         "name"
@@ -2879,6 +2812,32 @@
         "name"
       ],
       "matchable": true
+    },
+    "Interest": {
+      "label": "Interest",
+      "plural": "Interest",
+      "schemata": [
+        "Interest",
+        "Interval"
+      ],
+      "extends": [
+        "Interval"
+      ],
+      "properties": {
+        "role": {
+          "name": "role",
+          "qname": "Interest:role",
+          "label": "Role",
+          "type": "string"
+        },
+        "status": {
+          "name": "status",
+          "qname": "Interest:status",
+          "label": "Status",
+          "type": "string"
+        }
+      },
+      "abstract": true
     },
     "Family": {
       "label": "Family",
@@ -2939,32 +2898,6 @@
       ],
       "description": "Family relationship between two people"
     },
-    "Interest": {
-      "label": "Interest",
-      "plural": "Interest",
-      "schemata": [
-        "Interest",
-        "Interval"
-      ],
-      "extends": [
-        "Interval"
-      ],
-      "properties": {
-        "role": {
-          "name": "role",
-          "qname": "Interest:role",
-          "label": "Role",
-          "type": "string"
-        },
-        "status": {
-          "name": "status",
-          "qname": "Interest:status",
-          "label": "Status",
-          "type": "string"
-        }
-      },
-      "abstract": true
-    },
     "BankAccount": {
       "label": "Bank Account",
       "plural": "Bank Accounts",
@@ -3003,6 +2936,15 @@
           "qname": "BankAccount:bic",
           "label": "Bank Identifier Code",
           "type": "string"
+        },
+        "bank": {
+          "name": "bank",
+          "qname": "BankAccount:bank",
+          "label": "Bank",
+          "type": "entity",
+          "matchable": true,
+          "range": "Organization",
+          "reverse": "bankAccounts"
         },
         "accountType": {
           "name": "accountType",
@@ -3749,17 +3691,6 @@
           "type": "checksum",
           "matchable": true,
           "hidden": true
-        },
-        "rows": {
-          "name": "rows",
-          "qname": "Table:rows",
-          "label": "Rows",
-          "type": "entity",
-          "stub": true,
-          "matchable": true,
-          "hidden": true,
-          "range": "Row",
-          "reverse": "table"
         }
       },
       "featured": [
@@ -3773,6 +3704,52 @@
         "name",
         "fileName"
       ],
+      "generated": true
+    },
+    "Page": {
+      "label": "Page",
+      "plural": "Pages",
+      "schemata": [
+        "Page"
+      ],
+      "extends": [],
+      "properties": {
+        "index": {
+          "name": "index",
+          "qname": "Page:index",
+          "label": "Index",
+          "type": "number"
+        },
+        "bodyText": {
+          "name": "bodyText",
+          "qname": "Page:bodyText",
+          "label": "Text",
+          "type": "text",
+          "hidden": true
+        },
+        "document": {
+          "name": "document",
+          "qname": "Page:document",
+          "label": "Document",
+          "type": "entity",
+          "matchable": true,
+          "range": "Pages",
+          "reverse": "pages"
+        },
+        "detectedLanguage": {
+          "name": "detectedLanguage",
+          "qname": "Page:detectedLanguage",
+          "label": "Auto-detected language",
+          "type": "language"
+        },
+        "indexText": {
+          "name": "indexText",
+          "qname": "Page:indexText",
+          "label": "Index text",
+          "type": "text",
+          "hidden": true
+        }
+      },
       "generated": true
     },
     "Asset": {
@@ -4334,6 +4311,12 @@
         "Asset"
       ],
       "properties": {
+        "name": {
+          "name": "name",
+          "qname": "RealEstate:name",
+          "label": "Name",
+          "type": "string"
+        },
         "latitude": {
           "name": "latitude",
           "qname": "RealEstate:latitude",
@@ -4423,24 +4406,6 @@
         "registrationNumber"
       ],
       "description": "A piece of land or property."
-    },
-    "Land": {
-      "label": "Land",
-      "plural": "Lands",
-      "schemata": [
-        "Asset",
-        "Land",
-        "RealEstate",
-        "Thing",
-        "Value"
-      ],
-      "extends": [
-        "RealEstate"
-      ],
-      "properties": {},
-      "featured": [
-        "registrationNumber"
-      ]
     },
     "EconomicActivity": {
       "label": "Customs declaration",

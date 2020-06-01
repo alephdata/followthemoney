@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-12 17:09+0200\n"
+"POT-Creation-Date: 2020-06-01 14:36+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Miguel Sojo <miguelsojo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -25,159 +25,159 @@ msgstr ""
 
 #: followthemoney/property.py:73
 msgid "Property cannot be written"
-msgstr ""
+msgstr "No se puede escribir la propiedad"
 
 #: followthemoney/property.py:76
 msgid "Invalid value"
 msgstr "Valor inválido"
 
-#: followthemoney/proxy.py:29
+#: followthemoney/proxy.py:30
 msgid "No schema for entity."
 msgstr "No hay esquema para la entidad."
 
-#: followthemoney/proxy.py:62
+#: followthemoney/proxy.py:63
 #, python-format
 msgid "Unknown property (%s): %s"
-msgstr ""
+msgstr "Propiedad desconocida (%s): %s"
 
-#: followthemoney/proxy.py:95
+#: followthemoney/proxy.py:96
 #, python-format
 msgid "Stub property (%s): %s"
-msgstr ""
+msgstr "Propiedad Stub (%s): %s"
 
-#: followthemoney/proxy.py:104
+#: followthemoney/proxy.py:105
 #, python-format
 msgid "Self-relationship (%s): %s"
-msgstr ""
+msgstr "Autorrelación (%s): %s"
 
 #: followthemoney/schema.py:189
 msgid "Required"
-msgstr ""
+msgstr "Obligatorio"
 
 #: followthemoney/schema.py:193
 msgid "Entity validation failed"
-msgstr ""
+msgstr "Error en la validación de la propiedad"
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
 msgid "Airplane"
-msgstr ""
+msgstr "Aeronave"
 
 #. Airplane.plural
 #: followthemoney/schema/Airplane.yaml
 msgid "Airplanes"
-msgstr ""
+msgstr "Aeronaves"
 
 #. Airplane.properties.serialNumber.label
 #: followthemoney/schema/Airplane.yaml
 msgid "Serial Number"
-msgstr ""
+msgstr "Número de serial"
 
 #. Airplane.properties.icaoCode.label
 #: followthemoney/schema/Airplane.yaml
 msgid "ICAO aircraft type designator"
-msgstr ""
+msgstr "Indicador de tipo de aeronave de la OACI"
 
 #. Airplane.properties.manufacturer.label
 #: followthemoney/schema/Airplane.yaml
 msgid "Manufacturer"
-msgstr ""
+msgstr "Fabricante"
 
 #. Analyzable.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Analyzable"
-msgstr ""
+msgstr "Analizable"
 
 #. Analyzable.plural
 #: followthemoney/schema/Analyzable.yaml
 msgid "Analyzables"
-msgstr ""
+msgstr "Analizables"
 
 #. Analyzable.properties.detectedLanguage.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected language"
-msgstr ""
+msgstr "Idioma detectado"
 
 #. Analyzable.properties.detectedCountry.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected country"
-msgstr ""
+msgstr "País detectado"
 
 #. Analyzable.properties.namesMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected names"
-msgstr ""
+msgstr "Nombres detectados"
 
 #. Analyzable.properties.peopleMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected people"
-msgstr ""
+msgstr "Personas detectadas"
 
 #. Analyzable.properties.companiesMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected companies"
-msgstr ""
+msgstr "Empresas detectadas"
 
 #. Analyzable.properties.ibanMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected IBANs"
-msgstr ""
+msgstr "IBAN detectados"
 
 #. Analyzable.properties.ipMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected IP addresses"
-msgstr ""
+msgstr "Direcciones IP detectadas"
 
 #. Analyzable.properties.locationMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected locations"
-msgstr ""
+msgstr "Ubicaciones detectadas"
 
 #. Analyzable.properties.phoneMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected phones"
-msgstr ""
+msgstr "Teléfonos detectados"
 
 #. Analyzable.properties.emailMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected e-mail addresses"
-msgstr ""
+msgstr "Correos electrónicos detectados"
 
 #. Assessment.label
 #: followthemoney/schema/Assessment.yaml
 msgid "Assessment"
-msgstr ""
+msgstr "Evaluación"
 
 #. Assessment.plural
 #: followthemoney/schema/Assessment.yaml
 msgid "Assessments"
-msgstr ""
+msgstr "Evaluaciones"
 
 #. Assessment.properties.publishDate.label
 #: followthemoney/schema/Assessment.yaml
 msgid "Date of publishing"
-msgstr ""
+msgstr "Fecha de publicación"
 
 #. Assessment.properties.assessmentId.label
 #: followthemoney/schema/Assessment.yaml
 msgid "Assessment ID"
-msgstr ""
+msgstr "Identificación de evaluación"
 
 #. Assessment.properties.author.label
 #. Document.properties.author.label
 #: followthemoney/schema/Assessment.yaml followthemoney/schema/Document.yaml
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #. Assessment.properties.author.plural
 #: followthemoney/schema/Assessment.yaml
 msgid "Authors"
-msgstr ""
+msgstr "Autores"
 
 #. Assessment.properties.author.reverse.label
 #: followthemoney/schema/Assessment.yaml
 msgid "Assessments authored"
-msgstr ""
+msgstr "Evaluaciones realizadas"
 
 #. Asset.label
 #. Ownership.properties.asset.label
@@ -192,59 +192,59 @@ msgstr "Activos"
 
 #. Associate.label
 #. Associate.properties.associate.label
-#: followthemoney/schema/Associate.yml followthemoney/types/topic.py:39
+#: followthemoney/schema/Associate.yaml followthemoney/types/topic.py:39
 msgid "Associate"
-msgstr ""
+msgstr "Asociado"
 
 #. Associate.plural
 #. Associate.properties.person.reverse.label
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "Associates"
-msgstr ""
+msgstr "Asociados"
 
 #. Associate.description
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "Non-family association between two people"
-msgstr ""
+msgstr "Relación no familiar entre dos personas"
 
 #. Associate.edge.label
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "associated with"
-msgstr ""
+msgstr "asociado con"
 
 #. Associate.properties.person.label
 #. Family.properties.person.label
 #. Person.label
-#: followthemoney/schema/Associate.yml followthemoney/schema/Family.yml
+#: followthemoney/schema/Associate.yaml followthemoney/schema/Family.yaml
 #: followthemoney/schema/Person.yaml
 msgid "Person"
-msgstr ""
+msgstr "Persona"
 
 #. Associate.properties.person.description
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "The subject of the association."
-msgstr ""
+msgstr "El sujeto de la asociación."
 
 #. Associate.properties.associate.description
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "An associate of the subject person."
-msgstr ""
+msgstr "Un asociado del sujeto."
 
 #. Associate.properties.associate.reverse.label
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "Associations"
-msgstr ""
+msgstr "Asociaciones"
 
 #. Associate.properties.relationship.label
 #. Family.properties.relationship.label
-#: followthemoney/schema/Associate.yml followthemoney/schema/Family.yml
+#: followthemoney/schema/Associate.yaml followthemoney/schema/Family.yaml
 msgid "Relationship"
-msgstr ""
+msgstr "Relación"
 
 #. Associate.properties.relationship.description
-#: followthemoney/schema/Associate.yml
+#: followthemoney/schema/Associate.yaml
 msgid "Nature of the association"
-msgstr ""
+msgstr "Naturaleza de la asociación"
 
 #. BankAccount.label
 #. EconomicActivity.properties.bankAccount.label
@@ -271,12 +271,22 @@ msgstr "Número de cuenta"
 #. BankAccount.properties.iban.label
 #: followthemoney/schema/BankAccount.yaml followthemoney/types/iban.py:12
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
 #. BankAccount.properties.bic.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Identifier Code"
 msgstr "Código de identificación del banco"
+
+#. BankAccount.properties.bank.label
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:35
+msgid "Bank"
+msgstr ""
+
+#. BankAccount.properties.bank.reverse.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank accounts"
+msgstr ""
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
@@ -296,53 +306,53 @@ msgstr "Dirección del banco"
 #. Call.label
 #: followthemoney/schema/Call.yaml
 msgid "Call"
-msgstr ""
+msgstr "Llamada"
 
 #. Call.plural
 #: followthemoney/schema/Call.yaml
 msgid "Calls"
-msgstr ""
+msgstr "Llamadas"
 
 #. Call.properties.caller.label
 #: followthemoney/schema/Call.yaml
 msgid "Caller"
-msgstr ""
+msgstr "Interlocutor"
 
 #. Call.properties.caller.reverse.label
 #: followthemoney/schema/Call.yaml
 msgid "Calls made"
-msgstr ""
+msgstr "Llamadas realizadas"
 
 #. Call.properties.callerNumber.label
 #: followthemoney/schema/Call.yaml
 msgid "Caller's Number"
-msgstr ""
+msgstr "Número del interlocutor"
 
 #. Call.properties.receiver.label
 #. EconomicActivity.properties.receiver.label
 #: followthemoney/schema/Call.yaml followthemoney/schema/EconomicActivity.yaml
 msgid "Receiver"
-msgstr ""
+msgstr "Receptor"
 
 #. Call.properties.receiver.reverse.label
 #: followthemoney/schema/Call.yaml
 msgid "Calls received"
-msgstr ""
+msgstr "Llamadas recibidas"
 
 #. Call.properties.receiverNumber.label
 #: followthemoney/schema/Call.yaml
 msgid "Receiver's Number"
-msgstr ""
+msgstr "Número del receptor"
 
 #. Call.properties.duration.label
 #: followthemoney/schema/Call.yaml
 msgid "Call Duration in seconds"
-msgstr ""
+msgstr "Duración de la llamada en segundos"
 
 #. Company.label
 #: followthemoney/schema/Company.yaml
 msgid "Company"
-msgstr ""
+msgstr "Empresa"
 
 #. Company.plural
 #: followthemoney/schema/Company.yaml
@@ -361,77 +371,77 @@ msgstr "Jurisdicción"
 #: followthemoney/schema/Company.yaml followthemoney/schema/LegalEntity.yaml
 #: followthemoney/schema/RealEstate.yaml
 msgid "Registration number"
-msgstr ""
+msgstr "Número de registro"
 
 #. Company.properties.capital.label
 #: followthemoney/schema/Company.yaml
 msgid "Capital"
-msgstr ""
+msgstr "Capital"
 
 #. Company.properties.voenCode.label
 #: followthemoney/schema/Company.yaml
 msgid "VOEN"
-msgstr ""
+msgstr "VOEN"
 
 #. Company.properties.voenCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Azerbaijan taxpayer ID"
-msgstr ""
+msgstr "Identificación fiscal de Azerbaiyán"
 
 #. Company.properties.coatoCode.label
 #: followthemoney/schema/Company.yaml
 msgid "COATO / SOATO / OKATO"
-msgstr ""
+msgstr "COATO / SOATO / OKATO"
 
 #. Company.properties.irsCode.label
 #: followthemoney/schema/Company.yaml
 msgid "IRS Number"
-msgstr ""
+msgstr "Número de IRS"
 
 #. Company.properties.irsCode.description
 #: followthemoney/schema/Company.yaml
 msgid "US tax ID"
-msgstr ""
+msgstr "Identificación fiscal de EE. UU."
 
 #. Company.properties.ipoCode.label
 #: followthemoney/schema/Company.yaml
 msgid "IPO"
-msgstr ""
+msgstr "IPO"
 
 #. Company.properties.cikCode.label
 #: followthemoney/schema/Company.yaml
 msgid "SEC Central Index Key"
-msgstr ""
+msgstr "Clave del índice central de la SEC"
 
 #. Company.properties.cikCode.description
 #: followthemoney/schema/Company.yaml
 msgid "US SEC Central Index Key"
-msgstr ""
+msgstr "Clave del índice central de la SEC de EE. UU."
 
 #. Company.properties.jibCode.label
 #: followthemoney/schema/Company.yaml
 msgid "JIB"
-msgstr ""
+msgstr "JIB"
 
 #. Company.properties.jibCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Yugoslavia company ID"
-msgstr ""
+msgstr "Identificación de empresa de Yugoslavia"
 
 #. Company.properties.mbsCode.label
 #: followthemoney/schema/Company.yaml
 msgid "MBS"
-msgstr ""
+msgstr "MBS"
 
 #. Company.properties.ibcRuc.label
 #: followthemoney/schema/Company.yaml
 msgid "ibcRUC"
-msgstr ""
+msgstr "ibcRUC"
 
 #. Company.properties.caemCode.label
 #: followthemoney/schema/Company.yaml
 msgid "COD CAEM"
-msgstr ""
+msgstr "COD CAEM"
 
 #. Company.properties.caemCode.description
 #: followthemoney/schema/Company.yaml
@@ -442,33 +452,36 @@ msgstr ""
 #. Company.properties.kppCode.label
 #: followthemoney/schema/Company.yaml
 msgid "KPP"
-msgstr ""
+msgstr "KPP"
 
 #. Company.properties.kppCode.description
 #: followthemoney/schema/Company.yaml
 msgid "(RU, КПП) in addition to INN for orgs; reason for registration at FNS"
 msgstr ""
+"(RU, КПП) además del INN para organizaciones; motivo del registro en el FNS"
 
 #. Company.properties.okvedCode.label
 #: followthemoney/schema/Company.yaml
 msgid "OKVED(2) Classifier"
-msgstr ""
+msgstr "Clasificador OKVED(2)"
 
 #. Company.properties.okvedCode.description
 #: followthemoney/schema/Company.yaml
 msgid ""
 "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
 msgstr ""
+"(RU, ОКВЭД) Clasificador de actividad económica. El OKVED2 es el mismo pero "
+"más reciente"
 
 #. Company.properties.okopfCode.label
 #: followthemoney/schema/Company.yaml
 msgid "OKOPF"
-msgstr ""
+msgstr "OKOPF"
 
 #. Company.properties.okopfCode.description
 #: followthemoney/schema/Company.yaml
 msgid "(RU, ОКОПФ) What kind of business entity"
-msgstr ""
+msgstr "(RU, ОКОПФ) Tipo de entidad comercial"
 
 #. Company.properties.fnsCode.label
 #: followthemoney/schema/Company.yaml
@@ -484,7 +497,7 @@ msgstr ""
 #. Company.properties.fssCode.label
 #: followthemoney/schema/Company.yaml
 msgid "FSS"
-msgstr ""
+msgstr "FSS"
 
 #. Company.properties.fssCode.description
 #: followthemoney/schema/Company.yaml
@@ -507,17 +520,17 @@ msgstr "Número Principal de Registro del Estado"
 #. Company.properties.bikCode.label
 #: followthemoney/schema/Company.yaml
 msgid "BIK"
-msgstr ""
+msgstr "BIK"
 
 #. Company.properties.bikCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Russian bank account code"
-msgstr ""
+msgstr "Código de cuenta bancaria rusa"
 
 #. Company.properties.pfrNumber.label
 #: followthemoney/schema/Company.yaml
 msgid "PFR Number"
-msgstr ""
+msgstr "Número PFR"
 
 #. Company.properties.pfrNumber.description
 #: followthemoney/schema/Company.yaml
@@ -525,11 +538,14 @@ msgid ""
 "(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is "
 "organisation region, BBB is district, CCCCCC number at a specific branch"
 msgstr ""
+"(RU, ПФР) Número de registro del fondo de pensiones. AAA-BBB-CCCCCC, donde "
+"AAA es la región de la organizatión, BBB es el distrito, CCCCCC es el número"
+" en una sucursal específica"
 
 #. Company.properties.oksmCode.label
 #: followthemoney/schema/Company.yaml
 msgid "OKSM"
-msgstr ""
+msgstr "OKSM"
 
 #. Company.properties.oksmCode.description
 #: followthemoney/schema/Company.yaml
@@ -542,7 +558,7 @@ msgstr "Clasificador de países ruso (ОКСМ)"
 #: followthemoney/schema/Contract.yaml
 #: followthemoney/schema/ContractAward.yaml followthemoney/schema/Payment.yaml
 msgid "Contract"
-msgstr ""
+msgstr "Contrato"
 
 #. Contract.plural
 #. ContractAward.properties.contract.plural
@@ -550,7 +566,7 @@ msgstr ""
 #: followthemoney/schema/Contract.yaml
 #: followthemoney/schema/ContractAward.yaml followthemoney/schema/Payment.yaml
 msgid "Contracts"
-msgstr ""
+msgstr "Contratos"
 
 #. Contract.description
 #: followthemoney/schema/Contract.yaml
@@ -558,31 +574,33 @@ msgid ""
 "An contract or contract lot issued by an authority. Multiple lots may be "
 "awarded to different suppliers (see ContractAward).\n"
 msgstr ""
+"Un contrato o lote de contratos emitido por una autoridad. Se pueden "
+"adjudicar varios lotes a varios proveedores (ver ContractAward).\n"
 
 #. Contract.properties.name.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract name"
-msgstr ""
+msgstr "Nombre del contrato"
 
 #. Contract.properties.title.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract title"
-msgstr ""
+msgstr "Título del contrato"
 
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract authority"
-msgstr ""
+msgstr "Autoridad contractual"
 
 #. Contract.properties.authority.plural
 #: followthemoney/schema/Contract.yaml
 msgid "Contract authorities"
-msgstr ""
+msgstr "Autoridades contractuales"
 
 #. Contract.properties.authority.reverse.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contracts issued"
-msgstr ""
+msgstr "Contratos emitidos"
 
 #. Contract.properties.type.label
 #. CourtCase.properties.type.label
@@ -590,184 +608,188 @@ msgstr ""
 #: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
 #: followthemoney/schema/Vehicle.yaml
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #. Contract.properties.type.description
 #: followthemoney/schema/Contract.yaml
 msgid "Type of contract. Potentially W (Works), U (Supplies), S (Services).\n"
 msgstr ""
+"Tipo de contrato. Puede ser W (Obras), U (Suministros), S (Servicios).\n"
 
 #. Contract.properties.contractDate.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract date"
-msgstr ""
+msgstr "Fecha del contrato"
 
 #. Contract.properties.procedureNumber.label
 #: followthemoney/schema/Contract.yaml
 msgid "Procedure number"
-msgstr ""
+msgstr "Número de procedimiento"
 
 #. Contract.properties.procedure.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract procedure"
-msgstr ""
+msgstr "Procedimiento contractual"
 
 #. Contract.properties.noticeId.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract Award Notice ID"
-msgstr ""
+msgstr "Identificación de aviso de adjudicación de contrato"
 
 #. Contract.properties.numberAwards.label
 #: followthemoney/schema/Contract.yaml
 msgid "Number of awards"
-msgstr ""
+msgstr "Número de adjudicaciones"
 
 #. Contract.properties.status.label
 #: followthemoney/schema/Contract.yaml
 msgid "Procurement status"
-msgstr ""
+msgstr "Estado de la compra"
 
 #. Contract.properties.method.label
 #: followthemoney/schema/Contract.yaml
 msgid "Procurement method"
-msgstr ""
+msgstr "Método de compra"
 
 #. Contract.properties.criteria.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract award criteria"
-msgstr ""
+msgstr "Criterios de adjudicación de contrato"
 
 #. Contract.properties.classification.label
 #. LegalEntity.properties.classification.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/LegalEntity.yaml
 msgid "Classification"
-msgstr ""
+msgstr "Clasificación"
 
 #. Contract.properties.cancelled.label
 #: followthemoney/schema/Contract.yaml
 msgid "Cancelled?"
-msgstr ""
+msgstr "¿Cancelado?"
 
 #. Contract.properties.language.label
 #. Document.properties.language.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/Document.yaml
 #: followthemoney/types/language.py:12
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #. ContractAward.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract award"
-msgstr ""
+msgstr "Adjudicación de contrato"
 
 #. ContractAward.plural
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract awards"
-msgstr ""
+msgstr "Adjudicaciones de contratos"
 
 #. ContractAward.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "A contract or contract lot as awarded to a supplier."
-msgstr ""
+msgstr "Un contrato o lote de contratos se adjudica a un proveedor."
 
 #. ContractAward.edge.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "awarded to"
-msgstr ""
+msgstr "adjudicado a"
 
 #. ContractAward.properties.supplier.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Supplier"
-msgstr ""
+msgstr "Proveedor"
 
 #. ContractAward.properties.supplier.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "The entity the contract was awarded to"
-msgstr ""
+msgstr "La entidad a la que se adjudicó el contrato"
 
 #. ContractAward.properties.supplier.plural
 #: followthemoney/schema/ContractAward.yaml
 msgid "Suppliers"
-msgstr ""
+msgstr "Proveedores"
 
 #. ContractAward.properties.supplier.reverse.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contracts awarded"
-msgstr ""
+msgstr "Contratos adjudicados"
 
 #. ContractAward.properties.contract.reverse.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Lots awarded"
-msgstr ""
+msgstr "Lotes adjudicados"
 
 #. ContractAward.properties.lotNumber.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Lot number"
-msgstr ""
+msgstr "Número de lote"
 
 #. ContractAward.properties.documentNumber.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Document number"
-msgstr ""
+msgstr "Número de documento"
 
 #. ContractAward.properties.documentType.label
 #. Passport.properties.type.label
 #: followthemoney/schema/ContractAward.yaml
 #: followthemoney/schema/Passport.yaml
 msgid "Document type"
-msgstr ""
+msgstr "Tipo de documento"
 
 #. ContractAward.properties.decisionReason.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Decision reason"
-msgstr ""
+msgstr "Motivo de la decisión"
 
 #. ContractAward.properties.cpvCode.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "CPV code"
-msgstr ""
+msgstr "Código CPV"
 
 #. ContractAward.properties.cpvCode.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract Procurement Vocabulary (what type of goods/services, EU)"
 msgstr ""
+"Vocabulario de procura en contratos (qué tipo de bienes/servicios, UE)"
 
 #. ContractAward.properties.nutsCode.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "NUTS code"
-msgstr ""
+msgstr "Código NUTS"
 
 #. ContractAward.properties.nutsCode.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "Nomencalture of Territorial Units for Statistics (NUTS)"
-msgstr ""
+msgstr "Nomenclatura de Unidades Territoriales para Estadística (NUTS)"
 
 #. ContractAward.properties.amended.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Amended"
-msgstr ""
+msgstr "Enmendado"
 
 #. ContractAward.properties.amended.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "Was this award amended, modified or updated by a subsequent document?"
 msgstr ""
+"¿Este contrato se enmendó, se modificó o se actualizó con un documento "
+"posterior?"
 
 #. CourtCase.label
 #: followthemoney/schema/CourtCase.yaml
 msgid "Court case"
-msgstr ""
+msgstr "Causa procesal"
 
 #. CourtCase.plural
 #. CourtCaseParty.properties.party.reverse.label
 #: followthemoney/schema/CourtCase.yaml
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Court cases"
-msgstr ""
+msgstr "Causas procesales"
 
 #. CourtCase.properties.category.label
 #: followthemoney/schema/CourtCase.yaml
 msgid "Category"
-msgstr ""
+msgstr "Categoría"
 
 #. CourtCase.properties.status.label
 #. Interest.properties.status.label
@@ -776,114 +798,114 @@ msgstr ""
 #: followthemoney/schema/CourtCase.yaml followthemoney/schema/Interest.yaml
 #: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Sanction.yaml
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #. CourtCase.properties.caseNumber.label
 #: followthemoney/schema/CourtCase.yaml
 msgid "Case number"
-msgstr ""
+msgstr "Número de caso"
 
 #. CourtCase.properties.court.label
 #: followthemoney/schema/CourtCase.yaml
 msgid "Court"
-msgstr ""
+msgstr "Tribunal"
 
 #. CourtCase.properties.fileDate.label
 #: followthemoney/schema/CourtCase.yaml
 msgid "File date"
-msgstr ""
+msgstr "Fecha de archivo"
 
 #. CourtCase.properties.closeDate.label
 #: followthemoney/schema/CourtCase.yaml
 msgid "Close date"
-msgstr ""
+msgstr "Fecha de cierre"
 
 #. CourtCaseParty.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case party"
-msgstr ""
+msgstr "Parte en la causa"
 
 #. CourtCaseParty.plural
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case parties"
-msgstr ""
+msgstr "Partes en la causa"
 
 #. CourtCaseParty.edge.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "involved in"
-msgstr ""
+msgstr "implicado en"
 
 #. CourtCaseParty.properties.party.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Party"
-msgstr ""
+msgstr "Parte"
 
 #. CourtCaseParty.properties.case.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Case"
-msgstr ""
+msgstr "Causa"
 
 #. CourtCaseParty.properties.case.reverse.label
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Parties"
-msgstr ""
+msgstr "Partes"
 
 #. Debt.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debt"
-msgstr ""
+msgstr "Deuda"
 
 #. Debt.plural
 #. Debt.properties.debtor.reverse.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debts"
-msgstr ""
+msgstr "Deudas"
 
 #. Debt.description
 #: followthemoney/schema/Debt.yaml
 msgid "A monetary debt between two parties."
-msgstr ""
+msgstr "Una deuda monetaria entre dos partes."
 
 #. Debt.edge.label
 #: followthemoney/schema/Debt.yaml
 msgid "owes"
-msgstr ""
+msgstr "debe"
 
 #. Debt.properties.debtor.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debtor"
-msgstr ""
+msgstr "Deudor"
 
 #. Debt.properties.creditor.label
 #: followthemoney/schema/Debt.yaml
 msgid "creditor"
-msgstr ""
+msgstr "acreedor"
 
 #. Debt.properties.creditor.reverse.label
 #: followthemoney/schema/Debt.yaml
 msgid "Credits"
-msgstr ""
+msgstr "Créditos"
 
 #. Directorship.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Directorship"
-msgstr ""
+msgstr "Dirección"
 
 #. Directorship.plural
 #. Directorship.properties.director.reverse.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Directorships"
-msgstr ""
+msgstr "Direcciones"
 
 #. Directorship.edge.label
 #: followthemoney/schema/Directorship.yaml
 msgid "directs"
-msgstr ""
+msgstr "dirige"
 
 #. Directorship.properties.director.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Director"
-msgstr ""
+msgstr "Director"
 
 #. Directorship.properties.organization.label
 #. Membership.properties.organization.label
@@ -892,302 +914,303 @@ msgstr ""
 #: followthemoney/schema/Membership.yaml
 #: followthemoney/schema/Organization.yaml
 msgid "Organization"
-msgstr ""
+msgstr "Organización"
 
 #. Directorship.properties.organization.reverse.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Directors"
-msgstr ""
+msgstr "Directores"
 
 #. Directorship.properties.secretary.label
 #: followthemoney/schema/Directorship.yaml
 msgid "Secretary"
-msgstr ""
+msgstr "Secretario"
 
 #. Document.label
 #: followthemoney/schema/Document.yaml
 msgid "File"
-msgstr ""
+msgstr "Archivo"
 
 #. Document.plural
 #: followthemoney/schema/Document.yaml
 msgid "Files"
-msgstr ""
+msgstr "Archivos"
 
 #. Document.properties.contentHash.label
 #: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:11
 msgid "Checksum"
-msgstr ""
+msgstr "Comprobación"
 
 #. Document.properties.contentHash.description
 #: followthemoney/schema/Document.yaml
 msgid "SHA1 hash of the data"
-msgstr ""
+msgstr "Hash SHA1 de los datos"
 
 #. Document.properties.title.label
 #. Person.properties.title.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #. Document.properties.author.description
 #: followthemoney/schema/Document.yaml
 msgid "The original author, not the uploader"
-msgstr ""
+msgstr "El autor original, no quien subió el archivo"
 
 #. Document.properties.generator.label
 #: followthemoney/schema/Document.yaml
 msgid "Generator"
-msgstr ""
+msgstr "Generador"
 
 #. Document.properties.generator.description
 #: followthemoney/schema/Document.yaml
 msgid "The program used to generate this file"
-msgstr ""
+msgstr "El programa utilizado para generar este archivo"
 
 #. Document.properties.crawler.label
 #: followthemoney/schema/Document.yaml
 msgid "Crawler"
-msgstr ""
+msgstr "Rastreador"
 
 #. Document.properties.crawler.description
 #: followthemoney/schema/Document.yaml
 msgid "The crawler used to acquire this file"
-msgstr ""
+msgstr "El rastreador utilizado para adquirir este archivo"
 
 #. Document.properties.fileSize.label
 #: followthemoney/schema/Document.yaml
 msgid "File size"
-msgstr ""
+msgstr "Tamaño del archivo"
 
 #. Document.properties.fileName.label
 #: followthemoney/schema/Document.yaml
 msgid "File name"
-msgstr ""
+msgstr "Nombre del archivo"
 
 #. Document.properties.extension.label
 #: followthemoney/schema/Document.yaml
 msgid "File extension"
-msgstr ""
+msgstr "Extensión del archivo"
 
 #. Document.properties.encoding.label
 #: followthemoney/schema/Document.yaml
 msgid "File encoding"
-msgstr ""
+msgstr "Codificación de archivo"
 
 #. Document.properties.messageId.label
 #: followthemoney/schema/Document.yaml
 msgid "Message ID"
-msgstr ""
+msgstr "Identificación del mensaje"
 
 #. Document.properties.messageId.description
 #: followthemoney/schema/Document.yaml
 msgid "Message ID of a document; unique in most cases"
 msgstr ""
+"Identificación de mensaje de un documento; único en la mayoría de los casos"
 
 #. Document.properties.mimeType.label
 #: followthemoney/schema/Document.yaml
 msgid "MIME type"
-msgstr ""
+msgstr "Tipo de MIME"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
 #: followthemoney/types/date.py:45
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
 #. Document.properties.date.description
 #: followthemoney/schema/Document.yaml
 msgid "If not otherwise specified"
-msgstr ""
+msgstr "Si no se indica lo contrario"
 
 #. Document.properties.authoredAt.label
 #: followthemoney/schema/Document.yaml
 msgid "Authored on"
-msgstr ""
+msgstr "Elaborado el"
 
 #. Document.properties.publishedAt.label
 #: followthemoney/schema/Document.yaml
 msgid "Published on"
-msgstr ""
+msgstr "Publicado el"
 
 #. Document.properties.parent.label
 #. Folder.label
 #: followthemoney/schema/Document.yaml
 msgid "Folder"
-msgstr ""
+msgstr "Carpeta"
 
 #. Document.properties.parent.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Children"
-msgstr ""
+msgstr "Hijos"
 
 #. Document.properties.ancestors.label
 #: followthemoney/schema/Document.yaml
 msgid "Ancestors"
-msgstr ""
+msgstr "Ancestros"
 
 #. Document.properties.ancestors.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Descendants"
-msgstr ""
+msgstr "Descendientes"
 
 #. Document.properties.processingStatus.label
 #: followthemoney/schema/Document.yaml
 msgid "Processing status"
-msgstr ""
+msgstr "Estado de procesamiento"
 
 #. Document.properties.processingError.label
 #: followthemoney/schema/Document.yaml
 msgid "Processing error"
-msgstr ""
+msgstr "Error de procesamiento"
 
 #. PlainText.label
 #: followthemoney/schema/Document.yaml
 msgid "Text file"
-msgstr ""
+msgstr "Archivo de texto"
 
 #. PlainText.plural
 #: followthemoney/schema/Document.yaml
 msgid "Text files"
-msgstr ""
+msgstr "Archivos de texto"
 
 #. PlainText.properties.bodyText.label
 #. Image.properties.bodyText.label
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
+#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 #: followthemoney/types/string.py:15
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #. Pages.label
 #. Documentation.properties.document.label
 #. Page.properties.document.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Documentation.yml
-#: followthemoney/schema/Record.yaml
+#: followthemoney/schema/Page.yaml
 msgid "Document"
-msgstr ""
+msgstr "Documento"
 
 #. Pages.plural
 #. Documentation.properties.entity.reverse.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Documentation.yml
 msgid "Documents"
-msgstr ""
+msgstr "Documentos"
 
 #. Pages.properties.pdfHash.label
 #: followthemoney/schema/Document.yaml
 msgid "PDF alternative version checksum"
-msgstr ""
+msgstr "Comprobación de versión alternativa de PDF"
 
 #. Folder.plural
 #: followthemoney/schema/Document.yaml
 msgid "Folders"
-msgstr ""
+msgstr "Carpetas"
 
 #. Package.label
 #: followthemoney/schema/Document.yaml
 msgid "Package"
-msgstr ""
+msgstr "Paquete"
 
 #. Package.plural
 #: followthemoney/schema/Document.yaml
 msgid "Packages"
-msgstr ""
+msgstr "Paquetes"
 
 #. Workbook.label
 #: followthemoney/schema/Document.yaml
 msgid "Workbook"
-msgstr ""
+msgstr "Libro de trabajo"
 
 #. Workbook.plural
 #: followthemoney/schema/Document.yaml
 msgid "Workbooks"
-msgstr ""
+msgstr "Libros de trabajo"
 
 #. Image.label
 #: followthemoney/schema/Document.yaml
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 #. Image.plural
 #: followthemoney/schema/Document.yaml
 msgid "Images"
-msgstr ""
+msgstr "Imágenes"
 
 #. Video.label
 #: followthemoney/schema/Document.yaml
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #. Video.plural
 #: followthemoney/schema/Document.yaml
 msgid "Videos"
-msgstr ""
+msgstr "Videos"
 
 #. Video.properties.duration.label
 #. Audio.properties.duration.label
 #. Sanction.properties.duration.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Sanction.yaml
 msgid "Duration"
-msgstr ""
+msgstr "Duración"
 
 #. Video.properties.duration.description
 #: followthemoney/schema/Document.yaml
 msgid "Duration of the video in ms"
-msgstr ""
+msgstr "Duración del video en ms"
 
 #. Audio.label
 #: followthemoney/schema/Document.yaml
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #. Audio.plural
 #: followthemoney/schema/Document.yaml
 msgid "Audio files"
-msgstr ""
+msgstr "Archivos de audio"
 
 #. Audio.properties.duration.description
 #: followthemoney/schema/Document.yaml
 msgid "Duration of the audio in ms"
-msgstr ""
+msgstr "Duración del audio en ms"
 
 #. Audio.properties.samplingRate.label
 #: followthemoney/schema/Document.yaml
 msgid "Sampling Rate"
-msgstr ""
+msgstr "Tasa de muestreo"
 
 #. Audio.properties.samplingRate.description
 #: followthemoney/schema/Document.yaml
 msgid "Sampling rate of the audio in Hz"
-msgstr ""
+msgstr "Tasa de muestreo del audio en Hz"
 
 #. HyperText.label
 #: followthemoney/schema/Document.yaml
 msgid "Web page"
-msgstr ""
+msgstr "Página web"
 
 #. HyperText.plural
 #: followthemoney/schema/Document.yaml
 msgid "Web pages"
-msgstr ""
+msgstr "Páginas web"
 
 #. HyperText.properties.bodyHtml.label
 #: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #. Email.label
 #. LegalEntity.properties.email.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/LegalEntity.yaml
 msgid "E-Mail"
-msgstr ""
+msgstr "Correo electrónico"
 
 #. Email.plural
 #: followthemoney/schema/Document.yaml
 msgid "E-Mails"
-msgstr ""
+msgstr "Correos electrónicos"
 
 #. Email.properties.subject.label
 #. Message.properties.subject.label
@@ -1201,7 +1224,7 @@ msgstr "Tema"
 #. Message.properties.threadTopic.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Thread topic"
-msgstr ""
+msgstr "Tema del hilo"
 
 #. Email.properties.sender.label
 #. EconomicActivity.properties.sender.label
@@ -1210,144 +1233,143 @@ msgstr ""
 #: followthemoney/schema/EconomicActivity.yaml
 #: followthemoney/schema/Message.yaml
 msgid "Sender"
-msgstr ""
+msgstr "Remitente"
 
 #. Email.properties.from.label
 #: followthemoney/schema/Document.yaml
 msgid "From"
-msgstr ""
+msgstr "De"
 
 #. Email.properties.to.label
 #: followthemoney/schema/Document.yaml
 msgid "To"
-msgstr ""
+msgstr "Para"
 
 #. Email.properties.cc.label
 #: followthemoney/schema/Document.yaml
 msgid "CC"
-msgstr ""
+msgstr "CC"
 
 #. Email.properties.cc.description
 #: followthemoney/schema/Document.yaml
 msgid "Carbon copy"
-msgstr ""
+msgstr "Con copia"
 
 #. Email.properties.bcc.label
 #: followthemoney/schema/Document.yaml
 msgid "BCC"
-msgstr ""
+msgstr "CCO"
 
 #. Email.properties.bcc.description
 #: followthemoney/schema/Document.yaml
 msgid "Blind carbon copy"
-msgstr ""
+msgstr "Con copia oculta"
 
 #. Email.properties.emitters.label
 #: followthemoney/schema/Document.yaml
 msgid "Emitter"
-msgstr ""
+msgstr "Emisor"
 
 #. Email.properties.emitters.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "E-Mails sent"
-msgstr ""
+msgstr "Correos electrónicos enviados"
 
 #. Email.properties.recipients.label
 #. Message.properties.recipients.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Recipients"
-msgstr ""
+msgstr "Destinatarios"
 
 #. Email.properties.recipients.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "E-Mails received"
-msgstr ""
+msgstr "Correos electrónicos recibidos"
 
 #. Email.properties.inReplyTo.label
 #. Message.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "In Reply To"
-msgstr ""
+msgstr "En respuesta a"
 
 #. Email.properties.inReplyTo.description
 #: followthemoney/schema/Document.yaml
 msgid "Message ID of the preceding email in the thread"
-msgstr ""
+msgstr "Identificación del mensaje del correo electrónico anterior en el hilo"
 
 #. Email.properties.inReplyToEmail.label
 #. Message.properties.inReplyToMessage.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Responding to"
-msgstr ""
+msgstr "En respuesta a"
 
 #. Email.properties.inReplyToEmail.reverse.label
 #. Message.properties.inReplyToMessage.reverse.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "Responses"
-msgstr ""
+msgstr "Respuestas"
 
 #. Email.properties.headers.label
 #: followthemoney/schema/Document.yaml
 msgid "Raw headers"
-msgstr ""
+msgstr "Encabezados sin procesar"
 
 #. Table.label
-#. Row.properties.table.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Record.yaml
+#: followthemoney/schema/Document.yaml
 msgid "Table"
-msgstr ""
+msgstr "Tabla"
 
 #. Table.plural
 #: followthemoney/schema/Document.yaml
 msgid "Tables"
-msgstr ""
+msgstr "Tablas"
 
 #. Table.properties.columns.label
 #: followthemoney/schema/Document.yaml
 msgid "Column headings"
-msgstr ""
+msgstr "Títulos de las columnas"
 
 #. Table.properties.rowCount.label
 #: followthemoney/schema/Document.yaml
 msgid "Number of rows"
-msgstr ""
+msgstr "Número de filas"
 
 #. Table.properties.csvHash.label
 #: followthemoney/schema/Document.yaml
 msgid "CSV alternative version checksum"
-msgstr ""
+msgstr "Comprobación de la versión alternativa del CSV"
 
 #. Documentation.label
 #: followthemoney/schema/Documentation.yml
 msgid "Documentation"
-msgstr ""
+msgstr "Documentación"
 
 #. Documentation.plural
 #: followthemoney/schema/Documentation.yml
 msgid "Documentations"
-msgstr ""
+msgstr "Documentos"
 
 #. Documentation.edge.label
 #: followthemoney/schema/Documentation.yml
 msgid "documents"
-msgstr ""
+msgstr "documentos"
 
 #. Documentation.properties.document.reverse.label
 #: followthemoney/schema/Documentation.yml
 msgid "Related entities"
-msgstr ""
+msgstr "Entidades relacionadas"
 
 #. Documentation.properties.entity.label
 #. Sanction.properties.entity.label
 #: followthemoney/schema/Documentation.yml followthemoney/schema/Sanction.yaml
 #: followthemoney/types/entity.py:13
 msgid "Entity"
-msgstr ""
+msgstr "Entidad"
 
 #. EconomicActivity.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declaration"
-msgstr ""
+msgstr "Declaración de aduana"
 
 #. EconomicActivity.plural
 #. EconomicActivity.properties.declarant.reverse.label
@@ -1355,78 +1377,81 @@ msgstr ""
 #. EconomicActivity.properties.transport.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations"
-msgstr ""
+msgstr "Declaraciones de aduana"
 
 #. EconomicActivity.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "A foreign economic activity"
-msgstr ""
+msgstr "Una actividad económica extranjera"
 
 #. EconomicActivity.properties.contract.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Associated contract"
-msgstr ""
+msgstr "Contrato asociado"
 
 #. EconomicActivity.properties.contract.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Used in customs"
-msgstr ""
+msgstr "Utilizado en aduana"
 
 #. EconomicActivity.properties.ccdNumber.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs Cargo Declaration Number"
-msgstr ""
+msgstr "Número de declaración de carga en aduana"
 
 #. EconomicActivity.properties.ccdValue.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "CCD Value"
-msgstr ""
+msgstr "Valor CCD"
 
 #. EconomicActivity.properties.ccdValue.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Declaration Value"
-msgstr ""
+msgstr "Valor declarado"
 
 #. EconomicActivity.properties.directionOfTransportation.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Direction of transportation"
-msgstr ""
+msgstr "Dirección de transporte"
 
 #. EconomicActivity.properties.directionOfTransportation.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Direction of transportation (import/export)"
-msgstr ""
+msgstr "Dirección de transporte (importación/exportación)"
 
 #. EconomicActivity.properties.customsProcedure.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs Procedure"
-msgstr ""
+msgstr "Procedimiento aduanero"
 
 #. EconomicActivity.properties.customsProcedure.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs Procedure — type of customs clearance"
-msgstr ""
+msgstr "Procedimiento aduanero - tipo de despacho de aduanas"
 
 #. EconomicActivity.properties.vedCode.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "FEAC Code"
-msgstr ""
+msgstr "Código FEAC"
 
 #. EconomicActivity.properties.vedCode.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "(Код ТН ВЭД) Foreign Economic Activity Commodity Code"
 msgstr ""
+"(Код ТН ВЭД) Código de producto básico de actividad económica exterior"
 
 #. EconomicActivity.properties.vedCodeDescription.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "FEAC Code description"
-msgstr ""
+msgstr "Descripción del código FEAC"
 
 #. EconomicActivity.properties.vedCodeDescription.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid ""
 "(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
 msgstr ""
+"(Описание кода ТН ВЭД) Descripción del código de productos básicos de "
+"actividad económica exterior"
 
 #. EconomicActivity.properties.goodsDescription.label
 #. Interval.properties.description.label
@@ -1434,191 +1459,193 @@ msgstr ""
 #: followthemoney/schema/EconomicActivity.yaml
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #. EconomicActivity.properties.goodsDescription.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Description of goods"
-msgstr ""
+msgstr "Descripción de los bienes"
 
 #. EconomicActivity.properties.declarant.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Declarant"
-msgstr ""
+msgstr "Declarante"
 
 #. EconomicActivity.properties.declarant.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarant"
-msgstr ""
+msgstr "Declarante aduanero"
 
 #. EconomicActivity.properties.sender.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Origin of the goods"
-msgstr ""
+msgstr "Origen de los bienes"
 
 #. EconomicActivity.properties.sender.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Goods originated"
-msgstr ""
+msgstr "Bienes con origen en"
 
 #. EconomicActivity.properties.receiver.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Destination of the goods"
-msgstr ""
+msgstr "Destino de los bienes"
 
 #. EconomicActivity.properties.receiver.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Goods received"
-msgstr ""
+msgstr "Bienes recibidos"
 
 #. EconomicActivity.properties.contractHolder.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Contract holder"
-msgstr ""
+msgstr "Titular del contrato"
 
 #. EconomicActivity.properties.contractHolder.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs formalities caretaker"
-msgstr ""
+msgstr "Encargado de formalidades aduaneras"
 
 #. EconomicActivity.properties.contractHolder.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations facilitated"
-msgstr ""
+msgstr "Declaraciones de aduana facilitadas"
 
 #. EconomicActivity.properties.invoiceAmount.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Invoice Value Amount"
-msgstr ""
+msgstr "Monto de la factura"
 
 #. EconomicActivity.properties.invoiceAmount.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Invoice Value of goods"
-msgstr ""
+msgstr "Valor facturado de los bienes"
 
 #. EconomicActivity.properties.customsAmount.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs Value Amount"
-msgstr ""
+msgstr "Valor aduanero"
 
 #. EconomicActivity.properties.customsAmount.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs Value of goods"
-msgstr ""
+msgstr "Valor aduanero de los bienes"
 
 #. EconomicActivity.properties.dollarExchRate.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "USD Exchange Rate"
-msgstr ""
+msgstr "Tipo de cambio de USD"
 
 #. EconomicActivity.properties.dollarExchRate.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "USD Exchange Rate for the activity"
-msgstr ""
+msgstr "Tipo de cambio de USD para la actividad"
 
 #. EconomicActivity.properties.tradingCountry.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Trading Country"
-msgstr ""
+msgstr "País de la empresa"
 
 #. EconomicActivity.properties.tradingCountry.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid ""
 "Trading Country of the company which transports the goods via Russian border"
 msgstr ""
+"País de la empresa que transporta las mercancías a través de la frontera "
+"rusa"
 
 #. EconomicActivity.properties.departureCountry.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Country of departure"
-msgstr ""
+msgstr "País de salida"
 
 #. EconomicActivity.properties.departureCountry.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Country out of which the goods are transported"
-msgstr ""
+msgstr "País desde el que se transportan los bienes"
 
 #. EconomicActivity.properties.destinationCountry.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Country of destination"
-msgstr ""
+msgstr "País de destino"
 
 #. EconomicActivity.properties.destinationCountry.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Final destination for the goods"
-msgstr ""
+msgstr "Destino final de los bienes"
 
 #. EconomicActivity.properties.originCountry.label
 #. LegalEntity.properties.mainCountry.label
 #: followthemoney/schema/EconomicActivity.yaml
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Country of origin"
-msgstr ""
+msgstr "País de origen"
 
 #. EconomicActivity.properties.originCountry.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Country of origin of goods"
-msgstr ""
+msgstr "País de origen de los bienes"
 
 #. EconomicActivity.properties.bankAccount.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank account of the contract"
-msgstr ""
+msgstr "Cuenta bancaria del contrato"
 
 #. EconomicActivity.properties.bankRub.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Rouble bank"
-msgstr ""
+msgstr "Banco de rublos"
 
 #. EconomicActivity.properties.bankRub.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank account for payments in roubles"
-msgstr ""
+msgstr "Cuenta bancaria para pagos en rublos"
 
 #. EconomicActivity.properties.bankRub.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations (as rouble bank)"
-msgstr ""
+msgstr "Declaraciones de aduana (como banco de rublos)"
 
 #. EconomicActivity.properties.bankForeign.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Foreign currency bank"
-msgstr ""
+msgstr "Banco de moneda extranjera"
 
 #. EconomicActivity.properties.bankForeign.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank account for payments in foreign currency"
-msgstr ""
+msgstr "Cuenta bancaria para pagos en moneda extranjera"
 
 #. EconomicActivity.properties.bankForeign.reverse.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Customs declarations (as foreign bank)"
-msgstr ""
+msgstr "Declaraciones de aduana (como banco extranjero)"
 
 #. EconomicActivity.properties.transport.label
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Transport"
-msgstr ""
+msgstr "Transporte"
 
 #. EconomicActivity.properties.transport.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Means of transportation"
-msgstr ""
+msgstr "Medio de transporte"
 
 #. Event.label
 #: followthemoney/schema/Event.yaml
 msgid "Event"
-msgstr ""
+msgstr "Evento"
 
 #. Event.plural
 #. Event.properties.involved.reverse.label
 #: followthemoney/schema/Event.yaml
 msgid "Events"
-msgstr ""
+msgstr "Eventos"
 
 #. Event.properties.location.label
 #: followthemoney/schema/Event.yaml
 msgid "Location"
-msgstr ""
+msgstr "Ubicación"
 
 #. Event.properties.country.label
 #. Passport.properties.country.label
@@ -1631,259 +1658,261 @@ msgstr ""
 #: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
 #: followthemoney/types/country.py:11
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 #. Event.properties.important.label
 #: followthemoney/schema/Event.yaml
 msgid "Important"
-msgstr ""
+msgstr "Importante"
 
 #. Event.properties.organizer.label
 #: followthemoney/schema/Event.yaml
 msgid "Organizer"
-msgstr ""
+msgstr "Organizador"
 
 #. Event.properties.organizer.reverse.label
 #: followthemoney/schema/Event.yaml
 msgid "Organized events"
-msgstr ""
+msgstr "Eventos organizados"
 
 #. Event.properties.involved.label
 #: followthemoney/schema/Event.yaml
 msgid "Involved"
-msgstr ""
+msgstr "Implicados"
 
 #. Family.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Family"
-msgstr ""
+msgstr "Familia"
 
 #. Family.plural
 #. Family.properties.person.reverse.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Family members"
-msgstr ""
+msgstr "Familiares"
 
 #. Family.description
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Family relationship between two people"
-msgstr ""
+msgstr "Parentesco entre dos personas"
 
 #. Family.edge.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "related to"
-msgstr ""
+msgstr "emparentado con"
 
 #. Family.properties.person.description
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "The subject of the familial relation."
-msgstr ""
+msgstr "El sujeto del parentesco."
 
 #. Family.properties.relative.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Relative"
-msgstr ""
+msgstr "Familiar"
 
 #. Family.properties.relative.reverse.label
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "Relatives"
-msgstr ""
+msgstr "Familiares"
 
 #. Family.properties.relative.description
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid "The relative of the subject person."
-msgstr ""
+msgstr "El familiar del sujeto."
 
 #. Family.properties.relationship.description
-#: followthemoney/schema/Family.yml
+#: followthemoney/schema/Family.yaml
 msgid ""
 "Nature of the relationship, from the person's perspective eg. 'mother', "
 "where 'relative' is mother of 'person'."
 msgstr ""
+"La naturaleza del parentesco, desde la perspectiva de la persona, p. ej., "
+"\"madre\", donde el \"pariente\" es la madre de \"persona\"."
 
 #. Interest.label
 #: followthemoney/schema/Interest.yaml
 msgid "Interest"
-msgstr ""
+msgstr "Interés"
 
 #. Interest.properties.role.label
 #: followthemoney/schema/Interest.yaml
 msgid "Role"
-msgstr ""
+msgstr "Papel"
 
 #. Interval.label
 #: followthemoney/schema/Interval.yaml
 msgid "Interval"
-msgstr ""
+msgstr "Intervalo"
 
 #. Interval.properties.startDate.label
 #: followthemoney/schema/Interval.yaml
 msgid "Start date"
-msgstr ""
+msgstr "Fecha de inicio"
 
 #. Interval.properties.endDate.label
 #: followthemoney/schema/Interval.yaml
 msgid "End date"
-msgstr ""
+msgstr "Fecha de finalización"
 
 #. Interval.properties.summary.label
 #. Thing.properties.summary.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #. Interval.properties.recordId.label
 #: followthemoney/schema/Interval.yaml
 msgid "Record ID"
-msgstr ""
+msgstr "Identificador del registro"
 
 #. Interval.properties.sourceUrl.label
 #: followthemoney/schema/Interval.yaml
 msgid "Source URL"
-msgstr ""
+msgstr "URL fuente"
 
 #. Interval.properties.publisher.label
 #. Thing.properties.publisher.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Publishing source"
-msgstr ""
+msgstr "Fuente de publicación"
 
 #. Interval.properties.publisherUrl.label
 #. Thing.properties.publisherUrl.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Publishing source URL"
-msgstr ""
+msgstr "URL de fuente de publicación"
 
 #. Interval.properties.alephUrl.label
 #. Thing.properties.alephUrl.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Aleph URL"
-msgstr ""
+msgstr "URL de Aleph"
 
 #. Interval.properties.indexText.label
-#. Record.properties.indexText.label
+#. Page.properties.indexText.label
 #. Thing.properties.indexText.label
-#: followthemoney/schema/Interval.yaml followthemoney/schema/Record.yaml
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Page.yaml
 #: followthemoney/schema/Thing.yaml
 msgid "Index text"
-msgstr ""
+msgstr "Texto de índice"
 
 #. Interval.properties.modifiedAt.label
 #. Thing.properties.modifiedAt.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Modified on"
-msgstr ""
+msgstr "Modificado el"
 
 #. Interval.properties.retrievedAt.label
 #. Thing.properties.retrievedAt.label
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Retrieved on"
-msgstr ""
+msgstr "Recuperado el"
 
 #. LegalEntity.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Legal entity"
-msgstr ""
+msgstr "Persona jurídica"
 
 #. LegalEntity.plural
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Legal entities"
-msgstr ""
+msgstr "Personas jurídicas"
 
 #. LegalEntity.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "A legal entity may be a person or a company."
-msgstr ""
+msgstr "Una persona jurídica puede ser una persona o empresa."
 
 #. LegalEntity.properties.email.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Email address"
-msgstr ""
+msgstr "Dirección de correo electrónico"
 
 #. LegalEntity.properties.phone.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Phone"
-msgstr ""
+msgstr "Teléfono"
 
 #. LegalEntity.properties.phone.description
 #: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:17
 msgid "Phone number"
-msgstr ""
+msgstr "Número de teléfono"
 
 #. LegalEntity.properties.website.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Website"
-msgstr ""
+msgstr "Sitio web"
 
 #. LegalEntity.properties.website.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Website address"
-msgstr ""
+msgstr "Dirección del sitio web"
 
 #. LegalEntity.properties.legalForm.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Legal form"
-msgstr ""
+msgstr "Forma jurídica"
 
 #. LegalEntity.properties.incorporationDate.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Incorporation date"
-msgstr ""
+msgstr "Fecha de constitución"
 
 #. LegalEntity.properties.incorporationDate.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "The date the legal entity was incorporated"
-msgstr ""
+msgstr "Fecha en que se constituyó la entidad jurídica"
 
 #. LegalEntity.properties.dissolutionDate.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Dissolution date"
-msgstr ""
+msgstr "Fecha de disolución"
 
 #. LegalEntity.properties.dissolutionDate.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "The date the legal entity was dissolved, if applicable"
-msgstr ""
+msgstr "Fecha en que se disolvió la entidad jurídica, si corresponde"
 
 #. LegalEntity.properties.taxStatus.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax status"
-msgstr ""
+msgstr "Situación fiscal"
 
 #. LegalEntity.properties.sector.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Sector"
-msgstr ""
+msgstr "Sector"
 
 #. LegalEntity.properties.registrationNumber.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Company registration number"
-msgstr ""
+msgstr "Número de registro de empresa"
 
 #. LegalEntity.properties.idNumber.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "ID Number"
-msgstr ""
+msgstr "Número de identificación"
 
 #. LegalEntity.properties.idNumber.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "ID number of any applicable ID"
-msgstr ""
+msgstr "Número de cualquier identificación aplicable"
 
 #. LegalEntity.properties.taxNumber.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax Number"
-msgstr ""
+msgstr "Número fiscal"
 
 #. LegalEntity.properties.taxNumber.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Tax identification number"
-msgstr ""
+msgstr "Número de identificación fiscal"
 
 #. LegalEntity.properties.vatCode.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "V.A.T. Identifier"
-msgstr ""
+msgstr "Identificador de IVA"
 
 #. LegalEntity.properties.vatCode.description
 #: followthemoney/schema/LegalEntity.yaml
@@ -1893,77 +1922,79 @@ msgstr "(EU) Número VAT"
 #. LegalEntity.properties.jurisdiction.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Country or region in which this entity operates"
-msgstr ""
+msgstr "País y región en el que opera esta entidad"
 
 #. LegalEntity.properties.mainCountry.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Primary country of this entity"
-msgstr ""
+msgstr "País principal de esta entidad"
 
 #. LegalEntity.properties.opencorporatesUrl.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "OpenCorporates URL"
-msgstr ""
+msgstr "URL de OpenCorporates"
 
 #. LegalEntity.properties.bvdId.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Bureau van Dijk ID"
-msgstr ""
+msgstr "Identificación de Bureau van Dijk"
 
 #. LegalEntity.properties.icijId.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "ICIJ ID"
-msgstr ""
+msgstr "Identificación de ICIJ"
 
 #. LegalEntity.properties.icijId.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "ID according to International Consortium for Investigative Journalists"
 msgstr ""
+"Identificación según el Consorcio Internacional de Periodistas de "
+"Investigación"
 
 #. LegalEntity.properties.okpoCode.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "OKPO"
-msgstr ""
+msgstr "OKPO"
 
 #. LegalEntity.properties.okpoCode.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Russian industry classifier"
-msgstr ""
+msgstr "Clasificador de industria rusa"
 
 #. LegalEntity.properties.innCode.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "INN"
-msgstr ""
+msgstr "INN"
 
 #. LegalEntity.properties.innCode.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Russian company ID"
-msgstr ""
+msgstr "Identificador de empresa rusa"
 
 #. LegalEntity.properties.dunsCode.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "D-U-N-S"
-msgstr ""
+msgstr "D-U-N-S"
 
 #. LegalEntity.properties.dunsCode.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Dun & Bradstreet identifier"
-msgstr ""
+msgstr "Identificador de Dun & Bradstreet "
 
 #. LegalEntity.properties.swiftBic.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "SWIFT/BIC"
-msgstr ""
+msgstr "SWIFT/BIC"
 
 #. LegalEntity.properties.swiftBic.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Bank identifier code"
-msgstr ""
+msgstr "Código de identificador bancario"
 
 #. LegalEntity.properties.parent.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Parent company"
-msgstr ""
+msgstr "Empresa matriz"
 
 #. LegalEntity.properties.parent.description
 #: followthemoney/schema/LegalEntity.yaml
@@ -1971,130 +2002,132 @@ msgid ""
 "If this entity is a subsidiary, another entity (company or organisation) is "
 "its parent"
 msgstr ""
+"Si esta entidad es una filial, otra entidad (empresa u organización) es su "
+"matriz"
 
 #. LegalEntity.properties.parent.reverse.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Subsidiaries"
-msgstr ""
+msgstr "Filiales"
 
 #. License.label
 #: followthemoney/schema/License.yaml
 msgid "License"
-msgstr ""
+msgstr "Licencia"
 
 #. License.plural
 #: followthemoney/schema/License.yaml
 msgid "Licenses"
-msgstr ""
+msgstr "Licencias"
 
 #. License.description
 #: followthemoney/schema/License.yaml
 msgid "A grant of land, rights or property. A type of Contract"
-msgstr ""
+msgstr "Una concesión de tierra, derechos o propiedad. Un tipo de contrato"
 
 #. License.properties.area.label
 #. RealEstate.properties.area.label
 #: followthemoney/schema/License.yaml followthemoney/schema/RealEstate.yaml
 msgid "Area"
-msgstr ""
+msgstr "Área"
 
 #. License.properties.commodities.label
 #: followthemoney/schema/License.yaml
 msgid "Commodities"
-msgstr ""
+msgstr "Productos básicos"
 
 #. License.properties.reviewDate.label
 #: followthemoney/schema/License.yaml
 msgid "License review date"
-msgstr ""
+msgstr "Fecha de revisión de la licencia"
 
 #. Membership.label
 #: followthemoney/schema/Membership.yaml
 msgid "Membership"
-msgstr ""
+msgstr "Membresía"
 
 #. Membership.plural
 #. Membership.properties.member.reverse.label
 #: followthemoney/schema/Membership.yaml
 msgid "Memberships"
-msgstr ""
+msgstr "Membresías"
 
 #. Membership.edge.label
 #: followthemoney/schema/Membership.yaml
 msgid "belongs to"
-msgstr ""
+msgstr "pertenece a"
 
 #. Membership.properties.member.label
 #: followthemoney/schema/Membership.yaml
 msgid "Member"
-msgstr ""
+msgstr "Miembro"
 
 #. Membership.properties.organization.reverse.label
 #: followthemoney/schema/Membership.yaml
 msgid "Members"
-msgstr ""
+msgstr "Miembros"
 
 #. Message.label
 #: followthemoney/schema/Message.yaml
 msgid "Message"
-msgstr ""
+msgstr "Mensaje"
 
 #. Message.plural
 #: followthemoney/schema/Message.yaml
 msgid "Messages"
-msgstr ""
+msgstr "Mensajes"
 
 #. Message.properties.sender.reverse.label
 #. Message.properties.senderAccount.reverse.label
 #: followthemoney/schema/Message.yaml
 msgid "Messages sent"
-msgstr ""
+msgstr "Mensajes enviados"
 
 #. Message.properties.senderAccount.label
 #: followthemoney/schema/Message.yaml
 msgid "Sender Account"
-msgstr ""
+msgstr "Cuenta del remitente"
 
 #. Message.properties.recipients.reverse.label
 #. Message.properties.recipientAccount.reverse.label
 #: followthemoney/schema/Message.yaml
 msgid "Messages received"
-msgstr ""
+msgstr "Mensajes recibidos"
 
 #. Message.properties.recipientAccount.label
 #: followthemoney/schema/Message.yaml
 msgid "Recipient Account"
-msgstr ""
+msgstr "Cuenta del receptor"
 
 #. Message.properties.inReplyTo.description
 #: followthemoney/schema/Message.yaml
 msgid "Message ID of the preceding message in the thread"
-msgstr ""
+msgstr "Identificación del mensaje del mensaje anterior en el hilo"
 
 #. Message.properties.metadata.label
 #: followthemoney/schema/Message.yaml
 msgid "Metadata"
-msgstr ""
+msgstr "Metadata"
 
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
 msgid "Organizations"
-msgstr ""
+msgstr "Organizaciones"
 
 #. Ownership.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Ownership"
-msgstr ""
+msgstr "Propiedad"
 
 #. Ownership.plural
 #: followthemoney/schema/Ownership.yaml
 msgid "Ownerships"
-msgstr ""
+msgstr "Propiedades"
 
 #. Ownership.edge.label
 #: followthemoney/schema/Ownership.yaml
 msgid "owns"
-msgstr ""
+msgstr "tiene"
 
 #. Ownership.properties.owner.label
 #. UserAccount.properties.owner.label
@@ -2102,233 +2135,255 @@ msgstr ""
 #: followthemoney/schema/Ownership.yaml followthemoney/schema/UserAccount.yaml
 #: followthemoney/schema/Vehicle.yaml
 msgid "Owner"
-msgstr ""
+msgstr "Propietario"
 
 #. Ownership.properties.owner.reverse.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Assets and shares"
-msgstr ""
+msgstr "Activos y acciones"
 
 #. Ownership.properties.asset.reverse.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Owners"
-msgstr ""
+msgstr "Propietarios"
 
 #. Ownership.properties.percentage.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Percentage held"
-msgstr ""
+msgstr "Porcentaje de propiedad"
 
 #. Ownership.properties.sharesCount.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Number of shares"
-msgstr ""
+msgstr "Número de acciones"
 
 #. Ownership.properties.sharesValue.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Value of shares"
-msgstr ""
+msgstr "Valor de las acciones"
 
 #. Ownership.properties.sharesCurrency.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Currency of shares"
-msgstr ""
+msgstr "Moneda de las acciones"
 
 #. Ownership.properties.sharesType.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Type of shares"
-msgstr ""
+msgstr "Tipo de acciones"
 
 #. Ownership.properties.legalBasis.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Legal basis"
-msgstr ""
+msgstr "Base legal"
 
 #. Ownership.properties.ownershipType.label
 #: followthemoney/schema/Ownership.yaml
 msgid "Type of ownership"
-msgstr ""
+msgstr "Tipo de propiedad"
+
+#. Page.label
+#: followthemoney/schema/Page.yaml
+msgid "Page"
+msgstr "Página"
+
+#. Page.plural
+#. Page.properties.document.reverse.label
+#: followthemoney/schema/Page.yaml
+msgid "Pages"
+msgstr "Páginas"
+
+#. Page.properties.index.label
+#: followthemoney/schema/Page.yaml
+msgid "Index"
+msgstr "Índice"
+
+#. Page.properties.detectedLanguage.label
+#: followthemoney/schema/Page.yaml
+msgid "Auto-detected language"
+msgstr "Idioma autodetectado"
 
 #. Passport.label
 #. Passport.description
 #. Person.properties.passportNumber.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
 msgid "Passport"
-msgstr ""
+msgstr "Pasaporte"
 
 #. Passport.plural
 #. Passport.properties.holder.reverse.label
 #: followthemoney/schema/Passport.yaml
 msgid "Passports"
-msgstr ""
+msgstr "Pasaportes"
 
 #. Passport.properties.holder.label
 #: followthemoney/schema/Passport.yaml
 msgid "Document holder"
-msgstr ""
+msgstr "Titular del documento"
 
 #. Passport.properties.passportNumber.label
 #: followthemoney/schema/Passport.yaml
 msgid "Passport number"
-msgstr ""
+msgstr "Número de pasaporte"
 
 #. Passport.properties.surname.label
 #. TaxRoll.properties.surname.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/TaxRoll.yaml
 msgid "Surname"
-msgstr ""
+msgstr "Apellido"
 
 #. Passport.properties.givenName.label
 #. TaxRoll.properties.givenName.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/TaxRoll.yaml
 msgid "Given name"
-msgstr ""
+msgstr "Nombre"
 
 #. Passport.properties.birthDate.label
 #. TaxRoll.properties.birthDate.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/TaxRoll.yaml
 msgid "Date of birth"
-msgstr ""
+msgstr "Fecha de nacimiento"
 
 #. Passport.properties.birthPlace.label
 #. Person.properties.birthPlace.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
 msgid "Place of birth"
-msgstr ""
+msgstr "Lugar de nacimiento"
 
 #. Passport.properties.gender.label
 #. Person.properties.gender.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
 msgid "Gender"
-msgstr ""
+msgstr "Sexo"
 
 #. Passport.properties.personalNumber.label
 #: followthemoney/schema/Passport.yaml
 msgid "Personal number"
-msgstr ""
+msgstr "Número personal"
 
 #. Passport.properties.authority.label
 #. Sanction.properties.authority.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
 msgid "Authority"
-msgstr ""
+msgstr "Autoridad"
 
 #. Payment.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payment"
-msgstr ""
+msgstr "Pago"
 
 #. Payment.plural
 #: followthemoney/schema/Payment.yaml
 msgid "Payments"
-msgstr ""
+msgstr "Pagos"
 
 #. Payment.description
 #: followthemoney/schema/Payment.yaml
 msgid "A monetary payment between two parties."
-msgstr ""
+msgstr "Un pago monetario entre dos partes."
 
 #. Payment.edge.label
 #: followthemoney/schema/Payment.yaml
 msgid "paid"
-msgstr ""
+msgstr "pagado"
 
 #. Payment.properties.sequenceNumber.label
 #: followthemoney/schema/Payment.yaml
 msgid "Sequence number"
-msgstr ""
+msgstr "Número de secuencia"
 
 #. Payment.properties.transactionNumber.label
 #: followthemoney/schema/Payment.yaml
 msgid "Transaction number"
-msgstr ""
+msgstr "Número de transacción"
 
 #. Payment.properties.purpose.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payment purpose"
-msgstr ""
+msgstr "Propósito del pago"
 
 #. Payment.properties.programme.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payment programme"
-msgstr ""
+msgstr "Programa de pago"
 
 #. Payment.properties.programme.description
 #: followthemoney/schema/Payment.yaml
 msgid "Programme name, funding code, category identifier, etc."
 msgstr ""
+"Programa de pago, código de financiamiento, identificador de categoría, etc."
 
 #. Payment.properties.payer.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payer"
-msgstr ""
+msgstr "Pagador"
 
 #. Payment.properties.payer.reverse.label
 #. Payment.properties.payerAccount.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payments made"
-msgstr ""
+msgstr "Pagos realizados"
 
 #. Payment.properties.payerAccount.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payer bank account"
-msgstr ""
+msgstr "Cuenta bancaria del pagador"
 
 #. Payment.properties.beneficiary.label
 #: followthemoney/schema/Payment.yaml
 msgid "Beneficiary"
-msgstr ""
+msgstr "Beneficiario"
 
 #. Payment.properties.beneficiary.reverse.label
 #. Payment.properties.beneficiaryAccount.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payments received"
-msgstr ""
+msgstr "Pagos recibidos"
 
 #. Payment.properties.beneficiaryAccount.label
 #: followthemoney/schema/Payment.yaml
 msgid "Beneficiary bank account"
-msgstr ""
+msgstr "Cuenta bancaria del beneficiario"
 
 #. Payment.properties.contract.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Contractual payments"
-msgstr ""
+msgstr "Pagos contractuales"
 
 #. Person.plural
 #: followthemoney/schema/Person.yaml
 msgid "People"
-msgstr ""
+msgstr "Personas"
 
 #. Person.description
 #: followthemoney/schema/Person.yaml
 msgid "An individual"
-msgstr ""
+msgstr "Un individuo"
 
 #. Person.properties.firstName.label
 #: followthemoney/schema/Person.yaml
 msgid "First name"
-msgstr ""
+msgstr "Primer nombre"
 
 #. Person.properties.secondName.label
 #: followthemoney/schema/Person.yaml
 msgid "Second name"
-msgstr ""
+msgstr "Segundo nombre"
 
 #. Person.properties.middleName.label
 #: followthemoney/schema/Person.yaml
 msgid "Middle name"
-msgstr ""
+msgstr "Segundo nombre"
 
 #. Person.properties.fatherName.label
 #: followthemoney/schema/Person.yaml
 msgid "Patronymic"
-msgstr ""
+msgstr "Patronímico"
 
 #. Person.properties.motherName.label
 #: followthemoney/schema/Person.yaml
 msgid "Matronymic"
-msgstr ""
+msgstr "Matronímico"
 
 #. Person.properties.lastName.label
 #: followthemoney/schema/Person.yaml
@@ -2353,22 +2408,23 @@ msgstr "Cargo"
 #. Person.properties.nationality.label
 #: followthemoney/schema/Person.yaml
 msgid "Nationality"
-msgstr ""
+msgstr "Nacionalidad"
 
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
 msgid "Public body"
-msgstr ""
+msgstr "Entidad pública"
 
 #. PublicBody.plural
 #: followthemoney/schema/PublicBody.yaml
 msgid "Public bodies"
-msgstr ""
+msgstr "Entidades públicas"
 
 #. PublicBody.description
 #: followthemoney/schema/PublicBody.yaml
 msgid "A public body, such as a ministry, department or state company."
 msgstr ""
+"Un organismo público, como un ministerio, departamento o empresa estatal."
 
 #. RealEstate.label
 #: followthemoney/schema/RealEstate.yaml
@@ -2383,7 +2439,14 @@ msgstr "Bienes raíces"
 #. RealEstate.description
 #: followthemoney/schema/RealEstate.yaml
 msgid "A piece of land or property."
-msgstr ""
+msgstr "Un lote de terreno o propiedad."
+
+#. RealEstate.properties.name.label
+#. Thing.properties.name.label
+#: followthemoney/schema/RealEstate.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/types/name.py:14
+msgid "Name"
+msgstr "Nombre"
 
 #. RealEstate.properties.latitude.label
 #: followthemoney/schema/RealEstate.yaml
@@ -2446,63 +2509,6 @@ msgstr "Tipo de tierra"
 msgid "Record date"
 msgstr "Fecha de registro"
 
-#. Land.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Land"
-msgstr ""
-
-#. Land.plural
-#: followthemoney/schema/RealEstate.yaml
-msgid "Lands"
-msgstr ""
-
-#. Record.label
-#: followthemoney/schema/Record.yaml
-msgid "Record"
-msgstr ""
-
-#. Record.plural
-#: followthemoney/schema/Record.yaml
-msgid "Records"
-msgstr ""
-
-#. Record.properties.index.label
-#: followthemoney/schema/Record.yaml
-msgid "Index"
-msgstr ""
-
-#. Row.label
-#: followthemoney/schema/Record.yaml
-msgid "Row"
-msgstr ""
-
-#. Row.plural
-#. Row.properties.table.reverse.label
-#: followthemoney/schema/Record.yaml
-msgid "Rows"
-msgstr ""
-
-#. Row.properties.cells.label
-#: followthemoney/schema/Record.yaml
-msgid "Cells"
-msgstr ""
-
-#. Page.label
-#: followthemoney/schema/Record.yaml
-msgid "Page"
-msgstr ""
-
-#. Page.plural
-#. Page.properties.document.reverse.label
-#: followthemoney/schema/Record.yaml
-msgid "Pages"
-msgstr ""
-
-#. Page.properties.detectedLanguage.label
-#: followthemoney/schema/Record.yaml
-msgid "Auto-detected language"
-msgstr ""
-
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
 msgid "Representation"
@@ -2520,7 +2526,7 @@ msgstr ""
 #. Representation.edge.label
 #: followthemoney/schema/Representation.yaml
 msgid "represents"
-msgstr ""
+msgstr "representa"
 
 #. Representation.properties.agent.label
 #: followthemoney/schema/Representation.yaml
@@ -2530,7 +2536,7 @@ msgstr "Agente"
 #. Representation.properties.agent.reverse.label
 #: followthemoney/schema/Representation.yaml
 msgid "Clients"
-msgstr ""
+msgstr "Clientes"
 
 #. Representation.properties.client.label
 #: followthemoney/schema/Representation.yaml
@@ -2556,7 +2562,7 @@ msgstr "Sanciones"
 #. Sanction.description
 #: followthemoney/schema/Sanction.yaml
 msgid "A sanction designation"
-msgstr ""
+msgstr "Designación de sanción"
 
 #. Sanction.properties.program.label
 #. Thing.properties.program.label
@@ -2567,63 +2573,63 @@ msgstr "Programa"
 #. Sanction.properties.reason.label
 #: followthemoney/schema/Sanction.yaml
 msgid "Reason"
-msgstr ""
+msgstr "Motivo"
 
 #. Succession.label
 #: followthemoney/schema/Succession.yaml
 msgid "Succession"
-msgstr ""
+msgstr "Sucesión"
 
 #. Succession.plural
 #: followthemoney/schema/Succession.yaml
 msgid "Successions"
-msgstr ""
+msgstr "Sucesiones"
 
 #. Succession.description
 #: followthemoney/schema/Succession.yaml
 msgid "Two entities that legally succeed each other."
-msgstr ""
+msgstr "Dos entidades que se suceden legalmente."
 
 #. Succession.edge.label
 #: followthemoney/schema/Succession.yaml
 msgid "preceeds"
-msgstr ""
+msgstr "precede"
 
 #. Succession.properties.predecessor.label
 #: followthemoney/schema/Succession.yaml
 msgid "Predecessor"
-msgstr ""
+msgstr "Predecesor"
 
 #. Succession.properties.predecessor.reverse.label
 #: followthemoney/schema/Succession.yaml
 msgid "Successors"
-msgstr ""
+msgstr "Sucesores"
 
 #. Succession.properties.successor.label
 #: followthemoney/schema/Succession.yaml
 msgid "Successor"
-msgstr ""
+msgstr "Sucesor"
 
 #. Succession.properties.successor.reverse.label
 #: followthemoney/schema/Succession.yaml
 msgid "Predecessors"
-msgstr ""
+msgstr "Predecesores"
 
 #. TaxRoll.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Tax roll"
-msgstr ""
+msgstr "Registro fiscal"
 
 #. TaxRoll.plural
 #. TaxRoll.properties.taxee.reverse.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Tax rolls"
-msgstr ""
+msgstr "Registros fiscales"
 
 #. TaxRoll.description
 #: followthemoney/schema/TaxRoll.yaml
 msgid "A tax declaration of an individual"
-msgstr ""
+msgstr "Declaración de impuestos de una persona natural"
 
 #. TaxRoll.properties.taxee.label
 #: followthemoney/schema/TaxRoll.yaml
@@ -2633,7 +2639,7 @@ msgstr ""
 #. TaxRoll.properties.income.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Registered income"
-msgstr ""
+msgstr "Ingreso registrado"
 
 #. TaxRoll.properties.taxPaid.label
 #: followthemoney/schema/TaxRoll.yaml
@@ -2643,11 +2649,6 @@ msgstr ""
 #. TaxRoll.properties.wealth.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Registered wealth"
-msgstr ""
-
-#. Thing.properties.name.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:14
-msgid "Name"
 msgstr ""
 
 #. Thing.properties.sameAs.label
@@ -2824,6 +2825,11 @@ msgstr ""
 #. Vehicle.plural
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicles"
+msgstr ""
+
+#. Vehicle.properties.name.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "Vehicle name"
 msgstr ""
 
 #. Vehicle.properties.registrationNumber.label
@@ -3175,11 +3181,7 @@ msgstr ""
 
 #: followthemoney/types/topic.py:34
 msgid "Financial services"
-msgstr ""
-
-#: followthemoney/types/topic.py:35
-msgid "Bank"
-msgstr ""
+msgstr "Servicios financieros"
 
 #: followthemoney/types/topic.py:36
 msgid "Fund"
@@ -3187,7 +3189,7 @@ msgstr ""
 
 #: followthemoney/types/topic.py:37
 msgid "Financial advisor"
-msgstr ""
+msgstr "Asesor financiero"
 
 #: followthemoney/types/topic.py:38
 msgid "Politician"

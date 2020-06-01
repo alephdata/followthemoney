@@ -156,11 +156,6 @@ ftm:Interval a rdfs:Class ;
     rdfs:label "Interval" ;
     rdfs:isDefinedBy ftm: .
 
-ftm:Land a rdfs:Class ;
-    rdfs:label "Land" ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:RealEstate .
-
 ftm:LegalEntity a rdfs:Class ;
     rdfs:label "Legal entity" ;
     rdfs:comment "A legal entity may be a person or a company." ;
@@ -203,8 +198,7 @@ ftm:Package a rdfs:Class ;
 
 ftm:Page a rdfs:Class ;
     rdfs:label "Page" ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Record .
+    rdfs:isDefinedBy ftm: .
 
 ftm:Pages a rdfs:Class ;
     rdfs:label "Document" ;
@@ -241,20 +235,11 @@ ftm:RealEstate a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Asset .
 
-ftm:Record a rdfs:Class ;
-    rdfs:label "Record" ;
-    rdfs:isDefinedBy ftm: .
-
 ftm:Representation a rdfs:Class ;
     rdfs:label "Representation" ;
     rdfs:comment "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity." ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
-
-ftm:Row a rdfs:Class ;
-    rdfs:label "Row" ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:subClassOf ftm:Record .
 
 ftm:Sanction a rdfs:Class ;
     rdfs:label "Sanction" ;
@@ -1316,6 +1301,16 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Page ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Page:index> a rdf:Property ;
+    rdfs:label "Index" ;
+    rdfs:domain ftm:Page ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Page:indexText> a rdf:Property ;
+    rdfs:label "Index text" ;
+    rdfs:domain ftm:Page ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Pages:pdfHash> a rdf:Property ;
     rdfs:label "PDF alternative version checksum" ;
     rdfs:domain ftm:Pages ;
@@ -1492,6 +1487,11 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#RealEstate:name> a rdf:Property ;
+    rdfs:label "Name" ;
+    rdfs:domain ftm:RealEstate ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#RealEstate:propertyType> a rdf:Property ;
     rdfs:label "Property type" ;
     rdfs:domain ftm:RealEstate ;
@@ -1510,21 +1510,6 @@ dct:language a rdf:Property ;
 <https://w3id.org/ftm#RealEstate:titleNumber> a rdf:Property ;
     rdfs:label "Title number" ;
     rdfs:domain ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Record:index> a rdf:Property ;
-    rdfs:label "Index" ;
-    rdfs:domain ftm:Record ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Record:indexText> a rdf:Property ;
-    rdfs:label "Index text" ;
-    rdfs:domain ftm:Record ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Row:cells> a rdf:Property ;
-    rdfs:label "Cells" ;
-    rdfs:domain ftm:Row ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Sanction:authority> a rdf:Property ;
@@ -1772,6 +1757,11 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Vehicle ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Vehicle:name> a rdf:Property ;
+    rdfs:label "Vehicle name" ;
+    rdfs:domain ftm:Vehicle ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Vehicle:registrationDate> a rdf:Property ;
     rdfs:label "Registration Date" ;
     rdfs:domain ftm:Vehicle ;
@@ -1896,6 +1886,13 @@ owl:sameAs a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range <http://xmlns.com/foaf/0.1/Person> ;
     owl:inverseOf <https://w3id.org/ftm#Person:associates> .
+
+<https://w3id.org/ftm#BankAccount:bank> a rdf:Property ;
+    rdfs:label "Bank" ;
+    rdfs:domain ftm:BankAccount ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Organization ;
+    owl:inverseOf <https://w3id.org/ftm#Organization:bankAccounts> .
 
 <https://w3id.org/ftm#BankAccount:contractBankAccount> a rdf:Property ;
     rdfs:label "Customs declarations" ;
@@ -2504,6 +2501,13 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:UserAccount ;
     owl:inverseOf <https://w3id.org/ftm#UserAccount:messagesSent> .
 
+<https://w3id.org/ftm#Organization:bankAccounts> a rdf:Property ;
+    rdfs:label "Bank accounts" ;
+    rdfs:domain ftm:Organization ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:BankAccount ;
+    owl:inverseOf <https://w3id.org/ftm#BankAccount:bank> .
+
 <https://w3id.org/ftm#Organization:directorshipOrganization> a rdf:Property ;
     rdfs:label "Directors" ;
     rdfs:domain ftm:Organization ;
@@ -2644,13 +2648,6 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:LegalEntity ;
     owl:inverseOf <https://w3id.org/ftm#LegalEntity:predecessors> .
 
-<https://w3id.org/ftm#Table:rows> a rdf:Property ;
-    rdfs:label "Rows" ;
-    rdfs:domain ftm:Table ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range ftm:Row ;
-    owl:inverseOf dct:isPartOf .
-
 <https://w3id.org/ftm#TaxRoll:taxee> a rdf:Property ;
     rdfs:label "Taxee" ;
     rdfs:domain ftm:TaxRoll ;
@@ -2758,20 +2755,16 @@ owl:sameAs a rdf:Property ;
 
 dct:isPartOf a rdf:Property ;
     rdfs:label "Document",
-        "Folder",
-        "Table" ;
+        "Folder" ;
     rdfs:domain ftm:Document,
-        ftm:Page,
-        ftm:Row ;
+        ftm:Page ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Folder,
-        ftm:Pages,
-        ftm:Table ;
+        ftm:Pages ;
     owl:inverseOf <https://w3id.org/ftm#Folder:children>,
-        <https://w3id.org/ftm#Pages:pages>,
-        <https://w3id.org/ftm#Table:rows> .
+        <https://w3id.org/ftm#Pages:pages> .
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-05-05T10:10:46"^^xsd:dateTime .
+    dct:modified "2020-06-01T14:02:36"^^xsd:dateTime .
 

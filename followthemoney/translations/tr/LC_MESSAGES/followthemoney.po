@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-26 16:57+0200\n"
+"POT-Creation-Date: 2020-06-01 14:36+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Language-Team: Turkish (https://www.transifex.com/aleph/teams/76591/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -271,6 +271,16 @@ msgstr ""
 #. BankAccount.properties.bic.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Identifier Code"
+msgstr ""
+
+#. BankAccount.properties.bank.label
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:35
+msgid "Bank"
+msgstr ""
+
+#. BankAccount.properties.bank.reverse.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank accounts"
 msgstr ""
 
 #. BankAccount.properties.accountType.label
@@ -3130,10 +3140,6 @@ msgstr ""
 
 #: followthemoney/types/topic.py:34
 msgid "Financial services"
-msgstr ""
-
-#: followthemoney/types/topic.py:35
-msgid "Bank"
 msgstr ""
 
 #: followthemoney/types/topic.py:36

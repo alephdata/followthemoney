@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-26 16:57+0200\n"
+"POT-Creation-Date: 2020-06-01 14:36+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Eman Alqaisi <eman@arij.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/aleph/teams/76591/ar/)\n"
@@ -128,7 +128,7 @@ msgstr "أرقام الحسابات البنكية المضبوطة"
 #. Analyzable.properties.ipMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected IP addresses"
-msgstr "عناوين IP الموجودة"
+msgstr "عناوين IP المضبوطة"
 
 #. Analyzable.properties.locationMentioned.label
 #: followthemoney/schema/Analyzable.yaml
@@ -138,12 +138,12 @@ msgstr "المواقع الموجودة"
 #. Analyzable.properties.phoneMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected phones"
-msgstr "أرقام الهواتف الموجودة"
+msgstr "أرقام الهواتف المضبوطة"
 
 #. Analyzable.properties.emailMentioned.label
 #: followthemoney/schema/Analyzable.yaml
 msgid "Detected e-mail addresses"
-msgstr "عناوين البريد الإلكتروني الموجودة"
+msgstr "عناوين البريد الإلكتروني المضبوطة"
 
 #. Assessment.label
 #: followthemoney/schema/Assessment.yaml
@@ -179,7 +179,7 @@ msgstr "المؤلفون"
 #. Assessment.properties.author.reverse.label
 #: followthemoney/schema/Assessment.yaml
 msgid "Assessments authored"
-msgstr "جمع التقييمات"
+msgstr "جمع/تأليف التقييمات"
 
 #. Asset.label
 #. Ownership.properties.asset.label
@@ -280,6 +280,16 @@ msgstr "رقم الحساب المصرفي الدولي"
 msgid "Bank Identifier Code"
 msgstr "الرمز التعريفي للبنك"
 
+#. BankAccount.properties.bank.label
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:35
+msgid "Bank"
+msgstr "بنك"
+
+#. BankAccount.properties.bank.reverse.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank accounts"
+msgstr ""
+
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account Type"
@@ -373,7 +383,7 @@ msgstr "العاصمة"
 #. Company.properties.voenCode.label
 #: followthemoney/schema/Company.yaml
 msgid "VOEN"
-msgstr "كلمة روسية"
+msgstr "VOEN"
 
 #. Company.properties.voenCode.description
 #: followthemoney/schema/Company.yaml
@@ -388,7 +398,7 @@ msgstr "أوكاتو / أوكاتو / أوكاتو"
 #. Company.properties.irsCode.label
 #: followthemoney/schema/Company.yaml
 msgid "IRS Number"
-msgstr "(RU ، OKOPF)  أي نوع من الكيانات التجارية"
+msgstr "رقم IRS"
 
 #. Company.properties.irsCode.description
 #: followthemoney/schema/Company.yaml
@@ -398,7 +408,7 @@ msgstr "المعرف الضريبي في الولايات المتحدة الأ�
 #. Company.properties.ipoCode.label
 #: followthemoney/schema/Company.yaml
 msgid "IPO"
-msgstr "شركات عامه- الاكتتاب العام"
+msgstr "شركات عامه- الاكتتاب العام IPO"
 
 #. Company.properties.cikCode.label
 #: followthemoney/schema/Company.yaml
@@ -428,12 +438,12 @@ msgstr "جدول فوائد الرعاية الطبية MBS"
 #. Company.properties.ibcRuc.label
 #: followthemoney/schema/Company.yaml
 msgid "ibcRUC"
-msgstr "تسريبات"
+msgstr "تسريبات ibcRUC"
 
 #. Company.properties.caemCode.label
 #: followthemoney/schema/Company.yaml
 msgid "COD CAEM"
-msgstr "رقم النشاط التجاري"
+msgstr "رقم النشاط التجاري COD CAEM"
 
 #. Company.properties.caemCode.description
 #: followthemoney/schema/Company.yaml
@@ -443,7 +453,7 @@ msgstr "  (RO) ما هو نوع النشاط الذي يسمح للكيان ال
 #. Company.properties.kppCode.label
 #: followthemoney/schema/Company.yaml
 msgid "KPP"
-msgstr "مشروع إنتاج المعرفة"
+msgstr "مشروع إنتاج المعرفة KPP"
 
 #. Company.properties.kppCode.description
 #: followthemoney/schema/Company.yaml
@@ -455,7 +465,7 @@ msgstr ""
 #. Company.properties.okvedCode.label
 #: followthemoney/schema/Company.yaml
 msgid "OKVED(2) Classifier"
-msgstr "مصنف (OKVED (2"
+msgstr "مصنف(OKVED (2"
 
 #. Company.properties.okvedCode.description
 #: followthemoney/schema/Company.yaml
@@ -467,9 +477,9 @@ msgstr "(RU ، OKVED) مصنف النشاط الاقتصادي. OKVED2 هو نف
 #: followthemoney/schema/Company.yaml
 msgid "OKOPF"
 msgstr ""
-"في روسيا ، رمز يشير إلى الشكل القانوني الذي تتخذه مؤسسة تجارية أو منظمة أخرى"
-" ، مثل شركة تجارية أو منظمة غير ربحية. يتم استخدام رمز OKOPF ، على سبيل "
-"المثال ، في سجلات الأراضي ولإعداد الإحصاءات."
+"رمز يشير إلى الشكل القانوني الذي تتخذه مؤسسة تجارية أو منظمة أخرى ، مثل شركة"
+" تجارية أو منظمة غير ربحية. يتم استخدام رمز OKOPF ، على سبيل المثال ، في "
+"سجلات الأراضي ولإعداد الإحصاءات."
 
 #. Company.properties.okopfCode.description
 #: followthemoney/schema/Company.yaml
@@ -489,7 +499,7 @@ msgstr "(RU، ФНС) المعلومات المتعلقة بخدمة الضرا�
 #. Company.properties.fssCode.label
 #: followthemoney/schema/Company.yaml
 msgid "FSS"
-msgstr "محاكي نظام حقل العمل"
+msgstr "محاكي نظام حقل العمل FSS"
 
 #. Company.properties.fssCode.description
 #: followthemoney/schema/Company.yaml
@@ -533,7 +543,7 @@ msgstr ""
 #. Company.properties.oksmCode.label
 #: followthemoney/schema/Company.yaml
 msgid "OKSM"
-msgstr "مصدر مفتوح للمعلومات"
+msgstr "OKSM"
 
 #. Company.properties.oksmCode.description
 #: followthemoney/schema/Company.yaml
@@ -1897,7 +1907,7 @@ msgstr "معرف V.A.T. "
 #. LegalEntity.properties.vatCode.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "(EU) VAT number"
-msgstr "الرقم الضريبي"
+msgstr "الرقم الضريبي (الاتحاد الأوروبي)"
 
 #. LegalEntity.properties.jurisdiction.description
 #: followthemoney/schema/LegalEntity.yaml
@@ -2809,7 +2819,7 @@ msgstr "مركبات"
 #. Vehicle.properties.name.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicle name"
-msgstr ""
+msgstr "اسم المركبة / واسطة النقل"
 
 #. Vehicle.properties.registrationNumber.label
 #: followthemoney/schema/Vehicle.yaml
@@ -2924,7 +2934,7 @@ msgstr "الأنواع السابقة"
 #. Vessel.properties.mmsi.label
 #: followthemoney/schema/Vessel.yaml
 msgid "MMSI"
-msgstr "هوية الخدمة المتنقلة البحرية"
+msgstr "هوية الخدمة المتنقلة البحرية MMSI"
 
 #: followthemoney/types/address.py:16
 msgid "Addresses"
@@ -3128,11 +3138,11 @@ msgstr "الاتجار بالبشر"
 
 #: followthemoney/types/topic.py:26
 msgid "Offshore"
-msgstr "خارجي"
+msgstr "Offshore"
 
 #: followthemoney/types/topic.py:27
 msgid "Shell company"
-msgstr "شركة قابضة"
+msgstr "Shell company"
 
 #: followthemoney/types/topic.py:28
 msgid "Government"
@@ -3161,10 +3171,6 @@ msgstr "منظمة حكومية دولية"
 #: followthemoney/types/topic.py:34
 msgid "Financial services"
 msgstr "الخدمات المالية"
-
-#: followthemoney/types/topic.py:35
-msgid "Bank"
-msgstr "بنك"
 
 #: followthemoney/types/topic.py:36
 msgid "Fund"

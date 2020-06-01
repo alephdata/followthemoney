@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-05-26 16:57+0200\n"
+"POT-Creation-Date: 2020-06-01 14:36+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Tajna Biscevic <tajna@occrp.org>, 2019\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -277,6 +277,16 @@ msgstr "IBAN"
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank Identifier Code"
 msgstr "Šifra identifikatora banke"
+
+#. BankAccount.properties.bank.label
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:35
+msgid "Bank"
+msgstr ""
+
+#. BankAccount.properties.bank.reverse.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Bank accounts"
+msgstr ""
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
@@ -3138,10 +3148,6 @@ msgstr ""
 
 #: followthemoney/types/topic.py:34
 msgid "Financial services"
-msgstr ""
-
-#: followthemoney/types/topic.py:35
-msgid "Bank"
 msgstr ""
 
 #: followthemoney/types/topic.py:36
