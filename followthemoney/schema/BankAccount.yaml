@@ -23,6 +23,13 @@ BankAccount:
       type: iban
     bic:
       label: Bank Identifier Code
+    bank:
+      label: Bank
+      type: entity
+      range: Organization
+      reverse:
+        name: bankAccounts
+        label: "Bank accounts"
     accountType:
       label: Account Type
     balance:
