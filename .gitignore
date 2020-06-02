@@ -5,6 +5,7 @@
 .vscode/
 .idea
 .tox/
+.mypy_cache/
 .env
 .coverage
 *.sqlite3
