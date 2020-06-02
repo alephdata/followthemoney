@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-01 14:36+0200\n"
+"POT-Creation-Date: 2020-06-02 10:16+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -286,7 +286,7 @@ msgstr "Банк"
 #. BankAccount.properties.bank.reverse.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank accounts"
-msgstr ""
+msgstr "Банковский счета"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
@@ -2811,7 +2811,7 @@ msgstr "Транспортные средства"
 #. Vehicle.properties.name.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicle name"
-msgstr ""
+msgstr "Название транспортного средства"
 
 #. Vehicle.properties.registrationNumber.label
 #: followthemoney/schema/Vehicle.yaml

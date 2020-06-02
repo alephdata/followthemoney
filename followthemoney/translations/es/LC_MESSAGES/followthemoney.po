@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-01 14:36+0200\n"
+"POT-Creation-Date: 2020-06-02 10:16+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Miguel Sojo <miguelsojo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -281,12 +281,12 @@ msgstr "Código de identificación del banco"
 #. BankAccount.properties.bank.label
 #: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:35
 msgid "Bank"
-msgstr ""
+msgstr "Banco"
 
 #. BankAccount.properties.bank.reverse.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank accounts"
-msgstr ""
+msgstr "Cuentas bancarias"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
@@ -2634,7 +2634,7 @@ msgstr "Declaración de impuestos de una persona natural"
 #. TaxRoll.properties.taxee.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Taxee"
-msgstr ""
+msgstr "Recaudador"
 
 #. TaxRoll.properties.income.label
 #: followthemoney/schema/TaxRoll.yaml
@@ -2644,17 +2644,17 @@ msgstr "Ingreso registrado"
 #. TaxRoll.properties.taxPaid.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Amount of tax paid"
-msgstr ""
+msgstr "Monto de impuesto pagado"
 
 #. TaxRoll.properties.wealth.label
 #: followthemoney/schema/TaxRoll.yaml
 msgid "Registered wealth"
-msgstr ""
+msgstr "Fortuna registrada"
 
 #. Thing.properties.sameAs.label
 #: followthemoney/schema/Thing.yaml
 msgid "Same as"
-msgstr ""
+msgstr "Igual que"
 
 #. Thing.properties.alias.label
 #: followthemoney/schema/Thing.yaml
@@ -2669,7 +2669,7 @@ msgstr "Nombre previo"
 #. Thing.properties.weakAlias.label
 #: followthemoney/schema/Thing.yaml
 msgid "Weak alias"
-msgstr ""
+msgstr "Weak alias"
 
 #. Thing.properties.sourceUrl.label
 #: followthemoney/schema/Thing.yaml
@@ -2679,12 +2679,12 @@ msgstr "Vínculo original"
 #. Thing.properties.wikipediaUrl.label
 #: followthemoney/schema/Thing.yaml
 msgid "Wikipedia Article"
-msgstr ""
+msgstr "Artículo en Wikipedia"
 
 #. Thing.properties.wikidataId.label
 #: followthemoney/schema/Thing.yaml
 msgid "Wikidata ID"
-msgstr ""
+msgstr "Identificación de Wikidata"
 
 #. Thing.properties.keywords.label
 #: followthemoney/schema/Thing.yaml
@@ -2694,7 +2694,7 @@ msgstr "Palarbas clave"
 #. Thing.properties.topics.label
 #: followthemoney/schema/Thing.yaml followthemoney/types/topic.py:11
 msgid "Topics"
-msgstr ""
+msgstr "Temas"
 
 #. Thing.properties.address.label
 #: followthemoney/schema/Thing.yaml followthemoney/types/address.py:15
@@ -2709,32 +2709,32 @@ msgstr "Notas"
 #. Thing.properties.proof.label
 #: followthemoney/schema/Thing.yaml
 msgid "Source document"
-msgstr ""
+msgstr "Documento fuente"
 
 #. Thing.properties.proof.reverse.label
 #: followthemoney/schema/Thing.yaml
 msgid "Extracted entities"
-msgstr ""
+msgstr "Entidades extraídas"
 
 #. Thing.properties.indexUpdatedAt.label
 #: followthemoney/schema/Thing.yaml
 msgid "Index updated at"
-msgstr ""
+msgstr "Índice actualizado a las"
 
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
-msgstr ""
+msgstr "Otro enlace"
 
 #. UnknownLink.plural
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other links"
-msgstr ""
+msgstr "Otros enlaces"
 
 #. UnknownLink.edge.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "linked to"
-msgstr ""
+msgstr "vinculado a"
 
 #. UnknownLink.properties.subject.reverse.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -2754,38 +2754,38 @@ msgstr "Vinculado desde"
 #. UserAccount.label
 #: followthemoney/schema/UserAccount.yaml
 msgid "User account"
-msgstr ""
+msgstr "Cuenta de usuario"
 
 #. UserAccount.plural
 #. UserAccount.properties.owner.reverse.label
 #: followthemoney/schema/UserAccount.yaml
 msgid "User accounts"
-msgstr ""
+msgstr "Cuentas de usuario"
 
 #. UserAccount.properties.service.label
 #: followthemoney/schema/UserAccount.yaml
 msgid "Service"
-msgstr ""
+msgstr "Servicio"
 
 #. UserAccount.properties.email.label
 #: followthemoney/schema/UserAccount.yaml
 msgid "E-mail"
-msgstr ""
+msgstr "Correo electrónico"
 
 #. UserAccount.properties.number.label
 #: followthemoney/schema/UserAccount.yaml
 msgid "Phone Number"
-msgstr ""
+msgstr "Número de teléfono"
 
 #. UserAccount.properties.username.label
 #: followthemoney/schema/UserAccount.yaml
 msgid "Username"
-msgstr ""
+msgstr "Nombre de usuario"
 
 #. UserAccount.properties.password.label
 #: followthemoney/schema/UserAccount.yaml
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #. Value.label
 #: followthemoney/schema/Value.yaml
@@ -2795,7 +2795,7 @@ msgstr "Valor"
 #. Value.plural
 #: followthemoney/schema/Value.yaml
 msgid "Values"
-msgstr ""
+msgstr "Valores"
 
 #. Value.properties.amount.label
 #: followthemoney/schema/Value.yaml
@@ -2820,42 +2820,42 @@ msgstr "Cantidad en EUR"
 #. Vehicle.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicle"
-msgstr ""
+msgstr "Vehículo"
 
 #. Vehicle.plural
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicles"
-msgstr ""
+msgstr "Vehículos"
 
 #. Vehicle.properties.name.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicle name"
-msgstr ""
+msgstr "Nombre de vehículo"
 
 #. Vehicle.properties.registrationNumber.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Registration Number"
-msgstr ""
+msgstr "Número de registro"
 
 #. Vehicle.properties.model.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Model"
-msgstr ""
+msgstr "Modelo"
 
 #. Vehicle.properties.owner.reverse.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicles owned"
-msgstr ""
+msgstr "Vehículos propios"
 
 #. Vehicle.properties.operator.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Operator"
-msgstr ""
+msgstr "Operador"
 
 #. Vehicle.properties.operator.reverse.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicles operated"
-msgstr ""
+msgstr "Vehículos operados"
 
 #. Vehicle.properties.buildDate.label
 #: followthemoney/schema/Vehicle.yaml
@@ -2865,12 +2865,12 @@ msgstr "Fecha de elaboración"
 #. Vehicle.properties.registrationDate.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Registration Date"
-msgstr ""
+msgstr "Fecha de registro"
 
 #. Vessel.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Vessel"
-msgstr ""
+msgstr "Embarcación"
 
 #. Vessel.plural
 #: followthemoney/schema/Vessel.yaml
@@ -2880,17 +2880,17 @@ msgstr "Buques"
 #. Vessel.description
 #: followthemoney/schema/Vessel.yaml
 msgid "A boat or ship"
-msgstr ""
+msgstr "Un bote o barco"
 
 #. Vessel.properties.imoNumber.label
 #: followthemoney/schema/Vessel.yaml
 msgid "IMO Number"
-msgstr ""
+msgstr "Número de IMO"
 
 #. Vessel.properties.crsNumber.label
 #: followthemoney/schema/Vessel.yaml
 msgid "CRS Number"
-msgstr ""
+msgstr "Número de CRS"
 
 #. Vessel.properties.flag.label
 #: followthemoney/schema/Vessel.yaml
@@ -2945,239 +2945,239 @@ msgstr "Tipo Past"
 #. Vessel.properties.mmsi.label
 #: followthemoney/schema/Vessel.yaml
 msgid "MMSI"
-msgstr ""
+msgstr "MMSI"
 
 #: followthemoney/types/address.py:16
 msgid "Addresses"
-msgstr ""
+msgstr "Direcciones"
 
 #: followthemoney/types/checksum.py:12
 msgid "Checksums"
-msgstr ""
+msgstr "Comprobaciones"
 
 #: followthemoney/types/country.py:12
 msgid "Countries"
-msgstr ""
+msgstr "Países"
 
 #: followthemoney/types/country.py:18
 msgid "Global"
-msgstr ""
+msgstr "Global"
 
 #: followthemoney/types/country.py:19
 msgid "European Union"
-msgstr ""
+msgstr "Unión Europea"
 
 #: followthemoney/types/country.py:21
 msgid "Czech Republic"
-msgstr ""
+msgstr "República Checa"
 
 #: followthemoney/types/country.py:22
 msgid "Kosovo"
-msgstr ""
+msgstr "Kosovo"
 
 #: followthemoney/types/country.py:23
 msgid "Yugoslavia"
-msgstr ""
+msgstr "Yugoslavia"
 
 #: followthemoney/types/country.py:24
 msgid "Serbia and Montenegro"
-msgstr ""
+msgstr "Serbia y Montenegro"
 
 #: followthemoney/types/country.py:25
 msgid "Soviet Union"
-msgstr ""
+msgstr "Unión Soviética"
 
 #: followthemoney/types/country.py:26
 msgid "Abkhazia"
-msgstr ""
+msgstr "Abjasia"
 
 #: followthemoney/types/country.py:27
 msgid "South Ossetia"
-msgstr ""
+msgstr "Osetia del Sur"
 
 #: followthemoney/types/country.py:28
 msgid "Somaliland"
-msgstr ""
+msgstr "Somalilandia"
 
 #: followthemoney/types/country.py:29
 msgid "Wales"
-msgstr ""
+msgstr "Gales"
 
 #: followthemoney/types/country.py:30
 msgid "Scotland"
-msgstr ""
+msgstr "Escocia"
 
 #: followthemoney/types/country.py:31
 msgid "Northern Ireland"
-msgstr ""
+msgstr "Irlanda del Norte"
 
 #: followthemoney/types/country.py:32
 msgid "Transnistria"
-msgstr ""
+msgstr "Transnistria"
 
 #: followthemoney/types/date.py:46
 msgid "Dates"
-msgstr ""
+msgstr "Fechas"
 
 #: followthemoney/types/domain.py:12
 msgid "Domain"
-msgstr ""
+msgstr "Dominio"
 
 #: followthemoney/types/domain.py:13
 msgid "Domains"
-msgstr ""
+msgstr "Dominios"
 
 #: followthemoney/types/email.py:18
 msgid "E-Mail Address"
-msgstr ""
+msgstr "Dirección de correo electrónico"
 
 #: followthemoney/types/email.py:19
 msgid "E-Mail Addresses"
-msgstr ""
+msgstr "Direcciones de correo electrónico"
 
 #: followthemoney/types/entity.py:14
 msgid "Entities"
-msgstr ""
+msgstr "Entidades"
 
 #: followthemoney/types/iban.py:13
 msgid "IBANs"
-msgstr ""
+msgstr "Números de IBAN"
 
 #: followthemoney/types/identifier.py:14
 msgid "Identifier"
-msgstr ""
+msgstr "Identificador"
 
 #: followthemoney/types/identifier.py:15
 msgid "Identifiers"
-msgstr ""
+msgstr "Identificadores"
 
 #: followthemoney/types/ip.py:11
 msgid "IP-Address"
-msgstr ""
+msgstr "Dirección IP"
 
 #: followthemoney/types/ip.py:12
 msgid "IP-Addresses"
-msgstr ""
+msgstr "Direcciones IP"
 
 #: followthemoney/types/json.py:11
 msgid "Nested data"
-msgstr ""
+msgstr "Datos anidados"
 
 #: followthemoney/types/language.py:13
 msgid "Languages"
-msgstr ""
+msgstr "Idiomas"
 
 #: followthemoney/types/mimetype.py:11
 msgid "MIME-Type"
-msgstr ""
+msgstr "Tipo de MIME"
 
 #: followthemoney/types/mimetype.py:12
 msgid "MIME-Types"
-msgstr ""
+msgstr "Tipos de MIME"
 
 #: followthemoney/types/name.py:15
 msgid "Names"
-msgstr ""
+msgstr "Nombres"
 
 #: followthemoney/types/number.py:10
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 #: followthemoney/types/number.py:11
 msgid "Numbers"
-msgstr ""
+msgstr "Números"
 
 #: followthemoney/types/phone.py:18
 msgid "Phone numbers"
-msgstr ""
+msgstr "Números de teléfono"
 
 #: followthemoney/types/string.py:8
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: followthemoney/types/string.py:9
 msgid "Labels"
-msgstr ""
+msgstr "Etiquetas"
 
 #: followthemoney/types/topic.py:10
 msgid "Topic"
-msgstr ""
+msgstr "Tema"
 
 #: followthemoney/types/topic.py:15
 msgid "Crime"
-msgstr ""
+msgstr "Delito"
 
 #: followthemoney/types/topic.py:16
 msgid "Fraud"
-msgstr ""
+msgstr "Fraude"
 
 #: followthemoney/types/topic.py:17
 msgid "Cybercrime"
-msgstr ""
+msgstr "Delito cibernético"
 
 #: followthemoney/types/topic.py:18
 msgid "Financial crime"
-msgstr ""
+msgstr "Crimen financiero"
 
 #: followthemoney/types/topic.py:19
 msgid "Theft"
-msgstr ""
+msgstr "Robo"
 
 #: followthemoney/types/topic.py:20
 msgid "War crimes"
-msgstr ""
+msgstr "Crímenes de guerra"
 
 #: followthemoney/types/topic.py:21
 msgid "Criminal leadership"
-msgstr ""
+msgstr "Liderazgo criminal"
 
 #: followthemoney/types/topic.py:22
 msgid "Terrorism"
-msgstr ""
+msgstr "Terrorismo"
 
 #: followthemoney/types/topic.py:23
 msgid "Trafficking"
-msgstr ""
+msgstr "Tráfico"
 
 #: followthemoney/types/topic.py:24
 msgid "Drug trafficking"
-msgstr ""
+msgstr "Narcotráfico"
 
 #: followthemoney/types/topic.py:25
 msgid "Human trafficking"
-msgstr ""
+msgstr "Tráfico de personas"
 
 #: followthemoney/types/topic.py:26
 msgid "Offshore"
-msgstr ""
+msgstr "Offshore"
 
 #: followthemoney/types/topic.py:27
 msgid "Shell company"
-msgstr ""
+msgstr "Empresa de maletín"
 
 #: followthemoney/types/topic.py:28
 msgid "Government"
-msgstr ""
+msgstr "Gobierno"
 
 #: followthemoney/types/topic.py:29
 msgid "National government"
-msgstr ""
+msgstr "Gobierno nacional"
 
 #: followthemoney/types/topic.py:30
 msgid "State government"
-msgstr ""
+msgstr "Gobierno estatal"
 
 #: followthemoney/types/topic.py:31
 msgid "Municipal government"
-msgstr ""
+msgstr "Gobierno municipal"
 
 #: followthemoney/types/topic.py:32
 msgid "State-owned enterprise"
-msgstr ""
+msgstr "Empresa estatal"
 
 #: followthemoney/types/topic.py:33
 msgid "Intergovernmental organization"
-msgstr ""
+msgstr "Organización intergubernamental"
 
 #: followthemoney/types/topic.py:34
 msgid "Financial services"
@@ -3185,7 +3185,7 @@ msgstr "Servicios financieros"
 
 #: followthemoney/types/topic.py:36
 msgid "Fund"
-msgstr ""
+msgstr "Fondo"
 
 #: followthemoney/types/topic.py:37
 msgid "Financial advisor"
@@ -3193,72 +3193,72 @@ msgstr "Asesor financiero"
 
 #: followthemoney/types/topic.py:38
 msgid "Politician"
-msgstr ""
+msgstr "Político"
 
 #: followthemoney/types/topic.py:40
 msgid "Judge"
-msgstr ""
+msgstr "Juez"
 
 #: followthemoney/types/topic.py:41
 msgid "Civil servant"
-msgstr ""
+msgstr "Funcionario público"
 
 #: followthemoney/types/topic.py:42
 msgid "Diplomat"
-msgstr ""
+msgstr "Diplomático"
 
 #: followthemoney/types/topic.py:43
 msgid "Lawyer"
-msgstr ""
+msgstr "Abogado"
 
 #: followthemoney/types/topic.py:44
 msgid "Accountant"
-msgstr ""
+msgstr "Contador"
 
 #: followthemoney/types/topic.py:45
 msgid "Spy"
-msgstr ""
+msgstr "Espía"
 
 #: followthemoney/types/topic.py:46
 msgid "Journalist"
-msgstr ""
+msgstr "Periodista"
 
 #: followthemoney/types/topic.py:47
 msgid "Activist"
-msgstr ""
+msgstr "Activista"
 
 #: followthemoney/types/topic.py:48
 msgid "Political party"
-msgstr ""
+msgstr "Partido político"
 
 #: followthemoney/types/topic.py:49
 msgid "Union"
-msgstr ""
+msgstr "Sindicato"
 
 #: followthemoney/types/topic.py:50
 msgid "Religion"
-msgstr ""
+msgstr "Religión"
 
 #: followthemoney/types/topic.py:51
 msgid "Military"
-msgstr ""
+msgstr "Militar"
 
 #: followthemoney/types/topic.py:52
 msgid "Frozen asset"
-msgstr ""
+msgstr "Activo congelado"
 
 #: followthemoney/types/topic.py:53
 msgid "Sanctioned entity"
-msgstr ""
+msgstr "Entidad sancionada"
 
 #: followthemoney/types/topic.py:54
 msgid "Person of interest"
-msgstr ""
+msgstr "Persona de interés"
 
 #: followthemoney/types/url.py:11
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: followthemoney/types/url.py:12
 msgid "URLs"
-msgstr ""
+msgstr "URL"
