@@ -87,16 +87,8 @@ class Model(object):
             return left
         if right.is_a(left):
             return right
-        common = list(left.schemata.intersection(right.schemata))
-        if not len(common):
-            msg = "No common ancestor: %s and %s"
-            raise InvalidData(msg % (left, right))
-
-        specific = common[0]
-        for schema in common[1:]:
-            if schema.is_a(specific):
-                specific = schema
-        return specific
+        msg = "No common schema: %s and %s"
+        raise InvalidData(msg % (left, right))
 
     def make_entity(self, schema, key_prefix=None):
         return EntityProxy(self, {'schema': schema}, key_prefix=key_prefix)
