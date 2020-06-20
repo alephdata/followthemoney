@@ -1,5 +1,5 @@
-from rdflib import URIRef
-from urlnormalizer import normalize_url, is_valid_url
+from rdflib import URIRef  # type: ignore
+from urlnormalizer import normalize_url, is_valid_url  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _

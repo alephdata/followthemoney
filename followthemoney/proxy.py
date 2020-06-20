@@ -1,11 +1,11 @@
 import logging
 from hashlib import sha1
 from itertools import product
-from rdflib import Literal, URIRef
+from rdflib import Literal, URIRef  # type: ignore
 from collections.abc import Hashable
-from rdflib.namespace import RDF, SKOS
+from rdflib.namespace import RDF, SKOS  # type: ignore
 from banal import ensure_list, is_mapping, ensure_dict
-from ordered_set import OrderedSet
+from ordered_set import OrderedSet  # type: ignore
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry

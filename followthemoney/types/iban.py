@@ -1,6 +1,6 @@
-from rdflib import URIRef
-from stdnum import iban
-from stdnum.exceptions import ValidationError
+from rdflib import URIRef  # type: ignore
+from stdnum import iban  # type: ignore
+from stdnum.exceptions import ValidationError  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import sanitize_text, defer as _

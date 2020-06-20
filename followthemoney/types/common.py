@@ -1,7 +1,7 @@
 from itertools import product
-from rdflib import Literal
+from rdflib import Literal  # type: ignore
 from banal import ensure_list
-from normality import stringify
+from normality import stringify  # type: ignore
 
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text

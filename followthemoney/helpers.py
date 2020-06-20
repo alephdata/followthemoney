@@ -6,7 +6,7 @@
 # If anyone were to swap out the default model, this would
 # probably be the first place to break.
 from os.path import splitext
-from normality import safe_filename
+from normality import safe_filename  # type: ignore
 from mimetypes import guess_extension
 
 from followthemoney.types import registry

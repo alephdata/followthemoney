@@ -1,5 +1,5 @@
-from rdflib import URIRef
-from ipaddress import ip_address
+from rdflib import URIRef  # type: ignore
+from ipaddress import ip_address  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _

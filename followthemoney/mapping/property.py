@@ -1,10 +1,9 @@
 import re
 from copy import deepcopy
 from banal import keys_values
-from normality import stringify
 
 from followthemoney.exc import InvalidMapping
-from followthemoney.util import get_entity_id
+from followthemoney.util import get_entity_id, sanitize_text
 
 
 class PropertyMapping(object):
@@ -27,7 +26,7 @@ class PropertyMapping(object):
         self.entity = data.pop('entity', None)
         self.required = data.pop('required', False)
 
-        self.template = stringify(data.pop('template', None))
+        self.template = sanitize_text(data.pop('template', None))
         self.replacements = {}
         if self.template is not None:
             # this is hacky, trying to generate refs from template
