@@ -1,8 +1,8 @@
 import os
 import logging
-from babel import Locale
-from gettext import translation
-from rdflib import Namespace
+from babel import Locale  # type: ignore
+from gettext import translation  # type: ignore
+from rdflib import Namespace  # type: ignore
 from threading import local
 from normality import stringify
 from normality.cleaning import compose_nfc

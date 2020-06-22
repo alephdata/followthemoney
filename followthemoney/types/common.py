@@ -1,7 +1,8 @@
 from itertools import product
-from rdflib import Literal
+from rdflib import Literal  # type: ignore
 from banal import ensure_list
 from normality import stringify
+from typing import Any, Optional
 
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
@@ -9,31 +10,31 @@ from followthemoney.util import gettext, sanitize_text
 
 class PropertyType(object):
     """Base class for all types."""
-    name = None
-    group = None
-    label = None
-    plural = None
-    matchable = True
-    pivot = False
-    max_size = None
+    name: Optional[str] = None
+    group: Optional[str] = None
+    label: Optional[str] = None
+    plural: Optional[str] = None
+    matchable: bool = True
+    pivot: bool = False
+    max_size: Optional[int] = None
 
-    def validate(self, text, **kwargs):
+    def validate(self, text: Any, **kwargs):
         """Returns a boolean to indicate if this is a valid instance of
         the type."""
         cleaned = self.clean(text, **kwargs)
         return cleaned is not None
 
-    def clean(self, text, **kwargs):
+    def clean(self, text: Any, **kwargs):
         """Create a more clean, but still user-facing version of an
         instance of the type."""
         text = sanitize_text(text)
         if text is not None:
             return self.clean_text(text, **kwargs)
 
-    def clean_text(self, text, **kwargs):
+    def clean_text(self, text: Optional[str], **kwargs):
         return text
 
-    def normalize(self, text, cleaned=False, **kwargs):
+    def normalize(self, text: str, cleaned=False, **kwargs):
         """Create a represenation ideal for comparisons, but not to be
         shown to the user."""
         if not cleaned:

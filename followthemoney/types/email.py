@@ -1,6 +1,6 @@
 import re
 import logging
-from rdflib import URIRef
+from rdflib import URIRef  # type: ignore
 from normality.cleaning import strip_quotes
 
 from followthemoney.types.common import PropertyType

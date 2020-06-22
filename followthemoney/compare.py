@@ -1,5 +1,5 @@
 import itertools
-from Levenshtein import jaro
+from Levenshtein import jaro  # type: ignore
 from normality import normalize
 from followthemoney.types import registry
 from followthemoney.util import dampen, shortest

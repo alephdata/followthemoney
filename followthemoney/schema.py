@@ -1,4 +1,4 @@
-from rdflib import URIRef
+from rdflib import URIRef  # type: ignore
 from banal import ensure_list, ensure_dict, as_bool
 
 from followthemoney.property import Property

@@ -1,6 +1,6 @@
-from normality import stringify
+from rdflib import URIRef  # type: ignore
 from banal import is_mapping
-from rdflib import URIRef
+from normality import stringify
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry

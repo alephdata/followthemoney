@@ -32,8 +32,8 @@ class AddressType(PropertyType):
     #     addresses = super(AddressType, self).normalize(address, **kwargs)
     #     return addresses
 
-    def _specificity(self, value):
+    def _specificity(self, value: str) -> float:
         return dampen(10, 60, value)
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> str:
         return 'addr:%s' % slugify(value)

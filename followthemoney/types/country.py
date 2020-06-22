@@ -1,5 +1,5 @@
-import countrynames
-from rdflib import URIRef
+import countrynames  # type: ignore
+from rdflib import URIRef  # type: ignore
 
 from followthemoney.types.common import EnumType
 from followthemoney.util import gettext, defer as _

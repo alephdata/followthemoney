@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 from typing import Dict, Tuple, List, TextIO, Optional
 
 from pymisp import MISPObject

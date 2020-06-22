@@ -1,5 +1,5 @@
 import logging
-from rdflib import Graph
+from rdflib import Graph  # type: ignore
 
 from followthemoney.export.common import Exporter
 
