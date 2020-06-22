@@ -3,7 +3,7 @@ import six
 import logging
 from uuid import uuid4
 from banal import ensure_list, is_listish, keys_values
-from normality import stringify  # type: ignore
+from normality import stringify
 from sqlalchemy import create_engine, MetaData  # type: ignore
 from sqlalchemy import select, func  # type: ignore
 from sqlalchemy.pool import NullPool  # type: ignore

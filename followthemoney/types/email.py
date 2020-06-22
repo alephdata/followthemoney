@@ -1,7 +1,7 @@
 import re
 import logging
 from rdflib import URIRef  # type: ignore
-from normality.cleaning import strip_quotes  # type: ignore
+from normality.cleaning import strip_quotes
 
 from followthemoney.types.common import PropertyType
 from followthemoney.types.domain import DomainType

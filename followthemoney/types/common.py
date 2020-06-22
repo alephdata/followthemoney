@@ -1,7 +1,7 @@
 from itertools import product
 from rdflib import Literal  # type: ignore
 from banal import ensure_list
-from normality import stringify  # type: ignore
+from normality import stringify
 from typing import Any, Optional
 
 from followthemoney.util import get_locale
@@ -31,7 +31,7 @@ class PropertyType(object):
         if text is not None:
             return self.clean_text(text, **kwargs)
 
-    def clean_text(self, text: str, **kwargs):
+    def clean_text(self, text: Optional[str], **kwargs):
         return text
 
     def normalize(self, text: str, cleaned=False, **kwargs):

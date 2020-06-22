@@ -4,10 +4,10 @@ from babel import Locale  # type: ignore
 from gettext import translation  # type: ignore
 from rdflib import Namespace  # type: ignore
 from threading import local
-from normality import stringify  # type: ignore
-from normality.cleaning import compose_nfc  # type: ignore
-from normality.cleaning import remove_unsafe_chars  # type: ignore
-from normality.encoding import DEFAULT_ENCODING  # type: ignore
+from normality import stringify
+from normality.cleaning import compose_nfc
+from normality.cleaning import remove_unsafe_chars
+from normality.encoding import DEFAULT_ENCODING
 from banal import is_mapping, unique_list, ensure_list
 
 NS = Namespace('https://w3id.org/ftm#')

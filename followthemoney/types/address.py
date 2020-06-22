@@ -1,6 +1,6 @@
 import re
-from normality import slugify  # type: ignore
-from normality.cleaning import collapse_spaces  # type: ignore
+from normality import slugify
+from normality.cleaning import collapse_spaces
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
@@ -32,8 +32,8 @@ class AddressType(PropertyType):
     #     addresses = super(AddressType, self).normalize(address, **kwargs)
     #     return addresses
 
-    def _specificity(self, value):
+    def _specificity(self, value: str) -> float:
         return dampen(10, 60, value)
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> str:
         return 'addr:%s' % slugify(value)
