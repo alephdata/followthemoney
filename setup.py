@@ -27,7 +27,7 @@ setup(
         'stringcase >= 1.2.0',
         'requests >= 2.21.0',
         'python-levenshtein >= 0.12.0',
-        'normality >= 2.0.0',
+        'normality >= 2.1.1',
         'sqlalchemy >= 1.2.0',
         'countrynames >= 1.6.0',
         'languagecodes >= 1.0.4',

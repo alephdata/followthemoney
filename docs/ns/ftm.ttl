@@ -2766,5 +2766,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-06-01T14:02:36"^^xsd:dateTime .
+    dct:modified "2020-06-22T08:08:45"^^xsd:dateTime .
 
