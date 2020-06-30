@@ -1050,6 +1050,11 @@ dct:language a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
 
+<https://w3id.org/ftm#Interval:namesMentioned> a rdf:Property ;
+    rdfs:label "Detected names" ;
+    rdfs:domain ftm:Interval ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Interval:publisher> a rdf:Property ;
     rdfs:label "Publishing source" ;
     rdfs:domain ftm:Interval ;
@@ -2766,5 +2771,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-06-22T08:08:45"^^xsd:dateTime .
+    dct:modified "2020-06-30T18:06:43"^^xsd:dateTime .
 

@@ -4274,6 +4274,14 @@
           "type": "url",
           "matchable": true
         },
+        "namesMentioned": {
+          "name": "namesMentioned",
+          "qname": "Interval:namesMentioned",
+          "label": "Detected names",
+          "type": "name",
+          "matchable": true,
+          "hidden": true
+        },
         "indexText": {
           "name": "indexText",
           "qname": "Interval:indexText",
