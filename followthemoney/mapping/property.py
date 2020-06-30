@@ -2,6 +2,7 @@ import re
 from copy import deepcopy
 from banal import keys_values
 
+from followthemoney.helpers import inline_names
 from followthemoney.exc import InvalidMapping
 from followthemoney.util import get_entity_id, sanitize_text
 
@@ -77,13 +78,7 @@ class PropertyMapping(object):
             entity = entities.get(self.entity)
             if entity is not None:
                 proxy.add(self.prop, get_entity_id(entity))
-
-                # This is really bad in theory, but really useful
-                # in practice. Shoot me.
-                text = proxy.schema.get('indexText')
-                if text is not None:
-                    for caption in entity.schema.caption:
-                        proxy.add(text, entity.get(caption))
+                inline_names(proxy, entity)
 
         # clean the values returned by the query, or by using literals, or
         # formats.

@@ -31,6 +31,10 @@ Interval:
     alephUrl:
       label: Aleph URL
       type: url
+    namesMentioned:
+      label: "Detected names"
+      hidden: true
+      type: name
     indexText:
       # This is a leaked abstraction from aleph. The idea is to have some
       # additional text field that can be used to associate searchable text
