@@ -74,3 +74,18 @@ def name_entity(entity):
             entity.set('name', name)
             entity.add('alias', names)
     return entity
+
+
+def inline_names(entity, related):
+    """Attempt to solve a weird UI problem. Imagine, for example, we
+    are showing a list of payments between a sender and a beneficiary to
+    a user. They may now conduct a search for a term present in the sender
+    or recipient name, but there will be no result, because the name is
+    only indexed with the parties, but not in the payment. This is part of
+    a partial work-around to that.
+
+    This is really bad in theory, but really useful in practice. Shoot me.
+    """
+    prop = entity.schema.get('namesMentioned')
+    if prop is not None:
+        entity.add(prop, related.get_type_values(registry.name))
