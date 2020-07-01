@@ -18,9 +18,6 @@ Contract:
   - name
   - procedureNumber
   properties:
-    name: # TODO: phase this out and use 'title'
-      label: "Contract name"
-      type: string
     title:
       label: "Contract title"
       type: string

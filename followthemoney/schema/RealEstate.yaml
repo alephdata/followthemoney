@@ -13,9 +13,6 @@ RealEstate:
   - address
   - registrationNumber
   properties:
-    name:
-      label: "Name"
-      type: string
     latitude:
       label: Latitude
       type: number

@@ -11,7 +11,7 @@ Thing:
   properties:
     name:
       label: Name
-      type: name
+      type: string
       rdf: http://www.w3.org/2004/02/skos/core#prefLabel
     sameAs:
       # This is clever but doesn't query correctly

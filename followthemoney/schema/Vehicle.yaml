@@ -13,9 +13,6 @@ Vehicle:
   - name
   - registrationNumber
   properties:
-    name:
-      label: "Vehicle name"
-      type: string
     registrationNumber:
       label: Registration Number
       type: identifier

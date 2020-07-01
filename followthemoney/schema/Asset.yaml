@@ -4,5 +4,10 @@ Asset:
   extends: 
   - Thing
   - Value
+  featured:
+  - name
+  - amount
+  caption:
+  - name
   abstract: false
   matchable: false
