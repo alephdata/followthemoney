@@ -31,7 +31,7 @@ class ProxyTestCase(TestCase):
         assert hash(proxy) == hash(proxy.id)
         assert proxy.get('name') == ['Ralph Tester']
         assert proxy.first('name') == 'Ralph Tester'
-        prop = model.get_qname('Thing:name')
+        prop = model.get_qname('LegalEntity:name')
         assert proxy.get(prop) == ['Ralph Tester']
         assert proxy.caption == 'Ralph Tester'
         assert str(proxy) == 'Ralph Tester'
