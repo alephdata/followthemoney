@@ -13,12 +13,6 @@
         "Asset"
       ],
       "properties": {
-        "name": {
-          "name": "name",
-          "qname": "Vehicle:name",
-          "label": "Vehicle name",
-          "type": "string"
-        },
         "registrationNumber": {
           "name": "registrationNumber",
           "qname": "Vehicle:registrationNumber",
@@ -1705,6 +1699,13 @@
         "Thing"
       ],
       "properties": {
+        "name": {
+          "name": "name",
+          "qname": "LegalEntity:name",
+          "label": "Name",
+          "type": "name",
+          "matchable": true
+        },
         "email": {
           "name": "email",
           "qname": "LegalEntity:email",
@@ -2288,8 +2289,7 @@
           "name": "name",
           "qname": "Thing:name",
           "label": "Name",
-          "type": "name",
-          "matchable": true
+          "type": "string"
         },
         "sameAs": {
           "name": "sameAs",
@@ -3775,7 +3775,14 @@
           "range": "Ownership",
           "reverse": "asset"
         }
-      }
+      },
+      "featured": [
+        "name",
+        "amount"
+      ],
+      "caption": [
+        "name"
+      ]
     },
     "Message": {
       "label": "Message",
@@ -3911,12 +3918,6 @@
         "Asset"
       ],
       "properties": {
-        "name": {
-          "name": "name",
-          "qname": "Contract:name",
-          "label": "Contract name",
-          "type": "string"
-        },
         "title": {
           "name": "title",
           "qname": "Contract:title",
@@ -4319,12 +4320,6 @@
         "Asset"
       ],
       "properties": {
-        "name": {
-          "name": "name",
-          "qname": "RealEstate:name",
-          "label": "Name",
-          "type": "string"
-        },
         "latitude": {
           "name": "latitude",
           "qname": "RealEstate:latitude",

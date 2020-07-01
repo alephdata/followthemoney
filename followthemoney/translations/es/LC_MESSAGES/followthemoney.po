@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-02 10:16+0200\n"
+"POT-Creation-Date: 2020-07-01 13:48+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Miguel Sojo <miguelsojo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -104,7 +104,8 @@ msgid "Detected country"
 msgstr "País detectado"
 
 #. Analyzable.properties.namesMentioned.label
-#: followthemoney/schema/Analyzable.yaml
+#. Interval.properties.namesMentioned.label
+#: followthemoney/schema/Analyzable.yaml followthemoney/schema/Interval.yaml
 msgid "Detected names"
 msgstr "Nombres detectados"
 
@@ -576,11 +577,6 @@ msgid ""
 msgstr ""
 "Un contrato o lote de contratos emitido por una autoridad. Se pueden "
 "adjudicar varios lotes a varios proveedores (ver ContractAward).\n"
-
-#. Contract.properties.name.label
-#: followthemoney/schema/Contract.yaml
-msgid "Contract name"
-msgstr "Nombre del contrato"
 
 #. Contract.properties.title.label
 #: followthemoney/schema/Contract.yaml
@@ -1824,6 +1820,13 @@ msgstr "Personas jurídicas"
 msgid "A legal entity may be a person or a company."
 msgstr "Una persona jurídica puede ser una persona o empresa."
 
+#. LegalEntity.properties.name.label
+#. Thing.properties.name.label
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/types/name.py:14
+msgid "Name"
+msgstr "Nombre"
+
 #. LegalEntity.properties.email.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Email address"
@@ -2441,13 +2444,6 @@ msgstr "Bienes raíces"
 msgid "A piece of land or property."
 msgstr "Un lote de terreno o propiedad."
 
-#. RealEstate.properties.name.label
-#. Thing.properties.name.label
-#: followthemoney/schema/RealEstate.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/name.py:14
-msgid "Name"
-msgstr "Nombre"
-
 #. RealEstate.properties.latitude.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Latitude"
@@ -2827,11 +2823,6 @@ msgstr "Vehículo"
 msgid "Vehicles"
 msgstr "Vehículos"
 
-#. Vehicle.properties.name.label
-#: followthemoney/schema/Vehicle.yaml
-msgid "Vehicle name"
-msgstr "Nombre de vehículo"
-
 #. Vehicle.properties.registrationNumber.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Registration Number"
@@ -3067,11 +3058,11 @@ msgstr "Datos anidados"
 msgid "Languages"
 msgstr "Idiomas"
 
-#: followthemoney/types/mimetype.py:11
+#: followthemoney/types/mimetype.py:12
 msgid "MIME-Type"
 msgstr "Tipo de MIME"
 
-#: followthemoney/types/mimetype.py:12
+#: followthemoney/types/mimetype.py:13
 msgid "MIME-Types"
 msgstr "Tipos de MIME"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-02 10:16+0200\n"
+"POT-Creation-Date: 2020-07-01 13:48+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -104,7 +104,8 @@ msgid "Detected country"
 msgstr "Найденные названия стран"
 
 #. Analyzable.properties.namesMentioned.label
-#: followthemoney/schema/Analyzable.yaml
+#. Interval.properties.namesMentioned.label
+#: followthemoney/schema/Analyzable.yaml followthemoney/schema/Interval.yaml
 msgid "Detected names"
 msgstr "Найденные имена"
 
@@ -568,11 +569,6 @@ msgstr ""
 "Контракт или лот, размещённый гос. органом. Исполнителями отдельных лотов в "
 "рамках одного контракта могут быть определены различные поставщики (см. "
 "Контракты).\n"
-
-#. Contract.properties.name.label
-#: followthemoney/schema/Contract.yaml
-msgid "Contract name"
-msgstr "Название контракта"
 
 #. Contract.properties.title.label
 #: followthemoney/schema/Contract.yaml
@@ -1811,6 +1807,13 @@ msgstr "Юридические лица"
 msgid "A legal entity may be a person or a company."
 msgstr "Юридическое или физическое лицо"
 
+#. LegalEntity.properties.name.label
+#. Thing.properties.name.label
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/types/name.py:14
+msgid "Name"
+msgstr "Имя"
+
 #. LegalEntity.properties.email.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Email address"
@@ -2424,13 +2427,6 @@ msgstr "Недвижимость"
 msgid "A piece of land or property."
 msgstr "Объект недвижимости"
 
-#. RealEstate.properties.name.label
-#. Thing.properties.name.label
-#: followthemoney/schema/RealEstate.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/name.py:14
-msgid "Name"
-msgstr "Имя"
-
 #. RealEstate.properties.latitude.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Latitude"
@@ -2808,11 +2804,6 @@ msgstr "Транспортное средство"
 msgid "Vehicles"
 msgstr "Транспортные средства"
 
-#. Vehicle.properties.name.label
-#: followthemoney/schema/Vehicle.yaml
-msgid "Vehicle name"
-msgstr "Название транспортного средства"
-
 #. Vehicle.properties.registrationNumber.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Registration Number"
@@ -3048,11 +3039,11 @@ msgstr "Сгруппированные данные"
 msgid "Languages"
 msgstr "Языки"
 
-#: followthemoney/types/mimetype.py:11
+#: followthemoney/types/mimetype.py:12
 msgid "MIME-Type"
 msgstr "MIME-тип"
 
-#: followthemoney/types/mimetype.py:12
+#: followthemoney/types/mimetype.py:13
 msgid "MIME-Types"
 msgstr "MIME-типы"
 

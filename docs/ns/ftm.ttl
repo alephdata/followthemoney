@@ -339,7 +339,8 @@ dct:language a rdf:Property ;
 
 <http://www.w3.org/2004/02/skos/core#prefLabel> a rdf:Property ;
     rdfs:label "Name" ;
-    rdfs:domain ftm:Thing ;
+    rdfs:domain ftm:LegalEntity,
+        ftm:Thing ;
     rdfs:isDefinedBy ftm: .
 
 <http://xmlns.com/foaf/0.1/birthday> a rdf:Property ;
@@ -649,11 +650,6 @@ dct:language a rdf:Property ;
 
 <https://w3id.org/ftm#Contract:method> a rdf:Property ;
     rdfs:label "Procurement method" ;
-    rdfs:domain ftm:Contract ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Contract:name> a rdf:Property ;
-    rdfs:label "Contract name" ;
     rdfs:domain ftm:Contract ;
     rdfs:isDefinedBy ftm: .
 
@@ -1492,11 +1488,6 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:RealEstate ;
     rdfs:isDefinedBy ftm: .
 
-<https://w3id.org/ftm#RealEstate:name> a rdf:Property ;
-    rdfs:label "Name" ;
-    rdfs:domain ftm:RealEstate ;
-    rdfs:isDefinedBy ftm: .
-
 <https://w3id.org/ftm#RealEstate:propertyType> a rdf:Property ;
     rdfs:label "Property type" ;
     rdfs:domain ftm:RealEstate ;
@@ -1759,11 +1750,6 @@ dct:language a rdf:Property ;
 
 <https://w3id.org/ftm#Vehicle:model> a rdf:Property ;
     rdfs:label "Model" ;
-    rdfs:domain ftm:Vehicle ;
-    rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Vehicle:name> a rdf:Property ;
-    rdfs:label "Vehicle name" ;
     rdfs:domain ftm:Vehicle ;
     rdfs:isDefinedBy ftm: .
 
@@ -2771,5 +2757,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-06-30T18:06:43"^^xsd:dateTime .
+    dct:modified "2020-07-01T13:01:53"^^xsd:dateTime .
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-30 18:43+0200\n"
+"POT-Creation-Date: 2020-07-01 13:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -556,11 +556,6 @@ msgstr ""
 msgid ""
 "An contract or contract lot issued by an authority. Multiple lots may be "
 "awarded to different suppliers (see ContractAward).\n"
-msgstr ""
-
-#. Contract.properties.name.label
-#: followthemoney/schema/Contract.yaml
-msgid "Contract name"
 msgstr ""
 
 #. Contract.properties.title.label
@@ -1794,6 +1789,13 @@ msgstr ""
 msgid "A legal entity may be a person or a company."
 msgstr ""
 
+#. LegalEntity.properties.name.label
+#. Thing.properties.name.label
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/types/name.py:14
+msgid "Name"
+msgstr ""
+
 #. LegalEntity.properties.email.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Email address"
@@ -2405,13 +2407,6 @@ msgstr ""
 msgid "A piece of land or property."
 msgstr ""
 
-#. RealEstate.properties.name.label
-#. Thing.properties.name.label
-#: followthemoney/schema/RealEstate.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/name.py:14
-msgid "Name"
-msgstr ""
-
 #. RealEstate.properties.latitude.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Latitude"
@@ -2784,11 +2779,6 @@ msgstr ""
 #. Vehicle.plural
 #: followthemoney/schema/Vehicle.yaml
 msgid "Vehicles"
-msgstr ""
-
-#. Vehicle.properties.name.label
-#: followthemoney/schema/Vehicle.yaml
-msgid "Vehicle name"
 msgstr ""
 
 #. Vehicle.properties.registrationNumber.label
