@@ -30,7 +30,7 @@ setup(
         'normality >= 2.1.1',
         'sqlalchemy >= 1.2.0',
         'countrynames >= 1.6.0',
-        'languagecodes >= 1.0.4',
+        'languagecodes >= 1.0.7',
         'phonenumbers >= 8.9.11',
         'python-stdnum >= 1.10',
         'urlnormalizer >= 1.2.0',
