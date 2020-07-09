@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-01 13:48+0200\n"
+"POT-Creation-Date: 2020-07-09 18:53+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2020\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -286,7 +286,7 @@ msgstr "Bank"
 #. BankAccount.properties.bank.reverse.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank accounts"
-msgstr ""
+msgstr "Bankkonten"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
