@@ -14,20 +14,20 @@ class Match(object):
         self.model = model
         self._data = data
         # Support output from Aleph's linkage API (profile_id):
-        self.id = data.get('canonical_id', data.get('profile_id'))
-        self.id = self.id or get_entity_id(data.get('canonical'))
+        self.id = data.get("canonical_id", data.get("profile_id"))
+        self.id = self.id or get_entity_id(data.get("canonical"))
         self._canonical = None
-        self.entity_id = data.get('entity_id')
-        self.entity_id = self.entity_id or get_entity_id(data.get('entity'))
+        self.entity_id = data.get("entity_id")
+        self.entity_id = self.entity_id or get_entity_id(data.get("entity"))
         self._entity = None
-        self.decision = data.get('decision')
-        self._score = data.get('score', None)
+        self.decision = data.get("decision")
+        self._score = data.get("score", None)
 
     @property
     def entity(self):
         if self._entity is None:
-            data = self._data.get('entity')
-            if is_mapping(data) and 'schema' in data:
+            data = self._data.get("entity")
+            if is_mapping(data) and "schema" in data:
                 self._entity = self.model.get_proxy(data)
         return self._entity
 
@@ -39,8 +39,8 @@ class Match(object):
     @property
     def canonical(self):
         if self._canonical is None:
-            data = self._data.get('canonical')
-            if is_mapping(data) and 'schema' in data:
+            data = self._data.get("canonical")
+            if is_mapping(data) and "schema" in data:
                 self._canonical = self.model.get_proxy(data)
         return self._canonical
 
@@ -51,17 +51,17 @@ class Match(object):
 
     def to_dict(self):
         data = {
-            'canonical_id': self.id,
-            'entity_id': self.entity_id,
+            "canonical_id": self.id,
+            "entity_id": self.entity_id,
         }
         if self.decision is not None:
-            data['decision'] = self.decision
+            data["decision"] = self.decision
         if self._score is not None:
-            data['score'] = self.score
+            data["score"] = self.score
         if self.entity is not None:
-            data['entity'] = self.entity.to_dict()
+            data["entity"] = self.entity.to_dict()
         if self.canonical is not None:
-            data['canonical'] = self.canonical.to_dict()
+            data["canonical"] = self.canonical.to_dict()
         return data
 
     @property
@@ -82,4 +82,4 @@ class Match(object):
             yield cls(model, data)
 
     def __repr__(self):
-        return '<Match(%r, %r, %s)>' % (self.id, self.entity_id, self.decision)
+        return "<Match(%r, %r, %s)>" % (self.id, self.entity_id, self.decision)

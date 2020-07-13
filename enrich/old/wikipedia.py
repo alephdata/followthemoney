@@ -6,25 +6,25 @@ import mwclient
 from corpint.model.schema import PERSON, OTHER
 
 
-ORIGIN = 'wikipedia'
-SKIP_HOSTS = ['wikiquote', 'simple.wiki', 'commons.wiki', 'collections.wiki']
-DISAMBIGUATION = [u'Шаблон:Неоднозначность', 'Template:Disambiguation']
+ORIGIN = "wikipedia"
+SKIP_HOSTS = ["wikiquote", "simple.wiki", "commons.wiki", "collections.wiki"]
+DISAMBIGUATION = [u"Шаблон:Неоднозначность", "Template:Disambiguation"]
 SITES = {
-    'en': mwclient.Site('en.wikipedia.org'),
-    'ru': mwclient.Site('ru.wikipedia.org')
+    "en": mwclient.Site("en.wikipedia.org"),
+    "ru": mwclient.Site("ru.wikipedia.org"),
 }
 
 
 def get_uid(page):
     uid = sha1(ORIGIN)
     uid.update(page.pagelanguage)
-    uid.update(page.name.encode('utf-8'))
+    uid.update(page.name.encode("utf-8"))
     return uid.hexdigest()
 
 
 def page_url(page):
     slug = page.normalize_title(page.name)
-    return 'http://%s/wiki/%s' % (page.site.host, slug)
+    return "http://%s/wiki/%s" % (page.site.host, slug)
 
 
 def page_entity(emitter, page, path=None):
@@ -77,12 +77,14 @@ def page_entity(emitter, page, path=None):
         if bl.redirects_to().page_title == page.page_title:
             aliases.add(bl.page_title)
 
-    emitter.emit_entity({
-        'uid': uid,
-        'wikipedia_' + page.pagelanguage: page.name,
-        'name': page.page_title,
-        'aliases': aliases
-    })
+    emitter.emit_entity(
+        {
+            "uid": uid,
+            "wikipedia_" + page.pagelanguage: page.name,
+            "name": page.page_title,
+            "aliases": aliases,
+        }
+    )
     return uid
 
 
@@ -92,10 +94,10 @@ def enrich(origin, entity):
         return
 
     for lang, site in SITES.items():
-        origin.log.info("Search [%s]: %s", lang, entity['name'])
+        origin.log.info("Search [%s]: %s", lang, entity["name"])
         for name in entity.names:
-            for res in site.search(name, what='nearmatch', limit=5):
-                page = site.Pages[res.get('title')]
+            for res in site.search(name, what="nearmatch", limit=5):
+                page = site.Pages[res.get("title")]
                 match_uid = origin.uid(page.pagelanguage, page.name)
                 emitter = origin.result(entity.uid, match_uid)
                 page_entity(emitter, page)

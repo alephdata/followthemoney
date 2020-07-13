@@ -39,7 +39,7 @@ class Linker(object):
             if prop.type != registry.entity:
                 continue
             for value in linked.pop(prop):
-                if prop.name != 'sameAs':
+                if prop.name != "sameAs":
                     value = self.resolve(value)
                 linked.add(prop, value)
         # linked.remove('sameAs', linked.id)

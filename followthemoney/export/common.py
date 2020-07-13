@@ -2,7 +2,6 @@ from followthemoney.types import registry
 
 
 class Exporter(object):
-
     def __init__(self, export_all=False):
         self.export_all = export_all
 

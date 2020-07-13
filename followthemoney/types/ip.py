@@ -6,10 +6,10 @@ from followthemoney.util import defer as _
 
 
 class IpType(PropertyType):
-    name = 'ip'
-    group = 'ips'
-    label = _('IP-Address')
-    plural = _('IP-Addresses')
+    name = "ip"
+    group = "ips"
+    label = _("IP-Address")
+    plural = _("IP-Addresses")
     matchable = True
 
     def validate(self, ip, **kwargs):
@@ -29,4 +29,4 @@ class IpType(PropertyType):
             return None
 
     def rdf(self, value):
-        return URIRef('ip:%s' % value)
+        return URIRef("ip:%s" % value)

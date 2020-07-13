@@ -3,18 +3,16 @@ from banal import is_listish
 
 
 class Source(object):
-
     def __init__(self, query, data):
         self.query = query
-        self.filters = query.data.get('filters', {}).items()
-        self.filters_not = query.data.get('filters_not', {}).items()
+        self.filters = query.data.get("filters", {}).items()
+        self.filters_not = query.data.get("filters_not", {}).items()
 
     def __len__(self):
         return 0
 
 
 class StreamSource(Source):
-
     def apply_filter(self, data, key, pred):
         value = data.get(key)
         if is_listish(pred):

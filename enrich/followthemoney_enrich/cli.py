@@ -20,10 +20,10 @@ def load_enricher(name):
     return ENRICHERS[name]
 
 
-@cli.command('enrich', help="Find matching entities remotely")
-@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
-@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
-@click.argument('enricher')
+@cli.command("enrich", help="Find matching entities remotely")
+@click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
+@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
+@click.argument("enricher")
 def enrich(infile, outfile, enricher):
     enricher = load_enricher(enricher)
     try:
@@ -37,10 +37,10 @@ def enrich(infile, outfile, enricher):
         raise click.Abort()
 
 
-@cli.command('expand', help="Expand enriched entities")
-@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
-@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
-@click.argument('enricher')
+@cli.command("expand", help="Expand enriched entities")
+@click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
+@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
+@click.argument("enricher")
 def expand(infile, outfile, enricher):
     enricher = load_enricher(enricher)
     try:

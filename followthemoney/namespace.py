@@ -7,12 +7,13 @@ from followthemoney.util import key_bytes, get_entity_id
 class Namespace(object):
     """Namespaces are used to partition entity IDs into different units,
     which traditionally represent a dataset, collection or source."""
+
     # cf. https://github.com/alephdata/followthemoney/issues/35
-    SEP = '.'
+    SEP = "."
 
     def __init__(self, name=None):
-        self.bname = key_bytes(name) if name else b''
-        self.hmac = hmac.new(self.bname, digestmod='sha1')
+        self.bname = key_bytes(name) if name else b""
+        self.hmac = hmac.new(self.bname, digestmod="sha1")
 
     @classmethod
     def parse(cls, entity_id):
@@ -72,7 +73,7 @@ class Namespace(object):
                 value = get_entity_id(value)
                 signed.add(prop, self.sign(value))
         # linked.add('sameAs', proxy.id, quiet=True)
-        signed.remove('sameAs', signed.id)
+        signed.remove("sameAs", signed.id)
         return signed
 
     @classmethod
@@ -85,4 +86,4 @@ class Namespace(object):
         return self.bname == other.bname
 
     def __repr__(self):
-        return '<Namespace(%r)>' % self.bname
+        return "<Namespace(%r)>" % self.bname

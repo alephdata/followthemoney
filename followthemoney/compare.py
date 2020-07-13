@@ -48,7 +48,7 @@ def compare(model, left, right):
         if not len(left_values) or not len(right_values):
             continue
         prop_score = prop.type.compare_sets(left_values, right_values)
-        score += (prop_score * weight)
+        score += prop_score * weight
     return score
 
 

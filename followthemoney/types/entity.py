@@ -7,11 +7,11 @@ from followthemoney.util import defer as _
 
 
 class EntityType(PropertyType):
-    ID_RE = re.compile(r'^[0-9a-zA-Z]([0-9a-zA-Z\.\-]*[0-9a-zA-Z])?$')
-    name = 'entity'
-    group = 'entities'
-    label = _('Entity')
-    plural = _('Entities')
+    ID_RE = re.compile(r"^[0-9a-zA-Z]([0-9a-zA-Z\.\-]*[0-9a-zA-Z])?$")
+    name = "entity"
+    group = "entities"
+    label = _("Entity")
+    plural = _("Entities")
     matchable = True
     pivot = True
 
@@ -27,7 +27,7 @@ class EntityType(PropertyType):
             return entity_id
 
     def rdf(self, value):
-        return URIRef('entity:%s' % value)
+        return URIRef("entity:%s" % value)
 
     def caption(self, value):
         return None

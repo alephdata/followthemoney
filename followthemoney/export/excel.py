@@ -12,17 +12,17 @@ log = logging.getLogger(__name__)
 
 
 class ExcelWriter(object):
-    HEADER_FONT = Font(bold=True, color='FFFFFF')
-    HEADER_FILL = PatternFill(start_color='982022',
-                              end_color='982022',
-                              fill_type='solid')
+    HEADER_FONT = Font(bold=True, color="FFFFFF")
+    HEADER_FILL = PatternFill(
+        start_color="982022", end_color="982022", fill_type="solid"
+    )
 
     def __init__(self):
         self.workbook = Workbook(write_only=True)
 
     def make_sheet(self, title, headers):
         sheet = self.workbook.create_sheet(title=title)
-        sheet.freeze_panes = 'A2'
+        sheet.freeze_panes = "A2"
         sheet.sheet_properties.filterMode = True
         cells = []
         for header in headers:
@@ -42,7 +42,6 @@ class ExcelWriter(object):
 
 
 class ExcelExporter(ExcelWriter, Exporter):
-
     def __init__(self, file_path, extra=None):
         ExcelWriter.__init__(self)
         Exporter.__init__(self)
@@ -52,7 +51,7 @@ class ExcelExporter(ExcelWriter, Exporter):
 
     def write(self, proxy, extra=None, **kwargs):
         if proxy.schema not in self.sheets:
-            headers = ['ID']
+            headers = ["ID"]
             headers.extend(self.extra)
             for prop in self.exportable_properties(proxy.schema):
                 headers.append(prop.label)

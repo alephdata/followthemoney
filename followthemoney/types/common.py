@@ -10,6 +10,7 @@ from followthemoney.util import gettext, sanitize_text
 
 class PropertyType(object):
     """Base class for all types."""
+
     name: Optional[str] = None
     group: Optional[str] = None
     label: Optional[str] = None
@@ -51,7 +52,7 @@ class PropertyType(object):
 
     def join(self, values):
         values = ensure_list(values)
-        return '; '.join(values)
+        return "; ".join(values)
 
     def _specificity(self, value):
         return 1.0
@@ -106,16 +107,13 @@ class PropertyType(object):
         return value
 
     def to_dict(self):
-        data = {
-            'label': gettext(self.label),
-            'plural': gettext(self.plural)
-        }
+        data = {"label": gettext(self.label), "plural": gettext(self.plural)}
         if self.group:
-            data['group'] = self.group
+            data["group"] = self.group
         if self.matchable:
-            data['matchable'] = True
+            data["matchable"] = True
         if self.pivot:
-            data['pivot'] = True
+            data["pivot"] = True
         return data
 
     def __eq__(self, other):
@@ -128,11 +126,10 @@ class PropertyType(object):
         return self.name
 
     def __repr__(self):
-        return '<%s()>' % type(self).__name__
+        return "<%s()>" % type(self).__name__
 
 
 class EnumType(PropertyType):
-
     def __init__(self, *args):
         self._names = {}
 
@@ -166,5 +163,5 @@ class EnumType(PropertyType):
 
     def to_dict(self):
         data = super(EnumType, self).to_dict()
-        data['values'] = self.names
+        data["values"] = self.names
         return data

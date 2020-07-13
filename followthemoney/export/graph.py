@@ -57,20 +57,19 @@ class NXGraphExporter(GraphExporter):
 
         for node in self.graph.iternodes():
             attributes = self.get_attributes(node)
-            attributes['schema'] = node.type.name
+            attributes["schema"] = node.type.name
             if node.caption is not None:
-                attributes['label'] = node.caption
+                attributes["label"] = node.caption
             if node.is_entity:
-                attributes['schema'] = node.schema.name
+                attributes["schema"] = node.schema.name
             digraph.add_node(node.id, **attributes)
 
         for edge in self.graph.iteredges():
             attributes = self.get_attributes(edge)
-            attributes['schema'] = edge.type_name
-            attributes['weight'] = edge.weight
-            digraph.add_edge(edge.source_id, edge.target_id,
-                             key=edge.id, **attributes)
+            attributes["schema"] = edge.type_name
+            attributes["weight"] = edge.weight
+            digraph.add_edge(edge.source_id, edge.target_id, key=edge.id, **attributes)
 
         for line in generate_gexf(digraph, prettyprint=True):
             self.fh.write(line)
-            self.fh.write('\n')
+            self.fh.write("\n")

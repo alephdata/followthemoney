@@ -13,10 +13,10 @@ log = logging.getLogger(__name__)
 class EmailType(PropertyType):
     EMAIL_REGEX = re.compile(r"^[^@\s]+@[^@\s]+\.\w+$")
     domains = DomainType()
-    name = 'email'
-    group = 'emails'
-    label = _('E-Mail Address')
-    plural = _('E-Mail Addresses')
+    name = "email"
+    group = "emails"
+    label = _("E-Mail Address")
+    plural = _("E-Mail Addresses")
     matchable = True
     pivot = True
 
@@ -28,7 +28,7 @@ class EmailType(PropertyType):
             return False
         if not self.EMAIL_REGEX.match(email):
             return False
-        _, domain = email.rsplit('@', 1)
+        _, domain = email.rsplit("@", 1)
         return self.domains.validate(domain, **kwargs)
 
     def clean_text(self, email, **kwargs):
@@ -39,10 +39,10 @@ class EmailType(PropertyType):
         email = strip_quotes(email)
         if not self.EMAIL_REGEX.match(email):
             return None
-        mailbox, domain = email.rsplit('@', 1)
+        mailbox, domain = email.rsplit("@", 1)
         domain = self.domains.clean(domain, **kwargs)
         if domain is not None and mailbox is not None:
-            return '@'.join((mailbox, domain))
+            return "@".join((mailbox, domain))
 
     def normalize(self, email, **kwargs):
         """Normalize for comparison."""
@@ -53,4 +53,4 @@ class EmailType(PropertyType):
     # TODO: do we want to use TLDs as country evidence?
 
     def rdf(self, value):
-        return URIRef('mailto:%s' % value.lower())
+        return URIRef("mailto:%s" % value.lower())

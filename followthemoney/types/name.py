@@ -9,10 +9,10 @@ from followthemoney.util import defer as _
 
 
 class NameType(PropertyType):
-    name = 'name'
-    group = 'names'
-    label = _('Name')
-    plural = _('Names')
+    name = "name"
+    group = "names"
+    label = _("Name")
+    plural = _("Names")
     matchable = True
     pivot = True
 
@@ -37,4 +37,4 @@ class NameType(PropertyType):
         return jaro_winkler(left, right)
 
     def node_id(self, value):
-        return 'name:%s' % slugify(value)
+        return "name:%s" % slugify(value)

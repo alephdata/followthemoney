@@ -7,10 +7,10 @@ from followthemoney.util import sanitize_text, defer as _
 
 
 class DomainType(PropertyType):
-    name = 'domain'
+    name = "domain"
     group = None
-    label = _('Domain')
-    plural = _('Domains')
+    label = _("Domain")
+    plural = _("Domains")
     matchable = True
 
     # def _check_exists(self, domain):
@@ -27,9 +27,9 @@ class DomainType(PropertyType):
         text = sanitize_text(obj)
         if text is None:
             return False
-        if '.' not in text:
+        if "." not in text:
             return False
-        if '@' in text or ':' in text:
+        if "@" in text or ":" in text:
             return False
         if len(text) < 4:
             return False
@@ -42,10 +42,10 @@ class DomainType(PropertyType):
             domain = urlparse(domain).hostname or domain
             domain = domain.lower()
             # get rid of port specs
-            domain = domain.rsplit(':', 1)[0]
-            domain = domain.rstrip('.')
+            domain = domain.rsplit(":", 1)[0]
+            domain = domain.rstrip(".")
             # handle unicode
-            domain = domain.encode("idna").decode('ascii')
+            domain = domain.encode("idna").decode("ascii")
         except ValueError:
             return None
         if self.validate(domain):

@@ -6,7 +6,6 @@ from followthemoney.export.common import Exporter
 
 
 class CSVMixin(object):
-
     def _configure(self, directory, dialect=csv.unix_dialect, extra=None):
         self.directory = Path(directory)
         self.extra = ensure_list(extra)
@@ -15,8 +14,8 @@ class CSVMixin(object):
 
     def _open_csv_file(self, name):
         self.directory.mkdir(parents=True, exist_ok=True)
-        file_path = self.directory.joinpath('{0}.csv'.format(name))
-        handle = open(file_path, mode='w')
+        file_path = self.directory.joinpath("{0}.csv".format(name))
+        handle = open(file_path, mode="w")
         writer = csv.writer(handle, dialect=self.dialect)
         return handle, writer
 
@@ -34,13 +33,12 @@ class CSVMixin(object):
 
 
 class CSVExporter(Exporter, CSVMixin):
-
     def __init__(self, directory, export_all=True, extra=None):
         Exporter.__init__(self, export_all=True)
         self._configure(directory, extra=extra)
 
     def _write_header(self, writer, schema):
-        headers = ['id']
+        headers = ["id"]
         headers.extend(self.extra)
         for prop in self.exportable_properties(schema):
             # Not using label to make it more machine-readable:

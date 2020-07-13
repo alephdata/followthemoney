@@ -6,10 +6,10 @@ from followthemoney.util import defer as _
 
 
 class UrlType(PropertyType):
-    name = 'url'
-    group = 'urls'
-    label = _('URL')
-    plural = _('URLs')
+    name = "url"
+    group = "urls"
+    label = _("URL")
+    plural = _("URLs")
     matchable = True
     pivot = True
 
@@ -25,4 +25,4 @@ class UrlType(PropertyType):
         return URIRef(value)
 
     def node_id(self, value):
-        return 'url:%s' % value
+        return "url:%s" % value

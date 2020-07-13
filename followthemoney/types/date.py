@@ -15,11 +15,13 @@ log = logging.getLogger(__name__)
 
 class DateType(PropertyType):
     # JS: '^([12]\\d{3}(-[01]?[1-9](-[0123]?[1-9])?)?)?$'
-    DATE_RE = re.compile(r'^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$')  # noqa
-    DATE_FULL = re.compile(r'\d{4}-\d{2}-\d{2}.*')
-    CUT_ZEROES = re.compile(r'((\-00.*)|(.00:00:00))$')
-    MONTH_FORMATS = re.compile(r'(%b|%B|%m|%c|%x)')
-    DAY_FORMATS = re.compile(r'(%d|%w|%c|%x)')
+    DATE_RE = re.compile(
+        r"^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$"
+    )  # noqa
+    DATE_FULL = re.compile(r"\d{4}-\d{2}-\d{2}.*")
+    CUT_ZEROES = re.compile(r"((\-00.*)|(.00:00:00))$")
+    MONTH_FORMATS = re.compile(r"(%b|%B|%m|%c|%x)")
+    DAY_FORMATS = re.compile(r"(%d|%w|%c|%x)")
     MAX_LENGTH = 19
     DATE_PATTERNS_BY_LENGTH = {
         19: ["%Y-%m-%dT%H:%M:%S"],
@@ -40,10 +42,10 @@ class DateType(PropertyType):
         4: ["%Y"],
     }
 
-    name = 'date'
-    group = 'dates'
-    label = _('Date')
-    plural = _('Dates')
+    name = "date"
+    group = "dates"
+    label = _("Date")
+    plural = _("Dates")
     matchable = True
 
     def validate(self, obj, **kwargs):
@@ -59,26 +61,26 @@ class DateType(PropertyType):
             # if it's not naive, put it on zulu time first:
             if obj.tzinfo is not None:
                 obj = obj.astimezone(pytz.utc)
-            return obj.isoformat()[:self.MAX_LENGTH]
+            return obj.isoformat()[: self.MAX_LENGTH]
         if isinstance(obj, date):
             return obj.isoformat()
 
     def _clean_text(self, text):
         # limit to the date part of a presumed date string
         # FIXME: this may get us rid of TZ info?
-        text = text[:self.MAX_LENGTH]
+        text = text[: self.MAX_LENGTH]
         if not self.validate(text):
             return None
-        text = text.replace(' ', 'T')
+        text = text.replace(" ", "T")
         # fix up dates like 2017-1-5 into 2017-01-05
         if not self.DATE_FULL.match(text):
-            parts = text.split('T', 1)
-            date = [p.zfill(2) for p in parts[0].split('-')]
-            parts[0] = '-'.join(date)
-            text = 'T'.join(parts)
-            text = text[:self.MAX_LENGTH]
+            parts = text.split("T", 1)
+            date = [p.zfill(2) for p in parts[0].split("-")]
+            parts[0] = "-".join(date)
+            text = "T".join(parts)
+            text = text[: self.MAX_LENGTH]
         # strip -00-00 from dates because it makes ES barf.
-        text = self.CUT_ZEROES.sub('', text)
+        text = self.CUT_ZEROES.sub("", text)
         return text
 
     def clean(self, text, format=None, **kwargs):
@@ -118,7 +120,7 @@ class DateType(PropertyType):
         return Literal(value, datatype=XSD.dateTime)
 
     def node_id(self, value):
-        return 'date:%s' % value
+        return "date:%s" % value
 
     def to_datetime(self, value):
         formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), [])
@@ -128,7 +130,7 @@ class DateType(PropertyType):
                 return dt.replace(tzinfo=pytz.UTC)
             except Exception:
                 continue
-        log.debug('Date cannot be parsed %r: %s', formats, value)
+        log.debug("Date cannot be parsed %r: %s", formats, value)
 
     def to_number(self, value):
         date = self.to_datetime(value)

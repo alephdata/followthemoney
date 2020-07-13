@@ -12,10 +12,10 @@ from followthemoney.util import dampen
 
 
 class PhoneType(PropertyType):
-    name = 'phone'
-    group = 'phones'
-    label = _('Phone number')
-    plural = _('Phone numbers')
+    name = "phone"
+    group = "phones"
+    label = _("Phone number")
+    plural = _("Phone numbers")
     matchable = True
     pivot = True
 
@@ -67,7 +67,7 @@ class PhoneType(PropertyType):
         return dampen(6, 11, value)
 
     def rdf(self, value):
-        return URIRef('tel:%s' % value)
+        return URIRef("tel:%s" % value)
 
     def caption(self, value):
         number = parse_number(value)

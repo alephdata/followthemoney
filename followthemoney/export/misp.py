@@ -12,8 +12,9 @@ DEFAULT_EDGE_TYPES: Tuple[str] = (registry.entity.name,)
 
 
 class MISPExporter(GraphExporter):
-
-    def __init__(self, fh: Optional[TextIO]=None, edge_types: Tuple[str]=DEFAULT_EDGE_TYPES):
+    def __init__(
+        self, fh: Optional[TextIO] = None, edge_types: Tuple[str] = DEFAULT_EDGE_TYPES
+    ):
         super(MISPExporter, self).__init__(edge_types=edge_types)
         self._nodes_mapping: Dict[str, MISPObject] = {}
         self._references_to_add: List[Tuple[MISPObject, str]] = []
@@ -29,7 +30,7 @@ class MISPExporter(GraphExporter):
             self.write_node(node)
 
         for src, dst in self._references_to_add:
-            src.add_reference(self._nodes_mapping[dst], 'related-to')
+            src.add_reference(self._nodes_mapping[dst], "related-to")
 
         for edge in self.graph.iteredges():
             self.write_edge(edge)
@@ -37,13 +38,13 @@ class MISPExporter(GraphExporter):
     def write_node(self, node: Node):
         if node.is_entity:
             # NOTE: if the node is an entity, schema cannot be None
-            misp_object = MISPObject(f'ftm-{node.schema.name}', standalone=False)  # type: ignore
+            misp_object = MISPObject(f"ftm-{node.schema.name}", standalone=False)  # type: ignore
             if not node.proxy:
                 return
             for prop, value in self.exportable_fields(node.proxy):
                 if not value:
                     continue
-                if prop.type.name == 'entity':
+                if prop.type.name == "entity":
                     # reference
                     node_id = prop.type.node_id_safe(value)
                     if node_id:
@@ -58,13 +59,13 @@ class MISPExporter(GraphExporter):
         source_object = self._nodes_mapping[edge.source_id]
         target_object = self._nodes_mapping[edge.target_id]
         if edge.schema is None or not edge.schema.edge_label:
-            relation = 'related-to'
+            relation = "related-to"
         else:
-            relation = '-'.join(edge.schema.edge_label.split())
+            relation = "-".join(edge.schema.edge_label.split())
         source_object.add_reference(target_object, relation)
 
     def finalize_graph(self):
         if not self.fh:
-            raise Exception('File handle required to dump the objects')
+            raise Exception("File handle required to dump the objects")
         for obj in self.misp_objects:
             self.fh.write(obj.to_json())

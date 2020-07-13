@@ -6,50 +6,40 @@ from followthemoney.graph import Graph, Node
 
 
 ENTITY = {
-    'id': 'ralph',
-    'schema': 'Person',
-    'properties': {
-        'name': 'Ralph Tester',
-        'birthDate': '1972-05-01',
-        'idNumber': ['9177171', '8e839023'],
-        'website': 'https://ralphtester.me',
-        'phone': '+12025557612',
-        'email': 'info@ralphtester.me',
-        'passport': 'passportEntityId',
-        'topics': 'role.spy'
-    }
+    "id": "ralph",
+    "schema": "Person",
+    "properties": {
+        "name": "Ralph Tester",
+        "birthDate": "1972-05-01",
+        "idNumber": ["9177171", "8e839023"],
+        "website": "https://ralphtester.me",
+        "phone": "+12025557612",
+        "email": "info@ralphtester.me",
+        "passport": "passportEntityId",
+        "topics": "role.spy",
+    },
 }
 
 ENTITY2 = {
-    'id': 'jodie',
-    'schema': 'Person',
-    'properties': {
-        'name': 'Jodie Tester',
-        'birthDate': '1972-05-01',
-    }
+    "id": "jodie",
+    "schema": "Person",
+    "properties": {"name": "Jodie Tester", "birthDate": "1972-05-01",},
 }
 
 REL = {
-    'id': 'jodie2ralph',
-    'schema': 'Family',
-    'properties': {
-        'person': ['jodie'],
-        'relative': ['ralph'],
-    }
+    "id": "jodie2ralph",
+    "schema": "Family",
+    "properties": {"person": ["jodie"], "relative": ["ralph"],},
 }
 
 PASS = {
-    'id': 'passpoat',
-    'schema': 'Passport',
-    'properties': {
-        'holder': ['jodie'],
-        'passportNumber': ['HJSJHAS']
-    }
+    "id": "passpoat",
+    "schema": "Passport",
+    "properties": {"holder": ["jodie"], "passportNumber": ["HJSJHAS"]},
 }
 
 
 class GraphTestCase(TestCase):
-
     def test_basic_graph(self):
         proxy = model.get_proxy(ENTITY)
         graph = Graph(edge_types=registry.pivots)
@@ -67,31 +57,31 @@ class GraphTestCase(TestCase):
         graph.add(model.get_proxy(ENTITY2))
         graph.add(model.get_proxy(REL))
         graph.add(model.get_proxy(PASS))
-        node = Node(registry.entity, 'jodie')
+        node = Node(registry.entity, "jodie")
         adj = list(graph.get_adjacent(node))
         assert len(adj) == 3, adj
-        node = Node(registry.entity, 'ralph')
+        node = Node(registry.entity, "ralph")
         adj = list(graph.get_adjacent(node))
         assert len(adj) == 7, adj
-        node = Node(registry.entity, 'passpoat')
+        node = Node(registry.entity, "passpoat")
         adj = list(graph.get_adjacent(node))
         assert len(adj) == 2, adj
 
-        node = Node(registry.entity, 'passpoat')
-        prop = model.get_qname('Passport:holder')
+        node = Node(registry.entity, "passpoat")
+        prop = model.get_qname("Passport:holder")
         adj = list(graph.get_adjacent(node, prop))
         assert len(adj) == 1, adj
         assert adj[0].source_prop == prop, adj[0].source_prop
         assert adj[0].target_prop == prop.reverse, adj[0].target_prop
 
-        node = Node(registry.entity, 'jodie')
-        prop = model.get_qname('Person:familyPerson')
+        node = Node(registry.entity, "jodie")
+        prop = model.get_qname("Person:familyPerson")
         adj = list(graph.get_adjacent(node, prop))
         assert len(adj) == 1, adj
         assert adj[0].source_prop == prop, adj[0].source_prop
 
-        node = Node(registry.entity, 'ralph')
-        prop = model.get_qname('Person:familyRelative')
+        node = Node(registry.entity, "ralph")
+        prop = model.get_qname("Person:familyRelative")
         adj2 = list(graph.get_adjacent(node, prop))
         assert len(adj2) == 1, adj2
         assert adj2[0].target_prop == prop, adj2[0].target_prop
@@ -104,12 +94,12 @@ class GraphTestCase(TestCase):
         graph = Graph(edge_types=registry.pivots)
         graph.add(proxy)
         data = graph.to_dict()
-        assert 'nodes' in data, data
-        assert 'edges' in data, data
+        assert "nodes" in data, data
+        assert "edges" in data, data
 
     def test_nodes(self):
-        node = Node(registry.phone, '+4917778271717')
-        assert '+49177' in repr(node), repr(node)
+        node = Node(registry.phone, "+4917778271717")
+        assert "+49177" in repr(node), repr(node)
         assert node == node, repr(node)
         assert node.caption == str(node), str(node)
         assert hash(node) == hash(node.id), repr(node)

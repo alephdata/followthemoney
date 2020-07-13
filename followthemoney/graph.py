@@ -9,7 +9,8 @@ class Node(object):
     """A node represents either an entity that can be rendered as a
     node in a graph, or as a re-ified value, like a name, email
     address or phone number."""
-    __slots__ = ['type', 'value', 'id', 'proxy', 'schema']
+
+    __slots__ = ["type", "value", "id", "proxy", "schema"]
 
     def __init__(self, type_, value, proxy=None, schema=None):
         self.type = type_
@@ -32,10 +33,10 @@ class Node(object):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'type': self.type.name,
-            'value': self.value,
-            'caption': self.caption
+            "id": self.id,
+            "type": self.type.name,
+            "value": self.value,
+            "caption": self.caption,
         }
 
     @classmethod
@@ -46,7 +47,7 @@ class Node(object):
         return self.caption
 
     def __repr__(self):
-        return '<Node(%r, %r, %r)>' % (self.id, self.type, self.caption)
+        return "<Node(%r, %r, %r)>" % (self.id, self.type, self.caption)
 
     def __hash__(self):
         return hash(self.id)
@@ -57,10 +58,21 @@ class Node(object):
 
 class Edge(object):
     """A link between two nodes."""
-    __slots__ = ['id', 'weight', 'source_id', 'target_id',
-                 'prop', 'proxy', 'schema', 'graph']
 
-    def __init__(self, graph, source, target, proxy=None, prop=None, value=None):  # noqa
+    __slots__ = [
+        "id",
+        "weight",
+        "source_id",
+        "target_id",
+        "prop",
+        "proxy",
+        "schema",
+        "graph",
+    ]
+
+    def __init__(
+        self, graph, source, target, proxy=None, prop=None, value=None
+    ):  # noqa
         self.graph = graph
         self.id = f"{source.id}<>{target.id}"
         self.source_id = source.id
@@ -105,14 +117,14 @@ class Edge(object):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'source_id': self.source_id,
-            'target_id': self.target_id,
-            'type_name': self.type_name
+            "id": self.id,
+            "source_id": self.source_id,
+            "target_id": self.target_id,
+            "type_name": self.type_name,
         }
 
     def __repr__(self):
-        return '<Edge(%r)>' % self.id
+        return "<Edge(%r)>" % self.id
 
     def __hash__(self):
         return hash(self.id)
@@ -212,6 +224,6 @@ class Graph(object):
 
     def to_dict(self):
         return {
-            'nodes': [n.to_dict() for n in self.iternodes()],
-            'edges': [e.to_dict() for e in self.iteredges()]
+            "nodes": [n.to_dict() for n in self.iternodes()],
+            "edges": [e.to_dict() for e in self.iteredges()],
         }

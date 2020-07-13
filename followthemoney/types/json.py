@@ -6,9 +6,9 @@ from followthemoney.util import sanitize_text, defer as _
 
 
 class JsonType(PropertyType):
-    name = 'json'
+    name = "json"
     group = None
-    label = _('Nested data')
+    label = _("Nested data")
     matchable = False
 
     def pack(self, obj):

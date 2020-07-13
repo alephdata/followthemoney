@@ -3,24 +3,23 @@ from followthemoney.util import merge_context
 
 
 class UtilTestCase(TestCase):
-
     def test_merge_value(self):
         old = {
-            'foo': 'bar',
+            "foo": "bar",
         }
         new = {
-            'foo': 'quux',
+            "foo": "quux",
         }
         result = merge_context(old, new)
-        assert result['foo'] == ['bar', 'quux'], result
+        assert result["foo"] == ["bar", "quux"], result
 
     def test_merge_different(self):
         old = {
-            'foo': 'quux',
+            "foo": "quux",
         }
         new = {
-            'bar': 'quux',
+            "bar": "quux",
         }
         result = merge_context(old, new)
-        assert result['foo'] == ['quux'], result
-        assert result['bar'] == ['quux'], result
+        assert result["foo"] == ["quux"], result
+        assert result["bar"] == ["quux"], result

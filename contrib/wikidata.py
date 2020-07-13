@@ -9,16 +9,14 @@ from followthemoney import model
 SCHEMA = Namespace("http://schema.org/")
 PROP = Namespace("http://www.wikidata.org/prop/direct/")
 
-ENTITY = 'http://www.wikidata.org/entity/'
+ENTITY = "http://www.wikidata.org/entity/"
 Q = Namespace(ENTITY)
-SPECIAL = 'https://www.wikidata.org/wiki/Special:EntityData/'
+SPECIAL = "https://www.wikidata.org/wiki/Special:EntityData/"
 
-SCHEMATA = {
-    Q['5']: 'Person'
-}
+SCHEMATA = {Q["5"]: "Person"}
 
 # Examples:
-# spouse: https://www.wikidata.org/wiki/Property:P26 
+# spouse: https://www.wikidata.org/wiki/Property:P26
 # father: https://www.wikidata.org/wiki/Property:P22
 # member of: https://www.wikidata.org/wiki/Property:P463
 # employer: https://www.wikidata.org/wiki/Property:P108
@@ -35,14 +33,14 @@ def parse_triples(fh, size=1000):
             break
         try:
             graph = Graph()
-            graph.parse(data=line, format='nt')
+            graph.parse(data=line, format="nt")
             yield from graph
         except Exception:
             pass
 
 
 @click.command()
-@click.option('-i', '--input', type=click.File('r'), default='-')  # noqa
+@click.option("-i", "--input", type=click.File("r"), default="-")  # noqa
 def transform(input):
     prev = None
     entity = None
@@ -53,17 +51,17 @@ def transform(input):
         if s != prev:
             prev = s
             if s.startswith(SPECIAL):
-                qid = s[len(SPECIAL):]
+                qid = s[len(SPECIAL) :]
             else:
-                qid = s[len(ENTITY):]
-            entity = model.make_entity('Thing')
+                qid = s[len(ENTITY) :]
+            entity = model.make_entity("Thing")
             entity.make_id(qid)
-            entity.add('wikidataId', qid)
+            entity.add("wikidataId", qid)
             if s.startswith(ENTITY):
-                entity.add('sourceUrl', str(s))
+                entity.add("sourceUrl", str(s))
 
         if p in [SKOS.prefLabel, RDFS.label, SCHEMA.name]:
-            entity.add('name', str(o))
+            entity.add("name", str(o))
             continue
 
         print(s, p, o)
@@ -73,7 +71,7 @@ def transform(input):
             pass
 
 
-if __name__ == '__main__':
-    fmt = '%(name)s [%(levelname)s] %(message)s'
+if __name__ == "__main__":
+    fmt = "%(name)s [%(levelname)s] %(message)s"
     logging.basicConfig(stream=sys.stderr, level=logging.INFO, format=fmt)
     transform()

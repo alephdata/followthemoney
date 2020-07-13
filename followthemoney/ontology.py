@@ -9,17 +9,16 @@ from followthemoney.util import NS
 
 
 class Ontology(object):
-
     def __init__(self):
         self.uri = URIRef(NS)
         self.graph = Graph(identifier=self.uri)
-        self.graph.namespace_manager.bind('ftm', NS)
-        self.graph.namespace_manager.bind('owl', OWL)
-        self.graph.namespace_manager.bind('dct', DCTERMS)
+        self.graph.namespace_manager.bind("ftm", NS)
+        self.graph.namespace_manager.bind("owl", OWL)
+        self.graph.namespace_manager.bind("dct", DCTERMS)
 
         self.graph.add((self.uri, RDF.type, OWL.Ontology))
         self.graph.add((self.uri, RDFS.label, Literal("Follow The Money")))
-        modified = datetime.now().strftime('%Y-%m-%dT%H:%I:%M')
+        modified = datetime.now().strftime("%Y-%m-%dT%H:%I:%M")
         modified = Literal(modified, datatype=XSD.dateTime)
         self.graph.add((self.uri, DCTERMS.modified, modified))
 
@@ -60,20 +59,20 @@ class Ontology(object):
         if prop.type == registry.date:
             self.graph.add((prop.uri, RDFS.range, XSD.dateTime))
 
-    def serialize(self, format='n3'):
+    def serialize(self, format="n3"):
         return self.graph.serialize(format=format)
 
     def write_namespace_docs(self, path):
-        ttl_fn = '%s/ftm.ttl' % path
-        with open(ttl_fn, 'wb') as ttl_file:
+        ttl_fn = "%s/ftm.ttl" % path
+        with open(ttl_fn, "wb") as ttl_file:
             ttl_file.write(self.serialize())
 
-        xml_fn = '%s/ftm.xml' % path
-        with open(xml_fn, 'wb') as xml_file:
-            xml_file.write(self.serialize('xml'))
+        xml_fn = "%s/ftm.xml" % path
+        with open(xml_fn, "wb") as xml_file:
+            xml_file.write(self.serialize("xml"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     path = sys.argv[1]
     ontology = Ontology()
     ontology.write_namespace_docs(path)

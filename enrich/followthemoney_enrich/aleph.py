@@ -12,7 +12,6 @@ log = logging.getLogger(__name__)
 
 
 class AlephEnricher(Enricher):
-
     def __init__(self):
         self.api = AlephAPI()
 
@@ -54,28 +53,25 @@ class AlephEnricher(Enricher):
 
     def convert_entity(self, data):
         data = ensure_dict(data)
-        if 'properties' not in data or 'schema' not in data:
+        if "properties" not in data or "schema" not in data:
             return
         try:
             entity = model.get_proxy(data, cleaned=False)
         except InvalidData:
-            log.error("Server model mismatch: %s" % data.get('schema'))
+            log.error("Server model mismatch: %s" % data.get("schema"))
             return
-        entity.id = data.get('id')
-        links = ensure_dict(data.get('links'))
-        entity.add('alephUrl', links.get('self'),
-                   quiet=True, cleaned=True)
-        collection = data.get('collection', {})
-        entity.add('publisher', collection.get('label'),
-                   quiet=True, cleaned=True)
-        clinks = collection.get('links', {})
-        entity.add('publisherUrl', clinks.get('ui'),
-                   quiet=True, cleaned=True)
+        entity.id = data.get("id")
+        links = ensure_dict(data.get("links"))
+        entity.add("alephUrl", links.get("self"), quiet=True, cleaned=True)
+        collection = data.get("collection", {})
+        entity.add("publisher", collection.get("label"), quiet=True, cleaned=True)
+        clinks = collection.get("links", {})
+        entity.add("publisherUrl", clinks.get("ui"), quiet=True, cleaned=True)
         return entity
 
     def convert_nested(self, data):
         entity = self.convert_entity(data)
-        properties = ensure_dict(data.get('properties'))
+        properties = ensure_dict(data.get("properties"))
         for prop, values in properties.items():
             for value in ensure_list(values):
                 if is_mapping(value):
@@ -83,30 +79,30 @@ class AlephEnricher(Enricher):
         yield entity
 
     def enrich_entity(self, entity):
-        url = self.api._make_url('match')
+        url = self.api._make_url("match")
         for page in range(10):
             data = self.post_match(url, entity)
-            for res in data.get('results', []):
+            for res in data.get("results", []):
                 proxy = self.convert_entity(res)
                 yield self.make_match(entity, proxy)
 
-            url = data.get('next')
+            url = data.get("next")
             if url is None:
                 break
 
     def expand_entity(self, entity):
-        for url in entity.get('alephUrl', quiet=True):
+        for url in entity.get("alephUrl", quiet=True):
             data = self.get_api(url)
             yield from self.convert_nested(data)
 
-            _, entity_id = url.rsplit('/', 1)
-            filters = (('entities', entity_id),)
-            search_api = self.api._make_url('entities', filters=filters)
+            _, entity_id = url.rsplit("/", 1)
+            filters = (("entities", entity_id),)
+            search_api = self.api._make_url("entities", filters=filters)
             while True:
                 res = self.get_api(search_api)
-                for data in ensure_list(res.get('results')):
+                for data in ensure_list(res.get("results")):
                     yield from self.convert_nested(data)
 
-                search_api = res.get('next')
+                search_api = res.get("next")
                 if search_api is None:
                     break

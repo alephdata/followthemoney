@@ -5,15 +5,13 @@ from followthemoney.exc import InvalidMapping
 
 
 class QueryMapping(object):
-
     def __init__(self, model, data, key_prefix=None):
         self.model = model
         self.data = data
         self.refs = set()
         self.entities = []
-        for name, data in data.get('entities', {}).items():
-            entity = EntityMapping(model, self, name, data,
-                                   key_prefix=key_prefix)
+        for name, data in data.get("entities", {}).items():
+            entity = EntityMapping(model, self, name, data, key_prefix=key_prefix)
 
             self.entities.append(entity)
             self.refs.update(entity.refs)
@@ -45,9 +43,9 @@ class QueryMapping(object):
 
     @property
     def source(self):
-        if 'database' in self.data:
+        if "database" in self.data:
             return SQLSource(self, self.data)
-        elif 'csv_url' in self.data or 'csv_urls' in self.data:
+        elif "csv_url" in self.data or "csv_urls" in self.data:
             return CSVSource(self, self.data)
         raise InvalidMapping("Cannot determine mapping type")
 

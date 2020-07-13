@@ -17,7 +17,7 @@ class CSVSource(StreamSource):
     def __init__(self, query, data):
         super(CSVSource, self).__init__(query, data)
         self.urls = set()
-        for url in keys_values(data, 'csv_url', 'csv_urls'):
+        for url in keys_values(data, "csv_url", "csv_urls"):
             self.urls.add(os.path.expandvars(url))
 
         if not len(self.urls):
@@ -26,17 +26,17 @@ class CSVSource(StreamSource):
     def read_csv_url(self, url):
         parsed_url = requests.utils.urlparse(url)
         log.info("Loading: %s", url)
-        if parsed_url.scheme in ['http', 'https']:
+        if parsed_url.scheme in ["http", "https"]:
             res = requests.get(url, stream=True)
             if not res.ok:
                 raise InvalidMapping("Failed to open CSV: %s" % url)
             # if res.encoding is None:
-            res.encoding = 'utf-8'
+            res.encoding = "utf-8"
             # log.info("Detected encoding: %s", res.encoding)
             lines = res.iter_lines(decode_unicode=True)
             yield from self.read_csv(lines)
         else:
-            with io.open(parsed_url.path, 'r') as fh:
+            with io.open(parsed_url.path, "r") as fh:
                 yield from self.read_csv(fh)
 
     @property

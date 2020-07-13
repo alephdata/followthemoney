@@ -32,10 +32,10 @@ class Model(object):
                     schema.properties[prop.name] = prop
 
     def _load(self, filepath):
-        with open(filepath, 'r') as fh:
+        with open(filepath, "r") as fh:
             data = yaml.safe_load(fh)
             if not isinstance(data, dict):
-                raise InvalidModel('Model file is not a mapping.')
+                raise InvalidModel("Model file is not a mapping.")
             for name, config in data.items():
                 self.schemata[name] = Schema(self, name, config)
 
@@ -91,15 +91,15 @@ class Model(object):
         raise InvalidData(msg % (left, right))
 
     def make_entity(self, schema, key_prefix=None):
-        return EntityProxy(self, {'schema': schema}, key_prefix=key_prefix)
+        return EntityProxy(self, {"schema": schema}, key_prefix=key_prefix)
 
     def get_proxy(self, data, cleaned=True):
         return EntityProxy.from_dict(self, data, cleaned=cleaned)
 
     def to_dict(self):
         return {
-            'schemata': {s.name: s.to_dict() for s in self.schemata.values()},
-            'types': {t.name: t.to_dict() for t in registry.types}
+            "schemata": {s.name: s.to_dict() for s in self.schemata.values()},
+            "types": {t.name: t.to_dict() for t in registry.types},
         }
 
     def __iter__(self):

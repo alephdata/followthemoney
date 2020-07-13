@@ -19,16 +19,16 @@ log = logging.getLogger(__name__)
 class EntityProxy(object):
     """A wrapper object for an entity, with utility functions for the
     introspection and manipulation of its properties."""
-    __slots__ = ['schema', 'id', 'key_prefix', 'context',
-                 '_properties', '_size']
+
+    __slots__ = ["schema", "id", "key_prefix", "context", "_properties", "_size"]
 
     def __init__(self, model, data, key_prefix=None, cleaned=True):
         data = dict(data)
-        properties = ensure_dict(data.pop('properties', {}))
-        self.schema = model.get(data.pop('schema', None))
+        properties = ensure_dict(data.pop("properties", {}))
+        self.schema = model.get(data.pop("schema", None))
         if self.schema is None:
-            raise InvalidData(gettext('No schema for entity.'))
-        self.id = sanitize_text(data.pop('id', None))
+            raise InvalidData(gettext("No schema for entity."))
+        self.id = sanitize_text(data.pop("id", None))
         self.key_prefix = sanitize_text(key_prefix)
         self.context = data
         self._properties = {}
@@ -169,8 +169,7 @@ class EntityProxy(object):
         countries = []
         if type_ != registry.country:
             countries = self.get_type_values(registry.country)
-        return type_.normalize_set(combined, cleaned=cleaned,
-                                   countries=countries)
+        return type_.normalize_set(combined, cleaned=cleaned, countries=countries)
 
     def get_type_inverted(self, cleaned=True):
         """Invert the properties of an entity into their normalised form."""
@@ -230,11 +229,9 @@ class EntityProxy(object):
 
     def to_dict(self):
         data = dict(self.context)
-        data.update({
-            'id': self.id,
-            'schema': self.schema.name,
-            'properties': self.properties
-        })
+        data.update(
+            {"id": self.id, "schema": self.schema.name, "properties": self.properties}
+        )
         return data
 
     def to_full_dict(self):
@@ -264,7 +261,7 @@ class EntityProxy(object):
         return self.caption
 
     def __repr__(self):
-        return '<E(%r,%r)>' % (self.id, str(self))
+        return "<E(%r,%r)>" % (self.id, str(self))
 
     def __len__(self):
         return self._size

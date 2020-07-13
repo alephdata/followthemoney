@@ -7,10 +7,10 @@ from followthemoney.util import defer as _
 
 
 class MimeType(PropertyType):
-    name = 'mimetype'
-    group = 'mimetypes'
-    label = _('MIME-Type')
-    plural = _('MIME-Types')
+    name = "mimetype"
+    group = "mimetypes"
+    label = _("MIME-Type")
+    plural = _("MIME-Types")
     matchable = False
 
     def clean_text(self, text, **kwargs):
@@ -19,7 +19,7 @@ class MimeType(PropertyType):
             return text
 
     def rdf(self, value):
-        return URIRef('urn:mimetype:%s' % value)
+        return URIRef("urn:mimetype:%s" % value)
 
     def caption(self, value):
         return parse_mimetype(value).label

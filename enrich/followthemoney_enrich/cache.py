@@ -5,7 +5,6 @@ from normality import stringify
 
 
 class Cache(object):
-
     def get(self, key):
         return None
 
@@ -18,13 +17,13 @@ class Cache(object):
 
 class RedisCache(Cache):
     EXPIRE = 84600 * 90
-    URL = os.environ.get('ENRICH_REDIS_URL')
+    URL = os.environ.get("ENRICH_REDIS_URL")
 
     def __init__(self):
         self.redis = Redis.from_url(self.URL)
 
     def _prefix_key(self, key):
-        return 'ftm:enrich:%s' % stringify(key)
+        return "ftm:enrich:%s" % stringify(key)
 
     def store(self, key, value):
         key = self._prefix_key(key)

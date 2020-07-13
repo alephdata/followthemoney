@@ -10,19 +10,19 @@ from followthemoney.cli.util import read_entity, write_object
 
 @click.group(help="Utility for FollowTheMoney graph data")
 def cli():
-    fmt = '%(name)s [%(levelname)s] %(message)s'
+    fmt = "%(name)s [%(levelname)s] %(message)s"
     logging.basicConfig(stream=sys.stderr, level=logging.INFO, format=fmt)
 
 
-@cli.command('dump-model', help="Export the current schema model")
-@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+@cli.command("dump-model", help="Export the current schema model")
+@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
 def dump_model(outfile):
     outfile.write(json.dumps(model.to_dict(), indent=2))
 
 
-@cli.command('validate', help="Re-parse and validate the given data")
-@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
-@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
+@cli.command("validate", help="Re-parse and validate the given data")
+@click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
+@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
 def validate(infile, outfile):
     try:
         while True:
@@ -38,10 +38,10 @@ def validate(infile, outfile):
         raise click.Abort()
 
 
-@cli.command('sign', help="Apply an HMAC signature to entity IDs")
-@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
-@click.option('-o', '--outfile', type=click.File('w'), default='-')  # noqa
-@click.option('-s', '--signature', default=None, help='HMAC signature key')  # noqa
+@cli.command("sign", help="Apply an HMAC signature to entity IDs")
+@click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
+@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
+@click.option("-s", "--signature", default=None, help="HMAC signature key")  # noqa
 def sign(infile, outfile, signature):
     ns = Namespace(signature)
     try:
@@ -56,15 +56,15 @@ def sign(infile, outfile, signature):
 
 
 @cli.command(help="Format a stream of entities to make it readable")
-@click.option('-i', '--infile', type=click.File('r'), default='-')  # noqa
+@click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
 def pretty(infile):
-    stdout = click.get_text_stream('stdout')
+    stdout = click.get_text_stream("stdout")
     try:
         while True:
             entity = read_entity(infile)
             if entity is None:
                 break
             data = json.dumps(entity.to_dict(), indent=2)
-            stdout.write(data + '\n')
+            stdout.write(data + "\n")
     except BrokenPipeError:
         raise click.Abort()

@@ -1,7 +1,6 @@
-
-
 class FollowTheMoneyException(Exception):
     """Catch-all exception for errors emitted by this library."""
+
     pass
 
 
@@ -15,9 +14,11 @@ class InvalidData(FollowTheMoneyException):
 
 class InvalidModel(FollowTheMoneyException):
     """The schema model is not defined correctly."""
+
     pass
 
 
 class InvalidMapping(FollowTheMoneyException):
     """A data mapping was invalid."""
+
     pass

@@ -10,7 +10,8 @@ from followthemoney.util import get_entity_id, sanitize_text
 class PropertyMapping(object):
     """Map values from a given record (e.g. a CSV row or SQL result) to the
     schema form."""
-    FORMAT_PATTERN = re.compile('{{([^(}})]*)}}')
+
+    FORMAT_PATTERN = re.compile("{{([^(}})]*)}}")
 
     def __init__(self, query, data, prop):
         self.query = query
@@ -20,20 +21,20 @@ class PropertyMapping(object):
         self.name = prop.name
         self.type = prop.type
 
-        self.refs = keys_values(data, 'column', 'columns')
-        self.literals = keys_values(data, 'literal', 'literals')
-        self.join = data.pop('join', None)
-        self.split = data.pop('split', None)
-        self.entity = data.pop('entity', None)
-        self.required = data.pop('required', False)
+        self.refs = keys_values(data, "column", "columns")
+        self.literals = keys_values(data, "literal", "literals")
+        self.join = data.pop("join", None)
+        self.split = data.pop("split", None)
+        self.entity = data.pop("entity", None)
+        self.required = data.pop("required", False)
 
-        self.template = sanitize_text(data.pop('template', None))
+        self.template = sanitize_text(data.pop("template", None))
         self.replacements = {}
         if self.template is not None:
             # this is hacky, trying to generate refs from template
             for ref in self.FORMAT_PATTERN.findall(self.template):
                 self.refs.append(ref)
-                self.replacements['{{%s}}' % ref] = ref
+                self.replacements["{{%s}}" % ref] = ref
 
     def bind(self):
         if self.prop.stub:
@@ -50,12 +51,15 @@ class PropertyMapping(object):
             if entity.name != self.entity:
                 continue
             if not entity.schema.is_a(self.prop.range):
-                raise InvalidMapping("The entity [%r] must be a %s (not %s)" %
-                                     (self.prop, self.prop.range, entity.schema.name))  # noqa
+                raise InvalidMapping(
+                    "The entity [%r] must be a %s (not %s)"
+                    % (self.prop, self.prop.range, entity.schema.name)
+                )  # noqa
             return
 
-        raise InvalidMapping("No entity [%s] for property [%r]"
-                             % (self.entity, self.prop))
+        raise InvalidMapping(
+            "No entity [%s] for property [%r]" % (self.entity, self.prop)
+        )
 
     def record_values(self, record):
         if self.template is not None:
@@ -63,7 +67,7 @@ class PropertyMapping(object):
             # current record
             value = self.template
             for repl, ref in self.replacements.items():
-                ref_value = record.get(ref) or ''
+                ref_value = record.get(ref) or ""
                 value = value.replace(repl, ref_value)
             return [value.strip()]
 
