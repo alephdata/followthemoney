@@ -88,13 +88,6 @@ Thing:
       label: Index text
       hidden: true
       type: text
-    indexUpdatedAt:
-      # This is a leaked abstraction from aleph. This will be used to set
-      # the timestamp of the entity when indexed.
-      label: Index updated at
-      hidden: true
-      matchable: false
-      type: date
     modifiedAt:
       label: "Modified on"
       type: date

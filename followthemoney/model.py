@@ -87,6 +87,9 @@ class Model(object):
             return left
         if right.is_a(left):
             return right
+        # for schema in self.schemata.values():
+        #     if schema.is_a(left) and schema.is_a(right):
+        #         return schema
         msg = "No common schema: %s and %s"
         raise InvalidData(msg % (left, right))
 

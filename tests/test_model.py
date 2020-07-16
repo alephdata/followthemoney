@@ -78,13 +78,14 @@ class ModelTestCase(TestCase):
         assert model.common_schema("Person", "Thing") == "Person"
         assert model.common_schema("LegalEntity", "Company") == "Company"
         assert model.common_schema("Interval", "Ownership") == "Ownership"
+        # assert model.common_schema("LegalEntity", "Asset") == "Company"
 
         with assert_raises(InvalidData):
             model.common_schema("Person", "Directorship")
         with assert_raises(InvalidData):
             model.common_schema("Person", "Company")
         with assert_raises(InvalidData):
-            model.common_schema("Interval", "Thing")
+            model.common_schema("Membership", "Thing")
 
     def test_model_is_descendant(self):
         assert model["Thing"].is_a("Thing") is True
