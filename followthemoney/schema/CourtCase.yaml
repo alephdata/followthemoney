@@ -4,14 +4,14 @@ CourtCase:
   extends: Thing
   matchable: false
   featured:
-  - name
-  - fileDate
-  - caseNumber
+    - name
+    - fileDate
+    - caseNumber
   required:
-  - name
+    - name
   caption:
-  - name
-  - caseNumber
+    - name
+    - caseNumber
   properties:
     category:
       label: Category

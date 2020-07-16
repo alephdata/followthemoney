@@ -1,16 +1,16 @@
 # Two entities are connected but the nature of the connection is tbd
-UnknownLink: 
+UnknownLink:
   label: "Other link"
   plural: "Other links"
   extends: Interest
   matchable: false
   featured:
-  - subject
-  - object
-  - role
+    - subject
+    - object
+    - role
   required:
-  - subject
-  - object
+    - subject
+    - object
   edge:
     source: subject
     label: "linked to"

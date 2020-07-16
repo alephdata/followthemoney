@@ -1,23 +1,23 @@
 Event:
   label: "Event"
   plural: "Events"
-  extends: 
-  - Interval
-  - Analyzable
-  - Thing
+  extends:
+    - Interval
+    - Analyzable
+    - Thing
   matchable: false
   # generated: true
   caption:
-  - name
-  - summary
-  - date
+    - name
+    - summary
+    - date
   required:
-  - name
+    - name
   featured:
-  - name
-  - summary
-  - date
-  - location
+    - name
+    - summary
+    - date
+    - location
   properties:
     location:
       label: "Location"

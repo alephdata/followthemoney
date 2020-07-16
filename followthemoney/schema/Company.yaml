@@ -3,17 +3,17 @@ Company:
   plural: Companies
   matchable: true
   extends:
-  - Organization
-  - Asset
+    - Organization
+    - Asset
   featured:
-  - name
-  - jurisdiction
-  - registrationNumber
-  - incorporationDate
+    - name
+    - jurisdiction
+    - registrationNumber
+    - incorporationDate
   required:
-  - name
+    - name
   caption:
-  - name
+    - name
   properties:
     jurisdiction:
       label: Jurisdiction

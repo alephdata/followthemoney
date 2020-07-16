@@ -4,17 +4,17 @@ ContractAward:
   description: "A contract or contract lot as awarded to a supplier."
   matchable: false
   extends:
-  - Value
-  - Interest
+    - Value
+    - Interest
   required:
-  - supplier
-  - contract
+    - supplier
+    - contract
   featured:
-  - supplier
-  - contract
-  - amount
-  - lotNumber
-  - decisionReason
+    - supplier
+    - contract
+    - amount
+    - lotNumber
+    - decisionReason
   edge:
     source: contract
     label: "awarded to"

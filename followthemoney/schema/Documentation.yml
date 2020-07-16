@@ -1,15 +1,15 @@
-Documentation: 
+Documentation:
   label: "Documentation"
   plural: "Documentations"
   extends: Interest
   matchable: false
   featured:
-  - document
-  - entity
-  - role
+    - document
+    - entity
+    - role
   required:
-  - document
-  - entity
+    - document
+    - entity
   edge:
     source: document
     label: "documents"

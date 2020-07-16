@@ -3,20 +3,20 @@ Payment:
   plural: "Payments"
   description: "A monetary payment between two parties."
   matchable: false
-  extends: 
-  - Interval
-  - Value
+  extends:
+    - Interval
+    - Value
   featured:
-  - payer
-  - beneficiary
-  - date
-  - amount
-  - purpose
+    - payer
+    - beneficiary
+    - date
+    - amount
+    - purpose
   required:
-  - payer
-  - beneficiary
+    - payer
+    - beneficiary
   caption:
-  - amount
+    - amount
   edge:
     source: payer
     label: "paid"

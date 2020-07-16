@@ -5,17 +5,17 @@ LegalEntity:
   description: "A legal entity may be a person or a company."
   matchable: true
   featured:
-  - name
-  - country
-  - legalForm
-  - status
+    - name
+    - country
+    - legalForm
+    - status
   required:
-  - name
+    - name
   caption:
-  - name
-  - email
-  - phone
-  - registrationNumber
+    - name
+    - email
+    - phone
+    - registrationNumber
   properties:
     name:
       # This is normally defined as a string, here it becomes a name

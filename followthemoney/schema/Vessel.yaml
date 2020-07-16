@@ -5,15 +5,15 @@ Vessel:
   extends: Vehicle
   matchable: true
   featured:
-  - name
-  - imoNumber
-  - type
-  - flag
+    - name
+    - imoNumber
+    - type
+    - flag
   required:
-  - name
+    - name
   caption:
-  - name
-  - imoNumber
+    - name
+    - imoNumber
   properties:
     imoNumber:
       label: IMO Number

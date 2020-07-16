@@ -4,11 +4,11 @@ Organization:
   plural: Organizations
   matchable: true
   featured:
-  - name
-  - country
-  - legalForm
-  - status
+    - name
+    - country
+    - legalForm
+    - status
   required:
-  - name
+    - name
   caption:
-  - name
+    - name

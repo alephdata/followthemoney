@@ -7,16 +7,16 @@ Contract:
   extends: Asset
   matchable: false
   featured:
-  - title
-  - amount
-  - authority
-  - contractDate
+    - title
+    - amount
+    - authority
+    - contractDate
   required:
-  - title
+    - title
   caption:
-  - title
-  - name
-  - procedureNumber
+    - title
+    - name
+    - procedureNumber
   properties:
     title:
       label: "Contract title"

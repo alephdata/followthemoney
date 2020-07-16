@@ -5,13 +5,13 @@ RealEstate:
   description: "A piece of land or property."
   matchable: false
   featured:
-  - registrationNumber
-  - address
-  - country
+    - registrationNumber
+    - address
+    - country
   caption:
-  - name
-  - address
-  - registrationNumber
+    - name
+    - address
+    - registrationNumber
   properties:
     latitude:
       label: Latitude

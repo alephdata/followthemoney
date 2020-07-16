@@ -5,12 +5,12 @@ Representation:
   extends: Interest
   matchable: false
   featured:
-  - agent
-  - client
-  - role
+    - agent
+    - client
+    - role
   required:
-  - agent
-  - client
+    - agent
+    - client
   edge: # AGENT represents CLIENT
     source: agent
     label: "represents"

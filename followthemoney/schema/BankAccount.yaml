@@ -4,14 +4,14 @@ BankAccount:
   extends: Asset
   matchable: true
   featured:
-  - accountNumber
-  - bankName
+    - accountNumber
+    - bankName
   # required:
   # - accountNumber
   caption:
-  - name
-  - iban
-  - accountNumber
+    - name
+    - iban
+    - accountNumber
   properties:
     bankName:
       label: Bank Name

@@ -4,16 +4,16 @@ Directorship:
   extends: Interest
   matchable: false
   featured:
-  - director
-  - organization
-  - role
-  - startDate
-  - endDate
+    - director
+    - organization
+    - role
+    - startDate
+    - endDate
   required:
-  - director
-  - organization
+    - director
+    - organization
   caption:
-  - role
+    - role
   edge:
     source: director
     label: "directs"

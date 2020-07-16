@@ -5,12 +5,12 @@ Family:
   extends: Interval
   matchable: false
   featured:
-  - person
-  - relative
-  - relationship
+    - person
+    - relative
+    - relationship
   required:
-  - person
-  - relative
+    - person
+    - relative
   edge:
     source: person
     label: "related to"

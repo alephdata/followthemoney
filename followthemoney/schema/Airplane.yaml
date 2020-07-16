@@ -4,19 +4,19 @@ Airplane:
   extends: Vehicle
   matchable: true
   featured:
-  - type               # Airbus A320 214SL
-  - registrationNumber # A7-LAE
-  - country            # Qatar
-  - operator           # Qatar Airways
-  - owner              # Qatar Airways
+    - type # Airbus A320 214SL
+    - registrationNumber # A7-LAE
+    - country # Qatar
+    - operator # Qatar Airways
+    - owner # Qatar Airways
   caption:
-  - name
-  - registrationNumber
+    - name
+    - registrationNumber
   properties:
-    serialNumber:           # 36576093870
+    serialNumber: # 36576093870
       label: Serial Number
       type: identifier
-    icaoCode:               # A320
+    icaoCode: # A320
       label: ICAO aircraft type designator
-    manufacturer:           # Airbus
+    manufacturer: # Airbus
       label: Manufacturer

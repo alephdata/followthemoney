@@ -5,12 +5,12 @@ Succession:
   extends: Interest
   matchable: false
   featured:
-  - predecessor
-  - successor
-  - date
+    - predecessor
+    - successor
+    - date
   required:
-  - predecessor
-  - successor
+    - predecessor
+    - successor
   edge: # PREDECESSOR preceeds SUCCESSOR
     source: predecessor
     label: "preceeds"
@@ -24,7 +24,7 @@ Succession:
       range: LegalEntity
       reverse:
         name: successors
-        label: "Successors" 
+        label: "Successors"
     successor:
       label: "Successor"
       type: entity

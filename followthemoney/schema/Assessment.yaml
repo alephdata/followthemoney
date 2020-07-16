@@ -4,13 +4,13 @@ Assessment:
   extends: Thing
   matchable: false
   featured:
-  - name
-  - publishDate
-  - author
+    - name
+    - publishDate
+    - author
   caption:
-  - name
+    - name
   required:
-  - name
+    - name
   properties:
     publishDate:
       label: "Date of publishing"

@@ -1,19 +1,19 @@
 Call:
   extends:
-  - Interval
+    - Interval
   label: "Call"
   plural: "Calls"
   matchable: false
   generated: true
   featured:
-  - callerNumber
-  - caller
-  - receiverNumber
-  - receiver
-  - date
+    - callerNumber
+    - caller
+    - receiverNumber
+    - receiver
+    - date
   caption:
-  - callerNumber
-  - receiverNumber
+    - callerNumber
+    - receiverNumber
   properties:
     caller:
       label: "Caller"

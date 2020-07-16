@@ -3,16 +3,16 @@ Debt:
   plural: "Debts"
   description: "A monetary debt between two parties."
   matchable: false
-  extends: 
-  - Interval
-  - Value
+  extends:
+    - Interval
+    - Value
   required:
-  - debtor
+    - debtor
   featured:
-  - debtor
-  - creditor
-  - date
-  - amount
+    - debtor
+    - creditor
+    - date
+    - amount
   edge:
     source: debtor
     label: "owes"

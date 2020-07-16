@@ -2,12 +2,12 @@ Thing:
   abstract: true
   matchable: false
   featured:
-  - name
-  - country
+    - name
+    - country
   required:
-  - name
+    - name
   caption:
-  - name
+    - name
   properties:
     name:
       label: Name

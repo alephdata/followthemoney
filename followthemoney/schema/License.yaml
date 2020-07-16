@@ -3,19 +3,19 @@ License:
   plural: Licenses
   description: "A grant of land, rights or property. A type of Contract"
   extends:
-  - Contract
+    - Contract
   matchable: false
   featured:
-  - name
-  - amount
-  - authority
-  - contractDate
-  - commodities
+    - name
+    - amount
+    - authority
+    - contractDate
+    - commodities
   required:
-  - name
-  - authority
+    - name
+    - authority
   caption:
-  - name
+    - name
   properties:
     area:
       label: "Area"

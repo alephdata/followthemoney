@@ -4,14 +4,14 @@ Ownership:
   extends: Interest
   matchable: false
   featured:
-  - owner
-  - asset
-  - percentage
-  - startDate
-  - endDate
+    - owner
+    - asset
+    - percentage
+    - startDate
+    - endDate
   required:
-  - owner
-  - asset
+    - owner
+    - asset
   edge: # OWNER owns ASSET
     source: owner
     label: "owns"

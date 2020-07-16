@@ -4,18 +4,18 @@ EconomicActivity:
   description: "A foreign economic activity"
   matchable: false
   extends:
-  - Interval
+    - Interval
   featured:
-  - sender
-  - receiver
-  - contract
-  - goodsDescription
-  - startDate
-  - endDate
+    - sender
+    - receiver
+    - contract
+    - goodsDescription
+    - startDate
+    - endDate
   caption:
-  - summary
-  - goodsDescription
-  - ccdNumber
+    - summary
+    - goodsDescription
+    - ccdNumber
   properties:
     contract:
       label: "Associated contract"

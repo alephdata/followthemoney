@@ -1,21 +1,21 @@
 UserAccount:
   extends:
-  - Thing
+    - Thing
   label: "User account"
   plural: "User accounts"
   matchable: true
   generated: true
   featured:
-  - username
-  - service
-  - email
-  - owner
+    - username
+    - service
+    - email
+    - owner
   required:
-  - username
+    - username
   caption:
-  - username
-  - email
-  - service
+    - username
+    - email
+    - service
   properties:
     owner:
       label: "Owner"

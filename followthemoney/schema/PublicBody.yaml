@@ -5,11 +5,11 @@ PublicBody:
   extends: Organization
   matchable: true
   featured:
-  - name
-  - country
-  - legalForm
-  - status
+    - name
+    - country
+    - legalForm
+    - status
   caption:
-  - name
+    - name
   required:
-  - name
+    - name

@@ -4,14 +4,14 @@ Vehicle:
   extends: Asset
   matchable: false
   featured:
-  - type
-  - name
-  - registrationNumber    
-  - country
-  - owner
+    - type
+    - name
+    - registrationNumber
+    - country
+    - owner
   caption:
-  - name
-  - registrationNumber
+    - name
+    - registrationNumber
   properties:
     registrationNumber:
       label: Registration Number

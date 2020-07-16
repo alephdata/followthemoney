@@ -5,15 +5,15 @@ Sanction:
   extends: Interval
   matchable: false
   featured:
-  - entity
-  - authority
-  - program
-  - startDate
-  - endDate
+    - entity
+    - authority
+    - program
+    - startDate
+    - endDate
   required:
-  - entity
+    - entity
   caption:
-  - program
+    - program
   properties:
     entity:
       label: "Entity"

@@ -5,17 +5,17 @@ Passport:
   extends: Interval
   matchable: false
   featured:
-  - passportNumber
-  - country
-  - type
-  - holder
-  - startDate
-  - endDate
+    - passportNumber
+    - country
+    - type
+    - holder
+    - startDate
+    - endDate
   required:
-  - holder
-  - passportNumber
+    - holder
+    - passportNumber
   caption:
-  - passportNumber
+    - passportNumber
   properties:
     holder:
       label: "Document holder"

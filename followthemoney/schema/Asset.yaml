@@ -1,13 +1,13 @@
 Asset:
   label: Asset
   plural: Assets
-  extends: 
-  - Thing
-  - Value
+  extends:
+    - Thing
+    - Value
   featured:
-  - name
-  - amount
+    - name
+    - amount
   caption:
-  - name
+    - name
   abstract: false
   matchable: false
