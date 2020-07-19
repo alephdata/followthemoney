@@ -18,7 +18,7 @@ class UrlsTest(unittest.TestCase):
 
     def test_parse_url(self):
         self.assertEqual(urls.clean("http://foo.com"), "http://foo.com/")
-        self.assertEqual(urls.clean("http://foo.com/#lala"), "http://foo.com/")
+        self.assertEqual(urls.clean("http://foo.com/#lala"), "http://foo.com/#lala")
 
         self.assertEqual(
             urls.clean("http://foo.com?b=1&a=2"), "http://foo.com/?a=2&b=1"

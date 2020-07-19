@@ -19,7 +19,7 @@ class UrlType(PropertyType):
 
     def clean_text(self, url, **kwargs):
         """Perform intensive care on URLs, see `urlnormalizer`."""
-        return normalize_url(url)
+        return normalize_url(url, drop_fragments=False)
 
     def rdf(self, value):
         return URIRef(value)
