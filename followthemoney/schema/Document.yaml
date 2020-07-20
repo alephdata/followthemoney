@@ -113,6 +113,14 @@ PlainText:
       label: "Text"
       hidden: true
       type: "text"
+    altBodyText:
+      label: "Alternative text"
+      hidden: true
+      type: text
+    altTextSrcLanguage:
+      label: "The language of the source document detected when the alternative text was extracted"
+    altTextLanguage:
+      label: "The language of the alternative extracted text"
 
 Pages:
   # Like PDF, word document, ...
@@ -134,6 +142,9 @@ Pages:
       label: "PDF alternative version checksum"
       hidden: true
       type: checksum
+    hasAltBodyText:
+      label: "Indicates if the pages have alternative text. When present and non-zero, pages have alt text"
+      type: number
 
 Folder:
   extends: Document
@@ -197,6 +208,14 @@ Image:
       label: "Text"
       type: "text"
       hidden: true
+    altBodyText:
+      label: "Alternative text"
+      hidden: true
+      type: text
+    altTextSrcLanguage:
+      label: "The language of the source document detected when the alternative text was extracted"
+    altTextLanguage:
+      label: "The language of the alternative extracted text"
 
 Video:
   extends: Document
@@ -266,6 +285,14 @@ HyperText:
       label: "HTML"
       type: html
       hidden: true
+    altBodyText:
+      label: "Alternative text"
+      hidden: true
+      type: text
+    altTextSrcLanguage:
+      label: "The language of the source document detected when the alternative text was extracted"
+    altTextLanguage:
+      label: "The language of the alternative extracted text"
 
 Email:
   extends:
