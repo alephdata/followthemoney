@@ -1,14 +1,14 @@
 Mention:
   label: Mention
   plural: Mentions
-  abstract: true
+  abstract: false
   matchable: false
   generated: true
   properties:
     document:
       label: "Document"
       reverse:
-        name: relatedEntities
+        name: mentionedEntities
         label: "Extracted names"
       type: entity
       range: Document
