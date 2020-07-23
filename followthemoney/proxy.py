@@ -67,9 +67,9 @@ class EntityProxy(object):
     def get(self, prop, quiet=False):
         """Get all values of a property."""
         prop = self._get_prop(prop, quiet=quiet)
-        if prop is None or prop not in self._properties:
+        if prop is None or prop.name not in self._properties:
             return []
-        return list(self._properties.get(prop))
+        return list(self._properties.get(prop.name))
 
     def first(self, prop, quiet=False):
         """Get only the first (random) value, or None."""
@@ -115,16 +115,16 @@ class EntityProxy(object):
                     continue
             self._size += value_size
 
-            if prop not in self._properties:
-                self._properties[prop] = OrderedSet()
-            self._properties[prop].add(value)
+            if prop.name not in self._properties:
+                self._properties[prop.name] = OrderedSet()
+            self._properties[prop.name].add(value)
 
     def set(self, prop, values, cleaned=False, quiet=False):
         """Replace the values of the property with the given value(s)."""
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
             return
-        self._properties.pop(prop, None)
+        self._properties.pop(prop.name, None)
         return self.add(prop, values, cleaned=cleaned, quiet=quiet)
 
     def pop(self, prop, quiet=True):
@@ -132,22 +132,23 @@ class EntityProxy(object):
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
             return []
-        return ensure_list(self._properties.pop(prop, []))
+        return ensure_list(self._properties.pop(prop.name, []))
 
     def remove(self, prop, value, quiet=True):
         """Remove a single element from the given property if it
         exists. If it is not there, no action."""
         prop = self._get_prop(prop, quiet=quiet)
         try:
-            self._properties[prop].remove(value)
+            self._properties[prop.name].remove(value)
         except KeyError:
             pass
 
     def iterprops(self):
-        return list(self._properties.keys())
+        return [self._get_prop(p) for p in self._properties.keys()]
 
     def itervalues(self):
-        for prop, values in self._properties.items():
+        for name, values in self._properties.items():
+            prop = self._get_prop(name)
             for value in values:
                 yield (prop, value)
 
@@ -164,7 +165,7 @@ class EntityProxy(object):
         """All values of a particular type associated with a the entity."""
         combined = set()
         for prop, values in self._properties.items():
-            if prop.type == type_:
+            if self._get_prop(prop).type == type_:
                 combined.update(values)
         countries = []
         if type_ != registry.country:
@@ -225,7 +226,7 @@ class EntityProxy(object):
 
     @property
     def properties(self):
-        return {p.name: list(vs) for p, vs in self._properties.items()}
+        return {p: list(vs) for p, vs in self._properties.items()}
 
     def to_dict(self):
         data = dict(self.context)
