@@ -11,7 +11,7 @@ from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.property import Property
 from followthemoney.util import sanitize_text, key_bytes, gettext
-from followthemoney.util import merge_context
+from followthemoney.util import merge_context, value_list
 
 log = logging.getLogger(__name__)
 
@@ -24,12 +24,16 @@ class EntityProxy(object):
 
     def __init__(self, model, data, key_prefix=None, cleaned=True):
         data = dict(data)
-        properties = ensure_dict(data.pop("properties", {}))
+        properties = data.pop("properties", {})
+        if not cleaned:
+            properties = ensure_dict(properties)
         self.schema = model.get(data.pop("schema", None))
         if self.schema is None:
             raise InvalidData(gettext("No schema for entity."))
-        self.id = sanitize_text(data.pop("id", None))
-        self.key_prefix = sanitize_text(key_prefix)
+        self.key_prefix = key_prefix
+        self.id = data.pop("id", None)
+        if not cleaned:
+            self.id = sanitize_text(self.id)
         self.context = data
         self._properties = {}
         self._size = 0
@@ -57,12 +61,13 @@ class EntityProxy(object):
     def _get_prop(self, prop, quiet=False):
         if isinstance(prop, Property):
             return prop
-        if prop not in self.schema.properties:
+        prop_obj = self.schema.get(prop)
+        if prop_obj is None:
             if quiet:
                 return
             msg = gettext("Unknown property (%s): %s")
             raise InvalidData(msg % (self.schema, prop))
-        return self.schema.get(prop)
+        return prop_obj
 
     def get(self, prop, quiet=False):
         """Get all values of a property."""
@@ -81,7 +86,7 @@ class EntityProxy(object):
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
             return False
-        return prop in self._properties
+        return prop.name in self._properties
 
     def add(self, prop, values, cleaned=False, quiet=False):
         """Add the given value(s) to the property if they are not empty."""
@@ -96,10 +101,10 @@ class EntityProxy(object):
             msg = gettext("Stub property (%s): %s")
             raise InvalidData(msg % (self.schema, prop))
 
-        for value in ensure_list(values):
+        for value in value_list(values):
             if not cleaned:
                 value = prop.type.clean(value, countries=self.countries)
-            if value is None or not isinstance(value, Hashable):
+            if value is None:
                 continue
             if prop.type == registry.entity and value == self.id:
                 msg = gettext("Self-relationship (%s): %s")
@@ -116,7 +121,7 @@ class EntityProxy(object):
             self._size += value_size
 
             if prop.name not in self._properties:
-                self._properties[prop.name] = OrderedSet()
+                self._properties[prop.name] = set()
             self._properties[prop.name].add(value)
 
     def set(self, prop, values, cleaned=False, quiet=False):
@@ -138,10 +143,11 @@ class EntityProxy(object):
         """Remove a single element from the given property if it
         exists. If it is not there, no action."""
         prop = self._get_prop(prop, quiet=quiet)
-        try:
-            self._properties[prop.name].remove(value)
-        except KeyError:
-            pass
+        if prop is not None:
+            try:
+                self._properties[prop.name].remove(value)
+            except KeyError:
+                pass
 
     def iterprops(self):
         return [self._get_prop(p) for p in self._properties.keys()]

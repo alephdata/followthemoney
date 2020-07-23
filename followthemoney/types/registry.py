@@ -44,7 +44,4 @@ class Registry(object):
         return [self.get(n) for n in names if self.get(n) is not None]
 
     def __getattr__(self, name):
-        type_ = self.get(name)
-        if type_ is None:
-            raise AttributeError(name)
-        return type_
+        return self._types[name]
