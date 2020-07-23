@@ -173,10 +173,7 @@ class EntityProxy(object):
         for prop, values in self._properties.items():
             if self._get_prop(prop).type == type_:
                 combined.update(values)
-        countries = []
-        if type_ != registry.country:
-            countries = self.get_type_values(registry.country)
-        return type_.normalize_set(combined, cleaned=cleaned, countries=countries)
+        return list(combined)
 
     def get_type_inverted(self, cleaned=True):
         """Invert the properties of an entity into their normalised form."""

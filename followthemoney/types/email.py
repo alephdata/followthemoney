@@ -44,11 +44,6 @@ class EmailType(PropertyType):
         if domain is not None and mailbox is not None:
             return "@".join((mailbox, domain))
 
-    def normalize(self, email, **kwargs):
-        """Normalize for comparison."""
-        emails = super(EmailType, self).normalize(email, **kwargs)
-        return [e.lower() for e in emails]
-
     # def country_hint(self, value)
     # TODO: do we want to use TLDs as country evidence?
 

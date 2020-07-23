@@ -19,8 +19,7 @@ class NameType(PropertyType):
     def clean_text(self, name, **kwargs):
         """Basic clean-up."""
         name = strip_quotes(name)
-        name = collapse_spaces(name)
-        return name
+        return collapse_spaces(name)
 
     def pick(self, values):
         values = [sanitize_text(v) for v in ensure_list(values)]

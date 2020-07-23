@@ -25,13 +25,6 @@ class AddressType(PropertyType):
         if len(address):
             return address
 
-    # TODO: normalize well-known parts like "Street", "Road", etc.
-    # TODO: consider using https://github.com/openvenues/pypostal
-    # def normalize(self, address, **kwargs):
-    #     """Make the address more compareable."""
-    #     addresses = super(AddressType, self).normalize(address, **kwargs)
-    #     return addresses
-
     def _specificity(self, value: str) -> float:
         return dampen(10, 60, value)
 

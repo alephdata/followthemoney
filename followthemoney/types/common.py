@@ -35,21 +35,6 @@ class PropertyType(object):
     def clean_text(self, text: Optional[str], **kwargs):
         return text
 
-    def normalize(self, text: str, cleaned=False, **kwargs):
-        """Create a represenation ideal for comparisons, but not to be
-        shown to the user."""
-        if not cleaned:
-            text = self.clean(text, **kwargs)
-        return ensure_list(text)
-
-    def normalize_set(self, items, **kwargs):
-        """Utility to normalize a whole set of values and get unique
-        values."""
-        values = set()
-        for item in ensure_list(items):
-            values.update(self.normalize(item, **kwargs))
-        return list(values)
-
     def join(self, values):
         values = ensure_list(values)
         return "; ".join(values)
