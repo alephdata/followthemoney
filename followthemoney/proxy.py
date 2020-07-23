@@ -107,7 +107,7 @@ class EntityProxy(object):
 
             # Somewhat hacky: limit the maximum size of any particular
             # field to avoid overloading upstream aleph/elasticsearch.
-            value_size = prop.type.values_size(value)
+            value_size = len(value)
             if prop.type.max_size is not None:
                 if self._size + value_size > prop.type.max_size:
                     # msg = "[%s] too large. Rejecting additional values."
@@ -225,7 +225,7 @@ class EntityProxy(object):
 
     @property
     def properties(self):
-        return {p.name: self.get(p) for p in self._properties.keys()}
+        return {p.name: list(vs) for p, vs in self._properties.items()}
 
     def to_dict(self):
         data = dict(self.context)

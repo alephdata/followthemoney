@@ -90,9 +90,6 @@ class PropertyType(object):
         that it may be related to."""
         return None
 
-    def values_size(self, values):
-        return sum((len(v) for v in ensure_list(values)))
-
     def rdf(self, value):
         return Literal(value)
 
