@@ -77,7 +77,7 @@ Thing:
       label: Source document
       reverse:
         name: proven
-        label: "Extracted entities"
+        label: "Derived entities"
       type: entity
       range: Document
     indexText:
