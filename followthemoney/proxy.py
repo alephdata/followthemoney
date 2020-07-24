@@ -3,11 +3,10 @@ from hashlib import sha1
 from itertools import product
 from rdflib import Literal, URIRef  # type: ignore
 from rdflib.namespace import RDF, SKOS  # type: ignore
-from banal import ensure_list, is_mapping, ensure_dict
+from banal import ensure_dict
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
-from followthemoney.property import Property
 from followthemoney.util import sanitize_text, key_bytes, gettext
 from followthemoney.util import merge_context, value_list
 
@@ -36,9 +35,13 @@ class EntityProxy(object):
         self._properties = {}
         self._size = 0
 
-        if is_mapping(properties):
-            for key, value in properties.items():
+        for key, value in properties.items():
+            if key not in self.schema.properties:
+                continue
+            if not cleaned:
                 self.add(key, value, cleaned=cleaned, quiet=True)
+            else:
+                self._properties[key] = set(value)
 
     def make_id(self, *parts):
         """Generate a (hopefully unique) ID for the given entity, composed
@@ -56,23 +59,26 @@ class EntityProxy(object):
         self.id = digest.hexdigest()
         return self.id
 
-    def _get_prop(self, prop, quiet=False):
-        if isinstance(prop, Property):
+    def _prop_name(self, prop, quiet=False):
+        # This is pretty unwound because it gets called a *lot*.
+        if prop in self.schema.properties:
             return prop
-        prop_obj = self.schema.get(prop)
-        if prop_obj is None:
-            if quiet:
-                return
-            msg = gettext("Unknown property (%s): %s")
-            raise InvalidData(msg % (self.schema, prop))
-        return prop_obj
+        try:
+            if prop.name in self.schema.properties:
+                return prop.name
+        except AttributeError:
+            pass
+        if quiet:
+            return
+        msg = gettext("Unknown property (%s): %s")
+        raise InvalidData(msg % (self.schema, prop))
 
     def get(self, prop, quiet=False):
         """Get all values of a property."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is None or prop.name not in self._properties:
+        prop = self._prop_name(prop, quiet=quiet)
+        if prop not in self._properties:
             return []
-        return list(self._properties.get(prop.name))
+        return list(self._properties.get(prop))
 
     def first(self, prop, quiet=False):
         """Get only the first (random) value, or None."""
@@ -81,16 +87,15 @@ class EntityProxy(object):
 
     def has(self, prop, quiet=False):
         """Check to see that the property has at least one value set."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is None:
-            return False
-        return prop.name in self._properties
+        prop = self._prop_name(prop, quiet=quiet)
+        return prop in self._properties
 
     def add(self, prop, values, cleaned=False, quiet=False, fuzzy=False):
         """Add the given value(s) to the property if they are not empty."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is None:
+        prop_name = self._prop_name(prop, quiet=quiet)
+        if prop_name is None:
             return
+        prop = self.schema.properties[prop_name]
 
         # Don't allow setting the reverse properties:
         if prop.stub:
@@ -118,41 +123,41 @@ class EntityProxy(object):
                     continue
             self._size += value_size
 
-            if prop.name not in self._properties:
-                self._properties[prop.name] = set()
-            self._properties[prop.name].add(value)
+            if prop_name not in self._properties:
+                self._properties[prop_name] = set()
+            self._properties[prop_name].add(value)
 
     def set(self, prop, values, cleaned=False, quiet=False):
         """Replace the values of the property with the given value(s)."""
-        prop = self._get_prop(prop, quiet=quiet)
+        prop = self._prop_name(prop, quiet=quiet)
         if prop is None:
             return
-        self._properties.pop(prop.name, None)
+        self._properties.pop(prop, None)
         return self.add(prop, values, cleaned=cleaned, quiet=quiet)
 
     def pop(self, prop, quiet=True):
         """Remove all the values from the given property and return them."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is None:
+        prop = self._prop_name(prop, quiet=quiet)
+        if prop is None or prop not in self._properties:
             return []
-        return ensure_list(self._properties.pop(prop.name, []))
+        return list(self._properties.pop(prop))
 
     def remove(self, prop, value, quiet=True):
         """Remove a single element from the given property if it
         exists. If it is not there, no action."""
-        prop = self._get_prop(prop, quiet=quiet)
-        if prop is not None:
+        prop = self._prop_name(prop, quiet=quiet)
+        if prop is not None and prop in self._properties:
             try:
-                self._properties[prop.name].remove(value)
+                self._properties[prop].remove(value)
             except KeyError:
                 pass
 
     def iterprops(self):
-        return [self._get_prop(p) for p in self._properties.keys()]
+        return [self.schema.properties[p] for p in self._properties.keys()]
 
     def itervalues(self):
         for name, values in self._properties.items():
-            prop = self._get_prop(name)
+            prop = self.schema.properties[name]
             for value in values:
                 yield (prop, value)
 
@@ -169,7 +174,7 @@ class EntityProxy(object):
         """All values of a particular type associated with a the entity."""
         combined = set()
         for prop, values in self._properties.items():
-            if self._get_prop(prop).type == type_:
+            if self.schema.properties[prop].type == type_:
                 combined.update(values)
         return list(combined)
 
@@ -255,8 +260,9 @@ class EntityProxy(object):
             raise InvalidData(msg % (self.id, e))
 
         self.context = merge_context(self.context, other.context)
-        for prop, value in set(other.itervalues()):
-            self.add(prop, value, cleaned=True, quiet=True)
+        for prop, values in other._properties.items():
+            self._properties.setdefault(prop, set())
+            self._properties[prop].update(values)
         return self
 
     def __str__(self):

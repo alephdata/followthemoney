@@ -84,9 +84,12 @@ def get_entity_id(obj):
     """Given an entity-ish object, try to get the ID."""
     if is_mapping(obj):
         obj = obj.get("id")
-    elif hasattr(obj, "id"):
-        obj = obj.id
-    return sanitize_text(obj)
+    else:
+        try:
+            obj = obj.id
+        except AttributeError:
+            pass
+    return obj
 
 
 def merge_context(left, right):
