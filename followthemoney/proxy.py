@@ -2,10 +2,8 @@ import logging
 from hashlib import sha1
 from itertools import product
 from rdflib import Literal, URIRef  # type: ignore
-from collections.abc import Hashable
 from rdflib.namespace import RDF, SKOS  # type: ignore
 from banal import ensure_list, is_mapping, ensure_dict
-from ordered_set import OrderedSet  # type: ignore
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
@@ -88,7 +86,7 @@ class EntityProxy(object):
             return False
         return prop.name in self._properties
 
-    def add(self, prop, values, cleaned=False, quiet=False):
+    def add(self, prop, values, cleaned=False, quiet=False, fuzzy=False):
         """Add the given value(s) to the property if they are not empty."""
         prop = self._get_prop(prop, quiet=quiet)
         if prop is None:
@@ -103,7 +101,7 @@ class EntityProxy(object):
 
         for value in value_list(values):
             if not cleaned:
-                value = prop.type.clean(value, countries=self.countries)
+                value = prop.type.clean(value, proxy=self, fuzzy=fuzzy)
             if value is None:
                 continue
             if prop.type == registry.entity and value == self.id:
