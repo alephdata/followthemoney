@@ -173,6 +173,10 @@ ftm:Membership a rdfs:Class ;
     rdfs:isDefinedBy ftm: ;
     rdfs:subClassOf ftm:Interest .
 
+ftm:Mention a rdfs:Class ;
+    rdfs:label "Mention" ;
+    rdfs:isDefinedBy ftm: .
+
 ftm:Message a rdfs:Class ;
     rdfs:label "Message" ;
     rdfs:isDefinedBy ftm: ;
@@ -1236,6 +1240,31 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:License ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#Mention:companyMentioned> a rdf:Property ;
+    rdfs:label "Detected company name" ;
+    rdfs:domain ftm:Mention ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Mention:contextCountry> a rdf:Property ;
+    rdfs:label "Co-occurring countries" ;
+    rdfs:domain ftm:Mention ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Mention:contextEmail> a rdf:Property ;
+    rdfs:label "Co-occurring e-mail addresses" ;
+    rdfs:domain ftm:Mention ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Mention:contextPhone> a rdf:Property ;
+    rdfs:label "Co-occurring phone numbers" ;
+    rdfs:domain ftm:Mention ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Mention:personMentioned> a rdf:Property ;
+    rdfs:label "Detected person name" ;
+    rdfs:domain ftm:Mention ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Message:inReplyTo> a rdf:Property ;
     rdfs:label "In Reply To" ;
     rdfs:comment "Message ID of the preceding message in the thread" ;
@@ -1613,12 +1642,6 @@ dct:language a rdf:Property ;
     rdfs:label "Index text" ;
     rdfs:domain ftm:Thing ;
     rdfs:isDefinedBy ftm: .
-
-<https://w3id.org/ftm#Thing:indexUpdatedAt> a rdf:Property ;
-    rdfs:label "Index updated at" ;
-    rdfs:domain ftm:Thing ;
-    rdfs:isDefinedBy ftm: ;
-    rdfs:range xsd:dateTime .
 
 <https://w3id.org/ftm#Thing:keywords> a rdf:Property ;
     rdfs:label "Keywords" ;
@@ -2033,8 +2056,15 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:Folder ;
     owl:inverseOf <https://w3id.org/ftm#Folder:descendants> .
 
+<https://w3id.org/ftm#Document:mentionedEntities> a rdf:Property ;
+    rdfs:label "Extracted names" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Mention ;
+    owl:inverseOf <https://w3id.org/ftm#Mention:document> .
+
 <https://w3id.org/ftm#Document:proven> a rdf:Property ;
-    rdfs:label "Extracted entities" ;
+    rdfs:label "Derived entities" ;
     rdfs:domain ftm:Document ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Thing ;
@@ -2337,6 +2367,13 @@ owl:sameAs a rdf:Property ;
     rdfs:range ftm:Membership ;
     owl:inverseOf <https://w3id.org/ftm#Membership:member> .
 
+<https://w3id.org/ftm#LegalEntity:mentionedBy> a rdf:Property ;
+    rdfs:label "Document mentions" ;
+    rdfs:domain ftm:LegalEntity ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Mention ;
+    owl:inverseOf <https://w3id.org/ftm#Mention:resolved> .
+
 <https://w3id.org/ftm#LegalEntity:messagesReceived> a rdf:Property ;
     rdfs:label "Messages received" ;
     rdfs:domain ftm:LegalEntity ;
@@ -2449,6 +2486,20 @@ owl:sameAs a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range ftm:Organization ;
     owl:inverseOf <https://w3id.org/ftm#Organization:membershipOrganization> .
+
+<https://w3id.org/ftm#Mention:document> a rdf:Property ;
+    rdfs:label "Document" ;
+    rdfs:domain ftm:Mention ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:Document ;
+    owl:inverseOf <https://w3id.org/ftm#Document:mentionedEntities> .
+
+<https://w3id.org/ftm#Mention:resolved> a rdf:Property ;
+    rdfs:label "Entity" ;
+    rdfs:domain ftm:Mention ;
+    rdfs:isDefinedBy ftm: ;
+    rdfs:range ftm:LegalEntity ;
+    owl:inverseOf <https://w3id.org/ftm#LegalEntity:mentionedBy> .
 
 <https://w3id.org/ftm#Message:inReplyToMessage> a rdf:Property ;
     rdfs:label "Responding to" ;
@@ -2757,5 +2808,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-07-01T13:01:53"^^xsd:dateTime .
+    dct:modified "2020-07-24T17:05:02"^^xsd:dateTime .
 
