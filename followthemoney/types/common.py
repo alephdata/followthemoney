@@ -114,6 +114,7 @@ class PropertyType(object):
 class EnumType(PropertyType):
     def __init__(self, *args):
         self._names = {}
+        self.codes = set(self.names.keys())
 
     def _locale_names(self, locale):
         return {}
@@ -124,10 +125,6 @@ class EnumType(PropertyType):
         if locale not in self._names:
             self._names[locale] = self._locale_names(locale)
         return self._names[locale]
-
-    @property
-    def codes(self):
-        return self.names.keys()
 
     def validate(self, code, **kwargs):
         code = sanitize_text(code)
