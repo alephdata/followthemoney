@@ -11,12 +11,13 @@ ENTITY = {
     "id": "person",
     "schema": "Person",
     "properties": {
-        "name": "Ralph Tester",
-        "birthDate": "1972-05-01",
+        "name": ["Ralph Tester"],
+        "birthDate": ["1972-05-01"],
         "idNumber": ["9177171", "8e839023"],
-        "website": "https://ralphtester.me",
-        "phone": "+12025557612",
-        "email": "info@ralphtester.me",
+        "website": ["https://ralphtester.me"],
+        "phone": ["+12025557612"],
+        "email": ["info@ralphtester.me"],
+        "topics": ["role.spy"],
     },
 }
 

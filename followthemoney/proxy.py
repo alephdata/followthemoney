@@ -41,7 +41,9 @@ class EntityProxy(object):
             if not cleaned:
                 self.add(key, value, cleaned=cleaned, quiet=True)
             else:
-                self._properties[key] = set(value)
+                values = set(value)
+                self._properties[key] = values
+                self._size += sum([len(v) for v in values])
 
     def make_id(self, *parts):
         """Generate a (hopefully unique) ID for the given entity, composed
@@ -260,9 +262,11 @@ class EntityProxy(object):
             raise InvalidData(msg % (self.id, e))
 
         self.context = merge_context(self.context, other.context)
+        self._size = 0
         for prop, values in other._properties.items():
             self._properties.setdefault(prop, set())
             self._properties[prop].update(values)
+            self._size += sum([len(v) for v in self._properties[prop]])
         return self
 
     def __str__(self):

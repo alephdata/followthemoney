@@ -12,13 +12,13 @@ ENTITY = {
     "id": "test",
     "schema": "Person",
     "properties": {
-        "name": "Ralph Tester",
-        "birthDate": "1972-05-01",
+        "name": ["Ralph Tester"],
+        "birthDate": ["1972-05-01"],
         "idNumber": ["9177171", "8e839023"],
-        "website": "https://ralphtester.me",
-        "phone": "+12025557612",
-        "email": "info@ralphtester.me",
-        "topics": "role.spy",
+        "website": ["https://ralphtester.me"],
+        "phone": ["+12025557612"],
+        "email": ["info@ralphtester.me"],
+        "topics": ["role.spy"],
     },
 }
 
@@ -198,7 +198,7 @@ class ProxyTestCase(TestCase):
     def test_merge(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
         proxy.merge(proxy)
-        other = {"schema": "LegalEntity", "properties": {"country": "gb"}}
+        other = {"schema": "LegalEntity", "properties": {"country": ["gb"]}}
         other = EntityProxy.from_dict(model, other)
         proxy.merge(other)
         assert "Ralph Tester" in proxy.names, proxy.names
