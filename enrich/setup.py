@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="followthemoney-enrich",
-    version="2.0.0",
+    version="2.0.1",
     long_description="Data enrichment toolkit",
     classifiers=[
         "Development Status :: 3 - Alpha",
