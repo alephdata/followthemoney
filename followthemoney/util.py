@@ -63,6 +63,15 @@ def sanitize_text(text, encoding=DEFAULT_ENCODING):
         return text.decode(DEFAULT_ENCODING, "replace")
 
 
+def value_list(value):
+    if not isinstance(value, (str, bytes)):
+        try:
+            return [v for v in value]
+        except TypeError:
+            pass
+    return [value]
+
+
 def key_bytes(key):
     """Convert the given data to a value appropriate for hashing."""
     if isinstance(key, bytes):
@@ -75,9 +84,12 @@ def get_entity_id(obj):
     """Given an entity-ish object, try to get the ID."""
     if is_mapping(obj):
         obj = obj.get("id")
-    elif hasattr(obj, "id"):
-        obj = obj.id
-    return sanitize_text(obj)
+    else:
+        try:
+            obj = obj.id
+        except AttributeError:
+            pass
+    return obj
 
 
 def merge_context(left, right):

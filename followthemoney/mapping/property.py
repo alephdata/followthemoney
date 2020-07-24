@@ -75,9 +75,7 @@ class PropertyMapping(object):
         values.extend([record.get(r) for r in self.refs])
         return values
 
-    def map(self, proxy, record, entities, **kwargs):
-        kwargs.update(self.data)
-
+    def map(self, proxy, record, entities):
         if self.entity is not None:
             entity = entities.get(self.entity)
             if entity is not None:
@@ -88,7 +86,7 @@ class PropertyMapping(object):
         # formats.
         values = []
         for value in self.record_values(record):
-            value = self.type.clean(value, **kwargs)
+            value = self.type.clean(value, proxy=proxy, **self.data)
             if value is not None:
                 values.append(value)
 

@@ -8,43 +8,35 @@ class Registry(object):
     then clean, validate or format values of that type."""
 
     def __init__(self):
-        self._types = {}
+        self.named = {}
+        self.matchable = set()
+        self.types = set()
+        self.groups = {}
+        self.pivots = set()
 
     def add(self, clazz):
-        if issubclass(clazz, PropertyType):
-            self._types[clazz.name] = clazz()
-
-    @property
-    def types(self):
-        """Return all types known to the system."""
-        return list(self._types.values())
-
-    @property
-    def matchable(self):
-        """Return all matchable property types."""
-        return [t for t in self.types if t.matchable]
-
-    @property
-    def pivots(self):
-        return [t for t in self.types if t.pivot]
-
-    @property
-    def groups(self):
-        return {t.group: t for t in self.types if t.group is not None}
+        if not issubclass(clazz, PropertyType):
+            return
+        type_ = clazz()
+        self.named[clazz.name] = type_
+        self.types.add(type_)
+        if type_.matchable:
+            self.matchable.add(type_)
+        if type_.pivot:
+            self.pivots.add(type_)
+        if type_.group is not None:
+            self.groups[type_.group] = type_
 
     def get(self, name):
         """For a given property type name, get its handling object."""
         # Allow transparent re-checking.
         if isinstance(name, PropertyType):
             return name
-        return self._types.get(name)
+        return self.named.get(name)
 
     def get_types(self, names):
         names = ensure_list(names)
         return [self.get(n) for n in names if self.get(n) is not None]
 
     def __getattr__(self, name):
-        type_ = self.get(name)
-        if type_ is None:
-            raise AttributeError(name)
-        return type_
+        return self.named[name]

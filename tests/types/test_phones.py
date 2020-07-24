@@ -1,5 +1,6 @@
 import unittest
 
+from followthemoney import model
 from followthemoney.types import registry
 
 
@@ -13,8 +14,10 @@ class PhonesTest(unittest.TestCase):
 
     def test_de_number(self):
         phones = registry.phone
+        proxy = model.make_entity("Person")
+        proxy.add("country", "DE")
         self.assertEqual(phones.clean("017623423980"), None)
-        self.assertEqual(phones.clean("017623423980", countries="DE"), "+4917623423980")
+        self.assertEqual(phones.clean("017623423980", proxy=proxy), "+4917623423980")
 
     def test_specificity(self):
         phones = registry.phone
