@@ -37,7 +37,6 @@ setup(
         "rdflib >= 4.2.2",
         "networkx >= 2.4",
         "openpyxl >= 3.0.3",
-        "ordered-set >= 3.1.1",
         "pymisp >= 2.4.126",
     ],
     extras_require={

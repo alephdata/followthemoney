@@ -75,7 +75,7 @@ class EntityMapping(object):
 
         for prop in self.properties:
             if prop.prop.type != registry.country:
-                prop.map(proxy, record, entities, countries=proxy.countries)
+                prop.map(proxy, record, entities)
 
         for prop in self.properties:
             if prop.required and not proxy.has(prop.prop):

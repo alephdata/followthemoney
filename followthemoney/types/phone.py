@@ -19,17 +19,13 @@ class PhoneType(PropertyType):
     matchable = True
     pivot = True
 
-    def _clean_countries(self, countries, country):
-        result = set([None])
-        countries = ensure_list(countries)
-        countries.extend(ensure_list(country))
-        for country in countries:
-            if isinstance(country, str):
-                country = country.strip().upper()
-                result.add(country)
-        return result
+    def _clean_countries(self, proxy):
+        yield None
+        if proxy is not None:
+            for country in proxy.countries:
+                yield country.upper()
 
-    def _parse_number(self, number, countries=None, country=None, **kwargs):
+    def _parse_number(self, number, proxy=None):
         """Parse a phone number and return in international format.
 
         If no valid phone number can be detected, None is returned. If
@@ -38,19 +34,19 @@ class PhoneType(PropertyType):
 
         https://github.com/daviddrysdale/python-phonenumbers
         """
-        for code in self._clean_countries(countries, country):
+        for code in self._clean_countries(proxy):
             try:
                 yield parse_number(number, code)
             except NumberParseException:
                 pass
 
-    def clean_text(self, number, **kwargs):
-        for num in self._parse_number(number, **kwargs):
+    def clean_text(self, number, proxy=None, **kwargs):
+        for num in self._parse_number(number, proxy=proxy):
             if is_valid_number(num):
                 return format_number(num, PhoneNumberFormat.E164)
 
-    def validate(self, number, **kwargs):
-        for num in self._parse_number(number, **kwargs):
+    def validate(self, number, proxy=None, **kwargs):
+        for num in self._parse_number(number, proxy=proxy):
             if is_valid_number(num):
                 return True
         return False
