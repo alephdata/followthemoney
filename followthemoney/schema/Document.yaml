@@ -113,14 +113,14 @@ PlainText:
       label: "Text"
       hidden: true
       type: "text"
-    altBodyText:
-      label: "Alternative text"
+    translatedText:
+      label: "Translated version of the body text"
       hidden: true
       type: text
-    altTextSrcLanguage:
-      label: "The language of the source document detected when the alternative text was extracted"
-    altTextLanguage:
-      label: "The language of the alternative extracted text"
+    translatedTextSrcLanguage:
+      label: "The language of the source document detected when the body text was translated"
+    translatedTextLanguage:
+      label: "The language of the translated text"
 
 Pages:
   # Like PDF, word document, ...
@@ -142,8 +142,8 @@ Pages:
       label: "PDF alternative version checksum"
       hidden: true
       type: checksum
-    hasAltBodyText:
-      label: "Indicates if the pages have alternative text. When present and non-zero, pages have alt text"
+    hasTranslatedText:
+      label: "Indicates if the pages have translated text. When present and non-zero, pages have alt text"
       type: number
 
 Folder:
@@ -208,14 +208,14 @@ Image:
       label: "Text"
       type: "text"
       hidden: true
-    altBodyText:
-      label: "Alternative text"
+    translatedText:
+      label: "Translated version of the body text"
       hidden: true
       type: text
-    altTextSrcLanguage:
-      label: "The language of the source document detected when the alternative text was extracted"
-    altTextLanguage:
-      label: "The language of the alternative extracted text"
+    translatedTextSrcLanguage:
+      label: "The language of the source document detected when the body text was translated"
+    translatedTextLanguage:
+      label: "The language of the translated text"
 
 Video:
   extends: Document
@@ -285,14 +285,14 @@ HyperText:
       label: "HTML"
       type: html
       hidden: true
-    altBodyText:
-      label: "Alternative text"
+    translatedText:
+      label: "Translated version of the body text"
       hidden: true
       type: text
-    altTextSrcLanguage:
-      label: "The language of the source document detected when the alternative text was extracted"
-    altTextLanguage:
-      label: "The language of the alternative extracted text"
+    translatedTextSrcLanguage:
+      label: "The language of the source document detected when the body text was translated"
+    translatedTextLanguage:
+      label: "The language of the translated text"
 
 Email:
   extends:
