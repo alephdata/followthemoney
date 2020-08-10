@@ -1,5 +1,6 @@
 import os
 import logging
+from hashlib import sha1
 from babel import Locale  # type: ignore
 from gettext import translation  # type: ignore
 from rdflib import Namespace  # type: ignore
@@ -90,6 +91,18 @@ def get_entity_id(obj):
         except AttributeError:
             pass
     return obj
+
+
+def make_entity_id(*parts, key_prefix=None):
+    digest = sha1()
+    if key_prefix:
+        digest.update(key_bytes(key_prefix))
+    base = digest.digest()
+    for part in parts:
+        digest.update(key_bytes(part))
+    if digest.digest() == base:
+        return
+    return digest.hexdigest()
 
 
 def merge_context(left, right):

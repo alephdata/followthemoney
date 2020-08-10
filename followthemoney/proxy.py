@@ -1,5 +1,4 @@
 import logging
-from hashlib import sha1
 from itertools import product
 from rdflib import Literal, URIRef  # type: ignore
 from rdflib.namespace import RDF, SKOS  # type: ignore
@@ -7,8 +6,8 @@ from banal import ensure_dict
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
-from followthemoney.util import sanitize_text, key_bytes, gettext
-from followthemoney.util import merge_context, value_list
+from followthemoney.util import sanitize_text, gettext
+from followthemoney.util import merge_context, value_list, make_entity_id
 
 log = logging.getLogger(__name__)
 
@@ -49,16 +48,7 @@ class EntityProxy(object):
         """Generate a (hopefully unique) ID for the given entity, composed
         of the given components, and the key_prefix defined in the proxy.
         """
-        digest = sha1()
-        if self.key_prefix:
-            digest.update(key_bytes(self.key_prefix))
-        base = digest.digest()
-        for part in parts:
-            digest.update(key_bytes(part))
-        if digest.digest() == base:
-            self.id = None
-            return
-        self.id = digest.hexdigest()
+        self.id = make_entity_id(*parts, key_prefix=self.key_prefix)
         return self.id
 
     def _prop_name(self, prop, quiet=False):
