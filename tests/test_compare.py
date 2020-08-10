@@ -4,18 +4,14 @@ from unittest import TestCase
 from followthemoney import model
 from followthemoney.compare import compare, compare_names
 
-
 ENTITY = {
     "id": "test",
     "schema": "Person",
     "properties": {
-        "name": "Ralph Tester",
-        "birthDate": "1972-05-01",
+        "name": ["Ralph Tester"],
+        "birthDate": ["1972-05-01"],
         "idNumber": ["9177171", "8e839023"],
-        # 'website': 'https://ralphtester.me',
-        # 'phone': '+12025557612',
-        # 'email': 'info@ralphtester.me',
-        "passport": "passportEntityId",
+        "topics": ["role.spy"],
     },
 }
 
@@ -66,5 +62,5 @@ class CompareTestCase(TestCase):
         self.assertLess(compare(model, ENTITY, reduced), best_score)
 
         reduced = deepcopy(ENTITY)
-        reduced["properties"]["name"] = "Frank Banana"
+        reduced["properties"]["name"] = ["Frank Banana"]
         self.assertLess(compare(model, ENTITY, reduced), best_score)

@@ -13,6 +13,7 @@ class StringType(PropertyType):
 class TextType(PropertyType):
     name = "text"
     label = _("Text")
+    plural = _("Texts")
     matchable = False
     max_size = 30 * MEGABYTE
 
@@ -23,6 +24,7 @@ class TextType(PropertyType):
 class HTMLType(PropertyType):
     name = "html"
     label = _("HTML")
+    plural = _("HTMLs")
     matchable = False
     max_size = 30 * MEGABYTE
 

@@ -9,27 +9,26 @@ ENTITY = {
     "id": "ralph",
     "schema": "Person",
     "properties": {
-        "name": "Ralph Tester",
-        "birthDate": "1972-05-01",
+        "name": ["Ralph Tester"],
+        "birthDate": ["1972-05-01"],
         "idNumber": ["9177171", "8e839023"],
-        "website": "https://ralphtester.me",
-        "phone": "+12025557612",
-        "email": "info@ralphtester.me",
-        "passport": "passportEntityId",
-        "topics": "role.spy",
+        "website": ["https://ralphtester.me"],
+        "phone": ["+12025557612"],
+        "email": ["info@ralphtester.me"],
+        "topics": ["role.spy"],
     },
 }
 
 ENTITY2 = {
     "id": "jodie",
     "schema": "Person",
-    "properties": {"name": "Jodie Tester", "birthDate": "1972-05-01",},
+    "properties": {"name": ["Jodie Tester"], "birthDate": ["1972-05-01"]},
 }
 
 REL = {
     "id": "jodie2ralph",
     "schema": "Family",
-    "properties": {"person": ["jodie"], "relative": ["ralph"],},
+    "properties": {"person": ["jodie"], "relative": ["ralph"]},
 }
 
 PASS = {
@@ -41,7 +40,7 @@ PASS = {
 
 class GraphTestCase(TestCase):
     def test_basic_graph(self):
-        proxy = model.get_proxy(ENTITY)
+        proxy = model.get_proxy(ENTITY, cleaned=False)
         graph = Graph(edge_types=registry.pivots)
         graph.add(proxy)
         assert len(graph.iternodes()) > 1, graph.to_dict()
@@ -53,10 +52,10 @@ class GraphTestCase(TestCase):
 
     def test_adjacent(self):
         graph = Graph(edge_types=registry.pivots)
-        graph.add(model.get_proxy(ENTITY))
-        graph.add(model.get_proxy(ENTITY2))
-        graph.add(model.get_proxy(REL))
-        graph.add(model.get_proxy(PASS))
+        graph.add(model.get_proxy(ENTITY, cleaned=False))
+        graph.add(model.get_proxy(ENTITY2, cleaned=False))
+        graph.add(model.get_proxy(REL, cleaned=False))
+        graph.add(model.get_proxy(PASS, cleaned=False))
         node = Node(registry.entity, "jodie")
         adj = list(graph.get_adjacent(node))
         assert len(adj) == 3, adj
@@ -90,7 +89,7 @@ class GraphTestCase(TestCase):
         assert adj[0].id in repr(adj[0]), repr(adj[0])
 
     def test_to_dict(self):
-        proxy = model.get_proxy(ENTITY)
+        proxy = model.get_proxy(ENTITY, cleaned=False)
         graph = Graph(edge_types=registry.pivots)
         graph.add(proxy)
         data = graph.to_dict()

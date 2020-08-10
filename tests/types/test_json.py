@@ -17,10 +17,6 @@ class JsonTest(unittest.TestCase):
         self.assertEqual(json.unpack(None), None)
         self.assertEqual(json.unpack("[x]"), "[x]")
 
-    def test_normalize(self):
-        self.assertEqual(json.normalize("FOO"), ["FOO"])
-        self.assertEqual(json.normalize(None), [])
-
     def test_join(self):
         # Pretty weird behaviour, but hey:
         data = json.pack({"id": 88})

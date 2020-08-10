@@ -1,0 +1,39 @@
+Mention:
+  label: Mention
+  plural: Mentions
+  abstract: false
+  matchable: false
+  generated: true
+  properties:
+    document:
+      label: "Document"
+      reverse:
+        name: mentionedEntities
+        label: "Extracted names"
+      type: entity
+      range: Document
+    resolved:
+      label: "Entity"
+      reverse:
+        name: mentionedBy
+        label: "Document mentions"
+      type: entity
+      range: LegalEntity
+    personMentioned:
+      label: "Detected person name"
+      type: name
+    companyMentioned:
+      label: "Detected company name"
+      type: name
+    contextCountry:
+      label: "Co-occurring countries"
+      hidden: true
+      type: country
+    contextPhone:
+      label: "Co-occurring phone numbers"
+      hidden: true
+      type: phone
+    contextEmail:
+      label: "Co-occurring e-mail addresses"
+      hidden: true
+      type: email

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-01 13:48+0200\n"
+"POT-Creation-Date: 2020-07-24 16:18+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -31,30 +31,30 @@ msgstr "Не удалось сохранить свойство"
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
-#: followthemoney/proxy.py:30
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr "Для сущности отсутствует схема."
 
-#: followthemoney/proxy.py:63
+#: followthemoney/proxy.py:75
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
 
-#: followthemoney/proxy.py:96
+#: followthemoney/proxy.py:106
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/proxy.py:105
+#: followthemoney/proxy.py:115
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
 
-#: followthemoney/schema.py:189
+#: followthemoney/schema.py:195
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:193
+#: followthemoney/schema.py:199
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
@@ -923,7 +923,7 @@ msgid "Files"
 msgstr "Файлы"
 
 #. Document.properties.contentHash.label
-#: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:11
+#: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:12
 msgid "Checksum"
 msgstr "Контрольная сумма"
 
@@ -1001,7 +1001,7 @@ msgstr "MIME-тип"
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:45
+#: followthemoney/types/date.py:47
 msgid "Date"
 msgstr "Дата"
 
@@ -1072,9 +1072,10 @@ msgstr "Текст"
 
 #. Pages.label
 #. Documentation.properties.document.label
+#. Mention.properties.document.label
 #. Page.properties.document.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Documentation.yml
-#: followthemoney/schema/Page.yaml
+#: followthemoney/schema/Mention.yaml followthemoney/schema/Page.yaml
 msgid "Document"
 msgstr "Документ"
 
@@ -1182,7 +1183,7 @@ msgid "Web pages"
 msgstr "Веб-страницы"
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:26
 msgid "HTML"
 msgstr "HTML"
 
@@ -1345,9 +1346,10 @@ msgid "Related entities"
 msgstr "Связанные сущности"
 
 #. Documentation.properties.entity.label
+#. Mention.properties.resolved.label
 #. Sanction.properties.entity.label
-#: followthemoney/schema/Documentation.yml followthemoney/schema/Sanction.yaml
-#: followthemoney/types/entity.py:13
+#: followthemoney/schema/Documentation.yml followthemoney/schema/Mention.yaml
+#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:13
 msgid "Entity"
 msgstr "Субъект"
 
@@ -1825,7 +1827,7 @@ msgid "Phone"
 msgstr "Номер телефона"
 
 #. LegalEntity.properties.phone.description
-#: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:17
+#: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:16
 msgid "Phone number"
 msgstr "Номер телефона"
 
@@ -2054,6 +2056,51 @@ msgstr "Член"
 #: followthemoney/schema/Membership.yaml
 msgid "Members"
 msgstr "Участники"
+
+#. Mention.label
+#: followthemoney/schema/Mention.yaml
+msgid "Mention"
+msgstr "Упоминание"
+
+#. Mention.plural
+#: followthemoney/schema/Mention.yaml
+msgid "Mentions"
+msgstr "Упоминания"
+
+#. Mention.properties.document.reverse.label
+#: followthemoney/schema/Mention.yaml
+msgid "Extracted names"
+msgstr "Найденные имена"
+
+#. Mention.properties.resolved.reverse.label
+#: followthemoney/schema/Mention.yaml
+msgid "Document mentions"
+msgstr "Упоминания в документе"
+
+#. Mention.properties.personMentioned.label
+#: followthemoney/schema/Mention.yaml
+msgid "Detected person name"
+msgstr "Найденное имя"
+
+#. Mention.properties.companyMentioned.label
+#: followthemoney/schema/Mention.yaml
+msgid "Detected company name"
+msgstr "Найденное название компании"
+
+#. Mention.properties.contextCountry.label
+#: followthemoney/schema/Mention.yaml
+msgid "Co-occurring countries"
+msgstr "Совместно встречающиеся страны"
+
+#. Mention.properties.contextPhone.label
+#: followthemoney/schema/Mention.yaml
+msgid "Co-occurring phone numbers"
+msgstr "Совместно встречающиеся телефонные номера"
+
+#. Mention.properties.contextEmail.label
+#: followthemoney/schema/Mention.yaml
+msgid "Co-occurring e-mail addresses"
+msgstr "Совместно встречающиеся эл. адреса"
 
 #. Message.label
 #: followthemoney/schema/Message.yaml
@@ -2690,13 +2737,8 @@ msgstr "Исходный документ"
 
 #. Thing.properties.proof.reverse.label
 #: followthemoney/schema/Thing.yaml
-msgid "Extracted entities"
-msgstr "Обнаруженные сущности"
-
-#. Thing.properties.indexUpdatedAt.label
-#: followthemoney/schema/Thing.yaml
-msgid "Index updated at"
-msgstr "Индекс обновлён"
+msgid "Derived entities"
+msgstr "Производные сущности"
 
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -2923,7 +2965,7 @@ msgstr "MMSI"
 msgid "Addresses"
 msgstr "Адреса"
 
-#: followthemoney/types/checksum.py:12
+#: followthemoney/types/checksum.py:13
 msgid "Checksums"
 msgstr "Контрольные суммы"
 
@@ -2987,7 +3029,7 @@ msgstr "Северная Ирландия"
 msgid "Transnistria"
 msgstr "Приднестровье"
 
-#: followthemoney/types/date.py:46
+#: followthemoney/types/date.py:48
 msgid "Dates"
 msgstr "Даты"
 
@@ -3059,7 +3101,7 @@ msgstr "Номер"
 msgid "Numbers"
 msgstr "Номера"
 
-#: followthemoney/types/phone.py:18
+#: followthemoney/types/phone.py:17
 msgid "Phone numbers"
 msgstr "Номера телефонов"
 
@@ -3070,6 +3112,14 @@ msgstr "Название"
 #: followthemoney/types/string.py:9
 msgid "Labels"
 msgstr "Названия"
+
+#: followthemoney/types/string.py:16
+msgid "Texts"
+msgstr ""
+
+#: followthemoney/types/string.py:27
+msgid "HTMLs"
+msgstr ""
 
 #: followthemoney/types/topic.py:10
 msgid "Topic"

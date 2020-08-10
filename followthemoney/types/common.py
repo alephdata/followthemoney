@@ -35,21 +35,6 @@ class PropertyType(object):
     def clean_text(self, text: Optional[str], **kwargs):
         return text
 
-    def normalize(self, text: str, cleaned=False, **kwargs):
-        """Create a represenation ideal for comparisons, but not to be
-        shown to the user."""
-        if not cleaned:
-            text = self.clean(text, **kwargs)
-        return ensure_list(text)
-
-    def normalize_set(self, items, **kwargs):
-        """Utility to normalize a whole set of values and get unique
-        values."""
-        values = set()
-        for item in ensure_list(items):
-            values.update(self.normalize(item, **kwargs))
-        return list(values)
-
     def join(self, values):
         values = ensure_list(values)
         return "; ".join(values)
@@ -90,9 +75,6 @@ class PropertyType(object):
         that it may be related to."""
         return None
 
-    def values_size(self, values):
-        return sum((len(v) for v in ensure_list(values)))
-
     def rdf(self, value):
         return Literal(value)
 
@@ -132,6 +114,7 @@ class PropertyType(object):
 class EnumType(PropertyType):
     def __init__(self, *args):
         self._names = {}
+        self.codes = set(self.names.keys())
 
     def _locale_names(self, locale):
         return {}
@@ -142,10 +125,6 @@ class EnumType(PropertyType):
         if locale not in self._names:
             self._names[locale] = self._locale_names(locale)
         return self._names[locale]
-
-    @property
-    def codes(self):
-        return self.names.keys()
 
     def validate(self, code, **kwargs):
         code = sanitize_text(code)

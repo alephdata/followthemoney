@@ -489,6 +489,73 @@
       ],
       "matchable": true
     },
+    "Mention": {
+      "label": "Mention",
+      "plural": "Mentions",
+      "schemata": [
+        "Mention"
+      ],
+      "extends": [],
+      "properties": {
+        "document": {
+          "name": "document",
+          "qname": "Mention:document",
+          "label": "Document",
+          "type": "entity",
+          "matchable": true,
+          "range": "Document",
+          "reverse": "mentionedEntities"
+        },
+        "resolved": {
+          "name": "resolved",
+          "qname": "Mention:resolved",
+          "label": "Entity",
+          "type": "entity",
+          "matchable": true,
+          "range": "LegalEntity",
+          "reverse": "mentionedBy"
+        },
+        "personMentioned": {
+          "name": "personMentioned",
+          "qname": "Mention:personMentioned",
+          "label": "Detected person name",
+          "type": "name",
+          "matchable": true
+        },
+        "companyMentioned": {
+          "name": "companyMentioned",
+          "qname": "Mention:companyMentioned",
+          "label": "Detected company name",
+          "type": "name",
+          "matchable": true
+        },
+        "contextCountry": {
+          "name": "contextCountry",
+          "qname": "Mention:contextCountry",
+          "label": "Co-occurring countries",
+          "type": "country",
+          "matchable": true,
+          "hidden": true
+        },
+        "contextPhone": {
+          "name": "contextPhone",
+          "qname": "Mention:contextPhone",
+          "label": "Co-occurring phone numbers",
+          "type": "phone",
+          "matchable": true,
+          "hidden": true
+        },
+        "contextEmail": {
+          "name": "contextEmail",
+          "qname": "Mention:contextEmail",
+          "label": "Co-occurring e-mail addresses",
+          "type": "email",
+          "matchable": true,
+          "hidden": true
+        }
+      },
+      "generated": true
+    },
     "CourtCase": {
       "label": "Court case",
       "plural": "Court cases",
@@ -1957,6 +2024,16 @@
           "range": "LegalEntity",
           "reverse": "parent"
         },
+        "mentionedBy": {
+          "name": "mentionedBy",
+          "qname": "LegalEntity:mentionedBy",
+          "label": "Document mentions",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Mention",
+          "reverse": "resolved"
+        },
         "passport": {
           "name": "passport",
           "qname": "LegalEntity:passport",
@@ -2423,13 +2500,6 @@
           "qname": "Thing:indexText",
           "label": "Index text",
           "type": "text",
-          "hidden": true
-        },
-        "indexUpdatedAt": {
-          "name": "indexUpdatedAt",
-          "qname": "Thing:indexUpdatedAt",
-          "label": "Index updated at",
-          "type": "date",
           "hidden": true
         },
         "modifiedAt": {
@@ -3175,12 +3245,22 @@
         "proven": {
           "name": "proven",
           "qname": "Document:proven",
-          "label": "Extracted entities",
+          "label": "Derived entities",
           "type": "entity",
           "stub": true,
           "matchable": true,
           "range": "Thing",
           "reverse": "proof"
+        },
+        "mentionedEntities": {
+          "name": "mentionedEntities",
+          "qname": "Document:mentionedEntities",
+          "label": "Extracted names",
+          "type": "entity",
+          "stub": true,
+          "matchable": true,
+          "range": "Mention",
+          "reverse": "document"
         },
         "relatedEntities": {
           "name": "relatedEntities",
@@ -4681,25 +4761,6 @@
     }
   },
   "types": {
-    "url": {
-      "label": "URL",
-      "plural": "URLs",
-      "group": "urls",
-      "matchable": true,
-      "pivot": true
-    },
-    "name": {
-      "label": "Name",
-      "plural": "Names",
-      "group": "names",
-      "matchable": true,
-      "pivot": true
-    },
-    "domain": {
-      "label": "Domain",
-      "plural": "Domains",
-      "matchable": true
-    },
     "email": {
       "label": "E-Mail Address",
       "plural": "E-Mail Addresses",
@@ -4707,10 +4768,116 @@
       "matchable": true,
       "pivot": true
     },
+    "language": {
+      "label": "Language",
+      "plural": "Languages",
+      "group": "languages",
+      "values": {
+        "eng": "English",
+        "fra": "French",
+        "deu": "German",
+        "rus": "Russian",
+        "spa": "Spanish",
+        "nld": "Dutch",
+        "ron": "Romanian",
+        "kat": "Georgian",
+        "ara": "Arabic",
+        "tur": "Turkish",
+        "ltz": "Luxembourgish",
+        "ell": "Greek",
+        "lit": "Lithuanian",
+        "ukr": "Ukrainian",
+        "zho": "Chinese",
+        "bel": "Belarusian",
+        "bul": "Bulgarian",
+        "bos": "Bosnian",
+        "jpn": "Japanese",
+        "ces": "Czech",
+        "lav": "Latvian",
+        "por": "Portuguese",
+        "pol": "Polish",
+        "hye": "Armenian",
+        "hrv": "Croatian",
+        "hin": "Hindi",
+        "heb": "Hebrew",
+        "uzb": "Uzbek",
+        "mon": "Mongolian",
+        "urd": "Urdu",
+        "sqi": "Albanian",
+        "kor": "Korean",
+        "isl": "Icelandic",
+        "ita": "Italian",
+        "est": "Estonian",
+        "nor": "Norwegian",
+        "fas": "Persian",
+        "swa": "Swahili",
+        "slv": "Slovenian",
+        "slk": "Slovak",
+        "aze": "Azerbaijani",
+        "tgk": "Tajik",
+        "kaz": "Kazakh",
+        "tuk": "Turkmen",
+        "kir": "Kyrgyz",
+        "hun": "hun",
+        "dan": "Danish",
+        "afr": "Afrikaans",
+        "swe": "Swedish",
+        "srp": "Serbian",
+        "ind": "Indonesian",
+        "kan": "Kannada",
+        "mkd": "Macedonian",
+        "mlt": "Maltese",
+        "msa": "Malay",
+        "fin": "Finnish",
+        "cat": "Catalan",
+        "npi": "npi",
+        "tgl": "Tagalog",
+        "fil": "Filipino"
+      }
+    },
+    "url": {
+      "label": "URL",
+      "plural": "URLs",
+      "group": "urls",
+      "matchable": true,
+      "pivot": true
+    },
+    "json": {
+      "label": "Nested data",
+      "plural": null
+    },
+    "mimetype": {
+      "label": "MIME-Type",
+      "plural": "MIME-Types",
+      "group": "mimetypes"
+    },
+    "number": {
+      "label": "Number",
+      "plural": "Numbers"
+    },
+    "date": {
+      "label": "Date",
+      "plural": "Dates",
+      "group": "dates",
+      "matchable": true
+    },
     "ip": {
       "label": "IP-Address",
       "plural": "IP-Addresses",
       "group": "ips",
+      "matchable": true
+    },
+    "entity": {
+      "label": "Entity",
+      "plural": "Entities",
+      "group": "entities",
+      "matchable": true,
+      "pivot": true
+    },
+    "checksum": {
+      "label": "Checksum",
+      "plural": "Checksums",
+      "group": "checksums",
       "matchable": true
     },
     "iban": {
@@ -4720,18 +4887,56 @@
       "matchable": true,
       "pivot": true
     },
-    "address": {
-      "label": "Address",
-      "plural": "Addresses",
-      "group": "addresses",
-      "matchable": true,
-      "pivot": true
+    "topic": {
+      "label": "Topic",
+      "plural": "Topics",
+      "group": "topics",
+      "values": {
+        "crime": "Crime",
+        "crime.fraud": "Fraud",
+        "crime.cyber": "Cybercrime",
+        "crime.fin": "Financial crime",
+        "crime.theft": "Theft",
+        "crime.war": "War crimes",
+        "crime.boss": "Criminal leadership",
+        "crime.terror": "Terrorism",
+        "crime.traffick": "Trafficking",
+        "crime.traffick.drug": "Drug trafficking",
+        "crime.traffick.human": "Human trafficking",
+        "corp.offshore": "Offshore",
+        "corp.shell": "Shell company",
+        "gov": "Government",
+        "gov.national": "National government",
+        "gov.state": "State government",
+        "gov.muni": "Municipal government",
+        "gov.soe": "State-owned enterprise",
+        "gov.igo": "Intergovernmental organization",
+        "fin": "Financial services",
+        "fin.bank": "Bank",
+        "fin.fund": "Fund",
+        "fin.adivsor": "Financial advisor",
+        "role.pep": "Politician",
+        "role.rca": "Associate",
+        "role.judge": "Judge",
+        "role.civil": "Civil servant",
+        "role.diplo": "Diplomat",
+        "role.lawyer": "Lawyer",
+        "role.acct": "Accountant",
+        "role.spy": "Spy",
+        "role.journo": "Journalist",
+        "role.act": "Activist",
+        "pol.party": "Political party",
+        "pol.union": "Union",
+        "rel": "Religion",
+        "mil": "Military",
+        "asset.frozen": "Frozen asset",
+        "ctx.sanctioned": "Sanctioned entity",
+        "ctx.poi": "Person of interest"
+      }
     },
-    "date": {
-      "label": "Date",
-      "plural": "Dates",
-      "group": "dates",
-      "matchable": true
+    "html": {
+      "label": "HTML",
+      "plural": "HTMLs"
     },
     "phone": {
       "label": "Phone number",
@@ -4739,6 +4944,15 @@
       "group": "phones",
       "matchable": true,
       "pivot": true
+    },
+    "domain": {
+      "label": "Domain",
+      "plural": "Domains",
+      "matchable": true
+    },
+    "string": {
+      "label": "Label",
+      "plural": "Labels"
     },
     "country": {
       "label": "Country",
@@ -5021,82 +5235,6 @@
         "zw": "Zimbabwe"
       }
     },
-    "language": {
-      "label": "Language",
-      "plural": "Languages",
-      "group": "languages",
-      "values": {
-        "eng": "English",
-        "fra": "French",
-        "deu": "German",
-        "rus": "Russian",
-        "spa": "Spanish",
-        "nld": "Dutch",
-        "ron": "Romanian",
-        "kat": "Georgian",
-        "ara": "Arabic",
-        "tur": "Turkish",
-        "ltz": "Luxembourgish",
-        "ell": "Greek",
-        "lit": "Lithuanian",
-        "ukr": "Ukrainian",
-        "zho": "Chinese",
-        "bel": "Belarusian",
-        "bul": "Bulgarian",
-        "bos": "Bosnian",
-        "jpn": "Japanese",
-        "ces": "Czech",
-        "lav": "Latvian",
-        "por": "Portuguese",
-        "pol": "Polish",
-        "hye": "Armenian",
-        "hrv": "Croatian",
-        "hin": "Hindi",
-        "heb": "Hebrew",
-        "uzb": "Uzbek",
-        "mon": "Mongolian",
-        "urd": "Urdu",
-        "sqi": "Albanian",
-        "kor": "Korean",
-        "isl": "Icelandic",
-        "ita": "Italian",
-        "est": "Estonian",
-        "nor": "Norwegian",
-        "fas": "Persian",
-        "swa": "Swahili",
-        "slv": "Slovenian",
-        "slk": "Slovak",
-        "aze": "Azerbaijani",
-        "tgk": "Tajik",
-        "kaz": "Kazakh",
-        "tuk": "Turkmen",
-        "kir": "Kyrgyz",
-        "hun": "hun",
-        "dan": "Danish",
-        "afr": "Afrikaans",
-        "swe": "Swedish",
-        "srp": "Serbian",
-        "ind": "Indonesian",
-        "kan": "Kannada",
-        "mkd": "Macedonian",
-        "mlt": "Maltese",
-        "msa": "Malay",
-        "fin": "Finnish",
-        "cat": "Catalan",
-        "npi": "npi"
-      }
-    },
-    "mimetype": {
-      "label": "MIME-Type",
-      "plural": "MIME-Types",
-      "group": "mimetypes"
-    },
-    "checksum": {
-      "label": "Checksum",
-      "plural": "Checksums",
-      "group": "checksums",
-      "matchable": true
-    },
     "identifier": {
       "label": "Identifier",
       "plural": "Identifiers",
@@ -5104,79 +5242,23 @@
       "matchable": true,
       "pivot": true
     },
-    "entity": {
-      "label": "Entity",
-      "plural": "Entities",
-      "group": "entities",
+    "address": {
+      "label": "Address",
+      "plural": "Addresses",
+      "group": "addresses",
       "matchable": true,
       "pivot": true
     },
-    "topic": {
-      "label": "Topic",
-      "plural": "Topics",
-      "group": "topics",
-      "values": {
-        "crime": "Crime",
-        "crime.fraud": "Fraud",
-        "crime.cyber": "Cybercrime",
-        "crime.fin": "Financial crime",
-        "crime.theft": "Theft",
-        "crime.war": "War crimes",
-        "crime.boss": "Criminal leadership",
-        "crime.terror": "Terrorism",
-        "crime.traffick": "Trafficking",
-        "crime.traffick.drug": "Drug trafficking",
-        "crime.traffick.human": "Human trafficking",
-        "corp.offshore": "Offshore",
-        "corp.shell": "Shell company",
-        "gov": "Government",
-        "gov.national": "National government",
-        "gov.state": "State government",
-        "gov.muni": "Municipal government",
-        "gov.soe": "State-owned enterprise",
-        "gov.igo": "Intergovernmental organization",
-        "fin": "Financial services",
-        "fin.bank": "Bank",
-        "fin.fund": "Fund",
-        "fin.adivsor": "Financial advisor",
-        "role.pep": "Politician",
-        "role.rca": "Associate",
-        "role.judge": "Judge",
-        "role.civil": "Civil servant",
-        "role.diplo": "Diplomat",
-        "role.lawyer": "Lawyer",
-        "role.acct": "Accountant",
-        "role.spy": "Spy",
-        "role.journo": "Journalist",
-        "role.act": "Activist",
-        "pol.party": "Political party",
-        "pol.union": "Union",
-        "rel": "Religion",
-        "mil": "Military",
-        "asset.frozen": "Frozen asset",
-        "ctx.sanctioned": "Sanctioned entity",
-        "ctx.poi": "Person of interest"
-      }
-    },
-    "json": {
-      "label": "Nested data",
-      "plural": null
+    "name": {
+      "label": "Name",
+      "plural": "Names",
+      "group": "names",
+      "matchable": true,
+      "pivot": true
     },
     "text": {
       "label": "Text",
-      "plural": null
-    },
-    "html": {
-      "label": "HTML",
-      "plural": null
-    },
-    "string": {
-      "label": "Label",
-      "plural": "Labels"
-    },
-    "number": {
-      "label": "Number",
-      "plural": "Numbers"
+      "plural": "Texts"
     }
   }
 }

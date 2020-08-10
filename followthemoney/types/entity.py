@@ -23,7 +23,10 @@ class EntityType(PropertyType):
 
     def clean(self, text, **kwargs):
         entity_id = get_entity_id(text)
-        if self.validate(entity_id):
+        if entity_id is None:
+            return
+        entity_id = str(entity_id)
+        if self.ID_RE.match(entity_id) is not None:
             return entity_id
 
     def rdf(self, value):

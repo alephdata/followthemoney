@@ -12,10 +12,6 @@ class DomainsTest(unittest.TestCase):
         self.assertEqual(domains.clean(None), None)
         self.assertEqual(domains.clean("x.a"), None)
 
-    def test_normalize(self):
-        self.assertEqual(domains.normalize("PUDO"), [])
-        self.assertEqual(domains.normalize("PUDO.org"), ["pudo.org"])
-
     def test_domain_validity(self):
         self.assertTrue(domains.validate("pudo.org"))
         self.assertFalse(domains.validate("pudo"))

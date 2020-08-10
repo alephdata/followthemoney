@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-01 13:48+0200\n"
+"POT-Creation-Date: 2020-07-24 16:18+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/aleph/teams/76591/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -26,30 +26,30 @@ msgstr ""
 msgid "Invalid value"
 msgstr ""
 
-#: followthemoney/proxy.py:30
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:63
+#: followthemoney/proxy.py:75
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:96
+#: followthemoney/proxy.py:106
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:105
+#: followthemoney/proxy.py:115
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:189
+#: followthemoney/schema.py:195
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:193
+#: followthemoney/schema.py:199
 msgid "Entity validation failed"
 msgstr ""
 
@@ -911,7 +911,7 @@ msgid "Files"
 msgstr ""
 
 #. Document.properties.contentHash.label
-#: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:11
+#: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:12
 msgid "Checksum"
 msgstr ""
 
@@ -989,7 +989,7 @@ msgstr ""
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:45
+#: followthemoney/types/date.py:47
 msgid "Date"
 msgstr ""
 
@@ -1060,9 +1060,10 @@ msgstr ""
 
 #. Pages.label
 #. Documentation.properties.document.label
+#. Mention.properties.document.label
 #. Page.properties.document.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Documentation.yml
-#: followthemoney/schema/Page.yaml
+#: followthemoney/schema/Mention.yaml followthemoney/schema/Page.yaml
 msgid "Document"
 msgstr ""
 
@@ -1170,7 +1171,7 @@ msgid "Web pages"
 msgstr ""
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:26
 msgid "HTML"
 msgstr ""
 
@@ -1333,9 +1334,10 @@ msgid "Related entities"
 msgstr ""
 
 #. Documentation.properties.entity.label
+#. Mention.properties.resolved.label
 #. Sanction.properties.entity.label
-#: followthemoney/schema/Documentation.yml followthemoney/schema/Sanction.yaml
-#: followthemoney/types/entity.py:13
+#: followthemoney/schema/Documentation.yml followthemoney/schema/Mention.yaml
+#: followthemoney/schema/Sanction.yaml followthemoney/types/entity.py:13
 msgid "Entity"
 msgstr ""
 
@@ -1808,7 +1810,7 @@ msgid "Phone"
 msgstr ""
 
 #. LegalEntity.properties.phone.description
-#: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:17
+#: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:16
 msgid "Phone number"
 msgstr ""
 
@@ -2034,6 +2036,51 @@ msgstr ""
 #. Membership.properties.organization.reverse.label
 #: followthemoney/schema/Membership.yaml
 msgid "Members"
+msgstr ""
+
+#. Mention.label
+#: followthemoney/schema/Mention.yaml
+msgid "Mention"
+msgstr ""
+
+#. Mention.plural
+#: followthemoney/schema/Mention.yaml
+msgid "Mentions"
+msgstr ""
+
+#. Mention.properties.document.reverse.label
+#: followthemoney/schema/Mention.yaml
+msgid "Extracted names"
+msgstr ""
+
+#. Mention.properties.resolved.reverse.label
+#: followthemoney/schema/Mention.yaml
+msgid "Document mentions"
+msgstr ""
+
+#. Mention.properties.personMentioned.label
+#: followthemoney/schema/Mention.yaml
+msgid "Detected person name"
+msgstr ""
+
+#. Mention.properties.companyMentioned.label
+#: followthemoney/schema/Mention.yaml
+msgid "Detected company name"
+msgstr ""
+
+#. Mention.properties.contextCountry.label
+#: followthemoney/schema/Mention.yaml
+msgid "Co-occurring countries"
+msgstr ""
+
+#. Mention.properties.contextPhone.label
+#: followthemoney/schema/Mention.yaml
+msgid "Co-occurring phone numbers"
+msgstr ""
+
+#. Mention.properties.contextEmail.label
+#: followthemoney/schema/Mention.yaml
+msgid "Co-occurring e-mail addresses"
 msgstr ""
 
 #. Message.label
@@ -2668,12 +2715,7 @@ msgstr ""
 
 #. Thing.properties.proof.reverse.label
 #: followthemoney/schema/Thing.yaml
-msgid "Extracted entities"
-msgstr ""
-
-#. Thing.properties.indexUpdatedAt.label
-#: followthemoney/schema/Thing.yaml
-msgid "Index updated at"
+msgid "Derived entities"
 msgstr ""
 
 #. UnknownLink.label
@@ -2901,7 +2943,7 @@ msgstr ""
 msgid "Addresses"
 msgstr ""
 
-#: followthemoney/types/checksum.py:12
+#: followthemoney/types/checksum.py:13
 msgid "Checksums"
 msgstr ""
 
@@ -2965,7 +3007,7 @@ msgstr ""
 msgid "Transnistria"
 msgstr ""
 
-#: followthemoney/types/date.py:46
+#: followthemoney/types/date.py:48
 msgid "Dates"
 msgstr ""
 
@@ -3037,7 +3079,7 @@ msgstr ""
 msgid "Numbers"
 msgstr ""
 
-#: followthemoney/types/phone.py:18
+#: followthemoney/types/phone.py:17
 msgid "Phone numbers"
 msgstr ""
 
@@ -3047,6 +3089,14 @@ msgstr ""
 
 #: followthemoney/types/string.py:9
 msgid "Labels"
+msgstr ""
+
+#: followthemoney/types/string.py:16
+msgid "Texts"
+msgstr ""
+
+#: followthemoney/types/string.py:27
+msgid "HTMLs"
 msgstr ""
 
 #: followthemoney/types/topic.py:10

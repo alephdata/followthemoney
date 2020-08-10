@@ -33,9 +33,6 @@ class JsonType(PropertyType):
             obj = sanitize_text(obj)
         return obj
 
-    def normalize(self, obj, cleaned=False, **kwargs):
-        return [] if obj is None else [obj]
-
     def join(self, values):
         """Turn multiple values into a JSON array."""
         values = [self.unpack(v) for v in ensure_list(values)]

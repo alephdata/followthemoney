@@ -11,35 +11,34 @@ from followthemoney.util import defer as _
 from followthemoney.util import dampen, sanitize_text
 
 log = logging.getLogger(__name__)
+DATE = r"^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$"  # noqa
 
 
 class DateType(PropertyType):
     # JS: '^([12]\\d{3}(-[01]?[1-9](-[0123]?[1-9])?)?)?$'
-    DATE_RE = re.compile(
-        r"^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$"
-    )  # noqa
+    DATE_RE = re.compile(DATE)
     DATE_FULL = re.compile(r"\d{4}-\d{2}-\d{2}.*")
     CUT_ZEROES = re.compile(r"((\-00.*)|(.00:00:00))$")
     MONTH_FORMATS = re.compile(r"(%b|%B|%m|%c|%x)")
     DAY_FORMATS = re.compile(r"(%d|%w|%c|%x)")
     MAX_LENGTH = 19
     DATE_PATTERNS_BY_LENGTH = {
-        19: ["%Y-%m-%dT%H:%M:%S"],
-        18: ["%Y-%m-%dT%H:%M:%S"],
-        17: ["%Y-%m-%dT%H:%M:%S"],
-        16: ["%Y-%m-%dT%H:%M", "%Y-%m-%dT%H:%M:%S"],
-        15: ["%Y-%m-%dT%H:%M", "%Y-%m-%dT%H:%M:%S"],
-        14: ["%Y-%m-%dT%H:%M", "%Y-%m-%dT%H:%M:%S"],
-        13: ["%Y-%m-%dT%H", "%Y-%m-%dT%H:%M"],
-        12: ["%Y-%m-%dT%H", "%Y-%m-%dT%H:%M"],
-        11: ["%Y-%m-%dT%H"],
-        10: ["%Y-%m-%d", "%Y-%m-%dT%H"],
-        9: ["%Y-%m-%d"],
-        8: ["%Y-%m-%d"],
-        7: ["%Y-%m"],
-        6: ["%Y-%m"],
-        5: [],
-        4: ["%Y"],
+        19: ("%Y-%m-%dT%H:%M:%S",),
+        18: ("%Y-%m-%dT%H:%M:%S",),
+        17: ("%Y-%m-%dT%H:%M:%S",),
+        16: ("%Y-%m-%dT%H:%M", "%Y-%m-%dT%H:%M:%S"),
+        15: ("%Y-%m-%dT%H:%M", "%Y-%m-%dT%H:%M:%S"),
+        14: ("%Y-%m-%dT%H:%M", "%Y-%m-%dT%H:%M:%S"),
+        13: ("%Y-%m-%dT%H", "%Y-%m-%dT%H:%M"),
+        12: ("%Y-%m-%dT%H", "%Y-%m-%dT%H:%M"),
+        11: ("%Y-%m-%dT%H",),
+        10: ("%Y-%m-%d", "%Y-%m-%dT%H"),
+        9: ("%Y-%m-%d",),
+        8: ("%Y-%m-%d",),
+        7: ("%Y-%m",),
+        6: ("%Y-%m",),
+        5: (),
+        4: ("%Y",),
     }
 
     name = "date"
@@ -123,7 +122,8 @@ class DateType(PropertyType):
         return "date:%s" % value
 
     def to_datetime(self, value):
-        formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), [])
+        value = value[: self.MAX_LENGTH]
+        formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), ())
         for fmt in formats:
             try:
                 dt = datetime.strptime(value, fmt)

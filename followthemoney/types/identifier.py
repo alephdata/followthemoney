@@ -1,5 +1,4 @@
 import re
-from normality import normalize
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen, shortest
@@ -16,11 +15,6 @@ class IdentifierType(PropertyType):
     plural = _("Identifiers")
     matchable = True
     pivot = True
-
-    def normalize(self, text, **kwargs):
-        """Normalize for comparison."""
-        ids = super(IdentifierType, self).normalize(text, **kwargs)
-        return [normalize(i) for i in ids]
 
     def clean_compare(self, value):
         # TODO: should this be used for normalization?

@@ -17,11 +17,6 @@ class EmailsTest(unittest.TestCase):
         self.assertEqual(emails.clean("foo@PUDO.org"), "foo@pudo.org")
         self.assertEqual(emails.clean("FOO@PUDO.org"), "FOO@pudo.org")
 
-    def test_normalize(self):
-        self.assertEqual(emails.normalize(None), [])
-        self.assertEqual(emails.normalize("FOO@PUDO"), [])
-        self.assertEqual(emails.normalize("FOO@PUDO.org"), ["foo@pudo.org"])
-
     def test_domain_validity(self):
         self.assertTrue(emails.validate("foo@pudo.org"))
         self.assertFalse(emails.validate("foo@pudo"))

@@ -14,13 +14,6 @@ class AddressesTest(unittest.TestCase):
         self.assertEqual(addresses.clean("huhu\n   haha"), "huhu, haha")
         self.assertEqual(addresses.clean("huhu,\n haha"), "huhu, haha")
 
-    def test_normalize(self):
-        addresses = registry.address
-        self.assertEqual(
-            addresses.normalize(UK), ["43 Duke Street, Edinburgh, EH6 8HH"]
-        )  # noqa
-        self.assertEqual(addresses.normalize("\n  "), [])
-
     def test_specificity(self):
         addresses = registry.address
         self.assertGreater(addresses.specificity(UK), 0.2)
