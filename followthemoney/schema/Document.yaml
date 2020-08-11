@@ -57,6 +57,13 @@ Document:
       label: "Language"
       type: language
       rdf: http://purl.org/dc/terms/language
+    translatedSourceLanguage:
+      # TODO: how is this different from `detectedLanguage`?
+      label: "The language of the source document detected when the body text was translated"
+      type: language
+    translatedLanguage:
+      label: "The language of the translated text"
+      type: language
     date:
       label: "Date"
       description: "If not otherwise specified"
@@ -117,10 +124,6 @@ PlainText:
       label: "Translated version of the body text"
       hidden: true
       type: text
-    translatedTextSrcLanguage:
-      label: "The language of the source document detected when the body text was translated"
-    translatedTextLanguage:
-      label: "The language of the translated text"
 
 Pages:
   # Like PDF, word document, ...
@@ -212,10 +215,6 @@ Image:
       label: "Translated version of the body text"
       hidden: true
       type: text
-    translatedTextSrcLanguage:
-      label: "The language of the source document detected when the body text was translated"
-    translatedTextLanguage:
-      label: "The language of the translated text"
 
 Video:
   extends: Document
@@ -289,10 +288,6 @@ HyperText:
       label: "Translated version of the body text"
       hidden: true
       type: text
-    translatedTextSrcLanguage:
-      label: "The language of the source document detected when the body text was translated"
-    translatedTextLanguage:
-      label: "The language of the translated text"
 
 Email:
   extends:
