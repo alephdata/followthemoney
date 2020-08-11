@@ -4,6 +4,15 @@ Mention:
   abstract: false
   matchable: false
   generated: true
+  featured:
+    - document
+    - name
+    - resolved
+  required:
+    - document
+    - name
+  caption:
+    - name
   properties:
     document:
       label: "Document"
@@ -19,12 +28,12 @@ Mention:
         label: "Document mentions"
       type: entity
       range: LegalEntity
-    personMentioned:
-      label: "Detected person name"
+    name:
+      label: "Detected name"
       type: name
-    companyMentioned:
-      label: "Detected company name"
-      type: name
+    detectedSchema:
+      label: "Detected entity type"
+      hidden: true
     contextCountry:
       label: "Co-occurring countries"
       hidden: true
