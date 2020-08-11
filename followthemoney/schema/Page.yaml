@@ -11,6 +11,14 @@ Page:
       label: "Text"
       hidden: true
       type: text
+    translatedText:
+      label: "Translated version of the body text"
+      hidden: true
+      type: text
+    translatedTextSrcLanguage:
+      label: "The language of the source document detected when the body text was translated"
+    translatedTextLanguage:
+      label: "The language of the translated text"
     document:
       label: "Document"
       type: entity

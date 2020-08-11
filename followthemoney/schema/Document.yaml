@@ -113,6 +113,14 @@ PlainText:
       label: "Text"
       hidden: true
       type: "text"
+    translatedText:
+      label: "Translated version of the body text"
+      hidden: true
+      type: text
+    translatedTextSrcLanguage:
+      label: "The language of the source document detected when the body text was translated"
+    translatedTextLanguage:
+      label: "The language of the translated text"
 
 Pages:
   # Like PDF, word document, ...
@@ -134,6 +142,9 @@ Pages:
       label: "PDF alternative version checksum"
       hidden: true
       type: checksum
+    hasTranslatedText:
+      label: "Indicates if the pages have translated text. When present and non-zero, pages have alt text"
+      type: number
 
 Folder:
   extends: Document
@@ -197,6 +208,14 @@ Image:
       label: "Text"
       type: "text"
       hidden: true
+    translatedText:
+      label: "Translated version of the body text"
+      hidden: true
+      type: text
+    translatedTextSrcLanguage:
+      label: "The language of the source document detected when the body text was translated"
+    translatedTextLanguage:
+      label: "The language of the translated text"
 
 Video:
   extends: Document
@@ -266,6 +285,14 @@ HyperText:
       label: "HTML"
       type: html
       hidden: true
+    translatedText:
+      label: "Translated version of the body text"
+      hidden: true
+      type: text
+    translatedTextSrcLanguage:
+      label: "The language of the source document detected when the body text was translated"
+    translatedTextLanguage:
+      label: "The language of the translated text"
 
 Email:
   extends:
