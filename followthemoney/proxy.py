@@ -272,7 +272,10 @@ class EntityProxy(object):
         return hash(self.id)
 
     def __eq__(self, other):
-        return self.id == other.id
+        try:
+            return self.id == other.id
+        except AttributeError:
+            return False
 
     @classmethod
     def from_dict(cls, model, data, cleaned=True):

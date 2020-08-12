@@ -78,7 +78,10 @@ class Property(object):
                 values.append(val)
 
     def __eq__(self, other):
-        return self.qname == other.qname
+        try:
+            return self.qname == other.qname
+        except AttributeError:
+            return False
 
     def __hash__(self):
         return hash(self.qname)
