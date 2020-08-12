@@ -32,7 +32,7 @@ class Model(object):
                     schema.properties[prop.name] = prop
 
     def _load(self, filepath):
-        with open(filepath, "r") as fh:
+        with open(filepath, "r", encoding="utf-8") as fh:
             data = yaml.safe_load(fh)
             if not isinstance(data, dict):
                 raise InvalidModel("Model file is not a mapping.")
