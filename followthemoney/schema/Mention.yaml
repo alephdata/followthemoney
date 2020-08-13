@@ -19,6 +19,7 @@ Mention:
       reverse:
         name: mentionedEntities
         label: "Extracted names"
+        hidden: true
       type: entity
       range: Document
     resolved:
