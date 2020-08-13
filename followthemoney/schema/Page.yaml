@@ -3,6 +3,7 @@ Page:
   plural: Pages
   matchable: false
   generated: true
+  hidden: true
   properties:
     index:
       label: "Index"

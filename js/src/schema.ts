@@ -18,6 +18,7 @@ export interface ISchemaDatum {
   schemata: string[]
   extends: string[]
   abstract?: boolean
+  hidden?: boolean
   matchable?: boolean
   generated?: boolean
   description?: string
@@ -39,6 +40,7 @@ export class Schema {
   public readonly label: string
   public readonly plural: string
   public readonly abstract: boolean
+  public readonly hidden: boolean
   public readonly matchable: boolean
   public readonly generated: boolean
   public readonly description: string | null
@@ -62,6 +64,7 @@ export class Schema {
     this.caption = config.caption || new Array()
     this.required = config.required || new Array()
     this.abstract = !!config.abstract
+    this.hidden = !!config.hidden
     this.matchable = !!config.matchable
     this.generated = !!config.generated
     this.description = config.description || null

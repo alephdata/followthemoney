@@ -4,6 +4,7 @@ Mention:
   abstract: false
   matchable: false
   generated: true
+  hidden: true
   featured:
     - document
     - name
