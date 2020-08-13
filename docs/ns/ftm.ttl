@@ -840,6 +840,16 @@ dct:language a rdf:Property ;
     rdfs:isDefinedBy ftm: ;
     rdfs:range xsd:dateTime .
 
+<https://w3id.org/ftm#Document:translatedLanguage> a rdf:Property ;
+    rdfs:label "The language of the translated text" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Document:translatedSourceLanguage> a rdf:Property ;
+    rdfs:label "The language of the source document detected when the body text was translated" ;
+    rdfs:domain ftm:Document ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#EconomicActivity:ccdNumber> a rdf:Property ;
     rdfs:label "Customs Cargo Declaration Number" ;
     rdfs:domain ftm:EconomicActivity ;
@@ -1002,8 +1012,18 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:HyperText ;
     rdfs:isDefinedBy ftm: .
 
+<https://w3id.org/ftm#HyperText:translatedText> a rdf:Property ;
+    rdfs:label "Translated version of the body text" ;
+    rdfs:domain ftm:HyperText ;
+    rdfs:isDefinedBy ftm: .
+
 <https://w3id.org/ftm#Image:bodyText> a rdf:Property ;
     rdfs:label "Text" ;
+    rdfs:domain ftm:Image ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Image:translatedText> a rdf:Property ;
+    rdfs:label "Translated version of the body text" ;
     rdfs:domain ftm:Image ;
     rdfs:isDefinedBy ftm: .
 
@@ -1240,11 +1260,6 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:License ;
     rdfs:isDefinedBy ftm: .
 
-<https://w3id.org/ftm#Mention:companyMentioned> a rdf:Property ;
-    rdfs:label "Detected company name" ;
-    rdfs:domain ftm:Mention ;
-    rdfs:isDefinedBy ftm: .
-
 <https://w3id.org/ftm#Mention:contextCountry> a rdf:Property ;
     rdfs:label "Co-occurring countries" ;
     rdfs:domain ftm:Mention ;
@@ -1260,8 +1275,13 @@ dct:language a rdf:Property ;
     rdfs:domain ftm:Mention ;
     rdfs:isDefinedBy ftm: .
 
-<https://w3id.org/ftm#Mention:personMentioned> a rdf:Property ;
-    rdfs:label "Detected person name" ;
+<https://w3id.org/ftm#Mention:detectedSchema> a rdf:Property ;
+    rdfs:label "Detected entity type" ;
+    rdfs:domain ftm:Mention ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Mention:name> a rdf:Property ;
+    rdfs:label "Detected name" ;
     rdfs:domain ftm:Mention ;
     rdfs:isDefinedBy ftm: .
 
@@ -1339,6 +1359,26 @@ dct:language a rdf:Property ;
 <https://w3id.org/ftm#Page:indexText> a rdf:Property ;
     rdfs:label "Index text" ;
     rdfs:domain ftm:Page ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Page:translatedText> a rdf:Property ;
+    rdfs:label "Translated version of the body text" ;
+    rdfs:domain ftm:Page ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Page:translatedTextLanguage> a rdf:Property ;
+    rdfs:label "The language of the translated text" ;
+    rdfs:domain ftm:Page ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Page:translatedTextSrcLanguage> a rdf:Property ;
+    rdfs:label "The language of the source document detected when the body text was translated" ;
+    rdfs:domain ftm:Page ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#Pages:hasTranslatedText> a rdf:Property ;
+    rdfs:label "Indicates if the pages have translated text. When present and non-zero, pages have alt text" ;
+    rdfs:domain ftm:Pages ;
     rdfs:isDefinedBy ftm: .
 
 <https://w3id.org/ftm#Pages:pdfHash> a rdf:Property ;
@@ -1471,6 +1511,11 @@ dct:language a rdf:Property ;
 
 <https://w3id.org/ftm#PlainText:bodyText> a rdf:Property ;
     rdfs:label "Text" ;
+    rdfs:domain ftm:PlainText ;
+    rdfs:isDefinedBy ftm: .
+
+<https://w3id.org/ftm#PlainText:translatedText> a rdf:Property ;
+    rdfs:label "Translated version of the body text" ;
     rdfs:domain ftm:PlainText ;
     rdfs:isDefinedBy ftm: .
 
@@ -2808,5 +2853,5 @@ dct:isPartOf a rdf:Property ;
 
 ftm: a owl:Ontology ;
     rdfs:label "Follow The Money" ;
-    dct:modified "2020-07-24T17:05:02"^^xsd:dateTime .
+    dct:modified "2020-08-13T12:12:33"^^xsd:dateTime .
 

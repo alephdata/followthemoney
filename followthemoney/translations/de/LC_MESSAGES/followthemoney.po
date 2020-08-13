@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-24 16:18+0200\n"
+"POT-Creation-Date: 2020-08-13 12:33+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2020\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -30,30 +30,30 @@ msgstr "Eigenschaft darf nicht direkt gesetzt werden."
 msgid "Invalid value"
 msgstr "Ungültiger Wert"
 
-#: followthemoney/proxy.py:29
+#: followthemoney/proxy.py:28
 msgid "No schema for entity."
 msgstr "Der Entität ist kein Schema zugeordnet."
 
-#: followthemoney/proxy.py:75
+#: followthemoney/proxy.py:65
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Unbekannte Eigenschaft (%s): %s"
 
-#: followthemoney/proxy.py:106
+#: followthemoney/proxy.py:96
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Pseudofeld (%s): %s"
 
-#: followthemoney/proxy.py:115
+#: followthemoney/proxy.py:105
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Selbst-Beziehung (%s): %s"
 
-#: followthemoney/schema.py:195
+#: followthemoney/schema.py:197
 msgid "Required"
 msgstr "Erforderlich"
 
-#: followthemoney/schema.py:199
+#: followthemoney/schema.py:201
 msgid "Entity validation failed"
 msgstr "Prüfung fehlgeschlagen"
 
@@ -997,10 +997,24 @@ msgstr "Eindeutige Nachrichten-ID des vorliegenden Dokuments"
 msgid "MIME type"
 msgstr "MIME-Typ"
 
+#. Document.properties.translatedSourceLanguage.label
+#. Page.properties.translatedTextSrcLanguage.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
+msgid ""
+"The language of the source document detected when the body text was "
+"translated"
+msgstr ""
+
+#. Document.properties.translatedLanguage.label
+#. Page.properties.translatedTextLanguage.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
+msgid "The language of the translated text"
+msgstr ""
+
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:47
+#: followthemoney/types/date.py:46
 msgid "Date"
 msgstr "Datum"
 
@@ -1069,6 +1083,14 @@ msgstr "Textdateien"
 msgid "Text"
 msgstr "Text"
 
+#. PlainText.properties.translatedText.label
+#. Image.properties.translatedText.label
+#. HyperText.properties.translatedText.label
+#. Page.properties.translatedText.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
+msgid "Translated version of the body text"
+msgstr ""
+
 #. Pages.label
 #. Documentation.properties.document.label
 #. Mention.properties.document.label
@@ -1088,6 +1110,13 @@ msgstr "Dokumente"
 #: followthemoney/schema/Document.yaml
 msgid "PDF alternative version checksum"
 msgstr "Prüfsumme der PDF-Fassung"
+
+#. Pages.properties.hasTranslatedText.label
+#: followthemoney/schema/Document.yaml
+msgid ""
+"Indicates if the pages have translated text. When present and non-zero, "
+"pages have alt text"
+msgstr ""
 
 #. Folder.plural
 #: followthemoney/schema/Document.yaml
@@ -2073,14 +2102,14 @@ msgstr ""
 msgid "Document mentions"
 msgstr ""
 
-#. Mention.properties.personMentioned.label
+#. Mention.properties.name.label
 #: followthemoney/schema/Mention.yaml
-msgid "Detected person name"
+msgid "Detected name"
 msgstr ""
 
-#. Mention.properties.companyMentioned.label
+#. Mention.properties.detectedSchema.label
 #: followthemoney/schema/Mention.yaml
-msgid "Detected company name"
+msgid "Detected entity type"
 msgstr ""
 
 #. Mention.properties.contextCountry.label
@@ -3027,7 +3056,7 @@ msgstr "Nordirland"
 msgid "Transnistria"
 msgstr "Transnistrien"
 
-#: followthemoney/types/date.py:48
+#: followthemoney/types/date.py:47
 msgid "Dates"
 msgstr "Daten"
 

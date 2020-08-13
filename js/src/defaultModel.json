@@ -515,19 +515,19 @@
           "range": "LegalEntity",
           "reverse": "mentionedBy"
         },
-        "personMentioned": {
-          "name": "personMentioned",
-          "qname": "Mention:personMentioned",
-          "label": "Detected person name",
+        "name": {
+          "name": "name",
+          "qname": "Mention:name",
+          "label": "Detected name",
           "type": "name",
           "matchable": true
         },
-        "companyMentioned": {
-          "name": "companyMentioned",
-          "qname": "Mention:companyMentioned",
-          "label": "Detected company name",
-          "type": "name",
-          "matchable": true
+        "detectedSchema": {
+          "name": "detectedSchema",
+          "qname": "Mention:detectedSchema",
+          "label": "Detected entity type",
+          "type": "string",
+          "hidden": true
         },
         "contextCountry": {
           "name": "contextCountry",
@@ -554,6 +554,19 @@
           "hidden": true
         }
       },
+      "featured": [
+        "document",
+        "name",
+        "resolved"
+      ],
+      "required": [
+        "document",
+        "name"
+      ],
+      "caption": [
+        "name"
+      ],
+      "hidden": true,
       "generated": true
     },
     "CourtCase": {
@@ -3187,6 +3200,18 @@
           "label": "Language",
           "type": "language"
         },
+        "translatedSourceLanguage": {
+          "name": "translatedSourceLanguage",
+          "qname": "Document:translatedSourceLanguage",
+          "label": "The language of the source document detected when the body text was translated",
+          "type": "language"
+        },
+        "translatedLanguage": {
+          "name": "translatedLanguage",
+          "qname": "Document:translatedLanguage",
+          "label": "The language of the translated text",
+          "type": "language"
+        },
         "date": {
           "name": "date",
           "qname": "Document:date",
@@ -3259,6 +3284,7 @@
           "type": "entity",
           "stub": true,
           "matchable": true,
+          "hidden": true,
           "range": "Mention",
           "reverse": "document"
         },
@@ -3307,6 +3333,13 @@
           "label": "Text",
           "type": "text",
           "hidden": true
+        },
+        "translatedText": {
+          "name": "translatedText",
+          "qname": "PlainText:translatedText",
+          "label": "Translated version of the body text",
+          "type": "text",
+          "hidden": true
         }
       },
       "featured": [
@@ -3341,6 +3374,12 @@
           "type": "checksum",
           "matchable": true,
           "hidden": true
+        },
+        "hasTranslatedText": {
+          "name": "hasTranslatedText",
+          "qname": "Pages:hasTranslatedText",
+          "label": "Indicates if the pages have translated text. When present and non-zero, pages have alt text",
+          "type": "number"
         },
         "pages": {
           "name": "pages",
@@ -3482,6 +3521,13 @@
           "label": "Text",
           "type": "text",
           "hidden": true
+        },
+        "translatedText": {
+          "name": "translatedText",
+          "qname": "Image:translatedText",
+          "label": "Translated version of the body text",
+          "type": "text",
+          "hidden": true
         }
       },
       "featured": [
@@ -3594,6 +3640,13 @@
           "qname": "HyperText:bodyHtml",
           "label": "HTML",
           "type": "html",
+          "hidden": true
+        },
+        "translatedText": {
+          "name": "translatedText",
+          "qname": "HyperText:translatedText",
+          "label": "Translated version of the body text",
+          "type": "text",
           "hidden": true
         }
       },
@@ -3807,6 +3860,25 @@
           "type": "text",
           "hidden": true
         },
+        "translatedText": {
+          "name": "translatedText",
+          "qname": "Page:translatedText",
+          "label": "Translated version of the body text",
+          "type": "text",
+          "hidden": true
+        },
+        "translatedTextSrcLanguage": {
+          "name": "translatedTextSrcLanguage",
+          "qname": "Page:translatedTextSrcLanguage",
+          "label": "The language of the source document detected when the body text was translated",
+          "type": "string"
+        },
+        "translatedTextLanguage": {
+          "name": "translatedTextLanguage",
+          "qname": "Page:translatedTextLanguage",
+          "label": "The language of the translated text",
+          "type": "string"
+        },
         "document": {
           "name": "document",
           "qname": "Page:document",
@@ -3830,6 +3902,7 @@
           "hidden": true
         }
       },
+      "hidden": true,
       "generated": true
     },
     "Asset": {
@@ -4768,122 +4841,10 @@
       "matchable": true,
       "pivot": true
     },
-    "language": {
-      "label": "Language",
-      "plural": "Languages",
-      "group": "languages",
-      "values": {
-        "eng": "English",
-        "fra": "French",
-        "deu": "German",
-        "rus": "Russian",
-        "spa": "Spanish",
-        "nld": "Dutch",
-        "ron": "Romanian",
-        "kat": "Georgian",
-        "ara": "Arabic",
-        "tur": "Turkish",
-        "ltz": "Luxembourgish",
-        "ell": "Greek",
-        "lit": "Lithuanian",
-        "ukr": "Ukrainian",
-        "zho": "Chinese",
-        "bel": "Belarusian",
-        "bul": "Bulgarian",
-        "bos": "Bosnian",
-        "jpn": "Japanese",
-        "ces": "Czech",
-        "lav": "Latvian",
-        "por": "Portuguese",
-        "pol": "Polish",
-        "hye": "Armenian",
-        "hrv": "Croatian",
-        "hin": "Hindi",
-        "heb": "Hebrew",
-        "uzb": "Uzbek",
-        "mon": "Mongolian",
-        "urd": "Urdu",
-        "sqi": "Albanian",
-        "kor": "Korean",
-        "isl": "Icelandic",
-        "ita": "Italian",
-        "est": "Estonian",
-        "nor": "Norwegian",
-        "fas": "Persian",
-        "swa": "Swahili",
-        "slv": "Slovenian",
-        "slk": "Slovak",
-        "aze": "Azerbaijani",
-        "tgk": "Tajik",
-        "kaz": "Kazakh",
-        "tuk": "Turkmen",
-        "kir": "Kyrgyz",
-        "hun": "hun",
-        "dan": "Danish",
-        "afr": "Afrikaans",
-        "swe": "Swedish",
-        "srp": "Serbian",
-        "ind": "Indonesian",
-        "kan": "Kannada",
-        "mkd": "Macedonian",
-        "mlt": "Maltese",
-        "msa": "Malay",
-        "fin": "Finnish",
-        "cat": "Catalan",
-        "npi": "npi",
-        "tgl": "Tagalog",
-        "fil": "Filipino"
-      }
-    },
-    "url": {
-      "label": "URL",
-      "plural": "URLs",
-      "group": "urls",
-      "matchable": true,
-      "pivot": true
-    },
-    "json": {
-      "label": "Nested data",
-      "plural": null
-    },
-    "mimetype": {
-      "label": "MIME-Type",
-      "plural": "MIME-Types",
-      "group": "mimetypes"
-    },
-    "number": {
-      "label": "Number",
-      "plural": "Numbers"
-    },
-    "date": {
-      "label": "Date",
-      "plural": "Dates",
-      "group": "dates",
-      "matchable": true
-    },
-    "ip": {
-      "label": "IP-Address",
-      "plural": "IP-Addresses",
-      "group": "ips",
-      "matchable": true
-    },
-    "entity": {
-      "label": "Entity",
-      "plural": "Entities",
-      "group": "entities",
-      "matchable": true,
-      "pivot": true
-    },
-    "checksum": {
-      "label": "Checksum",
-      "plural": "Checksums",
-      "group": "checksums",
-      "matchable": true
-    },
-    "iban": {
-      "label": "IBAN",
-      "plural": "IBANs",
-      "group": "ibans",
+    "phone": {
+      "label": "Phone number",
+      "plural": "Phone numbers",
+      "group": "phones",
       "matchable": true,
       "pivot": true
     },
@@ -4934,25 +4895,34 @@
         "ctx.poi": "Person of interest"
       }
     },
-    "html": {
-      "label": "HTML",
-      "plural": "HTMLs"
-    },
-    "phone": {
-      "label": "Phone number",
-      "plural": "Phone numbers",
-      "group": "phones",
+    "iban": {
+      "label": "IBAN",
+      "plural": "IBANs",
+      "group": "ibans",
       "matchable": true,
       "pivot": true
-    },
-    "domain": {
-      "label": "Domain",
-      "plural": "Domains",
-      "matchable": true
     },
     "string": {
       "label": "Label",
       "plural": "Labels"
+    },
+    "checksum": {
+      "label": "Checksum",
+      "plural": "Checksums",
+      "group": "checksums",
+      "matchable": true
+    },
+    "address": {
+      "label": "Address",
+      "plural": "Addresses",
+      "group": "addresses",
+      "matchable": true,
+      "pivot": true
+    },
+    "mimetype": {
+      "label": "MIME-Type",
+      "plural": "MIME-Types",
+      "group": "mimetypes"
     },
     "country": {
       "label": "Country",
@@ -5235,20 +5205,6 @@
         "zw": "Zimbabwe"
       }
     },
-    "identifier": {
-      "label": "Identifier",
-      "plural": "Identifiers",
-      "group": "identifiers",
-      "matchable": true,
-      "pivot": true
-    },
-    "address": {
-      "label": "Address",
-      "plural": "Addresses",
-      "group": "addresses",
-      "matchable": true,
-      "pivot": true
-    },
     "name": {
       "label": "Name",
       "plural": "Names",
@@ -5256,9 +5212,126 @@
       "matchable": true,
       "pivot": true
     },
+    "domain": {
+      "label": "Domain",
+      "plural": "Domains",
+      "matchable": true
+    },
+    "json": {
+      "label": "Nested data",
+      "plural": null
+    },
+    "ip": {
+      "label": "IP-Address",
+      "plural": "IP-Addresses",
+      "group": "ips",
+      "matchable": true
+    },
+    "url": {
+      "label": "URL",
+      "plural": "URLs",
+      "group": "urls",
+      "matchable": true,
+      "pivot": true
+    },
+    "html": {
+      "label": "HTML",
+      "plural": "HTMLs"
+    },
+    "identifier": {
+      "label": "Identifier",
+      "plural": "Identifiers",
+      "group": "identifiers",
+      "matchable": true,
+      "pivot": true
+    },
+    "number": {
+      "label": "Number",
+      "plural": "Numbers"
+    },
     "text": {
       "label": "Text",
       "plural": "Texts"
+    },
+    "language": {
+      "label": "Language",
+      "plural": "Languages",
+      "group": "languages",
+      "values": {
+        "eng": "English",
+        "fra": "French",
+        "deu": "German",
+        "rus": "Russian",
+        "spa": "Spanish",
+        "nld": "Dutch",
+        "ron": "Romanian",
+        "kat": "Georgian",
+        "ara": "Arabic",
+        "tur": "Turkish",
+        "ltz": "Luxembourgish",
+        "ell": "Greek",
+        "lit": "Lithuanian",
+        "ukr": "Ukrainian",
+        "zho": "Chinese",
+        "bel": "Belarusian",
+        "bul": "Bulgarian",
+        "bos": "Bosnian",
+        "jpn": "Japanese",
+        "ces": "Czech",
+        "lav": "Latvian",
+        "por": "Portuguese",
+        "pol": "Polish",
+        "hye": "Armenian",
+        "hrv": "Croatian",
+        "hin": "Hindi",
+        "heb": "Hebrew",
+        "uzb": "Uzbek",
+        "mon": "Mongolian",
+        "urd": "Urdu",
+        "sqi": "Albanian",
+        "kor": "Korean",
+        "isl": "Icelandic",
+        "ita": "Italian",
+        "est": "Estonian",
+        "nor": "Norwegian",
+        "fas": "Persian",
+        "swa": "Swahili",
+        "slv": "Slovenian",
+        "slk": "Slovak",
+        "aze": "Azerbaijani",
+        "tgk": "Tajik",
+        "kaz": "Kazakh",
+        "tuk": "Turkmen",
+        "kir": "Kyrgyz",
+        "hun": "hun",
+        "dan": "Danish",
+        "afr": "Afrikaans",
+        "swe": "Swedish",
+        "srp": "Serbian",
+        "ind": "Indonesian",
+        "kan": "Kannada",
+        "mkd": "Macedonian",
+        "mlt": "Maltese",
+        "msa": "Malay",
+        "fin": "Finnish",
+        "cat": "Catalan",
+        "npi": "npi",
+        "tgl": "Tagalog",
+        "fil": "Filipino"
+      }
+    },
+    "entity": {
+      "label": "Entity",
+      "plural": "Entities",
+      "group": "entities",
+      "matchable": true,
+      "pivot": true
+    },
+    "date": {
+      "label": "Date",
+      "plural": "Dates",
+      "group": "dates",
+      "matchable": true
     }
   }
 }
