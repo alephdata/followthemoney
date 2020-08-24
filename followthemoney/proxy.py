@@ -114,9 +114,7 @@ class EntityProxy(object):
                     # log.warning(msg, prop.name)
                     continue
             self._size += value_size
-
-            if prop_name not in self._properties:
-                self._properties[prop_name] = set()
+            self._properties.setdefault(prop_name, set())
             self._properties[prop_name].add(value)
 
     def set(self, prop, values, cleaned=False, quiet=False):
@@ -243,7 +241,6 @@ class EntityProxy(object):
 
     def merge(self, other):
         model = self.schema.model
-        other = self.from_dict(model, other)
         self.id = self.id or other.id
         try:
             self.schema = model.common_schema(self.schema, other.schema)
@@ -252,11 +249,8 @@ class EntityProxy(object):
             raise InvalidData(msg % (self.id, e))
 
         self.context = merge_context(self.context, other.context)
-        self._size = 0
         for prop, values in other._properties.items():
-            self._properties.setdefault(prop, set())
-            self._properties[prop].update(values)
-            self._size += sum([len(v) for v in self._properties[prop]])
+            self.add(prop, values, cleaned=True, quiet=True)
         return self
 
     def __str__(self):
