@@ -12,6 +12,9 @@ class PhonesTest(unittest.TestCase):
         self.assertEqual(phones.clean("+18007842433"), "+18007842433")
         self.assertEqual(phones.clean("+1 555 8379"), None)
 
+        self.assertTrue(phones.validate("+18007842433"))
+        self.assertFalse(phones.validate("banana"))
+
     def test_de_number(self):
         phones = registry.phone
         proxy = model.make_entity("Person")

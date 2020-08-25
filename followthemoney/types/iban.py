@@ -30,10 +30,10 @@ class IbanType(PropertyType):
         return value[:2].lower()
 
     def rdf(self, value):
-        return URIRef("iban:%s" % value)
+        return URIRef(self.node_id(value))
 
     def node_id(self, value):
-        return str(self.rdf(value.upper()))
+        return f"iban:{value.upper()}"
 
     def caption(self, value):
         return iban.format(value)

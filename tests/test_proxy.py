@@ -25,7 +25,9 @@ ENTITY = {
 
 class ProxyTestCase(TestCase):
     def test_base_functions(self):
-        proxy = EntityProxy.from_dict(model, ENTITY)
+        data = dict(ENTITY)
+        data["properties"]["banana"] = ["foo"]
+        proxy = EntityProxy.from_dict(model, data)
         assert "test" in repr(proxy), repr(proxy)
         assert hash(proxy) == hash(proxy.id)
         assert proxy.get("name") == ["Ralph Tester"]
@@ -174,6 +176,9 @@ class ProxyTestCase(TestCase):
         data = proxy.get_type_inverted()
         assert "countries" in data
         assert "vg" in proxy.country_hints, proxy.country_hints
+        assert "us" not in proxy.country_hints, proxy.country_hints
+        proxy.pop("nationality")
+        assert "vg" not in proxy.country_hints, proxy.country_hints
         assert "us" in proxy.country_hints, proxy.country_hints
 
     def test_make_id(self):
@@ -194,6 +199,7 @@ class ProxyTestCase(TestCase):
         other.id = "banana"
         assert proxy.id == "test"
         assert other != proxy
+        assert other != "banana"
 
     def test_merge(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
@@ -203,6 +209,10 @@ class ProxyTestCase(TestCase):
         proxy.merge(other)
         assert "Ralph Tester" in proxy.names, proxy.names
         assert "gb" in proxy.countries, proxy.countries
+        with assert_raises(InvalidData):
+            other = {"schema": "Vessel"}
+            other = EntityProxy.from_dict(model, other)
+            proxy.merge(other)
 
     def test_context(self):
         data = {"fruit": "banana", "schema": "Person"}

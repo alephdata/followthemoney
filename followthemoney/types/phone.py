@@ -64,7 +64,10 @@ class PhoneType(PropertyType):
         return dampen(6, 11, value)
 
     def rdf(self, value):
-        return URIRef("tel:%s" % value)
+        return URIRef(self.node_id(value))
+
+    def node_id(self, value):
+        return f"tel:{value}"
 
     def caption(self, value):
         number = parse_number(value)

@@ -14,6 +14,8 @@ class IbansTest(unittest.TestCase):
     def test_rdf(self):
         rdf = ibans.rdf("GB29NWBK60161331926819")
         assert "iban:GB29NWBK60161331926819" in rdf
+        nid = ibans.node_id("gb29NWBK60161331926819")
+        assert "iban:GB" in nid
 
     def test_domain_validity(self):
         self.assertTrue(ibans.validate("GB29 NWBK 6016 1331 9268 19"))

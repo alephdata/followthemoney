@@ -9,24 +9,19 @@ class StringType(PropertyType):
     plural = _("Labels")
     matchable = False
 
+    def node_id(self, value):
+        return None
 
-class TextType(PropertyType):
+
+class TextType(StringType):
     name = "text"
     label = _("Text")
     plural = _("Texts")
-    matchable = False
     max_size = 30 * MEGABYTE
 
-    def node_id(self, value):
-        return None
 
-
-class HTMLType(PropertyType):
+class HTMLType(StringType):
     name = "html"
     label = _("HTML")
     plural = _("HTMLs")
-    matchable = False
     max_size = 30 * MEGABYTE
-
-    def node_id(self, value):
-        return None
