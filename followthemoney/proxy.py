@@ -214,10 +214,11 @@ class EntityProxy(object):
         imply a country that may be associated with the entity.
         """
         countries = set(self.countries)
-        for (prop, value) in self.itervalues():
-            hint = prop.type.country_hint(value)
-            if hint is not None:
-                countries.add(hint)
+        if not len(countries):
+            for (prop, value) in self.itervalues():
+                hint = prop.type.country_hint(value)
+                if hint is not None:
+                    countries.add(hint)
         return countries
 
     @property
