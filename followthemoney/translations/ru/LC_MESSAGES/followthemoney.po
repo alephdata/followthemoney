@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-13 12:33+0200\n"
+"POT-Creation-Date: 2020-08-25 16:02+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -1004,13 +1004,13 @@ msgstr "MIME-тип"
 msgid ""
 "The language of the source document detected when the body text was "
 "translated"
-msgstr ""
+msgstr "Язык документа, определённый при автоматическом переводе"
 
 #. Document.properties.translatedLanguage.label
 #. Page.properties.translatedTextLanguage.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 msgid "The language of the translated text"
-msgstr ""
+msgstr "Язык автоматически переведённого текста"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
@@ -1090,7 +1090,7 @@ msgstr "Текст"
 #. Page.properties.translatedText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 msgid "Translated version of the body text"
-msgstr ""
+msgstr "Перевод текста"
 
 #. Pages.label
 #. Documentation.properties.document.label
@@ -1118,6 +1118,8 @@ msgid ""
 "Indicates if the pages have translated text. When present and non-zero, "
 "pages have alt text"
 msgstr ""
+"Указатель (если присутствует и не равен нулю) наличия переведённого текста "
+"на страницах."
 
 #. Folder.plural
 #: followthemoney/schema/Document.yaml
@@ -2109,12 +2111,12 @@ msgstr "Упоминания в документе"
 #. Mention.properties.name.label
 #: followthemoney/schema/Mention.yaml
 msgid "Detected name"
-msgstr ""
+msgstr "Обнаруженное название"
 
 #. Mention.properties.detectedSchema.label
 #: followthemoney/schema/Mention.yaml
 msgid "Detected entity type"
-msgstr ""
+msgstr "Обнаруженный тип сущности"
 
 #. Mention.properties.contextCountry.label
 #: followthemoney/schema/Mention.yaml

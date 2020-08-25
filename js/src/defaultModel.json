@@ -4834,19 +4834,89 @@
     }
   },
   "types": {
-    "email": {
-      "label": "E-Mail Address",
-      "plural": "E-Mail Addresses",
-      "group": "emails",
+    "url": {
+      "label": "URL",
+      "plural": "URLs",
+      "group": "urls",
       "matchable": true,
       "pivot": true
     },
-    "phone": {
-      "label": "Phone number",
-      "plural": "Phone numbers",
-      "group": "phones",
-      "matchable": true,
-      "pivot": true
+    "string": {
+      "label": "Label",
+      "plural": "Labels"
+    },
+    "language": {
+      "label": "Language",
+      "plural": "Languages",
+      "group": "languages",
+      "values": {
+        "eng": "English",
+        "fra": "French",
+        "deu": "German",
+        "rus": "Russian",
+        "spa": "Spanish",
+        "nld": "Dutch",
+        "ron": "Romanian",
+        "kat": "Georgian",
+        "ara": "Arabic",
+        "tur": "Turkish",
+        "ltz": "Luxembourgish",
+        "ell": "Greek",
+        "lit": "Lithuanian",
+        "ukr": "Ukrainian",
+        "zho": "Chinese",
+        "bel": "Belarusian",
+        "bul": "Bulgarian",
+        "bos": "Bosnian",
+        "jpn": "Japanese",
+        "ces": "Czech",
+        "lav": "Latvian",
+        "por": "Portuguese",
+        "pol": "Polish",
+        "hye": "Armenian",
+        "hrv": "Croatian",
+        "hin": "Hindi",
+        "heb": "Hebrew",
+        "uzb": "Uzbek",
+        "mon": "Mongolian",
+        "urd": "Urdu",
+        "sqi": "Albanian",
+        "kor": "Korean",
+        "isl": "Icelandic",
+        "ita": "Italian",
+        "est": "Estonian",
+        "nor": "Norwegian",
+        "fas": "Persian",
+        "swa": "Swahili",
+        "slv": "Slovenian",
+        "slk": "Slovak",
+        "aze": "Azerbaijani",
+        "tgk": "Tajik",
+        "kaz": "Kazakh",
+        "tuk": "Turkmen",
+        "kir": "Kyrgyz",
+        "hun": "hun",
+        "dan": "Danish",
+        "afr": "Afrikaans",
+        "swe": "Swedish",
+        "srp": "Serbian",
+        "ind": "Indonesian",
+        "kan": "Kannada",
+        "mkd": "Macedonian",
+        "mlt": "Maltese",
+        "msa": "Malay",
+        "fin": "Finnish",
+        "cat": "Catalan",
+        "npi": "npi",
+        "tgl": "Tagalog",
+        "fil": "Filipino"
+      }
+    },
+    "date": {
+      "label": "Date",
+      "plural": "Dates",
+      "group": "dates",
+      "matchable": true
     },
     "topic": {
       "label": "Topic",
@@ -4895,34 +4965,16 @@
         "ctx.poi": "Person of interest"
       }
     },
-    "iban": {
-      "label": "IBAN",
-      "plural": "IBANs",
-      "group": "ibans",
+    "number": {
+      "label": "Number",
+      "plural": "Numbers"
+    },
+    "name": {
+      "label": "Name",
+      "plural": "Names",
+      "group": "names",
       "matchable": true,
       "pivot": true
-    },
-    "string": {
-      "label": "Label",
-      "plural": "Labels"
-    },
-    "checksum": {
-      "label": "Checksum",
-      "plural": "Checksums",
-      "group": "checksums",
-      "matchable": true
-    },
-    "address": {
-      "label": "Address",
-      "plural": "Addresses",
-      "group": "addresses",
-      "matchable": true,
-      "pivot": true
-    },
-    "mimetype": {
-      "label": "MIME-Type",
-      "plural": "MIME-Types",
-      "group": "mimetypes"
     },
     "country": {
       "label": "Country",
@@ -5205,10 +5257,19 @@
         "zw": "Zimbabwe"
       }
     },
-    "name": {
-      "label": "Name",
-      "plural": "Names",
-      "group": "names",
+    "mimetype": {
+      "label": "MIME-Type",
+      "plural": "MIME-Types",
+      "group": "mimetypes"
+    },
+    "html": {
+      "label": "HTML",
+      "plural": "HTMLs"
+    },
+    "address": {
+      "label": "Address",
+      "plural": "Addresses",
+      "group": "addresses",
       "matchable": true,
       "pivot": true
     },
@@ -5217,26 +5278,11 @@
       "plural": "Domains",
       "matchable": true
     },
-    "json": {
-      "label": "Nested data",
-      "plural": null
-    },
-    "ip": {
-      "label": "IP-Address",
-      "plural": "IP-Addresses",
-      "group": "ips",
+    "checksum": {
+      "label": "Checksum",
+      "plural": "Checksums",
+      "group": "checksums",
       "matchable": true
-    },
-    "url": {
-      "label": "URL",
-      "plural": "URLs",
-      "group": "urls",
-      "matchable": true,
-      "pivot": true
-    },
-    "html": {
-      "label": "HTML",
-      "plural": "HTMLs"
     },
     "identifier": {
       "label": "Identifier",
@@ -5245,80 +5291,16 @@
       "matchable": true,
       "pivot": true
     },
-    "number": {
-      "label": "Number",
-      "plural": "Numbers"
+    "json": {
+      "label": "Nested data",
+      "plural": null
     },
-    "text": {
-      "label": "Text",
-      "plural": "Texts"
-    },
-    "language": {
-      "label": "Language",
-      "plural": "Languages",
-      "group": "languages",
-      "values": {
-        "eng": "English",
-        "fra": "French",
-        "deu": "German",
-        "rus": "Russian",
-        "spa": "Spanish",
-        "nld": "Dutch",
-        "ron": "Romanian",
-        "kat": "Georgian",
-        "ara": "Arabic",
-        "tur": "Turkish",
-        "ltz": "Luxembourgish",
-        "ell": "Greek",
-        "lit": "Lithuanian",
-        "ukr": "Ukrainian",
-        "zho": "Chinese",
-        "bel": "Belarusian",
-        "bul": "Bulgarian",
-        "bos": "Bosnian",
-        "jpn": "Japanese",
-        "ces": "Czech",
-        "lav": "Latvian",
-        "por": "Portuguese",
-        "pol": "Polish",
-        "hye": "Armenian",
-        "hrv": "Croatian",
-        "hin": "Hindi",
-        "heb": "Hebrew",
-        "uzb": "Uzbek",
-        "mon": "Mongolian",
-        "urd": "Urdu",
-        "sqi": "Albanian",
-        "kor": "Korean",
-        "isl": "Icelandic",
-        "ita": "Italian",
-        "est": "Estonian",
-        "nor": "Norwegian",
-        "fas": "Persian",
-        "swa": "Swahili",
-        "slv": "Slovenian",
-        "slk": "Slovak",
-        "aze": "Azerbaijani",
-        "tgk": "Tajik",
-        "kaz": "Kazakh",
-        "tuk": "Turkmen",
-        "kir": "Kyrgyz",
-        "hun": "hun",
-        "dan": "Danish",
-        "afr": "Afrikaans",
-        "swe": "Swedish",
-        "srp": "Serbian",
-        "ind": "Indonesian",
-        "kan": "Kannada",
-        "mkd": "Macedonian",
-        "mlt": "Maltese",
-        "msa": "Malay",
-        "fin": "Finnish",
-        "cat": "Catalan",
-        "npi": "npi",
-        "tgl": "Tagalog",
-        "fil": "Filipino"
-      }
+    "phone": {
+      "label": "Phone number",
+      "plural": "Phone numbers",
+      "group": "phones",
+      "matchable": true,
+      "pivot": true
     },
     "entity": {
       "label": "Entity",
@@ -5327,11 +5309,29 @@
       "matchable": true,
       "pivot": true
     },
-    "date": {
-      "label": "Date",
-      "plural": "Dates",
-      "group": "dates",
+    "ip": {
+      "label": "IP-Address",
+      "plural": "IP-Addresses",
+      "group": "ips",
       "matchable": true
+    },
+    "email": {
+      "label": "E-Mail Address",
+      "plural": "E-Mail Addresses",
+      "group": "emails",
+      "matchable": true,
+      "pivot": true
+    },
+    "text": {
+      "label": "Text",
+      "plural": "Texts"
+    },
+    "iban": {
+      "label": "IBAN",
+      "plural": "IBANs",
+      "group": "ibans",
+      "matchable": true,
+      "pivot": true
     }
   }
 }
