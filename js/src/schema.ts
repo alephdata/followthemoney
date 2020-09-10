@@ -90,15 +90,15 @@ export class Schema {
     return this.extends.map(name => this.model.getSchema(name))
   }
 
-  getProperties(): Map<string, Property> {
+  getProperties(qualified: boolean = false): Map<string, Property> {
     const properties = new Map<string, Property>()
     this.getExtends().forEach((schema) => {
-      schema.getProperties().forEach((prop, name) => {
+      schema.getProperties(qualified).forEach((prop, name) => {
         properties.set(name, prop)
       })
     })
     this.properties.forEach((prop, name) => {
-      properties.set(name, prop)
+      properties.set(qualified ? prop.qname : name, prop)
     })
     return properties
   }
@@ -114,7 +114,7 @@ export class Schema {
 
   hasProperty(prop: string | Property): boolean {
     if (prop instanceof Property) {
-      return this.getProperties().has(prop.name)
+      return this.getProperties(true).has(prop.qname)
     }
     return this.getProperties().has(prop)
   }
