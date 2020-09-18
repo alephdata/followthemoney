@@ -42,7 +42,7 @@ setup(
     extras_require={
         "dev": [
             "pip>=10.0.0",
-            "bumpversion>=0.5.3",
+            "bump2version",
             "wheel>=0.29.0",
             "twine",
             "flake8>=2.6.0",
