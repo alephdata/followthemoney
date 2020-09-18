@@ -25,7 +25,7 @@ class Ontology(object):
         self.add_schemata()
 
     def add_schemata(self):
-        for schema in model:
+        for schema in sorted(model):
             self.add_class(schema)
 
     def add_class(self, schema):
@@ -39,7 +39,7 @@ class Ontology(object):
             description = Literal(schema.description)
             self.graph.add((schema.uri, RDFS.comment, description))
 
-        for prop in schema.properties.values():
+        for _, prop in sorted(schema.properties.items()):
             self.add_property(prop)
 
     def add_property(self, prop):
@@ -59,17 +59,10 @@ class Ontology(object):
         if prop.type == registry.date:
             self.graph.add((prop.uri, RDFS.range, XSD.dateTime))
 
-    def serialize(self, format="n3"):
-        return self.graph.serialize(format=format)
-
     def write_namespace_docs(self, path):
-        ttl_fn = "%s/ftm.ttl" % path
-        with open(ttl_fn, "wb") as ttl_file:
-            ttl_file.write(self.serialize())
-
         xml_fn = "%s/ftm.xml" % path
         with open(xml_fn, "wb") as xml_file:
-            xml_file.write(self.serialize("xml"))
+            xml_file.write(self.graph.serialize(format="xml"))
 
 
 if __name__ == "__main__":

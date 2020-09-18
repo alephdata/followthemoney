@@ -241,6 +241,9 @@ class Schema(object):
     def __eq__(self, other):
         return hash(other) == hash(self)
 
+    def __lt__(self, other):
+        return self.name.__lt__(other.name)
+
     def __hash__(self):
         return hash(self.name)
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-13 12:33+0200\n"
+"POT-Creation-Date: 2020-09-18 12:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1065,7 +1065,7 @@ msgstr ""
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-#: followthemoney/types/string.py:15
+#: followthemoney/types/string.py:18
 msgid "Text"
 msgstr ""
 
@@ -1197,7 +1197,7 @@ msgid "Web pages"
 msgstr ""
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:26
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
 msgid "HTML"
 msgstr ""
 
@@ -3119,11 +3119,11 @@ msgstr ""
 msgid "Labels"
 msgstr ""
 
-#: followthemoney/types/string.py:16
+#: followthemoney/types/string.py:19
 msgid "Texts"
 msgstr ""
 
-#: followthemoney/types/string.py:27
+#: followthemoney/types/string.py:26
 msgid "HTMLs"
 msgstr ""
 
