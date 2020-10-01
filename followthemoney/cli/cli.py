@@ -5,7 +5,7 @@ import logging
 
 from followthemoney import model
 from followthemoney.namespace import Namespace
-from followthemoney.cli.util import read_entity, write_object
+from followthemoney.cli.util import read_entities, write_object
 
 
 @click.group(help="Utility for FollowTheMoney graph data")
@@ -25,10 +25,7 @@ def dump_model(outfile):
 @click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
 def validate(infile, outfile):
     try:
-        while True:
-            entity = read_entity(infile)
-            if entity is None:
-                break
+        for entity in read_entities(infile, cleaned=False):
             clean = model.make_entity(entity.schema)
             clean.id = entity.id
             for (prop, value) in entity.itervalues():
@@ -38,6 +35,14 @@ def validate(infile, outfile):
         raise click.Abort()
 
 
+@cli.command("import-vis", help="Load a .VIS file and get entities")
+@click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
+@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
+def import_vis(infile, outfile):
+    for entity in read_entities(infile, cleaned=False):
+        write_object(outfile, entity)
+
+
 @cli.command("sign", help="Apply an HMAC signature to entity IDs")
 @click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
 @click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
@@ -45,10 +50,7 @@ def validate(infile, outfile):
 def sign(infile, outfile, signature):
     ns = Namespace(signature)
     try:
-        while True:
-            entity = read_entity(infile)
-            if entity is None:
-                break
+        for entity in read_entities(infile):
             signed = ns.apply(entity)
             write_object(outfile, signed)
     except BrokenPipeError:
@@ -60,10 +62,7 @@ def sign(infile, outfile, signature):
 def pretty(infile):
     stdout = click.get_text_stream("stdout")
     try:
-        while True:
-            entity = read_entity(infile)
-            if entity is None:
-                break
+        for entity in read_entities(infile):
             data = json.dumps(entity.to_dict(), indent=2)
             stdout.write(data + "\n")
     except BrokenPipeError:

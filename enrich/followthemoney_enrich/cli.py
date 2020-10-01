@@ -2,7 +2,7 @@ import click
 import logging
 
 from followthemoney.cli.cli import cli
-from followthemoney.cli.util import read_entity, write_object
+from followthemoney.cli.util import read_entities, write_object
 from followthemoney_enrich import get_enricher, enricher_cache
 
 log = logging.getLogger(__name__)
@@ -27,10 +27,7 @@ def load_enricher(name):
 def enrich(infile, outfile, enricher):
     enricher = load_enricher(enricher)
     try:
-        while True:
-            entity = read_entity(infile)
-            if entity is None:
-                break
+        for entity in read_entities(infile):
             for match in enricher.enrich_entity_raw(entity):
                 write_object(outfile, match)
     except BrokenPipeError:
@@ -44,11 +41,8 @@ def enrich(infile, outfile, enricher):
 def expand(infile, outfile, enricher):
     enricher = load_enricher(enricher)
     try:
-        while True:
-            entity = read_entity(infile)
-            if entity is None:
-                break
-            for entity in enricher.expand_entity(entity):
-                write_object(outfile, entity)
+        for entity in read_entities(infile):
+            for expanded in enricher.expand_entity(entity):
+                write_object(outfile, expanded)
     except BrokenPipeError:
         raise click.Abort()

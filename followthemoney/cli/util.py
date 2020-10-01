@@ -14,13 +14,34 @@ def write_object(stream, obj):
     stream.write(data + "\n")
 
 
-def read_entity(stream):
+def _read_one(data, cleaned=True):
+    if is_mapping(data) and "schema" in data:
+        yield model.get_proxy(data, cleaned=cleaned)
+
+
+def read_entities(stream, cleaned=True):
+    while True:
+        line = stream.readline()
+        if not line:
+            return
+        data = json.loads(line)
+        entities = ensure_list(data)
+        if is_mapping(data):
+            if "entities" in data:
+                entities = data.get("entities", data)
+            if "layout" in data:
+                entities = data.get("layout", {}).get("entities", data)
+        for entity in ensure_list(entities):
+            yield from _read_one(entity, cleaned=cleaned)
+
+
+def read_entity(stream, cleaned=True):
     line = stream.readline()
     if not line:
         return
     data = json.loads(line)
-    if is_mapping(data) and "schema" in data:
-        return model.get_proxy(data)
+    for entity in _read_one(data, cleaned=cleaned):
+        return entity
     return data
 
 

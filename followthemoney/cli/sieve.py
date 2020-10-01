@@ -3,7 +3,7 @@ import click
 from followthemoney import model
 from followthemoney.types import registry
 from followthemoney.cli.cli import cli
-from followthemoney.cli.util import read_entity, write_object
+from followthemoney.cli.util import read_entities, write_object
 
 
 def sieve_entity(entity, schemata, properties, types):
@@ -40,10 +40,7 @@ def sieve_entity(entity, schemata, properties, types):
 )  # noqa
 def sieve(infile, outfile, schema, property, type):
     try:
-        while True:
-            entity = read_entity(infile)
-            if entity is None:
-                break
+        for entity in read_entities(infile):
             entity = sieve_entity(entity, schema, property, type)
             if entity is not None:
                 write_object(outfile, entity)

@@ -4,7 +4,7 @@ import logging
 from followthemoney import model
 from followthemoney.dedupe import Linker, Match
 from followthemoney.cli.cli import cli
-from followthemoney.cli.util import read_entity, write_object
+from followthemoney.cli.util import read_entities, write_object
 
 log = logging.getLogger(__name__)
 
@@ -19,10 +19,7 @@ def link(infile, outfile, matches):
         for match in Match.from_file(model, matches):
             linker.add(match)
         log.info("Linker: %s clusters.", len(linker.lookup))
-        while True:
-            entity = read_entity(infile)
-            if entity is None:
-                break
+        for entity in read_entities(infile):
             entity = linker.apply(entity)
             write_object(outfile, entity)
     except BrokenPipeError:

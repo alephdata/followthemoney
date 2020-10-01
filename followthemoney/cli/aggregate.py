@@ -3,7 +3,7 @@ import logging
 from followthemoney.namespace import Namespace
 
 from followthemoney.cli.cli import cli
-from followthemoney.cli.util import read_entity, write_object
+from followthemoney.cli.util import read_entities, write_object
 
 log = logging.getLogger(__name__)
 
@@ -15,10 +15,7 @@ def aggregate(infile, outfile):
     buffer = {}
     namespace = Namespace(None)
     try:
-        while True:
-            entity = read_entity(infile)
-            if entity is None:
-                break
+        for entity in read_entities(infile):
             entity = namespace.apply(entity)
             if entity.id in buffer:
                 buffer[entity.id].merge(entity)
