@@ -77,7 +77,7 @@ class LanguageType(EnumType):
         "fil",
     ]
     LANGUAGES = get_env_list("FTM_LANGUAGES", LANGUAGES)
-    LANGUAGES = [l.lower().strip() for l in LANGUAGES]
+    LANGUAGES = [lang.lower().strip() for lang in LANGUAGES]
 
     def _locale_names(self, locale):
         names = {}
