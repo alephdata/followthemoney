@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-13 12:33+0200\n"
+"POT-Creation-Date: 2020-10-27 12:35+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2020\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -1004,12 +1004,13 @@ msgid ""
 "The language of the source document detected when the body text was "
 "translated"
 msgstr ""
+"Die Sprache des Quelldokuments, auf der eine Übersetzung durchgeführt wurde."
 
 #. Document.properties.translatedLanguage.label
 #. Page.properties.translatedTextLanguage.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 msgid "The language of the translated text"
-msgstr ""
+msgstr "Die Sprache des übersetzten Textes"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
@@ -1079,7 +1080,7 @@ msgstr "Textdateien"
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-#: followthemoney/types/string.py:15
+#: followthemoney/types/string.py:18
 msgid "Text"
 msgstr "Text"
 
@@ -1089,7 +1090,7 @@ msgstr "Text"
 #. Page.properties.translatedText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 msgid "Translated version of the body text"
-msgstr ""
+msgstr "Üübersetzte Fassung des Volltextes"
 
 #. Pages.label
 #. Documentation.properties.document.label
@@ -1116,7 +1117,7 @@ msgstr "Prüfsumme der PDF-Fassung"
 msgid ""
 "Indicates if the pages have translated text. When present and non-zero, "
 "pages have alt text"
-msgstr ""
+msgstr "Gibt an, ob die Seiten einen übersetzten Text haben."
 
 #. Folder.plural
 #: followthemoney/schema/Document.yaml
@@ -1211,7 +1212,7 @@ msgid "Web pages"
 msgstr "Webseiten"
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:26
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
 msgid "HTML"
 msgstr "HTML"
 
@@ -2085,47 +2086,47 @@ msgstr "Mitglieder"
 #. Mention.label
 #: followthemoney/schema/Mention.yaml
 msgid "Mention"
-msgstr ""
+msgstr "Erwähnung"
 
 #. Mention.plural
 #: followthemoney/schema/Mention.yaml
 msgid "Mentions"
-msgstr ""
+msgstr "Erwähnungen"
 
 #. Mention.properties.document.reverse.label
 #: followthemoney/schema/Mention.yaml
 msgid "Extracted names"
-msgstr ""
+msgstr "Extrahierte Namen"
 
 #. Mention.properties.resolved.reverse.label
 #: followthemoney/schema/Mention.yaml
 msgid "Document mentions"
-msgstr ""
+msgstr "Erwähnende Dokumente"
 
 #. Mention.properties.name.label
 #: followthemoney/schema/Mention.yaml
 msgid "Detected name"
-msgstr ""
+msgstr "Erkannter Name"
 
 #. Mention.properties.detectedSchema.label
 #: followthemoney/schema/Mention.yaml
 msgid "Detected entity type"
-msgstr ""
+msgstr "Erkannter Objekttyp"
 
 #. Mention.properties.contextCountry.label
 #: followthemoney/schema/Mention.yaml
 msgid "Co-occurring countries"
-msgstr ""
+msgstr "Kookkurrierende Länder"
 
 #. Mention.properties.contextPhone.label
 #: followthemoney/schema/Mention.yaml
 msgid "Co-occurring phone numbers"
-msgstr ""
+msgstr "Kookkurrierende Telefonnummern"
 
 #. Mention.properties.contextEmail.label
 #: followthemoney/schema/Mention.yaml
 msgid "Co-occurring e-mail addresses"
-msgstr ""
+msgstr "Kookkurrierende E-Mail-Adressen"
 
 #. Message.label
 #: followthemoney/schema/Message.yaml
@@ -2765,7 +2766,7 @@ msgstr "Quelldokument"
 #. Thing.properties.proof.reverse.label
 #: followthemoney/schema/Thing.yaml
 msgid "Derived entities"
-msgstr ""
+msgstr "Abgeleitete Objekte"
 
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -3140,13 +3141,13 @@ msgstr "Bezeichnung"
 msgid "Labels"
 msgstr "Bezeichnungen"
 
-#: followthemoney/types/string.py:16
+#: followthemoney/types/string.py:19
 msgid "Texts"
-msgstr ""
+msgstr "Texte"
 
-#: followthemoney/types/string.py:27
+#: followthemoney/types/string.py:26
 msgid "HTMLs"
-msgstr ""
+msgstr "HTMLs"
 
 #: followthemoney/types/topic.py:10
 msgid "Topic"

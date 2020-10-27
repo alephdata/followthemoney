@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-25 16:02+0200\n"
+"POT-Creation-Date: 2020-10-27 11:26+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -1080,7 +1080,7 @@ msgstr "Текстовые файлы"
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-#: followthemoney/types/string.py:15
+#: followthemoney/types/string.py:18
 msgid "Text"
 msgstr "Текст"
 
@@ -1214,7 +1214,7 @@ msgid "Web pages"
 msgstr "Веб-страницы"
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:26
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
 msgid "HTML"
 msgstr "HTML"
 
@@ -2820,7 +2820,7 @@ msgstr "Служба"
 #. UserAccount.properties.email.label
 #: followthemoney/schema/UserAccount.yaml
 msgid "E-mail"
-msgstr "Эл. письмо"
+msgstr "Эл. почта"
 
 #. UserAccount.properties.number.label
 #: followthemoney/schema/UserAccount.yaml
@@ -3144,11 +3144,11 @@ msgstr "Название"
 msgid "Labels"
 msgstr "Названия"
 
-#: followthemoney/types/string.py:16
+#: followthemoney/types/string.py:19
 msgid "Texts"
 msgstr "Тексты"
 
-#: followthemoney/types/string.py:27
+#: followthemoney/types/string.py:26
 msgid "HTMLs"
 msgstr "HTML-файлы"
 
