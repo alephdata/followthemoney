@@ -53,16 +53,16 @@ class EntityMapping(object):
             return record.get(self.id_column)
         values = [key_bytes(record.get(k)) for k in self.keys]
         digest = self.seed.copy()
+        has_value = False
         for value in sorted(values):
-            digest.update(value)
-        if digest.digest() != self.seed.digest():
+            if len(value):
+                has_value = True
+                digest.update(value)
+        if has_value:
             return digest.hexdigest()
 
     def map(self, record, entities):
         proxy = self.model.make_entity(self.schema)
-        proxy.id = self.compute_key(record)
-        if proxy.id is None:
-            return
 
         # THIS IS HACKY
         # Some of the converters, e.g. for phone numbers, work better if they
@@ -76,6 +76,12 @@ class EntityMapping(object):
         for prop in self.properties:
             if prop.prop.type != registry.country:
                 prop.map(proxy, record, entities)
+
+        # Generate the ID at the end to avoid self-reference checks on empty
+        # keys.
+        proxy.id = self.compute_key(record)
+        if proxy.id is None:
+            return
 
         for prop in self.properties:
             if prop.required and not proxy.has(prop.prop):

@@ -3,13 +3,13 @@ import six
 import logging
 from uuid import uuid4
 from banal import ensure_list, is_listish, keys_values
-from normality import stringify
 from sqlalchemy import create_engine, MetaData  # type: ignore
 from sqlalchemy import select, func  # type: ignore
 from sqlalchemy.pool import NullPool  # type: ignore
 from sqlalchemy.schema import Table  # type: ignore
 
 from followthemoney.mapping.source import Source
+from followthemoney.util import sanitize_text
 from followthemoney.exc import InvalidMapping
 
 log = logging.getLogger(__name__)
@@ -100,7 +100,7 @@ class SQLSource(Source):
             for row in rows:
                 data = {}
                 for ref, name in mapping:
-                    data[ref] = stringify(row[name])
+                    data[ref] = sanitize_text(row[name])
                 yield data
 
     def __len__(self):

@@ -3,9 +3,9 @@ import os
 import logging
 import requests
 from banal import keys_values
-from normality import stringify
 
 from followthemoney.mapping.source import StreamSource
+from followthemoney.util import sanitize_text
 from followthemoney.exc import InvalidMapping
 
 log = logging.getLogger(__name__)
@@ -46,6 +46,6 @@ class CSVSource(StreamSource):
             for row in self.read_csv_url(url):
                 data = {}
                 for ref in self.query.refs:
-                    data[ref] = stringify(row.get(ref))
+                    data[ref] = sanitize_text(row.get(ref))
                 if self.check_filters(row):
                     yield data

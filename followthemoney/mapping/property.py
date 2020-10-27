@@ -81,6 +81,7 @@ class PropertyMapping(object):
             if entity is not None:
                 proxy.add(self.prop, get_entity_id(entity))
                 inline_names(proxy, entity)
+            return
 
         # clean the values returned by the query, or by using literals, or
         # formats.
