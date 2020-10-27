@@ -1,6 +1,6 @@
 {
   "name": "@alephdata/followthemoney",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "JavaScript version of the followthemoney data model",
   "keywords": [],
   "main": "dist/followthemoney.umd.js",
