@@ -87,7 +87,7 @@
     "tslint-config-prettier": "~1.18.0",
     "tslint-config-standard": "~9.0.0",
     "typedoc": "~0.19.1",
-    "typescript": "~3.6.3"
+    "typescript": "~3.9.7"
   },
   "dependencies": {
     "@types/uuid": "^8.3.0",
