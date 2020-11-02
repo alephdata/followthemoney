@@ -69,7 +69,7 @@
     "cross-env": "~7.0.0",
     "jest": "~25.1.0",
     "jest-config": "~26.0.0",
-    "lint-staged": "~10.4.0",
+    "lint-staged": "~10.5.1",
     "prettier": "~2.1.2",
     "prompt": "~1.0.0",
     "replace-in-file": "~6.0.0",
