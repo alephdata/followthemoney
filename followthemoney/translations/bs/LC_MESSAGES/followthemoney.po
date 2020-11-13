@@ -12,14 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-13 12:33+0200\n"
+"POT-Creation-Date: 2020-11-13 10:03+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Tajna Biscevic <tajna@occrp.org>, 2019\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
@@ -1076,7 +1076,7 @@ msgstr "Tekstualni fajlovi"
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-#: followthemoney/types/string.py:15
+#: followthemoney/types/string.py:18
 msgid "Text"
 msgstr ""
 
@@ -1208,7 +1208,7 @@ msgid "Web pages"
 msgstr "Web stranice"
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:26
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
 msgid "HTML"
 msgstr ""
 
@@ -2555,6 +2555,11 @@ msgstr "Datum zapisa"
 msgid "Representation"
 msgstr "Prikaz"
 
+#. Representation.plural
+#: followthemoney/schema/Representation.yaml
+msgid "Representations"
+msgstr ""
+
 #. Representation.description
 #: followthemoney/schema/Representation.yaml
 msgid ""
@@ -3128,11 +3133,11 @@ msgstr ""
 msgid "Labels"
 msgstr ""
 
-#: followthemoney/types/string.py:16
+#: followthemoney/types/string.py:19
 msgid "Texts"
 msgstr ""
 
-#: followthemoney/types/string.py:27
+#: followthemoney/types/string.py:26
 msgid "HTMLs"
 msgstr ""
 

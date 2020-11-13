@@ -6,20 +6,21 @@
 # Translators:
 # Ahmed Ghanam <info@ahmedghanam.com>, 2018
 # Eman Alqaisi <eman@arij.net>, 2020
+# Mohammed AlKawmani <komani@arij.net>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-13 12:33+0200\n"
+"POT-Creation-Date: 2020-11-13 10:03+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
-"Last-Translator: Eman Alqaisi <eman@arij.net>, 2020\n"
+"Last-Translator: Mohammed AlKawmani <komani@arij.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/aleph/teams/76591/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.0\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
@@ -33,7 +34,7 @@ msgstr "قيمة غير صحيحة"
 
 #: followthemoney/proxy.py:28
 msgid "No schema for entity."
-msgstr "لا يوجد مخطط للكيان."
+msgstr "لا يوجد مخطط للكيان"
 
 #: followthemoney/proxy.py:65
 #, python-format
@@ -91,9 +92,7 @@ msgstr "تحليل"
 #. Analyzable.plural
 #: followthemoney/schema/Analyzable.yaml
 msgid "Analyzables"
-msgstr ""
-"تحليلات\n"
-" "
+msgstr "تحليلات"
 
 #. Analyzable.properties.detectedLanguage.label
 #: followthemoney/schema/Analyzable.yaml
@@ -186,7 +185,7 @@ msgstr "جمع/تأليف التقييمات"
 #. Ownership.properties.asset.label
 #: followthemoney/schema/Asset.yaml followthemoney/schema/Ownership.yaml
 msgid "Asset"
-msgstr "الأصول"
+msgstr "أصل "
 
 #. Asset.plural
 #: followthemoney/schema/Asset.yaml
@@ -289,7 +288,7 @@ msgstr "بنك"
 #. BankAccount.properties.bank.reverse.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank accounts"
-msgstr ""
+msgstr "حسابات بنكية"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
@@ -335,7 +334,7 @@ msgstr "رقم المتصل"
 #. EconomicActivity.properties.receiver.label
 #: followthemoney/schema/Call.yaml followthemoney/schema/EconomicActivity.yaml
 msgid "Receiver"
-msgstr "المستقبل/ المستلم"
+msgstr "المستلم"
 
 #. Call.properties.receiver.reverse.label
 #: followthemoney/schema/Call.yaml
@@ -345,7 +344,7 @@ msgstr "المكالمات المستلمة"
 #. Call.properties.receiverNumber.label
 #: followthemoney/schema/Call.yaml
 msgid "Receiver's Number"
-msgstr "رقم المستقبل"
+msgstr "رقم المستلم"
 
 #. Call.properties.duration.label
 #: followthemoney/schema/Call.yaml
@@ -584,12 +583,12 @@ msgstr "عنوان العقد"
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contract authority"
-msgstr "سلطة العقد"
+msgstr "الجهة التي اصدرت العقد"
 
 #. Contract.properties.authority.plural
 #: followthemoney/schema/Contract.yaml
 msgid "Contract authorities"
-msgstr "سلطات العقود"
+msgstr "الجهات التي اصدرت العقود"
 
 #. Contract.properties.authority.reverse.label
 #: followthemoney/schema/Contract.yaml
@@ -658,7 +657,7 @@ msgstr "التصنيف"
 #. Contract.properties.cancelled.label
 #: followthemoney/schema/Contract.yaml
 msgid "Cancelled?"
-msgstr "ملغي"
+msgstr "الغي؟"
 
 #. Contract.properties.language.label
 #. Document.properties.language.label
@@ -670,12 +669,12 @@ msgstr "اللغة"
 #. ContractAward.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract award"
-msgstr "إرساء العقود"
+msgstr "منح العقد"
 
 #. ContractAward.plural
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract awards"
-msgstr "إرساء العقود"
+msgstr "منح العقود"
 
 #. ContractAward.description
 #: followthemoney/schema/ContractAward.yaml
@@ -690,13 +689,13 @@ msgstr "منحت إلى"
 #. ContractAward.properties.supplier.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Supplier"
-msgstr "المزود / المورد"
+msgstr "المورد"
 
 #. ContractAward.properties.supplier.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "The entity the contract was awarded to"
 msgstr ""
-"الكيان الذي تم إرساء العقد عليه/\n"
+"الكيان الذي تم إرساء العقد عليه\n"
 "الكيان الذي منح العقد له"
 
 #. ContractAward.properties.supplier.plural
@@ -744,7 +743,8 @@ msgstr "رمز الشراء العام"
 #. ContractAward.properties.cpvCode.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract Procurement Vocabulary (what type of goods/services, EU)"
-msgstr "مفردات شراء العقد (أي نوع من السلع / الخدمات ، الاتحاد الأوروبي)"
+msgstr ""
+"مصطلحات العقرد والمشتريات (أي نوع من السلع / الخدمات ، الاتحاد الأوروبي)"
 
 #. ContractAward.properties.nutsCode.label
 #: followthemoney/schema/ContractAward.yaml
@@ -856,7 +856,7 @@ msgstr "ديون"
 #. Debt.description
 #: followthemoney/schema/Debt.yaml
 msgid "A monetary debt between two parties."
-msgstr "دين نقدي بين طرفين."
+msgstr "دين نقدي بين طرفين"
 
 #. Debt.edge.label
 #: followthemoney/schema/Debt.yaml
@@ -962,7 +962,7 @@ msgstr "البرنامج المستخدم لإنشاء هذا الملف"
 #. Document.properties.crawler.label
 #: followthemoney/schema/Document.yaml
 msgid "Crawler"
-msgstr "محرك بحث فى نسيج العنكبوت"
+msgstr "محرك بحث "
 
 #. Document.properties.crawler.description
 #: followthemoney/schema/Document.yaml
@@ -977,7 +977,7 @@ msgstr "حجم الملف"
 #. Document.properties.fileName.label
 #: followthemoney/schema/Document.yaml
 msgid "File name"
-msgstr "اسم المبف"
+msgstr "اسم الملف"
 
 #. Document.properties.extension.label
 #: followthemoney/schema/Document.yaml
@@ -1010,13 +1010,13 @@ msgstr "التمثيل الصامت"
 msgid ""
 "The language of the source document detected when the body text was "
 "translated"
-msgstr ""
+msgstr "لغة المستند الأصلي التي تم اكتشافها عند ترجمة النص الأصلي"
 
 #. Document.properties.translatedLanguage.label
 #. Page.properties.translatedTextLanguage.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 msgid "The language of the translated text"
-msgstr ""
+msgstr "لغة النص المترجم"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
@@ -1086,7 +1086,7 @@ msgstr "الملفات النصية"
 #. HyperText.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-#: followthemoney/types/string.py:15
+#: followthemoney/types/string.py:18
 msgid "Text"
 msgstr "النص"
 
@@ -1096,7 +1096,7 @@ msgstr "النص"
 #. Page.properties.translatedText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 msgid "Translated version of the body text"
-msgstr ""
+msgstr "نسخة مترجمة من النص الأصلي"
 
 #. Pages.label
 #. Documentation.properties.document.label
@@ -1124,6 +1124,8 @@ msgid ""
 "Indicates if the pages have translated text. When present and non-zero, "
 "pages have alt text"
 msgstr ""
+"يشير إلى ما إذا كانت الصفحات تحتوي على نص مترجم. عندما تكون الصفحات موجودة "
+"وغير صفرية ، تحتوي الصفحات على نص بديل"
 
 #. Folder.plural
 #: followthemoney/schema/Document.yaml
@@ -1215,10 +1217,10 @@ msgstr "صفحة ويب"
 #. HyperText.plural
 #: followthemoney/schema/Document.yaml
 msgid "Web pages"
-msgstr "صفحات الويب"
+msgstr "صفحاات الويب"
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/Document.yaml followthemoney/types/string.py:26
+#: followthemoney/schema/Document.yaml followthemoney/types/string.py:25
 msgid "HTML"
 msgstr "لغة HTML"
 
@@ -1311,7 +1313,7 @@ msgstr "رسائل البريد الإلكتروني الواردة"
 #. Message.properties.inReplyTo.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Message.yaml
 msgid "In Reply To"
-msgstr "رداً على"
+msgstr "ردا على"
 
 #. Email.properties.inReplyTo.description
 #: followthemoney/schema/Document.yaml
@@ -1558,7 +1560,7 @@ msgstr "سعر صرف الدولار الأمريكي"
 #. EconomicActivity.properties.dollarExchRate.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "USD Exchange Rate for the activity"
-msgstr "سعر صرف الدولار الأمريكي"
+msgstr "سعر صرف الدولار الأمريكي للانشطة"
 
 #. EconomicActivity.properties.tradingCountry.label
 #: followthemoney/schema/EconomicActivity.yaml
@@ -1721,7 +1723,7 @@ msgstr "مرتبط ب"
 #. Family.properties.person.description
 #: followthemoney/schema/Family.yaml
 msgid "The subject of the familial relation."
-msgstr "موضوع العلاقة الأسرية."
+msgstr "موضوع العلاقة الأسرية"
 
 #. Family.properties.relative.label
 #: followthemoney/schema/Family.yaml
@@ -1745,7 +1747,7 @@ msgid ""
 "where 'relative' is mother of 'person'."
 msgstr ""
 "طبيعة العلاقة ، من منظور الشخص ، على سبيل المثال. \"الأم\" ، حيث \"القريب\" "
-"هي أم \"الشخص\"."
+"هي أم \"الشخص\""
 
 #. Interest.label
 #: followthemoney/schema/Interest.yaml
@@ -1839,7 +1841,7 @@ msgstr "الكيانات القانونية"
 #. LegalEntity.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "A legal entity may be a person or a company."
-msgstr "قد يكون الكيان القانوني شخصًا أو شركة."
+msgstr "قد يكون الكيان القانوني شخصًا أو شركة"
 
 #. LegalEntity.properties.name.label
 #. Thing.properties.name.label
@@ -2005,7 +2007,7 @@ msgstr ""
 msgid "Dun & Bradstreet identifier"
 msgstr ""
 "رقم Dun & Bradstreet D ‑ U ‑ N ‑ S هو معرف فريد مكون من تسعة أرقام للأنشطة "
-"التجارية."
+"التجارية"
 
 #. LegalEntity.properties.swiftBic.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -2098,47 +2100,47 @@ msgstr "أعضاء"
 #. Mention.label
 #: followthemoney/schema/Mention.yaml
 msgid "Mention"
-msgstr ""
+msgstr "أشير إلى"
 
 #. Mention.plural
 #: followthemoney/schema/Mention.yaml
 msgid "Mentions"
-msgstr ""
+msgstr "أشار"
 
 #. Mention.properties.document.reverse.label
 #: followthemoney/schema/Mention.yaml
 msgid "Extracted names"
-msgstr ""
+msgstr "الأسماء المستخرجة"
 
 #. Mention.properties.resolved.reverse.label
 #: followthemoney/schema/Mention.yaml
 msgid "Document mentions"
-msgstr ""
+msgstr "مستندات تم ذكرها"
 
 #. Mention.properties.name.label
 #: followthemoney/schema/Mention.yaml
 msgid "Detected name"
-msgstr ""
+msgstr "الاسم المكتشف"
 
 #. Mention.properties.detectedSchema.label
 #: followthemoney/schema/Mention.yaml
 msgid "Detected entity type"
-msgstr ""
+msgstr "نوع الكيان المكتشف"
 
 #. Mention.properties.contextCountry.label
 #: followthemoney/schema/Mention.yaml
 msgid "Co-occurring countries"
-msgstr ""
+msgstr "الدول المتزامنة"
 
 #. Mention.properties.contextPhone.label
 #: followthemoney/schema/Mention.yaml
 msgid "Co-occurring phone numbers"
-msgstr ""
+msgstr "أرقام الهواتف المتزامنة"
 
 #. Mention.properties.contextEmail.label
 #: followthemoney/schema/Mention.yaml
 msgid "Co-occurring e-mail addresses"
-msgstr ""
+msgstr "عناوين البريد الإلكتروني المتزامنة"
 
 #. Message.label
 #: followthemoney/schema/Message.yaml
@@ -2545,7 +2547,7 @@ msgstr "ملكية / حيازة"
 #. RealEstate.properties.encumbrance.label
 #: followthemoney/schema/RealEstate.yaml
 msgid "Encumbrance"
-msgstr "عبء ، التزام ، رهن، تكليف"
+msgstr "عبء"
 
 #. RealEstate.properties.encumbrance.description
 #: followthemoney/schema/RealEstate.yaml
@@ -2577,12 +2579,17 @@ msgstr "تاريخ التسجيل"
 msgid "Representation"
 msgstr "تمثيل"
 
+#. Representation.plural
+#: followthemoney/schema/Representation.yaml
+msgid "Representations"
+msgstr ""
+
 #. Representation.description
 #: followthemoney/schema/Representation.yaml
 msgid ""
 "A mediatory, intermediary, middleman, or broker acting on behalf of a legal "
 "entity."
-msgstr "وسيط يتصرف بالنيابة عن كيان قانوني."
+msgstr "وسيط يتصرف بالنيابة عن كيان قانوني"
 
 #. Representation.edge.label
 #: followthemoney/schema/Representation.yaml
@@ -2597,12 +2604,12 @@ msgstr "وكيل"
 #. Representation.properties.agent.reverse.label
 #: followthemoney/schema/Representation.yaml
 msgid "Clients"
-msgstr "عملاء"
+msgstr "متعامل"
 
 #. Representation.properties.client.label
 #: followthemoney/schema/Representation.yaml
 msgid "Client"
-msgstr "عميل"
+msgstr "متعاملون"
 
 #. Representation.properties.client.reverse.label
 #: followthemoney/schema/Representation.yaml
@@ -2775,7 +2782,7 @@ msgstr "مصدر المستند"
 #. Thing.properties.proof.reverse.label
 #: followthemoney/schema/Thing.yaml
 msgid "Derived entities"
-msgstr ""
+msgstr "الكيانات المشتقة"
 
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
@@ -2911,7 +2918,7 @@ msgstr "المركبات العاملة"
 #. Vehicle.properties.buildDate.label
 #: followthemoney/schema/Vehicle.yaml
 msgid "Build Date"
-msgstr "تاريخ البناء / الإنشاء"
+msgstr "تاريخ الإنشاء"
 
 #. Vehicle.properties.registrationDate.label
 #: followthemoney/schema/Vehicle.yaml
@@ -3072,11 +3079,11 @@ msgstr "تواريخ"
 
 #: followthemoney/types/domain.py:12
 msgid "Domain"
-msgstr "نطاق - مجال"
+msgstr "نطاق"
 
 #: followthemoney/types/domain.py:13
 msgid "Domains"
-msgstr "نطاق - مجال"
+msgstr "نطاق"
 
 #: followthemoney/types/email.py:18
 msgid "E-Mail Address"
@@ -3092,7 +3099,7 @@ msgstr "الكيانات"
 
 #: followthemoney/types/iban.py:13
 msgid "IBANs"
-msgstr "أرقام رقم الحساب بصيغة IBAN"
+msgstr "رقم الحساب IBAN"
 
 #: followthemoney/types/identifier.py:14
 msgid "Identifier"
@@ -3150,13 +3157,13 @@ msgstr "علامة"
 msgid "Labels"
 msgstr "علامات"
 
-#: followthemoney/types/string.py:16
+#: followthemoney/types/string.py:19
 msgid "Texts"
-msgstr ""
+msgstr "النصوص"
 
-#: followthemoney/types/string.py:27
+#: followthemoney/types/string.py:26
 msgid "HTMLs"
-msgstr ""
+msgstr "صفحات HTML"
 
 #: followthemoney/types/topic.py:10
 msgid "Topic"
@@ -3208,7 +3215,7 @@ msgstr "الاتجار بالبشر"
 
 #: followthemoney/types/topic.py:26
 msgid "Offshore"
-msgstr "Offshore"
+msgstr "شركة اوف شور"
 
 #: followthemoney/types/topic.py:27
 msgid "Shell company"

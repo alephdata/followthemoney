@@ -3886,7 +3886,7 @@
         "role"
       ],
       "label": "Representation",
-      "plural": "Representation",
+      "plural": "Representations",
       "properties": {
         "agent": {
           "label": "Agent",
