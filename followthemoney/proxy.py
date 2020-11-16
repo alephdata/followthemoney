@@ -264,11 +264,11 @@ class EntityProxy(object):
         return self._size
 
     def __hash__(self):
-        return hash(self.id)
+        return hash(self.id or id(self))
 
     def __eq__(self, other):
         try:
-            return self.id == other.id
+            return self.id == other.id and not (self.id is None and other.id is None)
         except AttributeError:
             return False
 
