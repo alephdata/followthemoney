@@ -22,6 +22,14 @@ ENTITY = {
 }
 
 
+def make_proxy(schema, **data):
+    proxy = model.make_entity(schema)
+    for k, v in data.items():
+        proxy.add(k, v)
+    proxy.make_id(*random.sample(string.ascii_letters, 24))
+    return proxy
+
+
 class MultiPartProxyTestCase(TestCase):
     def test_base_functions(self):
         a = model.get_proxy(ENTITY)
@@ -37,15 +45,15 @@ class MultiPartProxyTestCase(TestCase):
 
     def test_schema(self):
         mpp = MultiPartProxy()
-        proxy = model.make_entity("Organization")
+        proxy = make_proxy("Organization")
         mpp.add_proxy(proxy)
         assert mpp.schema.name == "Organization"
 
-        proxy = model.make_entity("PublicBody")
+        proxy = make_proxy("PublicBody")
         mpp.add_proxy(proxy)
         assert mpp.schema.name == "PublicBody"
 
-        proxy = model.make_entity("Organization")
+        proxy = make_proxy("Organization")
         mpp.add_proxy(proxy)
         assert mpp.schema.name == "PublicBody"
 
@@ -54,8 +62,7 @@ class MultiPartProxyTestCase(TestCase):
         proxies = set()
         for i in range(10):
             name = "".join(random.sample(string.ascii_letters, 8))
-            proxy = model.make_entity("Person")
-            proxy.add("name", name)
+            proxy = make_proxy("Person", name=name)
             mpp.add_proxy(proxy)
             proxies.add(proxy)
         assert len(mpp.proxies) == 10
@@ -67,8 +74,7 @@ class MultiPartProxyTestCase(TestCase):
         proxies = set()
         for i in range(10):
             name = "".join(random.sample(string.ascii_letters, 8))
-            proxy = model.make_entity("Person")
-            proxy.add("name", name)
+            proxy = make_proxy("Person", name=name)
             mpp.add_proxy(proxy)
             proxies.add(proxy)
         remove = proxies.pop()
@@ -81,7 +87,7 @@ class MultiPartProxyTestCase(TestCase):
     def test_merge(self):
         proxies = []
         for i in range(3):
-            proxy = model.make_entity("Person")
+            proxy = make_proxy("Person")
             proxies.append(proxy)
         mpp1 = MultiPartProxy(proxies=[proxies[0]], anti_proxies=[proxies[1]])
         mpp2 = MultiPartProxy(proxies=[proxies[2]], anti_proxies=[proxies[0]])

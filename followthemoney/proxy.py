@@ -1,4 +1,5 @@
 import logging
+import warnings
 from itertools import product
 from rdflib import Literal, URIRef  # type: ignore
 from rdflib.namespace import RDF, SKOS  # type: ignore
@@ -264,11 +265,21 @@ class EntityProxy(object):
         return self._size
 
     def __hash__(self):
-        return hash(self.id or id(self))
+        if not self.id:
+            warnings.warn(
+                "Taking the hash of an EntityProxy without an ID set results in undefined behaviour",
+                RuntimeWarning,
+            )
+        return hash(self.id)
 
     def __eq__(self, other):
         try:
-            return self.id == other.id and not (self.id is None and other.id is None)
+            if self.id is None or other.id is None:
+                warnings.warn(
+                    "Comparing EntityProxys without an ID set results in undefined behaviour",
+                    RuntimeWarning,
+                )
+            return self.id == other.id
         except AttributeError:
             return False
 
