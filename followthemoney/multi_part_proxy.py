@@ -84,9 +84,13 @@ class MultiPartProxy(EntityProxy):
 
     def to_dict(self):
         return {
+            "id": self.id,
             "schema": self.schema.name,
             "parts": self.parts,
             "anti_parts": self.anti_parts,
             "proxies": self.proxies,
             "anti_proxies": self.anti_proxies,
         }
+
+    def __repr__(self):
+        return "<MPP(%r,%r)>" % (self.id, str(self))
