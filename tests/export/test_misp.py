@@ -1,7 +1,6 @@
-from unittest import TestCase
+from unittest import TestCase, skip
 
 from followthemoney import model
-from followthemoney.export.misp import MISPExporter
 
 ENTITIES = [
     {
@@ -39,7 +38,10 @@ ENTITIES = [
 
 
 class MISPExportTestCase(TestCase):
+    @skip("Requires pymisp to be installed")
     def test_misp_simple(self):
+        from followthemoney.export.misp import MISPExporter
+
         exporter = MISPExporter()
         for entity in ENTITIES:
             proxy = model.get_proxy(entity)

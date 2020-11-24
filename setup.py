@@ -37,7 +37,6 @@ setup(
         "rdflib >=5.0.0, < 5.1.0",
         "networkx >=2.5, < 2.6",
         "openpyxl >= 3.0.5",
-        "pymisp >= 2.4.126",
     ],
     extras_require={
         "dev": [
@@ -51,7 +50,10 @@ setup(
             "responses>=0.9.0",
             "coverage>=4.1",
             "recommonmark>=0.4.0",
-        ]
+        ],
+        "misp": [
+            "pymisp >= 2.4.126",
+        ],
     },
     test_suite="nose.collector",
     entry_points={
