@@ -61,10 +61,6 @@ Document:
       label: "Language"
       type: language
       rdf: http://purl.org/dc/terms/language
-    translatedSourceLanguage:
-      # TODO: how is this different from `detectedLanguage`?
-      label: "The language of the source document detected when the body text was translated"
-      type: language
     translatedLanguage:
       label: "The language of the translated text"
       type: language
