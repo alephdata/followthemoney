@@ -46,6 +46,10 @@ Document:
       label: "File extension"
     encoding:
       label: "File encoding"
+    bodyText:
+      label: "Text"
+      hidden: true
+      type: "text"
     messageId:
       label: "Message ID"
       description: "Message ID of a document; unique in most cases"
@@ -64,6 +68,10 @@ Document:
     translatedLanguage:
       label: "The language of the translated text"
       type: language
+    translatedText:
+      label: "Translated version of the body text"
+      hidden: true
+      type: text
     date:
       label: "Date"
       description: "If not otherwise specified"
@@ -115,15 +123,6 @@ PlainText:
   caption:
     - fileName
     - title
-  properties:
-    bodyText:
-      label: "Text"
-      hidden: true
-      type: "text"
-    translatedText:
-      label: "Translated version of the body text"
-      hidden: true
-      type: text
 
 Pages:
   # Like PDF, word document, ...
@@ -145,9 +144,6 @@ Pages:
       label: "PDF alternative version checksum"
       hidden: true
       type: checksum
-    hasTranslatedText:
-      label: "Indicates if the pages have translated text. When present and non-zero, pages have alt text"
-      type: number
 
 Folder:
   extends: Document
@@ -206,15 +202,6 @@ Image:
   caption:
     - fileName
     - title
-  properties:
-    bodyText:
-      label: "Text"
-      type: "text"
-      hidden: true
-    translatedText:
-      label: "Translated version of the body text"
-      hidden: true
-      type: text
 
 Video:
   extends: Document
@@ -276,18 +263,10 @@ HyperText:
     - title
     - fileName
   properties:
-    bodyText:
-      label: "Text"
-      type: "text"
-      hidden: true
     bodyHtml:
       label: "HTML"
       type: html
       hidden: true
-    translatedText:
-      label: "Translated version of the body text"
-      hidden: true
-      type: text
 
 Email:
   extends:
