@@ -5,6 +5,9 @@ import click
 from banal import is_mapping, is_listish, ensure_list
 
 from followthemoney import model
+from followthemoney.util import MEGABYTE
+
+MAX_LINE = 200 * MEGABYTE
 
 
 def write_object(stream, obj):
@@ -19,9 +22,9 @@ def _read_one(data, cleaned=True):
         yield model.get_proxy(data, cleaned=cleaned)
 
 
-def read_entities(stream, cleaned=True):
+def read_entities(stream, cleaned=True, max_line=MAX_LINE):
     while True:
-        line = stream.readline()
+        line = stream.readline(max_line)
         if not line:
             return
         data = json.loads(line)
@@ -35,8 +38,8 @@ def read_entities(stream, cleaned=True):
             yield from _read_one(entity, cleaned=cleaned)
 
 
-def read_entity(stream, cleaned=True):
-    line = stream.readline()
+def read_entity(stream, cleaned=True, max_line=MAX_LINE):
+    line = stream.readline(max_line)
     if not line:
         return
     data = json.loads(line)
