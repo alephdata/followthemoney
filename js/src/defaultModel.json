@@ -1224,6 +1224,13 @@
           "qname": "Document:authoredAt",
           "type": "date"
         },
+        "bodyText": {
+          "hidden": true,
+          "label": "Text",
+          "name": "bodyText",
+          "qname": "Document:bodyText",
+          "type": "text"
+        },
         "contentHash": {
           "description": "SHA1 hash of the data",
           "label": "Checksum",
@@ -1370,11 +1377,12 @@
           "qname": "Document:translatedLanguage",
           "type": "language"
         },
-        "translatedSourceLanguage": {
-          "label": "The language of the source document detected when the body text was translated",
-          "name": "translatedSourceLanguage",
-          "qname": "Document:translatedSourceLanguage",
-          "type": "language"
+        "translatedText": {
+          "hidden": true,
+          "label": "Translated version of the body text",
+          "name": "translatedText",
+          "qname": "Document:translatedText",
+          "type": "text"
         }
       },
       "required": [
@@ -1982,20 +1990,6 @@
           "name": "bodyHtml",
           "qname": "HyperText:bodyHtml",
           "type": "html"
-        },
-        "bodyText": {
-          "hidden": true,
-          "label": "Text",
-          "name": "bodyText",
-          "qname": "HyperText:bodyText",
-          "type": "text"
-        },
-        "translatedText": {
-          "hidden": true,
-          "label": "Translated version of the body text",
-          "name": "translatedText",
-          "qname": "HyperText:translatedText",
-          "type": "text"
         }
       },
       "schemata": [
@@ -2022,22 +2016,7 @@
       "generated": true,
       "label": "Image",
       "plural": "Images",
-      "properties": {
-        "bodyText": {
-          "hidden": true,
-          "label": "Text",
-          "name": "bodyText",
-          "qname": "Image:bodyText",
-          "type": "text"
-        },
-        "translatedText": {
-          "hidden": true,
-          "label": "Translated version of the body text",
-          "name": "translatedText",
-          "qname": "Image:translatedText",
-          "type": "text"
-        }
-      },
+      "properties": {},
       "schemata": [
         "Analyzable",
         "Document",
@@ -3291,12 +3270,6 @@
       "label": "Document",
       "plural": "Documents",
       "properties": {
-        "hasTranslatedText": {
-          "label": "Indicates if the pages have translated text. When present and non-zero, pages have alt text",
-          "name": "hasTranslatedText",
-          "qname": "Pages:hasTranslatedText",
-          "type": "number"
-        },
         "pages": {
           "hidden": true,
           "label": "Pages",
@@ -3712,22 +3685,7 @@
       "generated": true,
       "label": "Text file",
       "plural": "Text files",
-      "properties": {
-        "bodyText": {
-          "hidden": true,
-          "label": "Text",
-          "name": "bodyText",
-          "qname": "PlainText:bodyText",
-          "type": "text"
-        },
-        "translatedText": {
-          "hidden": true,
-          "label": "Translated version of the body text",
-          "name": "translatedText",
-          "qname": "PlainText:translatedText",
-          "type": "text"
-        }
-      },
+      "properties": {},
       "schemata": [
         "Analyzable",
         "Document",

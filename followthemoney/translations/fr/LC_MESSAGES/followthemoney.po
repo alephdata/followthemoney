@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-13 10:03+0100\n"
+"POT-Creation-Date: 2020-11-26 19:16+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Language-Team: French (https://www.transifex.com/aleph/teams/76591/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -26,21 +26,21 @@ msgstr ""
 msgid "Invalid value"
 msgstr ""
 
-#: followthemoney/proxy.py:28
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:65
+#: followthemoney/proxy.py:66
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:96
+#: followthemoney/proxy.py:97
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:105
+#: followthemoney/proxy.py:106
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr ""
@@ -971,6 +971,13 @@ msgstr ""
 msgid "File encoding"
 msgstr ""
 
+#. Document.properties.bodyText.label
+#. Page.properties.bodyText.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
+#: followthemoney/types/string.py:18
+msgid "Text"
+msgstr ""
+
 #. Document.properties.messageId.label
 #: followthemoney/schema/Document.yaml
 msgid "Message ID"
@@ -986,18 +993,16 @@ msgstr ""
 msgid "MIME type"
 msgstr ""
 
-#. Document.properties.translatedSourceLanguage.label
-#. Page.properties.translatedTextSrcLanguage.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-msgid ""
-"The language of the source document detected when the body text was "
-"translated"
-msgstr ""
-
 #. Document.properties.translatedLanguage.label
 #. Page.properties.translatedTextLanguage.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 msgid "The language of the translated text"
+msgstr ""
+
+#. Document.properties.translatedText.label
+#. Page.properties.translatedText.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
+msgid "Translated version of the body text"
 msgstr ""
 
 #. Document.properties.date.label
@@ -1063,23 +1068,6 @@ msgstr ""
 msgid "Text files"
 msgstr ""
 
-#. PlainText.properties.bodyText.label
-#. Image.properties.bodyText.label
-#. HyperText.properties.bodyText.label
-#. Page.properties.bodyText.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-#: followthemoney/types/string.py:18
-msgid "Text"
-msgstr ""
-
-#. PlainText.properties.translatedText.label
-#. Image.properties.translatedText.label
-#. HyperText.properties.translatedText.label
-#. Page.properties.translatedText.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-msgid "Translated version of the body text"
-msgstr ""
-
 #. Pages.label
 #. Documentation.properties.document.label
 #. Mention.properties.document.label
@@ -1098,13 +1086,6 @@ msgstr ""
 #. Pages.properties.pdfHash.label
 #: followthemoney/schema/Document.yaml
 msgid "PDF alternative version checksum"
-msgstr ""
-
-#. Pages.properties.hasTranslatedText.label
-#: followthemoney/schema/Document.yaml
-msgid ""
-"Indicates if the pages have translated text. When present and non-zero, "
-"pages have alt text"
 msgstr ""
 
 #. Folder.plural
@@ -2241,6 +2222,13 @@ msgstr ""
 #. Page.properties.index.label
 #: followthemoney/schema/Page.yaml
 msgid "Index"
+msgstr ""
+
+#. Page.properties.translatedTextSrcLanguage.label
+#: followthemoney/schema/Page.yaml
+msgid ""
+"The language of the source document detected when the body text was "
+"translated"
 msgstr ""
 
 #. Page.properties.detectedLanguage.label

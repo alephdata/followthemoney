@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-13 10:03+0100\n"
+"POT-Creation-Date: 2020-11-26 19:16+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -31,21 +31,21 @@ msgstr "Не удалось сохранить свойство"
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
-#: followthemoney/proxy.py:28
+#: followthemoney/proxy.py:29
 msgid "No schema for entity."
 msgstr "Для сущности отсутствует схема."
 
-#: followthemoney/proxy.py:65
+#: followthemoney/proxy.py:66
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
 
-#: followthemoney/proxy.py:96
+#: followthemoney/proxy.py:97
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/proxy.py:105
+#: followthemoney/proxy.py:106
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
@@ -983,6 +983,13 @@ msgstr "Расширение файла"
 msgid "File encoding"
 msgstr "Кодировка файла"
 
+#. Document.properties.bodyText.label
+#. Page.properties.bodyText.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
+#: followthemoney/types/string.py:18
+msgid "Text"
+msgstr "Текст"
+
 #. Document.properties.messageId.label
 #: followthemoney/schema/Document.yaml
 msgid "Message ID"
@@ -998,19 +1005,17 @@ msgstr "Message-ID документа; уникален в большинств�
 msgid "MIME type"
 msgstr "MIME-тип"
 
-#. Document.properties.translatedSourceLanguage.label
-#. Page.properties.translatedTextSrcLanguage.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-msgid ""
-"The language of the source document detected when the body text was "
-"translated"
-msgstr "Язык документа, определённый при автоматическом переводе"
-
 #. Document.properties.translatedLanguage.label
 #. Page.properties.translatedTextLanguage.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
 msgid "The language of the translated text"
 msgstr "Язык автоматически переведённого текста"
+
+#. Document.properties.translatedText.label
+#. Page.properties.translatedText.label
+#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
+msgid "Translated version of the body text"
+msgstr "Перевод текста"
 
 #. Document.properties.date.label
 #. Interval.properties.date.label
@@ -1075,23 +1080,6 @@ msgstr "Текстовый файл"
 msgid "Text files"
 msgstr "Текстовые файлы"
 
-#. PlainText.properties.bodyText.label
-#. Image.properties.bodyText.label
-#. HyperText.properties.bodyText.label
-#. Page.properties.bodyText.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-#: followthemoney/types/string.py:18
-msgid "Text"
-msgstr "Текст"
-
-#. PlainText.properties.translatedText.label
-#. Image.properties.translatedText.label
-#. HyperText.properties.translatedText.label
-#. Page.properties.translatedText.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-msgid "Translated version of the body text"
-msgstr "Перевод текста"
-
 #. Pages.label
 #. Documentation.properties.document.label
 #. Mention.properties.document.label
@@ -1111,15 +1099,6 @@ msgstr "Документы"
 #: followthemoney/schema/Document.yaml
 msgid "PDF alternative version checksum"
 msgstr "Дополнительная контрольная сумма для PDF"
-
-#. Pages.properties.hasTranslatedText.label
-#: followthemoney/schema/Document.yaml
-msgid ""
-"Indicates if the pages have translated text. When present and non-zero, "
-"pages have alt text"
-msgstr ""
-"Указатель (если присутствует и не равен нулю) наличия переведённого текста "
-"на страницах."
 
 #. Folder.plural
 #: followthemoney/schema/Document.yaml
@@ -2264,6 +2243,13 @@ msgstr "Страницы"
 msgid "Index"
 msgstr "Индекс"
 
+#. Page.properties.translatedTextSrcLanguage.label
+#: followthemoney/schema/Page.yaml
+msgid ""
+"The language of the source document detected when the body text was "
+"translated"
+msgstr "Язык документа, определённый при автоматическом переводе"
+
 #. Page.properties.detectedLanguage.label
 #: followthemoney/schema/Page.yaml
 msgid "Auto-detected language"
@@ -2574,7 +2560,7 @@ msgstr "Представление"
 #. Representation.plural
 #: followthemoney/schema/Representation.yaml
 msgid "Representations"
-msgstr ""
+msgstr "Представление"
 
 #. Representation.description
 #: followthemoney/schema/Representation.yaml
