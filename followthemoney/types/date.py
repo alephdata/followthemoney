@@ -122,6 +122,8 @@ class DateType(PropertyType):
         return "date:%s" % value
 
     def to_datetime(self, value):
+        if value is None:
+            return
         value = value[: self.MAX_LENGTH]
         formats = self.DATE_PATTERNS_BY_LENGTH.get(len(value), ())
         for fmt in formats:
