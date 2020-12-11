@@ -27,4 +27,4 @@ class UrlsTest(unittest.TestCase):
         self.assertEqual(urls.clean("http://FOO.com/A"), "http://foo.com/A")
 
     def test_specificity(self):
-        self.assertEqual(urls.specificity("http://foo.com/"), 1)
+        self.assertGreater(urls.specificity("http://foo.com/#banana"), 0.1)
