@@ -61,7 +61,7 @@ class PhoneType(PropertyType):
 
     def _specificity(self, value):
         # TODO: insert artificial intelligence here.
-        return dampen(6, 11, value)
+        return dampen(7, 11, value)
 
     def rdf(self, value):
         return URIRef(self.node_id(value))

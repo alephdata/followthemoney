@@ -11,6 +11,7 @@ class IpType(PropertyType):
     label = _("IP-Address")
     plural = _("IP-Addresses")
     matchable = True
+    pivot = True
 
     def validate(self, ip, **kwargs):
         """Check to see if this is a valid ip address."""
