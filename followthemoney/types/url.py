@@ -2,7 +2,7 @@ from rdflib import URIRef  # type: ignore
 from urlnormalizer import normalize_url, is_valid_url  # type: ignore
 
 from followthemoney.types.common import PropertyType
-from followthemoney.util import defer as _
+from followthemoney.util import dampen, defer as _
 
 
 class UrlType(PropertyType):
@@ -20,6 +20,9 @@ class UrlType(PropertyType):
     def clean_text(self, url, **kwargs):
         """Perform intensive care on URLs, see `urlnormalizer`."""
         return normalize_url(url, drop_fragments=False)
+
+    def _specificity(self, value):
+        return dampen(10, 120, value)
 
     def rdf(self, value):
         return URIRef(value)
