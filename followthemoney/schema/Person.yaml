@@ -49,8 +49,15 @@ Person:
     nationality:
       label: Nationality
       type: country
-    gender:
-      label: Gender
     passportNumber:
       label: Passport
       type: identifier
+    # Awkward data section below
+    gender:
+      label: Gender
+    ethnicity:
+      label: Ethnicity
+    religion:
+      label: Religion
+    political:
+      label: Political association
