@@ -1,0 +1,23 @@
+Note:
+  extends:
+    - Thing
+    - Analyzable
+  label: Note
+  plural: Notes
+  description: >
+    An annotation that applies to a document or entity.
+  matchable: false
+  # generated: true
+  featured:
+    - description
+    - entity
+  caption:
+    - description
+  properties:
+    entity:
+      label: "Entity"
+      type: entity
+      range: Thing
+      reverse:
+        name: noteEntities
+        label: "Notes"
