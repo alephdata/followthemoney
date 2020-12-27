@@ -1,3 +1,26 @@
+"""
+Entity ID namespacing.
+
+This is fundamentally a security mechanism related to the Aleph search index.
+When bulk-loading entities associated with a particular dataset to the index,
+past versions of Aleph would first look up each entity ID in the index, check
+that it was part of the same dataset as the new entity, and only then proceed
+to write the index.
+
+The root cause for this issue is because Aleph allows the user (via mappings
+or the API) to specify entity IDs. The fact that entity IDs are controlled by
+the user and not the system is, of course, unusual. At the same time, it makes
+it possible to generate bulk data outside Aleph, and then load it into the
+system as a continuous stream of entities.
+
+Namespacing works around this by essentially making a compromise: the entity ID
+consists of two parts: one controlled by the client, the other controlled by
+the system. The logic is basically `{entity_id}.{signature}`, where `signature`
+is `hmac(entity_id, dataset_id)`. This, first of all, guarantees that the
+combined ID is specific to a dataset, without needing an (expensive) index
+look up of each ID first. It can also be generated both on the client and in
+the server without compromising isolation.
+"""
 import hmac
 
 from followthemoney.types import registry
@@ -6,9 +29,10 @@ from followthemoney.util import key_bytes, get_entity_id
 
 class Namespace(object):
     """Namespaces are used to partition entity IDs into different units,
-    which traditionally represent a dataset, collection or source."""
+    which traditionally represent a dataset, collection or source.
 
-    # cf. https://github.com/alephdata/followthemoney/issues/35
+    See module docstring for details."""
+
     SEP = "."
 
     def __init__(self, name=None):
@@ -59,17 +83,18 @@ class Namespace(object):
             return False
         return hmac.compare_digest(digest, self.signature(entity_id))
 
-    def apply(self, proxy):
+    def apply(self, proxy, shallow=False):
         """Rewrite an entity proxy so all IDs mentioned are limited to
         the namespace."""
         signed = proxy.clone()
         signed.id = self.sign(proxy.id)
-        for prop in proxy.iterprops():
-            if prop.type != registry.entity:
-                continue
-            for value in signed.pop(prop):
-                value = get_entity_id(value)
-                signed.add(prop, self.sign(value))
+        if not shallow:
+            for prop in proxy.iterprops():
+                if prop.type != registry.entity:
+                    continue
+                for value in signed.pop(prop):
+                    value = get_entity_id(value)
+                    signed.add(prop, self.sign(value))
         return signed
 
     @classmethod

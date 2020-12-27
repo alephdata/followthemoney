@@ -10,7 +10,7 @@ from followthemoney.util import gettext, NS
 class Schema(object):
     """Defines the abstract data model.
 
-    Schema items define the entities and links available in the model.
+    Schema items define the entities available in the model.
     """
 
     def __init__(self, model, name, data):
