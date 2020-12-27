@@ -35,7 +35,7 @@ class Model(object):
         with open(filepath, "r", encoding="utf-8") as fh:
             data = yaml.safe_load(fh)
             if not isinstance(data, dict):
-                raise InvalidModel("Model file is not a mapping.")
+                raise InvalidModel("Model file is not a mapping: %s" % filepath)
             for name, config in data.items():
                 self.schemata[name] = Schema(self, name, config)
 

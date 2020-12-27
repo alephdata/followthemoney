@@ -1,4 +1,6 @@
 Thing:
+  # Kein Ding, digga, das Ding hat swing.
+  # Root type of all entities that should be rendered in Aleph.
   abstract: true
   matchable: false
   featured:
@@ -13,14 +15,6 @@ Thing:
       label: Name
       type: string
       rdf: http://www.w3.org/2004/02/skos/core#prefLabel
-    sameAs:
-      # This is clever but doesn't query correctly
-      label: "Same as"
-      type: entity
-      range: Thing
-      rdf: http://www.w3.org/2002/07/owl#sameAs
-      reverse:
-        name: sameAs
     summary: # a short one-liner kind of description
       label: Summary
       type: text

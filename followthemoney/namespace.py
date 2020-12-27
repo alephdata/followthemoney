@@ -61,9 +61,7 @@ class Namespace(object):
 
     def apply(self, proxy):
         """Rewrite an entity proxy so all IDs mentioned are limited to
-        the namespace.
-
-        An exception is made for sameAs declarations."""
+        the namespace."""
         signed = proxy.clone()
         signed.id = self.sign(proxy.id)
         for prop in proxy.iterprops():
@@ -72,8 +70,6 @@ class Namespace(object):
             for value in signed.pop(prop):
                 value = get_entity_id(value)
                 signed.add(prop, self.sign(value))
-        # linked.add('sameAs', proxy.id, quiet=True)
-        signed.remove("sameAs", signed.id)
         return signed
 
     @classmethod

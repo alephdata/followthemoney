@@ -1,0 +1,16 @@
+PlainText:
+  extends: Document
+  label: Text file
+  plural: Text files
+  description: >
+    Text files, like .txt or source code.
+  matchable: false
+  generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
+  caption:
+    - fileName
+    - title
