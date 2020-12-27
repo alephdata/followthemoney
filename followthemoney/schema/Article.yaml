@@ -1,0 +1,15 @@
+Article:
+  extends: Document
+  label: Article
+  plural: Articles
+  description: >
+    A piece of media reporting about a subject.
+  matchable: false
+  generated: true
+  featured:
+    - title
+    - author
+    - publishedAt
+  caption:
+    - title
+    - fileName
