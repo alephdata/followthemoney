@@ -1,0 +1,76 @@
+Email:
+  extends:
+    - Folder
+    - PlainText
+    - HyperText
+  label: E-Mail
+  plural: E-Mails
+  description:
+    An internet mail message. The body can be formatted as plain text and/or HTML,
+    and the message may have any number of attachments.
+  matchable: false
+  generated: true
+  featured:
+    - subject
+    - date
+    - from
+  caption:
+    - subject
+    - threadTopic
+    - title
+    - name
+    - fileName
+  properties:
+    subject:
+      label: Subject
+      type: string
+      caption: true
+    threadTopic:
+      label: Thread topic
+      type: string
+    sender:
+      label: "Sender"
+      type: string
+    from:
+      label: "From"
+      type: string
+    to:
+      label: "To"
+      type: string
+    cc:
+      label: "CC"
+      description: "Carbon copy"
+      type: string
+    bcc:
+      label: "BCC"
+      description: "Blind carbon copy"
+      type: string
+    emitters:
+      label: "Emitter"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: emailsSent
+        label: "E-Mails sent"
+    recipients:
+      label: "Recipients"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: emailsReceived
+        label: "E-Mails received"
+    inReplyTo:
+      label: "In Reply To"
+      description: "Message ID of the preceding email in the thread"
+      hidden: true
+    inReplyToEmail:
+      label: Responding to
+      type: entity
+      range: Email
+      reverse:
+        name: responses
+        label: "Responses"
+    headers:
+      label: "Raw headers"
+      hidden: true
+      type: json

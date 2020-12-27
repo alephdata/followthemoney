@@ -1,6 +1,9 @@
 Documentation:
   label: "Documentation"
   plural: "Documentations"
+  description: >
+    Links some entity to a document, which might provide further detail or 
+    evidence regarding the entity.
   extends: Interest
   matchable: false
   featured:

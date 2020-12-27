@@ -1,0 +1,21 @@
+Pages:
+  extends: Document
+  label: Document
+  description: >
+    A multi-page document, such as a PDF or Word file or slide-show presentation.
+  plural: Documents
+  matchable: false
+  generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
+  caption:
+    - fileName
+    - title
+  properties:
+    pdfHash:
+      label: "PDF alternative version checksum"
+      hidden: true
+      type: checksum

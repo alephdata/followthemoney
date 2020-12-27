@@ -1,4 +1,5 @@
 Page:
+  # Be careful: Not derived from anything!
   label: Page
   plural: Pages
   matchable: false
@@ -12,14 +13,6 @@ Page:
       label: "Text"
       hidden: true
       type: text
-    translatedText:
-      label: "Translated version of the body text"
-      hidden: true
-      type: text
-    translatedTextSrcLanguage:
-      label: "The language of the source document detected when the body text was translated"
-    translatedTextLanguage:
-      label: "The language of the translated text"
     document:
       label: "Document"
       type: entity
@@ -32,6 +25,13 @@ Page:
     detectedLanguage:
       label: "Auto-detected language"
       type: language
+    translatedText:
+      label: "Translated version of the body text"
+      hidden: true
+      type: text
+    translatedTextLanguage:
+      label: "The language of the translated text"
+      hidden: true
     indexText:
       # This is a leaked abstraction from aleph. The idea is to have some
       # additional text field that can be used to associate searchable text

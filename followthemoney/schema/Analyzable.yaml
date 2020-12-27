@@ -1,6 +1,8 @@
 Analyzable:
   label: Analyzable
   plural: Analyzables
+  description: >
+    An entity suitable for being processed via named-entity recognition.
   abstract: true
   matchable: false
   generated: true

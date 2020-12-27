@@ -1,4 +1,5 @@
 Assessment:
+  # This is overly specific yet not useful. Should we phase it out?
   label: Assessment
   plural: Assessments
   extends: Thing

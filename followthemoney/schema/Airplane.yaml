@@ -2,6 +2,8 @@ Airplane:
   label: Airplane
   plural: Airplanes
   extends: Vehicle
+  description: >
+    An airplane, helicopter or other flying vehicle.
   matchable: true
   featured:
     - type # Airbus A320 214SL

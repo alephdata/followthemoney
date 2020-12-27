@@ -1,0 +1,16 @@
+Package:
+  extends: Folder
+  label: Package
+  plural: Packages
+  description: >
+    A bundle of files that have been packaged together into some form of archive.
+  matchable: false
+  generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
+  caption:
+    - fileName
+    - title

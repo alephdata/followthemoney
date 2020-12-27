@@ -1,6 +1,10 @@
 Company:
   label: Company
   plural: Companies
+  description: >
+    A corporation, usually for profit. Does not distinguish between private and public
+    companies, and can also be used to model more specific constructs like trusts and
+    funds. Companies are assets, so they can be owned by other legal entities.
   matchable: true
   extends:
     - Organization

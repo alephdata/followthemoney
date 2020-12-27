@@ -1,5 +1,17 @@
 Interval:
+  # FOR THE LOVE OF ALL THAT IS GOOD AND BEAUTIFUL IN THIS UNVERSE:
+  #
+  # Intervals are not graph edges.
+  #
+  # Yes, many interval child schemata (e.g. Directorship, Ownership) can
+  # be interpreted as an edge between to Things. But that isn't intrinsic.
+  # If you write any code that assumes that Intervals == edges, it will
+  # be buggy and wrong. You will find there are intervals that link to
+  # only one thing (e.g. Sanction) or to much more than two (e.g. FEA).
+  # Just do not do it.
   label: "Interval"
+  description: >
+    An object which is bounded in time.
   matchable: false
   abstract: true
   properties:

@@ -1,0 +1,19 @@
+Video:
+  extends: Document
+  label: Video
+  plural: Videos
+  matchable: false
+  generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
+  caption:
+    - fileName
+    - title
+  properties:
+    duration:
+      label: "Duration"
+      description: "Duration of the video in ms"
+      type: number

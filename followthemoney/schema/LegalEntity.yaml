@@ -2,7 +2,10 @@ LegalEntity:
   extends: Thing
   label: Legal entity
   plural: Legal entities
-  description: "A legal entity may be a person or a company."
+  description: >
+    Any party to legal proceedings, such as asset ownership, corporate governance
+    or social interactions. Often used when raw data does not specify if something
+    is a person or company.
   matchable: true
   featured:
     - name

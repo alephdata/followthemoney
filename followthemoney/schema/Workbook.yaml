@@ -1,0 +1,17 @@
+Workbook:
+  extends: Folder
+  label: Workbook
+  plural: Workbooks
+  description: >
+    A spreadsheet document, for example from Excel. Each spreadsheet contains a set
+    of sheets that hold actual data.
+  matchable: false
+  generated: true
+  featured:
+    - title
+    - fileName
+    # - mimeType
+    - parent
+  caption:
+    - fileName
+    - title

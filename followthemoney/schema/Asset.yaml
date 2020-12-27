@@ -1,6 +1,8 @@
 Asset:
   label: Asset
   plural: Assets
+  description: >
+    A piece of property which can be owned and assigned a monetary value.
   extends:
     - Thing
     - Value

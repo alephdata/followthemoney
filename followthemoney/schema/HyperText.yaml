@@ -1,0 +1,20 @@
+HyperText:
+  # HTML document
+  extends: Document
+  label: Web page
+  plural: Web pages
+  matchable: false
+  generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
+  caption:
+    - title
+    - fileName
+  properties:
+    bodyHtml:
+      label: "HTML"
+      type: html
+      hidden: true

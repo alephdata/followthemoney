@@ -1,0 +1,30 @@
+Table:
+  extends: Document
+  label: Table
+  plural: Tables
+  description: >
+    A document structured into rows and cells. This includes simple CSV files, spreadsheet
+    sheets or database relations.
+  matchable: false
+  generated: true
+  featured:
+    - title
+    - fileName
+    - mimeType
+    - parent
+  caption:
+    - title
+    - name
+    - fileName
+  properties:
+    columns:
+      label: "Column headings"
+      hidden: true
+      type: json
+    rowCount:
+      label: "Number of rows"
+      type: number
+    csvHash:
+      label: "CSV alternative version checksum"
+      hidden: true
+      type: checksum

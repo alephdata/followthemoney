@@ -2,7 +2,8 @@ Person:
   extends: LegalEntity
   label: Person
   plural: People
-  description: "An individual"
+  description: >
+    A natural person, as opposed to a corporation of some type.
   matchable: true
   rdf: http://xmlns.com/foaf/0.1/Person
   featured:
