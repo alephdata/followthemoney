@@ -5,6 +5,7 @@
         "name",
         "registrationNumber"
       ],
+      "description": "An airplane, helicopter or other flying vehicle.\n",
       "extends": [
         "Vehicle"
       ],
@@ -49,6 +50,7 @@
     },
     "Analyzable": {
       "abstract": true,
+      "description": "An entity suitable for being processed via named-entity recognition.\n",
       "extends": [],
       "generated": true,
       "label": "Analyzable",
@@ -136,6 +138,31 @@
         "Analyzable"
       ]
     },
+    "Article": {
+      "caption": [
+        "title",
+        "fileName"
+      ],
+      "description": "A piece of media reporting about a subject.\n",
+      "extends": [
+        "Document"
+      ],
+      "featured": [
+        "title",
+        "author",
+        "publishedAt"
+      ],
+      "generated": true,
+      "label": "Article",
+      "plural": "Articles",
+      "properties": {},
+      "schemata": [
+        "Analyzable",
+        "Article",
+        "Document",
+        "Thing"
+      ]
+    },
     "Assessment": {
       "caption": [
         "name"
@@ -186,6 +213,7 @@
       "caption": [
         "name"
       ],
+      "description": "A piece of property which can be owned and assigned a monetary value.\n",
       "extends": [
         "Thing",
         "Value"
@@ -319,6 +347,7 @@
         "iban",
         "accountNumber"
       ],
+      "description": "An account held at a bank and controlled by an owner. This may also be used  to describe more complex arrangements like correspondent bank settlement accounts.\n",
       "extends": [
         "Asset"
       ],
@@ -508,6 +537,7 @@
       "caption": [
         "name"
       ],
+      "description": "A corporation, usually for profit. Does not distinguish between private and public companies, and can also be used to model more specific constructs like trusts and funds. Companies are assets, so they can be owned by other legal entities.\n",
       "extends": [
         "Asset",
         "Organization"
@@ -1372,6 +1402,7 @@
           "type": "string"
         },
         "translatedLanguage": {
+          "hidden": true,
           "label": "The language of the translated text",
           "name": "translatedLanguage",
           "qname": "Document:translatedLanguage",
@@ -1395,6 +1426,7 @@
       ]
     },
     "Documentation": {
+      "description": "Links some entity to a document, which might provide further detail or  evidence regarding the entity.\n",
       "edge": {
         "caption": [
           "role"
@@ -1671,6 +1703,7 @@
         "name",
         "fileName"
       ],
+      "description": "An internet mail message. The body can be formatted as plain text and/or HTML, and the message may have any number of attachments.",
       "extends": [
         "Folder",
         "HyperText",
@@ -1938,7 +1971,7 @@
       "properties": {
         "children": {
           "hidden": true,
-          "label": "Children",
+          "label": "Child documents",
           "matchable": true,
           "name": "children",
           "qname": "Folder:children",
@@ -2004,6 +2037,7 @@
         "fileName",
         "title"
       ],
+      "description": "An image file.\n",
       "extends": [
         "Document"
       ],
@@ -2052,6 +2086,7 @@
     },
     "Interval": {
       "abstract": true,
+      "description": "An object which is bounded in time.\n",
       "extends": [],
       "label": "Interval",
       "plural": "Interval",
@@ -2163,7 +2198,7 @@
         "phone",
         "registrationNumber"
       ],
-      "description": "A legal entity may be a person or a company.",
+      "description": "Any party to legal proceedings, such as asset ownership, corporate governance or social interactions. Often used when raw data does not specify if something is a person or company.\n",
       "extends": [
         "Thing"
       ],
@@ -3009,10 +3044,43 @@
         "Thing"
       ]
     },
+    "Note": {
+      "caption": [
+        "description"
+      ],
+      "description": "An annotation that applies to a document or entity.\n",
+      "extends": [
+        "Analyzable",
+        "Thing"
+      ],
+      "featured": [
+        "description",
+        "entity"
+      ],
+      "label": "Note",
+      "plural": "Notes",
+      "properties": {
+        "entity": {
+          "label": "Entity",
+          "matchable": true,
+          "name": "entity",
+          "qname": "Note:entity",
+          "range": "Thing",
+          "reverse": "noteEntities",
+          "type": "entity"
+        }
+      },
+      "schemata": [
+        "Analyzable",
+        "Note",
+        "Thing"
+      ]
+    },
     "Organization": {
       "caption": [
         "name"
       ],
+      "description": "Any type of incorporated entity that cannot be owned by another (see Company). This might include charities, foundations or state-owned enterprises, depending on their  juristiction.\n",
       "extends": [
         "LegalEntity"
       ],
@@ -3165,6 +3233,7 @@
         "fileName",
         "title"
       ],
+      "description": "A bundle of files that have been packaged together into some form of archive.\n",
       "extends": [
         "Folder"
       ],
@@ -3236,15 +3305,10 @@
           "type": "text"
         },
         "translatedTextLanguage": {
+          "hidden": true,
           "label": "The language of the translated text",
           "name": "translatedTextLanguage",
           "qname": "Page:translatedTextLanguage",
-          "type": "string"
-        },
-        "translatedTextSrcLanguage": {
-          "label": "The language of the source document detected when the body text was translated",
-          "name": "translatedTextSrcLanguage",
-          "qname": "Page:translatedTextSrcLanguage",
           "type": "string"
         }
       },
@@ -3257,6 +3321,7 @@
         "fileName",
         "title"
       ],
+      "description": "A multi-page document, such as a PDF or Word file or slide-show presentation.\n",
       "extends": [
         "Document"
       ],
@@ -3301,7 +3366,7 @@
       "caption": [
         "passportNumber"
       ],
-      "description": "Passport",
+      "description": "An identification document associated with its holder and some issuing country. This can also be used for national ID cards and similar instruments.\n",
       "extends": [
         "Interval"
       ],
@@ -3517,7 +3582,7 @@
         "email",
         "phone"
       ],
-      "description": "An individual",
+      "description": "A natural person, as opposed to a corporation of some type.\n",
       "extends": [
         "LegalEntity"
       ],
@@ -3569,6 +3634,12 @@
           "name": "deathDate",
           "qname": "Person:deathDate",
           "type": "date"
+        },
+        "ethnicity": {
+          "label": "Ethnicity",
+          "name": "ethnicity",
+          "qname": "Person:ethnicity",
+          "type": "string"
         },
         "familyPerson": {
           "label": "Family members",
@@ -3640,10 +3711,22 @@
           "qname": "Person:passportNumber",
           "type": "identifier"
         },
+        "political": {
+          "label": "Political association",
+          "name": "political",
+          "qname": "Person:political",
+          "type": "string"
+        },
         "position": {
           "label": "Position",
           "name": "position",
           "qname": "Person:position",
+          "type": "string"
+        },
+        "religion": {
+          "label": "Religion",
+          "name": "religion",
+          "qname": "Person:religion",
           "type": "string"
         },
         "secondName": {
@@ -3673,6 +3756,7 @@
         "fileName",
         "title"
       ],
+      "description": "Text files, like .txt or source code.\n",
       "extends": [
         "Document"
       ],
@@ -3697,7 +3781,7 @@
       "caption": [
         "name"
       ],
-      "description": "A public body, such as a ministry, department or state company.",
+      "description": "A public body, such as a ministry, department or state company.\n",
       "extends": [
         "Organization"
       ],
@@ -4005,6 +4089,7 @@
         "name",
         "fileName"
       ],
+      "description": "A document structured into rows and cells. This includes simple CSV files, spreadsheet sheets or database relations.\n",
       "extends": [
         "Document"
       ],
@@ -4216,6 +4301,16 @@
           "qname": "Thing:name",
           "type": "string"
         },
+        "noteEntities": {
+          "label": "Notes",
+          "matchable": true,
+          "name": "noteEntities",
+          "qname": "Thing:noteEntities",
+          "range": "Note",
+          "reverse": "entity",
+          "stub": true,
+          "type": "entity"
+        },
         "notes": {
           "label": "Notes",
           "name": "notes",
@@ -4261,15 +4356,6 @@
           "name": "retrievedAt",
           "qname": "Thing:retrievedAt",
           "type": "date"
-        },
-        "sameAs": {
-          "label": "Same as",
-          "matchable": true,
-          "name": "sameAs",
-          "qname": "Thing:sameAs",
-          "range": "Thing",
-          "reverse": "sameAs",
-          "type": "entity"
         },
         "sanctionEntity": {
           "label": "Sanctions",
@@ -4621,7 +4707,7 @@
         "name",
         "imoNumber"
       ],
-      "description": "A boat or ship",
+      "description": "A boat or ship. Typically flying some sort of national flag.\n",
       "extends": [
         "Vehicle"
       ],
@@ -4770,6 +4856,7 @@
         "fileName",
         "title"
       ],
+      "description": "A spreadsheet document, for example from Excel. Each spreadsheet contains a set of sheets that hold actual data.\n",
       "extends": [
         "Folder"
       ],
@@ -4803,6 +4890,7 @@
       "group": "checksums",
       "label": "Checksum",
       "matchable": true,
+      "pivot": true,
       "plural": "Checksums"
     },
     "country": {
@@ -5133,6 +5221,7 @@
       "group": "ips",
       "label": "IP-Address",
       "matchable": true,
+      "pivot": true,
       "plural": "IP-Addresses"
     },
     "json": {
