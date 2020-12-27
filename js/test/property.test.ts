@@ -17,16 +17,15 @@ describe('ftm/Property class', () => {
     })
   })
 
-  it('check sameAs', function() {
-    const sameAs = schema.getProperty('sameAs');
-    expect(sameAs).toBeInstanceOf(Property)
-    expect(sameAs.hasReverse).toBeTruthy()
-    expect(sameAs.hasRange).toBeTruthy()
-    expect(sameAs.getRange()).toBe(schema)
-    expect(sameAs.getReverse()).toBe(sameAs)
+  it('check entity property', function () {
+    const notes = schema.getProperty('noteEntities');
+    expect(notes).toBeInstanceOf(Property)
+    expect(notes.hasReverse).toBeTruthy()
+    expect(notes.hasRange).toBeTruthy()
+    expect(notes.getReverse().getRange()).toBe(schema)
   })
 
-  it('check name reverse', function() {
+  it('check name reverse', function () {
     const nameProp = schema.getProperty('name');
     expect(nameProp).toBeInstanceOf(Property)
     expect(nameProp.hasReverse).toBeFalsy()
