@@ -1,19 +1,19 @@
 # Translations template for PROJECT.
-# Copyright (C) 2020 ORGANIZATION
+# Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # 
 # Translators:
-# pudo <friedrich@pudo.org>, 2020
+# pudo <friedrich@pudo.org>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-27 17:01+0100\n"
+"POT-Creation-Date: 2021-01-19 14:05+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
-"Last-Translator: pudo <friedrich@pudo.org>, 2020\n"
+"Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +70,7 @@ msgstr "Flugzeuge"
 #. Airplane.description
 #: followthemoney/schema/Airplane.yaml
 msgid "An airplane, helicopter or other flying vehicle.\n"
-msgstr ""
+msgstr "Ein Flugzeug, Helikopter oder anderes fliegendes Fahrzeug.\n"
 
 #. Airplane.properties.serialNumber.label
 #: followthemoney/schema/Airplane.yaml
@@ -101,6 +101,7 @@ msgstr "Analysierbare"
 #: followthemoney/schema/Analyzable.yaml
 msgid "An entity suitable for being processed via named-entity recognition.\n"
 msgstr ""
+"Ein Objekt, welches zur Analyse mit Named Entity Recognition geeignet ist.\n"
 
 #. Analyzable.properties.detectedLanguage.label
 #: followthemoney/schema/Analyzable.yaml
@@ -166,7 +167,7 @@ msgstr "Artikel"
 #. Article.description
 #: followthemoney/schema/Article.yaml
 msgid "A piece of media reporting about a subject.\n"
-msgstr ""
+msgstr "Eine Medienberichterstattung zu einem Thema.\n"
 
 #. Assessment.label
 #: followthemoney/schema/Assessment.yaml
@@ -219,6 +220,8 @@ msgstr "Vermögenswerte"
 #: followthemoney/schema/Asset.yaml
 msgid "A piece of property which can be owned and assigned a monetary value.\n"
 msgstr ""
+"Ein Grundstück, welches Eigentum sein kann und dem ein monetärer Wert "
+"zugwiesen werden kann.\n"
 
 #. Associate.label
 #. Associate.properties.associate.label
@@ -1165,6 +1168,8 @@ msgid ""
 "Links some entity to a document, which might provide further detail or  "
 "evidence regarding the entity.\n"
 msgstr ""
+"Eine Verweis von einem Objekt auf in Dokument, das weitere Details oder "
+"Beweismaterial zu dem Objekt enthält.\n"
 
 #. Documentation.edge.label
 #: followthemoney/schema/Documentation.yml
@@ -1488,6 +1493,9 @@ msgid ""
 "An internet mail message. The body can be formatted as plain text and/or "
 "HTML, and the message may have any number of attachments."
 msgstr ""
+"Eine Internet-Nachricht. Der enthaltene Text kann als HTML und/oder "
+"einfacher Text verfasst sein, und die Nachricht kann eine Reihe von Anhängen"
+" umfassen."
 
 #. Email.properties.subject.label
 #. Message.properties.subject.label
@@ -1732,7 +1740,7 @@ msgstr "Zeitraum"
 #. Interval.description
 #: followthemoney/schema/Interval.yaml
 msgid "An object which is bounded in time.\n"
-msgstr ""
+msgstr "Ein Objekt, welches eine Zeitspanne oder einen Zeitpunkt beschreibt.\n"
 
 #. Interval.properties.startDate.label
 #: followthemoney/schema/Interval.yaml
@@ -2166,7 +2174,7 @@ msgstr "Notizen"
 #. Note.description
 #: followthemoney/schema/Note.yaml
 msgid "An annotation that applies to a document or entity.\n"
-msgstr ""
+msgstr "Eine Anmerkung die sich auf ein Dokument oder Objekt bezieht.\n"
 
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
@@ -2180,6 +2188,9 @@ msgid ""
 "Company). This might include charities, foundations or state-owned "
 "enterprises, depending on their  juristiction.\n"
 msgstr ""
+"Juristische Personen, die nicht Eigentum einer anderen Person sein können "
+"(siehe Firma). Dies umfasst Stiftungen, Staatsunternehmen und Vereine, je "
+"nach ihrem Sitz.\n"
 
 #. Ownership.label
 #: followthemoney/schema/Ownership.yaml
@@ -2293,6 +2304,8 @@ msgid ""
 "A multi-page document, such as a PDF or Word file or slide-show "
 "presentation.\n"
 msgstr ""
+"Ein seitenbasiertes Dokument, wie etwa eine PDF- oder Word-Datei oder eine "
+"Präsentation.\n"
 
 #. Pages.properties.pdfHash.label
 #: followthemoney/schema/Pages.yaml
@@ -2461,6 +2474,7 @@ msgstr "Personen"
 #: followthemoney/schema/Person.yaml
 msgid "A natural person, as opposed to a corporation of some type.\n"
 msgstr ""
+"Eine natürliche Person, im Gegensatz zu anderen Rechtspersonen wie Firmen.\n"
 
 #. Person.properties.firstName.label
 #: followthemoney/schema/Person.yaml
@@ -2540,7 +2554,7 @@ msgstr "Textdateien"
 #. PlainText.description
 #: followthemoney/schema/PlainText.yaml
 msgid "Text files, like .txt or source code.\n"
-msgstr ""
+msgstr "Textdateien und Quellcode.\n"
 
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
@@ -2556,6 +2570,8 @@ msgstr "Behörden"
 #: followthemoney/schema/PublicBody.yaml
 msgid "A public body, such as a ministry, department or state company.\n"
 msgstr ""
+"Eine öffentliche Einrichtung, etwa ein Ministerium, eine Behörde oder ein "
+"Staatskonzern.\n"
 
 #. RealEstate.label
 #: followthemoney/schema/RealEstate.yaml

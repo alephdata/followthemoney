@@ -1,20 +1,20 @@
 # Translations template for PROJECT.
-# Copyright (C) 2020 ORGANIZATION
+# Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # 
 # Translators:
 # Olga Gein <chloe@occrp.org>, 2018
-# jen occrp, 2020
+# jen occrp, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-27 17:01+0100\n"
+"POT-Creation-Date: 2021-01-19 14:05+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
-"Last-Translator: jen occrp, 2020\n"
+"Last-Translator: jen occrp, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +71,7 @@ msgstr "Самолёты"
 #. Airplane.description
 #: followthemoney/schema/Airplane.yaml
 msgid "An airplane, helicopter or other flying vehicle.\n"
-msgstr ""
+msgstr "Самолёт, вертолёт или другой летательный аппарат.\n"
 
 #. Airplane.properties.serialNumber.label
 #: followthemoney/schema/Airplane.yaml
@@ -102,6 +102,8 @@ msgstr "Анализируемые"
 #: followthemoney/schema/Analyzable.yaml
 msgid "An entity suitable for being processed via named-entity recognition.\n"
 msgstr ""
+"Сущность, к которой можно применить методы распознавания именованных "
+"сущностей.\n"
 
 #. Analyzable.properties.detectedLanguage.label
 #: followthemoney/schema/Analyzable.yaml
@@ -157,17 +159,17 @@ msgstr "Найденные эл. адреса"
 #. Article.label
 #: followthemoney/schema/Article.yaml
 msgid "Article"
-msgstr ""
+msgstr "Статья"
 
 #. Article.plural
 #: followthemoney/schema/Article.yaml
 msgid "Articles"
-msgstr ""
+msgstr "Статьи"
 
 #. Article.description
 #: followthemoney/schema/Article.yaml
 msgid "A piece of media reporting about a subject.\n"
-msgstr ""
+msgstr "Текст из СМИ на определённую тематику.\n"
 
 #. Assessment.label
 #: followthemoney/schema/Assessment.yaml
@@ -220,6 +222,8 @@ msgstr "Активы"
 #: followthemoney/schema/Asset.yaml
 msgid "A piece of property which can be owned and assigned a monetary value.\n"
 msgstr ""
+"Объект имущества, у которого может быть владелец и стоимость в денежном "
+"выражении.\n"
 
 #. Associate.label
 #. Associate.properties.associate.label
@@ -329,6 +333,8 @@ msgid ""
 "  to describe more complex arrangements like correspondent bank settlement "
 "accounts.\n"
 msgstr ""
+"Банковский счёт, у которого есть владелец. Может также использоваться для "
+"описания более сложных отношений, например, корреспондентских счетов.\n"
 
 #. BankAccount.properties.bankName.label
 #: followthemoney/schema/BankAccount.yaml
@@ -439,6 +445,10 @@ msgid ""
 "like trusts and funds. Companies are assets, so they can be owned by other "
 "legal entities.\n"
 msgstr ""
+"Корпорация, обычно коммерческая. Не различаются частные и публичные "
+"компании, поэтому можно использовать для моделирования более специфичных "
+"структур, как то: трастов и фондов. Компании являются активами, поэтому "
+"могут находиться в собственности других юридических лиц.\n"
 
 #. Company.properties.jurisdiction.label
 #. LegalEntity.properties.jurisdiction.label
@@ -1128,7 +1138,7 @@ msgstr "Папка"
 #. Document.properties.parent.reverse.label
 #: followthemoney/schema/Document.yaml
 msgid "Child documents"
-msgstr ""
+msgstr "Дочерние документы"
 
 #. Document.properties.ancestors.label
 #: followthemoney/schema/Document.yaml
@@ -1166,6 +1176,8 @@ msgid ""
 "Links some entity to a document, which might provide further detail or  "
 "evidence regarding the entity.\n"
 msgstr ""
+"Связь сущности с документом, содержащим дополнительные сведения о "
+"сущности.\n"
 
 #. Documentation.edge.label
 #: followthemoney/schema/Documentation.yml
@@ -1490,6 +1502,8 @@ msgid ""
 "An internet mail message. The body can be formatted as plain text and/or "
 "HTML, and the message may have any number of attachments."
 msgstr ""
+"Электронное письмо. Тело письма представлено в виде отформатированого текста"
+" и/или HTML, и может содержать любое количество вложений."
 
 #. Email.properties.subject.label
 #. Message.properties.subject.label
@@ -1716,7 +1730,7 @@ msgstr "Изображения"
 #. Image.description
 #: followthemoney/schema/Image.yaml
 msgid "An image file.\n"
-msgstr ""
+msgstr "Файл с изображением.\n"
 
 #. Interest.label
 #: followthemoney/schema/Interest.yaml
@@ -1736,7 +1750,7 @@ msgstr "Интервал"
 #. Interval.description
 #: followthemoney/schema/Interval.yaml
 msgid "An object which is bounded in time.\n"
-msgstr ""
+msgstr "Объект с привязкой ко времени.\n"
 
 #. Interval.properties.startDate.label
 #: followthemoney/schema/Interval.yaml
@@ -1819,6 +1833,8 @@ msgid ""
 "governance or social interactions. Often used when raw data does not specify"
 " if something is a person or company.\n"
 msgstr ""
+"Любой участник судопроизводства, как то: владения (активами), корпоративного"
+" контроля или социального взаимодействия.\n"
 
 #. LegalEntity.properties.name.label
 #. Thing.properties.name.label
@@ -2158,7 +2174,7 @@ msgstr "Метаданные"
 #. Note.label
 #: followthemoney/schema/Note.yaml
 msgid "Note"
-msgstr ""
+msgstr "Примечание"
 
 #. Note.plural
 #. Note.properties.entity.reverse.label
@@ -2170,7 +2186,7 @@ msgstr "Примечания"
 #. Note.description
 #: followthemoney/schema/Note.yaml
 msgid "An annotation that applies to a document or entity.\n"
-msgstr ""
+msgstr "Примечание к документу или сущности.\n"
 
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
@@ -2184,6 +2200,9 @@ msgid ""
 "Company). This might include charities, foundations or state-owned "
 "enterprises, depending on their  juristiction.\n"
 msgstr ""
+"Любой тип юридического лица, который не может быть объектом собственности "
+"(см. Компания). Например, благотворительные организации, фонды или "
+"государственные предприятия, в зависимости от юрисдикции.\n"
 
 #. Ownership.label
 #: followthemoney/schema/Ownership.yaml
@@ -2268,7 +2287,7 @@ msgstr "Архивы"
 msgid ""
 "A bundle of files that have been packaged together into some form of "
 "archive.\n"
-msgstr ""
+msgstr "Набор файлов, упакованных вместе в форме архива.\n"
 
 #. Page.label
 #: followthemoney/schema/Page.yaml
@@ -2297,6 +2316,7 @@ msgid ""
 "A multi-page document, such as a PDF or Word file or slide-show "
 "presentation.\n"
 msgstr ""
+"Многостраничный документ, как то: PDF-файл, Word-файл или презентация.\n"
 
 #. Pages.properties.pdfHash.label
 #: followthemoney/schema/Pages.yaml
@@ -2322,6 +2342,8 @@ msgid ""
 "country. This can also be used for national ID cards and similar "
 "instruments.\n"
 msgstr ""
+"Удостоверяющий документ, ассоциированный с лицом и выдавшей стороной. Может "
+"использоваться также для национальных ID-карт и подобных документов.\n"
 
 #. Passport.properties.holder.label
 #: followthemoney/schema/Passport.yaml
@@ -2464,7 +2486,7 @@ msgstr "Физические лица"
 #. Person.description
 #: followthemoney/schema/Person.yaml
 msgid "A natural person, as opposed to a corporation of some type.\n"
-msgstr ""
+msgstr "Физическое лицо, в отличие от корпорации определённого типа.\n"
 
 #. Person.properties.firstName.label
 #: followthemoney/schema/Person.yaml
@@ -2519,7 +2541,7 @@ msgstr "Гражданство"
 #. Person.properties.ethnicity.label
 #: followthemoney/schema/Person.yaml
 msgid "Ethnicity"
-msgstr ""
+msgstr "Этническая группа"
 
 #. Person.properties.religion.label
 #: followthemoney/schema/Person.yaml followthemoney/types/topic.py:50
@@ -2529,7 +2551,7 @@ msgstr "Религия"
 #. Person.properties.political.label
 #: followthemoney/schema/Person.yaml
 msgid "Political association"
-msgstr ""
+msgstr "Политическая ассоциация"
 
 #. PlainText.label
 #: followthemoney/schema/PlainText.yaml
@@ -2544,7 +2566,7 @@ msgstr "Текстовые файлы"
 #. PlainText.description
 #: followthemoney/schema/PlainText.yaml
 msgid "Text files, like .txt or source code.\n"
-msgstr ""
+msgstr "Текстовые файлы, например, .txt или исходный код.\n"
 
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
@@ -2560,6 +2582,8 @@ msgstr "Государственные органы"
 #: followthemoney/schema/PublicBody.yaml
 msgid "A public body, such as a ministry, department or state company.\n"
 msgstr ""
+"Государственный орган, например, министерство, ведомство или государственная"
+" компания.\n"
 
 #. RealEstate.label
 #: followthemoney/schema/RealEstate.yaml
@@ -2762,6 +2786,8 @@ msgid ""
 "A document structured into rows and cells. This includes simple CSV files, "
 "spreadsheet sheets or database relations.\n"
 msgstr ""
+"Документ, структурно организованный в строки и ячейки. Например, простые "
+"CSV-файлы, электронные таблицы или базы данных.\n"
 
 #. Table.properties.columns.label
 #: followthemoney/schema/Table.yaml
@@ -3023,7 +3049,7 @@ msgstr "Суда"
 #. Vessel.description
 #: followthemoney/schema/Vessel.yaml
 msgid "A boat or ship. Typically flying some sort of national flag.\n"
-msgstr ""
+msgstr "Корабль, судно. Обычно под каким-либо национальным флагом.\n"
 
 #. Vessel.properties.imoNumber.label
 #: followthemoney/schema/Vessel.yaml
@@ -3121,6 +3147,8 @@ msgid ""
 "A spreadsheet document, for example from Excel. Each spreadsheet contains a "
 "set of sheets that hold actual data.\n"
 msgstr ""
+"Электронная таблица, например, Excel. Данные в электронной таблице обычно "
+"организованы в набор листов.\n"
 
 #: followthemoney/types/address.py:16
 msgid "Addresses"
