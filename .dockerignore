@@ -1,2 +1,10 @@
 __pycache__
 js/
+coverage-report
+.github
+.git
+.gitignore
+.vscode
+followthemoney.egg-info
+.tx
+enrich/followthemoney_enrich.egg-info
