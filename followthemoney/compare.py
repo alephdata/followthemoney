@@ -1,6 +1,7 @@
 import itertools
 from Levenshtein import jaro  # type: ignore
 from normality import normalize
+import fingerprints
 from followthemoney.types import registry
 from followthemoney.util import dampen, shortest
 from followthemoney.exc import InvalidData
@@ -52,10 +53,27 @@ def compare(model, left, right):
     return score
 
 
+def _normalize_names(names):
+    """Generate a sequence of comparable names for an entity. This also
+    generates a `fingerprint`, i.e. a version of the name where all tokens
+    are sorted alphabetically, and some parts, such as company suffixes,
+    have been removed."""
+    seen = set()
+    for name in names:
+        plain = normalize(name, ascii=True)
+        if plain is not None and plain not in seen:
+            seen.add(plain)
+            yield plain
+        fp = fingerprints.generate(name)
+        if fp is not None and len(fp) > 6 and fp not in seen:
+            seen.add(fp)
+            yield fp
+
+
 def compare_names(left, right):
     result = 0
-    left_list = [normalize(n, latinize=True) for n in left.names]
-    right_list = [normalize(n, latinize=True) for n in right.names]
+    left_list = list(_normalize_names(left.names))
+    right_list = list(_normalize_names(right.names))
     for (left, right) in itertools.product(left_list, right_list):
         similarity = jaro(left, right)
         score = similarity * dampen(2, 20, shortest(left, right))
