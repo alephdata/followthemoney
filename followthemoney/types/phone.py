@@ -9,6 +9,9 @@ from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
 from followthemoney.util import dampen
 
+# TODO: for json schema export
+# https://stackoverflow.com/questions/6478875/regular-expression-matching-e-164-formatted-phone-numbers
+
 
 class PhoneType(PropertyType):
     name = "phone"
