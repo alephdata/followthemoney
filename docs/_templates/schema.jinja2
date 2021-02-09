@@ -21,6 +21,25 @@ to generate entities.
         {{schema.description}}
     {%- endif %}
 
+    {% if schema.hidden -%}
+    .. note::
+        
+        ``hidden``: This schema will not be included in listings
+    {%- endif %}
+
+    {% if schema.edge -%}
+    .. note::
+        
+        In a network graph, this schema is converted into an edge
+        between ``{{schema.edge_source}}`` and ``{{schema.edge_target}}``.
+    {%- endif %}
+
+    {% if schema.abstract -%}
+    .. note::
+        
+        ``abstract``: This schema cannot be used directly, only via its descendants.
+    {%- endif %}
+
     {% if schema.extends -%}
     .. option:: Extends:
 
@@ -37,26 +56,43 @@ to generate entities.
       {%- endfor %}
     {%- endif %}
 
-    {% if schema.hidden -%}
-    .. note::
-        
-        `hidden`: This schema will not be included in listings
-    {%- endif %}
-
-    {% if schema.abstract -%}
-    .. note::
-        
-        `abstract`: This schema cannot be used directly, only via its descendants.
-    {%- endif %}
-
     .. option:: Properties:
         {% for prop in schema.properties.values() %}
         {% if prop.schema == schema and not prop.stub %}
         .. attribute:: {{prop.name}} ({{prop.type.name}})
             :noindex:
 
-            {{prop.label}}{% if prop.description -%}: {{prop.description}}{%- endif %}
+            {{prop.label}}
+            {% if prop.range -%}(of type :ref:`schema-{{prop.range.name}}`){%- endif %}
+
+            {% if prop.description -%}*{{prop.description.strip()}}*{%- endif %}
+
         {% endif %}
         {% endfor %}
+        {% if schema.extends -%}
+        And all properties from {% for extend in schema.extends -%}
+        :ref:`schema-{{extend.name}}`{% if not loop.last -%}{{', '}}{%- endif %}
+        {%- endfor %}.
+        {%- endif %}
+
+    {% if schema.caption -%}
+    .. option:: Properties used as caption:
+
+        {% for caption in schema.caption -%}
+        ``{{caption}}``{% if not loop.last %}{{', '}}{% endif %}
+        {%- endfor %}
+
+        *The first value found in these properties will be used as the entity title.*
+    {%- endif %}
+
+    {% if schema.featured -%}
+    .. option:: Important properties:
+
+        {% for feature in schema.featured -%}
+        ``{{feature}}``{% if not loop.last %}{{', '}}{% endif %}
+        {%- endfor %}
+
+        *When creating an entity, try to fill these properties with values.*
+    {%- endif %}
 
 {% endfor %}
