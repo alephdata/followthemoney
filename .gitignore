@@ -14,6 +14,8 @@
 build/*
 dist/*
 docs/*.json
+docs/_build
+docs/model.rst
 balkhashdb/*
 coverage-report/*
 enrich/dist/*

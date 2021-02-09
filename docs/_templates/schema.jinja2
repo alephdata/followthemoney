@@ -1,0 +1,62 @@
+
+Data model
+===============================================================================
+
+Below is an overview of the default data model shipped with ``followthemoney``.
+It currently includes {{model.schemata | length}} schemata that can be selected
+to generate entities.
+
+.. contents:: Schemata
+    :local:
+
+{% for schema in model.schemata.values(): %}
+.. _schema-{{schema.name}}:
+
+{{schema.label}}
+--------------------------------------------------------------------------------
+
+.. object:: {{schema.name}}
+
+    {% if schema.description -%}
+        {{schema.description}}
+    {%- endif %}
+
+    {% if schema.extends -%}
+    .. option:: Extends:
+
+        {% for extend in schema.extends -%}
+        :ref:`schema-{{extend.name}}`{% if not loop.last %}{{', '}}{% endif %}
+        {%- endfor %}
+    {%- endif %}
+
+    {% if schema.descendants -%}
+    .. option:: Descendants:
+
+      {% for desc in schema.descendants -%}
+      :ref:`schema-{{desc.name}}`{% if not loop.last %}{{', '}}{% endif %}
+      {%- endfor %}
+    {%- endif %}
+
+    {% if schema.hidden -%}
+    .. note::
+        
+        `hidden`: This schema will not be included in listings
+    {%- endif %}
+
+    {% if schema.abstract -%}
+    .. note::
+        
+        `abstract`: This schema cannot be used directly, only via its descendants.
+    {%- endif %}
+
+    .. option:: Properties:
+        {% for prop in schema.properties.values() %}
+        {% if prop.schema == schema and not prop.stub %}
+        .. attribute:: {{prop.name}} ({{prop.type.name}})
+            :noindex:
+
+            {{prop.label}}{% if prop.description -%}: {{prop.description}}{%- endif %}
+        {% endif %}
+        {% endfor %}
+
+{% endfor %}
