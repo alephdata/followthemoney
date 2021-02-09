@@ -79,9 +79,7 @@ class Edge(object):
         "graph",
     ]
 
-    def __init__(
-        self, graph, source, target, proxy=None, prop=None, value=None
-    ):  # noqa
+    def __init__(self, graph, source, target, proxy=None, prop=None, value=None):
         self.graph = graph
         self.id = f"{source.id}<>{target.id}"
         self.source_id = source.id
@@ -98,6 +96,7 @@ class Edge(object):
 
     @property
     def source(self):
+        """The graph node from which the edge originates."""
         return self.graph.nodes.get(self.source_id)
 
     @property
@@ -109,6 +108,7 @@ class Edge(object):
 
     @property
     def target(self):
+        """The graph node to which the edge points."""
         return self.graph.nodes.get(self.target_id)
 
     @property
@@ -195,6 +195,7 @@ class Graph(object):
                 self.edges[edge.id] = edge
 
     def add(self, proxy):
+        """Add a proxy to the graph and make it either a node or an edge."""
         if proxy is None:
             return
         self.queue(proxy.id, proxy)
@@ -205,9 +206,11 @@ class Graph(object):
             self._add_node(proxy)
 
     def iternodes(self):
+        """Iterate all nodes in the graph."""
         return self.nodes.values()
 
     def iteredges(self):
+        """Iterate all edges in the graph."""
         return self.edges.values()
 
     def get_outbound(self, node, prop=None):
@@ -232,6 +235,7 @@ class Graph(object):
         yield from self.get_inbound(node, prop=prop)
 
     def to_dict(self):
+        """Return a dictionary with the graph nodes and edges."""
         return {
             "nodes": [n.to_dict() for n in self.iternodes()],
             "edges": [e.to_dict() for e in self.iteredges()],

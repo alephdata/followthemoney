@@ -1,7 +1,7 @@
 """
-Entity ID namespacing.
+*We like our abstractions like our offshore banks: leaky.*
 
-This is fundamentally a security mechanism related to the Aleph search index.
+Entity ID namespaces are a security mechanism related to the Aleph search index.
 When bulk-loading entities associated with a particular dataset to the index,
 past versions of Aleph would first look up each entity ID in the index, check
 that it was part of the same dataset as the new entity, and only then proceed
