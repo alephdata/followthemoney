@@ -1,0 +1,127 @@
+Entity fragmentation
+======================
+
+Generating interconnected graph data is a notoriously difficult process. Given the volume
+of the datasets we want to process using FtM, we can't incrementally build nodes and egdes
+in-memory like you would in NetworkX. Instead, we had to find a stream-based solution
+for constructing the graph entities. That's why FtM supports *entity fragments* and
+*entity aggregation*.
+
+An example
+------------
+
+To illustrate this problem, imagine a table with millions of rows that describes a set of
+people and the companies they control. The columns in such a table might be: `RowID`,
+`CompanyID`, `CompanyName`, `DirectorName`, `DirectorPassportNo`. Every company can have
+multiple directors, while each director might control multiple companies. When mapping this
+data to FtM, we'd create three entities for each row: a :ref:`schema-Company`, a
+:ref:`schema-Person` and a :ref:`schema-Directorship` that connects the two.
+
+Now, let's imagine two concrete companies: `Brilliant Amazing Ltd.` (with a company ID) is
+listed on on row 15, and its director is `John Smith`, with a passport ID unique to him.
+On row 18001, there's another mention of `Brilliant Amazing Ltd.` (same company ID), listing
+a different director. Finally, on row 9822021, the company `Goldfish Ltd.` (new company ID)
+makes an appearance, listing `John Smith` (same passport as above) as a director.
+
+Database humpty-dumpty
+-----------------------
+
+Based on this example, we'd generate three :ref:`schema-Company` entities to represent two
+actual companies, and three :ref:`schema-Person` entities for two people. A naive approach
+in Aleph might be to write these to an ElasticSearch index sequentially - the later entities
+overwriting the earlier ones with the same identifier.
+
+That, however, works only as long as each version of each entity contains the same data. If, on
+the other hand, the first mention of `John Smith` included his birth date, while the second
+mention included his business address, we'd also need to merge these fragments. While it's
+possible do perform such merges at index time, this has proven to be impractically slow because
+it requires fetching each entity before it is updated.
+
+A better solution is to sort the generated fragments before indexing them. In this approach, all
+the generated entities from the source table would be written to disk or to a database, and
+then sorted by their ID. In the resulting entity set, all instances of each company and person
+are subsequent and can be merged as they are read and submitted then to the index.
+
+In practice 
+-------------
+
+In the FtM toolchain, there are two tools for doing entity aggregation: the command-line
+`ftm aggregate` will merge fragments in memory, whereas the add-on library `followthemoney-store`
+will perform the same operation in a SQLite or PostgreSQL database.
+
+.. code-block:: bash
+
+    # Generate entities from a CSV file and a mapping:
+    cat company-registry.csv | ftm map-csv mapping_file.yml >fragments.ijson
+    # Write the fragments to a table `company_registry`:
+    cat fragments.ijson | ftm store write -d company_registry
+    # List the tables in the store:
+    ftm store list 
+    # Output merged entities:
+    ftm store iterate -d company_registry
+
+The same functionality can, of course, also be used as a Python library:
+
+.. code-block:: python
+
+    import os
+    from ftmstore import get_dataset
+    # Assume a function that will emit fragments:
+    from myapp.data import generate_fragments
+
+    # If no `database_uri` is given, ftmstore will read connection from 
+    # $FTM_STORE_URI, or create a file called `followthemoney.sqlite` in
+    # the current directory.
+    database_uri = os.environ.get('DATABASE_URI')
+    dataset = get_dataset('myapp_dataset', database_uri=database_uri)
+    bulk = dataset.bulk()
+    for idx, proxy in enumerate(generate_fragments()):
+        bulk.put(proxy, fragment=idx)
+    bulk.flush()
+
+    # This will print the number of combined entities (ie. DISTINCT id):
+    print(len(dataset)) 
+
+    # This will return combined entities:
+    for entity in dataset.iterate():
+        print(entity.caption)
+
+    # You could also iterate the underlying fragments:
+    for proxy in dataset.partials():
+        print(proxy)
+
+    # Note: `dataset.partials()` returns `EntityProxy` objects. The method
+    # `dataset.fragments()` would return raw Python dictionaries instead.
+
+    # All three methods also support the `entity_id` filter, which can also be
+    # shortened to `get`:
+    entity = dataset.get(entity_id)
+
+Fragment origins
+-----------------
+
+`followthemoney-store` is used across the tools built on FtM to capture and aggregate
+entity fragments. In Aleph in particular, fragments for one entity might be written
+by different processes: the API, document ingestors, document NER analyzers or a 
+translation backend. This has made it convenient to be able to flush all entity
+fragments from a particular origin, while leaving the other fragments intact. For
+example, this can be used to delete all data uploaded via the bulk API, while leaving
+document-based data in the same dataset intact.
+
+To support this, `ftm-store` has the notion of an `origin` for each fragment. If
+specified, this can be used to later delete or overwrite subsets of fragments.
+
+.. code-block:: bash
+
+    cat us_ofac.ijson | ftm store write -d sanctions -o us_ofac
+    cat eu_eeas.ijson | ftm store write -d sanctions -o eu_eeas
+
+    # Will now have entities from both source files:
+    ftm store iterate -d sanctions | wc -l
+
+    # Delete all fragments from the second file:
+    ftm store delete -d sanctions -o eu_eeas
+
+    # Only one source file is left:
+    ftm store iterate -d sanctions | wc -l
+
