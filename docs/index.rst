@@ -7,6 +7,7 @@ FollowTheMoney Reference Documentation
 
    cli.rst
    api.rst
+   custom.rst
    model.rst
    graph.rst
    namespace.rst
