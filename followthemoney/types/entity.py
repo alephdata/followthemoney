@@ -28,14 +28,14 @@ class EntityType(PropertyType):
         text = sanitize_text(text)
         if text is None:
             return False
-        return self.ID_RE.match(text) is not None
+        return self.REGEX.match(text) is not None
 
     def clean(self, text, **kwargs):
         entity_id = get_entity_id(text)
         if entity_id is None:
             return
         entity_id = str(entity_id)
-        if self.ID_RE.match(entity_id) is not None:
+        if self.REGEX.match(entity_id) is not None:
             return entity_id
 
     def rdf(self, value):

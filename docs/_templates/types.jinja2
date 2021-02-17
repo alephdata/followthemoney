@@ -9,6 +9,22 @@ data types are all string-based, but define the semantics of the property.
 .. contents:: Data types
     :local:
 
+Type API
+-------------
+
+.. autoclass:: followthemoney.types.common.PropertyType
+   :members:
+   :undoc-members:
+   :exclude-members: __init__, docs
+
+.. autoclass:: followthemoney.types.common.EnumType
+   :members:
+   :undoc-members:
+
+.. autoclass:: followthemoney.types.registry.Registry
+   :members:
+   :undoc-members:
+
 {% for type in registry.types | sort(attribute='name') %}
 .. _type-{{type.name}}:
 
@@ -25,34 +41,22 @@ data types are all string-based, but define the semantics of the property.
     {% if type.group %}
     .. option:: group: {{type.group}}
 
-        Groups are used to invert all the properties of an entity that have a given 
-        type into a single list before indexing them. This way, in Aleph, you can
-        query for `countries:gb` instead of having to make a set of filters like
-        `properties.jurisdiction:gb OR properties.country:gb OR ...`.
-
+        see :py:attr:`followthemoney.types.common.PropertyType.group`
     {% endif %}
     {% if type.matchable %}
     .. option:: matchable: {{type.matchable}}
         
-        Matchable types allow properties to be compared with each other in order to
-        assess entity similarity. While it makes sense to compare names, countries or
-        phone numbers, the same isn't true for raw JSON blobs or long text snippets.
+        see :py:attr:`followthemoney.types.common.PropertyType.matchable`
     {% endif %}
     {% if type.pivot %}
     .. option:: pivot: {{type.pivot}}
-        
-        Pivot property types are like a stronger form of matchable types: they will
-        be used by default when value-based lookups are used to find commonalities
-        between entities. This includes generating graph pseudo-nodes, and the
-        `Mentions` functionality in the Aleph user interface.
+
+        see :py:attr:`followthemoney.types.common.PropertyType.pivot`
     {% endif %}
     {% if type.max_size %}
     .. option:: max_size: {{type.max_size}}
 
-        Some types have overall size limitations in place in order to avoid generating
-        entities that are very large (upstream ElasticSearch has a 100MB document limit).
-        Once the total size of all properties of this type has exceed the given limit,
-        an entity will refuse to add further values.
+        see :py:attr:`followthemoney.types.common.PropertyType.max_size`
     {% endif %}
 
 
