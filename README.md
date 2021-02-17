@@ -14,19 +14,22 @@ of the elements of data, and to map tabular data into the model.
 
 ## Documentation
 
-For a general introduction to `followthemoney`, check the main documentation:
+For a general introduction to `followthemoney`, check the high-level introduction:
 
 * https://docs.alephdata.org/developers/followthemoney
 
 Part of this package is a command-line tool that can be used to process and
-transform data in various ways. This is documented here:
+transform data in various ways. You can find a tutorial here:
 
 * https://docs.alephdata.org/developers/ftm
 
-There's no built-in tooling to render the model metadata (i.e. the list of
-schemata). However, we can export the schema to RDF (RDF/OWL), the abstract
-data model behind linked data. There's a number of viewers for the RDF schema
-definitions generated from FollowTheMoney, e.g.:
+Besides these introductions, there is also a full reference documentation for the
+library and the contained ontology: 
+
+* https://followthemoney.readthedocs.io/
+
+There's also a number of viewers for the RDF schema definitions generated
+from FollowTheMoney, e.g.:
 
 * [LODE documentation](http://150.146.207.114/lode/extract?url=https%3A%2F%2Falephdata.github.io%2Ffollowthemoney%2Fns%2Fftm.xml&owlapi=true&imported=true&lang=en)
 * [WebVOWL](http://www.visualdataweb.de/webvowl/#iri=https://alephdata.github.io/followthemoney/ns/ftm.xml)
