@@ -14,7 +14,8 @@ class EmailType(PropertyType):
     """Internet mail address (e.g. user@example.com). These are notoriously hard
     to validate, but we use an irresponsibly simple rule and hope for the best."""
 
-    EMAIL_REGEX = re.compile(r"^[^@\s]+@[^@\s]+\.\w+$")
+    REGEX_RAW = r"^[^@\s]+@[^@\s]+\.\w+$"
+    REGEX = re.compile(REGEX_RAW)
     domains = DomainType()
     name = "email"
     group = "emails"

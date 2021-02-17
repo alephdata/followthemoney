@@ -11,7 +11,6 @@ from followthemoney.util import defer as _
 from followthemoney.util import dampen, sanitize_text
 
 log = logging.getLogger(__name__)
-DATE = r"^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$"  # noqa
 
 
 class DateType(PropertyType):
@@ -24,7 +23,10 @@ class DateType(PropertyType):
     no support for calendar weeks (``2021-W7``) and date ranges (``2021-2024``)."""
 
     # JS: '^([12]\\d{3}(-[01]?[1-9](-[0123]?[1-9])?)?)?$'
-    DATE_RE = re.compile(DATE)
+    REGEX_RAW = (
+        DATE
+    ) = r"^([12]\d{3}(-[01]?[0-9](-[0123]?[0-9]([T ]([012]?\d(:\d{1,2}(:\d{1,2}(\.\d{6})?(Z|[-+]\d{2}(:?\d{2})?)?)?)?)?)?)?)?)?$"
+    REGEX = re.compile(REGEX_RAW)
     DATE_FULL = re.compile(r"\d{4}-\d{2}-\d{2}.*")
     CUT_ZEROES = re.compile(r"((\-00.*)|(.00:00:00))$")
     MONTH_FORMATS = re.compile(r"(%b|%B|%m|%c|%x)")
@@ -60,7 +62,7 @@ class DateType(PropertyType):
         obj = sanitize_text(obj)
         if obj is None:
             return False
-        return self.DATE_RE.match(obj) is not None
+        return self.REGEX.match(obj) is not None
 
     def _clean_datetime(self, obj):
         """Python objects want to be text."""

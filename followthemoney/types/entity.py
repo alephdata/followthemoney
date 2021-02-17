@@ -15,8 +15,8 @@ class EntityType(PropertyType):
     dict of the entity, the ID will then be extracted and stored.
     """
 
-    ID_RE_RAW = r"^[0-9a-zA-Z]([0-9a-zA-Z\.\-]*[0-9a-zA-Z])?$"
-    ID_RE = re.compile(ID_RE_RAW)
+    REGEX_RAW = r"^[0-9a-zA-Z]([0-9a-zA-Z\.\-]*[0-9a-zA-Z])?$"
+    REGEX = re.compile(REGEX_RAW)
     name = "entity"
     group = "entities"
     label = _("Entity")
