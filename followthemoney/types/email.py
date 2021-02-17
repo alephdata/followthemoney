@@ -30,7 +30,7 @@ class EmailType(PropertyType):
         email = sanitize_text(email)
         if email is None:
             return False
-        if not self.EMAIL_REGEX.match(email):
+        if not self.REGEX.match(email):
             return False
         _, domain = email.rsplit("@", 1)
         return self.domains.validate(domain, **kwargs)
@@ -41,7 +41,7 @@ class EmailType(PropertyType):
         Returns None if this is not an email address.
         """
         email = strip_quotes(email)
-        if not self.EMAIL_REGEX.match(email):
+        if not self.REGEX.match(email):
             return None
         mailbox, domain = email.rsplit("@", 1)
         domain = self.domains.clean(domain, **kwargs)
