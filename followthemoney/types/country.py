@@ -6,6 +6,11 @@ from followthemoney.util import gettext, defer as _
 
 
 class CountryType(EnumType):
+    """Properties to define countries and territories. This is completely
+    descriptive and needs to deal with data from many origins, so we support
+    a number of unusual and controversial designations (e.g. the Soviet Union,
+    Transnistria, Somaliland, Kosovo)."""
+
     name = "country"
     group = "countries"
     label = _("Country")

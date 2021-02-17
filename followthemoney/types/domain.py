@@ -7,6 +7,8 @@ from followthemoney.util import sanitize_text, defer as _
 
 
 class DomainType(PropertyType):
+    """DNS domain names. Not really used and might be thrown out."""
+
     name = "domain"
     group = None
     label = _("Domain")

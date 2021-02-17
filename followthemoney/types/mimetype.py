@@ -7,6 +7,14 @@ from followthemoney.util import defer as _
 
 
 class MimeType(PropertyType):
+    """A MIME media type are a specification of a content type on a network.
+    Each MIME type is assinged by IANA and consists of two parts: the type
+    and sub-type. Common examples are: ``text/plain``, ``application/json`` and
+    ``application/pdf``.
+
+    MIME type properties do not contain parameters as used in HTTP headers,
+    like ``charset=UTF-8``."""
+
     name = "mimetype"
     group = "mimetypes"
     label = _("MIME-Type")

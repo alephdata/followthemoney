@@ -1,0 +1,51 @@
+.. _types:
+
+Property types
+=================
+
+Each property defined on a given schema has one of the data types below. The 
+data types are all string-based, but define the semantics of the property.
+
+.. contents:: Data types
+    :local:
+
+{% for type in registry.types | sort(attribute='name') %}
+.. _type-{{type.name}}:
+
+{{type.label}}
+------------------------------
+
+.. option:: {{type.name}}: {{type.plural}}
+
+    {{type.docs}}
+
+    {% if type.group -%}
+    :group: ``{{type.group}}``
+    {%- endif %}
+    :matchable: {{type.matchable}}
+    :pivot: {{type.pivot}}
+    {% if type.max_size -%}
+    :max_size: {{type.max_size}}
+    {%- endif %}
+
+    {% if not type.matchable -%}
+    .. note::
+        
+        ``matchable``: Properties with this type will not be considered in entity comparisons.
+    {%- endif %}
+
+
+{% if type.names %}
+.. list-table::
+    :widths: 15 30
+    :header-rows: 1
+
+    * - Code value
+      - Label
+    {% for code, name in type.names.items() | sort %}
+    * - ``{{code}}``
+      - {{name}}
+    {% endfor %}
+{% endif %}
+
+{% endfor %}

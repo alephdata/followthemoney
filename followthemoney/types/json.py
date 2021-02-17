@@ -6,6 +6,10 @@ from followthemoney.util import sanitize_text, defer as _
 
 
 class JsonType(PropertyType):
+    """An encoded JSON object. This is used to store raw HTTP headers for documents
+    and some other edge cases. It's a really bad idea and we should try to get rid
+    of JSON properties."""
+
     name = "json"
     group = None
     label = _("Nested data")

@@ -19,6 +19,10 @@ class PropertyType(object):
     pivot: bool = False
     max_size: Optional[int] = None
 
+    @property
+    def docs(self):
+        return self.__doc__
+
     def validate(self, text: Any, **kwargs):
         """Returns a boolean to indicate if this is a valid instance of
         the type."""

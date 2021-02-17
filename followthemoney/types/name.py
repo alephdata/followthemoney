@@ -9,6 +9,13 @@ from followthemoney.util import defer as _
 
 
 class NameType(PropertyType):
+    """A name used for a person or company. This is assumed to be as complete
+    a name as available - when a first name, family name or patronymic are given
+    separately, these are stored to string-type properties instead.
+
+    No validation rules apply, and things having multiple names must be considered
+    a perfectly ordinary case."""
+
     name = "name"
     group = "names"
     label = _("Name")

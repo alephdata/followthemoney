@@ -12,3 +12,4 @@ FollowTheMoney Reference Documentation
    custom.rst
    graph.rst
    model.rst
+   types.rst

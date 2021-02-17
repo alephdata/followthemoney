@@ -8,6 +8,11 @@ from followthemoney.util import dampen
 
 
 class AddressType(PropertyType):
+    """A geographic address used to describe a location of a residence or post
+    box. There is no specified order for the sub-parts of an address (e.g. street,
+    city, postal code), and we should consider introducing an Address schema type
+    to retain fidelity in cases where address parts are specified."""
+
     LINE_BREAKS = re.compile(r"(\r\n|\n|<BR/>|<BR>|\t|ESQ\.,|ESQ,|;)")
     COMMATA = re.compile(r"(,\s?[,\.])")
     name = "address"

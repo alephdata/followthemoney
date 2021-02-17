@@ -5,6 +5,16 @@ from followthemoney.util import gettext, defer as _
 
 
 class TopicType(EnumType):
+    """Topics define a controlled vocabulary of terms applicable to some
+    entities, such as companies and people. They describe categories of
+    journalistic interest which may apply to the given entity, for example
+    if a given person is a criminal or a politician.
+
+    Besides the informative value, topics are ultimately supposed to bear
+    fruits in the context of graph-based data analysis, where they would
+    enable queries such as `find all paths between a government procurement
+    award and a politician`."""
+
     name = "topic"
     group = "topics"
     label = _("Topic")

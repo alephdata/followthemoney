@@ -6,7 +6,13 @@ from followthemoney.util import defer as _
 
 
 class IdentifierType(PropertyType):
-    """Used for registration numbers, codes etc."""
+    """Used for registration numbers and other codes assigned by an authority
+    to identify an entity. This might include tax identifiers and statistical
+    codes.
+
+    Since identifiers are high-value criteria when comparing two entities, numbers
+    should only be modelled as identifiers if they are long enough to be meaningful.
+    Four- or five-digit industry classifiers create more noise than value."""
 
     COMPARE_CLEAN = re.compile(r"[\W_]+")
     name = "identifier"

@@ -7,6 +7,14 @@ from followthemoney.util import defer as _
 
 
 class EntityType(PropertyType):
+    """A reference to another entity via its ID. This is how entities in FtM
+    become a graph: by pointing at each other using entity references.
+
+    Entity IDs can either be `namespaced` or `plain`, depending on the context.
+    When setting properties of this type, you can pass in an entity proxy or
+    dict of the entity, the ID will then be extracted and stored.
+    """
+
     ID_RE_RAW = r"^[0-9a-zA-Z]([0-9a-zA-Z\.\-]*[0-9a-zA-Z])?$"
     ID_RE = re.compile(ID_RE_RAW)
     name = "entity"

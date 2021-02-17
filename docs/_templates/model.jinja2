@@ -62,8 +62,7 @@ to generate entities.
         .. attribute:: {{prop.name}} ({{prop.type.name}})
             :noindex:
 
-            {{prop.label}}
-            {% if prop.range -%}(of type :ref:`schema-{{prop.range.name}}`){%- endif %}
+            {{prop.label}} (:ref:`{{prop.type.label}} <type-{{prop.type.name}}>`{% if prop.range -%}, of type :ref:`schema-{{prop.range.name}}`{%- endif %})
 
             {% if prop.description -%}*{{prop.description.strip()}}*{%- endif %}
 

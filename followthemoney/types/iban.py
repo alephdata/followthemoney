@@ -7,6 +7,14 @@ from followthemoney.util import sanitize_text, defer as _
 
 
 class IbanType(PropertyType):
+    """An international bank account number, as defined in ISO 13616. IBANs are
+    managed by SWIFT used in the European SEPA payment system.
+
+    A noteable aspect of IBANs is that they share a country prefix and validation
+    mechanism, but the specific length of an IBAN is dependent on the country
+    code defined in the first two characters: ``NO8330001234567`` and
+    ``CY21002001950000357001234567`` are both valid values."""
+
     name = "iban"
     group = "ibans"
     label = _("IBAN")

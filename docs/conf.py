@@ -1,6 +1,7 @@
 from pathlib import Path
 from jinja2 import Environment
 from followthemoney import model
+from followthemoney.types import registry
 
 # Configuration file for the Sphinx documentation builder.
 #
@@ -61,15 +62,15 @@ print("Generating FtM schema documentation...")
 
 sphinx_path = Path(__file__).parent
 env = Environment()
-with open(sphinx_path.joinpath("_templates/schema.jinja2"), "r") as fh:
-    template = env.from_string(fh.read())
-# schema_path = sphinx_path.joinpath("schema")
-# schema_path.mkdir(exist_ok=True)
-# for name, schema in model.schemata.items():
-#     file_name = schema_path.joinpath(f"{name.lower()}.rst")
-#     with open(file_name, "w") as fh:
-#         fh.write(template.render(schema=schema, model=model))
 
-file_name = sphinx_path.joinpath("model.rst")
-with open(file_name, "w") as fh:
-    fh.write(template.render(model=model))
+with open(sphinx_path.joinpath("_templates/model.jinja2"), "r") as fh:
+    template = env.from_string(fh.read())
+    file_name = sphinx_path.joinpath("model.rst")
+    with open(file_name, "w") as fh:
+        fh.write(template.render(model=model))
+
+with open(sphinx_path.joinpath("_templates/types.jinja2"), "r") as fh:
+    template = env.from_string(fh.read())
+    file_name = sphinx_path.joinpath("types.rst")
+    with open(file_name, "w") as fh:
+        fh.write(template.render(registry=registry))

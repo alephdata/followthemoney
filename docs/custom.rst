@@ -1,4 +1,4 @@
-Installing custom schema
+Defining custom schemata
 ==========================
 
 `FollowTheMoney` lives a double life, both as a data modelling and validation tool and as a 
@@ -7,7 +7,7 @@ investigative journalism as it is exercised in OCCRP, the FtM data modelling too
 beyond that domain. Users from adjacent fields, such as human rights advocacy, cyber forensics
 or social media analysis might wish to adapt the data model.
 
-Operators can modify the active FtM model by setting the environment variable `FTM_MODEL_PATH`
+Operators can modify the active FtM model by setting the environment variable ``$FTM_MODEL_PATH``
 to a directory that contains a set of YAML schema description files. The simplest way to do 
 this would be to download the existing YAML schema set from FtM source (`followthemoney/schema`),
 and make edits in a new directory. 

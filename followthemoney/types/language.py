@@ -7,6 +7,11 @@ from followthemoney.util import get_env_list
 
 
 class LanguageType(EnumType):
+    """A human written language. This list is arbitrarily limited for some
+    weird upstream technical reasons, but we'll happily accept pull requests
+    for additional languages once there is a specific need for them to be
+    supported."""
+
     name = "language"
     group = "languages"
     label = _("Language")

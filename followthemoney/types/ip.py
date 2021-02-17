@@ -6,6 +6,10 @@ from followthemoney.util import defer as _
 
 
 class IpType(PropertyType):
+    """Internet protocol addresses. This supports both addresses used
+    by the protocol versions 4 (e.g. ``192.168.1.143``) and 6
+    (e.g. ``0:0:0:0:0:ffff:c0a8:18f``)."""
+
     name = "ip"
     group = "ips"
     label = _("IP-Address")

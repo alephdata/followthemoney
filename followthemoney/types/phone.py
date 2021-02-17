@@ -14,6 +14,18 @@ from followthemoney.util import dampen
 
 
 class PhoneType(PropertyType):
+    """A phone number in E.164 format. This means that phone numbers always
+    include an international country prefix (e.g. ``+38760183628``). The
+    cleaning and validation functions for this try to be smart about by
+    accepting a list of countries as an argument in order to add the number
+    prefix.
+
+    When adding a property of this type to an entity, any country-type properties
+    defined for the entity are considered for validation. That means that adding a
+    phone number to an entity before adding a country can have a different
+    validation outcome from doing the two operations the other way around. Always
+    define the country first."""
+
     name = "phone"
     group = "phones"
     label = _("Phone number")

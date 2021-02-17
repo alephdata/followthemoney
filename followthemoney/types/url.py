@@ -6,6 +6,10 @@ from followthemoney.util import dampen, defer as _
 
 
 class UrlType(PropertyType):
+    """A uniform resource locator (URL). This will perform some normalisation
+    on the URL so that it's sure to be using valid encoding/quoting, and to
+    make sure the URL has a schema (e.g. 'http', 'https', ...)."""
+
     name = "url"
     group = "urls"
     label = _("URL")

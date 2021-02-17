@@ -20,7 +20,7 @@ class EntityProxy(object):
     __slots__ = ["schema", "id", "key_prefix", "context", "_properties", "_size"]
 
     def __init__(self, model, data, key_prefix=None, cleaned=True):
-        data = dict(data)
+        data = dict(data or {})
         properties = data.pop("properties", {})
         if not cleaned:
             properties = ensure_dict(properties)

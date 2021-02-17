@@ -1,0 +1,34 @@
+# OSM: https://wiki.openstreetmap.org/wiki/Proposed_features/House_numbers/Karlsruhe_Schema#Tags 
+# Seen in the wild:
+# 
+# - full
+# - remarks / note
+# - c/o
+# - location
+# - unknown
+# - address-details / street
+# - house number / house name
+# - address1 / address2 / address3
+# - city
+# - po box
+# - zip code / postcode / postal_code
+# - region
+# - area / state / province
+# - country
+Address:
+  label: Address
+  plural: Addresses
+  description: >
+    A location associated with an entity.
+  matchable: true
+  featured:
+    - full
+  caption:
+    - full
+  properties:
+    full:
+      label: "Full address"
+    country:
+      label: "Country"
+      type: "country"
+    
