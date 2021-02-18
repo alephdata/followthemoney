@@ -1,3 +1,5 @@
+.. _fragments: 
+
 Entity fragmentation
 ======================
 
