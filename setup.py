@@ -28,7 +28,7 @@ setup(
         "normality >= 2.1.1, < 3.0.0",
         "sqlalchemy >= 1.2.0, < 2.0.0",
         "countrynames >= 1.7.0, < 2.0.0",
-        "languagecodes >= 1.0.7, < 2.0.0",
+        "languagecodes >= 1.0.9, < 2.0.0",
         "fingerprints >= 1.0.1, < 2.0.0",
         "phonenumbers >= 8.9.11",
         "python-stdnum >= 1.10",
