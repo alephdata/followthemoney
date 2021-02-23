@@ -5,6 +5,7 @@ from babel import Locale  # type: ignore
 from gettext import translation  # type: ignore
 from rdflib import Namespace  # type: ignore
 from threading import local
+from typing import Dict, Any, List, Optional
 from normality import stringify
 from normality.cleaning import compose_nfc
 from normality.cleaning import remove_unsafe_chars
@@ -25,24 +26,24 @@ def gettext(*args, **kwargs):
     return state.translation.gettext(*args, **kwargs)
 
 
-def defer(text):
+def defer(text: str) -> str:
     return text
 
 
-def set_model_locale(locale):
+def set_model_locale(locale: Locale):
     state.locale = locale
     state.translation = translation(
         "followthemoney", i18n_path, [locale], fallback=True
     )
 
 
-def get_locale():
+def get_locale() -> Locale:
     if not hasattr(state, "locale"):
         return Locale(DEFAULT_LOCALE)
     return Locale(state.locale)
 
 
-def get_env_list(name, default=[]):
+def get_env_list(name: str, default: List[str] = []) -> List[str]:
     value = stringify(os.environ.get(name))
     if value is not None:
         values = value.split(":")
@@ -51,17 +52,18 @@ def get_env_list(name, default=[]):
     return default
 
 
-def sanitize_text(text, encoding=DEFAULT_ENCODING):
+def sanitize_text(text: Any, encoding: str = DEFAULT_ENCODING) -> Optional[str]:
     text = stringify(text, encoding_default=encoding)
-    if text is not None:
-        try:
-            text = compose_nfc(text)
-        except (SystemError, Exception) as ex:
-            log.warning("Cannot NFC text: %s", ex)
-            return None
-        text = remove_unsafe_chars(text)
-        text = text.encode(DEFAULT_ENCODING, "replace")
-        return text.decode(DEFAULT_ENCODING, "replace")
+    if text is None:
+        return None
+    try:
+        text = compose_nfc(text)
+    except (SystemError, Exception) as ex:
+        log.warning("Cannot NFC text: %s", ex)
+        return None
+    text = remove_unsafe_chars(text)
+    text = text.encode(DEFAULT_ENCODING, "replace")
+    return text.decode(DEFAULT_ENCODING, "replace")
 
 
 def value_list(value):
@@ -73,7 +75,7 @@ def value_list(value):
     return [value]
 
 
-def key_bytes(key):
+def key_bytes(key: Any) -> bytes:
     """Convert the given data to a value appropriate for hashing."""
     if isinstance(key, bytes):
         return key
@@ -81,7 +83,7 @@ def key_bytes(key):
     return key.encode("utf-8")
 
 
-def get_entity_id(obj):
+def get_entity_id(obj: Any) -> Optional[str]:
     """Given an entity-ish object, try to get the ID."""
     if is_mapping(obj):
         obj = obj.get("id")
@@ -90,10 +92,10 @@ def get_entity_id(obj):
             obj = obj.id
         except AttributeError:
             pass
-    return obj
+    return stringify(obj)
 
 
-def make_entity_id(*parts, key_prefix=None):
+def make_entity_id(*parts, key_prefix=None) -> Optional[str]:
     digest = sha1()
     if key_prefix:
         digest.update(key_bytes(key_prefix))
@@ -101,11 +103,11 @@ def make_entity_id(*parts, key_prefix=None):
     for part in parts:
         digest.update(key_bytes(part))
     if digest.digest() == base:
-        return
+        return None
     return digest.hexdigest()
 
 
-def merge_context(left, right):
+def merge_context(left: Dict, right: Dict):
     """When merging two entities, we make lists of all the
     duplicate context keys."""
     combined = {}
@@ -117,11 +119,11 @@ def merge_context(left, right):
     return combined
 
 
-def dampen(short, long, text):
+def dampen(short: int, long: int, text: str) -> float:
     length = len(text) - short
     baseline = max(1.0, (long - short))
     return max(0, min(1.0, (length / baseline)))
 
 
-def shortest(*texts):
+def shortest(*texts: str) -> str:
     return min(texts, key=len)

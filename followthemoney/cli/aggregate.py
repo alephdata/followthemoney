@@ -1,7 +1,9 @@
 import click
 import logging
-from followthemoney.namespace import Namespace
+from typing import Dict
 
+from followthemoney.proxy import EntityProxy
+from followthemoney.namespace import Namespace
 from followthemoney.cli.cli import cli
 from followthemoney.cli.util import read_entities, write_object
 
@@ -12,7 +14,7 @@ log = logging.getLogger(__name__)
 @click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
 @click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
 def aggregate(infile, outfile):
-    buffer = {}
+    buffer: Dict[str, EntityProxy] = {}
     namespace = Namespace(None)
     try:
         for entity in read_entities(infile):

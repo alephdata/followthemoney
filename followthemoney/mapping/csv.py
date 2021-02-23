@@ -2,6 +2,7 @@ import io
 import os
 import logging
 import requests
+from urllib.parse import urlparse
 from banal import keys_values
 
 from followthemoney.mapping.source import StreamSource
@@ -24,7 +25,7 @@ class CSVSource(StreamSource):
             raise InvalidMapping("No CSV URLs are specified.")
 
     def read_csv_url(self, url):
-        parsed_url = requests.utils.urlparse(url)
+        parsed_url = urlparse(url)
         log.info("Loading: %s", url)
         if parsed_url.scheme in ["http", "https"]:
             res = requests.get(url, stream=True)

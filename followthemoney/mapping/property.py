@@ -97,7 +97,7 @@ class PropertyMapping(object):
         if self.split is not None:
             splote = []
             for value in values:
-                splote = splote + value.split(self.split)
+                splote.extend(value.split(self.split))
             values = splote
 
         proxy.add(self.prop, values)

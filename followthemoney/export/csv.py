@@ -19,6 +19,9 @@ class CSVMixin(object):
         writer = csv.writer(handle, dialect=self.dialect)
         return handle, writer
 
+    def _write_header(self, writer, schema):
+        raise NotImplementedError
+
     def _get_writer(self, schema):
         if schema not in self.handles:
             handle, writer = self._open_csv_file(schema.name)

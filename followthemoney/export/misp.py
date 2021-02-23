@@ -1,6 +1,6 @@
 from typing import Dict, Tuple, List, TextIO, Optional
 
-from pymisp import MISPObject
+from pymisp import MISPObject  # type: ignore
 
 from followthemoney.graph import Node, Edge
 from followthemoney.types import registry

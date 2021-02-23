@@ -1,3 +1,6 @@
+from typing import Set, Dict
+
+from followthemoney.proxy import EntityProxy
 from followthemoney.mapping.entity import EntityMapping
 from followthemoney.mapping.sql import SQLSource
 from followthemoney.mapping.csv import CSVSource
@@ -29,7 +32,7 @@ class QueryMapping(object):
         # in dependent entities.
         entities = self.entities
         self.entities = []
-        resolved = set()
+        resolved: Set[str] = set()
         while len(entities) > 0:
             before = len(entities)
             for entity in entities:
@@ -50,7 +53,7 @@ class QueryMapping(object):
         raise InvalidMapping("Cannot determine mapping type")
 
     def map(self, record):
-        data = {}
+        data: Dict[str, EntityProxy] = {}
         for entity in self.entities:
             mapped = entity.map(record, data)
             if mapped is not None:
