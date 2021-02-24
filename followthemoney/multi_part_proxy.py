@@ -23,6 +23,7 @@ class MultiPartProxy(EntityProxy):
     def _merge_new_proxy(self, proxy):
         if self._golden_proxy is None:
             self._build()
+            return
         self._golden_proxy.merge(proxy)
 
     @property
@@ -33,10 +34,14 @@ class MultiPartProxy(EntityProxy):
 
     @property
     def schema(self):
+        if self._golden_proxy is None:
+            return None
         return self._golden_proxy.schema
 
     @property
     def _properties(self):
+        if self._golden_proxy is None:
+            return {}
         return self._golden_proxy._properties
 
     @property
