@@ -1,5 +1,6 @@
 from itertools import product
-from rdflib import Term, Literal  # type: ignore
+from rdflib import Literal  # type: ignore
+from rdflib.term import Identifier  # type: ignore
 from banal import ensure_list
 from normality import stringify
 from typing import Any, Dict, Optional, Sequence, Callable
@@ -124,7 +125,7 @@ class PropertyType(object):
         be related to (e.g. using a country prefix on a phone number or IBAN)."""
         return None
 
-    def rdf(self, value: str) -> Term:
+    def rdf(self, value: str) -> Identifier:
         """Return an RDF term to represent the given value - either a string
         literal, or a URI reference."""
         return Literal(value)
