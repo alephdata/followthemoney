@@ -1,4 +1,6 @@
 from banal import ensure_list
+from typing import Set, Dict, Type, Union, List, Optional
+
 from followthemoney.types.common import PropertyType
 
 
@@ -8,17 +10,15 @@ class Registry(object):
     loaded. The registry can be used to get a type, which can itself then
     clean, validate or format values of that type."""
 
-    def __init__(self):
-        self.named = {}
-        self.matchable = set()
-        self.types = set()
-        self.groups = {}
-        self.pivots = set()
+    def __init__(self) -> None:
+        self.named: Dict[str, PropertyType] = {}
+        self.matchable: Set[PropertyType] = set()
+        self.types: Set[PropertyType] = set()
+        self.groups: Dict[str, PropertyType] = {}
+        self.pivots: Set[PropertyType] = set()
 
-    def add(self, clazz):
+    def add(self, clazz: Type[PropertyType]) -> None:
         """Add a singleton class."""
-        if not issubclass(clazz, PropertyType):
-            return
         type_ = clazz()
         self.named[clazz.name] = type_
         self.types.add(type_)
@@ -29,7 +29,7 @@ class Registry(object):
         if type_.group is not None:
             self.groups[type_.group] = type_
 
-    def get(self, name):
+    def get(self, name: Union[str, PropertyType]) -> Optional[PropertyType]:
         """For a given property type name, get its type object. This can also
         be used via getattr, e.g. ``registry.phone``."""
         # Allow transparent re-checking.
@@ -37,10 +37,11 @@ class Registry(object):
             return name
         return self.named.get(name)
 
-    def get_types(self, names):
+    def get_types(self, names: List[Union[str, PropertyType]]) -> List[PropertyType]:
         """Get a list of all type names."""
         names = ensure_list(names)
-        return [self.get(n) for n in names if self.get(n) is not None]
+        types = [self.get(n) for n in names]
+        return [t for t in types if t is not None]
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Optional[PropertyType]:
         return self.named[name]

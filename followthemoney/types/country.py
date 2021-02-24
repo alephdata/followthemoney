@@ -1,5 +1,5 @@
 import countrynames  # type: ignore
-from rdflib import URIRef  # type: ignore
+from rdflib import Term, URIRef  # type: ignore
 
 from followthemoney.types.common import EnumType
 from followthemoney.util import gettext, defer as _
@@ -58,8 +58,8 @@ class CountryType(EnumType):
         if country is not None:
             return country.lower()
 
-    def country_hint(self, value):
+    def country_hint(self, value: str) -> str:
         return value
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> Term:
         return URIRef("iso-3166-1:%s" % value)
