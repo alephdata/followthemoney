@@ -1,6 +1,6 @@
 # Follow the Money
 
-[![Build Status](https://travis-ci.org/alephdata/followthemoney.png?branch=master)](https://travis-ci.org/alephdata/followthemoney)
+[![ftm-build](https://github.com/alephdata/followthemoney/actions/workflows/build.yml/badge.svg)](https://github.com/alephdata/followthemoney/actions/workflows/build.yml)
 
 This repository contains a pragmatic data model for the entities most
 commonly used in investigative reporting: people, companies, assets,
