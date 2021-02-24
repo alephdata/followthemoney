@@ -12,6 +12,12 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="MIT",
+    classifiers=[
+        "Intended Audience :: Developers",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.9",
+    ],
     packages=find_packages(exclude=["ez_setup", "examples", "tests"]),
     namespace_packages=[],
     include_package_data=True,
