@@ -18,7 +18,6 @@
         "country"
       ],
       "label": "Address",
-      "matchable": true,
       "plural": "Addresses",
       "properties": {
         "city": {
@@ -92,6 +91,16 @@
           "name": "street2",
           "qname": "Address:street2",
           "type": "string"
+        },
+        "things": {
+          "label": "Located there",
+          "matchable": true,
+          "name": "things",
+          "qname": "Address:things",
+          "range": "Thing",
+          "reverse": "addressEntity",
+          "stub": true,
+          "type": "entity"
         }
       },
       "schemata": [
@@ -935,6 +944,15 @@
           "name": "procedureNumber",
           "qname": "Contract:procedureNumber",
           "type": "string"
+        },
+        "project": {
+          "label": "Project",
+          "matchable": true,
+          "name": "project",
+          "qname": "Contract:project",
+          "range": "Project",
+          "reverse": "contracts",
+          "type": "entity"
         },
         "status": {
           "label": "Procurement status",
@@ -2731,6 +2749,16 @@
           "stub": true,
           "type": "entity"
         },
+        "projectParticipation": {
+          "label": "Projects",
+          "matchable": true,
+          "name": "projectParticipation",
+          "qname": "LegalEntity:projectParticipation",
+          "range": "ProjectParticipant",
+          "reverse": "participant",
+          "stub": true,
+          "type": "entity"
+        },
         "registrationNumber": {
           "description": "Company registration number",
           "label": "Registration number",
@@ -3645,6 +3673,15 @@
           "qname": "Payment:programme",
           "type": "string"
         },
+        "project": {
+          "label": "Project",
+          "matchable": true,
+          "name": "project",
+          "qname": "Payment:project",
+          "range": "Project",
+          "reverse": "payments",
+          "type": "entity"
+        },
         "purpose": {
           "label": "Payment purpose",
           "name": "purpose",
@@ -3874,6 +3911,136 @@
         "Document",
         "PlainText",
         "Thing"
+      ]
+    },
+    "Project": {
+      "caption": [
+        "name",
+        "projectId"
+      ],
+      "description": "An activity carried out by a group of participants.\n",
+      "extends": [
+        "Interval",
+        "Thing"
+      ],
+      "featured": [
+        "name",
+        "projectId",
+        "startDate"
+      ],
+      "label": "Project",
+      "plural": "Projects",
+      "properties": {
+        "contracts": {
+          "label": "Contracts",
+          "matchable": true,
+          "name": "contracts",
+          "qname": "Project:contracts",
+          "range": "Contract",
+          "reverse": "project",
+          "stub": true,
+          "type": "entity"
+        },
+        "goal": {
+          "label": "Project goal",
+          "name": "goal",
+          "qname": "Project:goal",
+          "type": "string"
+        },
+        "participants": {
+          "label": "Participants",
+          "matchable": true,
+          "name": "participants",
+          "qname": "Project:participants",
+          "range": "ProjectParticipant",
+          "reverse": "project",
+          "stub": true,
+          "type": "entity"
+        },
+        "payments": {
+          "label": "Payments",
+          "matchable": true,
+          "name": "payments",
+          "qname": "Project:payments",
+          "range": "Payment",
+          "reverse": "project",
+          "stub": true,
+          "type": "entity"
+        },
+        "phase": {
+          "label": "Phase",
+          "name": "phase",
+          "qname": "Project:phase",
+          "type": "string"
+        },
+        "projectId": {
+          "label": "Project ID",
+          "matchable": true,
+          "name": "projectId",
+          "qname": "Project:projectId",
+          "type": "identifier"
+        },
+        "status": {
+          "label": "Status",
+          "name": "status",
+          "qname": "Project:status",
+          "type": "string"
+        }
+      },
+      "schemata": [
+        "Interval",
+        "Project",
+        "Thing"
+      ]
+    },
+    "ProjectParticipant": {
+      "caption": [
+        "role"
+      ],
+      "description": "An activity carried out by a group of participants.\n",
+      "edge": {
+        "caption": [
+          "role"
+        ],
+        "directed": true,
+        "label": "participates in",
+        "source": "participant",
+        "target": "project"
+      },
+      "extends": [
+        "Interest"
+      ],
+      "featured": [
+        "project",
+        "participant",
+        "role"
+      ],
+      "label": "Project participant",
+      "plural": "Project participants",
+      "properties": {
+        "participant": {
+          "label": "Participant",
+          "matchable": true,
+          "name": "participant",
+          "qname": "ProjectParticipant:participant",
+          "range": "LegalEntity",
+          "reverse": "projectParticipation",
+          "type": "entity"
+        },
+        "project": {
+          "label": "Project",
+          "matchable": true,
+          "name": "project",
+          "qname": "ProjectParticipant:project",
+          "range": "Project",
+          "reverse": "participants",
+          "type": "entity"
+        }
+      },
+      "schemata": [
+        "Interest",
+        "Interval",
+        "ProjectParticipant"
       ]
     },
     "PublicBody": {
@@ -4327,6 +4494,15 @@
           "name": "address",
           "qname": "Thing:address",
           "type": "address"
+        },
+        "addressEntity": {
+          "label": "Address",
+          "matchable": true,
+          "name": "addressEntity",
+          "qname": "Thing:addressEntity",
+          "range": "Address",
+          "reverse": "things",
+          "type": "entity"
         },
         "alephUrl": {
           "label": "Aleph URL",

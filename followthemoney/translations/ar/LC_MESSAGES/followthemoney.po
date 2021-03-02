@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-02 15:14+0100\n"
+"POT-Creation-Date: 2021-03-02 18:29+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Mohammed AlKawmani <komani@arij.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/aleph/teams/76591/ar/)\n"
@@ -24,43 +24,44 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: followthemoney/property.py:86
+#: followthemoney/property.py:109
 msgid "Property cannot be written"
 msgstr "لا يمكن كتابة اسم الملكية"
 
-#: followthemoney/property.py:89
+#: followthemoney/property.py:112
 msgid "Invalid value"
 msgstr "قيمة غير صحيحة"
 
-#: followthemoney/proxy.py:29
+#: followthemoney/proxy.py:35
 msgid "No schema for entity."
 msgstr "لا يوجد مخطط للكيان"
 
-#: followthemoney/proxy.py:66
+#: followthemoney/proxy.py:86
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "ملكية غير معروفة (1%s):%s"
 
-#: followthemoney/proxy.py:95
+#: followthemoney/proxy.py:147
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "الملكية المتبقية%s:%s"
 
-#: followthemoney/proxy.py:104
+#: followthemoney/proxy.py:156
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "علاقة ذاتية (1%s):  1%s"
 
-#: followthemoney/schema.py:236
+#: followthemoney/schema.py:237
 msgid "Required"
 msgstr "مطلوب"
 
-#: followthemoney/schema.py:240
+#: followthemoney/schema.py:241
 msgid "Entity validation failed"
 msgstr "فشل التحقق من صحة الكيان"
 
 #. Address.label
 #. Thing.properties.address.label
+#. Thing.properties.addressEntity.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Thing.yaml
 #: followthemoney/types/address.py:20
 msgid "Address"
@@ -140,6 +141,18 @@ msgstr ""
 #: followthemoney/schema/Address.yaml
 msgid "State, province or area."
 msgstr ""
+
+#. Address.properties.latitude.label
+#. RealEstate.properties.latitude.label
+#: followthemoney/schema/Address.yaml followthemoney/schema/RealEstate.yaml
+msgid "Latitude"
+msgstr "خط العرض"
+
+#. Address.properties.longitude.label
+#. RealEstate.properties.longitude.label
+#: followthemoney/schema/Address.yaml followthemoney/schema/RealEstate.yaml
+msgid "Longitude"
+msgstr "خط الطول"
 
 #. Address.properties.country.label
 #. Event.properties.country.label
@@ -735,10 +748,10 @@ msgid "Contract"
 msgstr "العقد"
 
 #. Contract.plural
+#. Contract.properties.project.reverse.label
 #. ContractAward.properties.contract.plural
-#. Payment.properties.contract.plural
 #: followthemoney/schema/Contract.yaml
-#: followthemoney/schema/ContractAward.yaml followthemoney/schema/Payment.yaml
+#: followthemoney/schema/ContractAward.yaml
 msgid "Contracts"
 msgstr "العقود"
 
@@ -770,6 +783,16 @@ msgstr "الجهات التي اصدرت العقود"
 #: followthemoney/schema/Contract.yaml
 msgid "Contracts issued"
 msgstr "العقود الصادرة"
+
+#. Contract.properties.project.label
+#. Payment.properties.project.label
+#. Project.label
+#. ProjectParticipant.properties.project.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/Payment.yaml
+#: followthemoney/schema/Project.yaml
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Project"
+msgstr ""
 
 #. Contract.properties.type.label
 #. CourtCase.properties.type.label
@@ -962,9 +985,11 @@ msgstr "الفئة"
 #. CourtCase.properties.status.label
 #. Interest.properties.status.label
 #. LegalEntity.properties.status.label
+#. Project.properties.status.label
 #. Sanction.properties.status.label
 #: followthemoney/schema/CourtCase.yaml followthemoney/schema/Interest.yaml
-#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Sanction.yaml
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Project.yaml
+#: followthemoney/schema/Sanction.yaml
 msgid "Status"
 msgstr "الحالة"
 
@@ -2472,6 +2497,7 @@ msgid "Payment"
 msgstr "دفعة"
 
 #. Payment.plural
+#. Payment.properties.project.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payments"
 msgstr "المدفوعات /دفعات"
@@ -2638,6 +2664,60 @@ msgstr "الملفات النصية"
 msgid "Text files, like .txt or source code.\n"
 msgstr ""
 
+#. Project.plural
+#. ProjectParticipant.properties.participant.reverse.label
+#: followthemoney/schema/Project.yaml
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Projects"
+msgstr ""
+
+#. Project.description
+#. ProjectParticipant.description
+#: followthemoney/schema/Project.yaml
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "An activity carried out by a group of participants.\n"
+msgstr ""
+
+#. Project.properties.projectId.label
+#: followthemoney/schema/Project.yaml
+msgid "Project ID"
+msgstr ""
+
+#. Project.properties.phase.label
+#: followthemoney/schema/Project.yaml
+msgid "Phase"
+msgstr ""
+
+#. Project.properties.goal.label
+#: followthemoney/schema/Project.yaml
+msgid "Project goal"
+msgstr ""
+
+#. ProjectParticipant.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Project participant"
+msgstr ""
+
+#. ProjectParticipant.plural
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Project participants"
+msgstr ""
+
+#. ProjectParticipant.edge.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "participates in"
+msgstr ""
+
+#. ProjectParticipant.properties.project.reverse.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Participants"
+msgstr ""
+
+#. ProjectParticipant.properties.participant.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Participant"
+msgstr ""
+
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
 msgid "Public body"
@@ -2667,16 +2747,6 @@ msgstr "عقارات"
 #: followthemoney/schema/RealEstate.yaml
 msgid "A piece of land or property."
 msgstr "قطعة أرض أو عقار."
-
-#. RealEstate.properties.latitude.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Latitude"
-msgstr "خط العرض"
-
-#. RealEstate.properties.longitude.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Longitude"
-msgstr "خط الطول"
 
 #. RealEstate.properties.censusBlock.label
 #: followthemoney/schema/RealEstate.yaml
@@ -2944,6 +3014,11 @@ msgstr "الكلمات المفتاحية"
 #: followthemoney/schema/Thing.yaml followthemoney/types/topic.py:21
 msgid "Topics"
 msgstr "المواضيع"
+
+#. Thing.properties.addressEntity.reverse.label
+#: followthemoney/schema/Thing.yaml
+msgid "Located there"
+msgstr ""
 
 #. Thing.properties.proof.label
 #: followthemoney/schema/Thing.yaml
