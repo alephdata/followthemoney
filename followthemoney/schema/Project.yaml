@@ -18,5 +18,9 @@ Project:
     projectId:
       label: "Project ID"
       type: identifier
-    aim:
-      label: "Project aim"
+    status:
+      label: "Status"
+    phase:
+      label: "Phase"
+    goal:
+      label: "Project goal"
