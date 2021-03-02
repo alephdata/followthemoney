@@ -62,6 +62,13 @@ Thing:
     address:
       label: Address
       type: address
+    addressEntity:
+      label: Address
+      reverse:
+        name: things
+        label: "Located there"
+      type: entity
+      range: Address
     program: # Used by sanctions
       label: Program
     notes:
