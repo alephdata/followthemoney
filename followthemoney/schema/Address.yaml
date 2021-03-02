@@ -18,16 +18,43 @@
 Address:
   label: Address
   plural: Addresses
+  extends:
+    - Interval
   description: >
     A location associated with an entity.
   matchable: true
   featured:
     - full
+    - city
+    - street
+    - country
   caption:
     - full
+    - summary
+    - city
+    - remarks
   properties:
     full:
       label: "Full address"
+    remarks:
+      label: "Remarks"
+      description: "Handling instructions, like 'care of'."
+    postOfficeBox:
+      label: "PO Box"
+      description: "A mailbox indentifier at the post office"
+    street:
+      label: "Street address"
+    street2:
+      label: "Street address (ctd.)"
+    city:
+      label: "City"
+      description: "City, town, village or other locality"
+    postalCode:
+      label: "Postal code"
+      description: "Zip code or postcode."
+    region:
+      label: "Region"
+      description: "State, province or area."
     country:
       label: "Country"
       type: "country"
