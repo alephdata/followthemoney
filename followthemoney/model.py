@@ -9,11 +9,17 @@ from followthemoney.exc import InvalidModel, InvalidData
 
 
 class Model(object):
-    """A collection of schemata."""
+    """A collection of all the schemata available in followthemoney. The model
+    provides some helper functions to find schemata, properties or to instantiate
+    entity proxies based on the schema metadata."""
 
     def __init__(self, path):
         self.path = path
+
+        #: A mapping with all schemata, organised by their name.
         self.schemata = {}
+
+        #: All properties defined in the model.
         self.properties = set()
         self.qnames = {}
         for (path, _, filenames) in os.walk(self.path):
@@ -22,6 +28,11 @@ class Model(object):
         self.generate()
 
     def generate(self):
+        """Loading the model is a weird process because the schemata reference
+        each other in complex ways, so the generation process cannot be fully
+        run as schemata are being instantiated. Hence this process needs to be
+        called once all schemata are loaded to finalise dereferencing the
+        schemata."""
         for schema in self:
             schema.generate()
         for prop in self.properties:
@@ -40,14 +51,18 @@ class Model(object):
                 self.schemata[name] = Schema(self, name, config)
 
     def get(self, name):
+        """Get a schema object based on a schema name. If the input is already
+        a schema object, it will just be returned."""
         if isinstance(name, Schema):
             return name
         return self.schemata.get(name)
 
     def get_qname(self, qname):
+        """Get a property object based on a qualified name (i.e. schema:property)."""
         return self.qnames.get(qname)
 
     def __getitem__(self, name):
+        """Same as get(), but throws an exception when the given name does not exist."""
         schema = self.get(name)
         if schema is None:
             raise KeyError("No such schema: %s" % name)
@@ -94,16 +109,23 @@ class Model(object):
         raise InvalidData(msg % (left, right))
 
     def make_entity(self, schema, key_prefix=None):
+        """Instantiate an empty entity proxy of the given schema type."""
         return EntityProxy(self, {"schema": schema}, key_prefix=key_prefix)
 
     def get_proxy(self, data, cleaned=True):
+        """Create an entity proxy to reflect the entity data in the given
+        dictionary. If ``cleaned`` is disabled, all property values are
+        fully re-validated and normalised. Use this if handling input data
+        from an untrusted source."""
         return EntityProxy.from_dict(self, data, cleaned=cleaned)
 
     def to_dict(self):
+        """Return metadata for all schemata and properties, in a serializable form."""
         return {
             "schemata": {s.name: s.to_dict() for s in self.schemata.values()},
             "types": {t.name: t.to_dict() for t in registry.types},
         }
 
     def __iter__(self):
+        """Iterate across all schemata."""
         return iter(self.schemata.values())

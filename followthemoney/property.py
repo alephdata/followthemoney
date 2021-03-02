@@ -8,11 +8,20 @@ from followthemoney.util import gettext, NS, get_entity_id
 
 
 class Property(object):
+    """A definition of a value-holding field on a schema. Properties define
+    the field type and other possible constraints. They also serve as entity
+    to entity references."""
+
+    #: Invalid property names.
     RESERVED = ["id", "caption", "schema", "schemata"]
 
     def __init__(self, schema, name, data):
-        self.schema = schema
         self.model = schema.model
+
+        #: The schema which the property is defined for. This is always the
+        #: most abstract schema that has this property, not the possible
+        #: child schemata that inherit it.
+        self.schema = schema
 
         #: Machine-readable name for this property.
         self.name = stringify(name)
@@ -22,13 +31,14 @@ class Property(object):
         if self.name in self.RESERVED:
             raise InvalidModel("Reserved name: %s" % self.name)
 
+        self._hash = hash("<Property(%r)>" % self.qname)
+
         self.data = data
         self._label = data.get("label", name)
         self._description = data.get("description")
 
         #: This property should not be shown or mentioned in the user interface.
         self.hidden = data.get("hidden", False)
-        self.stub = data.get("stub", False)
 
         type_ = data.get("type", "string")
         #: The data type for this property.
@@ -38,10 +48,23 @@ class Property(object):
 
         #: Whether this property should be used for matching and cross-referencing.
         self.matchable = data.get("matchable", self.type.matchable)
+
+        #: If the property is of type ``entity``, the set of valid schema to be added
+        #: in this property can be constrained. For example, an asset can be owned,
+        #: but a person cannot be owned.
         self.range = None
+
+        #: When a property points to another schema, a reverse property is added for
+        #: various administrative reasons. These properties are, however, not real
+        #: and cannot be written to. That's why they are marked as stubs and adding
+        #: values to them will raise an exception.
+        self.stub = data.get("stub", False)
+
+        #: When a property points to another schema, a stub reverse property is
+        #: added for various administrative reasons.
         self.reverse = None
 
-        #: RDF term for this property.
+        #: RDF term for this property (i.e. the predicate URI).
         self.uri = URIRef(data.get("rdf", NS[self.qname]))
 
     def generate(self):
@@ -91,16 +114,13 @@ class Property(object):
                 values.append(val)
 
     def __eq__(self, other):
-        try:
-            return self.qname == other.qname
-        except AttributeError:
-            return False
+        return self._hash == hash(other)
 
     def __hash__(self):
-        return hash(self.qname)
+        return self._hash
 
     def to_dict(self):
-        """Return property metadata in a serialised form."""
+        """Return property metadata in a serializable form."""
         data = {
             "name": self.name,
             "qname": self.qname,

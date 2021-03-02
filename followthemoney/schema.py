@@ -24,6 +24,7 @@ class Schema(object):
         self._label = data.get("label", name)
         self._plural = data.get("plural", self.label)
         self._description = data.get("description")
+        self._hash = hash("<Schema(%r)>" % self.name)
 
         #: RDF identifier for this schema when it is transformed to a triple term.
         self.uri = URIRef(data.get("rdf", NS[name]))
@@ -241,7 +242,7 @@ class Schema(object):
             raise InvalidData(msg, errors={"properties": errors})
 
     def to_dict(self):
-        """Return schema metadata in a serialised form."""
+        """Return schema metadata, including all properties, in a serializable form."""
         data = {
             "label": self.label,
             "plural": self.plural,
@@ -280,13 +281,13 @@ class Schema(object):
 
     def __eq__(self, other):
         """Compare two schemata (via hash)."""
-        return hash(other) == hash(self)
+        return self._hash == hash(self)
 
     def __lt__(self, other):
         return self.name.__lt__(other.name)
 
     def __hash__(self):
-        return hash(self.name)
+        return self._hash
 
     def __repr__(self):
         return "<Schema(%r)>" % self.name

@@ -21,39 +21,44 @@ to generate entities.
         {{schema.description}}
     {%- endif %}
 
-    {% if schema.hidden -%}
-    .. note::
-        
-        ``hidden``: This schema will not be included in listings
-    {%- endif %}
+    {% if schema.hidden %}
+    .. option:: hidden: {{schema.hidden}}
+
+        see :py:attr:`followthemoney.schema.Schema.hidden`
+    {% endif %}
+    {% if schema.abstract %}
+    .. option:: abstract: {{schema.abstract}}
+
+        see :py:attr:`followthemoney.schema.Schema.abstract`
+    {% endif %}
 
     {% if schema.edge -%}
-    .. note::
-        
+    .. option:: edge: {{schema.edge}}
+
         In a network graph, this schema is converted into an edge
         between ``{{schema.edge_source}}`` and ``{{schema.edge_target}}``.
-    {%- endif %}
 
-    {% if schema.abstract -%}
-    .. note::
-        
-        ``abstract``: This schema cannot be used directly, only via its descendants.
+        see :py:attr:`followthemoney.schema.Schema.edge`
     {%- endif %}
 
     {% if schema.extends -%}
-    .. option:: Extends:
+    .. option:: extends:
 
         {% for extend in schema.extends -%}
         :ref:`schema-{{extend.name}}`{% if not loop.last %}{{', '}}{% endif %}
         {%- endfor %}
+
+        see :py:attr:`followthemoney.schema.Schema.extends`
     {%- endif %}
 
     {% if schema.descendants -%}
-    .. option:: Descendants:
+    .. option:: descendants:
 
       {% for desc in schema.descendants -%}
       :ref:`schema-{{desc.name}}`{% if not loop.last %}{{', '}}{% endif %}
       {%- endfor %}
+
+      see :py:attr:`followthemoney.schema.Schema.descendants`
     {%- endif %}
 
     .. option:: Properties:
@@ -81,7 +86,7 @@ to generate entities.
         ``{{caption}}``{% if not loop.last %}{{', '}}{% endif %}
         {%- endfor %}
 
-        *The first value found in these properties will be used as the entity title.*
+        see :py:attr:`~followthemoney.schema.Schema.caption`
     {%- endif %}
 
     {% if schema.featured -%}
@@ -91,7 +96,7 @@ to generate entities.
         ``{{feature}}``{% if not loop.last %}{{', '}}{% endif %}
         {%- endfor %}
 
-        *When creating an entity, try to fill these properties with values.*
+        see :py:attr:`~followthemoney.schema.Schema.featured`
     {%- endif %}
 
 {% endfor %}
