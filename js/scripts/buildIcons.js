@@ -1,10 +1,15 @@
 const fs = require('fs');
 const path = require('path')
-const SVGO =  require('svgo')
+const { optimize } = require('svgo')
 
-const svgo = new SVGO({ plugins: [{ convertShapeToPath: { convertArcs: true } }] });
+const svgoConfig = {
+  plugins: [{
+    name: 'convertShapeToPath',
+    params: { convertArcs: true }
+  }]
+};
 
-fs.readdir('./icons', null, async function(error, list) {
+fs.readdir('./icons', null, async function (error, list) {
   if (error) {
     console.error(error)
   } else {
@@ -18,7 +23,7 @@ fs.readdir('./icons', null, async function(error, list) {
 
 async function writeLinesToFile(filename, ...lines) {
   const outputPath = path.join(filename);
-  const contents = [ ...lines, ""].join('');
+  const contents = [...lines, ""].join('');
   fs.writeFileSync(outputPath, contents);
 }
 
@@ -27,10 +32,9 @@ function buildPathsObject(ICONS_METADATA) {
     ICONS_METADATA.map(async icon => {
       const filepath = path.resolve(__dirname, `../icons/${icon}.svg`);
       const svg = fs.readFileSync(filepath, "utf-8");
-      const pathStrings = await svgo
-        .optimize(svg, { path: filepath })
-        .then(({ data }) => data.match(/ d="[^"]+"/g) || [])
-        .then(paths => paths.map(s => s.slice(3)));
+      const result = optimize(svg, { path: filepath, ...svgoConfig });
+      const paths = result.data.match(/ d="[^"]+"/g) || [];
+      const pathStrings = paths.map(s => s.slice(3));
       return `"${icon}": [${pathStrings.join(",\n")}]`;
     }),
   );
