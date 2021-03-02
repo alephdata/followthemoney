@@ -55,6 +55,12 @@ Address:
     region:
       label: "Region"
       description: "State, province or area."
+    latitude:
+      label: "Latitude"
+      type: "number"
+    longitude:
+      label: "Longitude"
+      type: "number"
     country:
       label: "Country"
       type: "country"

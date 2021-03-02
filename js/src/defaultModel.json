@@ -1,5 +1,104 @@
 {
   "schemata": {
+    "Address": {
+      "caption": [
+        "full",
+        "summary",
+        "city",
+        "remarks"
+      ],
+      "description": "A location associated with an entity.\n",
+      "extends": [
+        "Interval"
+      ],
+      "featured": [
+        "full",
+        "city",
+        "street",
+        "country"
+      ],
+      "label": "Address",
+      "matchable": true,
+      "plural": "Addresses",
+      "properties": {
+        "city": {
+          "description": "City, town, village or other locality",
+          "label": "City",
+          "name": "city",
+          "qname": "Address:city",
+          "type": "string"
+        },
+        "country": {
+          "label": "Country",
+          "matchable": true,
+          "name": "country",
+          "qname": "Address:country",
+          "type": "country"
+        },
+        "full": {
+          "label": "Full address",
+          "name": "full",
+          "qname": "Address:full",
+          "type": "string"
+        },
+        "latitude": {
+          "label": "Latitude",
+          "name": "latitude",
+          "qname": "Address:latitude",
+          "type": "number"
+        },
+        "longitude": {
+          "label": "Longitude",
+          "name": "longitude",
+          "qname": "Address:longitude",
+          "type": "number"
+        },
+        "postOfficeBox": {
+          "description": "A mailbox indentifier at the post office",
+          "label": "PO Box",
+          "name": "postOfficeBox",
+          "qname": "Address:postOfficeBox",
+          "type": "string"
+        },
+        "postalCode": {
+          "description": "Zip code or postcode.",
+          "label": "Postal code",
+          "name": "postalCode",
+          "qname": "Address:postalCode",
+          "type": "string"
+        },
+        "region": {
+          "description": "State, province or area.",
+          "label": "Region",
+          "name": "region",
+          "qname": "Address:region",
+          "type": "string"
+        },
+        "remarks": {
+          "description": "Handling instructions, like 'care of'.",
+          "label": "Remarks",
+          "name": "remarks",
+          "qname": "Address:remarks",
+          "type": "string"
+        },
+        "street": {
+          "label": "Street address",
+          "name": "street",
+          "qname": "Address:street",
+          "type": "string"
+        },
+        "street2": {
+          "label": "Street address (ctd.)",
+          "name": "street2",
+          "qname": "Address:street2",
+          "type": "string"
+        }
+      },
+      "schemata": [
+        "Address",
+        "Interval"
+      ]
+    },
     "Airplane": {
       "caption": [
         "name",
@@ -5253,7 +5352,7 @@
         "heb": "Hebrew",
         "hin": "Hindi",
         "hrv": "Croatian",
-        "hun": "hun",
+        "hun": "Hungarian",
         "hye": "Armenian",
         "ind": "Indonesian",
         "isl": "Icelandic",
@@ -5271,9 +5370,10 @@
         "mlt": "Maltese",
         "mon": "Mongolian",
         "msa": "Malay",
+        "mya": "Burmese",
+        "nep": "Nepali",
         "nld": "Dutch",
         "nor": "Norwegian",
-        "npi": "npi",
         "pol": "Polish",
         "por": "Portuguese",
         "ron": "Romanian",

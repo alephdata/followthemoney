@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-19 14:05+0100\n"
+"POT-Creation-Date: 2021-03-02 15:40+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: followthemoney/property.py:73
+#: followthemoney/property.py:86
 msgid "Property cannot be written"
 msgstr "Не удалось сохранить свойство"
 
-#: followthemoney/property.py:76
+#: followthemoney/property.py:89
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
@@ -40,23 +40,131 @@ msgstr "Для сущности отсутствует схема."
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
 
-#: followthemoney/proxy.py:97
+#: followthemoney/proxy.py:95
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/proxy.py:106
+#: followthemoney/proxy.py:104
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
 
-#: followthemoney/schema.py:197
+#: followthemoney/schema.py:236
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:201
+#: followthemoney/schema.py:240
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
+
+#. Address.label
+#. Thing.properties.address.label
+#: followthemoney/schema/Address.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/types/address.py:20
+msgid "Address"
+msgstr "Адрес"
+
+#. Address.plural
+#: followthemoney/schema/Address.yaml followthemoney/types/address.py:21
+msgid "Addresses"
+msgstr "Адреса"
+
+#. Address.description
+#: followthemoney/schema/Address.yaml
+msgid "A location associated with an entity.\n"
+msgstr ""
+
+#. Address.properties.full.label
+#: followthemoney/schema/Address.yaml
+msgid "Full address"
+msgstr ""
+
+#. Address.properties.remarks.label
+#: followthemoney/schema/Address.yaml
+msgid "Remarks"
+msgstr ""
+
+#. Address.properties.remarks.description
+#: followthemoney/schema/Address.yaml
+msgid "Handling instructions, like 'care of'."
+msgstr ""
+
+#. Address.properties.postOfficeBox.label
+#: followthemoney/schema/Address.yaml
+msgid "PO Box"
+msgstr ""
+
+#. Address.properties.postOfficeBox.description
+#: followthemoney/schema/Address.yaml
+msgid "A mailbox indentifier at the post office"
+msgstr ""
+
+#. Address.properties.street.label
+#: followthemoney/schema/Address.yaml
+msgid "Street address"
+msgstr ""
+
+#. Address.properties.street2.label
+#: followthemoney/schema/Address.yaml
+msgid "Street address (ctd.)"
+msgstr ""
+
+#. Address.properties.city.label
+#: followthemoney/schema/Address.yaml
+msgid "City"
+msgstr ""
+
+#. Address.properties.city.description
+#: followthemoney/schema/Address.yaml
+msgid "City, town, village or other locality"
+msgstr ""
+
+#. Address.properties.postalCode.label
+#: followthemoney/schema/Address.yaml
+msgid "Postal code"
+msgstr ""
+
+#. Address.properties.postalCode.description
+#: followthemoney/schema/Address.yaml
+msgid "Zip code or postcode."
+msgstr ""
+
+#. Address.properties.region.label
+#: followthemoney/schema/Address.yaml
+msgid "Region"
+msgstr ""
+
+#. Address.properties.region.description
+#: followthemoney/schema/Address.yaml
+msgid "State, province or area."
+msgstr ""
+
+#. Address.properties.latitude.label
+#. RealEstate.properties.latitude.label
+#: followthemoney/schema/Address.yaml followthemoney/schema/RealEstate.yaml
+msgid "Latitude"
+msgstr "Широта"
+
+#. Address.properties.longitude.label
+#. RealEstate.properties.longitude.label
+#: followthemoney/schema/Address.yaml followthemoney/schema/RealEstate.yaml
+msgid "Longitude"
+msgstr "Долгота"
+
+#. Address.properties.country.label
+#. Event.properties.country.label
+#. Passport.properties.country.label
+#. Sanction.properties.country.label
+#. TaxRoll.properties.country.label
+#. Thing.properties.country.label
+#. Vehicle.properties.country.label
+#: followthemoney/schema/Address.yaml followthemoney/schema/Event.yaml
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
+#: followthemoney/schema/TaxRoll.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/schema/Vehicle.yaml followthemoney/types/country.py:17
+msgid "Country"
+msgstr "Страна"
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
@@ -227,7 +335,7 @@ msgstr ""
 
 #. Associate.label
 #. Associate.properties.associate.label
-#: followthemoney/schema/Associate.yaml followthemoney/types/topic.py:39
+#: followthemoney/schema/Associate.yaml followthemoney/types/topic.py:49
 msgid "Associate"
 msgstr "Знакомый/знакомая"
 
@@ -347,7 +455,7 @@ msgid "Account Number"
 msgstr "Номер счёта"
 
 #. BankAccount.properties.iban.label
-#: followthemoney/schema/BankAccount.yaml followthemoney/types/iban.py:12
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/iban.py:20
 msgid "IBAN"
 msgstr "IBAN"
 
@@ -357,7 +465,7 @@ msgid "Bank Identifier Code"
 msgstr "БИК"
 
 #. BankAccount.properties.bank.label
-#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:35
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:45
 msgid "Bank"
 msgstr "Банк"
 
@@ -749,7 +857,7 @@ msgstr "Отменен?"
 #. Contract.properties.language.label
 #. Document.properties.language.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/Document.yaml
-#: followthemoney/types/language.py:12
+#: followthemoney/types/language.py:17
 msgid "Language"
 msgstr "Язык"
 
@@ -1013,7 +1121,7 @@ msgid "Files"
 msgstr "Файлы"
 
 #. Document.properties.contentHash.label
-#: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:12
+#: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:19
 msgid "Checksum"
 msgstr "Контрольная сумма"
 
@@ -1076,7 +1184,7 @@ msgstr "Кодировка файла"
 #. Document.properties.bodyText.label
 #. Page.properties.bodyText.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Page.yaml
-#: followthemoney/types/string.py:18
+#: followthemoney/types/string.py:24
 msgid "Text"
 msgstr "Текст"
 
@@ -1110,7 +1218,7 @@ msgstr "Перевод текста"
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:46
+#: followthemoney/types/date.py:56
 msgid "Date"
 msgstr "Дата"
 
@@ -1204,7 +1312,7 @@ msgstr "Связанные сущности"
 #. Sanction.properties.entity.label
 #: followthemoney/schema/Documentation.yml followthemoney/schema/Mention.yaml
 #: followthemoney/schema/Note.yaml followthemoney/schema/Sanction.yaml
-#: followthemoney/types/entity.py:13
+#: followthemoney/types/entity.py:22
 msgid "Entity"
 msgstr "Субъект"
 
@@ -1614,19 +1722,6 @@ msgstr "События"
 msgid "Location"
 msgstr "Местоположение"
 
-#. Event.properties.country.label
-#. Passport.properties.country.label
-#. Sanction.properties.country.label
-#. TaxRoll.properties.country.label
-#. Thing.properties.country.label
-#. Vehicle.properties.country.label
-#: followthemoney/schema/Event.yaml followthemoney/schema/Passport.yaml
-#: followthemoney/schema/Sanction.yaml followthemoney/schema/TaxRoll.yaml
-#: followthemoney/schema/Thing.yaml followthemoney/schema/Vehicle.yaml
-#: followthemoney/types/country.py:11
-msgid "Country"
-msgstr "Страна"
-
 #. Event.properties.important.label
 #: followthemoney/schema/Event.yaml
 msgid "Important"
@@ -1713,7 +1808,7 @@ msgid "Web pages"
 msgstr "Веб-страницы"
 
 #. HyperText.properties.bodyHtml.label
-#: followthemoney/schema/HyperText.yaml followthemoney/types/string.py:25
+#: followthemoney/schema/HyperText.yaml followthemoney/types/string.py:38
 msgid "HTML"
 msgstr "HTML"
 
@@ -1839,7 +1934,7 @@ msgstr ""
 #. LegalEntity.properties.name.label
 #. Thing.properties.name.label
 #: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/name.py:14
+#: followthemoney/types/name.py:21
 msgid "Name"
 msgstr "Имя"
 
@@ -1854,7 +1949,7 @@ msgid "Phone"
 msgstr "Номер телефона"
 
 #. LegalEntity.properties.phone.description
-#: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:16
+#: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:31
 msgid "Phone number"
 msgstr "Номер телефона"
 
@@ -2544,7 +2639,7 @@ msgid "Ethnicity"
 msgstr "Этническая группа"
 
 #. Person.properties.religion.label
-#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:50
+#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:60
 msgid "Religion"
 msgstr "Религия"
 
@@ -2599,16 +2694,6 @@ msgstr "Недвижимость"
 #: followthemoney/schema/RealEstate.yaml
 msgid "A piece of land or property."
 msgstr "Объект недвижимости"
-
-#. RealEstate.properties.latitude.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Latitude"
-msgstr "Широта"
-
-#. RealEstate.properties.longitude.label
-#: followthemoney/schema/RealEstate.yaml
-msgid "Longitude"
-msgstr "Долгота"
 
 #. RealEstate.properties.censusBlock.label
 #: followthemoney/schema/RealEstate.yaml
@@ -2876,14 +2961,9 @@ msgid "Keywords"
 msgstr "Ключевые слова"
 
 #. Thing.properties.topics.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/topic.py:11
+#: followthemoney/schema/Thing.yaml followthemoney/types/topic.py:21
 msgid "Topics"
 msgstr "Темы"
-
-#. Thing.properties.address.label
-#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:15
-msgid "Address"
-msgstr "Адрес"
 
 #. Thing.properties.proof.label
 #: followthemoney/schema/Thing.yaml
@@ -3150,322 +3230,318 @@ msgstr ""
 "Электронная таблица, например, Excel. Данные в электронной таблице обычно "
 "организованы в набор листов.\n"
 
-#: followthemoney/types/address.py:16
-msgid "Addresses"
-msgstr "Адреса"
-
-#: followthemoney/types/checksum.py:13
+#: followthemoney/types/checksum.py:20
 msgid "Checksums"
 msgstr "Контрольные суммы"
 
-#: followthemoney/types/country.py:12
+#: followthemoney/types/country.py:18
 msgid "Countries"
 msgstr "Страны"
 
-#: followthemoney/types/country.py:18
+#: followthemoney/types/country.py:24
 msgid "Global"
 msgstr "Все страны мира"
 
-#: followthemoney/types/country.py:19
+#: followthemoney/types/country.py:25
 msgid "European Union"
 msgstr "Европейский союз"
 
-#: followthemoney/types/country.py:21
+#: followthemoney/types/country.py:27
 msgid "Czech Republic"
 msgstr "Чешская Республика"
 
-#: followthemoney/types/country.py:22
+#: followthemoney/types/country.py:28
 msgid "Kosovo"
 msgstr "Косово"
 
-#: followthemoney/types/country.py:23
+#: followthemoney/types/country.py:29
 msgid "Yugoslavia"
 msgstr "Югославия"
 
-#: followthemoney/types/country.py:24
+#: followthemoney/types/country.py:30
 msgid "Serbia and Montenegro"
 msgstr "Сербия и Черногория"
 
-#: followthemoney/types/country.py:25
+#: followthemoney/types/country.py:31
 msgid "Soviet Union"
 msgstr "Советский Союз"
 
-#: followthemoney/types/country.py:26
+#: followthemoney/types/country.py:32
 msgid "Abkhazia"
 msgstr "Абхазия"
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:33
 msgid "South Ossetia"
 msgstr "Южная Осетия"
 
-#: followthemoney/types/country.py:28
+#: followthemoney/types/country.py:34
 msgid "Somaliland"
 msgstr "Сомалиленд"
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:35
 msgid "Wales"
 msgstr "Уэльс"
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:36
 msgid "Scotland"
 msgstr "Шотландия"
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:37
 msgid "Northern Ireland"
 msgstr "Северная Ирландия"
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:38
 msgid "Transnistria"
 msgstr "Приднестровье"
 
-#: followthemoney/types/date.py:47
+#: followthemoney/types/date.py:57
 msgid "Dates"
 msgstr "Даты"
 
-#: followthemoney/types/domain.py:12
+#: followthemoney/types/domain.py:14
 msgid "Domain"
 msgstr "Домен"
 
-#: followthemoney/types/domain.py:13
+#: followthemoney/types/domain.py:15
 msgid "Domains"
 msgstr "Домены"
 
-#: followthemoney/types/email.py:18
+#: followthemoney/types/email.py:22
 msgid "E-Mail Address"
 msgstr "Эл. адрес"
 
-#: followthemoney/types/email.py:19
+#: followthemoney/types/email.py:23
 msgid "E-Mail Addresses"
 msgstr "Эл. адреса"
 
-#: followthemoney/types/entity.py:14
+#: followthemoney/types/entity.py:23
 msgid "Entities"
 msgstr "Сущность"
 
-#: followthemoney/types/iban.py:13
+#: followthemoney/types/iban.py:21
 msgid "IBANs"
 msgstr "Международные номера банковских счетов (IBAN)"
 
-#: followthemoney/types/identifier.py:14
+#: followthemoney/types/identifier.py:20
 msgid "Identifier"
 msgstr "Идентификатор"
 
-#: followthemoney/types/identifier.py:15
+#: followthemoney/types/identifier.py:21
 msgid "Identifiers"
 msgstr "Идентификаторы"
 
-#: followthemoney/types/ip.py:11
+#: followthemoney/types/ip.py:15
 msgid "IP-Address"
 msgstr "IP-адрес"
 
-#: followthemoney/types/ip.py:12
+#: followthemoney/types/ip.py:16
 msgid "IP-Addresses"
 msgstr "IP-адреса"
 
-#: followthemoney/types/json.py:11
+#: followthemoney/types/json.py:15
 msgid "Nested data"
 msgstr "Сгруппированные данные"
 
-#: followthemoney/types/language.py:13
+#: followthemoney/types/language.py:18
 msgid "Languages"
 msgstr "Языки"
 
-#: followthemoney/types/mimetype.py:12
+#: followthemoney/types/mimetype.py:20
 msgid "MIME-Type"
 msgstr "MIME-тип"
 
-#: followthemoney/types/mimetype.py:13
+#: followthemoney/types/mimetype.py:21
 msgid "MIME-Types"
 msgstr "MIME-типы"
 
-#: followthemoney/types/name.py:15
+#: followthemoney/types/name.py:22
 msgid "Names"
 msgstr "Имена"
 
-#: followthemoney/types/number.py:10
+#: followthemoney/types/number.py:17
 msgid "Number"
 msgstr "Номер"
 
-#: followthemoney/types/number.py:11
+#: followthemoney/types/number.py:18
 msgid "Numbers"
 msgstr "Номера"
 
-#: followthemoney/types/phone.py:17
+#: followthemoney/types/phone.py:32
 msgid "Phone numbers"
 msgstr "Номера телефонов"
 
-#: followthemoney/types/string.py:8
+#: followthemoney/types/string.py:10
 msgid "Label"
 msgstr "Название"
 
-#: followthemoney/types/string.py:9
+#: followthemoney/types/string.py:11
 msgid "Labels"
 msgstr "Названия"
 
-#: followthemoney/types/string.py:19
+#: followthemoney/types/string.py:25
 msgid "Texts"
 msgstr "Тексты"
 
-#: followthemoney/types/string.py:26
+#: followthemoney/types/string.py:39
 msgid "HTMLs"
 msgstr "HTML-файлы"
 
-#: followthemoney/types/topic.py:10
+#: followthemoney/types/topic.py:20
 msgid "Topic"
 msgstr "Тема"
 
-#: followthemoney/types/topic.py:15
+#: followthemoney/types/topic.py:25
 msgid "Crime"
 msgstr "Преступность"
 
-#: followthemoney/types/topic.py:16
+#: followthemoney/types/topic.py:26
 msgid "Fraud"
 msgstr "Мошенничество"
 
-#: followthemoney/types/topic.py:17
+#: followthemoney/types/topic.py:27
 msgid "Cybercrime"
 msgstr "Киберпреступность"
 
-#: followthemoney/types/topic.py:18
+#: followthemoney/types/topic.py:28
 msgid "Financial crime"
 msgstr "Финансовые преступления"
 
-#: followthemoney/types/topic.py:19
+#: followthemoney/types/topic.py:29
 msgid "Theft"
 msgstr "Кража"
 
-#: followthemoney/types/topic.py:20
+#: followthemoney/types/topic.py:30
 msgid "War crimes"
 msgstr "Военные преступления"
 
-#: followthemoney/types/topic.py:21
+#: followthemoney/types/topic.py:31
 msgid "Criminal leadership"
 msgstr "Криминальное руководство"
 
-#: followthemoney/types/topic.py:22
+#: followthemoney/types/topic.py:32
 msgid "Terrorism"
 msgstr "Терроризм"
 
-#: followthemoney/types/topic.py:23
+#: followthemoney/types/topic.py:33
 msgid "Trafficking"
 msgstr "Контрабанда"
 
-#: followthemoney/types/topic.py:24
+#: followthemoney/types/topic.py:34
 msgid "Drug trafficking"
 msgstr "Наркоторговля"
 
-#: followthemoney/types/topic.py:25
+#: followthemoney/types/topic.py:35
 msgid "Human trafficking"
 msgstr "Торговля людьми"
 
-#: followthemoney/types/topic.py:26
+#: followthemoney/types/topic.py:36
 msgid "Offshore"
 msgstr "Офшор"
 
-#: followthemoney/types/topic.py:27
+#: followthemoney/types/topic.py:37
 msgid "Shell company"
 msgstr "Офшорная компания"
 
-#: followthemoney/types/topic.py:28
+#: followthemoney/types/topic.py:38
 msgid "Government"
 msgstr "Правительство"
 
-#: followthemoney/types/topic.py:29
+#: followthemoney/types/topic.py:39
 msgid "National government"
 msgstr "Федеральное правительство"
 
-#: followthemoney/types/topic.py:30
+#: followthemoney/types/topic.py:40
 msgid "State government"
 msgstr "Региональное правительство"
 
-#: followthemoney/types/topic.py:31
+#: followthemoney/types/topic.py:41
 msgid "Municipal government"
 msgstr "Муниципальные власти"
 
-#: followthemoney/types/topic.py:32
+#: followthemoney/types/topic.py:42
 msgid "State-owned enterprise"
 msgstr "Государственное предприятие"
 
-#: followthemoney/types/topic.py:33
+#: followthemoney/types/topic.py:43
 msgid "Intergovernmental organization"
 msgstr "Межправительственная организация"
 
-#: followthemoney/types/topic.py:34
+#: followthemoney/types/topic.py:44
 msgid "Financial services"
 msgstr "Финансовые услуги"
 
-#: followthemoney/types/topic.py:36
+#: followthemoney/types/topic.py:46
 msgid "Fund"
 msgstr "Фонд"
 
-#: followthemoney/types/topic.py:37
+#: followthemoney/types/topic.py:47
 msgid "Financial advisor"
 msgstr "Финансовый консультант"
 
-#: followthemoney/types/topic.py:38
+#: followthemoney/types/topic.py:48
 msgid "Politician"
 msgstr "Политик"
 
-#: followthemoney/types/topic.py:40
+#: followthemoney/types/topic.py:50
 msgid "Judge"
 msgstr "Судья"
 
-#: followthemoney/types/topic.py:41
+#: followthemoney/types/topic.py:51
 msgid "Civil servant"
 msgstr "Чиновник"
 
-#: followthemoney/types/topic.py:42
+#: followthemoney/types/topic.py:52
 msgid "Diplomat"
 msgstr "Дипломат"
 
-#: followthemoney/types/topic.py:43
+#: followthemoney/types/topic.py:53
 msgid "Lawyer"
 msgstr "Юрист"
 
-#: followthemoney/types/topic.py:44
+#: followthemoney/types/topic.py:54
 msgid "Accountant"
 msgstr "Бухгалтер"
 
-#: followthemoney/types/topic.py:45
+#: followthemoney/types/topic.py:55
 msgid "Spy"
 msgstr "Шпион"
 
-#: followthemoney/types/topic.py:46
+#: followthemoney/types/topic.py:56
 msgid "Journalist"
 msgstr "Журналист"
 
-#: followthemoney/types/topic.py:47
+#: followthemoney/types/topic.py:57
 msgid "Activist"
 msgstr "Активист"
 
-#: followthemoney/types/topic.py:48
+#: followthemoney/types/topic.py:58
 msgid "Political party"
 msgstr "Политическая партия"
 
-#: followthemoney/types/topic.py:49
+#: followthemoney/types/topic.py:59
 msgid "Union"
 msgstr "Объединение"
 
-#: followthemoney/types/topic.py:51
+#: followthemoney/types/topic.py:61
 msgid "Military"
 msgstr "Военные"
 
-#: followthemoney/types/topic.py:52
+#: followthemoney/types/topic.py:62
 msgid "Frozen asset"
 msgstr "Замороженный актив"
 
-#: followthemoney/types/topic.py:53
+#: followthemoney/types/topic.py:63
 msgid "Sanctioned entity"
 msgstr "Объект санкций"
 
-#: followthemoney/types/topic.py:54
+#: followthemoney/types/topic.py:64
 msgid "Person of interest"
 msgstr "Подозрительный персонаж"
 
-#: followthemoney/types/url.py:11
+#: followthemoney/types/url.py:15
 msgid "URL"
 msgstr "Ссылка"
 
-#: followthemoney/types/url.py:12
+#: followthemoney/types/url.py:16
 msgid "URLs"
 msgstr "Ссылки"
