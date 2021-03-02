@@ -24,7 +24,7 @@ class Schema(object):
         self._label = data.get("label", name)
         self._plural = data.get("plural", self.label)
         self._description = data.get("description")
-        self._hash = hash("<Schema(%r)>" % self.name)
+        self._hash = hash("<Schema(%r)>" % name)
 
         #: RDF identifier for this schema when it is transformed to a triple term.
         self.uri = URIRef(data.get("rdf", NS[name]))
@@ -217,7 +217,7 @@ class Schema(object):
     def is_a(self, other):
         """Check if the schema or one of its parents is the same as the given
         candidate ``other``."""
-        return other in self.schemata
+        return self.model.get(other) in self.schemata
 
     def get(self, name):
         """Retrieve a property defined for this schema by its name."""
@@ -281,7 +281,7 @@ class Schema(object):
 
     def __eq__(self, other):
         """Compare two schemata (via hash)."""
-        return self._hash == hash(self)
+        return self._hash == hash(other)
 
     def __lt__(self, other):
         return self.name.__lt__(other.name)

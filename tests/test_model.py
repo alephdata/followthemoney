@@ -53,7 +53,7 @@ class ModelTestCase(TestCase):
 
         ownership = model["Ownership"]
         owner = ownership.get("owner")
-        assert owner.range == "LegalEntity"
+        assert owner.range == model["LegalEntity"]
         assert owner.reverse is not None
         role = ownership.get("role")
         assert role.reverse is None
@@ -67,11 +67,12 @@ class ModelTestCase(TestCase):
             thing.validate({"properties": {"name": None}})
 
     def test_model_common_schema(self):
-        assert model.common_schema("Thing", "Thing") == "Thing"
-        assert model.common_schema("Thing", "Person") == "Person"
-        assert model.common_schema("Person", "Thing") == "Person"
-        assert model.common_schema("LegalEntity", "Company") == "Company"
-        assert model.common_schema("Interval", "Ownership") == "Ownership"
+        assert model.common_schema("Thing", "Thing") == model["Thing"]
+        assert model.common_schema("Thing", "Person") == model["Person"]
+        assert model.common_schema("Person", "Thing") == model["Person"]
+        assert model.common_schema("LegalEntity", "Company") == model["Company"]
+        assert model.common_schema("Interval", "Ownership") == model["Ownership"]
+        # This behaviour turned out the be a really bad idea:
         # assert model.common_schema("LegalEntity", "Asset") == "Company"
 
         with assert_raises(InvalidData):
