@@ -14,7 +14,10 @@ class Property(object):
         self.schema = schema
         self.model = schema.model
 
+        #: Machine-readable name for this property.
         self.name = stringify(name)
+
+        #: Qualified property name, which also includes the schema name.
         self.qname = "%s:%s" % (schema.name, self.name)
         if self.name in self.RESERVED:
             raise InvalidModel("Reserved name: %s" % self.name)
@@ -22,20 +25,28 @@ class Property(object):
         self.data = data
         self._label = data.get("label", name)
         self._description = data.get("description")
+
+        #: This property should not be shown or mentioned in the user interface.
         self.hidden = data.get("hidden", False)
         self.stub = data.get("stub", False)
 
         type_ = data.get("type", "string")
+        #: The data type for this property.
         self.type = registry.get(type_)
         if self.type is None:
             raise InvalidModel("Invalid type: %s" % type_)
 
+        #: Whether this property should be used for matching and cross-referencing.
         self.matchable = data.get("matchable", self.type.matchable)
         self.range = None
         self.reverse = None
+
+        #: RDF term for this property.
         self.uri = URIRef(data.get("rdf", NS[self.qname]))
 
     def generate(self):
+        """Setup method used when loading the model in order to build out the reverse
+        links of the property."""
         self.model.properties.add(self)
 
         if self.range is None and self.type == registry.entity:
@@ -49,10 +60,12 @@ class Property(object):
 
     @property
     def label(self):
+        """User-facing title for this property."""
         return gettext(self._label)
 
     @property
     def description(self):
+        """A longer description of the semantics of this property."""
         return gettext(self._description)
 
     def specificity(self, value):
@@ -87,6 +100,7 @@ class Property(object):
         return hash(self.qname)
 
     def to_dict(self):
+        """Return property metadata in a serialised form."""
         data = {
             "name": self.name,
             "qname": self.qname,
