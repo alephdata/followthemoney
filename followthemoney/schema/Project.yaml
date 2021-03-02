@@ -1,0 +1,22 @@
+Project:
+  label: Project
+  plural: Projects
+  extends:
+    - Interval
+    - Thing
+  description: >
+    An activity carried out by a group of participants.
+  matchable: false
+  featured:
+    - name
+    - projectId
+    - startDate
+  caption:
+    - name
+    - projectId
+  properties:
+    projectId:
+      label: "Project ID"
+      type: identifier
+    aim:
+      label: "Project aim"

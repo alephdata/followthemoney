@@ -29,6 +29,13 @@ Contract:
         label: "Contracts issued"
       type: entity
       range: LegalEntity
+    project:
+      label: "Project"
+      reverse:
+        name: contracts
+        label: "Contracts"
+      type: entity
+      range: Project
     type:
       label: "Type"
       description: >

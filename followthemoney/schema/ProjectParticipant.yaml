@@ -1,0 +1,34 @@
+ProjectParticipant:
+  label: Project participant
+  plural: Project participants
+  extends: Interest
+  description: >
+    An activity carried out by a group of participants.
+  matchable: false
+  featured:
+    - project
+    - participant
+    - role
+  caption:
+    - role
+  edge:
+    source: participant
+    label: "participates in"
+    target: project
+    directed: true
+    caption: role
+  properties:
+    project:
+      label: "Project"
+      type: entity
+      range: Project
+      reverse:
+        name: participants
+        label: "Participants"
+    participant:
+      label: "Participant"
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: projectParticipation
+        label: "Projects"

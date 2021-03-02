@@ -67,9 +67,15 @@ Payment:
       range: BankAccount
     contract:
       label: "Contract"
-      plural: "Contracts"
       reverse:
         name: paymentContract
         label: "Contractual payments"
       type: entity
       range: Contract
+    project:
+      label: "Project"
+      reverse:
+        name: payments
+        label: "Payments"
+      type: entity
+      range: Project
