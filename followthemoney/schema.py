@@ -44,13 +44,13 @@ class Schema(object):
         #: as land plots, assets etc.
         self.matchable = as_bool(data.get("matchable"), True)
 
-        # Mark a set of properties as important, i.e. they should be shown
-        # first, or in an abridged view of the entity.
+        #: Mark a set of properties as important, i.e. they should be shown
+        #: first, or in an abridged view of the entity.
         self.featured = ensure_list(data.get("featured"))
 
-        # Mark a set of properties as required. This is applied only when
-        # an entity is created by the user - bulk created entities will
-        # slip through even if it is technically invalid.
+        #: Mark a set of properties as required. This is applied only when
+        #: an entity is created by the user - bulk created entities will
+        #: slip through even if it is technically invalid.
         self.required = ensure_list(data.get("required"))
 
         #: Mark a set of properties to be used for the entity's caption.
@@ -80,10 +80,11 @@ class Schema(object):
         #: All parents of this schema (including indirect parents and the schema itself).
         self.schemata = set([self])
 
-        #: All names of ``schemata``.
+        #: All names of :attr:`~schemata`.
         self.names = set([self.name])
 
-        #: Inverse of ``schemata``, all derived child types of this schema and their children.
+        #: Inverse of :attr:`~schemata`, all derived child types of this schema
+        #: and their children.
         self.descendants = set()
 
         #: The full list of properties defined for the entity, including those
