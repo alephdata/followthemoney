@@ -1,0 +1,37 @@
+Employment:
+  label: "Employment"
+  plural: "Employments"
+  extends: Interest
+  matchable: false
+  featured:
+    - employer
+    - employee
+    - role
+    - startDate
+    - endDate
+  required:
+    - employer
+    - employee
+  caption:
+    - role
+  edge:
+    source: employee
+    label: "works for"
+    target: employer
+    directed: true
+    caption: role
+  properties:
+    employer:
+      label: "Employer"
+      type: entity
+      range: Organization
+      reverse:
+        name: employees
+        label: "Employees"
+    employee:
+      label: "Employee"
+      type: entity
+      range: Person
+      reverse:
+        name: employers
+        label: "Employers"

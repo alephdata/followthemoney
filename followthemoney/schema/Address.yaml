@@ -23,6 +23,7 @@ Address:
   description: >
     A location associated with an entity.
   matchable: false
+  generated: true
   featured:
     - full
     - city
