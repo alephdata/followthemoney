@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-02 15:40+0100\n"
+"POT-Creation-Date: 2021-03-03 13:30+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Language-Team: French (https://www.transifex.com/aleph/teams/76591/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -18,43 +18,44 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: followthemoney/property.py:86
+#: followthemoney/property.py:109
 msgid "Property cannot be written"
 msgstr ""
 
-#: followthemoney/property.py:89
+#: followthemoney/property.py:112
 msgid "Invalid value"
 msgstr ""
 
-#: followthemoney/proxy.py:29
+#: followthemoney/proxy.py:35
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:66
+#: followthemoney/proxy.py:86
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:95
+#: followthemoney/proxy.py:147
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:104
+#: followthemoney/proxy.py:156
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:236
+#: followthemoney/schema.py:237
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:240
+#: followthemoney/schema.py:241
 msgid "Entity validation failed"
 msgstr ""
 
 #. Address.label
 #. Thing.properties.address.label
+#. Thing.properties.addressEntity.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Thing.yaml
 #: followthemoney/types/address.py:20
 msgid "Address"
@@ -734,10 +735,10 @@ msgid "Contract"
 msgstr ""
 
 #. Contract.plural
+#. Contract.properties.project.reverse.label
 #. ContractAward.properties.contract.plural
-#. Payment.properties.contract.plural
 #: followthemoney/schema/Contract.yaml
-#: followthemoney/schema/ContractAward.yaml followthemoney/schema/Payment.yaml
+#: followthemoney/schema/ContractAward.yaml
 msgid "Contracts"
 msgstr ""
 
@@ -766,6 +767,16 @@ msgstr ""
 #. Contract.properties.authority.reverse.label
 #: followthemoney/schema/Contract.yaml
 msgid "Contracts issued"
+msgstr ""
+
+#. Contract.properties.project.label
+#. Payment.properties.project.label
+#. Project.label
+#. ProjectParticipant.properties.project.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/Payment.yaml
+#: followthemoney/schema/Project.yaml
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Project"
 msgstr ""
 
 #. Contract.properties.type.label
@@ -956,9 +967,11 @@ msgstr ""
 #. CourtCase.properties.status.label
 #. Interest.properties.status.label
 #. LegalEntity.properties.status.label
+#. Project.properties.status.label
 #. Sanction.properties.status.label
 #: followthemoney/schema/CourtCase.yaml followthemoney/schema/Interest.yaml
-#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Sanction.yaml
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Project.yaml
+#: followthemoney/schema/Sanction.yaml
 msgid "Status"
 msgstr ""
 
@@ -1675,6 +1688,41 @@ msgstr ""
 #. Email.properties.headers.label
 #: followthemoney/schema/Email.yaml
 msgid "Raw headers"
+msgstr ""
+
+#. Employment.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employment"
+msgstr ""
+
+#. Employment.plural
+#: followthemoney/schema/Employment.yaml
+msgid "Employments"
+msgstr ""
+
+#. Employment.edge.label
+#: followthemoney/schema/Employment.yaml
+msgid "works for"
+msgstr ""
+
+#. Employment.properties.employer.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employer"
+msgstr ""
+
+#. Employment.properties.employer.reverse.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employees"
+msgstr ""
+
+#. Employment.properties.employee.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employee"
+msgstr ""
+
+#. Employment.properties.employee.reverse.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employers"
 msgstr ""
 
 #. Event.label
@@ -2456,6 +2504,7 @@ msgid "Payment"
 msgstr ""
 
 #. Payment.plural
+#. Payment.properties.project.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payments"
 msgstr ""
@@ -2620,6 +2669,60 @@ msgstr ""
 #. PlainText.description
 #: followthemoney/schema/PlainText.yaml
 msgid "Text files, like .txt or source code.\n"
+msgstr ""
+
+#. Project.plural
+#. ProjectParticipant.properties.participant.reverse.label
+#: followthemoney/schema/Project.yaml
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Projects"
+msgstr ""
+
+#. Project.description
+#. ProjectParticipant.description
+#: followthemoney/schema/Project.yaml
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "An activity carried out by a group of participants.\n"
+msgstr ""
+
+#. Project.properties.projectId.label
+#: followthemoney/schema/Project.yaml
+msgid "Project ID"
+msgstr ""
+
+#. Project.properties.phase.label
+#: followthemoney/schema/Project.yaml
+msgid "Phase"
+msgstr ""
+
+#. Project.properties.goal.label
+#: followthemoney/schema/Project.yaml
+msgid "Project goal"
+msgstr ""
+
+#. ProjectParticipant.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Project participant"
+msgstr ""
+
+#. ProjectParticipant.plural
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Project participants"
+msgstr ""
+
+#. ProjectParticipant.edge.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "participates in"
+msgstr ""
+
+#. ProjectParticipant.properties.project.reverse.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Participants"
+msgstr ""
+
+#. ProjectParticipant.properties.participant.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Participant"
 msgstr ""
 
 #. PublicBody.label
@@ -2915,6 +3018,11 @@ msgstr ""
 #. Thing.properties.topics.label
 #: followthemoney/schema/Thing.yaml followthemoney/types/topic.py:21
 msgid "Topics"
+msgstr ""
+
+#. Thing.properties.addressEntity.reverse.label
+#: followthemoney/schema/Thing.yaml
+msgid "Located there"
 msgstr ""
 
 #. Thing.properties.proof.label

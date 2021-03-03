@@ -17,6 +17,7 @@
         "street",
         "country"
       ],
+      "generated": true,
       "label": "Address",
       "plural": "Addresses",
       "properties": {
@@ -1942,6 +1943,61 @@
         "Thing"
       ]
     },
+    "Employment": {
+      "caption": [
+        "role"
+      ],
+      "edge": {
+        "caption": [
+          "role"
+        ],
+        "directed": true,
+        "label": "works for",
+        "source": "employee",
+        "target": "employer"
+      },
+      "extends": [
+        "Interest"
+      ],
+      "featured": [
+        "employer",
+        "employee",
+        "role",
+        "startDate",
+        "endDate"
+      ],
+      "label": "Employment",
+      "plural": "Employments",
+      "properties": {
+        "employee": {
+          "label": "Employee",
+          "matchable": true,
+          "name": "employee",
+          "qname": "Employment:employee",
+          "range": "Person",
+          "reverse": "employers",
+          "type": "entity"
+        },
+        "employer": {
+          "label": "Employer",
+          "matchable": true,
+          "name": "employer",
+          "qname": "Employment:employer",
+          "range": "Organization",
+          "reverse": "employees",
+          "type": "entity"
+        }
+      },
+      "required": [
+        "employer",
+        "employee"
+      ],
+      "schemata": [
+        "Employment",
+        "Interest",
+        "Interval"
+      ]
+    },
     "Event": {
       "caption": [
         "name",
@@ -3241,6 +3297,16 @@
           "stub": true,
           "type": "entity"
         },
+        "employees": {
+          "label": "Employees",
+          "matchable": true,
+          "name": "employees",
+          "qname": "Organization:employees",
+          "range": "Employment",
+          "reverse": "employer",
+          "stub": true,
+          "type": "entity"
+        },
         "membershipOrganization": {
           "label": "Members",
           "matchable": true,
@@ -3770,6 +3836,16 @@
           "name": "deathDate",
           "qname": "Person:deathDate",
           "type": "date"
+        },
+        "employers": {
+          "label": "Employers",
+          "matchable": true,
+          "name": "employers",
+          "qname": "Person:employers",
+          "range": "Employment",
+          "reverse": "employee",
+          "stub": true,
+          "type": "entity"
         },
         "ethnicity": {
           "label": "Ethnicity",

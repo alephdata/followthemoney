@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-02 15:40+0100\n"
+"POT-Creation-Date: 2021-03-03 13:30+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -23,43 +23,44 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: followthemoney/property.py:86
+#: followthemoney/property.py:109
 msgid "Property cannot be written"
 msgstr "Не удалось сохранить свойство"
 
-#: followthemoney/property.py:89
+#: followthemoney/property.py:112
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
-#: followthemoney/proxy.py:29
+#: followthemoney/proxy.py:35
 msgid "No schema for entity."
 msgstr "Для сущности отсутствует схема."
 
-#: followthemoney/proxy.py:66
+#: followthemoney/proxy.py:86
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
 
-#: followthemoney/proxy.py:95
+#: followthemoney/proxy.py:147
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/proxy.py:104
+#: followthemoney/proxy.py:156
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
 
-#: followthemoney/schema.py:236
+#: followthemoney/schema.py:237
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:240
+#: followthemoney/schema.py:241
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
 #. Address.label
 #. Thing.properties.address.label
+#. Thing.properties.addressEntity.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Thing.yaml
 #: followthemoney/types/address.py:20
 msgid "Address"
@@ -73,72 +74,72 @@ msgstr "Адреса"
 #. Address.description
 #: followthemoney/schema/Address.yaml
 msgid "A location associated with an entity.\n"
-msgstr ""
+msgstr "Местоположение, ассоциированное с сущностью.\n"
 
 #. Address.properties.full.label
 #: followthemoney/schema/Address.yaml
 msgid "Full address"
-msgstr ""
+msgstr "Полный адрес"
 
 #. Address.properties.remarks.label
 #: followthemoney/schema/Address.yaml
 msgid "Remarks"
-msgstr ""
+msgstr "Пометки"
 
 #. Address.properties.remarks.description
 #: followthemoney/schema/Address.yaml
 msgid "Handling instructions, like 'care of'."
-msgstr ""
+msgstr "По адресу чего-либо, ориентиры"
 
 #. Address.properties.postOfficeBox.label
 #: followthemoney/schema/Address.yaml
 msgid "PO Box"
-msgstr ""
+msgstr "Абонентский ящик"
 
 #. Address.properties.postOfficeBox.description
 #: followthemoney/schema/Address.yaml
 msgid "A mailbox indentifier at the post office"
-msgstr ""
+msgstr "Номер абонентского ящика в почтовом отделении"
 
 #. Address.properties.street.label
 #: followthemoney/schema/Address.yaml
 msgid "Street address"
-msgstr ""
+msgstr "Адрес (улица)"
 
 #. Address.properties.street2.label
 #: followthemoney/schema/Address.yaml
 msgid "Street address (ctd.)"
-msgstr ""
+msgstr "Контактный адрес (улица)"
 
 #. Address.properties.city.label
 #: followthemoney/schema/Address.yaml
 msgid "City"
-msgstr ""
+msgstr "Город"
 
 #. Address.properties.city.description
 #: followthemoney/schema/Address.yaml
 msgid "City, town, village or other locality"
-msgstr ""
+msgstr "Населённый пункт"
 
 #. Address.properties.postalCode.label
 #: followthemoney/schema/Address.yaml
 msgid "Postal code"
-msgstr ""
+msgstr "Почтовый индекс"
 
 #. Address.properties.postalCode.description
 #: followthemoney/schema/Address.yaml
 msgid "Zip code or postcode."
-msgstr ""
+msgstr "ZIP-код или иной почтовый код"
 
 #. Address.properties.region.label
 #: followthemoney/schema/Address.yaml
 msgid "Region"
-msgstr ""
+msgstr "Область"
 
 #. Address.properties.region.description
 #: followthemoney/schema/Address.yaml
 msgid "State, province or area."
-msgstr ""
+msgstr "Штат, провинция или район."
 
 #. Address.properties.latitude.label
 #. RealEstate.properties.latitude.label
@@ -751,10 +752,10 @@ msgid "Contract"
 msgstr "Контракт"
 
 #. Contract.plural
+#. Contract.properties.project.reverse.label
 #. ContractAward.properties.contract.plural
-#. Payment.properties.contract.plural
 #: followthemoney/schema/Contract.yaml
-#: followthemoney/schema/ContractAward.yaml followthemoney/schema/Payment.yaml
+#: followthemoney/schema/ContractAward.yaml
 msgid "Contracts"
 msgstr "Контракты"
 
@@ -787,6 +788,16 @@ msgstr "Заказчики"
 #: followthemoney/schema/Contract.yaml
 msgid "Contracts issued"
 msgstr "Размещено контрактов"
+
+#. Contract.properties.project.label
+#. Payment.properties.project.label
+#. Project.label
+#. ProjectParticipant.properties.project.label
+#: followthemoney/schema/Contract.yaml followthemoney/schema/Payment.yaml
+#: followthemoney/schema/Project.yaml
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Project"
+msgstr "Проект"
 
 #. Contract.properties.type.label
 #. CourtCase.properties.type.label
@@ -978,9 +989,11 @@ msgstr "Категория"
 #. CourtCase.properties.status.label
 #. Interest.properties.status.label
 #. LegalEntity.properties.status.label
+#. Project.properties.status.label
 #. Sanction.properties.status.label
 #: followthemoney/schema/CourtCase.yaml followthemoney/schema/Interest.yaml
-#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Sanction.yaml
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Project.yaml
+#: followthemoney/schema/Sanction.yaml
 msgid "Status"
 msgstr "Статус"
 
@@ -1705,6 +1718,41 @@ msgstr "Ответы"
 #: followthemoney/schema/Email.yaml
 msgid "Raw headers"
 msgstr "Заголовки"
+
+#. Employment.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employment"
+msgstr ""
+
+#. Employment.plural
+#: followthemoney/schema/Employment.yaml
+msgid "Employments"
+msgstr ""
+
+#. Employment.edge.label
+#: followthemoney/schema/Employment.yaml
+msgid "works for"
+msgstr ""
+
+#. Employment.properties.employer.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employer"
+msgstr ""
+
+#. Employment.properties.employer.reverse.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employees"
+msgstr ""
+
+#. Employment.properties.employee.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employee"
+msgstr ""
+
+#. Employment.properties.employee.reverse.label
+#: followthemoney/schema/Employment.yaml
+msgid "Employers"
+msgstr ""
 
 #. Event.label
 #: followthemoney/schema/Event.yaml
@@ -2497,6 +2545,7 @@ msgid "Payment"
 msgstr "Платеж"
 
 #. Payment.plural
+#. Payment.properties.project.reverse.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payments"
 msgstr "Платежи"
@@ -2662,6 +2711,60 @@ msgstr "Текстовые файлы"
 #: followthemoney/schema/PlainText.yaml
 msgid "Text files, like .txt or source code.\n"
 msgstr "Текстовые файлы, например, .txt или исходный код.\n"
+
+#. Project.plural
+#. ProjectParticipant.properties.participant.reverse.label
+#: followthemoney/schema/Project.yaml
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Projects"
+msgstr "Проекты"
+
+#. Project.description
+#. ProjectParticipant.description
+#: followthemoney/schema/Project.yaml
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "An activity carried out by a group of participants.\n"
+msgstr "Деятельность, осуществляемая группой участников.\n"
+
+#. Project.properties.projectId.label
+#: followthemoney/schema/Project.yaml
+msgid "Project ID"
+msgstr "ID проекта"
+
+#. Project.properties.phase.label
+#: followthemoney/schema/Project.yaml
+msgid "Phase"
+msgstr "Стадия"
+
+#. Project.properties.goal.label
+#: followthemoney/schema/Project.yaml
+msgid "Project goal"
+msgstr "Цель проекта"
+
+#. ProjectParticipant.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Project participant"
+msgstr "Участник проекта"
+
+#. ProjectParticipant.plural
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Project participants"
+msgstr "Участники проекта"
+
+#. ProjectParticipant.edge.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "participates in"
+msgstr "участие в"
+
+#. ProjectParticipant.properties.project.reverse.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Participants"
+msgstr "Участники"
+
+#. ProjectParticipant.properties.participant.label
+#: followthemoney/schema/ProjectParticipant.yaml
+msgid "Participant"
+msgstr "Участник"
 
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
@@ -2964,6 +3067,11 @@ msgstr "Ключевые слова"
 #: followthemoney/schema/Thing.yaml followthemoney/types/topic.py:21
 msgid "Topics"
 msgstr "Темы"
+
+#. Thing.properties.addressEntity.reverse.label
+#: followthemoney/schema/Thing.yaml
+msgid "Located there"
+msgstr "Местоположение"
 
 #. Thing.properties.proof.label
 #: followthemoney/schema/Thing.yaml
