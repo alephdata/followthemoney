@@ -1,6 +1,10 @@
 Network graph semantics
 ========================
 
+TODO: Import the graph tooling documentation into this documentation:
+
+https://docs.alephdata.org/developers/followthemoney/ftm#exporting-data-to-a-network-graph
+
 How FtM data is translated to a network graph
 ----------------------------------------------
 

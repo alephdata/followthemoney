@@ -29,6 +29,7 @@ higher-level notions of datasets and access control.
    graph.rst
    model.rst
    types.rst
+   credits.rst
 
 
 .. [#ingest] The Aleph toolchain includes a separate project, ``ingestors``, which
