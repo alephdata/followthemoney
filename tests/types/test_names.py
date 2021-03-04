@@ -7,7 +7,7 @@ names = registry.name
 
 class NamesTest(unittest.TestCase):
     def test_repr(self):
-        self.assertEqual(repr(names), "<NameType()>")
+        self.assertEqual(repr(names), "<name>")
 
     def test_parse(self):
         self.assertEqual(names.clean("Hans Well"), "Hans Well")
