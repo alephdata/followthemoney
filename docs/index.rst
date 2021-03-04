@@ -20,11 +20,12 @@ higher-level notions of datasets and access control.
    :maxdepth: 2
    :caption: Contents:
 
-   cli.rst
+   entity.rst
    api.rst
    fragments.rst
    namespace.rst
    custom.rst
+   cli.rst
    graph.rst
    model.rst
    types.rst

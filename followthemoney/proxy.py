@@ -307,7 +307,7 @@ class EntityProxy(object):
 
     @property
     def country_hints(self):
-        """Some property types, such as phone numbers, and IBAN codes, imply a
+        """Some property types, such as phone numbers and IBAN codes imply a
         country that may be associated with the entity. This list can be used
         for a more generous matching approach than the actual country values."""
         countries = set(self.countries)
@@ -392,7 +392,9 @@ class EntityProxy(object):
 
     @classmethod
     def from_dict(cls, model, data, cleaned=True):
-        """Instantiate a proxy based on the given model and serialised dictionary."""
+        """Instantiate a proxy based on the given model and serialised dictionary.
+
+        Use :meth:`followthemoney.model.Model.get_proxy` instead."""
         if isinstance(data, cls):
             return data
         return cls(model, data, cleaned=cleaned)

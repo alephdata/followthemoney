@@ -2,24 +2,22 @@
 *We like our abstractions like our offshore banks: leaky.*
 
 Entity ID namespaces are a security mechanism related to the Aleph search index.
-When bulk-loading entities associated with a particular dataset to the index,
-past versions of Aleph would first look up each entity ID in the index, check
-that it was part of the same dataset as the new entity, and only then proceed
-to write the index.
 
-The root cause for this issue is because Aleph allows the user (via mappings
-or the API) to specify entity IDs. The fact that entity IDs are controlled by
-the user and not the system is, of course, unusual. At the same time, it makes
-it possible to generate bulk data outside Aleph, and then load it into the
-system as a continuous stream of entities.
+This is because Aleph allows the user (via mappings or the API) to mint arbitary
+entity IDs. Entity IDs that are controlled by the user and not the system are,
+of course, unusual. At the same time, this makes it possible to generate bulk data
+outside Aleph, and then load entities into the system as a continuous :ref:`streams`.
 
-Namespacing works around this by essentially making a compromise: the entity ID
-consists of two parts: one controlled by the client, the other controlled by
-the system. The logic is basically `{entity_id}.{signature}`, where `signature`
-is `hmac(entity_id, dataset_id)`. This, first of all, guarantees that the
-combined ID is specific to a dataset, without needing an (expensive) index
-look up of each ID first. It can also be generated both on the client and in
-the server without compromising isolation.
+Namespacing works around this by making each entity ID consists of two parts:
+one controlled by the client, the other controlled by the system. The second
+part of the ID is called its `signature`::
+
+    entity_id.a40a29300ac6bb79dd2f911e77bbda7a3b502126
+
+The signature is generated as ``hmac(entity_id, dataset_id)``. This guarantees
+that the combined ID is specific to a dataset, without needing an (expensive)
+index look up of each ID first. It can also be generated both on the client and
+in the server without compromising isolation.
 """
 import hmac
 

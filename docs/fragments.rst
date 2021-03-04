@@ -3,46 +3,55 @@
 Entity fragmentation
 ======================
 
-Generating interconnected graph data is a notoriously difficult process. Given the volume
-of the datasets we want to process using FtM, we can't incrementally build nodes and egdes
-in-memory like you would in NetworkX. Instead, we had to find a stream-based solution
-for constructing the graph entities. That's why FtM supports *entity fragments* and
-*entity aggregation*.
+Generating graph data is a difficult process. The size of the datasets we want to process
+using `followthemoney` makes it impossible to incrementally build nodes and egdes in
+memory like you would in `NetworkX`_. Instead, we had to find a stream-based solution
+for constructing graph entities. That's why the toolkit supports *entity fragments*
+and *aggregation*.
+
+.. _NetworkX: https://networkx.org/
 
 An example
 ------------
 
 To illustrate this problem, imagine a table with millions of rows that describes a set of
-people and the companies they control. The columns in such a table might be: `RowID`,
-`CompanyID`, `CompanyName`, `DirectorName`, `DirectorPassportNo`. Every company can have
-multiple directors, while each director might control multiple companies. When mapping this
-data to FtM, we'd create three entities for each row: a :ref:`schema-Company`, a
-:ref:`schema-Person` and a :ref:`schema-Directorship` that connects the two.
+people and the companies they control. Every company can have multiple directors, while
+each director might control multiple companies:
 
-Now, let's imagine two concrete companies: `Brilliant Amazing Ltd.` (with a company ID) is
-listed on on row 15, and its director is `John Smith`, with a passport ID unique to him.
-On row 18001, there's another mention of `Brilliant Amazing Ltd.` (same company ID), listing
-a different director. Finally, on row 9822021, the company `Goldfish Ltd.` (new company ID)
-makes an appearance, listing `John Smith` (same passport as above) as a director.
+========= ======================= ============ ============ ============
+CompanyID CompanyName             DirectorName DirectorIdNo DirectorDoB
+========= ======================= ============ ============ ============
+A123      Brilliant Amazing Ltd.  John Smith   PP827817     1979-02-16
+...       ...                     ...          ...          ...
+A71882    Goldfish Ltd.           John Smith   PP827817     NULL
+...       ...                     ...          ...          ...
+A123      Brilliant Amazing Ltd.  Jane Doe     PP1988299    1983-06-24
+...       ...                     ...          ...          ...
+========= ======================= ============ ============ ============
 
 Database humpty-dumpty
 -----------------------
 
-Based on this example, we'd generate three :ref:`schema-Company` entities to represent two
-actual companies, and three :ref:`schema-Person` entities for two people. A naive approach
-in Aleph might be to write these to an ElasticSearch index sequentially - the later entities
-overwriting the earlier ones with the same identifier.
+When turning this data into FtM, we'd create three entities for each row: a
+:ref:`schema-Company`, a :ref:`schema-Person` and a :ref:`schema-Directorship` that
+connects the two.
 
-That, however, works only as long as each version of each entity contains the same data. If, on
-the other hand, the first mention of `John Smith` included his birth date, while the second
-mention included his business address, we'd also need to merge these fragments. While it's
-possible do perform such merges at index time, this has proven to be impractically slow because
-it requires fetching each entity before it is updated.
+If we do this row by row, we'd eventually generate three :ref:`schema-Company`
+entities to represent two actual companies, and three :ref:`schema-Person` entities
+for two distinct people. Of course, we could write these to an ElasticSearch index
+sequentially - the later entities overwriting the earlier ones with the same ID.
 
-A better solution is to sort the generated fragments before indexing them. In this approach, all
-the generated entities from the source table would be written to disk or to a database, and
-then sorted by their ID. In the resulting entity set, all instances of each company and person
-are subsequent and can be merged as they are read and submitted then to the index.
+That, however, works only as long as each version of each entity contains the same data.
+In our example, the first mention of `John Smith` includes his birth date, while
+the second does not. If we don't wish to lose that detail, we need to merge these
+`fragments`. While it's possible do perform such merges at index time, this has proven
+to be impractically slow because it requires fetching each entity before it is
+updated.
+
+A better solution is to sort all generated fragments before indexing them. In this
+approach, all the entities generated from the source table would be written to disk or
+to a database, and then sorted using their ID. In the resulting entity set, all instances
+of each company and person are grouped and can be merged as they are read.
 
 In practice 
 -------------

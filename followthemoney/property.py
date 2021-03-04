@@ -61,7 +61,8 @@ class Property(object):
         self.stub = data.get("stub", False)
 
         #: When a property points to another schema, a stub reverse property is
-        #: added for various administrative reasons.
+        #: added as a place to store metadata to help display the link in inverted
+        #: views.
         self.reverse = None
 
         #: RDF term for this property (i.e. the predicate URI).

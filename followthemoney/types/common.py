@@ -31,13 +31,15 @@ class PropertyType(object):
     matchable: bool = True
     """Matchable types allow properties to be compared with each other in order to
     assess entity similarity. While it makes sense to compare names, countries or
-    phone numbers, the same isn't true for raw JSON blobs or long text snippets."""
+    phone numbers, the same isn't true for raw JSON blobs or descriptive text
+    snippets."""
 
     pivot: bool = False
-    """Pivot property types are like a stronger form of matchable types: they will
-    be used by default when value-based lookups are used to find commonalities
-    between entities. This includes generating graph pseudo-nodes, and the
-    `Mentions` functionality in the Aleph user interface."""
+    """Pivot property types are like a stronger form of :attr:`~matchable` types:
+    they will be used when value-based lookups are used to find commonalities
+    between entities. For example, pivot typed-properties are used to show all the
+    other entities that mention the same phone number, email address or name as the
+    one currently seen by the user."""
 
     max_size: Optional[int] = None
     """Some types have overall size limitations in place in order to avoid generating

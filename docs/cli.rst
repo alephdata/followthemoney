@@ -8,8 +8,8 @@ line. Please first refer to the `Aleph documentation`_ for an intro to the ``ftm
 
 .. _Aleph documentation: https://docs.alephdata.org/developers/followthemoney/ftm
 
-Key to understanding the ``ftm`` tool is the notion of `entity streams`: FtM entities can
-be transferred between programs and processing steps as a series of JSON objects, one per
+Key to understanding the ``ftm`` tool is the notion of :ref:`streams`: entities can be
+transferred between programs and processing steps as a series of JSON objects, one per
 line. This notion is also supported by the related `alephclient`_ command, which can serve
 as both a source and a sink for entity streams backed by the Aleph API.
 
