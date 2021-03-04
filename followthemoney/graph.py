@@ -1,8 +1,6 @@
 """
 Converting FtM data to a property graph data model.
 
-Read `GRAPH.md` in the repository root for more commentary on this.
-
 This module provides an abstract data object that represents a property
 graph. This is mainly used by the exporter modules to convert the data
 to a specific output format, like Cypher or NetworkX.
@@ -30,10 +28,14 @@ class Node(object):
 
     @property
     def is_entity(self):
+        """Check to see if the node represents an entity. If this is false, the
+        node represents a non-entity property value that has been reified, like
+        a phone number or a name."""
         return self.type == registry.entity
 
     @property
     def caption(self):
+        """A user-facing label for the current node."""
         if self.type != registry.entity:
             return self.type.caption(self.value)
         if self.proxy is not None:
@@ -41,6 +43,7 @@ class Node(object):
         return self.value
 
     def to_dict(self):
+        """Return a simple dictionary to reflect this graph node."""
         return {
             "id": self.id,
             "type": self.type.name,
@@ -50,6 +53,8 @@ class Node(object):
 
     @classmethod
     def from_proxy(cls, proxy):
+        """For a given :class:`~followthemoney.proxy.EntityProxy`, return a node
+        based on the entity."""
         return cls(registry.entity, proxy.id, proxy=proxy)
 
     def __str__(self):
@@ -122,6 +127,8 @@ class Edge(object):
 
     @property
     def type_name(self):
+        """Return a machine-readable descripton of the type of the edge.
+        This is either a property name or a schema name."""
         return self.prop.name if self.schema is None else self.schema.name
 
     def to_dict(self):
@@ -143,8 +150,9 @@ class Edge(object):
 
 
 class Graph(object):
-    """A manager for a set of nodes and edges, all derived from FtM
-    entities and their properties.
+    """A set of nodes and edges, derived from entities and their properties.
+    This represents an alternative interpretation of FtM data as a property
+    graph.
 
     This class is meant to be extensible in order to support additional
     backends, like Aleph.
@@ -156,16 +164,22 @@ class Graph(object):
         self.flush()
 
     def flush(self):
+        """Remove all nodes, edges and proxies from the graph."""
         self.edges = {}
         self.nodes = {}
         self.proxies = {}
 
     def queue(self, id_, proxy=None):
+        """Register a reference to an entity in the graph."""
         if id_ not in self.proxies or proxy is not None:
             self.proxies[id_] = proxy
 
     @property
     def queued(self):
+        """Return a list of all the entities which are referenced from the graph
+        but that haven't been loaded yet. This can be used to get a list of
+        entities that should be included to expand the whole graph by one degree.
+        """
         return [i for (i, p) in self.proxies.items() if p is None]
 
     def _get_node_stub(self, prop, value):
@@ -195,7 +209,9 @@ class Graph(object):
                 self.edges[edge.id] = edge
 
     def add(self, proxy):
-        """Add a proxy to the graph and make it either a node or an edge."""
+        """Add an :class:`~followthemoney.proxy.EntityProxy` to the graph and make
+        it either a :class:`~followthemoney.graph.Node` or an
+        :class:`~followthemoney.graph.Edge`."""
         if proxy is None:
             return
         self.queue(proxy.id, proxy)
@@ -206,11 +222,11 @@ class Graph(object):
             self._add_node(proxy)
 
     def iternodes(self):
-        """Iterate all nodes in the graph."""
+        """Iterate all :class:`nodes <followthemoney.graph.Node>` in the graph."""
         return self.nodes.values()
 
     def iteredges(self):
-        """Iterate all edges in the graph."""
+        """Iterate all :class:`edges <followthemoney.graph.Edge>` in the graph."""
         return self.edges.values()
 
     def get_outbound(self, node, prop=None):
@@ -230,7 +246,7 @@ class Graph(object):
                 yield edge
 
     def get_adjacent(self, node, prop=None):
-        "Get all edges of the given node."
+        "Get all adjacent edges of the given node."
         yield from self.get_outbound(node, prop=prop)
         yield from self.get_inbound(node, prop=prop)
 

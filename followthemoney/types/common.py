@@ -171,7 +171,7 @@ class PropertyType(object):
         return self.name
 
     def __repr__(self):
-        return "<%s()>" % type(self).__name__
+        return "<%s>" % self.name
 
 
 class EnumType(PropertyType):

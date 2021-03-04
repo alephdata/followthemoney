@@ -24,11 +24,13 @@ higher-level notions of datasets and access control.
    api.rst
    fragments.rst
    namespace.rst
+   mapping.rst
    custom.rst
    cli.rst
    graph.rst
    model.rst
    types.rst
+   faq.rst
    credits.rst
 
 

@@ -1,4 +1,4 @@
-.. _entities: 
+.. _entities:
 
 Introduction
 ==================

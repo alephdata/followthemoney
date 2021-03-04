@@ -32,9 +32,9 @@ A123      Brilliant Amazing Ltd.  Jane Doe     PP1988299    1983-06-24
 Database humpty-dumpty
 -----------------------
 
-When turning this data into FtM, we'd create three entities for each row: a
-:ref:`schema-Company`, a :ref:`schema-Person` and a :ref:`schema-Directorship` that
-connects the two.
+When :ref:`turning this data into FtM <mappings>`, we'd create three entities for
+each row: a :ref:`schema-Company`, a :ref:`schema-Person` and a
+:ref:`schema-Directorship` that connects the two.
 
 If we do this row by row, we'd eventually generate three :ref:`schema-Company`
 entities to represent two actual companies, and three :ref:`schema-Person` entities

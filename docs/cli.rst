@@ -18,8 +18,8 @@ as both a source and a sink for entity streams backed by the Aleph API.
 Examples
 ----------
 
-For example, the command line sequence below uses shell pipes to a) map data into the FtM
-format from a database, b) apply a :ref:`namespace <namespace>` to the entity IDs,
+For example, the command line sequence below uses shell pipes to a) :ref:`map data <mappings>`
+into entities from a database, b) apply a :ref:`namespace <namespace>` to the entity IDs,
 c) aggregate :ref:`entity fragments <fragments>` created by the mapping, and d) export
 the resulting entity stream into a sequence of CYPHER statements that can be executed on a
 Neo4J database to generate a property graph:
