@@ -4,6 +4,7 @@ Project:
   extends:
     - Interval
     - Thing
+    - Value
   description: >
     An activity carried out by a group of participants.
   matchable: false
