@@ -62,3 +62,5 @@ Person:
       label: Religion
     political:
       label: Political association
+    education:
+      label: Education
