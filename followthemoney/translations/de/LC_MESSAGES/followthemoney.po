@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-03 13:30+0100\n"
+"POT-Creation-Date: 2021-03-12 06:57+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: followthemoney/property.py:109
+#: followthemoney/property.py:110
 msgid "Property cannot be written"
 msgstr "Eigenschaft darf nicht direkt gesetzt werden."
 
-#: followthemoney/property.py:112
+#: followthemoney/property.py:113
 msgid "Invalid value"
 msgstr "Ungültiger Wert"
 
@@ -49,11 +49,11 @@ msgstr "Pseudofeld (%s): %s"
 msgid "Self-relationship (%s): %s"
 msgstr "Selbst-Beziehung (%s): %s"
 
-#: followthemoney/schema.py:237
+#: followthemoney/schema.py:242
 msgid "Required"
 msgstr "Erforderlich"
 
-#: followthemoney/schema.py:241
+#: followthemoney/schema.py:246
 msgid "Entity validation failed"
 msgstr "Prüfung fehlgeschlagen"
 
@@ -2684,6 +2684,11 @@ msgstr "Religion"
 #: followthemoney/schema/Person.yaml
 msgid "Political association"
 msgstr "Politische Zugehörigkeit"
+
+#. Person.properties.education.label
+#: followthemoney/schema/Person.yaml
+msgid "Education"
+msgstr ""
 
 #. PlainText.label
 #: followthemoney/schema/PlainText.yaml

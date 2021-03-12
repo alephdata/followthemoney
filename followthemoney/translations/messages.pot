@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-03 13:44+0100\n"
+"POT-Creation-Date: 2021-03-12 06:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
 
-#: followthemoney/property.py:109
+#: followthemoney/property.py:110
 msgid "Property cannot be written"
 msgstr ""
 
-#: followthemoney/property.py:112
+#: followthemoney/property.py:113
 msgid "Invalid value"
 msgstr ""
 
@@ -44,11 +44,11 @@ msgstr ""
 msgid "Self-relationship (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:238
+#: followthemoney/schema.py:242
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:242
+#: followthemoney/schema.py:246
 msgid "Entity validation failed"
 msgstr ""
 
@@ -2652,6 +2652,11 @@ msgstr ""
 #. Person.properties.political.label
 #: followthemoney/schema/Person.yaml
 msgid "Political association"
+msgstr ""
+
+#. Person.properties.education.label
+#: followthemoney/schema/Person.yaml
+msgid "Education"
 msgstr ""
 
 #. PlainText.label

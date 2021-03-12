@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-03 13:30+0100\n"
+"POT-Creation-Date: 2021-03-12 06:56+0100\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: followthemoney/property.py:109
+#: followthemoney/property.py:110
 msgid "Property cannot be written"
 msgstr "Не удалось сохранить свойство"
 
-#: followthemoney/property.py:112
+#: followthemoney/property.py:113
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
@@ -50,11 +50,11 @@ msgstr "Неизвестное свойство (1%s): 1%s"
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
 
-#: followthemoney/schema.py:237
+#: followthemoney/schema.py:242
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:241
+#: followthemoney/schema.py:246
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
@@ -1722,37 +1722,37 @@ msgstr "Заголовки"
 #. Employment.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employment"
-msgstr ""
+msgstr "Трудоустройство"
 
 #. Employment.plural
 #: followthemoney/schema/Employment.yaml
 msgid "Employments"
-msgstr ""
+msgstr "Трудоустройство"
 
 #. Employment.edge.label
 #: followthemoney/schema/Employment.yaml
 msgid "works for"
-msgstr ""
+msgstr "работают на"
 
 #. Employment.properties.employer.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employer"
-msgstr ""
+msgstr "Работодатель"
 
 #. Employment.properties.employer.reverse.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employees"
-msgstr ""
+msgstr "Работодатели"
 
 #. Employment.properties.employee.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employee"
-msgstr ""
+msgstr "Работник"
 
 #. Employment.properties.employee.reverse.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employers"
-msgstr ""
+msgstr "Работники"
 
 #. Event.label
 #: followthemoney/schema/Event.yaml
@@ -2696,6 +2696,11 @@ msgstr "Религия"
 #: followthemoney/schema/Person.yaml
 msgid "Political association"
 msgstr "Политическая ассоциация"
+
+#. Person.properties.education.label
+#: followthemoney/schema/Person.yaml
+msgid "Education"
+msgstr ""
 
 #. PlainText.label
 #: followthemoney/schema/PlainText.yaml

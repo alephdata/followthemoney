@@ -3837,6 +3837,12 @@
           "qname": "Person:deathDate",
           "type": "date"
         },
+        "education": {
+          "label": "Education",
+          "name": "education",
+          "qname": "Person:education",
+          "type": "string"
+        },
         "employers": {
           "label": "Employers",
           "matchable": true,
@@ -3997,7 +4003,8 @@
       "description": "An activity carried out by a group of participants.\n",
       "extends": [
         "Interval",
-        "Thing"
+        "Thing",
+        "Value"
       ],
       "featured": [
         "name",
@@ -4066,7 +4073,8 @@
       "schemata": [
         "Interval",
         "Project",
-        "Thing"
+        "Thing",
+        "Value"
       ]
     },
     "ProjectParticipant": {
