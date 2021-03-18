@@ -34,23 +34,34 @@ def compare(model, left, right):
     if right.schema not in list(left.schema.matchable_schemata):
         return 0
     schema = model.common_schema(left.schema, right.schema)
-    score = compare_names(left, right) * NAMES_WEIGHT
-    score += compare_countries(left, right) * COUNTRIES_WEIGHT
+    score = 0
+    weight_sum = 0
+    try:
+        score += compare_names(left, right) * NAMES_WEIGHT
+        weight_sum += NAMES_WEIGHT
+    except ValueError:
+        pass
+    try:
+        score += compare_countries(left, right) * COUNTRIES_WEIGHT
+        weight_sum += COUNTRIES_WEIGHT
+    except ValueError:
+        pass
     for name, prop in schema.properties.items():
         weight = MATCH_WEIGHTS.get(prop.type, 0)
         if weight == 0 or not prop.matchable:
             continue
-        try:
-            left_values = left.get(name)
-            right_values = right.get(name)
-        except InvalidData:
-            continue
 
-        if not len(left_values) or not len(right_values):
+        left_values = left.get(name, quiet=True)
+        right_values = right.get(name, quiet=True)
+        if left_values or right_values:
+            weight_sum += weight
+        if not left_values or not right:
             continue
         prop_score = prop.type.compare_sets(left_values, right_values)
         score += prop_score * weight
-    return score
+    if not weight_sum:
+        return 0
+    return score / weight_sum
 
 
 def _normalize_names(names):
@@ -74,9 +85,14 @@ def compare_names(left, right):
     result = 0
     left_list = list(_normalize_names(left.names))
     right_list = list(_normalize_names(right.names))
+    if not (left_list or right_list):
+        raise ValueError
     for (left, right) in itertools.product(left_list, right_list):
+        if not (left or right):
+            continue
         similarity = jaro(left, right)
-        score = similarity * dampen(2, 20, shortest(left, right))
+        weight = min(len(left), len(right)) / max(len(left), len(right))
+        score = similarity * weight ** 0.5
         result = max(result, score)
     return result
 
@@ -84,5 +100,8 @@ def compare_names(left, right):
 def compare_countries(left, right):
     left = left.country_hints
     right = right.country_hints
-    overlap = left.intersection(right)
-    return min(2.0, len(overlap))
+    if not (left or right):
+        raise ValueError
+    intersection = left.intersection(right)
+    union = left.union(right)
+    return len(intersection) / len(union)
