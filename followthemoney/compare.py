@@ -1,5 +1,5 @@
 import itertools
-from Levenshtein import jaro  # type: ignore
+from fuzzywuzzy import fuzz
 from normality import normalize
 import fingerprints
 from followthemoney.types import registry
@@ -90,10 +90,8 @@ def compare_names(left, right):
     for (left, right) in itertools.product(left_list, right_list):
         if not (left or right):
             continue
-        similarity = jaro(left, right)
-        weight = min(len(left), len(right)) / max(len(left), len(right))
-        score = similarity * weight ** 0.5
-        result = max(result, score)
+        similarity = fuzz.WRatio(left, right, full_process=False)
+        result = max(result, similarity)
     return result
 
 

@@ -1,7 +1,8 @@
 from banal import ensure_list, first
 from normality import slugify
 from normality.cleaning import collapse_spaces, strip_quotes
-from Levenshtein import jaro_winkler, setmedian  # type: ignore
+from fuzzywuzzy import fuzz
+from Levenshtein import setmedian  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen, sanitize_text
@@ -40,7 +41,7 @@ class NameType(PropertyType):
         return dampen(3, 50, value)
 
     def compare(self, left, right):
-        return jaro_winkler(left, right)
+        return fuzz.WRatio(left, right)
 
     def node_id(self, value):
         return "name:%s" % slugify(value)
