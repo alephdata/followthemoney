@@ -25,3 +25,6 @@ Project:
       label: "Phase"
     goal:
       label: "Project goal"
+    programme:
+      label: "Project programme"
+      description: "Programme name, funding code, category identifier, etc."
