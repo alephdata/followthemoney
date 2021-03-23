@@ -41,7 +41,7 @@ class NameType(PropertyType):
         return dampen(3, 50, value)
 
     def compare(self, left, right):
-        return fuzz.WRatio(left, right)
+        return fuzz.WRatio(left, right) / 100.0
 
     def node_id(self, value):
         return "name:%s" % slugify(value)

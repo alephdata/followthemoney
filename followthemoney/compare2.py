@@ -88,7 +88,7 @@ def compare_names(left, right):
     for (left, right) in itertools.product(left_list, right_list):
         if not (left or right):
             continue
-        similarity = fuzz.WRatio(left, right, full_process=False)
+        similarity = fuzz.WRatio(left, right, full_process=False) / 100.0
         result = max(result, similarity)
     return result
 
