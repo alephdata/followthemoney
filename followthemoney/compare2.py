@@ -1,10 +1,8 @@
 import itertools
-from Levenshtein import jaro  # type: ignore
+from fuzzywuzzy import fuzz
 from normality import normalize
 import fingerprints
 from followthemoney.types import registry
-from followthemoney.util import dampen, shortest
-from followthemoney.exc import InvalidData
 
 # OK, Here's the plan: we have to find a way to get user judgements
 # on as many of these matches as we can, then build a regression
@@ -34,23 +32,34 @@ def compare(model, left, right):
     if right.schema not in list(left.schema.matchable_schemata):
         return 0
     schema = model.common_schema(left.schema, right.schema)
-    score = compare_names(left, right) * NAMES_WEIGHT
-    score += compare_countries(left, right) * COUNTRIES_WEIGHT
+    score = 0
+    weight_sum = 0
+    try:
+        score += compare_names(left, right) * NAMES_WEIGHT
+        weight_sum += NAMES_WEIGHT
+    except ValueError:
+        pass
+    try:
+        score += compare_countries(left, right) * COUNTRIES_WEIGHT
+        weight_sum += COUNTRIES_WEIGHT
+    except ValueError:
+        pass
     for name, prop in schema.properties.items():
         weight = MATCH_WEIGHTS.get(prop.type, 0)
         if weight == 0 or not prop.matchable:
             continue
-        try:
-            left_values = left.get(name)
-            right_values = right.get(name)
-        except InvalidData:
-            continue
 
-        if not len(left_values) or not len(right_values):
+        left_values = left.get(name, quiet=True)
+        right_values = right.get(name, quiet=True)
+        if left_values or right_values:
+            weight_sum += weight
+        if not left_values or not right:
             continue
         prop_score = prop.type.compare_sets(left_values, right_values)
         score += prop_score * weight
-    return score
+    if not weight_sum:
+        return 0
+    return score / weight_sum
 
 
 def _normalize_names(names):
@@ -74,15 +83,21 @@ def compare_names(left, right):
     result = 0
     left_list = list(_normalize_names(left.names))
     right_list = list(_normalize_names(right.names))
+    if not (left_list or right_list):
+        raise ValueError
     for (left, right) in itertools.product(left_list, right_list):
-        similarity = jaro(left, right)
-        score = similarity * dampen(2, 20, shortest(left, right))
-        result = max(result, score)
+        if not (left or right):
+            continue
+        similarity = fuzz.WRatio(left, right, full_process=False)
+        result = max(result, similarity)
     return result
 
 
 def compare_countries(left, right):
     left = left.country_hints
     right = right.country_hints
-    overlap = left.intersection(right)
-    return min(2.0, len(overlap))
+    if not (left or right):
+        raise ValueError
+    intersection = left.intersection(right)
+    union = left.union(right)
+    return len(intersection) / len(union)
