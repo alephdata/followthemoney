@@ -1,5 +1,6 @@
 import itertools
 from collections import defaultdict
+import math
 
 from fuzzywuzzy import fuzz
 from normality import normalize
@@ -22,9 +23,12 @@ MATCH_WEIGHTS = {
     registry.date: 0.2,
     registry.phone: 0.3,
 }
+MISSING_WEIGHT = 0.75
 
 
-def compare_scores(model, left, right, include_prop_types=None):
+def compare_scores(
+    model, left, right, include_prop_types=None, exclude_prop_types=None
+):
     """Compare two entities and return a match score for each property."""
     left = model.get_proxy(left)
     right = model.get_proxy(right)
@@ -32,10 +36,21 @@ def compare_scores(model, left, right, include_prop_types=None):
         return {}
     schema = model.common_schema(left.schema, right.schema)
     scores = defaultdict(list)
+    try:
+        scores[registry.name] = [compare_names(left, right)]
+    except ValueError:
+        pass
+    try:
+        scores[registry.country] = [compare_countries(left, right)]
+    except ValueError:
+        pass
+    exclude_prop_types = set(exclude_prop_types or []).union(scores.keys())
     for name, prop in schema.properties.items():
         if not prop.matchable:
             continue
-        elif include_prop_types is not None and prop.type not in include_prop_types:
+        elif include_prop_types and prop.type not in include_prop_types:
+            continue
+        elif exclude_prop_types and prop.type in exclude_prop_types:
             continue
         try:
             score = compare_prop(prop, left, right)
@@ -52,8 +67,11 @@ def compare(model, left, right):
     weights_sum = 0
     for prop, score in scores.items():
         weight = MATCH_WEIGHTS.get(prop, 0)
-        weighted_score += max(score) * weight
-        weights_sum += weight
+        try:
+            weighted_score += max(filter(None, score)) * weight
+            weights_sum += weight
+        except ValueError:
+            weights_sum += weight * MISSING_WEIGHT
     if not weights_sum:
         return 0.0
     return weighted_score / weights_sum
@@ -77,30 +95,31 @@ def _normalize_names(names):
 
 
 def compare_prop(prop, left, right):
-    if prop.type == registry.name:
-        return compare_names(left, right)
-    elif prop.type == registry.country:
-        return compare_countries(left, right)
     left_values = left.get(prop.name, quiet=True)
     right_values = right.get(prop.name, quiet=True)
     if not left_values and not right_values:
         raise ValueError("At least one proxy must have property: %s", prop)
     elif not left_values or not right_values:
-        return 0.0
+        return None
     return prop.type.compare_sets(left_values, right_values)
 
 
-def compare_names(left, right):
+def compare_names(left, right, max_names=200):
     result = 0.0
-    left_list = list(_normalize_names(left.names))
-    right_list = list(_normalize_names(right.names))
+    left_list = list(itertools.islice(_normalize_names(left.names), max_names))
+    right_list = list(itertools.islice(_normalize_names(right.names), max_names))
     if not left_list and not right_list:
         raise ValueError("At least one proxy must have name properties")
     elif not left_list or not right_list:
-        return 0.0
+        return None
     for (left, right) in itertools.product(left_list, right_list):
         similarity = fuzz.WRatio(left, right, full_process=False) / 100.0
         result = max(result, similarity)
+        if result == 1.0:
+            break
+    result *= min(
+        1.0, 2 ** (-len(left_list) * len(right_list) / (max_names * max_names))
+    )
     return result
 
 
@@ -110,7 +129,7 @@ def compare_countries(left, right):
     if not left_countries and not right_countries:
         raise ValueError("At least one proxy must have country properties")
     elif not left_countries or not right_countries:
-        return 0.0
+        return None
     intersection = left_countries.intersection(right_countries)
     union = left_countries.union(right_countries)
     return len(intersection) / len(union)
