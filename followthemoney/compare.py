@@ -1,5 +1,6 @@
-from functools import singledispatch
 import itertools
+from collections import defaultdict
+
 from fuzzywuzzy import fuzz
 from normality import normalize
 import fingerprints
@@ -30,12 +31,13 @@ def compare_scores(model, left, right):
     if right.schema not in list(left.schema.matchable_schemata):
         return {}
     schema = model.common_schema(left.schema, right.schema)
-    scores = {}
+    scores = defaultdict(list)
     for name, prop in schema.properties.items():
         if not prop.matchable:
             continue
         try:
-            scores[prop.type] = compare_prop(prop, left, right)
+            score = compare_prop(prop, left, right)
+            scores[prop.type].append(score)
         except ValueError:
             pass
     return scores
@@ -48,7 +50,7 @@ def compare(model, left, right):
     weights_sum = 0
     for prop, score in scores.items():
         weight = MATCH_WEIGHTS.get(prop, 0)
-        weighted_score += score * weight
+        weighted_score += max(score) * weight
         weights_sum += weight
     if not weights_sum:
         return 0.0
