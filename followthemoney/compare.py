@@ -24,7 +24,7 @@ MATCH_WEIGHTS = {
 }
 
 
-def compare_scores(model, left, right):
+def compare_scores(model, left, right, include_prop_types=None):
     """Compare two entities and return a match score for each property."""
     left = model.get_proxy(left)
     right = model.get_proxy(right)
@@ -34,6 +34,8 @@ def compare_scores(model, left, right):
     scores = defaultdict(list)
     for name, prop in schema.properties.items():
         if not prop.matchable:
+            continue
+        elif include_prop_types is not None and prop.type not in include_prop_types:
             continue
         try:
             score = compare_prop(prop, left, right)
@@ -45,7 +47,7 @@ def compare_scores(model, left, right):
 
 def compare(model, left, right):
     """Compare two entities and return a match score."""
-    scores = compare_scores(model, left, right)
+    scores = compare_scores(model, left, right, set(MATCH_WEIGHTS.keys()))
     weighted_score = 0
     weights_sum = 0
     for prop, score in scores.items():
