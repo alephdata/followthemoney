@@ -1,20 +1,17 @@
+from functools import singledispatch
 import itertools
-from Levenshtein import jaro  # type: ignore
+from fuzzywuzzy import fuzz
 from normality import normalize
 import fingerprints
 from followthemoney.types import registry
-from followthemoney.util import dampen, shortest
-from followthemoney.exc import InvalidData
 
 # OK, Here's the plan: we have to find a way to get user judgements
 # on as many of these matches as we can, then build a regression
 # model which properly weights the value of a matching property
 # based upon it's type.
-NAMES_WEIGHT = 0.6
-COUNTRIES_WEIGHT = 0.1
 MATCH_WEIGHTS = {
-    registry.text: 0,
-    registry.name: 0,  # because we already compare names
+    registry.name: 0.6,
+    registry.country: 0.1,
     registry.identifier: 0.3,
     registry.url: 0.1,
     registry.email: 0.2,
@@ -23,34 +20,39 @@ MATCH_WEIGHTS = {
     registry.address: 0.3,
     registry.date: 0.2,
     registry.phone: 0.3,
-    registry.country: 0.1,
 }
+
+
+def compare_scores(model, left, right):
+    """Compare two entities and return a match score for each property."""
+    left = model.get_proxy(left)
+    right = model.get_proxy(right)
+    if right.schema not in list(left.schema.matchable_schemata):
+        return {}
+    schema = model.common_schema(left.schema, right.schema)
+    scores = {}
+    for name, prop in schema.properties.items():
+        if not prop.matchable:
+            continue
+        try:
+            scores[prop.type] = compare_prop(prop, left, right)
+        except ValueError:
+            pass
+    return scores
 
 
 def compare(model, left, right):
     """Compare two entities and return a match score."""
-    left = model.get_proxy(left)
-    right = model.get_proxy(right)
-    if right.schema not in list(left.schema.matchable_schemata):
-        return 0
-    schema = model.common_schema(left.schema, right.schema)
-    score = compare_names(left, right) * NAMES_WEIGHT
-    score += compare_countries(left, right) * COUNTRIES_WEIGHT
-    for name, prop in schema.properties.items():
-        weight = MATCH_WEIGHTS.get(prop.type, 0)
-        if weight == 0 or not prop.matchable:
-            continue
-        try:
-            left_values = left.get(name)
-            right_values = right.get(name)
-        except InvalidData:
-            continue
-
-        if not len(left_values) or not len(right_values):
-            continue
-        prop_score = prop.type.compare_sets(left_values, right_values)
-        score += prop_score * weight
-    return score
+    scores = compare_scores(model, left, right)
+    weighted_score = 0
+    weights_sum = 0
+    for prop, score in scores.items():
+        weight = MATCH_WEIGHTS.get(prop, 0)
+        weighted_score += score * weight
+        weights_sum += weight
+    if not weights_sum:
+        return 0.0
+    return weighted_score / weights_sum
 
 
 def _normalize_names(names):
@@ -70,19 +72,41 @@ def _normalize_names(names):
             yield fp
 
 
+def compare_prop(prop, left, right):
+    if prop.type == registry.name:
+        return compare_names(left, right)
+    elif prop.type == registry.country:
+        return compare_countries(left, right)
+    left_values = left.get(prop.name, quiet=True)
+    right_values = right.get(prop.name, quiet=True)
+    if not left_values and not right_values:
+        raise ValueError("At least one proxy must have property: %s", prop)
+    elif not left_values or not right_values:
+        return 0.0
+    return prop.type.compare_sets(left_values, right_values)
+
+
 def compare_names(left, right):
-    result = 0
+    result = 0.0
     left_list = list(_normalize_names(left.names))
     right_list = list(_normalize_names(right.names))
+    if not left_list and not right_list:
+        raise ValueError("At least one proxy must have name properties")
+    elif not left_list or not right_list:
+        return 0.0
     for (left, right) in itertools.product(left_list, right_list):
-        similarity = jaro(left, right)
-        score = similarity * dampen(2, 20, shortest(left, right))
-        result = max(result, score)
+        similarity = fuzz.WRatio(left, right, full_process=False) / 100.0
+        result = max(result, similarity)
     return result
 
 
 def compare_countries(left, right):
-    left = left.country_hints
-    right = right.country_hints
-    overlap = left.intersection(right)
-    return min(2.0, len(overlap))
+    left_countries = left.country_hints
+    right_countries = right.country_hints
+    if not left_countries and not right_countries:
+        raise ValueError("At least one proxy must have country properties")
+    elif not left_countries or not right_countries:
+        return 0.0
+    intersection = left_countries.intersection(right_countries)
+    union = left_countries.union(right_countries)
+    return len(intersection) / len(union)
