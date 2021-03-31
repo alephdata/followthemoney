@@ -30,6 +30,7 @@ setup(
         "click >= 7.0",
         "stringcase >= 1.2.0, < 2.0.0",
         "requests >= 2.21.0",
+        "fuzzywuzzy[speedup] >= 0.18.0",
         "python-levenshtein >= 0.12.0",
         "normality >= 2.1.1, < 3.0.0",
         "sqlalchemy >= 1.2.0, < 2.0.0",
