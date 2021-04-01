@@ -1,7 +1,6 @@
 import itertools
+from banal import ensure_list
 from collections import defaultdict
-import math
-
 from fuzzywuzzy import fuzz
 from normality import normalize
 import fingerprints
@@ -34,30 +33,40 @@ def compare_scores(
     right = model.get_proxy(right)
     if right.schema not in list(left.schema.matchable_schemata):
         return {}
-    schema = model.common_schema(left.schema, right.schema)
+    # schema = model.common_schema(left.schema, right.schema)
     scores = defaultdict(list)
-    try:
-        scores[registry.name] = [compare_names(left, right)]
-    except ValueError:
-        pass
-    try:
-        scores[registry.country] = [compare_countries(left, right)]
-    except ValueError:
-        pass
-    exclude_prop_types = set(exclude_prop_types or []).union(scores.keys())
-    for name, prop in schema.properties.items():
-        if not prop.matchable:
-            continue
-        elif include_prop_types and prop.type not in include_prop_types:
-            continue
-        elif exclude_prop_types and prop.type in exclude_prop_types:
-            continue
+    # try:
+    #     scores[registry.name] = [compare_names(left, right)]
+    # except ValueError:
+    #     pass
+    # try:
+    #     scores[registry.country] = [compare_countries(left, right)]
+    # except ValueError:
+    #     pass
+    prop_types = include_prop_types or scores.keys()
+    for exclude in ensure_list(exclude_prop_types):
+        prop_types.discard(exclude)
+    for prop_type in prop_types:
         try:
-            score = compare_prop(prop, left, right)
-            scores[prop.type].append(score)
+            scores[prop_type] = compare_type(prop_type, left, right)
         except ValueError:
             pass
     return scores
+
+    # exclude_prop_types = set(exclude_prop_types or []).union(scores.keys())
+    # for name, prop in schema.properties.items():
+    #     if not prop.matchable:
+    #         continue
+    #     elif include_prop_types and prop.type not in include_prop_types:
+    #         continue
+    #     elif exclude_prop_types and prop.type in exclude_prop_types:
+    #         continue
+    #     try:
+    #         score = compare_prop(prop, left, right)
+    #         scores[prop.type].append(score)
+    #     except ValueError:
+    #         pass
+    # return scores
 
 
 def compare(model, left, right):
@@ -65,16 +74,40 @@ def compare(model, left, right):
     scores = compare_scores(model, left, right, set(MATCH_WEIGHTS.keys()))
     weighted_score = 0
     weights_sum = 0
-    for prop, score in scores.items():
-        weight = MATCH_WEIGHTS.get(prop, 0)
+    for prop_type, score in scores.items():
+        weight = MATCH_WEIGHTS.get(prop_type, 0)
         try:
-            weighted_score += max(filter(None, score)) * weight
+            weighted_score += score * weight
             weights_sum += weight
         except ValueError:
             weights_sum += weight * MISSING_WEIGHT
     if not weights_sum:
         return 0.0
     return weighted_score / weights_sum
+
+
+def compare_type(prop_type, left, right):
+    if prop_type == registry.country:
+        return compare_countries(left, right)
+    left_values = left.get_type_values(prop_type, matchable=True)
+    right_values = right.get_type_values(prop_type, matchable=True)
+    if prop_type == registry.name:
+        return compare_names(left_values, right_values)
+    if not len(left_values) and not len(right_values):
+        raise ValueError("At least one proxy must have type: %s", prop_type)
+    elif not left_values or not right_values:
+        return None
+    return prop_type.compare_sets(left_values, right_values)
+
+
+# def compare_prop(prop, left, right):
+#     left_values = left.get(prop.name, quiet=True)
+#     right_values = right.get(prop.name, quiet=True)
+#     if not left_values and not right_values:
+#         raise ValueError("At least one proxy must have property: %s", prop)
+#     elif not left_values or not right_values:
+#         return None
+#     return prop.type.compare_sets(left_values, right_values)
 
 
 def _normalize_names(names):
@@ -94,20 +127,10 @@ def _normalize_names(names):
             yield fp
 
 
-def compare_prop(prop, left, right):
-    left_values = left.get(prop.name, quiet=True)
-    right_values = right.get(prop.name, quiet=True)
-    if not left_values and not right_values:
-        raise ValueError("At least one proxy must have property: %s", prop)
-    elif not left_values or not right_values:
-        return None
-    return prop.type.compare_sets(left_values, right_values)
-
-
-def compare_names(left, right, max_names=200):
+def compare_names(left_names, right_names, max_names=200):
     result = 0.0
-    left_list = list(itertools.islice(_normalize_names(left.names), max_names))
-    right_list = list(itertools.islice(_normalize_names(right.names), max_names))
+    left_list = list(itertools.islice(_normalize_names(left_names), max_names))
+    right_list = list(itertools.islice(_normalize_names(right_names), max_names))
     if not left_list and not right_list:
         raise ValueError("At least one proxy must have name properties")
     elif not left_list or not right_list:
