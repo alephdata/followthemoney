@@ -9,9 +9,11 @@ Analyzable:
   properties:
     detectedLanguage:
       label: "Detected language"
+      matchable: false
       type: language
     detectedCountry:
       label: "Detected country"
+      matchable: false
       type: country
     namesMentioned:
       label: "Detected names"
@@ -36,6 +38,7 @@ Analyzable:
     locationMentioned:
       label: "Detected locations"
       hidden: true
+      matchable: false
       type: address
     phoneMentioned:
       label: "Detected phones"

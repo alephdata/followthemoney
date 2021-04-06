@@ -35,14 +35,17 @@ Interval:
     sourceUrl:
       label: "Source URL"
       type: url
+      matchable: false
     publisher:
       label: "Publishing source"
     publisherUrl:
       label: "Publishing source URL"
       type: url
+      matchable: false
     alephUrl:
       label: Aleph URL
       type: url
+      matchable: false
     namesMentioned:
       label: "Detected names"
       hidden: true
@@ -61,3 +64,4 @@ Interval:
     retrievedAt:
       label: "Retrieved on"
       type: date
+      matchable: false

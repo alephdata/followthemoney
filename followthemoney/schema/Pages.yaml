@@ -19,3 +19,4 @@ Pages:
       label: "PDF alternative version checksum"
       hidden: true
       type: checksum
+      matchable: false

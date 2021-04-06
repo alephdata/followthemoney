@@ -103,6 +103,7 @@ LegalEntity:
       label: "OKPO"
       description: "Russian industry classifier"
       type: identifier
+      matchable: false
     innCode:
       label: "INN"
       description: "Russian company ID"

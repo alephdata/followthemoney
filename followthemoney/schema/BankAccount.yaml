@@ -26,6 +26,7 @@ BankAccount:
       type: iban
     bic:
       label: Bank Identifier Code
+      type: identifier
     bank:
       label: Bank
       type: entity

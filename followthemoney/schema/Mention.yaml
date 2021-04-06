@@ -36,15 +36,19 @@ Mention:
     detectedSchema:
       label: "Detected entity type"
       hidden: true
+      matchable: false
     contextCountry:
       label: "Co-occurring countries"
       hidden: true
       type: country
+      matchable: false
     contextPhone:
       label: "Co-occurring phone numbers"
       hidden: true
       type: phone
+      matchable: false
     contextEmail:
       label: "Co-occurring e-mail addresses"
       hidden: true
       type: email
+      matchable: false

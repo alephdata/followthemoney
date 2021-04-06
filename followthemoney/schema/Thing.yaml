@@ -48,6 +48,7 @@ Thing:
     alephUrl:
       label: Aleph URL
       type: url
+      matchable: false
     wikipediaUrl:
       label: Wikipedia Article
       type: url
@@ -92,7 +93,6 @@ Thing:
     modifiedAt:
       label: "Modified on"
       type: date
-      matchable: false
     retrievedAt:
       label: "Retrieved on"
       type: date

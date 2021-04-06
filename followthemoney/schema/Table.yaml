@@ -28,3 +28,4 @@ Table:
       label: "CSV alternative version checksum"
       hidden: true
       type: checksum
+      matchable: false

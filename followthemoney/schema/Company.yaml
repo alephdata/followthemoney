@@ -43,6 +43,7 @@ Company:
     ipoCode:
       label: "IPO"
       type: identifier
+      matchable: false
     cikCode:
       label: "SEC Central Index Key"
       description: "US SEC Central Index Key"
@@ -60,10 +61,12 @@ Company:
     caemCode:
       label: "COD CAEM"
       description: "(RO) What kind of activity a legal entity is allowed to develop"
+      matchable: false
     kppCode:
       label: "KPP"
       description: "(RU, КПП) in addition to INN for orgs; reason for registration at FNS"
       type: identifier
+      matchable: false
     okvedCode:
       label: "OKVED(2) Classifier"
       description: "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
@@ -76,6 +79,7 @@ Company:
       label: "Federal tax service code"
       description: "(RU, ФНС) Federal Tax Service related info"
       type: identifier
+      matchable: false
     fssCode:
       label: "FSS"
       description: "(RU, ФСС) Social Security"
