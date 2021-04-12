@@ -23,6 +23,7 @@ class CountryType(EnumType):
         names = {
             "zz": gettext("Global"),
             "eu": gettext("European Union"),
+            "zr": gettext("Zaire"),
             # Overwrite "Czechia" label:
             "cz": gettext("Czech Republic"),
             "xk": gettext("Kosovo"),
@@ -32,6 +33,10 @@ class CountryType(EnumType):
             "ge-ab": gettext("Abkhazia"),
             "x-so": gettext("South Ossetia"),
             "so-som": gettext("Somaliland"),
+            "cy-trnc": gettext("Northern Cyprus"),
+            "az-nk": gettext("Nagorno-Karabakh"),
+            "cn-xz": gettext("Tibet"),
+            "gg-srk": gettext("Sark"),
             "gb-wls": gettext("Wales"),
             "gb-sct": gettext("Scotland"),
             "gb-nir": gettext("Northern Ireland"),
