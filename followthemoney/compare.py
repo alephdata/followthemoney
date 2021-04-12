@@ -1,80 +1,90 @@
 import itertools
-from collections import defaultdict
 import math
+import warnings
 
 from fuzzywuzzy import fuzz
 from normality import normalize
 import fingerprints
+from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 
-# OK, Here's the plan: we have to find a way to get user judgements
-# on as many of these matches as we can, then build a regression
-# model which properly weights the value of a matching property
-# based upon it's type.
-MATCH_WEIGHTS = {
-    registry.name: 0.6,
-    registry.country: 0.1,
-    registry.identifier: 0.3,
-    registry.url: 0.1,
-    registry.email: 0.2,
-    registry.ip: 0.1,
-    registry.iban: 0.3,
-    registry.address: 0.3,
-    registry.date: 0.2,
-    registry.phone: 0.3,
+
+# Compare weights come from the glm-bernouli model in followthemoney-predict
+COMPARE_WEIGHTS = {
+    registry.name: 12.275729155073371,
+    registry.country: 1.0494517476987815,
+    registry.date: 6.960245940274218,
+    registry.identifier: 5.2209896558064175,
+    registry.address: 6.456137299747168,
+    registry.phone: 3.538892687331418,
+    registry.email: 14.115925628770384,
+    registry.iban: 0.019140301711998726,
+    registry.url: 3.211995327345834,
+    None: -11.91521189545115,
 }
-MISSING_WEIGHT = 0.75
 
 
-def compare_scores(
-    model, left, right, include_prop_types=None, exclude_prop_types=None
-):
+class FTMPredictWarning(UserWarning):
+    def __str__(self):
+        return (
+            "followthemoney.compare uses a simplified model. Use the package "
+            "followthemoney-predict for a more accurate entity comparison model"
+        )
+
+
+warnings.simplefilter("once", FTMPredictWarning)
+
+
+def compare_scores(model, left, right):
     """Compare two entities and return a match score for each property."""
     left = model.get_proxy(left)
     right = model.get_proxy(right)
-    if right.schema not in list(left.schema.matchable_schemata):
+    try:
+        model.common_schema(left.schema, right.schema)
+    except InvalidData:
         return {}
-    schema = model.common_schema(left.schema, right.schema)
-    scores = defaultdict(list)
-    try:
-        scores[registry.name] = [compare_names(left, right)]
-    except ValueError:
-        pass
-    try:
-        scores[registry.country] = [compare_countries(left, right)]
-    except ValueError:
-        pass
-    exclude_prop_types = set(exclude_prop_types or []).union(scores.keys())
-    for name, prop in schema.properties.items():
-        if not prop.matchable:
-            continue
-        elif include_prop_types and prop.type not in include_prop_types:
-            continue
-        elif exclude_prop_types and prop.type in exclude_prop_types:
-            continue
+    scores = dict()
+    left_inv = left.get_type_inverted(matchable=True)
+    right_inv = right.get_type_inverted(matchable=True)
+    left_groups = set(left_inv.keys())
+    right_groups = set(right_inv.keys())
+    for group_name in left_groups.intersection(right_groups):
+        group = registry.groups[group_name]
         try:
-            score = compare_prop(prop, left, right)
-            scores[prop.type].append(score)
+            if group == registry.name:
+                score = compare_names(left, right)
+            elif group == registry.country:
+                score = compare_countries(left, right)
+            else:
+                score = compare_group(
+                    group, left_inv[group_name], right_inv[group_name]
+                )
+            scores[group] = score
         except ValueError:
             pass
+    for group_name in left_groups.symmetric_difference(right_groups):
+        group = registry.groups[group_name]
+        scores[group] = None
     return scores
 
 
-def compare(model, left, right):
-    """Compare two entities and return a match score."""
-    scores = compare_scores(model, left, right, set(MATCH_WEIGHTS.keys()))
-    weighted_score = 0
-    weights_sum = 0
-    for prop, score in scores.items():
-        weight = MATCH_WEIGHTS.get(prop, 0)
-        try:
-            weighted_score += max(filter(None, score)) * weight
-            weights_sum += weight
-        except ValueError:
-            weights_sum += weight * MISSING_WEIGHT
-    if not weights_sum:
+def _compare(scores, weights, n_std=1):
+    warnings.warn(FTMPredictWarning())
+    if not scores or not any(scores.values()):
         return 0.0
-    return weighted_score / weights_sum
+    prob = 0
+    for field, weight in weights.items():
+        if field:
+            prob += weight * (scores.get(field) or 0.0)
+        else:
+            prob += weight
+    return 1.0 / (1.0 + math.exp(-prob))
+
+
+def compare(model, left, right, weights=COMPARE_WEIGHTS):
+    """Compare two entities and return a match score."""
+    scores = compare_scores(model, left, right)
+    return _compare(scores, weights)
 
 
 def _normalize_names(names):
@@ -94,14 +104,12 @@ def _normalize_names(names):
             yield fp
 
 
-def compare_prop(prop, left, right):
-    left_values = left.get(prop.name, quiet=True)
-    right_values = right.get(prop.name, quiet=True)
+def compare_group(group_type, left_values, right_values):
     if not left_values and not right_values:
-        raise ValueError("At least one proxy must have property: %s", prop)
+        raise ValueError("At least one proxy must have property type: %s", group_type)
     elif not left_values or not right_values:
         return None
-    return prop.type.compare_sets(left_values, right_values)
+    return group_type.compare_sets(left_values, right_values)
 
 
 def compare_names(left, right, max_names=200):

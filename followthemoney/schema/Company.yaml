@@ -64,6 +64,7 @@ Company:
       label: "KPP"
       description: "(RU, КПП) in addition to INN for orgs; reason for registration at FNS"
       type: identifier
+      matchable: false
     okvedCode:
       label: "OKVED(2) Classifier"
       description: "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer"
