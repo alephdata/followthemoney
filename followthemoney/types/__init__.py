@@ -20,6 +20,7 @@ from followthemoney.types.string import TextType
 from followthemoney.types.string import HTMLType
 from followthemoney.types.string import StringType
 from followthemoney.types.number import NumberType
+from followthemoney.types.common import PropertyType
 
 registry = Registry()
 registry.add(UrlType)

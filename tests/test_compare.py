@@ -45,14 +45,14 @@ class CompareTestCase(TestCase):
         best_score = compare(model, ENTITY, ENTITY)
         assert best_score > 0.5, best_score
         comp = {"schema": "RealEstate"}
-        self.assertEqual(compare(model, ENTITY, comp), 0)
-        self.assertEqual(compare(model, comp, comp), 0)
+        self.assertAlmostEqual(compare(model, ENTITY, comp), 0)
+        self.assertAlmostEqual(compare(model, comp, comp), 0)
 
         comp = {"schema": "Person"}
-        self.assertEqual(compare(model, ENTITY, comp), 0)
+        self.assertAlmostEqual(compare(model, ENTITY, comp), 0)
 
         comp = {"schema": "LegalEntity"}
-        self.assertEqual(compare(model, ENTITY, comp), 0)
+        self.assertAlmostEqual(compare(model, ENTITY, comp), 0)
 
     def test_compare_quality(self):
         best_score = compare(model, ENTITY, ENTITY)

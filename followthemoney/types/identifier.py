@@ -1,7 +1,7 @@
 import re
 
 from followthemoney.types.common import PropertyType
-from followthemoney.util import dampen, shortest
+from followthemoney.util import dampen, shortest, longest
 from followthemoney.util import defer as _
 
 
@@ -30,15 +30,20 @@ class IdentifierType(PropertyType):
     def compare(self, left, right):
         left = self.clean_compare(left)
         right = self.clean_compare(right)
-        specificity = self.specificity(shortest(left, right))
         if left == right:
-            return specificity
-        if left in right or right in left:
-            return 0.8 * specificity
+            return 1
+        elif left in right or right in left:
+            return len(shortest(left, right)) / len(longest(left, right))
         return 0
 
+    def compare_sets(self, left, right):
+        scores = super().compare_sets(left, right, lambda x: x)
+        if not scores:
+            return 0.0
+        return min(1.0, sum(scores) / min(len(left), len(right)))
+
     def _specificity(self, value):
-        return dampen(6, 10, value)
+        return dampen(4, 10, value)
 
     def node_id(self, value):
         return "id:%s" % value

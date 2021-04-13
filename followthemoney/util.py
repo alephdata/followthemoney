@@ -134,3 +134,7 @@ def dampen(short: int, long: int, text: str) -> float:
 
 def shortest(*texts: str) -> str:
     return min(texts, key=len)
+
+
+def longest(*texts: str) -> str:
+    return max(texts, key=len)
