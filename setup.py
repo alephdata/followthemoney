@@ -34,7 +34,7 @@ setup(
         "python-levenshtein >= 0.12.0",
         "normality >= 2.1.1, < 3.0.0",
         "sqlalchemy >= 1.2.0, < 2.0.0",
-        "countrynames >= 1.7.0, < 2.0.0",
+        "countrynames >= 1.9.0, < 2.0.0",
         "languagecodes >= 1.0.9, < 2.0.0",
         "fingerprints >= 1.0.1, < 2.0.0",
         "phonenumbers >= 8.9.11",
