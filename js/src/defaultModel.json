@@ -175,7 +175,6 @@
         },
         "detectedCountry": {
           "label": "Detected country",
-          "matchable": true,
           "name": "detectedCountry",
           "qname": "Analyzable:detectedCountry",
           "type": "country"
@@ -213,7 +212,6 @@
         "locationMentioned": {
           "hidden": true,
           "label": "Detected locations",
-          "matchable": true,
           "name": "locationMentioned",
           "qname": "Analyzable:locationMentioned",
           "type": "address"
@@ -487,6 +485,13 @@
           "qname": "BankAccount:balance",
           "type": "number"
         },
+        "balanceDate": {
+          "label": "Balance date",
+          "matchable": true,
+          "name": "balanceDate",
+          "qname": "BankAccount:balanceDate",
+          "type": "date"
+        },
         "bank": {
           "label": "Bank",
           "matchable": true,
@@ -510,9 +515,10 @@
         },
         "bic": {
           "label": "Bank Identifier Code",
+          "matchable": true,
           "name": "bic",
           "qname": "BankAccount:bic",
-          "type": "string"
+          "type": "identifier"
         },
         "contractBankAccount": {
           "label": "Customs declarations",
@@ -540,6 +546,19 @@
           "name": "iban",
           "qname": "BankAccount:iban",
           "type": "iban"
+        },
+        "maxBalance": {
+          "label": "Maximum balance",
+          "name": "maxBalance",
+          "qname": "BankAccount:maxBalance",
+          "type": "number"
+        },
+        "maxBalanceDate": {
+          "label": "Maximum balance date",
+          "matchable": true,
+          "name": "maxBalanceDate",
+          "qname": "BankAccount:maxBalanceDate",
+          "type": "date"
         },
         "paymentBeneficiaryAccount": {
           "label": "Payments received",
@@ -698,7 +717,6 @@
         "fnsCode": {
           "description": "(RU, \u0424\u041d\u0421) Federal Tax Service related info",
           "label": "Federal tax service code",
-          "matchable": true,
           "name": "fnsCode",
           "qname": "Company:fnsCode",
           "type": "identifier"
@@ -719,7 +737,6 @@
         },
         "ipoCode": {
           "label": "IPO",
-          "matchable": true,
           "name": "ipoCode",
           "qname": "Company:ipoCode",
           "type": "identifier"
@@ -750,7 +767,6 @@
         "kppCode": {
           "description": "(RU, \u041a\u041f\u041f) in addition to INN for orgs; reason for registration at FNS",
           "label": "KPP",
-          "matchable": true,
           "name": "kppCode",
           "qname": "Company:kppCode",
           "type": "identifier"
@@ -2266,7 +2282,6 @@
       "properties": {
         "alephUrl": {
           "label": "Aleph URL",
-          "matchable": true,
           "name": "alephUrl",
           "qname": "Interval:alephUrl",
           "type": "url"
@@ -2321,7 +2336,6 @@
         },
         "publisherUrl": {
           "label": "Publishing source URL",
-          "matchable": true,
           "name": "publisherUrl",
           "qname": "Interval:publisherUrl",
           "type": "url"
@@ -2334,14 +2348,12 @@
         },
         "retrievedAt": {
           "label": "Retrieved on",
-          "matchable": true,
           "name": "retrievedAt",
           "qname": "Interval:retrievedAt",
           "type": "date"
         },
         "sourceUrl": {
           "label": "Source URL",
-          "matchable": true,
           "name": "sourceUrl",
           "qname": "Interval:sourceUrl",
           "type": "url"
@@ -2705,7 +2717,6 @@
         "okpoCode": {
           "description": "Russian industry classifier",
           "label": "OKPO",
-          "matchable": true,
           "name": "okpoCode",
           "qname": "LegalEntity:okpoCode",
           "type": "identifier"
@@ -3044,7 +3055,6 @@
         "contextCountry": {
           "hidden": true,
           "label": "Co-occurring countries",
-          "matchable": true,
           "name": "contextCountry",
           "qname": "Mention:contextCountry",
           "type": "country"
@@ -3052,7 +3062,6 @@
         "contextEmail": {
           "hidden": true,
           "label": "Co-occurring e-mail addresses",
-          "matchable": true,
           "name": "contextEmail",
           "qname": "Mention:contextEmail",
           "type": "email"
@@ -3060,7 +3069,6 @@
         "contextPhone": {
           "hidden": true,
           "label": "Co-occurring phone numbers",
-          "matchable": true,
           "name": "contextPhone",
           "qname": "Mention:contextPhone",
           "type": "phone"
@@ -3542,7 +3550,6 @@
         "pdfHash": {
           "hidden": true,
           "label": "PDF alternative version checksum",
-          "matchable": true,
           "name": "pdfHash",
           "qname": "Pages:pdfHash",
           "type": "checksum"
@@ -4463,7 +4470,6 @@
         "csvHash": {
           "hidden": true,
           "label": "CSV alternative version checksum",
-          "matchable": true,
           "name": "csvHash",
           "qname": "Table:csvHash",
           "type": "checksum"
@@ -4590,7 +4596,6 @@
         },
         "alephUrl": {
           "label": "Aleph URL",
-          "matchable": true,
           "name": "alephUrl",
           "qname": "Thing:alephUrl",
           "type": "url"
@@ -4650,6 +4655,7 @@
         },
         "modifiedAt": {
           "label": "Modified on",
+          "matchable": true,
           "name": "modifiedAt",
           "qname": "Thing:modifiedAt",
           "type": "date"
@@ -5275,6 +5281,7 @@
         "aw": "Aruba",
         "ax": "\u00c5land Islands",
         "az": "Azerbaijan",
+        "az-nk": "Nagorno-Karabakh",
         "ba": "Bosnia & Herzegovina",
         "bb": "Barbados",
         "bd": "Bangladesh",
@@ -5307,6 +5314,7 @@
         "cl": "Chile",
         "cm": "Cameroon",
         "cn": "China",
+        "cn-xz": "Tibet",
         "co": "Colombia",
         "cp": "Clipperton Island",
         "cr": "Costa Rica",
@@ -5316,6 +5324,7 @@
         "cw": "Cura\u00e7ao",
         "cx": "Christmas Island",
         "cy": "Cyprus",
+        "cy-trnc": "Northern Cyprus",
         "cz": "Czech Republic",
         "de": "Germany",
         "dg": "Diego Garcia",
@@ -5350,6 +5359,7 @@
         "ge-ab": "Abkhazia",
         "gf": "French Guiana",
         "gg": "Guernsey",
+        "gg-srk": "Sark",
         "gh": "Ghana",
         "gi": "Gibraltar",
         "gl": "Greenland",
@@ -5529,6 +5539,7 @@
         "yucs": "Yugoslavia",
         "za": "South Africa",
         "zm": "Zambia",
+        "zr": "Zaire",
         "zw": "Zimbabwe",
         "zz": "Global"
       }

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-12 06:56+0100\n"
+"POT-Creation-Date: 2021-04-13 08:43+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Mohammed AlKawmani <komani@arij.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/aleph/teams/76591/ar/)\n"
@@ -479,6 +479,21 @@ msgstr "نوع الحساب"
 #: followthemoney/schema/BankAccount.yaml
 msgid "Balance"
 msgstr "رصيد حساب"
+
+#. BankAccount.properties.balanceDate.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Balance date"
+msgstr ""
+
+#. BankAccount.properties.maxBalance.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Maximum balance"
+msgstr ""
+
+#. BankAccount.properties.maxBalanceDate.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Maximum balance date"
+msgstr ""
 
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
@@ -1969,7 +1984,7 @@ msgstr ""
 #. LegalEntity.properties.name.label
 #. Thing.properties.name.label
 #: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/name.py:21
+#: followthemoney/types/name.py:22
 msgid "Name"
 msgstr "الاسم"
 
@@ -3339,51 +3354,71 @@ msgstr "العالم"
 msgid "European Union"
 msgstr "الإتحاد الأوربي"
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:26
+msgid "Zaire"
+msgstr ""
+
+#: followthemoney/types/country.py:28
 msgid "Czech Republic"
 msgstr "جمهورية التشيك"
 
-#: followthemoney/types/country.py:28
+#: followthemoney/types/country.py:29
 msgid "Kosovo"
 msgstr "كوسوفو"
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:30
 msgid "Yugoslavia"
 msgstr "يوغوسلافيا"
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:31
 msgid "Serbia and Montenegro"
 msgstr "صربيا والجبل الأسود"
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:32
 msgid "Soviet Union"
 msgstr "الاتحاد السوفياتي"
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:33
 msgid "Abkhazia"
 msgstr "أبخازيا"
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:34
 msgid "South Ossetia"
 msgstr "أوسيتيا الجنوبية"
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:35
 msgid "Somaliland"
 msgstr "أرض الصومال"
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:36
+msgid "Northern Cyprus"
+msgstr ""
+
+#: followthemoney/types/country.py:37
+msgid "Nagorno-Karabakh"
+msgstr ""
+
+#: followthemoney/types/country.py:38
+msgid "Tibet"
+msgstr ""
+
+#: followthemoney/types/country.py:39
+msgid "Sark"
+msgstr ""
+
+#: followthemoney/types/country.py:40
 msgid "Wales"
 msgstr "ويلز"
 
-#: followthemoney/types/country.py:36
+#: followthemoney/types/country.py:41
 msgid "Scotland"
 msgstr "اسكتلندا"
 
-#: followthemoney/types/country.py:37
+#: followthemoney/types/country.py:42
 msgid "Northern Ireland"
 msgstr "إيرلندا الشمالية"
 
-#: followthemoney/types/country.py:38
+#: followthemoney/types/country.py:43
 msgid "Transnistria"
 msgstr "ترانسنيستريا"
 
@@ -3447,7 +3482,7 @@ msgstr "يشير MIME إلى \"ملحقات بريد إنترنت متعدد ا�
 msgid "MIME-Types"
 msgstr "أنواع  بريد إنترنت متعدد الأغراض"
 
-#: followthemoney/types/name.py:22
+#: followthemoney/types/name.py:23
 msgid "Names"
 msgstr "أسماء"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-12 06:56+0100\n"
+"POT-Creation-Date: 2021-04-13 08:43+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -484,6 +484,21 @@ msgstr "Тип счёта"
 #: followthemoney/schema/BankAccount.yaml
 msgid "Balance"
 msgstr "Баланс"
+
+#. BankAccount.properties.balanceDate.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Balance date"
+msgstr ""
+
+#. BankAccount.properties.maxBalance.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Maximum balance"
+msgstr ""
+
+#. BankAccount.properties.maxBalanceDate.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Maximum balance date"
+msgstr ""
 
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
@@ -1982,7 +1997,7 @@ msgstr ""
 #. LegalEntity.properties.name.label
 #. Thing.properties.name.label
 #: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/name.py:21
+#: followthemoney/types/name.py:22
 msgid "Name"
 msgstr "Имя"
 
@@ -2700,7 +2715,7 @@ msgstr "Политическая ассоциация"
 #. Person.properties.education.label
 #: followthemoney/schema/Person.yaml
 msgid "Education"
-msgstr ""
+msgstr "Образование"
 
 #. PlainText.label
 #: followthemoney/schema/PlainText.yaml
@@ -3359,51 +3374,71 @@ msgstr "Все страны мира"
 msgid "European Union"
 msgstr "Европейский союз"
 
-#: followthemoney/types/country.py:27
+#: followthemoney/types/country.py:26
+msgid "Zaire"
+msgstr ""
+
+#: followthemoney/types/country.py:28
 msgid "Czech Republic"
 msgstr "Чешская Республика"
 
-#: followthemoney/types/country.py:28
+#: followthemoney/types/country.py:29
 msgid "Kosovo"
 msgstr "Косово"
 
-#: followthemoney/types/country.py:29
+#: followthemoney/types/country.py:30
 msgid "Yugoslavia"
 msgstr "Югославия"
 
-#: followthemoney/types/country.py:30
+#: followthemoney/types/country.py:31
 msgid "Serbia and Montenegro"
 msgstr "Сербия и Черногория"
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:32
 msgid "Soviet Union"
 msgstr "Советский Союз"
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:33
 msgid "Abkhazia"
 msgstr "Абхазия"
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:34
 msgid "South Ossetia"
 msgstr "Южная Осетия"
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:35
 msgid "Somaliland"
 msgstr "Сомалиленд"
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:36
+msgid "Northern Cyprus"
+msgstr ""
+
+#: followthemoney/types/country.py:37
+msgid "Nagorno-Karabakh"
+msgstr ""
+
+#: followthemoney/types/country.py:38
+msgid "Tibet"
+msgstr ""
+
+#: followthemoney/types/country.py:39
+msgid "Sark"
+msgstr ""
+
+#: followthemoney/types/country.py:40
 msgid "Wales"
 msgstr "Уэльс"
 
-#: followthemoney/types/country.py:36
+#: followthemoney/types/country.py:41
 msgid "Scotland"
 msgstr "Шотландия"
 
-#: followthemoney/types/country.py:37
+#: followthemoney/types/country.py:42
 msgid "Northern Ireland"
 msgstr "Северная Ирландия"
 
-#: followthemoney/types/country.py:38
+#: followthemoney/types/country.py:43
 msgid "Transnistria"
 msgstr "Приднестровье"
 
@@ -3467,7 +3502,7 @@ msgstr "MIME-тип"
 msgid "MIME-Types"
 msgstr "MIME-типы"
 
-#: followthemoney/types/name.py:22
+#: followthemoney/types/name.py:23
 msgid "Names"
 msgstr "Имена"
 
