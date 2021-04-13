@@ -39,5 +39,14 @@ BankAccount:
     balance:
       label: Balance
       type: number
+    balanceDate:
+      label: Balance date
+      type: date
+    maxBalance:
+      label: Maximum balance
+      type: number
+    maxBalanceDate:
+      label: Maximum balance date
+      type: date
     bankAddress:
       label: Bank Address
