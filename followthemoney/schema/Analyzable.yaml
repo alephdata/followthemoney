@@ -10,10 +10,12 @@ Analyzable:
     detectedLanguage:
       label: "Detected language"
       matchable: false
+      hidden: true
       type: language
     detectedCountry:
       label: "Detected country"
       matchable: false
+      hidden: true
       type: country
     namesMentioned:
       label: "Detected names"

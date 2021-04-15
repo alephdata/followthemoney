@@ -35,7 +35,7 @@ BankAccount:
         name: bankAccounts
         label: "Bank accounts"
     accountType:
-      label: Account Type
+      label: Account type
     balance:
       label: Balance
       type: number
@@ -49,4 +49,4 @@ BankAccount:
       label: Maximum balance date
       type: date
     bankAddress:
-      label: Bank Address
+      label: Bank address

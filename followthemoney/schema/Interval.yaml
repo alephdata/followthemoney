@@ -45,6 +45,7 @@ Interval:
     alephUrl:
       label: Aleph URL
       type: url
+      hidden: true
       matchable: false
     namesMentioned:
       label: "Detected names"

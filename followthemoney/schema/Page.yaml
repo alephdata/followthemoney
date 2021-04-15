@@ -25,6 +25,7 @@ Page:
     detectedLanguage:
       label: "Auto-detected language"
       type: language
+      hidden: true
     translatedText:
       label: "Translated version of the body text"
       hidden: true

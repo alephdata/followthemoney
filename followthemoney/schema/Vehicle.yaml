@@ -37,9 +37,6 @@ Vehicle:
     buildDate:
       label: Build Date
       type: date
-    country:
-      label: Country
-      type: country
     registrationDate:
       label: Registration Date
       type: date

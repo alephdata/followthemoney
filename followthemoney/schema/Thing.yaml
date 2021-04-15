@@ -48,6 +48,7 @@ Thing:
     alephUrl:
       label: Aleph URL
       type: url
+      hidden: true
       matchable: false
     wikipediaUrl:
       label: Wikipedia Article
