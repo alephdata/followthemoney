@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-13 08:43+0200\n"
+"POT-Creation-Date: 2021-04-15 21:33+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -159,11 +159,10 @@ msgstr "Долгота"
 #. Sanction.properties.country.label
 #. TaxRoll.properties.country.label
 #. Thing.properties.country.label
-#. Vehicle.properties.country.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Event.yaml
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
 #: followthemoney/schema/TaxRoll.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/schema/Vehicle.yaml followthemoney/types/country.py:17
+#: followthemoney/types/country.py:17
 msgid "Country"
 msgstr "Страна"
 
@@ -477,8 +476,8 @@ msgstr "Банковский счета"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Account Type"
-msgstr "Тип счёта"
+msgid "Account type"
+msgstr ""
 
 #. BankAccount.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
@@ -488,22 +487,22 @@ msgstr "Баланс"
 #. BankAccount.properties.balanceDate.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Balance date"
-msgstr ""
+msgstr "Дата баланса"
 
 #. BankAccount.properties.maxBalance.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Maximum balance"
-msgstr ""
+msgstr "Максимальный баланс"
 
 #. BankAccount.properties.maxBalanceDate.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Maximum balance date"
-msgstr ""
+msgstr "Дата максимального баланса"
 
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Address"
-msgstr "Адрес банка"
+msgid "Bank address"
+msgstr ""
 
 #. Call.label
 #: followthemoney/schema/Call.yaml
@@ -3376,7 +3375,7 @@ msgstr "Европейский союз"
 
 #: followthemoney/types/country.py:26
 msgid "Zaire"
-msgstr ""
+msgstr "Заир"
 
 #: followthemoney/types/country.py:28
 msgid "Czech Republic"
@@ -3412,19 +3411,19 @@ msgstr "Сомалиленд"
 
 #: followthemoney/types/country.py:36
 msgid "Northern Cyprus"
-msgstr ""
+msgstr "Северный Кипр"
 
 #: followthemoney/types/country.py:37
 msgid "Nagorno-Karabakh"
-msgstr ""
+msgstr "Нагорный Карабах"
 
 #: followthemoney/types/country.py:38
 msgid "Tibet"
-msgstr ""
+msgstr "Тибет"
 
 #: followthemoney/types/country.py:39
 msgid "Sark"
-msgstr ""
+msgstr "Сарк"
 
 #: followthemoney/types/country.py:40
 msgid "Wales"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-13 08:43+0200\n"
+"POT-Creation-Date: 2021-04-15 21:33+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Tajna Biscevic <tajna@occrp.org>, 2019\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
@@ -159,11 +159,10 @@ msgstr "Dužina"
 #. Sanction.properties.country.label
 #. TaxRoll.properties.country.label
 #. Thing.properties.country.label
-#. Vehicle.properties.country.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Event.yaml
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
 #: followthemoney/schema/TaxRoll.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/schema/Vehicle.yaml followthemoney/types/country.py:17
+#: followthemoney/types/country.py:17
 msgid "Country"
 msgstr "Država"
 
@@ -471,8 +470,8 @@ msgstr ""
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Account Type"
-msgstr "Tip računa"
+msgid "Account type"
+msgstr ""
 
 #. BankAccount.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
@@ -496,8 +495,8 @@ msgstr ""
 
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Address"
-msgstr "Adresa banke"
+msgid "Bank address"
+msgstr ""
 
 #. Call.label
 #: followthemoney/schema/Call.yaml

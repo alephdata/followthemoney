@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-13 08:43+0200\n"
+"POT-Creation-Date: 2021-04-15 21:33+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Mohammed AlKawmani <komani@arij.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/aleph/teams/76591/ar/)\n"
@@ -160,11 +160,10 @@ msgstr "خط الطول"
 #. Sanction.properties.country.label
 #. TaxRoll.properties.country.label
 #. Thing.properties.country.label
-#. Vehicle.properties.country.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Event.yaml
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
 #: followthemoney/schema/TaxRoll.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/schema/Vehicle.yaml followthemoney/types/country.py:17
+#: followthemoney/types/country.py:17
 msgid "Country"
 msgstr "الدولة"
 
@@ -472,8 +471,8 @@ msgstr "حسابات بنكية"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Account Type"
-msgstr "نوع الحساب"
+msgid "Account type"
+msgstr ""
 
 #. BankAccount.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
@@ -497,8 +496,8 @@ msgstr ""
 
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Address"
-msgstr "عنوان البنك"
+msgid "Bank address"
+msgstr ""
 
 #. Call.label
 #: followthemoney/schema/Call.yaml

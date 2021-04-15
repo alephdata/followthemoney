@@ -174,12 +174,14 @@
           "type": "name"
         },
         "detectedCountry": {
+          "hidden": true,
           "label": "Detected country",
           "name": "detectedCountry",
           "qname": "Analyzable:detectedCountry",
           "type": "country"
         },
         "detectedLanguage": {
+          "hidden": true,
           "label": "Detected language",
           "name": "detectedLanguage",
           "qname": "Analyzable:detectedLanguage",
@@ -474,7 +476,7 @@
           "type": "identifier"
         },
         "accountType": {
-          "label": "Account Type",
+          "label": "Account type",
           "name": "accountType",
           "qname": "BankAccount:accountType",
           "type": "string"
@@ -502,7 +504,7 @@
           "type": "entity"
         },
         "bankAddress": {
-          "label": "Bank Address",
+          "label": "Bank address",
           "name": "bankAddress",
           "qname": "BankAccount:bankAddress",
           "type": "string"
@@ -2281,6 +2283,7 @@
       "plural": "Interval",
       "properties": {
         "alephUrl": {
+          "hidden": true,
           "label": "Aleph URL",
           "name": "alephUrl",
           "qname": "Interval:alephUrl",
@@ -3471,6 +3474,7 @@
           "type": "text"
         },
         "detectedLanguage": {
+          "hidden": true,
           "label": "Auto-detected language",
           "name": "detectedLanguage",
           "qname": "Page:detectedLanguage",
@@ -4595,6 +4599,7 @@
           "type": "entity"
         },
         "alephUrl": {
+          "hidden": true,
           "label": "Aleph URL",
           "name": "alephUrl",
           "qname": "Thing:alephUrl",
@@ -4997,13 +5002,6 @@
           "name": "buildDate",
           "qname": "Vehicle:buildDate",
           "type": "date"
-        },
-        "country": {
-          "label": "Country",
-          "matchable": true,
-          "name": "country",
-          "qname": "Vehicle:country",
-          "type": "country"
         },
         "declaredCustoms": {
           "label": "Customs declarations",

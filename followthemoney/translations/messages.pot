@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-13 08:51+0200\n"
+"POT-Creation-Date: 2021-04-15 21:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,11 +153,10 @@ msgstr ""
 #. Sanction.properties.country.label
 #. TaxRoll.properties.country.label
 #. Thing.properties.country.label
-#. Vehicle.properties.country.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Event.yaml
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
 #: followthemoney/schema/TaxRoll.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/schema/Vehicle.yaml followthemoney/types/country.py:17
+#: followthemoney/types/country.py:17
 msgid "Country"
 msgstr ""
 
@@ -465,7 +464,7 @@ msgstr ""
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Account Type"
+msgid "Account type"
 msgstr ""
 
 #. BankAccount.properties.balance.label
@@ -490,7 +489,7 @@ msgstr ""
 
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Address"
+msgid "Bank address"
 msgstr ""
 
 #. Call.label

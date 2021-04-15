@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-13 08:43+0200\n"
+"POT-Creation-Date: 2021-04-15 21:33+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: followthemoney/property.py:110
 msgid "Property cannot be written"
-msgstr "Eigenschaft darf nicht direkt gesetzt werden."
+msgstr "Eigenschaft darf nicht direkt gesetzt werden"
 
 #: followthemoney/property.py:113
 msgid "Invalid value"
@@ -88,7 +88,7 @@ msgstr "Hinweise"
 #. Address.properties.remarks.description
 #: followthemoney/schema/Address.yaml
 msgid "Handling instructions, like 'care of'."
-msgstr ""
+msgstr "Zustellungshinweise."
 
 #. Address.properties.postOfficeBox.label
 #: followthemoney/schema/Address.yaml
@@ -128,17 +128,17 @@ msgstr "Postleitzahl"
 #. Address.properties.postalCode.description
 #: followthemoney/schema/Address.yaml
 msgid "Zip code or postcode."
-msgstr ""
+msgstr "Postleitzahl."
 
 #. Address.properties.region.label
 #: followthemoney/schema/Address.yaml
 msgid "Region"
-msgstr ""
+msgstr "Region"
 
 #. Address.properties.region.description
 #: followthemoney/schema/Address.yaml
 msgid "State, province or area."
-msgstr ""
+msgstr "Land, Provinz oder Bezirk."
 
 #. Address.properties.latitude.label
 #. RealEstate.properties.latitude.label
@@ -158,11 +158,10 @@ msgstr "Längengrad"
 #. Sanction.properties.country.label
 #. TaxRoll.properties.country.label
 #. Thing.properties.country.label
-#. Vehicle.properties.country.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Event.yaml
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
 #: followthemoney/schema/TaxRoll.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/schema/Vehicle.yaml followthemoney/types/country.py:17
+#: followthemoney/types/country.py:17
 msgid "Country"
 msgstr "Land"
 
@@ -473,8 +472,8 @@ msgstr "Bankkonten"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Account Type"
-msgstr "Kontotyp"
+msgid "Account type"
+msgstr ""
 
 #. BankAccount.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
@@ -484,22 +483,22 @@ msgstr "Kontostand"
 #. BankAccount.properties.balanceDate.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Balance date"
-msgstr ""
+msgstr "Konstostands-Datum"
 
 #. BankAccount.properties.maxBalance.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Maximum balance"
-msgstr ""
+msgstr "Maximaler Kontostand"
 
 #. BankAccount.properties.maxBalanceDate.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Maximum balance date"
-msgstr ""
+msgstr "Datum des maximalen Kontostands"
 
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Address"
-msgstr "Bankadresse"
+msgid "Bank address"
+msgstr ""
 
 #. Call.label
 #: followthemoney/schema/Call.yaml
@@ -805,7 +804,7 @@ msgstr "Vergebene Aufträge"
 #: followthemoney/schema/Project.yaml
 #: followthemoney/schema/ProjectParticipant.yaml
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. Contract.properties.type.label
 #. CourtCase.properties.type.label
@@ -1729,37 +1728,37 @@ msgstr "Unverarbeitete Header"
 #. Employment.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employment"
-msgstr ""
+msgstr "Anstellung"
 
 #. Employment.plural
 #: followthemoney/schema/Employment.yaml
 msgid "Employments"
-msgstr ""
+msgstr "Anstellungen"
 
 #. Employment.edge.label
 #: followthemoney/schema/Employment.yaml
 msgid "works for"
-msgstr ""
+msgstr "arbeitet für"
 
 #. Employment.properties.employer.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employer"
-msgstr ""
+msgstr "Arbeitgeber"
 
 #. Employment.properties.employer.reverse.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employees"
-msgstr ""
+msgstr "Angestelle"
 
 #. Employment.properties.employee.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employee"
-msgstr ""
+msgstr "Angestellter"
 
 #. Employment.properties.employee.reverse.label
 #: followthemoney/schema/Employment.yaml
 msgid "Employers"
-msgstr ""
+msgstr "Arbeitgeber"
 
 #. Event.label
 #: followthemoney/schema/Event.yaml
@@ -2703,7 +2702,7 @@ msgstr "Politische Zugehörigkeit"
 #. Person.properties.education.label
 #: followthemoney/schema/Person.yaml
 msgid "Education"
-msgstr ""
+msgstr "Bildung"
 
 #. PlainText.label
 #: followthemoney/schema/PlainText.yaml
@@ -2725,54 +2724,54 @@ msgstr "Textdateien und Quellcode.\n"
 #: followthemoney/schema/Project.yaml
 #: followthemoney/schema/ProjectParticipant.yaml
 msgid "Projects"
-msgstr ""
+msgstr "Projekte"
 
 #. Project.description
 #. ProjectParticipant.description
 #: followthemoney/schema/Project.yaml
 #: followthemoney/schema/ProjectParticipant.yaml
 msgid "An activity carried out by a group of participants.\n"
-msgstr ""
+msgstr "Ein Vorhaben das von einer Gruppe von Beteiligten durchgeführt wird.\n"
 
 #. Project.properties.projectId.label
 #: followthemoney/schema/Project.yaml
 msgid "Project ID"
-msgstr ""
+msgstr "Projekt-Kennung"
 
 #. Project.properties.phase.label
 #: followthemoney/schema/Project.yaml
 msgid "Phase"
-msgstr ""
+msgstr "Phase"
 
 #. Project.properties.goal.label
 #: followthemoney/schema/Project.yaml
 msgid "Project goal"
-msgstr ""
+msgstr "Projektziel"
 
 #. ProjectParticipant.label
 #: followthemoney/schema/ProjectParticipant.yaml
 msgid "Project participant"
-msgstr ""
+msgstr "Projektbeteiligter"
 
 #. ProjectParticipant.plural
 #: followthemoney/schema/ProjectParticipant.yaml
 msgid "Project participants"
-msgstr ""
+msgstr "Projektbeteiligte"
 
 #. ProjectParticipant.edge.label
 #: followthemoney/schema/ProjectParticipant.yaml
 msgid "participates in"
-msgstr ""
+msgstr "nimmt teil an"
 
 #. ProjectParticipant.properties.project.reverse.label
 #: followthemoney/schema/ProjectParticipant.yaml
 msgid "Participants"
-msgstr ""
+msgstr "Teilnehmer"
 
 #. ProjectParticipant.properties.participant.label
 #: followthemoney/schema/ProjectParticipant.yaml
 msgid "Participant"
-msgstr ""
+msgstr "Teilnehmer"
 
 #. PublicBody.label
 #: followthemoney/schema/PublicBody.yaml
@@ -2982,6 +2981,8 @@ msgid ""
 "A document structured into rows and cells. This includes simple CSV files, "
 "spreadsheet sheets or database relations.\n"
 msgstr ""
+"Ein Dokument das in Zeilen und Spalten geteilt ist. Beispiele umfassen "
+"einfache CSV-Dateien, Arbeitsblätter und Datenbanktabellen.\n"
 
 #. Table.properties.columns.label
 #: followthemoney/schema/Table.yaml
@@ -3077,7 +3078,7 @@ msgstr "Themen"
 #. Thing.properties.addressEntity.reverse.label
 #: followthemoney/schema/Thing.yaml
 msgid "Located there"
-msgstr ""
+msgstr "An diesem Ort"
 
 #. Thing.properties.proof.label
 #: followthemoney/schema/Thing.yaml
@@ -3243,7 +3244,7 @@ msgstr "Schiffe"
 #. Vessel.description
 #: followthemoney/schema/Vessel.yaml
 msgid "A boat or ship. Typically flying some sort of national flag.\n"
-msgstr ""
+msgstr "Ein Boot oder Schiff. Segelt unter einer bestimmen Flagge.\n"
 
 #. Vessel.properties.imoNumber.label
 #: followthemoney/schema/Vessel.yaml
@@ -3341,6 +3342,8 @@ msgid ""
 "A spreadsheet document, for example from Excel. Each spreadsheet contains a "
 "set of sheets that hold actual data.\n"
 msgstr ""
+"Ein Tabellenverarbeitungsdokument, zum Beispiel aus Excel. Jede Arbeitsmappe"
+" enthält mehrere Tabellen, in denen Werte gespeichert sind.\n"
 
 #: followthemoney/types/checksum.py:20
 msgid "Checksums"
@@ -3360,7 +3363,7 @@ msgstr "Europäische Union"
 
 #: followthemoney/types/country.py:26
 msgid "Zaire"
-msgstr ""
+msgstr "Zaire"
 
 #: followthemoney/types/country.py:28
 msgid "Czech Republic"
@@ -3396,19 +3399,19 @@ msgstr "Somaliland"
 
 #: followthemoney/types/country.py:36
 msgid "Northern Cyprus"
-msgstr ""
+msgstr "Nordzypern"
 
 #: followthemoney/types/country.py:37
 msgid "Nagorno-Karabakh"
-msgstr ""
+msgstr "Bergkarabach"
 
 #: followthemoney/types/country.py:38
 msgid "Tibet"
-msgstr ""
+msgstr "Tibet"
 
 #: followthemoney/types/country.py:39
 msgid "Sark"
-msgstr ""
+msgstr "Sark"
 
 #: followthemoney/types/country.py:40
 msgid "Wales"
