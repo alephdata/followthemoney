@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "01:00"
+  open-pull-requests-limit: 99
+- package-ecosystem: npm
+  directory: "/js"
+  schedule:
+    interval: monthly
+    time: "01:00"
+  open-pull-requests-limit: 99
+  ignore:
+  - dependency-name: svgo
+    versions:
+    - 2.0.3
+    - 2.1.0
+- package-ecosystem: docker
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "01:00"
+  open-pull-requests-limit: 99
