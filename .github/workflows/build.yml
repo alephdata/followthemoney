@@ -90,13 +90,12 @@ jobs:
           docker build -t alephdata/followthemoney:latest .
       - name: Push docker image for commit hashes
         run: |
-          docker login -u ${{ secrets.docker_user }} -p ${{ secrets.docker_password }}
-          docker build -t alephdata/followthemoney:${GITHUB_SHA} .
+          echo ${{ secrets.docker_password }} | docker login -u ${{ secrets.docker_user }} --password-stdin
+          docker tag alephdata/followthemoney:latest alephdata/followthemoney:${GITHUB_SHA}
           docker push alephdata/followthemoney:${GITHUB_SHA}
       - name: Push docker image for tags
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         run: |
-          docker login -u ${{ secrets.docker_user }} -p ${{ secrets.docker_password }}
-          docker build -t alephdata/followthemoney:${GITHUB_REF/refs\/tags\//} .
+          docker tag alephdata/followthemoney:latest alephdata/followthemoney:${GITHUB_REF/refs\/tags\//}
           docker push alephdata/followthemoney:${GITHUB_REF/refs\/tags\//}
           docker push alephdata/followthemoney:latest
