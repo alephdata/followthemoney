@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-15 21:33+0200\n"
+"POT-Creation-Date: 2021-05-05 20:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3633,11 +3633,11 @@ msgstr ""
 msgid "Person of interest"
 msgstr ""
 
-#: followthemoney/types/url.py:15
+#: followthemoney/types/url.py:18
 msgid "URL"
 msgstr ""
 
-#: followthemoney/types/url.py:16
+#: followthemoney/types/url.py:19
 msgid "URLs"
 msgstr ""
 

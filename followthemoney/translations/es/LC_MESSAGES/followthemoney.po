@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-13 08:45+0200\n"
+"POT-Creation-Date: 2021-05-05 20:43+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: Miguel Sojo <miguelsojo@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -159,11 +159,10 @@ msgstr "Longitud"
 #. Sanction.properties.country.label
 #. TaxRoll.properties.country.label
 #. Thing.properties.country.label
-#. Vehicle.properties.country.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Event.yaml
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
 #: followthemoney/schema/TaxRoll.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/schema/Vehicle.yaml followthemoney/types/country.py:17
+#: followthemoney/types/country.py:17
 msgid "Country"
 msgstr "País"
 
@@ -471,8 +470,8 @@ msgstr "Cuentas bancarias"
 
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Account Type"
-msgstr "Tipo de cuenta"
+msgid "Account type"
+msgstr ""
 
 #. BankAccount.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
@@ -496,8 +495,8 @@ msgstr ""
 
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Address"
-msgstr "Dirección del banco"
+msgid "Bank address"
+msgstr ""
 
 #. Call.label
 #: followthemoney/schema/Call.yaml
@@ -3676,10 +3675,10 @@ msgstr "Entidad sancionada"
 msgid "Person of interest"
 msgstr "Persona de interés"
 
-#: followthemoney/types/url.py:15
+#: followthemoney/types/url.py:18
 msgid "URL"
 msgstr "URL"
 
-#: followthemoney/types/url.py:16
+#: followthemoney/types/url.py:19
 msgid "URLs"
 msgstr "URL"

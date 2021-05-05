@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-15 21:33+0200\n"
+"POT-Creation-Date: 2021-05-05 20:43+0200\n"
 "PO-Revision-Date: 2018-03-14 22:03+0000\n"
 "Last-Translator: jen occrp, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -477,7 +477,7 @@ msgstr "Банковский счета"
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account type"
-msgstr ""
+msgstr "Тип счёта"
 
 #. BankAccount.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
@@ -502,7 +502,7 @@ msgstr "Дата максимального баланса"
 #. BankAccount.properties.bankAddress.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Bank address"
-msgstr ""
+msgstr "Адрес банка"
 
 #. Call.label
 #: followthemoney/schema/Call.yaml
@@ -3685,10 +3685,10 @@ msgstr "Объект санкций"
 msgid "Person of interest"
 msgstr "Подозрительный персонаж"
 
-#: followthemoney/types/url.py:15
+#: followthemoney/types/url.py:18
 msgid "URL"
 msgstr "Ссылка"
 
-#: followthemoney/types/url.py:16
+#: followthemoney/types/url.py:19
 msgid "URLs"
 msgstr "Ссылки"
