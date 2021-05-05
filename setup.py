@@ -39,7 +39,6 @@ setup(
         "fingerprints >= 1.0.1, < 2.0.0",
         "phonenumbers >= 8.9.11",
         "python-stdnum >= 1.10",
-        "urlnormalizer >= 1.2.0",
         "pantomime >= 0.4.0, < 1.0.0",
         "pytz >= 2020.1",
         "rdflib >=5.0.0, < 5.1.0",
