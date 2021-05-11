@@ -1,6 +1,6 @@
 BankAccount:
-  label: Bank Account
-  plural: Bank Accounts
+  label: Bank account
+  plural: Bank accounts
   extends: Asset
   description: >
     An account held at a bank and controlled by an owner. This may also be used 
@@ -17,9 +17,9 @@ BankAccount:
     - accountNumber
   properties:
     bankName:
-      label: Bank Name
+      label: Bank name
     accountNumber:
-      label: Account Number
+      label: Account number
       type: identifier
     iban:
       label: IBAN
