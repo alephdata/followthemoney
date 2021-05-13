@@ -11,7 +11,7 @@ class Schema(object):
     """A type definition for a class of entities that have certain properties.
 
     Schemata are arranged in a multi-rooted hierarchy: each schema can have multiple
-    parent schemata from which it inherits all of their properties, and a schema can
+    parent schemata from which it inherits all of their properties. A schema can also
     have descendant child schemata, which, in turn, add further properties. Schemata
     are usually accessed via the model, which holds all available definitions.
     """
@@ -98,8 +98,8 @@ class Schema(object):
             self.properties[name] = Property(self, name, prop)
 
     def generate(self):
-        """While loading the schema, this function will validate and fully
-        load the hierarchy, properties and flags of the definition."""
+        """While loading the schema, this function will validate and
+        load the hierarchy, properties, and flags of the definition."""
         for parent in ensure_list(self.data.get("extends")):
             parent = self.model.get(parent)
             parent.generate()
@@ -204,9 +204,9 @@ class Schema(object):
 
     @property
     def matchable_schemata(self):
-        """Return the set of schemata to which is makes sense to compare this schema.
-        For example, it makes no sense to compare a car and a person, but it may make
-        sense to compare a legal entity and a company."""
+        """Return the set of schemata to which it makes sense to compare with this schema.
+        For example, it makes sense to compare a legal entity with a company,
+        but it does not make sense to compare a car and a person."""
         if not self.matchable:
             return
         # This is used by the cross-referencer to determine what
