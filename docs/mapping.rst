@@ -3,8 +3,8 @@
 Mappings
 =========
 
-Mappings are mechanism for generating entities from structured data sources, including
-tabular data and SQL databases.
+Mappings are a mechanism for generating entities from structured data sources,
+including tabular data and SQL databases.
 
 Please refer to the `Aleph mappings documentation`_ for details.
 
