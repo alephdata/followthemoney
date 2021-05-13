@@ -3,12 +3,15 @@
 
 Entity ID namespaces are a security mechanism related to the Aleph search index.
 
-This is because Aleph allows the user (via mappings or the API) to mint arbitary
-entity IDs. Entity IDs that are controlled by the user and not the system are,
-of course, unusual. At the same time, this makes it possible to generate bulk data
-outside Aleph, and then load entities into the system as a continuous :ref:`streams`.
+Aleph allows the user (via mappings or the API) to create arbitary entity IDs.
+Entity IDs that are controlled by the user and not the system are unusual.
+However, this makes it possible to generate bulk data outside Aleph,
+and then load entities into the system as a continuous :ref:`streams`.
 
-Namespacing works around this by making each entity ID consists of two parts:
+The problem is that having user controlled entity IDs increases the chance
+of conflict in the search index.
+
+Namespacing works around this by making each entity ID consist of two parts:
 one controlled by the client, the other controlled by the system. The second
 part of the ID is called its `signature`::
 
@@ -16,8 +19,8 @@ part of the ID is called its `signature`::
 
 The signature is generated as ``hmac(entity_id, dataset_id)``. This guarantees
 that the combined ID is specific to a dataset, without needing an (expensive)
-index look up of each ID first. It can also be generated both on the client and
-in the server without compromising isolation.
+index look up of each ID first. It can also be generated on the client or
+the server without compromising isolation.
 """
 import hmac
 
