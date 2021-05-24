@@ -7,12 +7,12 @@ or :ref:`companies <schema-company>`) and tools that let you generate, validate,
 data easily. Entities can reference each other, thus creating a graph of relationships. 
 
 FtM can be used in three contexts: as a :ref:`command-line utility <cli>`, a :ref:`Python
-library <api>` and as a `TypeScript/JavaScript library`_. The ontology defined by FtM also
+library <api>`, and as a `TypeScript/JavaScript library`_. The ontology defined by FtM also
 includes a model for various types of :ref:`documents <schema-document>` that might be
 used as evidence in investigations [#ingest]_.
 
-All data stored by the `Aleph search engine`_ is expressed as FtM entities. Aleph itself merely
-adds functions for searching, viewing and manipulating such entities. It also introduces
+All data stored by the `Aleph search engine`_ is expressed as FtM entities. Aleph itself
+adds functions for searching, viewing, and manipulating such entities. It also introduces
 higher-level notions of datasets and access control.
 
 

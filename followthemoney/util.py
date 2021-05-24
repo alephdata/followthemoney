@@ -115,8 +115,8 @@ def make_entity_id(*parts: Any, key_prefix: Optional[str] = None) -> Optional[st
 
 
 def merge_context(left: Dict[K, V], right: Dict[K, V]) -> Dict[K, List[V]]:
-    """When merging two entities, we make lists of all the
-    duplicate context keys."""
+    """When merging two entities, make lists of all the duplicate context 
+    keys."""
     combined = {}
     keys = [*left.keys(), *right.keys()]
     for key in set(keys):

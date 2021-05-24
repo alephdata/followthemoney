@@ -7,12 +7,12 @@ The core interfaces of `followthemoney` are simple: each running instance of the
 library has a :class:`~followthemoney.model.Model` singleton, which holds a set of
 :class:`~followthemoney.schema.Schema` definitions (e.g. :ref:`schema-Person`).
 Each schema defines a set of :class:`properties <followthemoney.property.Property>`
-(e.g. `name`, `birthDate`) that give meaning to how values can be associated with
+(e.g. `name`, `birthDate`) which give meaning to how values can be associated with
 entities of a given schema.
 
 The :class:`model <followthemoney.model.Model>` is also used to instantiate
 :class:`entity proxies <followthemoney.proxy.EntityProxy>` - objects that allow
-the creation and use of entity data based on the rules defined by an associated
+the creation and use of entity data, based on the rules defined by an associated
 :class:`schema <followthemoney.schema.Schema>`.
 
 Example
@@ -80,8 +80,8 @@ For an illustration of how these objects interact, imagine the following script:
     assert entity2 == entity
 
 
-Of course, the library offers a much more complex set of operations - but entity proxies, 
-schemata, properties and the model are the key elements to understand.
+The library offers a much more complex set of operations - but entity proxies, 
+schemata, properties, and the model are the key elements to understand.
 
 Entity proxy
 -------------

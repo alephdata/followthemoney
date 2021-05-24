@@ -4,9 +4,9 @@ Entity fragmentation
 ======================
 
 Generating graph data is a difficult process. The size of the datasets we want to process
-using `followthemoney` makes it impossible to incrementally build nodes and egdes in
-memory like you would in `NetworkX`_. Instead, we had to find a stream-based solution
-for constructing graph entities. That's why the toolkit supports *entity fragments*
+using `followthemoney` (FtM) makes it impossible to incrementally build nodes and egdes in
+memory like you would in `NetworkX`_. Instead, we use a stream-based solution
+for constructing graph entities. That is why the toolkit supports *entity fragments*
 and *aggregation*.
 
 .. _NetworkX: https://networkx.org/
@@ -41,14 +41,14 @@ entities to represent two actual companies, and three :ref:`schema-Person` entit
 for two distinct people. Of course, we could write these to an ElasticSearch index
 sequentially - the later entities overwriting the earlier ones with the same ID.
 
-That, however, works only as long as each version of each entity contains the same data.
+That works only as long as each version of each entity contains the same data.
 In our example, the first mention of `John Smith` includes his birth date, while
 the second does not. If we don't wish to lose that detail, we need to merge these
-`fragments`. While it's possible do perform such merges at index time, this has proven
+`fragments`. While it's possible to perform such merges at index time, this has proven
 to be impractically slow because it requires fetching each entity before it is
 updated.
 
-A better solution is to sort all generated fragments before indexing them. In this
+A better solution is to sort all generated fragments before indexing them. With this
 approach, all the entities generated from the source table would be written to disk or
 to a database, and then sorted using their ID. In the resulting entity set, all instances
 of each company and person are grouped and can be merged as they are read.
@@ -56,8 +56,8 @@ of each company and person are grouped and can be merged as they are read.
 In practice 
 -------------
 
-In the FtM toolchain, there are two tools for doing entity aggregation: the command-line
-`ftm aggregate` will merge fragments in memory, whereas the add-on library `followthemoney-store`
+In the FtM toolchain, there are two tools for doing entity aggregation: from the command-line
+`ftm aggregate` will merge fragments in memory. Alternately the add-on library `followthemoney-store`
 will perform the same operation in a SQLite or PostgreSQL database.
 
 .. code-block:: bash
@@ -71,7 +71,7 @@ will perform the same operation in a SQLite or PostgreSQL database.
     # Output merged entities:
     ftm store iterate -d company_registry
 
-The same functionality can, of course, also be used as a Python library:
+The same functionality can also be used as a Python library:
 
 .. code-block:: python
 
@@ -112,11 +112,11 @@ Fragment origins
 -----------------
 
 `followthemoney-store` is used across the tools built on FtM to capture and aggregate
-entity fragments. In Aleph in particular, fragments for one entity might be written
-by different processes: the API, document ingestors, document NER analyzers or a 
-translation backend. This has made it convenient to be able to flush all entity
-fragments from a particular origin, while leaving the other fragments intact. For
-example, this can be used to delete all data uploaded via the bulk API, while leaving
+entity fragments. In Aleph, fragments for one entity might be written by different
+processes: the API, document ingestors, document NER analyzers or a translation 
+backend. It is convenient to be able to flush all entity fragments from a 
+particular origin, while leaving the other fragments intact. For example,
+this can be used to delete all data uploaded via the bulk API, while leaving
 document-based data in the same dataset intact.
 
 To support this, `ftm-store` has the notion of an `origin` for each fragment. If

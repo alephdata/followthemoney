@@ -2,7 +2,7 @@
 Converting FtM data to a property graph data model.
 
 This module provides an abstract data object that represents a property
-graph. This is mainly used by the exporter modules to convert the data
+graph. This is used by the exporter modules to convert data
 to a specific output format, like Cypher or NetworkX.
 """
 import logging

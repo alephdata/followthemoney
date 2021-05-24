@@ -1,7 +1,7 @@
 Extending the schema
 =====================
 
-`followthemoney` lives a double life, both as a data modelling and validation tool and
+`followthemoney` (FtM) lives a double life, as a data modelling and validation tool, and
 as a specific data model. While the default model is tailored to investigative
 journalism, the data modelling tool is reusable beyond that domain. Users from adjacent
 fields, such as human rights advocacy, cyber forensics or social media analysis might
@@ -11,8 +11,8 @@ wish to extend the data model.
 Modelling principles
 ----------------------
 
-The goal of `followthemoney` is to create a data model for international business, banking,
-corporate law, government procurement and social relations. It's important to be conscious
+The goal of `FtM` is to create a data model for international business, banking,
+corporate law, government procurement, and social relations. It's important to be conscious
 of how preposterous that premise is. In consequence, our goal cannot be to fully model these
 domains, but to `model a conversation between two slightly drunk investigative reporters`
 about these things.
@@ -49,8 +49,8 @@ Operators can modify the active FtM model by setting the environment variable
 description files. The simplest way to do this would be to download the existing YAML
 schema set from FtM source (`followthemoney/schema`), and make edits in a new directory. 
 
-This, however, raises an icky question: how mutable is the FtM model in reality? FtM
-itself uses specific schemata in its tests, but that wouldn't be a fatal hindrance.
+This raises an difficult question: how mutable is the FtM model in reality? FtM
+uses specific schemata in its tests, but that wouldn't be a fatal hindrance.
 However, the `aleph` and `ingestors` applications have built-in assumptions about a
 larger subsection of the schema. For example, `ingestors` require all schemata descendant
 from :ref:`schema-Document` and :ref:`schema-Mention`. Aleph assumes that the
@@ -59,7 +59,7 @@ from :ref:`schema-Document` and :ref:`schema-Mention`. Aleph assumes that the
 In practice, we would recommend these policies when modifying the FtM model in an Aleph
 deployment:
 
-* Add schemata and properties, don't remove them or rename the existing ones. 
+* Add schemata and properties, don't remove or rename the existing ones. 
 * Don't add too many schemata. Each schema will add a new index in Aleph's ElasticSearch,
   and each index needs to be queried individually. Add 10 or 20 schemata, not 200.
 * Contribute upstream: once you have successfully modelled some data into an extension

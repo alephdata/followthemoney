@@ -43,7 +43,7 @@ def import_vis(infile, outfile):
         write_object(outfile, entity)
 
 
-@cli.command("sign", help="Apply an HMAC signature to entity IDs")
+@cli.command("sign", help="Apply a HMAC signature to entity IDs")
 @click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
 @click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
 @click.option("-s", "--signature", default=None, help="HMAC signature key")  # noqa
