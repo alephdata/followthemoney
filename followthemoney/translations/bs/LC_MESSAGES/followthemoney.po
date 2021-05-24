@@ -4,22 +4,21 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # 
 # Translators:
-# Emina Muratovic <emina@occrp.org>, 2018
-# Tajna Biscevic <tajna@occrp.org>, 2019
+# pudo <friedrich@pudo.org>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-15 21:33+0200\n"
-"PO-Revision-Date: 2018-03-14 22:03+0000\n"
-"Last-Translator: Tajna Biscevic <tajna@occrp.org>, 2019\n"
+"POT-Creation-Date: 2021-05-24 10:49+0200\n"
+"PO-Revision-Date: 2021-05-07 13:11+0000\n"
+"Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: Bosnian (https://www.transifex.com/aleph/teams/76591/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
@@ -59,10 +58,11 @@ msgid "Entity validation failed"
 msgstr ""
 
 #. Address.label
+#. CryptoWallet.properties.publicKey.label
 #. Thing.properties.address.label
 #. Thing.properties.addressEntity.label
-#: followthemoney/schema/Address.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/address.py:20
+#: followthemoney/schema/Address.yaml followthemoney/schema/CryptoWallet.yaml
+#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:20
 msgid "Address"
 msgstr "Adresa"
 
@@ -419,16 +419,15 @@ msgid "Sampling rate of the audio in Hz"
 msgstr ""
 
 #. BankAccount.label
-#. EconomicActivity.properties.bankAccount.label
 #: followthemoney/schema/BankAccount.yaml
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Bank Account"
-msgstr "Bankovni račun"
+msgid "Bank account"
+msgstr ""
 
 #. BankAccount.plural
+#. BankAccount.properties.bank.reverse.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Accounts"
-msgstr "Bankovni računi"
+msgid "Bank accounts"
+msgstr ""
 
 #. BankAccount.description
 #: followthemoney/schema/BankAccount.yaml
@@ -440,13 +439,13 @@ msgstr ""
 
 #. BankAccount.properties.bankName.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Name"
-msgstr "Ime banke"
+msgid "Bank name"
+msgstr ""
 
 #. BankAccount.properties.accountNumber.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Account Number"
-msgstr "Broj računa"
+msgid "Account number"
+msgstr ""
 
 #. BankAccount.properties.iban.label
 #: followthemoney/schema/BankAccount.yaml followthemoney/types/iban.py:20
@@ -463,23 +462,22 @@ msgstr "Šifra identifikatora banke"
 msgid "Bank"
 msgstr ""
 
-#. BankAccount.properties.bank.reverse.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Bank accounts"
-msgstr ""
-
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account type"
 msgstr ""
 
 #. BankAccount.properties.balance.label
+#. CryptoWallet.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
+#: followthemoney/schema/CryptoWallet.yaml
 msgid "Balance"
 msgstr "Saldo"
 
 #. BankAccount.properties.balanceDate.label
+#. CryptoWallet.properties.balanceDate.label
 #: followthemoney/schema/BankAccount.yaml
+#: followthemoney/schema/CryptoWallet.yaml
 msgid "Balance date"
 msgstr ""
 
@@ -1047,6 +1045,54 @@ msgstr "Slučaj"
 msgid "Parties"
 msgstr ""
 
+#. CryptoWallet.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Cryptocurrency wallet"
+msgstr ""
+
+#. CryptoWallet.plural
+#. CryptoWallet.properties.holder.reverse.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Cryptocurrency wallets"
+msgstr ""
+
+#. CryptoWallet.description
+#: followthemoney/schema/CryptoWallet.yaml
+msgid ""
+"A cryptocurrency wallet is a view on the transactions conducted by one "
+"participant on a blockchain / distributed ledger system.\n"
+msgstr ""
+
+#. CryptoWallet.properties.publicKey.description
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Public key used to identify the wallet"
+msgstr ""
+
+#. CryptoWallet.properties.privateKey.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Private key"
+msgstr ""
+
+#. CryptoWallet.properties.creationDate.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Creation date"
+msgstr ""
+
+#. CryptoWallet.properties.currencySymbol.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Currency short code"
+msgstr ""
+
+#. CryptoWallet.properties.mangingExchange.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Managing exchange"
+msgstr ""
+
+#. CryptoWallet.properties.holder.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Wallet holder"
+msgstr ""
+
 #. Debt.label
 #: followthemoney/schema/Debt.yaml
 msgid "Debt"
@@ -1555,6 +1601,11 @@ msgstr "Zemlja podrijekla"
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Country of origin of goods"
 msgstr ""
+
+#. EconomicActivity.properties.bankAccount.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank Account"
+msgstr "Bankovni račun"
 
 #. EconomicActivity.properties.bankAccount.description
 #: followthemoney/schema/EconomicActivity.yaml
@@ -3643,10 +3694,10 @@ msgstr ""
 msgid "Person of interest"
 msgstr ""
 
-#: followthemoney/types/url.py:15
+#: followthemoney/types/url.py:18
 msgid "URL"
 msgstr ""
 
-#: followthemoney/types/url.py:16
+#: followthemoney/types/url.py:19
 msgid "URLs"
 msgstr ""

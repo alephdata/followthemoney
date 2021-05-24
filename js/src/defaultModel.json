@@ -464,12 +464,12 @@
         "accountNumber",
         "bankName"
       ],
-      "label": "Bank Account",
+      "label": "Bank account",
       "matchable": true,
-      "plural": "Bank Accounts",
+      "plural": "Bank accounts",
       "properties": {
         "accountNumber": {
-          "label": "Account Number",
+          "label": "Account number",
           "matchable": true,
           "name": "accountNumber",
           "qname": "BankAccount:accountNumber",
@@ -510,7 +510,7 @@
           "type": "string"
         },
         "bankName": {
-          "label": "Bank Name",
+          "label": "Bank name",
           "name": "bankName",
           "qname": "BankAccount:bankName",
           "type": "string"
@@ -1232,6 +1232,86 @@
         "CourtCaseParty",
         "Interest",
         "Interval"
+      ]
+    },
+    "CryptoWallet": {
+      "caption": [
+        "publicKey",
+        "name",
+        "summary"
+      ],
+      "description": "A cryptocurrency wallet is a view on the transactions conducted by one participant on a blockchain / distributed ledger system.\n",
+      "extends": [
+        "Thing",
+        "Value"
+      ],
+      "featured": [
+        "currency",
+        "publicKey"
+      ],
+      "label": "Cryptocurrency wallet",
+      "plural": "Cryptocurrency wallets",
+      "properties": {
+        "balance": {
+          "label": "Balance",
+          "name": "balance",
+          "qname": "CryptoWallet:balance",
+          "type": "number"
+        },
+        "balanceDate": {
+          "label": "Balance date",
+          "matchable": true,
+          "name": "balanceDate",
+          "qname": "CryptoWallet:balanceDate",
+          "type": "date"
+        },
+        "creationDate": {
+          "label": "Creation date",
+          "matchable": true,
+          "name": "creationDate",
+          "qname": "CryptoWallet:creationDate",
+          "type": "date"
+        },
+        "currencySymbol": {
+          "label": "Currency short code",
+          "name": "currencySymbol",
+          "qname": "CryptoWallet:currencySymbol",
+          "type": "string"
+        },
+        "holder": {
+          "label": "Wallet holder",
+          "matchable": true,
+          "name": "holder",
+          "qname": "CryptoWallet:holder",
+          "range": "LegalEntity",
+          "reverse": "cryptoWallets",
+          "type": "entity"
+        },
+        "mangingExchange": {
+          "label": "Managing exchange",
+          "name": "mangingExchange",
+          "qname": "CryptoWallet:mangingExchange",
+          "type": "string"
+        },
+        "privateKey": {
+          "label": "Private key",
+          "name": "privateKey",
+          "qname": "CryptoWallet:privateKey",
+          "type": "string"
+        },
+        "publicKey": {
+          "description": "Public key used to identify the wallet",
+          "label": "Address",
+          "matchable": true,
+          "name": "publicKey",
+          "qname": "CryptoWallet:publicKey",
+          "type": "identifier"
+        }
+      },
+      "schemata": [
+        "CryptoWallet",
+        "Thing",
+        "Value"
       ]
     },
     "Debt": {
@@ -2480,6 +2560,16 @@
           "qname": "LegalEntity:contractAwardSupplier",
           "range": "ContractAward",
           "reverse": "supplier",
+          "stub": true,
+          "type": "entity"
+        },
+        "cryptoWallets": {
+          "label": "Cryptocurrency wallets",
+          "matchable": true,
+          "name": "cryptoWallets",
+          "qname": "LegalEntity:cryptoWallets",
+          "range": "CryptoWallet",
+          "reverse": "holder",
           "stub": true,
           "type": "entity"
         },

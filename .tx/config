@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[followthemoney.messages-pot]
+[followthemoney.followthemoney-translations-messages-pot--master]
 file_filter = followthemoney/translations/<lang>/LC_MESSAGES/followthemoney.po
 minimum_perc = 0
 source_file = followthemoney/translations/messages.pot

@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # build-essential 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install locales ca-certificates curl \
-    python3-pip python3-icu python3-psycopg2 python3-crypto \
+    python3-pip libpq-dev python3-icu python3-psycopg2 python3-crypto \
     && apt-get -qq -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
