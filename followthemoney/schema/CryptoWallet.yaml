@@ -1,0 +1,44 @@
+CryptoWallet:
+  label: Cryptocurrency wallet
+  plural: Cryptocurrency wallets
+  extends:
+    - Thing
+    - Value
+  description: >
+    A cryptocurrency wallet is a view on the transactions conducted by one participant
+    on a blockchain / distributed ledger system.
+  matchable: false
+  featured:
+    - currency
+    - publicKey
+  caption:
+    - publicKey
+    - name
+    - summary
+  properties:
+    publicKey:
+      label: Address
+      description: Public key used to identify the wallet
+      type: identifier
+    privateKey:
+      label: Private key
+    creationDate:
+      label: Creation date
+      type: date
+    currencySymbol:
+      label: Currency short code
+    mangingExchange:
+      label: Managing exchange
+    holder:
+      label: Wallet holder
+      type: entity
+      range: LegalEntity
+      reverse:
+        name: cryptoWallets
+        label: "Cryptocurrency wallets"
+    balance:
+      label: Balance
+      type: number
+    balanceDate:
+      label: Balance date
+      type: date
