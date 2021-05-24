@@ -89,7 +89,7 @@ jobs:
         with:
           install: true
       - name: Set env
-        run: echo "VERSION_NUMBER=${GITHUB_REF/refs\/tags\//"} >> $GITHUB_ENV
+        run: echo "VERSION_NUMBER=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
