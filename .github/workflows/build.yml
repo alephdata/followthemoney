@@ -99,21 +99,11 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: alephdata/followthemoney:${{ github.sha }}    
-    # steps:
-    #   - uses: actions/checkout@v1
-    #   - name: Show ref
-    #     run: |
-    #       echo "$GITHUB_REF"
-    #   - name: Build docker image
-    #     run: |
-    #       docker build -t alephdata/followthemoney:latest .
-
-    #   - name: Push docker image for commit hashes
-    #     run: |
-    #       echo ${{ secrets.docker_password }} | docker login -u ${{ secrets.docker_user }} --password-stdin
-    #       docker tag alephdata/followthemoney:latest alephdata/followthemoney:${GITHUB_SHA}
-    #       docker push alephdata/followthemoney:${GITHUB_SHA}
+          tags: alephdata/followthemoney:${{ github.sha }}       
+      - name: Push docker image for commit hashes
+        run: |
+          docker tag alephdata/followthemoney:${GITHUB_SHA} alephdata/followthemoney:TEST
+          docker push alephdata/followthemoney:TEST
     #   - name: Push docker image for tags
     #     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
     #     run: |
