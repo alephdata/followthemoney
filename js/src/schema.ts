@@ -60,9 +60,9 @@ export class Schema {
     this.plural = config.plural || this.label;
     this.schemata = config.schemata
     this.extends = config.extends
-    this.featured = config.featured || new Array()
-    this.caption = config.caption || new Array()
-    this.required = config.required || new Array()
+    this.featured = config.featured || []
+    this.caption = config.caption || []
+    this.required = config.required || []
     this.abstract = !!config.abstract
     this.hidden = !!config.hidden
     this.matchable = !!config.matchable
@@ -90,7 +90,7 @@ export class Schema {
     return this.extends.map(name => this.model.getSchema(name))
   }
 
-  getProperties(qualified: boolean = false): Map<string, Property> {
+  getProperties(qualified = false): Map<string, Property> {
     const properties = new Map<string, Property>()
     this.getExtends().forEach((schema) => {
       schema.getProperties(qualified).forEach((prop, name) => {
@@ -108,7 +108,7 @@ export class Schema {
       .filter(prop => !prop.hidden && !prop.stub)
   }
 
-  getFeaturedProperties() {
+  getFeaturedProperties(): Array<Property> {
     return this.featured.map(name => this.getProperty(name))
   }
 
@@ -136,7 +136,7 @@ export class Schema {
     }
   }
 
-  isA(schema: SchemaSpec) {
+  isA(schema: SchemaSpec): boolean {
     try {
       schema = this.model.getSchema(schema)
       return !!~this.schemata.indexOf(schema.name)
@@ -145,8 +145,8 @@ export class Schema {
     }
   }
 
-  isAny(schemata: Array<SchemaSpec>) {
-    for (let schema of schemata) {
+  isAny(schemata: Array<SchemaSpec>): boolean {
+    for (const schema of schemata) {
       if (this.isA(schema)) {
         return true;
       }

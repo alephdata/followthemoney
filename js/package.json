@@ -19,6 +19,7 @@
     "node": ">=8.0.0"
   },
   "scripts": {
+    "lint": "eslint . --ext .ts",
     "prebuild": "rimraf dist && npm run build:icons",
     "build:icons": "node scripts/buildIcons.js",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
@@ -61,9 +62,12 @@
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "@types/node": "^15.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
     "colors": "~1.4.0",
     "coveralls": "~3.1.0",
     "cross-env": "~7.0.0",
+    "eslint": "^7.28.0",
     "jest": "~27.0.4",
     "jest-config": "~27.0.4",
     "lint-staged": "~11.0.0",
