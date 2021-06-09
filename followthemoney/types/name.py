@@ -1,7 +1,7 @@
 from banal import ensure_list, first
 from normality import slugify
 from normality.cleaning import collapse_spaces, strip_quotes
-from fuzzywuzzy import fuzz
+from fuzzywuzzy import fuzz  # type: ignore
 from Levenshtein import setmedian  # type: ignore
 
 from followthemoney.types.common import PropertyType
@@ -30,11 +30,27 @@ class NameType(PropertyType):
         return collapse_spaces(name)
 
     def pick(self, values):
-        values = [sanitize_text(v) for v in ensure_list(values)]
-        values = [v for v in values if v is not None]
-        if len(values) <= 1:
-            return first(values)
-        return setmedian(sorted(values))
+        """From a set of names, pick the most plausible user-facing one."""
+        # Sort to get stable results when it's a coin toss:
+        values = sorted(ensure_list(values))
+        if not len(values):
+            return None
+        normalised = []
+        lookup = {}
+        # We're doing this in two stages, to avoid name forms with varied casing
+        # (e.g. Smith vs. SMITH) are counted as widly different, leading to
+        # implausible median outcomes.
+        for value in values:
+            norm = slugify(value, sep=" ")
+            if norm is None:
+                continue
+            normalised.append(norm)
+            lookup.setdefault(norm, [])
+            lookup[norm].append(value)
+
+        norm = setmedian(normalised)
+        forms = lookup.get(norm)
+        return setmedian(forms)
 
     def _specificity(self, value):
         # TODO: insert artificial intelligence here.
