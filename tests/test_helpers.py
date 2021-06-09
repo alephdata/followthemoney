@@ -5,6 +5,7 @@ from followthemoney.helpers import remove_checksums
 from followthemoney.helpers import simplify_provenance
 from followthemoney.helpers import entity_filename
 from followthemoney.helpers import name_entity
+from followthemoney.helpers import remove_prefix_dates
 
 
 class HelpersTestCase(TestCase):
@@ -37,7 +38,12 @@ class HelpersTestCase(TestCase):
         assert "2016-01-01" in proxy.get("publishedAt")
 
     def test_entity_filename(self):
-        proxy = model.get_proxy({"id": "banana", "schema": "Document",})
+        proxy = model.get_proxy(
+            {
+                "id": "banana",
+                "schema": "Document",
+            }
+        )
         file_name = entity_filename(proxy)
         assert "banana" == file_name, file_name
 
@@ -45,7 +51,9 @@ class HelpersTestCase(TestCase):
             {
                 "id": "banana",
                 "schema": "Document",
-                "properties": {"extension": [".doc"],},
+                "properties": {
+                    "extension": [".doc"],
+                },
             }
         )
         file_name = entity_filename(proxy)
@@ -55,7 +63,9 @@ class HelpersTestCase(TestCase):
             {
                 "id": "banana",
                 "schema": "Document",
-                "properties": {"mimeType": ["application/pdf"],},
+                "properties": {
+                    "mimeType": ["application/pdf"],
+                },
             }
         )
         file_name = entity_filename(proxy)
@@ -65,7 +75,9 @@ class HelpersTestCase(TestCase):
             {
                 "id": "banana",
                 "schema": "Document",
-                "properties": {"fileName": ["bla.doc"],},
+                "properties": {
+                    "fileName": ["bla.doc"],
+                },
             }
         )
         file_name = entity_filename(proxy)
@@ -78,7 +90,9 @@ class HelpersTestCase(TestCase):
             {
                 "id": "banana",
                 "schema": "Person",
-                "properties": {"name": ["Carl", "Karl", "Carlo", "CARL"],},
+                "properties": {
+                    "name": ["Carl", "Karl", "Carlo", "CARL"],
+                },
             }
         )
         name_entity(proxy)
@@ -87,7 +101,13 @@ class HelpersTestCase(TestCase):
         assert name[0] not in proxy.get("alias"), proxy.get("alias")
 
         proxy = model.get_proxy(
-            {"id": "banana", "schema": "Person", "properties": {"name": ["Carl"],}}
+            {
+                "id": "banana",
+                "schema": "Person",
+                "properties": {
+                    "name": ["Carl"],
+                },
+            }
         )
         name_entity(proxy)
         assert ["Carl"] == proxy.get("name"), proxy.get("name")
