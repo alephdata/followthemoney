@@ -15,8 +15,8 @@ from followthemoney.types import registry
 def remove_checksums(proxy):
     """When accepting entities via a web API, it would consistute
     a security risk to allow a user to submit checksum-type properties.
-    These can be traded in for access to said files if they exist in the 
-    underlying content-addressed storage. It seems safest to just remove 
+    These can be traded in for access to said files if they exist in the
+    underlying content-addressed storage. It seems safest to just remove
     all checksums from entities when they are untrusted user input."""
     for prop in proxy.iterprops():
         if prop.type == registry.checksum:
@@ -74,10 +74,37 @@ def name_entity(entity):
     return entity
 
 
+def remove_prefix_dates(entity):
+    """If an entity has multiple values for a date field, you may
+    want to remove all those that are prefixes of others. For example,
+    if a Person has both a birthDate of 1990 and of 1990-05-01, we'd
+    want to drop the mention of 1990."""
+    for prop in entity.iterprops():
+        if prop.type == registry.date:
+            values = remove_prefix_date_values(entity.get(prop))
+            entity.set(prop, values)
+    return entity
+
+
+def remove_prefix_date_values(values):
+    """See ``remove_prefix_dates``."""
+    kept = []
+    values = sorted(values, key=len, reverse=True)
+    for index, value in enumerate(values):
+        keep = True
+        for longer in values[:index]:
+            if longer.startswith(value):
+                keep = False
+                break
+        if keep:
+            kept.append(value)
+    return kept
+
+
 def inline_names(entity, related):
-    """Attempt to solve a weird UI problem. Imagine we are showing a list of 
-    payments between a sender and a beneficiary to a user. They may now conduct 
-    a search for a term present in the sender or recipient name, but there will 
+    """Attempt to solve a weird UI problem. Imagine we are showing a list of
+    payments between a sender and a beneficiary to a user. They may now conduct
+    a search for a term present in the sender or recipient name, but there will
     be no result, because the name is only indexed with the parties, but not in
     the payment. This is part of a partial work-around to that.
 

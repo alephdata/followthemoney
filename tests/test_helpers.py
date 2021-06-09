@@ -111,3 +111,19 @@ class HelpersTestCase(TestCase):
         )
         name_entity(proxy)
         assert ["Carl"] == proxy.get("name"), proxy.get("name")
+
+    def test_remove_prefix_dates(self):
+        proxy = model.get_proxy(
+            {
+                "id": "banana",
+                "schema": "Person",
+                "properties": {
+                    "birthDate": ["2020-01-05", "2020-01", "2020-03", "2020"],
+                },
+            }
+        )
+        remove_prefix_dates(proxy)
+        assert "2020" not in proxy.get("birthDate")
+        assert "2020-01" not in proxy.get("birthDate")
+        assert "2020-01-05" in proxy.get("birthDate")
+        assert "2020-03" in proxy.get("birthDate")
