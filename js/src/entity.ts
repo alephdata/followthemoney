@@ -5,10 +5,11 @@ import { PropertyType } from './type'
 
 export type Value = string | Entity
 export type Values = Array<Value>
+export type EntityProperties = { [prop: string]: Array<Value | IEntityDatum> }
 
 export interface IEntityDatum {
   schema: Schema | string
-  properties?: { [prop: string]: Array<Value | IEntityDatum> }
+  properties?: EntityProperties
   id: string
 }
 
@@ -78,7 +79,7 @@ export class Entity {
    * @param prop A property name or object
    */
   getFirst(prop: string | Property): Value | null {
-    for (let value of this.getProperty(prop)) {
+    for (const value of this.getProperty(prop)) {
       return value
     }
     return null
@@ -96,7 +97,7 @@ export class Entity {
    * Copy the properties from a given entity that match the local
    * schema to this entity.
    */
-  copyProperties(entity: Entity) {
+  copyProperties(entity: Entity): void {
     entity.getProperties().forEach((prop) => {
       if (this.schema.hasProperty(prop)) {
         const localProp = this.schema.getProperty(prop.name)
@@ -113,8 +114,8 @@ export class Entity {
    * Get the designated label for the given entity.
    */
   getCaption(): string {
-    for (let property of this.schema.caption) {
-      for (let value of this.getProperty(property)) {
+    for (const property of this.schema.caption) {
+      for (const value of this.getProperty(property)) {
         return value as string
       }
     }
@@ -124,7 +125,7 @@ export class Entity {
   /**
    * Set the designated label as the first caption prop for the given entity.
    */
-  setCaption(value: string) {
+  setCaption(value: string): void {
     const captionProperties = this.schema.caption
     if (captionProperties && captionProperties.length > 0) {
       this.setProperty(captionProperties[0], value)
@@ -148,13 +149,13 @@ export class Entity {
    * Get all the values of a particular type, irrespective of
    * which property it is associated with.
    */
-  getTypeValues(type: string | PropertyType, matchableOnly: boolean = false): Values {
+  getTypeValues(type: string | PropertyType, matchableOnly = false): Values {
     const propType = this.schema.model.getType(type)
     const values = new Array<Value>()
-    for (let property of this.getProperties()) {
+    for (const property of this.getProperties()) {
       if (!matchableOnly || property.matchable) {
         if (property.type.toString() === propType.toString()) {
-          for (let value of this.getProperty(property)) {
+          for (const value of this.getProperty(property)) {
             if (values.indexOf(value) === -1) {
               values.push(value)
             }
@@ -170,7 +171,7 @@ export class Entity {
    * JSON.stringify() call.
    */
   toJSON(): IEntityDatum {
-    const properties = {} as any
+    const properties: EntityProperties = {}
     this.properties.forEach((values, prop) => {
       properties[prop.name] = values.map((value) =>
         Entity.isEntity(value) ? (value as Entity).toJSON() : value
@@ -196,7 +197,7 @@ export class Entity {
    * @param model active FollowTheMoney model
    * @param data the raw blob, which must match IEntityDatum
    */
-  static fromJSON(model: Model, data: any) {
+  static fromJSON(model: Model, data: any): Entity { // eslint-disable-line
     return model.getEntity(data)
   }
 

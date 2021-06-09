@@ -1,25 +1,25 @@
 import crypto from 'crypto';
 
 export class Namespace {
-  private separator: string = '.'
+  private separator = '.'
   private namespaceKey: string
 
   constructor(namespaceKey: string) {
     this.namespaceKey = namespaceKey;
   }
 
-  parse(id: string) {
+  parse(id: string): string[] {
     return id.split(this.separator);
   }
 
-  signature(id: string) {
+  signature(id: string): string {
     return crypto.createHmac('sha1', this.namespaceKey)
       .update(id)
       .digest('hex');
   }
 
   sign(id: string): string {
-    const [entityId, _] = this.parse(id);
+    const entityId = this.parse(id)[0];
     if (!entityId) {
       return id;
     }
