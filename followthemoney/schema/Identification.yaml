@@ -1,0 +1,38 @@
+Identification:
+  label: "Identification"
+  plural: "Identifications"
+  description: >
+    An form of identification associated with its holder and some issuing country. This
+    can be used for national ID cards, voter enrollments and similar instruments.
+  extends: Interval
+  matchable: false
+  featured:
+    - number
+    - country
+    - type
+    - holder
+    - startDate
+    - endDate
+  required:
+    - holder
+    - number
+  caption:
+    - number
+  properties:
+    holder:
+      label: "Identification holder"
+      type: entity
+      range: LegalEntity
+      reverse:
+        label: "Identifications"
+        name: identificiation
+    type:
+      label: "Document type"
+    country:
+      label: "Country"
+      type: country
+    number:
+      label: "Passport number"
+      type: identifier
+    authority:
+      label: "Authority"
