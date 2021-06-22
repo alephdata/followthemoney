@@ -27,6 +27,7 @@ class CountryType(EnumType):
             # Overwrite "Czechia" label:
             "cz": gettext("Czech Republic"),
             "xk": gettext("Kosovo"),
+            "dd": gettext("East Germany"),
             "yucs": gettext("Yugoslavia"),
             "csxx": gettext("Serbia and Montenegro"),
             "suhh": gettext("Soviet Union"),
