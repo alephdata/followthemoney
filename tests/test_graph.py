@@ -67,7 +67,7 @@ class GraphTestCase(TestCase):
         assert len(adj) == 2, adj
 
         node = Node(registry.entity, "passpoat")
-        prop = model.get_qname("Passport:holder")
+        prop = model.get_qname("Identification:holder")
         adj = list(graph.get_adjacent(node, prop))
         assert len(adj) == 1, adj
         assert adj[0].source_prop == prop, adj[0].source_prop
