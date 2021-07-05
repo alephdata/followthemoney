@@ -2,9 +2,8 @@ Passport:
   label: "Passport"
   plural: "Passports"
   description: >
-    An identification document associated with its holder and some issuing country. This
-    can also be used for national ID cards and similar instruments.
-  extends: Interval
+    An passport held by a person.
+  extends: Identification
   matchable: false
   featured:
     - passportNumber
@@ -16,21 +15,11 @@ Passport:
   required:
     - holder
     - passportNumber
+    - number
   caption:
     - passportNumber
+    - number
   properties:
-    holder:
-      label: "Document holder"
-      type: entity
-      range: LegalEntity
-      reverse:
-        label: "Passports"
-        name: passport
-    type:
-      label: "Document type"
-    country:
-      label: "Country"
-      type: country
     passportNumber:
       label: "Passport number"
       type: identifier
@@ -48,5 +37,3 @@ Passport:
     personalNumber:
       label: "Personal number"
       type: identifier
-    authority:
-      label: "Authority"
