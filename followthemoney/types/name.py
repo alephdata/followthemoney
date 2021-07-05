@@ -49,7 +49,9 @@ class NameType(PropertyType):
             lookup[norm].append(value)
 
         norm = setmedian(normalised)
-        forms = lookup.get(norm)
+        forms = lookup.get(norm, [])
+        if len(forms) <= 1:
+            return first(forms)
         return setmedian(forms)
 
     def _specificity(self, value):
