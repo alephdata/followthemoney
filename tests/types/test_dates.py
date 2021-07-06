@@ -43,9 +43,7 @@ class DatesTest(unittest.TestCase):
         self.assertEqual(dates.clean("2017-3"), "2017-03")
         self.assertEqual(dates.clean("2017-0"), "2017")
         self.assertEqual(dates.clean("2017-5-2T00:00:00"), "2017-05-02")
-        self.assertEqual(
-            dates.clean("2017-5-2T10:00:00"), "2017-05-02T10:00:00"
-        )  # noqa
+        self.assertEqual(dates.clean("2017-5-2T10:00:00"), "2017-05-02T10")
 
     def test_convert_datetime(self):
         dt = datetime.utcnow()
@@ -76,10 +74,10 @@ class DatesTest(unittest.TestCase):
         self.assertGreater(dates.compare("2011-01-01", "2011-01-01"), 0.9)
 
     def test_cast_num(self):
-        self.assertEqual(dates.to_number("2017-04-04T10:30:29"), 1491301829.0)
-        self.assertEqual(dates.to_number("2017-04-04T10:30"), 1491301800.0)
-        self.assertEqual(dates.to_number("2017-04-04T10"), 1491300000.0)
-        self.assertEqual(dates.to_number("2017-04-04"), 1491264000.0)
-        self.assertEqual(dates.to_number("2017-4-4"), 1491264000.0)
-        self.assertEqual(dates.to_number("2017-4"), 1491004800.0)
-        self.assertEqual(dates.to_number("2017"), 1483228800.0)
+        self.assertEqual(dates.to_number("2017-04-04T10:30:29"), 1491294629.0)
+        self.assertEqual(dates.to_number("2017-04-04T10:30"), 1491294600.0)
+        self.assertEqual(dates.to_number("2017-04-04T10"), 1491292800.0)
+        self.assertEqual(dates.to_number("2017-04-04"), 1491256800.0)
+        self.assertEqual(dates.to_number("2017-4-4"), 1491256800.0)
+        self.assertEqual(dates.to_number("2017-4"), 1490997600.0)
+        self.assertEqual(dates.to_number("2017"), 1483225200.0)
