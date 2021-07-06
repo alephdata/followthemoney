@@ -1,5 +1,6 @@
 import os
 import logging
+from datetime import timezone
 from prefixdate import parse, parse_format, Precision
 from rdflib import Literal  # type: ignore
 from rdflib.namespace import XSD  # type: ignore
@@ -56,4 +57,7 @@ class DateType(PropertyType):
     def to_number(self, value):
         date = self.to_datetime(value)
         if date is not None:
+            # We make a best effort all over the app to ensure all times are in UTC.
+            if date.tzinfo is None:
+                date = date.replace(tzinfo=timezone.utc)
             return date.timestamp()
