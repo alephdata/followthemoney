@@ -36,7 +36,7 @@ setup(
         "sqlalchemy >= 1.2.0, < 2.0.0",
         "countrynames >= 1.9.1, < 2.0.0",
         "languagecodes >= 1.0.9, < 2.0.0",
-        "prefixdate >= 0.3.0, < 1.0.0",
+        "prefixdate >= 0.4.0, < 1.0.0",
         "fingerprints >= 1.0.1, < 2.0.0",
         "phonenumbers >= 8.12.22, < 9.0.0",
         "python-stdnum >= 1.16, < 2.0.0",
