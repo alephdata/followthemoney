@@ -18,7 +18,7 @@ Sanction:
     entity:
       label: "Entity"
       reverse:
-        name: sanctionEntity
+        name: sanctions
         label: "Sanctions"
       type: entity
       range: Thing
@@ -36,3 +36,6 @@ Sanction:
     country:
       label: "Country"
       type: country
+    listingDate:
+      label: "Listing date"
+      type: date
