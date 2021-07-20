@@ -36,16 +36,14 @@ class DatesTest(unittest.TestCase):
         self.assertEqual(dates.clean("2017-00-00"), "2017")
         self.assertEqual(dates.clean("2017-00-00T00:00:00"), "2017")
         self.assertEqual(dates.clean("2017-00-00T12:03:49"), "2017")
-        self.assertEqual(dates.clean("2017-01-01T00:00:00"), "2017-01-01")
+        self.assertEqual(dates.clean("2017-01-01T00:00:00"), "2017-01-01T00:00:00")
 
     def test_patch_dates(self):
         self.assertEqual(dates.clean("2017-1-3"), "2017-01-03")
         self.assertEqual(dates.clean("2017-3"), "2017-03")
         self.assertEqual(dates.clean("2017-0"), "2017")
-        self.assertEqual(dates.clean("2017-5-2T00:00:00"), "2017-05-02")
-        self.assertEqual(
-            dates.clean("2017-5-2T10:00:00"), "2017-05-02T10:00:00"
-        )  # noqa
+        self.assertEqual(dates.clean("2017-5-2T00:00:00"), "2017-05-02T00:00:00")
+        self.assertEqual(dates.clean("2017-5-2T10:00:00"), "2017-05-02T10:00:00")
 
     def test_convert_datetime(self):
         dt = datetime.utcnow()
