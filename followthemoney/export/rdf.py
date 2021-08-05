@@ -14,10 +14,11 @@ class RDFExporter(Exporter):
 
     def write(self, proxy, **kwargs):
         graph = Graph()
+
         for triple in proxy.triples(qualified=self.qualified):
             graph.add(triple)
         try:
             nt = graph.serialize(format="nt").strip()
-            self.fh.write(nt.decode("utf-8") + "\n")
+            self.fh.write(nt + "\n")
         except Exception:
             log.exception("Failed to serialize ntriples.")
