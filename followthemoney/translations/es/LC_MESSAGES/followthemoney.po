@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-24 10:49+0200\n"
+"POT-Creation-Date: 2021-07-06 13:25+0530\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -155,14 +155,14 @@ msgstr "Longitud"
 
 #. Address.properties.country.label
 #. Event.properties.country.label
-#. Passport.properties.country.label
+#. Identification.properties.country.label
 #. Sanction.properties.country.label
 #. TaxRoll.properties.country.label
 #. Thing.properties.country.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Event.yaml
-#: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
-#: followthemoney/schema/TaxRoll.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/country.py:17
+#: followthemoney/schema/Identification.yaml
+#: followthemoney/schema/Sanction.yaml followthemoney/schema/TaxRoll.yaml
+#: followthemoney/schema/Thing.yaml followthemoney/types/country.py:17
 msgid "Country"
 msgstr "País"
 
@@ -937,9 +937,9 @@ msgid "Document number"
 msgstr "Número de documento"
 
 #. ContractAward.properties.documentType.label
-#. Passport.properties.type.label
+#. Identification.properties.type.label
 #: followthemoney/schema/ContractAward.yaml
-#: followthemoney/schema/Passport.yaml
+#: followthemoney/schema/Identification.yaml
 msgid "Document type"
 msgstr "Tipo de documento"
 
@@ -1924,6 +1924,44 @@ msgstr "Páginas web"
 msgid "HTML"
 msgstr "HTML"
 
+#. Identification.label
+#: followthemoney/schema/Identification.yaml
+msgid "Identification"
+msgstr ""
+
+#. Identification.plural
+#. Identification.properties.holder.reverse.label
+#: followthemoney/schema/Identification.yaml
+msgid "Identifications"
+msgstr ""
+
+#. Identification.description
+#: followthemoney/schema/Identification.yaml
+msgid ""
+"An form of identification associated with its holder and some issuing "
+"country. This can be used for national ID cards, voter enrollments and "
+"similar instruments.\n"
+msgstr ""
+
+#. Identification.properties.holder.label
+#: followthemoney/schema/Identification.yaml
+msgid "Identification holder"
+msgstr ""
+
+#. Identification.properties.number.label
+#. Passport.properties.passportNumber.label
+#: followthemoney/schema/Identification.yaml
+#: followthemoney/schema/Passport.yaml
+msgid "Passport number"
+msgstr "Número de pasaporte"
+
+#. Identification.properties.authority.label
+#. Sanction.properties.authority.label
+#: followthemoney/schema/Identification.yaml
+#: followthemoney/schema/Sanction.yaml
+msgid "Authority"
+msgstr "Autoridad"
+
 #. Image.label
 #: followthemoney/schema/Image.yaml
 msgid "Image"
@@ -2533,28 +2571,14 @@ msgid "Passport"
 msgstr "Pasaporte"
 
 #. Passport.plural
-#. Passport.properties.holder.reverse.label
 #: followthemoney/schema/Passport.yaml
 msgid "Passports"
 msgstr "Pasaportes"
 
 #. Passport.description
 #: followthemoney/schema/Passport.yaml
-msgid ""
-"An identification document associated with its holder and some issuing "
-"country. This can also be used for national ID cards and similar "
-"instruments.\n"
+msgid "An passport held by a person.\n"
 msgstr ""
-
-#. Passport.properties.holder.label
-#: followthemoney/schema/Passport.yaml
-msgid "Document holder"
-msgstr "Titular del documento"
-
-#. Passport.properties.passportNumber.label
-#: followthemoney/schema/Passport.yaml
-msgid "Passport number"
-msgstr "Número de pasaporte"
 
 #. Passport.properties.surname.label
 #. TaxRoll.properties.surname.label
@@ -2590,12 +2614,6 @@ msgstr "Sexo"
 #: followthemoney/schema/Passport.yaml
 msgid "Personal number"
 msgstr "Número personal"
-
-#. Passport.properties.authority.label
-#. Sanction.properties.authority.label
-#: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
-msgid "Authority"
-msgstr "Autoridad"
 
 #. Payment.label
 #: followthemoney/schema/Payment.yaml
@@ -3427,58 +3445,62 @@ msgid "Kosovo"
 msgstr "Kosovo"
 
 #: followthemoney/types/country.py:30
+msgid "East Germany"
+msgstr ""
+
+#: followthemoney/types/country.py:31
 msgid "Yugoslavia"
 msgstr "Yugoslavia"
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:32
 msgid "Serbia and Montenegro"
 msgstr "Serbia y Montenegro"
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:33
 msgid "Soviet Union"
 msgstr "Unión Soviética"
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:34
 msgid "Abkhazia"
 msgstr "Abjasia"
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:35
 msgid "South Ossetia"
 msgstr "Osetia del Sur"
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:36
 msgid "Somaliland"
 msgstr "Somalilandia"
 
-#: followthemoney/types/country.py:36
+#: followthemoney/types/country.py:37
 msgid "Northern Cyprus"
 msgstr ""
 
-#: followthemoney/types/country.py:37
+#: followthemoney/types/country.py:38
 msgid "Nagorno-Karabakh"
 msgstr ""
 
-#: followthemoney/types/country.py:38
+#: followthemoney/types/country.py:39
 msgid "Tibet"
 msgstr ""
 
-#: followthemoney/types/country.py:39
+#: followthemoney/types/country.py:40
 msgid "Sark"
 msgstr ""
 
-#: followthemoney/types/country.py:40
+#: followthemoney/types/country.py:41
 msgid "Wales"
 msgstr "Gales"
 
-#: followthemoney/types/country.py:41
+#: followthemoney/types/country.py:42
 msgid "Scotland"
 msgstr "Escocia"
 
-#: followthemoney/types/country.py:42
+#: followthemoney/types/country.py:43
 msgid "Northern Ireland"
 msgstr "Irlanda del Norte"
 
-#: followthemoney/types/country.py:43
+#: followthemoney/types/country.py:44
 msgid "Transnistria"
 msgstr "Transnistria"
 

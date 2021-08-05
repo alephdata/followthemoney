@@ -357,8 +357,8 @@
         "caption": [
           "relationship"
         ],
-        "directed": false,
-        "label": "associated with",
+        "directed": true,
+        "label": "Associate",
         "source": "person",
         "target": "associate"
       },
@@ -401,10 +401,6 @@
           "type": "string"
         }
       },
-      "required": [
-        "person",
-        "associate"
-      ],
       "schemata": [
         "Associate",
         "Interval"
@@ -2303,6 +2299,70 @@
         "Thing"
       ]
     },
+    "Identification": {
+      "caption": [
+        "number"
+      ],
+      "description": "An form of identification associated with its holder and some issuing country. This can be used for national ID cards, voter enrollments and similar instruments.\n",
+      "extends": [
+        "Interval"
+      ],
+      "featured": [
+        "number",
+        "country",
+        "type",
+        "holder",
+        "startDate",
+        "endDate"
+      ],
+      "label": "Identification",
+      "plural": "Identifications",
+      "properties": {
+        "authority": {
+          "label": "Authority",
+          "name": "authority",
+          "qname": "Identification:authority",
+          "type": "string"
+        },
+        "country": {
+          "label": "Country",
+          "matchable": true,
+          "name": "country",
+          "qname": "Identification:country",
+          "type": "country"
+        },
+        "holder": {
+          "label": "Identification holder",
+          "matchable": true,
+          "name": "holder",
+          "qname": "Identification:holder",
+          "range": "LegalEntity",
+          "reverse": "identificiation",
+          "type": "entity"
+        },
+        "number": {
+          "label": "Passport number",
+          "matchable": true,
+          "name": "number",
+          "qname": "Identification:number",
+          "type": "identifier"
+        },
+        "type": {
+          "label": "Document type",
+          "name": "type",
+          "qname": "Identification:type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "holder",
+        "number"
+      ],
+      "schemata": [
+        "Identification",
+        "Interval"
+      ]
+    },
     "Image": {
       "caption": [
         "fileName",
@@ -2722,6 +2782,16 @@
           "qname": "LegalEntity:idNumber",
           "type": "identifier"
         },
+        "identificiation": {
+          "label": "Identifications",
+          "matchable": true,
+          "name": "identificiation",
+          "qname": "LegalEntity:identificiation",
+          "range": "Identification",
+          "reverse": "holder",
+          "stub": true,
+          "type": "entity"
+        },
         "incorporationDate": {
           "description": "The date the legal entity was incorporated",
           "label": "Incorporation date",
@@ -2859,16 +2929,6 @@
           "qname": "LegalEntity:parent",
           "range": "LegalEntity",
           "reverse": "subsidiaries",
-          "type": "entity"
-        },
-        "passport": {
-          "label": "Passports",
-          "matchable": true,
-          "name": "passport",
-          "qname": "LegalEntity:passport",
-          "range": "Passport",
-          "reverse": "holder",
-          "stub": true,
           "type": "entity"
         },
         "paymentBeneficiary": {
@@ -3658,11 +3718,12 @@
     },
     "Passport": {
       "caption": [
-        "passportNumber"
+        "passportNumber",
+        "number"
       ],
-      "description": "An identification document associated with its holder and some issuing country. This can also be used for national ID cards and similar instruments.\n",
+      "description": "An passport held by a person.\n",
       "extends": [
-        "Interval"
+        "Identification"
       ],
       "featured": [
         "passportNumber",
@@ -3675,12 +3736,6 @@
       "label": "Passport",
       "plural": "Passports",
       "properties": {
-        "authority": {
-          "label": "Authority",
-          "name": "authority",
-          "qname": "Passport:authority",
-          "type": "string"
-        },
         "birthDate": {
           "label": "Date of birth",
           "matchable": true,
@@ -3694,13 +3749,6 @@
           "qname": "Passport:birthPlace",
           "type": "string"
         },
-        "country": {
-          "label": "Country",
-          "matchable": true,
-          "name": "country",
-          "qname": "Passport:country",
-          "type": "country"
-        },
         "gender": {
           "label": "Gender",
           "name": "gender",
@@ -3712,15 +3760,6 @@
           "name": "givenName",
           "qname": "Passport:givenName",
           "type": "string"
-        },
-        "holder": {
-          "label": "Document holder",
-          "matchable": true,
-          "name": "holder",
-          "qname": "Passport:holder",
-          "range": "LegalEntity",
-          "reverse": "passport",
-          "type": "entity"
         },
         "passportNumber": {
           "label": "Passport number",
@@ -3741,19 +3780,15 @@
           "name": "surname",
           "qname": "Passport:surname",
           "type": "string"
-        },
-        "type": {
-          "label": "Document type",
-          "name": "type",
-          "qname": "Passport:type",
-          "type": "string"
         }
       },
       "required": [
         "holder",
-        "passportNumber"
+        "passportNumber",
+        "number"
       ],
       "schemata": [
+        "Identification",
         "Interval",
         "Passport"
       ]
@@ -4359,6 +4394,31 @@
         "Value"
       ]
     },
+    "Record": {
+      "abstract": true,
+      "extends": [],
+      "generated": true,
+      "label": "Record",
+      "plural": "Records",
+      "properties": {
+        "index": {
+          "label": "Index",
+          "name": "index",
+          "qname": "Record:index",
+          "type": "number"
+        },
+        "indexText": {
+          "hidden": true,
+          "label": "Index text",
+          "name": "indexText",
+          "qname": "Record:indexText",
+          "type": "text"
+        }
+      },
+      "schemata": [
+        "Record"
+      ]
+    },
     "Representation": {
       "description": "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity.",
       "edge": {
@@ -4408,6 +4468,36 @@
         "Interest",
         "Interval",
         "Representation"
+      ]
+    },
+    "Row": {
+      "extends": [
+        "Record"
+      ],
+      "generated": true,
+      "label": "Row",
+      "plural": "Rows",
+      "properties": {
+        "cells": {
+          "hidden": true,
+          "label": "Cells",
+          "name": "cells",
+          "qname": "Row:cells",
+          "type": "json"
+        },
+        "table": {
+          "label": "Table",
+          "matchable": true,
+          "name": "table",
+          "qname": "Row:table",
+          "range": "Table",
+          "reverse": "rows",
+          "type": "entity"
+        }
+      },
+      "schemata": [
+        "Record",
+        "Row"
       ]
     },
     "Sanction": {
@@ -4573,6 +4663,17 @@
           "name": "rowCount",
           "qname": "Table:rowCount",
           "type": "number"
+        },
+        "rows": {
+          "hidden": true,
+          "label": "Rows",
+          "matchable": true,
+          "name": "rows",
+          "qname": "Table:rows",
+          "range": "Row",
+          "reverse": "table",
+          "stub": true,
+          "type": "entity"
         }
       },
       "schemata": [
@@ -5414,6 +5515,7 @@
         "cy": "Cyprus",
         "cy-trnc": "Northern Cyprus",
         "cz": "Czech Republic",
+        "dd": "East Germany",
         "de": "Germany",
         "dg": "Diego Garcia",
         "dj": "Djibouti",
