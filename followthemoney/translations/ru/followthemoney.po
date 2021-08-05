@@ -5,20 +5,21 @@
 # 
 # Translators:
 # pudo <friedrich@pudo.org>, 2021
+# jen occrp, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-05 20:43+0200\n"
+"POT-Creation-Date: 2021-07-06 13:25+0530\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
-"Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
+"Last-Translator: jen occrp, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
@@ -58,10 +59,11 @@ msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
 #. Address.label
+#. CryptoWallet.properties.publicKey.label
 #. Thing.properties.address.label
 #. Thing.properties.addressEntity.label
-#: followthemoney/schema/Address.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/address.py:20
+#: followthemoney/schema/Address.yaml followthemoney/schema/CryptoWallet.yaml
+#: followthemoney/schema/Thing.yaml followthemoney/types/address.py:20
 msgid "Address"
 msgstr "Адрес"
 
@@ -154,14 +156,14 @@ msgstr "Долгота"
 
 #. Address.properties.country.label
 #. Event.properties.country.label
-#. Passport.properties.country.label
+#. Identification.properties.country.label
 #. Sanction.properties.country.label
 #. TaxRoll.properties.country.label
 #. Thing.properties.country.label
 #: followthemoney/schema/Address.yaml followthemoney/schema/Event.yaml
-#: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
-#: followthemoney/schema/TaxRoll.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/country.py:17
+#: followthemoney/schema/Identification.yaml
+#: followthemoney/schema/Sanction.yaml followthemoney/schema/TaxRoll.yaml
+#: followthemoney/schema/Thing.yaml followthemoney/types/country.py:17
 msgid "Country"
 msgstr "Страна"
 
@@ -422,15 +424,14 @@ msgid "Sampling rate of the audio in Hz"
 msgstr "Частота дискретизации аудио (Гц)"
 
 #. BankAccount.label
-#. EconomicActivity.properties.bankAccount.label
 #: followthemoney/schema/BankAccount.yaml
-#: followthemoney/schema/EconomicActivity.yaml
-msgid "Bank Account"
+msgid "Bank account"
 msgstr "Банковский счёт"
 
 #. BankAccount.plural
+#. BankAccount.properties.bank.reverse.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Accounts"
+msgid "Bank accounts"
 msgstr "Банковские счета"
 
 #. BankAccount.description
@@ -445,12 +446,12 @@ msgstr ""
 
 #. BankAccount.properties.bankName.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Bank Name"
+msgid "Bank name"
 msgstr "Название банка"
 
 #. BankAccount.properties.accountNumber.label
 #: followthemoney/schema/BankAccount.yaml
-msgid "Account Number"
+msgid "Account number"
 msgstr "Номер счёта"
 
 #. BankAccount.properties.iban.label
@@ -468,23 +469,22 @@ msgstr "БИК"
 msgid "Bank"
 msgstr "Банк"
 
-#. BankAccount.properties.bank.reverse.label
-#: followthemoney/schema/BankAccount.yaml
-msgid "Bank accounts"
-msgstr "Банковский счета"
-
 #. BankAccount.properties.accountType.label
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account type"
 msgstr "Тип счёта"
 
 #. BankAccount.properties.balance.label
+#. CryptoWallet.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
+#: followthemoney/schema/CryptoWallet.yaml
 msgid "Balance"
 msgstr "Баланс"
 
 #. BankAccount.properties.balanceDate.label
+#. CryptoWallet.properties.balanceDate.label
 #: followthemoney/schema/BankAccount.yaml
+#: followthemoney/schema/CryptoWallet.yaml
 msgid "Balance date"
 msgstr "Дата баланса"
 
@@ -941,9 +941,9 @@ msgid "Document number"
 msgstr "Номер документа"
 
 #. ContractAward.properties.documentType.label
-#. Passport.properties.type.label
+#. Identification.properties.type.label
 #: followthemoney/schema/ContractAward.yaml
-#: followthemoney/schema/Passport.yaml
+#: followthemoney/schema/Identification.yaml
 msgid "Document type"
 msgstr "Тип документа"
 
@@ -1059,6 +1059,56 @@ msgstr "Дело"
 #: followthemoney/schema/CourtCaseParty.yaml
 msgid "Parties"
 msgstr "Стороны"
+
+#. CryptoWallet.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Cryptocurrency wallet"
+msgstr "Криптовалютный кошелёк"
+
+#. CryptoWallet.plural
+#. CryptoWallet.properties.holder.reverse.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Cryptocurrency wallets"
+msgstr "Криптовалютные кошельки"
+
+#. CryptoWallet.description
+#: followthemoney/schema/CryptoWallet.yaml
+msgid ""
+"A cryptocurrency wallet is a view on the transactions conducted by one "
+"participant on a blockchain / distributed ledger system.\n"
+msgstr ""
+"Криптовалютный кошелёк содержит транзакции, произведённые участником "
+"пиринговой платёжной системы / системы распределённого реестра.\n"
+
+#. CryptoWallet.properties.publicKey.description
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Public key used to identify the wallet"
+msgstr "Открытый ключ, идентифицирующий кошелёк"
+
+#. CryptoWallet.properties.privateKey.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Private key"
+msgstr "Закрытый ключ"
+
+#. CryptoWallet.properties.creationDate.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Creation date"
+msgstr "Дата создания"
+
+#. CryptoWallet.properties.currencySymbol.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Currency short code"
+msgstr "Код криптовалюты"
+
+#. CryptoWallet.properties.mangingExchange.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Managing exchange"
+msgstr "Биржа цифровой валюты"
+
+#. CryptoWallet.properties.holder.label
+#: followthemoney/schema/CryptoWallet.yaml
+msgid "Wallet holder"
+msgstr "Держатель кошелька"
 
 #. Debt.label
 #: followthemoney/schema/Debt.yaml
@@ -1574,6 +1624,11 @@ msgstr "Страна происхождения"
 msgid "Country of origin of goods"
 msgstr "Страна происхождения"
 
+#. EconomicActivity.properties.bankAccount.label
+#: followthemoney/schema/EconomicActivity.yaml
+msgid "Bank Account"
+msgstr "Банковский счёт"
+
 #. EconomicActivity.properties.bankAccount.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Bank account of the contract"
@@ -1872,6 +1927,47 @@ msgstr "Веб-страницы"
 #: followthemoney/schema/HyperText.yaml followthemoney/types/string.py:38
 msgid "HTML"
 msgstr "HTML"
+
+#. Identification.label
+#: followthemoney/schema/Identification.yaml
+msgid "Identification"
+msgstr "Идентификационный документ"
+
+#. Identification.plural
+#. Identification.properties.holder.reverse.label
+#: followthemoney/schema/Identification.yaml
+msgid "Identifications"
+msgstr "Идентификационные документы"
+
+#. Identification.description
+#: followthemoney/schema/Identification.yaml
+msgid ""
+"An form of identification associated with its holder and some issuing "
+"country. This can be used for national ID cards, voter enrollments and "
+"similar instruments.\n"
+msgstr ""
+"Вид идентификационного документа, ассоциированного с держателем и выдавшей "
+"стороной. Может использоваться в качестве ID-карт, регистрации участника "
+"голосования или подобных инструментов.\n"
+
+#. Identification.properties.holder.label
+#: followthemoney/schema/Identification.yaml
+msgid "Identification holder"
+msgstr "Держатель"
+
+#. Identification.properties.number.label
+#. Passport.properties.passportNumber.label
+#: followthemoney/schema/Identification.yaml
+#: followthemoney/schema/Passport.yaml
+msgid "Passport number"
+msgstr "Номер паспорта"
+
+#. Identification.properties.authority.label
+#. Sanction.properties.authority.label
+#: followthemoney/schema/Identification.yaml
+#: followthemoney/schema/Sanction.yaml
+msgid "Authority"
+msgstr "Орган, выдавший документ"
 
 #. Image.label
 #: followthemoney/schema/Image.yaml
@@ -2486,30 +2582,14 @@ msgid "Passport"
 msgstr "Паспорт"
 
 #. Passport.plural
-#. Passport.properties.holder.reverse.label
 #: followthemoney/schema/Passport.yaml
 msgid "Passports"
 msgstr "Паспорта"
 
 #. Passport.description
 #: followthemoney/schema/Passport.yaml
-msgid ""
-"An identification document associated with its holder and some issuing "
-"country. This can also be used for national ID cards and similar "
-"instruments.\n"
-msgstr ""
-"Удостоверяющий документ, ассоциированный с лицом и выдавшей стороной. Может "
-"использоваться также для национальных ID-карт и подобных документов.\n"
-
-#. Passport.properties.holder.label
-#: followthemoney/schema/Passport.yaml
-msgid "Document holder"
-msgstr "Держатель документа"
-
-#. Passport.properties.passportNumber.label
-#: followthemoney/schema/Passport.yaml
-msgid "Passport number"
-msgstr "Номер паспорта"
+msgid "An passport held by a person.\n"
+msgstr "Выданный паспорт.\n"
 
 #. Passport.properties.surname.label
 #. TaxRoll.properties.surname.label
@@ -2545,12 +2625,6 @@ msgstr "Пол"
 #: followthemoney/schema/Passport.yaml
 msgid "Personal number"
 msgstr "Идентификационный номер"
-
-#. Passport.properties.authority.label
-#. Sanction.properties.authority.label
-#: followthemoney/schema/Passport.yaml followthemoney/schema/Sanction.yaml
-msgid "Authority"
-msgstr "Орган, выдавший документ"
 
 #. Payment.label
 #: followthemoney/schema/Payment.yaml
@@ -2612,7 +2686,7 @@ msgstr "Перечисленные платежи"
 #. Payment.properties.payerAccount.label
 #: followthemoney/schema/Payment.yaml
 msgid "Payer bank account"
-msgstr "Банковский счет плательщика"
+msgstr "Банковский счёт плательщика"
 
 #. Payment.properties.beneficiary.label
 #: followthemoney/schema/Payment.yaml
@@ -2628,7 +2702,7 @@ msgstr "Денежные поступления"
 #. Payment.properties.beneficiaryAccount.label
 #: followthemoney/schema/Payment.yaml
 msgid "Beneficiary bank account"
-msgstr "Банковский счет бенефициара"
+msgstr "Банковский счёт бенефициара"
 
 #. Payment.properties.contract.reverse.label
 #: followthemoney/schema/Payment.yaml
@@ -3385,58 +3459,62 @@ msgid "Kosovo"
 msgstr "Косово"
 
 #: followthemoney/types/country.py:30
+msgid "East Germany"
+msgstr "Восточная Германия"
+
+#: followthemoney/types/country.py:31
 msgid "Yugoslavia"
 msgstr "Югославия"
 
-#: followthemoney/types/country.py:31
+#: followthemoney/types/country.py:32
 msgid "Serbia and Montenegro"
 msgstr "Сербия и Черногория"
 
-#: followthemoney/types/country.py:32
+#: followthemoney/types/country.py:33
 msgid "Soviet Union"
 msgstr "Советский Союз"
 
-#: followthemoney/types/country.py:33
+#: followthemoney/types/country.py:34
 msgid "Abkhazia"
 msgstr "Абхазия"
 
-#: followthemoney/types/country.py:34
+#: followthemoney/types/country.py:35
 msgid "South Ossetia"
 msgstr "Южная Осетия"
 
-#: followthemoney/types/country.py:35
+#: followthemoney/types/country.py:36
 msgid "Somaliland"
 msgstr "Сомалиленд"
 
-#: followthemoney/types/country.py:36
+#: followthemoney/types/country.py:37
 msgid "Northern Cyprus"
 msgstr "Северный Кипр"
 
-#: followthemoney/types/country.py:37
+#: followthemoney/types/country.py:38
 msgid "Nagorno-Karabakh"
 msgstr "Нагорный Карабах"
 
-#: followthemoney/types/country.py:38
+#: followthemoney/types/country.py:39
 msgid "Tibet"
 msgstr "Тибет"
 
-#: followthemoney/types/country.py:39
+#: followthemoney/types/country.py:40
 msgid "Sark"
 msgstr "Сарк"
 
-#: followthemoney/types/country.py:40
+#: followthemoney/types/country.py:41
 msgid "Wales"
 msgstr "Уэльс"
 
-#: followthemoney/types/country.py:41
+#: followthemoney/types/country.py:42
 msgid "Scotland"
 msgstr "Шотландия"
 
-#: followthemoney/types/country.py:42
+#: followthemoney/types/country.py:43
 msgid "Northern Ireland"
 msgstr "Северная Ирландия"
 
-#: followthemoney/types/country.py:43
+#: followthemoney/types/country.py:44
 msgid "Transnistria"
 msgstr "Приднестровье"
 
