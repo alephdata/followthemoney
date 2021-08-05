@@ -18,7 +18,7 @@ class RDFExporter(Exporter):
         for triple in proxy.triples(qualified=self.qualified):
             graph.add(triple)
         try:
-            nt = graph.serialize(format="nt").strip()
+            nt = graph.serialize(format="nt11").strip()
             self.fh.write(nt + "\n")
         except Exception:
             log.exception("Failed to serialize ntriples.")
