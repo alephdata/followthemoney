@@ -1,0 +1,38 @@
+Security:
+  extends: Asset
+  label: Security
+  plural: Securities
+  description: "A tradeable financial asset."
+  matchable: false
+  featured:
+    - isin
+    - name
+    - issuer
+    - country
+  caption:
+    - name
+    - isin
+  properties:
+    isin:
+      label: ISIN
+      description: International Securities Identification Number
+      type: identifier
+    ticker:
+      label: Ticker
+      type: identifier
+    issuer:
+      label: "Issuer"
+      type: entity
+      range: LegalEntity
+      reverse:
+        label: "Issued securities"
+        name: securities
+    issueDate:
+      label: Date issued
+      type: date
+    type:
+      label: Type
+    classification:
+      label: Classification
+    collateral:
+      label: Collateral

@@ -1,6 +1,6 @@
-# OSM: https://wiki.openstreetmap.org/wiki/Proposed_features/House_numbers/Karlsruhe_Schema#Tags 
+# OSM: https://wiki.openstreetmap.org/wiki/Proposed_features/House_numbers/Karlsruhe_Schema#Tags
 # Seen in the wild:
-# 
+#
 # - full
 # - remarks / note
 # - c/o
@@ -55,7 +55,10 @@ Address:
       description: "Zip code or postcode."
     region:
       label: "Region"
-      description: "State, province or area."
+      description: "Also province or area."
+    state:
+      label: "State"
+      description: "State or federal unit."
     latitude:
       label: "Latitude"
       type: "number"
@@ -65,4 +68,3 @@ Address:
     country:
       label: "Country"
       type: "country"
-    
