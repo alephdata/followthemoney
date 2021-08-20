@@ -68,7 +68,7 @@
           "type": "string"
         },
         "region": {
-          "description": "State, province or area.",
+          "description": "Also province or area.",
           "label": "Region",
           "name": "region",
           "qname": "Address:region",
@@ -79,6 +79,13 @@
           "label": "Remarks",
           "name": "remarks",
           "qname": "Address:remarks",
+          "type": "string"
+        },
+        "state": {
+          "description": "State or federal unit.",
+          "label": "State",
+          "name": "state",
+          "qname": "Address:state",
           "type": "string"
         },
         "street": {
@@ -357,8 +364,8 @@
         "caption": [
           "relationship"
         ],
-        "directed": true,
-        "label": "Associate",
+        "directed": false,
+        "label": "associated with",
         "source": "person",
         "target": "associate"
       },
@@ -401,6 +408,10 @@
           "type": "string"
         }
       },
+      "required": [
+        "person",
+        "associate"
+      ],
       "schemata": [
         "Associate",
         "Interval"
@@ -2993,6 +3004,16 @@
           "qname": "LegalEntity:sector",
           "type": "string"
         },
+        "securities": {
+          "label": "Issued securities",
+          "matchable": true,
+          "name": "securities",
+          "qname": "LegalEntity:securities",
+          "range": "Security",
+          "reverse": "issuer",
+          "stub": true,
+          "type": "entity"
+        },
         "status": {
           "label": "Status",
           "name": "status",
@@ -4394,31 +4415,6 @@
         "Value"
       ]
     },
-    "Record": {
-      "abstract": true,
-      "extends": [],
-      "generated": true,
-      "label": "Record",
-      "plural": "Records",
-      "properties": {
-        "index": {
-          "label": "Index",
-          "name": "index",
-          "qname": "Record:index",
-          "type": "number"
-        },
-        "indexText": {
-          "hidden": true,
-          "label": "Index text",
-          "name": "indexText",
-          "qname": "Record:indexText",
-          "type": "text"
-        }
-      },
-      "schemata": [
-        "Record"
-      ]
-    },
     "Representation": {
       "description": "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity.",
       "edge": {
@@ -4470,36 +4466,6 @@
         "Representation"
       ]
     },
-    "Row": {
-      "extends": [
-        "Record"
-      ],
-      "generated": true,
-      "label": "Row",
-      "plural": "Rows",
-      "properties": {
-        "cells": {
-          "hidden": true,
-          "label": "Cells",
-          "name": "cells",
-          "qname": "Row:cells",
-          "type": "json"
-        },
-        "table": {
-          "label": "Table",
-          "matchable": true,
-          "name": "table",
-          "qname": "Row:table",
-          "range": "Table",
-          "reverse": "rows",
-          "type": "entity"
-        }
-      },
-      "schemata": [
-        "Record",
-        "Row"
-      ]
-    },
     "Sanction": {
       "caption": [
         "program"
@@ -4543,8 +4509,15 @@
           "name": "entity",
           "qname": "Sanction:entity",
           "range": "Thing",
-          "reverse": "sanctionEntity",
+          "reverse": "sanctions",
           "type": "entity"
+        },
+        "listingDate": {
+          "label": "Listing date",
+          "matchable": true,
+          "name": "listingDate",
+          "qname": "Sanction:listingDate",
+          "type": "date"
         },
         "program": {
           "label": "Program",
@@ -4571,6 +4544,81 @@
       "schemata": [
         "Interval",
         "Sanction"
+      ]
+    },
+    "Security": {
+      "caption": [
+        "name",
+        "isin"
+      ],
+      "description": "A tradeable financial asset.",
+      "extends": [
+        "Asset"
+      ],
+      "featured": [
+        "isin",
+        "name",
+        "issuer",
+        "country"
+      ],
+      "label": "Security",
+      "plural": "Securities",
+      "properties": {
+        "classification": {
+          "label": "Classification",
+          "name": "classification",
+          "qname": "Security:classification",
+          "type": "string"
+        },
+        "collateral": {
+          "label": "Collateral",
+          "name": "collateral",
+          "qname": "Security:collateral",
+          "type": "string"
+        },
+        "isin": {
+          "description": "International Securities Identification Number",
+          "label": "ISIN",
+          "matchable": true,
+          "name": "isin",
+          "qname": "Security:isin",
+          "type": "identifier"
+        },
+        "issueDate": {
+          "label": "Date issued",
+          "matchable": true,
+          "name": "issueDate",
+          "qname": "Security:issueDate",
+          "type": "date"
+        },
+        "issuer": {
+          "label": "Issuer",
+          "matchable": true,
+          "name": "issuer",
+          "qname": "Security:issuer",
+          "range": "LegalEntity",
+          "reverse": "securities",
+          "type": "entity"
+        },
+        "ticker": {
+          "label": "Ticker",
+          "matchable": true,
+          "name": "ticker",
+          "qname": "Security:ticker",
+          "type": "identifier"
+        },
+        "type": {
+          "label": "Type",
+          "name": "type",
+          "qname": "Security:type",
+          "type": "string"
+        }
+      },
+      "schemata": [
+        "Asset",
+        "Security",
+        "Thing",
+        "Value"
       ]
     },
     "Succession": {
@@ -4663,17 +4711,6 @@
           "name": "rowCount",
           "qname": "Table:rowCount",
           "type": "number"
-        },
-        "rows": {
-          "hidden": true,
-          "label": "Rows",
-          "matchable": true,
-          "name": "rows",
-          "qname": "Table:rows",
-          "range": "Row",
-          "reverse": "table",
-          "stub": true,
-          "type": "entity"
         }
       },
       "schemata": [
@@ -4918,11 +4955,11 @@
           "qname": "Thing:retrievedAt",
           "type": "date"
         },
-        "sanctionEntity": {
+        "sanctions": {
           "label": "Sanctions",
           "matchable": true,
-          "name": "sanctionEntity",
-          "qname": "Thing:sanctionEntity",
+          "name": "sanctions",
+          "qname": "Thing:sanctions",
           "range": "Sanction",
           "reverse": "entity",
           "stub": true,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-06 13:25+0530\n"
+"POT-Creation-Date: 2021-08-20 16:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,7 +133,17 @@ msgstr ""
 
 #. Address.properties.region.description
 #: followthemoney/schema/Address.yaml
-msgid "State, province or area."
+msgid "Also province or area."
+msgstr ""
+
+#. Address.properties.state.label
+#: followthemoney/schema/Address.yaml
+msgid "State"
+msgstr ""
+
+#. Address.properties.state.description
+#: followthemoney/schema/Address.yaml
+msgid "State or federal unit."
 msgstr ""
 
 #. Address.properties.latitude.label
@@ -791,9 +801,10 @@ msgstr ""
 
 #. Contract.properties.type.label
 #. CourtCase.properties.type.label
+#. Security.properties.type.label
 #. Vehicle.properties.type.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
-#: followthemoney/schema/Vehicle.yaml
+#: followthemoney/schema/Security.yaml followthemoney/schema/Vehicle.yaml
 msgid "Type"
 msgstr ""
 
@@ -844,7 +855,9 @@ msgstr ""
 
 #. Contract.properties.classification.label
 #. LegalEntity.properties.classification.label
+#. Security.properties.classification.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/LegalEntity.yaml
+#: followthemoney/schema/Security.yaml
 msgid "Classification"
 msgstr ""
 
@@ -1267,7 +1280,7 @@ msgstr ""
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:56
+#: followthemoney/types/date.py:26
 msgid "Date"
 msgstr ""
 
@@ -2960,6 +2973,61 @@ msgstr ""
 msgid "Reason"
 msgstr ""
 
+#. Sanction.properties.listingDate.label
+#: followthemoney/schema/Sanction.yaml
+msgid "Listing date"
+msgstr ""
+
+#. Security.label
+#: followthemoney/schema/Security.yaml
+msgid "Security"
+msgstr ""
+
+#. Security.plural
+#: followthemoney/schema/Security.yaml
+msgid "Securities"
+msgstr ""
+
+#. Security.description
+#: followthemoney/schema/Security.yaml
+msgid "A tradeable financial asset."
+msgstr ""
+
+#. Security.properties.isin.label
+#: followthemoney/schema/Security.yaml
+msgid "ISIN"
+msgstr ""
+
+#. Security.properties.isin.description
+#: followthemoney/schema/Security.yaml
+msgid "International Securities Identification Number"
+msgstr ""
+
+#. Security.properties.ticker.label
+#: followthemoney/schema/Security.yaml
+msgid "Ticker"
+msgstr ""
+
+#. Security.properties.issuer.label
+#: followthemoney/schema/Security.yaml
+msgid "Issuer"
+msgstr ""
+
+#. Security.properties.issuer.reverse.label
+#: followthemoney/schema/Security.yaml
+msgid "Issued securities"
+msgstr ""
+
+#. Security.properties.issueDate.label
+#: followthemoney/schema/Security.yaml
+msgid "Date issued"
+msgstr ""
+
+#. Security.properties.collateral.label
+#: followthemoney/schema/Security.yaml
+msgid "Collateral"
+msgstr ""
+
 #. Succession.label
 #: followthemoney/schema/Succession.yaml
 msgid "Succession"
@@ -3464,7 +3532,7 @@ msgstr ""
 msgid "Transnistria"
 msgstr ""
 
-#: followthemoney/types/date.py:57
+#: followthemoney/types/date.py:27
 msgid "Dates"
 msgstr ""
 
