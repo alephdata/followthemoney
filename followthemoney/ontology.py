@@ -61,7 +61,7 @@ class Ontology(object):
 
     def write_namespace_docs(self, path):
         xml_fn = "%s/ftm.xml" % path
-        with open(xml_fn, "wb") as xml_file:
+        with open(xml_fn, "w") as xml_file:
             xml_file.write(self.graph.serialize(format="xml"))
 
 
