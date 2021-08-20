@@ -58,7 +58,7 @@ Address:
       description: "Also province or area."
     state:
       label: "State"
-      description: "State oder federal unit."
+      description: "State or federal unit."
     latitude:
       label: "Latitude"
       type: "number"
