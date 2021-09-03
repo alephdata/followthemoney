@@ -1,3 +1,4 @@
+from typing import Optional
 from banal import ensure_list, first
 from normality import slugify
 from normality.cleaning import collapse_spaces, strip_quotes
@@ -5,7 +6,7 @@ from fuzzywuzzy import fuzz  # type: ignore
 from Levenshtein import setmedian  # type: ignore
 
 from followthemoney.types.common import PropertyType
-from followthemoney.util import dampen, sanitize_text
+from followthemoney.util import dampen
 from followthemoney.util import defer as _
 
 
@@ -61,5 +62,8 @@ class NameType(PropertyType):
     def compare(self, left, right):
         return fuzz.WRatio(left, right) / 100.0
 
-    def node_id(self, value):
-        return "name:%s" % slugify(value)
+    def node_id(self, value: str) -> Optional[str]:
+        slug = slugify(value)
+        if slug is None:
+            return None
+        return f"name:{slug}"

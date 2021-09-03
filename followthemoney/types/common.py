@@ -132,7 +132,7 @@ class PropertyType(object):
         literal, or a URI reference."""
         return Literal(value)
 
-    def node_id(self, value: str) -> str:
+    def node_id(self, value: str) -> Optional[str]:
         """Return an ID suitable to identify this entity as a typed node in a
         graph representation of some FtM data. It's usually the same as the the
         RDF form."""
@@ -144,7 +144,7 @@ class PropertyType(object):
             return None
         return self.node_id(value)
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: str) -> Optional[str]:
         """Return a label for the given property value. This is often the same as the
         value, but for types like countries or languages, it would return the label,
         while other values like phone numbers can be formatted to be nicer to read."""
@@ -152,7 +152,10 @@ class PropertyType(object):
 
     def to_dict(self) -> Dict[str, Any]:
         """Return a serialisable description of this data type."""
-        data = {"label": gettext(self.label), "plural": gettext(self.plural)}
+        data: Dict[str, Any] = {
+            "label": gettext(self.label),
+            "plural": gettext(self.plural),
+        }
         if self.group:
             data["group"] = self.group
         if self.matchable:
@@ -161,17 +164,17 @@ class PropertyType(object):
             data["pivot"] = True
         return data
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         return self.name == other.name
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.name)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def __repr__(self):
-        return "<%s>" % self.name
+    def __repr__(self) -> str:
+        return f"<{self.name}>"
 
 
 class EnumType(PropertyType):
@@ -208,11 +211,11 @@ class EnumType(PropertyType):
         if code in self.codes:
             return code
 
-    def caption(self, value):
+    def caption(self, value: str) -> str:
         """Given a code value, return the label that should be shown to a user."""
         return self.names.get(value, value)
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         """When serialising the model to JSON, include all values."""
         data = super(EnumType, self).to_dict()
         data["values"] = self.names

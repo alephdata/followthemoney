@@ -43,5 +43,5 @@ class Registry(object):
         types = [self.get(n) for n in names]
         return [t for t in types if t is not None]
 
-    def __getattr__(self, name: str) -> Optional[PropertyType]:
+    def __getattr__(self, name: str) -> PropertyType:
         return self.named[name]

@@ -1,4 +1,4 @@
-import json  # yay Python 3
+import json
 from banal import ensure_list
 
 from followthemoney.types.common import PropertyType
@@ -42,5 +42,5 @@ class JsonType(PropertyType):
         values = [self.unpack(v) for v in ensure_list(values)]
         return self.pack(values)
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> None:
         return None

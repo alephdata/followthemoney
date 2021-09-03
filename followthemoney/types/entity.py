@@ -1,5 +1,6 @@
 import re
 from rdflib import URIRef  # type: ignore
+from rdflib.term import Identifier  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import get_entity_id, sanitize_text
@@ -38,8 +39,8 @@ class EntityType(PropertyType):
         if self.REGEX.match(entity_id) is not None:
             return entity_id
 
-    def rdf(self, value):
-        return URIRef("entity:%s" % value)
+    def rdf(self, value: str) -> Identifier:
+        return URIRef(f"entity:{value}")
 
-    def caption(self, value):
+    def caption(self, value: str) -> None:
         return None

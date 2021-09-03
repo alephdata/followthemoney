@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 from normality import slugify
 from normality.cleaning import collapse_spaces
 
@@ -33,5 +34,8 @@ class AddressType(PropertyType):
     def _specificity(self, value: str) -> float:
         return dampen(10, 60, value)
 
-    def node_id(self, value: str) -> str:
-        return "addr:%s" % slugify(value)
+    def node_id(self, value: str) -> Optional[str]:
+        slug = slugify(value)
+        if slug is None:
+            return None
+        return f"addr:{value}"

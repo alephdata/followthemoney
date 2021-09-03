@@ -1,4 +1,4 @@
-import countrynames  # type: ignore
+import countrynames
 from rdflib import URIRef  # type: ignore
 from rdflib.term import Identifier  # type: ignore
 
@@ -69,4 +69,4 @@ class CountryType(EnumType):
         return value
 
     def rdf(self, value: str) -> Identifier:
-        return URIRef("iso-3166-1:%s" % value)
+        return URIRef(f"iso-3166-1:{value}")

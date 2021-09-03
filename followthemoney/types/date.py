@@ -1,9 +1,11 @@
 import os
 import logging
-from datetime import timezone
+from datetime import datetime, timezone
+from typing import Optional
 from prefixdate import parse, parse_format, Precision
 from rdflib import Literal  # type: ignore
 from rdflib.namespace import XSD  # type: ignore
+from rdflib.term import Identifier  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
@@ -38,26 +40,27 @@ class DateType(PropertyType):
             return parse_format(text, format).text
         return parse(text).text
 
-    def _specificity(self, value):
+    def _specificity(self, value: str) -> float:
         return dampen(5, 13, value)
 
-    def compare(self, left, right):
+    def compare(self, left: str, right: str) -> float:
         prefix = os.path.commonprefix([left, right])
         return dampen(4, 10, prefix)
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> Identifier:
         return Literal(value, datatype=XSD.dateTime)
 
-    def node_id(self, value):
-        return "date:%s" % value
+    def node_id(self, value: str) -> str:
+        return f"date:{value}"
 
-    def to_datetime(self, value):
+    def to_datetime(self, value: str) -> Optional[datetime]:
         return parse(value).dt
 
-    def to_number(self, value):
+    def to_number(self, value: str) -> Optional[float]:
         date = self.to_datetime(value)
-        if date is not None:
-            # We make a best effort all over the app to ensure all times are in UTC.
-            if date.tzinfo is None:
-                date = date.replace(tzinfo=timezone.utc)
-            return date.timestamp()
+        if date is None:
+            return None
+        # We make a best effort all over the app to ensure all times are in UTC.
+        if date.tzinfo is None:
+            date = date.replace(tzinfo=timezone.utc)
+        return date.timestamp()

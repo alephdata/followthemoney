@@ -1,6 +1,8 @@
 import re
 import logging
+from typing import Optional
 from rdflib import URIRef  # type: ignore
+from rdflib.term import Identifier  # type: ignore
 from normality.cleaning import strip_quotes
 
 from followthemoney.types.common import PropertyType
@@ -35,7 +37,7 @@ class EmailType(PropertyType):
         _, domain = email.rsplit("@", 1)
         return self.domains.validate(domain, **kwargs)
 
-    def clean_text(self, email, **kwargs):
+    def clean_text(self, email: str, **kwargs) -> Optional[str]:
         """Parse and normalize an email address.
 
         Returns None if this is not an email address.
@@ -51,5 +53,5 @@ class EmailType(PropertyType):
     # def country_hint(self, value)
     # TODO: do we want to use TLDs as country evidence?
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> Identifier:
         return URIRef("mailto:%s" % value.lower())

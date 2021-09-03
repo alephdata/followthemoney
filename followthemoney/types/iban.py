@@ -1,4 +1,5 @@
 from rdflib import URIRef  # type: ignore
+from rdflib.term import Identifier  # type: ignore
 from stdnum import iban  # type: ignore
 from stdnum.exceptions import ValidationError  # type: ignore
 
@@ -34,14 +35,14 @@ class IbanType(PropertyType):
         instance of the type."""
         return text.replace(" ", "").upper()
 
-    def country_hint(self, value):
+    def country_hint(self, value: str) -> str:
         return value[:2].lower()
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> Identifier:
         return URIRef(self.node_id(value))
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> str:
         return f"iban:{value.upper()}"
 
-    def caption(self, value):
+    def caption(self, value: str) -> str:
         return iban.format(value)

@@ -1,5 +1,6 @@
 from rdflib import URIRef  # type: ignore
-from languagecodes import iso_639_alpha3  # type: ignore
+from rdflib.term import Identifier  # type: ignore
+from languagecodes import iso_639_alpha3
 
 from followthemoney.types.common import EnumType
 from followthemoney.util import defer as _
@@ -100,5 +101,5 @@ class LanguageType(EnumType):
         if code in self.LANGUAGES:
             return code
 
-    def rdf(self, value):
-        return URIRef("iso-639:%s" % value)
+    def rdf(self, value: str) -> Identifier:
+        return URIRef(f"iso-639:{value}")

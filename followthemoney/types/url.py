@@ -1,3 +1,4 @@
+from typing import Optional
 from rdflib import URIRef  # type: ignore
 from urllib.parse import urlparse
 
@@ -44,11 +45,11 @@ class UrlType(PropertyType):
             parsed = parsed._replace(path="/")
         return parsed.geturl()
 
-    def _specificity(self, value):
+    def _specificity(self, value: str):
         return dampen(10, 120, value)
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> URIRef:
         return URIRef(value)
 
-    def node_id(self, value):
-        return "url:%s" % value
+    def node_id(self, value: str) -> Optional[str]:
+        return f"url:{value}"

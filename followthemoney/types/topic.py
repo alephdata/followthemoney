@@ -67,5 +67,5 @@ class TopicType(EnumType):
     def _locale_names(self, locale):
         return {k: gettext(v) for (k, v) in self._TOPICS.items()}
 
-    def rdf(self, value):
-        return URIRef("ftm:topic:%s" % value)
+    def rdf(self, value: str) -> URIRef:
+        return URIRef(f"ftm:topic:{value}")

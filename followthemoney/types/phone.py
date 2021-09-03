@@ -1,3 +1,4 @@
+from typing import Optional
 from rdflib import URIRef  # type: ignore
 from phonenumbers import geocoder  # type: ignore
 from phonenumbers import parse as parse_number  # type: ignore
@@ -78,12 +79,12 @@ class PhoneType(PropertyType):
         # TODO: insert artificial intelligence here.
         return dampen(7, 11, value)
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> URIRef:
         return URIRef(self.node_id(value))
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> Optional[str]:
         return f"tel:{value}"
 
-    def caption(self, value):
+    def caption(self, value: str) -> str:
         number = parse_number(value)
         return format_number(number, PhoneNumberFormat.INTERNATIONAL)

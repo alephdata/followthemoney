@@ -1,10 +1,9 @@
-import itertools
 import math
 import warnings
-
-from fuzzywuzzy import fuzz
-from normality import normalize
+import itertools
 import fingerprints
+from fuzzywuzzy import fuzz  # type: ignore
+from normality import normalize
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 

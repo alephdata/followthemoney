@@ -1,5 +1,6 @@
 from rdflib import URIRef  # type: ignore
-from ipaddress import ip_address  # type: ignore
+from rdflib.term import Identifier  # type: ignore
+from ipaddress import ip_address
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
@@ -33,5 +34,5 @@ class IpType(PropertyType):
         except ValueError:
             return None
 
-    def rdf(self, value):
-        return URIRef("ip:%s" % value)
+    def rdf(self, value: str) -> Identifier:
+        return URIRef(f"ip:{value}")
