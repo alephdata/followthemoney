@@ -1,7 +1,6 @@
 import os
-import logging
 from datetime import datetime, timezone
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 from prefixdate import parse, parse_format, Precision
 from rdflib import Literal  # type: ignore
 from rdflib.namespace import XSD  # type: ignore
@@ -11,7 +10,8 @@ from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
 from followthemoney.util import dampen
 
-log = logging.getLogger(__name__)
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class DateType(PropertyType):
@@ -29,12 +29,18 @@ class DateType(PropertyType):
     plural = _("Dates")
     matchable = True
 
-    def validate(self, obj, **kwargs):
+    def validate(self, obj: str) -> bool:
         """Check if a thing is a valid date."""
         prefix = parse(obj)
         return prefix.precision != Precision.EMPTY
 
-    def clean(self, text, format=None, **kwargs):
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """The classic: date parsing, every which way."""
         if format is not None:
             return parse_format(text, format).text

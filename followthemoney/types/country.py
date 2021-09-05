@@ -1,9 +1,13 @@
 import countrynames
+from typing import Optional, TYPE_CHECKING
 from rdflib import URIRef  # type: ignore
-from rdflib.term import Identifier  # type: ignore
+from babel.core import Locale  # type: ignore
 
-from followthemoney.types.common import EnumType
+from followthemoney.types.common import EnumType, EnumValues
 from followthemoney.util import gettext, defer as _
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class CountryType(EnumType):
@@ -18,7 +22,7 @@ class CountryType(EnumType):
     plural = _("Countries")
     matchable = True
 
-    def _locale_names(self, locale):
+    def _locale_names(self, locale: Locale) -> EnumValues:
         # extra territories that OCCRP is interested in.
         names = {
             "zz": gettext("Global"),
@@ -53,20 +57,26 @@ class CountryType(EnumType):
                 names[code] = label
         return names
 
-    def clean_text(self, country, fuzzy=False, **kwargs):
+    def clean_text(
+        self,
+        country: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """Determine a two-letter country code based on an input.
 
         The input may be a country code, a country name, etc.
         """
-        code = country.lower().strip()
-        if code in self.codes:
-            return code
-        country = countrynames.to_code(country, fuzzy=fuzzy)
-        if country is not None:
-            return country.lower()
+        code = countrynames.to_code(country, fuzzy=fuzzy)
+        if code is not None:
+            lower = code.lower()
+            if lower in self.codes:
+                return lower
+        return None
 
     def country_hint(self, value: str) -> str:
         return value
 
-    def rdf(self, value: str) -> Identifier:
+    def rdf(self, value: str) -> URIRef:
         return URIRef(f"iso-3166-1:{value}")

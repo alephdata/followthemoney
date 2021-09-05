@@ -1,11 +1,14 @@
 import re
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 from normality import slugify
 from normality.cleaning import collapse_spaces
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
 from followthemoney.util import dampen
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class AddressType(PropertyType):
@@ -23,13 +26,20 @@ class AddressType(PropertyType):
     matchable = True
     pivot = True
 
-    def clean_text(self, address, **kwargs):
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """Basic clean-up."""
-        address = self.LINE_BREAKS.sub(", ", address)
+        address = self.LINE_BREAKS.sub(", ", text)
         address = self.COMMATA.sub(", ", address)
-        address = collapse_spaces(address)
-        if len(address):
-            return address
+        collapsed = collapse_spaces(address)
+        if collapsed is None or not len(collapsed):
+            return None
+        return collapsed
 
     def _specificity(self, value: str) -> float:
         return dampen(10, 60, value)

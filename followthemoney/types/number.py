@@ -19,12 +19,12 @@ class NumberType(PropertyType):
     plural = _("Numbers")
     matchable = False
 
-    def node_id(self, value: str) -> Optional[str]:
+    def node_id(self, value: str) -> None:
         return None
 
-    def to_number(self, value):
+    def to_number(self, value: str) -> Optional[float]:
         try:
             value = self.CAST_RE.sub("", value)
             return float(value)
         except Exception:
-            return
+            return None

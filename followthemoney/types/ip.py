@@ -1,9 +1,13 @@
+from typing import Optional, TYPE_CHECKING
 from rdflib import URIRef  # type: ignore
 from rdflib.term import Identifier  # type: ignore
 from ipaddress import ip_address
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class IpType(PropertyType):
@@ -18,7 +22,7 @@ class IpType(PropertyType):
     matchable = True
     pivot = True
 
-    def validate(self, ip, **kwargs):
+    def validate(self, ip: str) -> bool:
         """Check to see if this is a valid ip address."""
         try:
             ip_address(ip)
@@ -26,7 +30,13 @@ class IpType(PropertyType):
         except ValueError:
             return False
 
-    def clean_text(self, text, **kwargs):
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """Create a more clean, but still user-facing version of an
         instance of the type."""
         try:

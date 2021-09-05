@@ -1,12 +1,16 @@
 from itertools import product
+from babel.core import Locale  # type: ignore
 from rdflib import Literal  # type: ignore
 from rdflib.term import Identifier  # type: ignore
 from banal import ensure_list
 from normality import stringify
-from typing import Any, Dict, Optional, Sequence, Callable
+from typing import Any, Dict, Optional, Sequence, Callable, TYPE_CHECKING
 
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class PropertyType(object):
@@ -51,21 +55,33 @@ class PropertyType(object):
     def docs(self) -> Optional[str]:
         return self.__doc__
 
-    def validate(self, text: Any, **kwargs) -> bool:
+    def validate(self, text: str) -> bool:
         """Returns a boolean to indicate if the given value is a valid instance of
         the type."""
-        cleaned = self.clean(text, **kwargs)
+        cleaned = self.clean(text)
         return cleaned is not None
 
-    def clean(self, text: Any, **kwargs) -> Optional[str]:
+    def clean(
+        self,
+        raw: Any,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """Create a clean version of a value of the type, suitable for storage
         in an entity proxy."""
-        text = sanitize_text(text)
+        text = sanitize_text(raw)
         if text is None:
             return None
-        return self.clean_text(text, **kwargs)
+        return self.clean_text(text, fuzzy=fuzzy, format=format, proxy=proxy)
 
-    def clean_text(self, text: str, **kwargs) -> Optional[str]:
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """Specific types can apply their own cleaning routines here (this is called
         by ``clean`` after the value has been converted to a string and null values
         have been filtered)."""
@@ -114,10 +130,8 @@ class PropertyType(object):
     ) -> float:
         """Compare two sets of values and select the highest-scored result."""
         results = []
-        l: str = ""
-        r: str = ""
         for (l, r) in product(ensure_list(left), ensure_list(right)):
-            results.append(self.compare_safe(l, r))
+            results.append(self.compare(l, r))
         if not len(results):
             return 0.0
         return func(results)
@@ -164,7 +178,9 @@ class PropertyType(object):
             data["pivot"] = True
         return data
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: Any) -> bool:
+        if not isinstance(other, PropertyType):
+            return False
         return self.name == other.name
 
     def __hash__(self) -> int:
@@ -177,19 +193,22 @@ class PropertyType(object):
         return f"<{self.name}>"
 
 
+EnumValues = Dict[str, str]
+
+
 class EnumType(PropertyType):
     """Enumerated type properties are used for types which have a defined set
     of possible values, like languages and countries."""
 
-    def __init__(self, *args):
-        self._names = {}
+    def __init__(self) -> None:
+        self._names: Dict[Locale, EnumValues] = {}
         self.codes = set(self.names.keys())
 
-    def _locale_names(self, locale):
+    def _locale_names(self, locale: str) -> EnumValues:
         return {}
 
     @property
-    def names(self):
+    def names(self) -> EnumValues:
         """Return a mapping from property values to their labels in the current
         locale."""
         locale = get_locale()
@@ -197,19 +216,26 @@ class EnumType(PropertyType):
             self._names[locale] = self._locale_names(locale)
         return self._names[locale]
 
-    def validate(self, code, **kwargs):
+    def validate(self, raw: str) -> bool:
         """Make sure that the given code value is one of the supported set."""
-        code = sanitize_text(code)
+        code = sanitize_text(raw)
         if code is None:
             return False
         return code.lower() in self.codes
 
-    def clean_text(self, code, guess=False, **kwargs):
+    def clean_text(
+        self,
+        code: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """All code values are cleaned to be lowercase and trailing whitespace is
         removed."""
         code = code.lower().strip()
-        if code in self.codes:
-            return code
+        if code not in self.codes:
+            return None
+        return code
 
     def caption(self, value: str) -> str:
         """Given a code value, return the label that should be shown to a user."""

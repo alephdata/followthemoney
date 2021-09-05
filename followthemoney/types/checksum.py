@@ -1,5 +1,4 @@
 from rdflib import URIRef  # type: ignore
-from rdflib.term import Identifier  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
@@ -22,5 +21,5 @@ class ChecksumType(PropertyType):
     matchable = True
     pivot = True
 
-    def rdf(self, value: str) -> Identifier:
+    def rdf(self, value: str) -> URIRef:
         return URIRef(f"hash:{value}")

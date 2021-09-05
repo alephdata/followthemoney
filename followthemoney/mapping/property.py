@@ -87,7 +87,12 @@ class PropertyMapping(object):
         # formats.
         values = []
         for value in self.record_values(record):
-            value = self.type.clean(value, proxy=proxy, **self.data)
+            value = self.type.clean(
+                value,
+                proxy=proxy,
+                fuzzy=self.data.get("fuzzy"),
+                format=self.data.get("format"),
+            )
             if value is not None:
                 values.append(value)
 
