@@ -17,7 +17,7 @@ class NamesTest(unittest.TestCase):
     def test_pick(self):
         values = ["Banana", "banana", "nanana", "Batman"]
         self.assertEqual(names.pick(values), "Banana")
-        self.assertEqual(names.pick("Banana"), "Banana")
+        self.assertEqual(names.pick(["Banana"]), "Banana")
         self.assertEqual(names.pick([]), None)
         values = ["Robert Smith", "Rob Smith", "Robert SMITH"]
         self.assertEqual(names.pick(values), "Robert SMITH")
