@@ -29,7 +29,7 @@ TaxRoll:
     givenName:
       label: "Given name"
     birthDate:
-      label: "Date of birth"
+      label: "Birth date"
       type: date
     income:
       label: "Registered income"

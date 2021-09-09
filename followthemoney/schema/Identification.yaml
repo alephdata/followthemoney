@@ -27,7 +27,7 @@ Identification:
         label: "Identifications"
         name: identificiation
     type:
-      label: "Document type"
+      label: "Type"
     country:
       label: "Country"
       type: country

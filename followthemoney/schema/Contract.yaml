@@ -52,7 +52,7 @@ Contract:
     numberAwards:
       label: "Number of awards"
     status:
-      label: "Procurement status"
+      label: "Status"
     method:
       label: "Procurement method"
     criteria:

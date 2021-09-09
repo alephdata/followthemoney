@@ -14,7 +14,7 @@ Vehicle:
     - registrationNumber
   properties:
     registrationNumber:
-      label: Registration Number
+      label: Registration number
       type: identifier
     type:
       label: Type

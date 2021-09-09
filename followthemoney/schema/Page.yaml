@@ -23,7 +23,7 @@ Page:
         hidden: true
       rdf: http://purl.org/dc/terms/isPartOf
     detectedLanguage:
-      label: "Auto-detected language"
+      label: "Detected language"
       type: language
       hidden: true
     translatedText:
