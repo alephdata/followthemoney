@@ -35,15 +35,15 @@ class JsonType(PropertyType):
 
     def clean(
         self,
-        obj: Any,
+        raw: Any,
         fuzzy: bool = False,
         format: Optional[str] = None,
         proxy: Optional["EntityProxy"] = None,
     ) -> Optional[str]:
-        if not isinstance(obj, str):
-            return self.pack(obj)
+        if not isinstance(raw, str):
+            return self.pack(raw)
         else:
-            return sanitize_text(obj)
+            return sanitize_text(raw)
 
     def join(self, values: Sequence[str]) -> str:
         """Turn multiple values into a JSON array."""

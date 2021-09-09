@@ -37,12 +37,12 @@ class EntityType(PropertyType):
 
     def clean(
         self,
-        value: Any,
+        raw: Any,
         fuzzy: bool = False,
         format: Optional[str] = None,
         proxy: Optional["EntityProxy"] = None,
     ) -> Optional[str]:
-        entity_id = get_entity_id(value)
+        entity_id = get_entity_id(raw)
         if entity_id is None:
             return None
         if self.REGEX.match(entity_id) is not None:

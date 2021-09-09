@@ -55,10 +55,10 @@ class PropertyType(object):
     def docs(self) -> Optional[str]:
         return self.__doc__
 
-    def validate(self, text: str) -> bool:
+    def validate(self, value: str) -> bool:
         """Returns a boolean to indicate if the given value is a valid instance of
         the type."""
-        cleaned = self.clean(text)
+        cleaned = self.clean(value)
         return cleaned is not None
 
     def clean(
@@ -216,12 +216,11 @@ class EnumType(PropertyType):
             self._names[locale] = self._locale_names(locale)
         return self._names[locale]
 
-    def validate(self, raw: str) -> bool:
+    def validate(self, value: str) -> bool:
         """Make sure that the given code value is one of the supported set."""
-        code = sanitize_text(raw)
-        if code is None:
+        if value is None:
             return False
-        return code.lower() in self.codes
+        return str(value).lower().strip() in self.codes
 
     def clean_text(
         self,

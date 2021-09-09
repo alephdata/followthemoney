@@ -22,10 +22,10 @@ class IpType(PropertyType):
     matchable = True
     pivot = True
 
-    def validate(self, ip: str) -> bool:
+    def validate(self, value: str) -> bool:
         """Check to see if this is a valid ip address."""
         try:
-            ip_address(ip)
+            ip_address(value)
             return True
         except ValueError:
             return False

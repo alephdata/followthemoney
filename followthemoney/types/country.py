@@ -59,7 +59,7 @@ class CountryType(EnumType):
 
     def clean_text(
         self,
-        country: str,
+        text: str,
         fuzzy: bool = False,
         format: Optional[str] = None,
         proxy: Optional["EntityProxy"] = None,
@@ -68,7 +68,7 @@ class CountryType(EnumType):
 
         The input may be a country code, a country name, etc.
         """
-        code = countrynames.to_code(country, fuzzy=fuzzy)
+        code = countrynames.to_code(text, fuzzy=fuzzy)
         if code is not None:
             lower = code.lower()
             if lower in self.codes:

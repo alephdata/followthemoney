@@ -63,8 +63,8 @@ class PhoneType(PropertyType):
             except NumberParseException:
                 pass
 
-    def validate(self, number: str) -> bool:
-        for num in self._parse_number(number):
+    def validate(self, value: str) -> bool:
+        for num in self._parse_number(value):
             if is_valid_number(num):
                 return True
         return False

@@ -29,9 +29,9 @@ class DateType(PropertyType):
     plural = _("Dates")
     matchable = True
 
-    def validate(self, obj: str) -> bool:
+    def validate(self, value: str) -> bool:
         """Check if a thing is a valid date."""
-        prefix = parse(obj)
+        prefix = parse(value)
         return prefix.precision != Precision.EMPTY
 
     def clean_text(
