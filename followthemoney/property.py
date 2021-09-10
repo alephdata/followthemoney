@@ -38,10 +38,29 @@ class PropertyToDict(PropertyDict, total=False):
     stub: Optional[bool]
 
 
-class Property(object):
+class Property:
     """A definition of a value-holding field on a schema. Properties define
     the field type and other possible constraints. They also serve as entity
     to entity references."""
+
+    __slots__ = (
+        "model",
+        "schema",
+        "name",
+        "qname",
+        "_label",
+        "_hash",
+        "_description",
+        "hidden",
+        "type",
+        "matchable",
+        "_range",
+        "range",
+        "stub",
+        "_reverse",
+        "reverse",
+        "uri",
+    )
 
     #: Invalid property names.
     RESERVED = ["id", "caption", "schema", "schemata"]
@@ -64,7 +83,6 @@ class Property(object):
 
         self._hash = hash("<Property(%r)>" % self.qname)
 
-        self.data = data
         self._label = data.get("label", name)
         self._description = data.get("description")
 

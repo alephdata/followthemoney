@@ -21,6 +21,8 @@ class Model(object):
     provides some helper functions to find schemata, properties or to instantiate
     entity proxies based on the schema metadata."""
 
+    __slots__ = ("path", "schemata", "properties", "qnames")
+
     def __init__(self, path: str) -> None:
         self.path = path
 

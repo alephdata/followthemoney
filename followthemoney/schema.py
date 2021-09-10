@@ -64,7 +64,7 @@ class SchemaToDict(TypedDict, total=False):
     matchable: bool
 
 
-class Schema(object):
+class Schema:
     """A type definition for a class of entities that have certain properties.
 
     Schemata are arranged in a multi-rooted hierarchy: each schema can have multiple
@@ -73,11 +73,39 @@ class Schema(object):
     are usually accessed via the model, which holds all available definitions.
     """
 
+    __slots__ = (
+        "model",
+        "name",
+        "_label",
+        "_plural",
+        "_description",
+        "_hash",
+        "uri",
+        "abstract",
+        "hidden",
+        "generated",
+        "matchable",
+        "featured",
+        "required",
+        "caption",
+        "edge",
+        "_edge_label",
+        "edge_directed",
+        "edge_source",
+        "edge_target",
+        "edge_caption",
+        "_extends",
+        "extends",
+        "schemata",
+        "names",
+        "descendants",
+        "properties",
+    )
+
     def __init__(self, model: "Model", name: str, data: SchemaSpec) -> None:
         #: Machine-readable name of the schema, used for identification.
         self.name = name
         self.model = model
-        self.data = data
         self._label = data.get("label", name)
         self._plural = data.get("plural", self.label)
         self._description = data.get("description")
@@ -136,6 +164,7 @@ class Schema(object):
         self.edge_directed = as_bool(edge.get("directed", True))
 
         #: Direct parent schemata of this schema.
+        self._extends = ensure_list(data.get("extends", []))
         self.extends = set["Schema"]()
 
         #: All parents of this schema (including indirect parents and the schema itself).
@@ -157,7 +186,7 @@ class Schema(object):
     def generate(self) -> None:
         """While loading the schema, this function will validate and
         load the hierarchy, properties, and flags of the definition."""
-        for extends in ensure_list(self.data.get("extends", [])):
+        for extends in self._extends:
             parent = self.model.get(extends)
             if parent is None:
                 raise InvalidData("Invalid extends: %r" % extends)
