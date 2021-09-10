@@ -4,13 +4,24 @@ from rdflib import Literal  # type: ignore
 from rdflib.term import Identifier  # type: ignore
 from banal import ensure_list
 from normality import stringify
-from typing import Any, Dict, Optional, Sequence, Callable, TYPE_CHECKING
+from typing import Any, Dict, Optional, Sequence, Callable, TYPE_CHECKING, TypedDict
 
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
 
 if TYPE_CHECKING:
     from followthemoney.proxy import EntityProxy
+
+EnumValues = Dict[str, str]
+
+
+class PropertyTypeToDict(TypedDict, total=False):
+    label: str
+    plural: str
+    group: Optional[str]
+    matchable: Optional[bool]
+    pivot: Optional[bool]
+    values: Optional[EnumValues]
 
 
 class PropertyType(object):
@@ -25,10 +36,10 @@ class PropertyType(object):
     you can query for ``countries:gb`` instead of having to make a set of filters
     like ``properties.jurisdiction:gb OR properties.country:gb OR ...``."""
 
-    label: Optional[str] = None
+    label: str = "Any"
     """A name for this type to be shown to users."""
 
-    plural: Optional[str] = None
+    plural: str = "Any"
     """A plural name for this type which can be used in appropriate places in
     a user interface."""
 
@@ -164,9 +175,9 @@ class PropertyType(object):
         while other values like phone numbers can be formatted to be nicer to read."""
         return value
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> PropertyTypeToDict:
         """Return a serialisable description of this data type."""
-        data: Dict[str, Any] = {
+        data: PropertyTypeToDict = {
             "label": gettext(self.label),
             "plural": gettext(self.plural),
         }
@@ -191,9 +202,6 @@ class PropertyType(object):
 
     def __repr__(self) -> str:
         return f"<{self.name}>"
-
-
-EnumValues = Dict[str, str]
 
 
 class EnumType(PropertyType):

@@ -1,10 +1,67 @@
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    Generator,
+    List,
+    Optional,
+    TypedDict,
+    Union,
+    cast,
+)
 from rdflib import URIRef  # type: ignore
 from banal import ensure_list, ensure_dict, as_bool
 
-from followthemoney.property import Property
+from followthemoney.property import Property, PropertySpec, PropertyToDict, ReverseSpec
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData, InvalidModel
 from followthemoney.util import gettext, NS
+
+if TYPE_CHECKING:
+    from followthemoney.model import Model
+
+
+class EdgeSpec(TypedDict, total=False):
+    source: str
+    target: str
+    caption: List[str]
+    label: str
+    directed: bool
+
+
+class SchemaSpec(TypedDict, total=False):
+    label: str
+    plural: str
+    schemata: List[str]
+    extends: List[str]
+    properties: Dict[str, PropertySpec]
+    featured: List[str]
+    required: List[str]
+    caption: List[str]
+    edge: EdgeSpec
+    description: Optional[str]
+    rdf: Optional[str]
+    abstract: bool
+    hidden: bool
+    generated: bool
+    matchable: bool
+
+
+class SchemaToDict(TypedDict, total=False):
+    label: str
+    plural: str
+    schemata: List[str]
+    extends: List[str]
+    properties: Dict[str, PropertyToDict]
+    featured: List[str]
+    required: List[str]
+    caption: List[str]
+    edge: EdgeSpec
+    description: Optional[str]
+    abstract: bool
+    hidden: bool
+    generated: bool
+    matchable: bool
 
 
 class Schema(object):
@@ -16,7 +73,7 @@ class Schema(object):
     are usually accessed via the model, which holds all available definitions.
     """
 
-    def __init__(self, model, name, data):
+    def __init__(self, model: "Model", name: str, data: SchemaSpec) -> None:
         #: Machine-readable name of the schema, used for identification.
         self.name = name
         self.model = model
@@ -50,17 +107,17 @@ class Schema(object):
         #: Mark a set of properties as important, i.e. they should be shown
         #: first, or in an abridged view of the entity. In Aleph, these properties
         #: are included in tabular entity listings.
-        self.featured = ensure_list(data.get("featured"))
+        self.featured = cast(List[str], ensure_list(data.get("featured")))
 
         #: Mark a set of properties as required. This is applied only when
         #: an entity is created by the user - bulk created entities will
         #: slip through even if it is technically invalid.
-        self.required = ensure_list(data.get("required"))
+        self.required = cast(List[str], ensure_list(data.get("required")))
 
         #: Mark a set of properties to be used for the entity's caption.
         #: They will be checked in order and the first existant value will
         #: be used.
-        self.caption = ensure_list(data.get("caption"))
+        self.caption = cast(List[str], ensure_list(data.get("caption")))
 
         # A transform of the entity into an edge for its representation in
         # the context of a property graph representation like Neo4J/Gephi.
@@ -70,16 +127,16 @@ class Schema(object):
 
         #: Flag to indicate if this schema should be represented by an edge (rather than
         #: a node) when the data is converted into a property graph.
-        self.edge = self.edge_source and self.edge_target
-        self.edge_caption = ensure_list(edge.get("caption"))
+        self.edge: bool = self.edge_source is not None and self.edge_target is not None
+        self.edge_caption = cast(List[str], ensure_list(edge.get("caption")))
         self._edge_label = edge.get("label", self._label)
 
         #: Flag to indicate if the edge should be presented as directed to the user, e.g.
         #: by showing an error at the target end of the edge.
-        self.edge_directed = edge.get("directed", True)
+        self.edge_directed = as_bool(edge.get("directed", True))
 
         #: Direct parent schemata of this schema.
-        self.extends = set()
+        self.extends = set["Schema"]()
 
         #: All parents of this schema (including indirect parents and the schema itself).
         self.schemata = set([self])
@@ -89,19 +146,21 @@ class Schema(object):
 
         #: Inverse of :attr:`~schemata`, all derived child types of this schema
         #: and their children.
-        self.descendants = set()
+        self.descendants = set["Schema"]()
 
         #: The full list of properties defined for the entity, including those
         #: inherited from parent schemata.
-        self.properties = {}
+        self.properties: Dict[str, Property] = {}
         for name, prop in data.get("properties", {}).items():
             self.properties[name] = Property(self, name, prop)
 
-    def generate(self):
+    def generate(self) -> None:
         """While loading the schema, this function will validate and
         load the hierarchy, properties, and flags of the definition."""
-        for parent in ensure_list(self.data.get("extends")):
-            parent = self.model.get(parent)
+        for extends in self.data.get("extends", []):
+            parent = self.model.get(extends)
+            if parent is None:
+                raise InvalidData("Invalid extends: %r" % extends)
             parent.generate()
 
             for name, prop in parent.properties.items():
@@ -138,59 +197,58 @@ class Schema(object):
                 msg = "Missing edge target: %s" % self.edge_target
                 raise InvalidModel(msg)
 
-    def _add_reverse(self, data, other):
-        name = data.get("name", None)
+    def _add_reverse(self, data: ReverseSpec, other: Property) -> Property:
+        name = data.get("name")
         if name is None:
             raise InvalidModel("Unnamed reverse: %s" % other)
 
         prop = self.get(name)
         if prop is None:
-            data.update(
-                {
-                    "type": registry.entity.name,
-                    "reverse": {"name": other.name},
-                    "range": other.schema.name,
-                    "stub": True,
-                }
-            )
-            data["hidden"] = data.get("hidden", other.hidden)
-            prop = Property(self, name, data)
+            spec: PropertySpec = {
+                "label": data.get("label"),
+                "type": registry.entity.name,
+                "reverse": {"name": other.name},
+                "range": other.schema.name,
+                "hidden": data.get("hidden", other.hidden),
+            }
+            prop = Property(self, name, spec)
+            prop.stub = True
             prop.generate()
             self.properties[name] = prop
         return prop
 
     @property
-    def label(self):
+    def label(self) -> str:
         """User-facing name of the schema."""
         return gettext(self._label)
 
     @property
-    def plural(self):
+    def plural(self) -> str:
         """Name of the schema to be used in plural constructions."""
         return gettext(self._plural)
 
     @property
-    def description(self):
+    def description(self) -> Optional[str]:
         """A longer description of the semantics of the schema."""
         return gettext(self._description)
 
     @property
-    def edge_label(self):
+    def edge_label(self) -> Optional[str]:
         """Description label for edges derived from entities of this schema."""
         return gettext(self._edge_label)
 
     @property
-    def source_prop(self):
+    def source_prop(self) -> Optional[Property]:
         """The entity property to be used as an edge source."""
         return self.get(self.edge_source)
 
     @property
-    def target_prop(self):
+    def target_prop(self) -> Optional[Property]:
         """The entity property to be used as an edge target."""
         return self.get(self.edge_target)
 
     @property
-    def sorted_properties(self):
+    def sorted_properties(self) -> List[Property]:
         """All properties of the schema in the order in which they should be shown
         to the user (alphabetically, with captions and featured properties first)."""
         return sorted(
@@ -203,7 +261,7 @@ class Schema(object):
         )
 
     @property
-    def matchable_schemata(self):
+    def matchable_schemata(self) -> Generator["Schema", None, None]:
         """Return the set of schemata to which it makes sense to compare with this schema.
         For example, it makes sense to compare a legal entity with a company,
         but it does not make sense to compare a car and a person."""
@@ -219,21 +277,23 @@ class Schema(object):
             if schema.matchable:
                 yield schema
 
-    def is_a(self, other):
+    def is_a(self, other: Union[str, "Schema"]) -> bool:
         """Check if the schema or one of its parents is the same as the given
         candidate ``other``."""
         return self.model.get(other) in self.schemata
 
-    def get(self, name):
+    def get(self, name: Optional[str]) -> Optional[Property]:
         """Retrieve a property defined for this schema by its name."""
+        if name is None:
+            return None
         return self.properties.get(name)
 
-    def validate(self, data):
+    def validate(self, data: Any) -> Optional[str]:
         """Validate a dictionary against the given schema.
         This will also drop keys which are not valid as properties.
         """
         errors = {}
-        properties = ensure_dict(data.get("properties"))
+        properties = cast(Dict[str, Any], ensure_dict(data.get("properties")))
         for name, prop in self.properties.items():
             values = ensure_list(properties.get(name))
             error = prop.validate(values)
@@ -245,17 +305,18 @@ class Schema(object):
         if len(errors):
             msg = gettext("Entity validation failed")
             raise InvalidData(msg, errors={"properties": errors})
+        return None
 
-    def to_dict(self):
+    def to_dict(self) -> SchemaToDict:
         """Return schema metadata, including all properties, in a serializable form."""
-        data = {
+        data: SchemaToDict = {
             "label": self.label,
             "plural": self.plural,
             "schemata": list(sorted(self.names)),
             "extends": list(sorted([e.name for e in self.extends])),
-            "properties": {},
+            "properties": dict[str, PropertyToDict](),
         }
-        if self.edge_source and self.edge_target:
+        if self.edge_source and self.edge_target and self.edge_label:
             data["edge"] = {
                 "source": self.edge_source,
                 "target": self.edge_target,
@@ -284,15 +345,15 @@ class Schema(object):
                 data["properties"][name] = prop.to_dict()
         return data
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
         """Compare two schemata (via hash)."""
         return self._hash == hash(other)
 
-    def __lt__(self, other):
+    def __lt__(self, other: Any) -> bool:
         return self.name.__lt__(other.name)
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return self._hash
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "<Schema(%r)>" % self.name

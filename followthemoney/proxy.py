@@ -1,4 +1,16 @@
 import logging
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    Generator,
+    List,
+    Optional,
+    Set,
+    Tuple,
+    TypedDict,
+    Union,
+)
 import warnings
 from itertools import product
 from rdflib import Literal, URIRef  # type: ignore
@@ -6,11 +18,16 @@ from rdflib.namespace import RDF, SKOS  # type: ignore
 from banal import ensure_dict
 
 from followthemoney.exc import InvalidData
-from followthemoney.types import registry
+from followthemoney.types import registry, PropertyType
+from followthemoney.property import Property
 from followthemoney.util import sanitize_text, gettext
 from followthemoney.util import merge_context, value_list, make_entity_id
 
+if TYPE_CHECKING:
+    from followthemoney.model import Model
+
 log = logging.getLogger(__name__)
+P = Union[Property, str]
 
 
 class EntityProxy(object):
@@ -22,7 +39,13 @@ class EntityProxy(object):
 
     __slots__ = ["schema", "id", "key_prefix", "context", "_properties", "_size"]
 
-    def __init__(self, model, data, key_prefix=None, cleaned=True):
+    def __init__(
+        self,
+        model: "Model",
+        data: Dict[str, Any],
+        key_prefix: Optional[str] = None,
+        cleaned: bool = True,
+    ):
         data = dict(data or {})
         properties = data.pop("properties", {})
         if not cleaned:
@@ -30,9 +53,10 @@ class EntityProxy(object):
 
         #: The schema definition for this entity, which implies the properties
         #: That can be set on it.
-        self.schema = model.get(data.pop("schema", None))
-        if self.schema is None:
+        schema = model.get(data.pop("schema", None))
+        if schema is None:
             raise InvalidData(gettext("No schema for entity."))
+        self.schema = schema
 
         #: When using :meth:`~make_id` to generate a natural key for this entity,
         #: the prefix will be added to the ID as a salt to make it easier to keep
@@ -51,7 +75,7 @@ class EntityProxy(object):
         #: than ``id``, ``schema`` or ``properties``, they will be kept in here
         #: and re-added upon serialization.
         self.context = data
-        self._properties = {}
+        self._properties: Dict[Property, Set[str]] = {}
         self._size = 0
 
         for key, value in properties.items():
@@ -64,7 +88,7 @@ class EntityProxy(object):
                 self._properties[key] = values
                 self._size += sum([len(v) for v in values])
 
-    def make_id(self, *parts):
+    def make_id(self, *parts: Any) -> Optional[str]:
         """Generate a (hopefully unique) ID for the given entity, composed
         of the given components, and the :attr:`~key_prefix` defined in
         the proxy.
@@ -72,7 +96,7 @@ class EntityProxy(object):
         self.id = make_entity_id(*parts, key_prefix=self.key_prefix)
         return self.id
 
-    def _prop_name(self, prop, quiet=False):
+    def _prop_name(self, prop: P, quiet: bool = False) -> Optional[Property]:
         # This is pretty unwound because it gets called a *lot*.
         if prop in self.schema.properties:
             return prop
@@ -82,11 +106,11 @@ class EntityProxy(object):
         except AttributeError:
             pass
         if quiet:
-            return
+            return None
         msg = gettext("Unknown property (%s): %s")
         raise InvalidData(msg % (self.schema, prop))
 
-    def get(self, prop, quiet=False):
+    def get(self, prop: P, quiet=False) -> List[str]:
         """Get all values of a property.
 
         :param prop: can be given as a name or an instance of
@@ -98,7 +122,7 @@ class EntityProxy(object):
         prop = self._prop_name(prop, quiet=quiet)
         return list(self._properties.get(prop, []))
 
-    def first(self, prop, quiet=False):
+    def first(self, prop: P, quiet=False) -> Optional[str]:
         """Get only the first value set for the property, in no particular
         order.
 
@@ -111,7 +135,7 @@ class EntityProxy(object):
         for value in self.get(prop, quiet=quiet):
             return value
 
-    def has(self, prop, quiet=False):
+    def has(self, prop: P, quiet=False) -> bool:
         """Check to see if the given property has at least one value set.
 
         :param prop: can be given as a name or an instance of
@@ -123,7 +147,14 @@ class EntityProxy(object):
         prop = self._prop_name(prop, quiet=quiet)
         return prop in self._properties
 
-    def add(self, prop, values, cleaned=False, quiet=False, fuzzy=False):
+    def add(
+        self,
+        prop: P,
+        values: Any,
+        cleaned: bool = False,
+        quiet: bool = False,
+        fuzzy: bool = False,
+    ):
         """Add the given value(s) to the property if they are valid for
         the type of the property.
 
@@ -184,7 +215,7 @@ class EntityProxy(object):
         self._properties.pop(prop, None)
         return self.add(prop, values, cleaned=cleaned, quiet=quiet)
 
-    def pop(self, prop, quiet=True):
+    def pop(self, prop: P, quiet: bool = True):
         """Remove all the values from the given property and return them.
 
         :param prop: can be given as a name or an instance of
@@ -198,7 +229,7 @@ class EntityProxy(object):
             return []
         return list(self._properties.pop(prop))
 
-    def remove(self, prop, value, quiet=True):
+    def remove(self, prop: P, value: str, quiet=True):
         """Remove a single value from the given property. If it is not there,
         no action takes place.
 
@@ -215,12 +246,12 @@ class EntityProxy(object):
             except KeyError:
                 pass
 
-    def iterprops(self):
+    def iterprops(self) -> List[Property]:
         """Iterate across all the properties for which a value is set in
         the proxy (but do not return their values)."""
         return [self.schema.properties[p] for p in self._properties.keys()]
 
-    def itervalues(self):
+    def itervalues(self) -> Generator[Tuple[Property, str], None, None]:
         """Iterate across all values in the proxy one by one, each given as a
         tuple of the property and the value."""
         for name, values in self._properties.items():
@@ -228,7 +259,7 @@ class EntityProxy(object):
             for value in values:
                 yield (prop, value)
 
-    def edgepairs(self):
+    def edgepairs(self) -> Generator[Tuple[str, str], None, None]:
         """Return all the possible pairs of values for the edge source and target if
         the schema allows for an edge representation of the entity."""
         if self.schema.edge:
@@ -237,7 +268,9 @@ class EntityProxy(object):
             for (source, target) in product(sources, targets):
                 yield (source, target)
 
-    def get_type_values(self, type_, matchable=False):
+    def get_type_values(
+        self, type_: PropertyType, matchable: bool = False
+    ) -> List[str]:
         """All values of a particular type associated with a the entity. For
         example, this lets you return all countries linked to an entity, rather
         than manually checking each property to see if it contains countries.
@@ -255,12 +288,12 @@ class EntityProxy(object):
         return list(combined)
 
     @property
-    def names(self):
+    def names(self) -> List[str]:
         """Get the set of all name-type values set of the entity."""
         return self.get_type_values(registry.name)
 
     @property
-    def countries(self):
+    def countries(self) -> List[str]:
         """Get the set of all country-type values set of the entity."""
         return self.get_type_values(registry.country)
 
@@ -296,7 +329,7 @@ class EntityProxy(object):
                 yield (uri, URIRef(prop.name), value)
 
     @property
-    def caption(self):
+    def caption(self) -> str:
         """The user-facing label to be used for this entity. This checks a list
         of properties defined by the schema (caption) and returns the first
         available value. If no caption is available, return the schema label."""
@@ -306,7 +339,7 @@ class EntityProxy(object):
         return self.schema.label
 
     @property
-    def country_hints(self):
+    def country_hints(self) -> Set[str]:
         """Some property types, such as phone numbers and IBAN codes imply a
         country that may be associated with the entity. This list can be used
         for a more generous matching approach than the actual country values."""
@@ -319,11 +352,11 @@ class EntityProxy(object):
         return countries
 
     @property
-    def properties(self):
+    def properties(self) -> Dict[Property, List[str]]:
         """Return a mapping of the properties and set values of the entity."""
         return {p: list(vs) for p, vs in self._properties.items()}
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         """Serialise the proxy into a dictionary with the defined properties, ID,
         schema and any contextual values that were handed in initially. The resulting
         dictionary can be used to make a new proxy, and it is commonly written to disk
@@ -334,18 +367,18 @@ class EntityProxy(object):
         )
         return data
 
-    def to_full_dict(self, matchable=False):
+    def to_full_dict(self, matchable: bool = False) -> Dict[str, Any]:
         """Return a serialised version of the entity with inverted type groups mixed
         in. See :meth:`~get_type_inverted`."""
         data = self.to_dict()
         data.update(self.get_type_inverted(matchable=matchable))
         return data
 
-    def clone(self):
+    def clone(self) -> "EntityProxy":
         """Make a deep copy of the current entity proxy."""
         return EntityProxy(self.schema.model, self.to_dict())
 
-    def merge(self, other):
+    def merge(self, other: "EntityProxy") -> "EntityProxy":
         """Merge another entity proxy into this one. This will try and find
         the common schema between both entities and then add all property
         values from the other entity into this one."""
@@ -362,16 +395,16 @@ class EntityProxy(object):
             self.add(prop, values, cleaned=True, quiet=True)
         return self
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.caption
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "<E(%r,%r)>" % (self.id, str(self))
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self._size
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         if not self.id:
             warnings.warn(
                 "Taking the hash of an EntityProxy without an ID set results in undefined behaviour",
@@ -379,7 +412,7 @@ class EntityProxy(object):
             )
         return hash(self.id)
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
         try:
             if self.id is None or other.id is None:
                 warnings.warn(
@@ -391,7 +424,9 @@ class EntityProxy(object):
             return False
 
     @classmethod
-    def from_dict(cls, model, data, cleaned=True):
+    def from_dict(
+        cls, model: "Model", data: Dict[str, Any], cleaned: bool = True
+    ) -> "EntityProxy":
         """Instantiate a proxy based on the given model and serialised dictionary.
 
         Use :meth:`followthemoney.model.Model.get_proxy` instead."""
