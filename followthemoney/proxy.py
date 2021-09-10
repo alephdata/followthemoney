@@ -8,17 +8,19 @@ from typing import (
     Optional,
     Set,
     Tuple,
-    TypedDict,
     Union,
+    cast,
 )
 import warnings
 from itertools import product
 from rdflib import Literal, URIRef  # type: ignore
+from rdflib.term import Identifier  # type: ignore
 from rdflib.namespace import RDF, SKOS  # type: ignore
 from banal import ensure_dict
 
 from followthemoney.exc import InvalidData
-from followthemoney.types import registry, PropertyType
+from followthemoney.types import registry
+from followthemoney.types.common import PropertyType
 from followthemoney.property import Property
 from followthemoney.util import sanitize_text, gettext
 from followthemoney.util import merge_context, value_list, make_entity_id
@@ -28,6 +30,7 @@ if TYPE_CHECKING:
 
 log = logging.getLogger(__name__)
 P = Union[Property, str]
+Triple = Tuple[Identifier, Identifier, Identifier]
 
 
 class EntityProxy(object):
@@ -75,7 +78,7 @@ class EntityProxy(object):
         #: than ``id``, ``schema`` or ``properties``, they will be kept in here
         #: and re-added upon serialization.
         self.context = data
-        self._properties: Dict[Property, Set[str]] = {}
+        self._properties: Dict[str, Set[str]] = {}
         self._size = 0
 
         for key, value in properties.items():
@@ -96,13 +99,14 @@ class EntityProxy(object):
         self.id = make_entity_id(*parts, key_prefix=self.key_prefix)
         return self.id
 
-    def _prop_name(self, prop: P, quiet: bool = False) -> Optional[Property]:
+    def _prop_name(self, prop: P, quiet: bool = False) -> Optional[str]:
         # This is pretty unwound because it gets called a *lot*.
         if prop in self.schema.properties:
-            return prop
+            return cast(str, prop)
         try:
-            if prop.name in self.schema.properties:
-                return prop.name
+            obj = cast(Property, prop)
+            if obj.name in self.schema.properties:
+                return obj.name
         except AttributeError:
             pass
         if quiet:
@@ -110,7 +114,7 @@ class EntityProxy(object):
         msg = gettext("Unknown property (%s): %s")
         raise InvalidData(msg % (self.schema, prop))
 
-    def get(self, prop: P, quiet=False) -> List[str]:
+    def get(self, prop: P, quiet: bool = False) -> List[str]:
         """Get all values of a property.
 
         :param prop: can be given as a name or an instance of
@@ -119,10 +123,12 @@ class EntityProxy(object):
             an empty list instead of raising an error.
         :return: A list of values.
         """
-        prop = self._prop_name(prop, quiet=quiet)
-        return list(self._properties.get(prop, []))
+        prop_name = self._prop_name(prop, quiet=quiet)
+        if prop_name is None:
+            return []
+        return list(self._properties.get(prop_name, []))
 
-    def first(self, prop: P, quiet=False) -> Optional[str]:
+    def first(self, prop: P, quiet: bool = False) -> Optional[str]:
         """Get only the first value set for the property, in no particular
         order.
 
@@ -134,8 +140,9 @@ class EntityProxy(object):
         """
         for value in self.get(prop, quiet=quiet):
             return value
+        return None
 
-    def has(self, prop: P, quiet=False) -> bool:
+    def has(self, prop: P, quiet: bool = False) -> bool:
         """Check to see if the given property has at least one value set.
 
         :param prop: can be given as a name or an instance of
@@ -144,8 +151,8 @@ class EntityProxy(object):
             an empty list instead of raising an error.
         :return: a boolean.
         """
-        prop = self._prop_name(prop, quiet=quiet)
-        return prop in self._properties
+        prop_name = self._prop_name(prop, quiet=quiet)
+        return prop_name in self._properties
 
     def add(
         self,
@@ -154,7 +161,7 @@ class EntityProxy(object):
         cleaned: bool = False,
         quiet: bool = False,
         fuzzy: bool = False,
-    ):
+    ) -> None:
         """Add the given value(s) to the property if they are valid for
         the type of the property.
 
@@ -168,13 +175,13 @@ class EntityProxy(object):
         """
         prop_name = self._prop_name(prop, quiet=quiet)
         if prop_name is None:
-            return
+            return None
         prop = self.schema.properties[prop_name]
 
         # Don't allow setting the reverse properties:
         if prop.stub:
             if quiet:
-                return
+                return None
             msg = gettext("Stub property (%s): %s")
             raise InvalidData(msg % (self.schema, prop))
 
@@ -198,8 +205,11 @@ class EntityProxy(object):
             self._size += value_size
             self._properties.setdefault(prop_name, set())
             self._properties[prop_name].add(value)
+        return None
 
-    def set(self, prop, values, cleaned=False, quiet=False):
+    def set(
+        self, prop: P, values: Any, cleaned: bool = False, quiet: bool = False
+    ) -> None:
         """Replace the values of the property with the given value(s).
 
         :param prop: can be given as a name or an instance of
@@ -209,13 +219,13 @@ class EntityProxy(object):
         :param quiet: a reference to an non-existent property will return
             an empty list instead of raising an error.
         """
-        prop = self._prop_name(prop, quiet=quiet)
-        if prop is None:
+        prop_name = self._prop_name(prop, quiet=quiet)
+        if prop_name is None:
             return
-        self._properties.pop(prop, None)
+        self._properties.pop(prop_name, None)
         return self.add(prop, values, cleaned=cleaned, quiet=quiet)
 
-    def pop(self, prop: P, quiet: bool = True):
+    def pop(self, prop: P, quiet: bool = True) -> List[str]:
         """Remove all the values from the given property and return them.
 
         :param prop: can be given as a name or an instance of
@@ -224,12 +234,12 @@ class EntityProxy(object):
             an empty list instead of raising an error.
         :return: a list of values, possibly empty.
         """
-        prop = self._prop_name(prop, quiet=quiet)
-        if prop is None or prop not in self._properties:
+        prop_name = self._prop_name(prop, quiet=quiet)
+        if prop_name is None or prop_name not in self._properties:
             return []
-        return list(self._properties.pop(prop))
+        return list(self._properties.pop(prop_name))
 
-    def remove(self, prop: P, value: str, quiet=True):
+    def remove(self, prop: P, value: str, quiet: bool = True) -> None:
         """Remove a single value from the given property. If it is not there,
         no action takes place.
 
@@ -239,10 +249,10 @@ class EntityProxy(object):
         :param quiet: a reference to an non-existent property will return
             an empty list instead of raising an error.
         """
-        prop = self._prop_name(prop, quiet=quiet)
-        if prop is not None and prop in self._properties:
+        prop_name = self._prop_name(prop, quiet=quiet)
+        if prop_name is not None and prop_name in self._properties:
             try:
-                self._properties[prop].remove(value)
+                self._properties[prop_name].remove(value)
             except KeyError:
                 pass
 
@@ -262,7 +272,7 @@ class EntityProxy(object):
     def edgepairs(self) -> Generator[Tuple[str, str], None, None]:
         """Return all the possible pairs of values for the edge source and target if
         the schema allows for an edge representation of the entity."""
-        if self.schema.edge:
+        if self.schema.source_prop is not None and self.schema.target_prop is not None:
             sources = self.get(self.schema.source_prop)
             targets = self.get(self.schema.target_prop)
             for (source, target) in product(sources, targets):
@@ -279,8 +289,8 @@ class EntityProxy(object):
         :param matchable: Whether to return only property values marked as matchable.
         """
         combined = set()
-        for prop, values in self._properties.items():
-            prop = self.schema.properties[prop]
+        for prop_name, values in self._properties.items():
+            prop = self.schema.properties[prop_name]
             if matchable and not prop.matchable:
                 continue
             if prop.type == type_:
@@ -297,18 +307,18 @@ class EntityProxy(object):
         """Get the set of all country-type values set of the entity."""
         return self.get_type_values(registry.country)
 
-    def get_type_inverted(self, matchable=False):
+    def get_type_inverted(self, matchable: bool = False) -> Dict[str, List[str]]:
         """Return all the values of the entity arranged into a mapping with the
         group name of their property type. These groups include ``countries``,
         ``addresses``, ``emails``, etc."""
-        data = {}
+        data: Dict[str, List[str]] = {}
         for group, type_ in registry.groups.items():
             values = self.get_type_values(type_, matchable=matchable)
             if len(values):
                 data[group] = values
         return data
 
-    def triples(self, qualified=True):
+    def triples(self, qualified: bool = True) -> Generator[Triple, None, None]:
         """Serialise the entity into a set of RDF triple statements. The
         statements include the property values, an ``RDF#type`` definition
         that refers to the entity schema, and a ``SKOS#prefLabel`` with the
@@ -352,7 +362,7 @@ class EntityProxy(object):
         return countries
 
     @property
-    def properties(self) -> Dict[Property, List[str]]:
+    def properties(self) -> Dict[str, List[str]]:
         """Return a mapping of the properties and set values of the entity."""
         return {p: list(vs) for p, vs in self._properties.items()}
 
@@ -419,7 +429,7 @@ class EntityProxy(object):
                     "Comparing EntityProxys without an ID set results in undefined behaviour",
                     RuntimeWarning,
                 )
-            return self.id == other.id
+            return bool(self.id == other.id)
         except AttributeError:
             return False
 

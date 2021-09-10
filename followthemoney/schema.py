@@ -157,7 +157,7 @@ class Schema(object):
     def generate(self) -> None:
         """While loading the schema, this function will validate and
         load the hierarchy, properties, and flags of the definition."""
-        for extends in self.data.get("extends", []):
+        for extends in ensure_list(self.data.get("extends", [])):
             parent = self.model.get(extends)
             if parent is None:
                 raise InvalidData("Invalid extends: %r" % extends)
