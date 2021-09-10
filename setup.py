@@ -59,6 +59,7 @@ setup(
             "wheel>=0.29.0",
             "twine",
             "mypy",
+            "types-PyYAML",
             "flake8>=2.6.0",
             "nose",
             "transifex-client",

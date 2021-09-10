@@ -12,6 +12,7 @@ types:
 		followthemoney/schema.py \
 		followthemoney/property.py \
 		followthemoney/proxy.py \
+		followthemoney/graph.py \
 		followthemoney/model.py
 
 dist:
