@@ -1,6 +1,6 @@
-from typing import TYPE_CHECKING, Any, List, Optional, TypedDict, cast
 from rdflib import URIRef  # type: ignore
 from banal import is_mapping, as_bool
+from typing import TYPE_CHECKING, Any, List, Optional, TypedDict
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry

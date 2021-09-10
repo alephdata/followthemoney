@@ -84,10 +84,10 @@ def key_bytes(key: Any) -> bytes:
     """Convert the given data to a value appropriate for hashing."""
     if isinstance(key, bytes):
         return key
-    key = stringify(key)
-    if key is None:
+    text = stringify(key)
+    if text is None:
         return b""
-    return cast(bytes, key.encode("utf-8"))
+    return text.encode("utf-8")
 
 
 def get_entity_id(obj: Any) -> Optional[str]:

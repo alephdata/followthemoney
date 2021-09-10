@@ -130,7 +130,7 @@ class Model(object):
         """Instantiate an empty entity proxy of the given schema type."""
         return EntityProxy(self, {"schema": schema}, key_prefix=key_prefix)
 
-    def get_proxy(self, data: Dict, cleaned: bool = True) -> EntityProxy:
+    def get_proxy(self, data: Dict[str, Any], cleaned: bool = True) -> EntityProxy:
         """Create an entity proxy to reflect the entity data in the given
         dictionary. If ``cleaned`` is disabled, all property values are
         fully re-validated and normalised. Use this if handling input data

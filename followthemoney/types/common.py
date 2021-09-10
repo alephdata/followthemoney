@@ -248,7 +248,7 @@ class EnumType(PropertyType):
         """Given a code value, return the label that should be shown to a user."""
         return self.names.get(value, value)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> PropertyTypeToDict:
         """When serialising the model to JSON, include all values."""
         data = super(EnumType, self).to_dict()
         data["values"] = self.names

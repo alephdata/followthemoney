@@ -25,6 +25,9 @@ jobs:
       - name: Run the tests
         run: |
           nosetests --with-coverage --cover-package=followthemoney --cover-erase
+      - name: Partial mypy type-check
+        run: |
+          make types
       - name: Build a followthemoney distribution
         run: |
           python setup.py sdist bdist_wheel

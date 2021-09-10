@@ -107,17 +107,17 @@ class Schema(object):
         #: Mark a set of properties as important, i.e. they should be shown
         #: first, or in an abridged view of the entity. In Aleph, these properties
         #: are included in tabular entity listings.
-        self.featured = cast(List[str], ensure_list(data.get("featured")))
+        self.featured = ensure_list(data.get("featured", []))
 
         #: Mark a set of properties as required. This is applied only when
         #: an entity is created by the user - bulk created entities will
         #: slip through even if it is technically invalid.
-        self.required = cast(List[str], ensure_list(data.get("required")))
+        self.required = ensure_list(data.get("required", []))
 
         #: Mark a set of properties to be used for the entity's caption.
         #: They will be checked in order and the first existant value will
         #: be used.
-        self.caption = cast(List[str], ensure_list(data.get("caption")))
+        self.caption = ensure_list(data.get("caption", []))
 
         # A transform of the entity into an edge for its representation in
         # the context of a property graph representation like Neo4J/Gephi.
@@ -128,7 +128,7 @@ class Schema(object):
         #: Flag to indicate if this schema should be represented by an edge (rather than
         #: a node) when the data is converted into a property graph.
         self.edge: bool = self.edge_source is not None and self.edge_target is not None
-        self.edge_caption = cast(List[str], ensure_list(edge.get("caption")))
+        self.edge_caption = ensure_list(edge.get("caption", []))
         self._edge_label = edge.get("label", self._label)
 
         #: Flag to indicate if the edge should be presented as directed to the user, e.g.
@@ -295,7 +295,7 @@ class Schema(object):
         errors = {}
         properties = cast(Dict[str, Any], ensure_dict(data.get("properties")))
         for name, prop in self.properties.items():
-            values = ensure_list(properties.get(name))
+            values = ensure_list(properties.get(name, []))
             error = prop.validate(values)
             if error is None and not len(values):
                 if prop.name in self.required:

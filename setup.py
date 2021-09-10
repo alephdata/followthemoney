@@ -58,6 +58,7 @@ setup(
             "bump2version",
             "wheel>=0.29.0",
             "twine",
+            "mypy",
             "flake8>=2.6.0",
             "nose",
             "transifex-client",

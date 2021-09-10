@@ -1,11 +1,18 @@
 
-all: dev clean test dists release
+all: dev clean test types dists release
 
 dev:
 	pip install -q ".[dev]"
 
 test:
 	nosetests --with-coverage --cover-package=followthemoney --cover-erase --cover-html --cover-html-dir=coverage-report
+
+types:
+	mypy --strict followthemoney/types \
+		followthemoney/schema.py \
+		followthemoney/property.py \
+		followthemoney/proxy.py \
+		followthemoney/model.py
 
 dist:
 	python setup.py sdist bdist_wheel
