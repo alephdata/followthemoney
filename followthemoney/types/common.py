@@ -157,6 +157,10 @@ class PropertyType(object):
         literal, or a URI reference."""
         return Literal(value)
 
+    def pick(self, values: Sequence[str]) -> Optional[str]:
+        """Pick the best value to show to the user."""
+        raise NotImplemented
+
     def node_id(self, value: str) -> Optional[str]:
         """Return an ID suitable to identify this entity as a typed node in a
         graph representation of some FtM data. It's usually the same as the the

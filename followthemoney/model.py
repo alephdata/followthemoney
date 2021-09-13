@@ -91,7 +91,7 @@ class Model(object):
         self, mapping: Dict[str, Any], key_prefix: Optional[str] = None
     ) -> QueryMapping:
         """Parse a mapping that applies (tabular) source data to the model."""
-        return QueryMapping(self, mapping, key_prefix=key_prefix)  # type: ignore
+        return QueryMapping(self, mapping, key_prefix=key_prefix)
 
     def map_entities(
         self, mapping: Dict[str, Any], key_prefix: Optional[str] = None
@@ -99,7 +99,7 @@ class Model(object):
         """Given a mapping, yield a series of entities from the data source."""
         gen = self.make_mapping(mapping, key_prefix=key_prefix)
         for record in gen.source.records:
-            for entity in gen.map(record).values():  # type: ignore
+            for entity in gen.map(record).values():
                 yield entity
 
     def common_schema(

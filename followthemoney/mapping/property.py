@@ -1,10 +1,18 @@
 import re
 from copy import deepcopy
-from banal import keys_values
+from normality import stringify
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, cast
+from banal import keys_values, as_bool
 
 from followthemoney.helpers import inline_names
 from followthemoney.exc import InvalidMapping
+from followthemoney.proxy import EntityProxy
 from followthemoney.util import get_entity_id, sanitize_text
+from followthemoney.property import Property
+from followthemoney.mapping.source import Record
+
+if TYPE_CHECKING:
+    from followthemoney.mapping.query import QueryMapping
 
 
 class PropertyMapping(object):
@@ -13,30 +21,32 @@ class PropertyMapping(object):
 
     FORMAT_PATTERN = re.compile("{{([^(}})]*)}}")
 
-    def __init__(self, query, data, prop):
+    def __init__(
+        self, query: "QueryMapping", data: Dict[str, Any], prop: Property
+    ) -> None:
         self.query = query
         data = deepcopy(data)
-        self.data = data
         self.prop = prop
         self.name = prop.name
-        self.type = prop.type
 
-        self.refs = keys_values(data, "column", "columns")
-        self.literals = keys_values(data, "literal", "literals")
-        self.join = data.pop("join", None)
-        self.split = data.pop("split", None)
-        self.entity = data.pop("entity", None)
-        self.required = data.pop("required", False)
+        self.refs = cast(List[str], keys_values(data, "column", "columns"))
+        self.join = cast(Optional[str], data.pop("join", None))
+        self.split = cast(Optional[str], data.pop("split", None))
+        self.entity = stringify(data.pop("entity", None))
+        self.format = stringify(data.pop("format", None))
+        self.fuzzy = as_bool(data.pop("fuzzy", False))
+        self.required = as_bool(data.pop("required", False))
+        self.literals = cast(List[str], keys_values(data, "literal", "literals"))
 
         self.template = sanitize_text(data.pop("template", None))
-        self.replacements = {}
+        self.replacements: Dict[str, str] = {}
         if self.template is not None:
             # this is hacky, trying to generate refs from template
             for ref in self.FORMAT_PATTERN.findall(self.template):
                 self.refs.append(ref)
                 self.replacements["{{%s}}" % ref] = ref
 
-    def bind(self):
+    def bind(self) -> None:
         if self.prop.stub:
             raise InvalidMapping("Property for [%r] is a stub" % self.prop)
 
@@ -50,7 +60,7 @@ class PropertyMapping(object):
         for entity in self.query.entities:
             if entity.name != self.entity:
                 continue
-            if not entity.schema.is_a(self.prop.range):
+            if not self.prop.range or not entity.schema.is_a(self.prop.range):
                 raise InvalidMapping(
                     "The entity [%r] must be a %s (not %s)"
                     % (self.prop, self.prop.range, entity.schema.name)
@@ -61,7 +71,7 @@ class PropertyMapping(object):
             "No entity [%s] for property [%r]" % (self.entity, self.prop)
         )
 
-    def record_values(self, record):
+    def record_values(self, record: Record) -> List[str]:
         if self.template is not None:
             # replace mentions of any refs with the values present in the
             # current record
@@ -72,29 +82,25 @@ class PropertyMapping(object):
             return [value.strip()]
 
         values = list(self.literals)
-        values.extend([record.get(r) for r in self.refs])
+        for ref in self.refs:
+            rec_value = record.get(ref)
+            if rec_value is not None:
+                values.append(rec_value)
         return values
 
-    def map(self, proxy, record, entities):
+    def map(
+        self, proxy: EntityProxy, record: Record, entities: Dict[str, EntityProxy]
+    ) -> None:
         if self.entity is not None:
             entity = entities.get(self.entity)
             if entity is not None:
-                proxy.add(self.prop, get_entity_id(entity))
+                proxy.add(self.prop, get_entity_id(entity), cleaned=True)
                 inline_names(proxy, entity)
-            return
+            return None
 
         # clean the values returned by the query, or by using literals, or
         # formats.
-        values = []
-        for value in self.record_values(record):
-            value = self.type.clean(
-                value,
-                proxy=proxy,
-                fuzzy=self.data.get("fuzzy"),
-                format=self.data.get("format"),
-            )
-            if value is not None:
-                values.append(value)
+        values: List[str] = self.record_values(record)
 
         if self.join is not None:
             values = [self.join.join(values)]
@@ -105,4 +111,4 @@ class PropertyMapping(object):
                 splote.extend(value.split(self.split))
             values = splote
 
-        proxy.add(self.prop, values)
+        proxy.add(self.prop, values, fuzzy=self.fuzzy, format=self.format)

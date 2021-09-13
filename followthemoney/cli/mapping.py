@@ -1,9 +1,11 @@
 import click
 from banal import keys_values
+from typing import List, Tuple
 
 from followthemoney import model
 from followthemoney.namespace import Namespace
-from followthemoney.mapping.source import StreamSource
+from followthemoney.mapping.query import QueryMapping
+from followthemoney.mapping.csv import CSVSource
 from followthemoney.cli.cli import cli
 from followthemoney.cli.util import write_object, load_mapping_file
 
@@ -39,20 +41,21 @@ def run_mapping(outfile, mapping_yaml, sign=True):
 )  # noqa
 @click.argument("mapping_yaml", type=click.Path(exists=True))
 def stream_mapping(infile, outfile, mapping_yaml, sign=True):
-    sources = []
+    queries: List[Tuple[str, QueryMapping]] = []
     config = load_mapping_file(mapping_yaml)
     for dataset, meta in config.items():
         for data in keys_values(meta, "queries", "query"):
+            data.pop("database", None)
+            data["csv_url"] = "/dev/null"
             query = model.make_mapping(data, key_prefix=dataset)
-            source = StreamSource(query, data)
-            sources.append((dataset, source))
+            queries.append((dataset, query))
 
     try:
-        for record in StreamSource.read_csv(infile):
-            for (dataset, source) in sources:
+        for record in CSVSource.read_csv(infile):
+            for (dataset, query) in queries:
                 ns = Namespace(dataset)
-                if source.check_filters(record):
-                    entities = source.query.map(record)
+                if query.check_filters(record):
+                    entities = query.map(record)
                     for entity in entities.values():
                         if sign:
                             entity = ns.apply(entity)

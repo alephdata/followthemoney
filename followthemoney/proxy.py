@@ -161,6 +161,7 @@ class EntityProxy(object):
         cleaned: bool = False,
         quiet: bool = False,
         fuzzy: bool = False,
+        format: Optional[str] = None,
     ) -> None:
         """Add the given value(s) to the property if they are valid for
         the type of the property.
@@ -172,6 +173,7 @@ class EntityProxy(object):
         :param quiet: a reference to an non-existent property will return
             an empty list instead of raising an error.
         :param fuzzy: when normalising the data, should fuzzy matching be allowed.
+        :param format: when normalising the data, formatting for a date.
         """
         prop_name = self._prop_name(prop, quiet=quiet)
         if prop_name is None:
@@ -187,7 +189,7 @@ class EntityProxy(object):
 
         for value in value_list(values):
             if not cleaned:
-                value = prop.type.clean(value, proxy=self, fuzzy=fuzzy)
+                value = prop.type.clean(value, proxy=self, fuzzy=fuzzy, format=format)
             if value is None:
                 continue
             if prop.type == registry.entity and value == self.id:
@@ -208,7 +210,13 @@ class EntityProxy(object):
         return None
 
     def set(
-        self, prop: P, values: Any, cleaned: bool = False, quiet: bool = False
+        self,
+        prop: P,
+        values: Any,
+        cleaned: bool = False,
+        quiet: bool = False,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
     ) -> None:
         """Replace the values of the property with the given value(s).
 
@@ -223,7 +231,9 @@ class EntityProxy(object):
         if prop_name is None:
             return
         self._properties.pop(prop_name, None)
-        return self.add(prop, values, cleaned=cleaned, quiet=quiet)
+        return self.add(
+            prop, values, cleaned=cleaned, quiet=quiet, fuzzy=fuzzy, format=format
+        )
 
     def pop(self, prop: P, quiet: bool = True) -> List[str]:
         """Remove all the values from the given property and return them.

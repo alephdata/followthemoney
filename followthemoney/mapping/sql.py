@@ -1,16 +1,23 @@
 import os
-import six
 import logging
 from uuid import uuid4
+from normality import stringify
+from typing import TYPE_CHECKING, Any, Dict, Generator, List, Optional, Union, cast
 from banal import ensure_list, is_listish, keys_values
 from sqlalchemy import create_engine, MetaData  # type: ignore
-from sqlalchemy import select, func  # type: ignore
+from sqlalchemy import select, func
+from sqlalchemy.sql.elements import Label  # type: ignore
 from sqlalchemy.pool import NullPool  # type: ignore
 from sqlalchemy.schema import Table  # type: ignore
+from sqlalchemy.sql.expression import Select  # type: ignore
 
-from followthemoney.mapping.source import Source
+from followthemoney.mapping.source import Record, Source
 from followthemoney.util import sanitize_text
 from followthemoney.exc import InvalidMapping
+
+if TYPE_CHECKING:
+    from followthemoney.mapping.query import QueryMapping
+
 
 log = logging.getLogger(__name__)
 DATA_PAGE = 1000
@@ -19,19 +26,19 @@ DATA_PAGE = 1000
 class QueryTable(object):
     """A table to be joined in."""
 
-    def __init__(self, query, data):
-        self.query = query
-        if isinstance(data, six.string_types):
+    def __init__(self, meta: MetaData, data: Union[str, Dict[str, str]]) -> None:
+        if isinstance(data, str):
             data = {"table": data}
-        self.data = data
-        self.table_ref = data.get("table")
-        self.alias_ref = data.get("alias", self.table_ref)
-        self.table = Table(self.table_ref, self.query.meta, autoload=True)
-        self.alias = self.table.alias(self.alias_ref)
+        table_ref = data.get("table")
+        if table_ref is None:
+            raise InvalidMapping("Query has no table!")
+        alias_ref = data.get("alias", table_ref)
+        self.table = Table(table_ref, meta, autoload=True)
+        self.alias = self.table.alias(alias_ref)
 
-        self.refs = {}
+        self.refs: Dict[str, Label] = {}
         for column in self.alias.columns:
-            name = "%s.%s" % (self.alias_ref, column.name)
+            name = "%s.%s" % (alias_ref, column.name)
             labeled_column = column.label("col_%s" % uuid4().hex[:10])
             self.refs[name] = labeled_column
             self.refs[column.name] = labeled_column
@@ -40,9 +47,12 @@ class QueryTable(object):
 class SQLSource(Source):
     """Query mapper for loading data from a SQL query."""
 
-    def __init__(self, query, data):
+    def __init__(self, query: "QueryMapping", data: Dict[str, Any]) -> None:
         super(SQLSource, self).__init__(query, data)
-        self.database_uri = os.path.expandvars(data.get("database"))
+        database = data.get("database")
+        if database is None:
+            raise InvalidMapping("No database in SQL mapping!")
+        self.database_uri = cast(str, os.path.expandvars(database))
         kwargs = {}
         if self.database_uri.lower().startswith("postgres"):
             kwargs["server_side_cursors"] = True
@@ -51,16 +61,16 @@ class SQLSource(Source):
         self.meta.bind = self.engine
 
         tables = keys_values(data, "table", "tables")
-        self.tables = [QueryTable(self, f) for f in tables]
-        self.joins = ensure_list(data.get("joins"))
+        self.tables = [QueryTable(self.meta, f) for f in tables]
+        self.joins = cast(List[Dict[str, str]], ensure_list(data.get("joins")))
 
-    def get_column(self, ref):
+    def get_column(self, ref: Optional[str]) -> Label:
         for table in self.tables:
             if ref in table.refs:
                 return table.refs.get(ref)
         raise InvalidMapping("Missing reference: %s" % ref)
 
-    def apply_filters(self, q):
+    def apply_filters(self, q: Select) -> Select:
         for col, val in self.filters:
             if is_listish(val):
                 q = q.where(self.get_column(col).in_(val))
@@ -80,14 +90,14 @@ class SQLSource(Source):
             q = q.where(left == right)
         return q
 
-    def compose_query(self):
+    def compose_query(self) -> Select:
         from_clause = [t.alias for t in self.tables]
         columns = [self.get_column(r) for r in self.query.refs]
         q = select(columns=columns, from_obj=from_clause, use_labels=True)
         return self.apply_filters(q)
 
     @property
-    def records(self):
+    def records(self) -> Generator[Record, None, None]:
         """Compose the actual query and return an iterator of ``Record``."""
         mapping = [(r, self.get_column(r).name) for r in self.query.refs]
         q = self.compose_query()
@@ -98,15 +108,17 @@ class SQLSource(Source):
             if not len(rows):
                 break
             for row in rows:
-                data = {}
+                data: Record = {}
                 for ref, name in mapping:
-                    data[ref] = sanitize_text(row[name])
+                    value = sanitize_text(row[name])
+                    if value is not None:
+                        data[ref] = value
                 yield data
 
-    def __len__(self):
+    def __len__(self) -> int:
         from_clause = [t.alias for t in self.tables]
         columns = [func.count("*")]
         q = select(columns=columns, from_obj=from_clause, use_labels=True)
         q = self.apply_filters(q)
         rp = self.engine.execute(q)
-        return rp.scalar()
+        return int(rp.scalar())

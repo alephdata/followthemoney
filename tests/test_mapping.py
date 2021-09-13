@@ -205,7 +205,8 @@ class MappingTestCase(TestCase):
 
         entities = list(model.map_entities(mapping))
         assert len(entities) == 1, len(entities)
-        assert entities[0].get("address") == ["64, The Desert, 01234"], entities  # noqa
+        entity = entities[0]
+        assert entity.get("address") == ["64, The Desert, 01234"], entity.to_dict()
 
     def test_mapping_split(self):
         url = "file://" + os.path.join(self.fixture_path, "links.csv")
