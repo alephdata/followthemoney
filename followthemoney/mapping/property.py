@@ -19,6 +19,21 @@ class PropertyMapping(object):
     """Map values from a given record (e.g. a CSV row or SQL result) to the
     schema form."""
 
+    __slots__ = (
+        "query",
+        "prop",
+        "refs",
+        "join",
+        "split",
+        "entity",
+        "format",
+        "fuzzy",
+        "required",
+        "literals",
+        "template",
+        "replacements",
+    )
+
     FORMAT_PATTERN = re.compile("{{([^(}})]*)}}")
 
     def __init__(
@@ -27,7 +42,6 @@ class PropertyMapping(object):
         self.query = query
         data = deepcopy(data)
         self.prop = prop
-        self.name = prop.name
 
         self.refs = cast(List[str], keys_values(data, "column", "columns"))
         self.join = cast(Optional[str], data.pop("join", None))

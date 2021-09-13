@@ -12,6 +12,8 @@ if TYPE_CHECKING:
 
 
 class QueryMapping:
+    __slots__ = ("model", "data", "refs", "entities")
+
     def __init__(
         self, model: "Model", data: Dict[str, Any], key_prefix: Optional[str] = None
     ) -> None:

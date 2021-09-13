@@ -16,6 +16,19 @@ if TYPE_CHECKING:
 
 
 class EntityMapping(object):
+
+    __slots__ = (
+        "model",
+        "name",
+        "seed",
+        "keys",
+        "id_column",
+        "schema",
+        "refs",
+        "dependencies",
+        "properties",
+    )
+
     def __init__(
         self,
         model: "Model",
