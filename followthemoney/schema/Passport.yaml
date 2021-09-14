@@ -28,7 +28,7 @@ Passport:
     givenName:
       label: "Given name"
     birthDate:
-      label: "Date of birth"
+      label: "Birth date"
       type: date
     birthPlace:
       label: "Place of birth"

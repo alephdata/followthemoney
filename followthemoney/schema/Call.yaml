@@ -36,7 +36,8 @@ Call:
       label: "Receiver's Number"
       type: phone
     duration:
-      label: "Call Duration in seconds"
+      label: "Duration"
+      descriptuon: "Call Duration in seconds"
       type: number
     # recording:
     #   label: "Recording of the call"

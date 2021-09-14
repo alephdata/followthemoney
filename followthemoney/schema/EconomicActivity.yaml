@@ -18,7 +18,7 @@ EconomicActivity:
     - ccdNumber
   properties:
     contract:
-      label: "Associated contract"
+      label: "Contract"
       reverse:
         name: economicActivityContract
         label: "Used in customs"

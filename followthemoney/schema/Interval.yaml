@@ -33,7 +33,7 @@ Interval:
     recordId:
       label: "Record ID"
     sourceUrl:
-      label: "Source URL"
+      label: "Source link"
       type: url
       matchable: false
     publisher:

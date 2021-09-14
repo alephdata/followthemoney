@@ -31,7 +31,7 @@ Mention:
       type: entity
       range: LegalEntity
     name:
-      label: "Detected name"
+      label: "Name"
       type: name
     detectedSchema:
       label: "Detected entity type"

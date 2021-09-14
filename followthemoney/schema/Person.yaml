@@ -51,7 +51,7 @@ Person:
       label: Nationality
       type: country
     passportNumber:
-      label: Passport
+      label: Passport number
       type: identifier
     # Awkward data section below
     gender:
