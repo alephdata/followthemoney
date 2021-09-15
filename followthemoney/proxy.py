@@ -190,12 +190,23 @@ class EntityProxy(object):
         for value in value_list(values):
             if not cleaned:
                 value = prop.type.clean(value, proxy=self, fuzzy=fuzzy, format=format)
-            if value is None:
-                continue
-            if prop.type == registry.entity and value == self.id:
-                msg = gettext("Self-relationship (%s): %s")
-                raise InvalidData(msg % (self.schema, prop))
+            self.unsafe_add(prop, value, cleaned=True)
+        return None
 
+    def unsafe_add(
+        self,
+        prop: Property,
+        value: Optional[str],
+        cleaned: bool = False,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+    ) -> None:
+        """A version of `add()` to be used only in type-checking code. This accepts
+        only a single value, and performs input cleaning on the premise that the
+        value is already valid unicode."""
+        if not cleaned and value is not None:
+            value = prop.type.clean_text(value, fuzzy=fuzzy, format=format, proxy=self)
+        if value is not None:
             # Somewhat hacky: limit the maximum size of any particular
             # field to avoid overloading upstream aleph/elasticsearch.
             value_size = len(value)
@@ -203,10 +214,10 @@ class EntityProxy(object):
                 if self._size + value_size > prop.type.max_size:
                     # msg = "[%s] too large. Rejecting additional values."
                     # log.warning(msg, prop.name)
-                    continue
+                    return None
             self._size += value_size
-            self._properties.setdefault(prop_name, set())
-            self._properties[prop_name].add(value)
+            self._properties.setdefault(prop.name, set())
+            self._properties[prop.name].add(value)
         return None
 
     def set(

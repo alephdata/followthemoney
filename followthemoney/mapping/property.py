@@ -108,7 +108,7 @@ class PropertyMapping(object):
         if self.entity is not None:
             entity = entities.get(self.entity)
             if entity is not None:
-                proxy.add(self.prop, get_entity_id(entity), cleaned=True)
+                proxy.unsafe_add(self.prop, entity.id, cleaned=True)
                 inline_names(proxy, entity)
             return None
 
@@ -125,4 +125,5 @@ class PropertyMapping(object):
                 splote.extend(value.split(self.split))
             values = splote
 
-        proxy.add(self.prop, values, fuzzy=self.fuzzy, format=self.format)
+        for value in values:
+            proxy.unsafe_add(self.prop, value, fuzzy=self.fuzzy, format=self.format)
