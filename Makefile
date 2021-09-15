@@ -9,6 +9,7 @@ test:
 
 types:
 	mypy --strict followthemoney/types \
+		followthemoney/mapping \
 		followthemoney/schema.py \
 		followthemoney/property.py \
 		followthemoney/proxy.py \
