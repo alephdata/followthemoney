@@ -90,6 +90,28 @@ export class Schema {
     return this.extends.map(name => this.model.getSchema(name))
   }
 
+  getParents(): Array<Schema> {
+    const parents = new Map<string, Schema>()
+    for (const ext of this.getExtends()) {
+      parents.set(ext.name, ext)
+      for (const parent of ext.getParents()) {
+        parents.set(parent.name, parent)
+      }
+    }
+    return Array.from(parents.values())
+  }
+
+  getChildren(): Array<Schema> {
+    const children = new Array<Schema>()
+    for (const schema of this.model.getSchemata()) {
+      const parents = schema.getParents().map(s => s.name)
+      if (parents.indexOf(this.name) !== -1) {
+        children.push(schema)
+      }
+    }
+    return children;
+  }
+
   getProperties(qualified = false): Map<string, Property> {
     const properties = new Map<string, Property>()
     this.getExtends().forEach((schema) => {

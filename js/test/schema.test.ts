@@ -75,13 +75,54 @@ describe('ftm/Schema class', () => {
     it('should be a function', () => {
       expect(document.getEditableProperties).toBeInstanceOf(Function)
     })
-    it('should return an array' , () => {
+    it('should return an array', () => {
       expect(document.getEditableProperties()).toBeInstanceOf(Array)
     })
-    it('should not return non-editable properties' , () => {
+    it('should not return non-editable properties', () => {
       const shouldBeHidden = document.getEditableProperties()
         .filter(prop => prop.hidden || prop.stub)
       expect(shouldBeHidden).toHaveLength(0)
+    })
+  })
+  describe('method getParents', () => {
+    let vessel: Schema
+    beforeEach(() => {
+      vessel = new Schema(schema.model, 'Vessel', defaultModel.schemata.Vessel)
+    })
+    it('should exist', () => {
+      expect(vessel.getParents).toBeDefined()
+    })
+    it('should be a function', () => {
+      expect(vessel.getParents).toBeInstanceOf(Function)
+    })
+    it('should return an array', () => {
+      expect(vessel.getParents()).toBeInstanceOf(Array)
+    })
+    it('should not return Person', () => {
+      const parents = vessel.getParents().map((s) => s.name)
+      expect(parents).not.toContain('Person')
+      expect(parents).toContain('Thing')
+    })
+  })
+  describe('method getChildren', () => {
+    let legal: Schema
+    beforeEach(() => {
+      legal = new Schema(schema.model, 'LegalEntity', defaultModel.schemata.LegalEntity)
+    })
+    it('should exist', () => {
+      expect(legal.getChildren).toBeDefined()
+    })
+    it('should be a function', () => {
+      expect(legal.getChildren).toBeInstanceOf(Function)
+    })
+    it('should return an array', () => {
+      expect(legal.getChildren()).toBeInstanceOf(Array)
+    })
+    it('should return Person', () => {
+      const children = legal.getChildren().map((s) => s.name)
+      expect(children).not.toContain('Vessel')
+      expect(children).toContain('Person')
+      expect(children).toContain('Company')
     })
   })
 })
