@@ -1,4 +1,5 @@
 import re
+from typing import Callable, Sequence
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen, shortest, longest
@@ -22,28 +23,22 @@ class IdentifierType(PropertyType):
     matchable = True
     pivot = True
 
-    def clean_compare(self, value):
+    def clean_compare(self, value: str) -> str:
         # TODO: should this be used for normalization?
         value = self.COMPARE_CLEAN.sub("", value)
         return value.lower()
 
-    def compare(self, left, right):
+    def compare(self, left: str, right: str) -> float:
         left = self.clean_compare(left)
         right = self.clean_compare(right)
         if left == right:
-            return 1
+            return 1.0
         elif left in right or right in left:
             return len(shortest(left, right)) / len(longest(left, right))
-        return 0
+        return 0.0
 
-    def compare_sets(self, left, right):
-        scores = super().compare_sets(left, right, lambda x: x)
-        if not scores:
-            return 0.0
-        return min(1.0, sum(scores) / min(len(left), len(right)))
-
-    def _specificity(self, value):
+    def _specificity(self, value: str) -> float:
         return dampen(4, 10, value)
 
-    def node_id(self, value):
-        return "id:%s" % value
+    def node_id(self, value: str) -> str:
+        return f"id:{value}"

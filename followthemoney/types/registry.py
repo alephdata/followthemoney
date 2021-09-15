@@ -1,5 +1,5 @@
 from banal import ensure_list
-from typing import Set, Dict, Type, Union, List, Optional
+from typing import Iterable, Set, Dict, Type, Union, List, Optional
 
 from followthemoney.types.common import PropertyType
 
@@ -37,11 +37,16 @@ class Registry(object):
             return name
         return self.named.get(name)
 
-    def get_types(self, names: List[Union[str, PropertyType]]) -> List[PropertyType]:
+    def get_types(
+        self, names: Iterable[Union[str, PropertyType]]
+    ) -> List[PropertyType]:
         """Get a list of all type names."""
         names = ensure_list(names)
         types = [self.get(n) for n in names]
         return [t for t in types if t is not None]
 
-    def __getattr__(self, name: str) -> Optional[PropertyType]:
+    def __getitem__(self, name: str) -> PropertyType:
+        return self.named[name]
+
+    def __getattr__(self, name: str) -> PropertyType:
         return self.named[name]

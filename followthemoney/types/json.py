@@ -1,8 +1,12 @@
-import json  # yay Python 3
+import json
+from typing import Any, Optional, Sequence, TYPE_CHECKING
 from banal import ensure_list
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import sanitize_text, defer as _
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class JsonType(PropertyType):
@@ -15,32 +19,39 @@ class JsonType(PropertyType):
     label = _("Nested data")
     matchable = False
 
-    def pack(self, obj):
+    def pack(self, obj: Any) -> Optional[str]:
         """Encode a given value to JSON."""
         # TODO: use a JSON encoder that handles more types?
-        if obj is not None:
-            return json.dumps(obj)
-
-    def unpack(self, obj):
-        """Decode a given JSON object."""
         if obj is None:
-            return
+            return None
+        return json.dumps(obj)
+
+    def unpack(self, obj: str) -> Any:
+        """Decode a given JSON object."""
         try:
             return json.loads(obj)
         except Exception:
             return obj
 
-    def clean(self, obj, **kwargs):
-        if not isinstance(obj, str):
-            obj = self.pack(obj)
+    def clean(
+        self,
+        raw: Any,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
+        if not isinstance(raw, str):
+            return self.pack(raw)
         else:
-            obj = sanitize_text(obj)
-        return obj
+            return sanitize_text(raw)
 
-    def join(self, values):
+    def join(self, values: Sequence[str]) -> str:
         """Turn multiple values into a JSON array."""
         values = [self.unpack(v) for v in ensure_list(values)]
-        return self.pack(values)
+        data = self.pack(values)
+        if data is None:
+            return "[]"
+        return data
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> None:
         return None

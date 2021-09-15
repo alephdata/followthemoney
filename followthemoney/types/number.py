@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
@@ -18,9 +19,12 @@ class NumberType(PropertyType):
     plural = _("Numbers")
     matchable = False
 
-    def to_number(self, value):
+    def node_id(self, value: str) -> None:
+        return None
+
+    def to_number(self, value: str) -> Optional[float]:
         try:
             value = self.CAST_RE.sub("", value)
             return float(value)
         except Exception:
-            return
+            return None

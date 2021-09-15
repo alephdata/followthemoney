@@ -10,7 +10,7 @@ DEFAULT_EDGE_TYPES = (registry.entity.name,)
 
 
 def edge_types():
-    return [t.name for t in registry.matchable]
+    return [t.name for t in registry.matchable if t is not None]
 
 
 class GraphExporter(Exporter):

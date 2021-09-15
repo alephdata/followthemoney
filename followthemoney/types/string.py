@@ -11,7 +11,7 @@ class StringType(PropertyType):
     plural = _("Labels")
     matchable = False
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> None:
         return None
 
 

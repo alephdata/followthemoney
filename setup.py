@@ -21,7 +21,13 @@ setup(
     packages=find_packages(exclude=["ez_setup", "examples", "tests"]),
     namespace_packages=[],
     include_package_data=True,
-    package_data={"": ["followthemoney/schema/*", "followthemoney/translations/*"]},
+    package_data={
+        "": [
+            "followthemoney/schema/*",
+            "followthemoney/translations/*",
+            "followthemoney/py.typed",
+        ]
+    },
     zip_safe=False,
     install_requires=[
         "babel >= 2.9.1, < 3.0.0",
@@ -35,12 +41,12 @@ setup(
         "normality >= 2.1.1, < 3.0.0",
         "sqlalchemy >= 1.2.0, < 2.0.0",
         "countrynames >= 1.9.1, < 2.0.0",
-        "languagecodes >= 1.0.9, < 2.0.0",
+        "languagecodes >= 1.1.0, < 2.0.0",
         "prefixdate >= 0.4.0, < 1.0.0",
         "fingerprints >= 1.0.1, < 2.0.0",
         "phonenumbers >= 8.12.22, < 9.0.0",
         "python-stdnum >= 1.16, < 2.0.0",
-        "pantomime >= 0.4.0, < 1.0.0",
+        "pantomime >= 0.5.1, < 1.0.0",
         "pytz >= 2021.1",
         "rdflib >= 6.0.0, < 6.1.0",
         "networkx >=2.5, < 2.7",
@@ -52,6 +58,8 @@ setup(
             "bump2version",
             "wheel>=0.29.0",
             "twine",
+            "mypy",
+            "types-PyYAML",
             "flake8>=2.6.0",
             "nose",
             "transifex-client",

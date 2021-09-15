@@ -23,7 +23,7 @@ K = TypeVar("K")
 V = TypeVar("V")
 
 
-def gettext(*args: str, **kwargs: Dict[str, str]) -> str:
+def gettext(*args: Optional[str], **kwargs: Dict[str, str]) -> str:
     if not hasattr(state, "translation"):
         set_model_locale(DEFAULT_LOCALE)
     return cast(str, state.translation.gettext(*args, **kwargs))
@@ -84,10 +84,10 @@ def key_bytes(key: Any) -> bytes:
     """Convert the given data to a value appropriate for hashing."""
     if isinstance(key, bytes):
         return key
-    key = stringify(key)
-    if key is None:
+    text = stringify(key)
+    if text is None:
         return b""
-    return cast(bytes, key.encode("utf-8"))
+    return text.encode("utf-8")
 
 
 def get_entity_id(obj: Any) -> Optional[str]:
@@ -115,13 +115,13 @@ def make_entity_id(*parts: Any, key_prefix: Optional[str] = None) -> Optional[st
 
 
 def merge_context(left: Dict[K, V], right: Dict[K, V]) -> Dict[K, List[V]]:
-    """When merging two entities, make lists of all the duplicate context 
+    """When merging two entities, make lists of all the duplicate context
     keys."""
     combined = {}
     keys = [*left.keys(), *right.keys()]
     for key in set(keys):
-        lval: List[V] = ensure_list(left.get(key))
-        rval: List[V] = ensure_list(right.get(key))
+        lval: List[V] = [i for i in ensure_list(left.get(key)) if i is not None]
+        rval: List[V] = [i for i in ensure_list(right.get(key)) if i is not None]
         combined[key] = unique_list([*lval, *rval])
     return combined
 

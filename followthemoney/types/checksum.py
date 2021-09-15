@@ -21,5 +21,5 @@ class ChecksumType(PropertyType):
     matchable = True
     pivot = True
 
-    def rdf(self, value):
-        return URIRef("hash:%s" % value)
+    def rdf(self, value: str) -> URIRef:
+        return URIRef(f"hash:{value}")

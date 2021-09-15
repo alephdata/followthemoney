@@ -1,12 +1,27 @@
 from itertools import product
+from babel.core import Locale  # type: ignore
 from rdflib import Literal  # type: ignore
 from rdflib.term import Identifier  # type: ignore
 from banal import ensure_list
 from normality import stringify
-from typing import Any, Dict, Optional, Sequence, Callable
+from typing import Any, Dict, Optional, Sequence, Callable, TYPE_CHECKING, TypedDict
 
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
+
+EnumValues = Dict[str, str]
+
+
+class PropertyTypeToDict(TypedDict, total=False):
+    label: str
+    plural: str
+    group: Optional[str]
+    matchable: Optional[bool]
+    pivot: Optional[bool]
+    values: Optional[EnumValues]
 
 
 class PropertyType(object):
@@ -21,10 +36,10 @@ class PropertyType(object):
     you can query for ``countries:gb`` instead of having to make a set of filters
     like ``properties.jurisdiction:gb OR properties.country:gb OR ...``."""
 
-    label: Optional[str] = None
+    label: str = "Any"
     """A name for this type to be shown to users."""
 
-    plural: Optional[str] = None
+    plural: str = "Any"
     """A plural name for this type which can be used in appropriate places in
     a user interface."""
 
@@ -51,21 +66,33 @@ class PropertyType(object):
     def docs(self) -> Optional[str]:
         return self.__doc__
 
-    def validate(self, text: Any, **kwargs) -> bool:
+    def validate(self, value: str) -> bool:
         """Returns a boolean to indicate if the given value is a valid instance of
         the type."""
-        cleaned = self.clean(text, **kwargs)
+        cleaned = self.clean(value)
         return cleaned is not None
 
-    def clean(self, text: Any, **kwargs) -> Optional[str]:
+    def clean(
+        self,
+        raw: Any,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """Create a clean version of a value of the type, suitable for storage
         in an entity proxy."""
-        text = sanitize_text(text)
+        text = sanitize_text(raw)
         if text is None:
             return None
-        return self.clean_text(text, **kwargs)
+        return self.clean_text(text, fuzzy=fuzzy, format=format, proxy=proxy)
 
-    def clean_text(self, text: str, **kwargs) -> Optional[str]:
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """Specific types can apply their own cleaning routines here (this is called
         by ``clean`` after the value has been converted to a string and null values
         have been filtered)."""
@@ -114,10 +141,8 @@ class PropertyType(object):
     ) -> float:
         """Compare two sets of values and select the highest-scored result."""
         results = []
-        l: str = ""
-        r: str = ""
         for (l, r) in product(ensure_list(left), ensure_list(right)):
-            results.append(self.compare_safe(l, r))
+            results.append(self.compare(l, r))
         if not len(results):
             return 0.0
         return func(results)
@@ -132,7 +157,11 @@ class PropertyType(object):
         literal, or a URI reference."""
         return Literal(value)
 
-    def node_id(self, value: str) -> str:
+    def pick(self, values: Sequence[str]) -> Optional[str]:
+        """Pick the best value to show to the user."""
+        raise NotImplemented
+
+    def node_id(self, value: str) -> Optional[str]:
         """Return an ID suitable to identify this entity as a typed node in a
         graph representation of some FtM data. It's usually the same as the the
         RDF form."""
@@ -144,15 +173,18 @@ class PropertyType(object):
             return None
         return self.node_id(value)
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: str) -> Optional[str]:
         """Return a label for the given property value. This is often the same as the
         value, but for types like countries or languages, it would return the label,
         while other values like phone numbers can be formatted to be nicer to read."""
         return value
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> PropertyTypeToDict:
         """Return a serialisable description of this data type."""
-        data = {"label": gettext(self.label), "plural": gettext(self.plural)}
+        data: PropertyTypeToDict = {
+            "label": gettext(self.label),
+            "plural": gettext(self.plural),
+        }
         if self.group:
             data["group"] = self.group
         if self.matchable:
@@ -161,32 +193,34 @@ class PropertyType(object):
             data["pivot"] = True
         return data
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
+        if not isinstance(other, PropertyType):
+            return False
         return self.name == other.name
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.name)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def __repr__(self):
-        return "<%s>" % self.name
+    def __repr__(self) -> str:
+        return f"<{self.name}>"
 
 
 class EnumType(PropertyType):
     """Enumerated type properties are used for types which have a defined set
     of possible values, like languages and countries."""
 
-    def __init__(self, *args):
-        self._names = {}
+    def __init__(self) -> None:
+        self._names: Dict[Locale, EnumValues] = {}
         self.codes = set(self.names.keys())
 
-    def _locale_names(self, locale):
+    def _locale_names(self, locale: str) -> EnumValues:
         return {}
 
     @property
-    def names(self):
+    def names(self) -> EnumValues:
         """Return a mapping from property values to their labels in the current
         locale."""
         locale = get_locale()
@@ -194,25 +228,31 @@ class EnumType(PropertyType):
             self._names[locale] = self._locale_names(locale)
         return self._names[locale]
 
-    def validate(self, code, **kwargs):
+    def validate(self, value: str) -> bool:
         """Make sure that the given code value is one of the supported set."""
-        code = sanitize_text(code)
-        if code is None:
+        if value is None:
             return False
-        return code.lower() in self.codes
+        return str(value).lower().strip() in self.codes
 
-    def clean_text(self, code, guess=False, **kwargs):
+    def clean_text(
+        self,
+        code: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """All code values are cleaned to be lowercase and trailing whitespace is
         removed."""
         code = code.lower().strip()
-        if code in self.codes:
-            return code
+        if code not in self.codes:
+            return None
+        return code
 
-    def caption(self, value):
+    def caption(self, value: str) -> str:
         """Given a code value, return the label that should be shown to a user."""
         return self.names.get(value, value)
 
-    def to_dict(self):
+    def to_dict(self) -> PropertyTypeToDict:
         """When serialising the model to JSON, include all values."""
         data = super(EnumType, self).to_dict()
         data["values"] = self.names

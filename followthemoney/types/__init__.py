@@ -1,7 +1,6 @@
 from followthemoney.types.registry import Registry
 from followthemoney.types.url import UrlType
 from followthemoney.types.name import NameType
-from followthemoney.types.domain import DomainType
 from followthemoney.types.email import EmailType
 from followthemoney.types.ip import IpType
 from followthemoney.types.iban import IbanType
@@ -25,7 +24,6 @@ from followthemoney.types.common import PropertyType
 registry = Registry()
 registry.add(UrlType)
 registry.add(NameType)
-registry.add(DomainType)
 registry.add(EmailType)
 registry.add(IpType)
 registry.add(IbanType)

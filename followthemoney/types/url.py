@@ -1,8 +1,12 @@
+from typing import Optional, TYPE_CHECKING
 from rdflib import URIRef  # type: ignore
 from urllib.parse import urlparse
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen, defer as _
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class UrlType(PropertyType):
@@ -20,19 +24,25 @@ class UrlType(PropertyType):
     matchable = True
     pivot = True
 
-    def clean_text(self, url, **kwargs):
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """Perform intensive care on URLs to make sure they have a scheme
         and a host name. If no scheme is given HTTP is assumed."""
         try:
-            parsed = urlparse(url)
+            parsed = urlparse(text)
         except (TypeError, ValueError):
             return None
         if not len(parsed.netloc):
-            if "." in parsed.path and not url.startswith("//"):
+            if "." in parsed.path and not text.startswith("//"):
                 # This is a pretty weird rule meant to catch things like
                 # 'www.google.com', but it'll likely backfire in some
                 # really creative ways.
-                return self.clean_text(f"//{url}", **kwargs)
+                return self.clean_text(f"//{text}")
             return None
         if not len(parsed.scheme):
             parsed = parsed._replace(scheme=self.DEFAULT_SCHEME)
@@ -44,11 +54,11 @@ class UrlType(PropertyType):
             parsed = parsed._replace(path="/")
         return parsed.geturl()
 
-    def _specificity(self, value):
+    def _specificity(self, value: str) -> float:
         return dampen(10, 120, value)
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> URIRef:
         return URIRef(value)
 
-    def node_id(self, value):
-        return "url:%s" % value
+    def node_id(self, value: str) -> Optional[str]:
+        return f"url:{value}"

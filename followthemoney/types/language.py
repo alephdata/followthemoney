@@ -1,9 +1,15 @@
+from typing import Optional, TYPE_CHECKING
+from babel.core import Locale  # type: ignore
 from rdflib import URIRef  # type: ignore
-from languagecodes import iso_639_alpha3  # type: ignore
+from rdflib.term import Identifier  # type: ignore
+from languagecodes import iso_639_alpha3
 
-from followthemoney.types.common import EnumType
+from followthemoney.types.common import EnumType, EnumValues
 from followthemoney.util import defer as _
 from followthemoney.util import get_env_list
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class LanguageType(EnumType):
@@ -85,7 +91,7 @@ class LanguageType(EnumType):
     LANGUAGES = get_env_list("FTM_LANGUAGES", LANGUAGES)
     LANGUAGES = [lang.lower().strip() for lang in LANGUAGES]
 
-    def _locale_names(self, locale):
+    def _locale_names(self, locale: Locale) -> EnumValues:
         names = {}
         for lang in self.LANGUAGES:
             names[lang] = lang
@@ -95,10 +101,17 @@ class LanguageType(EnumType):
                 names[code] = label
         return names
 
-    def clean_text(self, text, **kwargs):
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         code = iso_639_alpha3(text)
-        if code in self.LANGUAGES:
-            return code
+        if code not in self.LANGUAGES:
+            return None
+        return code
 
-    def rdf(self, value):
-        return URIRef("iso-639:%s" % value)
+    def rdf(self, value: str) -> Identifier:
+        return URIRef(f"iso-639:{value}")

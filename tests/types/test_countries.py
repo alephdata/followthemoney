@@ -22,7 +22,7 @@ class CountriesTest(unittest.TestCase):
     def test_country_names(self):
         countries = registry.country
         self.assertEqual(countries.clean(None), None)
-        self.assertEqual(countries.clean("Takatukaland", guess=False), None)
+        self.assertEqual(countries.clean("Takatukaland", fuzzy=False), None)
         self.assertEqual(countries.clean("Germany"), "de")
         # self.assertEqual(countries.clean('Germani'), 'de')
         self.assertEqual(countries.clean("Soviet Union"), "suhh")

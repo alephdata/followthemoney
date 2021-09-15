@@ -1,9 +1,14 @@
+from typing import Optional, TYPE_CHECKING, cast
 from rdflib import URIRef  # type: ignore
+from rdflib.term import Identifier  # type: ignore
 from stdnum import iban  # type: ignore
 from stdnum.exceptions import ValidationError  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import sanitize_text, defer as _
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class IbanType(PropertyType):
@@ -22,26 +27,32 @@ class IbanType(PropertyType):
     matchable = True
     pivot = True
 
-    def validate(self, text, **kwargs):
-        text = sanitize_text(text)
+    def validate(self, value: str) -> bool:
+        text = sanitize_text(value)
         try:
-            return iban.validate(text)
+            return cast(bool, iban.validate(text))
         except ValidationError:
             return False
 
-    def clean_text(self, text, **kwargs):
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
         """Create a more clean, but still user-facing version of an
         instance of the type."""
         return text.replace(" ", "").upper()
 
-    def country_hint(self, value):
+    def country_hint(self, value: str) -> str:
         return value[:2].lower()
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> Identifier:
         return URIRef(self.node_id(value))
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> str:
         return f"iban:{value.upper()}"
 
-    def caption(self, value):
-        return iban.format(value)
+    def caption(self, value: str) -> str:
+        return cast(str, iban.format(value))

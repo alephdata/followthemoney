@@ -1,13 +1,18 @@
+from typing import Iterable, Optional, TYPE_CHECKING
 from rdflib import URIRef  # type: ignore
 from phonenumbers import geocoder  # type: ignore
-from phonenumbers import parse as parse_number  # type: ignore
-from phonenumbers import is_valid_number, format_number  # type: ignore
-from phonenumbers import PhoneNumberFormat  # type: ignore
+from phonenumbers import parse as parse_number
+from phonenumbers import is_valid_number, format_number
+from phonenumbers import PhoneNumber, PhoneNumberFormat
 from phonenumbers.phonenumberutil import NumberParseException  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
 from followthemoney.util import dampen
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
+
 
 # TODO: for json schema export
 # https://stackoverflow.com/questions/6478875/regular-expression-matching-e-164-formatted-phone-numbers
@@ -33,13 +38,17 @@ class PhoneType(PropertyType):
     matchable = True
     pivot = True
 
-    def _clean_countries(self, proxy):
+    def _clean_countries(
+        self, proxy: Optional["EntityProxy"]
+    ) -> Iterable[Optional[str]]:
         yield None
         if proxy is not None:
             for country in proxy.countries:
                 yield country.upper()
 
-    def _parse_number(self, number, proxy=None):
+    def _parse_number(
+        self, number: str, proxy: Optional["EntityProxy"] = None
+    ) -> Iterable[PhoneNumber]:
         """Parse a phone number and return in international format.
 
         If no valid phone number can be detected, None is returned. If
@@ -54,36 +63,45 @@ class PhoneType(PropertyType):
             except NumberParseException:
                 pass
 
-    def clean_text(self, number, proxy=None, **kwargs):
-        for num in self._parse_number(number, proxy=proxy):
-            if is_valid_number(num):
-                return format_number(num, PhoneNumberFormat.E164)
-
-    def validate(self, number, proxy=None, **kwargs):
-        for num in self._parse_number(number, proxy=proxy):
+    def validate(self, value: str) -> bool:
+        for num in self._parse_number(value):
             if is_valid_number(num):
                 return True
         return False
 
-    def country_hint(self, value):
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
+        for num in self._parse_number(text, proxy=proxy):
+            if is_valid_number(num):
+                return str(format_number(num, PhoneNumberFormat.E164))
+        return None
+
+    def country_hint(self, value: str) -> Optional[str]:
         try:
             number = parse_number(value)
             code = geocoder.region_code_for_number(number)
-            if code is not None:
-                return code.lower()
+            if code is None:
+                return None
+            return str(code).lower()
         except NumberParseException:
             return None
 
-    def _specificity(self, value):
+    def _specificity(self, value: str) -> float:
         # TODO: insert artificial intelligence here.
         return dampen(7, 11, value)
 
-    def rdf(self, value):
+    def rdf(self, value: str) -> URIRef:
         return URIRef(self.node_id(value))
 
-    def node_id(self, value):
+    def node_id(self, value: str) -> Optional[str]:
         return f"tel:{value}"
 
-    def caption(self, value):
+    def caption(self, value: str) -> str:
         number = parse_number(value)
-        return format_number(number, PhoneNumberFormat.INTERNATIONAL)
+        formatted = format_number(number, PhoneNumberFormat.INTERNATIONAL)
+        return str(formatted)
