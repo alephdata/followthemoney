@@ -60,6 +60,7 @@ setup(
             "twine",
             "mypy",
             "types-PyYAML",
+            "types-requests",
             "flake8>=2.6.0",
             "nose",
             "transifex-client",
