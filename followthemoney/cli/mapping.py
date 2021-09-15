@@ -54,7 +54,7 @@ def stream_mapping(infile, outfile, mapping_yaml, sign=True):
         for record in CSVSource.read_csv(infile):
             for (dataset, query) in queries:
                 ns = Namespace(dataset)
-                if query.check_filters(record):
+                if query.source.check_filters(record):
                     entities = query.map(record)
                     for entity in entities.values():
                         if sign:

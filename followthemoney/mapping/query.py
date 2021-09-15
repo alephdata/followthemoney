@@ -12,17 +12,16 @@ if TYPE_CHECKING:
 
 
 class QueryMapping:
-    __slots__ = ("model", "data", "refs", "entities")
+    __slots__ = ("model", "data", "refs", "entities", "source")
 
     def __init__(
         self, model: "Model", data: Dict[str, Any], key_prefix: Optional[str] = None
     ) -> None:
         self.model = model
-        self.data = data
         self.refs = set[str]()
         self.entities: List[EntityMapping] = []
-        for name, data in data.get("entities", {}).items():
-            entity = EntityMapping(model, self, name, data, key_prefix=key_prefix)
+        for name, edata in data.get("entities", {}).items():
+            entity = EntityMapping(model, self, name, edata, key_prefix=key_prefix)
 
             self.entities.append(entity)
             self.refs.update(entity.refs)
@@ -52,13 +51,14 @@ class QueryMapping:
             if before == len(entities):
                 raise InvalidMapping("Circular entity dependency detected.")
 
-    @property
-    def source(self) -> Source:
-        if "database" in self.data:
-            return SQLSource(self, self.data)
-        elif "csv_url" in self.data or "csv_urls" in self.data:
-            return CSVSource(self, self.data)
-        raise InvalidMapping("Cannot determine mapping type")
+        self.source = self._get_source(data)
+
+    def _get_source(self, data: Dict[str, Any]) -> Source:
+        if "database" in data:
+            return SQLSource(self, data)
+        if "csv_url" in data or "csv_urls" in data:
+            return CSVSource(self, data)
+        raise InvalidMapping("Cannot determine mapping type: %r" % data)
 
     def map(self, record: Record) -> Dict[str, EntityProxy]:
         data: Dict[str, EntityProxy] = {}
