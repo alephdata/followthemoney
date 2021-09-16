@@ -18,7 +18,7 @@ class QueryMapping:
         self, model: "Model", data: Dict[str, Any], key_prefix: Optional[str] = None
     ) -> None:
         self.model = model
-        self.refs = set[str]()
+        self.refs: Set[str] = set()
         self.entities: List[EntityMapping] = []
         for name, edata in data.get("entities", {}).items():
             entity = EntityMapping(model, self, name, edata, key_prefix=key_prefix)

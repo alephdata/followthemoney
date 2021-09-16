@@ -92,7 +92,7 @@ def remove_prefix_dates(entity: EntityProxy) -> EntityProxy:
 
 def remove_prefix_date_values(values: Iterable[str]) -> List[str]:
     """See ``remove_prefix_dates``."""
-    kept = list[str]()
+    kept: List[str] = []
     values = sorted(values, key=len, reverse=True)
     for index, value in enumerate(values):
         keep = True

@@ -1,5 +1,5 @@
 from hashlib import sha1
-from typing import TYPE_CHECKING, Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, Set
 from banal import keys_values
 from normality import stringify
 
@@ -62,7 +62,7 @@ class EntityMapping(object):
         self.refs = set(self.keys)
         if self.id_column:
             self.refs.add(self.id_column)
-        self.dependencies = set[str]()
+        self.dependencies: Set[str] = set()
         self.properties: List[PropertyMapping] = []
         for name, prop_mapping in data.get("properties", {}).items():
             prop = self.schema.get(name)

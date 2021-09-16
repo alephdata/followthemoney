@@ -166,7 +166,7 @@ class Schema:
 
         #: Direct parent schemata of this schema.
         self._extends = ensure_list(data.get("extends", []))
-        self.extends = set["Schema"]()
+        self.extends: Set["Schema"] = set()
 
         #: All parents of this schema (including indirect parents and the schema itself).
         self.schemata = set([self])
@@ -176,8 +176,8 @@ class Schema:
 
         #: Inverse of :attr:`~schemata`, all derived child types of this schema
         #: and their children.
-        self.descendants = set["Schema"]()
-        self._matchable_schemata: Optional[set["Schema"]] = None
+        self.descendants: Set["Schema"] = set()
+        self._matchable_schemata: Optional[Set["Schema"]] = None
 
         #: The full list of properties defined for the entity, including those
         #: inherited from parent schemata.
@@ -297,7 +297,7 @@ class Schema:
         For example, it makes sense to compare a legal entity with a company,
         but it does not make sense to compare a car and a person."""
         if self._matchable_schemata is None:
-            self._matchable_schemata = set[Schema]()
+            self._matchable_schemata = set()
             if self.matchable:
                 # This is used by the cross-referencer to determine what
                 # other schemata should be considered for matches. For
@@ -347,7 +347,6 @@ class Schema:
             "plural": self.plural,
             "schemata": list(sorted(self.names)),
             "extends": list(sorted([e.name for e in self.extends])),
-            "properties": dict[str, PropertyToDict](),
         }
         if self.edge_source and self.edge_target and self.edge_label:
             data["edge"] = {
@@ -373,9 +372,11 @@ class Schema:
             data["generated"] = True
         if self.matchable:
             data["matchable"] = True
+        properties: Dict[str, PropertyToDict] = {}
         for name, prop in self.properties.items():
             if prop.schema == self:
-                data["properties"][name] = prop.to_dict()
+                properties[name] = prop.to_dict()
+        data["properties"] = properties
         return data
 
     def __eq__(self, other: Any) -> bool:

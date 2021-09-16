@@ -36,7 +36,7 @@ class CSVSource(Source):
 
     def __init__(self, query: "QueryMapping", data: Dict[str, Any]) -> None:
         super().__init__(query, data)
-        self.urls = set[str]()
+        self.urls: Set[str] = set()
         for url in keys_values(data, "csv_url", "csv_urls"):
             self.urls.add(cast(str, os.path.expandvars(url)))
 

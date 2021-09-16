@@ -1,5 +1,5 @@
 
-all: dev clean test types dists release
+all: dev clean test typecheck dists release
 
 dev:
 	pip install -q ".[dev]"
@@ -7,7 +7,7 @@ dev:
 test:
 	nosetests --with-coverage --cover-package=followthemoney --cover-erase --cover-html --cover-html-dir=coverage-report
 
-types:
+typecheck:
 	mypy --strict followthemoney/types \
 		followthemoney/mapping \
 		followthemoney/schema.py \
