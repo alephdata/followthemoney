@@ -1,5 +1,5 @@
 from typing import Dict, List, Optional, Sequence, TYPE_CHECKING, cast
-from banal import ensure_list, first
+from banal import first
 from normality import slugify
 from normality.cleaning import collapse_spaces, strip_quotes
 from fuzzywuzzy import fuzz  # type: ignore

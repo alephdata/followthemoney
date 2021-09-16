@@ -5,6 +5,11 @@ on: [push]
 jobs:
   python:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python:
+          - "3.8"
+          - "3.9"
     steps:
       - uses: actions/checkout@v1
       - name: Show ref
@@ -13,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
-          python-version: "3.9"
+          python-version: ${{ matrix.python }}
       - name: Install dependencies
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -27,7 +32,7 @@ jobs:
           nosetests --with-coverage --cover-package=followthemoney --cover-erase
       - name: Partial mypy type-check
         run: |
-          make types
+          make typecheck
       - name: Build a followthemoney distribution
         run: |
           python setup.py sdist bdist_wheel

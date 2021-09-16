@@ -30,7 +30,7 @@ class Model(object):
         self.schemata: Dict[str, Schema] = {}
 
         #: All properties defined in the model.
-        self.properties = set[Property]()
+        self.properties: Set[Property] = set()
         self.qnames: Dict[str, Property] = {}
         for (path, _, filenames) in os.walk(self.path):
             for filename in filenames:

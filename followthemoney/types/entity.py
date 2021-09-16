@@ -5,7 +5,8 @@ from rdflib.term import Identifier  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import get_entity_id, sanitize_text
-from followthemoney.util import defer as _
+from followthemoney.util import gettext, defer as _
+from followthemoney.exc import InvalidData
 
 if TYPE_CHECKING:
     from followthemoney.proxy import EntityProxy
@@ -45,8 +46,23 @@ class EntityType(PropertyType):
         entity_id = get_entity_id(raw)
         if entity_id is None:
             return None
-        if self.REGEX.match(entity_id) is not None:
-            return entity_id
+        return self.clean_text(entity_id, fuzzy=fuzzy, format=format, proxy=proxy)
+
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
+        """Specific types can apply their own cleaning routines here (this is called
+        by ``clean`` after the value has been converted to a string and null values
+        have been filtered)."""
+        if proxy is not None and text == proxy.id:
+            msg = gettext("Self-relationship (%s): %s")
+            raise InvalidData(msg % (proxy.schema, text))
+        if self.REGEX.match(text) is not None:
+            return text
         return None
 
     def rdf(self, value: str) -> Identifier:

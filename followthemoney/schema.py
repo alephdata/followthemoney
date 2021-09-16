@@ -2,9 +2,9 @@ from typing import (
     TYPE_CHECKING,
     Any,
     Dict,
-    Generator,
     List,
     Optional,
+    Set,
     TypedDict,
     Union,
     cast,
@@ -100,6 +100,7 @@ class Schema:
         "names",
         "descendants",
         "properties",
+        "_matchable_schemata",
     )
 
     def __init__(self, model: "Model", name: str, data: SchemaSpec) -> None:
@@ -165,7 +166,7 @@ class Schema:
 
         #: Direct parent schemata of this schema.
         self._extends = ensure_list(data.get("extends", []))
-        self.extends = set["Schema"]()
+        self.extends: Set["Schema"] = set()
 
         #: All parents of this schema (including indirect parents and the schema itself).
         self.schemata = set([self])
@@ -175,7 +176,8 @@ class Schema:
 
         #: Inverse of :attr:`~schemata`, all derived child types of this schema
         #: and their children.
-        self.descendants = set["Schema"]()
+        self.descendants: Set["Schema"] = set()
+        self._matchable_schemata: Optional[Set["Schema"]] = None
 
         #: The full list of properties defined for the entity, including those
         #: inherited from parent schemata.
@@ -290,21 +292,23 @@ class Schema:
         )
 
     @property
-    def matchable_schemata(self) -> Generator["Schema", None, None]:
+    def matchable_schemata(self) -> Set["Schema"]:
         """Return the set of schemata to which it makes sense to compare with this schema.
         For example, it makes sense to compare a legal entity with a company,
         but it does not make sense to compare a car and a person."""
-        if not self.matchable:
-            return
-        # This is used by the cross-referencer to determine what
-        # other schemata should be considered for matches. For
-        # example, a Company may be compared to a Legal Entity,
-        # but it makes no sense to compare it to an Aircraft.
-        matchable = set(self.schemata)
-        matchable.update(self.descendants)
-        for schema in matchable:
-            if schema.matchable:
-                yield schema
+        if self._matchable_schemata is None:
+            self._matchable_schemata = set()
+            if self.matchable:
+                # This is used by the cross-referencer to determine what
+                # other schemata should be considered for matches. For
+                # example, a Company may be compared to a Legal Entity,
+                # but it makes no sense to compare it to an Aircraft.
+                candidates = set(self.schemata)
+                candidates.update(self.descendants)
+                for schema in candidates:
+                    if schema.matchable:
+                        self._matchable_schemata.add(schema)
+        return self._matchable_schemata
 
     def is_a(self, other: Union[str, "Schema"]) -> bool:
         """Check if the schema or one of its parents is the same as the given
@@ -343,7 +347,6 @@ class Schema:
             "plural": self.plural,
             "schemata": list(sorted(self.names)),
             "extends": list(sorted([e.name for e in self.extends])),
-            "properties": dict[str, PropertyToDict](),
         }
         if self.edge_source and self.edge_target and self.edge_label:
             data["edge"] = {
@@ -369,9 +372,11 @@ class Schema:
             data["generated"] = True
         if self.matchable:
             data["matchable"] = True
+        properties: Dict[str, PropertyToDict] = {}
         for name, prop in self.properties.items():
             if prop.schema == self:
-                data["properties"][name] = prop.to_dict()
+                properties[name] = prop.to_dict()
+        data["properties"] = properties
         return data
 
     def __eq__(self, other: Any) -> bool:
