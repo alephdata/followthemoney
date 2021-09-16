@@ -54,6 +54,7 @@ jobs:
           user: __token__
           password: ${{ secrets.pypi_password }}
           packages_dir: enrich/dist/
+          skip_existing: true
 
   nodejs:
     runs-on: ubuntu-latest
