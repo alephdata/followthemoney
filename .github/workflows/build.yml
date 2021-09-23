@@ -43,6 +43,7 @@ jobs:
           user: __token__
           password: ${{ secrets.pypi_password }}
           packages_dir: dist/
+          skip_existing: true
       - name: Build a followthemoney-enrich distribution
         working-directory: ./enrich
         run: |
