@@ -643,7 +643,7 @@
           "type": "phone"
         },
         "duration": {
-          "label": "Call Duration in seconds",
+          "label": "Duration",
           "name": "duration",
           "qname": "Call:duration",
           "type": "number"
@@ -981,7 +981,7 @@
           "type": "entity"
         },
         "status": {
-          "label": "Procurement status",
+          "label": "Status",
           "name": "status",
           "qname": "Contract:status",
           "type": "string"
@@ -1765,7 +1765,7 @@
           "type": "string"
         },
         "contract": {
-          "label": "Associated contract",
+          "label": "Contract",
           "matchable": true,
           "name": "contract",
           "qname": "EconomicActivity:contract",
@@ -2359,7 +2359,7 @@
           "type": "identifier"
         },
         "type": {
-          "label": "Document type",
+          "label": "Type",
           "name": "type",
           "qname": "Identification:type",
           "type": "string"
@@ -2507,7 +2507,7 @@
           "type": "date"
         },
         "sourceUrl": {
-          "label": "Source URL",
+          "label": "Source link",
           "name": "sourceUrl",
           "qname": "Interval:sourceUrl",
           "type": "url"
@@ -3264,7 +3264,7 @@
           "type": "entity"
         },
         "name": {
-          "label": "Detected name",
+          "label": "Name",
           "matchable": true,
           "name": "name",
           "qname": "Mention:name",
@@ -3646,7 +3646,7 @@
         },
         "detectedLanguage": {
           "hidden": true,
-          "label": "Auto-detected language",
+          "label": "Detected language",
           "name": "detectedLanguage",
           "qname": "Page:detectedLanguage",
           "type": "language"
@@ -3758,7 +3758,7 @@
       "plural": "Passports",
       "properties": {
         "birthDate": {
-          "label": "Date of birth",
+          "label": "Birth date",
           "matchable": true,
           "name": "birthDate",
           "qname": "Passport:birthDate",
@@ -4080,7 +4080,7 @@
           "type": "country"
         },
         "passportNumber": {
-          "label": "Passport",
+          "label": "Passport number",
           "matchable": true,
           "name": "passportNumber",
           "qname": "Person:passportNumber",
@@ -4736,7 +4736,7 @@
       "plural": "Tax rolls",
       "properties": {
         "birthDate": {
-          "label": "Date of birth",
+          "label": "Birth date",
           "matchable": true,
           "name": "birthDate",
           "qname": "TaxRoll:birthDate",
@@ -5102,7 +5102,7 @@
       "plural": "User accounts",
       "properties": {
         "email": {
-          "label": "E-mail",
+          "label": "E-Mail",
           "matchable": true,
           "name": "email",
           "qname": "UserAccount:email",
@@ -5273,7 +5273,7 @@
           "type": "date"
         },
         "registrationNumber": {
-          "label": "Registration Number",
+          "label": "Registration number",
           "matchable": true,
           "name": "registrationNumber",
           "qname": "Vehicle:registrationNumber",
@@ -5544,6 +5544,7 @@
         "co": "Colombia",
         "cp": "Clipperton Island",
         "cr": "Costa Rica",
+        "cshh": "Czechoslovakia",
         "csxx": "Serbia and Montenegro",
         "cu": "Cuba",
         "cv": "Cape Verde",
@@ -5777,11 +5778,6 @@
       "matchable": true,
       "plural": "Dates"
     },
-    "domain": {
-      "label": "Domain",
-      "matchable": true,
-      "plural": "Domains"
-    },
     "email": {
       "group": "emails",
       "label": "E-Mail Address",
@@ -5823,7 +5819,7 @@
     },
     "json": {
       "label": "Nested data",
-      "plural": null
+      "plural": "Nested data"
     },
     "language": {
       "group": "languages",
@@ -5943,8 +5939,7 @@
         "crime.traffick.drug": "Drug trafficking",
         "crime.traffick.human": "Human trafficking",
         "crime.war": "War crimes",
-        "ctx.poi": "Person of interest",
-        "ctx.sanctioned": "Sanctioned entity",
+        "debarment": "Debarred entity",
         "fin": "Financial services",
         "fin.adivsor": "Financial advisor",
         "fin.bank": "Bank",
@@ -5956,6 +5951,7 @@
         "gov.soe": "State-owned enterprise",
         "gov.state": "State government",
         "mil": "Military",
+        "poi": "Person of interest",
         "pol.party": "Political party",
         "pol.union": "Union",
         "rel": "Religion",
@@ -5968,7 +5964,8 @@
         "role.lawyer": "Lawyer",
         "role.pep": "Politician",
         "role.rca": "Associate",
-        "role.spy": "Spy"
+        "role.spy": "Spy",
+        "sanction": "Sanctioned entity"
       }
     },
     "url": {

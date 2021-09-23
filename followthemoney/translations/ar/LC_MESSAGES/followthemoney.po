@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-15 09:50+0200\n"
+"POT-Creation-Date: 2021-09-23 17:37+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/aleph/teams/76591/ar/)\n"
@@ -44,16 +44,11 @@ msgstr "ملكية غير معروفة (1%s):%s"
 msgid "Stub property (%s): %s"
 msgstr "الملكية المتبقية%s:%s"
 
-#: followthemoney/proxy.py:196
-#, python-format
-msgid "Self-relationship (%s): %s"
-msgstr "علاقة ذاتية (1%s):  1%s"
-
-#: followthemoney/schema.py:331
+#: followthemoney/schema.py:335
 msgid "Required"
 msgstr "مطلوب"
 
-#: followthemoney/schema.py:335
+#: followthemoney/schema.py:339
 msgid "Entity validation failed"
 msgstr "فشل التحقق من صحة الكيان"
 
@@ -1388,7 +1383,7 @@ msgstr "الكيانات ذات الصلة"
 #. Sanction.properties.entity.label
 #: followthemoney/schema/Documentation.yml followthemoney/schema/Mention.yaml
 #: followthemoney/schema/Note.yaml followthemoney/schema/Sanction.yaml
-#: followthemoney/types/entity.py:27
+#: followthemoney/types/entity.py:28
 msgid "Entity"
 msgstr "كيان"
 
@@ -3482,50 +3477,54 @@ msgid "Serbia and Montenegro"
 msgstr "صربيا والجبل الأسود"
 
 #: followthemoney/types/country.py:37
+msgid "Czechoslovakia"
+msgstr ""
+
+#: followthemoney/types/country.py:38
 msgid "Soviet Union"
 msgstr "الاتحاد السوفياتي"
 
-#: followthemoney/types/country.py:38
+#: followthemoney/types/country.py:39
 msgid "Abkhazia"
 msgstr "أبخازيا"
 
-#: followthemoney/types/country.py:39
+#: followthemoney/types/country.py:40
 msgid "South Ossetia"
 msgstr "أوسيتيا الجنوبية"
 
-#: followthemoney/types/country.py:40
+#: followthemoney/types/country.py:41
 msgid "Somaliland"
 msgstr "أرض الصومال"
 
-#: followthemoney/types/country.py:41
+#: followthemoney/types/country.py:42
 msgid "Northern Cyprus"
 msgstr ""
 
-#: followthemoney/types/country.py:42
+#: followthemoney/types/country.py:43
 msgid "Nagorno-Karabakh"
 msgstr ""
 
-#: followthemoney/types/country.py:43
+#: followthemoney/types/country.py:44
 msgid "Tibet"
 msgstr ""
 
-#: followthemoney/types/country.py:44
+#: followthemoney/types/country.py:45
 msgid "Sark"
 msgstr ""
 
-#: followthemoney/types/country.py:45
+#: followthemoney/types/country.py:46
 msgid "Wales"
 msgstr "ويلز"
 
-#: followthemoney/types/country.py:46
+#: followthemoney/types/country.py:47
 msgid "Scotland"
 msgstr "اسكتلندا"
 
-#: followthemoney/types/country.py:47
+#: followthemoney/types/country.py:48
 msgid "Northern Ireland"
 msgstr "إيرلندا الشمالية"
 
-#: followthemoney/types/country.py:48
+#: followthemoney/types/country.py:49
 msgid "Transnistria"
 msgstr "ترانسنيستريا"
 
@@ -3541,9 +3540,14 @@ msgstr "عنوان البريد الإلكتروني"
 msgid "E-Mail Addresses"
 msgstr "عنوان البريد الإلكتروني"
 
-#: followthemoney/types/entity.py:28
+#: followthemoney/types/entity.py:29
 msgid "Entities"
 msgstr "الكيانات"
+
+#: followthemoney/types/entity.py:62
+#, python-format
+msgid "Self-relationship (%s): %s"
+msgstr "علاقة ذاتية (1%s):  1%s"
 
 #: followthemoney/types/iban.py:26
 msgid "IBANs"
@@ -3762,6 +3766,10 @@ msgid "Sanctioned entity"
 msgstr "كيان خاضع للعقوبات"
 
 #: followthemoney/types/topic.py:65
+msgid "Debarred entity"
+msgstr ""
+
+#: followthemoney/types/topic.py:66
 msgid "Person of interest"
 msgstr "الشخص المعني"
 

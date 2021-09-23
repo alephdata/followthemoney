@@ -17,6 +17,7 @@ class JsonType(PropertyType):
     name = "json"
     group = None
     label = _("Nested data")
+    plural = _("Nested data")
     matchable = False
 
     def pack(self, obj: Any) -> Optional[str]:

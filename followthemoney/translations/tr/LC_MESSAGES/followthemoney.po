@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-15 09:50+0200\n"
+"POT-Creation-Date: 2021-09-23 17:37+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Language-Team: Turkish (https://www.transifex.com/aleph/teams/76591/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -40,16 +40,11 @@ msgstr ""
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:196
-#, python-format
-msgid "Self-relationship (%s): %s"
-msgstr ""
-
-#: followthemoney/schema.py:331
+#: followthemoney/schema.py:335
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:335
+#: followthemoney/schema.py:339
 msgid "Entity validation failed"
 msgstr ""
 
@@ -1372,7 +1367,7 @@ msgstr ""
 #. Sanction.properties.entity.label
 #: followthemoney/schema/Documentation.yml followthemoney/schema/Mention.yaml
 #: followthemoney/schema/Note.yaml followthemoney/schema/Sanction.yaml
-#: followthemoney/types/entity.py:27
+#: followthemoney/types/entity.py:28
 msgid "Entity"
 msgstr ""
 
@@ -3454,50 +3449,54 @@ msgid "Serbia and Montenegro"
 msgstr ""
 
 #: followthemoney/types/country.py:37
-msgid "Soviet Union"
+msgid "Czechoslovakia"
 msgstr ""
 
 #: followthemoney/types/country.py:38
-msgid "Abkhazia"
+msgid "Soviet Union"
 msgstr ""
 
 #: followthemoney/types/country.py:39
-msgid "South Ossetia"
+msgid "Abkhazia"
 msgstr ""
 
 #: followthemoney/types/country.py:40
-msgid "Somaliland"
+msgid "South Ossetia"
 msgstr ""
 
 #: followthemoney/types/country.py:41
-msgid "Northern Cyprus"
+msgid "Somaliland"
 msgstr ""
 
 #: followthemoney/types/country.py:42
-msgid "Nagorno-Karabakh"
+msgid "Northern Cyprus"
 msgstr ""
 
 #: followthemoney/types/country.py:43
-msgid "Tibet"
+msgid "Nagorno-Karabakh"
 msgstr ""
 
 #: followthemoney/types/country.py:44
-msgid "Sark"
+msgid "Tibet"
 msgstr ""
 
 #: followthemoney/types/country.py:45
-msgid "Wales"
+msgid "Sark"
 msgstr ""
 
 #: followthemoney/types/country.py:46
-msgid "Scotland"
+msgid "Wales"
 msgstr ""
 
 #: followthemoney/types/country.py:47
-msgid "Northern Ireland"
+msgid "Scotland"
 msgstr ""
 
 #: followthemoney/types/country.py:48
+msgid "Northern Ireland"
+msgstr ""
+
+#: followthemoney/types/country.py:49
 msgid "Transnistria"
 msgstr ""
 
@@ -3513,8 +3512,13 @@ msgstr ""
 msgid "E-Mail Addresses"
 msgstr ""
 
-#: followthemoney/types/entity.py:28
+#: followthemoney/types/entity.py:29
 msgid "Entities"
+msgstr ""
+
+#: followthemoney/types/entity.py:62
+#, python-format
+msgid "Self-relationship (%s): %s"
 msgstr ""
 
 #: followthemoney/types/iban.py:26
@@ -3734,6 +3738,10 @@ msgid "Sanctioned entity"
 msgstr ""
 
 #: followthemoney/types/topic.py:65
+msgid "Debarred entity"
+msgstr ""
+
+#: followthemoney/types/topic.py:66
 msgid "Person of interest"
 msgstr ""
 
