@@ -61,8 +61,9 @@ class TopicType(EnumType):
         "rel": _("Religion"),
         "mil": _("Military"),
         "asset.frozen": _("Frozen asset"),
-        "ctx.sanctioned": _("Sanctioned entity"),
-        "ctx.poi": _("Person of interest"),
+        "sanction": _("Sanctioned entity"),
+        "debarment": _("Debarred entity"),
+        "poi": _("Person of interest"),
     }
 
     def _locale_names(self, locale: Locale) -> EnumValues:

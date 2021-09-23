@@ -34,6 +34,7 @@ class CountryType(EnumType):
             "dd": gettext("East Germany"),
             "yucs": gettext("Yugoslavia"),
             "csxx": gettext("Serbia and Montenegro"),
+            "cshh": gettext("Czechoslovakia"),
             "suhh": gettext("Soviet Union"),
             "ge-ab": gettext("Abkhazia"),
             "x-so": gettext("South Ossetia"),
