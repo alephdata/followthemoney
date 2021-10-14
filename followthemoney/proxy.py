@@ -13,15 +13,13 @@ from typing import (
 )
 import warnings
 from itertools import product
-from rdflib import Literal, URIRef  # type: ignore
-from rdflib.term import Identifier  # type: ignore
-from rdflib.namespace import RDF, SKOS  # type: ignore
 from banal import ensure_dict
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.types.common import PropertyType
 from followthemoney.property import Property
+from followthemoney.rdf import SKOS, RDF, Literal, URIRef, Identifier
 from followthemoney.util import sanitize_text, gettext
 from followthemoney.util import merge_context, value_list, make_entity_id
 

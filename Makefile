@@ -14,6 +14,7 @@ typecheck:
 		followthemoney/property.py \
 		followthemoney/proxy.py \
 		followthemoney/graph.py \
+		followthemoney/rdf.py \
 		followthemoney/model.py
 
 dist:

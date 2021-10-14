@@ -2,11 +2,9 @@ import os
 from datetime import datetime, timezone
 from typing import Optional, TYPE_CHECKING
 from prefixdate import parse, parse_format, Precision
-from rdflib import Literal  # type: ignore
-from rdflib.namespace import XSD  # type: ignore
-from rdflib.term import Identifier  # type: ignore
 
 from followthemoney.types.common import PropertyType
+from followthemoney.rdf import XSD, Literal, Identifier
 from followthemoney.util import defer as _
 from followthemoney.util import dampen
 

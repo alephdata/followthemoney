@@ -1,11 +1,10 @@
 from itertools import product
 from babel.core import Locale  # type: ignore
-from rdflib import Literal  # type: ignore
-from rdflib.term import Identifier  # type: ignore
 from banal import ensure_list
 from normality import stringify
 from typing import Any, Dict, Optional, Sequence, Callable, TYPE_CHECKING, TypedDict
 
+from followthemoney.rdf import Literal, Identifier
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
 

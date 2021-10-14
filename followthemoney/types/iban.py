@@ -1,10 +1,9 @@
 from typing import Optional, TYPE_CHECKING, cast
-from rdflib import URIRef  # type: ignore
-from rdflib.term import Identifier  # type: ignore
 from stdnum import iban  # type: ignore
 from stdnum.exceptions import ValidationError  # type: ignore
 
 from followthemoney.types.common import PropertyType
+from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import sanitize_text, defer as _
 
 if TYPE_CHECKING:

@@ -1,11 +1,11 @@
 from typing import Iterable, Optional, TYPE_CHECKING
-from rdflib import URIRef  # type: ignore
 from phonenumbers import parse as parse_number
 from phonenumbers import is_valid_number, format_number
 from phonenumbers import PhoneNumber, PhoneNumberFormat
 from phonenumbers.phonenumberutil import region_code_for_number, NumberParseException
 
 from followthemoney.types.common import PropertyType
+from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import defer as _
 from followthemoney.util import dampen
 
@@ -94,7 +94,7 @@ class PhoneType(PropertyType):
         # TODO: insert artificial intelligence here.
         return dampen(7, 11, value)
 
-    def rdf(self, value: str) -> URIRef:
+    def rdf(self, value: str) -> Identifier:
         return URIRef(self.node_id(value))
 
     def node_id(self, value: str) -> Optional[str]:

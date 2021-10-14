@@ -1,10 +1,9 @@
 from typing import Optional, TYPE_CHECKING
 from babel.core import Locale  # type: ignore
-from rdflib import URIRef  # type: ignore
-from rdflib.term import Identifier  # type: ignore
 from languagecodes import iso_639_alpha3
 
 from followthemoney.types.common import EnumType, EnumValues
+from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import defer as _
 from followthemoney.util import get_env_list
 

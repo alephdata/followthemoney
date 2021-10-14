@@ -3,7 +3,7 @@ import logging
 from hashlib import sha1
 from babel import Locale  # type: ignore
 from gettext import translation
-from rdflib import Namespace  # type: ignore
+
 from threading import local
 from typing import cast, Dict, Any, List, Optional, TypeVar, Union, Sequence
 from normality import stringify
@@ -12,7 +12,6 @@ from normality.cleaning import remove_unsafe_chars
 from normality.encoding import DEFAULT_ENCODING
 from banal import is_mapping, unique_list, ensure_list
 
-NS = Namespace("https://w3id.org/ftm#")
 MEGABYTE = 1024 * 1024
 DEFAULT_LOCALE = "en"
 i18n_path = os.path.join(os.path.dirname(__file__), "translations")
