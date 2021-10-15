@@ -1,9 +1,9 @@
 from typing import Optional, TYPE_CHECKING
-from rdflib import URIRef  # type: ignore
 from pantomime import normalize_mimetype, parse_mimetype
 from pantomime import DEFAULT
 
 from followthemoney.types.common import PropertyType
+from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import defer as _
 
 if TYPE_CHECKING:
@@ -37,7 +37,7 @@ class MimeType(PropertyType):
             return text
         return None
 
-    def rdf(self, value: str) -> URIRef:
+    def rdf(self, value: str) -> Identifier:
         return URIRef(f"urn:mimetype:{value}")
 
     def caption(self, value: str) -> str:

@@ -1,11 +1,10 @@
 import re
 import logging
 from typing import Optional, TYPE_CHECKING
-from rdflib import URIRef  # type: ignore
-from rdflib.term import Identifier  # type: ignore
 from urllib.parse import urlparse
 from normality.cleaning import strip_quotes
 
+from followthemoney.rdf import URIRef, Identifier
 from followthemoney.types.common import PropertyType
 from followthemoney.util import sanitize_text, defer as _
 

@@ -9,13 +9,13 @@ from typing import (
     Union,
     cast,
 )
-from rdflib import URIRef  # type: ignore
 from banal import ensure_list, ensure_dict, as_bool
 
 from followthemoney.property import Property, PropertySpec, PropertyToDict, ReverseSpec
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData, InvalidModel
-from followthemoney.util import gettext, NS
+from followthemoney.rdf import URIRef, NS
+from followthemoney.util import gettext
 
 if TYPE_CHECKING:
     from followthemoney.model import Model

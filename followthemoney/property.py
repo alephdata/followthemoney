@@ -1,10 +1,10 @@
-from rdflib import URIRef  # type: ignore
 from banal import is_mapping, as_bool
 from typing import TYPE_CHECKING, Any, List, Optional, TypedDict
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry
-from followthemoney.util import gettext, NS, get_entity_id
+from followthemoney.rdf import NS, URIRef
+from followthemoney.util import gettext, get_entity_id
 
 if TYPE_CHECKING:
     from followthemoney.schema import Schema

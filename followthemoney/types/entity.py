@@ -1,9 +1,8 @@
 import re
 from typing import Any, Optional, TYPE_CHECKING
-from rdflib import URIRef  # type: ignore
-from rdflib.term import Identifier  # type: ignore
 
 from followthemoney.types.common import PropertyType
+from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import get_entity_id, sanitize_text
 from followthemoney.util import gettext, defer as _
 from followthemoney.exc import InvalidData

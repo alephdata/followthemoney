@@ -1,8 +1,8 @@
 import countrynames
 from typing import Optional, TYPE_CHECKING
-from rdflib import URIRef  # type: ignore
 from babel.core import Locale  # type: ignore
 
+from followthemoney.rdf import URIRef, Identifier
 from followthemoney.types.common import EnumType, EnumValues
 from followthemoney.util import gettext, defer as _
 
@@ -79,5 +79,5 @@ class CountryType(EnumType):
     def country_hint(self, value: str) -> str:
         return value
 
-    def rdf(self, value: str) -> URIRef:
+    def rdf(self, value: str) -> Identifier:
         return URIRef(f"iso-3166-1:{value}")

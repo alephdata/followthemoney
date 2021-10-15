@@ -1,9 +1,8 @@
 from typing import Optional, TYPE_CHECKING
-from rdflib import URIRef  # type: ignore
-from rdflib.term import Identifier  # type: ignore
 from ipaddress import ip_address
 
 from followthemoney.types.common import PropertyType
+from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import defer as _
 
 if TYPE_CHECKING:
