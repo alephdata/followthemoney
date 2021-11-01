@@ -31,7 +31,7 @@ setup(
     zip_safe=False,
     install_requires=[
         "babel >= 2.9.1, < 3.0.0",
-        "pyyaml >= 5.0.0, < 6.0.0",
+        "pyyaml >= 5.0.0, < 7.0.0",
         "banal >= 1.0.1, < 1.1.0",
         "click >= 7.0, < 9.0.0",
         "stringcase >= 1.2.0, < 2.0.0",
