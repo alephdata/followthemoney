@@ -74,7 +74,7 @@
     "lint-staged": "~11.2.3",
     "prettier": "~2.4.0",
     "prompt": "~1.2.0",
-    "replace-in-file": "~6.2.0",
+    "replace-in-file": "~6.3.2",
     "rimraf": "~3.0.0",
     "rollup": "~2.58.0",
     "rollup-plugin-commonjs": "~10.1.0",
