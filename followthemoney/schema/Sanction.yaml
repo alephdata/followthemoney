@@ -24,8 +24,16 @@ Sanction:
       range: Thing
     authority:
       label: "Authority"
+    authorityId:
+      label: "Authority-issued identifier"
+      type: identifier
+    unscId:
+      label: "UN SC identifier"
+      type: identifier
     program:
       label: "Program"
+    provisions:
+      label: "Scope of sanctions"
     status:
       label: "Status"
     duration:
