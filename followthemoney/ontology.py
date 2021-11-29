@@ -5,7 +5,7 @@ from rdflib.namespace import OWL, DCTERMS, RDF, RDFS, XSD  # type: ignore
 
 from followthemoney import model
 from followthemoney.types import registry
-from followthemoney.util import NS
+from followthemoney.rdf import NS
 
 
 class Ontology(object):
