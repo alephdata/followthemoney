@@ -364,8 +364,8 @@
         "caption": [
           "relationship"
         ],
-        "directed": false,
-        "label": "associated with",
+        "directed": true,
+        "label": "Associate",
         "source": "person",
         "target": "associate"
       },
@@ -408,10 +408,6 @@
           "type": "string"
         }
       },
-      "required": [
-        "person",
-        "associate"
-      ],
       "schemata": [
         "Associate",
         "Interval"
@@ -4415,6 +4411,31 @@
         "Value"
       ]
     },
+    "Record": {
+      "abstract": true,
+      "extends": [],
+      "generated": true,
+      "label": "Record",
+      "plural": "Records",
+      "properties": {
+        "index": {
+          "label": "Index",
+          "name": "index",
+          "qname": "Record:index",
+          "type": "number"
+        },
+        "indexText": {
+          "hidden": true,
+          "label": "Index text",
+          "name": "indexText",
+          "qname": "Record:indexText",
+          "type": "text"
+        }
+      },
+      "schemata": [
+        "Record"
+      ]
+    },
     "Representation": {
       "description": "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity.",
       "edge": {
@@ -4466,6 +4487,36 @@
         "Representation"
       ]
     },
+    "Row": {
+      "extends": [
+        "Record"
+      ],
+      "generated": true,
+      "label": "Row",
+      "plural": "Rows",
+      "properties": {
+        "cells": {
+          "hidden": true,
+          "label": "Cells",
+          "name": "cells",
+          "qname": "Row:cells",
+          "type": "json"
+        },
+        "table": {
+          "label": "Table",
+          "matchable": true,
+          "name": "table",
+          "qname": "Row:table",
+          "range": "Table",
+          "reverse": "rows",
+          "type": "entity"
+        }
+      },
+      "schemata": [
+        "Record",
+        "Row"
+      ]
+    },
     "Sanction": {
       "caption": [
         "program"
@@ -4489,6 +4540,13 @@
           "name": "authority",
           "qname": "Sanction:authority",
           "type": "string"
+        },
+        "authorityId": {
+          "label": "Authority-issued identifier",
+          "matchable": true,
+          "name": "authorityId",
+          "qname": "Sanction:authorityId",
+          "type": "identifier"
         },
         "country": {
           "label": "Country",
@@ -4525,6 +4583,12 @@
           "qname": "Sanction:program",
           "type": "string"
         },
+        "provisions": {
+          "label": "Scope of sanctions",
+          "name": "provisions",
+          "qname": "Sanction:provisions",
+          "type": "string"
+        },
         "reason": {
           "label": "Reason",
           "name": "reason",
@@ -4536,6 +4600,13 @@
           "name": "status",
           "qname": "Sanction:status",
           "type": "string"
+        },
+        "unscId": {
+          "label": "UN SC identifier",
+          "matchable": true,
+          "name": "unscId",
+          "qname": "Sanction:unscId",
+          "type": "identifier"
         }
       },
       "required": [
@@ -4711,6 +4782,17 @@
           "name": "rowCount",
           "qname": "Table:rowCount",
           "type": "number"
+        },
+        "rows": {
+          "hidden": true,
+          "label": "Rows",
+          "matchable": true,
+          "name": "rows",
+          "qname": "Table:rows",
+          "range": "Row",
+          "reverse": "table",
+          "stub": true,
+          "type": "entity"
         }
       },
       "schemata": [
@@ -5855,6 +5937,7 @@
         "kan": "Kannada",
         "kat": "Georgian",
         "kaz": "Kazakh",
+        "khm": "Khmer",
         "kir": "Kyrgyz",
         "kor": "Korean",
         "lav": "Latvian",

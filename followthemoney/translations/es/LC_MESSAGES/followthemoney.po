@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-23 17:37+0200\n"
+"POT-Creation-Date: 2021-11-29 17:35+0530\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -30,16 +30,16 @@ msgstr "No se puede escribir la propiedad"
 msgid "Invalid value"
 msgstr "Valor inválido"
 
-#: followthemoney/proxy.py:61
+#: followthemoney/proxy.py:59
 msgid "No schema for entity."
 msgstr "No hay esquema para la entidad."
 
-#: followthemoney/proxy.py:114
+#: followthemoney/proxy.py:112
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Propiedad desconocida (%s): %s"
 
-#: followthemoney/proxy.py:187
+#: followthemoney/proxy.py:185
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Propiedad Stub (%s): %s"
@@ -455,7 +455,7 @@ msgid "Account number"
 msgstr ""
 
 #. BankAccount.properties.iban.label
-#: followthemoney/schema/BankAccount.yaml followthemoney/types/iban.py:25
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/iban.py:24
 msgid "IBAN"
 msgstr "IBAN"
 
@@ -895,7 +895,7 @@ msgstr "¿Cancelado?"
 #. Contract.properties.language.label
 #. Document.properties.language.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/Document.yaml
-#: followthemoney/types/language.py:23
+#: followthemoney/types/language.py:22
 msgid "Language"
 msgstr "Idioma"
 
@@ -1199,7 +1199,7 @@ msgid "Files"
 msgstr "Archivos"
 
 #. Document.properties.contentHash.label
-#: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:19
+#: followthemoney/schema/Document.yaml followthemoney/types/checksum.py:18
 msgid "Checksum"
 msgstr "Comprobación"
 
@@ -1297,7 +1297,7 @@ msgstr ""
 #. Document.properties.date.label
 #. Interval.properties.date.label
 #: followthemoney/schema/Document.yaml followthemoney/schema/Interval.yaml
-#: followthemoney/types/date.py:28
+#: followthemoney/types/date.py:26
 msgid "Date"
 msgstr "Fecha"
 
@@ -1389,7 +1389,7 @@ msgstr "Entidades relacionadas"
 #. Sanction.properties.entity.label
 #: followthemoney/schema/Documentation.yml followthemoney/schema/Mention.yaml
 #: followthemoney/schema/Note.yaml followthemoney/schema/Sanction.yaml
-#: followthemoney/types/entity.py:28
+#: followthemoney/types/entity.py:27
 msgid "Entity"
 msgstr "Entidad"
 
@@ -2102,7 +2102,7 @@ msgid "Phone"
 msgstr "Teléfono"
 
 #. LegalEntity.properties.phone.description
-#: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:36
+#: followthemoney/schema/LegalEntity.yaml followthemoney/types/phone.py:35
 msgid "Phone number"
 msgstr "Número de teléfono"
 
@@ -2980,11 +2980,26 @@ msgstr "Sanciones"
 msgid "A sanction designation"
 msgstr "Designación de sanción"
 
+#. Sanction.properties.authorityId.label
+#: followthemoney/schema/Sanction.yaml
+msgid "Authority-issued identifier"
+msgstr ""
+
+#. Sanction.properties.unscId.label
+#: followthemoney/schema/Sanction.yaml
+msgid "UN SC identifier"
+msgstr ""
+
 #. Sanction.properties.program.label
 #. Thing.properties.program.label
 #: followthemoney/schema/Sanction.yaml followthemoney/schema/Thing.yaml
 msgid "Program"
 msgstr "Programa"
+
+#. Sanction.properties.provisions.label
+#: followthemoney/schema/Sanction.yaml
+msgid "Scope of sanctions"
+msgstr ""
 
 #. Sanction.properties.reason.label
 #: followthemoney/schema/Sanction.yaml
@@ -3447,7 +3462,7 @@ msgid ""
 "set of sheets that hold actual data.\n"
 msgstr ""
 
-#: followthemoney/types/checksum.py:20
+#: followthemoney/types/checksum.py:19
 msgid "Checksums"
 msgstr "Comprobaciones"
 
@@ -3539,28 +3554,28 @@ msgstr "Irlanda del Norte"
 msgid "Transnistria"
 msgstr "Transnistria"
 
-#: followthemoney/types/date.py:29
+#: followthemoney/types/date.py:27
 msgid "Dates"
 msgstr "Fechas"
 
-#: followthemoney/types/email.py:26
+#: followthemoney/types/email.py:25
 msgid "E-Mail Address"
 msgstr "Dirección de correo electrónico"
 
-#: followthemoney/types/email.py:27
+#: followthemoney/types/email.py:26
 msgid "E-Mail Addresses"
 msgstr "Direcciones de correo electrónico"
 
-#: followthemoney/types/entity.py:29
+#: followthemoney/types/entity.py:28
 msgid "Entities"
 msgstr "Entidades"
 
-#: followthemoney/types/entity.py:62
+#: followthemoney/types/entity.py:61
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Autorrelación (%s): %s"
 
-#: followthemoney/types/iban.py:26
+#: followthemoney/types/iban.py:25
 msgid "IBANs"
 msgstr "Números de IBAN"
 
@@ -3572,19 +3587,19 @@ msgstr "Identificador"
 msgid "Identifiers"
 msgstr "Identificadores"
 
-#: followthemoney/types/ip.py:20
+#: followthemoney/types/ip.py:19
 msgid "IP-Address"
 msgstr "Dirección IP"
 
-#: followthemoney/types/ip.py:21
+#: followthemoney/types/ip.py:20
 msgid "IP-Addresses"
 msgstr "Direcciones IP"
 
-#: followthemoney/types/json.py:19
+#: followthemoney/types/json.py:19 followthemoney/types/json.py:20
 msgid "Nested data"
 msgstr "Datos anidados"
 
-#: followthemoney/types/language.py:24
+#: followthemoney/types/language.py:23
 msgid "Languages"
 msgstr "Idiomas"
 
@@ -3608,7 +3623,7 @@ msgstr "Número"
 msgid "Numbers"
 msgstr "Números"
 
-#: followthemoney/types/phone.py:37
+#: followthemoney/types/phone.py:36
 msgid "Phone numbers"
 msgstr "Números de teléfono"
 
