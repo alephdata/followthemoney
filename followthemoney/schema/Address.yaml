@@ -22,7 +22,7 @@ Address:
     - Interval
   description: >
     A location associated with an entity.
-  matchable: false
+  matchable: true
   generated: true
   featured:
     - full
