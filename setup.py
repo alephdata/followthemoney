@@ -48,7 +48,7 @@ setup(
         "python-stdnum >= 1.16, < 2.0.0",
         "pantomime >= 0.5.1, < 1.0.0",
         "pytz >= 2021.1",
-        "rdflib >= 6.0.0, < 6.1.0",
+        "rdflib >= 6.0.0, < 6.2.0",
         "networkx >=2.5, < 2.7",
         "openpyxl >= 3.0.5, < 4.0.0",
     ],
