@@ -71,7 +71,7 @@
     "eslint": "^8.0.1",
     "jest": "~27.4.2",
     "jest-config": "~27.4.3",
-    "lint-staged": "~11.2.3",
+    "lint-staged": "~12.1.4",
     "prettier": "~2.5.0",
     "prompt": "~1.2.0",
     "replace-in-file": "~6.3.2",
