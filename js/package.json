@@ -86,7 +86,7 @@
     "svgo": "~2.8.0",
     "ts-jest": "~27.0.3",
     "ts-node": "~10.4.0",
-    "typescript": "~4.4.2"
+    "typescript": "~4.5.4"
   },
   "dependencies": {
     "uuid": "~8.3.1"
