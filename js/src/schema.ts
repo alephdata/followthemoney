@@ -176,6 +176,10 @@ export class Schema {
     return false;
   }
 
+  static isSchema = (item: Schema | undefined): item is Schema => {
+    return !!item
+  }
+
   toString(): string {
     return this.name
   }

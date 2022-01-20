@@ -50,7 +50,8 @@ export class Model {
    */
   getSchemata(): Schema[] {
     return Object.keys(this.schemata)
-                 .map((name) => this.schemata[name]) as Schema[]
+      .map((name) => this.schemata[name])
+      .filter(Schema.isSchema)
   }
 
   /**
