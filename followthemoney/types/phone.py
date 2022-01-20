@@ -95,7 +95,10 @@ class PhoneType(PropertyType):
         return dampen(7, 11, value)
 
     def rdf(self, value: str) -> Identifier:
-        return URIRef(self.node_id(value))
+        node_id = self.node_id(value)
+        if node_id is not None:
+            return URIRef(node_id)
+        raise ValueError("Invalid phone number for serialisation: %s" % value)
 
     def node_id(self, value: str) -> Optional[str]:
         return f"tel:{value}"

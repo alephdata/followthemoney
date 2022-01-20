@@ -1,5 +1,5 @@
 from banal import is_mapping, as_bool
-from typing import TYPE_CHECKING, Any, List, Optional, TypedDict
+from typing import TYPE_CHECKING, cast, Any, List, Optional, TypedDict
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry
@@ -122,7 +122,7 @@ class Property:
         self.reverse: Optional["Property"] = None
 
         #: RDF term for this property (i.e. the predicate URI).
-        self.uri = URIRef(data.get("rdf", NS[self.qname]))
+        self.uri = URIRef(cast(str, data.get("rdf", NS[self.qname])))
 
     def generate(self) -> None:
         """Setup method used when loading the model in order to build out the reverse

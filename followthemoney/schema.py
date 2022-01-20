@@ -113,7 +113,7 @@ class Schema:
         self._hash = hash("<Schema(%r)>" % name)
 
         #: RDF identifier for this schema when it is transformed to a triple term.
-        self.uri = URIRef(data.get("rdf", NS[name]))
+        self.uri = URIRef(cast(str, data.get("rdf", NS[name])))
 
         #: Do not store or emit entities of this type, it is used only for
         #: inheritance.

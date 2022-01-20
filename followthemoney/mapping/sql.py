@@ -1,15 +1,14 @@
 import os
 import logging
 from uuid import uuid4
-from normality import stringify
 from typing import TYPE_CHECKING, Any, Dict, Generator, List, Optional, Union, cast
 from banal import ensure_list, is_listish, keys_values
-from sqlalchemy import create_engine, MetaData  # type: ignore
+from sqlalchemy import create_engine, MetaData
 from sqlalchemy import select, func
-from sqlalchemy.sql.elements import Label  # type: ignore
-from sqlalchemy.pool import NullPool  # type: ignore
-from sqlalchemy.schema import Table  # type: ignore
-from sqlalchemy.sql.expression import Select  # type: ignore
+from sqlalchemy.sql.elements import Label
+from sqlalchemy.pool import NullPool
+from sqlalchemy.schema import Table
+from sqlalchemy.sql.expression import Select
 
 from followthemoney.mapping.source import Record, Source
 from followthemoney.util import sanitize_text
@@ -36,7 +35,7 @@ class QueryTable(object):
         self.table = Table(table_ref, meta, autoload=True)
         self.alias = self.table.alias(alias_ref)
 
-        self.refs: Dict[str, Label] = {}
+        self.refs: Dict[str, Label[Any]] = {}
         for column in self.alias.columns:
             name = "%s.%s" % (alias_ref, column.name)
             labeled_column = column.label("col_%s" % uuid4().hex[:10])
@@ -56,7 +55,7 @@ class SQLSource(Source):
         kwargs = {}
         if self.database_uri.lower().startswith("postgres"):
             kwargs["server_side_cursors"] = True
-        self.engine = create_engine(self.database_uri, poolclass=NullPool, **kwargs)
+        self.engine = create_engine(self.database_uri, poolclass=NullPool, **kwargs)  # type: ignore
         self.meta = MetaData()
         self.meta.bind = self.engine
 
@@ -64,10 +63,10 @@ class SQLSource(Source):
         self.tables = [QueryTable(self.meta, f) for f in tables]
         self.joins = cast(List[Dict[str, str]], ensure_list(data.get("joins")))
 
-    def get_column(self, ref: Optional[str]) -> Label:
+    def get_column(self, ref: Optional[str]) -> Label[Any]:
         for table in self.tables:
             if ref in table.refs:
-                return table.refs.get(ref)
+                return table.refs[ref]
         raise InvalidMapping("Missing reference: %s" % ref)
 
     def apply_filters(self, q: Select) -> Select:

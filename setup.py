@@ -32,6 +32,8 @@ setup(
     install_requires=[
         "babel >= 2.9.1, < 3.0.0",
         "pyyaml >= 5.0.0, < 7.0.0",
+        "types-PyYAML",
+        "sqlalchemy2-stubs",
         "banal >= 1.0.1, < 1.1.0",
         "click >= 7.0, < 9.0.0",
         "stringcase >= 1.2.0, < 2.0.0",
@@ -48,7 +50,7 @@ setup(
         "python-stdnum >= 1.16, < 2.0.0",
         "pantomime >= 0.5.1, < 1.0.0",
         "pytz >= 2021.1",
-        "rdflib >= 6.0.0, < 6.1.0",
+        "rdflib >= 6.1.0, < 6.2.0",
         "networkx >=2.5, < 2.7",
         "openpyxl >= 3.0.5, < 4.0.0",
     ],
