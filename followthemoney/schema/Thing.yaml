@@ -91,9 +91,14 @@ Thing:
       label: Index text
       hidden: true
       type: text
+    createdAt:
+      label: "Created at"
+      type: date
+      matchable: false
     modifiedAt:
       label: "Modified on"
       type: date
+      matchable: false
     retrievedAt:
       label: "Retrieved on"
       type: date
