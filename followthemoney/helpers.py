@@ -33,7 +33,7 @@ def simplify_provenance(proxy: EntityProxy) -> EntityProxy:
         if proxy.has(prop_name, quiet=True):
             values = proxy.get(prop_name)
             proxy.set(prop_name, max(values))
-    for prop_name in ["authoredAt", "publishedAt"]:
+    for prop_name in ["createdAt", "authoredAt", "publishedAt"]:
         if proxy.has(prop_name, quiet=True):
             values = proxy.get(prop_name)
             proxy.set(prop_name, min(values))
