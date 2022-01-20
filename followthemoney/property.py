@@ -97,7 +97,11 @@ class Property:
         self.type = registry[type_]
 
         #: Whether this property should be used for matching and cross-referencing.
-        self.matchable = as_bool(data.get("matchable", self.type.matchable))
+        _matchable = data.get("matchable")
+        if _matchable is not None:
+            self.matchable = as_bool(data.get("matchable"))
+        else:
+            self.matchable = self.type.matchable
 
         #: If the property is of type ``entity``, the set of valid schema to be added
         #: in this property can be constrained. For example, an asset can be owned,
