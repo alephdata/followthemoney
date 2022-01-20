@@ -34,10 +34,10 @@ class Node(object):
     ) -> None:
         self.type = type_
         self.value = value
-        _id = type_.node_id_safe(value)
-        if _id is None:
-            raise InvalidData("No ID for node")
-        self.id = _id
+        # _id = type_.node_id_safe(value)
+        # if _id is None:
+        #     raise InvalidData("No ID for node")
+        self.id = type_.node_id_safe(value)
         self.proxy = proxy
         self.schema = schema if proxy is None else proxy.schema
 
@@ -124,6 +124,8 @@ class Edge(object):
     @property
     def source(self) -> Optional[Node]:
         """The graph node from which the edge originates."""
+        if self.source_id is None:
+            return None
         return self.graph.nodes.get(self.source_id)
 
     @property
@@ -139,6 +141,8 @@ class Edge(object):
     @property
     def target(self) -> Optional[Node]:
         """The graph node to which the edge points."""
+        if self.target_id is None:
+            return None
         return self.graph.nodes.get(self.target_id)
 
     @property
@@ -161,7 +165,7 @@ class Edge(object):
             raise InvalidModel("Invalid edge: %r" % self)
         return self.prop.name
 
-    def to_dict(self) -> Dict[str, str]:
+    def to_dict(self) -> Dict[str, Optional[str]]:
         return {
             "id": self.id,
             "source_id": self.source_id,
@@ -216,6 +220,8 @@ class Graph(object):
         if prop.type == registry.entity:
             self.queue(value)
         node = Node(prop.type, value, schema=prop.range)
+        if node.id is None:
+            return node
         if node.id not in self.nodes:
             self.nodes[node.id] = node
         return self.nodes[node.id]
@@ -227,17 +233,21 @@ class Graph(object):
         if proxy.schema.target_prop is None:
             raise InvalidModel("Invalid edge entity: %r" % proxy)
         target_node = self._get_node_stub(proxy.schema.target_prop, target)
-        edge = Edge(self, source_node, target_node, proxy=proxy)
-        self.edges[edge.id] = edge
+        if source_node.id is not None and target_node.id is not None:
+            edge = Edge(self, source_node, target_node, proxy=proxy)
+            self.edges[edge.id] = edge
 
     def _add_node(self, proxy: EntityProxy) -> None:
         """Derive a node and its value edges from the given proxy."""
         entity = Node.from_proxy(proxy)
-        self.nodes[entity.id] = entity
+        if entity.id is not None:
+            self.nodes[entity.id] = entity
         for prop, value in proxy.itervalues():
             if prop.type not in self.edge_types:
                 continue
             node = self._get_node_stub(prop, value)
+            if node.id is None:
+                continue
             edge = Edge(self, entity, node, prop=prop, value=value)
             if edge.weight > 0:
                 self.edges[edge.id] = edge
