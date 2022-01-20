@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2021 ORGANIZATION
+# Copyright (C) 2022 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-29 17:35+0530\n"
+"POT-Creation-Date: 2022-01-20 14:35+0100\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Language-Team: French (https://www.transifex.com/aleph/teams/76591/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: followthemoney/property.py:162
+#: followthemoney/property.py:166
 msgid "Property cannot be written"
 msgstr ""
 
-#: followthemoney/property.py:165
+#: followthemoney/property.py:169
 msgid "Invalid value"
 msgstr ""
 
@@ -3178,6 +3178,11 @@ msgstr ""
 #. Thing.properties.proof.reverse.label
 #: followthemoney/schema/Thing.yaml
 msgid "Derived entities"
+msgstr ""
+
+#. Thing.properties.createdAt.label
+#: followthemoney/schema/Thing.yaml
+msgid "Created at"
 msgstr ""
 
 #. UnknownLink.label

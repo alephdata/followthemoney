@@ -19,6 +19,7 @@
       ],
       "generated": true,
       "label": "Address",
+      "matchable": true,
       "plural": "Addresses",
       "properties": {
         "city": {
@@ -364,8 +365,8 @@
         "caption": [
           "relationship"
         ],
-        "directed": true,
-        "label": "Associate",
+        "directed": false,
+        "label": "associated with",
         "source": "person",
         "target": "associate"
       },
@@ -408,6 +409,10 @@
           "type": "string"
         }
       },
+      "required": [
+        "person",
+        "associate"
+      ],
       "schemata": [
         "Associate",
         "Interval"
@@ -4411,31 +4416,6 @@
         "Value"
       ]
     },
-    "Record": {
-      "abstract": true,
-      "extends": [],
-      "generated": true,
-      "label": "Record",
-      "plural": "Records",
-      "properties": {
-        "index": {
-          "label": "Index",
-          "name": "index",
-          "qname": "Record:index",
-          "type": "number"
-        },
-        "indexText": {
-          "hidden": true,
-          "label": "Index text",
-          "name": "indexText",
-          "qname": "Record:indexText",
-          "type": "text"
-        }
-      },
-      "schemata": [
-        "Record"
-      ]
-    },
     "Representation": {
       "description": "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity.",
       "edge": {
@@ -4485,36 +4465,6 @@
         "Interest",
         "Interval",
         "Representation"
-      ]
-    },
-    "Row": {
-      "extends": [
-        "Record"
-      ],
-      "generated": true,
-      "label": "Row",
-      "plural": "Rows",
-      "properties": {
-        "cells": {
-          "hidden": true,
-          "label": "Cells",
-          "name": "cells",
-          "qname": "Row:cells",
-          "type": "json"
-        },
-        "table": {
-          "label": "Table",
-          "matchable": true,
-          "name": "table",
-          "qname": "Row:table",
-          "range": "Table",
-          "reverse": "rows",
-          "type": "entity"
-        }
-      },
-      "schemata": [
-        "Record",
-        "Row"
       ]
     },
     "Sanction": {
@@ -4782,17 +4732,6 @@
           "name": "rowCount",
           "qname": "Table:rowCount",
           "type": "number"
-        },
-        "rows": {
-          "hidden": true,
-          "label": "Rows",
-          "matchable": true,
-          "name": "rows",
-          "qname": "Table:rows",
-          "range": "Row",
-          "reverse": "table",
-          "stub": true,
-          "type": "entity"
         }
       },
       "schemata": [
@@ -4939,6 +4878,12 @@
           "stub": true,
           "type": "entity"
         },
+        "createdAt": {
+          "label": "Created at",
+          "name": "createdAt",
+          "qname": "Thing:createdAt",
+          "type": "date"
+        },
         "description": {
           "label": "Description",
           "name": "description",
@@ -4970,7 +4915,6 @@
         },
         "modifiedAt": {
           "label": "Modified on",
-          "matchable": true,
           "name": "modifiedAt",
           "qname": "Thing:modifiedAt",
           "type": "date"

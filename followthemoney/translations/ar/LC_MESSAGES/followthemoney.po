@@ -1,7 +1,7 @@
 # Translations template for PROJECT.
-# Copyright (C) 2021 ORGANIZATION
+# Copyright (C) 2022 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # 
 # Translators:
 # pudo <friedrich@pudo.org>, 2021
@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-29 17:35+0530\n"
+"POT-Creation-Date: 2022-01-20 14:35+0100\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/aleph/teams/76591/ar/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: followthemoney/property.py:162
+#: followthemoney/property.py:166
 msgid "Property cannot be written"
 msgstr "لا يمكن كتابة اسم الملكية"
 
-#: followthemoney/property.py:165
+#: followthemoney/property.py:169
 msgid "Invalid value"
 msgstr "قيمة غير صحيحة"
 
@@ -3207,6 +3207,11 @@ msgstr "مصدر المستند"
 #: followthemoney/schema/Thing.yaml
 msgid "Derived entities"
 msgstr "الكيانات المشتقة"
+
+#. Thing.properties.createdAt.label
+#: followthemoney/schema/Thing.yaml
+msgid "Created at"
+msgstr ""
 
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
