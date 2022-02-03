@@ -47,7 +47,7 @@ class TopicType(EnumType):
         "fin.fund": _("Fund"),
         "fin.adivsor": _("Financial advisor"),
         "role.pep": _("Politician"),  # don't FATF-splain me, bro.
-        "role.rca": _("Associate"),
+        "role.rca": _("Close Associate"),
         "role.judge": _("Judge"),
         "role.civil": _("Civil servant"),
         "role.diplo": _("Diplomat"),
