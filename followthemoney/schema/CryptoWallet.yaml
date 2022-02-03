@@ -7,7 +7,7 @@ CryptoWallet:
   description: >
     A cryptocurrency wallet is a view on the transactions conducted by one participant
     on a blockchain / distributed ledger system.
-  matchable: false
+  matchable: true
   featured:
     - currency
     - publicKey
