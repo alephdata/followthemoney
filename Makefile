@@ -5,7 +5,7 @@ dev:
 	pip install -q ".[dev]"
 
 test:
-	nosetests --with-coverage --cover-package=followthemoney --cover-erase --cover-html --cover-html-dir=coverage-report
+	pytest --cov=followthemoney --cov-report html --cov-report term
 
 typecheck:
 	mypy --strict followthemoney/types \

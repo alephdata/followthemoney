@@ -1,10 +1,7 @@
-# from nose.tools import assert_raises
 from unittest import TestCase
 
 from followthemoney import model
 from followthemoney.namespace import Namespace
-
-# from followthemoney.exc import InvalidData
 
 
 class NamespaceTestCase(TestCase):

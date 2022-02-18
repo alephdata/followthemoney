@@ -1,4 +1,4 @@
-from nose.tools import assert_raises
+from pytest import raises
 from unittest import TestCase
 from followthemoney import model
 from followthemoney.types import registry
@@ -23,7 +23,7 @@ class ModelTestCase(TestCase):
         assert "name" in data["types"]
         assert "entity" in data["types"]
 
-        with assert_raises(KeyError):
+        with raises(KeyError):
             model["Banana"]
 
         assert model.get_qname("Thing:name") == thing.get("name")
@@ -75,11 +75,11 @@ class ModelTestCase(TestCase):
         # This behaviour turned out the be a really bad idea:
         # assert model.common_schema("LegalEntity", "Asset") == "Company"
 
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             model.common_schema("Person", "Directorship")
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             model.common_schema("Person", "Company")
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             model.common_schema("Membership", "Thing")
 
     def test_model_is_descendant(self):
