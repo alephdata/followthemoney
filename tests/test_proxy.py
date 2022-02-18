@@ -1,5 +1,5 @@
+from pytest import raises
 from unittest import TestCase
-from nose.tools import assert_raises
 from followthemoney.exc import InvalidData
 
 
@@ -51,23 +51,23 @@ class ProxyTestCase(TestCase):
         assert name in proxy.get("name")
         assert name in proxy.names, proxy.names
 
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.add("banana", "yellow")
         proxy.add("banana", "yellow", quiet=True)
 
         mem = model.make_entity("Membership")
         mem.id = "foo"
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.add("directorshipDirector", mem)
 
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.add("sameAs", proxy)
 
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.get("banana")
         assert [] == proxy.get("banana", quiet=True)
 
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.first("banana")
         assert proxy.first("banana", quiet=True) is None
 
@@ -77,10 +77,10 @@ class ProxyTestCase(TestCase):
         assert double == proxy
 
         proxy.add("banana", name, quiet=True)
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.add("banana", name)
 
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             EntityProxy.from_dict(model, {})
 
     def test_pop(self):
@@ -94,7 +94,7 @@ class ProxyTestCase(TestCase):
 
         # new in 1.6.1: pop is quiet by default
         assert not proxy.pop("banana")
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.pop("banana", quiet=False)
 
     def test_remove(self):
@@ -109,7 +109,7 @@ class ProxyTestCase(TestCase):
         proxy.remove("idNumber", "banana", quiet=False)
         proxy.remove("fruit", "banana")
 
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.remove("fruit", "banana", quiet=False)
 
     def test_has(self):
@@ -123,11 +123,11 @@ class ProxyTestCase(TestCase):
         proxy.set("birthPlace", "Inferno")
         assert 1 == len(proxy.get("birthPlace"))
 
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.set("banana", "fruit")
         assert not proxy.set("banana", "fruit", quiet=True)
 
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             proxy.has("banana")
         assert not proxy.has("banana", quiet=True)
 
@@ -209,7 +209,7 @@ class ProxyTestCase(TestCase):
         proxy.merge(other)
         assert "Ralph Tester" in proxy.names, proxy.names
         assert "gb" in proxy.countries, proxy.countries
-        with assert_raises(InvalidData):
+        with raises(InvalidData):
             other = {"schema": "Vessel"}
             other = EntityProxy.from_dict(model, other)
             proxy.merge(other)

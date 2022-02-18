@@ -23,17 +23,6 @@ COMPARE_WEIGHTS = {
 }
 
 
-class FTMPredictWarning(UserWarning):
-    def __str__(self):
-        return (
-            "followthemoney.compare uses a simplified model. Use the package "
-            "followthemoney-predict for a more accurate entity comparison model"
-        )
-
-
-warnings.simplefilter("once", FTMPredictWarning)
-
-
 def compare_scores(model, left, right):
     """Compare two entities and return a match score for each property."""
     left = model.get_proxy(left)
@@ -68,7 +57,6 @@ def compare_scores(model, left, right):
 
 
 def _compare(scores, weights, n_std=1):
-    warnings.warn(FTMPredictWarning())
     if not scores or not any(scores.values()):
         return 0.0
     prob = 0

@@ -19,6 +19,7 @@ docs/model.rst
 docs/types.rst
 balkhashdb/*
 coverage-report/*
+htmlcov/*
 enrich/dist/*
 enrich/build/*
 js/dist/*
