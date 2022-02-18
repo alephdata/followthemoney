@@ -16,7 +16,7 @@ jobs:
         run: |
           echo "$GITHUB_REF"
       - name: Set up Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v2.3.2
         with:
           python-version: ${{ matrix.python }}
       - name: Install dependencies
