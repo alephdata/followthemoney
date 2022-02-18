@@ -1258,6 +1258,7 @@
         "publicKey"
       ],
       "label": "Cryptocurrency wallet",
+      "matchable": true,
       "plural": "Cryptocurrency wallets",
       "properties": {
         "balance": {
@@ -5990,7 +5991,7 @@
         "role.judge": "Judge",
         "role.lawyer": "Lawyer",
         "role.pep": "Politician",
-        "role.rca": "Associate",
+        "role.rca": "Close Associate",
         "role.spy": "Spy",
         "sanction": "Sanctioned entity"
       }
