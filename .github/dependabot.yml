@@ -4,14 +4,15 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
-    open-pull-requests-limit: 99
   - package-ecosystem: npm
     directory: "/js"
     schedule:
       interval: weekly
-    open-pull-requests-limit: 99
   - package-ecosystem: docker
     directory: "/"
     schedule:
       interval: weekly
-    open-pull-requests-limit: 99
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
