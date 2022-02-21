@@ -1,20 +1,20 @@
 # Translations template for PROJECT.
-# Copyright (C) 2021 ORGANIZATION
+# Copyright (C) 2022 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # 
 # Translators:
 # pudo <friedrich@pudo.org>, 2021
-# jen occrp, 2021
+# jen occrp, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-29 17:35+0530\n"
+"POT-Creation-Date: 2022-02-18 14:01+0100\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
-"Last-Translator: jen occrp, 2021\n"
+"Last-Translator: jen occrp, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: followthemoney/property.py:162
+#: followthemoney/property.py:166
 msgid "Property cannot be written"
 msgstr "Не удалось сохранить свойство"
 
-#: followthemoney/property.py:165
+#: followthemoney/property.py:169
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
@@ -342,7 +342,7 @@ msgstr ""
 
 #. Associate.label
 #. Associate.properties.associate.label
-#: followthemoney/schema/Associate.yaml followthemoney/types/topic.py:50
+#: followthemoney/schema/Associate.yaml
 msgid "Associate"
 msgstr "Знакомый/знакомая"
 
@@ -3231,6 +3231,11 @@ msgstr "Исходный документ"
 msgid "Derived entities"
 msgstr "Производные сущности"
 
+#. Thing.properties.createdAt.label
+#: followthemoney/schema/Thing.yaml
+msgid "Created at"
+msgstr "Время создания"
+
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
@@ -3752,6 +3757,10 @@ msgstr "Финансовый консультант"
 #: followthemoney/types/topic.py:49
 msgid "Politician"
 msgstr "Политик"
+
+#: followthemoney/types/topic.py:50
+msgid "Close Associate"
+msgstr "Тесно связанное лицо"
 
 #: followthemoney/types/topic.py:51
 msgid "Judge"
