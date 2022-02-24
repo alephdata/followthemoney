@@ -40,9 +40,6 @@ Vessel:
     callSign:
       label: Call Sign
       type: identifier
-    pastNames:
-      label: Past Names
-      type: name
     pastFlags:
       label: Past Flags
     pastTypes:

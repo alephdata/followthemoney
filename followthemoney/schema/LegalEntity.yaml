@@ -20,12 +20,6 @@ LegalEntity:
     - phone
     - registrationNumber
   properties:
-    name:
-      # This is normally defined as a string, here it becomes a name
-      # typed-string to be shown in relevant facets etc.
-      label: Name
-      type: name
-      rdf: http://www.w3.org/2004/02/skos/core#prefLabel
     email:
       label: E-Mail
       type: email
