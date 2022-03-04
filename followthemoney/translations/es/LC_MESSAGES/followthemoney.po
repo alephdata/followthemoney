@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-01-20 14:35+0100\n"
+"POT-Creation-Date: 2022-03-04 14:36+0100\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -337,7 +337,7 @@ msgstr ""
 
 #. Associate.label
 #. Associate.properties.associate.label
-#: followthemoney/schema/Associate.yaml followthemoney/types/topic.py:50
+#: followthemoney/schema/Associate.yaml
 msgid "Associate"
 msgstr "Asociado"
 
@@ -2083,14 +2083,6 @@ msgid ""
 " if something is a person or company.\n"
 msgstr ""
 
-#. LegalEntity.properties.name.label
-#. Mention.properties.name.label
-#. Thing.properties.name.label
-#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Mention.yaml
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:26
-msgid "Name"
-msgstr "Nombre"
-
 #. LegalEntity.properties.email.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Email address"
@@ -2353,6 +2345,13 @@ msgstr ""
 #: followthemoney/schema/Mention.yaml
 msgid "Document mentions"
 msgstr ""
+
+#. Mention.properties.name.label
+#. Thing.properties.name.label
+#: followthemoney/schema/Mention.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/types/name.py:26
+msgid "Name"
+msgstr "Nombre"
 
 #. Mention.properties.detectedSchema.label
 #: followthemoney/schema/Mention.yaml
@@ -3415,11 +3414,6 @@ msgstr "Fecha de cambio de nombre"
 msgid "Call Sign"
 msgstr "Señal de identificación"
 
-#. Vessel.properties.pastNames.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Past Names"
-msgstr "Nombres Past"
-
 #. Vessel.properties.pastFlags.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Flags"
@@ -3524,38 +3518,50 @@ msgid "South Ossetia"
 msgstr "Osetia del Sur"
 
 #: followthemoney/types/country.py:41
-msgid "Somaliland"
-msgstr "Somalilandia"
+msgid "Luhansk (Ukraine)"
+msgstr ""
 
 #: followthemoney/types/country.py:42
-msgid "Northern Cyprus"
+msgid "Donetsk (Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:43
-msgid "Nagorno-Karabakh"
+msgid "Crimea (Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:44
-msgid "Tibet"
-msgstr ""
+msgid "Somaliland"
+msgstr "Somalilandia"
 
 #: followthemoney/types/country.py:45
-msgid "Sark"
+msgid "Northern Cyprus"
 msgstr ""
 
 #: followthemoney/types/country.py:46
+msgid "Nagorno-Karabakh"
+msgstr ""
+
+#: followthemoney/types/country.py:47
+msgid "Tibet"
+msgstr ""
+
+#: followthemoney/types/country.py:48
+msgid "Sark"
+msgstr ""
+
+#: followthemoney/types/country.py:49
 msgid "Wales"
 msgstr "Gales"
 
-#: followthemoney/types/country.py:47
+#: followthemoney/types/country.py:50
 msgid "Scotland"
 msgstr "Escocia"
 
-#: followthemoney/types/country.py:48
+#: followthemoney/types/country.py:51
 msgid "Northern Ireland"
 msgstr "Irlanda del Norte"
 
-#: followthemoney/types/country.py:49
+#: followthemoney/types/country.py:52
 msgid "Transnistria"
 msgstr "Transnistria"
 
@@ -3743,6 +3749,10 @@ msgstr "Asesor financiero"
 #: followthemoney/types/topic.py:49
 msgid "Politician"
 msgstr "Político"
+
+#: followthemoney/types/topic.py:50
+msgid "Close Associate"
+msgstr ""
 
 #: followthemoney/types/topic.py:51
 msgid "Judge"
