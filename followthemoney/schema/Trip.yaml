@@ -1,0 +1,36 @@
+Trip:
+  label: "Trip"
+  plural: "Trips"
+  extends:
+    - Event
+  matchable: false
+  caption:
+    - startLocation
+    - endLocation
+    - vehicle
+    - startDate
+    - endDate
+  required:
+    - name
+    - startLocation
+    - endLocation
+  featured:
+    - startLocation
+    - endLocation
+    - vehicle
+    - startDate
+    - endDate
+  properties:
+    startLocation:
+      label: "Start location"
+      type: address
+    endLocation:
+      label: "End location"
+      type: address
+    vehicle:
+      label: "Vehicle"
+      type: entity
+      range: Vehicle
+      reverse:
+        name: tripsInvolved
+        label: "Trips"
