@@ -23,10 +23,18 @@ Trip:
   properties:
     startLocation:
       label: "Start location"
-      type: address
+      type: entity
+      range: Address
+      reverse:
+        name: tripsDeparting
+        label: "Trips departing"
     endLocation:
       label: "End location"
-      type: address
+      type: entity
+      range: Address
+      reverse:
+        name: tripsIncoming
+        label: "Trips incoming"
     vehicle:
       label: "Vehicle"
       type: entity
