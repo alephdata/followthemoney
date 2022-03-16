@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-04 14:36+0100\n"
+"POT-Creation-Date: 2022-03-16 19:03+0100\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: jen occrp, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -2765,7 +2765,7 @@ msgid "Ethnicity"
 msgstr "Этническая группа"
 
 #. Person.properties.religion.label
-#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:61
+#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:62
 msgid "Religion"
 msgstr "Религия"
 
@@ -3533,15 +3533,15 @@ msgstr "Южная Осетия"
 
 #: followthemoney/types/country.py:41
 msgid "Luhansk (Ukraine)"
-msgstr ""
+msgstr "Луганск (Украина)"
 
 #: followthemoney/types/country.py:42
 msgid "Donetsk (Ukraine)"
-msgstr ""
+msgstr "Донецк (Украина)"
 
 #: followthemoney/types/country.py:43
 msgid "Crimea (Ukraine)"
-msgstr ""
+msgstr "Крым (Украина)"
 
 #: followthemoney/types/country.py:44
 msgid "Somaliland"
@@ -3793,38 +3793,42 @@ msgid "Spy"
 msgstr "Шпион"
 
 #: followthemoney/types/topic.py:57
+msgid "Oligarch"
+msgstr ""
+
+#: followthemoney/types/topic.py:58
 msgid "Journalist"
 msgstr "Журналист"
 
-#: followthemoney/types/topic.py:58
+#: followthemoney/types/topic.py:59
 msgid "Activist"
 msgstr "Активист"
 
-#: followthemoney/types/topic.py:59
+#: followthemoney/types/topic.py:60
 msgid "Political party"
 msgstr "Политическая партия"
 
-#: followthemoney/types/topic.py:60
+#: followthemoney/types/topic.py:61
 msgid "Union"
 msgstr "Объединение"
 
-#: followthemoney/types/topic.py:62
+#: followthemoney/types/topic.py:63
 msgid "Military"
 msgstr "Военные"
 
-#: followthemoney/types/topic.py:63
+#: followthemoney/types/topic.py:64
 msgid "Frozen asset"
 msgstr "Замороженный актив"
 
-#: followthemoney/types/topic.py:64
+#: followthemoney/types/topic.py:65
 msgid "Sanctioned entity"
 msgstr "Объект санкций"
 
-#: followthemoney/types/topic.py:65
+#: followthemoney/types/topic.py:66
 msgid "Debarred entity"
 msgstr "Физическое или юридическое лицо, лишённое полномочий"
 
-#: followthemoney/types/topic.py:66
+#: followthemoney/types/topic.py:67
 msgid "Person of interest"
 msgstr "Подозрительный персонаж"
 

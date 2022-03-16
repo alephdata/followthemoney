@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-04 14:36+0100\n"
+"POT-Creation-Date: 2022-03-16 19:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2719,7 +2719,7 @@ msgid "Ethnicity"
 msgstr ""
 
 #. Person.properties.religion.label
-#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:61
+#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:62
 msgid "Religion"
 msgstr ""
 
@@ -3738,38 +3738,42 @@ msgid "Spy"
 msgstr ""
 
 #: followthemoney/types/topic.py:57
-msgid "Journalist"
+msgid "Oligarch"
 msgstr ""
 
 #: followthemoney/types/topic.py:58
-msgid "Activist"
+msgid "Journalist"
 msgstr ""
 
 #: followthemoney/types/topic.py:59
-msgid "Political party"
+msgid "Activist"
 msgstr ""
 
 #: followthemoney/types/topic.py:60
+msgid "Political party"
+msgstr ""
+
+#: followthemoney/types/topic.py:61
 msgid "Union"
 msgstr ""
 
-#: followthemoney/types/topic.py:62
+#: followthemoney/types/topic.py:63
 msgid "Military"
 msgstr ""
 
-#: followthemoney/types/topic.py:63
+#: followthemoney/types/topic.py:64
 msgid "Frozen asset"
 msgstr ""
 
-#: followthemoney/types/topic.py:64
+#: followthemoney/types/topic.py:65
 msgid "Sanctioned entity"
 msgstr ""
 
-#: followthemoney/types/topic.py:65
+#: followthemoney/types/topic.py:66
 msgid "Debarred entity"
 msgstr ""
 
-#: followthemoney/types/topic.py:66
+#: followthemoney/types/topic.py:67
 msgid "Person of interest"
 msgstr ""
 

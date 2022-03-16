@@ -2883,13 +2883,6 @@
           "stub": true,
           "type": "entity"
         },
-        "name": {
-          "label": "Name",
-          "matchable": true,
-          "name": "name",
-          "qname": "LegalEntity:name",
-          "type": "name"
-        },
         "okpoCode": {
           "description": "Russian industry classifier",
           "label": "OKPO",
@@ -4922,9 +4915,10 @@
         },
         "name": {
           "label": "Name",
+          "matchable": true,
           "name": "name",
           "qname": "Thing:name",
-          "type": "string"
+          "type": "name"
         },
         "noteEntities": {
           "label": "Notes",
@@ -5399,13 +5393,6 @@
           "qname": "Vessel:pastFlags",
           "type": "string"
         },
-        "pastNames": {
-          "label": "Past Names",
-          "matchable": true,
-          "name": "pastNames",
-          "qname": "Vessel:pastNames",
-          "type": "name"
-        },
         "pastTypes": {
           "label": "Past Types",
           "name": "pastTypes",
@@ -5770,6 +5757,9 @@
         "tw": "Taiwan",
         "tz": "Tanzania",
         "ua": "Ukraine",
+        "ua-cri": "Crimea (Ukraine)",
+        "ua-dpr": "Donetsk (Ukraine)",
+        "ua-lpr": "Luhansk (Ukraine)",
         "ug": "Uganda",
         "um": "U.S. Outlying Islands",
         "un": "United Nations",
@@ -5990,6 +5980,7 @@
         "role.journo": "Journalist",
         "role.judge": "Judge",
         "role.lawyer": "Lawyer",
+        "role.oligarch": "Oligarch",
         "role.pep": "Politician",
         "role.rca": "Close Associate",
         "role.spy": "Spy",
