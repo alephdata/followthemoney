@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-02-18 14:01+0100\n"
+"POT-Creation-Date: 2022-03-04 14:36+0100\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: jen occrp, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -2092,14 +2092,6 @@ msgstr ""
 "Любой участник судопроизводства, как то: владения (активами), корпоративного"
 " контроля или социального взаимодействия.\n"
 
-#. LegalEntity.properties.name.label
-#. Mention.properties.name.label
-#. Thing.properties.name.label
-#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Mention.yaml
-#: followthemoney/schema/Thing.yaml followthemoney/types/name.py:26
-msgid "Name"
-msgstr "Имя"
-
 #. LegalEntity.properties.email.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Email address"
@@ -2360,6 +2352,13 @@ msgstr "Найденные имена"
 #: followthemoney/schema/Mention.yaml
 msgid "Document mentions"
 msgstr "Упоминания в документе"
+
+#. Mention.properties.name.label
+#. Thing.properties.name.label
+#: followthemoney/schema/Mention.yaml followthemoney/schema/Thing.yaml
+#: followthemoney/types/name.py:26
+msgid "Name"
+msgstr "Имя"
 
 #. Mention.properties.detectedSchema.label
 #: followthemoney/schema/Mention.yaml
@@ -3427,11 +3426,6 @@ msgstr "Дата изменения названия судна"
 msgid "Call Sign"
 msgstr "Позывной"
 
-#. Vessel.properties.pastNames.label
-#: followthemoney/schema/Vessel.yaml
-msgid "Past Names"
-msgstr "Предыдущие названия судна"
-
 #. Vessel.properties.pastFlags.label
 #: followthemoney/schema/Vessel.yaml
 msgid "Past Flags"
@@ -3538,38 +3532,50 @@ msgid "South Ossetia"
 msgstr "Южная Осетия"
 
 #: followthemoney/types/country.py:41
+msgid "Luhansk (Ukraine)"
+msgstr "Луганск (Украина)"
+
+#: followthemoney/types/country.py:42
+msgid "Donetsk (Ukraine)"
+msgstr "Донецк (Украина)"
+
+#: followthemoney/types/country.py:43
+msgid "Crimea (Ukraine)"
+msgstr "Крым (Украина)"
+
+#: followthemoney/types/country.py:44
 msgid "Somaliland"
 msgstr "Сомалиленд"
 
-#: followthemoney/types/country.py:42
+#: followthemoney/types/country.py:45
 msgid "Northern Cyprus"
 msgstr "Северный Кипр"
 
-#: followthemoney/types/country.py:43
+#: followthemoney/types/country.py:46
 msgid "Nagorno-Karabakh"
 msgstr "Нагорный Карабах"
 
-#: followthemoney/types/country.py:44
+#: followthemoney/types/country.py:47
 msgid "Tibet"
 msgstr "Тибет"
 
-#: followthemoney/types/country.py:45
+#: followthemoney/types/country.py:48
 msgid "Sark"
 msgstr "Сарк"
 
-#: followthemoney/types/country.py:46
+#: followthemoney/types/country.py:49
 msgid "Wales"
 msgstr "Уэльс"
 
-#: followthemoney/types/country.py:47
+#: followthemoney/types/country.py:50
 msgid "Scotland"
 msgstr "Шотландия"
 
-#: followthemoney/types/country.py:48
+#: followthemoney/types/country.py:51
 msgid "Northern Ireland"
 msgstr "Северная Ирландия"
 
-#: followthemoney/types/country.py:49
+#: followthemoney/types/country.py:52
 msgid "Transnistria"
 msgstr "Приднестровье"
 
