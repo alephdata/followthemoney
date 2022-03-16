@@ -54,6 +54,7 @@ class TopicType(EnumType):
         "role.lawyer": _("Lawyer"),
         "role.acct": _("Accountant"),
         "role.spy": _("Spy"),
+        "role.oligarch": _("Oligarch"),
         "role.journo": _("Journalist"),
         "role.act": _("Activist"),
         "pol.party": _("Political party"),
