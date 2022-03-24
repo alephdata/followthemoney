@@ -75,7 +75,6 @@ setup(
             "pymisp >= 2.4.126",
         ],
     },
-    test_suite="nose.collector",
     entry_points={
         "babel.extractors": {"ftmmodel = followthemoney.messages:extract_yaml"},
         "followthemoney.cli": {
@@ -95,5 +94,5 @@ setup(
             "followthemoney = followthemoney.cli.cli:cli",
         ],
     },
-    tests_require=["coverage", "nose"],
+    tests_require=["coverage", "pytest", "pytest-cov"],
 )
