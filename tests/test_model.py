@@ -147,6 +147,8 @@ class ModelTestCase(TestCase):
         assert company in matchable, matchable
         assert le in matchable, matchable
         assert doc not in matchable, matchable
+        assert le.can_match(company)
+        assert not doc.can_match(le)
 
     def test_specificity_name(self):
         company = model.schemata["Company"]

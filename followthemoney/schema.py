@@ -310,6 +310,10 @@ class Schema:
                         self._matchable_schemata.add(schema)
         return self._matchable_schemata
 
+    def can_match(self, other: "Schema") -> bool:
+        """Check if an schema can match with another schema."""
+        return other in self.matchable_schemata
+
     def is_a(self, other: Union[str, "Schema"]) -> bool:
         """Check if the schema or one of its parents is the same as the given
         candidate ``other``."""
