@@ -37,6 +37,7 @@ Address:
   properties:
     full:
       label: "Full address"
+      type: address
     remarks:
       label: "Remarks"
       description: "Handling instructions, like 'care of'."

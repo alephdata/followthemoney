@@ -77,9 +77,11 @@ Document:
     authoredAt:
       label: "Authored on"
       type: date
+      matchable: false
     publishedAt:
       label: "Published on"
       type: date
+      matchable: false
     parent:
       label: "Folder"
       type: entity
