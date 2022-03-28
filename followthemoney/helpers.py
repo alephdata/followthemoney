@@ -9,9 +9,11 @@ from os.path import splitext
 from typing import Iterable, List, Optional
 from normality import safe_filename
 from mimetypes import guess_extension
+from itertools import product
 
 from followthemoney.types import registry
 from followthemoney.proxy import EntityProxy
+from followthemoney.util import join_text
 
 
 def remove_checksums(proxy: EntityProxy) -> EntityProxy:
@@ -117,3 +119,30 @@ def inline_names(entity: EntityProxy, related: EntityProxy) -> None:
     prop = entity.schema.get("namesMentioned")
     if prop is not None:
         entity.add(prop, related.get_type_values(registry.name))
+
+
+def combine_names(entity: EntityProxy) -> EntityProxy:
+    """This function will try to build names from name parts provided as part
+    of a person entity. This is of course impossible to do culturally correctly
+    for the whole planet at once, so it should be mostly used for internal-facing
+    (e.g. matching) processes."""
+    if entity.schema.is_a("Person"):
+        first_names = entity.get("firstName")
+        second_names = entity.get("secondName")
+        second_names.append("")
+        middle_names = entity.get("middleName")
+        middle_names.append("")
+        father_names = entity.get("fatherName")
+        father_names.append("")
+        last_names = entity.get("lastName")
+        for (first, second, middle, father, last) in product(
+            first_names, second_names, middle_names, father_names, last_names
+        ):
+            name = join_text(first, second, middle, father, last)
+            if name is not None:
+                entity.add("alias", name)
+
+        # If no first name is given, at least add the last name:
+        if not entity.get_type_values(registry.name) and len(last_names):
+            entity.add("alias", last_names)
+    return entity

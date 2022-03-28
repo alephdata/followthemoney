@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from followthemoney import model
-from followthemoney.helpers import remove_checksums
+from followthemoney.helpers import combine_names, remove_checksums
 from followthemoney.helpers import simplify_provenance
 from followthemoney.helpers import entity_filename
 from followthemoney.helpers import name_entity
@@ -127,3 +127,40 @@ class HelpersTestCase(TestCase):
         assert "2020-01" not in proxy.get("birthDate")
         assert "2020-01-05" in proxy.get("birthDate")
         assert "2020-03" in proxy.get("birthDate")
+
+    def test_combine_names(self):
+        proxy = model.get_proxy(
+            {
+                "id": "banana",
+                "schema": "Person",
+                "properties": {
+                    "firstName": ["Vladimir", "Wladimir"],
+                    "fatherName": ["Vladimirovitch"],
+                    "lastName": ["Putin"],
+                },
+            }
+        )
+        combine_names(proxy)
+        assert "Vladimir Putin" in proxy.get("alias"), proxy.get("alias")
+        assert "Vladimir Vladimirovitch Putin" in proxy.get("alias"), proxy.get("alias")
+        proxy = model.get_proxy(
+            {
+                "id": "banana",
+                "schema": "Person",
+                "properties": {
+                    "name": ["Vladimir Putin"],
+                },
+            }
+        )
+        combine_names(proxy)
+        proxy = model.get_proxy(
+            {
+                "id": "banana",
+                "schema": "Person",
+                "properties": {
+                    "lastName": ["Putin"],
+                },
+            }
+        )
+        combine_names(proxy)
+        assert "Putin" in proxy.get("alias"), proxy.get("alias")

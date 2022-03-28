@@ -89,6 +89,18 @@ def key_bytes(key: Any) -> bytes:
     return text.encode("utf-8")
 
 
+def join_text(*parts: Any, sep: str = " ") -> Optional[str]:
+    """Join all the non-null arguments using sep."""
+    texts: List[str] = []
+    for part in parts:
+        text = stringify(part)
+        if text is not None:
+            texts.append(text)
+    if not len(texts):
+        return None
+    return sep.join(texts)
+
+
 def get_entity_id(obj: Any) -> Optional[str]:
     """Given an entity-ish object, try to get the ID."""
     if is_mapping(obj):
