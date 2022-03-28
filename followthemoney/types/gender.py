@@ -15,6 +15,26 @@ class GenderType(EnumType):
     government databases and represent it in a way that can be used by
     structured tools. I'm not sure this justifies the simplification."""
 
+    MALE = "male"
+    FEMALE = "female"
+    OTHER = "other"
+
+    LOOKUP = {
+        "m": MALE,
+        "man": MALE,
+        "masculin": MALE,
+        "männlich": MALE,
+        "мужской": MALE,
+        "f": FEMALE,
+        "woman": FEMALE,
+        "féminin": FEMALE,
+        "weiblich": FEMALE,
+        "женский": FEMALE,
+        "o": OTHER,
+        "d": OTHER,
+        "divers": OTHER,
+    }
+
     name = "gender"
     group = "genders"
     label = _("Gender")
@@ -23,9 +43,9 @@ class GenderType(EnumType):
 
     def _locale_names(self, locale: Locale) -> EnumValues:
         return {
-            "male": gettext("male"),
-            "female": gettext("female"),
-            "other": gettext("other"),
+            self.MALE: gettext("male"),
+            self.FEMALE: gettext("female"),
+            self.OTHER: gettext("other"),
         }
 
     def clean_text(
@@ -36,6 +56,7 @@ class GenderType(EnumType):
         proxy: Optional["EntityProxy"] = None,
     ) -> Optional[str]:
         code = text.lower().strip()
+        code = self.LOOKUP.get(code, code)
         if code not in self.codes:
             return None
         return code

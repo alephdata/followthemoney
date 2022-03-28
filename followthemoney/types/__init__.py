@@ -14,12 +14,14 @@ from followthemoney.types.checksum import ChecksumType
 from followthemoney.types.identifier import IdentifierType
 from followthemoney.types.entity import EntityType
 from followthemoney.types.topic import TopicType
+from followthemoney.types.gender import GenderType
 from followthemoney.types.json import JsonType
 from followthemoney.types.string import TextType
 from followthemoney.types.string import HTMLType
 from followthemoney.types.string import StringType
 from followthemoney.types.number import NumberType
 from followthemoney.types.common import PropertyType
+
 
 registry = Registry()
 registry.add(UrlType)
@@ -37,6 +39,7 @@ registry.add(ChecksumType)
 registry.add(IdentifierType)
 registry.add(EntityType)
 registry.add(TopicType)
+registry.add(GenderType)
 registry.add(JsonType)
 registry.add(TextType)
 registry.add(HTMLType)
