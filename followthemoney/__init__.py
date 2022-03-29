@@ -3,7 +3,7 @@ import os
 from followthemoney.model import Model
 from followthemoney.util import set_model_locale
 
-__version__ = "2.8.5"
+__version__ = "2.9.0"
 
 
 model_path = os.path.dirname(__file__)
