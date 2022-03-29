@@ -38,9 +38,10 @@
         },
         "full": {
           "label": "Full address",
+          "matchable": true,
           "name": "full",
           "qname": "Address:full",
-          "type": "string"
+          "type": "address"
         },
         "latitude": {
           "label": "Latitude",
@@ -108,6 +109,26 @@
           "qname": "Address:things",
           "range": "Thing",
           "reverse": "addressEntity",
+          "stub": true,
+          "type": "entity"
+        },
+        "tripsDeparting": {
+          "label": "Trips departing",
+          "matchable": true,
+          "name": "tripsDeparting",
+          "qname": "Address:tripsDeparting",
+          "range": "Trip",
+          "reverse": "startLocation",
+          "stub": true,
+          "type": "entity"
+        },
+        "tripsIncoming": {
+          "label": "Trips incoming",
+          "matchable": true,
+          "name": "tripsIncoming",
+          "qname": "Address:tripsIncoming",
+          "range": "Trip",
+          "reverse": "endLocation",
           "stub": true,
           "type": "entity"
         }
@@ -1474,7 +1495,6 @@
         },
         "authoredAt": {
           "label": "Authored on",
-          "matchable": true,
           "name": "authoredAt",
           "qname": "Document:authoredAt",
           "type": "date"
@@ -1605,7 +1625,6 @@
         },
         "publishedAt": {
           "label": "Published on",
-          "matchable": true,
           "name": "publishedAt",
           "qname": "Document:publishedAt",
           "type": "date"
@@ -4047,7 +4066,7 @@
           "label": "Gender",
           "name": "gender",
           "qname": "Person:gender",
-          "type": "string"
+          "type": "gender"
         },
         "lastName": {
           "label": "Last name",
@@ -5052,6 +5071,68 @@
         "Thing"
       ]
     },
+    "Trip": {
+      "caption": [
+        "startLocation",
+        "endLocation",
+        "vehicle",
+        "startDate",
+        "endDate"
+      ],
+      "extends": [
+        "Event"
+      ],
+      "featured": [
+        "startLocation",
+        "endLocation",
+        "vehicle",
+        "startDate",
+        "endDate"
+      ],
+      "label": "Trip",
+      "plural": "Trips",
+      "properties": {
+        "endLocation": {
+          "label": "End location",
+          "matchable": true,
+          "name": "endLocation",
+          "qname": "Trip:endLocation",
+          "range": "Address",
+          "reverse": "tripsIncoming",
+          "type": "entity"
+        },
+        "startLocation": {
+          "label": "Start location",
+          "matchable": true,
+          "name": "startLocation",
+          "qname": "Trip:startLocation",
+          "range": "Address",
+          "reverse": "tripsDeparting",
+          "type": "entity"
+        },
+        "vehicle": {
+          "label": "Vehicle",
+          "matchable": true,
+          "name": "vehicle",
+          "qname": "Trip:vehicle",
+          "range": "Vehicle",
+          "reverse": "tripsInvolved",
+          "type": "entity"
+        }
+      },
+      "required": [
+        "name",
+        "startLocation",
+        "endLocation"
+      ],
+      "schemata": [
+        "Analyzable",
+        "Event",
+        "Interval",
+        "Thing",
+        "Trip"
+      ]
+    },
     "UnknownLink": {
       "edge": {
         "caption": [
@@ -5299,6 +5380,16 @@
           "name": "registrationNumber",
           "qname": "Vehicle:registrationNumber",
           "type": "identifier"
+        },
+        "tripsInvolved": {
+          "label": "Trips",
+          "matchable": true,
+          "name": "tripsInvolved",
+          "qname": "Vehicle:tripsInvolved",
+          "range": "Trip",
+          "reverse": "vehicle",
+          "stub": true,
+          "type": "entity"
         },
         "type": {
           "label": "Type",
@@ -5808,6 +5899,16 @@
       "matchable": true,
       "pivot": true,
       "plural": "Entities"
+    },
+    "gender": {
+      "group": "genders",
+      "label": "Gender",
+      "plural": "Genders",
+      "values": {
+        "female": "female",
+        "male": "male",
+        "other": "other"
+      }
     },
     "html": {
       "label": "HTML",

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-16 19:03+0100\n"
+"POT-Creation-Date: 2022-03-29 16:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,11 +39,11 @@ msgstr ""
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:335
+#: followthemoney/schema.py:339
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:339
+#: followthemoney/schema.py:343
 msgid "Entity validation failed"
 msgstr ""
 
@@ -2567,6 +2567,7 @@ msgstr ""
 #. Passport.properties.gender.label
 #. Person.properties.gender.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+#: followthemoney/types/gender.py:40
 msgid "Gender"
 msgstr ""
 
@@ -3182,6 +3183,43 @@ msgstr ""
 msgid "Created at"
 msgstr ""
 
+#. Trip.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trip"
+msgstr ""
+
+#. Trip.plural
+#. Trip.properties.vehicle.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips"
+msgstr ""
+
+#. Trip.properties.startLocation.label
+#: followthemoney/schema/Trip.yaml
+msgid "Start location"
+msgstr ""
+
+#. Trip.properties.startLocation.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips departing"
+msgstr ""
+
+#. Trip.properties.endLocation.label
+#: followthemoney/schema/Trip.yaml
+msgid "End location"
+msgstr ""
+
+#. Trip.properties.endLocation.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips incoming"
+msgstr ""
+
+#. Trip.properties.vehicle.label
+#. Vehicle.label
+#: followthemoney/schema/Trip.yaml followthemoney/schema/Vehicle.yaml
+msgid "Vehicle"
+msgstr ""
+
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
@@ -3271,11 +3309,6 @@ msgstr ""
 #. Value.properties.amountEur.label
 #: followthemoney/schema/Value.yaml
 msgid "Amount in EUR"
-msgstr ""
-
-#. Vehicle.label
-#: followthemoney/schema/Vehicle.yaml
-msgid "Vehicle"
 msgstr ""
 
 #. Vehicle.plural
@@ -3543,6 +3576,22 @@ msgstr ""
 #: followthemoney/types/entity.py:61
 #, python-format
 msgid "Self-relationship (%s): %s"
+msgstr ""
+
+#: followthemoney/types/gender.py:41
+msgid "Genders"
+msgstr ""
+
+#: followthemoney/types/gender.py:46
+msgid "male"
+msgstr ""
+
+#: followthemoney/types/gender.py:47
+msgid "female"
+msgstr ""
+
+#: followthemoney/types/gender.py:48
+msgid "other"
 msgstr ""
 
 #: followthemoney/types/iban.py:25
