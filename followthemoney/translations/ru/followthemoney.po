@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-16 19:03+0100\n"
+"POT-Creation-Date: 2022-03-29 16:43+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: jen occrp, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -45,11 +45,11 @@ msgstr "Неизвестный параметр (1%s): 1%s"
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/schema.py:335
+#: followthemoney/schema.py:339
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:339
+#: followthemoney/schema.py:343
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
@@ -2613,6 +2613,7 @@ msgstr "Место рождения"
 #. Passport.properties.gender.label
 #. Person.properties.gender.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+#: followthemoney/types/gender.py:40
 msgid "Gender"
 msgstr "Пол"
 
@@ -3235,6 +3236,43 @@ msgstr "Производные сущности"
 msgid "Created at"
 msgstr "Время создания"
 
+#. Trip.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trip"
+msgstr "Поездка"
+
+#. Trip.plural
+#. Trip.properties.vehicle.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips"
+msgstr "Поездки"
+
+#. Trip.properties.startLocation.label
+#: followthemoney/schema/Trip.yaml
+msgid "Start location"
+msgstr "Начальное местоположение"
+
+#. Trip.properties.startLocation.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips departing"
+msgstr "Поездки отсюда"
+
+#. Trip.properties.endLocation.label
+#: followthemoney/schema/Trip.yaml
+msgid "End location"
+msgstr "Место назначения"
+
+#. Trip.properties.endLocation.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips incoming"
+msgstr "Поездки сюда"
+
+#. Trip.properties.vehicle.label
+#. Vehicle.label
+#: followthemoney/schema/Trip.yaml followthemoney/schema/Vehicle.yaml
+msgid "Vehicle"
+msgstr "Транспортное средство"
+
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
@@ -3325,11 +3363,6 @@ msgstr "Сумма в долларах США"
 #: followthemoney/schema/Value.yaml
 msgid "Amount in EUR"
 msgstr "Сумма в Евро"
-
-#. Vehicle.label
-#: followthemoney/schema/Vehicle.yaml
-msgid "Vehicle"
-msgstr "Транспортное средство"
 
 #. Vehicle.plural
 #: followthemoney/schema/Vehicle.yaml
@@ -3599,6 +3632,22 @@ msgstr "Сущность"
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
+
+#: followthemoney/types/gender.py:41
+msgid "Genders"
+msgstr "Гендер"
+
+#: followthemoney/types/gender.py:46
+msgid "male"
+msgstr "бинарный мужской"
+
+#: followthemoney/types/gender.py:47
+msgid "female"
+msgstr "бинарный женский"
+
+#: followthemoney/types/gender.py:48
+msgid "other"
+msgstr "небинарный"
 
 #: followthemoney/types/iban.py:25
 msgid "IBANs"
