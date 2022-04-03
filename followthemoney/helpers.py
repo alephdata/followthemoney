@@ -15,6 +15,9 @@ from followthemoney.types import registry
 from followthemoney.proxy import EntityProxy
 from followthemoney.util import join_text
 
+PROV_MIN_DATES = ("createdAt", "authoredAt", "publishedAt")
+PROV_MAX_DATES = ("modifiedAt", "retrievedAt")
+
 
 def remove_checksums(proxy: EntityProxy) -> EntityProxy:
     """When accepting entities via a web API, it would consistute
@@ -31,14 +34,14 @@ def remove_checksums(proxy: EntityProxy) -> EntityProxy:
 def simplify_provenance(proxy: EntityProxy) -> EntityProxy:
     """If there are multiple dates given for some of the provenance
     fields, we can logically conclude which one is the most meaningful."""
-    for prop_name in ["modifiedAt", "retrievedAt"]:
-        if proxy.has(prop_name, quiet=True):
-            values = proxy.get(prop_name)
-            proxy.set(prop_name, max(values))
-    for prop_name in ["createdAt", "authoredAt", "publishedAt"]:
-        if proxy.has(prop_name, quiet=True):
-            values = proxy.get(prop_name)
-            proxy.set(prop_name, min(values))
+    for prop_name in PROV_MAX_DATES:
+        values = proxy.pop(prop_name, quiet=True)
+        if len(values):
+            proxy.set(prop_name, max(values), cleaned=True)
+    for prop_name in PROV_MIN_DATES:
+        values = proxy.pop(prop_name, quiet=True)
+        if len(values):
+            proxy.set(prop_name, min(values), cleaned=True)
     return proxy
 
 
