@@ -137,6 +137,8 @@ class Model(object):
         dictionary. If ``cleaned`` is disabled, all property values are
         fully re-validated and normalised. Use this if handling input data
         from an untrusted source."""
+        if isinstance(data, EntityProxy):
+            return data
         return EntityProxy.from_dict(self, data, cleaned=cleaned)
 
     def to_dict(self) -> ModelToDict:

@@ -73,7 +73,7 @@ class ProxyTestCase(TestCase):
 
         assert len(proxy.get("nationality")) == 0
 
-        double = EntityProxy.from_dict(model, proxy)
+        double = model.get_proxy(proxy)
         assert double == proxy
 
         proxy.add("banana", name, quiet=True)
