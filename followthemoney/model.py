@@ -1,6 +1,6 @@
 import os
-from typing import Any, Dict, Generator, Iterator, Optional, Set, TypedDict, Union
 import yaml
+from typing import Any, Dict, Generator, Iterator, Optional, Set, TypedDict, Union
 
 from followthemoney.types import registry
 from followthemoney.types.common import PropertyType, PropertyTypeToDict

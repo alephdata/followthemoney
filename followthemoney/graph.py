@@ -6,7 +6,7 @@ graph. This is used by the exporter modules to convert data
 to a specific output format, like Cypher or NetworkX.
 """
 import logging
-from typing import Any, Dict, Generator, Iterable, List, Optional, Sequence
+from typing import Any, Dict, Generator, Iterable, List, Optional
 
 from followthemoney.types import registry
 from followthemoney.types.common import PropertyType
