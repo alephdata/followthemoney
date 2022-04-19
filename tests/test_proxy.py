@@ -2,7 +2,6 @@ from pytest import raises
 from unittest import TestCase
 from followthemoney.exc import InvalidData
 
-
 from followthemoney import model
 from followthemoney.types import registry
 from followthemoney.proxy import EntityProxy
@@ -73,7 +72,7 @@ class ProxyTestCase(TestCase):
 
         assert len(proxy.get("nationality")) == 0
 
-        double = EntityProxy.from_dict(model, proxy)
+        double = model.get_proxy(proxy)
         assert double == proxy
 
         proxy.add("banana", name, quiet=True)

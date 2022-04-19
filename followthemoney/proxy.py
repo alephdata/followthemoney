@@ -9,6 +9,8 @@ from typing import (
     Set,
     Tuple,
     Union,
+    Type,
+    TypeVar,
     cast,
 )
 import warnings
@@ -29,6 +31,7 @@ if TYPE_CHECKING:
 log = logging.getLogger(__name__)
 P = Union[Property, str]
 Triple = Tuple[Identifier, Identifier, Identifier]
+E = TypeVar("E", bound="EntityProxy")
 
 
 class EntityProxy(object):
@@ -403,11 +406,11 @@ class EntityProxy(object):
         data.update(self.get_type_inverted(matchable=matchable))
         return data
 
-    def clone(self) -> "EntityProxy":
+    def clone(self: E) -> E:
         """Make a deep copy of the current entity proxy."""
-        return EntityProxy(self.schema.model, self.to_dict())
+        return self.__class__.from_dict(self.schema.model, self.to_dict())
 
-    def merge(self, other: "EntityProxy") -> "EntityProxy":
+    def merge(self: E, other: E) -> E:
         """Merge another entity proxy into this one. This will try and find
         the common schema between both entities and then add all property
         values from the other entity into this one."""
@@ -454,11 +457,12 @@ class EntityProxy(object):
 
     @classmethod
     def from_dict(
-        cls, model: "Model", data: Dict[str, Any], cleaned: bool = True
-    ) -> "EntityProxy":
+        cls: Type[E],
+        model: "Model",
+        data: Dict[str, Any],
+        cleaned: bool = True,
+    ) -> E:
         """Instantiate a proxy based on the given model and serialised dictionary.
 
         Use :meth:`followthemoney.model.Model.get_proxy` instead."""
-        if isinstance(data, cls):
-            return data
         return cls(model, data, cleaned=cleaned)

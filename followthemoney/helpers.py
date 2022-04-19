@@ -12,14 +12,14 @@ from mimetypes import guess_extension
 from itertools import product
 
 from followthemoney.types import registry
-from followthemoney.proxy import EntityProxy
+from followthemoney.proxy import E
 from followthemoney.util import join_text
 
 PROV_MIN_DATES = ("createdAt", "authoredAt", "publishedAt")
 PROV_MAX_DATES = ("modifiedAt", "retrievedAt")
 
 
-def remove_checksums(proxy: EntityProxy) -> EntityProxy:
+def remove_checksums(proxy: E) -> E:
     """When accepting entities via a web API, it would consistute
     a security risk to allow a user to submit checksum-type properties.
     These can be traded in for access to said files if they exist in the
@@ -31,7 +31,7 @@ def remove_checksums(proxy: EntityProxy) -> EntityProxy:
     return proxy
 
 
-def simplify_provenance(proxy: EntityProxy) -> EntityProxy:
+def simplify_provenance(proxy: E) -> E:
     """If there are multiple dates given for some of the provenance
     fields, we can logically conclude which one is the most meaningful."""
     for prop_name in PROV_MAX_DATES:
@@ -46,7 +46,7 @@ def simplify_provenance(proxy: EntityProxy) -> EntityProxy:
 
 
 def entity_filename(
-    proxy: EntityProxy, base_name: Optional[str] = None, extension: Optional[str] = None
+    proxy: E, base_name: Optional[str] = None, extension: Optional[str] = None
 ) -> Optional[str]:
     """Derive a safe filename for the given entity."""
     if proxy.schema.is_a("Document"):
@@ -68,7 +68,7 @@ def entity_filename(
     return safe_filename(base_name, extension=extension)
 
 
-def name_entity(entity: EntityProxy) -> EntityProxy:
+def name_entity(entity: E) -> E:
     """If an entity has multiple names, pick the most central one
     and set all the others as aliases. This is awkward given that
     names are not special and may not always be the caption."""
@@ -83,7 +83,7 @@ def name_entity(entity: EntityProxy) -> EntityProxy:
     return entity
 
 
-def remove_prefix_dates(entity: EntityProxy) -> EntityProxy:
+def remove_prefix_dates(entity: E) -> E:
     """If an entity has multiple values for a date field, you may
     want to remove all those that are prefixes of others. For example,
     if a Person has both a birthDate of 1990 and of 1990-05-01, we'd
@@ -110,7 +110,7 @@ def remove_prefix_date_values(values: Iterable[str]) -> List[str]:
     return kept
 
 
-def inline_names(entity: EntityProxy, related: EntityProxy) -> None:
+def inline_names(entity: E, related: E) -> None:
     """Attempt to solve a weird UI problem. Imagine we are showing a list of
     payments between a sender and a beneficiary to a user. They may now conduct
     a search for a term present in the sender or recipient name, but there will
@@ -124,7 +124,7 @@ def inline_names(entity: EntityProxy, related: EntityProxy) -> None:
         entity.add(prop, related.get_type_values(registry.name))
 
 
-def combine_names(entity: EntityProxy) -> EntityProxy:
+def combine_names(entity: E) -> E:
     """This function will try to build names from name parts provided as part
     of a person entity. This is of course impossible to do culturally correctly
     for the whole planet at once, so it should be mostly used for internal-facing

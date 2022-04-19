@@ -1,5 +1,4 @@
 import math
-import warnings
 import itertools
 import fingerprints
 from fuzzywuzzy import fuzz  # type: ignore
