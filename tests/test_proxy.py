@@ -2,7 +2,6 @@ from pytest import raises
 from unittest import TestCase
 from followthemoney.exc import InvalidData
 
-
 from followthemoney import model
 from followthemoney.types import registry
 from followthemoney.proxy import EntityProxy

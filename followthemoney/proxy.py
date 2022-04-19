@@ -9,6 +9,7 @@ from typing import (
     Set,
     Tuple,
     Union,
+    Type,
     TypeVar,
     cast,
 )
@@ -456,7 +457,7 @@ class EntityProxy(object):
 
     @classmethod
     def from_dict(
-        cls: type[E],
+        cls: Type[E],
         model: "Model",
         data: Dict[str, Any],
         cleaned: bool = True,
