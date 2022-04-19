@@ -13,7 +13,7 @@ from followthemoney.types.common import PropertyType
 from followthemoney.schema import Schema
 from followthemoney.proxy import EntityProxy
 from followthemoney.property import Property
-from followthemoney.exc import InvalidData, InvalidModel
+from followthemoney.exc import InvalidModel
 
 log = logging.getLogger(__name__)
 
