@@ -5,18 +5,17 @@ Trip:
     - Event
   matchable: false
   caption:
-    - startLocation
+    - name
     - endLocation
-    - vehicle
-    - startDate
-    - endDate
+    - startLocation
   required:
     - name
-    - startLocation
     - endLocation
+    - startLocation
   featured:
-    - startLocation
+    - name
     - endLocation
+    - startLocation
     - vehicle
     - startDate
     - endDate
