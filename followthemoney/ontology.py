@@ -1,6 +1,6 @@
 import sys
 from datetime import datetime
-from rdflib import Graph, URIRef, Literal  # type: ignore
+from rdflib import Graph, URIRef, Literal
 from rdflib.namespace import OWL, DCTERMS, RDF, RDFS, XSD  # type: ignore
 
 from followthemoney import model

@@ -23,10 +23,10 @@ index look up of each ID first. It can also be generated on the client or
 the server without compromising isolation.
 """
 import hmac
-from typing import Any, Optional, Tuple, Union
+from typing import Any, Optional, Tuple, Union, TypeVar
 
 from followthemoney.types import registry
-from followthemoney.proxy import EntityProxy
+from followthemoney.proxy import E
 from followthemoney.util import key_bytes, get_entity_id
 
 
@@ -91,7 +91,7 @@ class Namespace(object):
             return False
         return hmac.compare_digest(digest, signature)
 
-    def apply(self, proxy: EntityProxy, shallow: bool = False) -> EntityProxy:
+    def apply(self, proxy: E, shallow: bool = False) -> E:
         """Rewrite an entity proxy so all IDs mentioned are limited to
         the namespace."""
         signed = proxy.clone()
@@ -101,8 +101,9 @@ class Namespace(object):
                 if prop.type != registry.entity:
                     continue
                 for value in signed.pop(prop):
-                    value = get_entity_id(value)
-                    signed.add(prop, self.sign(value))
+                    entity_id = get_entity_id(value)
+                    if entity_id is not None:
+                        signed.add(prop, self.sign(entity_id))
         return signed
 
     @classmethod

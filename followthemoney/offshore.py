@@ -1,5 +1,4 @@
-from followthemoney.types import registry
-from followthemoney.proxy import EntityProxy
+from followthemoney.proxy import E
 
 # Derived from: https://fsi.taxjustice.net/en/introduction/fsi-results
 OFFSHORE_COUNTRIES = set(
@@ -37,7 +36,7 @@ OFFSHORE_COUNTRIES = set(
 )
 
 
-def offshore_from_jurisdiction(proxy: EntityProxy) -> EntityProxy:
+def offshore_from_jurisdiction(proxy: E) -> E:
     """Tag organizations linked to a well-known offshore jurisdiction as
     offshores automatically. Complete generalization, use only in experiments."""
     if not proxy.schema.is_a("Organization"):

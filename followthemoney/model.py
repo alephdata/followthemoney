@@ -1,6 +1,6 @@
 import os
-from typing import Any, Dict, Generator, Iterator, Optional, Set, TypedDict, Union
 import yaml
+from typing import Any, Dict, Generator, Iterator, Optional, Set, TypedDict, Union
 
 from followthemoney.types import registry
 from followthemoney.types.common import PropertyType, PropertyTypeToDict
@@ -137,6 +137,8 @@ class Model(object):
         dictionary. If ``cleaned`` is disabled, all property values are
         fully re-validated and normalised. Use this if handling input data
         from an untrusted source."""
+        if isinstance(data, EntityProxy):
+            return data
         return EntityProxy.from_dict(self, data, cleaned=cleaned)
 
     def to_dict(self) -> ModelToDict:
