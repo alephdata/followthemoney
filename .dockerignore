@@ -7,4 +7,3 @@ coverage-report
 .vscode
 followthemoney.egg-info
 .tx
-enrich/followthemoney_enrich.egg-info
