@@ -16,8 +16,7 @@ ENV LANG='en_US.UTF-8'
 
 RUN pip3 install -q --no-cache-dir -U pip setuptools six psycopg2-binary 
 COPY . /opt/followthemoney
-RUN pip3 install -q --no-cache-dir -e /opt/followthemoney \
-    && pip3 install -q --no-cache-dir -e /opt/followthemoney/enrich
+RUN pip3 install -q --no-cache-dir -e /opt/followthemoney
 WORKDIR /opt/followthemoney/docs
 
 CMD ftm
