@@ -5,6 +5,7 @@ Trip:
     - Event
   matchable: false
   caption:
+    - name
     - startLocation
     - endLocation
     - vehicle
