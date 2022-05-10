@@ -7,7 +7,7 @@ from banal import keys_values, as_bool
 from followthemoney.helpers import inline_names
 from followthemoney.exc import InvalidMapping
 from followthemoney.proxy import EntityProxy
-from followthemoney.util import get_entity_id, sanitize_text
+from followthemoney.util import get_entity_id, import_method, sanitize_text
 from followthemoney.property import Property
 from followthemoney.mapping.source import Record
 
@@ -32,6 +32,7 @@ class PropertyMapping(object):
         "literals",
         "template",
         "replacements",
+        "apply_func",
     )
 
     FORMAT_PATTERN = re.compile("{{([^(}})]*)}}")
@@ -59,6 +60,13 @@ class PropertyMapping(object):
             for ref in self.FORMAT_PATTERN.findall(self.template):
                 self.refs.append(ref)
                 self.replacements["{{%s}}" % ref] = ref
+
+        self.apply_func = sanitize_text(data.pop("apply_func", None))
+        if self.apply_func is not None:
+            try:
+                self.apply_func = import_method(self.apply_func)
+            except ImportError:
+                raise InvalidMapping("Apply func for [%r] is invalid" % self.prop)
 
     def bind(self) -> None:
         if self.prop.stub:
@@ -124,6 +132,9 @@ class PropertyMapping(object):
             for value in values:
                 splote.extend(value.split(self.split))
             values = splote
+
+        if self.apply_func is not None:
+            values = [self.apply_func(v) for v in values]
 
         for value in values:
             proxy.unsafe_add(self.prop, value, fuzzy=self.fuzzy, format=self.format)

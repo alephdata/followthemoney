@@ -1,11 +1,12 @@
 import os
 import logging
 from hashlib import sha1
+from importlib import import_module
 from babel import Locale  # type: ignore
 from gettext import translation
 
 from threading import local
-from typing import cast, Dict, Any, List, Optional, TypeVar, Union, Sequence
+from typing import cast, Callable, Dict, Any, List, Optional, TypeVar, Union, Sequence
 from normality import stringify
 from normality.cleaning import compose_nfc
 from normality.cleaning import remove_unsafe_chars
@@ -149,3 +150,12 @@ def shortest(*texts: str) -> str:
 
 def longest(*texts: str) -> str:
     return max(texts, key=len)
+
+
+def import_method(method_name: str) -> Callable:
+    sep = "."
+    if ":" in method_name:
+        sep = ":"
+    package, method = method_name.rsplit(sep, 1)
+    module = import_module(package)
+    return getattr(module, method)
