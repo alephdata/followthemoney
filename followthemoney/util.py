@@ -1,16 +1,16 @@
-import os
 import logging
-from hashlib import sha1
-from babel import Locale
+import os
 from gettext import translation
-
+from hashlib import sha1
+from importlib import import_module
 from threading import local
-from typing import cast, Dict, Any, List, Optional, TypeVar, Union, Sequence
+from typing import Any, Callable, Dict, List, Optional, Sequence, TypeVar, Union, cast
+
+from babel import Locale  # type: ignore
+from banal import ensure_list, is_mapping, unique_list
 from normality import stringify
-from normality.cleaning import compose_nfc
-from normality.cleaning import remove_unsafe_chars
+from normality.cleaning import compose_nfc, remove_unsafe_chars
 from normality.encoding import DEFAULT_ENCODING
-from banal import is_mapping, unique_list, ensure_list
 
 MEGABYTE = 1024 * 1024
 DEFAULT_LOCALE = "en"
@@ -158,3 +158,12 @@ def shortest(*texts: str) -> str:
 
 def longest(*texts: str) -> str:
     return max(texts, key=len)
+
+
+def import_method(method_name: str) -> Callable:
+    sep = "."
+    if ":" in method_name:
+        sep = ":"
+    package, method = method_name.rsplit(sep, 1)
+    module = import_module(package)
+    return getattr(module, method)

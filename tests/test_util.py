@@ -1,5 +1,5 @@
 from unittest import TestCase
-from followthemoney.util import merge_context, join_text
+from followthemoney.util import merge_context, join_text, import_method
 
 
 class UtilTestCase(TestCase):
@@ -29,3 +29,11 @@ class UtilTestCase(TestCase):
         assert text == "hello 3"
         text = join_text("hello", None, 3, sep="-")
         assert text == "hello-3"
+
+    def test_import_method(self):
+        from datetime import date
+
+        self.assertEqual(date, import_method("datetime.date"))
+        self.assertEqual(
+            import_method, import_method("followthemoney.util:import_method")
+        )
