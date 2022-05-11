@@ -14,3 +14,11 @@ Image:
   caption:
     - fileName
     - title
+  properties:
+    pictured:
+      label: "Pictured"
+      reverse:
+        name: images
+        label: "Images"
+      type: entity
+      range: Person
