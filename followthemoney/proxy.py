@@ -88,7 +88,8 @@ class EntityProxy(object):
             if not cleaned:
                 self.add(key, value, cleaned=cleaned, quiet=True)
             else:
-                values = set(value)
+                filtered_value = [item for item in value if type(item) != dict]
+                values = set(filtered_value)
                 self._properties[key] = values
                 self._size += sum([len(v) for v in values])
 
@@ -368,6 +369,7 @@ class EntityProxy(object):
         for prop in self.schema.caption:
             for value in self.get(prop):
                 return value
+
         return self.schema.label
 
     @property

@@ -6,7 +6,6 @@ from followthemoney import model
 from followthemoney.types import registry
 from followthemoney.proxy import EntityProxy
 
-
 ENTITY = {
     "id": "test",
     "schema": "Person",
@@ -18,6 +17,29 @@ ENTITY = {
         "phone": ["+12025557612"],
         "email": ["info@ralphtester.me"],
         "topics": ["role.spy"],
+    },
+}
+
+TRIP_ENTITY = {
+    "id": "test",
+    "schema": "Trip",
+    "properties": {
+        "startDate": ["1972-05-01"],
+    },
+}
+
+COMPLEX_TRIP_ENTITY = {
+    "id": "test",
+    "schema": "Trip",
+    "properties": {
+        "startDate": ["1972-05-01"],
+        "startLocation": [
+            {
+                "id": "mergh",
+                "schema": "Address",
+                "properties": {"full": ["some address"]},
+            }
+        ],
     },
 }
 
@@ -226,3 +248,22 @@ class ProxyTestCase(TestCase):
 
         proxy = model.make_entity("Person")
         assert 0 == len(list(proxy.triples()))
+
+    def test_no_caption(self):
+        proxy = EntityProxy.from_dict(model, TRIP_ENTITY)
+        proxy.merge(proxy)
+
+        assert proxy.caption == "Trip"
+
+    def test_simple_caption(self):
+        proxy = EntityProxy.from_dict(model, TRIP_ENTITY)
+        proxy.merge(proxy)
+        proxy.add("name", "holiday")
+
+        assert proxy.caption == "holiday"
+
+    def test_entity_caption(self):
+        proxy = EntityProxy.from_dict(model, COMPLEX_TRIP_ENTITY)
+        proxy.merge(proxy)
+
+        assert proxy.caption == "Trip"
