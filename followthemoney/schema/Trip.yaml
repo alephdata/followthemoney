@@ -6,11 +6,6 @@ Trip:
   matchable: false
   caption:
     - name
-    - startLocation
-    - endLocation
-    - vehicle
-    - startDate
-    - endDate
   required:
     - name
     - startLocation
