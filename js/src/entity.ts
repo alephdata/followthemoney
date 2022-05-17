@@ -116,11 +116,9 @@ export class Entity {
   getCaption(): string {
     for (const property of this.schema.caption) {
       for (const value of this.getProperty(property)) {
-        if (typeof value !== "string" && typeof value.getCaption === "function") {
-          return value.getCaption()
+        if (typeof value === "string") {
+          return value as string
         }
-
-        return value as string
       }
     }
     return this.schema.label

@@ -29,7 +29,6 @@ const tripEntity = {
   id: 'd902de2d07a1062c7da8187e831010086de8c26',
   schema: 'Trip',
   properties: {
-    name: ['Paris or bust']
   }
 }
 const addressEntity = {
@@ -46,7 +45,6 @@ describe('ftm/Entity class', () => {
   const person = model.getEntity(otherEntity)
   const passport = model.getEntity(passportEntity)
   const trip = model.getEntity(tripEntity)
-  //const address = model.getEntity(addressEntity)
 
   describe('entity', () => {
     it('should return a an array', function () {
@@ -82,9 +80,9 @@ describe('ftm/Entity class', () => {
     it('can get a text caption', function () {
       expect(person.getCaption()).toBe("Karl Marx")
     })
-    it('will recursively look for a caption', function () {
+    it('will ignore captions that are entities', function () {
       trip.setProperty('startLocation', addressEntity)
-      expect(trip.getCaption()).toBe('Full Address')
+      expect(trip.getCaption()).toBe('Trip')
     })
     it('can get a single property value', function () {
       expect(person.getFirst('name')).toBe("Karl Marx")
