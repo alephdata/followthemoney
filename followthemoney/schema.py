@@ -212,8 +212,11 @@ class Schema:
                 raise InvalidModel("Missing featured property: %s" % featured)
 
         for caption in self.caption:
-            if self.get(caption) is None:
+            prop_ = self.get(caption)
+            if prop_ is None:
                 raise InvalidModel("Missing caption property: %s" % caption)
+            if prop_.type == registry.entity:
+                raise InvalidModel("Caption cannot be entity: %s" % caption)
 
         for required in self.required:
             if self.get(required) is None:
