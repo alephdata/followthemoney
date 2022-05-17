@@ -5073,11 +5073,7 @@
     },
     "Trip": {
       "caption": [
-        "startLocation",
-        "endLocation",
-        "vehicle",
-        "startDate",
-        "endDate"
+        "name"
       ],
       "extends": [
         "Event"
