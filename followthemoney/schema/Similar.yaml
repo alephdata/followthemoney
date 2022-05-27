@@ -7,14 +7,12 @@ Similar:
   matchable: false
   generated: true
   featured:
-    - title
-    - fileName
-    - mimeType
-    - parent
+    - candidate
+    - match
+    - confidenceScore
   caption:
-    - title
-    - name
-    - fileName
+    - confidenceScore
+    - criteria
   properties:
     candidate:
       label: "Candidate"
