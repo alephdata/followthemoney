@@ -30,8 +30,8 @@ Similar:
       reverse:
         name: matchSimilars
         label: "Similar as this"
-    score:
-      label: Score
+    confidenceScore:
+      label: Confidence score
       type: number
     criteria:
       label: Matching criteria
