@@ -1,18 +1,22 @@
 version: 2
 updates:
   - package-ecosystem: pip
+    open-pull-requests-limit: 99
     directory: "/"
     schedule:
       interval: weekly
   - package-ecosystem: npm
+    open-pull-requests-limit: 99
     directory: "/js"
     schedule:
       interval: weekly
   - package-ecosystem: docker
+    open-pull-requests-limit: 99
     directory: "/"
     schedule:
       interval: weekly
   - package-ecosystem: "github-actions"
+    open-pull-requests-limit: 99
     directory: "/"
     schedule:
       interval: weekly
