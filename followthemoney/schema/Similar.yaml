@@ -1,0 +1,37 @@
+Similar:
+  label: Similar
+  plural: Similar entities
+  description: >
+    A link between two entities that are presumed to be the same, e.g. as the
+    outcome of a probabilistic record linkage process.
+  matchable: false
+  generated: true
+  featured:
+    - candidate
+    - match
+    - confidenceScore
+  caption:
+    - confidenceScore
+    - criteria
+  properties:
+    candidate:
+      label: "Candidate"
+      type: entity
+      range: Thing
+      reverse:
+        name: candidateSimilars
+        label: "Similar to this"
+    match:
+      label: "Match"
+      type: entity
+      range: Thing
+      reverse:
+        name: matchSimilars
+        label: "Similar as this"
+    confidenceScore:
+      label: Confidence score
+      type: number
+    criteria:
+      label: Matching criteria
+    matcher:
+      label: Matcher
