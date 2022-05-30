@@ -88,7 +88,7 @@ def check_person_cutoff(
     entity: E,
     death_cutoff: datetime = datetime(2000, 1, 1),
     birth_cutoff: Optional[datetime] = None,
-):
+) -> bool:
     """Check if a person has been dead long enough to not be relevant for
     investigations any more."""
     if not entity.schema.is_a("Person"):
