@@ -10,6 +10,7 @@ from typing import Iterable, List, Optional
 from normality import safe_filename
 from mimetypes import guess_extension
 from itertools import product
+from datetime import datetime, timedelta
 
 from followthemoney.types import registry
 from followthemoney.proxy import E
@@ -81,6 +82,28 @@ def name_entity(entity: E) -> E:
             entity.set("name", name)
             entity.add("alias", names)
     return entity
+
+
+def check_person_cutoff(
+    entity: E,
+    death_cutoff: datetime = datetime(2000, 1, 1),
+    birth_cutoff: Optional[datetime] = None,
+) -> bool:
+    """Check if a person has been dead long enough to not be relevant for
+    investigations any more."""
+    if not entity.schema.is_a("Person"):
+        return False
+    death_dates = entity.get("deathDate", quiet=True)
+    death_cutoff_ = death_cutoff.isoformat()
+    if len(death_dates) and max(death_dates) < death_cutoff_:
+        return True
+    birth_dates = entity.get("birthDate", quiet=True)
+    if birth_cutoff is None:
+        birth_cutoff = death_cutoff - timedelta(days=100 * 365)
+    birth_cutoff_ = birth_cutoff.isoformat()
+    if len(birth_dates) and min(birth_dates) < birth_cutoff_:
+        return True
+    return False
 
 
 def remove_prefix_dates(entity: E) -> E:
