@@ -1,11 +1,10 @@
-import resolve from 'rollup-plugin-node-resolve'
-import nodeResolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import nodeResolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import ts from 'rollup-plugin-ts';
-import json from 'rollup-plugin-json'
-
-const pkg = require('./package.json')
+import json from '@rollup/plugin-json'
+import pkg from './package.json' assert {type: 'json'}
 
 const libraryName = 'followthemoney'
 
