@@ -24,7 +24,7 @@
     "prebuild": "rimraf dist && npm run build:icons",
     "build:icons": "node scripts/buildIcons.js",
     "build": "tsc --module commonjs && rollup -c rollup.config.mjs",
-    "start": "npm run build:icons && rollup -c rollup.config.ts -w",
+    "start": "npm run build:icons && rollup -c rollup.config.mjs -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache"
