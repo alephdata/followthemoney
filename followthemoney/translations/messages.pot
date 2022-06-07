@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-19 22:22+0200\n"
+"POT-Creation-Date: 2022-06-07 15:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,11 +39,11 @@ msgstr ""
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:339
+#: followthemoney/schema.py:342
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:343
+#: followthemoney/schema.py:346
 msgid "Entity validation failed"
 msgstr ""
 
@@ -1940,6 +1940,7 @@ msgid "Image"
 msgstr ""
 
 #. Image.plural
+#. Image.properties.pictured.reverse.label
 #: followthemoney/schema/Image.yaml
 msgid "Images"
 msgstr ""
@@ -1947,6 +1948,11 @@ msgstr ""
 #. Image.description
 #: followthemoney/schema/Image.yaml
 msgid "An image file.\n"
+msgstr ""
+
+#. Image.properties.pictured.label
+#: followthemoney/schema/Image.yaml
+msgid "Pictured"
 msgstr ""
 
 #. Interest.label
@@ -2195,6 +2201,16 @@ msgstr ""
 #. LegalEntity.properties.innCode.description
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Russian company ID"
+msgstr ""
+
+#. LegalEntity.properties.leiCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "LEI"
+msgstr ""
+
+#. LegalEntity.properties.leiCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Legal Entity Identifier"
 msgstr ""
 
 #. LegalEntity.properties.dunsCode.label
@@ -3018,6 +3034,58 @@ msgstr ""
 #. Security.properties.collateral.label
 #: followthemoney/schema/Security.yaml
 msgid "Collateral"
+msgstr ""
+
+#. Similar.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar"
+msgstr ""
+
+#. Similar.plural
+#: followthemoney/schema/Similar.yaml
+msgid "Similar entities"
+msgstr ""
+
+#. Similar.description
+#: followthemoney/schema/Similar.yaml
+msgid ""
+"A link between two entities that are presumed to be the same, e.g. as the"
+" outcome of a probabilistic record linkage process.\n"
+msgstr ""
+
+#. Similar.properties.candidate.label
+#: followthemoney/schema/Similar.yaml
+msgid "Candidate"
+msgstr ""
+
+#. Similar.properties.candidate.reverse.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar to this"
+msgstr ""
+
+#. Similar.properties.match.label
+#: followthemoney/schema/Similar.yaml
+msgid "Match"
+msgstr ""
+
+#. Similar.properties.match.reverse.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar as this"
+msgstr ""
+
+#. Similar.properties.confidenceScore.label
+#: followthemoney/schema/Similar.yaml
+msgid "Confidence score"
+msgstr ""
+
+#. Similar.properties.criteria.label
+#: followthemoney/schema/Similar.yaml
+msgid "Matching criteria"
+msgstr ""
+
+#. Similar.properties.matcher.label
+#: followthemoney/schema/Similar.yaml
+msgid "Matcher"
 msgstr ""
 
 #. Succession.label
