@@ -2854,6 +2854,14 @@
           "qname": "LegalEntity:legalForm",
           "type": "string"
         },
+        "leiCode": {
+          "description": "Legal Entity Identifier",
+          "label": "LEI",
+          "matchable": true,
+          "name": "leiCode",
+          "qname": "LegalEntity:leiCode",
+          "type": "identifier"
+        },
         "mainCountry": {
           "description": "Primary country of this entity",
           "label": "Country of origin",
@@ -4655,6 +4663,63 @@
         "Value"
       ]
     },
+    "Similar": {
+      "caption": [
+        "confidenceScore",
+        "criteria"
+      ],
+      "description": "A link between two entities that are presumed to be the same, e.g. as the outcome of a probabilistic record linkage process.\n",
+      "extends": [],
+      "featured": [
+        "candidate",
+        "match",
+        "confidenceScore"
+      ],
+      "generated": true,
+      "label": "Similar",
+      "plural": "Similar entities",
+      "properties": {
+        "candidate": {
+          "label": "Candidate",
+          "matchable": true,
+          "name": "candidate",
+          "qname": "Similar:candidate",
+          "range": "Thing",
+          "reverse": "candidateSimilars",
+          "type": "entity"
+        },
+        "confidenceScore": {
+          "label": "Confidence score",
+          "name": "confidenceScore",
+          "qname": "Similar:confidenceScore",
+          "type": "number"
+        },
+        "criteria": {
+          "label": "Matching criteria",
+          "name": "criteria",
+          "qname": "Similar:criteria",
+          "type": "string"
+        },
+        "match": {
+          "label": "Match",
+          "matchable": true,
+          "name": "match",
+          "qname": "Similar:match",
+          "range": "Thing",
+          "reverse": "matchSimilars",
+          "type": "entity"
+        },
+        "matcher": {
+          "label": "Matcher",
+          "name": "matcher",
+          "qname": "Similar:matcher",
+          "type": "string"
+        }
+      },
+      "schemata": [
+        "Similar"
+      ]
+    },
     "Succession": {
       "description": "Two entities that legally succeed each other.",
       "edge": {
@@ -4874,6 +4939,16 @@
           "qname": "Thing:alias",
           "type": "name"
         },
+        "candidateSimilars": {
+          "label": "Similar to this",
+          "matchable": true,
+          "name": "candidateSimilars",
+          "qname": "Thing:candidateSimilars",
+          "range": "Similar",
+          "reverse": "candidate",
+          "stub": true,
+          "type": "entity"
+        },
         "country": {
           "label": "Country",
           "matchable": true,
@@ -4925,6 +5000,16 @@
           "name": "keywords",
           "qname": "Thing:keywords",
           "type": "string"
+        },
+        "matchSimilars": {
+          "label": "Similar as this",
+          "matchable": true,
+          "name": "matchSimilars",
+          "qname": "Thing:matchSimilars",
+          "range": "Similar",
+          "reverse": "match",
+          "stub": true,
+          "type": "entity"
         },
         "modifiedAt": {
           "label": "Modified on",
@@ -5073,14 +5158,16 @@
     },
     "Trip": {
       "caption": [
-        "name"
+        "name",
+        "startDate",
+        "endDate"
       ],
       "extends": [
         "Event"
       ],
       "featured": [
-        "startLocation",
         "endLocation",
+        "startLocation",
         "vehicle",
         "startDate",
         "endDate"
@@ -5118,8 +5205,8 @@
       },
       "required": [
         "name",
-        "startLocation",
-        "endLocation"
+        "endLocation",
+        "startLocation"
       ],
       "schemata": [
         "Analyzable",

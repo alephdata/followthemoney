@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-19 22:20+0200\n"
+"POT-Creation-Date: 2022-06-09 08:48+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: jen occrp, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -45,11 +45,11 @@ msgstr "Неизвестный параметр (1%s): 1%s"
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/schema.py:339
+#: followthemoney/schema.py:342
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:343
+#: followthemoney/schema.py:346
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
@@ -1978,6 +1978,7 @@ msgid "Image"
 msgstr "Изображение"
 
 #. Image.plural
+#. Image.properties.pictured.reverse.label
 #: followthemoney/schema/Image.yaml
 msgid "Images"
 msgstr "Изображения"
@@ -1986,6 +1987,11 @@ msgstr "Изображения"
 #: followthemoney/schema/Image.yaml
 msgid "An image file.\n"
 msgstr "Файл с изображением.\n"
+
+#. Image.properties.pictured.label
+#: followthemoney/schema/Image.yaml
+msgid "Pictured"
+msgstr "На изображении"
 
 #. Interest.label
 #: followthemoney/schema/Interest.yaml
@@ -2236,6 +2242,16 @@ msgstr "ИНН"
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Russian company ID"
 msgstr "Идентификационный номер налогоплательщика"
+
+#. LegalEntity.properties.leiCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "LEI"
+msgstr "LEI"
+
+#. LegalEntity.properties.leiCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Legal Entity Identifier"
+msgstr "Идентификатор юридического лица"
 
 #. LegalEntity.properties.dunsCode.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -3070,6 +3086,60 @@ msgstr "Дата размещения"
 #: followthemoney/schema/Security.yaml
 msgid "Collateral"
 msgstr "Долговые обязательства"
+
+#. Similar.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar"
+msgstr "Совпадения"
+
+#. Similar.plural
+#: followthemoney/schema/Similar.yaml
+msgid "Similar entities"
+msgstr "Схожие сущности"
+
+#. Similar.description
+#: followthemoney/schema/Similar.yaml
+msgid ""
+"A link between two entities that are presumed to be the same, e.g. as the "
+"outcome of a probabilistic record linkage process.\n"
+msgstr ""
+"Связь между двумя предположительно тождественными сущностями, например, в "
+"результате вероятностного сопоставления записей.\n"
+
+#. Similar.properties.candidate.label
+#: followthemoney/schema/Similar.yaml
+msgid "Candidate"
+msgstr "Кандидат"
+
+#. Similar.properties.candidate.reverse.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar to this"
+msgstr "Похожие"
+
+#. Similar.properties.match.label
+#: followthemoney/schema/Similar.yaml
+msgid "Match"
+msgstr "Совпадение"
+
+#. Similar.properties.match.reverse.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar as this"
+msgstr "Похожие"
+
+#. Similar.properties.confidenceScore.label
+#: followthemoney/schema/Similar.yaml
+msgid "Confidence score"
+msgstr "Оценка вероятности"
+
+#. Similar.properties.criteria.label
+#: followthemoney/schema/Similar.yaml
+msgid "Matching criteria"
+msgstr "Критерии соответствия"
+
+#. Similar.properties.matcher.label
+#: followthemoney/schema/Similar.yaml
+msgid "Matcher"
+msgstr "Матчер"
 
 #. Succession.label
 #: followthemoney/schema/Succession.yaml
