@@ -11,10 +11,10 @@ from followthemoney.cli.util import write_object, load_mapping_file
 
 
 @cli.command("map", help="Execute a mapping file and emit objects")
-@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
+@click.option("-o", "--outfile", type=click.File("w"), default="-")
 @click.option(
     "--sign/--no-sign", is_flag=True, default=True, help="Apply HMAC signature"
-)  # noqa
+)
 @click.argument("mapping_yaml", type=click.Path(exists=True))
 def run_mapping(outfile, mapping_yaml, sign=True):
     config = load_mapping_file(mapping_yaml)
@@ -34,11 +34,11 @@ def run_mapping(outfile, mapping_yaml, sign=True):
 
 
 @cli.command("map-csv", help="Map CSV data from stdin and emit objects")
-@click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
-@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
+@click.option("-i", "--infile", type=click.File("r"), default="-")
+@click.option("-o", "--outfile", type=click.File("w"), default="-")
 @click.option(
     "--sign/--no-sign", is_flag=True, default=True, help="Apply HMAC signature"
-)  # noqa
+)
 @click.argument("mapping_yaml", type=click.Path(exists=True))
 def stream_mapping(infile, outfile, mapping_yaml, sign=True):
     queries: List[Tuple[str, QueryMapping]] = []
