@@ -1,13 +1,15 @@
 import logging
 from io import BytesIO
-from typing import List, Optional
+from typing import Dict, List, Optional
 from openpyxl import Workbook  # type: ignore
 from openpyxl.cell import WriteOnlyCell  # type: ignore
 from openpyxl.styles import Font, PatternFill  # type: ignore
+from openpyxl.worksheet.worksheet import Worksheet  # type: ignore
 from openpyxl.utils.exceptions import IllegalCharacterError  # type: ignore
 
 from followthemoney.export.common import Exporter
 from followthemoney.proxy import E
+from followthemoney.schema import Schema
 from followthemoney.util import PathLike, sanitize_text
 
 log = logging.getLogger(__name__)
@@ -19,24 +21,24 @@ class ExcelWriter(object):
         start_color="982022", end_color="982022", fill_type="solid"
     )
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.workbook = Workbook(write_only=True)
 
-    def make_sheet(self, title, headers):
+    def make_sheet(self, title: str, headers: List[str]) -> Worksheet:
         sheet = self.workbook.create_sheet(title=title)
         sheet.freeze_panes = "A2"
         sheet.sheet_properties.filterMode = True
         cells = []
         for header in headers:
-            header = sanitize_text(header)
-            cell = WriteOnlyCell(sheet, value=header)
+            header_ = sanitize_text(header)
+            cell = WriteOnlyCell(sheet, value=header_)
             cell.font = self.HEADER_FONT
             cell.fill = self.HEADER_FILL
             cells.append(cell)
         sheet.append(cells)
         return sheet
 
-    def get_bytesio(self):
+    def get_bytesio(self) -> BytesIO:
         buffer = BytesIO()
         self.workbook.save(buffer)
         buffer.seek(0)
@@ -49,7 +51,7 @@ class ExcelExporter(ExcelWriter, Exporter):
         Exporter.__init__(self)
         self.file_path = file_path
         self.extra = extra or []
-        self.sheets = {}
+        self.sheets: Dict[Schema, Worksheet] = {}
 
     def write(self, proxy: E, extra: Optional[List[str]] = None) -> None:
         if proxy.schema not in self.sheets:

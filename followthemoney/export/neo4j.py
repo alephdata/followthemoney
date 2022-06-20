@@ -1,11 +1,12 @@
 import os
 import json
 import logging
-from typing import Any, Dict, Iterable, Set, TextIO
+from typing import Any, Dict, Iterable, List, Optional, Set, TextIO
 import stringcase  # type: ignore
 
 from followthemoney.export.csv import CSVMixin
 from followthemoney.export.graph import GraphExporter, DEFAULT_EDGE_TYPES
+from followthemoney.util import PathLike
 
 log = logging.getLogger(__name__)
 NEO4J_ADMIN_PATH = os.environ.get("NEO4J_ADMIN_PATH", "neo4j-admin")
@@ -13,7 +14,12 @@ NEO4J_DATABASE_NAME = os.environ.get("NEO4J_DATABASE_NAME", "graph.db")
 
 
 class Neo4JCSVExporter(CSVMixin, GraphExporter):
-    def __init__(self, directory, extra=None, edge_types=DEFAULT_EDGE_TYPES):
+    def __init__(
+        self,
+        directory: PathLike,
+        extra: Optional[List[str]] = None,
+        edge_types: Iterable[str] = DEFAULT_EDGE_TYPES,
+    ) -> None:
         super(Neo4JCSVExporter, self).__init__(edge_types=edge_types)
         self._configure(directory, extra=extra)
 

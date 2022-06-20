@@ -11,7 +11,7 @@ from followthemoney.export.common import Exporter
 DEFAULT_EDGE_TYPES = (registry.entity.name,)
 
 
-def edge_types():
+def edge_types() -> List[str]:
     return [t.name for t in registry.matchable if t is not None]
 
 
