@@ -15,7 +15,7 @@ def cli():
 
 
 @cli.command("dump-model", help="Export the current schema model")
-@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
+@click.option("-o", "--outfile", type=click.File("w"), default="-")
 def dump_model(outfile):
     outfile.write(json.dumps(model.to_dict(), indent=2, sort_keys=True))
 

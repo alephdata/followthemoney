@@ -2,27 +2,49 @@ import os
 import json
 import yaml
 import click
+import orjson
+from pathlib import Path
+from warnings import warn
+from typing import Any, BinaryIO, Generator, Optional, TextIO, Type
 from banal import is_mapping, is_listish, ensure_list
 
 from followthemoney import model
-from followthemoney.util import MEGABYTE
+from followthemoney.export.common import Exporter
+from followthemoney.proxy import E, EntityProxy
+from followthemoney.util import MEGABYTE, PathLike
 
 MAX_LINE = 200 * MEGABYTE
+InPath = click.Path(dir_okay=False, readable=True, path_type=Path, allow_dash=True)
+OutPath = click.Path(dir_okay=False, writable=True, path_type=Path, allow_dash=True)
 
 
-def write_object(stream, obj):
+def write_object(stream: TextIO, obj: Any) -> None:
+    warn("write_object() is deprecated.", DeprecationWarning, stacklevel=2)
     if hasattr(obj, "to_dict"):
         obj = obj.to_dict()
-    data = json.dumps(obj, sort_keys=True)
+    data = json.dumps(obj)
     stream.write(data + "\n")
 
 
-def _read_one(data, cleaned=True):
+def write_entity(fh: BinaryIO, entity: E) -> None:
+    data = entity.to_dict()
+    entity_id = data.pop("id")
+    assert entity_id is not None, data
+    sort_data = dict(id=entity_id)
+    sort_data.update(data)
+    out = orjson.dumps(sort_data, option=orjson.OPT_APPEND_NEWLINE)
+    fh.write(out)
+
+
+def _read_one(data: Any, cleaned: bool = True) -> Generator[EntityProxy, None, None]:
     if is_mapping(data) and "schema" in data:
         yield model.get_proxy(data, cleaned=cleaned)
 
 
-def read_entities(stream, cleaned=True, max_line=MAX_LINE):
+def read_entities(
+    stream: TextIO, cleaned: bool = True, max_line: int = MAX_LINE
+) -> Generator[EntityProxy, None, None]:
+    warn("read_entities() is deprecated.", DeprecationWarning, stacklevel=2)
     while True:
         line = stream.readline(max_line)
         if not line:
@@ -38,7 +60,9 @@ def read_entities(stream, cleaned=True, max_line=MAX_LINE):
             yield from _read_one(entity, cleaned=cleaned)
 
 
-def read_entity(stream, cleaned=True, max_line=MAX_LINE):
+def read_entity(
+    stream: TextIO, cleaned: bool = True, max_line: int = MAX_LINE
+) -> Optional[E]:
     line = stream.readline(max_line)
     if not line:
         return
@@ -48,12 +72,21 @@ def read_entity(stream, cleaned=True, max_line=MAX_LINE):
     return data
 
 
-def export_stream(exporter, stream):
+def path_entities(
+    path: PathLike,
+    entity_type: Type[E],
+    cleaned: bool = True,
+    max_line: int = MAX_LINE,
+) -> Generator[E, None, None]:
+    with open(path, "rb") as fh:
+        while line := fh.readline(max_line):
+            data = orjson.loads(line)
+            yield entity_type.from_dict(model, data, cleaned=cleaned)
+
+
+def export_stream(exporter: Exporter, path: Path) -> None:
     try:
-        while True:
-            entity = read_entity(stream)
-            if entity is None:
-                break
+        for entity in path_entities(path, EntityProxy):
             exporter.write(entity)
     except BrokenPipeError:
         raise click.Abort()
@@ -61,7 +94,7 @@ def export_stream(exporter, stream):
         exporter.finalize()
 
 
-def load_mapping_file(file_path):
+def load_mapping_file(file_path: PathLike) -> Any:
     """Load a YAML (or JSON) bulk load mapping file."""
     file_path = os.path.abspath(file_path)
     with open(file_path, "r") as fh:
@@ -69,7 +102,7 @@ def load_mapping_file(file_path):
     return resolve_includes(file_path, data)
 
 
-def resolve_includes(file_path, data):
+def resolve_includes(file_path: PathLike, data: Any) -> Any:
     """Handle include statements in the graph configuration file.
 
     This allows the YAML graph configuration to be broken into

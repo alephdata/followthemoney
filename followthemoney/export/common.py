@@ -1,3 +1,4 @@
+from pathlib import Path
 from followthemoney.types import registry
 
 
