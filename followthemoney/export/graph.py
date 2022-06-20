@@ -1,9 +1,10 @@
-from typing import List, TextIO
+from typing import List, Optional, TextIO
 import networkx as nx  # type: ignore
 from pprint import pprint  # noqa
 from networkx.readwrite.gexf import generate_gexf  # type: ignore
 
 from followthemoney.graph import Graph
+from followthemoney.proxy import E
 from followthemoney.types import registry
 from followthemoney.export.common import Exporter
 
@@ -30,15 +31,15 @@ class GraphExporter(Exporter):
                 attributes[prop.name] = prop.type.join(values)
         return attributes
 
-    def write(self, proxy, **kwargs):
+    def write(self, proxy: E, extra: Optional[List[str]] = None) -> None:
         self.graph.add(proxy)
-        self.write_graph(**kwargs)
+        self.write_graph()
 
     def finalize(self) -> None:
         self.finalize_graph()
         self.graph.flush()
 
-    def write_graph(self, **kwargs):
+    def write_graph(self) -> None:
         pass
 
     def finalize_graph(self) -> None:

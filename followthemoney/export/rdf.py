@@ -1,6 +1,6 @@
 import logging
 from typing import TextIO
-from rdflib import Graph  # type: ignore
+from rdflib import Graph
 
 from followthemoney.export.common import Exporter
 

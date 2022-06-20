@@ -1,6 +1,7 @@
 import os
 import json
 import logging
+from typing import Any, Dict, Iterable, Set, TextIO
 import stringcase  # type: ignore
 
 from followthemoney.export.csv import CSVMixin
@@ -109,12 +110,12 @@ class CypherGraphExporter(GraphExporter):
     # https://www.opencypher.org/
     # MATCH (n) DETACH DELETE n;
 
-    def __init__(self, fh, edge_types=DEFAULT_EDGE_TYPES):
+    def __init__(self, fh: TextIO, edge_types: Iterable[str] = DEFAULT_EDGE_TYPES):
         super(CypherGraphExporter, self).__init__(edge_types=edge_types)
         self.fh = fh
-        self.proxy_nodes = set()
+        self.proxy_nodes: Set[str] = set()
 
-    def _to_map(self, data):
+    def _to_map(self, data: Dict[str, Any]) -> str:
         values = []
         for key, value in data.items():
             if value:
@@ -122,7 +123,7 @@ class CypherGraphExporter(GraphExporter):
                 values.append(value)
         return ", ".join(values)
 
-    def write_graph(self):
+    def write_graph(self) -> None:
         """Export queries for each graph element."""
         for node in self.graph.iternodes():
             if node.value in self.proxy_nodes:

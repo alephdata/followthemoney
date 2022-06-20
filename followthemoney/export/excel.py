@@ -1,12 +1,14 @@
 import logging
 from io import BytesIO
+from typing import List, Optional
 from openpyxl import Workbook  # type: ignore
 from openpyxl.cell import WriteOnlyCell  # type: ignore
 from openpyxl.styles import Font, PatternFill  # type: ignore
 from openpyxl.utils.exceptions import IllegalCharacterError  # type: ignore
 
 from followthemoney.export.common import Exporter
-from followthemoney.util import sanitize_text
+from followthemoney.proxy import E
+from followthemoney.util import PathLike, sanitize_text
 
 log = logging.getLogger(__name__)
 
@@ -42,14 +44,14 @@ class ExcelWriter(object):
 
 
 class ExcelExporter(ExcelWriter, Exporter):
-    def __init__(self, file_path, extra=None):
+    def __init__(self, file_path: PathLike, extra: Optional[List[str]] = None):
         ExcelWriter.__init__(self)
         Exporter.__init__(self)
         self.file_path = file_path
         self.extra = extra or []
         self.sheets = {}
 
-    def write(self, proxy, extra=None, **kwargs):
+    def write(self, proxy: E, extra: Optional[List[str]] = None) -> None:
         if proxy.schema not in self.sheets:
             headers = ["ID"]
             headers.extend(self.extra)
@@ -67,5 +69,5 @@ class ExcelExporter(ExcelWriter, Exporter):
         except IllegalCharacterError as ice:
             log.error("Invalid text for Excel export: %s", ice)
 
-    def finalize(self):
+    def finalize(self) -> None:
         self.workbook.save(self.file_path)

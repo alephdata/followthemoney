@@ -1,7 +1,9 @@
 import csv
 from pathlib import Path
+from typing import List, Optional
 from banal import ensure_list
 
+from followthemoney.proxy import E
 from followthemoney.export.common import Exporter
 
 
@@ -48,7 +50,7 @@ class CSVExporter(Exporter, CSVMixin):
             headers.append(prop.name)
         writer.writerow(headers)
 
-    def write(self, proxy, extra=None):
+    def write(self, proxy: E, extra: Optional[List[str]] = None) -> None:
         writer = self._get_writer(proxy.schema)
         cells = [proxy.id]
         cells.extend(extra or [])
