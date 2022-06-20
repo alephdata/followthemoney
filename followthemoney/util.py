@@ -14,7 +14,10 @@ from banal import is_mapping, unique_list, ensure_list
 
 MEGABYTE = 1024 * 1024
 DEFAULT_LOCALE = "en"
-PathLike = Union[str, os.PathLike[str]]
+try:
+    PathLike = Union[str, os.PathLike[str]]
+except TypeError:
+    PathLike = Union[str, os.PathLike]  # type: ignore
 i18n_path = os.path.join(os.path.dirname(__file__), "translations")
 state = local()
 log = logging.getLogger(__name__)
