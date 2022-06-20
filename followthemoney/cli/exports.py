@@ -1,5 +1,5 @@
 import click
-from typing import List
+from typing import List, TextIO, Generator
 from pathlib import Path
 from contextlib import contextmanager
 
@@ -15,7 +15,7 @@ from followthemoney.export.neo4j import CypherGraphExporter
 
 
 @contextmanager
-def text_out(path: Path):
+def text_out(path: Path) -> Generator[TextIO, None, None]:
     if str(path) == "-":
         yield click.get_text_stream("stdout")
         return
@@ -32,7 +32,7 @@ def text_out(path: Path):
     default=".",
     help="output directory",
 )
-def export_csv(infile: Path, outdir: Path):
+def export_csv(infile: Path, outdir: Path) -> None:
     exporter = CSVExporter(outdir)
     export_stream(exporter, infile)
 
@@ -45,7 +45,7 @@ def export_csv(infile: Path, outdir: Path):
     type=click.Path(dir_okay=False, writable=True, path_type=Path),
     required=True,
 )
-def export_excel(infile: Path, outfile: Path):
+def export_excel(infile: Path, outfile: Path) -> None:
     exporter = ExcelExporter(outfile)
     export_stream(exporter, infile)
 
@@ -59,10 +59,10 @@ def export_excel(infile: Path, outfile: Path):
     default=True,
     help="Generate full predicates",
 )
-def export_rdf(infile: Path, outfile: Path, qualified: bool = True):
-    fh = click.get_text_stream(outfile)
-    exporter = RDFExporter(fh, qualified=qualified)
-    export_stream(exporter, infile)
+def export_rdf(infile: Path, outfile: Path, qualified: bool = True) -> None:
+    with text_out(outfile) as fh:
+        exporter = RDFExporter(fh, qualified=qualified)
+        export_stream(exporter, infile)
 
 
 @cli.command("export-gexf", help="Export to GEXF (Gephi) format")
@@ -76,7 +76,7 @@ def export_rdf(infile: Path, outfile: Path, qualified: bool = True):
     default=DEFAULT_EDGE_TYPES,
     help="Property types to be reified into graph edges.",
 )
-def export_gexf(infile: Path, outfile: Path, edge_types: List[str]):
+def export_gexf(infile: Path, outfile: Path, edge_types: List[str]) -> None:
     with text_out(outfile) as fh:
         exporter = NXGraphExporter(fh, edge_types=edge_types)
         export_stream(exporter, infile)
@@ -93,7 +93,7 @@ def export_gexf(infile: Path, outfile: Path, edge_types: List[str]):
     default=DEFAULT_EDGE_TYPES,
     help="Property types to be reified into graph edges.",
 )
-def export_cypher(infile: Path, outfile: Path, edge_types: List[str]):
+def export_cypher(infile: Path, outfile: Path, edge_types: List[str]) -> None:
     with text_out(outfile) as fh:
         exporter = CypherGraphExporter(fh, edge_types=edge_types)
         export_stream(exporter, infile)
@@ -116,6 +116,6 @@ def export_cypher(infile: Path, outfile: Path, edge_types: List[str]):
     default=DEFAULT_EDGE_TYPES,
     help="Property types to be reified into graph edges.",
 )
-def export_neo4j_bulk(infile: Path, outdir: Path, edge_types: List[str]):
+def export_neo4j_bulk(infile: Path, outdir: Path, edge_types: List[str]) -> None:
     exporter = Neo4JCSVExporter(outdir, edge_types=edge_types)
     export_stream(exporter, infile)
