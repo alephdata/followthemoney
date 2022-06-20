@@ -32,7 +32,7 @@ There's also a number of viewers for the RDF schema definitions generated
 from FollowTheMoney, e.g.:
 
 * [LODE documentation](http://150.146.207.114/lode/extract?url=https%3A%2F%2Falephdata.github.io%2Ffollowthemoney%2Fns%2Fftm.xml&owlapi=true&imported=true&lang=en)
-* [WebVOWL](http://www.visualdataweb.de/webvowl/#iri=https://alephdata.github.io/followthemoney/ns/ftm.xml)
+* [WebVOWL](https://service.tib.eu/webvowl/#iri=https://alephdata.github.io/followthemoney/ns/ftm.xml)
 * RDF/OWL specification in [XML](https://alephdata.github.io/followthemoney/ns/ftm.xml).
 
 ## Releasing
