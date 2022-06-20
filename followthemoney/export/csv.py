@@ -1,5 +1,10 @@
 import csv
-from _csv import _writer as CSVWriter
+
+try:
+    from _csv import _writer as CSVWriter
+except ImportError:
+    from _csv import writer as CSVWriter
+
 from io import TextIOWrapper
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
