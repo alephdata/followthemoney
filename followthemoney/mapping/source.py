@@ -1,6 +1,4 @@
-from csv import DictReader
 from typing import TYPE_CHECKING, Any, Dict, Generator, Optional, Set, cast
-from banal import is_listish
 
 if TYPE_CHECKING:
     from followthemoney.mapping.query import QueryMapping
