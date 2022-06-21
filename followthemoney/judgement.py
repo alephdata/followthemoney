@@ -1,6 +1,10 @@
 from enum import Enum
 
+
 class Judgement(Enum):
+    """A judgement of whether two entities are the same. This should really not live in
+    FtM but it is used in both Aleph and nomenklatura."""
+
     POSITIVE = "positive"
     NEGATIVE = "negative"
     UNSURE = "unsure"
@@ -16,4 +20,3 @@ class Judgement(Enum):
 
     def to_dict(self):
         return str(self.value)
-

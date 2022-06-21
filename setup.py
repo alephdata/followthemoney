@@ -81,7 +81,6 @@ setup(
         "followthemoney.cli": {
             "aggregate = followthemoney.cli.aggregate:aggregate",
             "sieve = followthemoney.cli.sieve:sieve",
-            "link = followthemoney.cli.dedupe:link",
             "mapping = followthemoney.cli.mapping:run_mapping",
             "csv = followthemoney.cli.exports:export_csv",
             "excel = followthemoney.cli.exports:export_excel",
