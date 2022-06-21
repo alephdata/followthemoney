@@ -72,9 +72,6 @@ setup(
             "coverage>=4.1",
             "recommonmark>=0.4.0",
         ],
-        "misp": [
-            "pymisp >= 2.4.126",
-        ],
     },
     entry_points={
         "babel.extractors": {"ftmmodel = followthemoney.messages:extract_yaml"},
