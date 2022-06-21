@@ -4,7 +4,7 @@ try:
     from _csv import _writer as CSVWriter
 except ImportError:
     # Python 3.8/3.9 work-around:
-    from _csv import writer as CSVWriter
+    from _csv import writer as CSVWriter  # type: ignore
 
 from io import TextIOWrapper
 from pathlib import Path

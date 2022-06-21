@@ -1,14 +1,20 @@
 import math
 import itertools
+from typing import Dict, Generator, Iterable, List, Optional
 import fingerprints
 from fuzzywuzzy import fuzz  # type: ignore
 from normality import normalize
 from followthemoney.exc import InvalidData
+from followthemoney.model import Model
 from followthemoney.types import registry
+from followthemoney.proxy import EntityProxy
+from followthemoney.types.common import PropertyType
 
 
 # Compare weights come from the glm-bernouli model in followthemoney-predict
-COMPARE_WEIGHTS = {
+Weights = Dict[Optional[PropertyType], float]
+Scores = Dict[PropertyType, Optional[float]]
+COMPARE_WEIGHTS: Weights = {
     registry.name: 12.275729155073371,
     registry.country: 1.0494517476987815,
     registry.date: 6.960245940274218,
@@ -22,15 +28,13 @@ COMPARE_WEIGHTS = {
 }
 
 
-def compare_scores(model, left, right):
+def compare_scores(model: Model, left: EntityProxy, right: EntityProxy) -> Scores:
     """Compare two entities and return a match score for each property."""
-    left = model.get_proxy(left)
-    right = model.get_proxy(right)
     try:
         model.common_schema(left.schema, right.schema)
     except InvalidData:
         return {}
-    scores = dict()
+    scores: Scores = {}
     left_inv = left.get_type_inverted(matchable=True)
     right_inv = right.get_type_inverted(matchable=True)
     left_groups = set(left_inv.keys())
@@ -55,10 +59,10 @@ def compare_scores(model, left, right):
     return scores
 
 
-def _compare(scores, weights, n_std=1):
+def _compare(scores: Scores, weights: Weights, n_std: int = 1) -> float:
     if not scores or not any(scores.values()):
         return 0.0
-    prob = 0
+    prob = 0.0
     for field, weight in weights.items():
         if field:
             prob += weight * (scores.get(field) or 0.0)
@@ -67,13 +71,18 @@ def _compare(scores, weights, n_std=1):
     return 1.0 / (1.0 + math.exp(-prob))
 
 
-def compare(model, left, right, weights=COMPARE_WEIGHTS):
+def compare(
+    model: Model,
+    left: EntityProxy,
+    right: EntityProxy,
+    weights: Weights = COMPARE_WEIGHTS,
+) -> float:
     """Compare two entities and return a match score."""
     scores = compare_scores(model, left, right)
     return _compare(scores, weights)
 
 
-def _normalize_names(names):
+def _normalize_names(names: Iterable[str]) -> Generator[str, None, None]:
     """Generate a sequence of comparable names for an entity. This also
     generates a `fingerprint`, i.e. a version of the name where all tokens
     are sorted alphabetically, and some parts, such as company suffixes,
@@ -90,7 +99,9 @@ def _normalize_names(names):
             yield fp
 
 
-def compare_group(group_type, left_values, right_values):
+def compare_group(
+    group_type: PropertyType, left_values: List[str], right_values: List[str]
+) -> Optional[float]:
     if not left_values and not right_values:
         raise ValueError("At least one proxy must have property type: %s", group_type)
     elif not left_values or not right_values:
@@ -98,7 +109,9 @@ def compare_group(group_type, left_values, right_values):
     return group_type.compare_sets(left_values, right_values)
 
 
-def compare_names(left, right, max_names=200):
+def compare_names(
+    left: EntityProxy, right: EntityProxy, max_names: int = 200
+) -> Optional[float]:
     result = 0.0
     left_list = list(itertools.islice(_normalize_names(left.names), max_names))
     right_list = list(itertools.islice(_normalize_names(right.names), max_names))
@@ -106,8 +119,8 @@ def compare_names(left, right, max_names=200):
         raise ValueError("At least one proxy must have name properties")
     elif not left_list or not right_list:
         return None
-    for (left, right) in itertools.product(left_list, right_list):
-        similarity = fuzz.WRatio(left, right, full_process=False) / 100.0
+    for (left_val, right_val) in itertools.product(left_list, right_list):
+        similarity = fuzz.WRatio(left_val, right_val, full_process=False) / 100.0
         result = max(result, similarity)
         if result == 1.0:
             break
@@ -117,7 +130,7 @@ def compare_names(left, right, max_names=200):
     return result
 
 
-def compare_countries(left, right):
+def compare_countries(left: EntityProxy, right: EntityProxy) -> Optional[float]:
     left_countries = left.country_hints
     right_countries = right.country_hints
     if not left_countries and not right_countries:
@@ -126,4 +139,4 @@ def compare_countries(left, right):
         return None
     intersection = left_countries.intersection(right_countries)
     union = left_countries.union(right_countries)
-    return len(intersection) / len(union)
+    return len(intersection) / float(len(union))
