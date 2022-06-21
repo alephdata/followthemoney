@@ -35,7 +35,7 @@ setup(
         "types-PyYAML",
         "sqlalchemy2-stubs",
         "banal >= 1.0.1, < 1.1.0",
-        "click >= 7.0, < 9.0.0",
+        "click >= 8.0, < 9.0.0",
         "stringcase >= 1.2.0, < 2.0.0",
         "requests >= 2.21.0, < 3.0.0",
         "fuzzywuzzy[speedup] >= 0.18.0, < 1.0.0",
@@ -53,6 +53,7 @@ setup(
         "rdflib >= 6.1.0, < 6.2.0",
         "networkx >= 2.5, < 2.9",
         "openpyxl >= 3.0.5, < 4.0.0",
+        "orjson >= 3.7, < 4.0",
     ],
     extras_require={
         "dev": [

@@ -1,12 +1,21 @@
 import click
+from pathlib import Path
+from typing import Iterable, Optional
 
 from followthemoney import model
+from followthemoney.proxy import E, EntityProxy
 from followthemoney.types import registry
 from followthemoney.cli.cli import cli
-from followthemoney.cli.util import read_entities, write_object
+from followthemoney.cli.util import InPath, OutPath, path_entities
+from followthemoney.cli.util import path_writer, write_entity
 
 
-def sieve_entity(entity, schemata, properties, types):
+def sieve_entity(
+    entity: EntityProxy,
+    schemata: Iterable[str],
+    properties: Iterable[str],
+    types: Iterable[str],
+) -> Optional[EntityProxy]:
     for schema in schemata:
         if entity.schema.is_a(schema):
             return None
@@ -19,30 +28,40 @@ def sieve_entity(entity, schemata, properties, types):
 
 
 @cli.command("sieve", help="Filter out parts of entities.")
-@click.option("-i", "--infile", type=click.File("r"), default="-")  # noqa
-@click.option("-o", "--outfile", type=click.File("w"), default="-")  # noqa
+@click.option("-i", "--infile", type=InPath, default="-")
+@click.option("-o", "--outfile", type=OutPath, default="-")
 @click.option(
     "-s",
     "--schema",
-    type=click.Choice(model.schemata.keys()),
+    type=click.Choice(list(model.schemata.keys())),
     multiple=True,
     help="Filter out the given schemata.",
-)  # noqa
+)
 @click.option(
-    "-p", "--property", multiple=True, help="Filter out the given property names."
-)  # noqa
+    "-p",
+    "--property",
+    multiple=True,
+    help="Filter out the given property names.",
+)
 @click.option(
     "-t",
     "--type",
     type=click.Choice([t.name for t in registry.types]),
     multiple=True,
     help="Filter out the given property types.",
-)  # noqa
-def sieve(infile, outfile, schema, property, type):
+)
+def sieve(
+    infile: Path,
+    outfile: Path,
+    schema: Iterable[str],
+    property: Iterable[str],
+    type: Iterable[str],
+) -> None:
     try:
-        for entity in read_entities(infile):
-            entity = sieve_entity(entity, schema, property, type)
-            if entity is not None:
-                write_object(outfile, entity)
+        with path_writer(outfile) as outfh:
+            for entity in path_entities(infile, EntityProxy):
+                sieved = sieve_entity(entity, schema, property, type)
+                if sieved is not None:
+                    write_entity(outfh, sieved)
     except BrokenPipeError:
         raise click.Abort()
