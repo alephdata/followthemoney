@@ -14,16 +14,19 @@ from banal import is_mapping, unique_list, ensure_list
 
 MEGABYTE = 1024 * 1024
 DEFAULT_LOCALE = "en"
-try:
-    PathLike = Union[str, os.PathLike[str]]
-except TypeError:
-    PathLike = Union[str, os.PathLike]  # type: ignore
-i18n_path = os.path.join(os.path.dirname(__file__), "translations")
-state = local()
-log = logging.getLogger(__name__)
+
 T = TypeVar("T")
 K = TypeVar("K")
 V = TypeVar("V")
+try:
+    # Work-around for Python 3.8 backward compat:
+    PathLike = Union[str, os.PathLike[str]]
+except TypeError:
+    PathLike = Union[str, os.PathLike]  # type: ignore
+
+i18n_path = os.path.join(os.path.dirname(__file__), "translations")
+state = local()
+log = logging.getLogger(__name__)
 
 
 def gettext(*args: Optional[str], **kwargs: Dict[str, str]) -> str:

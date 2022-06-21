@@ -6,7 +6,7 @@ from followthemoney.types import registry
 
 
 class Exporter(object):
-    def __init__(self, export_all: bool = False):
+    def __init__(self, export_all: bool = False) -> None:
         self.export_all = export_all
 
     def exportable_properties(self, schema: Schema) -> Generator[Property, None, None]:
@@ -23,7 +23,7 @@ class Exporter(object):
             yield prop, proxy.get(prop)
 
     def write(self, proxy: E, extra: Optional[List[str]] = None) -> None:
-        pass
+        raise NotImplemented
 
     def finalize(self) -> None:
         pass
