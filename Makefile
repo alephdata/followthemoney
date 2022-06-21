@@ -8,7 +8,7 @@ test:
 	pytest --cov=followthemoney --cov-report html --cov-report term
 
 typecheck:
-	mypy --strict followthemoney
+	mypy --strict followthemoney/
 
 dist:
 	python setup.py sdist bdist_wheel

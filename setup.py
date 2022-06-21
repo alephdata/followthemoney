@@ -66,6 +66,7 @@ setup(
             "pytest-cov",
             "types-PyYAML",
             "types-requests",
+            "types-setuptools",
             "flake8>=2.6.0",
             "transifex-client",
             "responses>=0.9.0",
