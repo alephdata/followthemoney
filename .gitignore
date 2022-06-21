@@ -20,8 +20,6 @@ docs/types.rst
 balkhashdb/*
 coverage-report/*
 htmlcov/*
-enrich/dist/*
-enrich/build/*
 js/dist/*
 js/node_modules/*
 js/coverage/*
