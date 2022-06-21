@@ -1,10 +1,10 @@
 import csv
 
 try:
-    from _csv import _writer as CSVWriter
+    from _csv import _writer as csv_writer
 except ImportError:
     # Python 3.8/3.9 work-around:
-    from _csv import writer as CSVWriter  # type: ignore
+    from _csv import writer as csv_writer  # type: ignore
 
 from io import TextIOWrapper
 from pathlib import Path
@@ -14,6 +14,8 @@ from followthemoney.proxy import E
 from followthemoney.export.common import Exporter
 from followthemoney.schema import Schema
 from followthemoney.util import PathLike
+
+CSVWriter = csv_writer
 
 
 class CSVMixin(object):

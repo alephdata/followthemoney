@@ -4,8 +4,10 @@ import logging
 from typing import Any, Dict, Iterable, List, Optional, Set, TextIO
 import stringcase  # type: ignore
 
-from followthemoney.export.csv import CSVMixin
+from followthemoney.export.csv import CSVMixin, CSVWriter
 from followthemoney.export.graph import GraphExporter, DEFAULT_EDGE_TYPES
+from followthemoney.graph import Edge, Node
+from followthemoney.schema import Schema
 from followthemoney.util import PathLike
 
 log = logging.getLogger(__name__)
@@ -28,9 +30,9 @@ class Neo4JCSVExporter(CSVMixin, GraphExporter):
 
         self.nodes_handler, self.nodes_writer = self._open_csv_file("_nodes")
         self.nodes_writer.writerow(["id:ID", ":LABEL", "caption"])
-        self.nodes_seen = set()
+        self.nodes_seen: Set[str] = set()
 
-    def _write_header(self, writer, schema):
+    def _write_header(self, writer: CSVWriter, schema: Schema) -> None:
         headers = []
         if not schema.edge:
             headers = ["id:ID", ":LABEL", "caption"]
@@ -42,21 +44,24 @@ class Neo4JCSVExporter(CSVMixin, GraphExporter):
             headers.append(prop.name)
         writer.writerow(headers)
 
-    def write_graph(self, extra=None):
+    def write_graph(self, extra: Optional[List[str]] = None) -> None:
+        extra_ = extra or []
         for node in self.graph.iternodes():
-            self.write_node(node, extra)
+            self.write_node(node, extra_)
 
         for edge in self.graph.iteredges():
-            self.write_edge(edge, extra)
+            self.write_edge(edge, extra_)
 
         self.graph.flush()
 
-    def write_node(self, node, extra):
+    def write_node(self, node: Node, extra: List[str]) -> None:
+        if node.id is None:
+            return None
         if not node.is_entity and node.id not in self.nodes_seen:
             row = [node.id, node.type.name, node.caption]
             self.nodes_writer.writerow(row)
             self.nodes_seen.add(node.id)
-        if node.proxy is not None:
+        if node.proxy is not None and node.schema is not None:
             label = ";".join(node.schema.names)
             cells = [node.id, label, node.caption]
             cells.extend(extra or [])
@@ -65,7 +70,7 @@ class Neo4JCSVExporter(CSVMixin, GraphExporter):
             writer = self._get_writer(node.schema)
             writer.writerow(cells)
 
-    def write_edge(self, edge, extra):
+    def write_edge(self, edge: Edge, extra: List[str]) -> None:
         if edge.prop is not None:
             type_ = stringcase.constcase(edge.prop.name)
             row = [type_, edge.source_id, edge.target_id, edge.weight]
@@ -83,7 +88,7 @@ class Neo4JCSVExporter(CSVMixin, GraphExporter):
             writer = self._get_writer(proxy.schema)
             writer.writerow(cells)
 
-    def finalize_graph(self):
+    def finalize_graph(self) -> None:
         script_path = self.directory.joinpath("neo4j_import.sh")
         with open(script_path, mode="w") as fp:
             cmd = "{} import --id-type=STRING --database={} \\\n"
@@ -134,6 +139,8 @@ class CypherGraphExporter(GraphExporter):
         for node in self.graph.iternodes():
             if node.value in self.proxy_nodes:
                 continue
+            if node.id is None:
+                continue
             if node.proxy is not None:
                 self.proxy_nodes.add(node.value)
             attributes = self.get_attributes(node)
@@ -141,7 +148,7 @@ class CypherGraphExporter(GraphExporter):
             if node.caption is not None:
                 attributes["caption"] = node.caption
             if node.schema:
-                labels = node.schema.names
+                labels = list(node.schema.names)
             else:
                 labels = [node.type.name]
             cypher = "MERGE (p { %(id)s }) " "SET p += { %(map)s } SET p :%(label)s;\n"
@@ -157,7 +164,7 @@ class CypherGraphExporter(GraphExporter):
         for edge in self.graph.iteredges():
             attributes = self.get_attributes(edge)
             attributes["id"] = edge.id
-            attributes["weight"] = edge.weight
+            attributes["weight"] = str(edge.weight)
             cypher = (
                 "MATCH (s { %(source)s }), (t { %(target)s }) "
                 "MERGE (s)-[:%(type)s { %(map)s }]->(t);\n"

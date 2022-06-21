@@ -8,14 +8,7 @@ test:
 	pytest --cov=followthemoney --cov-report html --cov-report term
 
 typecheck:
-	mypy --strict followthemoney/types \
-		followthemoney/mapping \
-		followthemoney/schema.py \
-		followthemoney/property.py \
-		followthemoney/proxy.py \
-		followthemoney/graph.py \
-		followthemoney/rdf.py \
-		followthemoney/model.py
+	mypy --strict followthemoney
 
 dist:
 	python setup.py sdist bdist_wheel
