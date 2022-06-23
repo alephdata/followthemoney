@@ -19,7 +19,7 @@ Address:
   label: Address
   plural: Addresses
   extends:
-    - Interval
+    - Thing
   description: >
     A location associated with an entity.
   matchable: true
