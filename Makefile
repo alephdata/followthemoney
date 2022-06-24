@@ -8,14 +8,7 @@ test:
 	pytest --cov=followthemoney --cov-report html --cov-report term
 
 typecheck:
-	mypy --strict followthemoney/types \
-		followthemoney/mapping \
-		followthemoney/schema.py \
-		followthemoney/property.py \
-		followthemoney/proxy.py \
-		followthemoney/graph.py \
-		followthemoney/rdf.py \
-		followthemoney/model.py
+	mypy --strict followthemoney/
 
 dist:
 	python setup.py sdist bdist_wheel
@@ -23,7 +16,7 @@ dist:
 release: clean dist
 	twine upload dist/*
 
-docker: namespace
+docker:
 	docker build -t alephdata/followthemoney .
 
 build: namespace default-model translate docker
@@ -44,7 +37,6 @@ translate:
 
 clean:
 	rm -rf dist build .eggs coverage-report .coverage
-	rm -rf enrich/dist enrich/build
 	find . -name '*.egg-info' -exec rm -fr {} +
 	find . -name '*.egg' -exec rm -f {} +
 	find . -name '*.pyc' -exec rm -f {} +

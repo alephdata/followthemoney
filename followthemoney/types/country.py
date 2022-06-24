@@ -36,11 +36,11 @@ class CountryType(EnumType):
             "csxx": gettext("Serbia and Montenegro"),
             "cshh": gettext("Czechoslovakia"),
             "suhh": gettext("Soviet Union"),
-            "ge-ab": gettext("Abkhazia"),
-            "x-so": gettext("South Ossetia"),
-            "ua-lpr": gettext("Luhansk (Ukraine)"),
-            "ua-dpr": gettext("Donetsk (Ukraine)"),
-            "ua-cri": gettext("Crimea (Ukraine)"),
+            "ge-ab": gettext("Abkhazia (Occupied Georgia)"),
+            "x-so": gettext("South Ossetia (Occupied Georgia)"),
+            "ua-lpr": gettext("Luhansk (Occupied Ukraine)"),
+            "ua-dpr": gettext("Donetsk (Occupied Ukraine)"),
+            "ua-cri": gettext("Crimea (Occupied Ukraine)"),
             "so-som": gettext("Somaliland"),
             "cy-trnc": gettext("Northern Cyprus"),
             "az-nk": gettext("Nagorno-Karabakh"),
@@ -49,7 +49,7 @@ class CountryType(EnumType):
             "gb-wls": gettext("Wales"),
             "gb-sct": gettext("Scotland"),
             "gb-nir": gettext("Northern Ireland"),
-            "md-pmr": gettext("Transnistria"),
+            "md-pmr": gettext("Transnistria (PMR)"),
         }
         for code, label in locale.territories.items():
             code = code.lower()
