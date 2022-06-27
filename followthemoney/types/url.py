@@ -54,8 +54,10 @@ class UrlType(PropertyType):
             parsed = parsed._replace(path="/")
         return parsed.geturl()
 
-    def _specificity(self, value: str) -> float:
-        return dampen(10, 120, value)
+    def compare(self, left: str, right: str) -> float:
+        if left.lower() == right.lower():
+            return 1.0
+        return 0.0
 
     def rdf(self, value: str) -> Identifier:
         return URIRef(value)

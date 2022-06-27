@@ -42,7 +42,7 @@ class AddressType(PropertyType):
         return collapsed
 
     def _specificity(self, value: str) -> float:
-        return dampen(10, 60, value)
+        return dampen(10, 30, value)
 
     def node_id(self, value: str) -> Optional[str]:
         slug = slugify(value)

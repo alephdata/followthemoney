@@ -70,5 +70,8 @@ class TopicType(EnumType):
     def _locale_names(self, locale: Locale) -> EnumValues:
         return {k: gettext(v) for (k, v) in self._TOPICS.items()}
 
+    def compare(self, left: str, right: str) -> float:
+        return 1.0 if left == right else 0.0
+
     def rdf(self, value: str) -> Identifier:
         return URIRef(f"ftm:topic:{value}")
