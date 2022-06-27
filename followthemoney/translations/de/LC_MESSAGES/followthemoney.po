@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-04 14:36+0100\n"
+"POT-Creation-Date: 2022-06-27 13:42+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
@@ -30,25 +30,25 @@ msgstr "Eigenschaft darf nicht direkt gesetzt werden"
 msgid "Invalid value"
 msgstr "Ungültiger Wert"
 
-#: followthemoney/proxy.py:59
+#: followthemoney/proxy.py:62
 msgid "No schema for entity."
 msgstr "Der Entität ist kein Schema zugeordnet."
 
-#: followthemoney/proxy.py:112
+#: followthemoney/proxy.py:115
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Unbekannte Eigenschaft (%s): %s"
 
-#: followthemoney/proxy.py:185
+#: followthemoney/proxy.py:188
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Pseudofeld (%s): %s"
 
-#: followthemoney/schema.py:335
+#: followthemoney/schema.py:342
 msgid "Required"
 msgstr "Erforderlich"
 
-#: followthemoney/schema.py:339
+#: followthemoney/schema.py:346
 msgid "Entity validation failed"
 msgstr "Prüfung fehlgeschlagen"
 
@@ -1963,6 +1963,7 @@ msgid "Image"
 msgstr "Bild"
 
 #. Image.plural
+#. Image.properties.pictured.reverse.label
 #: followthemoney/schema/Image.yaml
 msgid "Images"
 msgstr "Bilder"
@@ -1971,6 +1972,11 @@ msgstr "Bilder"
 #: followthemoney/schema/Image.yaml
 msgid "An image file.\n"
 msgstr "Eine Bild-Datei,\n"
+
+#. Image.properties.pictured.label
+#: followthemoney/schema/Image.yaml
+msgid "Pictured"
+msgstr ""
 
 #. Interest.label
 #: followthemoney/schema/Interest.yaml
@@ -2219,6 +2225,16 @@ msgstr "INN"
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Russian company ID"
 msgstr "Russische Firmennummer"
+
+#. LegalEntity.properties.leiCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "LEI"
+msgstr ""
+
+#. LegalEntity.properties.leiCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Legal Entity Identifier"
+msgstr ""
 
 #. LegalEntity.properties.dunsCode.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -2597,6 +2613,7 @@ msgstr "Geburtsort"
 #. Passport.properties.gender.label
 #. Person.properties.gender.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+#: followthemoney/types/gender.py:40
 msgid "Gender"
 msgstr "Gender"
 
@@ -2750,7 +2767,7 @@ msgid "Ethnicity"
 msgstr "Ethnie"
 
 #. Person.properties.religion.label
-#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:61
+#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:62
 msgid "Religion"
 msgstr "Religion"
 
@@ -3055,6 +3072,58 @@ msgstr ""
 msgid "Collateral"
 msgstr ""
 
+#. Similar.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar"
+msgstr ""
+
+#. Similar.plural
+#: followthemoney/schema/Similar.yaml
+msgid "Similar entities"
+msgstr ""
+
+#. Similar.description
+#: followthemoney/schema/Similar.yaml
+msgid ""
+"A link between two entities that are presumed to be the same, e.g. as the "
+"outcome of a probabilistic record linkage process.\n"
+msgstr ""
+
+#. Similar.properties.candidate.label
+#: followthemoney/schema/Similar.yaml
+msgid "Candidate"
+msgstr ""
+
+#. Similar.properties.candidate.reverse.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar to this"
+msgstr ""
+
+#. Similar.properties.match.label
+#: followthemoney/schema/Similar.yaml
+msgid "Match"
+msgstr ""
+
+#. Similar.properties.match.reverse.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar as this"
+msgstr ""
+
+#. Similar.properties.confidenceScore.label
+#: followthemoney/schema/Similar.yaml
+msgid "Confidence score"
+msgstr ""
+
+#. Similar.properties.criteria.label
+#: followthemoney/schema/Similar.yaml
+msgid "Matching criteria"
+msgstr ""
+
+#. Similar.properties.matcher.label
+#: followthemoney/schema/Similar.yaml
+msgid "Matcher"
+msgstr ""
+
 #. Succession.label
 #: followthemoney/schema/Succession.yaml
 msgid "Succession"
@@ -3220,6 +3289,43 @@ msgstr "Abgeleitete Objekte"
 msgid "Created at"
 msgstr ""
 
+#. Trip.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trip"
+msgstr ""
+
+#. Trip.plural
+#. Trip.properties.vehicle.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips"
+msgstr ""
+
+#. Trip.properties.startLocation.label
+#: followthemoney/schema/Trip.yaml
+msgid "Start location"
+msgstr ""
+
+#. Trip.properties.startLocation.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips departing"
+msgstr ""
+
+#. Trip.properties.endLocation.label
+#: followthemoney/schema/Trip.yaml
+msgid "End location"
+msgstr ""
+
+#. Trip.properties.endLocation.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips incoming"
+msgstr ""
+
+#. Trip.properties.vehicle.label
+#. Vehicle.label
+#: followthemoney/schema/Trip.yaml followthemoney/schema/Vehicle.yaml
+msgid "Vehicle"
+msgstr "Fahrzeug"
+
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
@@ -3310,11 +3416,6 @@ msgstr "Betrag in USD"
 #: followthemoney/schema/Value.yaml
 msgid "Amount in EUR"
 msgstr "Betrag in EUR"
-
-#. Vehicle.label
-#: followthemoney/schema/Vehicle.yaml
-msgid "Vehicle"
-msgstr "Fahrzeug"
 
 #. Vehicle.plural
 #: followthemoney/schema/Vehicle.yaml
@@ -3509,23 +3610,23 @@ msgid "Soviet Union"
 msgstr "Sowietunion"
 
 #: followthemoney/types/country.py:39
-msgid "Abkhazia"
-msgstr "Abkhazien"
+msgid "Abkhazia (Occupied Georgia)"
+msgstr ""
 
 #: followthemoney/types/country.py:40
-msgid "South Ossetia"
-msgstr "Südossetien"
+msgid "South Ossetia (Occupied Georgia)"
+msgstr ""
 
 #: followthemoney/types/country.py:41
-msgid "Luhansk (Ukraine)"
+msgid "Luhansk (Occupied Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:42
-msgid "Donetsk (Ukraine)"
+msgid "Donetsk (Occupied Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:43
-msgid "Crimea (Ukraine)"
+msgid "Crimea (Occupied Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:44
@@ -3561,8 +3662,8 @@ msgid "Northern Ireland"
 msgstr "Nordirland"
 
 #: followthemoney/types/country.py:52
-msgid "Transnistria"
-msgstr "Transnistrien"
+msgid "Transnistria (PMR)"
+msgstr ""
 
 #: followthemoney/types/date.py:27
 msgid "Dates"
@@ -3584,6 +3685,22 @@ msgstr "Entitäten"
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Selbst-Beziehung (%s): %s"
+
+#: followthemoney/types/gender.py:41
+msgid "Genders"
+msgstr ""
+
+#: followthemoney/types/gender.py:46
+msgid "male"
+msgstr ""
+
+#: followthemoney/types/gender.py:47
+msgid "female"
+msgstr ""
+
+#: followthemoney/types/gender.py:48
+msgid "other"
+msgstr ""
 
 #: followthemoney/types/iban.py:25
 msgid "IBANs"
@@ -3778,38 +3895,42 @@ msgid "Spy"
 msgstr "Spion"
 
 #: followthemoney/types/topic.py:57
+msgid "Oligarch"
+msgstr ""
+
+#: followthemoney/types/topic.py:58
 msgid "Journalist"
 msgstr "Journalist"
 
-#: followthemoney/types/topic.py:58
+#: followthemoney/types/topic.py:59
 msgid "Activist"
 msgstr "Aktivist"
 
-#: followthemoney/types/topic.py:59
+#: followthemoney/types/topic.py:60
 msgid "Political party"
 msgstr "Politische Partei"
 
-#: followthemoney/types/topic.py:60
+#: followthemoney/types/topic.py:61
 msgid "Union"
 msgstr "Gewerkschaft"
 
-#: followthemoney/types/topic.py:62
+#: followthemoney/types/topic.py:63
 msgid "Military"
 msgstr "Militär"
 
-#: followthemoney/types/topic.py:63
+#: followthemoney/types/topic.py:64
 msgid "Frozen asset"
 msgstr "Gesperrte Guthaben"
 
-#: followthemoney/types/topic.py:64
+#: followthemoney/types/topic.py:65
 msgid "Sanctioned entity"
 msgstr "Sanktionierte Entität"
 
-#: followthemoney/types/topic.py:65
+#: followthemoney/types/topic.py:66
 msgid "Debarred entity"
 msgstr ""
 
-#: followthemoney/types/topic.py:66
+#: followthemoney/types/topic.py:67
 msgid "Person of interest"
 msgstr "Zielperson"
 

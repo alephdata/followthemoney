@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-04 14:36+0100\n"
+"POT-Creation-Date: 2022-06-27 13:42+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/aleph/teams/76591/es/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 "Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: followthemoney/property.py:166
 msgid "Property cannot be written"
@@ -30,25 +30,25 @@ msgstr "No se puede escribir la propiedad"
 msgid "Invalid value"
 msgstr "Valor inválido"
 
-#: followthemoney/proxy.py:59
+#: followthemoney/proxy.py:62
 msgid "No schema for entity."
 msgstr "No hay esquema para la entidad."
 
-#: followthemoney/proxy.py:112
+#: followthemoney/proxy.py:115
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Propiedad desconocida (%s): %s"
 
-#: followthemoney/proxy.py:185
+#: followthemoney/proxy.py:188
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Propiedad Stub (%s): %s"
 
-#: followthemoney/schema.py:335
+#: followthemoney/schema.py:342
 msgid "Required"
 msgstr "Obligatorio"
 
-#: followthemoney/schema.py:339
+#: followthemoney/schema.py:346
 msgid "Entity validation failed"
 msgstr "Error en la validación de la propiedad"
 
@@ -1971,6 +1971,7 @@ msgid "Image"
 msgstr "Imagen"
 
 #. Image.plural
+#. Image.properties.pictured.reverse.label
 #: followthemoney/schema/Image.yaml
 msgid "Images"
 msgstr "Imágenes"
@@ -1978,6 +1979,11 @@ msgstr "Imágenes"
 #. Image.description
 #: followthemoney/schema/Image.yaml
 msgid "An image file.\n"
+msgstr ""
+
+#. Image.properties.pictured.label
+#: followthemoney/schema/Image.yaml
+msgid "Pictured"
 msgstr ""
 
 #. Interest.label
@@ -2229,6 +2235,16 @@ msgstr "INN"
 #: followthemoney/schema/LegalEntity.yaml
 msgid "Russian company ID"
 msgstr "Identificador de empresa rusa"
+
+#. LegalEntity.properties.leiCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "LEI"
+msgstr ""
+
+#. LegalEntity.properties.leiCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Legal Entity Identifier"
+msgstr ""
 
 #. LegalEntity.properties.dunsCode.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -2602,6 +2618,7 @@ msgstr "Lugar de nacimiento"
 #. Passport.properties.gender.label
 #. Person.properties.gender.label
 #: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+#: followthemoney/types/gender.py:40
 msgid "Gender"
 msgstr "Sexo"
 
@@ -2755,7 +2772,7 @@ msgid "Ethnicity"
 msgstr ""
 
 #. Person.properties.religion.label
-#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:61
+#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:62
 msgid "Religion"
 msgstr "Religión"
 
@@ -3060,6 +3077,58 @@ msgstr ""
 msgid "Collateral"
 msgstr ""
 
+#. Similar.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar"
+msgstr ""
+
+#. Similar.plural
+#: followthemoney/schema/Similar.yaml
+msgid "Similar entities"
+msgstr ""
+
+#. Similar.description
+#: followthemoney/schema/Similar.yaml
+msgid ""
+"A link between two entities that are presumed to be the same, e.g. as the "
+"outcome of a probabilistic record linkage process.\n"
+msgstr ""
+
+#. Similar.properties.candidate.label
+#: followthemoney/schema/Similar.yaml
+msgid "Candidate"
+msgstr ""
+
+#. Similar.properties.candidate.reverse.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar to this"
+msgstr ""
+
+#. Similar.properties.match.label
+#: followthemoney/schema/Similar.yaml
+msgid "Match"
+msgstr ""
+
+#. Similar.properties.match.reverse.label
+#: followthemoney/schema/Similar.yaml
+msgid "Similar as this"
+msgstr ""
+
+#. Similar.properties.confidenceScore.label
+#: followthemoney/schema/Similar.yaml
+msgid "Confidence score"
+msgstr ""
+
+#. Similar.properties.criteria.label
+#: followthemoney/schema/Similar.yaml
+msgid "Matching criteria"
+msgstr ""
+
+#. Similar.properties.matcher.label
+#: followthemoney/schema/Similar.yaml
+msgid "Matcher"
+msgstr ""
+
 #. Succession.label
 #: followthemoney/schema/Succession.yaml
 msgid "Succession"
@@ -3223,6 +3292,43 @@ msgstr ""
 msgid "Created at"
 msgstr ""
 
+#. Trip.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trip"
+msgstr ""
+
+#. Trip.plural
+#. Trip.properties.vehicle.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips"
+msgstr ""
+
+#. Trip.properties.startLocation.label
+#: followthemoney/schema/Trip.yaml
+msgid "Start location"
+msgstr ""
+
+#. Trip.properties.startLocation.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips departing"
+msgstr ""
+
+#. Trip.properties.endLocation.label
+#: followthemoney/schema/Trip.yaml
+msgid "End location"
+msgstr ""
+
+#. Trip.properties.endLocation.reverse.label
+#: followthemoney/schema/Trip.yaml
+msgid "Trips incoming"
+msgstr ""
+
+#. Trip.properties.vehicle.label
+#. Vehicle.label
+#: followthemoney/schema/Trip.yaml followthemoney/schema/Vehicle.yaml
+msgid "Vehicle"
+msgstr "Vehículo"
+
 #. UnknownLink.label
 #: followthemoney/schema/UnknownLink.yaml
 msgid "Other link"
@@ -3313,11 +3419,6 @@ msgstr "Cantidad en USD"
 #: followthemoney/schema/Value.yaml
 msgid "Amount in EUR"
 msgstr "Cantidad en EUR"
-
-#. Vehicle.label
-#: followthemoney/schema/Vehicle.yaml
-msgid "Vehicle"
-msgstr "Vehículo"
 
 #. Vehicle.plural
 #: followthemoney/schema/Vehicle.yaml
@@ -3510,23 +3611,23 @@ msgid "Soviet Union"
 msgstr "Unión Soviética"
 
 #: followthemoney/types/country.py:39
-msgid "Abkhazia"
-msgstr "Abjasia"
+msgid "Abkhazia (Occupied Georgia)"
+msgstr ""
 
 #: followthemoney/types/country.py:40
-msgid "South Ossetia"
-msgstr "Osetia del Sur"
+msgid "South Ossetia (Occupied Georgia)"
+msgstr ""
 
 #: followthemoney/types/country.py:41
-msgid "Luhansk (Ukraine)"
+msgid "Luhansk (Occupied Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:42
-msgid "Donetsk (Ukraine)"
+msgid "Donetsk (Occupied Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:43
-msgid "Crimea (Ukraine)"
+msgid "Crimea (Occupied Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:44
@@ -3562,8 +3663,8 @@ msgid "Northern Ireland"
 msgstr "Irlanda del Norte"
 
 #: followthemoney/types/country.py:52
-msgid "Transnistria"
-msgstr "Transnistria"
+msgid "Transnistria (PMR)"
+msgstr ""
 
 #: followthemoney/types/date.py:27
 msgid "Dates"
@@ -3585,6 +3686,22 @@ msgstr "Entidades"
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Autorrelación (%s): %s"
+
+#: followthemoney/types/gender.py:41
+msgid "Genders"
+msgstr ""
+
+#: followthemoney/types/gender.py:46
+msgid "male"
+msgstr ""
+
+#: followthemoney/types/gender.py:47
+msgid "female"
+msgstr ""
+
+#: followthemoney/types/gender.py:48
+msgid "other"
+msgstr ""
 
 #: followthemoney/types/iban.py:25
 msgid "IBANs"
@@ -3779,38 +3896,42 @@ msgid "Spy"
 msgstr "Espía"
 
 #: followthemoney/types/topic.py:57
+msgid "Oligarch"
+msgstr ""
+
+#: followthemoney/types/topic.py:58
 msgid "Journalist"
 msgstr "Periodista"
 
-#: followthemoney/types/topic.py:58
+#: followthemoney/types/topic.py:59
 msgid "Activist"
 msgstr "Activista"
 
-#: followthemoney/types/topic.py:59
+#: followthemoney/types/topic.py:60
 msgid "Political party"
 msgstr "Partido político"
 
-#: followthemoney/types/topic.py:60
+#: followthemoney/types/topic.py:61
 msgid "Union"
 msgstr "Sindicato"
 
-#: followthemoney/types/topic.py:62
+#: followthemoney/types/topic.py:63
 msgid "Military"
 msgstr "Militar"
 
-#: followthemoney/types/topic.py:63
+#: followthemoney/types/topic.py:64
 msgid "Frozen asset"
 msgstr "Activo congelado"
 
-#: followthemoney/types/topic.py:64
+#: followthemoney/types/topic.py:65
 msgid "Sanctioned entity"
 msgstr "Entidad sancionada"
 
-#: followthemoney/types/topic.py:65
+#: followthemoney/types/topic.py:66
 msgid "Debarred entity"
 msgstr ""
 
-#: followthemoney/types/topic.py:66
+#: followthemoney/types/topic.py:67
 msgid "Person of interest"
 msgstr "Persona de interés"
 

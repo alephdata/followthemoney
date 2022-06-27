@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-20 13:04+0200\n"
+"POT-Creation-Date: 2022-06-27 13:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3570,23 +3570,23 @@ msgid "Soviet Union"
 msgstr ""
 
 #: followthemoney/types/country.py:39
-msgid "Abkhazia"
+msgid "Abkhazia (Occupied Georgia)"
 msgstr ""
 
 #: followthemoney/types/country.py:40
-msgid "South Ossetia"
+msgid "South Ossetia (Occupied Georgia)"
 msgstr ""
 
 #: followthemoney/types/country.py:41
-msgid "Luhansk (Ukraine)"
+msgid "Luhansk (Occupied Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:42
-msgid "Donetsk (Ukraine)"
+msgid "Donetsk (Occupied Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:43
-msgid "Crimea (Ukraine)"
+msgid "Crimea (Occupied Ukraine)"
 msgstr ""
 
 #: followthemoney/types/country.py:44
@@ -3622,7 +3622,7 @@ msgid "Northern Ireland"
 msgstr ""
 
 #: followthemoney/types/country.py:52
-msgid "Transnistria"
+msgid "Transnistria (PMR)"
 msgstr ""
 
 #: followthemoney/types/date.py:27

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-09 08:48+0200\n"
+"POT-Creation-Date: 2022-06-27 13:42+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: jen occrp, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
@@ -3627,24 +3627,24 @@ msgid "Soviet Union"
 msgstr "Советский Союз"
 
 #: followthemoney/types/country.py:39
-msgid "Abkhazia"
-msgstr "Абхазия"
+msgid "Abkhazia (Occupied Georgia)"
+msgstr "Абхазия (оккупированная территория Грузии)"
 
 #: followthemoney/types/country.py:40
-msgid "South Ossetia"
-msgstr "Южная Осетия"
+msgid "South Ossetia (Occupied Georgia)"
+msgstr "Южная Осетия (оккупированная территория Грузии)"
 
 #: followthemoney/types/country.py:41
-msgid "Luhansk (Ukraine)"
-msgstr "Луганск (Украина)"
+msgid "Luhansk (Occupied Ukraine)"
+msgstr "Луганск (оккупированная территория Украины)"
 
 #: followthemoney/types/country.py:42
-msgid "Donetsk (Ukraine)"
-msgstr "Донецк (Украина)"
+msgid "Donetsk (Occupied Ukraine)"
+msgstr "Донецк (оккупированная территория Украины)"
 
 #: followthemoney/types/country.py:43
-msgid "Crimea (Ukraine)"
-msgstr "Крым (Украина)"
+msgid "Crimea (Occupied Ukraine)"
+msgstr "Крым (оккупированная территория Украины)"
 
 #: followthemoney/types/country.py:44
 msgid "Somaliland"
@@ -3679,8 +3679,8 @@ msgid "Northern Ireland"
 msgstr "Северная Ирландия"
 
 #: followthemoney/types/country.py:52
-msgid "Transnistria"
-msgstr "Приднестровье"
+msgid "Transnistria (PMR)"
+msgstr "Приднестровье (ПМР)"
 
 #: followthemoney/types/date.py:27
 msgid "Dates"

@@ -9,7 +9,7 @@
       ],
       "description": "A location associated with an entity.\n",
       "extends": [
-        "Interval"
+        "Thing"
       ],
       "featured": [
         "full",
@@ -135,7 +135,7 @@
       },
       "schemata": [
         "Address",
-        "Interval"
+        "Thing"
       ]
     },
     "Airplane": {
@@ -2413,7 +2413,17 @@
       "generated": true,
       "label": "Image",
       "plural": "Images",
-      "properties": {},
+      "properties": {
+        "pictured": {
+          "label": "Pictured",
+          "matchable": true,
+          "name": "pictured",
+          "qname": "Image:pictured",
+          "range": "Person",
+          "reverse": "images",
+          "type": "entity"
+        }
+      },
       "schemata": [
         "Analyzable",
         "Document",
@@ -4075,6 +4085,16 @@
           "name": "gender",
           "qname": "Person:gender",
           "type": "gender"
+        },
+        "images": {
+          "label": "Images",
+          "matchable": true,
+          "name": "images",
+          "qname": "Person:images",
+          "range": "Image",
+          "reverse": "pictured",
+          "stub": true,
+          "type": "entity"
         },
         "lastName": {
           "label": "Last name",
@@ -5772,7 +5792,7 @@
         "gb-wls": "Wales",
         "gd": "Grenada",
         "ge": "Georgia",
-        "ge-ab": "Abkhazia",
+        "ge-ab": "Abkhazia (Occupied Georgia)",
         "gf": "French Guiana",
         "gg": "Guernsey",
         "gg-srk": "Sark",
@@ -5835,7 +5855,7 @@
         "ma": "Morocco",
         "mc": "Monaco",
         "md": "Moldova",
-        "md-pmr": "Transnistria",
+        "md-pmr": "Transnistria (PMR)",
         "me": "Montenegro",
         "mf": "St. Martin",
         "mg": "Madagascar",
@@ -5931,9 +5951,9 @@
         "tw": "Taiwan",
         "tz": "Tanzania",
         "ua": "Ukraine",
-        "ua-cri": "Crimea (Ukraine)",
-        "ua-dpr": "Donetsk (Ukraine)",
-        "ua-lpr": "Luhansk (Ukraine)",
+        "ua-cri": "Crimea (Occupied Ukraine)",
+        "ua-dpr": "Donetsk (Occupied Ukraine)",
+        "ua-lpr": "Luhansk (Occupied Ukraine)",
         "ug": "Uganda",
         "um": "U.S. Outlying Islands",
         "un": "United Nations",
@@ -5949,7 +5969,7 @@
         "vu": "Vanuatu",
         "wf": "Wallis & Futuna",
         "ws": "Samoa",
-        "x-so": "South Ossetia",
+        "x-so": "South Ossetia (Occupied Georgia)",
         "xa": "Pseudo-Accents",
         "xb": "Pseudo-Bidi",
         "xk": "Kosovo",
