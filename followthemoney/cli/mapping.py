@@ -1,7 +1,9 @@
+import sys
 import click
 from pathlib import Path
 from banal import keys_values
-from typing import List, Tuple
+from typing import Generator, List, TextIO, Tuple
+from contextlib import contextmanager
 
 from followthemoney import model
 from followthemoney.namespace import Namespace
@@ -10,6 +12,15 @@ from followthemoney.mapping.csv import CSVSource
 from followthemoney.cli.cli import cli
 from followthemoney.cli.util import InPath, OutPath, load_mapping_file
 from followthemoney.cli.util import path_writer, write_entity
+
+
+@contextmanager
+def input_file(path: Path) -> Generator[TextIO, None, None]:
+    if str(path) == "-":
+        yield sys.stdin
+        return
+    with open(path, "r") as fh:
+        yield fh
 
 
 @cli.command("map", help="Execute a mapping file and emit objects")
@@ -60,7 +71,7 @@ def stream_mapping(
 
     try:
         with path_writer(outfile) as outfh:
-            with open(infile, "r") as fh:
+            with input_file(infile) as fh:
                 for record in CSVSource.read_csv(fh):
                     for (dataset, query) in queries:
                         ns = Namespace(dataset)
