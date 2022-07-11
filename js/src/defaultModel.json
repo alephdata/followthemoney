@@ -17,7 +17,6 @@
         "street",
         "country"
       ],
-      "generated": true,
       "label": "Address",
       "matchable": true,
       "plural": "Addresses",
