@@ -83,10 +83,6 @@ Company:
     fssCode:
       label: "FSS"
       description: "(RU, ФСС) Social Security"
-    ogrnCode:
-      label: "OGRN"
-      description: "Major State Registration Number"
-      type: identifier
     bikCode:
       label: "BIK"
       description: "Russian bank account code"
