@@ -1,0 +1,43 @@
+Post:
+  label: "Post"
+  plural: "Posts"
+  extends: Interest
+  matchable: false
+  description: >
+    A post, role or position held by an individual within an organization 
+    or body.
+  featured:
+    - holder
+    - organization
+    - role
+    - startDate
+    - endDate
+  required:
+    - holder
+  caption:
+    - summary
+    - organization
+    - role
+  properties:
+    holder:
+      label: "Holder"
+      reverse:
+        name: posts
+        label: "Posts held"
+      type: entity
+      range: Person
+    organization:
+      # This is a stub text version of the org, describing it by name.
+      label: "Organization"
+      type: string
+    organizationEntity:
+      label: "Organization"
+      reverse:
+        name: posts
+        label: "Post holders"
+      type: entity
+      range: Organization
+    positionWikidataId:
+      label: "Wikidata ID of the position"
+      hidden: true
+      type: identifier
