@@ -2,7 +2,7 @@ from typing import Dict, List, Optional, Sequence, TYPE_CHECKING, cast
 from banal import first
 from normality import slugify
 from normality.cleaning import collapse_spaces, strip_quotes
-from Levenshtein import jaro_winkler, setmedian  # type: ignore
+from Levenshtein import distance, setmedian  # type: ignore
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen
@@ -70,7 +70,9 @@ class NameType(PropertyType):
         return dampen(3, 50, value)
 
     def compare(self, left: str, right: str) -> float:
-        return cast(float, jaro_winkler(left[:255], right[:255]))
+        longest = float(max(len(left), len(right), 1))
+        edits = float(distance(left[:255], right[:255]))
+        return (longest - edits) / longest
 
     def node_id(self, value: str) -> Optional[str]:
         slug = slugify(value)
