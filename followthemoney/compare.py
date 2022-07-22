@@ -2,7 +2,6 @@ import math
 import itertools
 from typing import Dict, Generator, Iterable, List, Optional
 import fingerprints
-from fuzzywuzzy import fuzz  # type: ignore
 from normality import normalize
 from followthemoney.exc import InvalidData
 from followthemoney.model import Model
@@ -120,7 +119,7 @@ def compare_names(
     elif not left_list or not right_list:
         return None
     for (left_val, right_val) in itertools.product(left_list, right_list):
-        similarity = fuzz.WRatio(left_val, right_val, full_process=False) / 100.0
+        similarity = registry.name.compare(left_val, right_val)
         result = max(result, similarity)
         if result == 1.0:
             break
