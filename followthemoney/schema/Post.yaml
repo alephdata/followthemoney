@@ -3,9 +3,13 @@ Post:
   plural: "Posts"
   extends: Interest
   matchable: false
+  # cf. https://www.popoloproject.com/specs/post.html
+  # But they're using it to define the post as an abstract thing, this
+  # describes the interval in which it is held by an individual.
   description: >
     A post, role or position held by an individual within an organization 
-    or body.
+    or body. This describes the period for which the position is held,
+    not the abstract concept of the post.
   featured:
     - holder
     - organization
@@ -30,14 +34,7 @@ Post:
       # This is a stub text version of the org, describing it by name.
       label: "Organization"
       type: string
-    organizationEntity:
-      label: "Organization"
-      reverse:
-        name: posts
-        label: "Post holders"
-      type: entity
-      range: Organization
-    positionWikidataId:
-      label: "Wikidata ID of the position"
+    wikidataId:
+      label: "Wikidata ID of the post"
       hidden: true
       type: identifier
