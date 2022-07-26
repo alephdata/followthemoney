@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-07-11 10:33+0200\n"
+"POT-Creation-Date: 2022-07-26 22:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: followthemoney/property.py:166
 msgid "Property cannot be written"
@@ -698,16 +698,6 @@ msgstr ""
 msgid "(RU, ФСС) Social Security"
 msgstr ""
 
-#. Company.properties.ogrnCode.label
-#: followthemoney/schema/Company.yaml
-msgid "OGRN"
-msgstr ""
-
-#. Company.properties.ogrnCode.description
-#: followthemoney/schema/Company.yaml
-msgid "Major State Registration Number"
-msgstr ""
-
 #. Company.properties.bikCode.label
 #: followthemoney/schema/Company.yaml
 msgid "BIK"
@@ -1147,9 +1137,10 @@ msgstr ""
 #. Directorship.properties.organization.label
 #. Membership.properties.organization.label
 #. Organization.label
+#. Post.properties.organization.label
 #: followthemoney/schema/Directorship.yaml
 #: followthemoney/schema/Membership.yaml
-#: followthemoney/schema/Organization.yaml
+#: followthemoney/schema/Organization.yaml followthemoney/schema/Post.yaml
 msgid "Organization"
 msgstr ""
 
@@ -2203,6 +2194,16 @@ msgstr ""
 msgid "Russian company ID"
 msgstr ""
 
+#. LegalEntity.properties.ogrnCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "OGRN"
+msgstr ""
+
+#. LegalEntity.properties.ogrnCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Major State Registration Number"
+msgstr ""
+
 #. LegalEntity.properties.leiCode.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "LEI"
@@ -2763,6 +2764,39 @@ msgstr ""
 #. PlainText.description
 #: followthemoney/schema/PlainText.yaml
 msgid "Text files, like .txt or source code.\n"
+msgstr ""
+
+#. Post.label
+#: followthemoney/schema/Post.yaml
+msgid "Post"
+msgstr ""
+
+#. Post.plural
+#: followthemoney/schema/Post.yaml
+msgid "Posts"
+msgstr ""
+
+#. Post.description
+#: followthemoney/schema/Post.yaml
+msgid ""
+"A post, role or position held by an individual within an organization  or"
+" body. This describes the period for which the position is held, not the "
+"abstract concept of the post.\n"
+msgstr ""
+
+#. Post.properties.holder.label
+#: followthemoney/schema/Post.yaml
+msgid "Holder"
+msgstr ""
+
+#. Post.properties.holder.reverse.label
+#: followthemoney/schema/Post.yaml
+msgid "Posts held"
+msgstr ""
+
+#. Post.properties.wikidataId.label
+#: followthemoney/schema/Post.yaml
+msgid "Wikidata ID of the post"
 msgstr ""
 
 #. Project.plural

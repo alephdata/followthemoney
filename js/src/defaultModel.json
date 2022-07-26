@@ -808,14 +808,6 @@
           "qname": "Company:mbsCode",
           "type": "identifier"
         },
-        "ogrnCode": {
-          "description": "Major State Registration Number",
-          "label": "OGRN",
-          "matchable": true,
-          "name": "ogrnCode",
-          "qname": "Company:ogrnCode",
-          "type": "identifier"
-        },
         "okopfCode": {
           "description": "(RU, \u041e\u041a\u041e\u041f\u0424) What kind of business entity",
           "label": "OKOPF",
@@ -2919,6 +2911,14 @@
           "stub": true,
           "type": "entity"
         },
+        "ogrnCode": {
+          "description": "Major State Registration Number",
+          "label": "OGRN",
+          "matchable": true,
+          "name": "ogrnCode",
+          "qname": "LegalEntity:ogrnCode",
+          "type": "identifier"
+        },
         "okpoCode": {
           "description": "Russian industry classifier",
           "label": "OKPO",
@@ -4139,6 +4139,16 @@
           "qname": "Person:position",
           "type": "string"
         },
+        "posts": {
+          "label": "Posts held",
+          "matchable": true,
+          "name": "posts",
+          "qname": "Person:posts",
+          "range": "Post",
+          "reverse": "holder",
+          "stub": true,
+          "type": "entity"
+        },
         "religion": {
           "label": "Religion",
           "name": "religion",
@@ -4191,6 +4201,59 @@
         "Document",
         "PlainText",
         "Thing"
+      ]
+    },
+    "Post": {
+      "caption": [
+        "summary",
+        "organization",
+        "role"
+      ],
+      "description": "A post, role or position held by an individual within an organization  or body. This describes the period for which the position is held, not the abstract concept of the post.\n",
+      "extends": [
+        "Interest"
+      ],
+      "featured": [
+        "holder",
+        "organization",
+        "role",
+        "startDate",
+        "endDate"
+      ],
+      "label": "Post",
+      "plural": "Posts",
+      "properties": {
+        "holder": {
+          "label": "Holder",
+          "matchable": true,
+          "name": "holder",
+          "qname": "Post:holder",
+          "range": "Person",
+          "reverse": "posts",
+          "type": "entity"
+        },
+        "organization": {
+          "label": "Organization",
+          "name": "organization",
+          "qname": "Post:organization",
+          "type": "string"
+        },
+        "wikidataId": {
+          "hidden": true,
+          "label": "Wikidata ID of the post",
+          "matchable": true,
+          "name": "wikidataId",
+          "qname": "Post:wikidataId",
+          "type": "identifier"
+        }
+      },
+      "required": [
+        "holder"
+      ],
+      "schemata": [
+        "Interest",
+        "Interval",
+        "Post"
       ]
     },
     "Project": {
