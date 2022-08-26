@@ -3,7 +3,7 @@ Security:
   label: Security
   plural: Securities
   description: "A tradeable financial asset."
-  matchable: false
+  matchable: true
   featured:
     - isin
     - name
