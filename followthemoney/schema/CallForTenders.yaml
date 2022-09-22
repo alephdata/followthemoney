@@ -71,3 +71,7 @@ CallForTenders:
       label: "Does this Call fall under the scope of GPP?"
     certificationCheck:
       label: "Certification check"
+    tenderers:  
+      label: "Tenderers"
+    awardedContracts:
+      label: "Awarded Contracts"
