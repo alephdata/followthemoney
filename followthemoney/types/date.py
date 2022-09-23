@@ -52,6 +52,8 @@ class DateType(PropertyType):
         return dampen(4, 10, prefix)
 
     def rdf(self, value: str) -> Identifier:
+        if len(value) < Precision.HOUR.value:
+            return Literal(value, datatype=XSD.date)
         return Literal(value, datatype=XSD.dateTime)
 
     def node_id(self, value: str) -> str:
