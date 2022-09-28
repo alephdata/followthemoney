@@ -4686,6 +4686,7 @@
         "country"
       ],
       "label": "Security",
+      "matchable": true,
       "plural": "Securities",
       "properties": {
         "classification": {

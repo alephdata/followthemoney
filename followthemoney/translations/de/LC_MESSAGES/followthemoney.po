@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-27 13:42+0200\n"
+"POT-Creation-Date: 2022-09-28 10:51+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.3\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -709,16 +709,6 @@ msgstr "FSS"
 msgid "(RU, ФСС) Social Security"
 msgstr "(RU, ФСС) Sozialversicherung"
 
-#. Company.properties.ogrnCode.label
-#: followthemoney/schema/Company.yaml
-msgid "OGRN"
-msgstr "OGRN"
-
-#. Company.properties.ogrnCode.description
-#: followthemoney/schema/Company.yaml
-msgid "Major State Registration Number"
-msgstr "Primäre Staatliche Anmeldenummer"
-
 #. Company.properties.bikCode.label
 #: followthemoney/schema/Company.yaml
 msgid "BIK"
@@ -1165,9 +1155,10 @@ msgstr "Geschäftsführer"
 #. Directorship.properties.organization.label
 #. Membership.properties.organization.label
 #. Organization.label
+#. Post.properties.organization.label
 #: followthemoney/schema/Directorship.yaml
 #: followthemoney/schema/Membership.yaml
-#: followthemoney/schema/Organization.yaml
+#: followthemoney/schema/Organization.yaml followthemoney/schema/Post.yaml
 msgid "Organization"
 msgstr "Organisation"
 
@@ -2226,6 +2217,16 @@ msgstr "INN"
 msgid "Russian company ID"
 msgstr "Russische Firmennummer"
 
+#. LegalEntity.properties.ogrnCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "OGRN"
+msgstr "OGRN"
+
+#. LegalEntity.properties.ogrnCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "Major State Registration Number"
+msgstr "Primäre Staatliche Anmeldenummer"
+
 #. LegalEntity.properties.leiCode.label
 #: followthemoney/schema/LegalEntity.yaml
 msgid "LEI"
@@ -2355,7 +2356,7 @@ msgstr "Erwähnende Dokumente"
 #. Mention.properties.name.label
 #. Thing.properties.name.label
 #: followthemoney/schema/Mention.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/name.py:26
+#: followthemoney/types/name.py:25
 msgid "Name"
 msgstr "Name"
 
@@ -2795,6 +2796,39 @@ msgstr "Textdateien"
 #: followthemoney/schema/PlainText.yaml
 msgid "Text files, like .txt or source code.\n"
 msgstr "Textdateien und Quellcode.\n"
+
+#. Post.label
+#: followthemoney/schema/Post.yaml
+msgid "Post"
+msgstr ""
+
+#. Post.plural
+#: followthemoney/schema/Post.yaml
+msgid "Posts"
+msgstr ""
+
+#. Post.description
+#: followthemoney/schema/Post.yaml
+msgid ""
+"A post, role or position held by an individual within an organization  or "
+"body. This describes the period for which the position is held, not the "
+"abstract concept of the post.\n"
+msgstr ""
+
+#. Post.properties.holder.label
+#: followthemoney/schema/Post.yaml
+msgid "Holder"
+msgstr ""
+
+#. Post.properties.holder.reverse.label
+#: followthemoney/schema/Post.yaml
+msgid "Posts held"
+msgstr ""
+
+#. Post.properties.wikidataId.label
+#: followthemoney/schema/Post.yaml
+msgid "Wikidata ID of the post"
+msgstr ""
 
 #. Project.plural
 #. ProjectParticipant.properties.participant.reverse.label
@@ -3738,7 +3772,7 @@ msgstr "MIME-Typ"
 msgid "MIME-Types"
 msgstr "MIME-Typen"
 
-#: followthemoney/types/name.py:27
+#: followthemoney/types/name.py:26
 msgid "Names"
 msgstr "Namen"
 
