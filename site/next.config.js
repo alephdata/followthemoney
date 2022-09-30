@@ -7,12 +7,12 @@ const withMarkdoc = require('@markdoc/next.js');
 //   trailingSlash: true,
 // }
 
-const bla = withMarkdoc()({
-  pageExtensions: ['md', 'mdoc'],
+const markdocConfig = withMarkdoc()({
+  pageExtensions: ['md', 'mdoc','js', 'jsx', 'ts', 'tsx'],
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
 });
 // console.log(bla)
 
-module.exports = bla;
+module.exports = markdocConfig;
