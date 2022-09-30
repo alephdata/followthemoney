@@ -8,7 +8,7 @@ const withMarkdoc = require('@markdoc/next.js');
 // }
 
 const bla = withMarkdoc()({
-  pageExtensions: ['md', 'mdoc', 'js', 'jsx', 'ts', 'tsx'],
+  pageExtensions: ['md', 'mdoc'],
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
