@@ -1,12 +1,18 @@
 const withMarkdoc = require('@markdoc/next.js');
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+// const nextConfig = {
+//   reactStrictMode: true,
+//   swcMinify: true,
+//   trailingSlash: true,
+// }
+
+const bla = withMarkdoc()({
+  pageExtensions: ['md', 'mdoc', 'js', 'jsx', 'ts', 'tsx'],
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
-}
-
-module.exports = withMarkdoc(nextConfig)({
-  pageExtensions: ['md', 'mdoc', 'js', 'jsx', 'ts', 'tsx']
 });
+// console.log(bla)
+
+module.exports = bla;
