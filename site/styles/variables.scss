@@ -1,0 +1,11 @@
+/// bootstrap overrides
+// https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+
+$primary: yellow;
+$secondary: red;
+$info: cyan;
+$code-color: blue;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
