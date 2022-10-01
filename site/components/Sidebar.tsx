@@ -1,15 +1,17 @@
 import React from 'react';
-import Link from 'next/link';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 
-import styles from '../styles/Footer.module.scss';
-
-export default class Sidebar extends React.Component {
-  render() {
-    return (
-        <>I am sidebar</>
-    )
-  }
+function Sidebar({headings}) {
+  return (
+    <nav>
+      <ul>
+        {headings.map((item) => (
+          <li key={item.title}>
+            <a className="nav-link" href={`#${item.title}`}>{item.title}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
 }
+
+export default Sidebar

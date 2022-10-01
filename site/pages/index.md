@@ -18,6 +18,8 @@ All data stored by the `Aleph search engine`\_ is expressed as FtM entities. Ale
 adds functions for searching, viewing, and manipulating such entities. It also introduces
 higher-level notions of datasets and access control.
 
+## Toc stuff
+
 .. toctree::
 :maxdepth: 2
 :caption: Contents:
@@ -35,11 +37,15 @@ types.rst
 faq.rst
 credits.rst
 
+## Other stuff
+
 .. [#ingest] The Aleph toolchain includes a separate project, `ingestors`, which
 can extract and analyse the content of many document types and emit them as FtM
 entities. For example, if you were to process an archive of emails, it would
 generate a complex graph of E-Mail entities that connect the people sending and
 receiving them.
+
+## some footer stuff
 
 .. \_Aleph search engine: https://docs.alephdata.org/
 
