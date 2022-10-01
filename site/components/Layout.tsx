@@ -8,6 +8,10 @@ import { BASE_URL, SITE } from '../lib/constants';
 
 import styles from '../styles/Layout.module.scss';
 
+import type { AppProps } from 'next/app'
+import type { MarkdocNextJsPageProps } from '@markdoc/next.js'
+
+export type MyAppProps = MarkdocNextJsPageProps
 
 type LayoutBaseProps = {
   title?: string,
@@ -15,26 +19,35 @@ type LayoutBaseProps = {
   imageUrl?: string | null
 }
 
-export default function Layout({ title, description, imageUrl, children }: React.PropsWithChildren<LayoutBaseProps>) {
-  const router = useRouter();
-  const url = `${BASE_URL}${router.asPath}`;
-  const fullTitle = `${title}`
+const GetLayout = ({Component, pageProps}) => {
+  if(Component.getLayout) {
+    return Component.getLayout(<Component {...pageProps} />)
+  } else {
+    return <Component {...pageProps} />
+  }  
+}
+
+export default function Layout({ Component, pageProps }: AppProps<MyAppProps>) {
+  const { markdoc } = pageProps;
+  const DEFAULT_TITLE = "";
+  const DEFAULT_DESCRIPTION = "";
+  const DEFAULT_IMAGE_URL = "";
+  const url = "#";
+
+  const title = markdoc && markdoc.frontmatter.title || DEFAULT_TITLE;
+  const description = markdoc && markdoc.frontmatter.description || DEFAULT_DESCRIPTION;
+  const imageUrl = markdoc && markdoc.frontmatter.imageUrl || DEFAULT_IMAGE_URL;
+
   return (
     <>
       <Head>
         {title && (
           <>
-            <title>{fullTitle}</title>
+            <title>{title}</title>
             <meta property="og:title" content={title} />
             <meta property="twitter:title" content={title} />
           </>
         )}
-        <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@alephdata" />
         {!!description && (
           <>
             <meta property="og:description" content={description.trim()} />
@@ -49,7 +62,7 @@ export default function Layout({ title, description, imageUrl, children }: React
       </Head>
       <div className={styles.page}>
         <Navbar />
-        {children}
+        <GetLayout Component={Component} pageProps={pageProps} />
       </div>
       <Footer />
     </>
