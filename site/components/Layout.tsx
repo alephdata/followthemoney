@@ -2,14 +2,21 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import Navbar from './Navbar';
+import TopNav from './TopNav';
 import Footer from './Footer';
+import Sidebar from './Sidebar';
+
 import { BASE_URL, SITE } from '../lib/constants';
 
 import styles from '../styles/Layout.module.scss';
 
 import type { AppProps } from 'next/app'
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js'
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 export type MyAppProps = MarkdocNextJsPageProps
 
@@ -60,11 +67,20 @@ export default function Layout({ Component, pageProps }: AppProps<MyAppProps>) {
         <meta name="og:site" content={SITE} />
         <meta property="og:url" content={url} />
       </Head>
-      <div className={styles.page}>
-        <Navbar />
-        <GetLayout Component={Component} pageProps={pageProps} />
-      </div>
-      <Footer />
+      <Container fluid className="h-100">
+        <Row>
+          <TopNav />
+        </Row>
+        <Row className="h-100">
+          <Col xs={2}>
+            <Sidebar></Sidebar>
+          </Col>
+          <Col xs={6}>
+            <GetLayout Component={Component} pageProps={pageProps} />
+          </Col>
+        </Row>
+        <Row><Footer /></Row>
+      </Container>
     </>
   )
 }

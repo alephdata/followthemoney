@@ -10,13 +10,7 @@ export default class Footer extends React.Component {
   render() {
     return (
       <div className={styles.footer}>
-        <Container>
-          <Row>
-            <Col>
-
-            </Col>
-          </Row>
-        </Container >
+        <p>I am footer</p>
       </div >
     )
   }
