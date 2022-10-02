@@ -3,7 +3,6 @@ import 'prismjs';
 
 import * as React from 'react';
 import copy from 'copy-to-clipboard';
-import { Icon } from './Icon';
 
 Prism.languages.markdoc = {
   tag: {
@@ -69,7 +68,7 @@ export function Code({ children, 'data-language': language }) {
         {children}
       </pre>
       <button onClick={() => setCopied(true)}>
-      <i className="bi bi-clipboard-plus"></i>
+        <i className="bi bi-clipboard-plus"></i>
       </button>
       <style jsx>
         {`
