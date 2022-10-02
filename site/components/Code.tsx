@@ -1,7 +1,7 @@
 /* global Prism */
-import 'prismjs';
-
+import * as Prism from 'prismjs';
 import * as React from 'react';
+
 import copy from 'copy-to-clipboard';
 
 Prism.languages.markdoc = {
