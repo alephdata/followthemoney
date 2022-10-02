@@ -45,7 +45,7 @@ export function Code({ children, 'data-language': language}: any) {
 
   React.useEffect(() => {
     if (copied) {
-      if(ref.current) copy(ref.current.innerText);
+      if(ref.current) copy(ref.current['innerText']);
       const to = setTimeout(setCopied, 1000, false);
       return () => clearTimeout(to);
     }
