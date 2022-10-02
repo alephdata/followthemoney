@@ -20,7 +20,7 @@ import 'prismjs/themes/prism.css';
 
 export type MyAppProps = MarkdocNextJsPageProps
 
-const GetLayout = ({Component, pageProps}) => {
+const GetLayout = ({Component, pageProps}: AppProps) => {
   if(Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />)
   } else {

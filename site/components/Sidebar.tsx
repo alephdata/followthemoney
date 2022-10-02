@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import styles from '../styles/Sidebar.module.scss';
 
-function Sidebar({headings}) {
+function Sidebar({headings}: any) {
   return (
     <Nav className={[styles.sidebar, "text-white", "bg-dark", "flex-column"]}>
         {headings.map((item) => (
