@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Link from 'next/link';
-import NavLinks from './NavLinks';
 import styles from '../styles/TopNav.module.scss';
 
 export default class TopNav extends React.Component {

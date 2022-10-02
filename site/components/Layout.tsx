@@ -1,21 +1,21 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-
 import TopNav from './TopNav';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
-
-import { BASE_URL, SITE } from '../lib/constants';
-
-import styles from '../styles/Layout.module.scss';
-
 import type { AppProps } from 'next/app'
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js'
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import { BASE_URL, SITE, DEFAULT_TITLE, DEFAULT_DESCRIPTION, DEFAULT_IMAGE_URL } from '../lib/constants';
+
+import 'prismjs';
+import 'prismjs/components/prism-json.min';
+import 'prismjs/components/prism-python.min';
+import 'prismjs/components/prism-bash.min';
+import 'prismjs/themes/prism.css';
 
 
 export type MyAppProps = MarkdocNextJsPageProps
@@ -53,10 +53,7 @@ const collectHeadings = (node, sections = []) => {
 
 export default function Layout({ Component, pageProps }: AppProps<MyAppProps>) {
   const { markdoc } = pageProps;
-  const DEFAULT_TITLE = "";
-  const DEFAULT_DESCRIPTION = "";
-  const DEFAULT_IMAGE_URL = "";
-  const url = "#";
+  const url = BASE_URL;
 
   const title = markdoc && markdoc.frontmatter.title || DEFAULT_TITLE;
   const description = markdoc && markdoc.frontmatter.description || DEFAULT_DESCRIPTION;

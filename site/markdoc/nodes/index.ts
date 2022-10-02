@@ -1,0 +1,1 @@
+export { default as fence } from './fence.markdoc';
