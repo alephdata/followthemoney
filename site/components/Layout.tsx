@@ -62,7 +62,7 @@ export default function Layout({ Component, pageProps }: AppProps<MyAppProps>) {
   const description = markdoc && markdoc.frontmatter.description || DEFAULT_DESCRIPTION;
   const imageUrl = markdoc && markdoc.frontmatter.imageUrl || DEFAULT_IMAGE_URL;
 
-  const toc = markdoc.content ? collectHeadings(markdoc.content) : [];
+  const toc = (markdoc && markdoc.content) ? collectHeadings(markdoc.content) : [];
 
   return (
     <>
@@ -86,20 +86,14 @@ export default function Layout({ Component, pageProps }: AppProps<MyAppProps>) {
         <meta name="og:site" content={SITE} />
         <meta property="og:url" content={url} />
       </Head>
-      <Container fluid className="h-100">
-        <Row>
-          <TopNav />
+      <TopNav />
+      <Container fluid>
+        <Row className="justify-content-md-left">
+          <Col sm={2} className="g-0"><Sidebar headings={toc}></Sidebar></Col>
+          <Col sm={10} className=""><GetLayout Component={Component} pageProps={pageProps} /></Col>
         </Row>
-        <Row className="h-100">
-          <Col xs={2}>
-            <Sidebar headings={toc}></Sidebar>
-          </Col>
-          <Col xs={6}>
-            <GetLayout Component={Component} pageProps={pageProps} />
-          </Col>
-        </Row>
-        <Row><Footer /></Row>
       </Container>
+      <Footer />
     </>
   )
 }

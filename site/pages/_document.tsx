@@ -12,7 +12,7 @@ export default class SiteDocument extends Document {
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@alephdata" />
         </Head>
-        <body className="ftm-docs">
+        <body className="dark">
           <Main />
           <NextScript />
         </body>
