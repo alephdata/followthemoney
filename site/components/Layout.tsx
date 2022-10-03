@@ -28,7 +28,7 @@ const GetLayout = ({Component, pageProps}: AppLayoutProps) => {
   }  
 }
 
-const collectHeadings = (node, sections = []) => {
+const collectHeadings = (node: any, sections = []) => {
   if (node && node.name) {
     if (node.name.match(/h\d/)) {
       const title = node.children[0];
