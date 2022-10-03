@@ -14,10 +14,4 @@ const FollowTheMoneyApp: NextComponentType<AppContext, AppInitialProps, AppLayou
   );
 }
 
-// function FollowTheMoneyApp({ Component, pageProps }: AppProps) {
-//   return(
-//     <Layout Component={Component} pageProps={pageProps} />
-//   );
-// }
-
 export default FollowTheMoneyApp

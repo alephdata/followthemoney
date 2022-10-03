@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Head from 'next/head';
 import TopNav from './TopNav';
 import Footer from './Footer';
@@ -17,6 +18,7 @@ import 'prismjs/components/prism-python.min';
 import 'prismjs/components/prism-bash.min';
 import 'prismjs/themes/prism.css';
 
+import Markdoc, {RenderableTreeNodes, Tag} from '@markdoc/markdoc';
 
 export type MyAppProps = MarkdocNextJsPageProps
 
@@ -28,22 +30,25 @@ const GetLayout = ({Component, pageProps}: AppLayoutProps) => {
   }  
 }
 
-const collectHeadings = (node: any, sections = []) => {
-  if (node && node.name) {
-    if (node.name.match(/h\d/)) {
-      const title = node.children[0];
+const collectHeadings = (node: Tag | RenderableTreeNodes, sections: Array<any> = []) => {
+  
+  if (node && node instanceof Tag) {
+    if(node.name) {
+      if (node.name.match(/h\d/)) {
+        const title = node.children[0];
 
-      if (typeof title === 'string') {
-        sections.push({
-          ...node.attributes,
-          title
-        });
+        if (typeof title === 'string') {
+          sections.push({
+            ...node.attributes,
+            title: title
+          });
+        }
       }
-    }
 
-    if (node.children) {
-      for (const child of node.children) {
-        collectHeadings(child, sections);
+      if (node.children) {
+        for (const child of node.children) {
+          collectHeadings(child, sections);
+        }
       }
     }
   }
@@ -52,7 +57,7 @@ const collectHeadings = (node: any, sections = []) => {
 }
 
 export default function Layout({ Component, pageProps }: AppProps<MyAppProps>) {
-  const { markdoc } = pageProps;
+  const { markdoc }: MyAppProps = pageProps;
   const url = BASE_URL;
 
   const title = markdoc && markdoc.frontmatter.title || DEFAULT_TITLE;
