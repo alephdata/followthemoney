@@ -3,7 +3,7 @@ import Head from 'next/head';
 import TopNav from './TopNav';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
-import type { AppProps } from 'next/app'
+import type { AppProps, AppLayoutProps } from 'next/app'
 import type { MarkdocNextJsPageProps } from '@markdoc/next.js'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -20,7 +20,7 @@ import 'prismjs/themes/prism.css';
 
 export type MyAppProps = MarkdocNextJsPageProps
 
-const GetLayout = ({Component, pageProps}: AppProps) => {
+const GetLayout = ({Component, pageProps}: AppLayoutProps) => {
   if(Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />)
   } else {
