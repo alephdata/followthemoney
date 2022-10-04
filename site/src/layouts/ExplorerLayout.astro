@@ -2,6 +2,7 @@
 import { Model, defaultModel } from '@alephdata/followthemoney';
 import DefaultLayout from './DefaultLayout.astro';
 import Nav from '../components/page/Nav.astro';
+import NavSection from '../components/page/NavSection.astro';
 import NavItem from '../components/page/NavItem.astro';
 
 const { activeSchema = null } = Astro.props;
@@ -15,16 +16,22 @@ const schemata = Object.values(model.schemata).sort((a, b) =>
 
 <DefaultLayout {title}>
   <Nav slot="sidebar">
-    {
-      schemata.map((schema) => (
-        <NavItem
-          link={`/explorer/schemata/${schema.name}`}
-          active={schema.name === activeSchema?.name}
-        >
-          {schema.label}
-        </NavItem>
-      ))
-    }
+    <NavSection title="Types">
+      <NavItem>Test</NavItem>
+    </NavSection>
+
+    <NavSection title="Schemata">
+      {
+        schemata.map((schema) => (
+          <NavItem
+            link={`/explorer/schemata/${schema.name}`}
+            active={schema.name === activeSchema?.name}
+          >
+            {schema.label}
+          </NavItem>
+        ))
+      }
+    </NavSection>
   </Nav>
 
   <slot />
