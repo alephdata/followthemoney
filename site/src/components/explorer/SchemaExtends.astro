@@ -3,16 +3,17 @@ const { schema } = Astro.props;
 const parents = schema.getExtends();
 ---
 
+<h2>Extends</h2>
+
 {
   parents.length > 0 && (
     <>
-      <h2>Extends</h2>
       <p>The {schema.label} schema extends the following schemata:</p>
 
       <ul>
         {parents.map((parent) => (
           <li>
-            <a href={`/schemata/${parent.name}`}>{parent.label}</a>
+            <a href={`/explorer/schemata/${parent.name}`}>{parent.label}</a>
           </li>
         ))}
       </ul>
@@ -22,6 +23,6 @@ const parents = schema.getExtends();
 
 {
   parents.length <= 0 && (
-    <p>{schema.plural} do not inherit from any other schemata.</p>
+    <p>The {schema.label} schema does not extend any other schemata.</p>
   )
 }
