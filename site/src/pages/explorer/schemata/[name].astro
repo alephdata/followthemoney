@@ -1,0 +1,29 @@
+---
+import { Model, defaultModel } from '@alephdata/followthemoney';
+import ExplorerLayout from '@layouts/ExplorerLayout.astro';
+import SchemaExtends from '@components/explorer/SchemaExtends.astro';
+import SchemaProperties from '@components/explorer/SchemaProperties.astro';
+
+const { name } = Astro.params;
+
+const model = new Model(defaultModel);
+const schema = model.schemata[name];
+const schemata = Object.values(model.schemata).sort((a, b) =>
+  a.label.localeCompare(b.label)
+);
+
+export function getStaticPaths() {
+  const model = new Model(defaultModel);
+  return Object.keys(model.schemata).map((name) => ({ params: { name } }));
+}
+---
+
+<ExplorerLayout activeSchema={schema}>
+  <header class="mb-12">
+    <h1 class="mb-2">{schema.label}</h1>
+    {schema.description && <p class="lead mt-0">{schema.description}</p>}
+  </header>
+
+  <SchemaExtends schema={schema} />
+  <SchemaProperties schema={schema} />
+</ExplorerLayout>

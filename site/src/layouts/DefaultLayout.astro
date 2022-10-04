@@ -1,0 +1,36 @@
+---
+import Header from '../components/page/Header.astro';
+import Sidebar from '../components/page/Sidebar.astro';
+
+const hasSidebar = !!Astro.slots.sidebar;
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title} – FollowTheMoney</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <Header />
+
+    <div class="max-w-6xl flex justify-center mx-auto">
+      {
+        hasSidebar && (
+          <div class="flex-grow-0 flex-shrink-0 w-1/4">
+            <Sidebar>
+              <slot name="sidebar" />
+            </Sidebar>
+          </div>
+        )
+      }
+
+      <main class="py-10 px-5 w-3/4">
+        <div class="prose max-w-3xl">
+          <slot />
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

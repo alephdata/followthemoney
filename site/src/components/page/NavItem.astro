@@ -1,0 +1,16 @@
+---
+const { link, active = false } = Astro.props;
+---
+
+<li class="-mx-2">
+  <a
+    href={link}
+    class:list={[
+      'block py-1 px-2 rounded',
+      !active && 'text-slate-500 hover:text-slate-800',
+      active && 'bg-slate-100 text-slate-800 font-semibold',
+    ]}
+  >
+    <slot />
+  </a>
+</li>
