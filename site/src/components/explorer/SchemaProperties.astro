@@ -1,4 +1,6 @@
 ---
+import PropertyType from './PropertyType.astro';
+
 const { schema } = Astro.props;
 const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
   a.name.localeCompare(b.name)
@@ -59,9 +61,7 @@ const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
             <td>{prop.label}</td>
 
             <td>
-              <span class="bg-slate-100 py-1 px-2 rounded font-mono text-sm">
-                {prop.type}
-              </span>
+              <PropertyType property={prop} />
             </td>
           </tr>
         ))
