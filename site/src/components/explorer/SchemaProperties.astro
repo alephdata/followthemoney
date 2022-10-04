@@ -1,0 +1,53 @@
+---
+const { schema } = Astro.props;
+const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
+  a.name.localeCompare(b.name)
+);
+---
+
+<div x-data="{ showInherited: false }">
+  <div class="flex justify-between items-end">
+    <h2>Properties</h2>
+
+    <label class="mb-6 mt-12 self-stretch">
+      <input type="checkbox" x-model="showInherited" />
+      Show inherited
+    </label>
+  </div>
+
+  <table class="mt-0 table-fixed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Info</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {
+        properties.map((prop) => (
+          <tr
+            x-data={`{ isInherited: ${prop.schema.name !== schema.name} }`}
+            x-show="!isInherited || showInherited"
+            class:list={prop.schema.name !== schema.name && 'bg-slate-50'}
+          >
+            <td>
+              <span class="bg-slate-100 py-1 px-2 rounded font-mono text-sm">
+                {prop.name}
+              </span>
+            </td>
+
+            <td>{prop.label}</td>
+
+            <td>
+              <span class="bg-slate-100 py-1 px-2 rounded font-mono text-sm">
+                {prop.type}
+              </span>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

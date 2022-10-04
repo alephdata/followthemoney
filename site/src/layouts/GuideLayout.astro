@@ -1,0 +1,23 @@
+---
+import DefaultLayout from './DefaultLayout.astro';
+import Nav from '../components/page/Nav.astro';
+import NavItem from '../components/page/NavItem.astro';
+
+const currentUrl = Astro.url;
+const pages = await Astro.glob('../pages/guide/*');
+const { title } = Astro.props.content;
+---
+
+<DefaultLayout {title}>
+  <Nav slot="sidebar">
+    {
+      pages.map((page) => (
+        <NavItem link={page.url} active={page.url === currentUrl.pathname}>
+          {page.frontmatter.title}
+        </NavItem>
+      ))
+    }
+  </Nav>
+
+  <slot />
+</DefaultLayout>

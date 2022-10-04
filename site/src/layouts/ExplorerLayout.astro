@@ -1,0 +1,31 @@
+---
+import { Model, defaultModel } from '@alephdata/followthemoney';
+import DefaultLayout from './DefaultLayout.astro';
+import Nav from '../components/page/Nav.astro';
+import NavItem from '../components/page/NavItem.astro';
+
+const { activeSchema = null } = Astro.props;
+const title = activeSchema ? `${activeSchema.label} schema` : 'Model Explorer';
+
+const model = new Model(defaultModel);
+const schemata = Object.values(model.schemata).sort((a, b) =>
+  a.label.localeCompare(b.label)
+);
+---
+
+<DefaultLayout {title}>
+  <Nav slot="sidebar">
+    {
+      schemata.map((schema) => (
+        <NavItem
+          link={`/explorer/schemata/${schema.name}`}
+          active={schema.name === activeSchema?.name}
+        >
+          {schema.label}
+        </NavItem>
+      ))
+    }
+  </Nav>
+
+  <slot />
+</DefaultLayout>

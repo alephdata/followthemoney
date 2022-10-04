@@ -1,0 +1,12 @@
+---
+layout: '@layouts/DefaultLayout.astro'
+title: Home
+---
+
+# FollowTheMoney
+
+_FollowTheMoney_ (FtM) is a data model for anti-corruption investigations. It contains definitions of the entities relevant in such research (like _people_ or _companies_) and tools that let you generate, validate, and export such data easily. Entities can reference each other, thus creating a graph of relationships.
+
+FtM can be used in three contexts: as a _command-line utility_, a _Python library_, and as a _TypeScript/JavaScript library_. The ontology defined by FtM also includes a model for various types of _documents_ that might be used as evidence in investigations.
+
+All data stored by the _Aleph search engine_ is expressed as FtM entities. Aleph itself adds functions for searching, viewing, and manipulating such entities. It also introduces higher-level notions of datasets and access control.
