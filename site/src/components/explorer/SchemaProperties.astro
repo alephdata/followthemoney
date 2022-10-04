@@ -5,12 +5,31 @@ const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
 );
 ---
 
-<div x-data="{ showInherited: false }">
+<style>
+  [data-show-inherited='false'] [data-is-inherited] {
+    display: none;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('#props');
+    const toggle = document.querySelector('#props-inherited-toggle');
+
+    toggle.checked = false;
+
+    toggle.addEventListener('change', () => {
+      container.dataset.showInherited = toggle.checked ? 'true' : 'false';
+    });
+  });
+</script>
+
+<div id="props" data-show-inherited="false">
   <div class="flex justify-between items-end">
     <h2>Properties</h2>
 
     <label class="mb-6 mt-12 self-stretch">
-      <input type="checkbox" x-model="showInherited" />
+      <input type="checkbox" id="props-inherited-toggle" />
       Show inherited
     </label>
   </div>
@@ -28,9 +47,8 @@ const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
       {
         properties.map((prop) => (
           <tr
-            x-data={`{ isInherited: ${prop.schema.name !== schema.name} }`}
-            x-show="!isInherited || showInherited"
             class:list={prop.schema.name !== schema.name && 'bg-slate-50'}
+            data-is-inherited={prop.schema.name !== schema.name}
           >
             <td>
               <span class="bg-slate-100 py-1 px-2 rounded font-mono text-sm">

@@ -13,7 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "@alephdata/followthemoney": "^3.0.4",
-    "@astrojs/alpinejs": "^0.1.2",
     "@astrojs/mdx": "^0.11.4",
     "@astrojs/tailwind": "^2.0.2",
     "@tailwindcss/typography": "^0.5.7",
