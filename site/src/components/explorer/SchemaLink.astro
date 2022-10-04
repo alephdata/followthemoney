@@ -1,0 +1,11 @@
+---
+import { defaultModel, Model, Schema } from '@alephdata/followthemoney';
+const model = new Model(defaultModel);
+
+let { schema } = Astro.props;
+schema = model.getSchema(schema);
+---
+
+<a href={`/explorer/schemata/${schema.name}`}>
+  {schema.label}
+</a>
