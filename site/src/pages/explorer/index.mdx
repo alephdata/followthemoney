@@ -1,0 +1,14 @@
+---
+layout: '@layouts/ExplorerLayout.astro'
+---
+
+import { defaultModel } from '@alephdata/followthemoney';
+
+# Model Explorer
+
+<p class="lead">
+  Explore the default data model shipped with FollowTheMoney. It currently
+  includes {Object.keys(defaultModel.schemata).length} schemata and{' '}
+  {Object.keys(defaultModel.types).length} property types that can be selected
+  to generate entities.
+</p>
