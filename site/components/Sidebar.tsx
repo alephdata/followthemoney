@@ -2,11 +2,15 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import styles from '../styles/Sidebar.module.scss';
 
-function Sidebar({headings}: any) {
+interface SidebarProps {
+  headings: Array<{ title: string }>,
+};
+
+function Sidebar({headings}: SidebarProps) {
   return (
     <Nav className={`${styles.sidebar} text-white bg-dark flex-column`}>
         {headings.map((item) => (
-          <Nav.Link key={Math.random()}>
+          <Nav.Link key={item.title}>
             <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
             {item.title}
           </Nav.Link>

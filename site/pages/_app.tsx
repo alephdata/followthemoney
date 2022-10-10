@@ -7,10 +7,15 @@ import '../styles/globals.scss';
 
 const FollowTheMoneyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = ({
   Component,
-  pageProps
+  pageProps,
+  router
 }: AppLayoutProps) => {
   return(
-    <Layout Component={Component} pageProps={pageProps} />
+    <Layout
+      Component={Component}
+      pageProps={pageProps}
+      router={router}
+    />
   );
 }
 

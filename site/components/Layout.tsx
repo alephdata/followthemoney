@@ -22,7 +22,7 @@ import Markdoc, {RenderableTreeNodes, Tag} from '@markdoc/markdoc';
 
 export type MyAppProps = MarkdocNextJsPageProps
 
-const GetLayout = ({Component, pageProps}: AppLayoutProps) => {
+const GetLayout = ({Component, pageProps}: Pick<AppLayoutProps, 'Component' | 'pageProps'>) => {
   if(Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />)
   } else {

@@ -8,13 +8,11 @@ import Layout from '../components/Layout'
 
 const Datasets: NextPage = () => {
   return (
-    <Layout title="Datasets">
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          dataset listing
-        </h1>
-      </main>
-    </Layout>
+    <main className={styles.main}>
+      <h1 className={styles.title}>
+        dataset listing
+      </h1>
+    </main>
   )
 }
 
