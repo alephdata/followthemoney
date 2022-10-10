@@ -5,16 +5,16 @@ import SchemaExtends from '@components/explorer/SchemaExtends.astro';
 import SchemaProperties from '@components/explorer/SchemaProperties.astro';
 
 const { name } = Astro.params;
+const { schema } = Astro.props;
 
 const model = new Model(defaultModel);
-const schema = model.schemata[name];
-const schemata = Object.values(model.schemata).sort((a, b) =>
-  a.label.localeCompare(b.label)
-);
 
 export function getStaticPaths() {
   const model = new Model(defaultModel);
-  return Object.keys(model.schemata).map((name) => ({ params: { name } }));
+  return Object.entries(model.schemata).map(([name, schema]) => ({
+    params: { name },
+    props: { schema },
+  }));
 }
 ---
 
