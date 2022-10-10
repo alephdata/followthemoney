@@ -1,0 +1,26 @@
+---
+import { Model, defaultModel } from '@alephdata/followthemoney';
+import ExplorerLayout from '@layouts/ExplorerLayout.astro';
+import TypeValues from '@components/explorer/TypeValues.astro';
+
+const { name } = Astro.params;
+const { type } = Astro.props;
+
+const model = new Model(defaultModel);
+
+export function getStaticPaths() {
+  const model = new Model(defaultModel);
+  return Object.entries(model.types).map(([name, type]) => ({
+    params: { name },
+    props: { type },
+  }));
+}
+---
+
+<ExplorerLayout activeType={type}>
+  <header class="mb-12">
+    <h1 class="mb-2">{type.label}</h1>
+
+    <TypeValues {type} />
+  </header>
+</ExplorerLayout>
