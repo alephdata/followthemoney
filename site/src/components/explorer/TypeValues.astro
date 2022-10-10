@@ -1,0 +1,31 @@
+---
+const { type } = Astro.props;
+const values = Array.from(type.values);
+---
+
+{
+  values.length > 0 && (
+    <>
+      <h2>Values</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Value</th>
+            <th>Label</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {values.map(([value, label]) => (
+            <tr>
+              <td>
+                <span class="bg-slate-100 py-1 px-2 rounded font-mono text-sm">{value}</span>
+              </td>
+              <td>{label}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  )
+}
