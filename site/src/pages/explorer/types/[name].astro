@@ -2,9 +2,11 @@
 import { Model, defaultModel } from '@alephdata/followthemoney';
 import ExplorerLayout from '@layouts/ExplorerLayout.astro';
 import TypeValues from '@components/explorer/TypeValues.astro';
+import descriptions from '../../../../tmp/typeDescriptions.json';
 
 const { name } = Astro.params;
 const { type } = Astro.props;
+const description = descriptions[type.name] || null;
 
 const model = new Model(defaultModel);
 
@@ -20,6 +22,7 @@ export function getStaticPaths() {
 <ExplorerLayout activeType={type}>
   <header class="mb-12">
     <h1 class="mb-2">{type.label}</h1>
+    <Fragment set:html={description} />
 
     <TypeValues {type} />
   </header>
