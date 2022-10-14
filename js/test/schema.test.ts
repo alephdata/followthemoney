@@ -134,13 +134,13 @@ describe('ftm/Schema class', () => {
     it('returns array of properties', () => {
       const interval = model.getSchema('Interval')
       const props = interval.getTemporalStartProperties()
-      expect(new Set(props.map(prop => prop.name))).toEqual(new Set(['startDate', 'date']))
+      expect(props.map(prop => prop.name)).toEqual(['date', 'startDate'])
     })
 
     it('inherits properties', () => {
       const event = model.getSchema('Event')
       const props = event.getTemporalStartProperties()
-      expect(new Set(props.map(prop => prop.name))).toEqual(new Set(['startDate', 'date']))
+      expect(props.map(prop => prop.name)).toEqual(['date', 'startDate'])
     })
   })
   describe('method getTemporalEndProperties', () => {
@@ -152,13 +152,13 @@ describe('ftm/Schema class', () => {
     it('returns array of properties', () => {
       const interval = model.getSchema('Interval')
       const props = interval.getTemporalEndProperties()
-      expect(new Set(props.map(prop => prop.name))).toEqual(new Set(['endDate']))
+      expect(props.map(prop => prop.name)).toEqual(['endDate'])
     })
 
     it('inherits properties', () => {
       const event = model.getSchema('Event')
       const props = event.getTemporalEndProperties()
-      expect(new Set(props.map(prop => prop.name))).toEqual(new Set(['endDate']))
+      expect(props.map(prop => prop.name)).toEqual(['endDate'])
     })
   })
 })

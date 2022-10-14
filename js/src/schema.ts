@@ -145,25 +145,27 @@ export class Schema {
   }
 
   getTemporalStartProperties(): Array<Property> {
-    const properties: Array<Property> = this.temporalStart
-      .map(name => this.getProperty(name))
+    const properties: Set<string> = new Set(this.temporalStart);
 
     for (const ext of this.getExtends()) {
-      properties.push(...ext.getTemporalStartProperties())
+      for (const property of ext.getTemporalStartProperties()) {
+        properties.add(property.name);
+      }
     }
 
-    return properties
+    return Array.from(properties).map((name) => this.getProperty(name));
   }
 
   getTemporalEndProperties(): Array<Property> {
-    const properties: Array<Property> = this.temporalEnd
-      .map(name => this.getProperty(name))
+    const properties: Set<string> = new Set(this.temporalEnd);
 
     for (const ext of this.getExtends()) {
-      properties.push(...ext.getTemporalEndProperties())
+      for (const property of ext.getTemporalEndProperties()) {
+        properties.add(property.name);
+      }
     }
 
-    return properties
+    return Array.from(properties).map((name) => this.getProperty(name));
   }
 
   hasProperty(prop: string | Property): boolean {
