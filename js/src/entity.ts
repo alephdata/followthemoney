@@ -149,30 +149,46 @@ export class Entity {
    * Get a date that can be used to represent the start of the entity in a timeline.
    * If there are multiple possible dates, the earliest date is returned.
    */
-  getTemporalStart(): Value|null {
+  getTemporalStart(): { property: Property, value: Value }|null {
     const values = [];
     const properties = this.schema.getTemporalStartProperties();
 
     for (const property of properties) {
-      values.push(...this.getProperty(property));
+      values.push(
+        ...this.getProperty(property).map(
+          (value) => ({ property, value})
+        )
+      );
     }
 
-    return values.sort()[0] || null;
+    const sortedValues = values.sort(
+      (a, b) => a.value < b.value ? -1 : 1
+    );
+
+    return sortedValues[0] || null;
   }
 
   /** 
    * Get a date that can be used to represent the end of the entity in a timeline.
    * If there are multiple possible dates, the earliest date is returned.
    */
-  getTemporalEnd(): Value|null {
+  getTemporalEnd(): { property: Property, value: Value }|null {
     const values = [];
     const properties = this.schema.getTemporalEndProperties();
 
     for (const property of properties) {
-      values.push(...this.getProperty(property));
+      values.push(
+        ...this.getProperty(property).map(
+          (value) => ({ property, value })
+        )
+      );
     }
 
-    return values.sort().slice(-1)[0] || null;
+    const sortedValues = values.sort(
+      (a, b) => b.value < a.value ? -1 : 1
+    );
+
+    return sortedValues[0] || null;
   }
 
   /**
