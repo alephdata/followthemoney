@@ -83,7 +83,7 @@ describe('ftm/Entity class', () => {
       expect(passport.getCaption()).toBe(testNumber)
     })
     it('can get temporal start', function() {
-      let entity;
+      let entity
 
       entity = model.getEntity({ id: '1', schema: 'Event' })
       expect(entity.getTemporalStart()).toBeNull()
@@ -103,7 +103,7 @@ describe('ftm/Entity class', () => {
       expect(start!.value).toEqual('2022-01-01')
     })
     it('can get temporal end', function () {
-      let entity;
+      let entity
 
       entity = model.getEntity({ id: '1', schema: 'Event' })
       expect(entity.getTemporalEnd()).toBeNull()
