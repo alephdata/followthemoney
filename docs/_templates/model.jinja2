@@ -10,7 +10,7 @@ to generate entities.
 .. contents:: Schemata
     :local:
 
-{% for schema in model.schemata.values(): %}
+{% for schema in model.schemata.values() | sort(attribute='label'): %}
 .. _schema-{{schema.name}}:
 
 {{schema.label}}
