@@ -92,19 +92,15 @@ describe('ftm/Entity class', () => {
         id: '1',
         schema: 'Event',
         properties: {
-          startDate: ['2022-01-01'],
-        },
-      })
-      expect(entity.getTemporalStart()).toEqual('2022-01-01')
-
-      entity = model.getEntity({
-        id: '1',
-        schema: 'Event',
-        properties: {
           startDate: ['2022-01-01', '2022-02-01'],
+          date: ['2022-03-01'],
         },
       })
-      expect(entity.getTemporalStart()).toEqual('2022-01-01')
+
+      const start = entity.getTemporalStart()
+      expect(start).not.toBeNull()
+      expect(start!.property).toEqual(entity.schema.getProperty('startDate'))
+      expect(start!.value).toEqual('2022-01-01')
     })
     it('can get temporal end', function () {
       let entity;
@@ -116,19 +112,14 @@ describe('ftm/Entity class', () => {
         id: '1',
         schema: 'Event',
         properties: {
-          endDate: ['2022-02-01'],
+          endDate: ['2022-02-01', '2022-01-01'],
         },
       })
-      expect(entity.getTemporalEnd()).toEqual('2022-02-01')
 
-      entity = model.getEntity({
-        id: '1',
-        schema: 'Event',
-        properties: {
-          endDate: ['2022-01-01', '2022-02-01'],
-        },
-      })
-      expect(entity.getTemporalEnd()).toEqual('2022-02-01')
+      const end = entity.getTemporalEnd()
+      expect(end).not.toBeNull()
+      expect(end!.property).toEqual(entity.schema.getProperty('endDate'))
+      expect(end!.value).toEqual('2022-02-01')
     })
   })
 })
