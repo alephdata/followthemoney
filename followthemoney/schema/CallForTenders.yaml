@@ -4,28 +4,45 @@ CallForTenders:
   description: "A public appeal issued by an authority, possibly on behalf of another, for buying a specific work, supply or service"
   extends:
     - Thing
+    - Interval
   required:
     - title
+    - authority
   featured:
     - title
-    - contractingAuthority
+    - authority
   caption:
     - title
   properties:
-    title:
-      label: "Title"
     uid:
       label: "CfT Unique ID"
+      type: identifier
     cftCaUid:
       label: "CfT CA Unique ID"
-    contractingOnBehalfOf:
-      label: "Published on behalf of"
-    contractingAuthority:
+      type: identifier
+    title:
+      label: "Title"
+    authority:
       label: "Name of Contracting Authority"
-    evaluationMechanism:
-      label: "Evaluation Mechanism"
+      reverse:
+        name: callForTenders
+        label: "Call For Tenders"
+      type: entity
+      range: LegalEntity
+    onBehalfOf:
+      label: "Published on behalf of"
+      reverse:
+        name: delegatedCallForTenders
+        label: "Delegated Call For Tenders"
+      type: entity
+      range: LegalEntity
     description:
       label: "Description"
+    pubDate:
+      label: "Date of Publication/Invitation"
+      type: date
+    evalMechanism:
+      label: "Evaluation Mechanism"
     procurementType:
       label: "Procurement Type"
     directive:
@@ -33,45 +50,54 @@ CallForTenders:
     procedure:
       label: "Procedure"
     involves:
-      label: "CfT Involves"
-    cpvCodes:
-      label: "CPV Codes"
+      label: "Call for Tenders Involves"
+    cpvCode:
+      label: "CPV Code"
+      plural: "CPV Codes"
+      description: "Common Procurement Vocabulary (CPV)"
+      type: identifier
     eAuctionsIncluded:
       label: "Inclusion of e-Auctions"
     nutsCode:
       label: "NUTS Code"
+      plural: "NUTS Codes"
       description: "Nomenclature of Territorial Units for Statistics (NUTS)"
-    aboveOrBelowThreshold:
+      type: identifier
+    relToThreshold:
       label: "Above or Below threshold"
+    awardingDate:
+      label: "Date of Awarding"
+      type: date
     paymentOptions:
       label: "Payment Options"
-    submissionDeadline:
+    submitDeadline:
       label: "Submission deadline"
-    clarificationDeadline:
+      type: date
+    clarifDeadline:
       label: "End of clarification period"
-    clarificationDocumentUpload:
+      type: date
+    clarifDocUpload:
       label: "Upload of documents within the clarification"
-    openingDate:
-      label: "Tenders Opening Date"
-    notificationAllowed:
-      label: "Allow suppliers to Register for Notifications:"
-    awardedInLots:  
+    notifAllowed:
+      label: "Allow suppliers to Register for Notifications"
+    awardedInLots:
       label: "Contract awarded in Lots"
     euFunding:
       label: "EU funding"
     multipleTenders:
       label: "Multiple tenders will be accepted"
-    publicationDate:
-      label: "Date of Publication/Invitation"
     tedLinksForNotices:
       label: "TED links for published notices"
-    dateOfAwarding:
-      label: "Date of Awarding"
     fallsUnderGPPScope:
       label: "Does this Call fall under the scope of GPP?"
-    certificationCheck:
+      description: "European Green Public Procurement (GPP) or green purchasing."
+    certifCheck:
       label: "Certification check"
-    tenderers:  
-      label: "Tenderers"
-    awardedContracts:
-      label: "Awarded Contracts"
+    tenderer:
+      label: "Tenderer"
+      plural: "Tenderers"
+      reverse:
+        name: tender
+        label: "Tender"
+      type: entity
+      range: LegalEntity

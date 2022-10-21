@@ -39,6 +39,13 @@ ContractAward:
         label: "Lots awarded"
       type: entity
       range: Contract
+    callForTenders:
+      label: "Call For Tender"
+      type: entity
+      reverse:
+        name: contractAwards
+        label: "Contract Awards"
+      range: CallForTenders
     lotNumber:
       label: "Lot number"
     documentNumber:
