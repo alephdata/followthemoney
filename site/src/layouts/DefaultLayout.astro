@@ -12,7 +12,7 @@ const { title } = Astro.props;
     <title>{title} – FollowTheMoney</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body>
+  <body class="bg-slate-50 dark:bg-gray-900">
     <Header />
 
     <div class="max-w-6xl flex justify-center mx-auto">
@@ -27,7 +27,7 @@ const { title } = Astro.props;
       }
 
       <main class="py-10 px-5 w-3/4">
-        <div class="prose max-w-3xl">
+        <div class="prose dark:prose-invert max-w-3xl">
           <slot />
         </div>
       </main>

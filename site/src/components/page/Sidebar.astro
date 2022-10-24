@@ -1,3 +1,12 @@
-<div class="px-5 py-10 sticky top-0 h-screen overflow-y-auto">
+<style>
+  div {
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+  }
+</style>
+
+<div class="px-5 py-10">
   <slot />
 </div>

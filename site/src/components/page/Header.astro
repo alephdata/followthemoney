@@ -1,5 +1,18 @@
-<header class="py-4 border-b shadow-xl shadow-slate-50">
-  <div class="px-5 max-w-6xl flex mx-auto justify-between">
+<style>
+  :global(:root) {
+    --header-height: theme('space.14');
+  }
+
+  header {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    height: var(--header-height);
+  }
+</style>
+
+<header class="py-4 border-b bg-white dark:bg-gray-800 dark:border-gray-700">
+  <div class="px-5 max-w-6xl flex mx-auto justify-between dark:text-white">
     <a href="/" class="font-bold"> FollowTheMoney</a>
 
     <nav>

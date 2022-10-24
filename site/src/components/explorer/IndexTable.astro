@@ -6,13 +6,23 @@
 
   * :global(th) {
     position: sticky;
-    top: 0;
-    background: theme('colors.white');
+    top: var(--header-height);
+    background: theme('colors.gray.50');
     padding-top: theme('space.2');
   }
 
   * :global(th, td) {
     border-bottom: 1px solid theme('colors.gray.200');
+  }
+
+  @media (prefers-color-scheme:  dark) {
+    * :global(th) {
+      background: theme('colors.gray.900');
+    }
+
+    * :global(th, td) {
+      border-bottom-color: theme('colors.gray.700');
+    }
   }
 </style>
 

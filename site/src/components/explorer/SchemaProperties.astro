@@ -47,7 +47,7 @@ const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
     {
       properties.map((prop) => (
         <tr
-          class:list={prop.schema.name !== schema.name && 'bg-slate-50'}
+          class:list={prop.schema.name !== schema.name && 'bg-slate-50 dark:bg-black/20'}
           data-is-inherited={prop.schema.name !== schema.name}
         >
           <td>
