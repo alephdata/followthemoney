@@ -22,7 +22,9 @@ const types = Object.values(model.types).sort((a, b) =>
       <td>
         <PropertyTypeLink {type}>{type.label}</PropertyTypeLink>
       </td>
-      <td>{type.name}</td>
+      <td>
+        <code>{type.name}</code>
+      </td>
       <td><BooleanValue value={type.matchable} /></td>
       <td><BooleanValue value={type.pivot} /></td>
     </tr>
