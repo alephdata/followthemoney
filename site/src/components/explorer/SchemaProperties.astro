@@ -51,9 +51,9 @@ const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
           data-is-inherited={prop.schema.name !== schema.name}
         >
           <td>
-            <span class="bg-slate-100 py-1 px-2 rounded font-mono text-xs">
+            <code>
               {prop.name}
-            </span>
+            </code>
           </td>
 
           <td>{prop.label}</td>
