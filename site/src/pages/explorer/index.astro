@@ -1,0 +1,26 @@
+---
+import { defaultModel, Model } from '@alephdata/followthemoney';
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import PropertyTypesIndexTable from '@components/explorer/PropertyTypesIndexTable.astro';
+import SchemataIndexTable from '@components/explorer/SchemataIndexTable.astro';
+
+const model = new Model(defaultModel);
+---
+
+<DefaultLayout>
+  <h1>Model Explorer</h1>
+
+  <p class="lead">
+    Explore the default data model shipped with FollowTheMoney. It currently
+    includes <a href="#schemata">{Object.keys(defaultModel.schemata).length} schemata</a> and{' '}
+    <a href="#types">{Object.keys(defaultModel.types).length} property types</a> that can be selected
+    to generate entities.
+  </p>
+
+  <h2 id="types">Types</h2>
+  <PropertyTypesIndexTable />
+
+  <h2 id="schemata">Schemata</h2>
+  <SchemataIndexTable />
+  
+</DefaultLayout>

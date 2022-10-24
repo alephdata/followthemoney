@@ -1,5 +1,6 @@
 ---
 import PropertyType from './PropertyType.astro';
+import IndexTable from './IndexTable.astro';
 
 const { schema } = Astro.props;
 const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
@@ -28,44 +29,40 @@ const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
 
 <div id="props" data-show-inherited="false">
   <div class="flex justify-between items-end">
-    <h2>Properties</h2>
+    <h2 class="mb-0">Properties</h2>
 
-    <label class="mb-6 mt-12 self-stretch">
+    <label class="mt-12 self-stretch">
       <input type="checkbox" id="props-inherited-toggle" />
       Show inherited
     </label>
   </div>
 
-  <table class="mt-0 table-fixed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Info</th>
-        <th>Type</th>
-      </tr>
-    </thead>
+  <IndexTable>
+    <tr slot="head">
+      <th>Name</th>
+      <th>Info</th>
+      <th>Type</th>
+    </tr>
 
-    <tbody>
-      {
-        properties.map((prop) => (
-          <tr
-            class:list={prop.schema.name !== schema.name && 'bg-slate-50'}
-            data-is-inherited={prop.schema.name !== schema.name}
-          >
-            <td>
-              <span class="bg-slate-100 py-1 px-2 rounded font-mono text-sm">
-                {prop.name}
-              </span>
-            </td>
+    {
+      properties.map((prop) => (
+        <tr
+          class:list={prop.schema.name !== schema.name && 'bg-slate-50'}
+          data-is-inherited={prop.schema.name !== schema.name}
+        >
+          <td>
+            <span class="bg-slate-100 py-1 px-2 rounded font-mono text-xs">
+              {prop.name}
+            </span>
+          </td>
 
-            <td>{prop.label}</td>
+          <td>{prop.label}</td>
 
-            <td>
-              <PropertyType property={prop} />
-            </td>
-          </tr>
-        ))
-      }
-    </tbody>
-  </table>
+          <td>
+            <PropertyType property={prop} />
+          </td>
+        </tr>
+      ))
+    }
+  </IndexTable>
 </div>

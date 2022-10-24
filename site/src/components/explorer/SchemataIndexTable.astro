@@ -1,0 +1,36 @@
+---
+import { defaultModel, Model } from '@alephdata/followthemoney';
+import IndexTable from '@components/explorer/IndexTable.astro';
+import SchemaLink from '@components/explorer/SchemaLink.astro';
+import BooleanValue from '@components/explorer/BooleanValue.astro';
+
+const model = new Model(defaultModel);
+const schemata = Object.values(model.schemata).sort((a, b) =>
+  a.label.localeCompare(b.label)
+);
+---
+
+<IndexTable>
+  <tr slot="head">
+    <th>Label</th>
+    <th>Name</th>
+    <th>Abstract</th>
+    <th>Generated</th>
+    <th>Edge</th>
+  </tr>
+  {schemata.map((schema) => (
+    <tr>
+      <td>
+        <SchemaLink {schema}>{schema.label}</SchemaLink>
+      </td>
+      <td>
+        <span class="bg-slate-100 py-1 px-2 rounded font-mono text-xs">
+          {schema.name}
+        </span>
+      </td>
+      <td><BooleanValue value={schema.abstract} /></td>
+      <td><BooleanValue value={schema.generated} /></td>
+      <td><BooleanValue value={schema.edge} /></td>
+    </tr>
+  ))}
+</IndexTable>
