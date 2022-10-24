@@ -1,0 +1,26 @@
+<style>
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  * :global(th) {
+    position: sticky;
+    top: 0;
+    background: theme('colors.white');
+    padding-top: theme('space.2');
+  }
+
+  * :global(th, td) {
+    border-bottom: 1px solid theme('colors.gray.200');
+  }
+</style>
+
+<table>
+  <thead>
+    <slot name="head" />
+  </thead>
+  <tbody>
+    <slot />
+  </tbody>
+</table>
