@@ -37,12 +37,10 @@ CallForTenders:
         label: "Delegated call for tenders"
       type: entity
       range: LegalEntity
-    description:
-      label: "Description"
-    pubDate:
+    publicationDate:
       label: "Date of publication/invitation"
       type: date
-    evalMechanism:
+    evaluationMechanism:
       label: "Evaluation mechanism"
     procurementType:
       label: "Procurement type"
@@ -62,22 +60,19 @@ CallForTenders:
       label: "NUTS codes"
       description: "Nomenclature of Territorial Units for Statistics (NUTS)"
       type: identifier
-    relToThreshold:
+    relationToThreshold:
       label: "Above or below threshold"
-    awardingDate:
-      label: "Date of awarding"
-      type: date
     paymentOptions:
       label: "Payment options"
-    submitDeadline:
+    submissionDeadline:
       label: "Submission deadline"
       type: date
-    clarifDeadline:
+    clarificationDeadline:
       label: "End of clarification period"
       type: date
-    clarifDocUpload:
+    clarificationDocumentUpload:
       label: "Upload of documents within the clarification"
-    notifAllowed:
+    notificationsAllowed:
       label: "Allow suppliers to register for notifications"
     awardedInLots:
       label: "Contract awarded in Lots"
@@ -88,7 +83,7 @@ CallForTenders:
       label: "Lots names"
     tendersForLots:
       label: "Tenders for lots"
-    maxNumberOfLots: 
+    maximumNumberOfLots: 
       label: "Maximum number of lots"
       type: number
     euFunding:
@@ -100,11 +95,19 @@ CallForTenders:
     fallsUnderGPPScope:
       label: "Does this call fall under the scope of GPP?"
       description: "European Green Public Procurement (GPP) or green purchasing."
-    certifCheck:
+    certificationCheck:
       label: "Certification check"
-    tenderer:
-      label: "Tenderer"
-      plural: "Tenderers"
+    awardingDate:
+      label: "Date of awarding"
+      type: date
+    contractNoticeDate:
+      label: "Contract notice date"
+      type: date
+    awardNoticeDate:
+      label: "Award Notice Date"
+      type: date
+    tenderers:
+      label: "Tenderers"
       reverse:
         name: tender
         label: "Tender"
