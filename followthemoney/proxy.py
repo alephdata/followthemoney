@@ -155,23 +155,6 @@ class EntityProxy(object):
         prop_name = self._prop_name(prop, quiet=quiet)
         return prop_name in self._properties
 
-    def clean_value(
-        self,
-        prop: Property,
-        value: Optional[str],
-        cleaned: bool = False,
-        fuzzy: bool = False,
-        format: Optional[str] = None,
-    ) -> Optional[str]:
-        """Clean the given value using the type-specific cleaner. This exists largely to
-        allow subclassing in other entity proxy implementations."""
-        if cleaned or value is None:
-            return value
-        value = prop.type.clean_text(value, fuzzy=fuzzy, format=format, proxy=self)
-        if value is None or len(value) == 0:
-            return None
-        return value
-
     def add(
         self,
         prop: P,
@@ -206,16 +189,9 @@ class EntityProxy(object):
             raise InvalidData(msg % (self.schema, prop))
 
         for value in value_list(values):
-            text = sanitize_text(value)
-            if text is None:
-                continue
-            self.unsafe_add(
-                prop,
-                text,
-                cleaned=cleaned,
-                fuzzy=fuzzy,
-                format=format,
-            )
+            if not cleaned:
+                value = prop.type.clean(value, proxy=self, fuzzy=fuzzy, format=format)
+            self.unsafe_add(prop, value, cleaned=True)
         return None
 
     def unsafe_add(
@@ -229,13 +205,8 @@ class EntityProxy(object):
         """A version of `add()` to be used only in type-checking code. This accepts
         only a single value, and performs input cleaning on the premise that the
         value is already valid unicode."""
-        value = self.clean_value(
-            prop,
-            value,
-            cleaned=cleaned,
-            fuzzy=fuzzy,
-            format=format,
-        )
+        if not cleaned and value is not None:
+            value = prop.type.clean_text(value, fuzzy=fuzzy, format=format, proxy=self)
         if value is not None:
             # Somewhat hacky: limit the maximum size of any particular
             # field to avoid overloading upstream aleph/elasticsearch.
