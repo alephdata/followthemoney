@@ -1,7 +1,9 @@
 CallForTenders:
   label: "Call for tenders"
   plural: "Calls for tenders"
-  description: "A public appeal issued by an authority, possibly on behalf of another, for buying a specific work, supply or service"
+  description: >
+    A public appeal issued by an authority, possibly on behalf of another,
+    for buying a specific work, supply or service
   extends:
     - Thing
     - Interval
@@ -15,12 +17,13 @@ CallForTenders:
   caption:
     - title
   properties:
-    uid:
+    callId:
       label: "CfT unique id"
       type: identifier
-    cftCaUid:
-      label: "CfT CA unique id"
-      type: identifier
+    # What is "CA"? Contract award? Maybe it should then live there...
+    # cftCaUid:
+    #   label: "CfT CA unique id"
+    #   type: identifier
     title:
       label: "Title"
     authority:
@@ -48,15 +51,16 @@ CallForTenders:
       label: "Directive"
     procedure:
       label: "Procedure"
-    involves:
-      label: "Call for tenders involves"
-    cpvCodes:
+    # What does this mean?
+    # involves:
+    #   label: "Call for tenders involves"
+    cpvCode:
       label: "CPV codes"
       description: "Common Procurement Vocabulary (CPV)"
       type: identifier
-    eAuctionsIncluded:
-      label: "Inclusion of e-Auctions"
-    nutsCodes:
+    # eAuctionsIncluded:
+    #   label: "Inclusion of e-Auctions"
+    nutsCode:
       label: "NUTS codes"
       description: "Nomenclature of Territorial Units for Statistics (NUTS)"
       type: identifier
@@ -70,10 +74,10 @@ CallForTenders:
     clarificationDeadline:
       label: "End of clarification period"
       type: date
-    clarificationDocumentUpload:
-      label: "Upload of documents within the clarification"
-    notificationsAllowed:
-      label: "Allow suppliers to register for notifications"
+    # clarificationDocumentUpload:
+    #   label: "Upload of documents within the clarification"
+    # notificationsAllowed:
+    #   label: "Allow suppliers to register for notifications"
     awardedInLots:
       label: "Contract awarded in Lots"
     numberOfLots:
@@ -82,16 +86,19 @@ CallForTenders:
     lotsNames:
       label: "Lots names"
     tendersForLots:
+      # What does this mean?
       label: "Tenders for lots"
-    maximumNumberOfLots: 
+    maximumNumberOfLots:
       label: "Maximum number of lots"
       type: number
     euFunding:
       label: "EU funding"
     multipleTenders:
       label: "Multiple tenders will be accepted"
-    tedLinksForNotices:
-      label: "TED links for published notices"
+    # tedLinksForNotices:
+    #   label: "TED links for published notices"
+    #   -> use sourceUrl instead
+    # Do we need this:
     fallsUnderGPPScope:
       label: "Does this call fall under the scope of GPP?"
       description: "European Green Public Procurement (GPP) or green purchasing."
@@ -109,7 +116,7 @@ CallForTenders:
     tenderers:
       label: "Tenderers"
       reverse:
-        name: tender
+        name: callForTenders
         label: "Tender"
       type: entity
       range: LegalEntity
