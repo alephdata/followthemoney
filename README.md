@@ -61,7 +61,7 @@ this end, here's the steps for making a release:
 git pull --rebase
 make test
 bumpversion patch
-git push --tags
+git push --atomic origin master $(git describe --tags --abbrev=0)
 ```
 
 This will create a new patch release and upload a distribution of it. If
