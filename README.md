@@ -35,6 +35,22 @@ from FollowTheMoney, e.g.:
 * [WebVOWL](https://service.tib.eu/webvowl/#iri=https://alephdata.github.io/followthemoney/ns/ftm.xml)
 * RDF/OWL specification in [XML](https://alephdata.github.io/followthemoney/ns/ftm.xml).
 
+## Development environment
+
+For local development with a virtualenv:
+
+```bash
+python3 -mvenv .env
+source .env/bin/activate
+pip install -e ".[dev]"
+```
+
+Now you can run the tests with
+
+```bash
+make test
+```
+
 ## Releasing
 
 We release a lot of version of `followthemoney` because even small changes
