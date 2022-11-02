@@ -16,6 +16,18 @@ class EmailsTest(unittest.TestCase):
         self.assertEqual(emails.clean(5), None)
         self.assertEqual(emails.clean("foo@PUDO.org"), "foo@pudo.org")
         self.assertEqual(emails.clean("FOO@PUDO.org"), "FOO@pudo.org")
+        self.assertEqual(
+            emails.clean(
+                "foo@0123456789012345678901234567890123456789012345678901234567890.example.com"
+            ),
+            "foo@0123456789012345678901234567890123456789012345678901234567890.example.com",
+        )
+        self.assertEqual(
+            emails.clean(
+                "foo@0123456789012345678901234567890123456789012345678901234567890123.example.com"
+            ),
+            None,
+        )
 
     def test_domain_validity(self):
         self.assertTrue(emails.validate("foo@pudo.org"))
