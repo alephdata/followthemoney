@@ -20,10 +20,6 @@ CallForTenders:
     callId:
       label: "CfT unique id"
       type: identifier
-    # What is "CA"? Contract award? Maybe it should then live there...
-    # cftCaUid:
-    #   label: "CfT CA unique id"
-    #   type: identifier
     title:
       label: "Title"
     authority:
@@ -33,6 +29,9 @@ CallForTenders:
         label: "Call For Tenders"
       type: entity
       range: LegalEntity
+    authorityReferenceId:
+      label: "Contracting authority reference ID"
+      type: identifier
     onBehalfOf:
       label: "Published on behalf of"
       reverse:
@@ -51,15 +50,16 @@ CallForTenders:
       label: "Directive"
     procedure:
       label: "Procedure"
-    # What does this mean?
-    # involves:
-    #   label: "Call for tenders involves"
+    involvesOutcome:
+      label: "Call for tenders result"
+      description: "The nature of the contractual agreement that will result from this CfT"
     cpvCode:
       label: "CPV codes"
       description: "Common Procurement Vocabulary (CPV)"
       type: identifier
-    # eAuctionsIncluded:
-    #   label: "Inclusion of e-Auctions"
+    reverseAuctionsIncluded:
+      label: "Inclusion of e-Auctions"
+      # cf. https://mita.gov.mt/2021/10/05/reverse-bidding-for-data-connectivity-across-the-public-service-a-first-for-malta/
     nutsCode:
       label: "NUTS codes"
       description: "Nomenclature of Territorial Units for Statistics (NUTS)"
@@ -74,10 +74,6 @@ CallForTenders:
     clarificationDeadline:
       label: "End of clarification period"
       type: date
-    # clarificationDocumentUpload:
-    #   label: "Upload of documents within the clarification"
-    # notificationsAllowed:
-    #   label: "Allow suppliers to register for notifications"
     awardedInLots:
       label: "Contract awarded in Lots"
     numberOfLots:
@@ -95,10 +91,9 @@ CallForTenders:
       label: "EU funding"
     multipleTenders:
       label: "Multiple tenders will be accepted"
-    # tedLinksForNotices:
-    #   label: "TED links for published notices"
-    #   -> use sourceUrl instead
-    # Do we need this:
+    tedUrl:
+      label: "TED link for published notices"
+      type: url
     fallsUnderGPPScope:
       label: "Does this call fall under the scope of GPP?"
       description: "European Green Public Procurement (GPP) or green purchasing."
