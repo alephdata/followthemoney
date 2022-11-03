@@ -59,7 +59,9 @@ this end, here's the steps for making a release:
 
 ```bash
 git pull --rebase
+make build
 make test
+git add . && git commit -m "Updating translation files"
 bumpversion patch
 git push --atomic origin master $(git describe --tags --abbrev=0)
 ```
