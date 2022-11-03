@@ -691,6 +691,259 @@
         "Interval"
       ]
     },
+    "CallForTenders": {
+      "caption": [
+        "title"
+      ],
+      "description": "A public appeal issued by an authority, possibly on behalf of another, for buying a specific work, supply or service\n",
+      "extends": [
+        "Interval",
+        "Thing"
+      ],
+      "featured": [
+        "title",
+        "authority"
+      ],
+      "label": "Call for tenders",
+      "plural": "Calls for tenders",
+      "properties": {
+        "authority": {
+          "label": "Name of contracting authority",
+          "matchable": true,
+          "name": "authority",
+          "qname": "CallForTenders:authority",
+          "range": "LegalEntity",
+          "reverse": "callForTenders",
+          "type": "entity"
+        },
+        "authorityReferenceId": {
+          "label": "Contracting authority reference ID",
+          "matchable": true,
+          "name": "authorityReferenceId",
+          "qname": "CallForTenders:authorityReferenceId",
+          "type": "identifier"
+        },
+        "awardNoticeDate": {
+          "label": "Award Notice Date",
+          "matchable": true,
+          "name": "awardNoticeDate",
+          "qname": "CallForTenders:awardNoticeDate",
+          "type": "date"
+        },
+        "awardedInLots": {
+          "label": "Contract awarded in Lots",
+          "name": "awardedInLots",
+          "qname": "CallForTenders:awardedInLots",
+          "type": "string"
+        },
+        "awardingDate": {
+          "label": "Date of awarding",
+          "matchable": true,
+          "name": "awardingDate",
+          "qname": "CallForTenders:awardingDate",
+          "type": "date"
+        },
+        "callId": {
+          "label": "CfT unique id",
+          "matchable": true,
+          "name": "callId",
+          "qname": "CallForTenders:callId",
+          "type": "identifier"
+        },
+        "certificationCheck": {
+          "label": "Certification check",
+          "name": "certificationCheck",
+          "qname": "CallForTenders:certificationCheck",
+          "type": "string"
+        },
+        "clarificationDeadline": {
+          "label": "End of clarification period",
+          "matchable": true,
+          "name": "clarificationDeadline",
+          "qname": "CallForTenders:clarificationDeadline",
+          "type": "date"
+        },
+        "contractAwards": {
+          "label": "Contract Awards",
+          "matchable": true,
+          "name": "contractAwards",
+          "qname": "CallForTenders:contractAwards",
+          "range": "ContractAward",
+          "reverse": "callForTenders",
+          "stub": true,
+          "type": "entity"
+        },
+        "contractNoticeDate": {
+          "label": "Contract notice date",
+          "matchable": true,
+          "name": "contractNoticeDate",
+          "qname": "CallForTenders:contractNoticeDate",
+          "type": "date"
+        },
+        "cpvCode": {
+          "description": "Common Procurement Vocabulary (CPV)",
+          "label": "CPV codes",
+          "matchable": true,
+          "name": "cpvCode",
+          "qname": "CallForTenders:cpvCode",
+          "type": "identifier"
+        },
+        "directive": {
+          "label": "Directive",
+          "name": "directive",
+          "qname": "CallForTenders:directive",
+          "type": "string"
+        },
+        "euFunding": {
+          "label": "EU funding",
+          "name": "euFunding",
+          "qname": "CallForTenders:euFunding",
+          "type": "string"
+        },
+        "evaluationMechanism": {
+          "label": "Evaluation mechanism",
+          "name": "evaluationMechanism",
+          "qname": "CallForTenders:evaluationMechanism",
+          "type": "string"
+        },
+        "fallsUnderGPPScope": {
+          "description": "European Green Public Procurement (GPP) or green purchasing.",
+          "label": "Does this call fall under the scope of GPP?",
+          "name": "fallsUnderGPPScope",
+          "qname": "CallForTenders:fallsUnderGPPScope",
+          "type": "string"
+        },
+        "involvesOutcome": {
+          "description": "The nature of the contractual agreement that will result from this CfT",
+          "label": "Call for tenders result",
+          "name": "involvesOutcome",
+          "qname": "CallForTenders:involvesOutcome",
+          "type": "string"
+        },
+        "lotsNames": {
+          "label": "Lots names",
+          "name": "lotsNames",
+          "qname": "CallForTenders:lotsNames",
+          "type": "string"
+        },
+        "maximumNumberOfLots": {
+          "label": "Maximum number of lots",
+          "name": "maximumNumberOfLots",
+          "qname": "CallForTenders:maximumNumberOfLots",
+          "type": "number"
+        },
+        "multipleTenders": {
+          "label": "Multiple tenders will be accepted",
+          "name": "multipleTenders",
+          "qname": "CallForTenders:multipleTenders",
+          "type": "string"
+        },
+        "numberOfLots": {
+          "label": "Number of lots",
+          "name": "numberOfLots",
+          "qname": "CallForTenders:numberOfLots",
+          "type": "number"
+        },
+        "nutsCode": {
+          "description": "Nomenclature of Territorial Units for Statistics (NUTS)",
+          "label": "NUTS codes",
+          "matchable": true,
+          "name": "nutsCode",
+          "qname": "CallForTenders:nutsCode",
+          "type": "identifier"
+        },
+        "onBehalfOf": {
+          "label": "Published on behalf of",
+          "matchable": true,
+          "name": "onBehalfOf",
+          "qname": "CallForTenders:onBehalfOf",
+          "range": "LegalEntity",
+          "reverse": "delegatedCallForTenders",
+          "type": "entity"
+        },
+        "paymentOptions": {
+          "label": "Payment options",
+          "name": "paymentOptions",
+          "qname": "CallForTenders:paymentOptions",
+          "type": "string"
+        },
+        "procedure": {
+          "label": "Procedure",
+          "name": "procedure",
+          "qname": "CallForTenders:procedure",
+          "type": "string"
+        },
+        "procurementType": {
+          "label": "Procurement type",
+          "name": "procurementType",
+          "qname": "CallForTenders:procurementType",
+          "type": "string"
+        },
+        "publicationDate": {
+          "label": "Date of publication/invitation",
+          "matchable": true,
+          "name": "publicationDate",
+          "qname": "CallForTenders:publicationDate",
+          "type": "date"
+        },
+        "relationToThreshold": {
+          "label": "Above or below threshold",
+          "name": "relationToThreshold",
+          "qname": "CallForTenders:relationToThreshold",
+          "type": "string"
+        },
+        "reverseAuctionsIncluded": {
+          "label": "Inclusion of e-Auctions",
+          "name": "reverseAuctionsIncluded",
+          "qname": "CallForTenders:reverseAuctionsIncluded",
+          "type": "string"
+        },
+        "submissionDeadline": {
+          "label": "Submission deadline",
+          "matchable": true,
+          "name": "submissionDeadline",
+          "qname": "CallForTenders:submissionDeadline",
+          "type": "date"
+        },
+        "tedUrl": {
+          "label": "TED link for published notices",
+          "matchable": true,
+          "name": "tedUrl",
+          "qname": "CallForTenders:tedUrl",
+          "type": "url"
+        },
+        "tenderers": {
+          "label": "Tenderers",
+          "matchable": true,
+          "name": "tenderers",
+          "qname": "CallForTenders:tenderers",
+          "range": "LegalEntity",
+          "reverse": "callForTenders",
+          "type": "entity"
+        },
+        "tendersForLots": {
+          "label": "Tenders for lots",
+          "name": "tendersForLots",
+          "qname": "CallForTenders:tendersForLots",
+          "type": "string"
+        },
+        "title": {
+          "label": "Title",
+          "name": "title",
+          "qname": "CallForTenders:title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "authority"
+      ],
+      "schemata": [
+        "CallForTenders",
+        "Interval",
+        "Thing"
+      ]
+    },
     "Company": {
       "caption": [
         "name"
@@ -1054,6 +1307,15 @@
           "name": "amended",
           "qname": "ContractAward:amended",
           "type": "string"
+        },
+        "callForTenders": {
+          "label": "Call For Tender",
+          "matchable": true,
+          "name": "callForTenders",
+          "qname": "ContractAward:callForTenders",
+          "range": "CallForTenders",
+          "reverse": "contractAwards",
+          "type": "entity"
         },
         "contract": {
           "label": "Contract",
@@ -2610,6 +2872,16 @@
           "qname": "LegalEntity:bvdId",
           "type": "identifier"
         },
+        "callForTenders": {
+          "label": "Call For Tenders",
+          "matchable": true,
+          "name": "callForTenders",
+          "qname": "LegalEntity:callForTenders",
+          "range": "CallForTenders",
+          "reverse": "authority",
+          "stub": true,
+          "type": "entity"
+        },
         "callsMade": {
           "label": "Calls made",
           "matchable": true,
@@ -2683,6 +2955,16 @@
           "qname": "LegalEntity:debtDebtor",
           "range": "Debt",
           "reverse": "debtor",
+          "stub": true,
+          "type": "entity"
+        },
+        "delegatedCallForTenders": {
+          "label": "Delegated call for tenders",
+          "matchable": true,
+          "name": "delegatedCallForTenders",
+          "qname": "LegalEntity:delegatedCallForTenders",
+          "range": "CallForTenders",
+          "reverse": "onBehalfOf",
           "stub": true,
           "type": "entity"
         },
