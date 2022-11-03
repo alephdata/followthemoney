@@ -1,0 +1,117 @@
+CallForTenders:
+  label: "Call for tenders"
+  plural: "Calls for tenders"
+  description: >
+    A public appeal issued by an authority, possibly on behalf of another,
+    for buying a specific work, supply or service
+  extends:
+    - Thing
+    - Interval
+  matchable: false
+  required:
+    - title
+    - authority
+  featured:
+    - title
+    - authority
+  caption:
+    - title
+  properties:
+    callId:
+      label: "CfT unique id"
+      type: identifier
+    title:
+      label: "Title"
+    authority:
+      label: "Name of contracting authority"
+      reverse:
+        name: callForTenders
+        label: "Call For Tenders"
+      type: entity
+      range: LegalEntity
+    authorityReferenceId:
+      label: "Contracting authority reference ID"
+      type: identifier
+    onBehalfOf:
+      label: "Published on behalf of"
+      reverse:
+        name: delegatedCallForTenders
+        label: "Delegated call for tenders"
+      type: entity
+      range: LegalEntity
+    publicationDate:
+      label: "Date of publication/invitation"
+      type: date
+    evaluationMechanism:
+      label: "Evaluation mechanism"
+    procurementType:
+      label: "Procurement type"
+    directive:
+      label: "Directive"
+    procedure:
+      label: "Procedure"
+    involvesOutcome:
+      label: "Call for tenders result"
+      description: "The nature of the contractual agreement that will result from this CfT"
+    cpvCode:
+      label: "CPV codes"
+      description: "Common Procurement Vocabulary (CPV)"
+      type: identifier
+    reverseAuctionsIncluded:
+      label: "Inclusion of e-Auctions"
+      # cf. https://mita.gov.mt/2021/10/05/reverse-bidding-for-data-connectivity-across-the-public-service-a-first-for-malta/
+    nutsCode:
+      label: "NUTS codes"
+      description: "Nomenclature of Territorial Units for Statistics (NUTS)"
+      type: identifier
+    relationToThreshold:
+      label: "Above or below threshold"
+    paymentOptions:
+      label: "Payment options"
+    submissionDeadline:
+      label: "Submission deadline"
+      type: date
+    clarificationDeadline:
+      label: "End of clarification period"
+      type: date
+    awardedInLots:
+      label: "Contract awarded in Lots"
+    numberOfLots:
+      label: "Number of lots"
+      type: number
+    lotsNames:
+      label: "Lots names"
+    tendersForLots:
+      # What does this mean?
+      label: "Tenders for lots"
+    maximumNumberOfLots:
+      label: "Maximum number of lots"
+      type: number
+    euFunding:
+      label: "EU funding"
+    multipleTenders:
+      label: "Multiple tenders will be accepted"
+    tedUrl:
+      label: "TED link for published notices"
+      type: url
+    fallsUnderGPPScope:
+      label: "Does this call fall under the scope of GPP?"
+      description: "European Green Public Procurement (GPP) or green purchasing."
+    certificationCheck:
+      label: "Certification check"
+    awardingDate:
+      label: "Date of awarding"
+      type: date
+    contractNoticeDate:
+      label: "Contract notice date"
+      type: date
+    awardNoticeDate:
+      label: "Award Notice Date"
+      type: date
+    tenderers:
+      label: "Tenderers"
+      reverse:
+        name: callForTenders
+        label: "Tender"
+      type: entity
+      range: LegalEntity
