@@ -12,14 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-07-26 22:19+0200\n"
+"POT-Creation-Date: 2022-11-03 15:19+0100\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: jen occrp, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.11.0\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
@@ -551,6 +551,226 @@ msgstr "Входящие звонки"
 msgid "Receiver's Number"
 msgstr "Номер абонента"
 
+#. CallForTenders.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Call for tenders"
+msgstr "Тендер"
+
+#. CallForTenders.plural
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Calls for tenders"
+msgstr "Тендеры"
+
+#. CallForTenders.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid ""
+"A public appeal issued by an authority, possibly on behalf of another, for "
+"buying a specific work, supply or service\n"
+msgstr ""
+"Приглашение к участию в торгах на поставку работ, услуг или материалов в "
+"пользу уполномоченной организации или по поручению иной уполномоченной "
+"организации \n"
+
+#. CallForTenders.properties.callId.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "CfT unique id"
+msgstr "ID тендера"
+
+#. CallForTenders.properties.title.label
+#. Document.properties.title.label
+#. Person.properties.title.label
+#: followthemoney/schema/CallForTenders.yaml
+#: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
+msgid "Title"
+msgstr "Название"
+
+#. CallForTenders.properties.authority.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Name of contracting authority"
+msgstr "Наименование заказчика"
+
+#. CallForTenders.properties.authority.reverse.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Call For Tenders"
+msgstr "Тендер"
+
+#. CallForTenders.properties.authorityReferenceId.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Contracting authority reference ID"
+msgstr "Регистрационный номер заказчика"
+
+#. CallForTenders.properties.onBehalfOf.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Published on behalf of"
+msgstr "По поручению"
+
+#. CallForTenders.properties.onBehalfOf.reverse.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Delegated call for tenders"
+msgstr "Делегировано"
+
+#. CallForTenders.properties.publicationDate.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Date of publication/invitation"
+msgstr "Дата публикации"
+
+#. CallForTenders.properties.evaluationMechanism.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Evaluation mechanism"
+msgstr "Механизм отбора"
+
+#. CallForTenders.properties.procurementType.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Procurement type"
+msgstr "Тип закупки"
+
+#. CallForTenders.properties.directive.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Directive"
+msgstr "Постановление"
+
+#. CallForTenders.properties.procedure.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Procedure"
+msgstr "Процедура"
+
+#. CallForTenders.properties.involvesOutcome.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Call for tenders result"
+msgstr "Результат тендера"
+
+#. CallForTenders.properties.involvesOutcome.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid "The nature of the contractual agreement that will result from this CfT"
+msgstr "Характер договорного соглашения"
+
+#. CallForTenders.properties.cpvCode.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "CPV codes"
+msgstr "CPV-код"
+
+#. CallForTenders.properties.cpvCode.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Common Procurement Vocabulary (CPV)"
+msgstr "Товарная классификация (CPV)"
+
+#. CallForTenders.properties.reverseAuctionsIncluded.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Inclusion of e-Auctions"
+msgstr "Включает электронный аукцион"
+
+#. CallForTenders.properties.nutsCode.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "NUTS codes"
+msgstr "NUTS-код"
+
+#. CallForTenders.properties.nutsCode.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Nomenclature of Territorial Units for Statistics (NUTS)"
+msgstr "Номенклатура территориальных единиц (NUTS)"
+
+#. CallForTenders.properties.relationToThreshold.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Above or below threshold"
+msgstr "Выше или ниже пороговой величины"
+
+#. CallForTenders.properties.paymentOptions.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Payment options"
+msgstr "Способы оплаты"
+
+#. CallForTenders.properties.submissionDeadline.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Submission deadline"
+msgstr "Срок подачи"
+
+#. CallForTenders.properties.clarificationDeadline.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "End of clarification period"
+msgstr "Срок внесения правок"
+
+#. CallForTenders.properties.awardedInLots.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Contract awarded in Lots"
+msgstr "Контракт заключён на несколько лотов"
+
+#. CallForTenders.properties.numberOfLots.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Number of lots"
+msgstr "Количество лотов"
+
+#. CallForTenders.properties.lotsNames.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Lots names"
+msgstr "Наименования лотов"
+
+#. CallForTenders.properties.tendersForLots.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Tenders for lots"
+msgstr "Тендер на лоты"
+
+#. CallForTenders.properties.maximumNumberOfLots.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Maximum number of lots"
+msgstr "Максимальное количество лотов"
+
+#. CallForTenders.properties.euFunding.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "EU funding"
+msgstr "Бюджет ЕС"
+
+#. CallForTenders.properties.multipleTenders.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Multiple tenders will be accepted"
+msgstr "Допускается несколько тендеров"
+
+#. CallForTenders.properties.tedUrl.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "TED link for published notices"
+msgstr "Ссылка на TED-объявление"
+
+#. CallForTenders.properties.fallsUnderGPPScope.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Does this call fall under the scope of GPP?"
+msgstr "Тендер проводится с учётом экологических требований?"
+
+#. CallForTenders.properties.fallsUnderGPPScope.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid "European Green Public Procurement (GPP) or green purchasing."
+msgstr ""
+"Осуществление государственных закупок с учётом факторов окружающей среды "
+"(GPP)"
+
+#. CallForTenders.properties.certificationCheck.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Certification check"
+msgstr "Приёмочный контроль"
+
+#. CallForTenders.properties.awardingDate.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Date of awarding"
+msgstr "Дата присуждения контракта"
+
+#. CallForTenders.properties.contractNoticeDate.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Contract notice date"
+msgstr "Дата заключения контракта"
+
+#. CallForTenders.properties.awardNoticeDate.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Award Notice Date"
+msgstr "Дата размещения"
+
+#. CallForTenders.properties.tenderers.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Tenderers"
+msgstr "Участники тендера"
+
+#. CallForTenders.properties.tenderers.reverse.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Tender"
+msgstr "Тендер"
+
 #. Company.label
 #: followthemoney/schema/Company.yaml
 msgid "Company"
@@ -938,6 +1158,16 @@ msgstr "Получено контрактов"
 msgid "Lots awarded"
 msgstr "Лоты"
 
+#. ContractAward.properties.callForTenders.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "Call For Tender"
+msgstr "Тендер"
+
+#. ContractAward.properties.callForTenders.reverse.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "Contract Awards"
+msgstr "Гос. контракты"
+
 #. ContractAward.properties.lotNumber.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Lot number"
@@ -1201,12 +1431,6 @@ msgstr "Контрольная сумма"
 #: followthemoney/schema/Document.yaml
 msgid "SHA1 hash of the data"
 msgstr "Хеш-сумма (SHA1)"
-
-#. Document.properties.title.label
-#. Person.properties.title.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
-msgid "Title"
-msgstr "Название"
 
 #. Document.properties.author.description
 #: followthemoney/schema/Document.yaml
@@ -2373,7 +2597,7 @@ msgstr "Упоминания в документе"
 #. Mention.properties.name.label
 #. Thing.properties.name.label
 #: followthemoney/schema/Mention.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/name.py:26
+#: followthemoney/types/name.py:25
 msgid "Name"
 msgstr "Имя"
 
@@ -3792,7 +4016,7 @@ msgstr "MIME-тип"
 msgid "MIME-Types"
 msgstr "MIME-типы"
 
-#: followthemoney/types/name.py:27
+#: followthemoney/types/name.py:26
 msgid "Names"
 msgstr "Имена"
 
