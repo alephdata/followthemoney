@@ -104,6 +104,9 @@ class PhoneType(PropertyType):
         return f"tel:{value}"
 
     def caption(self, value: str) -> str:
-        number = parse_number(value)
-        formatted = format_number(number, PhoneNumberFormat.INTERNATIONAL)
-        return str(formatted)
+        try:
+            number = parse_number(value)
+            formatted = format_number(number, PhoneNumberFormat.INTERNATIONAL)
+            return str(formatted)
+        except NumberParseException:
+            return value
