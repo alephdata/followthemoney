@@ -1,11 +1,22 @@
 ---
 import PropertyType from './PropertyType.astro';
+import SchemaLink from './SchemaLink.astro';
 import IndexTable from './IndexTable.astro';
 
 const { schema } = Astro.props;
-const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
-  a.name.localeCompare(b.name)
+
+const isFeatured = (property) => (
+  property.schema.featured.includes(property.name)
 );
+
+const isInherited = (property) => (
+  property.schema.name !== schema.name
+);
+
+const properties = Array.from(
+  schema.getProperties().values())
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .sort((a, b) => isFeatured(b) - isFeatured(a));
 ---
 
 <style>
@@ -19,7 +30,7 @@ const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
     const container = document.querySelector('#props');
     const toggle = document.querySelector('#props-inherited-toggle');
 
-    toggle.checked = false;
+    toggle.checked = true;
 
     toggle.addEventListener('change', () => {
       container.dataset.showInherited = toggle.checked ? 'true' : 'false';
@@ -27,12 +38,12 @@ const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
   });
 </script>
 
-<div id="props" data-show-inherited="false">
+<div id="props" data-show-inherited="true">
   <div class="flex justify-between items-end">
     <h2 class="mb-0">Properties</h2>
 
     <label class="mt-12 self-stretch">
-      <input type="checkbox" id="props-inherited-toggle" />
+      <input type="checkbox" id="props-inherited-toggle" checked />
       Show inherited
     </label>
   </div>
@@ -46,14 +57,14 @@ const properties = Array.from(schema.getProperties().values()).sort((a, b) =>
 
     {
       properties.map((prop) => (
-        <tr
-          class:list={prop.schema.name !== schema.name && 'bg-slate-50 dark:bg-black/20'}
-          data-is-inherited={prop.schema.name !== schema.name}
-        >
+        <tr data-is-inherited={isInherited(prop)}>
           <td>
-            <code>
-              {prop.name}
-            </code>
+            <code><span class="opacity-60">{prop.schema.name}:</span>{prop.name}</code>
+            {isFeatured(prop) && (
+              <svg title="Featured" class="inline-block w-3 h-3 text-amber-500 dark:text-amber-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
+              </svg>
+            )}
           </td>
 
           <td>{prop.label}</td>
