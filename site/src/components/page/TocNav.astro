@@ -1,0 +1,18 @@
+---
+import Nav from './Nav.astro';
+import NavItem from './NavItem.astro';
+const { headings } = Astro.props;
+---
+
+<Nav>
+  {headings.length > 0 && (
+    <strong class="uppercase tracking-widest text-sm mb-2 block text-slate-700 font-semibold dark:text-slate-400">
+      On this page
+    </strong>
+  )}
+  {
+    headings.map(({ text, slug }) => (
+      <NavItem link={`#${slug}`}>{text}</NavItem>
+    ))
+  }
+</Nav>

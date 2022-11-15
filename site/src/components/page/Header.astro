@@ -1,3 +1,7 @@
+---
+const currentUrl = Astro.url.pathname;
+---
+
 <style>
   :global(:root) {
     --header-height: theme('space.14');
@@ -10,20 +14,46 @@
     top: 0;
     height: var(--header-height);
   }
+
+  li a {
+    opacity: 0.66;
+  }
+
+  .active {
+    position: relative;
+    opacity: 1;
+  }
+
+  .active::after {
+    content: '';
+    position: absolute;
+    top: calc(100% + theme('space.4'));
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: theme('colors.blue.400');
+  }
 </style>
 
 <header class="py-4 border-b bg-white dark:bg-gray-800 dark:border-gray-700">
   <div class="px-5 max-w-7xl flex mx-auto justify-between dark:text-white">
-    <a href="/" class="font-bold"> FollowTheMoney</a>
+    <a href="/" class="font-bold">FollowTheMoney</a>
 
-    <nav>
+    <nav class="font-medium">
       <ul>
         <li class="inline-block px-2">
-          <a href="/guide">Guide</a>
+          <a
+            href="/guide"
+            class={currentUrl.startsWith('/guide') && 'active'}
+          >Guide</a>
         </li>
 
         <li class="inline-block px-2">
-          <a href="/explorer">Model Explorer</a>
+          <a
+            href="/explorer"
+            class={currentUrl.startsWith('/explorer') && 'active'}
+          >Model Explorer</a>
         </li>
       </ul>
     </nav>

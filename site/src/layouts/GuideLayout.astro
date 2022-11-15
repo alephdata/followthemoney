@@ -1,8 +1,7 @@
 ---
 import DefaultLayout from './DefaultLayout.astro';
-import Nav from '../components/page/Nav.astro';
-import NavItem from '../components/page/NavItem.astro';
 import GuideNav from '../components/page/GuideNav.astro';
+import TocNav from '../components/page/TocNav.astro';
 import Meta from '../components/page/Meta.astro';
 
 const headings = Astro.props.headings.filter(({ depth }) => depth === 2);
@@ -11,21 +10,7 @@ const { title } = Astro.props.content;
 
 <DefaultLayout {title}>
   <GuideNav slot="sidebar" />
-
   <slot />
-
-  <Nav slot="toc">
-    {headings.length > 0 && (
-      <strong class="uppercase tracking-widest text-sm mb-2 block text-slate-700 font-semibold dark:text-slate-400">
-        On this page
-      </strong>
-    )}
-    {
-      headings.map(({ text, slug }) => (
-        <NavItem link={`#${slug}`}>{text}</NavItem>
-      ))
-    }
-  </Nav>
-
+  <TocNav slot="toc" headings={headings} />
   <Meta slot="meta" path={Astro.props.content.file} />
 </DefaultLayout>
