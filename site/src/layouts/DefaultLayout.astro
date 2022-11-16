@@ -2,7 +2,6 @@
 import Header from '../components/page/Header.astro';
 import Sidebar from '../components/page/Sidebar.astro';
 
-const hasSidebar = !!Astro.slots.sidebar;
 const { title } = Astro.props;
 ---
 
@@ -15,22 +14,31 @@ const { title } = Astro.props;
   <body class="bg-slate-50 dark:bg-gray-900">
     <Header />
 
-    <div class="max-w-6xl flex justify-center mx-auto">
-      {
-        hasSidebar && (
-          <div class="flex-grow-0 flex-shrink-0 w-1/4">
-            <Sidebar>
-              <slot name="sidebar" />
-            </Sidebar>
-          </div>
-        )
-      }
+    <div class="max-w-7xl flex justify-center mx-auto">
+      <div class="flex-grow-0 flex-shrink-0 w-1/5">
+        <Sidebar>
+          <slot name="sidebar" />
+        </Sidebar>
+      </div>
 
-      <main class="py-10 px-5 w-3/4">
-        <div class="prose dark:prose-invert max-w-3xl">
+      <main class="py-10 px-5 w-3/5">
+        <div class="prose dark:prose-invert max-w-4xl">
           <slot />
         </div>
       </main>
+
+      <div class="flew-grow-0 flex-shrink-0 w-1/5">
+        <Sidebar>
+          {Astro.slots.toc && (
+            <strong
+              class="uppercase tracking-widest text-sm mb-2 block text-slate-700 font-semibold dark:text-slate-400"
+            >
+              On this page
+            </strong>
+          )}
+          <slot name="toc" />
+        </Sidebar>
+      </div>
     </div>
   </body>
 </html>

@@ -5,6 +5,7 @@ import NavItem from '../components/page/NavItem.astro';
 
 const currentUrl = Astro.url;
 const pages = await Astro.glob('../pages/guide/*');
+const headings = Astro.props.headings.filter(({ depth }) => depth === 2);
 const { title } = Astro.props.content;
 ---
 
@@ -20,4 +21,12 @@ const { title } = Astro.props.content;
   </Nav>
 
   <slot />
+
+  <Nav slot={headings.length > 0 ? 'toc' : '/devnull'}>
+    {
+      headings.map(({ text, slug }) => (
+        <NavItem link={`#${slug}`}>{text}</NavItem>
+      ))
+    }
+  </Nav>
 </DefaultLayout>
