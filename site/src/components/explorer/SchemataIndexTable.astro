@@ -12,8 +12,8 @@ const schemata = Object.values(model.schemata).sort((a, b) =>
 
 <IndexTable>
   <tr slot="head">
-    <th>Label</th>
     <th>Name</th>
+    <th>Label</th>
     <th>Abstract</th>
     <th>Generated</th>
     <th>Edge</th>
@@ -21,12 +21,14 @@ const schemata = Object.values(model.schemata).sort((a, b) =>
   {schemata.map((schema) => (
     <tr>
       <td>
-        <SchemaLink {schema}>{schema.label}</SchemaLink>
+        <SchemaLink {schema}>
+          <code>
+            {schema.name}
+          </code>
+        </SchemaLink>
       </td>
       <td>
-        <code>
-          {schema.name}
-        </code>
+        <SchemaLink {schema}>{schema.label}</SchemaLink>
       </td>
       <td><BooleanValue value={schema.abstract} /></td>
       <td><BooleanValue value={schema.generated} /></td>

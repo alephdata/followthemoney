@@ -7,5 +7,5 @@ schema = model.getSchema(schema);
 ---
 
 <a href={`/explorer/schemata/${schema.name}`}>
-  {text || schema.label}
+  {Astro.slots.default ? <slot/> : text || schema.label}
 </a>

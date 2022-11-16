@@ -7,5 +7,5 @@ type = model.getType(type);
 ---
 
 <a href={`/explorer/types/${type.name}`}>
-  {text || type.label}
+  {Astro.slots.default ? <slot/> : text || type.label}
 </a>
