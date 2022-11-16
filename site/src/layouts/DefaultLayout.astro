@@ -39,6 +39,10 @@ const { title } = Astro.props;
         flex-shrink: 1;
       }
 
+      .prose > :global(* + *) {
+        margin-top: 1.25rem;
+      }
+
       .sidebar {
         display: none;
       }
