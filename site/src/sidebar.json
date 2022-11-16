@@ -19,6 +19,21 @@
         "/guide/faq",
         "/guide/credits"
       ]
+    },
+    {
+      "title": "Reference",
+      "items": [
+        {
+          "link": "https://example.org",
+          "title": "Python Library",
+          "external": true
+        },
+        {
+          "link": "https://example.org",
+          "title": "JavaScript Library",
+          "external": true
+        }
+      ]
     }
   ]
 }
