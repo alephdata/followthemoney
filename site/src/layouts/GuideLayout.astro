@@ -2,25 +2,15 @@
 import DefaultLayout from './DefaultLayout.astro';
 import Nav from '../components/page/Nav.astro';
 import NavItem from '../components/page/NavItem.astro';
+import GuideNav from '../components/page/GuideNav.astro';
 import Meta from '../components/page/Meta.astro';
 
-const currentUrl = Astro.url;
-const pages = await Astro.glob('../pages/guide/*');
 const headings = Astro.props.headings.filter(({ depth }) => depth === 2);
 const { title } = Astro.props.content;
-
 ---
 
 <DefaultLayout {title}>
-  <Nav slot="sidebar">
-    {
-      pages.map((page) => (
-        <NavItem link={page.url} active={page.url === currentUrl.pathname}>
-          {page.frontmatter.title}
-        </NavItem>
-      ))
-    }
-  </Nav>
+  <GuideNav slot="sidebar" />
 
   <slot />
 

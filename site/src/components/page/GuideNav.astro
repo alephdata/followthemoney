@@ -1,0 +1,32 @@
+---
+import sidebar from '../../sidebar.json';
+import Sidebar from './Sidebar.astro';
+import Nav from './Nav.astro';
+import NavSection from './NavSection.astro';
+import NavItem from './NavItem.astro';
+
+const allPages = await Astro.glob('/**/*.mdx');
+
+const sections = sidebar.sections.map((section) => ({
+  ...section,
+  items: section.items
+    .map((slug) => (
+      allPages.find((page) => page.url === slug)
+    )),
+}));
+---
+
+<Nav>
+  {sections.map((section) => (
+    <NavSection title={section.title}>
+      {section.items.map((page) => (
+        <NavItem
+          link={page.url}
+          active={Astro.url.pathname === page.url}
+        >
+          {page.frontmatter.title}
+        </NavItem>
+      ))}
+    </NavSection>
+  ))}
+</Nav>
