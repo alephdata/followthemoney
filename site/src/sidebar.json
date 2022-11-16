@@ -1,0 +1,24 @@
+{
+  "sections": [
+    {
+      "title": "Getting Started",
+      "items": [
+        "/guide",
+        "/guide/api",
+        "/guide/fragments",
+        "/guide/namespace",
+        "/guide/mappings",
+        "/guide/cli"
+      ]
+    },
+    {
+      "title": "More",
+      "items": [
+        "/guide/custom",
+        "/guide/graphs",
+        "/guide/faq",
+        "/guide/credits"
+      ]
+    }
+  ]
+}
