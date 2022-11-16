@@ -9,21 +9,33 @@ const allPages = await Astro.glob('/**/*.mdx');
 const sections = sidebar.sections.map((section) => ({
   ...section,
   items: section.items
-    .map((slug) => (
-      allPages.find((page) => page.url === slug)
-    )),
+    .map((item) => {
+      if (typeof item === 'string') {
+        item = { type: 'page', slug: item };
+      }
+
+      if (item.type === 'page') {
+        const page = allPages.find((page) => page.url === item.slug);
+
+        return {
+          link: page.url,
+          title: page.frontmatter.title,
+          active: page.url === Astro.url.pathname,
+        };
+      }
+
+      return item;
+    }),
 }));
+
 ---
 
 <Nav>
   {sections.map((section) => (
     <NavSection title={section.title}>
-      {section.items.map((page) => (
-        <NavItem
-          link={page.url}
-          active={Astro.url.pathname === page.url}
-        >
-          {page.frontmatter.title}
+      {section.items.map((item) => (
+        <NavItem {...item}>
+          {item.title}
         </NavItem>
       ))}
     </NavSection>
