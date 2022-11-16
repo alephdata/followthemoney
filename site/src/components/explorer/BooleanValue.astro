@@ -4,8 +4,8 @@ const { value } = Astro.props;
 
 <span class:list={[
   'px-2 inline-block rounded-full font-semibold text-sm',
-  value && 'bg-emerald-100 text-emerald-900 dark:bg-emerald-900 dark:text-emerald-200',
-  !value && 'bg-rose-100 text-rose-900 dark:bg-rose-900 dark:text-rose-200',
+  value && 'bg-emerald-500/20 text-emerald-900 dark:text-emerald-200',
+  !value && 'bg-rose-500/20 text-rose-900 dark:text-rose-200',
 ]}>
   {value ? 'Yes' : 'No'}
 </span>
