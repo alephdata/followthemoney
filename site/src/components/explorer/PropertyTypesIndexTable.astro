@@ -12,18 +12,20 @@ const types = Object.values(model.types).sort((a, b) =>
 
 <IndexTable>
   <tr slot="head">
-    <th>Label</th>
     <th>Name</th>
+    <th>Label</th>
     <th>Matchable</th>
     <th>Pivot</th>
   </tr>
   {types.map((type) => (
     <tr>
       <td>
-        <PropertyTypeLink {type}>{type.label}</PropertyTypeLink>
+        <PropertyTypeLink {type}>
+          <code>{type.name}</code>
+        </PropertyTypeLink>
       </td>
       <td>
-        <code>{type.name}</code>
+        <PropertyTypeLink {type}>{type.label}</PropertyTypeLink>
       </td>
       <td><BooleanValue value={type.matchable} /></td>
       <td><BooleanValue value={type.pivot} /></td>
