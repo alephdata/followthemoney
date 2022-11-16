@@ -2,3 +2,32 @@
 layout: '@layouts/GuideLayout.astro'
 title: CLI
 ---
+
+# Command-Line Functions
+
+Many of the functions of *followthemoney* can be used interactively or in scripts via the command line. Please first refer to the [Aleph documentation](https://docs.alephdata.org/developers/followthemoney/ftm) for an intro to the `ftm` utility.
+
+Key to understanding the `ftm` tool is the notion of [streams](/guide#streams): entities can be transferred between programs and processing steps as a series of JSON objects, one per line. This notion is supported by the related [alephclient](https://docs.alephdata.org/developers/alephclient) command, which can serve as a source, and a sink for entity streams, backed by the Aleph API.
+
+## Examples
+
+The command line sequence below uses shell pipes to a) [map data](/guide/mappings) into entities from a database, b) apply a [namespace](/guide/namespace) to the entity IDs, c) aggregate [entity fragments](/guide/fragments) created by the mapping, and d) export the resulting entity stream into a sequence of CYPHER statements that can be executed on a Neo4J database to generate a property graph:
+
+```bash
+ftm map companies_from_db.yml | \
+    ftm sign -s my_namespace | \
+    ftm aggregate | \
+    ftm export-cypher -o graph.cypher
+```
+
+Here's another example that fetches pre-generated entities from a URL and loads
+them into a local Aleph instance:
+
+```bash
+export URL=https://public.data.occrp.org/datasets/icij/panama_papers.ijson
+curl -s $URL | \
+    ftm validate | \
+    alephclient write-entities -f icij_panama_papers
+```
+
+## Reference

@@ -7,7 +7,7 @@ title: 'Entity Fragmentation'
 
 Generating graph data is a difficult process. The size of the datasets we want to process using followthemoney (FtM) makes it impossible to incrementally build nodes and egdes in memory like you would in [NetworkX](https://networkx.org/). Instead, we use a stream-based solution for constructing graph entities. That is why the toolkit supports *entity fragments* and *aggregation*.
 
-## An example
+## Example
 
 To illustrate this problem, imagine a table with millions of rows that describes a set of people and the companies they control. Every company can have multiple directors, while each director might control multiple companies:
 
@@ -19,9 +19,9 @@ CompanyID | CompanyName | DirectorName | DirectorIdNo | DirectorDoB
 
 ## Database humpty-dumpty
 
-When `turning this data into FtM <mappings>`, we\'d create three entities for each row: a `schema-Company`, a `schema-Person` and a `schema-Directorship` that connects the two.
+When [turning this data into FtM](/guide/mappings), we’d create three entities for each row: a [](schema://Company), a [](schema://Person) and a [](schema://Directorship) that connects the two.
 
-If we do this row by row, we\'d eventually generate three `schema-Company` entities to represent two actual companies, and three `schema-Person` entities for two distinct people. Of course, we could write these to an ElasticSearch index sequentially - the later entities overwriting the earlier ones with the same ID.
+If we do this row by row, we’d eventually generate three [](schema://Company) entities to represent two actual companies, and three [](schema://Person) entities for two distinct people. Of course, we could write these to an ElasticSearch index sequentially - the later entities overwriting the earlier ones with the same ID.
 
 That works only as long as each version of each entity contains the same data. In our example, the first mention of John Smith includes his birth date, while the second does not. If we don\'t wish to lose that detail, we need to merge these fragments. While it\'s possible to perform such merges at index time, this has proven to be impractically slow because it requires fetching each entity before it is updated.
 
@@ -29,15 +29,18 @@ A better solution is to sort all generated fragments before indexing them. With 
 
 ## In practice
 
-In the FtM toolchain, there are two tools for doing entity aggregation: from the command-line ftm aggregate will merge fragments in memory. Alternately the add-on library followthemoney-store will perform the same operation in a SQLite or PostgreSQL database.
+In the FtM toolchain, there are two tools for doing entity aggregation: from the [command-line](/guide/cli) `ftm aggregate` will merge fragments in memory. Alternately the add-on library [followthemoney-store](https://github.com/alephdata/followthemoney-store) will perform the same operation in a SQLite or PostgreSQL database.
 
 ``` bash
 # Generate entities from a CSV file and a mapping:
-cat company-registry.csv | ftm map-csv mapping_file.yml >fragments.ijson
+cat company-registry.csv | ftm map-csv mapping_file.yml > fragments.ijson
+
 # Write the fragments to a table `company_registry`:
 cat fragments.ijson | ftm store write -d company_registry
+
 # List the tables in the store:
 ftm store list 
+
 # Output merged entities:
 ftm store iterate -d company_registry
 ```

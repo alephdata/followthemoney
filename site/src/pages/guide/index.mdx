@@ -23,11 +23,11 @@ Entities are often expressed as snippets of JSON, with three standard fields: a 
 }
 ```
 
-Property names are defined by the `schemata`. For example, a [](schema://Person) has a nationality, while a [](schema://Company) allows for setting a jurisdiction. Both properties, however, have the same property type, [](type://country).
+Property names are defined by the *schemata*. For example, a [](schema://Person) has a nationality, while a [](schema://Company) allows for setting a jurisdiction. Both properties, however, have the same property type, [](type://country).
 
 ## References
 
-Entities can reference other entities. This is achieved via a special property type, `type-entity`. Properties of this type simply store the ID of another entity. For example, a `schema-Passport` entity can be linked to a `schema-Person` entity via its holder property:
+Entities can reference other entities. This is achieved via a special property type, `entity`. Properties of this type simply store the ID of another entity. For example, a [](schema://Passport) entity can be linked to a [](schema://Person) entity via its holder property:
 
 ```json
 {
@@ -51,7 +51,7 @@ Entities can reference other entities. This is achieved via a special property t
 
 A link between two entities will have its own attributes. For example, an investigator looking at a person that owns a company might want to know when that interest was acquired, and also what percentage of shares the person holds.
 
-This is addressed by making interstitial entities. In the example above, an `schema-Ownership` entity would be created, with references to the person as its owner property and to the company as its asset property. That entity can then define further properties, including `startDate` and `percentage`:
+This is addressed by making interstitial entities. In the example above, an [](schema://Ownership) entity would be created, with references to the person as its owner property and to the company as its asset property. That entity can then define further properties, including `startDate` and `percentage`:
 
 ```json
 {
@@ -76,4 +76,4 @@ This is addressed by making interstitial entities. In the example above, an `sch
 
 Many tools in the FtM ecosystem use streams of entities to transfer or store information. Entity streams are simply sequences of entity objects that have been serialised to JSON as single lines without any indentation, each entity separated by a newline.
 
-Entity streams are read and produced by virtually every part of the `cli`, the Aleph API, and they're also supported by the ingestors. When stored to disk as a file, the extensions .ftm or .ijson should be used.
+Entity streams are read and produced by virtually every part of the [CLI](/guide/cli), the Aleph API, and they're also supported by the ingestors. When stored to disk as a file, the extensions .ftm or .ijson should be used.
