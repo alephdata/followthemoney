@@ -23,7 +23,7 @@ Entities are often expressed as snippets of JSON, with three standard fields: a 
 }
 ```
 
-Property names are defined by the `schemata`. For example, a `schema-Person` has a nationality, while a `schema-Company` allows for setting a jurisdiction. Both properties, however, have the same property type, `type-country`.
+Property names are defined by the `schemata`. For example, a [](schema://Person) has a nationality, while a [](schema://Company) allows for setting a jurisdiction. Both properties, however, have the same property type, [](type://country).
 
 ## References
 
@@ -68,7 +68,7 @@ This is addressed by making interstitial entities. In the example above, an `sch
 
 <Callout emoji="⚠️">
   It is tempting to simplify this model by assuming that entities derived from
-  `schema-Thing` are node entities, and those derived from `schema-Interval` are
+  [](schema://Thing) are node entities, and those derived from [](schema://Interval) are
   edges. This assumption is false and will lead to nasty bugs in your code.
 </Callout>
 

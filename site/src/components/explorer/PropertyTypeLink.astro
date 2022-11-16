@@ -6,6 +6,6 @@ let { type, text } = Astro.props;
 type = model.getType(type);
 ---
 
-<a href={`/explorer/types/${type.name}`}>
-  {Astro.slots.default ? <slot/> : text || type.label}
-</a>
+<a href={`/explorer/types/${type.name}`}>{
+  Astro.slots.default ? <slot/> : text || type.label
+}</a>
