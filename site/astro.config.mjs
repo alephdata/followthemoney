@@ -11,6 +11,7 @@ export default defineConfig({
       remarkPlugins: [
         injectComponents({
           Callout: '@components/content/Callout.astro',
+          LinkCard: '@components/content/LinkCard.astro',
           SchemaLink: '@components/explorer/SchemaLink.astro',
           PropertyTypeLink: '@components/explorer/PropertyTypeLink.astro',
         }),

@@ -1,0 +1,16 @@
+<style>
+  svg {
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    vertical-align: -5%;
+    opacity: 0.66;
+  }
+</style>
+
+<a href={Astro.props.link} class="block py-4 px-4 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 no-underline transition-all hover:text-blue-600 dark:hover:text-blue-300 hover:shadow-sm hover:border-gray-300 dark:hover:border-gray-600">
+  {Astro.props.label}
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+  </svg>
+</a>
