@@ -12,10 +12,14 @@ Security:
   caption:
     - name
     - isin
+    - registrationNumber
   properties:
     isin:
       label: ISIN
       description: International Securities Identification Number
+      type: identifier
+    registrationNumber:
+      label: Registration number
       type: identifier
     ticker:
       label: Ticker
@@ -29,6 +33,9 @@ Security:
         name: securities
     issueDate:
       label: Date issued
+      type: date
+    maturityDate:
+      label: Maturity date
       type: date
     type:
       label: Type
