@@ -82,5 +82,53 @@ describe('ftm/Entity class', () => {
       passport.setCaption(testNumber)
       expect(passport.getCaption()).toBe(testNumber)
     })
+    it('can get temporal start', function() {
+      let entity;
+
+      entity = model.getEntity({ id: '1', schema: 'Event' })
+      expect(entity.getTemporalStart()).toBeNull()
+
+      entity = model.getEntity({
+        id: '1',
+        schema: 'Event',
+        properties: {
+          startDate: ['2022-01-01'],
+        },
+      })
+      expect(entity.getTemporalStart()).toEqual('2022-01-01')
+
+      entity = model.getEntity({
+        id: '1',
+        schema: 'Event',
+        properties: {
+          startDate: ['2022-01-01', '2022-02-01'],
+        },
+      })
+      expect(entity.getTemporalStart()).toEqual('2022-01-01')
+    })
+    it('can get temporal end', function () {
+      let entity;
+
+      entity = model.getEntity({ id: '1', schema: 'Event' })
+      expect(entity.getTemporalEnd()).toBeNull()
+
+      entity = model.getEntity({
+        id: '1',
+        schema: 'Event',
+        properties: {
+          endDate: ['2022-02-01'],
+        },
+      })
+      expect(entity.getTemporalEnd()).toEqual('2022-02-01')
+
+      entity = model.getEntity({
+        id: '1',
+        schema: 'Event',
+        properties: {
+          endDate: ['2022-01-01', '2022-02-01'],
+        },
+      })
+      expect(entity.getTemporalEnd()).toEqual('2022-02-01')
+    })
   })
 })

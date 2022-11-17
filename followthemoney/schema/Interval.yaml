@@ -14,6 +14,13 @@ Interval:
     An object which is bounded in time.
   matchable: false
   abstract: true
+  temporalExtent:
+    start:
+      - startDate
+      - date
+    end:
+      - endDate
+      - date
   properties:
     startDate:
       label: "Start date"

@@ -146,6 +146,36 @@ export class Entity {
   }
 
   /**
+   * Get a date that can be used to represent the start of the entity in a timeline.
+   * If there are multiple possible dates, the earliest date is returned.
+   */
+  getTemporalStart(): Value|null {
+    const values = [];
+    const properties = this.schema.getTemporalStartProperties();
+
+    for (const property of properties) {
+      values.push(...this.getProperty(property));
+    }
+
+    return values.sort()[0] || null;
+  }
+
+  /** 
+   * Get a date that can be used to represent the end of the entity in a timeline.
+   * If there are multiple possible dates, the earliest date is returned.
+   */
+  getTemporalEnd(): Value|null {
+    const values = [];
+    const properties = this.schema.getTemporalEndProperties();
+
+    for (const property of properties) {
+      values.push(...this.getProperty(property));
+    }
+
+    return values.sort().slice(-1)[0] || null;
+  }
+
+  /**
    * Get all the values of a particular type, irrespective of
    * which property it is associated with.
    */
