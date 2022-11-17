@@ -396,8 +396,8 @@ class Schema:
         end_props = [prop.name for prop in self.temporal_end_props if prop.schema == self]
         if start_props or end_props:
             data["temporalExtent"] = {
-                "start": start_props,
-                "end": end_props,
+                "start": sorted(start_props),
+                "end": sorted(end_props),
             }
         if len(self.featured):
             data["featured"] = self.featured
