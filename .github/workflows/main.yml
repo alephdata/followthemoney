@@ -19,14 +19,3 @@ jobs:
           # to the issue
           project-url: https://github.com/orgs/alephdata/projects/10
           github-token: ${{ secrets.ALEPH_GITHUB_TOKEN }}
- # label_issues:
-    # name: Add repo label for clarity
-    # runs-on: ubuntu-latest
-    # permissions:
-      # issues: write
-    # steps:
-      # - name: Label issues
-        # uses: andymckay/labeler@e6c4322d0397f3240f0e7e30a33b5c5df2d39e90
-        # with:
-          # add-labels: "FtM"
-          # repo-token: ${{ secrets.ALEPH_GITHUB_TOKEN }}
