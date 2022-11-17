@@ -176,3 +176,27 @@ class ModelTestCase(TestCase):
 
         sprops = list(directorship.sorted_properties)
         assert len(sprops) == len(directorship.properties), sprops
+
+    def test_schema_temporal_extent(self):
+        interval = model.schemata["Interval"]
+        event = model.schemata["Event"]
+
+        assert interval.temporal_start == set(["startDate", "date"])
+        assert interval.temporal_end == set(["endDate"])
+        assert interval.temporal_start_props == set([
+            interval.get("startDate"),
+            interval.get("date"),
+        ])
+        assert interval.temporal_end_props == set([
+            interval.get("endDate"),
+        ])
+
+        assert event.temporal_start == set(["startDate", "date"])
+        assert event.temporal_end == set(["endDate"])
+        assert interval.temporal_start_props == set([
+            interval.get("startDate"),
+            interval.get("date"),
+        ])
+        assert interval.temporal_end_props == set([
+            interval.get("endDate"),
+        ])

@@ -125,4 +125,40 @@ describe('ftm/Schema class', () => {
       expect(children).toContain('Company')
     })
   })
+  describe('method getTemporalStartProperties', () => {
+    it('returns empty array if not specified', () => {
+      const thing = model.getSchema('Thing')
+      expect(thing.getTemporalStartProperties()).toEqual([])
+    })
+
+    it('returns array of properties', () => {
+      const interval = model.getSchema('Interval')
+      const props = interval.getTemporalStartProperties()
+      expect(new Set(props.map(prop => prop.name))).toEqual(new Set(['startDate', 'date']))
+    })
+
+    it('inherits properties', () => {
+      const event = model.getSchema('Event')
+      const props = event.getTemporalStartProperties()
+      expect(new Set(props.map(prop => prop.name))).toEqual(new Set(['startDate', 'date']))
+    })
+  })
+  describe('method getTemporalEndProperties', () => {
+    it('returns empty array if not specified', () => {
+      const thing = model.getSchema('Thing')
+      expect(thing.getTemporalEndProperties()).toEqual([])
+    })
+
+    it('returns array of properties', () => {
+      const interval = model.getSchema('Interval')
+      const props = interval.getTemporalEndProperties()
+      expect(new Set(props.map(prop => prop.name))).toEqual(new Set(['endDate']))
+    })
+
+    it('inherits properties', () => {
+      const event = model.getSchema('Event')
+      const props = event.getTemporalEndProperties()
+      expect(new Set(props.map(prop => prop.name))).toEqual(new Set(['endDate']))
+    })
+  })
 })

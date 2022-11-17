@@ -10,6 +10,11 @@ interface IEdgeSpecification {
   required?: string[]
 }
 
+interface ITemporalExtentSpecification {
+  start: string[]
+  end: string[]
+}
+
 export type SchemaSpec = string | null | undefined | Schema;
 
 export interface ISchemaDatum {
@@ -23,6 +28,7 @@ export interface ISchemaDatum {
   generated?: boolean
   description?: string
   edge?: IEdgeSpecification
+  temporalExtent?: ITemporalExtentSpecification
   featured?: string[]
   caption?: string[]
   required?: string[]
@@ -51,6 +57,8 @@ export class Schema {
   public readonly required: string[]
   public readonly edge?: IEdgeSpecification
   public readonly isEdge: boolean
+  public readonly temporalStart: string[]
+  public readonly temporalEnd: string[]
   private properties: Map<string, Property> = new Map()
 
   constructor(model: Model, schemaName: string, config: ISchemaDatum) {
@@ -70,6 +78,8 @@ export class Schema {
     this.description = config.description || null
     this.isEdge = !!config.edge
     this.edge = config.edge
+    this.temporalStart = config.temporalExtent?.start || []
+    this.temporalEnd = config.temporalExtent?.end || []
 
     Object.entries(config.properties).forEach(
       ([propertyName, property]) => {
@@ -132,6 +142,28 @@ export class Schema {
 
   getFeaturedProperties(): Array<Property> {
     return this.featured.map(name => this.getProperty(name))
+  }
+
+  getTemporalStartProperties(): Array<Property> {
+    const properties: Array<Property> = this.temporalStart
+      .map(name => this.getProperty(name))
+
+    for (const ext of this.getExtends()) {
+      properties.push(...ext.getTemporalStartProperties())
+    }
+
+    return properties
+  }
+
+  getTemporalEndProperties(): Array<Property> {
+    const properties: Array<Property> = this.temporalEnd
+      .map(name => this.getProperty(name))
+
+    for (const ext of this.getExtends()) {
+      properties.push(...ext.getTemporalEndProperties())
+    }
+
+    return properties
   }
 
   hasProperty(prop: string | Property): boolean {
