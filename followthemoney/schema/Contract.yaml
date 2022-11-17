@@ -17,6 +17,9 @@ Contract:
     - title
     - name
     - procedureNumber
+  temporalExtent:
+    start:
+      - contractDate
   properties:
     title:
       label: "Contract title"

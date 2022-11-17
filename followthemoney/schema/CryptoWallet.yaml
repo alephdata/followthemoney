@@ -15,6 +15,9 @@ CryptoWallet:
     - publicKey
     - name
     - summary
+  temporalExtent:
+    start:
+      - creationDate
   properties:
     publicKey:
       label: Address

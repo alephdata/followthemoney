@@ -12,6 +12,11 @@ CourtCase:
   caption:
     - name
     - caseNumber
+  temporalExtent:
+    start:
+      - fileDate
+    end:
+      - closeDate
   properties:
     category:
       label: Category
