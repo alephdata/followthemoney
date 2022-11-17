@@ -20,7 +20,6 @@ Interval:
       - date
     end:
       - endDate
-      - date
   properties:
     startDate:
       label: "Start date"

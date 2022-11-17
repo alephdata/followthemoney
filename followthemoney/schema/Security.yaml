@@ -13,6 +13,11 @@ Security:
     - name
     - isin
     - registrationNumber
+  temporalExtent:
+    start:
+      - issueDate
+    end:
+      - maturityDate
   properties:
     isin:
       label: ISIN
