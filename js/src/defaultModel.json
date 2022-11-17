@@ -344,7 +344,13 @@
       "schemata": [
         "Assessment",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "publishDate"
+        ]
+      }
     },
     "Asset": {
       "caption": [
@@ -1274,7 +1280,13 @@
         "Contract",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "contractDate"
+        ]
+      }
     },
     "ContractAward": {
       "description": "A contract or contract lot as awarded to a supplier.",
@@ -1464,7 +1476,15 @@
       "schemata": [
         "CourtCase",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "closeDate"
+        ],
+        "start": [
+          "fileDate"
+        ]
+      }
     },
     "CourtCaseParty": {
       "edge": {
@@ -1595,7 +1615,13 @@
         "CryptoWallet",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "creationDate"
+        ]
+      }
     },
     "Debt": {
       "description": "A monetary debt between two parties.",
@@ -1920,7 +1946,15 @@
         "Analyzable",
         "Document",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "authoredAt",
+          "date",
+          "publishedAt"
+        ]
+      }
     },
     "Documentation": {
       "description": "Links some entity to a document, which might provide further detail or  evidence regarding the entity.\n",
@@ -2812,7 +2846,16 @@
       },
       "schemata": [
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "date",
+          "startDate"
+        ]
+      }
     },
     "LegalEntity": {
       "caption": [
@@ -3418,7 +3461,15 @@
       "schemata": [
         "LegalEntity",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "dissolutionDate"
+        ],
+        "start": [
+          "incorporationDate"
+        ]
+      }
     },
     "License": {
       "caption": [
@@ -4457,7 +4508,15 @@
         "LegalEntity",
         "Person",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "deathDate"
+        ],
+        "start": [
+          "birthDate"
+        ]
+      }
     },
     "PlainText": {
       "caption": [
@@ -4955,7 +5014,8 @@
     "Security": {
       "caption": [
         "name",
-        "isin"
+        "isin",
+        "registrationNumber"
       ],
       "description": "A tradeable financial asset.",
       "extends": [
@@ -5007,6 +5067,20 @@
           "reverse": "securities",
           "type": "entity"
         },
+        "maturityDate": {
+          "label": "Maturity date",
+          "matchable": true,
+          "name": "maturityDate",
+          "qname": "Security:maturityDate",
+          "type": "date"
+        },
+        "registrationNumber": {
+          "label": "Registration number",
+          "matchable": true,
+          "name": "registrationNumber",
+          "qname": "Security:registrationNumber",
+          "type": "identifier"
+        },
         "ticker": {
           "label": "Ticker",
           "matchable": true,
@@ -5026,7 +5100,15 @@
         "Security",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "maturityDate"
+        ],
+        "start": [
+          "issueDate"
+        ]
+      }
     },
     "Similar": {
       "caption": [
@@ -5851,7 +5933,14 @@
         "Thing",
         "Value",
         "Vehicle"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "buildDate",
+          "registrationDate"
+        ]
+      }
     },
     "Vessel": {
       "caption": [
