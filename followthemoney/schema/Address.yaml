@@ -69,3 +69,9 @@ Address:
     country:
       label: "Country"
       type: "country"
+    osmId:
+      label: "OpenStreetmap Place ID"
+      type: "identifier"
+    googlePlaceId:
+      label: "Google Places ID"
+      type: "identifier"
