@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-03 15:19+0100\n"
+"POT-Creation-Date: 2022-11-21 13:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,11 +39,11 @@ msgstr ""
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:342
+#: followthemoney/schema.py:371
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:346
+#: followthemoney/schema.py:375
 msgid "Entity validation failed"
 msgstr ""
 
@@ -782,9 +782,11 @@ msgstr ""
 #. Company.properties.registrationNumber.label
 #. LegalEntity.properties.registrationNumber.label
 #. RealEstate.properties.registrationNumber.label
+#. Security.properties.registrationNumber.label
 #. Vehicle.properties.registrationNumber.label
 #: followthemoney/schema/Company.yaml followthemoney/schema/LegalEntity.yaml
-#: followthemoney/schema/RealEstate.yaml followthemoney/schema/Vehicle.yaml
+#: followthemoney/schema/RealEstate.yaml followthemoney/schema/Security.yaml
+#: followthemoney/schema/Vehicle.yaml
 msgid "Registration number"
 msgstr ""
 
@@ -3282,6 +3284,11 @@ msgstr ""
 #. Security.properties.issueDate.label
 #: followthemoney/schema/Security.yaml
 msgid "Date issued"
+msgstr ""
+
+#. Security.properties.maturityDate.label
+#: followthemoney/schema/Security.yaml
+msgid "Maturity date"
 msgstr ""
 
 #. Security.properties.collateral.label
