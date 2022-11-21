@@ -63,7 +63,7 @@ make build
 make test
 git add . && git commit -m "Updating translation files"
 bumpversion patch
-git push --atomic origin master $(git describe --tags --abbrev=0)
+git push --atomic origin main $(git describe --tags --abbrev=0)
 ```
 
 This will create a new patch release and upload a distribution of it. If
