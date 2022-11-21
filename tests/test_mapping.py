@@ -230,3 +230,27 @@ class MappingTestCase(TestCase):
         self.assertCountEqual(
             entities[0].get("notes"), ["brown", "black", "blue"]
         )  # noqa
+
+    def test_mapping_apply_func(self):
+        url = "file://" + os.path.join(self.fixture_path, "links.csv")
+        mapping = {
+            "csv_url": url,
+            "entities": {
+                "director": {
+                    "schema": "Person",
+                    "key": "id",
+                    "key_literal": "person",
+                    "properties": {
+                        "name": {"column": "name"},
+                        "weakAlias": {
+                            "column": "name",
+                            "apply_func": "fingerprints.generate",
+                        },
+                    },
+                }
+            },
+        }
+
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 1, len(entities)
+        self.assertEqual(entities[0].get("weakAlias"), ["coyote e wile"])  # noqa
