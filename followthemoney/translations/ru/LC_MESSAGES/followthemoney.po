@@ -3348,7 +3348,7 @@ msgstr "Дата размещения"
 #. Security.properties.maturityDate.label
 #: followthemoney/schema/Security.yaml
 msgid "Maturity date"
-msgstr ""
+msgstr "Дата погашения"
 
 #. Security.properties.collateral.label
 #: followthemoney/schema/Security.yaml
