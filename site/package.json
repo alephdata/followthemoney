@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "format": "prettier --write src/",
-    "format:check": "prettier --check src/"
+    "format:check": "prettier --check src/",
+    "links": "hyperlink --check-anchors --sources src/pages dist"
   },
   "author": "",
   "license": "MIT",
@@ -20,6 +21,7 @@
     "unist-util-visit": "^4.1.1"
   },
   "devDependencies": {
+    "@untitaker/hyperlink": "^0.1.26",
     "prettier": "^2.7.1"
   },
   "prettier": {
