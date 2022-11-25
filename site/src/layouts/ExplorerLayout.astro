@@ -8,7 +8,7 @@ const label =
   (activeSchema && activeSchema.label) || (activeType && activeType.label);
 ---
 
-<DefaultLayout {options} {...Astro.props} title={label}>
+<DefaultLayout layout="explorer" {options} {...Astro.props} title={label}>
   <ExpandableSidebar slot="sidebar">
     <ExplorerNav {activeType} {activeSchema} />
   </ExpandableSidebar>
