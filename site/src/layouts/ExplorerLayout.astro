@@ -1,53 +1,16 @@
 ---
-import { Model, defaultModel } from '@alephdata/followthemoney';
-import DefaultLayout from './DefaultLayout.astro';
-import Nav from '../components/page/Nav.astro';
-import NavSection from '../components/page/NavSection.astro';
-import NavItem from '../components/page/NavItem.astro';
+import { DefaultLayout, ExpandableSidebar } from 'astro-theme-docs/components';
+import ExplorerNav from '@components/explorer/ExplorerNav.astro';
+import options from '../options.json';
 
 const { activeSchema = null, activeType = null } = Astro.props;
-const label = (activeSchema && `${activeSchema.label} schema`) || (activeType && `${activeType.label} type`);
-const title = label || 'Model Explorer';
-
-const model = new Model(defaultModel);
-
-const schemata = Object.values(model.schemata).sort((a, b) =>
-  a.label.localeCompare(b.label)
-);
-
-const types = Object.values(model.types).sort((a, b) =>
-  a.label.localeCompare(b.label)
-);
+const label =
+  (activeSchema && activeSchema.label) || (activeType && activeType.label);
 ---
 
-<DefaultLayout {title}>
-  <Nav slot="sidebar">
-    <NavSection title="Types">
-      {
-        types.map((type) => (
-          <NavItem
-            link={`/explorer/types/${type.name}`}
-            active={type.name === activeType?.name}
-          >
-            {type.label}
-          </NavItem>
-        ))
-      }
-    </NavSection>
-
-    <NavSection title="Schemata">
-      {
-        schemata.map((schema) => (
-          <NavItem
-            link={`/explorer/schemata/${schema.name}`}
-            active={schema.name === activeSchema?.name}
-          >
-            {schema.label}
-          </NavItem>
-        ))
-      }
-    </NavSection>
-  </Nav>
-
+<DefaultLayout {options} {...Astro.props} title={label}>
+  <ExpandableSidebar slot="sidebar">
+    <ExplorerNav {activeType} {activeSchema} />
+  </ExpandableSidebar>
   <slot />
 </DefaultLayout>

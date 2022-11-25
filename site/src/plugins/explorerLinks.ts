@@ -1,15 +1,22 @@
-import { visit } from 'unist-util-visit'
+import { visit } from 'unist-util-visit';
 
 const jsxNode = (component, attributes) => {
   return {
     type: 'mdxJsxFlowElement',
     name: component,
-    attributes: Object.entries(attributes).map(
-      ([name, value]) => ({ type: 'mdxJsxAttribute', name, value })
-    ),
+    attributes: Object.entries(attributes).map(([name, value]) => ({
+      type: 'mdxJsxAttribute',
+      name,
+      value,
+    })),
   };
 };
 
+/*
+ * Replaces links like `[companies](schema://Company)` and
+ * `[identifier](type://identifier)` with the `SchemaLink` and `PropertyTypeLink`
+ * components to auto-generate URLs and (optionally) link labels.
+ */
 export default function explorerLinks() {
   return (tree) => {
     visit(tree, 'link', (node, index, parent) => {
@@ -21,9 +28,7 @@ export default function explorerLinks() {
         return;
       }
 
-      const component = isSchemaLink
-        ? 'SchemaLink'
-        : 'PropertyTypeLink';
+      const component = isSchemaLink ? 'SchemaLink' : 'PropertyTypeLink';
 
       const attrs = {
         [isSchemaLink ? 'schema' : 'type']: ref,
@@ -36,4 +41,4 @@ export default function explorerLinks() {
       parent.children.splice(index, 1, jsxNode(component, attrs));
     });
   };
-};
+}

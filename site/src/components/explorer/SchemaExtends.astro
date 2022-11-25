@@ -1,28 +1,34 @@
 ---
+import SchemaLink from '@components/explorer/SchemaLink.astro';
+
 const { schema } = Astro.props;
 const parents = schema.getExtends();
 ---
 
-<h2>Extends</h2>
+<div>
+  <h2 class="beta">Extends</h2>
 
-{
-  parents.length > 0 && (
-    <>
-      <p>The {schema.label} schema extends the following schemata:</p>
+  {
+    parents.length > 0 && (
+      <>
+        <p class="mb-xs">
+          The {schema.label} schema extends the following schemata:
+        </p>
 
-      <ul>
-        {parents.map((parent) => (
-          <li>
-            <a href={`/explorer/schemata/${parent.name}`}>{parent.label}</a>
-          </li>
-        ))}
-      </ul>
-    </>
-  )
-}
+        <ul class="unordered-list">
+          {parents.map((parent) => (
+            <li>
+              <SchemaLink schema={parent} />
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
 
-{
-  parents.length <= 0 && (
-    <p>The {schema.label} schema does not extend any other schemata.</p>
-  )
-}
+  {
+    parents.length <= 0 && (
+      <p>The {schema.label} schema does not extend any other schemata.</p>
+    )
+  }
+</div>

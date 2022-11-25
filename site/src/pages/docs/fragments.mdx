@@ -1,25 +1,25 @@
 ---
-layout: '@layouts/GuideLayout.astro'
+layout: '@layouts/DocsLayout.astro'
 title: 'Entity Fragmentation'
 ---
 
 # Entity Fragmentation
 
-Generating graph data is a difficult process. The size of the datasets we want to process using followthemoney (FtM) makes it impossible to incrementally build nodes and egdes in memory like you would in [NetworkX](https://networkx.org/). Instead, we use a stream-based solution for constructing graph entities. That is why the toolkit supports *entity fragments* and *aggregation*.
+Generating graph data is a difficult process. The size of the datasets we want to process using followthemoney (FtM) makes it impossible to incrementally build nodes and egdes in memory like you would in [NetworkX](https://networkx.org/). Instead, we use a stream-based solution for constructing graph entities. That is why the toolkit supports _entity fragments_ and _aggregation_.
 
 ## Example
 
 To illustrate this problem, imagine a table with millions of rows that describes a set of people and the companies they control. Every company can have multiple directors, while each director might control multiple companies:
 
-CompanyID | CompanyName | DirectorName | DirectorIdNo | DirectorDoB
-| --- | --- | --- | --- | --- |
-| A123 | Brilliant Amazing Ltd. | John Smith | PP827817 | 1979-02-16 |
-| A71882 | Goldfish Ltd. | John Smith | PP827817 | NULL |
-| A123 | Brilliant Amazing Ltd. | Jane Doe | PP1988299 | 1983-06-24 |
+| CompanyID | CompanyName            | DirectorName | DirectorIdNo | DirectorDoB |
+| --------- | ---------------------- | ------------ | ------------ | ----------- |
+| A123      | Brilliant Amazing Ltd. | John Smith   | PP827817     | 1979-02-16  |
+| A71882    | Goldfish Ltd.          | John Smith   | PP827817     | NULL        |
+| A123      | Brilliant Amazing Ltd. | Jane Doe     | PP1988299    | 1983-06-24  |
 
 ## Database humpty-dumpty
 
-When [turning this data into FtM](/guide/mappings), we’d create three entities for each row: a [](schema://Company), a [](schema://Person) and a [](schema://Directorship) that connects the two.
+When [turning this data into FtM](/docs/mappings), we’d create three entities for each row: a [](schema://Company), a [](schema://Person) and a [](schema://Directorship) that connects the two.
 
 If we do this row by row, we’d eventually generate three [](schema://Company) entities to represent two actual companies, and three [](schema://Person) entities for two distinct people. Of course, we could write these to an ElasticSearch index sequentially - the later entities overwriting the earlier ones with the same ID.
 
@@ -29,9 +29,9 @@ A better solution is to sort all generated fragments before indexing them. With 
 
 ## In practice
 
-In the FtM toolchain, there are two tools for doing entity aggregation: from the [command-line](/guide/cli) `ftm aggregate` will merge fragments in memory. Alternately the add-on library [followthemoney-store](https://github.com/alephdata/followthemoney-store) will perform the same operation in a SQLite or PostgreSQL database.
+In the FtM toolchain, there are two tools for doing entity aggregation: from the [command-line](/docs/cli) `ftm aggregate` will merge fragments in memory. Alternately the add-on library [followthemoney-store](https://github.com/alephdata/followthemoney-store) will perform the same operation in a SQLite or PostgreSQL database.
 
-``` bash
+```bash
 # Generate entities from a CSV file and a mapping:
 cat company-registry.csv | ftm map-csv mapping_file.yml > fragments.ijson
 
@@ -39,7 +39,7 @@ cat company-registry.csv | ftm map-csv mapping_file.yml > fragments.ijson
 cat fragments.ijson | ftm store write -d company_registry
 
 # List the tables in the store:
-ftm store list 
+ftm store list
 
 # Output merged entities:
 ftm store iterate -d company_registry
@@ -47,13 +47,13 @@ ftm store iterate -d company_registry
 
 The same functionality can also be used as a Python library:
 
-``` python
+```python
 import os
 from ftmstore import get_dataset
 # Assume a function that will emit fragments:
 from myapp.data import generate_fragments
 
-# If no `database_uri` is given, ftmstore will read connection from 
+# If no `database_uri` is given, ftmstore will read connection from
 # $FTM_STORE_URI, or create a file called `followthemoney.sqlite` in
 # the current directory.
 database_uri = os.environ.get('DATABASE_URI')
@@ -64,7 +64,7 @@ for idx, proxy in enumerate(generate_fragments()):
 bulk.flush()
 
 # This will print the number of combined entities (ie. DISTINCT id):
-print(len(dataset)) 
+print(len(dataset))
 
 # This will return combined entities:
 for entity in dataset.iterate():
@@ -88,7 +88,7 @@ followthemoney-store is used across the tools built on FtM to capture and aggreg
 
 To support this, ftm-store has the notion of an origin for each fragment. If specified, this can be used to later delete or overwrite subsets of fragments.
 
-``` bash
+```bash
 cat us_ofac.ijson | ftm store write -d sanctions -o us_ofac
 cat eu_eeas.ijson | ftm store write -d sanctions -o eu_eeas
 

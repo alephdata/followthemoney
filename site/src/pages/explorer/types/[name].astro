@@ -1,8 +1,9 @@
 ---
 import { Model, defaultModel } from '@alephdata/followthemoney';
+import { Stack, RichContent } from 'astro-theme-docs/components';
 import ExplorerLayout from '@layouts/ExplorerLayout.astro';
 import TypeValues from '@components/explorer/TypeValues.astro';
-import descriptions from '../../../../tmp/typeDescriptions.json';
+import descriptions from '/src/types.json';
 
 const { name } = Astro.params;
 const { type } = Astro.props;
@@ -20,10 +21,12 @@ export function getStaticPaths() {
 ---
 
 <ExplorerLayout activeType={type}>
-  <header class="mb-12">
-    <h1 class="mb-2">{type.label}</h1>
-    <Fragment set:html={description} />
+  <Stack size="xl">
+    <RichContent>
+      <h1 class="alpha">{type.label}</h1>
+      <Fragment set:html={description} />
+    </RichContent>
 
     <TypeValues {type} />
-  </header>
+  </Stack>
 </ExplorerLayout>

@@ -1,0 +1,60 @@
+{
+  "title": "FollowTheMoney",
+  "git": {
+    "branch": "website-astro",
+    "githubRepoUrl": "https://github.com/alephdata/followthemoney"
+  },
+  "nav": {
+    "header": {
+      "items": [
+        {
+          "title": "Docs",
+          "link": "/docs"
+        },
+        {
+          "title": "Model Explorer",
+          "link": "/explorer"
+        }
+      ]
+    },
+    "sidebar": {
+      "sections": [
+        {
+          "title": "Getting Started",
+          "items": [
+            { "slug": "/docs" },
+            { "slug": "/docs/api" },
+            { "slug": "/docs/fragments" },
+            { "slug": "/docs/namespace" },
+            { "slug": "/docs/mappings" },
+            { "slug": "/docs/cli" }
+          ]
+        },
+        {
+          "title": "More",
+          "items": [
+            { "slug": "/docs/custom" },
+            { "slug": "/docs/graphs" },
+            { "slug": "/docs/faq" },
+            { "slug": "/docs/credits" }
+          ]
+        },
+        {
+          "title": "Reference",
+          "items": [
+            {
+              "link": "https://example.org",
+              "title": "Python Library",
+              "external": true
+            },
+            {
+              "link": "https://example.org",
+              "title": "JavaScript Library",
+              "external": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

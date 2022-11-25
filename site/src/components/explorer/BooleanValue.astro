@@ -2,10 +2,34 @@
 const { value } = Astro.props;
 ---
 
-<span class:list={[
-  'px-2 inline-block rounded-full font-semibold text-sm',
-  value && 'bg-emerald-500/20 text-emerald-900 dark:text-emerald-200',
-  !value && 'bg-rose-500/20 text-rose-900 dark:text-rose-200',
-]}>
+<style>
+  .BooleanValue {
+    display: inline-block;
+    padding-inline: 0.75em;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    background-color: var(--bolean-value-color-bg);
+    color: var(--bolean-value-color-fg);
+  }
+
+  .BooleanValue--true {
+    --bolean-value-color-bg: var(--color-bg-positive);
+    --bolean-value-color-fg: var(--color-fg-positive);
+  }
+
+  .BooleanValue--false {
+    --bolean-value-color-bg: var(--color-bg-negative);
+    --bolean-value-color-fg: var(--color-fg-negative);
+  }
+</style>
+
+<span
+  class:list={[
+    'BooleanValue',
+    value && 'BooleanValue--true',
+    !value && 'BooleanValue--false',
+  ]}
+>
   {value ? 'Yes' : 'No'}
 </span>

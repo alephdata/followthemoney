@@ -1,31 +1,28 @@
 ---
+import IndexTable from '@components/explorer/IndexTable.astro';
 const { type } = Astro.props;
 const values = Array.from(type.values);
 ---
 
 {
   values.length > 0 && (
-    <>
-      <h2>Values</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Value</th>
-            <th>Label</th>
-          </tr>
-        </thead>
+    <div>
+      <h2 class="beta">Values</h2>
+      <IndexTable>
+        <tr slot="head">
+          <th>Value</th>
+          <th>Label</th>
+        </tr>
 
-        <tbody>
-          {values.map(([value, label]) => (
-            <tr>
-              <td>
-                <code>{value}</code>
-              </td>
-              <td>{label}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </>
+        {values.map(([value, label]) => (
+          <tr>
+            <td>
+              <code>{value}</code>
+            </td>
+            <td>{label}</td>
+          </tr>
+        ))}
+      </IndexTable>
+    </div>
   )
 }

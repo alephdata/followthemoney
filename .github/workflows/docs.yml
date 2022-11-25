@@ -1,0 +1,21 @@
+name: Docs
+
+on:
+  push:
+    paths:
+      - "site/**"
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  docs:
+    uses: alephdata/astro-theme-docs/.github/workflows/docs.yml@main
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    with:
+      build-path: ./site
+      deploy: ${{ github.ref == 'refs/heads/website-astro' }}

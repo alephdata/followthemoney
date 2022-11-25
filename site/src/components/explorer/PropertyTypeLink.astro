@@ -1,11 +1,13 @@
 ---
+import path from 'node:path';
 import { defaultModel, Model } from '@alephdata/followthemoney';
 const model = new Model(defaultModel);
 
 let { type, text } = Astro.props;
 type = model.getType(type);
+
+const basePath = Astro.site?.pathname || '';
+const link = path.join(basePath, '/explorer/types/', type.name);
 ---
 
-<a href={`/explorer/types/${type.name}`}>{
-  Astro.slots.default ? <slot/> : text || type.label
-}</a>
+<a href={link}>{Astro.slots.default ? <slot /> : text || type.label}</a>

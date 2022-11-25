@@ -9,8 +9,8 @@ def rst_to_html(source):
     return parts['fragment']
 
 if __name__ == "__main__":
-  out_dir = Path(__file__, '../../tmp').resolve()
-  out_file = Path(out_dir, 'typeDescriptions.json').resolve()
+  out_dir = Path(__file__, '../../src').resolve()
+  out_file = Path(out_dir, 'types.json').resolve()
 
   print(out_dir)
   print(out_file)

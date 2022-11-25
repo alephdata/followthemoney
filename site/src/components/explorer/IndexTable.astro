@@ -1,33 +1,15 @@
 <style>
-  table {
-    border-collapse: separate;
-    border-spacing: 0;
+  .IndexTable {
   }
 
   * :global(th) {
     position: sticky;
     z-index: 1;
     top: var(--header-height);
-    background: theme('colors.gray.50');
-    padding-top: theme('space.2');
-  }
-
-  * :global(th, td) {
-    border-bottom: 1px solid theme('colors.gray.200');
-  }
-
-  @media (prefers-color-scheme:  dark) {
-    * :global(th) {
-      background: theme('colors.gray.900');
-    }
-
-    * :global(th, td) {
-      border-bottom-color: theme('colors.gray.700');
-    }
   }
 </style>
 
-<table>
+<table class="table IndexTable">
   <thead>
     <slot name="head" />
   </thead>

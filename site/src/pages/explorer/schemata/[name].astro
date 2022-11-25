@@ -1,5 +1,6 @@
 ---
 import { Model, defaultModel } from '@alephdata/followthemoney';
+import { Stack } from 'astro-theme-docs/components';
 import ExplorerLayout from '@layouts/ExplorerLayout.astro';
 import SchemaExtends from '@components/explorer/SchemaExtends.astro';
 import SchemaProperties from '@components/explorer/SchemaProperties.astro';
@@ -19,11 +20,13 @@ export function getStaticPaths() {
 ---
 
 <ExplorerLayout activeSchema={schema}>
-  <header class="mb-12">
-    <h1 class="mb-2">{schema.label}</h1>
-    {schema.description && <p class="lead mt-0">{schema.description}</p>}
-  </header>
+  <Stack size="xl">
+    <header>
+      <h1 class="alpha">{schema.label}</h1>
+      {schema.description && <p class="lead">{schema.description}</p>}
+    </header>
 
-  <SchemaExtends schema={schema} />
-  <SchemaProperties schema={schema} />
+    <SchemaExtends schema={schema} />
+    <SchemaProperties schema={schema} />
+  </Stack>
 </ExplorerLayout>

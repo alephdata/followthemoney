@@ -1,11 +1,13 @@
 ---
+import path from 'node:path';
 import { defaultModel, Model, Schema } from '@alephdata/followthemoney';
 const model = new Model(defaultModel);
 
 let { schema, text } = Astro.props;
 schema = model.getSchema(schema);
+
+const basePath = Astro.site?.pathname || '';
+const link = path.join(basePath, '/explorer/schemata/', schema.name);
 ---
 
-<a href={`/explorer/schemata/${schema.name}`}>{
-  Astro.slots.default ? <slot/> : text || schema.label
-}</a>
+<a href={link}>{Astro.slots.default ? <slot /> : text || schema.label}</a>

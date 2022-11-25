@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/GuideLayout.astro'
+layout: '@layouts/DocsLayout.astro'
 title: Introduction
 ---
 
@@ -23,7 +23,7 @@ Entities are often expressed as snippets of JSON, with three standard fields: a 
 }
 ```
 
-Property names are defined by the *schemata*. For example, a [](schema://Person) has a nationality, while a [](schema://Company) allows for setting a jurisdiction. Both properties, however, have the same property type, [](type://country).
+Property names are defined by the _schemata_. For example, a [](schema://Person) has a nationality, while a [](schema://Company) allows for setting a jurisdiction. Both properties, however, have the same property type, [](type://country).
 
 ## References
 
@@ -68,12 +68,13 @@ This is addressed by making interstitial entities. In the example above, an [](s
 
 <Callout emoji="⚠️">
   It is tempting to simplify this model by assuming that entities derived from
-  [](schema://Thing) are node entities, and those derived from [](schema://Interval) are
-  edges. This assumption is false and will lead to nasty bugs in your code.
+  [](schema://Thing) are node entities, and those derived from
+  [](schema://Interval) are edges. This assumption is false and will lead to
+  nasty bugs in your code.
 </Callout>
 
 ## Streams
 
 Many tools in the FtM ecosystem use streams of entities to transfer or store information. Entity streams are simply sequences of entity objects that have been serialised to JSON as single lines without any indentation, each entity separated by a newline.
 
-Entity streams are read and produced by virtually every part of the [CLI](/guide/cli), the Aleph API, and they're also supported by the ingestors. When stored to disk as a file, the extensions .ftm or .ijson should be used.
+Entity streams are read and produced by virtually every part of the [CLI](/docs/cli), the Aleph API, and they're also supported by the ingestors. When stored to disk as a file, the extensions .ftm or .ijson should be used.
