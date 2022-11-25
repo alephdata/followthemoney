@@ -17,3 +17,4 @@ class CommonTest(unittest.TestCase):
         data = registry.name.to_dict()
         assert data.get("label") == "Name"
         assert data.get("group") == "names"
+        assert data.get("description", "").startswith("A name used for a person or company.")

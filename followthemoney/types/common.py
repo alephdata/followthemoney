@@ -17,6 +17,7 @@ EnumValues = Dict[str, str]
 class PropertyTypeToDict(TypedDict, total=False):
     label: str
     plural: str
+    description: Optional[str]
     group: Optional[str]
     matchable: Optional[bool]
     pivot: Optional[bool]
@@ -183,6 +184,7 @@ class PropertyType(object):
         data: PropertyTypeToDict = {
             "label": gettext(self.label),
             "plural": gettext(self.plural),
+            "description": gettext(self.docs),
         }
         if self.group:
             data["group"] = self.group
