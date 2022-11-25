@@ -2,6 +2,7 @@
 export interface IPropertyTypeDatum {
   group?: string
   label?: string
+  description?: string
   plural?: string | null
   matchable?: boolean,
   pivot?: boolean,
@@ -20,6 +21,7 @@ export class PropertyType {
   public grouped: boolean
   public label: string
   public plural: string
+  public description: string | null
   public matchable: boolean
   public pivot: boolean
   public values: Map<string, string>
@@ -28,6 +30,7 @@ export class PropertyType {
   constructor(name: string, data: IPropertyTypeDatum) {
     this.name = name
     this.label = data.label || name
+    this.description = data.description || null
     this.plural = data.plural || this.label
     this.group = data.group || null
     this.grouped = data.group !== undefined

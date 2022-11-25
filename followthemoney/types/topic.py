@@ -13,8 +13,8 @@ class TopicType(EnumType):
 
     Besides the informative value, topics are ultimately supposed to bear
     fruits in the context of graph-based data analysis, where they would
-    enable queries such as `find all paths between a government procurement
-    award and a politician`."""
+    enable queries such as _find all paths between a government procurement
+    award and a politician_."""
 
     name = "topic"
     group = "topics"
