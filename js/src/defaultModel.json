@@ -6113,6 +6113,7 @@
   },
   "types": {
     "address": {
+      "description": "A geographic address used to describe a location of a residence or post\n    box. There is no specified order for the sub-parts of an address (e.g. street,\n    city, postal code), and we should consider introducing an Address schema type\n    to retain fidelity in cases where address parts are specified.",
       "group": "addresses",
       "label": "Address",
       "matchable": true,
@@ -6120,6 +6121,7 @@
       "plural": "Addresses"
     },
     "checksum": {
+      "description": "Content hashes calculated using SHA1. Checksum references are used by\n    document-typed entities in Aleph to refer to raw data in the archive\n    (e.g. the document from which the entity is extracted).\n\n    Unfortunately, this has some security implications: in order to avoid people\n    getting access to documents for which they know the checksum, properties\n    of this type are scrubbed when submitted via the normal API. Checksums can only\n    be defined by uploading a document to be ingested.",
       "group": "checksums",
       "label": "Checksum",
       "matchable": true,
@@ -6127,6 +6129,7 @@
       "plural": "Checksums"
     },
     "country": {
+      "description": "Properties to define countries and territories. This is completely\n    descriptive and needs to deal with data from many origins, so we support\n    a number of unusual and controversial designations (e.g. the Soviet Union,\n    Transnistria, Somaliland, Kosovo).",
       "group": "countries",
       "label": "Country",
       "matchable": true,
@@ -6418,12 +6421,14 @@
       }
     },
     "date": {
+      "description": "A date or time stamp. This is based on ISO 8601, but meant to allow for different\n    degrees of precision by specifying a prefix. This means that `2021`, `2021-02`,\n    `2021-02-16`, `2021-02-16T21`, `2021-02-16T21:48` and `2021-02-16T21:48:52`\n    are all valid values, with an implied precision.\n\n    The timezone is always expected to be UTC and cannot be specified otherwise. There is\n    no support for calendar weeks (`2021-W7`) and date ranges (`2021-2024`).",
       "group": "dates",
       "label": "Date",
       "matchable": true,
       "plural": "Dates"
     },
     "email": {
+      "description": "Internet mail address (e.g. user@example.com). These are notoriously hard\n    to validate, but we use an irresponsibly simple rule and hope for the best.",
       "group": "emails",
       "label": "E-Mail Address",
       "matchable": true,
@@ -6431,6 +6436,7 @@
       "plural": "E-Mail Addresses"
     },
     "entity": {
+      "description": "A reference to another entity via its ID. This is how entities in FtM\n    become a graph: by pointing at each other using references.\n\n    Entity IDs can either be `namespaced` or `plain`, depending on the context.\n    When setting properties of this type, you can pass in an entity proxy or\n    dict of the entity, the ID will then be extracted and stored.\n    ",
       "group": "entities",
       "label": "Entity",
       "matchable": true,
@@ -6438,6 +6444,7 @@
       "plural": "Entities"
     },
     "gender": {
+      "description": "A human gender. This is not meant to be a comprehensive model of\n    the social realities of gender but a way to capture data from (mostly)\n    government databases and represent it in a way that can be used by\n    structured tools. I'm not sure this justifies the simplification.",
       "group": "genders",
       "label": "Gender",
       "plural": "Genders",
@@ -6448,10 +6455,12 @@
       }
     },
     "html": {
+      "description": "Properties that contain raw hypertext markup (HTML).\n\n    User interfaces rendering properties of this type need to take extreme\n    care not to allow attacks such as cross-site scripting. It is recommended\n    to perform server-side sanitisation, or to not render this property at all.\n    ",
       "label": "HTML",
       "plural": "HTMLs"
     },
     "iban": {
+      "description": "An international bank account number, as defined in ISO 13616. IBANs are\n    managed by SWIFT used in the European SEPA payment system.\n\n    A noteable aspect of IBANs is that they share a country prefix and validation\n    mechanism, but the specific length of an IBAN is dependent on the country\n    code defined in the first two characters: `NO8330001234567` and\n    `CY21002001950000357001234567` are both valid values.",
       "group": "ibans",
       "label": "IBAN",
       "matchable": true,
@@ -6459,6 +6468,7 @@
       "plural": "IBANs"
     },
     "identifier": {
+      "description": "Used for registration numbers and other codes assigned by an authority\n    to identify an entity. This might include tax identifiers and statistical\n    codes.\n\n    Since identifiers are high-value criteria when comparing two entities, numbers\n    should only be modelled as identifiers if they are long enough to be meaningful.\n    Four- or five-digit industry classifiers create more noise than value.",
       "group": "identifiers",
       "label": "Identifier",
       "matchable": true,
@@ -6466,6 +6476,7 @@
       "plural": "Identifiers"
     },
     "ip": {
+      "description": "Internet protocol addresses. This supports both addresses used\n    by the protocol versions 4 (e.g. `192.168.1.143`) and 6\n    (e.g. `0:0:0:0:0:ffff:c0a8:18f`).",
       "group": "ips",
       "label": "IP-Address",
       "matchable": true,
@@ -6473,10 +6484,12 @@
       "plural": "IP-Addresses"
     },
     "json": {
+      "description": "An encoded JSON object. This is used to store raw HTTP headers for documents\n    and some other edge cases. It's a really bad idea and we should try to get rid\n    of JSON properties.",
       "label": "Nested data",
       "plural": "Nested data"
     },
     "language": {
+      "description": "A human written language. This list is arbitrarily limited for some\n    weird upstream technical reasons, but we'll happily accept pull requests\n    for additional languages once there is a specific need for them to be\n    supported.",
       "group": "languages",
       "label": "Language",
       "plural": "Languages",
@@ -6546,11 +6559,13 @@
       }
     },
     "mimetype": {
+      "description": "A MIME media type are a specification of a content type on a network.\n    Each MIME type is assinged by IANA and consists of two parts: the type\n    and sub-type. Common examples are: `text/plain`, `application/json` and\n    `application/pdf`.\n\n    MIME type properties do not contain parameters as used in HTTP headers,\n    like `charset=UTF-8`.",
       "group": "mimetypes",
       "label": "MIME-Type",
       "plural": "MIME-Types"
     },
     "name": {
+      "description": "A name used for a person or company. This is assumed to be as complete\n    a name as available - when a first name, family name or patronymic are given\n    separately, these are stored to string-type properties instead.\n\n    No validation rules apply, and things having multiple names must be considered\n    a perfectly ordinary case.",
       "group": "names",
       "label": "Name",
       "matchable": true,
@@ -6558,10 +6573,12 @@
       "plural": "Names"
     },
     "number": {
+      "description": "A numeric value, like the size of a piece of land, or the value of a\n    contract. Since all property values in FtM are strings, this is also a\n    string and there is no specified format (e.g. `1,000.00` vs. `1.000,00`).\n\n    In the future we might want to enable annotations for format, units, or\n    even to introduce a separate property type for monetary values.",
       "label": "Number",
       "plural": "Numbers"
     },
     "phone": {
+      "description": "A phone number in E.164 format. This means that phone numbers always\n    include an international country prefix (e.g. `+38760183628`). The\n    cleaning and validation functions for this try to be smart about by\n    accepting a list of countries as an argument in order to add the number\n    prefix.\n\n    When adding a property of this type to an entity, any country-type properties\n    defined for the entity are considered for validation. That means that adding a\n    phone number to an entity before adding a country can have a different\n    validation outcome from doing the two operations the other way around. Always\n    define the country first.",
       "group": "phones",
       "label": "Phone number",
       "matchable": true,
@@ -6569,14 +6586,17 @@
       "plural": "Phone numbers"
     },
     "string": {
+      "description": "A simple string property with no additional semantics.",
       "label": "Label",
       "plural": "Labels"
     },
     "text": {
+      "description": "Longer text fragments, such as descriptions or document text. Unlike\n    string properties, it might make sense to treat properties of this type as\n    full-text search material.",
       "label": "Text",
       "plural": "Texts"
     },
     "topic": {
+      "description": "Topics define a controlled vocabulary of terms applicable to some\n    entities, such as companies and people. They describe categories of\n    journalistic interest which may apply to the given entity, for example\n    if a given person is a criminal or a politician.\n\n    Besides the informative value, topics are ultimately supposed to bear\n    fruits in the context of graph-based data analysis, where they would\n    enable queries such as _find all paths between a government procurement\n    award and a politician_.",
       "group": "topics",
       "label": "Topic",
       "plural": "Topics",
@@ -6626,6 +6646,7 @@
       }
     },
     "url": {
+      "description": "A uniform resource locator (URL). This will perform some normalisation\n    on the URL so that it's sure to be using valid encoding/quoting, and to\n    make sure the URL has a schema (e.g. `http`, `https`, ...).",
       "group": "urls",
       "label": "URL",
       "matchable": true,
