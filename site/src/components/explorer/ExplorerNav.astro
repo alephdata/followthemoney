@@ -18,18 +18,6 @@ const basePath = Astro.site?.pathname || '';
 ---
 
 <Nav slot="sidebar">
-  <NavSection title="Types">
-    {
-      types.map((type) => (
-        <NavItem
-          link={path.join(basePath, '/explorer/types/', type.name)}
-          active={type.name === activeType?.name}
-          title={type.label}
-        />
-      ))
-    }
-  </NavSection>
-
   <NavSection title="Schemata">
     {
       schemata.map((schema) => (
@@ -37,6 +25,18 @@ const basePath = Astro.site?.pathname || '';
           link={path.join(basePath, '/explorer/schemata/', schema.name)}
           active={schema.name === activeSchema?.name}
           title={schema.label}
+        />
+      ))
+    }
+  </NavSection>
+
+  <NavSection title="Types">
+    {
+      types.map((type) => (
+        <NavItem
+          link={path.join(basePath, '/explorer/types/', type.name)}
+          active={type.name === activeType?.name}
+          title={type.label}
         />
       ))
     }
