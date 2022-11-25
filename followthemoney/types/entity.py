@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 class EntityType(PropertyType):
     """A reference to another entity via its ID. This is how entities in FtM
-    become a graph: by pointing at each other using :ref:`references`.
+    become a graph: by pointing at each other using references.
 
     Entity IDs can either be `namespaced` or `plain`, depending on the context.
     When setting properties of this type, you can pass in an entity proxy or
