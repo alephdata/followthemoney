@@ -15,7 +15,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@alephdata/followthemoney": "^3.0.4",
+    "@alephdata/followthemoney": "https://gitpkg.now.sh/alephdata/followthemoney/js?till/type-descriptions-json-model&scripts.postinstall=npm%20install%20--ignore-scripts%20%26%26%20npm%20run%20build",
+    "@astrojs/markdown-component": "^1.0.2",
     "astro": "^1.4.3",
     "astro-theme-docs": "github:alephdata/astro-theme-docs",
     "unist-util-visit": "^4.1.1"

@@ -1,13 +1,12 @@
 ---
+import Markdown from '@astrojs/markdown-component';
 import { Model, defaultModel } from '@alephdata/followthemoney';
 import { Stack, RichContent } from 'astro-theme-docs/components';
 import ExplorerLayout from '@layouts/ExplorerLayout.astro';
 import TypeValues from '@components/explorer/TypeValues.astro';
-import descriptions from '/src/types.json';
 
 const { name } = Astro.params;
 const { type } = Astro.props;
-const description = descriptions[type.name] || null;
 
 const model = new Model(defaultModel);
 
@@ -24,7 +23,7 @@ export function getStaticPaths() {
   <Stack size="xl">
     <RichContent>
       <h1 class="alpha">{type.label}</h1>
-      <Fragment set:html={description} />
+      <Markdown>{type.description}</Markdown>
     </RichContent>
 
     <TypeValues {type} />
