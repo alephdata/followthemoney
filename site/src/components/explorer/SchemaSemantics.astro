@@ -1,0 +1,49 @@
+---
+import { RichContent } from 'astro-theme-docs/components';
+import PropertyList from '@components/explorer/PropertyList.astro';
+const { schema, ...rest } = Astro.props;
+const start = schema.getTemporalStartProperties();
+const end = schema.getTemporalEndProperties();
+---
+
+<div {...rest}>
+  <RichContent>
+    <h2 class="beta">Semantics</h2>
+    <p>
+      FollowTheMoney has well-defined semantics for different representations of
+      entities, for example in a network graph or in a timeline.
+
+      <ul class="unordered-list">
+        <li>
+          In a network graph, entities should be represented as {
+            schema.isEdge ? 'an edge' : 'a vertex'
+          }.
+        </li>
+
+        {
+          start.length > 0 && (
+            <li>
+              In a timeline, <PropertyList properties={start} /> should be used
+              as the temporal start.
+              {end.length > 0 && (
+                <>
+                  <PropertyList properties={end} /> should be used as the
+                  temporal end.
+                </>
+              )}
+            </li>
+          )
+        }
+
+        {
+          start <= 0 && (
+            <li>
+              {schema.label} entites have no temporal extent, i.e. they are not
+              suitable for representation in a timeline.
+            </li>
+          )
+        }
+      </ul>
+    </p>
+  </RichContent>
+</div>

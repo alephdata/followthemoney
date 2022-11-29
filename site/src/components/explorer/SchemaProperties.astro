@@ -4,7 +4,7 @@ import SchemaLink from '@components/explorer/SchemaLink.astro';
 import IndexTable from '@components/explorer/IndexTable.astro';
 import PropertyIndicator from '@components/explorer/PropertyIndicator.astro';
 
-const { schema } = Astro.props;
+const { schema, ...rest } = Astro.props;
 
 const isFeatured = (property) =>
   property.schema.featured.includes(property.name);
@@ -40,10 +40,8 @@ const properties = Array.from(schema.getProperties().values())
 
 <script>
   window.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('#schema-properties');
-    const toggle = document.querySelector(
-      '#schema-properties-inherited-toggle'
-    );
+    const container = document.querySelector('.SchemaProperties');
+    const toggle = document.querySelector('.SchemaProperties__toggle');
 
     toggle.checked = true;
 
@@ -53,12 +51,12 @@ const properties = Array.from(schema.getProperties().values())
   });
 </script>
 
-<div class="SchemaProperties" id="schema-properties" data-show-inherited="true">
+<div class="SchemaProperties" data-show-inherited="true" {...rest}>
   <div class="SchemaProperties__header">
     <h2 class="beta">Properties</h2>
 
     <label>
-      <input type="checkbox" id="schema-properties-inherited-toggle" checked />
+      <input type="checkbox" class="SchemaProperties__toggle" checked />
       Show inherited
     </label>
   </div>
