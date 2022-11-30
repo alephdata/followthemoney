@@ -1,10 +1,9 @@
 ---
-import { defaultModel, Model } from '@alephdata/followthemoney';
+import { model } from '@util/ftm';
 import IndexTable from '@components/explorer/IndexTable.astro';
 import SchemaLink from '@components/explorer/SchemaLink.astro';
 import BooleanValue from '@components/explorer/BooleanValue.astro';
 
-const model = new Model(defaultModel);
 const schemata = Object.values(model.schemata).sort((a, b) =>
   a.label.localeCompare(b.label)
 );

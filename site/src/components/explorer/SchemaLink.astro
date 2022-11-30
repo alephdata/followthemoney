@@ -1,7 +1,7 @@
 ---
 import path from 'node:path';
-import { defaultModel, Model, Schema } from '@alephdata/followthemoney';
-const model = new Model(defaultModel);
+import { Schema } from '@alephdata/followthemoney';
+import { model } from '@util/ftm';
 
 let { schema, text } = Astro.props;
 schema = model.getSchema(schema);

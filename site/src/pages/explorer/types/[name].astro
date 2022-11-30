@@ -1,6 +1,6 @@
 ---
 import Markdown from '@astrojs/markdown-component';
-import { Model, defaultModel } from '@alephdata/followthemoney';
+import { model } from '@util/ftm';
 import { Stack, RichContent } from 'astro-theme-docs/components';
 import ExplorerLayout from '@layouts/ExplorerLayout.astro';
 import TypeValues from '@components/explorer/TypeValues.astro';
@@ -8,10 +8,7 @@ import TypeValues from '@components/explorer/TypeValues.astro';
 const { name } = Astro.params;
 const { type } = Astro.props;
 
-const model = new Model(defaultModel);
-
 export function getStaticPaths() {
-  const model = new Model(defaultModel);
   return Object.entries(model.types).map(([name, type]) => ({
     params: { name },
     props: { type },

@@ -1,9 +1,8 @@
 ---
 import path from 'node:path';
-import { Model, defaultModel } from '@alephdata/followthemoney';
+import { model } from '@util/ftm';
 import { Nav, NavSection, NavItem } from 'astro-theme-docs/components';
 
-const model = new Model(defaultModel);
 const { activeType, activeSchema } = Astro.props;
 
 const schemata = Object.values(model.schemata).sort((a, b) =>

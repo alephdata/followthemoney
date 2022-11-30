@@ -1,11 +1,9 @@
 ---
-import { defaultModel, Model } from '@alephdata/followthemoney';
+import { model } from '@util/ftm';
 import { Stack } from 'astro-theme-docs/components';
 import DefaultLayout from '@layouts/DefaultLayout.astro';
 import PropertyTypesIndexTable from '@components/explorer/PropertyTypesIndexTable.astro';
 import SchemataIndexTable from '@components/explorer/SchemataIndexTable.astro';
-
-const model = new Model(defaultModel);
 ---
 
 <DefaultLayout title="Model Explorer">
@@ -15,12 +13,11 @@ const model = new Model(defaultModel);
 
       <p class="lead">
         Explore the default data model shipped with FollowTheMoney. It currently
-        includes <a href="#schemata"
-          >{Object.keys(defaultModel.schemata).length} schemata</a
-        > and{' '}
-        <a href="#types"
-          >{Object.keys(defaultModel.types).length} property types</a
-        > that can be selected to generate entities.
+        includes
+        <a href="#schemata">{Object.keys(model.schemata).length} schemata</a>
+        and
+        <a href="#types">{Object.keys(model.types).length} property types</a>
+        that can be selected to generate entities.
       </p>
     </header>
 

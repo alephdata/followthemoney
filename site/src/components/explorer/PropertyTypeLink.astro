@@ -1,7 +1,6 @@
 ---
 import path from 'node:path';
-import { defaultModel, Model } from '@alephdata/followthemoney';
-const model = new Model(defaultModel);
+import { model } from '@util/ftm';
 
 let { type, text } = Astro.props;
 type = model.getType(type);
