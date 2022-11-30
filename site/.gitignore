@@ -1,3 +1,5 @@
 node_modules
 dist
 .DS_STORE
+public/ns
+public/reference

@@ -43,13 +43,8 @@
           "title": "Reference",
           "items": [
             {
-              "link": "https://example.org",
+              "link": "https://alephdata.github.io/followthemoney/reference/python",
               "title": "Python Library",
-              "external": true
-            },
-            {
-              "link": "https://example.org",
-              "title": "JavaScript Library",
               "external": true
             }
           ]
