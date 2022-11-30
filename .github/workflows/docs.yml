@@ -30,7 +30,7 @@ jobs:
       - name: Build Python API docs
         run: |
           pip install pdoc
-          pdoc -o site/public/reference/python followthemoney.{model,schema,proxy,property,types.common,onthology,namespace,graph,util,exc}
+          pdoc --no-search -o site/public/reference/python followthemoney.{model,schema,proxy,property,types.common,onthology,namespace,graph,util,exc}
 
       - name: Build namespace XML
         run: |
