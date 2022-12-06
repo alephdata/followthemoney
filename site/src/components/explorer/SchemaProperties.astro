@@ -12,6 +12,8 @@ const isFeatured = (property) =>
 const isRequired = (property) =>
   property.schema.required.includes(property.name);
 
+const isHidden = (property) => property.hidden;
+
 const isInherited = (property) => property.schema.name !== schema.name;
 
 const properties = Array.from(schema.getProperties().values())
@@ -74,8 +76,9 @@ const properties = Array.from(schema.getProperties().values())
           <td>
             {/* prettier-ignore */}
             <code><span class="SchemaProperties__schema">{prop.schema.name}:</span>{prop.name}</code>
-            {isRequired(prop) && <PropertyIndicator type="required" />}
             {isFeatured(prop) && <PropertyIndicator type="featured" />}
+            {isRequired(prop) && <PropertyIndicator type="required" />}
+            {isHidden(prop) && <PropertyIndicator type="hidden" />}
           </td>
 
           <td>{prop.label}</td>

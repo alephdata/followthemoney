@@ -5,12 +5,17 @@ const CONTENTS = {
   featured: {
     icon: 'star',
     title: 'Featured property',
-    text: 'This property is important. In a list of properties, it should usually be shown first.',
+    text: 'In a list of properties, this property should usually be shown first.',
   },
   required: {
     icon: 'asterisk',
     title: 'Required property',
-    text: 'This is applied only when an entity is created by the user – bulk created entities will slip through even if it is technically invalid.',
+    text: 'When creating entities through a user interface, the presence of a value should be validated.',
+  },
+  hidden: {
+    icon: 'hidden',
+    title: 'Hidden property',
+    text: 'This property should not be displayed in user interfaces.',
   },
 };
 
@@ -35,6 +40,10 @@ const contents = CONTENTS[type];
 
   .PropertyIndicator--required .PropertyIndicator__icon {
     color: rgb(220, 38, 38);
+  }
+
+  .PropertyIndicator--hidden .PropertyIndicator__icon {
+    color: var(--color-fg-muted);
   }
 </style>
 
