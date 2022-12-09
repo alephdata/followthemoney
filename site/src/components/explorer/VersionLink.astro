@@ -1,0 +1,23 @@
+---
+import options from 'src/options.json';
+const { version } = Astro.props;
+const url = `${options.git.githubRepoUrl}/releases/tag/${version}`;
+---
+
+<style>
+  .VersionLink {
+    display: inline-block;
+    padding-inline: var(--space-xs);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-default);
+    color: var(--color-fg-muted);
+    text-decoration: none;
+    font-weight: 400;
+  }
+</style>
+
+<a class="VersionLink" href={url} noreferrer noopener>
+  Since {version}
+</a>
