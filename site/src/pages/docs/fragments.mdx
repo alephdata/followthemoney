@@ -19,9 +19,9 @@ To illustrate this problem, imagine a table with millions of rows that describes
 
 ## Database humpty-dumpty
 
-When [turning this data into FtM](/docs/mappings), we’d create three entities for each row: a [](schema://Company), a [](schema://Person) and a [](schema://Directorship) that connects the two.
+When [turning this data into FtM](/docs/mappings), we’d create three entities for each row: a `schema:Company`, a `schema:Person` and a `schema:Directorship` that connects the two.
 
-If we do this row by row, we’d eventually generate three [](schema://Company) entities to represent two actual companies, and three [](schema://Person) entities for two distinct people. Of course, we could write these to an ElasticSearch index sequentially - the later entities overwriting the earlier ones with the same ID.
+If we do this row by row, we’d eventually generate three `schema:Company` entities to represent two actual companies, and three `schema:Person` entities for two distinct people. Of course, we could write these to an ElasticSearch index sequentially - the later entities overwriting the earlier ones with the same ID.
 
 That works only as long as each version of each entity contains the same data. In our example, the first mention of John Smith includes his birth date, while the second does not. If we don\'t wish to lose that detail, we need to merge these fragments. While it\'s possible to perform such merges at index time, this has proven to be impractically slow because it requires fetching each entity before it is updated.
 
