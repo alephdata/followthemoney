@@ -44,7 +44,6 @@ Entities can reference other entities. This is achieved via a special property t
     Applications using FtM data usually need to resolve references bi-directionally. In the context of the example above, they will need to access the person based on it's ID in order to follow the holder link, but also query an inverted index to retrieve all the passports which reference a given person.
 
     In Aleph this is achieved using ElasticSearch and exposed via the `/api/2/entities/<id>/expand` API endpoint.
-
 </Callout>
 
 ### Interstitial entities
@@ -67,10 +66,7 @@ This is addressed by making interstitial entities. In the example above, an `sch
 ```
 
 <Callout emoji="⚠️">
-  It is tempting to simplify this model by assuming that entities derived from
-  `schema:Thing` are node entities, and those derived from
-  `schema:Interval` are edges. This assumption is false and will lead to
-  nasty bugs in your code.
+  It is tempting to simplify this model by assuming that entities derived from `schema:Thing` are node entities, and those derived from `schema:Interval` are edges. This assumption is false and will lead to nasty bugs in your code.
 </Callout>
 
 ## Streams
