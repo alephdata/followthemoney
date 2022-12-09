@@ -31,3 +31,32 @@ curl -s $URL | \
 ```
 
 ## Reference
+
+Please refer to the output of `ftm --help` for a detailed reference of the `ftm` CLI:
+
+```
+Usage: ftm [OPTIONS] COMMAND [ARGS]...
+
+  Utility for FollowTheMoney graph data
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  aggregate          Aggregate multiple fragments of entities
+  dump-model         Export the current schema model
+  export-csv         Export to CSV
+  export-cypher      Export to Cypher script
+  export-excel       Export to Excel
+  export-gexf        Export to GEXF (Gephi) format
+  export-neo4j-bulk  Export to Neo4J bulk import
+  export-rdf         Export to RDF NTriples
+  import-vis         Load a .VIS file and get entities
+  map                Execute a mapping file and emit objects
+  map-csv            Map CSV data from stdin and emit objects
+  pretty             Format a stream of entities to make it readable
+  sieve              Filter out parts of entities.
+  sign               Apply a HMAC signature to entity IDs
+  sorted-aggregate   Aggregate sorted fragments of entities
+  validate           Re-parse and validate the given data
+```
