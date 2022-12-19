@@ -75,7 +75,10 @@ const properties = Array.from(schema.getProperties().values())
         <tr data-is-inherited={isInherited(prop)}>
           <td>
             {/* prettier-ignore */}
-            <code><span class="SchemaProperties__schema">{prop.schema.name}:</span>{prop.name}</code>
+            <code class="SchemaProperties__property">{/*
+              */}<span class="SchemaProperties__schema">{prop.schema.name}:</span>{/*
+              */}<span data-docsearch-level={!isInherited(prop) && 3}>{prop.name}</span>{/*
+            */}</code>
             {isFeatured(prop) && <PropertyIndicator type="featured" />}
             {isRequired(prop) && <PropertyIndicator type="required" />}
             {isHidden(prop) && <PropertyIndicator type="hidden" />}
