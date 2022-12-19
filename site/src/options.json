@@ -4,6 +4,11 @@
     "branch": "website-astro",
     "githubRepoUrl": "https://github.com/alephdata/followthemoney"
   },
+  "search": {
+    "appId": "M4Z55V9SST",
+    "apiKey": "ea3fb4146ff4400ac27fafe98b1ea288",
+    "indexName": "followthemoney"
+  },
   "nav": {
     "header": {
       "items": [
