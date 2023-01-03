@@ -39,3 +39,6 @@ UserAccount:
     password:
       label: "Password"
       type: string
+    ipAddress:
+      label: "IP address"
+      type: ip
