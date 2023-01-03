@@ -32,7 +32,7 @@ Identification:
       label: "Country"
       type: country
     number:
-      label: "Passport number"
+      label: "Document number"
       type: identifier
     authority:
       label: "Authority"
