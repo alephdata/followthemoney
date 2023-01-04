@@ -1,21 +1,21 @@
 # Translations template for PROJECT.
-# Copyright (C) 2022 ORGANIZATION
+# Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-21 13:57+0100\n"
+"POT-Creation-Date: 2023-01-04 09:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.11.0\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: followthemoney/property.py:166
 msgid "Property cannot be written"
@@ -39,11 +39,11 @@ msgstr ""
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:371
+#: followthemoney/schema.py:373
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:375
+#: followthemoney/schema.py:377
 msgid "Entity validation failed"
 msgstr ""
 
@@ -164,6 +164,16 @@ msgstr ""
 #: followthemoney/schema/Sanction.yaml followthemoney/schema/TaxRoll.yaml
 #: followthemoney/schema/Thing.yaml followthemoney/types/country.py:21
 msgid "Country"
+msgstr ""
+
+#. Address.properties.osmId.label
+#: followthemoney/schema/Address.yaml
+msgid "OpenStreetmap Place ID"
+msgstr ""
+
+#. Address.properties.googlePlaceId.label
+#: followthemoney/schema/Address.yaml
+msgid "Google Places ID"
 msgstr ""
 
 #. Airplane.label
@@ -1145,7 +1155,9 @@ msgid "Lot number"
 msgstr ""
 
 #. ContractAward.properties.documentNumber.label
+#. Identification.properties.number.label
 #: followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/Identification.yaml
 msgid "Document number"
 msgstr ""
 
@@ -2131,14 +2143,6 @@ msgstr ""
 msgid "Identification holder"
 msgstr ""
 
-#. Identification.properties.number.label
-#. Passport.properties.passportNumber.label
-#. Person.properties.passportNumber.label
-#: followthemoney/schema/Identification.yaml
-#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
-msgid "Passport number"
-msgstr ""
-
 #. Identification.properties.authority.label
 #. Sanction.properties.authority.label
 #: followthemoney/schema/Identification.yaml
@@ -2774,6 +2778,12 @@ msgstr ""
 #. Passport.description
 #: followthemoney/schema/Passport.yaml
 msgid "An passport held by a person.\n"
+msgstr ""
+
+#. Passport.properties.passportNumber.label
+#. Person.properties.passportNumber.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+msgid "Passport number"
 msgstr ""
 
 #. Passport.properties.surname.label
@@ -3607,6 +3617,11 @@ msgstr ""
 #. UserAccount.properties.password.label
 #: followthemoney/schema/UserAccount.yaml
 msgid "Password"
+msgstr ""
+
+#. UserAccount.properties.ipAddress.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "IP address"
 msgstr ""
 
 #. Value.label

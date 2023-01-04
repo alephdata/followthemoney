@@ -42,6 +42,13 @@
           "qname": "Address:full",
           "type": "address"
         },
+        "googlePlaceId": {
+          "label": "Google Places ID",
+          "matchable": true,
+          "name": "googlePlaceId",
+          "qname": "Address:googlePlaceId",
+          "type": "identifier"
+        },
         "latitude": {
           "label": "Latitude",
           "name": "latitude",
@@ -53,6 +60,13 @@
           "name": "longitude",
           "qname": "Address:longitude",
           "type": "number"
+        },
+        "osmId": {
+          "label": "OpenStreetmap Place ID",
+          "matchable": true,
+          "name": "osmId",
+          "qname": "Address:osmId",
+          "type": "identifier"
         },
         "postOfficeBox": {
           "description": "A mailbox indentifier at the post office",
@@ -2660,7 +2674,7 @@
           "type": "entity"
         },
         "number": {
-          "label": "Passport number",
+          "label": "Document number",
           "matchable": true,
           "name": "number",
           "qname": "Identification:number",
@@ -5739,6 +5753,13 @@
           "name": "email",
           "qname": "UserAccount:email",
           "type": "email"
+        },
+        "ipAddress": {
+          "label": "IP address",
+          "matchable": true,
+          "name": "ipAddress",
+          "qname": "UserAccount:ipAddress",
+          "type": "ip"
         },
         "messagesReceived": {
           "label": "Messages received",
