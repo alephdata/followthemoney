@@ -16,6 +16,11 @@ Document:
   caption:
     - fileName
     - title
+  temporalExtent:
+    start:
+      - date
+      - authoredAt
+      - publishedAt
   properties:
     contentHash:
       label: "Checksum"

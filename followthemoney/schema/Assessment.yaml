@@ -12,6 +12,9 @@ Assessment:
     - name
   required:
     - name
+  temporalExtent:
+    start:
+      - publishDate
   properties:
     publishDate:
       label: "Date of publishing"

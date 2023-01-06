@@ -329,6 +329,30 @@ class EntityProxy(object):
         """Get the set of all country-type values set of the entity."""
         return self.get_type_values(registry.country)
 
+    @property
+    def temporal_start(self) -> Optional[Tuple[Property, str]]:
+        """Get a date that can be used to represent the start of the entity in a timeline.
+        If there are multiple possible dates, the earliest date is returned."""
+        values = []
+
+        for prop in self.schema.temporal_start_props:
+            values += [(prop, value) for value in self.get(prop.name)]
+
+        values.sort(key=lambda tuple: tuple[1])
+        return next(iter(values), None)
+
+    @property
+    def temporal_end(self) -> Optional[Tuple[Property, str]]:
+        """Get a date that can be used to represent the end of the entity in a timeline.
+        If therer are multiple possible dates, the latest date is returned."""
+        values = []
+
+        for prop in self.schema.temporal_end_props:
+            values += [(prop, value) for value in self.get(prop.name)]
+
+        values.sort(reverse=True, key=lambda tuple: tuple[1])
+        return next(iter(values), None)
+
     def get_type_inverted(self, matchable: bool = False) -> Dict[str, List[str]]:
         """Return all the values of the entity arranged into a mapping with the
         group name of their property type. These groups include ``countries``,

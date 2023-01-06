@@ -226,3 +226,36 @@ class ProxyTestCase(TestCase):
 
         proxy = model.make_entity("Person")
         assert 0 == len(list(proxy.triples()))
+
+    def test_temporal_start(self):
+        proxy = model.get_proxy({"schema": "Event"})
+        assert proxy.temporal_start is None
+
+        proxy = model.get_proxy({
+            "schema": "Event",
+            "properties": {
+                "startDate": ["2022-01-01", "2022-02-01"],
+                "date": ["2022-03-01"],
+            }
+        })
+
+        assert proxy.temporal_start is not None
+        prop, value = proxy.temporal_start
+        assert prop == proxy.schema.get('startDate')
+        assert value == ("2022-01-01")
+
+    def test_temporal_end(self):
+        proxy = EntityProxy.from_dict(model, {"schema": "Event"})
+        assert proxy.temporal_start is None
+
+        proxy = EntityProxy.from_dict(model, {
+            "schema": "Event",
+            "properties": {
+                "endDate": ["2022-01-01", "2022-02-01"],
+            }
+        })
+
+        assert proxy.temporal_end is not None
+        prop, value = proxy.temporal_end
+        assert prop == proxy.schema.get('endDate')
+        assert value == "2022-02-01"

@@ -35,6 +35,22 @@ from FollowTheMoney, e.g.:
 * [WebVOWL](https://service.tib.eu/webvowl/#iri=https://alephdata.github.io/followthemoney/ns/ftm.xml)
 * RDF/OWL specification in [XML](https://alephdata.github.io/followthemoney/ns/ftm.xml).
 
+## Development environment
+
+For local development with a virtualenv:
+
+```bash
+python3 -mvenv .env
+source .env/bin/activate
+pip install -e ".[dev]"
+```
+
+Now you can run the tests with
+
+```bash
+make test
+```
+
 ## Releasing
 
 We release a lot of version of `followthemoney` because even small changes
@@ -43,9 +59,11 @@ this end, here's the steps for making a release:
 
 ```bash
 git pull --rebase
+make build
 make test
+git add . && git commit -m "Updating translation files"
 bumpversion patch
-git push --tags
+git push --atomic origin main $(git describe --tags --abbrev=0)
 ```
 
 This will create a new patch release and upload a distribution of it. If

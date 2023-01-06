@@ -68,7 +68,10 @@ class EmailType(PropertyType):
         domain = domain.lower()
         domain = domain.rstrip(".")
         # handle unicode
-        domain = domain.encode("idna").decode("ascii")
+        try:
+            domain = domain.encode("idna").decode("ascii")
+        except UnicodeError:
+            return None
         if domain is not None and mailbox is not None:
             return "@".join((mailbox, domain))
         return None

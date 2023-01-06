@@ -25,14 +25,14 @@ Identification:
       range: LegalEntity
       reverse:
         label: "Identifications"
-        name: identificiation
+        name: identification
     type:
       label: "Type"
     country:
       label: "Country"
       type: country
     number:
-      label: "Passport number"
+      label: "Document number"
       type: identifier
     authority:
       label: "Authority"

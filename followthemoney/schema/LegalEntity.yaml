@@ -19,6 +19,11 @@ LegalEntity:
     - email
     - phone
     - registrationNumber
+  temporalExtent:
+    start:
+      - incorporationDate
+    end:
+      - dissolutionDate
   properties:
     email:
       label: E-Mail
@@ -101,6 +106,10 @@ LegalEntity:
     innCode:
       label: "INN"
       description: "Russian company ID"
+      type: identifier
+    ogrnCode:
+      label: "OGRN"
+      description: "Major State Registration Number"
       type: identifier
     leiCode:
       # cf. https://www.gleif.org/en/about-lei/introducing-the-legal-entity-identifier-lei

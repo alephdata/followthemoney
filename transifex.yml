@@ -1,0 +1,7 @@
+git:
+  filters:
+    - filter_type: file
+      file_format: PO
+      source_file: followthemoney/translations/messages.pot
+      source_language: en
+      translation_files_expression: "followthemoney/translations/<lang>/LC_MESSAGES/followthemoney.po"

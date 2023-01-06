@@ -146,6 +146,52 @@ export class Entity {
   }
 
   /**
+   * Get a date that can be used to represent the start of the entity in a timeline.
+   * If there are multiple possible dates, the earliest date is returned.
+   */
+  getTemporalStart(): { property: Property, value: string } | null {
+    const values = []
+    const properties = this.schema.getTemporalStartProperties()
+
+    for (const property of properties) {
+      for (const value of this.getProperty(property)) {
+        if (typeof value === 'string') {
+          values.push({ property, value })
+        }
+      }
+    }
+
+    const sortedValues = values.sort(
+      (a, b) => a.value < b.value ? -1 : 1
+    )
+
+    return sortedValues[0] || null
+  }
+
+  /** 
+   * Get a date that can be used to represent the end of the entity in a timeline.
+   * If there are multiple possible dates, the earliest date is returned.
+   */
+  getTemporalEnd(): { property: Property, value: string } | null {
+    const values = []
+    const properties = this.schema.getTemporalEndProperties()
+
+    for (const property of properties) {
+      for (const value of this.getProperty(property)) {
+        if (typeof value === 'string') {
+          values.push({ property, value })
+        }
+      }
+    }
+
+    const sortedValues = values.sort(
+      (a, b) => b.value < a.value ? -1 : 1
+    )
+
+    return sortedValues[0] || null
+  }
+
+  /**
    * Get all the values of a particular type, irrespective of
    * which property it is associated with.
    */

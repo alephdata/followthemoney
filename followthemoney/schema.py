@@ -10,6 +10,7 @@ from typing import (
     cast,
 )
 from banal import ensure_list, ensure_dict, as_bool
+from functools import lru_cache
 
 from followthemoney.property import Property, PropertySpec, PropertyToDict, ReverseSpec
 from followthemoney.types import registry
@@ -29,6 +30,11 @@ class EdgeSpec(TypedDict, total=False):
     directed: bool
 
 
+class TemporalExtentSpec(TypedDict, total=False):
+    start: List[str]
+    end: List[str]
+
+
 class SchemaSpec(TypedDict, total=False):
     label: str
     plural: str
@@ -39,6 +45,7 @@ class SchemaSpec(TypedDict, total=False):
     required: List[str]
     caption: List[str]
     edge: EdgeSpec
+    temporalExtent: TemporalExtentSpec
     description: Optional[str]
     rdf: Optional[str]
     abstract: bool
@@ -57,6 +64,7 @@ class SchemaToDict(TypedDict, total=False):
     required: List[str]
     caption: List[str]
     edge: EdgeSpec
+    temporalExtent: TemporalExtentSpec
     description: Optional[str]
     abstract: bool
     hidden: bool
@@ -94,6 +102,8 @@ class Schema:
         "edge_source",
         "edge_target",
         "edge_caption",
+        "temporal_start",
+        "temporal_end",
         "_extends",
         "extends",
         "schemata",
@@ -164,6 +174,11 @@ class Schema:
         #: by showing an error at the target end of the edge.
         self.edge_directed = as_bool(edge.get("directed", True))
 
+        #: Specify which properties should be used to represent this schema in a timeline.
+        temporal_extent = data.get("temporalExtent", {})
+        self.temporal_start = set(temporal_extent.get("start", []))
+        self.temporal_end = set(temporal_extent.get("end", []))
+
         #: Direct parent schemata of this schema.
         self._extends = ensure_list(data.get("extends", []))
         self.extends: Set["Schema"] = set()
@@ -203,6 +218,9 @@ class Schema:
                 self.schemata.add(ancestor)
                 self.names.add(ancestor.name)
                 ancestor.descendants.add(self)
+
+            self.temporal_start |= parent.temporal_start
+            self.temporal_end |= parent.temporal_end
 
         for prop in list(self.properties.values()):
             prop.generate()
@@ -282,6 +300,18 @@ class Schema:
         return self.get(self.edge_target)
 
     @property
+    def temporal_start_props(self) -> Set[Property]:
+        """The entity properties to be used as the start when representing the entity in a timeline."""
+        props = [self.get(prop_name) for prop_name in self.temporal_start]
+        return set([prop for prop in props if prop is not None])
+
+    @property
+    def temporal_end_props(self) -> Set[Property]:
+        """The entity properties to be used as the end when representing the entity in a timeline."""
+        props = [self.get(prop_name) for prop_name in self.temporal_end]
+        return set([prop for prop in props if prop is not None])
+
+    @property
     def sorted_properties(self) -> List[Property]:
         """All properties of the schema in the order in which they should be shown
         to the user (alphabetically, with captions and featured properties first)."""
@@ -317,6 +347,7 @@ class Schema:
         """Check if an schema can match with another schema."""
         return other in self.matchable_schemata
 
+    @lru_cache(maxsize=None)
     def is_a(self, other: Union[str, "Schema"]) -> bool:
         """Check if the schema or one of its parents is the same as the given
         candidate ``other``."""
@@ -362,6 +393,17 @@ class Schema:
                 "caption": self.edge_caption,
                 "label": self.edge_label,
                 "directed": self.edge_directed,
+            }
+        start_props = [
+            prop.name for prop in self.temporal_start_props if prop.schema == self
+        ]
+        end_props = [
+            prop.name for prop in self.temporal_end_props if prop.schema == self
+        ]
+        if start_props or end_props:
+            data["temporalExtent"] = {
+                "start": sorted(start_props),
+                "end": sorted(end_props),
             }
         if len(self.featured):
             data["featured"] = self.featured

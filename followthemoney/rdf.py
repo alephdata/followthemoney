@@ -2,10 +2,8 @@
 # that is rdflib 6.0.
 from rdflib import Namespace
 from rdflib.term import Identifier, URIRef, Literal
-from rdflib.namespace._RDF import RDF
-from rdflib.namespace._SKOS import SKOS
-from rdflib.namespace._XSD import XSD
+from rdflib import RDF, SKOS, XSD
 
-NS = Namespace("https://w3id.org/ftm#")  # type: ignore
+NS = Namespace("https://w3id.org/ftm#")
 
 __all__ = ["NS", "XSD", "RDF", "SKOS", "Identifier", "URIRef", "Literal"]

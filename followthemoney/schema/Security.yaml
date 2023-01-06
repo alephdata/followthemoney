@@ -3,7 +3,7 @@ Security:
   label: Security
   plural: Securities
   description: "A tradeable financial asset."
-  matchable: false
+  matchable: true
   featured:
     - isin
     - name
@@ -12,10 +12,19 @@ Security:
   caption:
     - name
     - isin
+    - registrationNumber
+  temporalExtent:
+    start:
+      - issueDate
+    end:
+      - maturityDate
   properties:
     isin:
       label: ISIN
       description: International Securities Identification Number
+      type: identifier
+    registrationNumber:
+      label: Registration number
       type: identifier
     ticker:
       label: Ticker
@@ -29,6 +38,9 @@ Security:
         name: securities
     issueDate:
       label: Date issued
+      type: date
+    maturityDate:
+      label: Maturity date
       type: date
     type:
       label: Type

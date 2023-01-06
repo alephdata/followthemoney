@@ -10,7 +10,7 @@ to generate entities.
 .. contents:: Schemata
     :local:
 
-{% for schema in model.schemata.values(): %}
+{% for schema in model.schemata.values() | sort(attribute='label'): %}
 .. _schema-{{schema.name}}:
 
 {{schema.label}}
@@ -103,6 +103,26 @@ to generate entities.
         {%- endfor %}
 
         see :py:attr:`followthemoney.schema.Schema.featured`
+    {%- endif %}
+
+    {% if schema.temporal_start -%}
+    .. option:: Temporal start:
+
+        {% for property in schema.temporal_start -%}
+            ``{{property}}``{% if not loop.last %}{{', '}}{% endif %}
+        {%- endfor %}
+
+        see :py:attr:`followthemoney.schema.Schema.temporal_start_props`
+    {%- endif %}
+
+    {% if schema.temporal_end -%}
+    .. option:: Temporal end:
+
+        {% for property in schema.temporal_end -%}
+            ``{{property}}``{% if not loop.last %}{{', '}}{% endif %}
+        {%- endfor %}
+
+        see :py:attr:`followthemoney.schema.Schema.temporal_end_props`
     {%- endif %}
 
 {% endfor %}

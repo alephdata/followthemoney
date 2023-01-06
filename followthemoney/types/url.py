@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 class UrlType(PropertyType):
     """A uniform resource locator (URL). This will perform some normalisation
     on the URL so that it's sure to be using valid encoding/quoting, and to
-    make sure the URL has a schema (e.g. 'http', 'https', ...)."""
+    make sure the URL has a schema (e.g. `http`, `https`, ...)."""
 
     SCHEMES = ("http", "https", "ftp", "mailto")
     DEFAULT_SCHEME = "http"

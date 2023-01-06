@@ -12,6 +12,10 @@ Vehicle:
   caption:
     - name
     - registrationNumber
+  temporalExtent:
+    start:
+      - buildDate
+      - registrationDate
   properties:
     registrationNumber:
       label: Registration number

@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 
 class PhoneType(PropertyType):
     """A phone number in E.164 format. This means that phone numbers always
-    include an international country prefix (e.g. ``+38760183628``). The
+    include an international country prefix (e.g. `+38760183628`). The
     cleaning and validation functions for this try to be smart about by
     accepting a list of countries as an argument in order to add the number
     prefix.
@@ -104,6 +104,9 @@ class PhoneType(PropertyType):
         return f"tel:{value}"
 
     def caption(self, value: str) -> str:
-        number = parse_number(value)
-        formatted = format_number(number, PhoneNumberFormat.INTERNATIONAL)
-        return str(formatted)
+        try:
+            number = parse_number(value)
+            formatted = format_number(number, PhoneNumberFormat.INTERNATIONAL)
+            return str(formatted)
+        except NumberParseException:
+            return value

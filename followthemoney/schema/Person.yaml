@@ -17,6 +17,11 @@ Person:
     - lastName
     - email
     - phone
+  temporalExtent:
+    start:
+      - birthDate
+    end:
+      - deathDate
   properties:
     title:
       label: Title

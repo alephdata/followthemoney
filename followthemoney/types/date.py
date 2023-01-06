@@ -14,12 +14,12 @@ if TYPE_CHECKING:
 
 class DateType(PropertyType):
     """A date or time stamp. This is based on ISO 8601, but meant to allow for different
-    degrees of precision by specifying a prefix. This means that ``2021``, ``2021-02``,
-    ``2021-02-16``, ``2021-02-16T21``, ``2021-02-16T21:48`` and ``2021-02-16T21:48:52``
+    degrees of precision by specifying a prefix. This means that `2021`, `2021-02`,
+    `2021-02-16`, `2021-02-16T21`, `2021-02-16T21:48` and `2021-02-16T21:48:52`
     are all valid values, with an implied precision.
 
     The timezone is always expected to be UTC and cannot be specified otherwise. There is
-    no support for calendar weeks (``2021-W7``) and date ranges (``2021-2024``)."""
+    no support for calendar weeks (`2021-W7`) and date ranges (`2021-2024`)."""
 
     name = "date"
     group = "dates"
@@ -52,6 +52,8 @@ class DateType(PropertyType):
         return dampen(4, 10, prefix)
 
     def rdf(self, value: str) -> Identifier:
+        if len(value) < Precision.HOUR.value:
+            return Literal(value, datatype=XSD.date)
         return Literal(value, datatype=XSD.dateTime)
 
     def node_id(self, value: str) -> str:

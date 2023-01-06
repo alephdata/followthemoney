@@ -6,7 +6,7 @@
 # If anyone were to swap out the default model, this would
 # probably be the first place to break.
 from os.path import splitext
-from typing import Iterable, List, Optional
+from typing import Iterable, List, Optional, Set
 from normality import safe_filename
 from mimetypes import guess_extension
 from itertools import product
@@ -172,3 +172,41 @@ def combine_names(entity: E) -> E:
         if not entity.get_type_values(registry.name) and len(last_names):
             entity.add("alias", last_names)
     return entity
+
+
+def dates_years(dates: Iterable[Optional[str]]) -> Set[str]:
+    """Get the unique years from a set of date strings."""
+    cleaned: Set[str] = set()
+    for date in dates:
+        if date is not None:
+            cleaned.add(date[:4])
+    return cleaned
+
+
+def post_summary(
+    organization: str,
+    role: Optional[str],
+    start_dates: Iterable[Optional[str]],
+    end_dates: Iterable[Optional[str]],
+    dates: Iterable[Optional[str]],
+) -> str:
+    """Make a string summary for a Post object."""
+    position = organization
+    start = min(dates_years(start_dates), default="")
+    end = min(dates_years(end_dates), default="")
+    date_range = None
+    if len(start) or len(end):
+        date_range = f"{start}-{end}"
+    dates_ = dates_years(dates)
+    if date_range is None and len(dates_):
+        date_range = ", ".join(sorted(dates_))
+
+    bracketed = None
+    if date_range and role:
+        bracketed = f"{role}, {date_range}"
+    else:
+        bracketed = role or date_range
+
+    if bracketed:
+        position = f"{position} ({bracketed})"
+    return position

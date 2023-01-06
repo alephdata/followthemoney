@@ -16,8 +16,8 @@ class IbanType(PropertyType):
 
     A noteable aspect of IBANs is that they share a country prefix and validation
     mechanism, but the specific length of an IBAN is dependent on the country
-    code defined in the first two characters: ``NO8330001234567`` and
-    ``CY21002001950000357001234567`` are both valid values."""
+    code defined in the first two characters: `NO8330001234567` and
+    `CY21002001950000357001234567` are both valid values."""
 
     name = "iban"
     group = "ibans"

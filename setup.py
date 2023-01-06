@@ -5,7 +5,7 @@ with open("README.md") as f:
 
 setup(
     name="followthemoney",
-    version="3.0.0",
+    version="3.2.1",
     author="Organized Crime and Corruption Reporting Project",
     author_email="data@occrp.org",
     url="https://followthemoney.readthedocs.io/",
@@ -38,7 +38,6 @@ setup(
         "click >= 8.0, < 9.0.0",
         "stringcase >= 1.2.0, < 2.0.0",
         "requests >= 2.21.0, < 3.0.0",
-        "fuzzywuzzy[speedup] >= 0.18.0, < 1.0.0",
         "python-levenshtein >= 0.12.0, < 1.0.0",
         "normality >= 2.1.1, < 3.0.0",
         "sqlalchemy >= 1.2.0, < 2.0.0",
@@ -50,7 +49,7 @@ setup(
         "python-stdnum >= 1.16, < 2.0.0",
         "pantomime >= 0.5.1, < 1.0.0",
         "pytz >= 2021.1",
-        "rdflib >= 6.1.0, < 6.2.0",
+        "rdflib >= 6.2.0, < 6.3.0",
         "networkx >= 2.5, < 2.9",
         "openpyxl >= 3.0.5, < 4.0.0",
         "orjson >= 3.7, < 4.0",
