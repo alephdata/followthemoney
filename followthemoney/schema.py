@@ -200,6 +200,14 @@ class Schema:
         for name, prop in data.get("properties", {}).items():
             self.properties[name] = Property(self, name, prop)
 
+    # def __getstate__(self):
+    #     return dict([(k, getattr(self, k, None)) for k in self.__slots__])
+
+    # def __setstate__(self, data):
+    #     for k, v in data.items():
+    #         print("XXXX", k, v)
+    #         setattr(self, k, v)
+
     def generate(self) -> None:
         """While loading the schema, this function will validate and
         load the hierarchy, properties, and flags of the definition."""
@@ -430,13 +438,19 @@ class Schema:
 
     def __eq__(self, other: Any) -> bool:
         """Compare two schemata (via hash)."""
-        return self._hash == hash(other)
+        try:
+            return self._hash == hash(other)
+        except AttributeError:
+            return False
 
     def __lt__(self, other: Any) -> bool:
         return self.name.__lt__(other.name)
 
     def __hash__(self) -> int:
-        return self._hash
+        try:
+            return self._hash
+        except AttributeError:
+            return super().__hash__()
 
     def __repr__(self) -> str:
         return "<Schema(%r)>" % self.name

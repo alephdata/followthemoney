@@ -479,6 +479,9 @@ class EntityProxy(object):
         except AttributeError:
             return False
 
+    # def __getstate__(self):
+    #     return self.to_dict()
+
     @classmethod
     def from_dict(
         cls: Type[E],

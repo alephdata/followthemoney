@@ -1,3 +1,4 @@
+import pickle
 from pytest import raises
 from unittest import TestCase
 from followthemoney.exc import InvalidData
@@ -231,31 +232,44 @@ class ProxyTestCase(TestCase):
         proxy = model.get_proxy({"schema": "Event"})
         assert proxy.temporal_start is None
 
-        proxy = model.get_proxy({
-            "schema": "Event",
-            "properties": {
-                "startDate": ["2022-01-01", "2022-02-01"],
-                "date": ["2022-03-01"],
+        proxy = model.get_proxy(
+            {
+                "schema": "Event",
+                "properties": {
+                    "startDate": ["2022-01-01", "2022-02-01"],
+                    "date": ["2022-03-01"],
+                },
             }
-        })
+        )
 
         assert proxy.temporal_start is not None
         prop, value = proxy.temporal_start
-        assert prop == proxy.schema.get('startDate')
+        assert prop == proxy.schema.get("startDate")
         assert value == ("2022-01-01")
 
     def test_temporal_end(self):
         proxy = EntityProxy.from_dict(model, {"schema": "Event"})
         assert proxy.temporal_start is None
 
-        proxy = EntityProxy.from_dict(model, {
-            "schema": "Event",
-            "properties": {
-                "endDate": ["2022-01-01", "2022-02-01"],
-            }
-        })
+        proxy = EntityProxy.from_dict(
+            model,
+            {
+                "schema": "Event",
+                "properties": {
+                    "endDate": ["2022-01-01", "2022-02-01"],
+                },
+            },
+        )
 
         assert proxy.temporal_end is not None
         prop, value = proxy.temporal_end
-        assert prop == proxy.schema.get('endDate')
+        assert prop == proxy.schema.get("endDate")
         assert value == "2022-02-01"
+
+    def test_pickle(self):
+        proxy = EntityProxy.from_dict(model, dict(ENTITY))
+        data = pickle.dumps(proxy)
+        proxy2 = pickle.loads(data)
+        assert proxy.id == proxy2.id
+        assert hash(proxy) == hash(proxy2)
+        assert proxy2.schema.name == ENTITY["schema"]
