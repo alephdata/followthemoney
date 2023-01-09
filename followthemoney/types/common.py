@@ -129,9 +129,7 @@ class PropertyType(object):
     def compare(self, left: str, right: str) -> float:
         """Comparisons are a float between 0 and 1. They can assume
         that the given data is cleaned, but not normalised."""
-        if left.lower() == right.lower():
-            return 1.0 * self.specificity(left)
-        return 0.0
+        return 1.0 if left == right else 0.0
 
     def compare_sets(
         self,

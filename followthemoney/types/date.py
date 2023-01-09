@@ -45,7 +45,7 @@ class DateType(PropertyType):
         return parse(text).text
 
     def _specificity(self, value: str) -> float:
-        return dampen(5, 13, value)
+        return dampen(4, 13, value)
 
     def compare(self, left: str, right: str) -> float:
         prefix = os.path.commonprefix([left, right])

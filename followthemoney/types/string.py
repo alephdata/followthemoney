@@ -25,6 +25,9 @@ class TextType(StringType):
     plural = _("Texts")
     max_size = 30 * MEGABYTE
 
+    def compare(self, left: str, right: str) -> float:
+        return 0.0
+
 
 class HTMLType(StringType):
     """Properties that contain raw hypertext markup (HTML).

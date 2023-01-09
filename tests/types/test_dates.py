@@ -67,7 +67,7 @@ class DatesTest(unittest.TestCase):
         self.assertEqual(dates.clean("4/2xx017", format="%m/%Y"), None)
 
     def test_specificity(self):
-        self.assertEqual(dates.specificity("2011"), 0)
+        self.assertEqual(dates.specificity("201"), 0)
         self.assertGreater(dates.specificity("2011-01-01"), 0.1)
 
     def test_compare(self):
