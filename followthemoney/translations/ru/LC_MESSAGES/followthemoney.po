@@ -1,25 +1,25 @@
 # Translations template for PROJECT.
-# Copyright (C) 2022 ORGANIZATION
+# Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 # 
 # Translators:
 # pudo <friedrich@pudo.org>, 2022
-# jen occrp, 2022
+# jen occrp, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-21 13:57+0100\n"
+"POT-Creation-Date: 2023-01-04 09:58+0100\n"
 "PO-Revision-Date: 2022-11-21 11:38+0000\n"
-"Last-Translator: jen occrp, 2022\n"
+"Last-Translator: jen occrp, 2023\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.11.0\n"
+"Generated-By: Babel 2.10.3\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
@@ -45,11 +45,11 @@ msgstr "Неизвестный параметр (1%s): 1%s"
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/schema.py:371
+#: followthemoney/schema.py:373
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:375
+#: followthemoney/schema.py:377
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
@@ -171,6 +171,16 @@ msgstr "Долгота"
 #: followthemoney/schema/Thing.yaml followthemoney/types/country.py:21
 msgid "Country"
 msgstr "Страна"
+
+#. Address.properties.osmId.label
+#: followthemoney/schema/Address.yaml
+msgid "OpenStreetmap Place ID"
+msgstr "OpenStreetmap ID места"
+
+#. Address.properties.googlePlaceId.label
+#: followthemoney/schema/Address.yaml
+msgid "Google Places ID"
+msgstr "Google Places ID"
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
@@ -1176,7 +1186,9 @@ msgid "Lot number"
 msgstr "Номер лота"
 
 #. ContractAward.properties.documentNumber.label
+#. Identification.properties.number.label
 #: followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/Identification.yaml
 msgid "Document number"
 msgstr "Номер документа"
 
@@ -2174,14 +2186,6 @@ msgstr ""
 msgid "Identification holder"
 msgstr "Держатель"
 
-#. Identification.properties.number.label
-#. Passport.properties.passportNumber.label
-#. Person.properties.passportNumber.label
-#: followthemoney/schema/Identification.yaml
-#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
-msgid "Passport number"
-msgstr "Номер паспорта"
-
 #. Identification.properties.authority.label
 #. Sanction.properties.authority.label
 #: followthemoney/schema/Identification.yaml
@@ -2826,6 +2830,12 @@ msgstr "Паспорта"
 #: followthemoney/schema/Passport.yaml
 msgid "An passport held by a person.\n"
 msgstr "Выданный паспорт.\n"
+
+#. Passport.properties.passportNumber.label
+#. Person.properties.passportNumber.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+msgid "Passport number"
+msgstr "Номер паспорта"
 
 #. Passport.properties.surname.label
 #. TaxRoll.properties.surname.label
@@ -3671,6 +3681,11 @@ msgstr "Имя пользователя"
 #: followthemoney/schema/UserAccount.yaml
 msgid "Password"
 msgstr "Пароль"
+
+#. UserAccount.properties.ipAddress.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "IP address"
+msgstr "IP-адрес"
 
 #. Value.label
 #: followthemoney/schema/Value.yaml
