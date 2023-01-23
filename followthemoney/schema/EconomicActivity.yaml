@@ -44,8 +44,7 @@ EconomicActivity:
       label: "FEAC Code description"
       description: "(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
     goodsDescription:
-      label: "Description"
-      description: "Description of goods"
+      label: "Description of goods"
       type: text
     declarant:
       label: "Declarant"
