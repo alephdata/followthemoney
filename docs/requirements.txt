@@ -1,3 +1,0 @@
-jinja2
-sphinx_rtd_theme
-sphinx-click
