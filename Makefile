@@ -19,10 +19,7 @@ release: clean dist
 docker:
 	docker build -t alephdata/followthemoney .
 
-build: namespace default-model translate
-
-namespace:
-	python followthemoney/ontology.py docs/ns
+build: default-model translate
 
 default-model:
 	ftm dump-model -o js/src/defaultModel.json
