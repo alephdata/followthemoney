@@ -1,7 +1,7 @@
 {
   "title": "FollowTheMoney",
   "git": {
-    "branch": "website-astro",
+    "branch": "main",
     "githubRepoUrl": "https://github.com/alephdata/followthemoney"
   },
   "search": {
@@ -27,21 +27,41 @@
         {
           "title": "Getting Started",
           "items": [
-            { "slug": "/docs" },
-            { "slug": "/docs/api" },
-            { "slug": "/docs/fragments" },
-            { "slug": "/docs/namespace" },
-            { "slug": "/docs/mappings" },
-            { "slug": "/docs/cli" }
+            {
+              "slug": "/docs"
+            },
+            {
+              "slug": "/docs/api"
+            },
+            {
+              "slug": "/docs/fragments"
+            },
+            {
+              "slug": "/docs/namespace"
+            },
+            {
+              "slug": "/docs/mappings"
+            },
+            {
+              "slug": "/docs/cli"
+            }
           ]
         },
         {
           "title": "More",
           "items": [
-            { "slug": "/docs/custom" },
-            { "slug": "/docs/graphs" },
-            { "slug": "/docs/faq" },
-            { "slug": "/docs/credits" }
+            {
+              "slug": "/docs/custom"
+            },
+            {
+              "slug": "/docs/graphs"
+            },
+            {
+              "slug": "/docs/faq"
+            },
+            {
+              "slug": "/docs/credits"
+            }
           ]
         },
         {
