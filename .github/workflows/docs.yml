@@ -1,4 +1,4 @@
-name: Docs
+name: docs
 
 on:
   - push
@@ -34,12 +34,12 @@ jobs:
       - name: Build Python API docs
         run: |
           pip install pdoc
-          pdoc --no-search -o site/public/reference/python followthemoney.{model,schema,proxy,property,types.common,namespace,graph,util,exc}
+          pdoc --no-search -o docs/public/reference/python followthemoney.{model,schema,proxy,property,types.common,namespace,graph,util,exc}
 
       - name: Build namespace XML
         run: |
           mkdir -p site/public/ns
-          python followthemoney/ontology.py site/public/ns
+          python followthemoney/ontology.py docs/public/ns
 
       - name: Build docs
         uses: alephdata/astro-theme-docs/.github/actions/build@main
