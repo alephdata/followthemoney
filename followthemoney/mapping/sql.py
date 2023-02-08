@@ -95,7 +95,6 @@ class SQLSource(Source):
         columns = [self.get_column(r) for r in self.query.refs]
         q = select(*columns)
         q = q.select_from(*[t.alias for t in self.tables])
-        q = q.apply_labels()
         return self.apply_filters(q)
 
     @property
@@ -120,7 +119,6 @@ class SQLSource(Source):
     def __len__(self) -> int:
         q = select(func.count("*"))
         q = q.select_from(*[t.alias for t in self.tables])
-        q = q.apply_labels()
         q = self.apply_filters(q)
         rp = self.engine.execute(q)
         return int(rp.scalar())
