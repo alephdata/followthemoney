@@ -16,17 +16,17 @@ of the elements of data, and to map tabular data into the model.
 
 For a general introduction to `followthemoney`, check the high-level introduction:
 
-* https://docs.alephdata.org/developers/followthemoney
+* https://followthemoney.tech
 
 Part of this package is a command-line tool that can be used to process and
 transform data in various ways. You can find a tutorial here:
 
-* https://docs.alephdata.org/developers/ftm
+* https://followthemoney.tech/docs/cli/
 
 Besides the introductions, there is also a full reference documentation for the
 library and the contained ontology: 
 
-* https://followthemoney.readthedocs.io/
+* https://followthemoney.tech/explorer/
 
 There's also a number of viewers for the RDF schema definitions generated
 from FollowTheMoney, e.g.:

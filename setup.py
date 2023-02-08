@@ -8,7 +8,7 @@ setup(
     version="3.2.1",
     author="Organized Crime and Corruption Reporting Project",
     author_email="data@occrp.org",
-    url="https://followthemoney.readthedocs.io/",
+    url="https://followthemoney.tech/",
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="MIT",
