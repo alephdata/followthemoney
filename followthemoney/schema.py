@@ -200,14 +200,6 @@ class Schema:
         for name, prop in data.get("properties", {}).items():
             self.properties[name] = Property(self, name, prop)
 
-    # def __getstate__(self):
-    #     return dict([(k, getattr(self, k, None)) for k in self.__slots__])
-
-    # def __setstate__(self, data):
-    #     for k, v in data.items():
-    #         print("XXXX", k, v)
-    #         setattr(self, k, v)
-
     def generate(self) -> None:
         """While loading the schema, this function will validate and
         load the hierarchy, properties, and flags of the definition."""
