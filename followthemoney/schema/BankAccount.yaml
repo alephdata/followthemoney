@@ -15,6 +15,11 @@ BankAccount:
     - name
     - iban
     - accountNumber
+  temporalExtent:
+    start:
+      - openingDate
+    end:
+      - closingDate
   properties:
     bankName:
       label: Bank name
