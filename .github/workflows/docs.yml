@@ -1,6 +1,6 @@
 name: Docs
 
-on: 
+on:
   - push
   - workflow_dispatch
 
@@ -45,10 +45,10 @@ jobs:
         uses: alephdata/astro-theme-docs/.github/actions/build@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          docs-path: ./site
+          docs-path: ./docs
 
   deploy:
-    if: ${{ github.ref == 'refs/heads/website-astro' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: build
     runs-on: ubuntu-latest
 
@@ -66,4 +66,3 @@ jobs:
         uses: alephdata/astro-theme-docs/.github/actions/deploy@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          
