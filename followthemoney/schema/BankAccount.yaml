@@ -36,6 +36,12 @@ BankAccount:
         label: "Bank accounts"
     accountType:
       label: Account type
+    openingDate:
+      label: Opening date
+      type: date
+    closingDate:
+      label: Closing date
+      type: date
     balance:
       label: Balance
       type: number
