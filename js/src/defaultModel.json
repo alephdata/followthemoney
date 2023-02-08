@@ -570,6 +570,13 @@
           "qname": "BankAccount:bic",
           "type": "identifier"
         },
+        "closingDate": {
+          "label": "Closing date",
+          "matchable": true,
+          "name": "closingDate",
+          "qname": "BankAccount:closingDate",
+          "type": "date"
+        },
         "contractBankAccount": {
           "label": "Customs declarations",
           "matchable": true,
@@ -610,6 +617,13 @@
           "qname": "BankAccount:maxBalanceDate",
           "type": "date"
         },
+        "openingDate": {
+          "label": "Opening date",
+          "matchable": true,
+          "name": "openingDate",
+          "qname": "BankAccount:openingDate",
+          "type": "date"
+        },
         "paymentBeneficiaryAccount": {
           "label": "Payments received",
           "matchable": true,
@@ -646,7 +660,15 @@
         "BankAccount",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "closingDate"
+        ],
+        "start": [
+          "openingDate"
+        ]
+      }
     },
     "Call": {
       "caption": [
@@ -2160,8 +2182,7 @@
           "type": "string"
         },
         "goodsDescription": {
-          "description": "Description of goods",
-          "label": "Description",
+          "label": "Description of goods",
           "name": "goodsDescription",
           "qname": "EconomicActivity:goodsDescription",
           "type": "text"
