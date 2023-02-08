@@ -110,9 +110,10 @@ class SQLSource(Source):
                 if not len(rows):
                     break
                 for row in rows:
+                    row_map = row._mapping
                     data: Record = {}
                     for ref, name in mapping:
-                        value = sanitize_text(row[name])
+                        value = sanitize_text(row_map[name])
                         if value is not None:
                             data[ref] = value
                     yield data
