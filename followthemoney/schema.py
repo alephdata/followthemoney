@@ -430,13 +430,19 @@ class Schema:
 
     def __eq__(self, other: Any) -> bool:
         """Compare two schemata (via hash)."""
-        return self._hash == hash(other)
+        try:
+            return self._hash == hash(other)
+        except AttributeError:
+            return False
 
     def __lt__(self, other: Any) -> bool:
         return self.name.__lt__(other.name)
 
     def __hash__(self) -> int:
-        return self._hash
+        try:
+            return self._hash
+        except AttributeError:
+            return super().__hash__()
 
     def __repr__(self) -> str:
         return "<Schema(%r)>" % self.name
