@@ -38,7 +38,7 @@ jobs:
 
       - name: Build namespace XML
         run: |
-          mkdir -p site/public/ns
+          mkdir -p docs/public/ns
           python followthemoney/ontology.py docs/public/ns
 
       - name: Build docs
