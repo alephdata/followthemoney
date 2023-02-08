@@ -1,0 +1,31 @@
+{
+  "name": "ftm-docs-astro",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/",
+    "links": "hyperlink --check-anchors --sources src/pages dist"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@alephdata/followthemoney": "^3.2.1",
+    "@astrojs/markdown-component": "^1.0.2",
+    "astro": "^1.4.3",
+    "astro-theme-docs": "github:alephdata/astro-theme-docs",
+    "unist-util-visit": "^4.1.1"
+  },
+  "devDependencies": {
+    "@untitaker/hyperlink": "^0.1.26",
+    "prettier": "^2.7.1"
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
