@@ -1,0 +1,36 @@
+---
+import { model } from '@util/ftm';
+import { Stack, TocNav } from 'astro-theme-docs/components';
+import ExplorerLayout from '@layouts/ExplorerLayout.astro';
+import SchemaPageHeader from '@components/page/SchemaPageHeader.astro';
+import SchemaExtends from '@components/explorer/SchemaExtends.astro';
+import SchemaSemantics from '@components/explorer/SchemaSemantics.astro';
+import SchemaProperties from '@components/explorer/SchemaProperties.astro';
+
+const { name } = Astro.params;
+const { schema } = Astro.props;
+
+export function getStaticPaths() {
+  return Object.entries(model.schemata).map(([name, schema]) => ({
+    params: { name },
+    props: { schema },
+  }));
+}
+
+const headings = [
+  { text: 'Inheritance', slug: 'inheritance' },
+  { text: 'Semantics', slug: 'semantics' },
+  { text: 'Properties', slug: 'properties' },
+];
+---
+
+<ExplorerLayout activeSchema={schema}>
+  <TocNav {headings} slot="toc" />
+
+  <Stack size="xl">
+    <SchemaPageHeader schema={schema} />
+    <SchemaExtends id="inheritance" schema={schema} />
+    <SchemaSemantics id="semantics" schema={schema} />
+    <SchemaProperties id="properties" schema={schema} />
+  </Stack>
+</ExplorerLayout>

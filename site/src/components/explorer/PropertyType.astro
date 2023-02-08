@@ -1,0 +1,20 @@
+---
+import { PropertyType } from '@alephdata/followthemoney';
+import SchemaLink from '@components/explorer/SchemaLink.astro';
+import PropertyTypeLink from '@components/explorer/PropertyTypeLink.astro';
+
+const { property } = Astro.props;
+const range = property.type.name === PropertyType.ENTITY && property.getRange();
+---
+
+{
+  property.type.name === PropertyType.ENTITY ? (
+    range.name ? (
+      <SchemaLink schema={range} text={range.name} />
+    ) : (
+      'entity'
+    )
+  ) : (
+    <PropertyTypeLink type={property.type} text={property.type.name} />
+  )
+}

@@ -1,0 +1,17 @@
+---
+import { DefaultLayout, ExpandableSidebar } from 'astro-theme-docs/components';
+import ExplorerNav from '@components/explorer/ExplorerNav.astro';
+import options from '../options.json';
+
+const { activeSchema = null, activeType = null } = Astro.props;
+const label =
+  (activeSchema && activeSchema.label) || (activeType && activeType.label);
+---
+
+<DefaultLayout layout="explorer" {options} {...Astro.props} title={label}>
+  <ExpandableSidebar slot="sidebar">
+    <ExplorerNav {activeType} {activeSchema} />
+  </ExpandableSidebar>
+  <slot />
+  <slot name="toc" slot="toc" />
+</DefaultLayout>

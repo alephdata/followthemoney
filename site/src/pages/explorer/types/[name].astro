@@ -1,0 +1,28 @@
+---
+import Markdown from '@astrojs/markdown-component';
+import { model } from '@util/ftm';
+import { Stack, RichContent } from 'astro-theme-docs/components';
+import ExplorerLayout from '@layouts/ExplorerLayout.astro';
+import TypeValues from '@components/explorer/TypeValues.astro';
+
+const { name } = Astro.params;
+const { type } = Astro.props;
+
+export function getStaticPaths() {
+  return Object.entries(model.types).map(([name, type]) => ({
+    params: { name },
+    props: { type },
+  }));
+}
+---
+
+<ExplorerLayout activeType={type}>
+  <Stack size="xl">
+    <RichContent>
+      <h1 class="alpha">{type.label}</h1>
+      <Markdown>{type.description}</Markdown>
+    </RichContent>
+
+    <TypeValues {type} />
+  </Stack>
+</ExplorerLayout>

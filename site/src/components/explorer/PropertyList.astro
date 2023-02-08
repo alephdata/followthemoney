@@ -1,0 +1,27 @@
+---
+const { properties } = Astro.props;
+const last = properties.pop();
+---
+
+{properties.length <= 0 && <code>{last.name}</code>}
+
+{
+  properties.length === 1 && (
+    <>
+      <code>{properties[0].name}</code> or <code>{last.name}</code>
+    </>
+  )
+}
+
+{
+  properties.length > 1 && (
+    <>
+      {properties.map((prop) => (
+        <>
+          <code>{prop.name}</code>,
+        </>
+      ))}
+      or <code>{last.name}</code>
+    </>
+  )
+}

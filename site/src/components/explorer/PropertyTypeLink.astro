@@ -1,0 +1,12 @@
+---
+import path from 'node:path';
+import { model } from '@util/ftm';
+
+let { type, text } = Astro.props;
+type = model.getType(type);
+
+const basePath = Astro.site?.pathname || '';
+const link = path.join(basePath, '/explorer/types/', type.name);
+---
+
+<a href={link}>{Astro.slots.default ? <slot /> : text || type.label}</a>

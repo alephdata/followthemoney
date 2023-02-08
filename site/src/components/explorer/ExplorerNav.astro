@@ -1,0 +1,43 @@
+---
+import path from 'node:path';
+import { model } from '@util/ftm';
+import { Nav, NavSection, NavItem } from 'astro-theme-docs/components';
+
+const { activeType, activeSchema } = Astro.props;
+
+const schemata = Object.values(model.schemata).sort((a, b) =>
+  a.label.localeCompare(b.label)
+);
+
+const types = Object.values(model.types).sort((a, b) =>
+  a.label.localeCompare(b.label)
+);
+
+const basePath = Astro.site?.pathname || '';
+---
+
+<Nav slot="sidebar">
+  <NavSection title="Schemata">
+    {
+      schemata.map((schema) => (
+        <NavItem
+          link={path.join(basePath, '/explorer/schemata/', schema.name)}
+          active={schema.name === activeSchema?.name}
+          title={schema.label}
+        />
+      ))
+    }
+  </NavSection>
+
+  <NavSection title="Types">
+    {
+      types.map((type) => (
+        <NavItem
+          link={path.join(basePath, '/explorer/types/', type.name)}
+          active={type.name === activeType?.name}
+          title={type.label}
+        />
+      ))
+    }
+  </NavSection>
+</Nav>

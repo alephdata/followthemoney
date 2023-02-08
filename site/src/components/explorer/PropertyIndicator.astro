@@ -1,0 +1,65 @@
+---
+import { Icon, Popover } from 'astro-theme-docs/components';
+
+const CONTENTS = {
+  featured: {
+    icon: 'star',
+    title: 'Featured property',
+    text: 'In a list of properties, this property should usually be shown first.',
+  },
+  required: {
+    icon: 'asterisk',
+    title: 'Required property',
+    text: 'When creating entities through a user interface, the presence of a value should be validated.',
+  },
+  hidden: {
+    icon: 'hidden',
+    title: 'Hidden property',
+    text: 'This property should not be displayed in user interfaces.',
+  },
+};
+
+const { type } = Astro.props;
+const contents = CONTENTS[type];
+---
+
+<style>
+  .PropertyIndicator__title {
+    color: var(--color-fg-emphasis);
+  }
+
+  .PropertyIndicator__icon {
+    width: 0.8em;
+    height: 0.8em;
+    vertical-align: -5%;
+  }
+
+  .PropertyIndicator--featured .PropertyIndicator__icon {
+    color: rgb(234, 179, 8);
+  }
+
+  .PropertyIndicator--required .PropertyIndicator__icon {
+    color: rgb(220, 38, 38);
+  }
+
+  .PropertyIndicator--hidden .PropertyIndicator__icon {
+    color: var(--color-fg-muted);
+  }
+</style>
+
+<span class:list={['PropertyIndicator', `PropertyIndicator--${type}`]}>
+  <Popover>
+    <Icon
+      icon={contents.icon}
+      label={contents.title}
+      className="PropertyIndicator__icon"
+    />
+    <p slot="content">
+      <strong class="PropertyIndicator__title">
+        {contents.title}
+      </strong>
+      <br />
+      {contents.text}
+    </p>
+  </Popover>
+</span>

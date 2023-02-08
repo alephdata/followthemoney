@@ -1,0 +1,13 @@
+---
+import path from 'node:path';
+import { Schema } from '@alephdata/followthemoney';
+import { model } from '@util/ftm';
+
+let { schema, text } = Astro.props;
+schema = model.getSchema(schema);
+
+const basePath = Astro.site?.pathname || '';
+const link = path.join(basePath, '/explorer/schemata/', schema.name);
+---
+
+<a href={link}>{Astro.slots.default ? <slot /> : text || schema.label}</a>

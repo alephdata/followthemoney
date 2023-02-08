@@ -1,0 +1,39 @@
+---
+import { model } from '@util/ftm';
+import IndexTable from '@components/explorer/IndexTable.astro';
+import PropertyTypeLink from '@components/explorer/PropertyTypeLink.astro';
+import BooleanValue from '@components/explorer/BooleanValue.astro';
+
+const types = Object.values(model.types).sort((a, b) =>
+  a.label.localeCompare(b.label)
+);
+---
+
+<IndexTable>
+  <tr slot="head">
+    <th>Name</th>
+    <th>Label</th>
+    <th>Matchable</th>
+    <th>Pivot</th>
+  </tr>
+  {
+    types.map((type) => (
+      <tr>
+        <td>
+          <PropertyTypeLink {type}>
+            <code>{type.name}</code>
+          </PropertyTypeLink>
+        </td>
+        <td>
+          <PropertyTypeLink {type}>{type.label}</PropertyTypeLink>
+        </td>
+        <td>
+          <BooleanValue value={type.matchable} />
+        </td>
+        <td>
+          <BooleanValue value={type.pivot} />
+        </td>
+      </tr>
+    ))
+  }
+</IndexTable>

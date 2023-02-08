@@ -1,0 +1,34 @@
+---
+import { model } from '@util/ftm';
+import { Stack } from 'astro-theme-docs/components';
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import PropertyTypesIndexTable from '@components/explorer/PropertyTypesIndexTable.astro';
+import SchemataIndexTable from '@components/explorer/SchemataIndexTable.astro';
+---
+
+<DefaultLayout title="Model Explorer">
+  <Stack size="xl">
+    <header>
+      <h1 class="alpha">Model Explorer</h1>
+
+      <p class="lead">
+        Explore the default data model shipped with FollowTheMoney. It currently
+        includes
+        <a href="#schemata">{Object.keys(model.schemata).length} schemata</a>
+        and
+        <a href="#types">{Object.keys(model.types).length} property types</a>
+        that can be selected to generate entities.
+      </p>
+    </header>
+
+    <div>
+      <h2 id="schemata" class="beta">Schemata</h2>
+      <SchemataIndexTable />
+    </div>
+
+    <div>
+      <h2 id="types" class="beta">Types</h2>
+      <PropertyTypesIndexTable />
+    </div>
+  </Stack>
+</DefaultLayout>

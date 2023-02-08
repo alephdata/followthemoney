@@ -1,0 +1,96 @@
+---
+import PropertyType from '@components/explorer/PropertyType.astro';
+import SchemaLink from '@components/explorer/SchemaLink.astro';
+import IndexTable from '@components/explorer/IndexTable.astro';
+import PropertyIndicator from '@components/explorer/PropertyIndicator.astro';
+
+const { schema, ...rest } = Astro.props;
+
+const isFeatured = (property) =>
+  property.schema.featured.includes(property.name);
+
+const isRequired = (property) =>
+  property.schema.required.includes(property.name);
+
+const isHidden = (property) => property.hidden;
+
+const isInherited = (property) => property.schema.name !== schema.name;
+
+const properties = Array.from(schema.getProperties().values())
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .sort((a, b) => isFeatured(b) - isFeatured(a))
+  .sort((a, b) => isRequired(b) - isRequired(a));
+---
+
+<style>
+  .SchemaProperties__header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+  }
+
+  .SchemaProperties__schema {
+    opacity: 66%;
+  }
+
+  [data-show-inherited='false'] [data-is-inherited] {
+    display: none;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.SchemaProperties');
+    const toggle = document.querySelector('.SchemaProperties__toggle');
+
+    toggle.checked = true;
+
+    toggle.addEventListener('change', () => {
+      container.dataset.showInherited = toggle.checked ? 'true' : 'false';
+    });
+  });
+</script>
+
+<div class="SchemaProperties" data-show-inherited="true" {...rest}>
+  <div class="SchemaProperties__header">
+    <h2 class="beta">Properties</h2>
+
+    <label>
+      <input type="checkbox" class="SchemaProperties__toggle" checked />
+      Show inherited
+    </label>
+  </div>
+
+  <IndexTable>
+    <tr slot="head">
+      <th>Name</th>
+      <th>Label</th>
+      <th>Type</th>
+    </tr>
+
+    {
+      properties.map((prop) => (
+        <tr data-is-inherited={isInherited(prop)}>
+          <td>
+            {/* prettier-ignore */}
+            <code class="SchemaProperties__property">{/*
+              */}<span class="SchemaProperties__schema">{prop.schema.name}:</span>{/*
+              */}<span data-docsearch-level={!isInherited(prop) && 3}>{prop.name}</span>{/*
+            */}</code>
+            {isFeatured(prop) && <PropertyIndicator type="featured" />}
+            {isRequired(prop) && <PropertyIndicator type="required" />}
+            {isHidden(prop) && <PropertyIndicator type="hidden" />}
+          </td>
+
+          <td>{prop.label}</td>
+
+          <td>
+            <PropertyType property={prop} />
+          </td>
+        </tr>
+      ))
+    }
+  </IndexTable>
+</div>

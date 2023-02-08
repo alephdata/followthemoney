@@ -1,0 +1,19 @@
+<style>
+  .IndexTable {
+  }
+
+  * :global(th) {
+    position: sticky;
+    z-index: 1;
+    top: var(--header-height);
+  }
+</style>
+
+<table class="table IndexTable">
+  <thead>
+    <slot name="head" />
+  </thead>
+  <tbody>
+    <slot />
+  </tbody>
+</table>
