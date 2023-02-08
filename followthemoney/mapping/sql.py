@@ -3,8 +3,9 @@ import logging
 from uuid import uuid4
 from typing import TYPE_CHECKING, Any, Dict, Generator, List, Optional, Union, cast
 from banal import ensure_list, is_listish, keys_values
-from sqlalchemy import create_engine, MetaData
-from sqlalchemy import select, func
+from sqlalchemy import MetaData, func
+from sqlalchemy.future import select
+from sqlalchemy.engine import Engine, create_engine
 from sqlalchemy.sql.elements import Label
 from sqlalchemy.pool import NullPool
 from sqlalchemy.schema import Table
@@ -25,14 +26,16 @@ DATA_PAGE = 1000
 class QueryTable(object):
     """A table to be joined in."""
 
-    def __init__(self, meta: MetaData, data: Union[str, Dict[str, str]]) -> None:
+    def __init__(
+        self, meta: MetaData, engine: Engine, data: Union[str, Dict[str, str]]
+    ) -> None:
         if isinstance(data, str):
             data = {"table": data}
         table_ref = data.get("table")
         if table_ref is None:
             raise InvalidMapping("Query has no table!")
         alias_ref = data.get("alias", table_ref)
-        self.table = Table(table_ref, meta, autoload=True)
+        self.table = Table(table_ref, meta, autoload_with=engine)
         self.alias = self.table.alias(alias_ref)
 
         self.refs: Dict[str, Label[Any]] = {}
@@ -57,10 +60,9 @@ class SQLSource(Source):
             kwargs["server_side_cursors"] = True
         self.engine = create_engine(self.database_uri, poolclass=NullPool, **kwargs)  # type: ignore
         self.meta = MetaData()
-        self.meta.bind = self.engine
 
         tables = keys_values(data, "table", "tables")
-        self.tables = [QueryTable(self.meta, f) for f in tables]
+        self.tables = [QueryTable(self.meta, self.engine, f) for f in tables]
         self.joins = cast(List[Dict[str, str]], ensure_list(data.get("joins")))
 
     def get_column(self, ref: Optional[str]) -> Label[Any]:
@@ -90,9 +92,10 @@ class SQLSource(Source):
         return q
 
     def compose_query(self) -> Select:
-        from_clause = [t.alias for t in self.tables]
         columns = [self.get_column(r) for r in self.query.refs]
-        q = select(columns=columns, from_obj=from_clause, use_labels=True)
+        q = select(*columns)
+        q = q.select_from(*[t.alias for t in self.tables])
+        q = q.apply_labels()
         return self.apply_filters(q)
 
     @property
@@ -115,9 +118,9 @@ class SQLSource(Source):
                 yield data
 
     def __len__(self) -> int:
-        from_clause = [t.alias for t in self.tables]
-        columns = [func.count("*")]
-        q = select(columns=columns, from_obj=from_clause, use_labels=True)
+        q = select(func.count("*"))
+        q = q.select_from(*[t.alias for t in self.tables])
+        q = q.apply_labels()
         q = self.apply_filters(q)
         rp = self.engine.execute(q)
         return int(rp.scalar())
