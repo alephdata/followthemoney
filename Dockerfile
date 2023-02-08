@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:23.04
 
 LABEL org.opencontainers.image.title "FollowTheMoney"
 LABEL org.opencontainers.image.licenses MIT
