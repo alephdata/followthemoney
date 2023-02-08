@@ -103,22 +103,24 @@ class SQLSource(Source):
         mapping = [(r, self.get_column(r).name) for r in self.query.refs]
         q = self.compose_query()
         log.info("Query: %s", q)
-        rp = self.engine.execute(q)
-        while True:
-            rows = rp.fetchmany(size=DATA_PAGE)
-            if not len(rows):
-                break
-            for row in rows:
-                data: Record = {}
-                for ref, name in mapping:
-                    value = sanitize_text(row[name])
-                    if value is not None:
-                        data[ref] = value
-                yield data
+        with self.engine.connect() as conn:
+            rp = conn.execute(q)
+            while True:
+                rows = rp.fetchmany(size=DATA_PAGE)
+                if not len(rows):
+                    break
+                for row in rows:
+                    data: Record = {}
+                    for ref, name in mapping:
+                        value = sanitize_text(row[name])
+                        if value is not None:
+                            data[ref] = value
+                    yield data
 
     def __len__(self) -> int:
         q = select(func.count("*"))
         q = q.select_from(*[t.alias for t in self.tables])
         q = self.apply_filters(q)
-        rp = self.engine.execute(q)
-        return int(rp.scalar())
+        with self.engine.connect() as conn:
+            rp = conn.execute(q)
+            return int(rp.scalar())
