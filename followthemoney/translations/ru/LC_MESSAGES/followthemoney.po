@@ -12,14 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-04 09:58+0100\n"
+"POT-Creation-Date: 2023-02-10 14:09+0100\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: jen occrp, 2023\n"
 "Language-Team: Russian (https://www.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.11.0\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
@@ -490,6 +490,16 @@ msgstr "Банк"
 #: followthemoney/schema/BankAccount.yaml
 msgid "Account type"
 msgstr "Тип счёта"
+
+#. BankAccount.properties.openingDate.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Opening date"
+msgstr "Дата открытия"
+
+#. BankAccount.properties.closingDate.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Closing date"
+msgstr "Дата закрытия"
 
 #. BankAccount.properties.balance.label
 #. CryptoWallet.properties.balance.label
@@ -1714,14 +1724,6 @@ msgstr ""
 "внешнеэкономической деятельности"
 
 #. EconomicActivity.properties.goodsDescription.label
-#. Interval.properties.description.label
-#. Thing.properties.description.label
-#: followthemoney/schema/EconomicActivity.yaml
-#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
-msgid "Description"
-msgstr "Описание"
-
-#. EconomicActivity.properties.goodsDescription.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Description of goods"
 msgstr "Описание и характеристика товаров"
@@ -2249,6 +2251,12 @@ msgstr "Дата окончания"
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Summary"
 msgstr "Информация"
+
+#. Interval.properties.description.label
+#. Thing.properties.description.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
+msgid "Description"
+msgstr "Описание"
 
 #. Interval.properties.recordId.label
 #: followthemoney/schema/Interval.yaml
