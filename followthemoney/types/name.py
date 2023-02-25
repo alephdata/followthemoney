@@ -1,8 +1,8 @@
-from typing import Dict, List, Optional, Sequence, TYPE_CHECKING, Union
-from banal import first
+from typing import TYPE_CHECKING, Dict, List, Optional, Sequence, Union
+
+from Levenshtein import distance, setmedian
 from normality import slugify
 from normality.cleaning import collapse_spaces, strip_quotes
-from Levenshtein import distance, setmedian
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen
@@ -56,6 +56,9 @@ class NameType(PropertyType):
             normalised.append(norm)
             lookup.setdefault(norm, [])
             lookup[norm].append(value)
+
+        if not normalised:
+            return None
 
         norm = setmedian(normalised)
         if norm is None:
