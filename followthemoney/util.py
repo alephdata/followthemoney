@@ -48,7 +48,7 @@ def set_model_locale(locale: Locale) -> None:
 
 def get_locale() -> Locale:
     if not hasattr(state, "locale"):
-        return Locale(DEFAULT_LOCALE)
+        return Locale.parse(DEFAULT_LOCALE)
     return state.locale
 
 
