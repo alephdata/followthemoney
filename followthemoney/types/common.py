@@ -1,5 +1,5 @@
 from itertools import product
-from babel.core import Locale  # type: ignore
+from babel.core import Locale
 from banal import ensure_list
 from normality import stringify
 from typing import Any, Dict, Optional, Sequence, Callable, TYPE_CHECKING, TypedDict
@@ -217,7 +217,7 @@ class EnumType(PropertyType):
         self._names: Dict[Locale, EnumValues] = {}
         self.codes = set(self.names.keys())
 
-    def _locale_names(self, locale: str) -> EnumValues:
+    def _locale_names(self, locale: Locale) -> EnumValues:
         return {}
 
     @property

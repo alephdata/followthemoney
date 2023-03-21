@@ -1,7 +1,7 @@
 import os
 import logging
 from hashlib import sha1
-from babel import Locale  # type: ignore
+from babel import Locale
 from gettext import translation
 
 from threading import local
@@ -31,7 +31,7 @@ log = logging.getLogger(__name__)
 
 def gettext(*args: Optional[str], **kwargs: Dict[str, str]) -> str:
     if not hasattr(state, "translation"):
-        set_model_locale(DEFAULT_LOCALE)
+        set_model_locale(Locale.parse(DEFAULT_LOCALE))
     return cast(str, state.translation.gettext(*args, **kwargs))
 
 
@@ -42,7 +42,7 @@ def defer(text: str) -> str:
 def set_model_locale(locale: Locale) -> None:
     state.locale = locale
     state.translation = translation(
-        "followthemoney", i18n_path, [locale], fallback=True
+        "followthemoney", i18n_path, [str(locale)], fallback=True
     )
 
 
@@ -138,6 +138,8 @@ def merge_context(left: Dict[K, V], right: Dict[K, V]) -> Dict[K, List[V]]:
     combined = {}
     keys = [*left.keys(), *right.keys()]
     for key in set(keys):
+        if key in ("caption",):
+            continue
         lval: List[V] = [i for i in ensure_list(left.get(key)) if i is not None]
         rval: List[V] = [i for i in ensure_list(right.get(key)) if i is not None]
         combined[key] = unique_list([*lval, *rval])
