@@ -1,5 +1,5 @@
 from typing import Optional, TYPE_CHECKING
-from babel.core import Locale  # type: ignore
+from babel.core import Locale
 from languagecodes import iso_639_alpha3
 
 from followthemoney.types.common import EnumType, EnumValues

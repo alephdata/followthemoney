@@ -1,5 +1,5 @@
 from typing import Optional, TYPE_CHECKING
-from babel.core import Locale  # type: ignore
+from babel.core import Locale
 
 from followthemoney.types.common import EnumType, EnumValues
 from followthemoney.rdf import URIRef, Identifier
