@@ -49,7 +49,7 @@ def set_model_locale(locale: Locale) -> None:
 def get_locale() -> Locale:
     if not hasattr(state, "locale"):
         return Locale.parse(DEFAULT_LOCALE)
-    return state.locale
+    return cast(Locale, state.locale)
 
 
 def get_env_list(name: str, default: List[str] = []) -> List[str]:
