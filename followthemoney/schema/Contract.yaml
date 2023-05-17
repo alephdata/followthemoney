@@ -62,7 +62,6 @@ Contract:
       label: Contract award criteria
     classification:
       label: Classification
-      type: text
     cancelled:
       label: "Cancelled?"
     language:
