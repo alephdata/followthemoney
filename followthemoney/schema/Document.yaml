@@ -119,7 +119,3 @@ Document:
       label: "Date and time of the most recent ingestion of the Document"
       type: date
       matchable: false
-
-    
-
-      
