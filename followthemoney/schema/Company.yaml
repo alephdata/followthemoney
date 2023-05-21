@@ -58,6 +58,8 @@ Company:
     ibcRuc:
       label: "ibcRUC"
       type: identifier
+      # TODO: Remove this. It's a column name in the ICIJ-released OffshoreLeaks datasets
+      # but seems to just mean "company number".
     caemCode:
       label: "COD CAEM"
       description: "(RO) What kind of activity a legal entity is allowed to develop"
@@ -94,3 +96,10 @@ Company:
       label: OKSM
       description: "Russian (ОКСМ) countries classifer"
       matchable: false
+    isinCode:
+      label: ISIN
+      description: International Securities Identification Number
+      type: identifier
+    ticker:
+      label: Stock ticker symbol
+      type: identifier
