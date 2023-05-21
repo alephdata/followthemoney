@@ -44,10 +44,9 @@ class Model(object):
         called once all schemata are loaded to finalise dereferencing the
         schemata."""
         for schema in self:
-            schema.generate()
+            schema.generate(self)
         for prop in self.properties:
             self.qnames[prop.qname] = prop
-            # FIXME: stubs are not correctly assigned
             for schema in prop.schema.descendants:
                 if prop.name not in schema.properties:
                     schema.properties[prop.name] = prop
