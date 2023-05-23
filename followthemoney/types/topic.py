@@ -46,7 +46,7 @@ class TopicType(EnumType):
         "fin.bank": _("Bank"),
         "fin.fund": _("Fund"),
         "fin.adivsor": _("Financial advisor"),
-        "role.pep": _("Politician"),  # don't FATF-splain me, bro.
+        "role.pep": _("Politican"),
         "role.rca": _("Close Associate"),
         "role.judge": _("Judge"),
         "role.civil": _("Civil servant"),
@@ -63,6 +63,7 @@ class TopicType(EnumType):
         "mil": _("Military"),
         "asset.frozen": _("Frozen asset"),
         "sanction": _("Sanctioned entity"),
+        "sanction.linked": _("Sanction-linked entity"),
         "debarment": _("Debarred entity"),
         "poi": _("Person of interest"),
     }
