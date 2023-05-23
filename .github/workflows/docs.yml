@@ -3,8 +3,8 @@ on:
   - push
   - workflow_dispatch
 
-concurrency:
-  group: pages
+# concurrency:
+#   group: pages
 
 jobs:
   build:
@@ -47,7 +47,7 @@ jobs:
 
   deploy:
     if: ${{ github.ref == 'refs/heads/main' }}
-    needs: build
+    needs: ["build"]
     runs-on: ubuntu-latest
 
     permissions:
