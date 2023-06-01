@@ -1,0 +1,59 @@
+---
+import { RichContent } from 'astro-theme-docs/components';
+import SchemaLink from '@components/explorer/SchemaLink.astro';
+import Mermaid from '@components/common/Mermaid.astro';
+import { getInheritanceAdjacency } from '@util/ftm';
+import { schemaLink } from '@util/links';
+
+const { schema, ...rest } = Astro.props;
+const base = Astro.site?.pathname;
+
+const parents = schema.getExtends();
+const edges = getInheritanceAdjacency(schema);
+const nodes = new Set();
+
+nodes.add(schema);
+
+for (const [child, parent] of edges) {
+  nodes.add(child);
+  nodes.add(parent);
+}
+
+const graphDef = [];
+
+for (const node of nodes) {
+  graphDef.push(`${node.name}(${node.label})`);
+
+  if (node !== schema) {
+    graphDef.push(`click ${node.name} "${schemaLink(base, node)}"`);
+  }
+}
+
+graphDef.push(`class ${schema.name} schema-inheritance__current`);
+
+for (const [child, parent] of edges) {
+  graphDef.push(`${child.name}-->${parent.name}`);
+}
+---
+
+<style>
+  .schema-inheritance :global(.schema-inheritance__current .label-container) {
+    fill: var(--color-bg-primary) !important;
+    stroke: var(--color-border-primary) !important;
+  }
+
+  .schema-inheritance :global(.schema-inheritance__current .nodeLabel) {
+    color: var(--color-fg-default) !important;
+  }
+</style>
+
+<div class="schema-inheritance" {...rest}>
+  <RichContent>
+    <h2 class="beta">Inheritance</h2>
+
+    <Mermaid>
+      graph BT
+      {graphDef.join('\n')}
+    </Mermaid>
+  </RichContent>
+</div>

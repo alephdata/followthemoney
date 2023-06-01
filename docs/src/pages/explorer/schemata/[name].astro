@@ -3,7 +3,7 @@ import { model } from '@util/ftm';
 import { Stack, TocNav } from 'astro-theme-docs/components';
 import ExplorerLayout from '@layouts/ExplorerLayout.astro';
 import SchemaPageHeader from '@components/page/SchemaPageHeader.astro';
-import SchemaExtends from '@components/explorer/SchemaExtends.astro';
+import SchemaInheritance from '@components/explorer/SchemaInheritance.astro';
 import SchemaSemantics from '@components/explorer/SchemaSemantics.astro';
 import SchemaProperties from '@components/explorer/SchemaProperties.astro';
 
@@ -29,7 +29,7 @@ const headings = [
 
   <Stack size="xl">
     <SchemaPageHeader schema={schema} />
-    <SchemaExtends id="inheritance" schema={schema} />
+    <SchemaInheritance id="inheritance" schema={schema} />
     <SchemaSemantics id="semantics" schema={schema} />
     <SchemaProperties id="properties" schema={schema} />
   </Stack>
