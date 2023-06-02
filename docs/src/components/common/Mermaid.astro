@@ -14,11 +14,16 @@ import Spinner from '@components/common/Spinner.astro';
 
   mermaid.run({
     querySelector: '.mermaid__graph',
+    postRenderCallback: (id) => {
+      const element = document.getElementById(id);
+      element.parentNode.dataset.rendered = 'true';
+    },
   });
 </script>
 
 <style>
   .mermaid {
+    position: relative;
     padding: var(--space-sm);
     aspect-ratio: 16 / 9;
 
@@ -27,7 +32,11 @@ import Spinner from '@components/common/Spinner.astro';
     border-radius: var(--radius);
   }
 
-  .mermaid__graph:not([data-processed="true"]) {
+  .mermaid__graph:not([data-processed='true']) {
+    display: none;
+  }
+
+  .mermaid__graph[data-rendered='true'] + .mermaid__spinner {
     display: none;
   }
 
@@ -42,6 +51,13 @@ import Spinner from '@components/common/Spinner.astro';
   .mermaid__graph > :global(svg) {
     max-width: 100%;
     max-height: 100%;
+  }
+
+  .mermaid__spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .mermaid :global(.label-container) {
@@ -72,8 +88,8 @@ import Spinner from '@components/common/Spinner.astro';
 </style>
 
 <div class="mermaid">
-  <Spinner />
   <div class="mermaid__graph">
     <slot />
   </div>
+  <Spinner class="mermaid__spinner" />
 </div>
