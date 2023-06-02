@@ -29,23 +29,12 @@ for (const node of nodes) {
   }
 }
 
-graphDef.push(`class ${schema.name} schema-inheritance__current`);
+graphDef.push(`class ${schema.name} node-primary`);
 
 for (const [child, parent] of edges) {
   graphDef.push(`${child.name}-->${parent.name}`);
 }
 ---
-
-<style>
-  .schema-inheritance :global(.schema-inheritance__current .label-container) {
-    fill: var(--color-bg-primary) !important;
-    stroke: var(--color-border-primary) !important;
-  }
-
-  .schema-inheritance :global(.schema-inheritance__current .nodeLabel) {
-    color: var(--color-fg-default) !important;
-  }
-</style>
 
 <div class="schema-inheritance" {...rest}>
   <RichContent>

@@ -4,9 +4,10 @@ import Spinner from '@components/common/Spinner.astro';
 
 <script>
   import mermaid from 'mermaid';
+  import themeCSS from './mermaid-theme.css?inline';
 
   mermaid.initialize({
-    theme: 'light',
+    themeCSS,
     securityLevel: 'loose',
     fontFamily: 'var(--font-family)',
     startOnLoad: false,
@@ -58,32 +59,6 @@ import Spinner from '@components/common/Spinner.astro';
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-
-  .mermaid :global(.label-container) {
-    fill: var(--color-bg-default) !important;
-    stroke: var(--color-border-default) !important;
-  }
-
-  .mermaid :global(.node.clickable:hover .label-container) {
-    fill: var(--color-bg-subtle) !important;
-    stroke: var(--color-border-emphasis) !important;
-  }
-
-  .mermaid :global(.nodeLabel) {
-    color: var(--color-fg-muted) !important;
-  }
-
-  .mermaid :global(.node.clickable:hover .nodeLabel) {
-    color: var(--color-fg-default) !important;
-  }
-
-  .mermaid :global(.flowchart-link) {
-    stroke: var(--color-fg-muted) !important;
-  }
-
-  .mermaid :global(.marker) {
-    fill: var(--color-fg-muted) !important;
   }
 </style>
 
