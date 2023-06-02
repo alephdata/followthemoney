@@ -33,6 +33,13 @@ import Spinner from '@components/common/Spinner.astro';
     border-radius: var(--radius);
   }
 
+  @media screen and (prefers-color-scheme: dark) {
+    .mermaid {
+      background-color: rgba(0, 0, 0, 0.15);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
   .mermaid__graph:not([data-processed='true']) {
     display: none;
   }
