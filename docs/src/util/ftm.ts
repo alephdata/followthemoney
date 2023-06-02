@@ -3,35 +3,22 @@ import { Model, Schema } from '@alephdata/followthemoney';
 
 export const model = new Model(defaultModel);
 
-export function getInheritanceAdjacency(
-  schema: Schema
-): Array<[Schema, Schema]> {
-  const tuples: Array<[Schema, Schema]> = [];
+type Edges = Array<[Schema, Schema]>;
 
-  // Get all parent schemata
-  const queue: Array<Schema> = [];
-  const visited: Set<Schema> = new Set();
-  queue.push(schema);
+export function getInheritanceEdges(schemata: Array<Schema>): Edges {
+  const nodes = new Set(schemata);
+  const edges: Set<string> = new Set();
 
-  while (queue.length > 0) {
-    const child = queue.shift();
-    visited.add(child);
-
-    for (const parent of child.getExtends()) {
-      tuples.push([child, parent]);
-
-      if (!visited.has(parent) && !queue.includes(parent)) {
-        queue.push(parent);
+  for (const node of nodes) {
+    for (const parent of node.getExtends()) {
+      if (nodes.has(parent)) {
+        edges.add([node.name, parent.name].join(':'));
       }
     }
   }
 
-  // Get first level child schemata
-  for (const child of model.getSchemata()) {
-    if (child.getExtends().includes(schema)) {
-      tuples.push([child, schema]);
-    }
-  }
-
-  return tuples;
+  return Array.from(edges).map((edge) => {
+    const [child, parent] = edge.split(':');
+    return [model.getSchema(child), model.getSchema(parent)];
+  });
 }
