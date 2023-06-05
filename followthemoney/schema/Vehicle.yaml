@@ -16,6 +16,8 @@ Vehicle:
     start:
       - buildDate
       - registrationDate
+    end:
+      - deregistrationDate
   properties:
     registrationNumber:
       label: Registration number
@@ -43,4 +45,7 @@ Vehicle:
       type: date
     registrationDate:
       label: Registration Date
+      type: date
+    deregistrationDate:
+      label: De-registration Date
       type: date
