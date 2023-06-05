@@ -4,11 +4,11 @@ import ExplorerNav from '@components/explorer/ExplorerNav.astro';
 import options from '../options.json';
 
 const { activeSchema = null, activeType = null } = Astro.props;
-const label =
-  (activeSchema && activeSchema.label) || (activeType && activeType.label);
+const name =
+  (activeSchema && activeSchema.name) || (activeType && activeType.name);
 ---
 
-<DefaultLayout layout="explorer" {options} {...Astro.props} title={label}>
+<DefaultLayout layout="explorer" {options} {...Astro.props} title={name}>
   <ExpandableSidebar slot="sidebar">
     <ExplorerNav {activeType} {activeSchema} />
   </ExpandableSidebar>

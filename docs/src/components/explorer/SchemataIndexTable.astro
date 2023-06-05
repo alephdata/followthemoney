@@ -24,9 +24,7 @@ const schemata = Object.values(model.schemata).sort((a, b) =>
             <code>{schema.name}</code>
           </SchemaLink>
         </td>
-        <td>
-          <SchemaLink {schema}>{schema.label}</SchemaLink>
-        </td>
+        <td>{schema.label}</td>
         <td>
           <BooleanValue value={schema.abstract} />
         </td>

@@ -9,7 +9,7 @@ const edges = getInheritanceEdges(schemata);
 const graph = [];
 
 for (const schema of schemata) {
-  graph.push(`${schema.name}(${schema.label})`);
+  graph.push(`${schema.name}(${schema.name})`);
 
   if (schema !== activeSchema) {
     graph.push(`click ${schema.name} "${schemaLink(base, schema)}"`);
