@@ -26,11 +26,17 @@
 }
 
 .flowchart-link {
-  stroke-width: 2px;
+  stroke-width: 1.5px;
   stroke: var(--color-fg-muted);
 }
 
 .marker {
   fill: var(--color-fg-muted);
-  stroke: var(--color-fg-muted);
+  stroke: none;
+}
+
+.arrowMarkerPath {
+  // Workaround to change size of arrow heads as there is no
+  // Mermaid config option
+  transform: scale(0.75) translate(4px, 2px)
 }
