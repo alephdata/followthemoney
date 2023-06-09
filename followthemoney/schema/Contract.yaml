@@ -22,7 +22,7 @@ Contract:
       - contractDate
   properties:
     title:
-      label: "Contract title"
+      label: "Title"
       type: string
     authority:
       label: "Contract authority"

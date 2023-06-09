@@ -27,7 +27,7 @@ Security:
       label: Registration number
       type: identifier
     ticker:
-      label: Ticker
+      label: Stock ticker symbol
       type: identifier
     issuer:
       label: "Issuer"

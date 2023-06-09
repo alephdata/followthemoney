@@ -40,7 +40,7 @@ ContractAward:
       type: entity
       range: Contract
     callForTenders:
-      label: "Call For Tender"
+      label: "Call For Tenders"
       type: entity
       reverse:
         name: contractAwards

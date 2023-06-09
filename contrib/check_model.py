@@ -18,18 +18,12 @@ IGNORE_DIVERGENT_TYPES = [
 ]
 
 IGNORE_DIVERGENT_LABELS = [
-    "wikidataId",
     "parent",
     "holder",
     "number",
     "authority",
-    "title",
-    "cpvCode",
-    "nutsCode",
     "criteria",
     "procedure",
-    "callForTenders",
-    "ticker",
 ]
 
 IGNORE_LABEL_COLLISIONS = [
