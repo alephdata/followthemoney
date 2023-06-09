@@ -10,8 +10,6 @@ IGNORE_DIVERGENT_TYPES = [
     "number",
     "authority",
     "duration",
-    "cpvCode",
-    "nutsCode",
     "area",
     "subject",
     "sender",
