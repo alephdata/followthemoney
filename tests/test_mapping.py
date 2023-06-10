@@ -1,7 +1,9 @@
 import os
-import yaml
-import responses
 from unittest import TestCase
+
+import responses
+import yaml
+
 from followthemoney import model
 from followthemoney.exc import InvalidMapping
 
@@ -251,6 +253,11 @@ class MappingTestCase(TestCase):
             },
         }
 
+        with self.assertRaises(InvalidMapping) as e:
+            entities = list(model.map_entities(mapping))
+            assert "not registered" in str(e)
+
+        os.environ["FTM_SAFE_MODULES"] = "fingerprints,datetime"
         entities = list(model.map_entities(mapping))
         assert len(entities) == 1, len(entities)
         self.assertEqual(entities[0].get("weakAlias"), ["coyote e wile"])  # noqa

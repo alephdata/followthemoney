@@ -1,15 +1,16 @@
 import re
 from copy import deepcopy
-from normality import stringify
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, cast
-from banal import keys_values, as_bool
 
-from followthemoney.helpers import inline_names
+from banal import as_bool, keys_values
+from normality import stringify
+
 from followthemoney.exc import InvalidMapping
-from followthemoney.proxy import EntityProxy
-from followthemoney.util import get_entity_id, import_method, sanitize_text
-from followthemoney.property import Property
+from followthemoney.helpers import inline_names
 from followthemoney.mapping.source import Record
+from followthemoney.property import Property
+from followthemoney.proxy import EntityProxy
+from followthemoney.util import get_env_list, import_method, sanitize_text
 
 if TYPE_CHECKING:
     from followthemoney.mapping.query import QueryMapping
@@ -63,6 +64,11 @@ class PropertyMapping(object):
 
         self.apply_func = sanitize_text(data.pop("apply_func", None))
         if self.apply_func is not None:
+            safe_modules = get_env_list("FTM_SAFE_MODULES", sep=",")
+            if not any([self.apply_func.startswith(f) for f in safe_modules]):
+                raise InvalidMapping(
+                    f"Apply function `{self.apply_func}` not registered."
+                )
             try:
                 self.apply_func = import_method(self.apply_func)
             except ImportError:

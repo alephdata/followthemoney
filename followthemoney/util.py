@@ -52,10 +52,10 @@ def get_locale() -> Locale:
     return cast(Locale, state.locale)
 
 
-def get_env_list(name: str, default: List[str] = []) -> List[str]:
+def get_env_list(name: str, default: List[str] = [], sep: str = ":") -> List[str]:
     value = stringify(os.environ.get(name))
     if value is not None:
-        values = value.split(":")
+        values = value.split(sep)
         if len(values):
             return values
     return default
