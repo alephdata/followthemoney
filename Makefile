@@ -24,7 +24,7 @@ build: default-model translate
 default-model:
 	ftm dump-model -o js/src/defaultModel.json
 
-# initalize a new language:
+# initialize a new language:
 # pybabel init -i followthemoney/translations/messages.pot -d followthemoney/translations -l de -D followthemoney
 translate:
 	pybabel extract -F babel.cfg -o followthemoney/translations/messages.pot followthemoney

@@ -7,7 +7,7 @@ title: Namespacing
 
 Entity ID namespaces are a security mechanism related to the Aleph search index.
 
-Aleph allows the user (via mappings or the API) to create arbitary entity IDs. Entity IDs that are controlled by the user and not the system are unusual. However, this makes it possible to generate bulk data outside Aleph, and then load entities into the system as a continuous [streams](/docs/#streams).
+Aleph allows the user (via mappings or the API) to create arbitrary entity IDs. Entity IDs that are controlled by the user and not the system are unusual. However, this makes it possible to generate bulk data outside Aleph, and then load entities into the system as a continuous [streams](/docs/#streams).
 
 The problem is that having user controlled entity IDs increases the chance of conflict in the search index. Namespacing works around this by making each entity ID consist of two parts: one controlled by the client, the other controlled by the system. The second part of the ID is called its _signature_:
 

@@ -43,7 +43,7 @@ Address:
       description: "Handling instructions, like 'care of'."
     postOfficeBox:
       label: "PO Box"
-      description: "A mailbox indentifier at the post office"
+      description: "A mailbox identifier at the post office"
     street:
       label: "Street address"
     street2:

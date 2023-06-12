@@ -157,7 +157,7 @@ class Edge(object):
 
     @property
     def type_name(self) -> str:
-        """Return a machine-readable descripton of the type of the edge.
+        """Return a machine-readable description of the type of the edge.
         This is either a property name or a schema name."""
         if self.schema is not None:
             return self.schema.name
