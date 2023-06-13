@@ -46,7 +46,7 @@ class TopicType(EnumType):
         "fin.bank": _("Bank"),
         "fin.fund": _("Fund"),
         "fin.adivsor": _("Financial advisor"),
-        "role.pep": _("Politican"),
+        "role.pep": _("Political"),
         "role.rca": _("Close Associate"),
         "role.judge": _("Judge"),
         "role.civil": _("Civil servant"),

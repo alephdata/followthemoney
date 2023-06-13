@@ -154,7 +154,7 @@ class Schema:
         self.required = ensure_list(data.get("required", []))
 
         #: Mark a set of properties to be used for the entity's caption.
-        #: They will be checked in order and the first existant value will
+        #: They will be checked in order and the first existent value will
         #: be used.
         self.caption = ensure_list(data.get("caption", []))
 

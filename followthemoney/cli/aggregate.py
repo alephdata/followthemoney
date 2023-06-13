@@ -10,7 +10,7 @@ from followthemoney.cli.util import path_writer, write_entity
 
 
 def sorted_aggregate(path: Path, outpath: Path, entity_type: Type[E]) -> None:
-    """Aggregate entities based on the premise that the fragements in the source
+    """Aggregate entities based on the premise that the fragments in the source
     stream are sorted by their ID."""
     entity: Optional[E] = None
     with path_writer(outpath) as outfh:

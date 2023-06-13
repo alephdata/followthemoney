@@ -5,7 +5,7 @@ Organization:
   description: >
     Any type of incorporated entity that cannot be owned by another (see Company). This
     might include charities, foundations or state-owned enterprises, depending on their 
-    juristiction.
+    jurisdiction.
   matchable: true
   featured:
     - name

@@ -34,7 +34,7 @@ Company:
     coatoCode:
       label: "COATO / SOATO / OKATO"
       type: identifier
-      descrption: "Soviet classifier for territories, regions, districts, villages. Aka. SOATO and same as OKATO"
+      description: "Soviet classifier for territories, regions, districts, villages. Aka. SOATO and same as OKATO"
       matchable: false
     irsCode:
       label: "IRS Number"
@@ -94,7 +94,7 @@ Company:
       type: identifier
     oksmCode:
       label: OKSM
-      description: "Russian (ОКСМ) countries classifer"
+      description: "Russian (ОКСМ) countries classifier"
       matchable: false
     isinCode:
       label: ISIN

@@ -3,7 +3,7 @@
 
 Entity ID namespaces are a security mechanism related to the Aleph search index.
 
-Aleph allows the user (via mappings or the API) to create arbitary entity IDs.
+Aleph allows the user (via mappings or the API) to create arbitrary entity IDs.
 Entity IDs that are controlled by the user and not the system are unusual.
 However, this makes it possible to generate bulk data outside Aleph,
 and then load entities into the system as a continuous :ref:`streams`.
