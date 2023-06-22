@@ -40,7 +40,7 @@ ContractAward:
       type: entity
       range: Contract
     callForTenders:
-      label: "Call For Tender"
+      label: "Call For Tenders"
       type: entity
       reverse:
         name: contractAwards
@@ -58,9 +58,11 @@ ContractAward:
     cpvCode:
       label: "CPV code"
       description: "Contract Procurement Vocabulary (what type of goods/services, EU)"
+      type: identifier
     nutsCode:
       label: "NUTS code"
       description: "Nomencalture of Territorial Units for Statistics (NUTS)"
+      type: identifier
     amended:
       label: "Amended"
       description: "Was this award amended, modified or updated by a subsequent document?"

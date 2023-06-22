@@ -54,14 +54,14 @@ CallForTenders:
       label: "Call for tenders result"
       description: "The nature of the contractual agreement that will result from this CfT"
     cpvCode:
-      label: "CPV codes"
+      label: "CPV code"
       description: "Common Procurement Vocabulary (CPV)"
       type: identifier
     reverseAuctionsIncluded:
       label: "Inclusion of e-Auctions"
       # cf. https://mita.gov.mt/2021/10/05/reverse-bidding-for-data-connectivity-across-the-public-service-a-first-for-malta/
     nutsCode:
-      label: "NUTS codes"
+      label: "NUTS code"
       description: "Nomenclature of Territorial Units for Statistics (NUTS)"
       type: identifier
     relationToThreshold:

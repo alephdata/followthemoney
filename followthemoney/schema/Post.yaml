@@ -35,6 +35,6 @@ Post:
       label: "Organization"
       type: string
     wikidataId:
-      label: "Wikidata ID of the post"
+      label: "Wikidata ID"
       hidden: true
       type: identifier
