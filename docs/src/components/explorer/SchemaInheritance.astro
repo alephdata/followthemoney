@@ -1,0 +1,21 @@
+---
+import { RichContent } from 'astro-theme-docs/components';
+import InheritanceGraph from '@components/explorer/InheritanceGraph.astro';
+
+const { schema, ...rest } = Astro.props;
+
+const parents = schema.getParents();
+const children = schema
+  .getChildren()
+  .filter((child) => child.getExtends().includes(schema));
+---
+
+<div class="schema-inheritance" {...rest}>
+  <RichContent>
+    <h2 class="beta">Inheritance</h2>
+    <InheritanceGraph
+      schemata={[schema, ...parents, ...children]}
+      activeSchema={schema}
+    />
+  </RichContent>
+</div>

@@ -1,0 +1,42 @@
+.node .label-container {
+  fill: var(--color-bg-default);
+  stroke: var(--color-border-default);
+}
+
+.node.clickable:hover .label-container {
+  fill: var(--color-bg-subtle);
+  stroke: var(--color-border-emphasis);
+}
+
+.node-primary .label-container {
+  fill: var(--color-bg-primary);
+  stroke: var(--color-border-primary);
+}
+
+.node .nodeLabel {
+  color: var(--color-fg-muted);
+}
+
+.node-primary .nodeLabel {
+  color: var(--color-fg-primary);
+}
+
+.node.clickable:hover .nodeLabel {
+  color: var(--color-fg-default);
+}
+
+.flowchart-link {
+  stroke-width: 1.5px;
+  stroke: var(--color-fg-muted);
+}
+
+.marker {
+  fill: var(--color-fg-muted);
+  stroke: none;
+}
+
+.arrowMarkerPath {
+  // Workaround to change size of arrow heads as there is no
+  // Mermaid config option
+  transform: scale(0.75) translate(4px, 2px)
+}

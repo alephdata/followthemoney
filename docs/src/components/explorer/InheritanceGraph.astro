@@ -1,0 +1,31 @@
+---
+import Mermaid from '@components/common/Mermaid.astro';
+import { getInheritanceEdges } from '@util/ftm';
+import { schemaLink } from '@util/links';
+
+const { schemata, activeSchema } = Astro.props;
+const base = Astro.site?.pathname;
+const edges = getInheritanceEdges(schemata);
+const graph = [];
+
+for (const schema of schemata) {
+  graph.push(`${schema.name}(${schema.name})`);
+
+  if (schema !== activeSchema) {
+    graph.push(`click ${schema.name} "${schemaLink(base, schema)}"`);
+  }
+}
+
+if (activeSchema) {
+  graph.push(`class ${activeSchema.name} node-primary`);
+}
+
+for (const [child, parent] of edges) {
+  graph.push(`${child.name}-->${parent.name}`);
+}
+---
+
+<Mermaid>
+  graph BT
+  {graph.join('\n')}
+</Mermaid>

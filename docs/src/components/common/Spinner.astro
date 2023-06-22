@@ -1,0 +1,43 @@
+---
+const { class: className } = Astro.props;
+---
+
+<style>
+  @keyframes spinner {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner__circle {
+    display: inline-block;
+    width: var(--space-xl);
+    height: var(--space-xl);
+    border-radius: 50%;
+    border: 3px solid var(--color-fg-muted);
+    border-right-color: var(--color-bg-subtle);
+    animation: spinner 1s linear infinite;
+  }
+
+  .spinner__progress {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+</style>
+
+<div class:list={['spinner', className]}>
+  <progress class="spinner__progress"></progress>
+  <span class="spinner__circle"></span>
+</div>

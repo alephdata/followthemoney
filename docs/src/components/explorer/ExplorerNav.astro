@@ -23,7 +23,7 @@ const basePath = Astro.site?.pathname || '';
         <NavItem
           link={path.join(basePath, '/explorer/schemata/', schema.name)}
           active={schema.name === activeSchema?.name}
-          title={schema.label}
+          title={schema.name}
         />
       ))
     }
@@ -35,7 +35,7 @@ const basePath = Astro.site?.pathname || '';
         <NavItem
           link={path.join(basePath, '/explorer/types/', type.name)}
           active={type.name === activeType?.name}
-          title={type.label}
+          title={type.name}
         />
       ))
     }
