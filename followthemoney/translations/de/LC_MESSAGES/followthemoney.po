@@ -1,7 +1,7 @@
 # Translations template for PROJECT.
-# Copyright (C) 2022 ORGANIZATION
+# Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 # 
 # Translators:
 # pudo <friedrich@pudo.org>, 2021
@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-28 10:51+0200\n"
+"POT-Creation-Date: 2023-06-23 10:41+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
-"Language-Team: German (https://www.transifex.com/aleph/teams/76591/de/)\n"
+"Language-Team: German (https://app.transifex.com/aleph/teams/76591/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.12.1\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -44,11 +44,11 @@ msgstr "Unbekannte Eigenschaft (%s): %s"
 msgid "Stub property (%s): %s"
 msgstr "Pseudofeld (%s): %s"
 
-#: followthemoney/schema.py:342
+#: followthemoney/schema.py:373
 msgid "Required"
 msgstr "Erforderlich"
 
-#: followthemoney/schema.py:346
+#: followthemoney/schema.py:377
 msgid "Entity validation failed"
 msgstr "Prüfung fehlgeschlagen"
 
@@ -93,8 +93,8 @@ msgstr "Postfach"
 
 #. Address.properties.postOfficeBox.description
 #: followthemoney/schema/Address.yaml
-msgid "A mailbox indentifier at the post office"
-msgstr "Eine Postfachnummer bei einer Filiale"
+msgid "A mailbox identifier at the post office"
+msgstr ""
 
 #. Address.properties.street.label
 #: followthemoney/schema/Address.yaml
@@ -170,6 +170,16 @@ msgstr "Längengrad"
 #: followthemoney/schema/Thing.yaml followthemoney/types/country.py:21
 msgid "Country"
 msgstr "Land"
+
+#. Address.properties.osmId.label
+#: followthemoney/schema/Address.yaml
+msgid "OpenStreetmap Place ID"
+msgstr ""
+
+#. Address.properties.googlePlaceId.label
+#: followthemoney/schema/Address.yaml
+msgid "Google Places ID"
+msgstr ""
 
 #. Airplane.label
 #: followthemoney/schema/Airplane.yaml
@@ -477,6 +487,16 @@ msgstr "Bank"
 msgid "Account type"
 msgstr "Kontenart"
 
+#. BankAccount.properties.openingDate.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Opening date"
+msgstr ""
+
+#. BankAccount.properties.closingDate.label
+#: followthemoney/schema/BankAccount.yaml
+msgid "Closing date"
+msgstr ""
+
 #. BankAccount.properties.balance.label
 #. CryptoWallet.properties.balance.label
 #: followthemoney/schema/BankAccount.yaml
@@ -547,6 +567,229 @@ msgstr "Empfangene Anrufe"
 msgid "Receiver's Number"
 msgstr "Empfängernummer"
 
+#. CallForTenders.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Call for tenders"
+msgstr ""
+
+#. CallForTenders.plural
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Calls for tenders"
+msgstr ""
+
+#. CallForTenders.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid ""
+"A public appeal issued by an authority, possibly on behalf of another, for "
+"buying a specific work, supply or service\n"
+msgstr ""
+
+#. CallForTenders.properties.callId.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "CfT unique id"
+msgstr ""
+
+#. CallForTenders.properties.title.label
+#. Contract.properties.title.label
+#. Document.properties.title.label
+#. Person.properties.title.label
+#: followthemoney/schema/CallForTenders.yaml
+#: followthemoney/schema/Contract.yaml followthemoney/schema/Document.yaml
+#: followthemoney/schema/Person.yaml
+msgid "Title"
+msgstr "TItel"
+
+#. CallForTenders.properties.authority.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Name of contracting authority"
+msgstr ""
+
+#. CallForTenders.properties.authority.reverse.label
+#. ContractAward.properties.callForTenders.label
+#: followthemoney/schema/CallForTenders.yaml
+#: followthemoney/schema/ContractAward.yaml
+msgid "Call For Tenders"
+msgstr ""
+
+#. CallForTenders.properties.authorityReferenceId.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Contracting authority reference ID"
+msgstr ""
+
+#. CallForTenders.properties.onBehalfOf.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Published on behalf of"
+msgstr ""
+
+#. CallForTenders.properties.onBehalfOf.reverse.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Delegated call for tenders"
+msgstr ""
+
+#. CallForTenders.properties.publicationDate.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Date of publication/invitation"
+msgstr ""
+
+#. CallForTenders.properties.evaluationMechanism.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Evaluation mechanism"
+msgstr ""
+
+#. CallForTenders.properties.procurementType.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Procurement type"
+msgstr ""
+
+#. CallForTenders.properties.directive.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Directive"
+msgstr ""
+
+#. CallForTenders.properties.procedure.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Procedure"
+msgstr ""
+
+#. CallForTenders.properties.involvesOutcome.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Call for tenders result"
+msgstr ""
+
+#. CallForTenders.properties.involvesOutcome.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid "The nature of the contractual agreement that will result from this CfT"
+msgstr ""
+
+#. CallForTenders.properties.cpvCode.label
+#. ContractAward.properties.cpvCode.label
+#: followthemoney/schema/CallForTenders.yaml
+#: followthemoney/schema/ContractAward.yaml
+msgid "CPV code"
+msgstr "CPV-Code"
+
+#. CallForTenders.properties.cpvCode.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Common Procurement Vocabulary (CPV)"
+msgstr ""
+
+#. CallForTenders.properties.reverseAuctionsIncluded.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Inclusion of e-Auctions"
+msgstr ""
+
+#. CallForTenders.properties.nutsCode.label
+#. ContractAward.properties.nutsCode.label
+#: followthemoney/schema/CallForTenders.yaml
+#: followthemoney/schema/ContractAward.yaml
+msgid "NUTS code"
+msgstr "NUTS-Code"
+
+#. CallForTenders.properties.nutsCode.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Nomenclature of Territorial Units for Statistics (NUTS)"
+msgstr ""
+
+#. CallForTenders.properties.relationToThreshold.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Above or below threshold"
+msgstr ""
+
+#. CallForTenders.properties.paymentOptions.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Payment options"
+msgstr ""
+
+#. CallForTenders.properties.submissionDeadline.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Submission deadline"
+msgstr ""
+
+#. CallForTenders.properties.clarificationDeadline.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "End of clarification period"
+msgstr ""
+
+#. CallForTenders.properties.awardedInLots.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Contract awarded in Lots"
+msgstr ""
+
+#. CallForTenders.properties.numberOfLots.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Number of lots"
+msgstr ""
+
+#. CallForTenders.properties.lotsNames.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Lots names"
+msgstr ""
+
+#. CallForTenders.properties.tendersForLots.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Tenders for lots"
+msgstr ""
+
+#. CallForTenders.properties.maximumNumberOfLots.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Maximum number of lots"
+msgstr ""
+
+#. CallForTenders.properties.euFunding.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "EU funding"
+msgstr ""
+
+#. CallForTenders.properties.multipleTenders.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Multiple tenders will be accepted"
+msgstr ""
+
+#. CallForTenders.properties.tedUrl.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "TED link for published notices"
+msgstr ""
+
+#. CallForTenders.properties.fallsUnderGPPScope.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Does this call fall under the scope of GPP?"
+msgstr ""
+
+#. CallForTenders.properties.fallsUnderGPPScope.description
+#: followthemoney/schema/CallForTenders.yaml
+msgid "European Green Public Procurement (GPP) or green purchasing."
+msgstr ""
+
+#. CallForTenders.properties.certificationCheck.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Certification check"
+msgstr ""
+
+#. CallForTenders.properties.awardingDate.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Date of awarding"
+msgstr ""
+
+#. CallForTenders.properties.contractNoticeDate.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Contract notice date"
+msgstr ""
+
+#. CallForTenders.properties.awardNoticeDate.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Award Notice Date"
+msgstr ""
+
+#. CallForTenders.properties.tenderers.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Tenderers"
+msgstr ""
+
+#. CallForTenders.properties.tenderers.reverse.label
+#: followthemoney/schema/CallForTenders.yaml
+msgid "Tender"
+msgstr ""
+
 #. Company.label
 #: followthemoney/schema/Company.yaml
 msgid "Company"
@@ -575,9 +818,11 @@ msgstr "Rechtsprechung"
 #. Company.properties.registrationNumber.label
 #. LegalEntity.properties.registrationNumber.label
 #. RealEstate.properties.registrationNumber.label
+#. Security.properties.registrationNumber.label
 #. Vehicle.properties.registrationNumber.label
 #: followthemoney/schema/Company.yaml followthemoney/schema/LegalEntity.yaml
-#: followthemoney/schema/RealEstate.yaml followthemoney/schema/Vehicle.yaml
+#: followthemoney/schema/RealEstate.yaml followthemoney/schema/Security.yaml
+#: followthemoney/schema/Vehicle.yaml
 msgid "Registration number"
 msgstr "Registrierungsnummer"
 
@@ -600,6 +845,13 @@ msgstr "Azerbaidschanische Steuernummer"
 #: followthemoney/schema/Company.yaml
 msgid "COATO / SOATO / OKATO"
 msgstr "COATO / SOATO / OKATO"
+
+#. Company.properties.coatoCode.description
+#: followthemoney/schema/Company.yaml
+msgid ""
+"Soviet classifier for territories, regions, districts, villages. Aka. SOATO "
+"and same as OKATO"
+msgstr ""
 
 #. Company.properties.irsCode.label
 #: followthemoney/schema/Company.yaml
@@ -740,8 +992,26 @@ msgstr "OKSM"
 
 #. Company.properties.oksmCode.description
 #: followthemoney/schema/Company.yaml
-msgid "Russian (ОКСМ) countries classifer"
-msgstr "Russische Landeskennzeichung (OKCM)"
+msgid "Russian (ОКСМ) countries classifier"
+msgstr ""
+
+#. Company.properties.isinCode.label
+#. Security.properties.isin.label
+#: followthemoney/schema/Company.yaml followthemoney/schema/Security.yaml
+msgid "ISIN"
+msgstr ""
+
+#. Company.properties.isinCode.description
+#. Security.properties.isin.description
+#: followthemoney/schema/Company.yaml followthemoney/schema/Security.yaml
+msgid "International Securities Identification Number"
+msgstr ""
+
+#. Company.properties.ticker.label
+#. Security.properties.ticker.label
+#: followthemoney/schema/Company.yaml followthemoney/schema/Security.yaml
+msgid "Stock ticker symbol"
+msgstr ""
 
 #. Contract.label
 #. ContractAward.properties.contract.label
@@ -770,11 +1040,6 @@ msgid ""
 msgstr ""
 "Ein Vertrag oder Teilvertrag einer öffentlichen Stelle der an mehrere "
 "Lieferanten vergeben sein kann (siehe Zuschlag)\n"
-
-#. Contract.properties.title.label
-#: followthemoney/schema/Contract.yaml
-msgid "Contract title"
-msgstr "Vertragstitel"
 
 #. Contract.properties.authority.label
 #: followthemoney/schema/Contract.yaml
@@ -929,13 +1194,20 @@ msgstr "Vergebene Verträge"
 msgid "Lots awarded"
 msgstr "Erteilte Zuschläge"
 
+#. ContractAward.properties.callForTenders.reverse.label
+#: followthemoney/schema/ContractAward.yaml
+msgid "Contract Awards"
+msgstr ""
+
 #. ContractAward.properties.lotNumber.label
 #: followthemoney/schema/ContractAward.yaml
 msgid "Lot number"
 msgstr "Zuschlagsnummer"
 
 #. ContractAward.properties.documentNumber.label
+#. Identification.properties.number.label
 #: followthemoney/schema/ContractAward.yaml
+#: followthemoney/schema/Identification.yaml
 msgid "Document number"
 msgstr "Dokumentennummer"
 
@@ -949,20 +1221,10 @@ msgstr "Dokumentenart"
 msgid "Decision reason"
 msgstr "Entscheidungsgrund"
 
-#. ContractAward.properties.cpvCode.label
-#: followthemoney/schema/ContractAward.yaml
-msgid "CPV code"
-msgstr "CPV-Code"
-
 #. ContractAward.properties.cpvCode.description
 #: followthemoney/schema/ContractAward.yaml
 msgid "Contract Procurement Vocabulary (what type of goods/services, EU)"
 msgstr "Gemeinsames Vergabevokabular (Art der Dienstleistung oder des Gutes)"
-
-#. ContractAward.properties.nutsCode.label
-#: followthemoney/schema/ContractAward.yaml
-msgid "NUTS code"
-msgstr "NUTS-Code"
 
 #. ContractAward.properties.nutsCode.description
 #: followthemoney/schema/ContractAward.yaml
@@ -1192,12 +1454,6 @@ msgstr "Prüfsumme"
 msgid "SHA1 hash of the data"
 msgstr "SHA1--Summe dieser Datei"
 
-#. Document.properties.title.label
-#. Person.properties.title.label
-#: followthemoney/schema/Document.yaml followthemoney/schema/Person.yaml
-msgid "Title"
-msgstr "TItel"
-
 #. Document.properties.author.description
 #: followthemoney/schema/Document.yaml
 msgid "The original author, not the uploader"
@@ -1329,6 +1585,16 @@ msgstr "Verarbeitungsstatus"
 #: followthemoney/schema/Document.yaml
 msgid "Processing error"
 msgstr "Verarbeitungsfehler"
+
+#. Document.properties.processingAgent.label
+#: followthemoney/schema/Document.yaml
+msgid "Name and version of the processing agent used to process the Document"
+msgstr ""
+
+#. Document.properties.processedAt.label
+#: followthemoney/schema/Document.yaml
+msgid "Date and time of the most recent ingestion of the Document"
+msgstr ""
 
 #. Documentation.label
 #: followthemoney/schema/Documentation.yml
@@ -1465,14 +1731,6 @@ msgstr ""
 "(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description"
 
 #. EconomicActivity.properties.goodsDescription.label
-#. Interval.properties.description.label
-#. Thing.properties.description.label
-#: followthemoney/schema/EconomicActivity.yaml
-#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
-msgid "Description"
-msgstr "Beschreibung"
-
-#. EconomicActivity.properties.goodsDescription.description
 #: followthemoney/schema/EconomicActivity.yaml
 msgid "Description of goods"
 msgstr "Beschreibung der Güter"
@@ -1933,14 +2191,6 @@ msgstr ""
 msgid "Identification holder"
 msgstr ""
 
-#. Identification.properties.number.label
-#. Passport.properties.passportNumber.label
-#. Person.properties.passportNumber.label
-#: followthemoney/schema/Identification.yaml
-#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
-msgid "Passport number"
-msgstr "Passnummer"
-
 #. Identification.properties.authority.label
 #. Sanction.properties.authority.label
 #: followthemoney/schema/Identification.yaml
@@ -2004,6 +2254,12 @@ msgstr "Enddatum"
 #: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
 msgid "Summary"
 msgstr "Zusammenfassung"
+
+#. Interval.properties.description.label
+#. Thing.properties.description.label
+#: followthemoney/schema/Interval.yaml followthemoney/schema/Thing.yaml
+msgid "Description"
+msgstr "Beschreibung"
 
 #. Interval.properties.recordId.label
 #: followthemoney/schema/Interval.yaml
@@ -2449,11 +2705,8 @@ msgstr "Organisationen"
 msgid ""
 "Any type of incorporated entity that cannot be owned by another (see "
 "Company). This might include charities, foundations or state-owned "
-"enterprises, depending on their  juristiction.\n"
+"enterprises, depending on their  jurisdiction.\n"
 msgstr ""
-"Juristische Personen, die nicht Eigentum einer anderen Person sein können "
-"(siehe Firma). Dies umfasst Stiftungen, Staatsunternehmen und Vereine, je "
-"nach ihrem Sitz.\n"
 
 #. Ownership.label
 #: followthemoney/schema/Ownership.yaml
@@ -2584,6 +2837,12 @@ msgstr "Reisepässe"
 #: followthemoney/schema/Passport.yaml
 msgid "An passport held by a person.\n"
 msgstr ""
+
+#. Passport.properties.passportNumber.label
+#. Person.properties.passportNumber.label
+#: followthemoney/schema/Passport.yaml followthemoney/schema/Person.yaml
+msgid "Passport number"
+msgstr "Passnummer"
 
 #. Passport.properties.surname.label
 #. TaxRoll.properties.surname.label
@@ -2826,9 +3085,10 @@ msgid "Posts held"
 msgstr ""
 
 #. Post.properties.wikidataId.label
-#: followthemoney/schema/Post.yaml
-msgid "Wikidata ID of the post"
-msgstr ""
+#. Thing.properties.wikidataId.label
+#: followthemoney/schema/Post.yaml followthemoney/schema/Thing.yaml
+msgid "Wikidata ID"
+msgstr "Wikidata-ID"
 
 #. Project.plural
 #. ProjectParticipant.properties.participant.reverse.label
@@ -3071,21 +3331,6 @@ msgstr ""
 msgid "A tradeable financial asset."
 msgstr ""
 
-#. Security.properties.isin.label
-#: followthemoney/schema/Security.yaml
-msgid "ISIN"
-msgstr ""
-
-#. Security.properties.isin.description
-#: followthemoney/schema/Security.yaml
-msgid "International Securities Identification Number"
-msgstr ""
-
-#. Security.properties.ticker.label
-#: followthemoney/schema/Security.yaml
-msgid "Ticker"
-msgstr ""
-
 #. Security.properties.issuer.label
 #: followthemoney/schema/Security.yaml
 msgid "Issuer"
@@ -3099,6 +3344,11 @@ msgstr ""
 #. Security.properties.issueDate.label
 #: followthemoney/schema/Security.yaml
 msgid "Date issued"
+msgstr ""
+
+#. Security.properties.maturityDate.label
+#: followthemoney/schema/Security.yaml
+msgid "Maturity date"
 msgstr ""
 
 #. Security.properties.collateral.label
@@ -3288,11 +3538,6 @@ msgstr "Umgangsname"
 msgid "Wikipedia Article"
 msgstr "Wikipedia-Artikel"
 
-#. Thing.properties.wikidataId.label
-#: followthemoney/schema/Thing.yaml
-msgid "Wikidata ID"
-msgstr "Wikidata-ID"
-
 #. Thing.properties.keywords.label
 #: followthemoney/schema/Thing.yaml
 msgid "Keywords"
@@ -3420,6 +3665,11 @@ msgstr "Benuztername"
 #: followthemoney/schema/UserAccount.yaml
 msgid "Password"
 msgstr "Passwort"
+
+#. UserAccount.properties.ipAddress.label
+#: followthemoney/schema/UserAccount.yaml
+msgid "IP address"
+msgstr ""
 
 #. Value.label
 #: followthemoney/schema/Value.yaml
@@ -3897,8 +4147,8 @@ msgid "Financial advisor"
 msgstr "Finanzberater"
 
 #: followthemoney/types/topic.py:49
-msgid "Politician"
-msgstr "Politiker"
+msgid "Political"
+msgstr ""
 
 #: followthemoney/types/topic.py:50
 msgid "Close Associate"
@@ -3961,10 +4211,14 @@ msgid "Sanctioned entity"
 msgstr "Sanktionierte Entität"
 
 #: followthemoney/types/topic.py:66
-msgid "Debarred entity"
+msgid "Sanction-linked entity"
 msgstr ""
 
 #: followthemoney/types/topic.py:67
+msgid "Debarred entity"
+msgstr ""
+
+#: followthemoney/types/topic.py:68
 msgid "Person of interest"
 msgstr "Zielperson"
 
