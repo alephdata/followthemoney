@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 # 
 # Translators:
-# pudo <friedrich@pudo.org>, 2021
+# pudo <friedrich@pudo.org>, 2022
 # jen occrp, 2023
 # 
 #, fuzzy
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-23 10:41+0200\n"
-"PO-Revision-Date: 2021-05-07 13:11+0000\n"
+"PO-Revision-Date: 2022-11-21 11:38+0000\n"
 "Last-Translator: jen occrp, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -95,7 +95,7 @@ msgstr "Абонентский ящик"
 #. Address.properties.postOfficeBox.description
 #: followthemoney/schema/Address.yaml
 msgid "A mailbox identifier at the post office"
-msgstr ""
+msgstr "Номер абонентского ящика в почтовом отделении"
 
 #. Address.properties.street.label
 #: followthemoney/schema/Address.yaml
@@ -865,6 +865,8 @@ msgid ""
 "Soviet classifier for territories, regions, districts, villages. Aka. SOATO "
 "and same as OKATO"
 msgstr ""
+"Система обозначения объектов административно-территориального деления (также"
+" ОКАТО)"
 
 #. Company.properties.irsCode.label
 #: followthemoney/schema/Company.yaml
@@ -1004,7 +1006,7 @@ msgstr "ОКСМ"
 #. Company.properties.oksmCode.description
 #: followthemoney/schema/Company.yaml
 msgid "Russian (ОКСМ) countries classifier"
-msgstr ""
+msgstr "Общероссийский классификатор стран мира"
 
 #. Company.properties.isinCode.label
 #. Security.properties.isin.label
@@ -1022,7 +1024,7 @@ msgstr "Международный идентификационный код ц�
 #. Security.properties.ticker.label
 #: followthemoney/schema/Company.yaml followthemoney/schema/Security.yaml
 msgid "Stock ticker symbol"
-msgstr ""
+msgstr "Тикер"
 
 #. Contract.label
 #. ContractAward.properties.contract.label
@@ -1604,12 +1606,12 @@ msgstr "Ошибка обработки"
 #. Document.properties.processingAgent.label
 #: followthemoney/schema/Document.yaml
 msgid "Name and version of the processing agent used to process the Document"
-msgstr ""
+msgstr "Имя и версия обработчика документа"
 
 #. Document.properties.processedAt.label
 #: followthemoney/schema/Document.yaml
 msgid "Date and time of the most recent ingestion of the Document"
-msgstr ""
+msgstr "Дата и время последней загрузки документа"
 
 #. Documentation.label
 #: followthemoney/schema/Documentation.yml
@@ -2729,6 +2731,9 @@ msgid ""
 "Company). This might include charities, foundations or state-owned "
 "enterprises, depending on their  jurisdiction.\n"
 msgstr ""
+"Любой тип юридического лица, который не может быть объектом собственности "
+"(см. Компания). Например, благотворительные организации, фонды или "
+"государственные предприятия, в зависимости от юрисдикции.\n"
 
 #. Ownership.label
 #: followthemoney/schema/Ownership.yaml
@@ -4173,7 +4178,7 @@ msgstr "Финансовый консультант"
 
 #: followthemoney/types/topic.py:49
 msgid "Political"
-msgstr ""
+msgstr "Политик"
 
 #: followthemoney/types/topic.py:50
 msgid "Close Associate"
@@ -4237,7 +4242,7 @@ msgstr "Объект санкций"
 
 #: followthemoney/types/topic.py:66
 msgid "Sanction-linked entity"
-msgstr ""
+msgstr "Подсанкционное физическое или юридическое лицо"
 
 #: followthemoney/types/topic.py:67
 msgid "Debarred entity"
