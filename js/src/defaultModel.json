@@ -69,7 +69,7 @@
           "type": "identifier"
         },
         "postOfficeBox": {
-          "description": "A mailbox indentifier at the post office",
+          "description": "A mailbox identifier at the post office",
           "label": "PO Box",
           "name": "postOfficeBox",
           "qname": "Address:postOfficeBox",
@@ -824,7 +824,7 @@
         },
         "cpvCode": {
           "description": "Common Procurement Vocabulary (CPV)",
-          "label": "CPV codes",
+          "label": "CPV code",
           "matchable": true,
           "name": "cpvCode",
           "qname": "CallForTenders:cpvCode",
@@ -888,7 +888,7 @@
         },
         "nutsCode": {
           "description": "Nomenclature of Territorial Units for Statistics (NUTS)",
-          "label": "NUTS codes",
+          "label": "NUTS code",
           "matchable": true,
           "name": "nutsCode",
           "qname": "CallForTenders:nutsCode",
@@ -1034,6 +1034,7 @@
           "type": "identifier"
         },
         "coatoCode": {
+          "description": "Soviet classifier for territories, regions, districts, villages. Aka. SOATO and same as OKATO",
           "label": "COATO / SOATO / OKATO",
           "name": "coatoCode",
           "qname": "Company:coatoCode",
@@ -1119,7 +1120,7 @@
           "type": "string"
         },
         "oksmCode": {
-          "description": "Russian (\u041e\u041a\u0421\u041c) countries classifer",
+          "description": "Russian (\u041e\u041a\u0421\u041c) countries classifier",
           "label": "OKSM",
           "name": "oksmCode",
           "qname": "Company:oksmCode",
@@ -1310,7 +1311,7 @@
           "type": "string"
         },
         "title": {
-          "label": "Contract title",
+          "label": "Title",
           "name": "title",
           "qname": "Contract:title",
           "type": "string"
@@ -1372,7 +1373,7 @@
           "type": "string"
         },
         "callForTenders": {
-          "label": "Call For Tender",
+          "label": "Call For Tenders",
           "matchable": true,
           "name": "callForTenders",
           "qname": "ContractAward:callForTenders",
@@ -1392,9 +1393,10 @@
         "cpvCode": {
           "description": "Contract Procurement Vocabulary (what type of goods/services, EU)",
           "label": "CPV code",
+          "matchable": true,
           "name": "cpvCode",
           "qname": "ContractAward:cpvCode",
-          "type": "string"
+          "type": "identifier"
         },
         "decisionReason": {
           "label": "Decision reason",
@@ -1423,9 +1425,10 @@
         "nutsCode": {
           "description": "Nomencalture of Territorial Units for Statistics (NUTS)",
           "label": "NUTS code",
+          "matchable": true,
           "name": "nutsCode",
           "qname": "ContractAward:nutsCode",
-          "type": "string"
+          "type": "identifier"
         },
         "supplier": {
           "description": "The entity the contract was awarded to",
@@ -1930,13 +1933,13 @@
           "type": "entity"
         },
         "processedAt": {
+          "hidden": true,
           "label": "Date and time of the most recent ingestion of the Document",
           "name": "processedAt",
           "qname": "Document:processedAt",
           "type": "date"
         },
         "processingAgent": {
-          "hidden": true,
           "label": "Name and version of the processing agent used to process the Document",
           "name": "processingAgent",
           "qname": "Document:processingAgent",
@@ -3872,7 +3875,7 @@
       "caption": [
         "name"
       ],
-      "description": "Any type of incorporated entity that cannot be owned by another (see Company). This might include charities, foundations or state-owned enterprises, depending on their  juristiction.\n",
+      "description": "Any type of incorporated entity that cannot be owned by another (see Company). This might include charities, foundations or state-owned enterprises, depending on their  jurisdiction.\n",
       "extends": [
         "LegalEntity"
       ],
@@ -4644,7 +4647,7 @@
         },
         "wikidataId": {
           "hidden": true,
-          "label": "Wikidata ID of the post",
+          "label": "Wikidata ID",
           "matchable": true,
           "name": "wikidataId",
           "qname": "Post:wikidataId",
@@ -5145,7 +5148,7 @@
           "type": "identifier"
         },
         "ticker": {
-          "label": "Ticker",
+          "label": "Stock ticker symbol",
           "matchable": true,
           "name": "ticker",
           "qname": "Security:ticker",
@@ -6530,7 +6533,7 @@
       "plural": "HTMLs"
     },
     "iban": {
-      "description": "An international bank account number, as defined in ISO 13616. IBANs are\n    managed by SWIFT used in the European SEPA payment system.\n\n    A noteable aspect of IBANs is that they share a country prefix and validation\n    mechanism, but the specific length of an IBAN is dependent on the country\n    code defined in the first two characters: `NO8330001234567` and\n    `CY21002001950000357001234567` are both valid values.",
+      "description": "An international bank account number, as defined in ISO 13616. IBANs are\n    managed by SWIFT used in the European SEPA payment system.\n\n    A notable aspect of IBANs is that they share a country prefix and validation\n    mechanism, but the specific length of an IBAN is dependent on the country\n    code defined in the first two characters: `NO8330001234567` and\n    `CY21002001950000357001234567` are both valid values.",
       "group": "ibans",
       "label": "IBAN",
       "matchable": true,
@@ -6629,7 +6632,7 @@
       }
     },
     "mimetype": {
-      "description": "A MIME media type are a specification of a content type on a network.\n    Each MIME type is assinged by IANA and consists of two parts: the type\n    and sub-type. Common examples are: `text/plain`, `application/json` and\n    `application/pdf`.\n\n    MIME type properties do not contain parameters as used in HTTP headers,\n    like `charset=UTF-8`.",
+      "description": "A MIME media type are a specification of a content type on a network.\n    Each MIME type is assigned by IANA and consists of two parts: the type\n    and sub-type. Common examples are: `text/plain`, `application/json` and\n    `application/pdf`.\n\n    MIME type properties do not contain parameters as used in HTTP headers,\n    like `charset=UTF-8`.",
       "group": "mimetypes",
       "label": "MIME-Type",
       "plural": "MIME-Types"
@@ -6709,7 +6712,7 @@
         "role.judge": "Judge",
         "role.lawyer": "Lawyer",
         "role.oligarch": "Oligarch",
-        "role.pep": "Politican",
+        "role.pep": "Political",
         "role.rca": "Close Associate",
         "role.spy": "Spy",
         "sanction": "Sanctioned entity",
