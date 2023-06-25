@@ -8,6 +8,7 @@ from followthemoney.util import gettext, get_entity_id
 
 if TYPE_CHECKING:
     from followthemoney.schema import Schema
+    from followthemoney.model import Model
 
 
 class ReverseSpec(TypedDict, total=False):
@@ -66,8 +67,6 @@ class Property:
     RESERVED = ["id", "caption", "schema", "schemata"]
 
     def __init__(self, schema: "Schema", name: str, data: PropertySpec) -> None:
-        self.model = schema.model
-
         #: The schema which the property is defined for. This is always the
         #: most abstract schema that has this property, not the possible
         #: child schemata that inherit it.
@@ -124,19 +123,19 @@ class Property:
         #: RDF term for this property (i.e. the predicate URI).
         self.uri = URIRef(cast(str, data.get("rdf", NS[self.qname])))
 
-    def generate(self) -> None:
+    def generate(self, model: "Model") -> None:
         """Setup method used when loading the model in order to build out the reverse
         links of the property."""
-        self.model.properties.add(self)
+        model.properties.add(self)
 
         if self.type == registry.entity:
             if self.range is None and self._range is not None:
-                self.range = self.model.get(self._range)
+                self.range = model.get(self._range)
 
             if self.reverse is None and self.range and self._reverse:
                 if not is_mapping(self._reverse):
                     raise InvalidModel("Invalid reverse: %s" % self)
-                self.reverse = self.range._add_reverse(self._reverse, self)
+                self.reverse = self.range._add_reverse(model, self._reverse, self)
 
     @property
     def label(self) -> str:

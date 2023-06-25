@@ -200,14 +200,14 @@ class Schema:
         for name, prop in data.get("properties", {}).items():
             self.properties[name] = Property(self, name, prop)
 
-    def generate(self) -> None:
+    def generate(self, model: "Model") -> None:
         """While loading the schema, this function will validate and
         load the hierarchy, properties, and flags of the definition."""
         for extends in self._extends:
-            parent = self.model.get(extends)
+            parent = model.get(extends)
             if parent is None:
                 raise InvalidData("Invalid extends: %r" % extends)
-            parent.generate()
+            parent.generate(model)
 
             for name, prop in parent.properties.items():
                 if name not in self.properties:
@@ -223,7 +223,7 @@ class Schema:
             self.temporal_end |= parent.temporal_end
 
         for prop in list(self.properties.values()):
-            prop.generate()
+            prop.generate(model)
 
         for featured in self.featured:
             if self.get(featured) is None:
@@ -249,7 +249,9 @@ class Schema:
                 msg = "Missing edge target: %s" % self.edge_target
                 raise InvalidModel(msg)
 
-    def _add_reverse(self, data: ReverseSpec, other: Property) -> Property:
+    def _add_reverse(
+        self, model: "Model", data: ReverseSpec, other: Property
+    ) -> Property:
         name = data.get("name")
         if name is None:
             raise InvalidModel("Unnamed reverse: %s" % other)
@@ -265,7 +267,7 @@ class Schema:
             }
             prop = Property(self, name, spec)
             prop.stub = True
-            prop.generate()
+            prop.generate(model)
             self.properties[name] = prop
         return prop
 
@@ -351,7 +353,9 @@ class Schema:
     def is_a(self, other: Union[str, "Schema"]) -> bool:
         """Check if the schema or one of its parents is the same as the given
         candidate ``other``."""
-        return self.model.get(other) in self.schemata
+        if not isinstance(other, str):
+            other = other.name
+        return other in self.names
 
     def get(self, name: Optional[str]) -> Optional[Property]:
         """Retrieve a property defined for this schema by its name."""
