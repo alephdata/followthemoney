@@ -1933,14 +1933,16 @@
           "type": "entity"
         },
         "processedAt": {
+          "description": "Date and time of the most recent ingestion of the Document",
           "hidden": true,
-          "label": "Date and time of the most recent ingestion of the Document",
+          "label": "Processed at",
           "name": "processedAt",
           "qname": "Document:processedAt",
           "type": "date"
         },
         "processingAgent": {
-          "label": "Name and version of the processing agent used to process the Document",
+          "description": "Name and version of the processing agent used to process the Document",
+          "label": "Processing agent",
           "name": "processingAgent",
           "qname": "Document:processingAgent",
           "type": "string"
@@ -5946,6 +5948,13 @@
           "stub": true,
           "type": "entity"
         },
+        "deregistrationDate": {
+          "label": "De-registration Date",
+          "matchable": true,
+          "name": "deregistrationDate",
+          "qname": "Vehicle:deregistrationDate",
+          "type": "date"
+        },
         "model": {
           "label": "Model",
           "name": "model",
@@ -6008,7 +6017,9 @@
         "Vehicle"
       ],
       "temporalExtent": {
-        "end": [],
+        "end": [
+          "deregistrationDate"
+        ],
         "start": [
           "buildDate",
           "registrationDate"
