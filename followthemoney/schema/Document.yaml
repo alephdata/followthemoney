@@ -112,6 +112,7 @@ Document:
       label: "Processing error"
       hidden: true
     processingAgent:
+      label: "Processing agent"
       label: "Name and version of the processing agent used to process the Document"
       type: string
     processedAt:
