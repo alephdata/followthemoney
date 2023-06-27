@@ -112,10 +112,12 @@ Document:
       label: "Processing error"
       hidden: true
     processingAgent:
-      label: "Name and version of the processing agent used to process the Document"
+      label: "Processing agent"
+      description: "Name and version of the processing agent used to process the Document"
       type: string
     processedAt:
-      label: "Date and time of the most recent ingestion of the Document"
+      label: "Processed at"
+      description: "Date and time of the most recent ingestion of the Document"
       type: date
       matchable: false
       hidden: true
