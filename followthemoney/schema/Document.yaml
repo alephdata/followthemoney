@@ -113,10 +113,11 @@ Document:
       hidden: true
     processingAgent:
       label: "Processing agent"
-      label: "Name and version of the processing agent used to process the Document"
+      description: "Name and version of the processing agent used to process the Document"
       type: string
     processedAt:
-      label: "Date and time of the most recent ingestion of the Document"
+      label: "Processed at"
+      description: "Date and time of the most recent ingestion of the Document"
       type: date
       matchable: false
       hidden: true
