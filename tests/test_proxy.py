@@ -315,3 +315,15 @@ class ProxyTestCase(TestCase):
         assert proxy.get("name") == ["ACME, Inc."]
         proxy.add("name", "ACME, Inc.")
         assert proxy.get("name") == ["ACME, Inc."]
+
+    def test_value_deduplication_cleaned(self):
+        proxy = EntityProxy.from_dict(model, {
+            "id": "acme-inc",
+            "schema": "Company",
+            "properties": {
+                "name": ["ACME, Inc.", "ACME, Inc."],
+            },
+        }, cleaned=True)
+
+        assert proxy.get("name") == ["ACME, Inc."]
+        
