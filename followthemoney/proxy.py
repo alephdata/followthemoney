@@ -88,7 +88,7 @@ class EntityProxy(object):
             if cleaned:
                 # This does not call `self.add` as it might be called millions of times
                 # in some context and we want to avoid the performance overhead of doing so.
-                seen = set()
+                seen: Set[str] = set()
                 seen_add = seen.add
                 unique_values = [v for v in values if not (v in seen or seen_add(v))]
                 self._properties[key] = unique_values
