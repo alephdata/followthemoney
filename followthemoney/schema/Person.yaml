@@ -40,7 +40,7 @@ Person:
     lastName:
       label: Last name
       rdf: http://xmlns.com/foaf/0.1/lastName
-    suffix:
+    nameSuffix:
       label: Name suffix
     birthDate:
       label: Birth date
