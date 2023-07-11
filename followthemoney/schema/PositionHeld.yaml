@@ -8,6 +8,9 @@ PositionHeld:
   featured:
     - holder
     - position
+  required:
+    - holder
+    - position
   properties:
     holder:
       label: "Holder"
@@ -19,8 +22,11 @@ PositionHeld:
     position:
       label: "Position"
       reverse:
-        name: occupations
+        name: positions_held
         label: "Occupations of this position"
       type: entity
       range: Position
+    occupancy_status:
+      label: "Occupancy status"
+      type: occupancy_status
     
