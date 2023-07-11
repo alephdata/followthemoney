@@ -1,0 +1,26 @@
+PositionHeld:
+  label: "Position held"
+  plural: "Positions held"
+  extends: Interval
+  matchable: false
+  description: >
+    The occupation of a position by a person at a specific point in time.
+  featured:
+    - holder
+    - position
+  properties:
+    holder:
+      label: "Holder"
+      reverse:
+        name: positionsHeld
+        label: "Positions held"
+      type: entity
+      range: Person
+    position:
+      label: "Position"
+      reverse:
+        name: occupations
+        label: "Occupations of this position"
+      type: entity
+      range: Position
+    

@@ -1,0 +1,46 @@
+Position:
+  label: "Position"
+  plural: "Positions"
+  matchable: false
+  # cf. https://www.popoloproject.com/specs/post.html
+  description: >
+    A post, role or position within an organization or body.
+    This describes a position one or more people may occupy
+    and not the occupation of the post by a specific individual at a 
+    specific point in time.
+  featured:
+    - organization
+    - name
+    - category
+  caption:
+    - name
+  properties:
+    organization:
+      label: "Organization"
+      type: entity
+      reverse:
+        name: positions
+        label: Positions
+      range: Organization
+    name:
+      label: "Name"
+      type: string
+    category:
+      label: "Category"
+      type: string
+    description:
+      label: "Description"
+      type: string
+    Summary:
+      label: "Summary"
+      type: text
+    country:
+      label: Country (Mandating and service)
+      type: country
+    jurisdiction:
+      label: Country or region of service
+      type: string
+    wikidataId:
+      label: "Wikidata ID"
+      hidden: true
+      type: identifier
