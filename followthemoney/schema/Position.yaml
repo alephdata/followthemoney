@@ -8,11 +8,17 @@ Position:
     This describes a position one or more people may occupy
     and not the occupation of the post by a specific individual at a 
     specific point in time.
+
+    - `jurisdiction` is not the constituency of a national member of
+      parliament - their legislative jurisdiction - the power or effect
+      of their position - is nationwide.
   featured:
-    - organization
     - name
+    - organization
     - category
   caption:
+    - name
+  required:
     - name
   properties:
     organization:
@@ -24,21 +30,24 @@ Position:
       range: Organization
     name:
       label: "Name"
-      type: string
+      type: name
     category:
       label: "Category"
       type: string
     description:
       label: "Description"
-      type: string
-    Summary:
+      type: text
+    summary:
       label: "Summary"
       type: text
-    country:
-      label: Country (Mandating and service)
-      type: country
+    sourceUrl:
+      label: "Source link"
+      type: url
     jurisdiction:
-      label: Country or region of service
+      label: Jurisdiction
+      type: country
+    jurisdiction_region:
+      label: Subnational jurisdiction name or code
       type: string
     wikidataId:
       label: "Wikidata ID"
