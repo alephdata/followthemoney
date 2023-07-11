@@ -37,6 +37,12 @@ Position:
     description:
       label: "Description"
       type: text
+    inceptionDate:
+      label: Inception date
+      type: date
+    dissolutionDate:
+      label: Dissolution date
+      type: date
     summary:
       label: "Summary"
       type: text
