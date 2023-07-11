@@ -23,6 +23,7 @@ class PropertyDict(TypedDict, total=False):
     type: Optional[str]
     hidden: Optional[bool]
     matchable: Optional[bool]
+    deprecated: Optional[bool]
     # stub: Optional[bool]
     rdf: Optional[str]
     range: Optional[str]
@@ -55,6 +56,7 @@ class Property:
         "hidden",
         "type",
         "matchable",
+        "deprecated",
         "_range",
         "range",
         "stub",
@@ -85,8 +87,11 @@ class Property:
         self._label = data.get("label", name)
         self._description = data.get("description")
 
+        #: This property is deprecated and should not be used.
+        self.deprecated = as_bool(data.get("deprecated", False))
+
         #: This property should not be shown or mentioned in the user interface.
-        self.hidden = as_bool(data.get("hidden", False))
+        self.hidden = as_bool(data.get("hidden", self.deprecated))
 
         type_ = data.get("type", "string")
         if type_ is None or type_ not in registry.named:
