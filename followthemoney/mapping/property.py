@@ -1,5 +1,6 @@
 import re
 from copy import deepcopy
+from warnings import warn
 from normality import stringify
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, cast
 from banal import keys_values, as_bool
@@ -63,6 +64,13 @@ class PropertyMapping(object):
     def bind(self) -> None:
         if self.prop.stub:
             raise InvalidMapping("Property for [%r] is a stub" % self.prop)
+
+        if self.prop.deprecated:
+            warn(
+                "Mapping uses a deprecated property: %r" % self.prop,
+                DeprecationWarning,
+                stacklevel=2,
+            )
 
         if self.entity is None:
             return

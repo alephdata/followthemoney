@@ -3,6 +3,7 @@ Post:
   plural: "Posts"
   extends: Interest
   matchable: false
+  deprecated: true
   # cf. https://www.popoloproject.com/specs/post.html
   # But they're using it to define the post as an abstract thing, this
   # describes the interval in which it is held by an individual.

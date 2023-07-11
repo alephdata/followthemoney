@@ -1,4 +1,5 @@
 from hashlib import sha1
+from warnings import warn
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Set
 from banal import keys_values
 from normality import stringify
@@ -57,6 +58,12 @@ class EntityMapping(object):
         schema = model.get(schema_name)
         if schema is None:
             raise InvalidMapping("Invalid schema: %s" % schema_name)
+        if schema.deprecated:
+            warn(
+                "Mapping uses a deprecated schema: %r" % schema,
+                DeprecationWarning,
+                stacklevel=2,
+            )
         self.schema = schema
 
         self.refs = set(self.keys)
