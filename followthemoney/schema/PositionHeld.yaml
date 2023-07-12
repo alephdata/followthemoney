@@ -4,29 +4,29 @@ PositionHeld:
   extends: Interval
   matchable: false
   description: >
-    The occupation of a position by a person at a specific point in time.
+    The occupation of a position by a person for a specific period of time.
   featured:
     - holder
-    - position
+    - post
   required:
     - holder
-    - position
+    - post
   properties:
     holder:
       label: "Holder"
       reverse:
         name: positionsHeld
-        label: "Positions held"
+        label: "Positions"
       type: entity
       range: Person
-    position:
-      label: "Position"
+    post:
+      label: "Position held"
       reverse:
-        name: positions_held
-        label: "Occupations of this position"
+        name: positionsHeld
+        label: "Positions held"
       type: entity
       range: Position
-    occupancy_status:
+    occupancyStatus:
       label: "Occupancy status"
       type: occupancy_status
     

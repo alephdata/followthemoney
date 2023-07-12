@@ -49,12 +49,15 @@ Position:
     sourceUrl:
       label: "Source link"
       type: url
-    jurisdiction:
-      label: Jurisdiction
+    country:
+      label: Country
       type: country
-    jurisdiction_region:
+    subnationalArea:
       label: Subnational jurisdiction name or code
       type: string
+    numberOfSeats:
+      label: Total number of seats
+      type: number
     wikidataId:
       label: "Wikidata ID"
       hidden: true
