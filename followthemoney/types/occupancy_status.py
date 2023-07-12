@@ -16,10 +16,8 @@ class OccupancyStatus(EnumType):
     ACTIVE = "active"
     ENDED = "ended"
 
-    LOOKUP = {}
-
-    name = "occupancy_status"
-    group = "occupancy_statuses"
+    name = "occupancyStatus"
+    group = "occupancyStatuses"
     label = _("Occupancy status")
     plural = _("Occupancy statuses")
     matchable = False
@@ -38,10 +36,9 @@ class OccupancyStatus(EnumType):
         proxy: Optional["EntityProxy"] = None,
     ) -> Optional[str]:
         code = text.lower().strip()
-        code = self.LOOKUP.get(code, code)
         if code not in self.codes:
             return None
         return code
 
     def rdf(self, value: str) -> Identifier:
-        return URIRef(f"occupancy_status:{value}")
+        return URIRef(f"occupancyStatus:{value}")

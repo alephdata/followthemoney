@@ -28,5 +28,5 @@ PositionHeld:
       range: Position
     occupancyStatus:
       label: "Occupancy status"
-      type: occupancy_status
+      type: occupancyStatus
     
