@@ -4406,6 +4406,13 @@
           "stub": true,
           "type": "entity"
         },
+        "birthCountry": {
+          "label": "Country of birth",
+          "matchable": true,
+          "name": "birthCountry",
+          "qname": "Person:birthCountry",
+          "type": "country"
+        },
         "birthDate": {
           "label": "Birth date",
           "matchable": true,
@@ -4512,6 +4519,12 @@
           "label": "Matronymic",
           "name": "motherName",
           "qname": "Person:motherName",
+          "type": "string"
+        },
+        "nameSuffix": {
+          "label": "Name suffix",
+          "name": "nameSuffix",
+          "qname": "Person:nameSuffix",
           "type": "string"
         },
         "nationality": {
