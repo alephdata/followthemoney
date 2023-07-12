@@ -15,15 +15,15 @@ PositionHeld:
     holder:
       label: "Holder"
       reverse:
-        name: positionsHeld
-        label: "Positions"
+        name: positionsOccupied
+        label: "Positions occupied"
       type: entity
       range: Person
     post:
-      label: "Position held"
+      label: "Position occupied"
       reverse:
-        name: positionsHeld
-        label: "Positions held"
+        name: occupancies
+        label: "Occupancies"
       type: entity
       range: Position
     occupancyStatus:
