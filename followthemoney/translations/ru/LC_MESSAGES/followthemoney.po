@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-06-23 10:41+0200\n"
+"POT-Creation-Date: 2023-06-27 15:36+0200\n"
 "PO-Revision-Date: 2022-11-21 11:38+0000\n"
 "Last-Translator: jen occrp, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/aleph/teams/76591/ru/)\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: followthemoney/property.py:166
+#: followthemoney/property.py:165
 msgid "Property cannot be written"
 msgstr "Не удалось сохранить свойство"
 
-#: followthemoney/property.py:169
+#: followthemoney/property.py:168
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
@@ -45,11 +45,11 @@ msgstr "Неизвестный параметр (1%s): 1%s"
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/schema.py:373
+#: followthemoney/schema.py:377
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:377
+#: followthemoney/schema.py:381
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
@@ -1605,10 +1605,20 @@ msgstr "Ошибка обработки"
 
 #. Document.properties.processingAgent.label
 #: followthemoney/schema/Document.yaml
+msgid "Processing agent"
+msgstr "Документ обработан"
+
+#. Document.properties.processingAgent.description
+#: followthemoney/schema/Document.yaml
 msgid "Name and version of the processing agent used to process the Document"
 msgstr "Имя и версия обработчика документа"
 
 #. Document.properties.processedAt.label
+#: followthemoney/schema/Document.yaml
+msgid "Processed at"
+msgstr "Дата обработки документа"
+
+#. Document.properties.processedAt.description
 #: followthemoney/schema/Document.yaml
 msgid "Date and time of the most recent ingestion of the Document"
 msgstr "Дата и время последней загрузки документа"
@@ -3765,6 +3775,11 @@ msgstr "Дата постройки"
 #: followthemoney/schema/Vehicle.yaml
 msgid "Registration Date"
 msgstr "Дата регистрации"
+
+#. Vehicle.properties.deregistrationDate.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "De-registration Date"
+msgstr "Дата снятия с регистрации"
 
 #. Vessel.label
 #: followthemoney/schema/Vessel.yaml
