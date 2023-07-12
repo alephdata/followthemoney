@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-06-27 15:36+0200\n"
+"POT-Creation-Date: 2023-07-12 18:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,12 +29,12 @@ msgstr ""
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:115
+#: followthemoney/proxy.py:119
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:188
+#: followthemoney/proxy.py:191
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr ""
@@ -2986,6 +2986,16 @@ msgstr ""
 #. Person.properties.lastName.label
 #: followthemoney/schema/Person.yaml
 msgid "Last name"
+msgstr ""
+
+#. Person.properties.nameSuffix.label
+#: followthemoney/schema/Person.yaml
+msgid "Name suffix"
+msgstr ""
+
+#. Person.properties.birthCountry.label
+#: followthemoney/schema/Person.yaml
+msgid "Country of birth"
 msgstr ""
 
 #. Person.properties.deathDate.label
