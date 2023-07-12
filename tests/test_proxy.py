@@ -273,3 +273,57 @@ class ProxyTestCase(TestCase):
         assert proxy.id == proxy2.id
         assert hash(proxy) == hash(proxy2)
         assert proxy2.schema.name == ENTITY["schema"]
+
+    def test_value_order(self):
+        one = EntityProxy.from_dict(model, {
+            "id": "one",
+            "schema": "Email",
+            "properties": {
+                "bodyHtml": ["Hello", "World"],
+            },
+        })
+
+        two = EntityProxy.from_dict(model, {
+            "id": "one",
+            "schema": "Email",
+            "properties": {
+                "bodyHtml": ["World", "Hello"],
+            },
+        })
+
+        assert one.get("bodyHtml") == ["Hello", "World"]
+        assert two.get("bodyHtml") == ["World", "Hello"]
+
+    def test_value_deduplication(self):
+        proxy = EntityProxy.from_dict(model, {
+            "id": "acme-inc",
+            "schema": "Company",
+            "properties": {
+                "name": ["ACME, Inc.", "ACME, Inc."],
+            },
+        })
+
+        assert proxy.get("name") == ["ACME, Inc."]
+
+        proxy = EntityProxy.from_dict(model, {
+            "id": "acme-inc",
+            "schema": "Company",
+        })
+
+        assert proxy.get("name") == []
+        proxy.add("name", "ACME, Inc.")
+        assert proxy.get("name") == ["ACME, Inc."]
+        proxy.add("name", "ACME, Inc.")
+        assert proxy.get("name") == ["ACME, Inc."]
+
+    def test_value_deduplication_cleaned(self):
+        proxy = EntityProxy.from_dict(model, {
+            "id": "acme-inc",
+            "schema": "Company",
+            "properties": {
+                "name": ["ACME, Inc.", "ACME, Inc."],
+            },
+        }, cleaned=True)
+
+        assert proxy.get("name") == ["ACME, Inc."]
+        
