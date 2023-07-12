@@ -40,12 +40,17 @@ Person:
     lastName:
       label: Last name
       rdf: http://xmlns.com/foaf/0.1/lastName
+    nameSuffix:
+      label: Name suffix
     birthDate:
       label: Birth date
       type: date
       rdf: http://xmlns.com/foaf/0.1/birthday
     birthPlace:
       label: Place of birth
+    birthCountry:
+      label: Country of birth
+      type: country
     deathDate:
       label: Death date
       type: date
