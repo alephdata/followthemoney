@@ -50,6 +50,7 @@ Person:
       label: Place of birth
     birthCountry:
       label: Country of birth
+      type: country
     deathDate:
       label: Death date
       type: date
