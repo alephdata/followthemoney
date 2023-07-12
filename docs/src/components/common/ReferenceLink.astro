@@ -7,13 +7,9 @@ const namespace = ref.split('.');
 const className = namespace.pop();
 const moduleName = namespace.pop();
 
-const url = path.join(
-  basePath,
-  'reference/python',
-  ...namespace,
-  `${moduleName}.html`,
-  `#${className}`
-);
+const url =
+  path.join(basePath, 'reference/python', ...namespace, `${moduleName}.html`) +
+  `#${className}`;
 ---
 
 <a href={url}><code>{className}</code></a>
