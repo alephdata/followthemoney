@@ -1,6 +1,6 @@
-PositionHeld:
-  label: "Position held"
-  plural: "Positions held"
+Occupancy:
+  label: "Occupancy"
+  plural: "Occupancies"
   extends: Interval
   matchable: false
   description: >
@@ -26,7 +26,7 @@ PositionHeld:
         label: "Occupancies"
       type: entity
       range: Position
-    occupancyStatus:
-      label: "Occupancy status"
-      type: occupancyStatus
+    status:
+      label: "Status"
+      type: string
     

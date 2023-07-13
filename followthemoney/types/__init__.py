@@ -21,7 +21,6 @@ from followthemoney.types.string import HTMLType
 from followthemoney.types.string import StringType
 from followthemoney.types.number import NumberType
 from followthemoney.types.common import PropertyType
-from followthemoney.types.occupancy_status import OccupancyStatus
 
 
 registry = Registry()
@@ -46,4 +45,3 @@ registry.add(TextType)
 registry.add(HTMLType)
 registry.add(StringType)
 registry.add(NumberType)
-registry.add(OccupancyStatus)
