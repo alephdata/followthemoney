@@ -9,9 +9,10 @@ Position:
     and not the occupation of the post by a specific individual at a 
     specific point in time.
 
-    - `jurisdiction` is not the constituency of a national member of
-      parliament - their legislative jurisdiction - the power or effect
-      of their position - is nationwide.
+    'subnationalArea' should be used to further restrict the scope of the
+    position. It should not simply represent some regional aspect of the
+    role - e.g. the constituency of a national member of parliament - when
+    their their legislative jurisdiction is nationwide.
   featured:
     - name
     - organization
