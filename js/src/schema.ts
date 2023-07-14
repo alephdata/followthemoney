@@ -26,6 +26,7 @@ export interface ISchemaDatum {
   hidden?: boolean
   matchable?: boolean
   generated?: boolean
+  deprecated?: boolean
   description?: string
   edge?: IEdgeSpecification
   temporalExtent?: ITemporalExtentSpecification
@@ -49,6 +50,7 @@ export class Schema {
   public readonly hidden: boolean
   public readonly matchable: boolean
   public readonly generated: boolean
+  public readonly deprecated: boolean
   public readonly description: string | null
   public readonly featured: string[]
   public readonly schemata: string[]
@@ -75,6 +77,7 @@ export class Schema {
     this.hidden = !!config.hidden
     this.matchable = !!config.matchable
     this.generated = !!config.generated
+    this.deprecated = !!config.deprecated
     this.description = config.description || null
     this.isEdge = !!config.edge
     this.edge = config.edge

@@ -10,6 +10,7 @@ export interface IPropertyDatum {
   stub?: boolean
   hidden?: boolean
   matchable?: boolean
+  deprecated?: boolean
   range?: string | null
   reverse?: string
 }
@@ -26,6 +27,7 @@ export class Property {
   public readonly type: PropertyType
   public readonly hidden: boolean
   public readonly matchable: boolean
+  public readonly deprecated: boolean
   public readonly description: string | null
   public readonly stub: boolean
   public readonly hasReverse: boolean
@@ -42,6 +44,7 @@ export class Property {
     this.description = property.description || null
     this.stub = !!property.stub
     this.matchable = !!property.matchable
+    this.deprecated = !!property.deprecated
     this.range = property.range || null
     this.reverse = property.reverse || null
     this.type = schema.model.getType(property.type)
