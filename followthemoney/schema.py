@@ -431,6 +431,8 @@ class Schema:
             data["generated"] = True
         if self.matchable:
             data["matchable"] = True
+        if self.deprecated:
+            data["deprecated"] = True
         properties: Dict[str, PropertyToDict] = {}
         for name, prop in self.properties.items():
             if prop.schema == self:

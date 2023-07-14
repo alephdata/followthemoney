@@ -197,6 +197,8 @@ class Property:
             data["matchable"] = True
         if self.hidden:
             data["hidden"] = True
+        if self.deprecated:
+            data["deprecated"] = True
         if self.range is not None:
             data["range"] = self.range.name
         if self.reverse is not None:
