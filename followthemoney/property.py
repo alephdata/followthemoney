@@ -91,7 +91,7 @@ class Property:
         self.deprecated = as_bool(data.get("deprecated", False))
 
         #: This property should not be shown or mentioned in the user interface.
-        self.hidden = as_bool(data.get("hidden", self.deprecated))
+        self.hidden = as_bool(data.get("hidden"))
 
         type_ = data.get("type", "string")
         if type_ is None or type_ not in registry.named:
