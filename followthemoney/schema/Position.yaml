@@ -1,6 +1,7 @@
 Position:
   label: "Position"
   plural: "Positions"
+  extends: Thing
   matchable: false
   # cf. https://www.popoloproject.com/specs/post.html
   description: >
@@ -12,7 +13,7 @@ Position:
     'subnationalArea' should be used to further restrict the scope of the
     position. It should not simply represent some regional aspect of the
     role - e.g. the constituency of a national member of parliament - when
-    their their legislative jurisdiction is nationwide.
+    their legislative jurisdiction is nationwide.
   featured:
     - name
     - organization
@@ -33,34 +34,15 @@ Position:
         name: positions
         label: Positions
       range: Organization
-    name:
-      label: "Name"
-      type: name
-    description:
-      label: "Description"
-      type: text
     inceptionDate:
       label: Inception date
       type: date
     dissolutionDate:
       label: Dissolution date
       type: date
-    summary:
-      label: "Summary"
-      type: text
-    sourceUrl:
-      label: "Source link"
-      type: url
-    country:
-      label: Country
-      type: country
     subnationalArea:
       label: Subnational jurisdiction name or code
       type: string
     numberOfSeats:
       label: Total number of seats
       type: number
-    wikidataId:
-      label: "Wikidata ID"
-      hidden: true
-      type: identifier
