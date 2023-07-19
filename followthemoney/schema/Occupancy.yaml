@@ -11,6 +11,14 @@ Occupancy:
   required:
     - holder
     - post
+  edge:
+    source: holder
+    label: holds
+    target: post
+    directed: true
+    caption: 
+      - startDate
+      - endDate
   properties:
     holder:
       label: "Holder"

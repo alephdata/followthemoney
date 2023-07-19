@@ -16,11 +16,15 @@ Position:
   featured:
     - name
     - organization
-    - category
   caption:
     - name
   required:
     - name
+  temporalExtent:
+    start:
+      - inceptionDate
+    end:
+      - dissolutionDate
   properties:
     organization:
       label: "Organization"
@@ -32,9 +36,6 @@ Position:
     name:
       label: "Name"
       type: name
-    category:
-      label: "Category"
-      type: string
     description:
       label: "Description"
       type: text
