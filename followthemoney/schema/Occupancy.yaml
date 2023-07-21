@@ -1,0 +1,40 @@
+Occupancy:
+  label: "Occupancy"
+  plural: "Occupancies"
+  extends: Interval
+  matchable: false
+  description: >
+    The occupation of a position by a person for a specific period of time.
+  featured:
+    - holder
+    - post
+  required:
+    - holder
+    - post
+  edge:
+    source: holder
+    label: holds
+    target: post
+    directed: true
+    caption: 
+      - startDate
+      - endDate
+  properties:
+    holder:
+      label: "Holder"
+      reverse:
+        name: positionOccupancies
+        label: "Position Occupancies"
+      type: entity
+      range: Person
+    post:
+      label: "Position occupied"
+      reverse:
+        name: occupancies
+        label: "Occupancies"
+      type: entity
+      range: Position
+    status:
+      label: "Status"
+      type: string
+    
