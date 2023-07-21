@@ -23,8 +23,8 @@ Occupancy:
     holder:
       label: "Holder"
       reverse:
-        name: positionsOccupied
-        label: "Positions occupied"
+        name: positionOccupancies
+        label: "Position Occupancies"
       type: entity
       range: Person
     post:
