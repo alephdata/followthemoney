@@ -1,6 +1,6 @@
 ---
 import { model } from '@util/ftm';
-import { Stack, TocNav } from 'astro-theme-docs/components';
+import { Stack, TocNav, Callout } from 'astro-theme-docs/components';
 import ExplorerLayout from '@layouts/ExplorerLayout.astro';
 import SchemaPageHeader from '@components/page/SchemaPageHeader.astro';
 import SchemaInheritance from '@components/explorer/SchemaInheritance.astro';
@@ -29,6 +29,14 @@ const headings = [
 
   <Stack size="xl">
     <SchemaPageHeader schema={schema} />
+    {
+      schema.deprecated && (
+        <Callout theme="danger">
+          This schema is deprecated and will be removed in a future version of
+          the FollowTheMoney model.
+        </Callout>
+      )
+    }
     <SchemaInheritance id="inheritance" schema={schema} />
     <SchemaSemantics id="semantics" schema={schema} />
     <SchemaProperties id="properties" schema={schema} />
