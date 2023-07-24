@@ -1,0 +1,30 @@
+---
+import { Popover } from 'astro-theme-docs/components';
+const { message } = Astro.props;
+---
+
+<style>
+  .DeprecatedIndicator {
+    display: inline-block;
+    padding-inline: var(--space-xs);
+
+    color: var(--color-fg-negative);
+    background-color: var(--color-bg-negative);
+    border: 1px solid var(--color-border-negative);
+    border-radius: var(--radius-full);
+
+    font-size: calc(0.85 * var(--font-size-sm));
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    cursor: default;
+  }
+</style>
+
+<Popover>
+  <span class="DeprecatedIndicator"> Deprecated</span>
+  <p slot="content">
+    {message}
+  </p>
+</Popover>

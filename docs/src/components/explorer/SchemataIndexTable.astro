@@ -3,6 +3,7 @@ import { model } from '@util/ftm';
 import IndexTable from '@components/explorer/IndexTable.astro';
 import SchemaLink from '@components/explorer/SchemaLink.astro';
 import BooleanValue from '@components/explorer/BooleanValue.astro';
+import DeprecatedIndicator from '@components/explorer/DeprecatedIndicator.astro';
 
 const schemata = Object.values(model.schemata).sort((a, b) =>
   a.label.localeCompare(b.label)
@@ -23,6 +24,9 @@ const schemata = Object.values(model.schemata).sort((a, b) =>
           <SchemaLink {schema}>
             <code>{schema.name}</code>
           </SchemaLink>
+          {schema.deprecated && (
+            <DeprecatedIndicator message="This schema is deprecated and will be removed in a future version of the FollowTheMoney model." />
+          )}
         </td>
         <td>{schema.label}</td>
         <td>

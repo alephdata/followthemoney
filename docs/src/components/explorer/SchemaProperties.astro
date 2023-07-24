@@ -3,18 +3,17 @@ import PropertyType from '@components/explorer/PropertyType.astro';
 import SchemaLink from '@components/explorer/SchemaLink.astro';
 import IndexTable from '@components/explorer/IndexTable.astro';
 import PropertyIndicator from '@components/explorer/PropertyIndicator.astro';
+import DeprecatedIndicator from '@components/explorer/DeprecatedIndicator.astro';
 
 const { schema, ...rest } = Astro.props;
 
 const isFeatured = (property) =>
   property.schema.featured.includes(property.name);
-
 const isRequired = (property) =>
   property.schema.required.includes(property.name);
-
 const isHidden = (property) => property.hidden;
-
 const isInherited = (property) => property.schema.name !== schema.name;
+const isDeprecated = (property) => property.deprecated;
 
 const properties = Array.from(schema.getProperties().values())
   .sort((a, b) => a.name.localeCompare(b.name))
@@ -82,6 +81,9 @@ const properties = Array.from(schema.getProperties().values())
             {isFeatured(prop) && <PropertyIndicator type="featured" />}
             {isRequired(prop) && <PropertyIndicator type="required" />}
             {isHidden(prop) && <PropertyIndicator type="hidden" />}
+            {isDeprecated(prop) && (
+              <DeprecatedIndicator message="This property is deprecated and will be removed in a future version of the FollowTheMoney model." />
+            )}
           </td>
 
           <td>{prop.label}</td>
