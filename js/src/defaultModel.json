@@ -3873,6 +3873,62 @@
         "Thing"
       ]
     },
+    "Occupancy": {
+      "description": "The occupation of a position by a person for a specific period of time.\n",
+      "edge": {
+        "caption": [
+          "startDate",
+          "endDate"
+        ],
+        "directed": true,
+        "label": "holds",
+        "source": "holder",
+        "target": "post"
+      },
+      "extends": [
+        "Interval"
+      ],
+      "featured": [
+        "holder",
+        "post"
+      ],
+      "label": "Occupancy",
+      "plural": "Occupancies",
+      "properties": {
+        "holder": {
+          "label": "Holder",
+          "matchable": true,
+          "name": "holder",
+          "qname": "Occupancy:holder",
+          "range": "Person",
+          "reverse": "positionOccupancies",
+          "type": "entity"
+        },
+        "post": {
+          "label": "Position occupied",
+          "matchable": true,
+          "name": "post",
+          "qname": "Occupancy:post",
+          "range": "Position",
+          "reverse": "occupancies",
+          "type": "entity"
+        },
+        "status": {
+          "label": "Status",
+          "name": "status",
+          "qname": "Occupancy:status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "holder",
+        "post"
+      ],
+      "schemata": [
+        "Interval",
+        "Occupancy"
+      ]
+    },
     "Organization": {
       "caption": [
         "name"
@@ -3927,6 +3983,16 @@
           "name": "membershipOrganization",
           "qname": "Organization:membershipOrganization",
           "range": "Membership",
+          "reverse": "organization",
+          "stub": true,
+          "type": "entity"
+        },
+        "positions": {
+          "label": "Positions",
+          "matchable": true,
+          "name": "positions",
+          "qname": "Organization:positions",
+          "range": "Position",
           "reverse": "organization",
           "stub": true,
           "type": "entity"
@@ -4553,6 +4619,16 @@
           "qname": "Person:position",
           "type": "string"
         },
+        "positionOccupancies": {
+          "label": "Position Occupancies",
+          "matchable": true,
+          "name": "positionOccupancies",
+          "qname": "Person:positionOccupancies",
+          "range": "Occupancy",
+          "reverse": "holder",
+          "stub": true,
+          "type": "entity"
+        },
         "posts": {
           "label": "Posts held",
           "matchable": true,
@@ -4625,12 +4701,90 @@
         "Thing"
       ]
     },
+    "Position": {
+      "caption": [
+        "name"
+      ],
+      "description": "A post, role or position within an organization or body. This describes a position one or more people may occupy and not the occupation of the post by a specific individual at a  specific point in time.\n'subnationalArea' should be used to further restrict the scope of the position. It should not simply represent some regional aspect of the role - e.g. the constituency of a national member of parliament - when their legislative jurisdiction is nationwide.\n",
+      "extends": [
+        "Thing"
+      ],
+      "featured": [
+        "name",
+        "organization"
+      ],
+      "label": "Position",
+      "plural": "Positions",
+      "properties": {
+        "dissolutionDate": {
+          "label": "Dissolution date",
+          "matchable": true,
+          "name": "dissolutionDate",
+          "qname": "Position:dissolutionDate",
+          "type": "date"
+        },
+        "inceptionDate": {
+          "label": "Inception date",
+          "matchable": true,
+          "name": "inceptionDate",
+          "qname": "Position:inceptionDate",
+          "type": "date"
+        },
+        "numberOfSeats": {
+          "label": "Total number of seats",
+          "name": "numberOfSeats",
+          "qname": "Position:numberOfSeats",
+          "type": "number"
+        },
+        "occupancies": {
+          "label": "Occupancies",
+          "matchable": true,
+          "name": "occupancies",
+          "qname": "Position:occupancies",
+          "range": "Occupancy",
+          "reverse": "post",
+          "stub": true,
+          "type": "entity"
+        },
+        "organization": {
+          "label": "Organization",
+          "matchable": true,
+          "name": "organization",
+          "qname": "Position:organization",
+          "range": "Organization",
+          "reverse": "positions",
+          "type": "entity"
+        },
+        "subnationalArea": {
+          "label": "Subnational jurisdiction name or code",
+          "name": "subnationalArea",
+          "qname": "Position:subnationalArea",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "schemata": [
+        "Position",
+        "Thing"
+      ],
+      "temporalExtent": {
+        "end": [
+          "dissolutionDate"
+        ],
+        "start": [
+          "inceptionDate"
+        ]
+      }
+    },
     "Post": {
       "caption": [
         "summary",
         "organization",
         "role"
       ],
+      "deprecated": true,
       "description": "A post, role or position held by an individual within an organization  or body. This describes the period for which the position is held, not the abstract concept of the post.\n",
       "extends": [
         "Interest"
