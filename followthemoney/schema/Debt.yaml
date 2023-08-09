@@ -28,7 +28,7 @@ Debt:
       type: entity
       range: LegalEntity
     creditor:
-      label: "creditor"
+      label: "Creditor"
       reverse:
         name: debtCreditor
         label: "Credits"
