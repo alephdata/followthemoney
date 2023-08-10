@@ -55,10 +55,7 @@ class SQLSource(Source):
         if database is None:
             raise InvalidMapping("No database in SQL mapping!")
         self.database_uri = cast(str, os.path.expandvars(database))
-        kwargs = {}
-        if self.database_uri.lower().startswith("postgres"):
-            kwargs["server_side_cursors"] = True
-        self.engine = create_engine(self.database_uri, poolclass=NullPool, **kwargs)  # type: ignore
+        self.engine = create_engine(self.database_uri, poolclass=NullPool)  
         self.meta = MetaData()
 
         tables = keys_values(data, "table", "tables")
@@ -104,7 +101,7 @@ class SQLSource(Source):
         q = self.compose_query()
         log.info("Query: %s", q)
         with self.engine.connect() as conn:
-            rp = conn.execute(q)
+            rp = conn.execution_options(stream_results=True).execute(q)
             while True:
                 rows = rp.fetchmany(size=DATA_PAGE)
                 if not len(rows):
@@ -124,4 +121,4 @@ class SQLSource(Source):
         q = self.apply_filters(q)
         with self.engine.connect() as conn:
             rp = conn.execute(q)
-            return int(rp.scalar())
+            return int(rp.scalar() or 0)
