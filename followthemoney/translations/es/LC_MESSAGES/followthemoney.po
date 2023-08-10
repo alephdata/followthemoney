@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-06-23 10:41+0200\n"
+"POT-Creation-Date: 2023-08-10 19:38+0200\n"
 "PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: pudo <friedrich@pudo.org>, 2021\n"
 "Language-Team: Spanish (https://app.transifex.com/aleph/teams/76591/es/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: followthemoney/property.py:166
+#: followthemoney/property.py:170
 msgid "Property cannot be written"
 msgstr "No se puede escribir la propiedad"
 
-#: followthemoney/property.py:169
+#: followthemoney/property.py:173
 msgid "Invalid value"
 msgstr "Valor inválido"
 
@@ -34,21 +34,21 @@ msgstr "Valor inválido"
 msgid "No schema for entity."
 msgstr "No hay esquema para la entidad."
 
-#: followthemoney/proxy.py:115
+#: followthemoney/proxy.py:119
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Propiedad desconocida (%s): %s"
 
-#: followthemoney/proxy.py:188
+#: followthemoney/proxy.py:191
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Propiedad Stub (%s): %s"
 
-#: followthemoney/schema.py:373
+#: followthemoney/schema.py:383
 msgid "Required"
 msgstr "Obligatorio"
 
-#: followthemoney/schema.py:377
+#: followthemoney/schema.py:387
 msgid "Entity validation failed"
 msgstr "Error en la validación de la propiedad"
 
@@ -1113,11 +1113,13 @@ msgstr "Número de adjudicaciones"
 #. CourtCase.properties.status.label
 #. Interest.properties.status.label
 #. LegalEntity.properties.status.label
+#. Occupancy.properties.status.label
 #. Project.properties.status.label
 #. Sanction.properties.status.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
 #: followthemoney/schema/Interest.yaml followthemoney/schema/LegalEntity.yaml
-#: followthemoney/schema/Project.yaml followthemoney/schema/Sanction.yaml
+#: followthemoney/schema/Occupancy.yaml followthemoney/schema/Project.yaml
+#: followthemoney/schema/Sanction.yaml
 msgid "Status"
 msgstr "Estado"
 
@@ -1389,8 +1391,8 @@ msgstr "Deudor"
 
 #. Debt.properties.creditor.label
 #: followthemoney/schema/Debt.yaml
-msgid "creditor"
-msgstr "acreedor"
+msgid "Creditor"
+msgstr ""
 
 #. Debt.properties.creditor.reverse.label
 #: followthemoney/schema/Debt.yaml
@@ -1421,10 +1423,12 @@ msgstr "Director"
 #. Directorship.properties.organization.label
 #. Membership.properties.organization.label
 #. Organization.label
+#. Position.properties.organization.label
 #. Post.properties.organization.label
 #: followthemoney/schema/Directorship.yaml
 #: followthemoney/schema/Membership.yaml
-#: followthemoney/schema/Organization.yaml followthemoney/schema/Post.yaml
+#: followthemoney/schema/Organization.yaml followthemoney/schema/Position.yaml
+#: followthemoney/schema/Post.yaml
 msgid "Organization"
 msgstr "Organización"
 
@@ -1593,10 +1597,20 @@ msgstr "Error de procesamiento"
 
 #. Document.properties.processingAgent.label
 #: followthemoney/schema/Document.yaml
+msgid "Processing agent"
+msgstr ""
+
+#. Document.properties.processingAgent.description
+#: followthemoney/schema/Document.yaml
 msgid "Name and version of the processing agent used to process the Document"
 msgstr ""
 
 #. Document.properties.processedAt.label
+#: followthemoney/schema/Document.yaml
+msgid "Processed at"
+msgstr ""
+
+#. Document.properties.processedAt.description
 #: followthemoney/schema/Document.yaml
 msgid "Date and time of the most recent ingestion of the Document"
 msgstr ""
@@ -2374,7 +2388,8 @@ msgid "The date the legal entity was incorporated"
 msgstr "Fecha en que se constituyó la entidad jurídica"
 
 #. LegalEntity.properties.dissolutionDate.label
-#: followthemoney/schema/LegalEntity.yaml
+#. Position.properties.dissolutionDate.label
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Position.yaml
 msgid "Dissolution date"
 msgstr "Fecha de disolución"
 
@@ -2705,6 +2720,44 @@ msgstr "Notas"
 msgid "An annotation that applies to a document or entity.\n"
 msgstr ""
 
+#. Occupancy.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Occupancy"
+msgstr ""
+
+#. Occupancy.plural
+#. Occupancy.properties.post.reverse.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Occupancies"
+msgstr ""
+
+#. Occupancy.description
+#: followthemoney/schema/Occupancy.yaml
+msgid ""
+"The occupation of a position by a person for a specific period of time.\n"
+msgstr ""
+
+#. Occupancy.edge.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "holds"
+msgstr ""
+
+#. Occupancy.properties.holder.label
+#. Post.properties.holder.label
+#: followthemoney/schema/Occupancy.yaml followthemoney/schema/Post.yaml
+msgid "Holder"
+msgstr ""
+
+#. Occupancy.properties.holder.reverse.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Position Occupancies"
+msgstr ""
+
+#. Occupancy.properties.post.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Position occupied"
+msgstr ""
+
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
 msgid "Organizations"
@@ -3014,13 +3067,24 @@ msgstr "Matronímico"
 msgid "Last name"
 msgstr "Apellido"
 
+#. Person.properties.nameSuffix.label
+#: followthemoney/schema/Person.yaml
+msgid "Name suffix"
+msgstr ""
+
+#. Person.properties.birthCountry.label
+#: followthemoney/schema/Person.yaml
+msgid "Country of birth"
+msgstr ""
+
 #. Person.properties.deathDate.label
 #: followthemoney/schema/Person.yaml
 msgid "Death date"
 msgstr "Fecha de defunción"
 
 #. Person.properties.position.label
-#: followthemoney/schema/Person.yaml
+#. Position.label
+#: followthemoney/schema/Person.yaml followthemoney/schema/Position.yaml
 msgid "Position"
 msgstr "Cargo"
 
@@ -3064,6 +3128,34 @@ msgstr "Archivos de texto"
 msgid "Text files, like .txt or source code.\n"
 msgstr ""
 
+#. Position.plural
+#. Position.properties.organization.reverse.label
+#: followthemoney/schema/Position.yaml
+msgid "Positions"
+msgstr ""
+
+#. Position.description
+#: followthemoney/schema/Position.yaml
+msgid ""
+"A post, role or position within an organization or body. This describes a position one or more people may occupy and not the occupation of the post by a specific individual at a  specific point in time.\n"
+"'subnationalArea' should be used to further restrict the scope of the position. It should not simply represent some regional aspect of the role - e.g. the constituency of a national member of parliament - when their legislative jurisdiction is nationwide.\n"
+msgstr ""
+
+#. Position.properties.inceptionDate.label
+#: followthemoney/schema/Position.yaml
+msgid "Inception date"
+msgstr ""
+
+#. Position.properties.subnationalArea.label
+#: followthemoney/schema/Position.yaml
+msgid "Subnational jurisdiction name or code"
+msgstr ""
+
+#. Position.properties.numberOfSeats.label
+#: followthemoney/schema/Position.yaml
+msgid "Total number of seats"
+msgstr ""
+
 #. Post.label
 #: followthemoney/schema/Post.yaml
 msgid "Post"
@@ -3080,11 +3172,6 @@ msgid ""
 "A post, role or position held by an individual within an organization  or "
 "body. This describes the period for which the position is held, not the "
 "abstract concept of the post.\n"
-msgstr ""
-
-#. Post.properties.holder.label
-#: followthemoney/schema/Post.yaml
-msgid "Holder"
 msgstr ""
 
 #. Post.properties.holder.reverse.label
@@ -3741,6 +3828,11 @@ msgstr "Fecha de elaboración"
 #: followthemoney/schema/Vehicle.yaml
 msgid "Registration Date"
 msgstr "Fecha de registro"
+
+#. Vehicle.properties.deregistrationDate.label
+#: followthemoney/schema/Vehicle.yaml
+msgid "De-registration Date"
+msgstr ""
 
 #. Vessel.label
 #: followthemoney/schema/Vessel.yaml

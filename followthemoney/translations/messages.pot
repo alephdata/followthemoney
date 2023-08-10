@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-12 18:31+0200\n"
+"POT-Creation-Date: 2023-08-10 19:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
-#: followthemoney/property.py:165
+#: followthemoney/property.py:170
 msgid "Property cannot be written"
 msgstr ""
 
-#: followthemoney/property.py:168
+#: followthemoney/property.py:173
 msgid "Invalid value"
 msgstr ""
 
@@ -39,11 +39,11 @@ msgstr ""
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:377
+#: followthemoney/schema.py:383
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:381
+#: followthemoney/schema.py:387
 msgid "Entity validation failed"
 msgstr ""
 
@@ -1094,11 +1094,13 @@ msgstr ""
 #. CourtCase.properties.status.label
 #. Interest.properties.status.label
 #. LegalEntity.properties.status.label
+#. Occupancy.properties.status.label
 #. Project.properties.status.label
 #. Sanction.properties.status.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
 #: followthemoney/schema/Interest.yaml followthemoney/schema/LegalEntity.yaml
-#: followthemoney/schema/Project.yaml followthemoney/schema/Sanction.yaml
+#: followthemoney/schema/Occupancy.yaml followthemoney/schema/Project.yaml
+#: followthemoney/schema/Sanction.yaml
 msgid "Status"
 msgstr ""
 
@@ -1367,7 +1369,7 @@ msgstr ""
 
 #. Debt.properties.creditor.label
 #: followthemoney/schema/Debt.yaml
-msgid "creditor"
+msgid "Creditor"
 msgstr ""
 
 #. Debt.properties.creditor.reverse.label
@@ -1399,10 +1401,12 @@ msgstr ""
 #. Directorship.properties.organization.label
 #. Membership.properties.organization.label
 #. Organization.label
+#. Position.properties.organization.label
 #. Post.properties.organization.label
 #: followthemoney/schema/Directorship.yaml
 #: followthemoney/schema/Membership.yaml
-#: followthemoney/schema/Organization.yaml followthemoney/schema/Post.yaml
+#: followthemoney/schema/Organization.yaml followthemoney/schema/Position.yaml
+#: followthemoney/schema/Post.yaml
 msgid "Organization"
 msgstr ""
 
@@ -2356,7 +2360,8 @@ msgid "The date the legal entity was incorporated"
 msgstr ""
 
 #. LegalEntity.properties.dissolutionDate.label
-#: followthemoney/schema/LegalEntity.yaml
+#. Position.properties.dissolutionDate.label
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Position.yaml
 msgid "Dissolution date"
 msgstr ""
 
@@ -2678,6 +2683,43 @@ msgstr ""
 #. Note.description
 #: followthemoney/schema/Note.yaml
 msgid "An annotation that applies to a document or entity.\n"
+msgstr ""
+
+#. Occupancy.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Occupancy"
+msgstr ""
+
+#. Occupancy.plural
+#. Occupancy.properties.post.reverse.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Occupancies"
+msgstr ""
+
+#. Occupancy.description
+#: followthemoney/schema/Occupancy.yaml
+msgid "The occupation of a position by a person for a specific period of time.\n"
+msgstr ""
+
+#. Occupancy.edge.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "holds"
+msgstr ""
+
+#. Occupancy.properties.holder.label
+#. Post.properties.holder.label
+#: followthemoney/schema/Occupancy.yaml followthemoney/schema/Post.yaml
+msgid "Holder"
+msgstr ""
+
+#. Occupancy.properties.holder.reverse.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Position Occupancies"
+msgstr ""
+
+#. Occupancy.properties.post.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Position occupied"
 msgstr ""
 
 #. Organization.plural
@@ -3004,7 +3046,8 @@ msgid "Death date"
 msgstr ""
 
 #. Person.properties.position.label
-#: followthemoney/schema/Person.yaml
+#. Position.label
+#: followthemoney/schema/Person.yaml followthemoney/schema/Position.yaml
 msgid "Position"
 msgstr ""
 
@@ -3048,6 +3091,39 @@ msgstr ""
 msgid "Text files, like .txt or source code.\n"
 msgstr ""
 
+#. Position.plural
+#. Position.properties.organization.reverse.label
+#: followthemoney/schema/Position.yaml
+msgid "Positions"
+msgstr ""
+
+#. Position.description
+#: followthemoney/schema/Position.yaml
+msgid ""
+"A post, role or position within an organization or body. This describes a"
+" position one or more people may occupy and not the occupation of the "
+"post by a specific individual at a  specific point in time.\n"
+"'subnationalArea' should be used to further restrict the scope of the "
+"position. It should not simply represent some regional aspect of the role"
+" - e.g. the constituency of a national member of parliament - when their "
+"legislative jurisdiction is nationwide.\n"
+msgstr ""
+
+#. Position.properties.inceptionDate.label
+#: followthemoney/schema/Position.yaml
+msgid "Inception date"
+msgstr ""
+
+#. Position.properties.subnationalArea.label
+#: followthemoney/schema/Position.yaml
+msgid "Subnational jurisdiction name or code"
+msgstr ""
+
+#. Position.properties.numberOfSeats.label
+#: followthemoney/schema/Position.yaml
+msgid "Total number of seats"
+msgstr ""
+
 #. Post.label
 #: followthemoney/schema/Post.yaml
 msgid "Post"
@@ -3064,11 +3140,6 @@ msgid ""
 "A post, role or position held by an individual within an organization  or"
 " body. This describes the period for which the position is held, not the "
 "abstract concept of the post.\n"
-msgstr ""
-
-#. Post.properties.holder.label
-#: followthemoney/schema/Post.yaml
-msgid "Holder"
 msgstr ""
 
 #. Post.properties.holder.reverse.label

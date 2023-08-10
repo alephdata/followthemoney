@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 # 
 # Translators:
-# pudo <friedrich@pudo.org>, 2022
+# pudo <friedrich@pudo.org>, 2021
 # jen occrp, 2023
 # 
 #, fuzzy
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-07-12 18:31+0200\n"
-"PO-Revision-Date: 2022-11-21 11:38+0000\n"
+"POT-Creation-Date: 2023-08-10 19:38+0200\n"
+"PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: jen occrp, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: followthemoney/property.py:165
+#: followthemoney/property.py:170
 msgid "Property cannot be written"
 msgstr "Не удалось сохранить свойство"
 
-#: followthemoney/property.py:168
+#: followthemoney/property.py:173
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
@@ -45,11 +45,11 @@ msgstr "Неизвестный параметр (1%s): 1%s"
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/schema.py:377
+#: followthemoney/schema.py:383
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:381
+#: followthemoney/schema.py:387
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
@@ -1127,11 +1127,13 @@ msgstr "Количество контрактов"
 #. CourtCase.properties.status.label
 #. Interest.properties.status.label
 #. LegalEntity.properties.status.label
+#. Occupancy.properties.status.label
 #. Project.properties.status.label
 #. Sanction.properties.status.label
 #: followthemoney/schema/Contract.yaml followthemoney/schema/CourtCase.yaml
 #: followthemoney/schema/Interest.yaml followthemoney/schema/LegalEntity.yaml
-#: followthemoney/schema/Project.yaml followthemoney/schema/Sanction.yaml
+#: followthemoney/schema/Occupancy.yaml followthemoney/schema/Project.yaml
+#: followthemoney/schema/Sanction.yaml
 msgid "Status"
 msgstr "Статус"
 
@@ -1402,8 +1404,8 @@ msgstr "Должник"
 
 #. Debt.properties.creditor.label
 #: followthemoney/schema/Debt.yaml
-msgid "creditor"
-msgstr "Кредитор"
+msgid "Creditor"
+msgstr ""
 
 #. Debt.properties.creditor.reverse.label
 #: followthemoney/schema/Debt.yaml
@@ -1434,10 +1436,12 @@ msgstr "Директор"
 #. Directorship.properties.organization.label
 #. Membership.properties.organization.label
 #. Organization.label
+#. Position.properties.organization.label
 #. Post.properties.organization.label
 #: followthemoney/schema/Directorship.yaml
 #: followthemoney/schema/Membership.yaml
-#: followthemoney/schema/Organization.yaml followthemoney/schema/Post.yaml
+#: followthemoney/schema/Organization.yaml followthemoney/schema/Position.yaml
+#: followthemoney/schema/Post.yaml
 msgid "Organization"
 msgstr "Организация"
 
@@ -2403,7 +2407,8 @@ msgid "The date the legal entity was incorporated"
 msgstr "Дата регистрации юридического лица"
 
 #. LegalEntity.properties.dissolutionDate.label
-#: followthemoney/schema/LegalEntity.yaml
+#. Position.properties.dissolutionDate.label
+#: followthemoney/schema/LegalEntity.yaml followthemoney/schema/Position.yaml
 msgid "Dissolution date"
 msgstr "Дата расторжения"
 
@@ -2728,6 +2733,44 @@ msgstr "Примечания"
 #: followthemoney/schema/Note.yaml
 msgid "An annotation that applies to a document or entity.\n"
 msgstr "Примечание к документу или сущности.\n"
+
+#. Occupancy.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Occupancy"
+msgstr ""
+
+#. Occupancy.plural
+#. Occupancy.properties.post.reverse.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Occupancies"
+msgstr ""
+
+#. Occupancy.description
+#: followthemoney/schema/Occupancy.yaml
+msgid ""
+"The occupation of a position by a person for a specific period of time.\n"
+msgstr ""
+
+#. Occupancy.edge.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "holds"
+msgstr ""
+
+#. Occupancy.properties.holder.label
+#. Post.properties.holder.label
+#: followthemoney/schema/Occupancy.yaml followthemoney/schema/Post.yaml
+msgid "Holder"
+msgstr "Должностное лицо"
+
+#. Occupancy.properties.holder.reverse.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Position Occupancies"
+msgstr ""
+
+#. Occupancy.properties.post.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Position occupied"
+msgstr ""
 
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
@@ -3057,7 +3100,8 @@ msgid "Death date"
 msgstr "Дата смерти"
 
 #. Person.properties.position.label
-#: followthemoney/schema/Person.yaml
+#. Position.label
+#: followthemoney/schema/Person.yaml followthemoney/schema/Position.yaml
 msgid "Position"
 msgstr "Должность"
 
@@ -3101,6 +3145,34 @@ msgstr "Текстовые файлы"
 msgid "Text files, like .txt or source code.\n"
 msgstr "Текстовые файлы, например, .txt или исходный код.\n"
 
+#. Position.plural
+#. Position.properties.organization.reverse.label
+#: followthemoney/schema/Position.yaml
+msgid "Positions"
+msgstr ""
+
+#. Position.description
+#: followthemoney/schema/Position.yaml
+msgid ""
+"A post, role or position within an organization or body. This describes a position one or more people may occupy and not the occupation of the post by a specific individual at a  specific point in time.\n"
+"'subnationalArea' should be used to further restrict the scope of the position. It should not simply represent some regional aspect of the role - e.g. the constituency of a national member of parliament - when their legislative jurisdiction is nationwide.\n"
+msgstr ""
+
+#. Position.properties.inceptionDate.label
+#: followthemoney/schema/Position.yaml
+msgid "Inception date"
+msgstr ""
+
+#. Position.properties.subnationalArea.label
+#: followthemoney/schema/Position.yaml
+msgid "Subnational jurisdiction name or code"
+msgstr ""
+
+#. Position.properties.numberOfSeats.label
+#: followthemoney/schema/Position.yaml
+msgid "Total number of seats"
+msgstr ""
+
 #. Post.label
 #: followthemoney/schema/Post.yaml
 msgid "Post"
@@ -3121,11 +3193,6 @@ msgstr ""
 "Должность, занимаемая в общественной или иной организации. (Предназначено "
 "для описания пребывания в должности в определённый период времени, а не "
 "абстрактного представления должности).\n"
-
-#. Post.properties.holder.label
-#: followthemoney/schema/Post.yaml
-msgid "Holder"
-msgstr "Должностное лицо"
 
 #. Post.properties.holder.reverse.label
 #: followthemoney/schema/Post.yaml
