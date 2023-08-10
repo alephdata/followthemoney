@@ -1702,7 +1702,7 @@
       "plural": "Debts",
       "properties": {
         "creditor": {
-          "label": "creditor",
+          "label": "Creditor",
           "matchable": true,
           "name": "creditor",
           "qname": "Debt:creditor",
