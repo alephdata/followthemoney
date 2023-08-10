@@ -38,6 +38,10 @@ IGNORE_LABEL_COLLISIONS = [
     "Document number",
 ]
 
+IGNORE_LABEL_CAPITALIZATION = [
+    "ibcRUC",
+]
+
 
 def test_divergent_types(by_name):
     divergent = {}
@@ -81,6 +85,17 @@ def test_label_collisions(by_label):
     return collisions
 
 
+def test_label_capitalization():
+    issues = []
+
+    for schema in model:
+        for prop in schema.properties.values():
+            if not prop.label[0].isupper() and prop.label not in IGNORE_LABEL_CAPITALIZATION:
+                issues.append(prop)
+
+    return issues
+
+
 if __name__ == '__main__':
     by_name = defaultdict(set)
     by_label = defaultdict(set)
@@ -93,6 +108,7 @@ if __name__ == '__main__':
     divergent_types = test_divergent_types(by_name)
     divergent_labels = test_divergent_labels(by_name)
     label_collisions = test_label_collisions(by_label)
+    label_issues = test_label_capitalization()
 
     failed = False
 
@@ -124,6 +140,12 @@ if __name__ == '__main__':
             for prop in props:
                 print(f"  * {prop.qname}")
             print()
+
+    if label_issues:
+        failed = True
+        print("WRONG PROPERTY LABEL CAPITALIZATION\n")
+        for prop in label_issues:
+            print(f"  {prop.qname} - {prop.label}")
 
     if failed:
         sys.exit(1)
