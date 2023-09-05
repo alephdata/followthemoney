@@ -16,7 +16,8 @@ Position:
     their legislative jurisdiction is nationwide.
   featured:
     - name
-    - organization
+    - country
+    - subnationalArea
   caption:
     - name
   required:

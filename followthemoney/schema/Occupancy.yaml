@@ -16,7 +16,7 @@ Occupancy:
     label: holds
     target: post
     directed: true
-    caption: 
+    caption:
       - startDate
       - endDate
   properties:
@@ -24,17 +24,16 @@ Occupancy:
       label: "Holder"
       reverse:
         name: positionOccupancies
-        label: "Position Occupancies"
+        label: "Positions held"
       type: entity
       range: Person
     post:
       label: "Position occupied"
       reverse:
         name: occupancies
-        label: "Occupancies"
+        label: "Position holders"
       type: entity
       range: Position
     status:
       label: "Status"
       type: string
-    
