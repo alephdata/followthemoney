@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 # 
 # Translators:
-# pudo <friedrich@pudo.org>, 2021
+# pudo <friedrich@pudo.org>, 2022
 # jen occrp, 2023
 # 
 #, fuzzy
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-08-10 19:38+0200\n"
-"PO-Revision-Date: 2021-05-07 13:11+0000\n"
+"PO-Revision-Date: 2022-11-21 11:38+0000\n"
 "Last-Translator: jen occrp, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -1405,7 +1405,7 @@ msgstr "Должник"
 #. Debt.properties.creditor.label
 #: followthemoney/schema/Debt.yaml
 msgid "Creditor"
-msgstr ""
+msgstr "Кредитор"
 
 #. Debt.properties.creditor.reverse.label
 #: followthemoney/schema/Debt.yaml
@@ -2737,24 +2737,24 @@ msgstr "Примечание к документу или сущности.\n"
 #. Occupancy.label
 #: followthemoney/schema/Occupancy.yaml
 msgid "Occupancy"
-msgstr ""
+msgstr "Должность"
 
 #. Occupancy.plural
 #. Occupancy.properties.post.reverse.label
 #: followthemoney/schema/Occupancy.yaml
 msgid "Occupancies"
-msgstr ""
+msgstr "Должности"
 
 #. Occupancy.description
 #: followthemoney/schema/Occupancy.yaml
 msgid ""
 "The occupation of a position by a person for a specific period of time.\n"
-msgstr ""
+msgstr "Занимаемая должность в течение определённого периода времени.\n"
 
 #. Occupancy.edge.label
 #: followthemoney/schema/Occupancy.yaml
 msgid "holds"
-msgstr ""
+msgstr "заняты"
 
 #. Occupancy.properties.holder.label
 #. Post.properties.holder.label
@@ -2765,12 +2765,12 @@ msgstr "Должностное лицо"
 #. Occupancy.properties.holder.reverse.label
 #: followthemoney/schema/Occupancy.yaml
 msgid "Position Occupancies"
-msgstr ""
+msgstr "Должность занята"
 
 #. Occupancy.properties.post.label
 #: followthemoney/schema/Occupancy.yaml
 msgid "Position occupied"
-msgstr ""
+msgstr "Занимаемая должность"
 
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
@@ -3149,7 +3149,7 @@ msgstr "Текстовые файлы, например, .txt или исход�
 #. Position.properties.organization.reverse.label
 #: followthemoney/schema/Position.yaml
 msgid "Positions"
-msgstr ""
+msgstr "Должности"
 
 #. Position.description
 #: followthemoney/schema/Position.yaml
@@ -3157,21 +3157,23 @@ msgid ""
 "A post, role or position within an organization or body. This describes a position one or more people may occupy and not the occupation of the post by a specific individual at a  specific point in time.\n"
 "'subnationalArea' should be used to further restrict the scope of the position. It should not simply represent some regional aspect of the role - e.g. the constituency of a national member of parliament - when their legislative jurisdiction is nationwide.\n"
 msgstr ""
+"Должность, роль или пост в организации или государственном органе. Описывает должность с точки зрения организации, которую может занимать один или несколько человек в разное время, а не роль, как свойство отдельного человека в определённый момент времени.\n"
+"'Территориальная юрисдикция' служит для уточнения территориальной юрисдикции должности — как например, избирательный округ члена парламента, — кроме случаев, когда должность является общегосударственной, федеральной.\n"
 
 #. Position.properties.inceptionDate.label
 #: followthemoney/schema/Position.yaml
 msgid "Inception date"
-msgstr ""
+msgstr "Дата начала"
 
 #. Position.properties.subnationalArea.label
 #: followthemoney/schema/Position.yaml
 msgid "Subnational jurisdiction name or code"
-msgstr ""
+msgstr "Наименование территориальной юрисдикции или код"
 
 #. Position.properties.numberOfSeats.label
 #: followthemoney/schema/Position.yaml
 msgid "Total number of seats"
-msgstr ""
+msgstr "Общее количество мест"
 
 #. Post.label
 #: followthemoney/schema/Post.yaml
