@@ -2,7 +2,7 @@ Position:
   label: "Position"
   plural: "Positions"
   extends: Thing
-  matchable: false
+  matchable: true
   # cf. https://www.popoloproject.com/specs/post.html
   description: >
     A post, role or position within an organization or body.
