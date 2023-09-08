@@ -1,7 +1,7 @@
 import sys
 from datetime import datetime
 from rdflib import Graph, URIRef, Literal
-from rdflib.namespace import OWL, DCTERMS, RDF, RDFS, XSD  # type: ignore
+from rdflib.namespace import OWL, DCTERMS, RDF, RDFS, XSD
 
 from followthemoney import model
 from followthemoney.property import Property
