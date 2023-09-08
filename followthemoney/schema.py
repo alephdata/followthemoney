@@ -176,11 +176,12 @@ class Schema:
         self.edge_caption = ensure_list(edge.get("caption", []))
         self._edge_label = edge.get("label", self._label)
 
-        #: Flag to indicate if the edge should be presented as directed to the user, e.g.
-        #: by showing an error at the target end of the edge.
+        #: Flag to indicate if the edge should be presented as directed to the user,
+        #: e.g. by showing an error at the target end of the edge.
         self.edge_directed = as_bool(edge.get("directed", True))
 
-        #: Specify which properties should be used to represent this schema in a timeline.
+        #: Specify which properties should be used to represent this schema in a
+        #: timeline.
         temporal_extent = data.get("temporalExtent", {})
         self.temporal_start = set(temporal_extent.get("start", []))
         self.temporal_end = set(temporal_extent.get("end", []))
@@ -189,7 +190,8 @@ class Schema:
         self._extends = ensure_list(data.get("extends", []))
         self.extends: Set["Schema"] = set()
 
-        #: All parents of this schema (including indirect parents and the schema itself).
+        #: All parents of this schema (including indirect parents and the schema
+        #: itself).
         self.schemata = set([self])
 
         #: All names of :attr:`~schemata`.
@@ -309,13 +311,15 @@ class Schema:
 
     @property
     def temporal_start_props(self) -> Set[Property]:
-        """The entity properties to be used as the start when representing the entity in a timeline."""
+        """The entity properties to be used as the start when representing the entity
+        in a timeline."""
         props = [self.get(prop_name) for prop_name in self.temporal_start]
         return set([prop for prop in props if prop is not None])
 
     @property
     def temporal_end_props(self) -> Set[Property]:
-        """The entity properties to be used as the end when representing the entity in a timeline."""
+        """The entity properties to be used as the end when representing the entity
+        in a timeline."""
         props = [self.get(prop_name) for prop_name in self.temporal_end]
         return set([prop for prop in props if prop is not None])
 
@@ -334,8 +338,8 @@ class Schema:
 
     @property
     def matchable_schemata(self) -> Set["Schema"]:
-        """Return the set of schemata to which it makes sense to compare with this schema.
-        For example, it makes sense to compare a legal entity with a company,
+        """Return the set of schemata to which it makes sense to compare with this
+        schema. For example, it makes sense to compare a legal entity with a company,
         but it does not make sense to compare a car and a person."""
         if self._matchable_schemata is None:
             self._matchable_schemata = set()

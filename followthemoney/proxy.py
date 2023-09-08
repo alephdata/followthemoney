@@ -87,7 +87,8 @@ class EntityProxy(object):
                 continue
             if cleaned:
                 # This does not call `self.add` as it might be called millions of times
-                # in some context and we want to avoid the performance overhead of doing so.
+                # in some context and we want to avoid the performance overhead of
+                # doing so.
                 seen: Set[str] = set()
                 seen_add = seen.add
                 unique_values = [v for v in values if not (v in seen or seen_add(v))]
@@ -335,8 +336,9 @@ class EntityProxy(object):
 
     @property
     def temporal_start(self) -> Optional[Tuple[Property, str]]:
-        """Get a date that can be used to represent the start of the entity in a timeline.
-        If there are multiple possible dates, the earliest date is returned."""
+        """Get a date that can be used to represent the start of the entity in a
+        timeline. If there are multiple possible dates, the earliest date is
+        returned."""
         values = []
 
         for prop in self.schema.temporal_start_props:
@@ -467,7 +469,7 @@ class EntityProxy(object):
     def __hash__(self) -> int:
         if not self.id:
             warnings.warn(
-                "Taking the hash of an EntityProxy without an ID set results in undefined behaviour",
+                "Hashing an EntityProxy without an ID results in undefined behaviour",
                 RuntimeWarning,
             )
         return hash(self.id)
@@ -476,7 +478,7 @@ class EntityProxy(object):
         try:
             if self.id is None or other.id is None:
                 warnings.warn(
-                    "Comparing EntityProxys without an ID set results in undefined behaviour",
+                    "Comparing EntityProxys without IDs results in undefined behaviour",
                     RuntimeWarning,
                 )
             return bool(self.id == other.id)
