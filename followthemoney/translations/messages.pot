@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-08-10 19:38+0200\n"
+"POT-Creation-Date: 2023-09-08 08:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,21 +29,21 @@ msgstr ""
 msgid "No schema for entity."
 msgstr ""
 
-#: followthemoney/proxy.py:119
+#: followthemoney/proxy.py:120
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr ""
 
-#: followthemoney/proxy.py:191
+#: followthemoney/proxy.py:192
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr ""
 
-#: followthemoney/schema.py:383
+#: followthemoney/schema.py:387
 msgid "Required"
 msgstr ""
 
-#: followthemoney/schema.py:387
+#: followthemoney/schema.py:391
 msgid "Entity validation failed"
 msgstr ""
 
@@ -2691,7 +2691,6 @@ msgid "Occupancy"
 msgstr ""
 
 #. Occupancy.plural
-#. Occupancy.properties.post.reverse.label
 #: followthemoney/schema/Occupancy.yaml
 msgid "Occupancies"
 msgstr ""
@@ -2714,12 +2713,17 @@ msgstr ""
 
 #. Occupancy.properties.holder.reverse.label
 #: followthemoney/schema/Occupancy.yaml
-msgid "Position Occupancies"
+msgid "Positions held"
 msgstr ""
 
 #. Occupancy.properties.post.label
 #: followthemoney/schema/Occupancy.yaml
 msgid "Position occupied"
+msgstr ""
+
+#. Occupancy.properties.post.reverse.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Position holders"
 msgstr ""
 
 #. Organization.plural

@@ -4620,7 +4620,7 @@
           "type": "string"
         },
         "positionOccupancies": {
-          "label": "Position Occupancies",
+          "label": "Positions held",
           "matchable": true,
           "name": "positionOccupancies",
           "qname": "Person:positionOccupancies",
@@ -4711,9 +4711,11 @@
       ],
       "featured": [
         "name",
-        "organization"
+        "country",
+        "subnationalArea"
       ],
       "label": "Position",
+      "matchable": true,
       "plural": "Positions",
       "properties": {
         "dissolutionDate": {
@@ -4737,7 +4739,7 @@
           "type": "number"
         },
         "occupancies": {
-          "label": "Occupancies",
+          "label": "Position holders",
           "matchable": true,
           "name": "occupancies",
           "qname": "Position:occupancies",
