@@ -42,6 +42,13 @@ class TopicType(EnumType):
         "gov.muni": _("Municipal government"),
         "gov.soe": _("State-owned enterprise"),
         "gov.igo": _("Intergovernmental organization"),
+        "gov.head": _("Head of government or state"),
+        "gov.executive": _("Executive branch of government"),
+        "gov.legislative": _("Legislative branch of government"),
+        "gov.judicial": _("Judicial branch of government"),
+        "gov.security": _("Security services including intelligence"),
+        "gov.bank": _("Central bank"),
+
         "fin": _("Financial services"),
         "fin.bank": _("Bank"),
         "fin.fund": _("Fund"),
