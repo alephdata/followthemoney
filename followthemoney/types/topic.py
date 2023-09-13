@@ -47,7 +47,7 @@ class TopicType(EnumType):
         "gov.legislative": _("Legislative branch of government"),
         "gov.judicial": _("Judicial branch of government"),
         "gov.security": _("Security services including intelligence"),
-        "gov.bank": _("Central bank"),
+        "gov.financial": _("Central banking and financial integrity"),
 
         "fin": _("Financial services"),
         "fin.bank": _("Bank"),
