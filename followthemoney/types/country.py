@@ -82,5 +82,8 @@ class CountryType(EnumType):
     def country_hint(self, value: str) -> str:
         return value
 
+    def compare(self, left: str, right: str) -> float:
+        return 1.0 if left == right else 0.0
+
     def rdf(self, value: str) -> Identifier:
         return URIRef(f"iso-3166-1:{value}")

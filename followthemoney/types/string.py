@@ -38,3 +38,6 @@ class HTMLType(StringType):
     label = _("HTML")
     plural = _("HTMLs")
     max_size = 30 * MEGABYTE
+
+    def compare(self, left: str, right: str) -> float:
+        return 0.0

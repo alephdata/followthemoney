@@ -113,5 +113,8 @@ class LanguageType(EnumType):
             return None
         return code
 
+    def _specificity(self, value: str) -> float:
+        return 1.0
+
     def rdf(self, value: str) -> Identifier:
         return URIRef(f"iso-639:{value}")
