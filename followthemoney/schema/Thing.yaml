@@ -33,6 +33,7 @@ Thing:
       type: name
     weakAlias:
       label: Weak alias
+      type: name
       matchable: false
     sourceUrl:
       label: Source link
