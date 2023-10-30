@@ -1,5 +1,5 @@
-from pkg_resources import iter_entry_points
+from importlib.metadata import entry_points
 
 
-for ep in iter_entry_points("followthemoney.cli"):
+for ep in entry_points(group="followthemoney.cli"):
     ep.load()
