@@ -50,7 +50,7 @@ setup(
         "pantomime >= 0.5.1, < 1.0.0",
         "pytz >= 2021.1",
         "rdflib >= 6.2.0, < 7.1.0",
-        "networkx >= 2.5, < 3.2",
+        "networkx >= 2.5, < 3.3",
         "openpyxl >= 3.0.5, < 4.0.0",
         "orjson >= 3.7, < 4.0",
     ],
