@@ -27,6 +27,7 @@ class TopicType(EnumType):
         "crime.fraud": _("Fraud"),
         "crime.cyber": _("Cybercrime"),
         "crime.fin": _("Financial crime"),
+        "crime.env": _("Environmental violations"),
         "crime.theft": _("Theft"),
         "crime.war": _("War crimes"),
         "crime.boss": _("Criminal leadership"),
@@ -43,6 +44,7 @@ class TopicType(EnumType):
         "gov.soe": _("State-owned enterprise"),
         "gov.igo": _("Intergovernmental organization"),
         "gov.head": _("Head of government or state"),
+        "gov.admin": _("Civil service"),
         "gov.executive": _("Executive branch of government"),
         "gov.legislative": _("Legislative branch of government"),
         "gov.judicial": _("Judicial branch of government"),
@@ -70,6 +72,7 @@ class TopicType(EnumType):
         "asset.frozen": _("Frozen asset"),
         "sanction": _("Sanctioned entity"),
         "sanction.linked": _("Sanction-linked entity"),
+        "export.control": _("Export controlled"),
         "debarment": _("Debarred entity"),
         "poi": _("Person of interest"),
     }
