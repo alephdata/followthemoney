@@ -5816,7 +5816,7 @@
           "label": "Weak alias",
           "name": "weakAlias",
           "qname": "Thing:weakAlias",
-          "type": "string"
+          "type": "name"
         },
         "wikidataId": {
           "label": "Wikidata ID",
@@ -6860,6 +6860,7 @@
         "crime": "Crime",
         "crime.boss": "Criminal leadership",
         "crime.cyber": "Cybercrime",
+        "crime.env": "Environmental violations",
         "crime.fin": "Financial crime",
         "crime.fraud": "Fraud",
         "crime.terror": "Terrorism",
@@ -6869,11 +6870,13 @@
         "crime.traffick.human": "Human trafficking",
         "crime.war": "War crimes",
         "debarment": "Debarred entity",
+        "export.control": "Export controlled",
         "fin": "Financial services",
         "fin.adivsor": "Financial advisor",
         "fin.bank": "Bank",
         "fin.fund": "Fund",
         "gov": "Government",
+        "gov.admin": "Civil service",
         "gov.executive": "Executive branch of government",
         "gov.financial": "Central banking and financial integrity",
         "gov.head": "Head of government or state",
