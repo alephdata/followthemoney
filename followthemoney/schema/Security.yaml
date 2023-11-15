@@ -29,6 +29,9 @@ Security:
     ticker:
       label: Stock ticker symbol
       type: identifier
+    figiCode:
+      label: Financial Instrument Global Identifier
+      type: identifier
     issuer:
       label: "Issuer"
       type: entity
