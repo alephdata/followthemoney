@@ -1133,6 +1133,14 @@
           "qname": "Company:okvedCode",
           "type": "string"
         },
+        "permId": {
+          "description": "LSEG/Refinitiv code for a company",
+          "label": "PermID",
+          "matchable": true,
+          "name": "permId",
+          "qname": "Company:permId",
+          "type": "identifier"
+        },
         "pfrNumber": {
           "description": "(RU, \u041f\u0424\u0420) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch",
           "label": "PFR Number",
@@ -1146,6 +1154,13 @@
           "matchable": true,
           "name": "registrationNumber",
           "qname": "Company:registrationNumber",
+          "type": "identifier"
+        },
+        "ricCode": {
+          "label": "Reuters Instrument Code",
+          "matchable": true,
+          "name": "ricCode",
+          "qname": "Company:ricCode",
           "type": "identifier"
         },
         "ticker": {
@@ -6856,6 +6871,7 @@
       "values": {
         "asset.frozen": "Frozen asset",
         "corp.offshore": "Offshore",
+        "corp.public": "Public listed company",
         "corp.shell": "Shell company",
         "crime": "Crime",
         "crime.boss": "Criminal leadership",
