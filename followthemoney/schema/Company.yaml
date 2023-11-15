@@ -103,3 +103,10 @@ Company:
     ticker:
       label: Stock ticker symbol
       type: identifier
+    permId:
+      label: PermID
+      description: LSEG/Refinitiv code for a company
+      type: identifier
+    ricCode:
+      label: Reuters Instrument Code
+      type: identifier
