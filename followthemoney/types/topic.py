@@ -37,6 +37,7 @@ class TopicType(EnumType):
         "crime.traffick.human": _("Human trafficking"),
         "corp.offshore": _("Offshore"),
         "corp.shell": _("Shell company"),
+        "corp.public": _("Public listed company"),
         "gov": _("Government"),
         "gov.national": _("National government"),
         "gov.state": _("State government"),
