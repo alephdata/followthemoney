@@ -1,5 +1,5 @@
 import yaml
-from typing import Any, Dict, Generator, List, TextIO, Tuple, Union
+from typing import Any, Dict, Generator, List, TextIO, Tuple
 
 Message = Tuple[Any, Any, List[str], List[str]]
 

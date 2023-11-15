@@ -5,7 +5,7 @@ from banal.lists import ensure_list
 import requests
 from csv import DictReader
 from urllib.parse import urlparse
-from banal import keys_values, is_listish
+from banal import keys_values
 from typing import (
     TYPE_CHECKING,
     Any,

@@ -1,5 +1,4 @@
 import re
-from typing import Callable, Sequence
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen, shortest, longest

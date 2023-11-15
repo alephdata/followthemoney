@@ -9,7 +9,7 @@ from followthemoney.util import key_bytes
 from followthemoney.proxy import EntityProxy
 from followthemoney.mapping.property import PropertyMapping
 from followthemoney.mapping.source import Record
-from followthemoney.exc import InvalidData, InvalidMapping
+from followthemoney.exc import InvalidMapping
 
 if TYPE_CHECKING:
     from followthemoney.model import Model

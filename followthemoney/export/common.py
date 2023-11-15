@@ -23,7 +23,7 @@ class Exporter(object):
             yield prop, proxy.get(prop)
 
     def write(self, proxy: E, extra: Optional[List[str]] = None) -> None:
-        raise NotImplemented
+        raise NotImplementedError
 
     def finalize(self) -> None:
         pass

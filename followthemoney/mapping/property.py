@@ -8,7 +8,7 @@ from banal import keys_values, as_bool
 from followthemoney.helpers import inline_names
 from followthemoney.exc import InvalidMapping
 from followthemoney.proxy import EntityProxy
-from followthemoney.util import get_entity_id, sanitize_text
+from followthemoney.util import sanitize_text
 from followthemoney.property import Property
 from followthemoney.mapping.source import Record
 

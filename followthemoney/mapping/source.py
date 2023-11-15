@@ -15,7 +15,7 @@ class Source(object):
 
     @property
     def records(self) -> Generator[Record, None, None]:
-        raise NotImplemented
+        raise NotImplementedError
 
     def __len__(self) -> int:
         return 0

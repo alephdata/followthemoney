@@ -1,6 +1,6 @@
 import logging
-from typing import List, Optional, TextIO
 from rdflib import Graph
+from typing import List, Optional, TextIO
 
 from followthemoney.export.common import Exporter
 from followthemoney.proxy import E

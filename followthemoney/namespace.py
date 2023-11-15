@@ -23,7 +23,7 @@ index look up of each ID first. It can also be generated on the client or
 the server without compromising isolation.
 """
 import hmac
-from typing import Any, Optional, Tuple, Union, TypeVar
+from typing import Any, Optional, Tuple, Union
 
 from followthemoney.types import registry
 from followthemoney.proxy import E

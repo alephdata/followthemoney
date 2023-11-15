@@ -61,7 +61,7 @@ class ExcelExporter(ExcelWriter, Exporter):
                 headers.append(prop.label)
             sheet = self.make_sheet(proxy.schema.plural, headers)
             self.sheets[proxy.schema] = sheet
-        sheet = self.sheets.get(proxy.schema)
+        sheet = self.sheets[proxy.schema]
         try:
             cells = [proxy.id]
             cells.extend(extra or [])
