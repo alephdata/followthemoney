@@ -5295,6 +5295,13 @@
           "qname": "Security:collateral",
           "type": "string"
         },
+        "figiCode": {
+          "label": "Financial Instrument Global Identifier",
+          "matchable": true,
+          "name": "figiCode",
+          "qname": "Security:figiCode",
+          "type": "identifier"
+        },
         "isin": {
           "description": "International Securities Identification Number",
           "label": "ISIN",
