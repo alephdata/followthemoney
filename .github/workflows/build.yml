@@ -47,8 +47,8 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.pypi_password }}
-          packages_dir: dist/
-          skip_existing: true
+          packages-dir: dist/
+          skip-existing: true
 
   nodejs:
     runs-on: ubuntu-latest
