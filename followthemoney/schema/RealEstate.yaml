@@ -48,3 +48,11 @@ RealEstate:
     createDate:
       label: Record date
       type: date
+    parent:
+      label: "Parent unit"
+      description: "If this entity is a subunit, another entity (real estate) is its parent"
+      reverse:
+        label: "Subunits"
+        name: subunits
+      type: entity
+      range: RealEstate
