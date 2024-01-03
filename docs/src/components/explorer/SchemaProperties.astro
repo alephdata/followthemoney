@@ -37,6 +37,44 @@ const properties = Array.from(schema.getProperties().values())
   [data-show-inherited='false'] [data-is-inherited] {
     display: none;
   }
+
+  .SchemaProperties tr {
+    position: relative;
+  }
+
+  .SchemaProperties__anchor {
+    position: absolute;
+
+    /* Shift anchor to account for the sticky table header */
+    top: calc(-1 * var(--space));
+  }
+
+  .SchemaProperties tr:has(.SchemaProperties__anchor:target) {
+    background-color: var(--color-bg-highlight);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--color-border-highlight);
+    color: var(--color-fg-emphasis);
+  }
+
+  .SchemaProperties tr:has(.SchemaProperties__anchor:target) td {
+    /* Remove border above highlighted row */
+    border-top: none;
+  }
+
+  .SchemaProperties tr:has(.SchemaProperties__anchor:target) + tr td {
+    /* Remove border below highlighted row */
+    border-top: none;
+  }
+
+  .SchemaProperties th:first-child {
+    /* Make sure that the outline of the highlighted row isn’t visible behind sticky header */
+    box-shadow: -1px 0 0 var(--color-bg-default);
+  }
+
+  .SchemaProperties th:last-child {
+    /* Make sure that the outline of the highlighted row isn’t visible behind sticky header */
+    box-shadow: 1px 0 0 var(--color-bg-default);
+  }
 </style>
 
 <script>
@@ -73,6 +111,7 @@ const properties = Array.from(schema.getProperties().values())
       properties.map((prop) => (
         <tr data-is-inherited={isInherited(prop)}>
           <td>
+            <span id={`property-${prop.name}`} class="SchemaProperties__anchor"></span>
             {/* prettier-ignore */}
             <code class="SchemaProperties__property">{/*
               */}<span class="SchemaProperties__schema">{prop.schema.name}:</span>{/*
