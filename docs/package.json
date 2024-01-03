@@ -17,7 +17,7 @@
   "dependencies": {
     "@alephdata/followthemoney": "^3.5.1",
     "@astrojs/markdown-component": "^1.0.2",
-    "astro": "^1.4.3",
+    "astro": "^2.10.15",
     "astro-theme-docs": "github:alephdata/astro-theme-docs",
     "mermaid": "^10.2.1",
     "unist-util-visit": "^4.1.1"
