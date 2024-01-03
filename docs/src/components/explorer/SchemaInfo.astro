@@ -1,26 +1,14 @@
 ---
 import BooleanCard from '@components/explorer/BooleanCard.astro';
+import Cards from '@components/common/Cards.astro';
 
 const { schema, ...rest } = Astro.props;
 ---
 
-<style>
-  .SchemaInfo__cards {
-    display: grid;
-    gap: var(--space-sm);
-  }
-
-  @media screen and (min-width: 960px) {
-    .SchemaInfo__cards {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>
-
 <section class="SchemaInfo" {...rest}>
   <h2 class="beta">Info</h2>
 
-  <div class="SchemaInfo__cards" data-docsearch-ignore>
+  <Cards data-docsearch-ignore>
     <BooleanCard
       title="Abstract"
       info="Abstract schemata are used for inheritance only and shouldn’t be used directly."
@@ -44,5 +32,5 @@ const { schema, ...rest } = Astro.props;
       info="Entities using a hidden schema shouldn’t be displayed in user interfaces or created by users."
       value={schema.hidden}
     />
-  </div>
+  </Cards>
 </section>

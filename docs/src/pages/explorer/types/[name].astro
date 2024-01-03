@@ -4,6 +4,7 @@ import { model } from '@util/ftm';
 import { Stack, RichContent } from 'astro-theme-docs/components';
 import ExplorerLayout from '@layouts/ExplorerLayout.astro';
 import TypeValues from '@components/explorer/TypeValues.astro';
+import TypeInfo from '@components/explorer/TypeInfo.astro';
 
 const { name } = Astro.params;
 const { type } = Astro.props;
@@ -23,6 +24,7 @@ export function getStaticPaths() {
       <Markdown>{type.description}</Markdown>
     </RichContent>
 
+    <TypeInfo {type} />
     <TypeValues {type} />
   </Stack>
 </ExplorerLayout>

@@ -1,0 +1,21 @@
+---
+import Cards from '@components/common/Cards.astro';
+import BooleanCard from '@components/explorer/BooleanCard.astro';
+
+const { type } = Astro.props;
+---
+
+<section data-docsearch-ignore>
+  <Cards>
+    <BooleanCard
+      value={type.matchable}
+      title="Matchable"
+      info="Matchable types allow properties to be compared with each other in order to assess entity similarity."
+    />
+    <BooleanCard
+      value={type.pivot}
+      title="Pivot"
+      info="Pivot types are a stronger form of matchable types and can be used to find similar entities based on simple value lookups."
+    />
+  </Cards>
+</section>
