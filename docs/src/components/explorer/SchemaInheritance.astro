@@ -10,7 +10,7 @@ const children = schema
   .filter((child) => child.getExtends().includes(schema));
 ---
 
-<div class="schema-inheritance" {...rest}>
+<section class="schema-inheritance" {...rest}>
   <RichContent>
     <h2 class="beta">Inheritance</h2>
     <InheritanceGraph
@@ -18,4 +18,4 @@ const children = schema
       activeSchema={schema}
     />
   </RichContent>
-</div>
+</section>

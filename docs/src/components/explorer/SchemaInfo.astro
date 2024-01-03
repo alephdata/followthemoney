@@ -17,7 +17,7 @@ const { schema, ...rest } = Astro.props;
   }
 </style>
 
-<div class="SchemaInfo" {...rest}>
+<section class="SchemaInfo" {...rest}>
   <h2 class="beta">Info</h2>
 
   <div class="SchemaInfo__cards" data-docsearch-ignore>
@@ -45,4 +45,4 @@ const { schema, ...rest } = Astro.props;
       value={schema.hidden}
     />
   </div>
-</div>
+</section>
