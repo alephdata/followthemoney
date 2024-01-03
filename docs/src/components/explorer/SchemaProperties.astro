@@ -111,7 +111,10 @@ const properties = Array.from(schema.getProperties().values())
       properties.map((prop) => (
         <tr data-is-inherited={isInherited(prop)}>
           <td>
-            <span id={`property-${prop.name}`} class="SchemaProperties__anchor"></span>
+            <span
+              id={`property-${prop.name}`}
+              class="SchemaProperties__anchor"
+            />
             {/* prettier-ignore */}
             <code class="SchemaProperties__property">{/*
               */}<span class="SchemaProperties__schema">{prop.schema.name}:</span>{/*
