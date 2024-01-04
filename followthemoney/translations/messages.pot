@@ -1,21 +1,21 @@
 # Translations template for PROJECT.
-# Copyright (C) 2023 ORGANIZATION
+# Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-08 08:44+0200\n"
+"POT-Creation-Date: 2024-01-04 14:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.14.0\n"
 
 #: followthemoney/property.py:170
 msgid "Property cannot be written"
@@ -470,7 +470,7 @@ msgid "Bank Identifier Code"
 msgstr ""
 
 #. BankAccount.properties.bank.label
-#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:46
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:55
 msgid "Bank"
 msgstr ""
 
@@ -998,6 +998,21 @@ msgstr ""
 #. Security.properties.ticker.label
 #: followthemoney/schema/Company.yaml followthemoney/schema/Security.yaml
 msgid "Stock ticker symbol"
+msgstr ""
+
+#. Company.properties.permId.label
+#: followthemoney/schema/Company.yaml
+msgid "PermID"
+msgstr ""
+
+#. Company.properties.permId.description
+#: followthemoney/schema/Company.yaml
+msgid "LSEG/Refinitiv code for a company"
+msgstr ""
+
+#. Company.properties.ricCode.label
+#: followthemoney/schema/Company.yaml
+msgid "Reuters Instrument Code"
 msgstr ""
 
 #. Contract.label
@@ -3066,7 +3081,7 @@ msgid "Ethnicity"
 msgstr ""
 
 #. Person.properties.religion.label
-#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:62
+#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:71
 msgid "Religion"
 msgstr ""
 
@@ -3289,6 +3304,21 @@ msgstr ""
 msgid "Record date"
 msgstr ""
 
+#. RealEstate.properties.parent.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Parent unit"
+msgstr ""
+
+#. RealEstate.properties.parent.description
+#: followthemoney/schema/RealEstate.yaml
+msgid "If this entity is a subunit, another entity (real estate) is its parent"
+msgstr ""
+
+#. RealEstate.properties.parent.reverse.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Subunits"
+msgstr ""
+
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
 msgid "Representation"
@@ -3391,6 +3421,11 @@ msgstr ""
 #. Security.description
 #: followthemoney/schema/Security.yaml
 msgid "A tradeable financial asset."
+msgstr ""
+
+#. Security.properties.figiCode.label
+#: followthemoney/schema/Security.yaml
+msgid "Financial Instrument Global Identifier"
 msgstr ""
 
 #. Security.properties.issuer.label
@@ -4053,11 +4088,11 @@ msgstr ""
 msgid "IBANs"
 msgstr ""
 
-#: followthemoney/types/identifier.py:21
+#: followthemoney/types/identifier.py:20
 msgid "Identifier"
 msgstr ""
 
-#: followthemoney/types/identifier.py:22
+#: followthemoney/types/identifier.py:21
 msgid "Identifiers"
 msgstr ""
 
@@ -4138,150 +4173,190 @@ msgid "Financial crime"
 msgstr ""
 
 #: followthemoney/types/topic.py:30
-msgid "Theft"
+msgid "Environmental violations"
 msgstr ""
 
 #: followthemoney/types/topic.py:31
-msgid "War crimes"
+msgid "Theft"
 msgstr ""
 
 #: followthemoney/types/topic.py:32
-msgid "Criminal leadership"
+msgid "War crimes"
 msgstr ""
 
 #: followthemoney/types/topic.py:33
-msgid "Terrorism"
+msgid "Criminal leadership"
 msgstr ""
 
 #: followthemoney/types/topic.py:34
-msgid "Trafficking"
+msgid "Terrorism"
 msgstr ""
 
 #: followthemoney/types/topic.py:35
-msgid "Drug trafficking"
+msgid "Trafficking"
 msgstr ""
 
 #: followthemoney/types/topic.py:36
-msgid "Human trafficking"
+msgid "Drug trafficking"
 msgstr ""
 
 #: followthemoney/types/topic.py:37
-msgid "Offshore"
+msgid "Human trafficking"
 msgstr ""
 
 #: followthemoney/types/topic.py:38
-msgid "Shell company"
+msgid "Offshore"
 msgstr ""
 
 #: followthemoney/types/topic.py:39
-msgid "Government"
+msgid "Shell company"
 msgstr ""
 
 #: followthemoney/types/topic.py:40
-msgid "National government"
+msgid "Public listed company"
 msgstr ""
 
 #: followthemoney/types/topic.py:41
-msgid "State government"
+msgid "Government"
 msgstr ""
 
 #: followthemoney/types/topic.py:42
-msgid "Municipal government"
+msgid "National government"
 msgstr ""
 
 #: followthemoney/types/topic.py:43
-msgid "State-owned enterprise"
+msgid "State government"
 msgstr ""
 
 #: followthemoney/types/topic.py:44
-msgid "Intergovernmental organization"
+msgid "Municipal government"
 msgstr ""
 
 #: followthemoney/types/topic.py:45
-msgid "Financial services"
+msgid "State-owned enterprise"
+msgstr ""
+
+#: followthemoney/types/topic.py:46
+msgid "Intergovernmental organization"
 msgstr ""
 
 #: followthemoney/types/topic.py:47
-msgid "Fund"
+msgid "Head of government or state"
 msgstr ""
 
 #: followthemoney/types/topic.py:48
-msgid "Financial advisor"
+msgid "Civil service"
 msgstr ""
 
 #: followthemoney/types/topic.py:49
-msgid "Political"
+msgid "Executive branch of government"
 msgstr ""
 
 #: followthemoney/types/topic.py:50
-msgid "Close Associate"
+msgid "Legislative branch of government"
 msgstr ""
 
 #: followthemoney/types/topic.py:51
-msgid "Judge"
+msgid "Judicial branch of government"
 msgstr ""
 
 #: followthemoney/types/topic.py:52
-msgid "Civil servant"
+msgid "Security services"
 msgstr ""
 
 #: followthemoney/types/topic.py:53
-msgid "Diplomat"
+msgid "Central banking and financial integrity"
 msgstr ""
 
 #: followthemoney/types/topic.py:54
-msgid "Lawyer"
-msgstr ""
-
-#: followthemoney/types/topic.py:55
-msgid "Accountant"
+msgid "Financial services"
 msgstr ""
 
 #: followthemoney/types/topic.py:56
-msgid "Spy"
+msgid "Fund"
 msgstr ""
 
 #: followthemoney/types/topic.py:57
-msgid "Oligarch"
+msgid "Financial advisor"
 msgstr ""
 
 #: followthemoney/types/topic.py:58
-msgid "Journalist"
+msgid "Political"
 msgstr ""
 
 #: followthemoney/types/topic.py:59
-msgid "Activist"
+msgid "Close Associate"
 msgstr ""
 
 #: followthemoney/types/topic.py:60
-msgid "Political party"
+msgid "Judge"
 msgstr ""
 
 #: followthemoney/types/topic.py:61
-msgid "Union"
+msgid "Civil servant"
+msgstr ""
+
+#: followthemoney/types/topic.py:62
+msgid "Diplomat"
 msgstr ""
 
 #: followthemoney/types/topic.py:63
-msgid "Military"
+msgid "Lawyer"
 msgstr ""
 
 #: followthemoney/types/topic.py:64
-msgid "Frozen asset"
+msgid "Accountant"
 msgstr ""
 
 #: followthemoney/types/topic.py:65
-msgid "Sanctioned entity"
+msgid "Spy"
 msgstr ""
 
 #: followthemoney/types/topic.py:66
-msgid "Sanction-linked entity"
+msgid "Oligarch"
 msgstr ""
 
 #: followthemoney/types/topic.py:67
-msgid "Debarred entity"
+msgid "Journalist"
 msgstr ""
 
 #: followthemoney/types/topic.py:68
+msgid "Activist"
+msgstr ""
+
+#: followthemoney/types/topic.py:69
+msgid "Political party"
+msgstr ""
+
+#: followthemoney/types/topic.py:70
+msgid "Union"
+msgstr ""
+
+#: followthemoney/types/topic.py:72
+msgid "Military"
+msgstr ""
+
+#: followthemoney/types/topic.py:73
+msgid "Frozen asset"
+msgstr ""
+
+#: followthemoney/types/topic.py:74
+msgid "Sanctioned entity"
+msgstr ""
+
+#: followthemoney/types/topic.py:75
+msgid "Sanction-linked entity"
+msgstr ""
+
+#: followthemoney/types/topic.py:76
+msgid "Export controlled"
+msgstr ""
+
+#: followthemoney/types/topic.py:77
+msgid "Debarred entity"
+msgstr ""
+
+#: followthemoney/types/topic.py:78
 msgid "Person of interest"
 msgstr ""
 

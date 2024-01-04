@@ -5078,6 +5078,16 @@
           "qname": "RealEstate:longitude",
           "type": "number"
         },
+        "parent": {
+          "description": "If this entity is a subunit, another entity (real estate) is its parent",
+          "label": "Parent unit",
+          "matchable": true,
+          "name": "parent",
+          "qname": "RealEstate:parent",
+          "range": "RealEstate",
+          "reverse": "subunits",
+          "type": "entity"
+        },
         "propertyType": {
           "label": "Property type",
           "name": "propertyType",
@@ -5090,6 +5100,16 @@
           "name": "registrationNumber",
           "qname": "RealEstate:registrationNumber",
           "type": "identifier"
+        },
+        "subunits": {
+          "label": "Subunits",
+          "matchable": true,
+          "name": "subunits",
+          "qname": "RealEstate:subunits",
+          "range": "RealEstate",
+          "reverse": "parent",
+          "stub": true,
+          "type": "entity"
         },
         "tenure": {
           "label": "Tenure",
@@ -6463,6 +6483,7 @@
         "cn-xz": "Tibet",
         "co": "Colombia",
         "cp": "Clipperton Island",
+        "cq": "Sark",
         "cr": "Costa Rica",
         "cshh": "Czechoslovakia",
         "csxx": "Serbia and Montenegro",
@@ -6657,7 +6678,7 @@
         "tm": "Turkmenistan",
         "tn": "Tunisia",
         "to": "Tonga",
-        "tr": "Turkey",
+        "tr": "T\u00fcrkiye",
         "tt": "Trinidad & Tobago",
         "tv": "Tuvalu",
         "tw": "Taiwan",
