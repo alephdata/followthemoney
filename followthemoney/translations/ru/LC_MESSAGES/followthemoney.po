@@ -1,10 +1,10 @@
 # Translations template for PROJECT.
-# Copyright (C) 2023 ORGANIZATION
+# Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 # 
 # Translators:
-# pudo <friedrich@pudo.org>, 2022
+# pudo <friedrich@pudo.org>, 2021
 # jen occrp, 2023
 # 
 #, fuzzy
@@ -12,14 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-08-10 19:38+0200\n"
-"PO-Revision-Date: 2022-11-21 11:38+0000\n"
+"POT-Creation-Date: 2024-01-04 14:09+0100\n"
+"PO-Revision-Date: 2021-05-07 13:11+0000\n"
 "Last-Translator: jen occrp, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.14.0\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
@@ -35,21 +35,21 @@ msgstr "Недопустимое значение"
 msgid "No schema for entity."
 msgstr "Для сущности отсутствует схема."
 
-#: followthemoney/proxy.py:119
+#: followthemoney/proxy.py:120
 #, python-format
 msgid "Unknown property (%s): %s"
 msgstr "Неизвестный параметр (1%s): 1%s"
 
-#: followthemoney/proxy.py:191
+#: followthemoney/proxy.py:192
 #, python-format
 msgid "Stub property (%s): %s"
 msgstr "Неизвестное свойство (1%s): 1%s"
 
-#: followthemoney/schema.py:383
+#: followthemoney/schema.py:387
 msgid "Required"
 msgstr "Обязательное значение"
 
-#: followthemoney/schema.py:387
+#: followthemoney/schema.py:391
 msgid "Entity validation failed"
 msgstr "Сущность не прошла валидацию"
 
@@ -482,7 +482,7 @@ msgid "Bank Identifier Code"
 msgstr "БИК"
 
 #. BankAccount.properties.bank.label
-#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:46
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:55
 msgid "Bank"
 msgstr "Банк"
 
@@ -1025,6 +1025,21 @@ msgstr "Международный идентификационный код ц�
 #: followthemoney/schema/Company.yaml followthemoney/schema/Security.yaml
 msgid "Stock ticker symbol"
 msgstr "Тикер"
+
+#. Company.properties.permId.label
+#: followthemoney/schema/Company.yaml
+msgid "PermID"
+msgstr ""
+
+#. Company.properties.permId.description
+#: followthemoney/schema/Company.yaml
+msgid "LSEG/Refinitiv code for a company"
+msgstr ""
+
+#. Company.properties.ricCode.label
+#: followthemoney/schema/Company.yaml
+msgid "Reuters Instrument Code"
+msgstr ""
 
 #. Contract.label
 #. ContractAward.properties.contract.label
@@ -2740,7 +2755,6 @@ msgid "Occupancy"
 msgstr "Должность"
 
 #. Occupancy.plural
-#. Occupancy.properties.post.reverse.label
 #: followthemoney/schema/Occupancy.yaml
 msgid "Occupancies"
 msgstr "Должности"
@@ -2764,13 +2778,18 @@ msgstr "Должностное лицо"
 
 #. Occupancy.properties.holder.reverse.label
 #: followthemoney/schema/Occupancy.yaml
-msgid "Position Occupancies"
-msgstr "Должность занята"
+msgid "Positions held"
+msgstr ""
 
 #. Occupancy.properties.post.label
 #: followthemoney/schema/Occupancy.yaml
 msgid "Position occupied"
 msgstr "Занимаемая должность"
+
+#. Occupancy.properties.post.reverse.label
+#: followthemoney/schema/Occupancy.yaml
+msgid "Position holders"
+msgstr ""
 
 #. Organization.plural
 #: followthemoney/schema/Organization.yaml
@@ -3116,7 +3135,7 @@ msgid "Ethnicity"
 msgstr "Этническая группа"
 
 #. Person.properties.religion.label
-#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:62
+#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:71
 msgid "Religion"
 msgstr "Религия"
 
@@ -3344,6 +3363,22 @@ msgstr "Назначение земельного участка"
 msgid "Record date"
 msgstr "Дата записи"
 
+#. RealEstate.properties.parent.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Parent unit"
+msgstr ""
+
+#. RealEstate.properties.parent.description
+#: followthemoney/schema/RealEstate.yaml
+msgid ""
+"If this entity is a subunit, another entity (real estate) is its parent"
+msgstr ""
+
+#. RealEstate.properties.parent.reverse.label
+#: followthemoney/schema/RealEstate.yaml
+msgid "Subunits"
+msgstr ""
+
 #. Representation.label
 #: followthemoney/schema/Representation.yaml
 msgid "Representation"
@@ -3447,6 +3482,11 @@ msgstr "Ценные бумаги"
 #: followthemoney/schema/Security.yaml
 msgid "A tradeable financial asset."
 msgstr "Котируемый финансовый актив."
+
+#. Security.properties.figiCode.label
+#: followthemoney/schema/Security.yaml
+msgid "Financial Instrument Global Identifier"
+msgstr ""
 
 #. Security.properties.issuer.label
 #: followthemoney/schema/Security.yaml
@@ -4114,11 +4154,11 @@ msgstr "небинарный"
 msgid "IBANs"
 msgstr "Международные номера банковских счетов (IBAN)"
 
-#: followthemoney/types/identifier.py:21
+#: followthemoney/types/identifier.py:20
 msgid "Identifier"
 msgstr "Идентификатор"
 
-#: followthemoney/types/identifier.py:22
+#: followthemoney/types/identifier.py:21
 msgid "Identifiers"
 msgstr "Идентификаторы"
 
@@ -4199,150 +4239,190 @@ msgid "Financial crime"
 msgstr "Финансовые преступления"
 
 #: followthemoney/types/topic.py:30
+msgid "Environmental violations"
+msgstr ""
+
+#: followthemoney/types/topic.py:31
 msgid "Theft"
 msgstr "Кража"
 
-#: followthemoney/types/topic.py:31
+#: followthemoney/types/topic.py:32
 msgid "War crimes"
 msgstr "Военные преступления"
 
-#: followthemoney/types/topic.py:32
+#: followthemoney/types/topic.py:33
 msgid "Criminal leadership"
 msgstr "Криминальное руководство"
 
-#: followthemoney/types/topic.py:33
+#: followthemoney/types/topic.py:34
 msgid "Terrorism"
 msgstr "Терроризм"
 
-#: followthemoney/types/topic.py:34
+#: followthemoney/types/topic.py:35
 msgid "Trafficking"
 msgstr "Контрабанда"
 
-#: followthemoney/types/topic.py:35
+#: followthemoney/types/topic.py:36
 msgid "Drug trafficking"
 msgstr "Наркоторговля"
 
-#: followthemoney/types/topic.py:36
+#: followthemoney/types/topic.py:37
 msgid "Human trafficking"
 msgstr "Торговля людьми"
 
-#: followthemoney/types/topic.py:37
+#: followthemoney/types/topic.py:38
 msgid "Offshore"
 msgstr "Офшор"
 
-#: followthemoney/types/topic.py:38
+#: followthemoney/types/topic.py:39
 msgid "Shell company"
 msgstr "Офшорная компания"
 
-#: followthemoney/types/topic.py:39
+#: followthemoney/types/topic.py:40
+msgid "Public listed company"
+msgstr ""
+
+#: followthemoney/types/topic.py:41
 msgid "Government"
 msgstr "Правительство"
 
-#: followthemoney/types/topic.py:40
+#: followthemoney/types/topic.py:42
 msgid "National government"
 msgstr "Федеральное правительство"
 
-#: followthemoney/types/topic.py:41
+#: followthemoney/types/topic.py:43
 msgid "State government"
 msgstr "Региональное правительство"
 
-#: followthemoney/types/topic.py:42
+#: followthemoney/types/topic.py:44
 msgid "Municipal government"
 msgstr "Муниципальные власти"
 
-#: followthemoney/types/topic.py:43
+#: followthemoney/types/topic.py:45
 msgid "State-owned enterprise"
 msgstr "Государственное предприятие"
 
-#: followthemoney/types/topic.py:44
+#: followthemoney/types/topic.py:46
 msgid "Intergovernmental organization"
 msgstr "Межправительственная организация"
 
-#: followthemoney/types/topic.py:45
+#: followthemoney/types/topic.py:47
+msgid "Head of government or state"
+msgstr ""
+
+#: followthemoney/types/topic.py:48
+msgid "Civil service"
+msgstr ""
+
+#: followthemoney/types/topic.py:49
+msgid "Executive branch of government"
+msgstr ""
+
+#: followthemoney/types/topic.py:50
+msgid "Legislative branch of government"
+msgstr ""
+
+#: followthemoney/types/topic.py:51
+msgid "Judicial branch of government"
+msgstr ""
+
+#: followthemoney/types/topic.py:52
+msgid "Security services"
+msgstr ""
+
+#: followthemoney/types/topic.py:53
+msgid "Central banking and financial integrity"
+msgstr ""
+
+#: followthemoney/types/topic.py:54
 msgid "Financial services"
 msgstr "Финансовые услуги"
 
-#: followthemoney/types/topic.py:47
+#: followthemoney/types/topic.py:56
 msgid "Fund"
 msgstr "Фонд"
 
-#: followthemoney/types/topic.py:48
+#: followthemoney/types/topic.py:57
 msgid "Financial advisor"
 msgstr "Финансовый консультант"
 
-#: followthemoney/types/topic.py:49
+#: followthemoney/types/topic.py:58
 msgid "Political"
 msgstr "Политик"
 
-#: followthemoney/types/topic.py:50
+#: followthemoney/types/topic.py:59
 msgid "Close Associate"
 msgstr "Тесно связанное лицо"
 
-#: followthemoney/types/topic.py:51
+#: followthemoney/types/topic.py:60
 msgid "Judge"
 msgstr "Судья"
 
-#: followthemoney/types/topic.py:52
+#: followthemoney/types/topic.py:61
 msgid "Civil servant"
 msgstr "Чиновник"
 
-#: followthemoney/types/topic.py:53
+#: followthemoney/types/topic.py:62
 msgid "Diplomat"
 msgstr "Дипломат"
 
-#: followthemoney/types/topic.py:54
+#: followthemoney/types/topic.py:63
 msgid "Lawyer"
 msgstr "Юрист"
 
-#: followthemoney/types/topic.py:55
+#: followthemoney/types/topic.py:64
 msgid "Accountant"
 msgstr "Бухгалтер"
 
-#: followthemoney/types/topic.py:56
+#: followthemoney/types/topic.py:65
 msgid "Spy"
 msgstr "Шпион"
 
-#: followthemoney/types/topic.py:57
+#: followthemoney/types/topic.py:66
 msgid "Oligarch"
 msgstr "Олигарх"
 
-#: followthemoney/types/topic.py:58
+#: followthemoney/types/topic.py:67
 msgid "Journalist"
 msgstr "Журналист"
 
-#: followthemoney/types/topic.py:59
+#: followthemoney/types/topic.py:68
 msgid "Activist"
 msgstr "Активист"
 
-#: followthemoney/types/topic.py:60
+#: followthemoney/types/topic.py:69
 msgid "Political party"
 msgstr "Политическая партия"
 
-#: followthemoney/types/topic.py:61
+#: followthemoney/types/topic.py:70
 msgid "Union"
 msgstr "Объединение"
 
-#: followthemoney/types/topic.py:63
+#: followthemoney/types/topic.py:72
 msgid "Military"
 msgstr "Военные"
 
-#: followthemoney/types/topic.py:64
+#: followthemoney/types/topic.py:73
 msgid "Frozen asset"
 msgstr "Замороженный актив"
 
-#: followthemoney/types/topic.py:65
+#: followthemoney/types/topic.py:74
 msgid "Sanctioned entity"
 msgstr "Объект санкций"
 
-#: followthemoney/types/topic.py:66
+#: followthemoney/types/topic.py:75
 msgid "Sanction-linked entity"
 msgstr "Подсанкционное физическое или юридическое лицо"
 
-#: followthemoney/types/topic.py:67
+#: followthemoney/types/topic.py:76
+msgid "Export controlled"
+msgstr ""
+
+#: followthemoney/types/topic.py:77
 msgid "Debarred entity"
 msgstr "Физическое или юридическое лицо, лишённое полномочий"
 
-#: followthemoney/types/topic.py:68
+#: followthemoney/types/topic.py:78
 msgid "Person of interest"
 msgstr "Подозрительный персонаж"
 
