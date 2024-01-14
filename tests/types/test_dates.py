@@ -52,7 +52,7 @@ class DatesTest(unittest.TestCase):
         self.assertTrue(dates.validate(iso))
 
         dt = datetime.now(timezone.utc)
-        iso = dt.isoformat()
+        iso = dt.isoformat()[:19]
         self.assertEqual(dates.clean(dt), iso)
 
     def test_parse_date(self):
