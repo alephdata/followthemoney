@@ -1,10 +1,9 @@
 from typing import Optional, TYPE_CHECKING, cast
-from stdnum import iban  # type: ignore
-from stdnum.exceptions import ValidationError  # type: ignore
+from rigour.ids import IBAN
 
 from followthemoney.types.common import PropertyType
 from followthemoney.rdf import URIRef, Identifier
-from followthemoney.util import sanitize_text, defer as _
+from followthemoney.util import defer as _
 
 if TYPE_CHECKING:
     from followthemoney.proxy import EntityProxy
@@ -27,11 +26,7 @@ class IbanType(PropertyType):
     pivot = True
 
     def validate(self, value: str) -> bool:
-        text = sanitize_text(value)
-        try:
-            return cast(bool, iban.validate(text))
-        except ValidationError:
-            return False
+        return IBAN.is_valid(value)
 
     def clean_text(
         self,
@@ -42,7 +37,7 @@ class IbanType(PropertyType):
     ) -> Optional[str]:
         """Create a more clean, but still user-facing version of an
         instance of the type."""
-        return text.replace(" ", "").upper()
+        return IBAN.normalize(text)
 
     def country_hint(self, value: str) -> str:
         return value[:2].lower()
@@ -54,4 +49,4 @@ class IbanType(PropertyType):
         return f"iban:{value.upper()}"
 
     def caption(self, value: str) -> str:
-        return cast(str, iban.format(value))
+        return cast(str, IBAN.format(value))
