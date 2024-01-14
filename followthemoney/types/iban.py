@@ -1,4 +1,4 @@
-from typing import Optional, TYPE_CHECKING, cast
+from typing import Optional, TYPE_CHECKING
 from rigour.ids import IBAN
 
 from followthemoney.types.common import PropertyType
@@ -49,4 +49,4 @@ class IbanType(PropertyType):
         return f"iban:{value.upper()}"
 
     def caption(self, value: str) -> str:
-        return cast(str, IBAN.format(value))
+        return IBAN.format(value)
