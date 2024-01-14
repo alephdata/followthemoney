@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
-from datetime import datetime
+from datetime import datetime, timezone
 
 from followthemoney.types import registry
 
@@ -15,7 +15,7 @@ class DatesTest(unittest.TestCase):
         self.assertTrue(dates.validate("2017-04-04T10:30:29+0200"))
         self.assertTrue(dates.validate("2017-04-04T10:30:29+03:00"))
         self.assertTrue(dates.validate("2017-04-04T10:30:29-04:00"))
-        self.assertTrue(dates.validate(datetime.utcnow().isoformat()))
+        self.assertTrue(dates.validate(datetime.now(timezone.utc).isoformat()))
         self.assertFalse(dates.validate("01-02-2003"))
         self.assertFalse(dates.validate("Thursday 21 March 2017"))
 
@@ -46,12 +46,12 @@ class DatesTest(unittest.TestCase):
         self.assertEqual(dates.clean("2017-5-2T10:00:00"), "2017-05-02T10:00:00")
 
     def test_convert_datetime(self):
-        dt = datetime.utcnow()
+        dt = datetime.now(timezone.utc)
         iso, _ = dt.isoformat().split(".", 1)
         self.assertEqual(dates.clean(dt), iso)
         self.assertTrue(dates.validate(iso))
 
-        dt = datetime.utcnow().date()
+        dt = datetime.now(timezone.utc)
         iso = dt.isoformat()
         self.assertEqual(dates.clean(dt), iso)
 
