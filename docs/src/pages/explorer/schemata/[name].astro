@@ -4,8 +4,10 @@ import { Stack, TocNav, Callout } from 'astro-theme-docs/components';
 import ExplorerLayout from '@layouts/ExplorerLayout.astro';
 import SchemaPageHeader from '@components/page/SchemaPageHeader.astro';
 import SchemaInheritance from '@components/explorer/SchemaInheritance.astro';
+import SchemaInfo from '@components/explorer/SchemaInfo.astro';
 import SchemaSemantics from '@components/explorer/SchemaSemantics.astro';
 import SchemaProperties from '@components/explorer/SchemaProperties.astro';
+import BooleanCard from '@components/explorer/BooleanCard.astro';
 
 const { name } = Astro.params;
 const { schema } = Astro.props;
@@ -19,16 +21,26 @@ export function getStaticPaths() {
 
 const headings = [
   { text: 'Inheritance', slug: 'inheritance', depth: 2 },
+  { text: 'Info', slug: 'info', depth: 2 },
   { text: 'Semantics', slug: 'semantics', depth: 2 },
   { text: 'Properties', slug: 'properties', depth: 2 },
 ];
 ---
+
+<style>
+  .Cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space);
+  }
+</style>
 
 <ExplorerLayout activeSchema={schema}>
   <TocNav {headings} slot="toc" />
 
   <Stack size="xl">
     <SchemaPageHeader schema={schema} />
+
     {
       schema.deprecated && (
         <Callout theme="danger">
@@ -37,7 +49,9 @@ const headings = [
         </Callout>
       )
     }
+
     <SchemaInheritance id="inheritance" schema={schema} />
+    <SchemaInfo id="info" schema={schema} />
     <SchemaSemantics id="semantics" schema={schema} />
     <SchemaProperties id="properties" schema={schema} />
   </Stack>

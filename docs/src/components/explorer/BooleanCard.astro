@@ -1,0 +1,32 @@
+---
+import BooleanValue from '@components/explorer/BooleanValue.astro';
+---
+
+<style>
+  .BooleanCard {
+    padding: var(--space-sm);
+    align-content: start;
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius);
+    background-color: var(--color-bg-elevated);
+  }
+
+  .BooleanCard__title {
+    display: inline;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+  }
+
+  .BooleanCard__info {
+    font-size: var(--font-size-sm);
+    color: var(--color-fg-muted);
+  }
+</style>
+
+<article class="BooleanCard">
+  <div class="BooleanCard__header">
+    <h3 class="BooleanCard__title">{Astro.props.title}</h3>
+    <BooleanValue value={Astro.props.value} />
+  </div>
+  <p class="BooleanCard__info">{Astro.props.info}</p>
+</article>

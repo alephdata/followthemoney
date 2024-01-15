@@ -4,9 +4,11 @@ import PropertyList from '@components/explorer/PropertyList.astro';
 const { schema, ...rest } = Astro.props;
 const start = schema.getTemporalStartProperties();
 const end = schema.getTemporalEndProperties();
+const hasStart = start.length > 0;
+const hasEnd = end.length > 0;
 ---
 
-<div {...rest}>
+<section {...rest}>
   <RichContent>
     <h2 class="beta">Semantics</h2>
     <p data-docsearch-ignore>
@@ -22,22 +24,22 @@ const end = schema.getTemporalEndProperties();
       </li>
 
       {
-        start.length > 0 && (
+        hasStart && (
           <li>
             In a timeline, <PropertyList properties={start} /> should be used as
             the temporal start.
             {end.length > 0 && (
-              <>
+              <Fragment>
                 <PropertyList properties={end} /> should be used as the temporal
                 end.
-              </>
+              </Fragment>
             )}
           </li>
         )
       }
 
       {
-        start <= 0 && (
+        hasEnd && (
           <li>
             {schema.name} entities have no temporal extent, i.e. they are not
             suitable for representation in a timeline.
@@ -46,4 +48,4 @@ const end = schema.getTemporalEndProperties();
       }
     </ul>
   </RichContent>
-</div>
+</section>

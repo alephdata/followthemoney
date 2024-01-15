@@ -9,72 +9,70 @@
     "apiKey": "ea3fb4146ff4400ac27fafe98b1ea288",
     "indexName": "followthemoney"
   },
-  "nav": {
-    "header": {
-      "items": [
-        {
-          "title": "Docs",
-          "link": "/docs"
-        },
-        {
-          "title": "Model Explorer",
-          "link": "/explorer"
-        }
-      ]
-    },
-    "sidebar": {
-      "sections": [
-        {
-          "title": "Getting Started",
-          "items": [
-            {
-              "slug": "/docs"
-            },
-            {
-              "slug": "/docs/api"
-            },
-            {
-              "slug": "/docs/fragments"
-            },
-            {
-              "slug": "/docs/namespace"
-            },
-            {
-              "slug": "/docs/mappings"
-            },
-            {
-              "slug": "/docs/cli"
-            }
-          ]
-        },
-        {
-          "title": "More",
-          "items": [
-            {
-              "slug": "/docs/custom"
-            },
-            {
-              "slug": "/docs/graphs"
-            },
-            {
-              "slug": "/docs/faq"
-            },
-            {
-              "slug": "/docs/credits"
-            }
-          ]
-        },
-        {
-          "title": "Reference",
-          "items": [
-            {
-              "link": "https://alephdata.github.io/followthemoney/reference/python",
-              "title": "Python Library",
-              "external": true
-            }
-          ]
-        }
-      ]
-    }
+  "header": {
+    "items": [
+      {
+        "title": "Docs",
+        "link": "/docs"
+      },
+      {
+        "title": "Model Explorer",
+        "link": "/explorer"
+      }
+    ]
+  },
+  "sidebar": {
+    "sections": [
+      {
+        "title": "Getting Started",
+        "items": [
+          {
+            "slug": "/docs"
+          },
+          {
+            "slug": "/docs/api"
+          },
+          {
+            "slug": "/docs/fragments"
+          },
+          {
+            "slug": "/docs/namespace"
+          },
+          {
+            "slug": "/docs/mappings"
+          },
+          {
+            "slug": "/docs/cli"
+          }
+        ]
+      },
+      {
+        "title": "More",
+        "items": [
+          {
+            "slug": "/docs/custom"
+          },
+          {
+            "slug": "/docs/graphs"
+          },
+          {
+            "slug": "/docs/faq"
+          },
+          {
+            "slug": "/docs/credits"
+          }
+        ]
+      },
+      {
+        "title": "Reference",
+        "items": [
+          {
+            "link": "https://alephdata.github.io/followthemoney/reference/python",
+            "title": "Python Library",
+            "external": true
+          }
+        ]
+      }
+    ]
   }
 }

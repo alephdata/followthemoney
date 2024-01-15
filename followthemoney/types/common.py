@@ -1,3 +1,4 @@
+from inspect import cleandoc
 from itertools import product
 from babel.core import Locale
 from banal import ensure_list
@@ -64,7 +65,10 @@ class PropertyType(object):
 
     @property
     def docs(self) -> Optional[str]:
-        return self.__doc__
+        if not self.__doc__:
+            return None
+
+        return cleandoc(self.__doc__)
 
     def validate(self, value: str) -> bool:
         """Returns a boolean to indicate if the given value is a valid instance of

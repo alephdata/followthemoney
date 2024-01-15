@@ -16,6 +16,8 @@ const schemata = Object.values(model.schemata).sort((a, b) =>
     <th>Label</th>
     <th>Abstract</th>
     <th>Generated</th>
+    <th>Matchable</th>
+    <th>Hidden</th>
   </tr>
   {
     schemata.map((schema) => (
@@ -34,6 +36,12 @@ const schemata = Object.values(model.schemata).sort((a, b) =>
         </td>
         <td>
           <BooleanValue value={schema.generated} />
+        </td>
+        <td>
+          <BooleanValue value={schema.matchable} />
+        </td>
+        <td>
+          <BooleanValue value={schema.hidden} />
         </td>
       </tr>
     ))

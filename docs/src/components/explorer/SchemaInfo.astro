@@ -1,0 +1,36 @@
+---
+import BooleanCard from '@components/explorer/BooleanCard.astro';
+import Cards from '@components/common/Cards.astro';
+
+const { schema, ...rest } = Astro.props;
+---
+
+<section class="SchemaInfo" {...rest}>
+  <h2 class="beta">Info</h2>
+
+  <Cards data-docsearch-ignore>
+    <BooleanCard
+      title="Abstract"
+      info="Abstract schemata are used for inheritance only and shouldn’t be used directly."
+      value={schema.abstract}
+    />
+
+    <BooleanCard
+      title="Generated"
+      info="Entities using a generated schema shouldn’t be created directly by users."
+      value={schema.generated}
+    />
+
+    <BooleanCard
+      title="Matchable"
+      info="Entities using a matchable schema can be used for matching and cross-referencing."
+      value={schema.matchable}
+    />
+
+    <BooleanCard
+      title="Hidden"
+      info="Entities using a hidden schema shouldn’t be displayed in user interfaces or created by users."
+      value={schema.hidden}
+    />
+  </Cards>
+</section>

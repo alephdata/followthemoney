@@ -6,11 +6,11 @@ import { Nav, NavSection, NavItem } from 'astro-theme-docs/components';
 const { activeType, activeSchema } = Astro.props;
 
 const schemata = Object.values(model.schemata).sort((a, b) =>
-  a.label.localeCompare(b.label)
+  a.label.localeCompare(b.name)
 );
 
 const types = Object.values(model.types).sort((a, b) =>
-  a.label.localeCompare(b.label)
+  a.label.localeCompare(b.name)
 );
 
 const basePath = Astro.site?.pathname || '';

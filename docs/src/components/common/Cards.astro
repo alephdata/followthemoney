@@ -1,0 +1,16 @@
+<style>
+  .Cards {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  @media screen and (min-width: 960px) {
+    .Cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+<div class="Cards" {...Astro.props}>
+  <slot />
+</div>
