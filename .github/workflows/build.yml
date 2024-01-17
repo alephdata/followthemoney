@@ -27,7 +27,7 @@ jobs:
         run: |
           sudo apt-get update -y -qq
           sudo apt-get install -y -qq libicu-dev
-          pip install wheel pyicu
+          pip install wheel pyicu setuptools
           pip install -e ".[dev]"
       - name: Run checks for default model
         run: |
