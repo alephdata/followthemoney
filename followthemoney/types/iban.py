@@ -25,7 +25,9 @@ class IbanType(PropertyType):
     matchable = True
     pivot = True
 
-    def validate(self, value: str) -> bool:
+    def validate(
+        self, value: str, fuzzy: bool = False, format: Optional[str] = None
+    ) -> bool:
         return IBAN.is_valid(value)
 
     def clean_text(
