@@ -27,6 +27,7 @@ class PropertyDict(TypedDict, total=False):
     # stub: Optional[bool]
     rdf: Optional[str]
     range: Optional[str]
+    format: Optional[str]
 
 
 class PropertySpec(PropertyDict):
@@ -58,6 +59,7 @@ class Property:
         "matchable",
         "deprecated",
         "_range",
+        "format",
         "range",
         "stub",
         "_reverse",
@@ -112,6 +114,11 @@ class Property:
         #: but a person cannot be owned.
         self._range = data.get("range")
         self.range: Optional["Schema"] = None
+
+        #: If the property is of type ``identifier``, a more narrow definition of the
+        #: identifier format can be provided. For example, LEI, INN or IBAN codes
+        #: can be automatically validated.
+        self.format: Optional[str] = data.get("format")
 
         #: When a property points to another schema, a reverse property is added for
         #: various administrative reasons. These properties are, however, not real
@@ -169,6 +176,8 @@ class Property:
             if self.stub:
                 return gettext("Property cannot be written")
             val = get_entity_id(val)
+            if val is None:
+                continue
             if not self.type.validate(val):
                 return gettext("Invalid value")
             if val is not None:
@@ -203,6 +212,8 @@ class Property:
             data["range"] = self.range.name
         if self.reverse is not None:
             data["reverse"] = self.reverse.name
+        if self.format is not None:
+            data["format"] = self.format
         return data
 
     def __repr__(self) -> str:

@@ -39,7 +39,6 @@ class IdentifierType(PropertyType):
             return format_.normalize(text)
         return text
 
-
     def clean_compare(self, value: str) -> str:
         # TODO: should this be used for normalization?
         value = self.COMPARE_CLEAN.sub("", value)
