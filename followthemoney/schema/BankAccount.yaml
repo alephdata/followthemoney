@@ -28,10 +28,12 @@ BankAccount:
       type: identifier
     iban:
       label: IBAN
-      type: iban
+      type: identifier
+      format: iban
     bic:
       label: Bank Identifier Code
       type: identifier
+      format: bic
     bank:
       label: Bank
       type: entity

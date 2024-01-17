@@ -23,6 +23,7 @@ Security:
       label: ISIN
       description: International Securities Identification Number
       type: identifier
+      format: isin
     registrationNumber:
       label: Registration number
       type: identifier
@@ -32,6 +33,7 @@ Security:
     figiCode:
       label: Financial Instrument Global Identifier
       type: identifier
+      format: figi
     issuer:
       label: "Issuer"
       type: entity

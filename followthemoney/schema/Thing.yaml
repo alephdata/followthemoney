@@ -57,6 +57,7 @@ Thing:
     wikidataId:
       label: Wikidata ID
       type: identifier
+      format: qid
     keywords:
       label: Keywords
     topics:
