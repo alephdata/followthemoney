@@ -3,7 +3,6 @@ from followthemoney.types.url import UrlType
 from followthemoney.types.name import NameType
 from followthemoney.types.email import EmailType
 from followthemoney.types.ip import IpType
-from followthemoney.types.iban import IbanType
 from followthemoney.types.address import AddressType
 from followthemoney.types.date import DateType
 from followthemoney.types.phone import PhoneType
@@ -27,7 +26,6 @@ registry.add(UrlType)
 registry.add(NameType)
 registry.add(EmailType)
 registry.add(IpType)
-registry.add(IbanType)
 registry.add(AddressType)
 registry.add(DateType)
 registry.add(PhoneType)
