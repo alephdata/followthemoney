@@ -32,6 +32,14 @@ jobs:
       - name: Run checks for default model
         run: |
           python contrib/check_model.py
+          make default-model
+          if [[ -z "$(git status --porcelain)" ]];
+          then
+            echo "Default model is up to date 👌"
+          else
+            echo "⚠️ Default model is not up to date. You need to run `make default-model` and commit the changes.";
+            exit 1;
+          fi;
       - name: Run the tests
         run: |
           make test
