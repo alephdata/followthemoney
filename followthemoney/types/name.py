@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING, Dict, List, Optional, Sequence, Union
-
-from Levenshtein import distance, setmedian
+from rigour.text.distance import levenshtein_similarity
+from Levenshtein import setmedian
 from normality import slugify
 from normality.cleaning import collapse_spaces, strip_quotes
 
@@ -75,9 +75,8 @@ class NameType(PropertyType):
         return dampen(3, 50, value)
 
     def compare(self, left: str, right: str) -> float:
-        longest = float(max(len(left), len(right), 1))
-        edits = float(distance(left[:255], right[:255]))
-        return (longest - edits) / longest
+        """Compare two names for similarity."""
+        return levenshtein_similarity(left, right)
 
     def node_id(self, value: str) -> Optional[str]:
         slug = slugify(value)
