@@ -39,7 +39,6 @@ setup(
         "click >= 8.0, < 9.0.0",
         "stringcase >= 1.2.0, < 2.0.0",
         "requests >= 2.21.0, < 3.0.0",
-        "python-levenshtein >= 0.12.0, < 1.0.0",
         "normality >= 2.4.0, < 3.0.0",
         "sqlalchemy >= 1.4.49, < 3.0.0",
         "countrynames >= 1.13.0, < 2.0.0",
