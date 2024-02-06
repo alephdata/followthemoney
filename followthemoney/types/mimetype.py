@@ -1,6 +1,6 @@
 from typing import Optional, TYPE_CHECKING
-from pantomime import normalize_mimetype, parse_mimetype
-from pantomime import DEFAULT
+from rigour.mime import normalize_mimetype, parse_mimetype
+from rigour.mime import DEFAULT
 
 from followthemoney.types.common import PropertyType
 from followthemoney.rdf import URIRef, Identifier
