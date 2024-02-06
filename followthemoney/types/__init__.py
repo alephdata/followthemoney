@@ -11,6 +11,7 @@ from followthemoney.types.language import LanguageType
 from followthemoney.types.mimetype import MimeType
 from followthemoney.types.checksum import ChecksumType
 from followthemoney.types.identifier import IdentifierType
+from followthemoney.types.iban import IbanType
 from followthemoney.types.entity import EntityType
 from followthemoney.types.topic import TopicType
 from followthemoney.types.gender import GenderType
@@ -34,6 +35,7 @@ registry.add(LanguageType)
 registry.add(MimeType)
 registry.add(ChecksumType)
 registry.add(IdentifierType)
+registry.add(IbanType)  # TODO: remove
 registry.add(EntityType)
 registry.add(TopicType)
 registry.add(GenderType)
