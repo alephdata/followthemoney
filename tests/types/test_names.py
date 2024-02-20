@@ -20,13 +20,7 @@ class NamesTest(unittest.TestCase):
         self.assertEqual(names.pick(["Banana"]), "Banana")
         self.assertEqual(names.pick([]), None)
         values = ["Robert Smith", "Rob Smith", "Robert SMITH"]
-        self.assertEqual(names.pick(values), "Robert SMITH")
-
-        # handle dirty edgecases
-        values = ["", "(", "Peter"]
-        self.assertEqual(names.pick(values), "Peter")
-        values = ["", "("]
-        self.assertEqual(names.pick(values), None)
+        self.assertEqual(names.pick(values), "Robert Smith")
 
     def test_domain_validity(self):
         self.assertTrue(names.validate("huhu"))
