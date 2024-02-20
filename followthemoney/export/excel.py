@@ -1,11 +1,11 @@
 import logging
 from io import BytesIO
 from typing import Dict, List, Optional
-from openpyxl import Workbook  # type: ignore
-from openpyxl.cell import WriteOnlyCell  # type: ignore
-from openpyxl.styles import Font, PatternFill  # type: ignore
-from openpyxl.worksheet.worksheet import Worksheet  # type: ignore
-from openpyxl.utils.exceptions import IllegalCharacterError  # type: ignore
+from openpyxl import Workbook
+from openpyxl.cell import WriteOnlyCell
+from openpyxl.styles import Font, PatternFill
+from openpyxl.worksheet.worksheet import Worksheet
+from openpyxl.utils.exceptions import IllegalCharacterError
 
 from followthemoney.export.common import Exporter
 from followthemoney.proxy import E
@@ -25,7 +25,7 @@ class ExcelWriter(object):
         self.workbook = Workbook(write_only=True)
 
     def make_sheet(self, title: str, headers: List[str]) -> Worksheet:
-        sheet = self.workbook.create_sheet(title=title)
+        sheet: Worksheet = self.workbook.create_sheet(title=title)
         sheet.freeze_panes = "A2"
         sheet.sheet_properties.filterMode = True
         cells = []

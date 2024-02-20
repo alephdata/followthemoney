@@ -64,6 +64,7 @@ setup(
             "types-PyYAML",
             "types-requests",
             "types-setuptools",
+            "types-openpyxl",
             "flake8>=2.6.0",
             "transifex-client",
             "responses>=0.9.0",
