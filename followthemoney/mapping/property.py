@@ -30,6 +30,7 @@ class PropertyMapping(object):
         "format",
         "fuzzy",
         "required",
+        "clean",
         "literals",
         "template",
         "replacements",
@@ -51,6 +52,7 @@ class PropertyMapping(object):
         self.format = stringify(data.pop("format", None))
         self.fuzzy = as_bool(data.pop("fuzzy", False))
         self.required = as_bool(data.pop("required", False))
+        self.clean = as_bool(data.pop("clean", True))
         self.literals = cast(List[str], keys_values(data, "literal", "literals"))
 
         self.template = sanitize_text(data.pop("template", None))
@@ -134,4 +136,10 @@ class PropertyMapping(object):
             values = splote
 
         for value in values:
-            proxy.unsafe_add(self.prop, value, fuzzy=self.fuzzy, format=self.format)
+            proxy.unsafe_add(
+                prop=self.prop,
+                value=value,
+                cleaned=(not self.clean),
+                fuzzy=self.fuzzy,
+                format=self.format,
+            )
