@@ -129,6 +129,10 @@ class EntityMapping(object):
         # keys.
         proxy.id = self.compute_key(record)
         if proxy.id is None:
+            if self.id_column:
+                log.warn(f"[{self.name}] Skipping entity because no ID could be computed. Make sure that there are no empty values in the \"{self.id_column}\" column.")
+            if self.keys:
+                log.warn(f"[{self.name}] Skipping entity because no ID could be computed. Make sure that there are no empty values in key columns.")
             return None
 
         for prop in self.properties:
@@ -137,6 +141,7 @@ class EntityMapping(object):
                 # the mapping, not in the model. Basically it means: if
                 # this row of source data doesn't have that field, then do
                 # not map it again.
+                log.warn(f"[{self.name}] Skipping entity because required property \"{prop.prop.name}\" is empty.")
                 return None
         return proxy
 
