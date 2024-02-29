@@ -205,26 +205,31 @@ class EntityProxy(object):
         cleaned: bool = False,
         fuzzy: bool = False,
         format: Optional[str] = None,
-    ) -> None:
+    ) -> Optional[str]:
         """A version of `add()` to be used only in type-checking code. This accepts
         only a single value, and performs input cleaning on the premise that the
-        value is already valid unicode."""
+        value is already valid unicode. Returns the value that has been added."""
         if not cleaned and value is not None:
             value = prop.type.clean_text(value, fuzzy=fuzzy, format=format, proxy=self)
-        if value is not None:
-            # Somewhat hacky: limit the maximum size of any particular
-            # field to avoid overloading upstream aleph/elasticsearch.
-            value_size = len(value)
-            if prop.type.max_size is not None:
-                if self._size + value_size > prop.type.max_size:
-                    # msg = "[%s] too large. Rejecting additional values."
-                    # log.warning(msg, prop.name)
-                    return None
-            self._size += value_size
-            self._properties.setdefault(prop.name, list())
-            if value not in self._properties[prop.name]:
-                self._properties[prop.name].append(value)
-        return None
+
+        if value is None:
+            return None
+
+        # Somewhat hacky: limit the maximum size of any particular
+        # field to avoid overloading upstream aleph/elasticsearch.
+        value_size = len(value)
+        if prop.type.max_size is not None:
+            if self._size + value_size > prop.type.max_size:
+                # msg = "[%s] too large. Rejecting additional values."
+                # log.warning(msg, prop.name)
+                return None
+        self._size += value_size
+        self._properties.setdefault(prop.name, list())
+
+        if value not in self._properties[prop.name]:
+            self._properties[prop.name].append(value)
+
+        return value
 
     def set(
         self,
