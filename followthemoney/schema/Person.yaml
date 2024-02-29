@@ -26,6 +26,10 @@ Person:
     title:
       label: Title
       rdf: http://xmlns.com/foaf/0.1/title
+    # The `firstName`, `lastName`, `secondName` etc. properties intentionally do not use
+    # the `name` property type. Many FtM tools (including Aleph) use name properties to
+    # compare/match entities, but matching entites just on e.g. a first name would lead to
+    # too many false positives.
     firstName:
       label: First name
       rdf: http://xmlns.com/foaf/0.1/givenName
