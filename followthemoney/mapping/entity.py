@@ -1,3 +1,4 @@
+import logging
 from hashlib import sha1
 from warnings import warn
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Set
@@ -14,6 +15,8 @@ from followthemoney.exc import InvalidMapping
 if TYPE_CHECKING:
     from followthemoney.model import Model
     from followthemoney.mapping.query import QueryMapping
+
+log = logging.getLogger(__name__)
 
 
 class EntityMapping(object):
@@ -112,11 +115,15 @@ class EntityMapping(object):
         # from that accessible to phone and address parsers.
         for prop in self.properties:
             if prop.prop.type == registry.country:
-                prop.map(proxy, record, entities)
+                discarded_values = prop.map(proxy, record, entities)
+                for value in discarded_values:
+                    log.warn(f"[{self.name}] Discarded unclean value \"{value}\" for property \"{prop.prop.qname}\".")
 
         for prop in self.properties:
             if prop.prop.type != registry.country:
-                prop.map(proxy, record, entities)
+                discarded_values = prop.map(proxy, record, entities)
+                for value in discarded_values:
+                    log.warn(f"[{self.name}] Discarding unclean value \"{value}\" for property \"{prop.prop.qname}\".")
 
         # Generate the ID at the end to avoid self-reference checks on empty
         # keys.
