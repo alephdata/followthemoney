@@ -83,6 +83,25 @@ class ProxyTestCase(TestCase):
         with raises(InvalidData):
             EntityProxy.from_dict(model, {})
 
+    def test_unsafe_add(self):
+        schema = model.schemata["Person"]
+        prop = schema.properties["phone"]
+
+        proxy = model.make_entity("Person")
+        value = proxy.unsafe_add(prop, "+12025557612")
+        assert value == "+12025557612"
+        assert proxy.get("phone") == ["+12025557612"]
+
+        proxy = model.make_entity("Person")
+        value = proxy.unsafe_add(prop, "+1 (202) 555-7612")
+        assert value == "+12025557612"
+        assert proxy.get("phone") == ["+12025557612"]
+
+        proxy = model.make_entity("Person")
+        value = proxy.unsafe_add(prop, "(202) 555-7612")
+        assert value == None
+        assert proxy.get("phone") == []
+
     def test_pop(self):
         proxy = EntityProxy.from_dict(model, ENTITY)
         get_ids = proxy.get("idNumber")
