@@ -32,8 +32,9 @@ Analyzable:
     ibanMentioned:
       label: "Detected IBANs"
       hidden: true
-      type: identifier
-      format: iban
+      # type: identifier
+      # format: iban
+      type: iban
     ipMentioned:
       label: "Detected IP addresses"
       hidden: true
