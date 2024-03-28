@@ -8,10 +8,10 @@ jobs:
     strategy:
       matrix:
         python:
-          - "3.8"
           - "3.9"
           - "3.10"
           - "3.11"
+          - "3.12"
     steps:
       - uses: actions/checkout@v4
       - name: Show ref
@@ -27,7 +27,7 @@ jobs:
         run: |
           sudo apt-get update -y -qq
           sudo apt-get install -y -qq libicu-dev
-          pip install wheel pyicu
+          pip install wheel pyicu setuptools
           pip install -e ".[dev]"
       - name: Run checks for default model
         run: |

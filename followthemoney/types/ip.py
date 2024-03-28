@@ -21,7 +21,9 @@ class IpType(PropertyType):
     matchable = True
     pivot = True
 
-    def validate(self, value: str) -> bool:
+    def validate(
+        self, value: str, fuzzy: bool = False, format: Optional[str] = None
+    ) -> bool:
         """Check to see if this is a valid ip address."""
         try:
             ip_address(value)

@@ -194,6 +194,7 @@ class EntityProxy(object):
 
         for value in value_list(values):
             if not cleaned:
+                format = format or prop.format
                 value = prop.type.clean(value, proxy=self, fuzzy=fuzzy, format=format)
             self.unsafe_add(prop, value, cleaned=True)
         return None
@@ -210,6 +211,7 @@ class EntityProxy(object):
         only a single value, and performs input cleaning on the premise that the
         value is already valid unicode."""
         if not cleaned and value is not None:
+            format = format or prop.format
             value = prop.type.clean_text(value, fuzzy=fuzzy, format=format, proxy=self)
         if value is not None:
             # Somewhat hacky: limit the maximum size of any particular
@@ -424,9 +426,12 @@ class EntityProxy(object):
         dictionary can be used to make a new proxy, and it is commonly written to disk
         or a database."""
         data = dict(self.context)
-        data.update(
-            {"id": self.id, "schema": self.schema.name, "properties": self.properties}
-        )
+        extra = {
+            "id": self.id,
+            "schema": self.schema.name,
+            "properties": self.properties,
+        }
+        data.update(extra)
         return data
 
     def to_full_dict(self, matchable: bool = False) -> Dict[str, Any]:

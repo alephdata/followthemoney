@@ -107,15 +107,18 @@ LegalEntity:
       label: "INN"
       description: "Russian company ID"
       type: identifier
+      # format: inn
     ogrnCode:
       label: "OGRN"
       description: "Major State Registration Number"
       type: identifier
+      # format: ogrn
     leiCode:
       # cf. https://www.gleif.org/en/about-lei/introducing-the-legal-entity-identifier-lei
       label: "LEI"
       description: "Legal Entity Identifier"
       type: identifier
+      format: lei
     dunsCode:
       label: "D-U-N-S"
       description: "Dun & Bradstreet identifier"
@@ -124,6 +127,7 @@ LegalEntity:
       label: "SWIFT/BIC"
       description: "Bank identifier code"
       type: identifier
+      format: bic
     parent:
       label: "Parent company"
       description: "If this entity is a subsidiary, another entity (company or organisation) is its parent"

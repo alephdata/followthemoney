@@ -29,7 +29,9 @@ class EntityType(PropertyType):
     matchable = True
     pivot = True
 
-    def validate(self, value: str) -> bool:
+    def validate(
+        self, value: str, fuzzy: bool = False, format: Optional[str] = None
+    ) -> bool:
         text = sanitize_text(value)
         if text is None:
             return False

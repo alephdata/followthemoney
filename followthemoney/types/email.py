@@ -36,7 +36,9 @@ class EmailType(PropertyType):
     #     except:
     #         return False
 
-    def validate(self, value: str) -> bool:
+    def validate(
+        self, value: str, fuzzy: bool = False, format: Optional[str] = None
+    ) -> bool:
         """Check to see if this is a valid email address."""
         # TODO: adopt email.utils.parseaddr
         email = sanitize_text(value)
