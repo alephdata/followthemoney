@@ -230,3 +230,48 @@ class MappingTestCase(TestCase):
         self.assertCountEqual(
             entities[0].get("notes"), ["brown", "black", "blue"]
         )  # noqa
+
+    def test_mapping_cleaning(self):
+        url = "file://" + os.path.join(self.fixture_path, "address_book.csv")
+        mapping = {
+            "csv_url": url,
+            "entities": {
+                "bank_account": {
+                    "schema": "Person",
+                    "key": "name",
+                    "properties": {
+                        "name": {"column": "name"},
+                        "phone": {"column": "phone"},
+                    },
+                }
+            }
+        }
+
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 3
+
+        # Valid phone number
+        assert entities[0].get("name") == ["Brian Perry"]
+        assert entities[0].get("phone") == ["+15679921234"]
+
+        # Valid phone number (normalized during mapping)
+        assert entities[1].get("name") == ["Jason Wood"]
+        assert entities[1].get("phone") == ["+15679925678"]
+
+        # Invalid phone number (missing country code) is removed
+        assert entities[2].get("name") == ["Judith Davis"]
+        assert entities[2].get("phone") == []
+
+        # Disable cleaning of values in the phone property mapping
+        mapping["entities"]["bank_account"]["properties"]["phone"]["clean"] = False
+
+        entities = list(model.map_entities(mapping))
+        assert len(entities) == 3
+
+        # Invalid phone number is not removed
+        assert entities[2].get("name") == ["Judith Davis"]
+        assert entities[2].get("phone") == ["(567) 992-0000"]
+
+        # However, even valid phone numbers are not normalized
+        assert entities[1].get("name") == ["Jason Wood"]
+        assert entities[1].get("phone") == ["+1 (567) 992-5678"]
