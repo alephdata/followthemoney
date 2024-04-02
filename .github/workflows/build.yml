@@ -33,6 +33,7 @@ jobs:
         run: |
           python contrib/check_model.py
           make default-model
+          git diff
           if [[ -z "$(git status --porcelain)" ]];
           then
             echo "Default model is up to date 👌"
