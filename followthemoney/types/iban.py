@@ -1,6 +1,5 @@
-from typing import Optional, TYPE_CHECKING, cast
-from stdnum import iban  # type: ignore
-from stdnum.exceptions import ValidationError  # type: ignore
+from typing import Optional, TYPE_CHECKING
+from rigour.ids import IBAN
 
 from followthemoney.types.common import PropertyType
 from followthemoney.rdf import URIRef, Identifier
@@ -26,12 +25,11 @@ class IbanType(PropertyType):
     matchable = True
     pivot = True
 
-    def validate(self, value: str) -> bool:
+    def validate(self, value: str, fuzzy: bool = False, format: Optional[str] = None) -> bool:
         text = sanitize_text(value)
-        try:
-            return cast(bool, iban.validate(text))
-        except ValidationError:
+        if text is None:
             return False
+        return IBAN.is_valid(text)
 
     def clean_text(
         self,
@@ -42,7 +40,7 @@ class IbanType(PropertyType):
     ) -> Optional[str]:
         """Create a more clean, but still user-facing version of an
         instance of the type."""
-        return text.replace(" ", "").upper()
+        return IBAN.normalize(text)
 
     def country_hint(self, value: str) -> str:
         return value[:2].lower()
@@ -54,4 +52,4 @@ class IbanType(PropertyType):
         return f"iban:{value.upper()}"
 
     def caption(self, value: str) -> str:
-        return cast(str, iban.format(value))
+        return IBAN.format(value)

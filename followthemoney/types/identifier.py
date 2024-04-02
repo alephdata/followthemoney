@@ -1,8 +1,13 @@
 import re
+from typing import Optional, TYPE_CHECKING
+from rigour.ids import get_identifier_format_names, get_identifier_format
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen, shortest, longest
 from followthemoney.util import defer as _
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
 
 
 class IdentifierType(PropertyType):
@@ -21,6 +26,18 @@ class IdentifierType(PropertyType):
     plural = _("Identifiers")
     matchable = True
     pivot = True
+
+    def clean_text(
+        self,
+        text: str,
+        fuzzy: bool = False,
+        format: Optional[str] = None,
+        proxy: Optional["EntityProxy"] = None,
+    ) -> Optional[str]:
+        if format in get_identifier_format_names():
+            format_ = get_identifier_format(format)
+            return format_.normalize(text)
+        return text
 
     def clean_compare(self, value: str) -> str:
         # TODO: should this be used for normalization?

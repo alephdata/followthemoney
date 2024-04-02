@@ -70,10 +70,12 @@ class PropertyType(object):
 
         return cleandoc(self.__doc__)
 
-    def validate(self, value: str) -> bool:
+    def validate(
+        self, value: str, fuzzy: bool = False, format: Optional[str] = None
+    ) -> bool:
         """Returns a boolean to indicate if the given value is a valid instance of
         the type."""
-        cleaned = self.clean(value)
+        cleaned = self.clean(value, fuzzy=fuzzy, format=format)
         return cleaned is not None
 
     def clean(
@@ -145,7 +147,7 @@ class PropertyType(object):
     ) -> float:
         """Compare two sets of values and select the highest-scored result."""
         results = []
-        for (l, r) in product(ensure_list(left), ensure_list(right)):
+        for l, r in product(ensure_list(left), ensure_list(right)):
             results.append(self.compare(l, r))
         if not len(results):
             return 0.0
@@ -233,7 +235,9 @@ class EnumType(PropertyType):
             self._names[locale] = self._locale_names(locale)
         return self._names[locale]
 
-    def validate(self, value: str) -> bool:
+    def validate(
+        self, value: str, fuzzy: bool = False, format: Optional[str] = None
+    ) -> bool:
         """Make sure that the given code value is one of the supported set."""
         if value is None:
             return False

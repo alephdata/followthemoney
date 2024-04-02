@@ -55,7 +55,7 @@ class SQLSource(Source):
         if database is None:
             raise InvalidMapping("No database in SQL mapping!")
         self.database_uri = cast(str, os.path.expandvars(database))
-        self.engine = create_engine(self.database_uri, poolclass=NullPool)  
+        self.engine = create_engine(self.database_uri, poolclass=NullPool)
         self.meta = MetaData()
 
         tables = keys_values(data, "table", "tables")
