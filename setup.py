@@ -30,7 +30,7 @@ setup(
     },
     zip_safe=False,
     install_requires=[
-        "babel >= 2.9.1, < 3.0.0",
+        "babel >= 2.14.0, < 3.0.0",
         "pyyaml >= 5.0.0, < 7.0.0",
         "types-PyYAML",
         "sqlalchemy2-stubs",
