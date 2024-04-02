@@ -7,6 +7,7 @@ export interface IPropertyDatum {
   label: string
   type: string
   description?: string
+  format?: string
   stub?: boolean
   hidden?: boolean
   matchable?: boolean
@@ -29,6 +30,7 @@ export class Property {
   public readonly matchable: boolean
   public readonly deprecated: boolean
   public readonly description: string | null
+  public readonly format: string | null
   public readonly stub: boolean
   public readonly hasReverse: boolean
   public readonly hasRange: boolean
@@ -42,6 +44,7 @@ export class Property {
     this.label = property.label || property.name
     this.hidden = !!property.hidden
     this.description = property.description || null
+    this.format = property.format || null
     this.stub = !!property.stub
     this.matchable = !!property.matchable
     this.deprecated = !!property.deprecated
