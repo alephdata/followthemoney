@@ -564,6 +564,7 @@
           "type": "string"
         },
         "bic": {
+          "format": "bic",
           "label": "Bank Identifier Code",
           "matchable": true,
           "name": "bic",
@@ -3265,6 +3266,7 @@
         },
         "leiCode": {
           "description": "Legal Entity Identifier",
+          "format": "lei",
           "label": "LEI",
           "matchable": true,
           "name": "leiCode",
@@ -3481,6 +3483,7 @@
         },
         "swiftBic": {
           "description": "Bank identifier code",
+          "format": "bic",
           "label": "SWIFT/BIC",
           "matchable": true,
           "name": "swiftBic",
@@ -5316,6 +5319,7 @@
           "type": "string"
         },
         "figiCode": {
+          "format": "figi",
           "label": "Financial Instrument Global Identifier",
           "matchable": true,
           "name": "figiCode",
@@ -5324,6 +5328,7 @@
         },
         "isin": {
           "description": "International Securities Identification Number",
+          "format": "isin",
           "label": "ISIN",
           "matchable": true,
           "name": "isin",
@@ -5861,6 +5866,7 @@
           "type": "name"
         },
         "wikidataId": {
+          "format": "qid",
           "label": "Wikidata ID",
           "matchable": true,
           "name": "wikidataId",
@@ -6483,7 +6489,6 @@
         "cn-xz": "Tibet",
         "co": "Colombia",
         "cp": "Clipperton Island",
-        "cq": "Sark",
         "cr": "Costa Rica",
         "cshh": "Czechoslovakia",
         "csxx": "Serbia and Montenegro",
@@ -6678,7 +6683,7 @@
         "tm": "Turkmenistan",
         "tn": "Tunisia",
         "to": "Tonga",
-        "tr": "T\u00fcrkiye",
+        "tr": "Turkey",
         "tt": "Trinidad & Tobago",
         "tv": "Tuvalu",
         "tw": "Taiwan",
