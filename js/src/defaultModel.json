@@ -1042,14 +1042,14 @@
           "type": "identifier"
         },
         "fnsCode": {
-          "description": "(RU, \u0424\u041d\u0421) Federal Tax Service related info",
+          "description": "(RU, ФНС) Federal Tax Service related info",
           "label": "Federal tax service code",
           "name": "fnsCode",
           "qname": "Company:fnsCode",
           "type": "identifier"
         },
         "fssCode": {
-          "description": "(RU, \u0424\u0421\u0421) Social Security",
+          "description": "(RU, ФСС) Social Security",
           "label": "FSS",
           "name": "fssCode",
           "qname": "Company:fssCode",
@@ -1100,7 +1100,7 @@
           "type": "country"
         },
         "kppCode": {
-          "description": "(RU, \u041a\u041f\u041f) in addition to INN for orgs; reason for registration at FNS",
+          "description": "(RU, КПП) in addition to INN for orgs; reason for registration at FNS",
           "label": "KPP",
           "name": "kppCode",
           "qname": "Company:kppCode",
@@ -1114,21 +1114,21 @@
           "type": "identifier"
         },
         "okopfCode": {
-          "description": "(RU, \u041e\u041a\u041e\u041f\u0424) What kind of business entity",
+          "description": "(RU, ОКОПФ) What kind of business entity",
           "label": "OKOPF",
           "name": "okopfCode",
           "qname": "Company:okopfCode",
           "type": "string"
         },
         "oksmCode": {
-          "description": "Russian (\u041e\u041a\u0421\u041c) countries classifier",
+          "description": "Russian (ОКСМ) countries classifier",
           "label": "OKSM",
           "name": "oksmCode",
           "qname": "Company:oksmCode",
           "type": "string"
         },
         "okvedCode": {
-          "description": "(RU, \u041e\u041a\u0412\u042d\u0414) Economical activity classifier. OKVED2 is the same but newer",
+          "description": "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer",
           "label": "OKVED(2) Classifier",
           "name": "okvedCode",
           "qname": "Company:okvedCode",
@@ -1143,7 +1143,7 @@
           "type": "identifier"
         },
         "pfrNumber": {
-          "description": "(RU, \u041f\u0424\u0420) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch",
+          "description": "(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch",
           "label": "PFR Number",
           "matchable": true,
           "name": "pfrNumber",
@@ -2184,7 +2184,7 @@
           "type": "string"
         },
         "customsProcedure": {
-          "description": "Customs Procedure \u2014 type of customs clearance",
+          "description": "Customs Procedure — type of customs clearance",
           "label": "Customs Procedure",
           "name": "customsProcedure",
           "qname": "EconomicActivity:customsProcedure",
@@ -2290,7 +2290,7 @@
           "type": "entity"
         },
         "vedCode": {
-          "description": "(\u041a\u043e\u0434 \u0422\u041d \u0412\u042d\u0414) Foreign Economic Activity Commodity Code",
+          "description": "(Код ТН ВЭД) Foreign Economic Activity Commodity Code",
           "label": "FEAC Code",
           "matchable": true,
           "name": "vedCode",
@@ -2298,7 +2298,7 @@
           "type": "identifier"
         },
         "vedCodeDescription": {
-          "description": "(\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043a\u043e\u0434\u0430 \u0422\u041d \u0412\u042d\u0414) Foreign Economic Activity Commodity Code description",
+          "description": "(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description",
           "label": "FEAC Code description",
           "name": "vedCodeDescription",
           "qname": "EconomicActivity:vedCodeDescription",
@@ -6451,7 +6451,7 @@
         "at": "Austria",
         "au": "Australia",
         "aw": "Aruba",
-        "ax": "\u00c5land Islands",
+        "ax": "Åland Islands",
         "az": "Azerbaijan",
         "az-nk": "Nagorno-Karabakh",
         "ba": "Bosnia & Herzegovina",
@@ -6463,7 +6463,7 @@
         "bh": "Bahrain",
         "bi": "Burundi",
         "bj": "Benin",
-        "bl": "St. Barth\u00e9lemy",
+        "bl": "St. Barthélemy",
         "bm": "Bermuda",
         "bn": "Brunei",
         "bo": "Bolivia",
@@ -6481,7 +6481,7 @@
         "cf": "Central African Republic",
         "cg": "Congo - Brazzaville",
         "ch": "Switzerland",
-        "ci": "C\u00f4te d\u2019Ivoire",
+        "ci": "Côte d’Ivoire",
         "ck": "Cook Islands",
         "cl": "Chile",
         "cm": "Cameroon",
@@ -6494,7 +6494,7 @@
         "csxx": "Serbia and Montenegro",
         "cu": "Cuba",
         "cv": "Cape Verde",
-        "cw": "Cura\u00e7ao",
+        "cw": "Curaçao",
         "cx": "Christmas Island",
         "cy": "Cyprus",
         "cy-trnc": "Northern Cyprus",
@@ -6643,7 +6643,7 @@
         "py": "Paraguay",
         "qa": "Qatar",
         "qo": "Outlying Oceania",
-        "re": "R\u00e9union",
+        "re": "Réunion",
         "ro": "Romania",
         "rs": "Serbia",
         "ru": "Russia",
@@ -6665,7 +6665,7 @@
         "so-som": "Somaliland",
         "sr": "Suriname",
         "ss": "South Sudan",
-        "st": "S\u00e3o Tom\u00e9 & Pr\u00edncipe",
+        "st": "São Tomé & Príncipe",
         "suhh": "Soviet Union",
         "sv": "El Salvador",
         "sx": "Sint Maarten",
