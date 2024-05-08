@@ -112,13 +112,13 @@ class PropertyMapping(object):
 
     def map(
         self, proxy: EntityProxy, record: Record, entities: Dict[str, EntityProxy]
-    ) -> None:
+    ) -> List[str]:
         if self.entity is not None:
             entity = entities.get(self.entity)
             if entity is not None:
                 proxy.unsafe_add(self.prop, entity.id, cleaned=True)
                 inline_names(proxy, entity)
-            return None
+            return []
 
         # clean the values returned by the query, or by using literals, or
         # formats.
@@ -133,5 +133,17 @@ class PropertyMapping(object):
                 splote.extend(value.split(self.split))
             values = splote
 
+        discarded_values: List[str] = []
+
         for value in values:
-            proxy.unsafe_add(self.prop, value, fuzzy=self.fuzzy, format=self.format)
+            added_value = proxy.unsafe_add(
+                prop=self.prop,
+                value=value,
+                fuzzy=self.fuzzy,
+                format=self.format,
+            )
+
+            if value is not None and added_value is None:
+                discarded_values.append(value)
+
+        return discarded_values
