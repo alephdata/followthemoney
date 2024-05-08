@@ -14,6 +14,7 @@ const isRequired = (property) =>
 const isHidden = (property) => property.hidden;
 const isInherited = (property) => property.schema.name !== schema.name;
 const isDeprecated = (property) => property.deprecated;
+const isStub = (property) => property.stub;
 
 const properties = Array.from(schema.getProperties().values())
   .sort((a, b) => a.name.localeCompare(b.name))
@@ -24,17 +25,24 @@ const properties = Array.from(schema.getProperties().values())
 <style>
   .SchemaProperties__header {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     align-items: center;
     justify-content: space-between;
     margin-bottom: var(--space-sm);
   }
 
+  .SchemaProperties__toggles {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
   .SchemaProperties__schema {
     opacity: 66%;
   }
 
-  [data-show-inherited='false'] [data-is-inherited] {
+  [data-show-inherited='false'] [data-is-inherited]:not(:has(:target)),
+  [data-show-stubs='false'] [data-is-stub]:not(:has(:target)) {
     display: none;
   }
 
@@ -80,24 +88,48 @@ const properties = Array.from(schema.getProperties().values())
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.SchemaProperties');
-    const toggle = document.querySelector('.SchemaProperties__toggle');
+    const toggles = document.querySelectorAll('.SchemaProperties__toggle');
 
-    toggle.checked = true;
+    for (const toggle of toggles) {
+      const setting = toggle.dataset.toggleSetting;
 
-    toggle.addEventListener('change', () => {
-      container.dataset.showInherited = toggle.checked ? 'true' : 'false';
-    });
+      if (!setting) {
+        return;
+      }
+
+      container.dataset[setting] = toggle.checked ? 'true' : 'false';
+
+      toggle.addEventListener('change', () => {
+        container.dataset[setting] = toggle.checked ? 'true' : 'false';
+      });
+    }
   });
 </script>
 
 <section class="SchemaProperties" data-show-inherited="true" {...rest}>
   <div class="SchemaProperties__header">
-    <h2 class="beta">Properties</h2>
+    <h2 class="SchemaProperties__heading beta">Properties</h2>
 
-    <label>
-      <input type="checkbox" class="SchemaProperties__toggle" checked />
-      Show inherited
-    </label>
+    <div class="SchemaProperties__toggles">
+      <label>
+        <input
+          type="checkbox"
+          class="SchemaProperties__toggle"
+          checked
+          data-toggle-setting="showInherited"
+        />
+        Show inherited
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          class="SchemaProperties__toggle"
+          data-toggle-setting="showStubs"
+        />
+        Show stubs
+      </label>
+    </div>
   </div>
 
   <IndexTable>
@@ -109,7 +141,7 @@ const properties = Array.from(schema.getProperties().values())
 
     {
       properties.map((prop) => (
-        <tr data-is-inherited={isInherited(prop)}>
+        <tr data-is-inherited={isInherited(prop)} data-is-stub={isStub(prop)}>
           <td>
             <span
               id={`property-${prop.name}`}
@@ -123,6 +155,7 @@ const properties = Array.from(schema.getProperties().values())
             {isFeatured(prop) && <PropertyIndicator type="featured" />}
             {isRequired(prop) && <PropertyIndicator type="required" />}
             {isHidden(prop) && <PropertyIndicator type="hidden" />}
+            {isStub(prop) && <PropertyIndicator type="stub" />}
             {isDeprecated(prop) && (
               <DeprecatedIndicator message="This property is deprecated and will be removed in a future version of the FollowTheMoney model." />
             )}
