@@ -6943,6 +6943,8 @@
         "poi": "Person of interest",
         "pol.party": "Political party",
         "pol.union": "Union",
+        "reg.action": "Regulator action",
+        "reg.warn": "Regulator warning",
         "rel": "Religion",
         "role.acct": "Accountant",
         "role.act": "Activist",
@@ -6952,10 +6954,12 @@
         "role.judge": "Judge",
         "role.lawyer": "Lawyer",
         "role.oligarch": "Oligarch",
-        "role.pep": "Political",
+        "role.pep": "Politican",
+        "role.pol": "Non-PEP",
         "role.rca": "Close Associate",
         "role.spy": "Spy",
         "sanction": "Sanctioned entity",
+        "sanction.counter": "Counter-sanctioned entity",
         "sanction.linked": "Sanction-linked entity"
       }
     },
