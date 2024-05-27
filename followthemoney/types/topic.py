@@ -58,7 +58,7 @@ class TopicType(EnumType):
         "fin.adivsor": _("Financial advisor"),
         "reg.action": _("Regulator action"),
         "reg.warn": _("Regulator warning"),
-        "role.pep": _("Politican"),
+        "role.pep": _("Politician"),
         "role.pol": _("Non-PEP"),
         "role.rca": _("Close Associate"),
         "role.judge": _("Judge"),
