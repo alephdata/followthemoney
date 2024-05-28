@@ -1,7 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import sourceMaps from 'rollup-plugin-sourcemaps'
 import ts from 'rollup-plugin-ts';
 import json from '@rollup/plugin-json'
 import pkg from './package.json' assert {type: 'json'}
@@ -11,8 +10,8 @@ const libraryName = 'followthemoney'
 export default {
   input: `src/index.ts`,
   output: [
-    { file: pkg.main, name: libraryName, format: 'umd', sourcemap: true },
-    { file: pkg.module, format: 'es', sourcemap: true },
+    { file: pkg.main, name: libraryName, format: 'umd', sourcemap: true, globals: { crypto: 'crypto' } },
+    { file: pkg.module, format: 'es', sourcemap: true, globals: { crypto: 'crypto' } },
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: ['crypto'],
@@ -30,10 +29,8 @@ export default {
     // https://github.com/rollup/rollup-plugin-node-resolve#usage
     resolve({ browser: true }),
     // Compile TypeScript files
-    ts({}),
+    ts({ sourceMap: true, inlineSources: true }),
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     commonjs(),
-    // Resolve source maps to the original source
-    sourceMaps(),
   ],
 }
