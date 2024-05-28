@@ -3,6 +3,7 @@ from rigour.text.distance import levenshtein_similarity
 from rigour.names import pick_name
 from normality import slugify
 from normality.cleaning import collapse_spaces, strip_quotes
+from fingerprints.cleanup import clean_name_light
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import dampen
@@ -48,7 +49,11 @@ class NameType(PropertyType):
 
     def compare(self, left: str, right: str) -> float:
         """Compare two names for similarity."""
-        return levenshtein_similarity(left, right)
+        left_clean = clean_name_light(left)
+        right_clean = clean_name_light(right)
+        if left_clean is None or right_clean is None:
+            return 0.0
+        return levenshtein_similarity(left_clean, right_clean)
 
     def node_id(self, value: str) -> Optional[str]:
         slug = slugify(value)
