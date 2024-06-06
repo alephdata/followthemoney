@@ -3114,8 +3114,8 @@
           "type": "date"
         },
         "dunsCode": {
-          "description": "Dun & Bradstreet identifier",
-          "label": "D-U-N-S",
+          "description": "Data Universal Numbering System - Dun & Bradstreet identifier",
+          "label": "DUNS",
           "matchable": true,
           "name": "dunsCode",
           "qname": "LegalEntity:dunsCode",
@@ -3320,6 +3320,14 @@
           "reverse": "sender",
           "stub": true,
           "type": "entity"
+        },
+        "npiCode": {
+          "description": "National Provider Identifier",
+          "label": "NPI",
+          "matchable": true,
+          "name": "npiCode",
+          "qname": "LegalEntity:npiCode",
+          "type": "identifier"
         },
         "ogrnCode": {
           "description": "Major State Registration Number",
@@ -3975,6 +3983,14 @@
           "stub": true,
           "type": "entity"
         },
+        "cageCode": {
+          "description": "Commercial and Government Entity Code (CAGE)",
+          "label": "CAGE",
+          "matchable": true,
+          "name": "cageCode",
+          "qname": "Organization:cageCode",
+          "type": "identifier"
+        },
         "directorshipOrganization": {
           "label": "Directors",
           "matchable": true,
@@ -4510,6 +4526,13 @@
           "qname": "Person:birthPlace",
           "type": "string"
         },
+        "citizenship": {
+          "label": "Citizenship",
+          "matchable": true,
+          "name": "citizenship",
+          "qname": "Person:citizenship",
+          "type": "country"
+        },
         "deathDate": {
           "label": "Death date",
           "matchable": true,
@@ -4668,6 +4691,13 @@
           "name": "secondName",
           "qname": "Person:secondName",
           "type": "string"
+        },
+        "socialSecurityNumber": {
+          "label": "Social security number",
+          "matchable": true,
+          "name": "socialSecurityNumber",
+          "qname": "Person:socialSecurityNumber",
+          "type": "identifier"
         },
         "title": {
           "label": "Title",
