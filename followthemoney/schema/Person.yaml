@@ -64,10 +64,16 @@ Person:
     nationality:
       label: Nationality
       type: country
+    citizenship:
+      label: Citizenship
+      type: country
     passportNumber:
       label: Passport number
       type: identifier
     # Awkward data section below
+    socialSecurityNumber:
+      label: Social security number
+      type: identifier
     gender:
       label: Gender
       type: gender

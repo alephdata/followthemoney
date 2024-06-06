@@ -120,8 +120,12 @@ LegalEntity:
       type: identifier
       format: lei
     dunsCode:
-      label: "D-U-N-S"
-      description: "Dun & Bradstreet identifier"
+      label: "DUNS"
+      description: "Data Universal Numbering System - Dun & Bradstreet identifier"
+      type: identifier
+    npiCode:
+      label: "NPI"
+      description: "National Provider Identifier"
       type: identifier
     swiftBic:
       label: "SWIFT/BIC"
