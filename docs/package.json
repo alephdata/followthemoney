@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@untitaker/hyperlink": "^0.1.26",
-    "prettier": "^2.7.1"
+    "prettier": "^3.3.1"
   },
   "prettier": {
     "singleQuote": true
