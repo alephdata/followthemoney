@@ -20,7 +20,7 @@
     "astro": "^2.10.15",
     "astro-theme-docs": "github:alephdata/astro-theme-docs",
     "mermaid": "^10.2.1",
-    "unist-util-visit": "^4.1.1"
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@untitaker/hyperlink": "^0.1.26",
