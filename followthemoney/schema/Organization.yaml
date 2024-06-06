@@ -16,3 +16,8 @@ Organization:
     - name
   caption:
     - name
+  properties:
+    cageCode:
+      label: CAGE
+      description: Commercial and Government Entity Code (CAGE)
+      type: identifier
