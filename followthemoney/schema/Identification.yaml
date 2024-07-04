@@ -4,7 +4,8 @@ Identification:
   description: >
     An form of identification associated with its holder and some issuing country. This
     can be used for national ID cards, voter enrollments and similar instruments.
-  extends: Interval
+  extends:
+    - Interval
   matchable: false
   featured:
     - number

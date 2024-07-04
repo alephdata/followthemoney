@@ -1,7 +1,8 @@
 CourtCaseParty:
   label: "Case party"
   plural: "Case parties"
-  extends: Interest
+  extends:
+    - Interest
   matchable: false
   featured:
     - party
@@ -15,7 +16,8 @@ CourtCaseParty:
     label: "involved in"
     target: case
     directed: true
-    caption: role
+    caption:
+      - role
   properties:
     party:
       label: "Party"

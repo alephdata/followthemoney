@@ -2,7 +2,8 @@ Sanction:
   label: Sanction
   plural: Sanctions
   description: "A sanction designation"
-  extends: Interval
+  extends:
+    - Interval
   matchable: false
   featured:
     - entity

@@ -1,7 +1,8 @@
 Occupancy:
   label: "Occupancy"
   plural: "Occupancies"
-  extends: Interval
+  extends:
+    - Interval
   matchable: false
   description: >
     The occupation of a position by a person for a specific period of time.

@@ -1,5 +1,6 @@
 Article:
-  extends: Document
+  extends:
+    - Document
   label: Article
   plural: Articles
   description: >

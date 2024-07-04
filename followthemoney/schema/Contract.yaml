@@ -4,7 +4,8 @@ Contract:
   description: >
     An contract or contract lot issued by an authority. Multiple lots
     may be awarded to different suppliers (see ContractAward).
-  extends: Asset
+  extends:
+    - Asset
   matchable: false
   featured:
     - title

@@ -20,7 +20,8 @@ ContractAward:
     label: "awarded to"
     target: supplier
     directed: true
-    caption: lotNumber
+    caption:
+      - lotNumber
   properties:
     supplier:
       label: "Supplier"

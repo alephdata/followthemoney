@@ -18,7 +18,8 @@ Documentation:
     label: "documents"
     target: entity
     directed: false
-    caption: role
+    caption:
+      - role
   properties:
     document:
       label: "Document"

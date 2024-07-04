@@ -1,7 +1,8 @@
 Directorship:
   label: "Directorship"
   plural: "Directorships"
-  extends: Interest
+  extends:
+    - Interest
   matchable: false
   featured:
     - director
@@ -19,7 +20,8 @@ Directorship:
     label: "directs"
     target: organization
     directed: true
-    caption: role
+    caption:
+      - role
   properties:
     director:
       label: "Director"

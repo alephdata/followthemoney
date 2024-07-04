@@ -1,7 +1,8 @@
 Post:
   label: "Post"
   plural: "Posts"
-  extends: Interest
+  extends:
+    - Interest
   matchable: false
   deprecated: true
   # cf. https://www.popoloproject.com/specs/post.html

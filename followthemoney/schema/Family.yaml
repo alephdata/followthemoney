@@ -2,7 +2,8 @@ Family:
   label: "Family"
   plural: "Family members"
   description: "Family relationship between two people"
-  extends: Interval
+  extends:
+    - Interval
   matchable: false
   featured:
     - person
@@ -16,7 +17,8 @@ Family:
     label: "related to"
     target: relative
     directed: false
-    caption: relationship
+    caption:
+      - relationship
   properties:
     person:
       label: "Person"

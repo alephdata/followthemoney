@@ -1,5 +1,6 @@
 Security:
-  extends: Asset
+  extends:
+    - Asset
   label: Security
   plural: Securities
   description: "A tradeable financial asset."

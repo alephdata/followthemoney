@@ -1,5 +1,6 @@
 PlainText:
-  extends: Document
+  extends:
+    - Document
   label: Text file
   plural: Text files
   description: >

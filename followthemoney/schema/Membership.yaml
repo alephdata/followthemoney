@@ -1,7 +1,8 @@
 Membership:
   label: "Membership"
   plural: "Memberships"
-  extends: Interest
+  extends:
+    - Interest
   matchable: false
   featured:
     - member
@@ -19,7 +20,8 @@ Membership:
     label: "belongs to"
     target: organization
     directed: true
-    caption: role
+    caption:
+      - role
   properties:
     member:
       label: "Member"
