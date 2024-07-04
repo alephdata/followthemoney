@@ -3,7 +3,8 @@ Passport:
   plural: "Passports"
   description: >
     An passport held by a person.
-  extends: Identification
+  extends:
+    - Identification
   matchable: false
   featured:
     - passportNumber

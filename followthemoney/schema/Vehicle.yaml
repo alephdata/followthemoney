@@ -1,7 +1,8 @@
 Vehicle:
   label: Vehicle
   plural: Vehicles
-  extends: Asset
+  extends:
+    - Asset
   matchable: false
   featured:
     - type

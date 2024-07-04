@@ -1,5 +1,6 @@
 Table:
-  extends: Document
+  extends:
+    - Document
   label: Table
   plural: Tables
   description: >

@@ -1,6 +1,7 @@
 HyperText:
   # HTML document
-  extends: Document
+  extends:
+    - Document
   label: Web page
   plural: Web pages
   matchable: false

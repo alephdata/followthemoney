@@ -1,5 +1,6 @@
 LegalEntity:
-  extends: Thing
+  extends:
+    - Thing
   label: Legal entity
   plural: Legal entities
   description: >

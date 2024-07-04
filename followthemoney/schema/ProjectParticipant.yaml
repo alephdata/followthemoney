@@ -1,7 +1,8 @@
 ProjectParticipant:
   label: Project participant
   plural: Project participants
-  extends: Interest
+  extends:
+    - Interest
   description: >
     An activity carried out by a group of participants.
   matchable: false
@@ -16,7 +17,8 @@ ProjectParticipant:
     label: "participates in"
     target: project
     directed: true
-    caption: role
+    caption:
+      - role
   properties:
     project:
       label: "Project"

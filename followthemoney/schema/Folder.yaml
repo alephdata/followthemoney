@@ -1,5 +1,6 @@
 Folder:
-  extends: Document
+  extends:
+    - Document
   label: Folder
   plural: Folders
   matchable: false

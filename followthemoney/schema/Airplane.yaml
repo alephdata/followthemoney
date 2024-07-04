@@ -1,7 +1,8 @@
 Airplane:
   label: Airplane
   plural: Airplanes
-  extends: Vehicle
+  extends:
+    - Vehicle
   description: >
     An airplane, helicopter or other flying vehicle.
   matchable: true

@@ -18,7 +18,8 @@ Debt:
     label: "owes"
     target: creditor
     directed: true
-    caption: amount
+    caption:
+      - amount
   properties:
     debtor:
       label: "Debtor"

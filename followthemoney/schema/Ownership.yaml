@@ -1,7 +1,8 @@
 Ownership:
   label: "Ownership"
   plural: "Ownerships"
-  extends: Interest
+  extends:
+    - Interest
   matchable: false
   featured:
     - owner
@@ -17,7 +18,8 @@ Ownership:
     label: "owns"
     target: asset
     directed: true
-    caption: percentage
+    caption:
+      - percentage
   properties:
     owner:
       label: "Owner"

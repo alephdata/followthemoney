@@ -1,5 +1,6 @@
 Pages:
-  extends: Document
+  extends:
+    - Document
   label: Document
   description: >
     A multi-page document, such as a PDF or Word file or slide-show presentation.

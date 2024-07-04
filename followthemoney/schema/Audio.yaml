@@ -1,5 +1,6 @@
 Audio:
-  extends: Document
+  extends:
+    - Document
   label: Audio
   plural: Audio files
   matchable: false

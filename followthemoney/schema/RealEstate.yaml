@@ -1,5 +1,6 @@
 RealEstate:
-  extends: Asset
+  extends:
+    - Asset
   label: Real estate
   plural: Real estates
   description: "A piece of land or property."

@@ -1,5 +1,6 @@
 Organization:
-  extends: LegalEntity
+  extends:
+    - LegalEntity
   label: Organization
   plural: Organizations
   description: >

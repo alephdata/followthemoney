@@ -1,5 +1,6 @@
 Video:
-  extends: Document
+  extends:
+    - Document
   label: Video
   plural: Videos
   matchable: false

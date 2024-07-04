@@ -1,7 +1,8 @@
 CourtCase:
   label: Court case
   plural: Court cases
-  extends: Thing
+  extends:
+    - Thing
   matchable: false
   featured:
     - name

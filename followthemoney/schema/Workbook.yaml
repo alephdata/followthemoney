@@ -1,5 +1,6 @@
 Workbook:
-  extends: Folder
+  extends:
+    - Folder
   label: Workbook
   plural: Workbooks
   description: >

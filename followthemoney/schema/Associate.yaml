@@ -2,7 +2,8 @@ Associate:
   label: "Associate"
   plural: "Associates"
   description: "Non-family association between two people"
-  extends: Interval
+  extends:
+    - Interval
   matchable: false
   featured:
     - person
@@ -16,7 +17,8 @@ Associate:
     label: "associated with"
     target: associate
     directed: false
-    caption: relationship
+    caption:
+      - relationship
   properties:
     person:
       label: "Person"

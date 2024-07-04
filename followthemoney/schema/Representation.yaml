@@ -2,7 +2,8 @@ Representation:
   label: "Representation"
   plural: "Representations"
   description: "A mediatory, intermediary, middleman, or broker acting on behalf of a legal entity."
-  extends: Interest
+  extends:
+    - Interest
   matchable: false
   featured:
     - agent
@@ -16,7 +17,8 @@ Representation:
     label: "represents"
     target: client
     directed: true
-    caption: role
+    caption:
+      - role
   properties:
     agent: # aka representative / incorporation agent
       label: "Agent"

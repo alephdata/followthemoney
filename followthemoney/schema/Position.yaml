@@ -1,7 +1,8 @@
 Position:
   label: "Position"
   plural: "Positions"
-  extends: Thing
+  extends:
+    - Thing
   matchable: true
   # cf. https://www.popoloproject.com/specs/post.html
   description: >

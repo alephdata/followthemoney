@@ -1,5 +1,6 @@
 Image:
-  extends: Document
+  extends:
+    - Document
   label: Image
   plural: Images
   description: >

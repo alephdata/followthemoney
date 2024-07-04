@@ -2,7 +2,8 @@ Succession:
   label: "Succession"
   plural: "Successions"
   description: "Two entities that legally succeed each other."
-  extends: Interest
+  extends:
+    - Interest
   matchable: false
   featured:
     - predecessor
@@ -16,7 +17,8 @@ Succession:
     label: "preceeds"
     target: successor
     directed: true
-    caption: date
+    caption:
+      - date
   properties:
     predecessor:
       label: "Predecessor"

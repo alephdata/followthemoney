@@ -1,7 +1,8 @@
 Employment:
   label: "Employment"
   plural: "Employments"
-  extends: Interest
+  extends:
+    - Interest
   matchable: false
   featured:
     - employer
@@ -19,7 +20,8 @@ Employment:
     label: "works for"
     target: employer
     directed: true
-    caption: role
+    caption:
+      - role
   properties:
     employer:
       label: "Employer"

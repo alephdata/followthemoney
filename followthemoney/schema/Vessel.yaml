@@ -3,7 +3,8 @@ Vessel:
   plural: Vessels
   description: >
     A boat or ship. Typically flying some sort of national flag.
-  extends: Vehicle
+  extends:
+    - Vehicle
   matchable: true
   featured:
     - name

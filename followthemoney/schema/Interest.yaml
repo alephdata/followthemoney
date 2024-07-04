@@ -1,6 +1,7 @@
 Interest:
   label: "Interest"
-  extends: Interval
+  extends:
+    - Interval
   matchable: false
   abstract: true
   properties:

@@ -1,5 +1,6 @@
 Person:
-  extends: LegalEntity
+  extends:
+    - LegalEntity
   label: Person
   plural: People
   description: >

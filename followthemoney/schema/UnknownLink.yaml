@@ -2,7 +2,8 @@
 UnknownLink:
   label: "Other link"
   plural: "Other links"
-  extends: Interest
+  extends:
+    - Interest
   matchable: false
   featured:
     - subject
@@ -16,7 +17,8 @@ UnknownLink:
     label: "linked to"
     target: object
     directed: false
-    caption: role
+    caption:
+      - role
   properties:
     subject:
       label: "Subject"
