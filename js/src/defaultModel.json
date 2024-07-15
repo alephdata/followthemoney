@@ -4562,6 +4562,12 @@
           "qname": "Person:ethnicity",
           "type": "string"
         },
+        "eyeColor": {
+          "label": "Eye color",
+          "name": "eyeColor",
+          "qname": "Person:eyeColor",
+          "type": "string"
+        },
         "familyPerson": {
           "label": "Family members",
           "matchable": true,
@@ -4599,6 +4605,24 @@
           "name": "gender",
           "qname": "Person:gender",
           "type": "gender"
+        },
+        "hairColor": {
+          "label": "Hair color",
+          "name": "hairColor",
+          "qname": "Person:hairColor",
+          "type": "string"
+        },
+        "height": {
+          "label": "Height",
+          "name": "height",
+          "qname": "Person:height",
+          "type": "number"
+        },
+        "identifyingMarks": {
+          "label": "Identifying marks",
+          "name": "identifyingMarks",
+          "qname": "Person:identifyingMarks",
+          "type": "string"
         },
         "images": {
           "label": "Images",
@@ -4704,6 +4728,12 @@
           "name": "title",
           "qname": "Person:title",
           "type": "string"
+        },
+        "weight": {
+          "label": "Weight",
+          "name": "weight",
+          "qname": "Person:weight",
+          "type": "number"
         }
       },
       "required": [
@@ -6952,6 +6982,7 @@
         "crime.war": "War crimes",
         "debarment": "Debarred entity",
         "export.control": "Export controlled",
+        "export.risk": "Trade risk",
         "fin": "Financial services",
         "fin.adivsor": "Financial advisor",
         "fin.bank": "Bank",
@@ -6990,7 +7021,8 @@
         "role.spy": "Spy",
         "sanction": "Sanctioned entity",
         "sanction.counter": "Counter-sanctioned entity",
-        "sanction.linked": "Sanction-linked entity"
+        "sanction.linked": "Sanction-linked entity",
+        "wanted": "Wanted"
       }
     },
     "url": {
