@@ -80,6 +80,18 @@ Person:
       type: gender
     ethnicity:
       label: Ethnicity
+    height:
+      label: Height
+      type: number
+    weight:
+      label: Weight
+      type: number
+    eyeColor:
+      label: Eye color
+    hairColor:
+      label: Hair color
+    identifyingMarks:
+      label: Identifying marks
     religion:
       label: Religion
     political:
