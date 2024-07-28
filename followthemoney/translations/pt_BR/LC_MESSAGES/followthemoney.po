@@ -436,7 +436,7 @@ msgstr ""
 #: followthemoney/schema/BankAccount.yaml
 msgid ""
 "An account held at a bank and controlled by an owner. This may also be used"
-"  to describe more complex arrangements like correspondent bank settlement "
+" to describe more complex arrangements like correspondent bank settlement "
 "accounts.\n"
 msgstr ""
 
@@ -1338,7 +1338,7 @@ msgstr ""
 #. Documentation.description
 #: followthemoney/schema/Documentation.yml
 msgid ""
-"Links some entity to a document, which might provide further detail or  "
+"Links some entity to a document, which might provide further detail or "
 "evidence regarding the entity.\n"
 msgstr ""
 
@@ -2409,7 +2409,7 @@ msgstr ""
 msgid ""
 "Any type of incorporated entity that cannot be owned by another (see "
 "Company). This might include charities, foundations or state-owned "
-"enterprises, depending on their  juristiction.\n"
+"enterprises, depending on their juristiction.\n"
 msgstr ""
 
 #. Ownership.label

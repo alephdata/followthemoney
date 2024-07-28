@@ -450,7 +450,7 @@ msgstr "Cuentas bancarias"
 #: followthemoney/schema/BankAccount.yaml
 msgid ""
 "An account held at a bank and controlled by an owner. This may also be used"
-"  to describe more complex arrangements like correspondent bank settlement "
+" to describe more complex arrangements like correspondent bank settlement "
 "accounts.\n"
 msgstr ""
 
@@ -1628,7 +1628,7 @@ msgstr "Documentos"
 #. Documentation.description
 #: followthemoney/schema/Documentation.yml
 msgid ""
-"Links some entity to a document, which might provide further detail or  "
+"Links some entity to a document, which might provide further detail or "
 "evidence regarding the entity.\n"
 msgstr ""
 
@@ -2768,7 +2768,7 @@ msgstr "Organizaciones"
 msgid ""
 "Any type of incorporated entity that cannot be owned by another (see "
 "Company). This might include charities, foundations or state-owned "
-"enterprises, depending on their  jurisdiction.\n"
+"enterprises, depending on their jurisdiction.\n"
 msgstr ""
 
 #. Ownership.label
@@ -3137,7 +3137,7 @@ msgstr ""
 #. Position.description
 #: followthemoney/schema/Position.yaml
 msgid ""
-"A post, role or position within an organization or body. This describes a position one or more people may occupy and not the occupation of the post by a specific individual at a  specific point in time.\n"
+"A post, role or position within an organization or body. This describes a position one or more people may occupy and not the occupation of the post by a specific individual at a specific point in time.\n"
 "'subnationalArea' should be used to further restrict the scope of the position. It should not simply represent some regional aspect of the role - e.g. the constituency of a national member of parliament - when their legislative jurisdiction is nationwide.\n"
 msgstr ""
 
@@ -3169,7 +3169,7 @@ msgstr ""
 #. Post.description
 #: followthemoney/schema/Post.yaml
 msgid ""
-"A post, role or position held by an individual within an organization  or "
+"A post, role or position held by an individual within an organization or "
 "body. This describes the period for which the position is held, not the "
 "abstract concept of the post.\n"
 msgstr ""
