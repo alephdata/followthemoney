@@ -4,7 +4,7 @@ BankAccount:
   extends:
     - Asset
   description: >
-    An account held at a bank and controlled by an owner. This may also be used 
+    An account held at a bank and controlled by an owner. This may also be used
     to describe more complex arrangements like correspondent bank settlement accounts.
   matchable: true
   featured:

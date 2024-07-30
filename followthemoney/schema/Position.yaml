@@ -8,7 +8,7 @@ Position:
   description: >
     A post, role or position within an organization or body.
     This describes a position one or more people may occupy
-    and not the occupation of the post by a specific individual at a 
+    and not the occupation of the post by a specific individual at a
     specific point in time.
 
     'subnationalArea' should be used to further restrict the scope of the
