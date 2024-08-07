@@ -3,6 +3,7 @@ export interface IPropertyTypeDatum {
   group?: string
   label?: string
   description?: string
+  max_size?: number
   plural?: string | null
   matchable?: boolean,
   pivot?: boolean,
@@ -22,6 +23,7 @@ export class PropertyType {
   public label: string
   public plural: string
   public description: string | null
+  public maxSize: number
   public matchable: boolean
   public pivot: boolean
   public values: Map<string, string>
@@ -31,6 +33,7 @@ export class PropertyType {
     this.name = name
     this.label = data.label || name
     this.description = data.description || null
+    this.maxSize = data.max_size || 0
     this.plural = data.plural || this.label
     this.group = data.group || null
     this.grouped = data.group !== undefined

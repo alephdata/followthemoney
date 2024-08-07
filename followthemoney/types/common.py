@@ -57,7 +57,13 @@ class PropertyType(object):
     other entities that mention the same phone number, email address or name as the
     one currently seen by the user."""
 
-    max_size: Optional[int] = None
+    max_size: int = 250
+    """The maximum length of a single value of this type. This is used to warn when
+    adding individual values that may be malformed or too long to be stored in
+    downstream databases with fixed column lengths. The unit is unicode codepoints
+    (not bytes), the output of Python len()."""
+
+    total_size: Optional[int] = None
     """Some types have overall size limitations in place in order to avoid generating
     entities that are very large (upstream ElasticSearch has a 100MB document limit).
     Once the total size of all properties of this type has exceed the given limit,
@@ -147,8 +153,8 @@ class PropertyType(object):
     ) -> float:
         """Compare two sets of values and select the highest-scored result."""
         results = []
-        for l, r in product(ensure_list(left), ensure_list(right)):
-            results.append(self.compare(l, r))
+        for le, ri in product(ensure_list(left), ensure_list(right)):
+            results.append(self.compare(le, ri))
         if not len(results):
             return 0.0
         return func(results)
@@ -165,7 +171,7 @@ class PropertyType(object):
 
     def pick(self, values: Sequence[str]) -> Optional[str]:
         """Pick the best value to show to the user."""
-        raise NotImplemented
+        raise NotImplementedError
 
     def node_id(self, value: str) -> Optional[str]:
         """Return an ID suitable to identify this entity as a typed node in a
@@ -191,6 +197,7 @@ class PropertyType(object):
             "label": gettext(self.label),
             "plural": gettext(self.plural),
             "description": gettext(self.docs),
+            "max_size": self.max_size,
         }
         if self.group:
             data["group"] = self.group

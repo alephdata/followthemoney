@@ -36,6 +36,7 @@ class PhoneType(PropertyType):
     plural = _("Phone numbers")
     matchable = True
     pivot = True
+    max_size = 64
 
     def _clean_countries(
         self, proxy: Optional["EntityProxy"]

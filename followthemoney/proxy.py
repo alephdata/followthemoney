@@ -220,8 +220,8 @@ class EntityProxy(object):
         # Somewhat hacky: limit the maximum size of any particular
         # field to avoid overloading upstream aleph/elasticsearch.
         value_size = len(value)
-        if prop.type.max_size is not None:
-            if self._size + value_size > prop.type.max_size:
+        if prop.type.total_size is not None:
+            if self._size + value_size > prop.type.total_size:
                 # msg = "[%s] too large. Rejecting additional values."
                 # log.warning(msg, prop.name)
                 return None
@@ -309,7 +309,7 @@ class EntityProxy(object):
         if self.schema.source_prop is not None and self.schema.target_prop is not None:
             sources = self.get(self.schema.source_prop)
             targets = self.get(self.schema.target_prop)
-            for (source, target) in product(sources, targets):
+            for source, target in product(sources, targets):
                 yield (source, target)
 
     def get_type_values(
@@ -414,7 +414,7 @@ class EntityProxy(object):
         for a more generous matching approach than the actual country values."""
         countries = set(self.countries)
         if not len(countries):
-            for (prop, value) in self.itervalues():
+            for prop, value in self.itervalues():
                 hint = prop.type.country_hint(value)
                 if hint is not None:
                     countries.add(hint)

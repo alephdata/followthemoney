@@ -24,8 +24,11 @@ class IbanType(PropertyType):
     plural = _("IBANs")
     matchable = True
     pivot = True
+    max_size = 64
 
-    def validate(self, value: str, fuzzy: bool = False, format: Optional[str] = None) -> bool:
+    def validate(
+        self, value: str, fuzzy: bool = False, format: Optional[str] = None
+    ) -> bool:
         text = sanitize_text(value)
         if text is None:
             return False
