@@ -10,6 +10,7 @@ class StringType(PropertyType):
     label = _("Label")
     plural = _("Labels")
     matchable = False
+    max_size = 1024
 
     def node_id(self, value: str) -> None:
         return None
@@ -23,7 +24,8 @@ class TextType(StringType):
     name = "text"
     label = _("Text")
     plural = _("Texts")
-    max_size = 30 * MEGABYTE
+    total_size = 30 * MEGABYTE
+    max_size = 65000
 
 
 class HTMLType(StringType):
@@ -37,4 +39,5 @@ class HTMLType(StringType):
     name = "html"
     label = _("HTML")
     plural = _("HTMLs")
-    max_size = 30 * MEGABYTE
+    total_size = 30 * MEGABYTE
+    max_size = 65000

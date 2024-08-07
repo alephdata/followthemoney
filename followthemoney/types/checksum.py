@@ -19,6 +19,7 @@ class ChecksumType(PropertyType):
     plural = _("Checksums")
     matchable = True
     pivot = True
+    max_size = 40
 
     def rdf(self, value: str) -> Identifier:
         return URIRef(f"hash:{value}")

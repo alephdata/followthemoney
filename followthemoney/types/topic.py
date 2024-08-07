@@ -21,6 +21,7 @@ class TopicType(EnumType):
     label = _("Topic")
     plural = _("Topics")
     matchable = False
+    max_size = 64
 
     _TOPICS = {
         "crime": _("Crime"),
