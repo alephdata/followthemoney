@@ -196,6 +196,7 @@ class PropertyType(object):
             "label": gettext(self.label),
             "plural": gettext(self.plural),
             "description": gettext(self.docs),
+            "max_size": self.max_size,
         }
         if self.group:
             data["group"] = self.group
