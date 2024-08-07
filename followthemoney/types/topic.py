@@ -72,6 +72,7 @@ class TopicType(EnumType):
         "role.oligarch": _("Oligarch"),
         "role.journo": _("Journalist"),
         "role.act": _("Activist"),
+        "role.lobby": _("Lobbyist"),
         "pol.party": _("Political party"),
         "pol.union": _("Union"),
         "rel": _("Religion"),
