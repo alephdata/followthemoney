@@ -58,9 +58,10 @@ class PropertyType(object):
     one currently seen by the user."""
 
     max_size: int = 250
-    """The maximum length of a single value of this type. This is used to avoid
-    the individual values that may be malformed or too long to be stored in
-    downstream databases with fixed column lengths."""
+    """The maximum length of a single value of this type. This is used to warn when
+    adding individual values that may be malformed or too long to be stored in
+    downstream databases with fixed column lengths. The unit is unicode codepoints
+    (not bytes), the output of Python len()."""
 
     total_size: Optional[int] = None
     """Some types have overall size limitations in place in order to avoid generating
