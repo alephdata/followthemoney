@@ -90,8 +90,8 @@ Person:
       label: Eye color
     hairColor:
       label: Hair color
-    identifyingMarks:
-      label: Identifying marks
+    appearance:
+      label: Physical appearance
     religion:
       label: Religion
     political:
