@@ -4486,6 +4486,12 @@
       "matchable": true,
       "plural": "People",
       "properties": {
+        "appearance": {
+          "label": "Physical appearance",
+          "name": "appearance",
+          "qname": "Person:appearance",
+          "type": "string"
+        },
         "associates": {
           "label": "Associates",
           "matchable": true,
@@ -4617,12 +4623,6 @@
           "name": "height",
           "qname": "Person:height",
           "type": "number"
-        },
-        "identifyingMarks": {
-          "label": "Identifying marks",
-          "name": "identifyingMarks",
-          "qname": "Person:identifyingMarks",
-          "type": "string"
         },
         "images": {
           "label": "Images",
@@ -6478,6 +6478,7 @@
       "group": "addresses",
       "label": "Address",
       "matchable": true,
+      "max_size": 250,
       "pivot": true,
       "plural": "Addresses"
     },
@@ -6486,6 +6487,7 @@
       "group": "checksums",
       "label": "Checksum",
       "matchable": true,
+      "max_size": 40,
       "pivot": true,
       "plural": "Checksums"
     },
@@ -6494,6 +6496,7 @@
       "group": "countries",
       "label": "Country",
       "matchable": true,
+      "max_size": 16,
       "plural": "Countries",
       "values": {
         "ac": "Ascension Island",
@@ -6787,6 +6790,7 @@
       "group": "dates",
       "label": "Date",
       "matchable": true,
+      "max_size": 32,
       "plural": "Dates"
     },
     "email": {
@@ -6794,6 +6798,7 @@
       "group": "emails",
       "label": "E-Mail Address",
       "matchable": true,
+      "max_size": 250,
       "pivot": true,
       "plural": "E-Mail Addresses"
     },
@@ -6802,6 +6807,7 @@
       "group": "entities",
       "label": "Entity",
       "matchable": true,
+      "max_size": 250,
       "pivot": true,
       "plural": "Entities"
     },
@@ -6809,6 +6815,7 @@
       "description": "A human gender. This is not meant to be a comprehensive model of\nthe social realities of gender but a way to capture data from (mostly)\ngovernment databases and represent it in a way that can be used by\nstructured tools. I'm not sure this justifies the simplification.",
       "group": "genders",
       "label": "Gender",
+      "max_size": 16,
       "plural": "Genders",
       "values": {
         "female": "female",
@@ -6819,6 +6826,7 @@
     "html": {
       "description": "Properties that contain raw hypertext markup (HTML).\n\nUser interfaces rendering properties of this type need to take extreme\ncare not to allow attacks such as cross-site scripting. It is recommended\nto perform server-side sanitisation, or to not render this property at all.",
       "label": "HTML",
+      "max_size": 65000,
       "plural": "HTMLs"
     },
     "iban": {
@@ -6826,6 +6834,7 @@
       "group": "ibans",
       "label": "IBAN",
       "matchable": true,
+      "max_size": 64,
       "pivot": true,
       "plural": "IBANs"
     },
@@ -6834,6 +6843,7 @@
       "group": "identifiers",
       "label": "Identifier",
       "matchable": true,
+      "max_size": 64,
       "pivot": true,
       "plural": "Identifiers"
     },
@@ -6842,18 +6852,21 @@
       "group": "ips",
       "label": "IP-Address",
       "matchable": true,
+      "max_size": 64,
       "pivot": true,
       "plural": "IP-Addresses"
     },
     "json": {
       "description": "An encoded JSON object. This is used to store raw HTTP headers for documents\nand some other edge cases. It's a really bad idea and we should try to get rid\nof JSON properties.",
       "label": "Nested data",
+      "max_size": 250,
       "plural": "Nested data"
     },
     "language": {
       "description": "A human written language. This list is arbitrarily limited for some\nweird upstream technical reasons, but we'll happily accept pull requests\nfor additional languages once there is a specific need for them to be\nsupported.",
       "group": "languages",
       "label": "Language",
+      "max_size": 16,
       "plural": "Languages",
       "values": {
         "afr": "Afrikaans",
@@ -6924,6 +6937,7 @@
       "description": "A MIME media type are a specification of a content type on a network.\nEach MIME type is assigned by IANA and consists of two parts: the type\nand sub-type. Common examples are: `text/plain`, `application/json` and\n`application/pdf`.\n\nMIME type properties do not contain parameters as used in HTTP headers,\nlike `charset=UTF-8`.",
       "group": "mimetypes",
       "label": "MIME-Type",
+      "max_size": 250,
       "plural": "MIME-Types"
     },
     "name": {
@@ -6931,12 +6945,14 @@
       "group": "names",
       "label": "Name",
       "matchable": true,
+      "max_size": 250,
       "pivot": true,
       "plural": "Names"
     },
     "number": {
       "description": "A numeric value, like the size of a piece of land, or the value of a\ncontract. Since all property values in FtM are strings, this is also a\nstring and there is no specified format (e.g. `1,000.00` vs. `1.000,00`).\n\nIn the future we might want to enable annotations for format, units, or\neven to introduce a separate property type for monetary values.",
       "label": "Number",
+      "max_size": 250,
       "plural": "Numbers"
     },
     "phone": {
@@ -6944,23 +6960,27 @@
       "group": "phones",
       "label": "Phone number",
       "matchable": true,
+      "max_size": 64,
       "pivot": true,
       "plural": "Phone numbers"
     },
     "string": {
       "description": "A simple string property with no additional semantics.",
       "label": "Label",
+      "max_size": 1024,
       "plural": "Labels"
     },
     "text": {
       "description": "Longer text fragments, such as descriptions or document text. Unlike\nstring properties, it might make sense to treat properties of this type as\nfull-text search material.",
       "label": "Text",
+      "max_size": 65000,
       "plural": "Texts"
     },
     "topic": {
       "description": "Topics define a controlled vocabulary of terms applicable to some\nentities, such as companies and people. They describe categories of\njournalistic interest which may apply to the given entity, for example\nif a given person is a criminal or a politician.\n\nBesides the informative value, topics are ultimately supposed to bear\nfruits in the context of graph-based data analysis, where they would\nenable queries such as _find all paths between a government procurement\naward and a politician_.",
       "group": "topics",
       "label": "Topic",
+      "max_size": 64,
       "plural": "Topics",
       "values": {
         "asset.frozen": "Frozen asset",
@@ -7014,6 +7034,7 @@
         "role.journo": "Journalist",
         "role.judge": "Judge",
         "role.lawyer": "Lawyer",
+        "role.lobby": "Lobbyist",
         "role.oligarch": "Oligarch",
         "role.pep": "Politician",
         "role.pol": "Non-PEP",
@@ -7030,6 +7051,7 @@
       "group": "urls",
       "label": "URL",
       "matchable": true,
+      "max_size": 4096,
       "pivot": true,
       "plural": "URLs"
     }
