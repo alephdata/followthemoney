@@ -20,7 +20,6 @@ log = logging.getLogger(__name__)
 
 
 class EntityMapping(object):
-
     __slots__ = (
         "model",
         "name",
@@ -117,22 +116,30 @@ class EntityMapping(object):
             if prop.prop.type == registry.country:
                 discarded_values = prop.map(proxy, record, entities)
                 for value in discarded_values:
-                    log.warn(f"[{self.name}] Discarded unclean value \"{value}\" for property \"{prop.prop.qname}\".")
+                    log.warning(
+                        f'[{self.name}] Discarded unclean value "{value}" for property "{prop.prop.qname}".'
+                    )
 
         for prop in self.properties:
             if prop.prop.type != registry.country:
                 discarded_values = prop.map(proxy, record, entities)
                 for value in discarded_values:
-                    log.warn(f"[{self.name}] Discarding unclean value \"{value}\" for property \"{prop.prop.qname}\".")
+                    log.warning(
+                        f'[{self.name}] Discarding unclean value "{value}" for property "{prop.prop.qname}".'
+                    )
 
         # Generate the ID at the end to avoid self-reference checks on empty
         # keys.
         proxy.id = self.compute_key(record)
         if proxy.id is None:
             if self.id_column:
-                log.warn(f"[{self.name}] Skipping entity because no ID could be computed. Make sure that there are no empty values in the \"{self.id_column}\" column.")
+                log.warning(
+                    f'[{self.name}] Skipping entity because no ID could be computed. Make sure that there are no empty values in the "{self.id_column}" column.'
+                )
             if self.keys:
-                log.warn(f"[{self.name}] Skipping entity because no ID could be computed. Make sure that there are no empty values in key columns.")
+                log.warning(
+                    f"[{self.name}] Skipping entity because no ID could be computed. Make sure that there are no empty values in key columns."
+                )
             return None
 
         for prop in self.properties:
@@ -141,7 +148,9 @@ class EntityMapping(object):
                 # the mapping, not in the model. Basically it means: if
                 # this row of source data doesn't have that field, then do
                 # not map it again.
-                log.warn(f"[{self.name}] Skipping entity because required property \"{prop.prop.name}\" is empty.")
+                log.warning(
+                    f'[{self.name}] Skipping entity because required property "{prop.prop.name}" is empty.'
+                )
                 return None
         return proxy
 
