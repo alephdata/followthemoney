@@ -26,7 +26,7 @@ class DateType(PropertyType):
     label = _("Date")
     plural = _("Dates")
     matchable = True
-    max_size = 32
+    max_length = 32
 
     def validate(
         self, value: str, fuzzy: bool = False, format: Optional[str] = None

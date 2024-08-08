@@ -19,6 +19,7 @@ class PropertyTypeToDict(TypedDict, total=False):
     label: str
     plural: str
     description: Optional[str]
+    max_length: int
     group: Optional[str]
     matchable: Optional[bool]
     pivot: Optional[bool]
@@ -57,7 +58,7 @@ class PropertyType(object):
     other entities that mention the same phone number, email address or name as the
     one currently seen by the user."""
 
-    max_size: int = 250
+    max_length: int = 250
     """The maximum length of a single value of this type. This is used to warn when
     adding individual values that may be malformed or too long to be stored in
     downstream databases with fixed column lengths. The unit is unicode codepoints
@@ -197,7 +198,7 @@ class PropertyType(object):
             "label": gettext(self.label),
             "plural": gettext(self.plural),
             "description": gettext(self.docs),
-            "max_size": self.max_size,
+            "max_length": self.max_length,
         }
         if self.group:
             data["group"] = self.group

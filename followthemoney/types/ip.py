@@ -20,7 +20,7 @@ class IpType(PropertyType):
     plural = _("IP-Addresses")
     matchable = True
     pivot = True
-    max_size = 64
+    max_length = 64
 
     def validate(
         self, value: str, fuzzy: bool = False, format: Optional[str] = None

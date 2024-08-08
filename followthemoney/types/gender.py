@@ -40,7 +40,7 @@ class GenderType(EnumType):
     label = _("Gender")
     plural = _("Genders")
     matchable = False
-    max_size = 16
+    max_length = 16
 
     def _locale_names(self, locale: Locale) -> EnumValues:
         return {

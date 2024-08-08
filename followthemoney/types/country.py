@@ -21,7 +21,7 @@ class CountryType(EnumType):
     label = _("Country")
     plural = _("Countries")
     matchable = True
-    max_size = 16
+    max_length = 16
 
     def _locale_names(self, locale: Locale) -> EnumValues:
         # extra territories that OCCRP is interested in.
