@@ -23,6 +23,7 @@ CryptoWallet:
       label: Address
       description: Public key used to identify the wallet
       type: identifier
+      maxLength: 128
     privateKey:
       label: Private key
     creationDate:

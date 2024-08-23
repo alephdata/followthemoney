@@ -19,7 +19,7 @@ class PropertyTypeToDict(TypedDict, total=False):
     label: str
     plural: str
     description: Optional[str]
-    max_length: int
+    maxLength: int
     group: Optional[str]
     matchable: Optional[bool]
     pivot: Optional[bool]
@@ -198,7 +198,7 @@ class PropertyType(object):
             "label": gettext(self.label),
             "plural": gettext(self.plural),
             "description": gettext(self.docs),
-            "max_length": self.max_length,
+            "maxLength": self.max_length,
         }
         if self.group:
             data["group"] = self.group

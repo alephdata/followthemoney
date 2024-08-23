@@ -20,6 +20,7 @@ Vessel:
     imoNumber:
       label: IMO Number
       type: identifier
+      maxLength: 16
     crsNumber:
       label: CRS Number
       type: identifier
@@ -50,3 +51,4 @@ Vessel:
     mmsi:
       label: MMSI
       type: identifier
+      maxLength: 16

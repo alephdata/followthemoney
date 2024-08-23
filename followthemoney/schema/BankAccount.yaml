@@ -27,15 +27,18 @@ BankAccount:
     accountNumber:
       label: Account number
       type: identifier
+      maxLength: 64
     iban:
       label: IBAN
       # type: identifier
       # format: iban
       type: iban
+      maxLength: 64
     bic:
       label: Bank Identifier Code
       type: identifier
       format: bic
+      maxLength: 16
     bank:
       label: Bank
       type: entity

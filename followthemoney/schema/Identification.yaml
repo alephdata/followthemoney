@@ -35,5 +35,6 @@ Identification:
     number:
       label: "Document number"
       type: identifier
+      maxLength: 64
     authority:
       label: "Authority"
