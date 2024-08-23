@@ -59,6 +59,7 @@ class Property:
         "type",
         "matchable",
         "deprecated",
+        "max_length",
         "_range",
         "format",
         "range",
@@ -111,7 +112,7 @@ class Property:
             self.matchable = self.type.matchable
 
         #: The maximum length of the property value.
-        self.max_length = int(data.get("max_length", self.type.max_length))
+        self.max_length = int(data.get("maxLength", self.type.max_length))
 
         #: If the property is of type ``entity``, the set of valid schema to be added
         #: in this property can be constrained. For example, an asset can be owned,

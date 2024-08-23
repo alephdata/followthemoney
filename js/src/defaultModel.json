@@ -24,6 +24,7 @@
         "city": {
           "description": "City, town, village or other locality",
           "label": "City",
+          "maxLength": 1024,
           "name": "city",
           "qname": "Address:city",
           "type": "string"
@@ -31,6 +32,7 @@
         "country": {
           "label": "Country",
           "matchable": true,
+          "maxLength": 16,
           "name": "country",
           "qname": "Address:country",
           "type": "country"
@@ -38,6 +40,7 @@
         "full": {
           "label": "Full address",
           "matchable": true,
+          "maxLength": 250,
           "name": "full",
           "qname": "Address:full",
           "type": "address"
@@ -45,18 +48,21 @@
         "googlePlaceId": {
           "label": "Google Places ID",
           "matchable": true,
+          "maxLength": 64,
           "name": "googlePlaceId",
           "qname": "Address:googlePlaceId",
           "type": "identifier"
         },
         "latitude": {
           "label": "Latitude",
+          "maxLength": 250,
           "name": "latitude",
           "qname": "Address:latitude",
           "type": "number"
         },
         "longitude": {
           "label": "Longitude",
+          "maxLength": 250,
           "name": "longitude",
           "qname": "Address:longitude",
           "type": "number"
@@ -64,6 +70,7 @@
         "osmId": {
           "label": "OpenStreetmap Place ID",
           "matchable": true,
+          "maxLength": 64,
           "name": "osmId",
           "qname": "Address:osmId",
           "type": "identifier"
@@ -71,6 +78,7 @@
         "postOfficeBox": {
           "description": "A mailbox identifier at the post office",
           "label": "PO Box",
+          "maxLength": 1024,
           "name": "postOfficeBox",
           "qname": "Address:postOfficeBox",
           "type": "string"
@@ -78,6 +86,7 @@
         "postalCode": {
           "description": "Zip code or postcode.",
           "label": "Postal code",
+          "maxLength": 16,
           "name": "postalCode",
           "qname": "Address:postalCode",
           "type": "string"
@@ -85,6 +94,7 @@
         "region": {
           "description": "Also province or area.",
           "label": "Region",
+          "maxLength": 1024,
           "name": "region",
           "qname": "Address:region",
           "type": "string"
@@ -92,6 +102,7 @@
         "remarks": {
           "description": "Handling instructions, like 'care of'.",
           "label": "Remarks",
+          "maxLength": 1024,
           "name": "remarks",
           "qname": "Address:remarks",
           "type": "string"
@@ -99,18 +110,21 @@
         "state": {
           "description": "State or federal unit.",
           "label": "State",
+          "maxLength": 1024,
           "name": "state",
           "qname": "Address:state",
           "type": "string"
         },
         "street": {
           "label": "Street address",
+          "maxLength": 1024,
           "name": "street",
           "qname": "Address:street",
           "type": "string"
         },
         "street2": {
           "label": "Street address (ctd.)",
+          "maxLength": 1024,
           "name": "street2",
           "qname": "Address:street2",
           "type": "string"
@@ -118,6 +132,7 @@
         "things": {
           "label": "Located there",
           "matchable": true,
+          "maxLength": 250,
           "name": "things",
           "qname": "Address:things",
           "range": "Thing",
@@ -128,6 +143,7 @@
         "tripsDeparting": {
           "label": "Trips departing",
           "matchable": true,
+          "maxLength": 250,
           "name": "tripsDeparting",
           "qname": "Address:tripsDeparting",
           "range": "Trip",
@@ -138,6 +154,7 @@
         "tripsIncoming": {
           "label": "Trips incoming",
           "matchable": true,
+          "maxLength": 250,
           "name": "tripsIncoming",
           "qname": "Address:tripsIncoming",
           "range": "Trip",
@@ -173,12 +190,14 @@
       "properties": {
         "icaoCode": {
           "label": "ICAO aircraft type designator",
+          "maxLength": 1024,
           "name": "icaoCode",
           "qname": "Airplane:icaoCode",
           "type": "string"
         },
         "manufacturer": {
           "label": "Manufacturer",
+          "maxLength": 1024,
           "name": "manufacturer",
           "qname": "Airplane:manufacturer",
           "type": "string"
@@ -186,6 +205,7 @@
         "serialNumber": {
           "label": "Serial Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "serialNumber",
           "qname": "Airplane:serialNumber",
           "type": "identifier"
@@ -211,6 +231,7 @@
           "hidden": true,
           "label": "Detected companies",
           "matchable": true,
+          "maxLength": 250,
           "name": "companiesMentioned",
           "qname": "Analyzable:companiesMentioned",
           "type": "name"
@@ -218,6 +239,7 @@
         "detectedCountry": {
           "hidden": true,
           "label": "Detected country",
+          "maxLength": 16,
           "name": "detectedCountry",
           "qname": "Analyzable:detectedCountry",
           "type": "country"
@@ -225,6 +247,7 @@
         "detectedLanguage": {
           "hidden": true,
           "label": "Detected language",
+          "maxLength": 16,
           "name": "detectedLanguage",
           "qname": "Analyzable:detectedLanguage",
           "type": "language"
@@ -233,6 +256,7 @@
           "hidden": true,
           "label": "Detected e-mail addresses",
           "matchable": true,
+          "maxLength": 250,
           "name": "emailMentioned",
           "qname": "Analyzable:emailMentioned",
           "type": "email"
@@ -241,6 +265,7 @@
           "hidden": true,
           "label": "Detected IBANs",
           "matchable": true,
+          "maxLength": 64,
           "name": "ibanMentioned",
           "qname": "Analyzable:ibanMentioned",
           "type": "iban"
@@ -249,6 +274,7 @@
           "hidden": true,
           "label": "Detected IP addresses",
           "matchable": true,
+          "maxLength": 64,
           "name": "ipMentioned",
           "qname": "Analyzable:ipMentioned",
           "type": "ip"
@@ -256,6 +282,7 @@
         "locationMentioned": {
           "hidden": true,
           "label": "Detected locations",
+          "maxLength": 250,
           "name": "locationMentioned",
           "qname": "Analyzable:locationMentioned",
           "type": "address"
@@ -264,6 +291,7 @@
           "hidden": true,
           "label": "Detected names",
           "matchable": true,
+          "maxLength": 250,
           "name": "namesMentioned",
           "qname": "Analyzable:namesMentioned",
           "type": "name"
@@ -272,6 +300,7 @@
           "hidden": true,
           "label": "Detected people",
           "matchable": true,
+          "maxLength": 250,
           "name": "peopleMentioned",
           "qname": "Analyzable:peopleMentioned",
           "type": "name"
@@ -280,6 +309,7 @@
           "hidden": true,
           "label": "Detected phones",
           "matchable": true,
+          "maxLength": 64,
           "name": "phoneMentioned",
           "qname": "Analyzable:phoneMentioned",
           "type": "phone"
@@ -331,6 +361,7 @@
       "properties": {
         "assessmentId": {
           "label": "Assessment ID",
+          "maxLength": 1024,
           "name": "assessmentId",
           "qname": "Assessment:assessmentId",
           "type": "string"
@@ -338,6 +369,7 @@
         "author": {
           "label": "Author",
           "matchable": true,
+          "maxLength": 250,
           "name": "author",
           "qname": "Assessment:author",
           "range": "LegalEntity",
@@ -347,6 +379,7 @@
         "publishDate": {
           "label": "Date of publishing",
           "matchable": true,
+          "maxLength": 32,
           "name": "publishDate",
           "qname": "Assessment:publishDate",
           "type": "date"
@@ -385,6 +418,7 @@
         "ownershipAsset": {
           "label": "Owners",
           "matchable": true,
+          "maxLength": 250,
           "name": "ownershipAsset",
           "qname": "Asset:ownershipAsset",
           "range": "Ownership",
@@ -425,6 +459,7 @@
           "description": "An associate of the subject person.",
           "label": "Associate",
           "matchable": true,
+          "maxLength": 250,
           "name": "associate",
           "qname": "Associate:associate",
           "range": "Person",
@@ -435,6 +470,7 @@
           "description": "The subject of the association.",
           "label": "Person",
           "matchable": true,
+          "maxLength": 250,
           "name": "person",
           "qname": "Associate:person",
           "range": "Person",
@@ -444,6 +480,7 @@
         "relationship": {
           "description": "Nature of the association",
           "label": "Relationship",
+          "maxLength": 1024,
           "name": "relationship",
           "qname": "Associate:relationship",
           "type": "string"
@@ -479,6 +516,7 @@
         "duration": {
           "description": "Duration of the audio in ms",
           "label": "Duration",
+          "maxLength": 250,
           "name": "duration",
           "qname": "Audio:duration",
           "type": "number"
@@ -486,6 +524,7 @@
         "samplingRate": {
           "description": "Sampling rate of the audio in Hz",
           "label": "Sampling Rate",
+          "maxLength": 250,
           "name": "samplingRate",
           "qname": "Audio:samplingRate",
           "type": "number"
@@ -519,18 +558,21 @@
         "accountNumber": {
           "label": "Account number",
           "matchable": true,
+          "maxLength": 64,
           "name": "accountNumber",
           "qname": "BankAccount:accountNumber",
           "type": "identifier"
         },
         "accountType": {
           "label": "Account type",
+          "maxLength": 1024,
           "name": "accountType",
           "qname": "BankAccount:accountType",
           "type": "string"
         },
         "balance": {
           "label": "Balance",
+          "maxLength": 250,
           "name": "balance",
           "qname": "BankAccount:balance",
           "type": "number"
@@ -538,6 +580,7 @@
         "balanceDate": {
           "label": "Balance date",
           "matchable": true,
+          "maxLength": 32,
           "name": "balanceDate",
           "qname": "BankAccount:balanceDate",
           "type": "date"
@@ -545,6 +588,7 @@
         "bank": {
           "label": "Bank",
           "matchable": true,
+          "maxLength": 250,
           "name": "bank",
           "qname": "BankAccount:bank",
           "range": "Organization",
@@ -553,12 +597,14 @@
         },
         "bankAddress": {
           "label": "Bank address",
+          "maxLength": 1024,
           "name": "bankAddress",
           "qname": "BankAccount:bankAddress",
           "type": "string"
         },
         "bankName": {
           "label": "Bank name",
+          "maxLength": 1024,
           "name": "bankName",
           "qname": "BankAccount:bankName",
           "type": "string"
@@ -567,6 +613,7 @@
           "format": "bic",
           "label": "Bank Identifier Code",
           "matchable": true,
+          "maxLength": 16,
           "name": "bic",
           "qname": "BankAccount:bic",
           "type": "identifier"
@@ -574,6 +621,7 @@
         "closingDate": {
           "label": "Closing date",
           "matchable": true,
+          "maxLength": 32,
           "name": "closingDate",
           "qname": "BankAccount:closingDate",
           "type": "date"
@@ -581,6 +629,7 @@
         "contractBankAccount": {
           "label": "Customs declarations",
           "matchable": true,
+          "maxLength": 250,
           "name": "contractBankAccount",
           "qname": "BankAccount:contractBankAccount",
           "range": "EconomicActivity",
@@ -591,6 +640,7 @@
         "foreignBankAccount": {
           "label": "Customs declarations (as foreign bank)",
           "matchable": true,
+          "maxLength": 250,
           "name": "foreignBankAccount",
           "qname": "BankAccount:foreignBankAccount",
           "range": "EconomicActivity",
@@ -601,12 +651,14 @@
         "iban": {
           "label": "IBAN",
           "matchable": true,
+          "maxLength": 64,
           "name": "iban",
           "qname": "BankAccount:iban",
           "type": "iban"
         },
         "maxBalance": {
           "label": "Maximum balance",
+          "maxLength": 250,
           "name": "maxBalance",
           "qname": "BankAccount:maxBalance",
           "type": "number"
@@ -614,6 +666,7 @@
         "maxBalanceDate": {
           "label": "Maximum balance date",
           "matchable": true,
+          "maxLength": 32,
           "name": "maxBalanceDate",
           "qname": "BankAccount:maxBalanceDate",
           "type": "date"
@@ -621,6 +674,7 @@
         "openingDate": {
           "label": "Opening date",
           "matchable": true,
+          "maxLength": 32,
           "name": "openingDate",
           "qname": "BankAccount:openingDate",
           "type": "date"
@@ -628,6 +682,7 @@
         "paymentBeneficiaryAccount": {
           "label": "Payments received",
           "matchable": true,
+          "maxLength": 250,
           "name": "paymentBeneficiaryAccount",
           "qname": "BankAccount:paymentBeneficiaryAccount",
           "range": "Payment",
@@ -638,6 +693,7 @@
         "paymentPayerAccount": {
           "label": "Payments made",
           "matchable": true,
+          "maxLength": 250,
           "name": "paymentPayerAccount",
           "qname": "BankAccount:paymentPayerAccount",
           "range": "Payment",
@@ -648,6 +704,7 @@
         "rubBankAccount": {
           "label": "Customs declarations (as rouble bank)",
           "matchable": true,
+          "maxLength": 250,
           "name": "rubBankAccount",
           "qname": "BankAccount:rubBankAccount",
           "range": "EconomicActivity",
@@ -693,6 +750,7 @@
         "caller": {
           "label": "Caller",
           "matchable": true,
+          "maxLength": 250,
           "name": "caller",
           "qname": "Call:caller",
           "range": "LegalEntity",
@@ -702,12 +760,14 @@
         "callerNumber": {
           "label": "Caller's Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "callerNumber",
           "qname": "Call:callerNumber",
           "type": "phone"
         },
         "duration": {
           "label": "Duration",
+          "maxLength": 250,
           "name": "duration",
           "qname": "Call:duration",
           "type": "number"
@@ -715,6 +775,7 @@
         "receiver": {
           "label": "Receiver",
           "matchable": true,
+          "maxLength": 250,
           "name": "receiver",
           "qname": "Call:receiver",
           "range": "LegalEntity",
@@ -724,6 +785,7 @@
         "receiverNumber": {
           "label": "Receiver's Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "receiverNumber",
           "qname": "Call:receiverNumber",
           "type": "phone"
@@ -753,6 +815,7 @@
         "authority": {
           "label": "Name of contracting authority",
           "matchable": true,
+          "maxLength": 250,
           "name": "authority",
           "qname": "CallForTenders:authority",
           "range": "LegalEntity",
@@ -762,6 +825,7 @@
         "authorityReferenceId": {
           "label": "Contracting authority reference ID",
           "matchable": true,
+          "maxLength": 64,
           "name": "authorityReferenceId",
           "qname": "CallForTenders:authorityReferenceId",
           "type": "identifier"
@@ -769,12 +833,14 @@
         "awardNoticeDate": {
           "label": "Award Notice Date",
           "matchable": true,
+          "maxLength": 32,
           "name": "awardNoticeDate",
           "qname": "CallForTenders:awardNoticeDate",
           "type": "date"
         },
         "awardedInLots": {
           "label": "Contract awarded in Lots",
+          "maxLength": 1024,
           "name": "awardedInLots",
           "qname": "CallForTenders:awardedInLots",
           "type": "string"
@@ -782,6 +848,7 @@
         "awardingDate": {
           "label": "Date of awarding",
           "matchable": true,
+          "maxLength": 32,
           "name": "awardingDate",
           "qname": "CallForTenders:awardingDate",
           "type": "date"
@@ -789,12 +856,14 @@
         "callId": {
           "label": "CfT unique id",
           "matchable": true,
+          "maxLength": 64,
           "name": "callId",
           "qname": "CallForTenders:callId",
           "type": "identifier"
         },
         "certificationCheck": {
           "label": "Certification check",
+          "maxLength": 1024,
           "name": "certificationCheck",
           "qname": "CallForTenders:certificationCheck",
           "type": "string"
@@ -802,6 +871,7 @@
         "clarificationDeadline": {
           "label": "End of clarification period",
           "matchable": true,
+          "maxLength": 32,
           "name": "clarificationDeadline",
           "qname": "CallForTenders:clarificationDeadline",
           "type": "date"
@@ -809,6 +879,7 @@
         "contractAwards": {
           "label": "Contract Awards",
           "matchable": true,
+          "maxLength": 250,
           "name": "contractAwards",
           "qname": "CallForTenders:contractAwards",
           "range": "ContractAward",
@@ -819,6 +890,7 @@
         "contractNoticeDate": {
           "label": "Contract notice date",
           "matchable": true,
+          "maxLength": 32,
           "name": "contractNoticeDate",
           "qname": "CallForTenders:contractNoticeDate",
           "type": "date"
@@ -827,24 +899,28 @@
           "description": "Common Procurement Vocabulary (CPV)",
           "label": "CPV code",
           "matchable": true,
+          "maxLength": 64,
           "name": "cpvCode",
           "qname": "CallForTenders:cpvCode",
           "type": "identifier"
         },
         "directive": {
           "label": "Directive",
+          "maxLength": 1024,
           "name": "directive",
           "qname": "CallForTenders:directive",
           "type": "string"
         },
         "euFunding": {
           "label": "EU funding",
+          "maxLength": 1024,
           "name": "euFunding",
           "qname": "CallForTenders:euFunding",
           "type": "string"
         },
         "evaluationMechanism": {
           "label": "Evaluation mechanism",
+          "maxLength": 1024,
           "name": "evaluationMechanism",
           "qname": "CallForTenders:evaluationMechanism",
           "type": "string"
@@ -852,6 +928,7 @@
         "fallsUnderGPPScope": {
           "description": "European Green Public Procurement (GPP) or green purchasing.",
           "label": "Does this call fall under the scope of GPP?",
+          "maxLength": 1024,
           "name": "fallsUnderGPPScope",
           "qname": "CallForTenders:fallsUnderGPPScope",
           "type": "string"
@@ -859,30 +936,35 @@
         "involvesOutcome": {
           "description": "The nature of the contractual agreement that will result from this CfT",
           "label": "Call for tenders result",
+          "maxLength": 1024,
           "name": "involvesOutcome",
           "qname": "CallForTenders:involvesOutcome",
           "type": "string"
         },
         "lotsNames": {
           "label": "Lots names",
+          "maxLength": 1024,
           "name": "lotsNames",
           "qname": "CallForTenders:lotsNames",
           "type": "string"
         },
         "maximumNumberOfLots": {
           "label": "Maximum number of lots",
+          "maxLength": 250,
           "name": "maximumNumberOfLots",
           "qname": "CallForTenders:maximumNumberOfLots",
           "type": "number"
         },
         "multipleTenders": {
           "label": "Multiple tenders will be accepted",
+          "maxLength": 1024,
           "name": "multipleTenders",
           "qname": "CallForTenders:multipleTenders",
           "type": "string"
         },
         "numberOfLots": {
           "label": "Number of lots",
+          "maxLength": 250,
           "name": "numberOfLots",
           "qname": "CallForTenders:numberOfLots",
           "type": "number"
@@ -891,6 +973,7 @@
           "description": "Nomenclature of Territorial Units for Statistics (NUTS)",
           "label": "NUTS code",
           "matchable": true,
+          "maxLength": 64,
           "name": "nutsCode",
           "qname": "CallForTenders:nutsCode",
           "type": "identifier"
@@ -898,6 +981,7 @@
         "onBehalfOf": {
           "label": "Published on behalf of",
           "matchable": true,
+          "maxLength": 250,
           "name": "onBehalfOf",
           "qname": "CallForTenders:onBehalfOf",
           "range": "LegalEntity",
@@ -906,18 +990,21 @@
         },
         "paymentOptions": {
           "label": "Payment options",
+          "maxLength": 1024,
           "name": "paymentOptions",
           "qname": "CallForTenders:paymentOptions",
           "type": "string"
         },
         "procedure": {
           "label": "Procedure",
+          "maxLength": 1024,
           "name": "procedure",
           "qname": "CallForTenders:procedure",
           "type": "string"
         },
         "procurementType": {
           "label": "Procurement type",
+          "maxLength": 1024,
           "name": "procurementType",
           "qname": "CallForTenders:procurementType",
           "type": "string"
@@ -925,18 +1012,21 @@
         "publicationDate": {
           "label": "Date of publication/invitation",
           "matchable": true,
+          "maxLength": 32,
           "name": "publicationDate",
           "qname": "CallForTenders:publicationDate",
           "type": "date"
         },
         "relationToThreshold": {
           "label": "Above or below threshold",
+          "maxLength": 1024,
           "name": "relationToThreshold",
           "qname": "CallForTenders:relationToThreshold",
           "type": "string"
         },
         "reverseAuctionsIncluded": {
           "label": "Inclusion of e-Auctions",
+          "maxLength": 1024,
           "name": "reverseAuctionsIncluded",
           "qname": "CallForTenders:reverseAuctionsIncluded",
           "type": "string"
@@ -944,6 +1034,7 @@
         "submissionDeadline": {
           "label": "Submission deadline",
           "matchable": true,
+          "maxLength": 32,
           "name": "submissionDeadline",
           "qname": "CallForTenders:submissionDeadline",
           "type": "date"
@@ -951,6 +1042,7 @@
         "tedUrl": {
           "label": "TED link for published notices",
           "matchable": true,
+          "maxLength": 4096,
           "name": "tedUrl",
           "qname": "CallForTenders:tedUrl",
           "type": "url"
@@ -958,6 +1050,7 @@
         "tenderers": {
           "label": "Tenderers",
           "matchable": true,
+          "maxLength": 250,
           "name": "tenderers",
           "qname": "CallForTenders:tenderers",
           "range": "LegalEntity",
@@ -966,12 +1059,14 @@
         },
         "tendersForLots": {
           "label": "Tenders for lots",
+          "maxLength": 1024,
           "name": "tendersForLots",
           "qname": "CallForTenders:tendersForLots",
           "type": "string"
         },
         "title": {
           "label": "Title",
+          "maxLength": 1024,
           "name": "title",
           "qname": "CallForTenders:title",
           "type": "string"
@@ -1009,6 +1104,7 @@
         "bikCode": {
           "description": "Russian bank account code",
           "label": "BIK",
+          "maxLength": 1024,
           "name": "bikCode",
           "qname": "Company:bikCode",
           "type": "string"
@@ -1016,12 +1112,14 @@
         "caemCode": {
           "description": "(RO) What kind of activity a legal entity is allowed to develop",
           "label": "COD CAEM",
+          "maxLength": 1024,
           "name": "caemCode",
           "qname": "Company:caemCode",
           "type": "string"
         },
         "capital": {
           "label": "Capital",
+          "maxLength": 1024,
           "name": "capital",
           "qname": "Company:capital",
           "type": "string"
@@ -1030,6 +1128,7 @@
           "description": "US SEC Central Index Key",
           "label": "SEC Central Index Key",
           "matchable": true,
+          "maxLength": 64,
           "name": "cikCode",
           "qname": "Company:cikCode",
           "type": "identifier"
@@ -1037,6 +1136,7 @@
         "coatoCode": {
           "description": "Soviet classifier for territories, regions, districts, villages. Aka. SOATO and same as OKATO",
           "label": "COATO / SOATO / OKATO",
+          "maxLength": 64,
           "name": "coatoCode",
           "qname": "Company:coatoCode",
           "type": "identifier"
@@ -1044,6 +1144,7 @@
         "fnsCode": {
           "description": "(RU, ФНС) Federal Tax Service related info",
           "label": "Federal tax service code",
+          "maxLength": 64,
           "name": "fnsCode",
           "qname": "Company:fnsCode",
           "type": "identifier"
@@ -1051,6 +1152,7 @@
         "fssCode": {
           "description": "(RU, ФСС) Social Security",
           "label": "FSS",
+          "maxLength": 1024,
           "name": "fssCode",
           "qname": "Company:fssCode",
           "type": "string"
@@ -1058,12 +1160,14 @@
         "ibcRuc": {
           "label": "ibcRUC",
           "matchable": true,
+          "maxLength": 64,
           "name": "ibcRuc",
           "qname": "Company:ibcRuc",
           "type": "identifier"
         },
         "ipoCode": {
           "label": "IPO",
+          "maxLength": 64,
           "name": "ipoCode",
           "qname": "Company:ipoCode",
           "type": "identifier"
@@ -1072,6 +1176,7 @@
           "description": "US tax ID",
           "label": "IRS Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "irsCode",
           "qname": "Company:irsCode",
           "type": "identifier"
@@ -1080,6 +1185,7 @@
           "description": "International Securities Identification Number",
           "label": "ISIN",
           "matchable": true,
+          "maxLength": 64,
           "name": "isinCode",
           "qname": "Company:isinCode",
           "type": "identifier"
@@ -1088,6 +1194,7 @@
           "description": "Yugoslavia company ID",
           "label": "JIB",
           "matchable": true,
+          "maxLength": 64,
           "name": "jibCode",
           "qname": "Company:jibCode",
           "type": "identifier"
@@ -1095,6 +1202,7 @@
         "jurisdiction": {
           "label": "Jurisdiction",
           "matchable": true,
+          "maxLength": 16,
           "name": "jurisdiction",
           "qname": "Company:jurisdiction",
           "type": "country"
@@ -1102,6 +1210,7 @@
         "kppCode": {
           "description": "(RU, КПП) in addition to INN for orgs; reason for registration at FNS",
           "label": "KPP",
+          "maxLength": 64,
           "name": "kppCode",
           "qname": "Company:kppCode",
           "type": "identifier"
@@ -1109,6 +1218,7 @@
         "mbsCode": {
           "label": "MBS",
           "matchable": true,
+          "maxLength": 64,
           "name": "mbsCode",
           "qname": "Company:mbsCode",
           "type": "identifier"
@@ -1116,6 +1226,7 @@
         "okopfCode": {
           "description": "(RU, ОКОПФ) What kind of business entity",
           "label": "OKOPF",
+          "maxLength": 1024,
           "name": "okopfCode",
           "qname": "Company:okopfCode",
           "type": "string"
@@ -1123,6 +1234,7 @@
         "oksmCode": {
           "description": "Russian (ОКСМ) countries classifier",
           "label": "OKSM",
+          "maxLength": 1024,
           "name": "oksmCode",
           "qname": "Company:oksmCode",
           "type": "string"
@@ -1130,6 +1242,7 @@
         "okvedCode": {
           "description": "(RU, ОКВЭД) Economical activity classifier. OKVED2 is the same but newer",
           "label": "OKVED(2) Classifier",
+          "maxLength": 1024,
           "name": "okvedCode",
           "qname": "Company:okvedCode",
           "type": "string"
@@ -1138,6 +1251,7 @@
           "description": "LSEG/Refinitiv code for a company",
           "label": "PermID",
           "matchable": true,
+          "maxLength": 16,
           "name": "permId",
           "qname": "Company:permId",
           "type": "identifier"
@@ -1146,6 +1260,7 @@
           "description": "(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch",
           "label": "PFR Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "pfrNumber",
           "qname": "Company:pfrNumber",
           "type": "identifier"
@@ -1153,6 +1268,7 @@
         "registrationNumber": {
           "label": "Registration number",
           "matchable": true,
+          "maxLength": 64,
           "name": "registrationNumber",
           "qname": "Company:registrationNumber",
           "type": "identifier"
@@ -1160,6 +1276,7 @@
         "ricCode": {
           "label": "Reuters Instrument Code",
           "matchable": true,
+          "maxLength": 16,
           "name": "ricCode",
           "qname": "Company:ricCode",
           "type": "identifier"
@@ -1167,6 +1284,7 @@
         "ticker": {
           "label": "Stock ticker symbol",
           "matchable": true,
+          "maxLength": 64,
           "name": "ticker",
           "qname": "Company:ticker",
           "type": "identifier"
@@ -1175,6 +1293,7 @@
           "description": "Azerbaijan taxpayer ID",
           "label": "VOEN",
           "matchable": true,
+          "maxLength": 32,
           "name": "voenCode",
           "qname": "Company:voenCode",
           "type": "identifier"
@@ -1214,6 +1333,7 @@
         "authority": {
           "label": "Contract authority",
           "matchable": true,
+          "maxLength": 250,
           "name": "authority",
           "qname": "Contract:authority",
           "range": "LegalEntity",
@@ -1223,6 +1343,7 @@
         "awards": {
           "label": "Lots awarded",
           "matchable": true,
+          "maxLength": 250,
           "name": "awards",
           "qname": "Contract:awards",
           "range": "ContractAward",
@@ -1232,12 +1353,14 @@
         },
         "cancelled": {
           "label": "Cancelled?",
+          "maxLength": 1024,
           "name": "cancelled",
           "qname": "Contract:cancelled",
           "type": "string"
         },
         "classification": {
           "label": "Classification",
+          "maxLength": 1024,
           "name": "classification",
           "qname": "Contract:classification",
           "type": "string"
@@ -1245,12 +1368,14 @@
         "contractDate": {
           "label": "Contract date",
           "matchable": true,
+          "maxLength": 32,
           "name": "contractDate",
           "qname": "Contract:contractDate",
           "type": "date"
         },
         "criteria": {
           "label": "Contract award criteria",
+          "maxLength": 1024,
           "name": "criteria",
           "qname": "Contract:criteria",
           "type": "string"
@@ -1258,6 +1383,7 @@
         "economicActivityContract": {
           "label": "Used in customs",
           "matchable": true,
+          "maxLength": 250,
           "name": "economicActivityContract",
           "qname": "Contract:economicActivityContract",
           "range": "EconomicActivity",
@@ -1267,24 +1393,28 @@
         },
         "language": {
           "label": "Language",
+          "maxLength": 16,
           "name": "language",
           "qname": "Contract:language",
           "type": "language"
         },
         "method": {
           "label": "Procurement method",
+          "maxLength": 1024,
           "name": "method",
           "qname": "Contract:method",
           "type": "string"
         },
         "noticeId": {
           "label": "Contract Award Notice ID",
+          "maxLength": 1024,
           "name": "noticeId",
           "qname": "Contract:noticeId",
           "type": "string"
         },
         "numberAwards": {
           "label": "Number of awards",
+          "maxLength": 1024,
           "name": "numberAwards",
           "qname": "Contract:numberAwards",
           "type": "string"
@@ -1292,6 +1422,7 @@
         "paymentContract": {
           "label": "Contractual payments",
           "matchable": true,
+          "maxLength": 250,
           "name": "paymentContract",
           "qname": "Contract:paymentContract",
           "range": "Payment",
@@ -1301,12 +1432,14 @@
         },
         "procedure": {
           "label": "Contract procedure",
+          "maxLength": 1024,
           "name": "procedure",
           "qname": "Contract:procedure",
           "type": "string"
         },
         "procedureNumber": {
           "label": "Procedure number",
+          "maxLength": 1024,
           "name": "procedureNumber",
           "qname": "Contract:procedureNumber",
           "type": "string"
@@ -1314,6 +1447,7 @@
         "project": {
           "label": "Project",
           "matchable": true,
+          "maxLength": 250,
           "name": "project",
           "qname": "Contract:project",
           "range": "Project",
@@ -1322,12 +1456,14 @@
         },
         "status": {
           "label": "Status",
+          "maxLength": 1024,
           "name": "status",
           "qname": "Contract:status",
           "type": "string"
         },
         "title": {
           "label": "Title",
+          "maxLength": 1024,
           "name": "title",
           "qname": "Contract:title",
           "type": "string"
@@ -1335,6 +1471,7 @@
         "type": {
           "description": "Type of contract. Potentially W (Works), U (Supplies), S (Services).\n",
           "label": "Type",
+          "maxLength": 1024,
           "name": "type",
           "qname": "Contract:type",
           "type": "string"
@@ -1384,6 +1521,7 @@
         "amended": {
           "description": "Was this award amended, modified or updated by a subsequent document?",
           "label": "Amended",
+          "maxLength": 1024,
           "name": "amended",
           "qname": "ContractAward:amended",
           "type": "string"
@@ -1391,6 +1529,7 @@
         "callForTenders": {
           "label": "Call For Tenders",
           "matchable": true,
+          "maxLength": 250,
           "name": "callForTenders",
           "qname": "ContractAward:callForTenders",
           "range": "CallForTenders",
@@ -1400,6 +1539,7 @@
         "contract": {
           "label": "Contract",
           "matchable": true,
+          "maxLength": 250,
           "name": "contract",
           "qname": "ContractAward:contract",
           "range": "Contract",
@@ -1410,30 +1550,35 @@
           "description": "Contract Procurement Vocabulary (what type of goods/services, EU)",
           "label": "CPV code",
           "matchable": true,
+          "maxLength": 64,
           "name": "cpvCode",
           "qname": "ContractAward:cpvCode",
           "type": "identifier"
         },
         "decisionReason": {
           "label": "Decision reason",
+          "maxLength": 65000,
           "name": "decisionReason",
           "qname": "ContractAward:decisionReason",
           "type": "text"
         },
         "documentNumber": {
           "label": "Document number",
+          "maxLength": 1024,
           "name": "documentNumber",
           "qname": "ContractAward:documentNumber",
           "type": "string"
         },
         "documentType": {
           "label": "Document type",
+          "maxLength": 1024,
           "name": "documentType",
           "qname": "ContractAward:documentType",
           "type": "string"
         },
         "lotNumber": {
           "label": "Lot number",
+          "maxLength": 1024,
           "name": "lotNumber",
           "qname": "ContractAward:lotNumber",
           "type": "string"
@@ -1442,6 +1587,7 @@
           "description": "Nomencalture of Territorial Units for Statistics (NUTS)",
           "label": "NUTS code",
           "matchable": true,
+          "maxLength": 64,
           "name": "nutsCode",
           "qname": "ContractAward:nutsCode",
           "type": "identifier"
@@ -1450,6 +1596,7 @@
           "description": "The entity the contract was awarded to",
           "label": "Supplier",
           "matchable": true,
+          "maxLength": 250,
           "name": "supplier",
           "qname": "ContractAward:supplier",
           "range": "LegalEntity",
@@ -1487,12 +1634,14 @@
         "caseNumber": {
           "label": "Case number",
           "matchable": true,
+          "maxLength": 64,
           "name": "caseNumber",
           "qname": "CourtCase:caseNumber",
           "type": "identifier"
         },
         "category": {
           "label": "Category",
+          "maxLength": 1024,
           "name": "category",
           "qname": "CourtCase:category",
           "type": "string"
@@ -1500,12 +1649,14 @@
         "closeDate": {
           "label": "Close date",
           "matchable": true,
+          "maxLength": 32,
           "name": "closeDate",
           "qname": "CourtCase:closeDate",
           "type": "date"
         },
         "court": {
           "label": "Court",
+          "maxLength": 1024,
           "name": "court",
           "qname": "CourtCase:court",
           "type": "string"
@@ -1513,6 +1664,7 @@
         "fileDate": {
           "label": "File date",
           "matchable": true,
+          "maxLength": 32,
           "name": "fileDate",
           "qname": "CourtCase:fileDate",
           "type": "date"
@@ -1520,6 +1672,7 @@
         "parties": {
           "label": "Parties",
           "matchable": true,
+          "maxLength": 250,
           "name": "parties",
           "qname": "CourtCase:parties",
           "range": "CourtCaseParty",
@@ -1529,12 +1682,14 @@
         },
         "status": {
           "label": "Status",
+          "maxLength": 1024,
           "name": "status",
           "qname": "CourtCase:status",
           "type": "string"
         },
         "type": {
           "label": "Type",
+          "maxLength": 1024,
           "name": "type",
           "qname": "CourtCase:type",
           "type": "string"
@@ -1580,6 +1735,7 @@
         "case": {
           "label": "Case",
           "matchable": true,
+          "maxLength": 250,
           "name": "case",
           "qname": "CourtCaseParty:case",
           "range": "CourtCase",
@@ -1589,6 +1745,7 @@
         "party": {
           "label": "Party",
           "matchable": true,
+          "maxLength": 250,
           "name": "party",
           "qname": "CourtCaseParty:party",
           "range": "Thing",
@@ -1627,6 +1784,7 @@
       "properties": {
         "balance": {
           "label": "Balance",
+          "maxLength": 250,
           "name": "balance",
           "qname": "CryptoWallet:balance",
           "type": "number"
@@ -1634,6 +1792,7 @@
         "balanceDate": {
           "label": "Balance date",
           "matchable": true,
+          "maxLength": 32,
           "name": "balanceDate",
           "qname": "CryptoWallet:balanceDate",
           "type": "date"
@@ -1641,12 +1800,14 @@
         "creationDate": {
           "label": "Creation date",
           "matchable": true,
+          "maxLength": 32,
           "name": "creationDate",
           "qname": "CryptoWallet:creationDate",
           "type": "date"
         },
         "currencySymbol": {
           "label": "Currency short code",
+          "maxLength": 1024,
           "name": "currencySymbol",
           "qname": "CryptoWallet:currencySymbol",
           "type": "string"
@@ -1654,6 +1815,7 @@
         "holder": {
           "label": "Wallet holder",
           "matchable": true,
+          "maxLength": 250,
           "name": "holder",
           "qname": "CryptoWallet:holder",
           "range": "LegalEntity",
@@ -1662,12 +1824,14 @@
         },
         "mangingExchange": {
           "label": "Managing exchange",
+          "maxLength": 1024,
           "name": "mangingExchange",
           "qname": "CryptoWallet:mangingExchange",
           "type": "string"
         },
         "privateKey": {
           "label": "Private key",
+          "maxLength": 1024,
           "name": "privateKey",
           "qname": "CryptoWallet:privateKey",
           "type": "string"
@@ -1676,6 +1840,7 @@
           "description": "Public key used to identify the wallet",
           "label": "Address",
           "matchable": true,
+          "maxLength": 128,
           "name": "publicKey",
           "qname": "CryptoWallet:publicKey",
           "type": "identifier"
@@ -1720,6 +1885,7 @@
         "creditor": {
           "label": "Creditor",
           "matchable": true,
+          "maxLength": 250,
           "name": "creditor",
           "qname": "Debt:creditor",
           "range": "LegalEntity",
@@ -1729,6 +1895,7 @@
         "debtor": {
           "label": "Debtor",
           "matchable": true,
+          "maxLength": 250,
           "name": "debtor",
           "qname": "Debt:debtor",
           "range": "LegalEntity",
@@ -1774,6 +1941,7 @@
         "director": {
           "label": "Director",
           "matchable": true,
+          "maxLength": 250,
           "name": "director",
           "qname": "Directorship:director",
           "range": "LegalEntity",
@@ -1783,6 +1951,7 @@
         "organization": {
           "label": "Organization",
           "matchable": true,
+          "maxLength": 250,
           "name": "organization",
           "qname": "Directorship:organization",
           "range": "Organization",
@@ -1791,6 +1960,7 @@
         },
         "secretary": {
           "label": "Secretary",
+          "maxLength": 1024,
           "name": "secretary",
           "qname": "Directorship:secretary",
           "type": "string"
@@ -1829,6 +1999,7 @@
           "hidden": true,
           "label": "Ancestors",
           "matchable": true,
+          "maxLength": 250,
           "name": "ancestors",
           "qname": "Document:ancestors",
           "range": "Folder",
@@ -1838,12 +2009,14 @@
         "author": {
           "description": "The original author, not the uploader",
           "label": "Author",
+          "maxLength": 1024,
           "name": "author",
           "qname": "Document:author",
           "type": "string"
         },
         "authoredAt": {
           "label": "Authored on",
+          "maxLength": 32,
           "name": "authoredAt",
           "qname": "Document:authoredAt",
           "type": "date"
@@ -1851,6 +2024,7 @@
         "bodyText": {
           "hidden": true,
           "label": "Text",
+          "maxLength": 65000,
           "name": "bodyText",
           "qname": "Document:bodyText",
           "type": "text"
@@ -1859,6 +2033,7 @@
           "description": "SHA1 hash of the data",
           "label": "Checksum",
           "matchable": true,
+          "maxLength": 40,
           "name": "contentHash",
           "qname": "Document:contentHash",
           "type": "checksum"
@@ -1866,6 +2041,7 @@
         "crawler": {
           "description": "The crawler used to acquire this file",
           "label": "Crawler",
+          "maxLength": 1024,
           "name": "crawler",
           "qname": "Document:crawler",
           "type": "string"
@@ -1874,30 +2050,35 @@
           "description": "If not otherwise specified",
           "label": "Date",
           "matchable": true,
+          "maxLength": 32,
           "name": "date",
           "qname": "Document:date",
           "type": "date"
         },
         "encoding": {
           "label": "File encoding",
+          "maxLength": 1024,
           "name": "encoding",
           "qname": "Document:encoding",
           "type": "string"
         },
         "extension": {
           "label": "File extension",
+          "maxLength": 1024,
           "name": "extension",
           "qname": "Document:extension",
           "type": "string"
         },
         "fileName": {
           "label": "File name",
+          "maxLength": 1024,
           "name": "fileName",
           "qname": "Document:fileName",
           "type": "string"
         },
         "fileSize": {
           "label": "File size",
+          "maxLength": 250,
           "name": "fileSize",
           "qname": "Document:fileSize",
           "type": "number"
@@ -1905,12 +2086,14 @@
         "generator": {
           "description": "The program used to generate this file",
           "label": "Generator",
+          "maxLength": 1024,
           "name": "generator",
           "qname": "Document:generator",
           "type": "string"
         },
         "language": {
           "label": "Language",
+          "maxLength": 16,
           "name": "language",
           "qname": "Document:language",
           "type": "language"
@@ -1919,6 +2102,7 @@
           "hidden": true,
           "label": "Extracted names",
           "matchable": true,
+          "maxLength": 250,
           "name": "mentionedEntities",
           "qname": "Document:mentionedEntities",
           "range": "Mention",
@@ -1929,12 +2113,14 @@
         "messageId": {
           "description": "Message ID of a document; unique in most cases",
           "label": "Message ID",
+          "maxLength": 1024,
           "name": "messageId",
           "qname": "Document:messageId",
           "type": "string"
         },
         "mimeType": {
           "label": "MIME type",
+          "maxLength": 250,
           "name": "mimeType",
           "qname": "Document:mimeType",
           "type": "mimetype"
@@ -1942,6 +2128,7 @@
         "parent": {
           "label": "Folder",
           "matchable": true,
+          "maxLength": 250,
           "name": "parent",
           "qname": "Document:parent",
           "range": "Folder",
@@ -1952,6 +2139,7 @@
           "description": "Date and time of the most recent ingestion of the Document",
           "hidden": true,
           "label": "Processed at",
+          "maxLength": 32,
           "name": "processedAt",
           "qname": "Document:processedAt",
           "type": "date"
@@ -1959,6 +2147,7 @@
         "processingAgent": {
           "description": "Name and version of the processing agent used to process the Document",
           "label": "Processing agent",
+          "maxLength": 1024,
           "name": "processingAgent",
           "qname": "Document:processingAgent",
           "type": "string"
@@ -1966,6 +2155,7 @@
         "processingError": {
           "hidden": true,
           "label": "Processing error",
+          "maxLength": 1024,
           "name": "processingError",
           "qname": "Document:processingError",
           "type": "string"
@@ -1973,6 +2163,7 @@
         "processingStatus": {
           "hidden": true,
           "label": "Processing status",
+          "maxLength": 1024,
           "name": "processingStatus",
           "qname": "Document:processingStatus",
           "type": "string"
@@ -1980,6 +2171,7 @@
         "proven": {
           "label": "Derived entities",
           "matchable": true,
+          "maxLength": 250,
           "name": "proven",
           "qname": "Document:proven",
           "range": "Thing",
@@ -1989,6 +2181,7 @@
         },
         "publishedAt": {
           "label": "Published on",
+          "maxLength": 32,
           "name": "publishedAt",
           "qname": "Document:publishedAt",
           "type": "date"
@@ -1996,6 +2189,7 @@
         "relatedEntities": {
           "label": "Related entities",
           "matchable": true,
+          "maxLength": 250,
           "name": "relatedEntities",
           "qname": "Document:relatedEntities",
           "range": "Documentation",
@@ -2005,6 +2199,7 @@
         },
         "title": {
           "label": "Title",
+          "maxLength": 1024,
           "name": "title",
           "qname": "Document:title",
           "type": "string"
@@ -2012,6 +2207,7 @@
         "translatedLanguage": {
           "hidden": true,
           "label": "The language of the translated text",
+          "maxLength": 16,
           "name": "translatedLanguage",
           "qname": "Document:translatedLanguage",
           "type": "language"
@@ -2019,6 +2215,7 @@
         "translatedText": {
           "hidden": true,
           "label": "Translated version of the body text",
+          "maxLength": 65000,
           "name": "translatedText",
           "qname": "Document:translatedText",
           "type": "text"
@@ -2066,6 +2263,7 @@
         "document": {
           "label": "Document",
           "matchable": true,
+          "maxLength": 250,
           "name": "document",
           "qname": "Documentation:document",
           "range": "Document",
@@ -2075,6 +2273,7 @@
         "entity": {
           "label": "Entity",
           "matchable": true,
+          "maxLength": 250,
           "name": "entity",
           "qname": "Documentation:entity",
           "range": "Thing",
@@ -2117,6 +2316,7 @@
           "description": "Bank account of the contract",
           "label": "Bank Account",
           "matchable": true,
+          "maxLength": 250,
           "name": "bankAccount",
           "qname": "EconomicActivity:bankAccount",
           "range": "BankAccount",
@@ -2127,6 +2327,7 @@
           "description": "Bank account for payments in foreign currency",
           "label": "Foreign currency bank",
           "matchable": true,
+          "maxLength": 250,
           "name": "bankForeign",
           "qname": "EconomicActivity:bankForeign",
           "range": "BankAccount",
@@ -2137,6 +2338,7 @@
           "description": "Bank account for payments in roubles",
           "label": "Rouble bank",
           "matchable": true,
+          "maxLength": 250,
           "name": "bankRub",
           "qname": "EconomicActivity:bankRub",
           "range": "BankAccount",
@@ -2146,6 +2348,7 @@
         "ccdNumber": {
           "label": "Customs Cargo Declaration Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "ccdNumber",
           "qname": "EconomicActivity:ccdNumber",
           "type": "identifier"
@@ -2153,6 +2356,7 @@
         "ccdValue": {
           "description": "Declaration Value",
           "label": "CCD Value",
+          "maxLength": 1024,
           "name": "ccdValue",
           "qname": "EconomicActivity:ccdValue",
           "type": "string"
@@ -2160,6 +2364,7 @@
         "contract": {
           "label": "Contract",
           "matchable": true,
+          "maxLength": 250,
           "name": "contract",
           "qname": "EconomicActivity:contract",
           "range": "Contract",
@@ -2170,6 +2375,7 @@
           "description": "Customs formalities caretaker",
           "label": "Contract holder",
           "matchable": true,
+          "maxLength": 250,
           "name": "contractHolder",
           "qname": "EconomicActivity:contractHolder",
           "range": "LegalEntity",
@@ -2179,6 +2385,7 @@
         "customsAmount": {
           "description": "Customs Value of goods",
           "label": "Customs Value Amount",
+          "maxLength": 1024,
           "name": "customsAmount",
           "qname": "EconomicActivity:customsAmount",
           "type": "string"
@@ -2186,6 +2393,7 @@
         "customsProcedure": {
           "description": "Customs Procedure — type of customs clearance",
           "label": "Customs Procedure",
+          "maxLength": 1024,
           "name": "customsProcedure",
           "qname": "EconomicActivity:customsProcedure",
           "type": "string"
@@ -2194,6 +2402,7 @@
           "description": "Customs declarant",
           "label": "Declarant",
           "matchable": true,
+          "maxLength": 250,
           "name": "declarant",
           "qname": "EconomicActivity:declarant",
           "range": "LegalEntity",
@@ -2204,6 +2413,7 @@
           "description": "Country out of which the goods are transported",
           "label": "Country of departure",
           "matchable": true,
+          "maxLength": 16,
           "name": "departureCountry",
           "qname": "EconomicActivity:departureCountry",
           "type": "country"
@@ -2212,6 +2422,7 @@
           "description": "Final destination for the goods",
           "label": "Country of destination",
           "matchable": true,
+          "maxLength": 16,
           "name": "destinationCountry",
           "qname": "EconomicActivity:destinationCountry",
           "type": "country"
@@ -2219,6 +2430,7 @@
         "directionOfTransportation": {
           "description": "Direction of transportation (import/export)",
           "label": "Direction of transportation",
+          "maxLength": 1024,
           "name": "directionOfTransportation",
           "qname": "EconomicActivity:directionOfTransportation",
           "type": "string"
@@ -2226,12 +2438,14 @@
         "dollarExchRate": {
           "description": "USD Exchange Rate for the activity",
           "label": "USD Exchange Rate",
+          "maxLength": 1024,
           "name": "dollarExchRate",
           "qname": "EconomicActivity:dollarExchRate",
           "type": "string"
         },
         "goodsDescription": {
           "label": "Description of goods",
+          "maxLength": 65000,
           "name": "goodsDescription",
           "qname": "EconomicActivity:goodsDescription",
           "type": "text"
@@ -2239,6 +2453,7 @@
         "invoiceAmount": {
           "description": "Invoice Value of goods",
           "label": "Invoice Value Amount",
+          "maxLength": 1024,
           "name": "invoiceAmount",
           "qname": "EconomicActivity:invoiceAmount",
           "type": "string"
@@ -2247,6 +2462,7 @@
           "description": "Country of origin of goods",
           "label": "Country of origin",
           "matchable": true,
+          "maxLength": 16,
           "name": "originCountry",
           "qname": "EconomicActivity:originCountry",
           "type": "country"
@@ -2255,6 +2471,7 @@
           "description": "Destination of the goods",
           "label": "Receiver",
           "matchable": true,
+          "maxLength": 250,
           "name": "receiver",
           "qname": "EconomicActivity:receiver",
           "range": "LegalEntity",
@@ -2265,6 +2482,7 @@
           "description": "Origin of the goods",
           "label": "Sender",
           "matchable": true,
+          "maxLength": 250,
           "name": "sender",
           "qname": "EconomicActivity:sender",
           "range": "LegalEntity",
@@ -2275,6 +2493,7 @@
           "description": "Trading Country of the company which transports the goods via Russian border",
           "label": "Trading Country",
           "matchable": true,
+          "maxLength": 16,
           "name": "tradingCountry",
           "qname": "EconomicActivity:tradingCountry",
           "type": "country"
@@ -2283,6 +2502,7 @@
           "description": "Means of transportation",
           "label": "Transport",
           "matchable": true,
+          "maxLength": 250,
           "name": "transport",
           "qname": "EconomicActivity:transport",
           "range": "Vehicle",
@@ -2293,6 +2513,7 @@
           "description": "(Код ТН ВЭД) Foreign Economic Activity Commodity Code",
           "label": "FEAC Code",
           "matchable": true,
+          "maxLength": 64,
           "name": "vedCode",
           "qname": "EconomicActivity:vedCode",
           "type": "identifier"
@@ -2300,6 +2521,7 @@
         "vedCodeDescription": {
           "description": "(Описание кода ТН ВЭД) Foreign Economic Activity Commodity Code description",
           "label": "FEAC Code description",
+          "maxLength": 1024,
           "name": "vedCodeDescription",
           "qname": "EconomicActivity:vedCodeDescription",
           "type": "string"
@@ -2336,6 +2558,7 @@
         "bcc": {
           "description": "Blind carbon copy",
           "label": "BCC",
+          "maxLength": 1024,
           "name": "bcc",
           "qname": "Email:bcc",
           "type": "string"
@@ -2343,6 +2566,7 @@
         "cc": {
           "description": "Carbon copy",
           "label": "CC",
+          "maxLength": 1024,
           "name": "cc",
           "qname": "Email:cc",
           "type": "string"
@@ -2350,6 +2574,7 @@
         "emitters": {
           "label": "Emitter",
           "matchable": true,
+          "maxLength": 250,
           "name": "emitters",
           "qname": "Email:emitters",
           "range": "LegalEntity",
@@ -2358,6 +2583,7 @@
         },
         "from": {
           "label": "From",
+          "maxLength": 1024,
           "name": "from",
           "qname": "Email:from",
           "type": "string"
@@ -2365,6 +2591,7 @@
         "headers": {
           "hidden": true,
           "label": "Raw headers",
+          "maxLength": 250,
           "name": "headers",
           "qname": "Email:headers",
           "type": "json"
@@ -2373,6 +2600,7 @@
           "description": "Message ID of the preceding email in the thread",
           "hidden": true,
           "label": "In Reply To",
+          "maxLength": 1024,
           "name": "inReplyTo",
           "qname": "Email:inReplyTo",
           "type": "string"
@@ -2380,6 +2608,7 @@
         "inReplyToEmail": {
           "label": "Responding to",
           "matchable": true,
+          "maxLength": 250,
           "name": "inReplyToEmail",
           "qname": "Email:inReplyToEmail",
           "range": "Email",
@@ -2389,6 +2618,7 @@
         "recipients": {
           "label": "Recipients",
           "matchable": true,
+          "maxLength": 250,
           "name": "recipients",
           "qname": "Email:recipients",
           "range": "LegalEntity",
@@ -2398,6 +2628,7 @@
         "responses": {
           "label": "Responses",
           "matchable": true,
+          "maxLength": 250,
           "name": "responses",
           "qname": "Email:responses",
           "range": "Email",
@@ -2407,24 +2638,28 @@
         },
         "sender": {
           "label": "Sender",
+          "maxLength": 1024,
           "name": "sender",
           "qname": "Email:sender",
           "type": "string"
         },
         "subject": {
           "label": "Subject",
+          "maxLength": 1024,
           "name": "subject",
           "qname": "Email:subject",
           "type": "string"
         },
         "threadTopic": {
           "label": "Thread topic",
+          "maxLength": 1024,
           "name": "threadTopic",
           "qname": "Email:threadTopic",
           "type": "string"
         },
         "to": {
           "label": "To",
+          "maxLength": 1024,
           "name": "to",
           "qname": "Email:to",
           "type": "string"
@@ -2469,6 +2704,7 @@
         "employee": {
           "label": "Employee",
           "matchable": true,
+          "maxLength": 250,
           "name": "employee",
           "qname": "Employment:employee",
           "range": "Person",
@@ -2478,6 +2714,7 @@
         "employer": {
           "label": "Employer",
           "matchable": true,
+          "maxLength": 250,
           "name": "employer",
           "qname": "Employment:employer",
           "range": "Organization",
@@ -2518,12 +2755,14 @@
         "country": {
           "label": "Country",
           "matchable": true,
+          "maxLength": 16,
           "name": "country",
           "qname": "Event:country",
           "type": "country"
         },
         "important": {
           "label": "Important",
+          "maxLength": 1024,
           "name": "important",
           "qname": "Event:important",
           "type": "string"
@@ -2531,6 +2770,7 @@
         "involved": {
           "label": "Involved",
           "matchable": true,
+          "maxLength": 250,
           "name": "involved",
           "qname": "Event:involved",
           "range": "LegalEntity",
@@ -2540,6 +2780,7 @@
         "location": {
           "label": "Location",
           "matchable": true,
+          "maxLength": 250,
           "name": "location",
           "qname": "Event:location",
           "type": "address"
@@ -2547,6 +2788,7 @@
         "organizer": {
           "label": "Organizer",
           "matchable": true,
+          "maxLength": 250,
           "name": "organizer",
           "qname": "Event:organizer",
           "range": "LegalEntity",
@@ -2590,6 +2832,7 @@
           "description": "The subject of the familial relation.",
           "label": "Person",
           "matchable": true,
+          "maxLength": 250,
           "name": "person",
           "qname": "Family:person",
           "range": "Person",
@@ -2599,6 +2842,7 @@
         "relationship": {
           "description": "Nature of the relationship, from the person's perspective eg. 'mother', where 'relative' is mother of 'person'.",
           "label": "Relationship",
+          "maxLength": 1024,
           "name": "relationship",
           "qname": "Family:relationship",
           "type": "string"
@@ -2607,6 +2851,7 @@
           "description": "The relative of the subject person.",
           "label": "Relative",
           "matchable": true,
+          "maxLength": 250,
           "name": "relative",
           "qname": "Family:relative",
           "range": "Person",
@@ -2643,6 +2888,7 @@
           "hidden": true,
           "label": "Child documents",
           "matchable": true,
+          "maxLength": 250,
           "name": "children",
           "qname": "Folder:children",
           "range": "Document",
@@ -2654,6 +2900,7 @@
           "hidden": true,
           "label": "Descendants",
           "matchable": true,
+          "maxLength": 250,
           "name": "descendants",
           "qname": "Folder:descendants",
           "range": "Document",
@@ -2690,6 +2937,7 @@
         "bodyHtml": {
           "hidden": true,
           "label": "HTML",
+          "maxLength": 65000,
           "name": "bodyHtml",
           "qname": "HyperText:bodyHtml",
           "type": "html"
@@ -2723,6 +2971,7 @@
       "properties": {
         "authority": {
           "label": "Authority",
+          "maxLength": 1024,
           "name": "authority",
           "qname": "Identification:authority",
           "type": "string"
@@ -2730,6 +2979,7 @@
         "country": {
           "label": "Country",
           "matchable": true,
+          "maxLength": 16,
           "name": "country",
           "qname": "Identification:country",
           "type": "country"
@@ -2737,6 +2987,7 @@
         "holder": {
           "label": "Identification holder",
           "matchable": true,
+          "maxLength": 250,
           "name": "holder",
           "qname": "Identification:holder",
           "range": "LegalEntity",
@@ -2746,12 +2997,14 @@
         "number": {
           "label": "Document number",
           "matchable": true,
+          "maxLength": 64,
           "name": "number",
           "qname": "Identification:number",
           "type": "identifier"
         },
         "type": {
           "label": "Type",
+          "maxLength": 1024,
           "name": "type",
           "qname": "Identification:type",
           "type": "string"
@@ -2788,6 +3041,7 @@
         "pictured": {
           "label": "Pictured",
           "matchable": true,
+          "maxLength": 250,
           "name": "pictured",
           "qname": "Image:pictured",
           "range": "Person",
@@ -2812,12 +3066,14 @@
       "properties": {
         "role": {
           "label": "Role",
+          "maxLength": 1024,
           "name": "role",
           "qname": "Interest:role",
           "type": "string"
         },
         "status": {
           "label": "Status",
+          "maxLength": 1024,
           "name": "status",
           "qname": "Interest:status",
           "type": "string"
@@ -2838,6 +3094,7 @@
         "alephUrl": {
           "hidden": true,
           "label": "Aleph URL",
+          "maxLength": 4096,
           "name": "alephUrl",
           "qname": "Interval:alephUrl",
           "type": "url"
@@ -2845,12 +3102,14 @@
         "date": {
           "label": "Date",
           "matchable": true,
+          "maxLength": 32,
           "name": "date",
           "qname": "Interval:date",
           "type": "date"
         },
         "description": {
           "label": "Description",
+          "maxLength": 65000,
           "name": "description",
           "qname": "Interval:description",
           "type": "text"
@@ -2858,6 +3117,7 @@
         "endDate": {
           "label": "End date",
           "matchable": true,
+          "maxLength": 32,
           "name": "endDate",
           "qname": "Interval:endDate",
           "type": "date"
@@ -2865,6 +3125,7 @@
         "indexText": {
           "hidden": true,
           "label": "Index text",
+          "maxLength": 65000,
           "name": "indexText",
           "qname": "Interval:indexText",
           "type": "text"
@@ -2872,6 +3133,7 @@
         "modifiedAt": {
           "label": "Modified on",
           "matchable": true,
+          "maxLength": 32,
           "name": "modifiedAt",
           "qname": "Interval:modifiedAt",
           "type": "date"
@@ -2880,36 +3142,42 @@
           "hidden": true,
           "label": "Detected names",
           "matchable": true,
+          "maxLength": 250,
           "name": "namesMentioned",
           "qname": "Interval:namesMentioned",
           "type": "name"
         },
         "publisher": {
           "label": "Publishing source",
+          "maxLength": 1024,
           "name": "publisher",
           "qname": "Interval:publisher",
           "type": "string"
         },
         "publisherUrl": {
           "label": "Publishing source URL",
+          "maxLength": 4096,
           "name": "publisherUrl",
           "qname": "Interval:publisherUrl",
           "type": "url"
         },
         "recordId": {
           "label": "Record ID",
+          "maxLength": 1024,
           "name": "recordId",
           "qname": "Interval:recordId",
           "type": "string"
         },
         "retrievedAt": {
           "label": "Retrieved on",
+          "maxLength": 32,
           "name": "retrievedAt",
           "qname": "Interval:retrievedAt",
           "type": "date"
         },
         "sourceUrl": {
           "label": "Source link",
+          "maxLength": 4096,
           "name": "sourceUrl",
           "qname": "Interval:sourceUrl",
           "type": "url"
@@ -2917,12 +3185,14 @@
         "startDate": {
           "label": "Start date",
           "matchable": true,
+          "maxLength": 32,
           "name": "startDate",
           "qname": "Interval:startDate",
           "type": "date"
         },
         "summary": {
           "label": "Summary",
+          "maxLength": 65000,
           "name": "summary",
           "qname": "Interval:summary",
           "type": "text"
@@ -2965,6 +3235,7 @@
         "agencyClient": {
           "label": "Clients",
           "matchable": true,
+          "maxLength": 250,
           "name": "agencyClient",
           "qname": "LegalEntity:agencyClient",
           "range": "Representation",
@@ -2975,6 +3246,7 @@
         "agentRepresentation": {
           "label": "Agents",
           "matchable": true,
+          "maxLength": 250,
           "name": "agentRepresentation",
           "qname": "LegalEntity:agentRepresentation",
           "range": "Representation",
@@ -2985,6 +3257,7 @@
         "authoredAssessments": {
           "label": "Assessments authored",
           "matchable": true,
+          "maxLength": 250,
           "name": "authoredAssessments",
           "qname": "LegalEntity:authoredAssessments",
           "range": "Assessment",
@@ -2995,6 +3268,7 @@
         "bvdId": {
           "label": "Bureau van Dijk ID",
           "matchable": true,
+          "maxLength": 64,
           "name": "bvdId",
           "qname": "LegalEntity:bvdId",
           "type": "identifier"
@@ -3002,6 +3276,7 @@
         "callForTenders": {
           "label": "Call For Tenders",
           "matchable": true,
+          "maxLength": 250,
           "name": "callForTenders",
           "qname": "LegalEntity:callForTenders",
           "range": "CallForTenders",
@@ -3012,6 +3287,7 @@
         "callsMade": {
           "label": "Calls made",
           "matchable": true,
+          "maxLength": 250,
           "name": "callsMade",
           "qname": "LegalEntity:callsMade",
           "range": "Call",
@@ -3022,6 +3298,7 @@
         "callsReceived": {
           "label": "Calls received",
           "matchable": true,
+          "maxLength": 250,
           "name": "callsReceived",
           "qname": "LegalEntity:callsReceived",
           "range": "Call",
@@ -3031,6 +3308,7 @@
         },
         "classification": {
           "label": "Classification",
+          "maxLength": 1024,
           "name": "classification",
           "qname": "LegalEntity:classification",
           "type": "string"
@@ -3038,6 +3316,7 @@
         "contractAuthority": {
           "label": "Contracts issued",
           "matchable": true,
+          "maxLength": 250,
           "name": "contractAuthority",
           "qname": "LegalEntity:contractAuthority",
           "range": "Contract",
@@ -3048,6 +3327,7 @@
         "contractAwardSupplier": {
           "label": "Contracts awarded",
           "matchable": true,
+          "maxLength": 250,
           "name": "contractAwardSupplier",
           "qname": "LegalEntity:contractAwardSupplier",
           "range": "ContractAward",
@@ -3058,6 +3338,7 @@
         "cryptoWallets": {
           "label": "Cryptocurrency wallets",
           "matchable": true,
+          "maxLength": 250,
           "name": "cryptoWallets",
           "qname": "LegalEntity:cryptoWallets",
           "range": "CryptoWallet",
@@ -3068,6 +3349,7 @@
         "debtCreditor": {
           "label": "Credits",
           "matchable": true,
+          "maxLength": 250,
           "name": "debtCreditor",
           "qname": "LegalEntity:debtCreditor",
           "range": "Debt",
@@ -3078,6 +3360,7 @@
         "debtDebtor": {
           "label": "Debts",
           "matchable": true,
+          "maxLength": 250,
           "name": "debtDebtor",
           "qname": "LegalEntity:debtDebtor",
           "range": "Debt",
@@ -3088,6 +3371,7 @@
         "delegatedCallForTenders": {
           "label": "Delegated call for tenders",
           "matchable": true,
+          "maxLength": 250,
           "name": "delegatedCallForTenders",
           "qname": "LegalEntity:delegatedCallForTenders",
           "range": "CallForTenders",
@@ -3098,6 +3382,7 @@
         "directorshipDirector": {
           "label": "Directorships",
           "matchable": true,
+          "maxLength": 250,
           "name": "directorshipDirector",
           "qname": "LegalEntity:directorshipDirector",
           "range": "Directorship",
@@ -3109,6 +3394,7 @@
           "description": "The date the legal entity was dissolved, if applicable",
           "label": "Dissolution date",
           "matchable": true,
+          "maxLength": 32,
           "name": "dissolutionDate",
           "qname": "LegalEntity:dissolutionDate",
           "type": "date"
@@ -3117,6 +3403,7 @@
           "description": "Data Universal Numbering System - Dun & Bradstreet identifier",
           "label": "DUNS",
           "matchable": true,
+          "maxLength": 32,
           "name": "dunsCode",
           "qname": "LegalEntity:dunsCode",
           "type": "identifier"
@@ -3124,6 +3411,7 @@
         "economicActivityDeclarant": {
           "label": "Customs declarations",
           "matchable": true,
+          "maxLength": 250,
           "name": "economicActivityDeclarant",
           "qname": "LegalEntity:economicActivityDeclarant",
           "range": "EconomicActivity",
@@ -3134,6 +3422,7 @@
         "economicActivityHolder": {
           "label": "Customs declarations facilitated",
           "matchable": true,
+          "maxLength": 250,
           "name": "economicActivityHolder",
           "qname": "LegalEntity:economicActivityHolder",
           "range": "EconomicActivity",
@@ -3144,6 +3433,7 @@
         "economicActivityReceiver": {
           "label": "Goods received",
           "matchable": true,
+          "maxLength": 250,
           "name": "economicActivityReceiver",
           "qname": "LegalEntity:economicActivityReceiver",
           "range": "EconomicActivity",
@@ -3154,6 +3444,7 @@
         "economicActivitySender": {
           "label": "Goods originated",
           "matchable": true,
+          "maxLength": 250,
           "name": "economicActivitySender",
           "qname": "LegalEntity:economicActivitySender",
           "range": "EconomicActivity",
@@ -3165,6 +3456,7 @@
           "description": "Email address",
           "label": "E-Mail",
           "matchable": true,
+          "maxLength": 250,
           "name": "email",
           "qname": "LegalEntity:email",
           "type": "email"
@@ -3172,6 +3464,7 @@
         "emailsReceived": {
           "label": "E-Mails received",
           "matchable": true,
+          "maxLength": 250,
           "name": "emailsReceived",
           "qname": "LegalEntity:emailsReceived",
           "range": "Email",
@@ -3182,6 +3475,7 @@
         "emailsSent": {
           "label": "E-Mails sent",
           "matchable": true,
+          "maxLength": 250,
           "name": "emailsSent",
           "qname": "LegalEntity:emailsSent",
           "range": "Email",
@@ -3192,6 +3486,7 @@
         "eventsInvolved": {
           "label": "Events",
           "matchable": true,
+          "maxLength": 250,
           "name": "eventsInvolved",
           "qname": "LegalEntity:eventsInvolved",
           "range": "Event",
@@ -3202,6 +3497,7 @@
         "eventsOrganized": {
           "label": "Organized events",
           "matchable": true,
+          "maxLength": 250,
           "name": "eventsOrganized",
           "qname": "LegalEntity:eventsOrganized",
           "range": "Event",
@@ -3212,6 +3508,7 @@
         "icijId": {
           "description": "ID according to International Consortium for Investigative Journalists",
           "label": "ICIJ ID",
+          "maxLength": 1024,
           "name": "icijId",
           "qname": "LegalEntity:icijId",
           "type": "string"
@@ -3220,6 +3517,7 @@
           "description": "ID number of any applicable ID",
           "label": "ID Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "idNumber",
           "qname": "LegalEntity:idNumber",
           "type": "identifier"
@@ -3227,6 +3525,7 @@
         "identification": {
           "label": "Identifications",
           "matchable": true,
+          "maxLength": 250,
           "name": "identification",
           "qname": "LegalEntity:identification",
           "range": "Identification",
@@ -3238,6 +3537,7 @@
           "description": "The date the legal entity was incorporated",
           "label": "Incorporation date",
           "matchable": true,
+          "maxLength": 32,
           "name": "incorporationDate",
           "qname": "LegalEntity:incorporationDate",
           "type": "date"
@@ -3246,6 +3546,7 @@
           "description": "Russian company ID",
           "label": "INN",
           "matchable": true,
+          "maxLength": 32,
           "name": "innCode",
           "qname": "LegalEntity:innCode",
           "type": "identifier"
@@ -3254,12 +3555,14 @@
           "description": "Country or region in which this entity operates",
           "label": "Jurisdiction",
           "matchable": true,
+          "maxLength": 16,
           "name": "jurisdiction",
           "qname": "LegalEntity:jurisdiction",
           "type": "country"
         },
         "legalForm": {
           "label": "Legal form",
+          "maxLength": 1024,
           "name": "legalForm",
           "qname": "LegalEntity:legalForm",
           "type": "string"
@@ -3269,6 +3572,7 @@
           "format": "lei",
           "label": "LEI",
           "matchable": true,
+          "maxLength": 32,
           "name": "leiCode",
           "qname": "LegalEntity:leiCode",
           "type": "identifier"
@@ -3277,6 +3581,7 @@
           "description": "Primary country of this entity",
           "label": "Country of origin",
           "matchable": true,
+          "maxLength": 16,
           "name": "mainCountry",
           "qname": "LegalEntity:mainCountry",
           "type": "country"
@@ -3284,6 +3589,7 @@
         "membershipMember": {
           "label": "Memberships",
           "matchable": true,
+          "maxLength": 250,
           "name": "membershipMember",
           "qname": "LegalEntity:membershipMember",
           "range": "Membership",
@@ -3294,6 +3600,7 @@
         "mentionedBy": {
           "label": "Document mentions",
           "matchable": true,
+          "maxLength": 250,
           "name": "mentionedBy",
           "qname": "LegalEntity:mentionedBy",
           "range": "Mention",
@@ -3304,6 +3611,7 @@
         "messagesReceived": {
           "label": "Messages received",
           "matchable": true,
+          "maxLength": 250,
           "name": "messagesReceived",
           "qname": "LegalEntity:messagesReceived",
           "range": "Message",
@@ -3314,6 +3622,7 @@
         "messagesSent": {
           "label": "Messages sent",
           "matchable": true,
+          "maxLength": 250,
           "name": "messagesSent",
           "qname": "LegalEntity:messagesSent",
           "range": "Message",
@@ -3325,6 +3634,7 @@
           "description": "National Provider Identifier",
           "label": "NPI",
           "matchable": true,
+          "maxLength": 32,
           "name": "npiCode",
           "qname": "LegalEntity:npiCode",
           "type": "identifier"
@@ -3333,6 +3643,7 @@
           "description": "Major State Registration Number",
           "label": "OGRN",
           "matchable": true,
+          "maxLength": 32,
           "name": "ogrnCode",
           "qname": "LegalEntity:ogrnCode",
           "type": "identifier"
@@ -3340,6 +3651,7 @@
         "okpoCode": {
           "description": "Russian industry classifier",
           "label": "OKPO",
+          "maxLength": 64,
           "name": "okpoCode",
           "qname": "LegalEntity:okpoCode",
           "type": "identifier"
@@ -3347,6 +3659,7 @@
         "opencorporatesUrl": {
           "label": "OpenCorporates URL",
           "matchable": true,
+          "maxLength": 4096,
           "name": "opencorporatesUrl",
           "qname": "LegalEntity:opencorporatesUrl",
           "type": "url"
@@ -3354,6 +3667,7 @@
         "operatedVehicles": {
           "label": "Vehicles operated",
           "matchable": true,
+          "maxLength": 250,
           "name": "operatedVehicles",
           "qname": "LegalEntity:operatedVehicles",
           "range": "Vehicle",
@@ -3364,6 +3678,7 @@
         "ownedVehicles": {
           "label": "Vehicles owned",
           "matchable": true,
+          "maxLength": 250,
           "name": "ownedVehicles",
           "qname": "LegalEntity:ownedVehicles",
           "range": "Vehicle",
@@ -3374,6 +3689,7 @@
         "ownershipOwner": {
           "label": "Assets and shares",
           "matchable": true,
+          "maxLength": 250,
           "name": "ownershipOwner",
           "qname": "LegalEntity:ownershipOwner",
           "range": "Ownership",
@@ -3385,6 +3701,7 @@
           "description": "If this entity is a subsidiary, another entity (company or organisation) is its parent",
           "label": "Parent company",
           "matchable": true,
+          "maxLength": 250,
           "name": "parent",
           "qname": "LegalEntity:parent",
           "range": "LegalEntity",
@@ -3394,6 +3711,7 @@
         "paymentBeneficiary": {
           "label": "Payments received",
           "matchable": true,
+          "maxLength": 250,
           "name": "paymentBeneficiary",
           "qname": "LegalEntity:paymentBeneficiary",
           "range": "Payment",
@@ -3404,6 +3722,7 @@
         "paymentPayer": {
           "label": "Payments made",
           "matchable": true,
+          "maxLength": 250,
           "name": "paymentPayer",
           "qname": "LegalEntity:paymentPayer",
           "range": "Payment",
@@ -3415,6 +3734,7 @@
           "description": "Phone number",
           "label": "Phone",
           "matchable": true,
+          "maxLength": 64,
           "name": "phone",
           "qname": "LegalEntity:phone",
           "type": "phone"
@@ -3422,6 +3742,7 @@
         "predecessors": {
           "label": "Predecessors",
           "matchable": true,
+          "maxLength": 250,
           "name": "predecessors",
           "qname": "LegalEntity:predecessors",
           "range": "Succession",
@@ -3432,6 +3753,7 @@
         "projectParticipation": {
           "label": "Projects",
           "matchable": true,
+          "maxLength": 250,
           "name": "projectParticipation",
           "qname": "LegalEntity:projectParticipation",
           "range": "ProjectParticipant",
@@ -3443,12 +3765,14 @@
           "description": "Company registration number",
           "label": "Registration number",
           "matchable": true,
+          "maxLength": 64,
           "name": "registrationNumber",
           "qname": "LegalEntity:registrationNumber",
           "type": "identifier"
         },
         "sector": {
           "label": "Sector",
+          "maxLength": 1024,
           "name": "sector",
           "qname": "LegalEntity:sector",
           "type": "string"
@@ -3456,6 +3780,7 @@
         "securities": {
           "label": "Issued securities",
           "matchable": true,
+          "maxLength": 250,
           "name": "securities",
           "qname": "LegalEntity:securities",
           "range": "Security",
@@ -3465,6 +3790,7 @@
         },
         "status": {
           "label": "Status",
+          "maxLength": 1024,
           "name": "status",
           "qname": "LegalEntity:status",
           "type": "string"
@@ -3472,6 +3798,7 @@
         "subsidiaries": {
           "label": "Subsidiaries",
           "matchable": true,
+          "maxLength": 250,
           "name": "subsidiaries",
           "qname": "LegalEntity:subsidiaries",
           "range": "LegalEntity",
@@ -3482,6 +3809,7 @@
         "successors": {
           "label": "Successors",
           "matchable": true,
+          "maxLength": 250,
           "name": "successors",
           "qname": "LegalEntity:successors",
           "range": "Succession",
@@ -3494,6 +3822,7 @@
           "format": "bic",
           "label": "SWIFT/BIC",
           "matchable": true,
+          "maxLength": 16,
           "name": "swiftBic",
           "qname": "LegalEntity:swiftBic",
           "type": "identifier"
@@ -3502,6 +3831,7 @@
           "description": "Tax identification number",
           "label": "Tax Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "taxNumber",
           "qname": "LegalEntity:taxNumber",
           "type": "identifier"
@@ -3509,6 +3839,7 @@
         "taxRolls": {
           "label": "Tax rolls",
           "matchable": true,
+          "maxLength": 250,
           "name": "taxRolls",
           "qname": "LegalEntity:taxRolls",
           "range": "TaxRoll",
@@ -3518,6 +3849,7 @@
         },
         "taxStatus": {
           "label": "Tax status",
+          "maxLength": 1024,
           "name": "taxStatus",
           "qname": "LegalEntity:taxStatus",
           "type": "string"
@@ -3525,6 +3857,7 @@
         "userAccounts": {
           "label": "User accounts",
           "matchable": true,
+          "maxLength": 250,
           "name": "userAccounts",
           "qname": "LegalEntity:userAccounts",
           "range": "UserAccount",
@@ -3536,6 +3869,7 @@
           "description": "(EU) VAT number",
           "label": "V.A.T. Identifier",
           "matchable": true,
+          "maxLength": 32,
           "name": "vatCode",
           "qname": "LegalEntity:vatCode",
           "type": "identifier"
@@ -3544,6 +3878,7 @@
           "description": "Website address",
           "label": "Website",
           "matchable": true,
+          "maxLength": 4096,
           "name": "website",
           "qname": "LegalEntity:website",
           "type": "url"
@@ -3585,18 +3920,21 @@
       "properties": {
         "area": {
           "label": "Area",
+          "maxLength": 1024,
           "name": "area",
           "qname": "License:area",
           "type": "string"
         },
         "commodities": {
           "label": "Commodities",
+          "maxLength": 1024,
           "name": "commodities",
           "qname": "License:commodities",
           "type": "string"
         },
         "reviewDate": {
           "label": "License review date",
+          "maxLength": 1024,
           "name": "reviewDate",
           "qname": "License:reviewDate",
           "type": "string"
@@ -3643,6 +3981,7 @@
         "member": {
           "label": "Member",
           "matchable": true,
+          "maxLength": 250,
           "name": "member",
           "qname": "Membership:member",
           "range": "LegalEntity",
@@ -3652,6 +3991,7 @@
         "organization": {
           "label": "Organization",
           "matchable": true,
+          "maxLength": 250,
           "name": "organization",
           "qname": "Membership:organization",
           "range": "Organization",
@@ -3687,6 +4027,7 @@
         "contextCountry": {
           "hidden": true,
           "label": "Co-occurring countries",
+          "maxLength": 16,
           "name": "contextCountry",
           "qname": "Mention:contextCountry",
           "type": "country"
@@ -3694,6 +4035,7 @@
         "contextEmail": {
           "hidden": true,
           "label": "Co-occurring e-mail addresses",
+          "maxLength": 250,
           "name": "contextEmail",
           "qname": "Mention:contextEmail",
           "type": "email"
@@ -3701,6 +4043,7 @@
         "contextPhone": {
           "hidden": true,
           "label": "Co-occurring phone numbers",
+          "maxLength": 64,
           "name": "contextPhone",
           "qname": "Mention:contextPhone",
           "type": "phone"
@@ -3708,6 +4051,7 @@
         "detectedSchema": {
           "hidden": true,
           "label": "Detected entity type",
+          "maxLength": 1024,
           "name": "detectedSchema",
           "qname": "Mention:detectedSchema",
           "type": "string"
@@ -3715,6 +4059,7 @@
         "document": {
           "label": "Document",
           "matchable": true,
+          "maxLength": 250,
           "name": "document",
           "qname": "Mention:document",
           "range": "Document",
@@ -3724,6 +4069,7 @@
         "name": {
           "label": "Name",
           "matchable": true,
+          "maxLength": 250,
           "name": "name",
           "qname": "Mention:name",
           "type": "name"
@@ -3731,6 +4077,7 @@
         "resolved": {
           "label": "Entity",
           "matchable": true,
+          "maxLength": 250,
           "name": "resolved",
           "qname": "Mention:resolved",
           "range": "LegalEntity",
@@ -3773,6 +4120,7 @@
           "description": "Message ID of the preceding message in the thread",
           "hidden": true,
           "label": "In Reply To",
+          "maxLength": 1024,
           "name": "inReplyTo",
           "qname": "Message:inReplyTo",
           "type": "string"
@@ -3780,6 +4128,7 @@
         "inReplyToMessage": {
           "label": "Responding to",
           "matchable": true,
+          "maxLength": 250,
           "name": "inReplyToMessage",
           "qname": "Message:inReplyToMessage",
           "range": "Message",
@@ -3789,6 +4138,7 @@
         "metadata": {
           "hidden": true,
           "label": "Metadata",
+          "maxLength": 250,
           "name": "metadata",
           "qname": "Message:metadata",
           "type": "json"
@@ -3796,6 +4146,7 @@
         "recipientAccount": {
           "label": "Recipient Account",
           "matchable": true,
+          "maxLength": 250,
           "name": "recipientAccount",
           "qname": "Message:recipientAccount",
           "range": "UserAccount",
@@ -3805,6 +4156,7 @@
         "recipients": {
           "label": "Recipients",
           "matchable": true,
+          "maxLength": 250,
           "name": "recipients",
           "qname": "Message:recipients",
           "range": "LegalEntity",
@@ -3814,6 +4166,7 @@
         "responses": {
           "label": "Responses",
           "matchable": true,
+          "maxLength": 250,
           "name": "responses",
           "qname": "Message:responses",
           "range": "Message",
@@ -3824,6 +4177,7 @@
         "sender": {
           "label": "Sender",
           "matchable": true,
+          "maxLength": 250,
           "name": "sender",
           "qname": "Message:sender",
           "range": "LegalEntity",
@@ -3833,6 +4187,7 @@
         "senderAccount": {
           "label": "Sender Account",
           "matchable": true,
+          "maxLength": 250,
           "name": "senderAccount",
           "qname": "Message:senderAccount",
           "range": "UserAccount",
@@ -3841,12 +4196,14 @@
         },
         "subject": {
           "label": "Subject",
+          "maxLength": 1024,
           "name": "subject",
           "qname": "Message:subject",
           "type": "string"
         },
         "threadTopic": {
           "label": "Thread topic",
+          "maxLength": 1024,
           "name": "threadTopic",
           "qname": "Message:threadTopic",
           "type": "string"
@@ -3886,6 +4243,7 @@
         "entity": {
           "label": "Entity",
           "matchable": true,
+          "maxLength": 250,
           "name": "entity",
           "qname": "Note:entity",
           "range": "Thing",
@@ -3924,6 +4282,7 @@
         "holder": {
           "label": "Holder",
           "matchable": true,
+          "maxLength": 250,
           "name": "holder",
           "qname": "Occupancy:holder",
           "range": "Person",
@@ -3933,6 +4292,7 @@
         "post": {
           "label": "Position occupied",
           "matchable": true,
+          "maxLength": 250,
           "name": "post",
           "qname": "Occupancy:post",
           "range": "Position",
@@ -3941,6 +4301,7 @@
         },
         "status": {
           "label": "Status",
+          "maxLength": 1024,
           "name": "status",
           "qname": "Occupancy:status",
           "type": "string"
@@ -3976,6 +4337,7 @@
         "bankAccounts": {
           "label": "Bank accounts",
           "matchable": true,
+          "maxLength": 250,
           "name": "bankAccounts",
           "qname": "Organization:bankAccounts",
           "range": "BankAccount",
@@ -3987,6 +4349,7 @@
           "description": "Commercial and Government Entity Code (CAGE)",
           "label": "CAGE",
           "matchable": true,
+          "maxLength": 64,
           "name": "cageCode",
           "qname": "Organization:cageCode",
           "type": "identifier"
@@ -3994,6 +4357,7 @@
         "directorshipOrganization": {
           "label": "Directors",
           "matchable": true,
+          "maxLength": 250,
           "name": "directorshipOrganization",
           "qname": "Organization:directorshipOrganization",
           "range": "Directorship",
@@ -4004,6 +4368,7 @@
         "employees": {
           "label": "Employees",
           "matchable": true,
+          "maxLength": 250,
           "name": "employees",
           "qname": "Organization:employees",
           "range": "Employment",
@@ -4014,6 +4379,7 @@
         "membershipOrganization": {
           "label": "Members",
           "matchable": true,
+          "maxLength": 250,
           "name": "membershipOrganization",
           "qname": "Organization:membershipOrganization",
           "range": "Membership",
@@ -4024,6 +4390,7 @@
         "positions": {
           "label": "Positions",
           "matchable": true,
+          "maxLength": 250,
           "name": "positions",
           "qname": "Organization:positions",
           "range": "Position",
@@ -4067,6 +4434,7 @@
         "asset": {
           "label": "Asset",
           "matchable": true,
+          "maxLength": 250,
           "name": "asset",
           "qname": "Ownership:asset",
           "range": "Asset",
@@ -4075,6 +4443,7 @@
         },
         "legalBasis": {
           "label": "Legal basis",
+          "maxLength": 1024,
           "name": "legalBasis",
           "qname": "Ownership:legalBasis",
           "type": "string"
@@ -4082,6 +4451,7 @@
         "owner": {
           "label": "Owner",
           "matchable": true,
+          "maxLength": 250,
           "name": "owner",
           "qname": "Ownership:owner",
           "range": "LegalEntity",
@@ -4090,36 +4460,42 @@
         },
         "ownershipType": {
           "label": "Type of ownership",
+          "maxLength": 1024,
           "name": "ownershipType",
           "qname": "Ownership:ownershipType",
           "type": "string"
         },
         "percentage": {
           "label": "Percentage held",
+          "maxLength": 1024,
           "name": "percentage",
           "qname": "Ownership:percentage",
           "type": "string"
         },
         "sharesCount": {
           "label": "Number of shares",
+          "maxLength": 1024,
           "name": "sharesCount",
           "qname": "Ownership:sharesCount",
           "type": "string"
         },
         "sharesCurrency": {
           "label": "Currency of shares",
+          "maxLength": 1024,
           "name": "sharesCurrency",
           "qname": "Ownership:sharesCurrency",
           "type": "string"
         },
         "sharesType": {
           "label": "Type of shares",
+          "maxLength": 1024,
           "name": "sharesType",
           "qname": "Ownership:sharesType",
           "type": "string"
         },
         "sharesValue": {
           "label": "Value of shares",
+          "maxLength": 1024,
           "name": "sharesValue",
           "qname": "Ownership:sharesValue",
           "type": "string"
@@ -4172,6 +4548,7 @@
         "bodyText": {
           "hidden": true,
           "label": "Text",
+          "maxLength": 65000,
           "name": "bodyText",
           "qname": "Page:bodyText",
           "type": "text"
@@ -4179,6 +4556,7 @@
         "detectedLanguage": {
           "hidden": true,
           "label": "Detected language",
+          "maxLength": 16,
           "name": "detectedLanguage",
           "qname": "Page:detectedLanguage",
           "type": "language"
@@ -4186,6 +4564,7 @@
         "document": {
           "label": "Document",
           "matchable": true,
+          "maxLength": 250,
           "name": "document",
           "qname": "Page:document",
           "range": "Pages",
@@ -4194,6 +4573,7 @@
         },
         "index": {
           "label": "Index",
+          "maxLength": 250,
           "name": "index",
           "qname": "Page:index",
           "type": "number"
@@ -4201,6 +4581,7 @@
         "indexText": {
           "hidden": true,
           "label": "Index text",
+          "maxLength": 65000,
           "name": "indexText",
           "qname": "Page:indexText",
           "type": "text"
@@ -4208,6 +4589,7 @@
         "translatedText": {
           "hidden": true,
           "label": "Translated version of the body text",
+          "maxLength": 65000,
           "name": "translatedText",
           "qname": "Page:translatedText",
           "type": "text"
@@ -4215,6 +4597,7 @@
         "translatedTextLanguage": {
           "hidden": true,
           "label": "The language of the translated text",
+          "maxLength": 1024,
           "name": "translatedTextLanguage",
           "qname": "Page:translatedTextLanguage",
           "type": "string"
@@ -4247,6 +4630,7 @@
           "hidden": true,
           "label": "Pages",
           "matchable": true,
+          "maxLength": 250,
           "name": "pages",
           "qname": "Pages:pages",
           "range": "Page",
@@ -4257,6 +4641,7 @@
         "pdfHash": {
           "hidden": true,
           "label": "PDF alternative version checksum",
+          "maxLength": 40,
           "name": "pdfHash",
           "qname": "Pages:pdfHash",
           "type": "checksum"
@@ -4292,24 +4677,28 @@
         "birthDate": {
           "label": "Birth date",
           "matchable": true,
+          "maxLength": 32,
           "name": "birthDate",
           "qname": "Passport:birthDate",
           "type": "date"
         },
         "birthPlace": {
           "label": "Place of birth",
+          "maxLength": 1024,
           "name": "birthPlace",
           "qname": "Passport:birthPlace",
           "type": "string"
         },
         "gender": {
           "label": "Gender",
+          "maxLength": 1024,
           "name": "gender",
           "qname": "Passport:gender",
           "type": "string"
         },
         "givenName": {
           "label": "Given name",
+          "maxLength": 1024,
           "name": "givenName",
           "qname": "Passport:givenName",
           "type": "string"
@@ -4317,6 +4706,7 @@
         "passportNumber": {
           "label": "Passport number",
           "matchable": true,
+          "maxLength": 64,
           "name": "passportNumber",
           "qname": "Passport:passportNumber",
           "type": "identifier"
@@ -4324,12 +4714,14 @@
         "personalNumber": {
           "label": "Personal number",
           "matchable": true,
+          "maxLength": 64,
           "name": "personalNumber",
           "qname": "Passport:personalNumber",
           "type": "identifier"
         },
         "surname": {
           "label": "Surname",
+          "maxLength": 1024,
           "name": "surname",
           "qname": "Passport:surname",
           "type": "string"
@@ -4379,6 +4771,7 @@
         "beneficiary": {
           "label": "Beneficiary",
           "matchable": true,
+          "maxLength": 250,
           "name": "beneficiary",
           "qname": "Payment:beneficiary",
           "range": "LegalEntity",
@@ -4388,6 +4781,7 @@
         "beneficiaryAccount": {
           "label": "Beneficiary bank account",
           "matchable": true,
+          "maxLength": 250,
           "name": "beneficiaryAccount",
           "qname": "Payment:beneficiaryAccount",
           "range": "BankAccount",
@@ -4397,6 +4791,7 @@
         "contract": {
           "label": "Contract",
           "matchable": true,
+          "maxLength": 250,
           "name": "contract",
           "qname": "Payment:contract",
           "range": "Contract",
@@ -4406,6 +4801,7 @@
         "payer": {
           "label": "Payer",
           "matchable": true,
+          "maxLength": 250,
           "name": "payer",
           "qname": "Payment:payer",
           "range": "LegalEntity",
@@ -4415,6 +4811,7 @@
         "payerAccount": {
           "label": "Payer bank account",
           "matchable": true,
+          "maxLength": 250,
           "name": "payerAccount",
           "qname": "Payment:payerAccount",
           "range": "BankAccount",
@@ -4424,6 +4821,7 @@
         "programme": {
           "description": "Programme name, funding code, category identifier, etc.",
           "label": "Payment programme",
+          "maxLength": 1024,
           "name": "programme",
           "qname": "Payment:programme",
           "type": "string"
@@ -4431,6 +4829,7 @@
         "project": {
           "label": "Project",
           "matchable": true,
+          "maxLength": 250,
           "name": "project",
           "qname": "Payment:project",
           "range": "Project",
@@ -4439,18 +4838,21 @@
         },
         "purpose": {
           "label": "Payment purpose",
+          "maxLength": 65000,
           "name": "purpose",
           "qname": "Payment:purpose",
           "type": "text"
         },
         "sequenceNumber": {
           "label": "Sequence number",
+          "maxLength": 1024,
           "name": "sequenceNumber",
           "qname": "Payment:sequenceNumber",
           "type": "string"
         },
         "transactionNumber": {
           "label": "Transaction number",
+          "maxLength": 1024,
           "name": "transactionNumber",
           "qname": "Payment:transactionNumber",
           "type": "string"
@@ -4488,6 +4890,7 @@
       "properties": {
         "appearance": {
           "label": "Physical appearance",
+          "maxLength": 1024,
           "name": "appearance",
           "qname": "Person:appearance",
           "type": "string"
@@ -4495,6 +4898,7 @@
         "associates": {
           "label": "Associates",
           "matchable": true,
+          "maxLength": 250,
           "name": "associates",
           "qname": "Person:associates",
           "range": "Associate",
@@ -4505,6 +4909,7 @@
         "associations": {
           "label": "Associations",
           "matchable": true,
+          "maxLength": 250,
           "name": "associations",
           "qname": "Person:associations",
           "range": "Associate",
@@ -4515,6 +4920,7 @@
         "birthCountry": {
           "label": "Country of birth",
           "matchable": true,
+          "maxLength": 16,
           "name": "birthCountry",
           "qname": "Person:birthCountry",
           "type": "country"
@@ -4522,12 +4928,14 @@
         "birthDate": {
           "label": "Birth date",
           "matchable": true,
+          "maxLength": 32,
           "name": "birthDate",
           "qname": "Person:birthDate",
           "type": "date"
         },
         "birthPlace": {
           "label": "Place of birth",
+          "maxLength": 1024,
           "name": "birthPlace",
           "qname": "Person:birthPlace",
           "type": "string"
@@ -4535,6 +4943,7 @@
         "citizenship": {
           "label": "Citizenship",
           "matchable": true,
+          "maxLength": 16,
           "name": "citizenship",
           "qname": "Person:citizenship",
           "type": "country"
@@ -4542,12 +4951,14 @@
         "deathDate": {
           "label": "Death date",
           "matchable": true,
+          "maxLength": 32,
           "name": "deathDate",
           "qname": "Person:deathDate",
           "type": "date"
         },
         "education": {
           "label": "Education",
+          "maxLength": 1024,
           "name": "education",
           "qname": "Person:education",
           "type": "string"
@@ -4555,6 +4966,7 @@
         "employers": {
           "label": "Employers",
           "matchable": true,
+          "maxLength": 250,
           "name": "employers",
           "qname": "Person:employers",
           "range": "Employment",
@@ -4564,12 +4976,14 @@
         },
         "ethnicity": {
           "label": "Ethnicity",
+          "maxLength": 1024,
           "name": "ethnicity",
           "qname": "Person:ethnicity",
           "type": "string"
         },
         "eyeColor": {
           "label": "Eye color",
+          "maxLength": 1024,
           "name": "eyeColor",
           "qname": "Person:eyeColor",
           "type": "string"
@@ -4577,6 +4991,7 @@
         "familyPerson": {
           "label": "Family members",
           "matchable": true,
+          "maxLength": 250,
           "name": "familyPerson",
           "qname": "Person:familyPerson",
           "range": "Family",
@@ -4587,6 +5002,7 @@
         "familyRelative": {
           "label": "Relatives",
           "matchable": true,
+          "maxLength": 250,
           "name": "familyRelative",
           "qname": "Person:familyRelative",
           "range": "Family",
@@ -4596,30 +5012,35 @@
         },
         "fatherName": {
           "label": "Patronymic",
+          "maxLength": 1024,
           "name": "fatherName",
           "qname": "Person:fatherName",
           "type": "string"
         },
         "firstName": {
           "label": "First name",
+          "maxLength": 1024,
           "name": "firstName",
           "qname": "Person:firstName",
           "type": "string"
         },
         "gender": {
           "label": "Gender",
+          "maxLength": 16,
           "name": "gender",
           "qname": "Person:gender",
           "type": "gender"
         },
         "hairColor": {
           "label": "Hair color",
+          "maxLength": 1024,
           "name": "hairColor",
           "qname": "Person:hairColor",
           "type": "string"
         },
         "height": {
           "label": "Height",
+          "maxLength": 250,
           "name": "height",
           "qname": "Person:height",
           "type": "number"
@@ -4627,6 +5048,7 @@
         "images": {
           "label": "Images",
           "matchable": true,
+          "maxLength": 250,
           "name": "images",
           "qname": "Person:images",
           "range": "Image",
@@ -4636,24 +5058,28 @@
         },
         "lastName": {
           "label": "Last name",
+          "maxLength": 1024,
           "name": "lastName",
           "qname": "Person:lastName",
           "type": "string"
         },
         "middleName": {
           "label": "Middle name",
+          "maxLength": 1024,
           "name": "middleName",
           "qname": "Person:middleName",
           "type": "string"
         },
         "motherName": {
           "label": "Matronymic",
+          "maxLength": 1024,
           "name": "motherName",
           "qname": "Person:motherName",
           "type": "string"
         },
         "nameSuffix": {
           "label": "Name suffix",
+          "maxLength": 1024,
           "name": "nameSuffix",
           "qname": "Person:nameSuffix",
           "type": "string"
@@ -4661,6 +5087,7 @@
         "nationality": {
           "label": "Nationality",
           "matchable": true,
+          "maxLength": 16,
           "name": "nationality",
           "qname": "Person:nationality",
           "type": "country"
@@ -4668,18 +5095,21 @@
         "passportNumber": {
           "label": "Passport number",
           "matchable": true,
+          "maxLength": 64,
           "name": "passportNumber",
           "qname": "Person:passportNumber",
           "type": "identifier"
         },
         "political": {
           "label": "Political association",
+          "maxLength": 1024,
           "name": "political",
           "qname": "Person:political",
           "type": "string"
         },
         "position": {
           "label": "Position",
+          "maxLength": 1024,
           "name": "position",
           "qname": "Person:position",
           "type": "string"
@@ -4687,6 +5117,7 @@
         "positionOccupancies": {
           "label": "Positions held",
           "matchable": true,
+          "maxLength": 250,
           "name": "positionOccupancies",
           "qname": "Person:positionOccupancies",
           "range": "Occupancy",
@@ -4697,6 +5128,7 @@
         "posts": {
           "label": "Posts held",
           "matchable": true,
+          "maxLength": 250,
           "name": "posts",
           "qname": "Person:posts",
           "range": "Post",
@@ -4706,12 +5138,14 @@
         },
         "religion": {
           "label": "Religion",
+          "maxLength": 1024,
           "name": "religion",
           "qname": "Person:religion",
           "type": "string"
         },
         "secondName": {
           "label": "Second name",
+          "maxLength": 1024,
           "name": "secondName",
           "qname": "Person:secondName",
           "type": "string"
@@ -4719,18 +5153,21 @@
         "socialSecurityNumber": {
           "label": "Social security number",
           "matchable": true,
+          "maxLength": 64,
           "name": "socialSecurityNumber",
           "qname": "Person:socialSecurityNumber",
           "type": "identifier"
         },
         "title": {
           "label": "Title",
+          "maxLength": 1024,
           "name": "title",
           "qname": "Person:title",
           "type": "string"
         },
         "weight": {
           "label": "Weight",
+          "maxLength": 250,
           "name": "weight",
           "qname": "Person:weight",
           "type": "number"
@@ -4799,6 +5236,7 @@
         "dissolutionDate": {
           "label": "Dissolution date",
           "matchable": true,
+          "maxLength": 32,
           "name": "dissolutionDate",
           "qname": "Position:dissolutionDate",
           "type": "date"
@@ -4806,12 +5244,14 @@
         "inceptionDate": {
           "label": "Inception date",
           "matchable": true,
+          "maxLength": 32,
           "name": "inceptionDate",
           "qname": "Position:inceptionDate",
           "type": "date"
         },
         "numberOfSeats": {
           "label": "Total number of seats",
+          "maxLength": 250,
           "name": "numberOfSeats",
           "qname": "Position:numberOfSeats",
           "type": "number"
@@ -4819,6 +5259,7 @@
         "occupancies": {
           "label": "Position holders",
           "matchable": true,
+          "maxLength": 250,
           "name": "occupancies",
           "qname": "Position:occupancies",
           "range": "Occupancy",
@@ -4829,6 +5270,7 @@
         "organization": {
           "label": "Organization",
           "matchable": true,
+          "maxLength": 250,
           "name": "organization",
           "qname": "Position:organization",
           "range": "Organization",
@@ -4837,6 +5279,7 @@
         },
         "subnationalArea": {
           "label": "Subnational jurisdiction name or code",
+          "maxLength": 1024,
           "name": "subnationalArea",
           "qname": "Position:subnationalArea",
           "type": "string"
@@ -4882,6 +5325,7 @@
         "holder": {
           "label": "Holder",
           "matchable": true,
+          "maxLength": 250,
           "name": "holder",
           "qname": "Post:holder",
           "range": "Person",
@@ -4890,6 +5334,7 @@
         },
         "organization": {
           "label": "Organization",
+          "maxLength": 1024,
           "name": "organization",
           "qname": "Post:organization",
           "type": "string"
@@ -4898,6 +5343,7 @@
           "hidden": true,
           "label": "Wikidata ID",
           "matchable": true,
+          "maxLength": 64,
           "name": "wikidataId",
           "qname": "Post:wikidataId",
           "type": "identifier"
@@ -4934,6 +5380,7 @@
         "contracts": {
           "label": "Contracts",
           "matchable": true,
+          "maxLength": 250,
           "name": "contracts",
           "qname": "Project:contracts",
           "range": "Contract",
@@ -4943,6 +5390,7 @@
         },
         "goal": {
           "label": "Project goal",
+          "maxLength": 1024,
           "name": "goal",
           "qname": "Project:goal",
           "type": "string"
@@ -4950,6 +5398,7 @@
         "participants": {
           "label": "Participants",
           "matchable": true,
+          "maxLength": 250,
           "name": "participants",
           "qname": "Project:participants",
           "range": "ProjectParticipant",
@@ -4960,6 +5409,7 @@
         "payments": {
           "label": "Payments",
           "matchable": true,
+          "maxLength": 250,
           "name": "payments",
           "qname": "Project:payments",
           "range": "Payment",
@@ -4969,6 +5419,7 @@
         },
         "phase": {
           "label": "Phase",
+          "maxLength": 1024,
           "name": "phase",
           "qname": "Project:phase",
           "type": "string"
@@ -4976,12 +5427,14 @@
         "projectId": {
           "label": "Project ID",
           "matchable": true,
+          "maxLength": 64,
           "name": "projectId",
           "qname": "Project:projectId",
           "type": "identifier"
         },
         "status": {
           "label": "Status",
+          "maxLength": 1024,
           "name": "status",
           "qname": "Project:status",
           "type": "string"
@@ -5022,6 +5475,7 @@
         "participant": {
           "label": "Participant",
           "matchable": true,
+          "maxLength": 250,
           "name": "participant",
           "qname": "ProjectParticipant:participant",
           "range": "LegalEntity",
@@ -5031,6 +5485,7 @@
         "project": {
           "label": "Project",
           "matchable": true,
+          "maxLength": 250,
           "name": "project",
           "qname": "ProjectParticipant:project",
           "range": "Project",
@@ -5092,6 +5547,7 @@
       "properties": {
         "area": {
           "label": "Area",
+          "maxLength": 250,
           "name": "area",
           "qname": "RealEstate:area",
           "type": "number"
@@ -5099,12 +5555,14 @@
         "cadastralCode": {
           "label": "Cadastral code",
           "matchable": true,
+          "maxLength": 64,
           "name": "cadastralCode",
           "qname": "RealEstate:cadastralCode",
           "type": "identifier"
         },
         "censusBlock": {
           "label": "Census block",
+          "maxLength": 1024,
           "name": "censusBlock",
           "qname": "RealEstate:censusBlock",
           "type": "string"
@@ -5112,6 +5570,7 @@
         "createDate": {
           "label": "Record date",
           "matchable": true,
+          "maxLength": 32,
           "name": "createDate",
           "qname": "RealEstate:createDate",
           "type": "date"
@@ -5119,24 +5578,28 @@
         "encumbrance": {
           "description": "An encumbrance is a right to, interest in, or legal liability on real property that does not prohibit passing title to the property but that diminishes its value.\n",
           "label": "Encumbrance",
+          "maxLength": 1024,
           "name": "encumbrance",
           "qname": "RealEstate:encumbrance",
           "type": "string"
         },
         "landType": {
           "label": "Land type",
+          "maxLength": 1024,
           "name": "landType",
           "qname": "RealEstate:landType",
           "type": "string"
         },
         "latitude": {
           "label": "Latitude",
+          "maxLength": 250,
           "name": "latitude",
           "qname": "RealEstate:latitude",
           "type": "number"
         },
         "longitude": {
           "label": "Longitude",
+          "maxLength": 250,
           "name": "longitude",
           "qname": "RealEstate:longitude",
           "type": "number"
@@ -5145,6 +5608,7 @@
           "description": "If this entity is a subunit, another entity (real estate) is its parent",
           "label": "Parent unit",
           "matchable": true,
+          "maxLength": 250,
           "name": "parent",
           "qname": "RealEstate:parent",
           "range": "RealEstate",
@@ -5153,6 +5617,7 @@
         },
         "propertyType": {
           "label": "Property type",
+          "maxLength": 1024,
           "name": "propertyType",
           "qname": "RealEstate:propertyType",
           "type": "string"
@@ -5160,6 +5625,7 @@
         "registrationNumber": {
           "label": "Registration number",
           "matchable": true,
+          "maxLength": 64,
           "name": "registrationNumber",
           "qname": "RealEstate:registrationNumber",
           "type": "identifier"
@@ -5167,6 +5633,7 @@
         "subunits": {
           "label": "Subunits",
           "matchable": true,
+          "maxLength": 250,
           "name": "subunits",
           "qname": "RealEstate:subunits",
           "range": "RealEstate",
@@ -5176,6 +5643,7 @@
         },
         "tenure": {
           "label": "Tenure",
+          "maxLength": 1024,
           "name": "tenure",
           "qname": "RealEstate:tenure",
           "type": "string"
@@ -5183,6 +5651,7 @@
         "titleNumber": {
           "label": "Title number",
           "matchable": true,
+          "maxLength": 64,
           "name": "titleNumber",
           "qname": "RealEstate:titleNumber",
           "type": "identifier"
@@ -5220,6 +5689,7 @@
         "agent": {
           "label": "Agent",
           "matchable": true,
+          "maxLength": 250,
           "name": "agent",
           "qname": "Representation:agent",
           "range": "LegalEntity",
@@ -5229,6 +5699,7 @@
         "client": {
           "label": "Client",
           "matchable": true,
+          "maxLength": 250,
           "name": "client",
           "qname": "Representation:client",
           "range": "LegalEntity",
@@ -5266,6 +5737,7 @@
       "properties": {
         "authority": {
           "label": "Authority",
+          "maxLength": 1024,
           "name": "authority",
           "qname": "Sanction:authority",
           "type": "string"
@@ -5273,6 +5745,7 @@
         "authorityId": {
           "label": "Authority-issued identifier",
           "matchable": true,
+          "maxLength": 64,
           "name": "authorityId",
           "qname": "Sanction:authorityId",
           "type": "identifier"
@@ -5280,12 +5753,14 @@
         "country": {
           "label": "Country",
           "matchable": true,
+          "maxLength": 16,
           "name": "country",
           "qname": "Sanction:country",
           "type": "country"
         },
         "duration": {
           "label": "Duration",
+          "maxLength": 1024,
           "name": "duration",
           "qname": "Sanction:duration",
           "type": "string"
@@ -5293,6 +5768,7 @@
         "entity": {
           "label": "Entity",
           "matchable": true,
+          "maxLength": 250,
           "name": "entity",
           "qname": "Sanction:entity",
           "range": "Thing",
@@ -5302,30 +5778,35 @@
         "listingDate": {
           "label": "Listing date",
           "matchable": true,
+          "maxLength": 32,
           "name": "listingDate",
           "qname": "Sanction:listingDate",
           "type": "date"
         },
         "program": {
           "label": "Program",
+          "maxLength": 1024,
           "name": "program",
           "qname": "Sanction:program",
           "type": "string"
         },
         "provisions": {
           "label": "Scope of sanctions",
+          "maxLength": 1024,
           "name": "provisions",
           "qname": "Sanction:provisions",
           "type": "string"
         },
         "reason": {
           "label": "Reason",
+          "maxLength": 65000,
           "name": "reason",
           "qname": "Sanction:reason",
           "type": "text"
         },
         "status": {
           "label": "Status",
+          "maxLength": 1024,
           "name": "status",
           "qname": "Sanction:status",
           "type": "string"
@@ -5333,6 +5814,7 @@
         "unscId": {
           "label": "UN SC identifier",
           "matchable": true,
+          "maxLength": 16,
           "name": "unscId",
           "qname": "Sanction:unscId",
           "type": "identifier"
@@ -5368,12 +5850,14 @@
       "properties": {
         "classification": {
           "label": "Classification",
+          "maxLength": 1024,
           "name": "classification",
           "qname": "Security:classification",
           "type": "string"
         },
         "collateral": {
           "label": "Collateral",
+          "maxLength": 1024,
           "name": "collateral",
           "qname": "Security:collateral",
           "type": "string"
@@ -5382,6 +5866,7 @@
           "format": "figi",
           "label": "Financial Instrument Global Identifier",
           "matchable": true,
+          "maxLength": 16,
           "name": "figiCode",
           "qname": "Security:figiCode",
           "type": "identifier"
@@ -5391,6 +5876,7 @@
           "format": "isin",
           "label": "ISIN",
           "matchable": true,
+          "maxLength": 16,
           "name": "isin",
           "qname": "Security:isin",
           "type": "identifier"
@@ -5398,6 +5884,7 @@
         "issueDate": {
           "label": "Date issued",
           "matchable": true,
+          "maxLength": 32,
           "name": "issueDate",
           "qname": "Security:issueDate",
           "type": "date"
@@ -5405,6 +5892,7 @@
         "issuer": {
           "label": "Issuer",
           "matchable": true,
+          "maxLength": 250,
           "name": "issuer",
           "qname": "Security:issuer",
           "range": "LegalEntity",
@@ -5414,6 +5902,7 @@
         "maturityDate": {
           "label": "Maturity date",
           "matchable": true,
+          "maxLength": 32,
           "name": "maturityDate",
           "qname": "Security:maturityDate",
           "type": "date"
@@ -5421,6 +5910,7 @@
         "registrationNumber": {
           "label": "Registration number",
           "matchable": true,
+          "maxLength": 64,
           "name": "registrationNumber",
           "qname": "Security:registrationNumber",
           "type": "identifier"
@@ -5428,12 +5918,14 @@
         "ticker": {
           "label": "Stock ticker symbol",
           "matchable": true,
+          "maxLength": 64,
           "name": "ticker",
           "qname": "Security:ticker",
           "type": "identifier"
         },
         "type": {
           "label": "Type",
+          "maxLength": 1024,
           "name": "type",
           "qname": "Security:type",
           "type": "string"
@@ -5473,6 +5965,7 @@
         "candidate": {
           "label": "Candidate",
           "matchable": true,
+          "maxLength": 250,
           "name": "candidate",
           "qname": "Similar:candidate",
           "range": "Thing",
@@ -5481,12 +5974,14 @@
         },
         "confidenceScore": {
           "label": "Confidence score",
+          "maxLength": 250,
           "name": "confidenceScore",
           "qname": "Similar:confidenceScore",
           "type": "number"
         },
         "criteria": {
           "label": "Matching criteria",
+          "maxLength": 1024,
           "name": "criteria",
           "qname": "Similar:criteria",
           "type": "string"
@@ -5494,6 +5989,7 @@
         "match": {
           "label": "Match",
           "matchable": true,
+          "maxLength": 250,
           "name": "match",
           "qname": "Similar:match",
           "range": "Thing",
@@ -5502,6 +5998,7 @@
         },
         "matcher": {
           "label": "Matcher",
+          "maxLength": 1024,
           "name": "matcher",
           "qname": "Similar:matcher",
           "type": "string"
@@ -5536,6 +6033,7 @@
         "predecessor": {
           "label": "Predecessor",
           "matchable": true,
+          "maxLength": 250,
           "name": "predecessor",
           "qname": "Succession:predecessor",
           "range": "LegalEntity",
@@ -5545,6 +6043,7 @@
         "successor": {
           "label": "Successor",
           "matchable": true,
+          "maxLength": 250,
           "name": "successor",
           "qname": "Succession:successor",
           "range": "LegalEntity",
@@ -5585,6 +6084,7 @@
         "columns": {
           "hidden": true,
           "label": "Column headings",
+          "maxLength": 250,
           "name": "columns",
           "qname": "Table:columns",
           "type": "json"
@@ -5592,12 +6092,14 @@
         "csvHash": {
           "hidden": true,
           "label": "CSV alternative version checksum",
+          "maxLength": 40,
           "name": "csvHash",
           "qname": "Table:csvHash",
           "type": "checksum"
         },
         "rowCount": {
           "label": "Number of rows",
+          "maxLength": 250,
           "name": "rowCount",
           "qname": "Table:rowCount",
           "type": "number"
@@ -5628,6 +6130,7 @@
         "birthDate": {
           "label": "Birth date",
           "matchable": true,
+          "maxLength": 32,
           "name": "birthDate",
           "qname": "TaxRoll:birthDate",
           "type": "date"
@@ -5635,30 +6138,35 @@
         "country": {
           "label": "Country",
           "matchable": true,
+          "maxLength": 16,
           "name": "country",
           "qname": "TaxRoll:country",
           "type": "country"
         },
         "givenName": {
           "label": "Given name",
+          "maxLength": 1024,
           "name": "givenName",
           "qname": "TaxRoll:givenName",
           "type": "string"
         },
         "income": {
           "label": "Registered income",
+          "maxLength": 1024,
           "name": "income",
           "qname": "TaxRoll:income",
           "type": "string"
         },
         "surname": {
           "label": "Surname",
+          "maxLength": 1024,
           "name": "surname",
           "qname": "TaxRoll:surname",
           "type": "string"
         },
         "taxPaid": {
           "label": "Amount of tax paid",
+          "maxLength": 1024,
           "name": "taxPaid",
           "qname": "TaxRoll:taxPaid",
           "type": "string"
@@ -5666,6 +6174,7 @@
         "taxee": {
           "label": "Taxee",
           "matchable": true,
+          "maxLength": 250,
           "name": "taxee",
           "qname": "TaxRoll:taxee",
           "range": "LegalEntity",
@@ -5674,6 +6183,7 @@
         },
         "wealth": {
           "label": "Registered wealth",
+          "maxLength": 1024,
           "name": "wealth",
           "qname": "TaxRoll:wealth",
           "type": "string"
@@ -5703,6 +6213,7 @@
         "address": {
           "label": "Address",
           "matchable": true,
+          "maxLength": 250,
           "name": "address",
           "qname": "Thing:address",
           "type": "address"
@@ -5710,6 +6221,7 @@
         "addressEntity": {
           "label": "Address",
           "matchable": true,
+          "maxLength": 250,
           "name": "addressEntity",
           "qname": "Thing:addressEntity",
           "range": "Address",
@@ -5719,6 +6231,7 @@
         "alephUrl": {
           "hidden": true,
           "label": "Aleph URL",
+          "maxLength": 4096,
           "name": "alephUrl",
           "qname": "Thing:alephUrl",
           "type": "url"
@@ -5726,6 +6239,7 @@
         "alias": {
           "label": "Other name",
           "matchable": true,
+          "maxLength": 250,
           "name": "alias",
           "qname": "Thing:alias",
           "type": "name"
@@ -5733,6 +6247,7 @@
         "candidateSimilars": {
           "label": "Similar to this",
           "matchable": true,
+          "maxLength": 250,
           "name": "candidateSimilars",
           "qname": "Thing:candidateSimilars",
           "range": "Similar",
@@ -5743,6 +6258,7 @@
         "country": {
           "label": "Country",
           "matchable": true,
+          "maxLength": 16,
           "name": "country",
           "qname": "Thing:country",
           "type": "country"
@@ -5750,6 +6266,7 @@
         "courtCase": {
           "label": "Court cases",
           "matchable": true,
+          "maxLength": 250,
           "name": "courtCase",
           "qname": "Thing:courtCase",
           "range": "CourtCaseParty",
@@ -5759,12 +6276,14 @@
         },
         "createdAt": {
           "label": "Created at",
+          "maxLength": 32,
           "name": "createdAt",
           "qname": "Thing:createdAt",
           "type": "date"
         },
         "description": {
           "label": "Description",
+          "maxLength": 65000,
           "name": "description",
           "qname": "Thing:description",
           "type": "text"
@@ -5772,6 +6291,7 @@
         "documentedBy": {
           "label": "Documents",
           "matchable": true,
+          "maxLength": 250,
           "name": "documentedBy",
           "qname": "Thing:documentedBy",
           "range": "Documentation",
@@ -5782,12 +6302,14 @@
         "indexText": {
           "hidden": true,
           "label": "Index text",
+          "maxLength": 65000,
           "name": "indexText",
           "qname": "Thing:indexText",
           "type": "text"
         },
         "keywords": {
           "label": "Keywords",
+          "maxLength": 1024,
           "name": "keywords",
           "qname": "Thing:keywords",
           "type": "string"
@@ -5795,6 +6317,7 @@
         "matchSimilars": {
           "label": "Similar as this",
           "matchable": true,
+          "maxLength": 250,
           "name": "matchSimilars",
           "qname": "Thing:matchSimilars",
           "range": "Similar",
@@ -5804,6 +6327,7 @@
         },
         "modifiedAt": {
           "label": "Modified on",
+          "maxLength": 32,
           "name": "modifiedAt",
           "qname": "Thing:modifiedAt",
           "type": "date"
@@ -5811,6 +6335,7 @@
         "name": {
           "label": "Name",
           "matchable": true,
+          "maxLength": 250,
           "name": "name",
           "qname": "Thing:name",
           "type": "name"
@@ -5818,6 +6343,7 @@
         "noteEntities": {
           "label": "Notes",
           "matchable": true,
+          "maxLength": 250,
           "name": "noteEntities",
           "qname": "Thing:noteEntities",
           "range": "Note",
@@ -5827,6 +6353,7 @@
         },
         "notes": {
           "label": "Notes",
+          "maxLength": 65000,
           "name": "notes",
           "qname": "Thing:notes",
           "type": "text"
@@ -5834,12 +6361,14 @@
         "previousName": {
           "label": "Previous name",
           "matchable": true,
+          "maxLength": 250,
           "name": "previousName",
           "qname": "Thing:previousName",
           "type": "name"
         },
         "program": {
           "label": "Program",
+          "maxLength": 1024,
           "name": "program",
           "qname": "Thing:program",
           "type": "string"
@@ -5847,6 +6376,7 @@
         "proof": {
           "label": "Source document",
           "matchable": true,
+          "maxLength": 250,
           "name": "proof",
           "qname": "Thing:proof",
           "range": "Document",
@@ -5855,18 +6385,21 @@
         },
         "publisher": {
           "label": "Publishing source",
+          "maxLength": 1024,
           "name": "publisher",
           "qname": "Thing:publisher",
           "type": "string"
         },
         "publisherUrl": {
           "label": "Publishing source URL",
+          "maxLength": 4096,
           "name": "publisherUrl",
           "qname": "Thing:publisherUrl",
           "type": "url"
         },
         "retrievedAt": {
           "label": "Retrieved on",
+          "maxLength": 32,
           "name": "retrievedAt",
           "qname": "Thing:retrievedAt",
           "type": "date"
@@ -5874,6 +6407,7 @@
         "sanctions": {
           "label": "Sanctions",
           "matchable": true,
+          "maxLength": 250,
           "name": "sanctions",
           "qname": "Thing:sanctions",
           "range": "Sanction",
@@ -5883,18 +6417,21 @@
         },
         "sourceUrl": {
           "label": "Source link",
+          "maxLength": 4096,
           "name": "sourceUrl",
           "qname": "Thing:sourceUrl",
           "type": "url"
         },
         "summary": {
           "label": "Summary",
+          "maxLength": 65000,
           "name": "summary",
           "qname": "Thing:summary",
           "type": "text"
         },
         "topics": {
           "label": "Topics",
+          "maxLength": 64,
           "name": "topics",
           "qname": "Thing:topics",
           "type": "topic"
@@ -5902,6 +6439,7 @@
         "unknownLinkFrom": {
           "label": "Linked from",
           "matchable": true,
+          "maxLength": 250,
           "name": "unknownLinkFrom",
           "qname": "Thing:unknownLinkFrom",
           "range": "UnknownLink",
@@ -5912,6 +6450,7 @@
         "unknownLinkTo": {
           "label": "Linked to",
           "matchable": true,
+          "maxLength": 250,
           "name": "unknownLinkTo",
           "qname": "Thing:unknownLinkTo",
           "range": "UnknownLink",
@@ -5921,6 +6460,7 @@
         },
         "weakAlias": {
           "label": "Weak alias",
+          "maxLength": 250,
           "name": "weakAlias",
           "qname": "Thing:weakAlias",
           "type": "name"
@@ -5929,6 +6469,7 @@
           "format": "qid",
           "label": "Wikidata ID",
           "matchable": true,
+          "maxLength": 32,
           "name": "wikidataId",
           "qname": "Thing:wikidataId",
           "type": "identifier"
@@ -5936,6 +6477,7 @@
         "wikipediaUrl": {
           "label": "Wikipedia Article",
           "matchable": true,
+          "maxLength": 4096,
           "name": "wikipediaUrl",
           "qname": "Thing:wikipediaUrl",
           "type": "url"
@@ -5970,6 +6512,7 @@
         "endLocation": {
           "label": "End location",
           "matchable": true,
+          "maxLength": 250,
           "name": "endLocation",
           "qname": "Trip:endLocation",
           "range": "Address",
@@ -5979,6 +6522,7 @@
         "startLocation": {
           "label": "Start location",
           "matchable": true,
+          "maxLength": 250,
           "name": "startLocation",
           "qname": "Trip:startLocation",
           "range": "Address",
@@ -5988,6 +6532,7 @@
         "vehicle": {
           "label": "Vehicle",
           "matchable": true,
+          "maxLength": 250,
           "name": "vehicle",
           "qname": "Trip:vehicle",
           "range": "Vehicle",
@@ -6032,6 +6577,7 @@
         "object": {
           "label": "Object",
           "matchable": true,
+          "maxLength": 250,
           "name": "object",
           "qname": "UnknownLink:object",
           "range": "Thing",
@@ -6041,6 +6587,7 @@
         "subject": {
           "label": "Subject",
           "matchable": true,
+          "maxLength": 250,
           "name": "subject",
           "qname": "UnknownLink:subject",
           "range": "Thing",
@@ -6081,6 +6628,7 @@
         "email": {
           "label": "E-Mail",
           "matchable": true,
+          "maxLength": 250,
           "name": "email",
           "qname": "UserAccount:email",
           "type": "email"
@@ -6088,6 +6636,7 @@
         "ipAddress": {
           "label": "IP address",
           "matchable": true,
+          "maxLength": 64,
           "name": "ipAddress",
           "qname": "UserAccount:ipAddress",
           "type": "ip"
@@ -6095,6 +6644,7 @@
         "messagesReceived": {
           "label": "Messages received",
           "matchable": true,
+          "maxLength": 250,
           "name": "messagesReceived",
           "qname": "UserAccount:messagesReceived",
           "range": "Message",
@@ -6105,6 +6655,7 @@
         "messagesSent": {
           "label": "Messages sent",
           "matchable": true,
+          "maxLength": 250,
           "name": "messagesSent",
           "qname": "UserAccount:messagesSent",
           "range": "Message",
@@ -6115,6 +6666,7 @@
         "number": {
           "label": "Phone Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "number",
           "qname": "UserAccount:number",
           "type": "phone"
@@ -6122,6 +6674,7 @@
         "owner": {
           "label": "Owner",
           "matchable": true,
+          "maxLength": 250,
           "name": "owner",
           "qname": "UserAccount:owner",
           "range": "LegalEntity",
@@ -6130,18 +6683,21 @@
         },
         "password": {
           "label": "Password",
+          "maxLength": 1024,
           "name": "password",
           "qname": "UserAccount:password",
           "type": "string"
         },
         "service": {
           "label": "Service",
+          "maxLength": 1024,
           "name": "service",
           "qname": "UserAccount:service",
           "type": "string"
         },
         "username": {
           "label": "Username",
+          "maxLength": 1024,
           "name": "username",
           "qname": "UserAccount:username",
           "type": "string"
@@ -6163,24 +6719,28 @@
       "properties": {
         "amount": {
           "label": "Amount",
+          "maxLength": 250,
           "name": "amount",
           "qname": "Value:amount",
           "type": "number"
         },
         "amountEur": {
           "label": "Amount in EUR",
+          "maxLength": 250,
           "name": "amountEur",
           "qname": "Value:amountEur",
           "type": "number"
         },
         "amountUsd": {
           "label": "Amount in USD",
+          "maxLength": 250,
           "name": "amountUsd",
           "qname": "Value:amountUsd",
           "type": "number"
         },
         "currency": {
           "label": "Currency",
+          "maxLength": 1024,
           "name": "currency",
           "qname": "Value:currency",
           "type": "string"
@@ -6211,6 +6771,7 @@
         "buildDate": {
           "label": "Build Date",
           "matchable": true,
+          "maxLength": 32,
           "name": "buildDate",
           "qname": "Vehicle:buildDate",
           "type": "date"
@@ -6218,6 +6779,7 @@
         "declaredCustoms": {
           "label": "Customs declarations",
           "matchable": true,
+          "maxLength": 250,
           "name": "declaredCustoms",
           "qname": "Vehicle:declaredCustoms",
           "range": "EconomicActivity",
@@ -6228,12 +6790,14 @@
         "deregistrationDate": {
           "label": "De-registration Date",
           "matchable": true,
+          "maxLength": 32,
           "name": "deregistrationDate",
           "qname": "Vehicle:deregistrationDate",
           "type": "date"
         },
         "model": {
           "label": "Model",
+          "maxLength": 1024,
           "name": "model",
           "qname": "Vehicle:model",
           "type": "string"
@@ -6241,6 +6805,7 @@
         "operator": {
           "label": "Operator",
           "matchable": true,
+          "maxLength": 250,
           "name": "operator",
           "qname": "Vehicle:operator",
           "range": "LegalEntity",
@@ -6250,6 +6815,7 @@
         "owner": {
           "label": "Owner",
           "matchable": true,
+          "maxLength": 250,
           "name": "owner",
           "qname": "Vehicle:owner",
           "range": "LegalEntity",
@@ -6259,6 +6825,7 @@
         "registrationDate": {
           "label": "Registration Date",
           "matchable": true,
+          "maxLength": 32,
           "name": "registrationDate",
           "qname": "Vehicle:registrationDate",
           "type": "date"
@@ -6266,6 +6833,7 @@
         "registrationNumber": {
           "label": "Registration number",
           "matchable": true,
+          "maxLength": 64,
           "name": "registrationNumber",
           "qname": "Vehicle:registrationNumber",
           "type": "identifier"
@@ -6273,6 +6841,7 @@
         "tripsInvolved": {
           "label": "Trips",
           "matchable": true,
+          "maxLength": 250,
           "name": "tripsInvolved",
           "qname": "Vehicle:tripsInvolved",
           "range": "Trip",
@@ -6282,6 +6851,7 @@
         },
         "type": {
           "label": "Type",
+          "maxLength": 1024,
           "name": "type",
           "qname": "Vehicle:type",
           "type": "string"
@@ -6325,6 +6895,7 @@
         "callSign": {
           "label": "Call Sign",
           "matchable": true,
+          "maxLength": 64,
           "name": "callSign",
           "qname": "Vessel:callSign",
           "type": "identifier"
@@ -6332,6 +6903,7 @@
         "crsNumber": {
           "label": "CRS Number",
           "matchable": true,
+          "maxLength": 64,
           "name": "crsNumber",
           "qname": "Vessel:crsNumber",
           "type": "identifier"
@@ -6339,12 +6911,14 @@
         "flag": {
           "label": "Flag",
           "matchable": true,
+          "maxLength": 16,
           "name": "flag",
           "qname": "Vessel:flag",
           "type": "country"
         },
         "grossRegisteredTonnage": {
           "label": "Gross Registered Tonnage",
+          "maxLength": 250,
           "name": "grossRegisteredTonnage",
           "qname": "Vessel:grossRegisteredTonnage",
           "type": "number"
@@ -6352,6 +6926,7 @@
         "imoNumber": {
           "label": "IMO Number",
           "matchable": true,
+          "maxLength": 16,
           "name": "imoNumber",
           "qname": "Vessel:imoNumber",
           "type": "identifier"
@@ -6359,6 +6934,7 @@
         "mmsi": {
           "label": "MMSI",
           "matchable": true,
+          "maxLength": 16,
           "name": "mmsi",
           "qname": "Vessel:mmsi",
           "type": "identifier"
@@ -6366,36 +6942,42 @@
         "nameChangeDate": {
           "label": "Date of Name Change",
           "matchable": true,
+          "maxLength": 32,
           "name": "nameChangeDate",
           "qname": "Vessel:nameChangeDate",
           "type": "date"
         },
         "navigationArea": {
           "label": "Navigation Area",
+          "maxLength": 1024,
           "name": "navigationArea",
           "qname": "Vessel:navigationArea",
           "type": "string"
         },
         "pastFlags": {
           "label": "Past Flags",
+          "maxLength": 1024,
           "name": "pastFlags",
           "qname": "Vessel:pastFlags",
           "type": "string"
         },
         "pastTypes": {
           "label": "Past Types",
+          "maxLength": 1024,
           "name": "pastTypes",
           "qname": "Vessel:pastTypes",
           "type": "string"
         },
         "registrationPort": {
           "label": "Port of Registration",
+          "maxLength": 1024,
           "name": "registrationPort",
           "qname": "Vessel:registrationPort",
           "type": "string"
         },
         "tonnage": {
           "label": "Tonnage",
+          "maxLength": 1024,
           "name": "tonnage",
           "qname": "Vessel:tonnage",
           "type": "string"
@@ -6433,6 +7015,7 @@
         "duration": {
           "description": "Duration of the video in ms",
           "label": "Duration",
+          "maxLength": 250,
           "name": "duration",
           "qname": "Video:duration",
           "type": "number"
@@ -6478,7 +7061,7 @@
       "group": "addresses",
       "label": "Address",
       "matchable": true,
-      "max_length": 250,
+      "maxLength": 250,
       "pivot": true,
       "plural": "Addresses"
     },
@@ -6487,7 +7070,7 @@
       "group": "checksums",
       "label": "Checksum",
       "matchable": true,
-      "max_length": 40,
+      "maxLength": 40,
       "pivot": true,
       "plural": "Checksums"
     },
@@ -6496,7 +7079,7 @@
       "group": "countries",
       "label": "Country",
       "matchable": true,
-      "max_length": 16,
+      "maxLength": 16,
       "plural": "Countries",
       "values": {
         "ac": "Ascension Island",
@@ -6790,7 +7373,7 @@
       "group": "dates",
       "label": "Date",
       "matchable": true,
-      "max_length": 32,
+      "maxLength": 32,
       "plural": "Dates"
     },
     "email": {
@@ -6798,7 +7381,7 @@
       "group": "emails",
       "label": "E-Mail Address",
       "matchable": true,
-      "max_length": 250,
+      "maxLength": 250,
       "pivot": true,
       "plural": "E-Mail Addresses"
     },
@@ -6807,7 +7390,7 @@
       "group": "entities",
       "label": "Entity",
       "matchable": true,
-      "max_length": 250,
+      "maxLength": 250,
       "pivot": true,
       "plural": "Entities"
     },
@@ -6815,7 +7398,7 @@
       "description": "A human gender. This is not meant to be a comprehensive model of\nthe social realities of gender but a way to capture data from (mostly)\ngovernment databases and represent it in a way that can be used by\nstructured tools. I'm not sure this justifies the simplification.",
       "group": "genders",
       "label": "Gender",
-      "max_length": 16,
+      "maxLength": 16,
       "plural": "Genders",
       "values": {
         "female": "female",
@@ -6826,7 +7409,7 @@
     "html": {
       "description": "Properties that contain raw hypertext markup (HTML).\n\nUser interfaces rendering properties of this type need to take extreme\ncare not to allow attacks such as cross-site scripting. It is recommended\nto perform server-side sanitisation, or to not render this property at all.",
       "label": "HTML",
-      "max_length": 65000,
+      "maxLength": 65000,
       "plural": "HTMLs"
     },
     "iban": {
@@ -6834,7 +7417,7 @@
       "group": "ibans",
       "label": "IBAN",
       "matchable": true,
-      "max_length": 64,
+      "maxLength": 64,
       "pivot": true,
       "plural": "IBANs"
     },
@@ -6843,7 +7426,7 @@
       "group": "identifiers",
       "label": "Identifier",
       "matchable": true,
-      "max_length": 64,
+      "maxLength": 64,
       "pivot": true,
       "plural": "Identifiers"
     },
@@ -6852,21 +7435,21 @@
       "group": "ips",
       "label": "IP-Address",
       "matchable": true,
-      "max_length": 64,
+      "maxLength": 64,
       "pivot": true,
       "plural": "IP-Addresses"
     },
     "json": {
       "description": "An encoded JSON object. This is used to store raw HTTP headers for documents\nand some other edge cases. It's a really bad idea and we should try to get rid\nof JSON properties.",
       "label": "Nested data",
-      "max_length": 250,
+      "maxLength": 250,
       "plural": "Nested data"
     },
     "language": {
       "description": "A human written language. This list is arbitrarily limited for some\nweird upstream technical reasons, but we'll happily accept pull requests\nfor additional languages once there is a specific need for them to be\nsupported.",
       "group": "languages",
       "label": "Language",
-      "max_length": 16,
+      "maxLength": 16,
       "plural": "Languages",
       "values": {
         "afr": "Afrikaans",
@@ -6937,7 +7520,7 @@
       "description": "A MIME media type are a specification of a content type on a network.\nEach MIME type is assigned by IANA and consists of two parts: the type\nand sub-type. Common examples are: `text/plain`, `application/json` and\n`application/pdf`.\n\nMIME type properties do not contain parameters as used in HTTP headers,\nlike `charset=UTF-8`.",
       "group": "mimetypes",
       "label": "MIME-Type",
-      "max_length": 250,
+      "maxLength": 250,
       "plural": "MIME-Types"
     },
     "name": {
@@ -6945,14 +7528,14 @@
       "group": "names",
       "label": "Name",
       "matchable": true,
-      "max_length": 250,
+      "maxLength": 250,
       "pivot": true,
       "plural": "Names"
     },
     "number": {
       "description": "A numeric value, like the size of a piece of land, or the value of a\ncontract. Since all property values in FtM are strings, this is also a\nstring and there is no specified format (e.g. `1,000.00` vs. `1.000,00`).\n\nIn the future we might want to enable annotations for format, units, or\neven to introduce a separate property type for monetary values.",
       "label": "Number",
-      "max_length": 250,
+      "maxLength": 250,
       "plural": "Numbers"
     },
     "phone": {
@@ -6960,27 +7543,27 @@
       "group": "phones",
       "label": "Phone number",
       "matchable": true,
-      "max_length": 64,
+      "maxLength": 64,
       "pivot": true,
       "plural": "Phone numbers"
     },
     "string": {
       "description": "A simple string property with no additional semantics.",
       "label": "Label",
-      "max_length": 1024,
+      "maxLength": 1024,
       "plural": "Labels"
     },
     "text": {
       "description": "Longer text fragments, such as descriptions or document text. Unlike\nstring properties, it might make sense to treat properties of this type as\nfull-text search material.",
       "label": "Text",
-      "max_length": 65000,
+      "maxLength": 65000,
       "plural": "Texts"
     },
     "topic": {
       "description": "Topics define a controlled vocabulary of terms applicable to some\nentities, such as companies and people. They describe categories of\njournalistic interest which may apply to the given entity, for example\nif a given person is a criminal or a politician.\n\nBesides the informative value, topics are ultimately supposed to bear\nfruits in the context of graph-based data analysis, where they would\nenable queries such as _find all paths between a government procurement\naward and a politician_.",
       "group": "topics",
       "label": "Topic",
-      "max_length": 64,
+      "maxLength": 64,
       "plural": "Topics",
       "values": {
         "asset.frozen": "Frozen asset",
@@ -7051,7 +7634,7 @@
       "group": "urls",
       "label": "URL",
       "matchable": true,
-      "max_length": 4096,
+      "maxLength": 4096,
       "pivot": true,
       "plural": "URLs"
     }
