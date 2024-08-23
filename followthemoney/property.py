@@ -24,7 +24,7 @@ class PropertyDict(TypedDict, total=False):
     hidden: Optional[bool]
     matchable: Optional[bool]
     deprecated: Optional[bool]
-    max_length: Optional[int]
+    maxLength: Optional[int]
     # stub: Optional[bool]
     rdf: Optional[str]
     range: Optional[str]
