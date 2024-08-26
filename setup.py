@@ -35,7 +35,7 @@ setup(
         "types-PyYAML",
         "sqlalchemy2-stubs",
         "banal >= 1.0.6, < 1.1.0",
-        "rigour >= 0.5.1, < 1.0.0",
+        "rigour >= 0.6.1, < 1.0.0",
         "click >= 8.0, < 9.0.0",
         "stringcase >= 1.2.0, < 2.0.0",
         "requests >= 2.21.0, < 3.0.0",
