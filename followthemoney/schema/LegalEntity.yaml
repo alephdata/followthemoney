@@ -82,6 +82,7 @@ LegalEntity:
       label: "V.A.T. Identifier"
       description: "(EU) VAT number"
       type: identifier
+      maxLength: 32
     jurisdiction:
       label: Jurisdiction
       type: country
@@ -109,30 +110,36 @@ LegalEntity:
       description: "Russian company ID"
       type: identifier
       # format: inn
+      maxLength: 32
     ogrnCode:
       label: "OGRN"
       description: "Major State Registration Number"
       type: identifier
       # format: ogrn
+      maxLength: 32
     leiCode:
       # cf. https://www.gleif.org/en/about-lei/introducing-the-legal-entity-identifier-lei
       label: "LEI"
       description: "Legal Entity Identifier"
       type: identifier
       format: lei
+      maxLength: 32
     dunsCode:
       label: "DUNS"
       description: "Data Universal Numbering System - Dun & Bradstreet identifier"
       type: identifier
+      maxLength: 32
     npiCode:
       label: "NPI"
       description: "National Provider Identifier"
       type: identifier
+      maxLength: 32
     swiftBic:
       label: "SWIFT/BIC"
       description: "Bank identifier code"
       type: identifier
       format: bic
+      maxLength: 16
     parent:
       label: "Parent company"
       description: "If this entity is a subsidiary, another entity (company or organisation) is its parent"

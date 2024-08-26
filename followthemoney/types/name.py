@@ -53,7 +53,11 @@ class NameType(PropertyType):
         right_clean = clean_name_light(right)
         if left_clean is None or right_clean is None:
             return 0.0
-        return levenshtein_similarity(left_clean, right_clean)
+        return levenshtein_similarity(
+            left_clean,
+            right_clean,
+            max_length=self.max_length,
+        )
 
     def node_id(self, value: str) -> Optional[str]:
         slug = slugify(value)

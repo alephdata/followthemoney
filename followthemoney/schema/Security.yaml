@@ -25,6 +25,7 @@ Security:
       description: International Securities Identification Number
       type: identifier
       format: isin
+      maxLength: 16
     registrationNumber:
       label: Registration number
       type: identifier
@@ -35,6 +36,7 @@ Security:
       label: Financial Instrument Global Identifier
       type: identifier
       format: figi
+      maxLength: 16
     issuer:
       label: "Issuer"
       type: entity

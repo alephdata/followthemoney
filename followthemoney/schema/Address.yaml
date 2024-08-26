@@ -54,6 +54,7 @@ Address:
     postalCode:
       label: "Postal code"
       description: "Zip code or postcode."
+      maxLength: 16
     region:
       label: "Region"
       description: "Also province or area."

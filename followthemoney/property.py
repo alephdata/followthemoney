@@ -24,6 +24,7 @@ class PropertyDict(TypedDict, total=False):
     hidden: Optional[bool]
     matchable: Optional[bool]
     deprecated: Optional[bool]
+    maxLength: Optional[int]
     # stub: Optional[bool]
     rdf: Optional[str]
     range: Optional[str]
@@ -58,6 +59,7 @@ class Property:
         "type",
         "matchable",
         "deprecated",
+        "max_length",
         "_range",
         "format",
         "range",
@@ -108,6 +110,9 @@ class Property:
             self.matchable = as_bool(data.get("matchable"))
         else:
             self.matchable = self.type.matchable
+
+        #: The maximum length of the property value.
+        self.max_length = int(data.get("maxLength") or self.type.max_length)
 
         #: If the property is of type ``entity``, the set of valid schema to be added
         #: in this property can be constrained. For example, an asset can be owned,
@@ -197,6 +202,7 @@ class Property:
             "qname": self.qname,
             "label": self.label,
             "type": self.type.name,
+            "maxLength": self.max_length,
         }
         if self.description:
             data["description"] = self.description
