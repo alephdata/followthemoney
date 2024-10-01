@@ -22,3 +22,8 @@ Organization:
       label: CAGE
       description: Commercial and Government Entity Code (CAGE)
       type: identifier
+    permId:
+      label: PermID
+      description: LSEG/Refinitiv code for a company
+      type: identifier
+      maxLength: 16
