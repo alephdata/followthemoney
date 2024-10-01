@@ -51,6 +51,7 @@ class CountryType(EnumType):
             "gb-sct": gettext("Scotland"),
             "gb-nir": gettext("Northern Ireland"),
             "md-pmr": gettext("Transnistria (PMR)"),
+            "pk-km": gettext("Kashmir"),
         }
         for code, label in locale.territories.items():
             code = code.lower()
