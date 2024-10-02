@@ -1,9 +1,9 @@
-import resolve from '@rollup/plugin-node-resolve'
-import nodeResolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import ts from 'rollup-plugin-ts';
-import json from '@rollup/plugin-json'
-import pkg from './package.json' with {type: 'json'}
+import resolve from '@rollup/plugin-node-resolve';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
+import json from '@rollup/plugin-json';
+import pkg from './package.json' with {type: 'json'};
 
 const libraryName = 'followthemoney'
 
@@ -29,7 +29,7 @@ export default {
     // https://github.com/rollup/rollup-plugin-node-resolve#usage
     resolve({ browser: true }),
     // Compile TypeScript files
-    ts({ sourceMap: true, inlineSources: true }),
+    typescript({ sourceMap: true, inlineSources: true }),
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     commonjs(),
   ],

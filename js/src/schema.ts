@@ -199,7 +199,7 @@ export class Schema {
     try {
       schema = this.model.getSchema(schema)
       return !!~this.schemata.indexOf(schema.name)
-    } catch (error) {
+    } catch {
       return false;
     }
   }
