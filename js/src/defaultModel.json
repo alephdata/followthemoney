@@ -1247,15 +1247,6 @@
           "qname": "Company:okvedCode",
           "type": "string"
         },
-        "permId": {
-          "description": "LSEG/Refinitiv code for a company",
-          "label": "PermID",
-          "matchable": true,
-          "maxLength": 16,
-          "name": "permId",
-          "qname": "Company:permId",
-          "type": "identifier"
-        },
         "pfrNumber": {
           "description": "(RU, ПФР) Pension Fund Registration number. AAA-BBB-CCCCCC, where AAA is organisation region, BBB is district, CCCCCC number at a specific branch",
           "label": "PFR Number",
@@ -4387,6 +4378,15 @@
           "stub": true,
           "type": "entity"
         },
+        "permId": {
+          "description": "LSEG/Refinitiv code for a company",
+          "label": "PermID",
+          "matchable": true,
+          "maxLength": 16,
+          "name": "permId",
+          "qname": "Organization:permId",
+          "type": "identifier"
+        },
         "positions": {
           "label": "Positions",
           "matchable": true,
@@ -7280,6 +7280,7 @@
         "pg": "Papua New Guinea",
         "ph": "Philippines",
         "pk": "Pakistan",
+        "pk-km": "Kashmir",
         "pl": "Poland",
         "pm": "St. Pierre & Miquelon",
         "pn": "Pitcairn Islands",
