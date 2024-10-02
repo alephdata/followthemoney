@@ -104,11 +104,6 @@ Company:
     ticker:
       label: Stock ticker symbol
       type: identifier
-    permId:
-      label: PermID
-      description: LSEG/Refinitiv code for a company
-      type: identifier
-      maxLength: 16
     ricCode:
       label: Reuters Instrument Code
       type: identifier
