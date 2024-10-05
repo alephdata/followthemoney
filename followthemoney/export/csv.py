@@ -47,7 +47,7 @@ class CSVMixin(object):
         return writer
 
     def close(self) -> None:
-        for (handle, _) in self.handles.values():
+        for handle, _ in self.handles.values():
             handle.close()
 
 
