@@ -231,7 +231,7 @@
           "hidden": true,
           "label": "Detected companies",
           "matchable": true,
-          "maxLength": 250,
+          "maxLength": 384,
           "name": "companiesMentioned",
           "qname": "Analyzable:companiesMentioned",
           "type": "name"
@@ -291,7 +291,7 @@
           "hidden": true,
           "label": "Detected names",
           "matchable": true,
-          "maxLength": 250,
+          "maxLength": 384,
           "name": "namesMentioned",
           "qname": "Analyzable:namesMentioned",
           "type": "name"
@@ -300,7 +300,7 @@
           "hidden": true,
           "label": "Detected people",
           "matchable": true,
-          "maxLength": 250,
+          "maxLength": 384,
           "name": "peopleMentioned",
           "qname": "Analyzable:peopleMentioned",
           "type": "name"
@@ -3133,7 +3133,7 @@
           "hidden": true,
           "label": "Detected names",
           "matchable": true,
-          "maxLength": 250,
+          "maxLength": 384,
           "name": "namesMentioned",
           "qname": "Interval:namesMentioned",
           "type": "name"
@@ -4060,7 +4060,7 @@
         "name": {
           "label": "Name",
           "matchable": true,
-          "maxLength": 250,
+          "maxLength": 384,
           "name": "name",
           "qname": "Mention:name",
           "type": "name"
@@ -6239,7 +6239,7 @@
         "alias": {
           "label": "Other name",
           "matchable": true,
-          "maxLength": 250,
+          "maxLength": 384,
           "name": "alias",
           "qname": "Thing:alias",
           "type": "name"
@@ -6335,7 +6335,7 @@
         "name": {
           "label": "Name",
           "matchable": true,
-          "maxLength": 250,
+          "maxLength": 384,
           "name": "name",
           "qname": "Thing:name",
           "type": "name"
@@ -6361,7 +6361,7 @@
         "previousName": {
           "label": "Previous name",
           "matchable": true,
-          "maxLength": 250,
+          "maxLength": 384,
           "name": "previousName",
           "qname": "Thing:previousName",
           "type": "name"
@@ -6460,7 +6460,7 @@
         },
         "weakAlias": {
           "label": "Weak alias",
-          "maxLength": 250,
+          "maxLength": 384,
           "name": "weakAlias",
           "qname": "Thing:weakAlias",
           "type": "name"
@@ -7205,6 +7205,7 @@
         "in": "India",
         "io": "British Indian Ocean Territory",
         "iq": "Iraq",
+        "iq-kr": "Kurdistan",
         "ir": "Iran",
         "is": "Iceland",
         "it": "Italy",
@@ -7523,7 +7524,7 @@
       "group": "names",
       "label": "Name",
       "matchable": true,
-      "maxLength": 250,
+      "maxLength": 384,
       "pivot": true,
       "plural": "Names"
     },
