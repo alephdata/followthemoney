@@ -46,6 +46,7 @@ class CountryType(EnumType):
             "so-som": gettext("Somaliland"),
             "cy-trnc": gettext("Northern Cyprus"),
             "az-nk": gettext("Nagorno-Karabakh"),
+            "iq-kr": gettext("Kurdistan"),
             "cn-xz": gettext("Tibet"),
             "cq": gettext("Sark"),
             "gb-wls": gettext("Wales"),

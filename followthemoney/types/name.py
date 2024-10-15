@@ -27,6 +27,7 @@ class NameType(PropertyType):
     plural = _("Names")
     matchable = True
     pivot = True
+    max_length = 384
 
     def clean_text(
         self,
