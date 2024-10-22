@@ -25,6 +25,9 @@ Contract:
     title:
       label: "Title"
       type: string
+    name:
+      label: "Name"
+      type: name
     authority:
       label: "Contract authority"
       plural: "Contract authorities"
