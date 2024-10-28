@@ -19,7 +19,7 @@
     "@astrojs/markdown-component": "^1.0.5",
     "astro": "^2.10.15",
     "astro-theme-docs": "github:alephdata/astro-theme-docs",
-    "mermaid": "^11.2.1",
+    "mermaid": "^11.3.0",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
