@@ -12,22 +12,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-01-04 14:09+0100\n"
+"POT-Creation-Date: 2024-07-28 20:08+0100\n"
 "PO-Revision-Date: 2022-11-21 11:38+0000\n"
 "Last-Translator: jen occrp, 2024\n"
 "Language-Team: Russian (https://app.transifex.com/aleph/teams/76591/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.15.0\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: followthemoney/property.py:170
+#: followthemoney/property.py:177
 msgid "Property cannot be written"
 msgstr "Не удалось сохранить свойство"
 
-#: followthemoney/property.py:173
+#: followthemoney/property.py:182
 msgid "Invalid value"
 msgstr "Недопустимое значение"
 
@@ -454,8 +454,8 @@ msgstr "Банковские счета"
 #. BankAccount.description
 #: followthemoney/schema/BankAccount.yaml
 msgid ""
-"An account held at a bank and controlled by an owner. This may also be used"
-" to describe more complex arrangements like correspondent bank settlement "
+"An account held at a bank and controlled by an owner. This may also be used "
+"to describe more complex arrangements like correspondent bank settlement "
 "accounts.\n"
 msgstr ""
 "Банковский счёт, у которого есть владелец. Может также использоваться для "
@@ -472,7 +472,7 @@ msgid "Account number"
 msgstr "Номер счёта"
 
 #. BankAccount.properties.iban.label
-#: followthemoney/schema/BankAccount.yaml followthemoney/types/iban.py:24
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/iban.py:23
 msgid "IBAN"
 msgstr "IBAN"
 
@@ -482,7 +482,7 @@ msgid "Bank Identifier Code"
 msgstr "БИК"
 
 #. BankAccount.properties.bank.label
-#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:55
+#: followthemoney/schema/BankAccount.yaml followthemoney/types/topic.py:57
 msgid "Bank"
 msgstr "Банк"
 
@@ -2549,13 +2549,23 @@ msgstr "Идентификатор юридического лица"
 
 #. LegalEntity.properties.dunsCode.label
 #: followthemoney/schema/LegalEntity.yaml
-msgid "D-U-N-S"
-msgstr "D-U-N-S-код"
+msgid "DUNS"
+msgstr "DUNS-номер"
 
 #. LegalEntity.properties.dunsCode.description
 #: followthemoney/schema/LegalEntity.yaml
-msgid "Dun & Bradstreet identifier"
-msgstr "Идентификатор Dun & Bradstreet"
+msgid "Data Universal Numbering System - Dun & Bradstreet identifier"
+msgstr "Универсальная система нумерации данных — DUNS-номер"
+
+#. LegalEntity.properties.npiCode.label
+#: followthemoney/schema/LegalEntity.yaml
+msgid "NPI"
+msgstr "NPI-код"
+
+#. LegalEntity.properties.npiCode.description
+#: followthemoney/schema/LegalEntity.yaml
+msgid "National Provider Identifier"
+msgstr "Общегосударственный номер-идентификатор агента"
 
 #. LegalEntity.properties.swiftBic.label
 #: followthemoney/schema/LegalEntity.yaml
@@ -2666,7 +2676,7 @@ msgstr "Упоминания в документе"
 #. Mention.properties.name.label
 #. Thing.properties.name.label
 #: followthemoney/schema/Mention.yaml followthemoney/schema/Thing.yaml
-#: followthemoney/types/name.py:25
+#: followthemoney/types/name.py:26
 msgid "Name"
 msgstr "Имя"
 
@@ -2806,6 +2816,16 @@ msgstr ""
 "Любой тип юридического лица, который не может быть объектом собственности "
 "(см. Компания). Например, благотворительные организации, фонды или "
 "государственные предприятия, в зависимости от юрисдикции.\n"
+
+#. Organization.properties.cageCode.label
+#: followthemoney/schema/Organization.yaml
+msgid "CAGE"
+msgstr "CAGE-код"
+
+#. Organization.properties.cageCode.description
+#: followthemoney/schema/Organization.yaml
+msgid "Commercial and Government Entity Code (CAGE)"
+msgstr "Код в реестре коммерческих и государственных предприятий (CAGE)"
 
 #. Ownership.label
 #: followthemoney/schema/Ownership.yaml
@@ -3129,13 +3149,48 @@ msgstr "Должность"
 msgid "Nationality"
 msgstr "Гражданство"
 
+#. Person.properties.citizenship.label
+#: followthemoney/schema/Person.yaml
+msgid "Citizenship"
+msgstr "Гражданство"
+
+#. Person.properties.socialSecurityNumber.label
+#: followthemoney/schema/Person.yaml
+msgid "Social security number"
+msgstr "Номер социального страхования"
+
 #. Person.properties.ethnicity.label
 #: followthemoney/schema/Person.yaml
 msgid "Ethnicity"
 msgstr "Этническая группа"
 
+#. Person.properties.height.label
+#: followthemoney/schema/Person.yaml
+msgid "Height"
+msgstr "Рост"
+
+#. Person.properties.weight.label
+#: followthemoney/schema/Person.yaml
+msgid "Weight"
+msgstr "Вес"
+
+#. Person.properties.eyeColor.label
+#: followthemoney/schema/Person.yaml
+msgid "Eye color"
+msgstr "Цвет глаз"
+
+#. Person.properties.hairColor.label
+#: followthemoney/schema/Person.yaml
+msgid "Hair color"
+msgstr "Цвет волос"
+
+#. Person.properties.identifyingMarks.label
+#: followthemoney/schema/Person.yaml
+msgid "Identifying marks"
+msgstr "Отличительные черты"
+
 #. Person.properties.religion.label
-#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:71
+#: followthemoney/schema/Person.yaml followthemoney/types/topic.py:76
 msgid "Religion"
 msgstr "Религия"
 
@@ -4131,7 +4186,7 @@ msgstr "Эл. адреса"
 msgid "Entities"
 msgstr "Сущность"
 
-#: followthemoney/types/entity.py:61
+#: followthemoney/types/entity.py:63
 #, python-format
 msgid "Self-relationship (%s): %s"
 msgstr "Самосоединение ( 1 %s): 1%s"
@@ -4152,15 +4207,15 @@ msgstr "бинарный женский"
 msgid "other"
 msgstr "небинарный"
 
-#: followthemoney/types/iban.py:25
+#: followthemoney/types/iban.py:24
 msgid "IBANs"
 msgstr "Международные номера банковских счетов (IBAN)"
 
-#: followthemoney/types/identifier.py:20
+#: followthemoney/types/identifier.py:25
 msgid "Identifier"
 msgstr "Идентификатор"
 
-#: followthemoney/types/identifier.py:21
+#: followthemoney/types/identifier.py:26
 msgid "Identifiers"
 msgstr "Идентификаторы"
 
@@ -4188,7 +4243,7 @@ msgstr "MIME-тип"
 msgid "MIME-Types"
 msgstr "MIME-типы"
 
-#: followthemoney/types/name.py:26
+#: followthemoney/types/name.py:27
 msgid "Names"
 msgstr "Имена"
 
@@ -4273,158 +4328,186 @@ msgid "Human trafficking"
 msgstr "Торговля людьми"
 
 #: followthemoney/types/topic.py:38
+msgid "Wanted"
+msgstr "В розыске"
+
+#: followthemoney/types/topic.py:39
 msgid "Offshore"
 msgstr "Офшор"
 
-#: followthemoney/types/topic.py:39
+#: followthemoney/types/topic.py:40
 msgid "Shell company"
 msgstr "Офшорная компания"
 
-#: followthemoney/types/topic.py:40
+#: followthemoney/types/topic.py:41
 msgid "Public listed company"
 msgstr "Компания, зарегистрированная на фондовой бирже"
 
-#: followthemoney/types/topic.py:41
+#: followthemoney/types/topic.py:42
+msgid "Disqualified"
+msgstr "Дисквалификация"
+
+#: followthemoney/types/topic.py:43
 msgid "Government"
 msgstr "Правительство"
 
-#: followthemoney/types/topic.py:42
+#: followthemoney/types/topic.py:44
 msgid "National government"
 msgstr "Федеральное правительство"
 
-#: followthemoney/types/topic.py:43
+#: followthemoney/types/topic.py:45
 msgid "State government"
 msgstr "Региональное правительство"
 
-#: followthemoney/types/topic.py:44
+#: followthemoney/types/topic.py:46
 msgid "Municipal government"
 msgstr "Муниципальные власти"
 
-#: followthemoney/types/topic.py:45
+#: followthemoney/types/topic.py:47
 msgid "State-owned enterprise"
 msgstr "Государственное предприятие"
 
-#: followthemoney/types/topic.py:46
+#: followthemoney/types/topic.py:48
 msgid "Intergovernmental organization"
 msgstr "Межправительственная организация"
 
-#: followthemoney/types/topic.py:47
+#: followthemoney/types/topic.py:49
 msgid "Head of government or state"
 msgstr "Глава правительства или государства"
 
-#: followthemoney/types/topic.py:48
+#: followthemoney/types/topic.py:50
 msgid "Civil service"
 msgstr "Государственная служба"
 
-#: followthemoney/types/topic.py:49
+#: followthemoney/types/topic.py:51
 msgid "Executive branch of government"
 msgstr "Исполнительная власть"
 
-#: followthemoney/types/topic.py:50
+#: followthemoney/types/topic.py:52
 msgid "Legislative branch of government"
 msgstr "Законодательная власть"
 
-#: followthemoney/types/topic.py:51
+#: followthemoney/types/topic.py:53
 msgid "Judicial branch of government"
 msgstr "Судебная власть"
 
-#: followthemoney/types/topic.py:52
+#: followthemoney/types/topic.py:54
 msgid "Security services"
 msgstr "Спецслужбы"
 
-#: followthemoney/types/topic.py:53
+#: followthemoney/types/topic.py:55
 msgid "Central banking and financial integrity"
 msgstr "Центральный банк и финансовая безупречность"
 
-#: followthemoney/types/topic.py:54
+#: followthemoney/types/topic.py:56
 msgid "Financial services"
 msgstr "Финансовые услуги"
 
-#: followthemoney/types/topic.py:56
+#: followthemoney/types/topic.py:58
 msgid "Fund"
 msgstr "Фонд"
 
-#: followthemoney/types/topic.py:57
+#: followthemoney/types/topic.py:59
 msgid "Financial advisor"
 msgstr "Финансовый консультант"
 
-#: followthemoney/types/topic.py:58
-msgid "Political"
+#: followthemoney/types/topic.py:60
+msgid "Regulator action"
+msgstr "Регуляторные меры"
+
+#: followthemoney/types/topic.py:61
+msgid "Regulator warning"
+msgstr "Регуляторное предупреждение"
+
+#: followthemoney/types/topic.py:62
+msgid "Politician"
 msgstr "Политик"
 
-#: followthemoney/types/topic.py:59
+#: followthemoney/types/topic.py:63
+msgid "Non-PEP"
+msgstr "Не политически значимое лицо"
+
+#: followthemoney/types/topic.py:64
 msgid "Close Associate"
 msgstr "Тесно связанное лицо"
 
-#: followthemoney/types/topic.py:60
+#: followthemoney/types/topic.py:65
 msgid "Judge"
 msgstr "Судья"
 
-#: followthemoney/types/topic.py:61
+#: followthemoney/types/topic.py:66
 msgid "Civil servant"
 msgstr "Чиновник"
 
-#: followthemoney/types/topic.py:62
+#: followthemoney/types/topic.py:67
 msgid "Diplomat"
 msgstr "Дипломат"
 
-#: followthemoney/types/topic.py:63
+#: followthemoney/types/topic.py:68
 msgid "Lawyer"
 msgstr "Юрист"
 
-#: followthemoney/types/topic.py:64
+#: followthemoney/types/topic.py:69
 msgid "Accountant"
 msgstr "Бухгалтер"
 
-#: followthemoney/types/topic.py:65
+#: followthemoney/types/topic.py:70
 msgid "Spy"
 msgstr "Шпион"
 
-#: followthemoney/types/topic.py:66
+#: followthemoney/types/topic.py:71
 msgid "Oligarch"
 msgstr "Олигарх"
 
-#: followthemoney/types/topic.py:67
+#: followthemoney/types/topic.py:72
 msgid "Journalist"
 msgstr "Журналист"
 
-#: followthemoney/types/topic.py:68
+#: followthemoney/types/topic.py:73
 msgid "Activist"
 msgstr "Активист"
 
-#: followthemoney/types/topic.py:69
+#: followthemoney/types/topic.py:74
 msgid "Political party"
 msgstr "Политическая партия"
 
-#: followthemoney/types/topic.py:70
+#: followthemoney/types/topic.py:75
 msgid "Union"
 msgstr "Объединение"
 
-#: followthemoney/types/topic.py:72
+#: followthemoney/types/topic.py:77
 msgid "Military"
 msgstr "Военные"
 
-#: followthemoney/types/topic.py:73
+#: followthemoney/types/topic.py:78
 msgid "Frozen asset"
 msgstr "Замороженный актив"
 
-#: followthemoney/types/topic.py:74
+#: followthemoney/types/topic.py:79
 msgid "Sanctioned entity"
 msgstr "Объект санкций"
 
-#: followthemoney/types/topic.py:75
+#: followthemoney/types/topic.py:80
 msgid "Sanction-linked entity"
 msgstr "Подсанкционное физическое или юридическое лицо"
 
-#: followthemoney/types/topic.py:76
+#: followthemoney/types/topic.py:81
+msgid "Counter-sanctioned entity"
+msgstr "Объект встречных санкций"
+
+#: followthemoney/types/topic.py:82
 msgid "Export controlled"
 msgstr "Экспортный контроль"
 
-#: followthemoney/types/topic.py:77
+#: followthemoney/types/topic.py:83
+msgid "Trade risk"
+msgstr "Торговый риск"
+
+#: followthemoney/types/topic.py:84
 msgid "Debarred entity"
 msgstr "Физическое или юридическое лицо, лишённое полномочий"
 
-#: followthemoney/types/topic.py:78
+#: followthemoney/types/topic.py:85
 msgid "Person of interest"
 msgstr "Подозрительный персонаж"
 
