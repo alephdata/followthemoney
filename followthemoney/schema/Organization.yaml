@@ -27,3 +27,7 @@ Organization:
       description: LSEG/Refinitiv code for a company
       type: identifier
       maxLength: 16
+    imoNumber:
+      label: IMO Number
+      type: identifier
+      maxLength: 16
