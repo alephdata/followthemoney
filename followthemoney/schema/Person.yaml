@@ -98,3 +98,6 @@ Person:
       label: Political association
     education:
       label: Education
+    spokenLanguage:
+      label: Spoken language
+      type: language
