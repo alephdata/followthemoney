@@ -3,7 +3,7 @@ from typing import Any, Optional, TYPE_CHECKING
 
 from followthemoney.types.common import PropertyType
 from followthemoney.rdf import URIRef, Identifier
-from followthemoney.util import get_entity_id, sanitize_text
+from followthemoney.util import ENTITY_ID_LEN, get_entity_id, sanitize_text
 from followthemoney.util import gettext, defer as _
 from followthemoney.exc import InvalidData
 
@@ -28,6 +28,7 @@ class EntityType(PropertyType):
     plural = _("Entities")
     matchable = True
     pivot = True
+    max_length = ENTITY_ID_LEN
 
     def validate(
         self, value: str, fuzzy: bool = False, format: Optional[str] = None

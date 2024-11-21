@@ -14,6 +14,7 @@ from banal import is_mapping, unique_list, ensure_list
 
 MEGABYTE = 1024 * 1024
 DEFAULT_LOCALE = "en"
+ENTITY_ID_LEN = 200
 
 T = TypeVar("T")
 K = TypeVar("K")
