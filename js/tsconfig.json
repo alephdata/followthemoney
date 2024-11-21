@@ -18,7 +18,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "declarationDir": "./dist/types",
-    "outDir": "./dist/lib",
+    "outDir": "./dist",
     "typeRoots": [
       "./node_modules/@types"
     ]
