@@ -4367,6 +4367,14 @@
           "stub": true,
           "type": "entity"
         },
+        "giiNumber": {
+          "label": "Global Intermediary Identification Number",
+          "matchable": true,
+          "maxLength": 20,
+          "name": "giiNumber",
+          "qname": "Organization:giiNumber",
+          "type": "identifier"
+        },
         "imoNumber": {
           "label": "IMO Number",
           "matchable": true,
