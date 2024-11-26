@@ -133,7 +133,8 @@ LegalEntity:
       label: "NPI"
       description: "National Provider Identifier"
       type: identifier
-      maxLength: 32
+      format: npi
+      maxLength: 16
     swiftBic:
       label: "SWIFT/BIC"
       description: "Bank identifier code"
