@@ -34,6 +34,7 @@ LegalEntity:
       label: Phone
       type: phone
       description: "Phone number"
+      maxLength: 32
     website:
       label: Website
       type: url
@@ -128,12 +129,13 @@ LegalEntity:
       label: "DUNS"
       description: "Data Universal Numbering System - Dun & Bradstreet identifier"
       type: identifier
-      maxLength: 32
+      maxLength: 16
     npiCode:
       label: "NPI"
       description: "National Provider Identifier"
       type: identifier
-      maxLength: 32
+      format: npi
+      maxLength: 16
     swiftBic:
       label: "SWIFT/BIC"
       description: "Bank identifier code"

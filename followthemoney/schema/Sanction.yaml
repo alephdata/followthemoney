@@ -34,6 +34,14 @@ Sanction:
       maxLength: 16
     program:
       label: "Program"
+    programId:
+      # This is a unique identifier for the program issued by OpenSanctions, but
+      # could also be used for authority-issued IDs in other usage scenarios.
+      label: "Program ID"
+      type: identifier
+    programUrl:
+      label: "Program URL"
+      type: url
     provisions:
       label: "Scope of sanctions"
     status:
