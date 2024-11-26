@@ -3394,7 +3394,7 @@
           "description": "Data Universal Numbering System - Dun & Bradstreet identifier",
           "label": "DUNS",
           "matchable": true,
-          "maxLength": 32,
+          "maxLength": 16,
           "name": "dunsCode",
           "qname": "LegalEntity:dunsCode",
           "type": "identifier"
@@ -3623,9 +3623,10 @@
         },
         "npiCode": {
           "description": "National Provider Identifier",
+          "format": "npi",
           "label": "NPI",
           "matchable": true,
-          "maxLength": 32,
+          "maxLength": 16,
           "name": "npiCode",
           "qname": "LegalEntity:npiCode",
           "type": "identifier"
@@ -3725,7 +3726,7 @@
           "description": "Phone number",
           "label": "Phone",
           "matchable": true,
-          "maxLength": 64,
+          "maxLength": 32,
           "name": "phone",
           "qname": "LegalEntity:phone",
           "type": "phone"
@@ -5812,6 +5813,22 @@
           "name": "program",
           "qname": "Sanction:program",
           "type": "string"
+        },
+        "programId": {
+          "label": "Program ID",
+          "matchable": true,
+          "maxLength": 64,
+          "name": "programId",
+          "qname": "Sanction:programId",
+          "type": "identifier"
+        },
+        "programUrl": {
+          "label": "Program URL",
+          "matchable": true,
+          "maxLength": 4096,
+          "name": "programUrl",
+          "qname": "Sanction:programUrl",
+          "type": "url"
         },
         "provisions": {
           "label": "Scope of sanctions",
