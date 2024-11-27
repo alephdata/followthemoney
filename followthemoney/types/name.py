@@ -1,8 +1,9 @@
 from typing import TYPE_CHECKING, Optional, Sequence
-from rigour.text.distance import levenshtein_similarity
-from rigour.names import pick_name
 from normality import slugify
 from normality.cleaning import collapse_spaces, strip_quotes
+from rigour.env import MAX_NAME_LENGTH
+from rigour.names import pick_name
+from rigour.text.distance import levenshtein_similarity
 from fingerprints.cleanup import clean_name_light
 
 from followthemoney.types.common import PropertyType
@@ -27,7 +28,7 @@ class NameType(PropertyType):
     plural = _("Names")
     matchable = True
     pivot = True
-    max_length = 384
+    max_length = MAX_NAME_LENGTH
 
     def clean_text(
         self,
