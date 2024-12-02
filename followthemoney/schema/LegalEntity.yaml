@@ -132,7 +132,7 @@ LegalEntity:
       maxLength: 16
     uniqueEntityId:
       label: "Unique Entity ID"
-      description: "Unique identifier from SAM.gov"
+      description: "UEI from SAM.gov"
       type: identifier
       maxLength: 32
     npiCode:
