@@ -44,6 +44,7 @@ Vessel:
       type: identifier
     pastFlags:
       label: Past Flags
+      type: country
     pastTypes:
       label: Past Types
     #buildDate:
