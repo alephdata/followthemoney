@@ -4,7 +4,7 @@ from rigour.langs import iso_639_alpha3
 
 from followthemoney.types.common import EnumType, EnumValues
 from followthemoney.rdf import URIRef, Identifier
-from followthemoney.util import defer as _
+from followthemoney.util import defer as _, gettext
 from followthemoney.util import get_env_list
 
 if TYPE_CHECKING:
@@ -93,12 +93,16 @@ class LanguageType(EnumType):
     LANGUAGES = [lang.lower().strip() for lang in LANGUAGES]
 
     def _locale_names(self, locale: Locale) -> EnumValues:
-        names = {}
+        names = {
+            "ara": gettext("Arabic"),
+            "nor": gettext("Norwegian"),
+        }
         for lang in self.LANGUAGES:
-            names[lang] = lang
+            if lang not in names:
+                names[lang] = lang
         for code, label in locale.languages.items():
             code = iso_639_alpha3(code)
-            if code in self.LANGUAGES:
+            if code in self.LANGUAGES and names[code] == code:
                 names[code] = label
         return names
 

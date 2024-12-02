@@ -3846,6 +3846,15 @@
           "qname": "LegalEntity:taxStatus",
           "type": "string"
         },
+        "uniqueEntityId": {
+          "description": "UEI from SAM.gov",
+          "label": "Unique Entity ID",
+          "matchable": true,
+          "maxLength": 32,
+          "name": "uniqueEntityId",
+          "qname": "LegalEntity:uniqueEntityId",
+          "type": "identifier"
+        },
         "userAccounts": {
           "label": "User accounts",
           "matchable": true,
@@ -6996,10 +7005,11 @@
         },
         "pastFlags": {
           "label": "Past Flags",
-          "maxLength": 1024,
+          "matchable": true,
+          "maxLength": 16,
           "name": "pastFlags",
           "qname": "Vessel:pastFlags",
-          "type": "string"
+          "type": "country"
         },
         "pastTypes": {
           "label": "Past Types",
