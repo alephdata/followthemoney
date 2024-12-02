@@ -130,6 +130,11 @@ LegalEntity:
       description: "Data Universal Numbering System - Dun & Bradstreet identifier"
       type: identifier
       maxLength: 16
+    uniqueEntityId:
+      label: "Unique Entity ID"
+      description: "Unique identifier from SAM.gov"
+      type: identifier
+      maxLength: 32
     npiCode:
       label: "NPI"
       description: "National Provider Identifier"
