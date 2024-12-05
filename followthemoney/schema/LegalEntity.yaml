@@ -110,13 +110,13 @@ LegalEntity:
       label: "INN"
       description: "Russian company ID"
       type: identifier
-      # format: inn
+      format: inn
       maxLength: 32
     ogrnCode:
       label: "OGRN"
       description: "Major State Registration Number"
       type: identifier
-      # format: ogrn
+      format: ogrn
       maxLength: 32
     leiCode:
       # cf. https://www.gleif.org/en/about-lei/introducing-the-legal-entity-identifier-lei
