@@ -3535,6 +3535,7 @@
         },
         "innCode": {
           "description": "Russian company ID",
+          "format": "inn",
           "label": "INN",
           "matchable": true,
           "maxLength": 32,
@@ -3633,6 +3634,7 @@
         },
         "ogrnCode": {
           "description": "Major State Registration Number",
+          "format": "ogrn",
           "label": "OGRN",
           "matchable": true,
           "maxLength": 32,
