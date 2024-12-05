@@ -179,7 +179,7 @@ The command line works analogous to the Neo4J export, also accepting the `-e` fl
 
 ```bash
 curl -o us_ofac.ijson https://storage.googleapis.com/occrp-data-exports/us_ofac/us_ofac.json
-cat us_ofac.ijson | ftm validate | ftm export-cypher -e iban -o ofac.gexf
+cat us_ofac.ijson | ftm validate | ftm export-gexf -e iban -o ofac.gexf
 ```
 
 <Image
