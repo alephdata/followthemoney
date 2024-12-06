@@ -3569,6 +3569,15 @@
           "qname": "LegalEntity:leiCode",
           "type": "identifier"
         },
+        "licenseNumber": {
+          "description": "For licenses granted to an entity",
+          "label": "License Number",
+          "matchable": true,
+          "maxLength": 64,
+          "name": "licenseNumber",
+          "qname": "LegalEntity:licenseNumber",
+          "type": "identifier"
+        },
         "mainCountry": {
           "description": "Primary country of this entity",
           "label": "Country of origin",
@@ -3850,6 +3859,7 @@
         },
         "uniqueEntityId": {
           "description": "UEI from SAM.gov",
+          "format": "uei",
           "label": "Unique Entity ID",
           "matchable": true,
           "maxLength": 32,
@@ -5179,6 +5189,7 @@
           "type": "string"
         },
         "socialSecurityNumber": {
+          "format": "ssn",
           "label": "Social security number",
           "matchable": true,
           "maxLength": 64,
@@ -6975,6 +6986,7 @@
           "type": "number"
         },
         "imoNumber": {
+          "format": "imo",
           "label": "IMO Number",
           "matchable": true,
           "maxLength": 16,

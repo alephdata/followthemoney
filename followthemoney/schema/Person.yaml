@@ -75,6 +75,7 @@ Person:
     socialSecurityNumber:
       label: Social security number
       type: identifier
+      format: ssn
     gender:
       label: Gender
       type: gender

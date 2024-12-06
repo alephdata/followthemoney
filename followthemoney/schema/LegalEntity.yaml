@@ -79,6 +79,10 @@ LegalEntity:
       label: Tax Number
       type: identifier
       description: "Tax identification number"
+    licenseNumber:
+      label: License Number
+      type: identifier
+      description: "For licenses granted to an entity"
     vatCode:
       label: "V.A.T. Identifier"
       description: "(EU) VAT number"
@@ -134,6 +138,7 @@ LegalEntity:
       label: "Unique Entity ID"
       description: "UEI from SAM.gov"
       type: identifier
+      format: uei
       maxLength: 32
     npiCode:
       label: "NPI"
