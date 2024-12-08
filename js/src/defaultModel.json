@@ -4398,6 +4398,7 @@
           "type": "identifier"
         },
         "imoNumber": {
+          "format": "imo",
           "label": "IMO Number",
           "matchable": true,
           "maxLength": 16,

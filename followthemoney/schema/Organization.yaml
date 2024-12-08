@@ -30,6 +30,7 @@ Organization:
     imoNumber:
       label: IMO Number
       type: identifier
+      format: imo
       maxLength: 16
     giiNumber:
       # cf. https://www.irs.gov/businesses/corporations/fatca-registration-and-ffi-list-giin-composition-information
