@@ -21,5 +21,7 @@ Airplane:
       type: identifier
     icaoCode: # A320
       label: ICAO aircraft type designator
+      type: identifier
+      maxLength: 16
     manufacturer: # Airbus
       label: Manufacturer

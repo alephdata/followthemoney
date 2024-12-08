@@ -190,10 +190,11 @@
       "properties": {
         "icaoCode": {
           "label": "ICAO aircraft type designator",
-          "maxLength": 1024,
+          "matchable": true,
+          "maxLength": 16,
           "name": "icaoCode",
           "qname": "Airplane:icaoCode",
-          "type": "string"
+          "type": "identifier"
         },
         "manufacturer": {
           "label": "Manufacturer",
@@ -4362,7 +4363,7 @@
           "description": "Commercial and Government Entity Code (CAGE)",
           "label": "CAGE",
           "matchable": true,
-          "maxLength": 64,
+          "maxLength": 16,
           "name": "cageCode",
           "qname": "Organization:cageCode",
           "type": "identifier"

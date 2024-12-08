@@ -39,6 +39,7 @@ Sanction:
       # could also be used for authority-issued IDs in other usage scenarios.
       label: "Program ID"
       type: identifier
+      maxLength: 64
     programUrl:
       label: "Program URL"
       type: url
