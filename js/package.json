@@ -5,7 +5,7 @@
   "keywords": [],
   "main": "dist/followthemoney.umd.js",
   "module": "dist/followthemoney.es5.js",
-  "typings": "dist/types/followthemoney.d.ts",
+  "typings": "dist/followthemoney.d.ts",
   "sideEffects": false,
   "files": [
     "dist"
