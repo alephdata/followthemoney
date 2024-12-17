@@ -4705,7 +4705,7 @@
         "Identification"
       ],
       "featured": [
-        "passportNumber",
+        "number",
         "country",
         "type",
         "holder",
@@ -4745,6 +4745,7 @@
           "type": "string"
         },
         "passportNumber": {
+          "hidden": true,
           "label": "Passport number",
           "matchable": true,
           "maxLength": 64,
@@ -4770,7 +4771,6 @@
       },
       "required": [
         "holder",
-        "passportNumber",
         "number"
       ],
       "schemata": [
