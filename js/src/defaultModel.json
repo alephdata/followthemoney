@@ -4391,7 +4391,8 @@
           "type": "entity"
         },
         "giiNumber": {
-          "label": "Global Intermediary Identification Number",
+          "description": "Global Intermediary Identification Number",
+          "label": "GIIN",
           "matchable": true,
           "maxLength": 20,
           "name": "giiNumber",
