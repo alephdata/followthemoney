@@ -88,6 +88,7 @@ class LanguageType(EnumType):
         "fil",
         "mya",
         "khm",
+        "cnr",
     ]
     LANGUAGES = get_env_list("FTM_LANGUAGES", LANGUAGES)
     LANGUAGES = [lang.lower().strip() for lang in LANGUAGES]
