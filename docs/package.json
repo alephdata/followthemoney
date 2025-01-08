@@ -18,7 +18,6 @@
     "@alephdata/followthemoney": "^3.7.12",
     "astro": "^5.1.3",
     "astro-theme-docs": "github:alephdata/astro-theme-docs",
-    "mermaid": "^11.4.1",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {

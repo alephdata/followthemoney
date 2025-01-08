@@ -1,5 +1,5 @@
 ---
-import Mermaid from '@components/common/Mermaid.astro';
+import { Mermaid } from 'astro-theme-docs/components';
 import { getInheritanceEdges } from '@util/ftm';
 import { schemaLink } from '@util/links';
 
@@ -25,7 +25,9 @@ for (const [child, parent] of edges) {
 }
 ---
 
-<Mermaid>
-  graph BT
-  {graph.join('\n')}
-</Mermaid>
+<Mermaid
+  content={`
+    graph BT
+    ${graph.join('\n')}
+  `}
+/>
