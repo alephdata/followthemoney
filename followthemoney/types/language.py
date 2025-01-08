@@ -97,6 +97,7 @@ class LanguageType(EnumType):
         names = {
             "ara": gettext("Arabic"),
             "nor": gettext("Norwegian"),
+            "cnr": gettext("Montenegrin"),
         }
         for lang in self.LANGUAGES:
             if lang not in names:
