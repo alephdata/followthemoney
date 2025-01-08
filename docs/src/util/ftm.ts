@@ -1,5 +1,5 @@
 import defaultModel from '../../../js/src/defaultModel.json';
-import { Model, Schema } from '@alephdata/followthemoney';
+import { Model, type Schema } from '@alephdata/followthemoney';
 
 export const model = new Model(defaultModel);
 
