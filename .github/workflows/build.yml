@@ -12,7 +12,6 @@ jobs:
     strategy:
       matrix:
         python:
-          - "3.9"
           - "3.10"
           - "3.11"
           - "3.12"
@@ -31,7 +30,7 @@ jobs:
         run: |
           sudo apt-get update -y -qq
           sudo apt-get install -y -qq libicu-dev
-          pip install wheel pyicu setuptools
+          python -m pip install --upgrade pip wheel pyicu
           pip install -e ".[dev]"
       - name: Run checks for default model
         run: |
