@@ -4,6 +4,7 @@ import explorerLinks from './src/plugins/explorerLinks.mjs';
 import referenceLinks from './src/plugins/referenceLinks.mjs';
 
 export default defineConfig({
+  scopedStyleStrategy: 'where',
   integrations: [theme({
     mdxPlugins: [
       explorerLinks(),
