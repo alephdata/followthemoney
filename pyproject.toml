@@ -56,6 +56,7 @@ dev = [
     "bump2version",
     "wheel>=0.29.0",
     "twine",
+    "build",
     "mypy",
     "pytest",
     "pytest-cov",
