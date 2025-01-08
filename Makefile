@@ -28,8 +28,6 @@ default-model:
 # pybabel init -i followthemoney/translations/messages.pot -d followthemoney/translations -l de -D followthemoney
 translate:
 	pybabel extract -F babel.cfg -o followthemoney/translations/messages.pot followthemoney
-	tx push --source
-	tx pull --all
 	pybabel compile -d followthemoney/translations -D followthemoney -f
 
 clean:

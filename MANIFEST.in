@@ -1,6 +1,0 @@
-include README.md
-include LICENSE
-include followthemoney/py.typed
-recursive-include followthemoney/schema *
-recursive-include followthemoney/translations *
-prune tests

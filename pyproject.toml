@@ -1,0 +1,102 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "followthemoney"
+version = "3.7.12"
+description = "A data model for anti corruption data modeling and analysis."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Organized Crime and Corruption Reporting Project", email = "data@occrp.org" },
+    { name = "OpenSanctions", email = "info@opensanctions.org" },
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">= 3.10"
+dependencies = [
+    "babel >= 2.14.0, < 3.0.0",
+    "pyyaml >= 5.0.0, < 7.0.0",
+    "types-PyYAML",
+    "sqlalchemy2-stubs",
+    "banal >= 1.0.6, < 1.1.0",
+    "rigour >= 0.8.1, < 1.0.0",
+    "click >= 8.0, < 9.0.0",
+    "stringcase >= 1.2.0, < 2.0.0",
+    "requests >= 2.21.0, < 3.0.0",
+    "normality >= 2.4.0, < 3.0.0",
+    "sqlalchemy >= 1.4.49, < 3.0.0",
+    "countrynames >= 1.13.0, < 2.0.0",
+    "prefixdate >= 0.4.0, < 1.0.0",
+    "fingerprints >= 1.0.1, < 2.0.0",
+    "phonenumbers >= 8.12.22, < 9.0.0",
+    "python-stdnum >= 1.16, < 2.0.0",
+    "pytz >= 2021.1",
+    "rdflib >= 6.2.0, < 7.2.0",
+    "networkx >= 2.5, < 3.5",
+    "openpyxl >= 3.0.5, < 4.0.0",
+    "orjson >= 3.7, < 4.0",
+]
+
+[project.urls]
+Documentation = "https://followthemoney.tech/"
+Repository = "https://github.com/alephdata/followthemoney.git"
+Issues = "https://github.com/alephdata/followthemoney/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pip>=10.0.0",
+    "bump2version",
+    "wheel>=0.29.0",
+    "twine",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "types-PyYAML",
+    "types-requests",
+    "types-setuptools",
+    "types-openpyxl",
+    "flake8>=2.6.0",
+    "transifex-client",
+    "responses>=0.9.0",
+    "coverage>=4.1",
+    "recommonmark>=0.4.0",
+]
+
+[project.scripts]
+ftmutil = "followthemoney.cli.cli:cli"
+ftm = "followthemoney.cli.cli:cli"
+followthemoney = "followthemoney.cli.cli:cli"
+
+[project.entry-points."babel.extractors"]
+ftmmodel = "followthemoney.messages:extract_yaml"
+
+[project.entry-points."followthemoney.cli"]
+aggregate = "followthemoney.cli.aggregate:aggregate"
+sieve = "followthemoney.cli.sieve:sieve"
+mapping = "followthemoney.cli.mapping:run_mapping"
+csv = "followthemoney.cli.exports:export_csv"
+excel = "followthemoney.cli.exports:export_excel"
+rdf = "followthemoney.cli.exports:export_rdf"
+gexf = "followthemoney.cli.exports:export_gexf"
+cypher = "followthemoney.cli.exports:export_cypher"
+
+[tool.hatch.build.targets.sdist]
+only-include = ["followthemoney", "LICENSE", "README.md"]
+
+[tool.distutils.bdist_wheel]
+universal = true
+
+[tool.babel.extractors.followthemoney]
+"followthemoney/**.py" = "python"
+"followthemoney/schema/**.yaml" = "ftmmodel"
+
+[tool.coverage.run]
+branch = true
