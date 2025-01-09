@@ -28,6 +28,8 @@ Vehicle:
     model:
       label: Model
     owner:
+      # Use `Ownership` link instead.
+      deprecated: true
       label: Owner
       type: entity
       range: LegalEntity

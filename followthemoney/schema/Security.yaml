@@ -41,6 +41,7 @@ Security:
       label: "Issuer"
       type: entity
       range: LegalEntity
+      # FIXME: Should this be `Organization`?
       reverse:
         label: "Issued securities"
         name: securities

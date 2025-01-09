@@ -153,6 +153,8 @@ LegalEntity:
       format: bic
       maxLength: 16
     parent:
+      # Use `Ownership` link instead.
+      deprecated: true
       label: "Parent company"
       description: "If this entity is a subsidiary, another entity (company or organisation) is its parent"
       reverse:

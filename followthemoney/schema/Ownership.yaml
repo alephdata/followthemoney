@@ -49,3 +49,4 @@ Ownership:
       label: "Legal basis"
     ownershipType:
       label: "Type of ownership"
+      # e.g. "beneficial", "direct", "indirect", "ultimate"

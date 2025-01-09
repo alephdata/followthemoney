@@ -34,6 +34,7 @@ Vessel:
       label: Navigation Area
     tonnage:
       label: Tonnage
+      type: number
     grossRegisteredTonnage:
       label: Gross Registered Tonnage
       type: number

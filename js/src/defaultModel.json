@@ -1159,6 +1159,7 @@
           "type": "string"
         },
         "ibcRuc": {
+          "deprecated": true,
           "label": "ibcRUC",
           "matchable": true,
           "maxLength": 64,
@@ -3702,6 +3703,7 @@
           "type": "entity"
         },
         "parent": {
+          "deprecated": true,
           "description": "If this entity is a subsidiary, another entity (company or organisation) is its parent",
           "label": "Parent company",
           "matchable": true,
@@ -6878,6 +6880,7 @@
           "type": "entity"
         },
         "owner": {
+          "deprecated": true,
           "label": "Owner",
           "matchable": true,
           "maxLength": 200,
@@ -7044,10 +7047,10 @@
         },
         "tonnage": {
           "label": "Tonnage",
-          "maxLength": 1024,
+          "maxLength": 250,
           "name": "tonnage",
           "qname": "Vessel:tonnage",
-          "type": "string"
+          "type": "number"
         }
       },
       "required": [
