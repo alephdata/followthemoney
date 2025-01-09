@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "followthemoney"
-version = "3.7.12"
+version = "3.8.0"
 description = "A data model for anti corruption data modeling and analysis."
 readme = "README.md"
 license = { file = "LICENSE" }
