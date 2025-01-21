@@ -5778,10 +5778,10 @@
       ],
       "featured": [
         "entity",
+        "country",
         "authority",
         "program",
-        "startDate",
-        "endDate"
+        "startDate"
       ],
       "label": "Sanction",
       "plural": "Sanctions",
