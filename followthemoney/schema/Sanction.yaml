@@ -7,10 +7,10 @@ Sanction:
   matchable: false
   featured:
     - entity
+    - country
     - authority
     - program
     - startDate
-    - endDate
   required:
     - entity
   caption:
