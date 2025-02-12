@@ -21,7 +21,7 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@untitaker/hyperlink": "^0.1.43",
+    "@untitaker/hyperlink": "^0.1.44",
     "prettier": "^3.4.2"
   },
   "prettier": {
