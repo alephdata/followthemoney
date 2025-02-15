@@ -103,8 +103,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: 'maven'
       - name: Build with Maven
-        run: mvn --batch-mode package
+        run: mvn --batch-mode --update-snapshots verify
       - name: Publish package
         if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
         run: mvn --batch-mode deploy

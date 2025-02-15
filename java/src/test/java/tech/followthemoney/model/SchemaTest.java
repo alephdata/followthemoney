@@ -1,5 +1,6 @@
 package tech.followthemoney.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,8 +9,11 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+
+import tech.followthemoney.exc.SchemaException;
 
 public class SchemaTest {
     @Test
@@ -57,5 +61,34 @@ public class SchemaTest {
         
         assertEquals(nameProperty, schema.getRequiredProperties().get(0));
         assertEquals(nameProperty, schema.getCaptionProperties().get(0));
+    }
+
+    @Test
+    public void testSchemaLogic() throws SchemaException, IOException {
+        Model model = Model.loadDefault();
+        Schema person = model.getSchema("Person");
+        Schema organization = model.getSchema("Organization");
+        Schema address = model.getSchema("Address");
+        Schema legalEntity = model.getSchema("LegalEntity");
+        Schema asset = model.getSchema("Asset");
+        Schema company = model.getSchema("Company");
+
+        assertTrue(person.isA(person));
+        assertTrue(organization.isA(organization));
+        assertTrue(address.isA(address));
+        assertTrue(legalEntity.isA(legalEntity));
+        assertTrue(person.isA(legalEntity));
+        assertTrue(organization.isA(legalEntity));
+
+        assertEquals(person.commonWith(person), person);
+        assertEquals(legalEntity.commonWith(person), person);
+        assertEquals(person.commonWith(legalEntity), person);
+        assertEquals(legalEntity.commonWith(company), company);
+        assertEquals(legalEntity.commonWith(asset), company);
+
+        SchemaException exception = assertThrows(SchemaException.class, () -> person.commonWith(asset));
+        assertTrue(exception.getMessage().contains("No common schema found: Person and Asset"));
+            exception = assertThrows(SchemaException.class, () -> person.commonWith(address));
+        assertTrue(exception.getMessage().contains("No common schema found: Person and Address"));
     }
 }

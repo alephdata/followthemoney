@@ -10,9 +10,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-import tech.followthemoney.exc.SchemaException;
-
 import com.fasterxml.jackson.databind.JsonNode;
+
+import tech.followthemoney.exc.SchemaException;
 
 public class Schema {
     private final Model model;
@@ -81,6 +81,12 @@ public class Schema {
     }
 
     public boolean isA(Schema schema) {
+        if (schema == null) {
+            return false;
+        }
+        if (schema == this) {
+            return true;
+        }
         return getSchemata().contains(schema);
     }
 
@@ -89,10 +95,10 @@ public class Schema {
             return this;
         }
         if (this.isA(other)) {
-            return other;
+            return this;
         } 
         if (other.isA(this)) {
-            return this;
+            return other;
         }
         for (Schema third : getModel().getSchemata().values()) {
             if (third.isA(this) && third.isA(other)) {
