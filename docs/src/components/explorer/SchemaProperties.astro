@@ -41,8 +41,8 @@ const properties = Array.from(schema.getProperties().values())
     opacity: 66%;
   }
 
-  [data-show-inherited='false'] [data-is-inherited]:not(:has(:target)),
-  [data-show-stubs='false'] [data-is-stub]:not(:has(:target)) {
+  [data-show-inherited='false'] [data-is-inherited='true']:not(:has(:target)),
+  [data-show-stubs='false'] [data-is-stub='true']:not(:has(:target)) {
     display: none;
   }
 

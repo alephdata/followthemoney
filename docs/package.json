@@ -15,13 +15,13 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@alephdata/followthemoney": "^3.7.12",
-    "astro": "^5.1.3",
+    "@alephdata/followthemoney": "^3.8.0",
+    "astro": "^5.2.5",
     "astro-theme-docs": "github:alephdata/astro-theme-docs",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@untitaker/hyperlink": "^0.1.43",
+    "@untitaker/hyperlink": "^0.1.44",
     "prettier": "^3.4.2"
   },
   "prettier": {
