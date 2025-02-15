@@ -1,6 +1,5 @@
 package tech.followthemoney.statement;
 
-import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
@@ -15,7 +14,7 @@ public class Statement {
     private static final String EMPTY = "".intern();
     public static final String ID_PROP = "id".intern();
 
-    private final BigInteger id;
+    private final String id;
     private final String entityId;
     private final String canonicalId;
     private final Schema schema;
@@ -29,14 +28,16 @@ public class Statement {
     private final long lastSeen;
 
     public Statement(String id, String entityId, String canonicalId, Schema schema, String propertyName, String dataset, String value, String lang, String originalValue, boolean external, long firstSeen, long lastSeen) {
-        this.id = parseId(id);
+        // this.id = parseId(id);
+        this.id = id;
         this.entityId = entityId;
-        this.canonicalId = canonicalId.equals(entityId) ? EMPTY : canonicalId;
+        this.canonicalId = canonicalId == null || canonicalId.equals(entityId) || canonicalId.length() == 0 ? EMPTY : canonicalId;
         this.schema = schema;
-        this.propertyName = propertyName.intern();
-        this.dataset = dataset.intern();
-        Property property = schema.getProperty(propertyName);
-        this.value = (property != null && property.isEnum()) ? value.intern() : value;
+        this.propertyName = propertyName; // .intern();
+        this.dataset = dataset; // .intern();
+        // Property property = schema.getProperty(propertyName);
+        // this.value = (property != null && property.isEnum()) ? value.intern() : value;
+        this.value = value;
         this.lang = lang == null || lang.length() == 0 ? EMPTY : lang;
         this.originalValue = originalValue == null || originalValue.length() == 0 ? EMPTY : originalValue;
         this.external = external;
@@ -45,7 +46,8 @@ public class Statement {
     }
 
     public String getId() {
-        return id.toString(16);
+        // return id.toString(16);
+        return id;
     }
 
     public String getEntityId() {
@@ -127,9 +129,9 @@ public class Statement {
         return new Statement(this.getId(), entityId, canonicalId, schema, propertyName, dataset, value, lang, originalValue, external, firstSeen, lastSeen);
     }
 
-    public static BigInteger parseId(String id) {
-        return new BigInteger(id, 16);
-    }
+    // public static BigInteger parseId(String id) {
+    //     return new BigInteger(id, 16);
+    // }
 
     public static String makeId(String dataset, String entityId, String propertyName, String value, boolean external) {
         byte[] sep = new byte[] { '.' };
