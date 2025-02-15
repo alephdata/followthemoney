@@ -62,6 +62,14 @@ public class ModelHelper {
             array.add(value);
         }
     }
+
+    public static List<String> internStrings(List<String> strings) {
+        List<String> interned = new ArrayList<>();
+        for (String string : strings) {
+            interned.add(string.intern());
+        }
+        return interned;
+    }
     
     public static String hexDigest(MessageDigest md) {
         StringBuilder sb = new StringBuilder();

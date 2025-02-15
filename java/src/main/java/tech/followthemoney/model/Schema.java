@@ -24,21 +24,25 @@ public class Schema {
     private final List<String> requiredNames;
     private final List<String> captionNames;
     private final Set<Schema> schemata;
+    private final Map<Schema, Schema> commonSchemata;
     private final Map<String, Property> properties;
     private Optional<Edge> edge;
     private Optional<TemporalExtent> temporalExtent;
 
     public Schema(Model model, String name, List<String> extendsSchemata, String label, String plural, List<String> featured, List<String> required, List<String> caption) {
         this.model = model;
-        this.name = name;
-        this.extendsNames = extendsSchemata;
+        this.name = name.intern();
+        this.extendsNames = ModelHelper.internStrings(extendsSchemata);
         this.label = label.length() == 0 ? this.name : label;
         this.plural = plural.length() == 0 ? this.label : plural;
-        this.featuredNames = featured;
-        this.requiredNames = required;
-        this.captionNames = caption;
+        this.featuredNames = ModelHelper.internStrings(featured);
+        this.requiredNames = ModelHelper.internStrings(required);
+        this.captionNames = ModelHelper.internStrings(caption);
         this.schemata = new HashSet<>();
         this.properties = new HashMap<>();
+        this.commonSchemata = new HashMap<>();
+        this.edge = Optional.empty();
+        this.temporalExtent = Optional.empty();
     }
 
     protected void buildHierarchy() {
@@ -90,10 +94,7 @@ public class Schema {
         return getSchemata().contains(schema);
     }
 
-    public Schema commonWith(Schema other) throws SchemaException {
-        if (other == this || other == null) {
-            return this;
-        }
+    public Schema computeCommonWith(Schema other) throws SchemaException {
         if (this.isA(other)) {
             return this;
         } 
@@ -106,6 +107,16 @@ public class Schema {
             }
         }
         throw new SchemaException("No common schema found: " + this.getName() + " and " + other.getName());
+    }
+
+    public Schema commonWith(Schema other) throws SchemaException {
+        if (other == this || other == null) {
+            return this;
+        }
+        if (!commonSchemata.containsKey(other)) {
+            commonSchemata.put(other, computeCommonWith(other));
+        }
+        return commonSchemata.get(other);
     }
 
     public String getName() {

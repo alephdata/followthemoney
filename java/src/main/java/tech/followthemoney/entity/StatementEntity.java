@@ -216,10 +216,10 @@ public class StatementEntity extends Entity {
         List<Statement> idStatements = new ArrayList<>();
         for (Statement statement : statements) {
             statement = statement.withCanonicalId(canonicalId);
+            schema = schema.commonWith(statement.getSchema());
             if (statement.getPropertyName().equals(Statement.ID_PROP)) {
                 idStatements.add(statement);
             } else {
-                schema = schema.commonWith(statement.getSchema());
                 Property prop = schema.getProperty(statement.getPropertyName());
                 if (prop != null) {
                     properties.computeIfAbsent(prop, k -> new ArrayList<>()).add(statement);
