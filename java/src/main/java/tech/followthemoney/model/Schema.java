@@ -109,8 +109,9 @@ public class Schema {
         throw new SchemaException("No common schema found: " + this.getName() + " and " + other.getName());
     }
 
+    @SuppressWarnings("StringEquality")
     public Schema commonWith(Schema other) throws SchemaException {
-        if (other == this || other == null) {
+        if (other == null || other.name == this.name) {
             return this;
         }
         if (!commonSchemata.containsKey(other)) {

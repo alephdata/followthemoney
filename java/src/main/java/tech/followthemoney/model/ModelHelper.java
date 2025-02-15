@@ -21,15 +21,16 @@ public class ModelHelper {
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss").withZone(ZoneId.from(ZoneOffset.UTC));
     
     public static List<String> getJsonStringArray(JsonNode node, String key) {
-        List<String> strings = new ArrayList<>();
         if (node == null || !node.has(key)) {
-            return strings;
+            return new ArrayList<>(0);
         }
         JsonNode value = node.get(key);
-        if (value.isArray()) {
-            for (JsonNode element : value) {
-                strings.add(element.asText());
-            }
+        if (!value.isArray()) {
+            return new ArrayList<>(0);
+        }
+        List<String> strings = new ArrayList<>(value.size());
+        for (JsonNode element : value) {
+            strings.add(element.asText());
         }
         return strings;
     }

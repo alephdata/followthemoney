@@ -189,9 +189,7 @@ public class ValueEntity extends Entity {
                 }
                 List<String> values = ModelHelper.getJsonStringArray(propsNode, propertyName);
                 if (property.isEnum()) {
-                    for (int i = 0; i < values.size(); i++) {
-                        values.set(i, values.get(i).intern());
-                    }
+                    values = ModelHelper.internStrings(values);
                 }
                 properties.put(property, values);
             }
@@ -200,10 +198,8 @@ public class ValueEntity extends Entity {
         if (node.has("caption")) {
             entity.setCaption(node.get("caption").asText());
         }
-        entity.datasets = new HashSet<>();
-        for (String dataset : ModelHelper.getJsonStringArray(node, "datasets")) {
-            entity.datasets.add(dataset.intern());
-        }
+        List<String> datasets = ModelHelper.internStrings(ModelHelper.getJsonStringArray(node, "datasets"));
+        entity.setDatasets(new HashSet<>(datasets));
         entity.setReferents(ModelHelper.getJsonStringSet(node, "referents"));
         if (node.has("first_seen")) {
             long firstSeen = ModelHelper.fromTimeStamp(node.get("first_seen").asText());

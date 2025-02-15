@@ -112,8 +112,8 @@ public class Property {
         int maxLength = node.has("maxLength") ? node.get("maxLength").asInt() : type.getMaxLength();
         boolean matchable = node.has("matchable") ? node.get("matchable").asBoolean() : type.isMatchable();
         boolean stub = node.has("stub") ? node.get("stub").asBoolean() : false;
-        Optional<String> reverse = node.has("reverse") ? Optional.of(node.get("reverse").asText()) : Optional.empty();
-        Optional<String> range = node.has("range") ? Optional.of(node.get("range").asText()) : Optional.empty();
+        Optional<String> reverse = node.has("reverse") ? Optional.of(node.get("reverse").asText().intern()) : Optional.empty();
+        Optional<String> range = node.has("range") ? Optional.of(node.get("range").asText().intern()) : Optional.empty();
         return new Property(schema, name, type, label, maxLength, matchable, stub, reverse, range);
     }
 }
