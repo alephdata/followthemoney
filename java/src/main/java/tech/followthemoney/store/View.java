@@ -7,8 +7,6 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import tech.followthemoney.entity.Entity;
 import tech.followthemoney.exc.ViewException;
-import tech.followthemoney.model.Model;
-import tech.followthemoney.model.PropertyType;
 
 public abstract class View<E extends Entity> {
     public abstract boolean hasEntity(String id) throws ViewException;
@@ -17,11 +15,8 @@ public abstract class View<E extends Entity> {
     public abstract Stream<Adjacency<E>> getInverted(String id) throws ViewException;
 
     public Stream<Adjacency<E>> getOutbound(E entity) throws ViewException {
-        Model model = entity.getSchema().getModel();
-        PropertyType entityType = model.getType(PropertyType.ENTITY);
-
         return entity.getDefinedProperties().stream()
-            .filter(property -> property.getType().equals(entityType))
+            .filter(property -> property.getType().isEntity())
             .map(property -> entity.getValues(property).stream().map((value) -> {
                 try {
                     return Pair.of(property, getEntity(value));

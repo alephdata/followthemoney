@@ -86,6 +86,7 @@ public class MemoryView<E extends Entity> extends View<E> {
             .filter(adj -> adj.getEntity() != null && adj.getProperty() != null);
     }
 
+    @Override
     public void close() {
         clear();
     }
