@@ -65,7 +65,7 @@ public class ModelHelper {
     }
 
     public static List<String> internStrings(List<String> strings) {
-        List<String> interned = new ArrayList<>();
+        List<String> interned = new ArrayList<>(strings.size());
         for (String string : strings) {
             interned.add(string.intern());
         }
