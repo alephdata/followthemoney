@@ -23,6 +23,7 @@ build: default-model translate
 
 default-model:
 	ftm dump-model -o js/src/defaultModel.json
+	ftm dump-model -o java/src/main/resources/defaultModel.json
 
 # initialize a new language:
 # pybabel init -i followthemoney/translations/messages.pot -d followthemoney/translations -l de -D followthemoney
