@@ -35,6 +35,10 @@ Occupancy:
         label: "Position holders"
       type: entity
       range: Position
+    declarationDate:
+      label: "Declaration date"
+      type: date
+      matchable: false
     status:
       label: "Status"
       type: string

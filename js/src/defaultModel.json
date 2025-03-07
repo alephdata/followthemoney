@@ -4511,6 +4511,13 @@
       "label": "Occupancy",
       "plural": "Occupancies",
       "properties": {
+        "declarationDate": {
+          "label": "Declaration date",
+          "maxLength": 32,
+          "name": "declarationDate",
+          "qname": "Occupancy:declarationDate",
+          "type": "date"
+        },
         "holder": {
           "label": "Holder",
           "matchable": true,
