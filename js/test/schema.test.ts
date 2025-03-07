@@ -1,4 +1,4 @@
-import { Schema, Model, defaultModel } from '../src'
+import { Model, Schema, defaultModel } from '../src'
 
 
 describe('ftm/Schema class', () => {
@@ -134,13 +134,13 @@ describe('ftm/Schema class', () => {
     it('returns array of properties', () => {
       const interval = model.getSchema('Interval')
       const props = interval.getTemporalStartProperties()
-      expect(props.map(prop => prop.name)).toEqual(['date', 'startDate'])
+      expect(props.map(prop => prop.name)).toEqual(['startDate', 'date'])
     })
 
     it('inherits properties', () => {
       const event = model.getSchema('Event')
       const props = event.getTemporalStartProperties()
-      expect(props.map(prop => prop.name)).toEqual(['date', 'startDate'])
+      expect(props.map(prop => prop.name)).toEqual(['startDate', 'date'])
     })
   })
   describe('method getTemporalEndProperties', () => {
