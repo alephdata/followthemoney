@@ -22,7 +22,8 @@ docker:
 build: default-model ontology
 
 ontology:
-	python followthemoney/ontology.py docs/public/ontology/
+	mkdir -p docs/public/ns
+	python followthemoney/ontology.py docs/public/ns/
 
 default-model:
 	ftm dump-model -o js/src/defaultModel.json

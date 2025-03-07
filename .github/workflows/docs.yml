@@ -36,8 +36,7 @@ jobs:
 
       - name: Build namespace XML
         run: |
-          mkdir -p docs/public/ns
-          python followthemoney/ontology.py docs/public/ns
+          make ontology
 
       - name: Build docs
         uses: alephdata/astro-theme-docs/.github/actions/build@main
