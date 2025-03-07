@@ -211,8 +211,8 @@ class Schema:
     def generate(self, model: "Model") -> None:
         """While loading the schema, this function will validate and
         load the hierarchy, properties, and flags of the definition."""
-        temporal_start = None
-        temporal_end = None
+        temporal_start: Optional[List[str]] = None
+        temporal_end: Optional[List[str]] = None
         for extends in self._extends:
             parent = model.get(extends)
             if parent is None:

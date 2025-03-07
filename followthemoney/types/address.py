@@ -44,11 +44,11 @@ class AddressType(PropertyType):
         return collapsed
 
     def compare(self, left: str, right: str) -> float:
-        left = normalize_address(left)
-        right = normalize_address(right)
-        if left is None or right is None:
+        left_norm = normalize_address(left)
+        right_norm = normalize_address(right)
+        if left_norm is None or right_norm is None:
             return 0.0
-        return levenshtein_similarity(left, right, max_edits=3)
+        return levenshtein_similarity(left_norm, right_norm, max_edits=3)
 
     def _specificity(self, value: str) -> float:
         return dampen(10, 60, value)
