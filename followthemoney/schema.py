@@ -211,6 +211,8 @@ class Schema:
     def generate(self, model: "Model") -> None:
         """While loading the schema, this function will validate and
         load the hierarchy, properties, and flags of the definition."""
+        temporal_start = None
+        temporal_end = None
         for extends in self._extends:
             parent = model.get(extends)
             if parent is None:
@@ -226,6 +228,23 @@ class Schema:
                 self.schemata.add(ancestor)
                 self.names.add(ancestor.name)
                 ancestor.descendants.add(self)
+
+            if len(self._temporal_start) == 0 and parent.temporal_start:
+                if (
+                    temporal_start is not None
+                    and temporal_start != parent.temporal_start
+                ):
+                    raise InvalidModel(
+                        "Conflicting temporal start properties: %s" % self.name
+                    )
+                temporal_start = parent.temporal_start
+
+            if len(self._temporal_end) == 0 and parent.temporal_end:
+                if temporal_end is not None and temporal_end != parent.temporal_end:
+                    raise InvalidModel(
+                        "Conflicting temporal start properties: %s" % self.name
+                    )
+                temporal_end = parent.temporal_end
 
         for prop in list(self.properties.values()):
             prop.generate(model)

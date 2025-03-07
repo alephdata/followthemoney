@@ -21,6 +21,11 @@ Message:
     - title
     - threadTopic
     - fileName
+  temporalExtent:
+    start:
+      - date
+      - authoredAt
+      - publishedAt
   properties:
     subject:
       label: Subject
