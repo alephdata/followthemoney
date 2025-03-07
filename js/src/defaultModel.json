@@ -218,7 +218,16 @@
         "Thing",
         "Value",
         "Vehicle"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "deregistrationDate"
+        ],
+        "start": [
+          "buildDate",
+          "registrationDate"
+        ]
+      }
     },
     "Analyzable": {
       "abstract": true,
@@ -343,7 +352,15 @@
         "Article",
         "Document",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Assessment": {
       "caption": [
@@ -494,7 +511,16 @@
       "schemata": [
         "Associate",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Audio": {
       "caption": [
@@ -536,7 +562,15 @@
         "Audio",
         "Document",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "BankAccount": {
       "caption": [
@@ -795,7 +829,16 @@
       "schemata": [
         "Call",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "CallForTenders": {
       "caption": [
@@ -1081,7 +1124,16 @@
         "CallForTenders",
         "Interval",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Company": {
       "caption": [
@@ -1302,7 +1354,15 @@
         "Organization",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "dissolutionDate"
+        ],
+        "start": [
+          "incorporationDate"
+        ]
+      }
     },
     "Contract": {
       "caption": [
@@ -1606,7 +1666,16 @@
         "Interest",
         "Interval",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "CourtCase": {
       "caption": [
@@ -1754,7 +1823,16 @@
         "CourtCaseParty",
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "CryptoWallet": {
       "caption": [
@@ -1903,7 +1981,16 @@
         "Debt",
         "Interval",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Directorship": {
       "caption": [
@@ -1967,7 +2054,16 @@
         "Directorship",
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Document": {
       "caption": [
@@ -2225,8 +2321,8 @@
       "temporalExtent": {
         "end": [],
         "start": [
-          "authoredAt",
           "date",
+          "authoredAt",
           "publishedAt"
         ]
       }
@@ -2282,7 +2378,16 @@
         "Documentation",
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "EconomicActivity": {
       "caption": [
@@ -2523,7 +2628,16 @@
       "schemata": [
         "EconomicActivity",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Email": {
       "caption": [
@@ -2666,7 +2780,15 @@
         "HyperText",
         "PlainText",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Employment": {
       "caption": [
@@ -2723,7 +2845,16 @@
         "Employment",
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Event": {
       "caption": [
@@ -2797,7 +2928,16 @@
         "Event",
         "Interval",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Family": {
       "description": "Family relationship between two people",
@@ -2859,7 +2999,16 @@
       "schemata": [
         "Family",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Folder": {
       "caption": [
@@ -2907,7 +3056,15 @@
         "Document",
         "Folder",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "HyperText": {
       "caption": [
@@ -2941,7 +3098,15 @@
         "Document",
         "HyperText",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Identification": {
       "caption": [
@@ -3010,7 +3175,16 @@
       "schemata": [
         "Identification",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Image": {
       "caption": [
@@ -3047,7 +3221,15 @@
         "Document",
         "Image",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Interest": {
       "abstract": true,
@@ -3075,7 +3257,16 @@
       "schemata": [
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Interval": {
       "abstract": true,
@@ -3199,8 +3390,8 @@
           "endDate"
         ],
         "start": [
-          "date",
-          "startDate"
+          "startDate",
+          "date"
         ]
       }
     },
@@ -3966,7 +4157,13 @@
         "License",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "contractDate"
+        ]
+      }
     },
     "Membership": {
       "caption": [
@@ -4023,7 +4220,16 @@
         "Interest",
         "Interval",
         "Membership"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Mention": {
       "caption": [
@@ -4238,7 +4444,17 @@
         "Message",
         "PlainText",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Note": {
       "caption": [
@@ -4330,7 +4546,16 @@
       "schemata": [
         "Interval",
         "Occupancy"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Organization": {
       "caption": [
@@ -4449,7 +4674,15 @@
         "LegalEntity",
         "Organization",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "dissolutionDate"
+        ],
+        "start": [
+          "incorporationDate"
+        ]
+      }
     },
     "Ownership": {
       "edge": {
@@ -4552,7 +4785,16 @@
         "Interest",
         "Interval",
         "Ownership"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Package": {
       "caption": [
@@ -4579,7 +4821,15 @@
         "Folder",
         "Package",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Page": {
       "extends": [],
@@ -4695,7 +4945,15 @@
         "Document",
         "Pages",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Passport": {
       "caption": [
@@ -4779,7 +5037,16 @@
         "Identification",
         "Interval",
         "Passport"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Payment": {
       "caption": [
@@ -4909,7 +5176,16 @@
         "Interval",
         "Payment",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Person": {
       "caption": [
@@ -5265,7 +5541,15 @@
         "Document",
         "PlainText",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Position": {
       "caption": [
@@ -5407,7 +5691,16 @@
         "Interest",
         "Interval",
         "Post"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Project": {
       "caption": [
@@ -5496,7 +5789,16 @@
         "Project",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "ProjectParticipant": {
       "caption": [
@@ -5548,7 +5850,16 @@
         "Interest",
         "Interval",
         "ProjectParticipant"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "PublicBody": {
       "caption": [
@@ -5576,7 +5887,15 @@
         "Organization",
         "PublicBody",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "dissolutionDate"
+        ],
+        "start": [
+          "incorporationDate"
+        ]
+      }
     },
     "RealEstate": {
       "caption": [
@@ -5766,7 +6085,16 @@
         "Interest",
         "Interval",
         "Representation"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Sanction": {
       "caption": [
@@ -5893,7 +6221,16 @@
       "schemata": [
         "Interval",
         "Sanction"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Security": {
       "caption": [
@@ -6126,7 +6463,16 @@
         "Interest",
         "Interval",
         "Succession"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Table": {
       "caption": [
@@ -6177,7 +6523,15 @@
         "Document",
         "Table",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "TaxRoll": {
       "description": "A tax declaration of an individual",
@@ -6262,7 +6616,16 @@
       "schemata": [
         "Interval",
         "TaxRoll"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Thing": {
       "abstract": true,
@@ -6618,7 +6981,16 @@
         "Interval",
         "Thing",
         "Trip"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "UnknownLink": {
       "edge": {
@@ -6670,7 +7042,16 @@
         "Interest",
         "Interval",
         "UnknownLink"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "UserAccount": {
       "caption": [
@@ -7062,7 +7443,16 @@
         "Value",
         "Vehicle",
         "Vessel"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "deregistrationDate"
+        ],
+        "start": [
+          "buildDate",
+          "registrationDate"
+        ]
+      }
     },
     "Video": {
       "caption": [
@@ -7096,7 +7486,15 @@
         "Document",
         "Thing",
         "Video"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Workbook": {
       "caption": [
@@ -7122,7 +7520,15 @@
         "Folder",
         "Thing",
         "Workbook"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     }
   },
   "types": {
