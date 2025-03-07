@@ -36,6 +36,7 @@ Passport:
       label: "Place of birth"
     gender:
       label: "Gender"
+      type: gender
     personalNumber:
       label: "Personal number"
       type: identifier
