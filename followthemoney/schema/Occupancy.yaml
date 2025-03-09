@@ -20,6 +20,13 @@ Occupancy:
     caption:
       - startDate
       - endDate
+  temporalExtent:
+    start:
+      - startDate
+      - declarationDate
+      - date
+    end:
+      - endDate
   properties:
     holder:
       label: "Holder"
