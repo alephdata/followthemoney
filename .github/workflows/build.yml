@@ -107,10 +107,12 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
       - name: Publish package
-        if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+        # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+        if: github.ref == 'refs/heads/main' 
         run: mvn --batch-mode deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
 
   docker:
     runs-on: ubuntu-latest
