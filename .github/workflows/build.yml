@@ -117,6 +117,7 @@ jobs:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
       - name: Publish package
         run: mvn -P release --batch-mode deploy -DskipTests
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
