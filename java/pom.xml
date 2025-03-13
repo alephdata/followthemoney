@@ -5,7 +5,7 @@
 
     <groupId>tech.followthemoney</groupId>
     <artifactId>followthemoney</artifactId>
-    <version>3.8.0</version>
+    <version>3.8.1</version>
     <packaging>jar</packaging>
 
     <name>followthemoney</name>
@@ -27,9 +27,9 @@
 
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/alephdata/followthemoney</url>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
