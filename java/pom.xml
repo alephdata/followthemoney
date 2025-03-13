@@ -25,14 +25,6 @@
         <url>http://github.com/alephdata/followthemoney/tree/main</url>
     </scm>
 
-    <distributionManagement>
-        <!-- <repository>
-            <id>ossrh</id>
-            <name>Central Repository OSSRH</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository> -->
-    </distributionManagement>
-
     <developers>
         <developer>
             <name>Friedrich Lindenberg</name>
@@ -185,9 +177,11 @@
                         <version>0.7.0</version>
                         <extensions>true</extensions>
                         <configuration>
+                            <deploymentName>${project.groupId}:${project.artifactId}:${project.version}</deploymentName>
                             <publishingServerId>central</publishingServerId>
-                            <!-- <tokenAuth>true</tokenAuth> -->
+                            <tokenAuth>true</tokenAuth>
                             <autoPublish>true</autoPublish>
+                            <!-- <centralBaseUrl>https://central.sonatype.com</centralBaseUrl> -->
                         </configuration>
                     </plugin>
                     <plugin>
