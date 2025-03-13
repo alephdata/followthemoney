@@ -218,7 +218,16 @@
         "Thing",
         "Value",
         "Vehicle"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "deregistrationDate"
+        ],
+        "start": [
+          "buildDate",
+          "registrationDate"
+        ]
+      }
     },
     "Analyzable": {
       "abstract": true,
@@ -343,7 +352,15 @@
         "Article",
         "Document",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Assessment": {
       "caption": [
@@ -494,7 +511,16 @@
       "schemata": [
         "Associate",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Audio": {
       "caption": [
@@ -536,7 +562,15 @@
         "Audio",
         "Document",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "BankAccount": {
       "caption": [
@@ -795,7 +829,16 @@
       "schemata": [
         "Call",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "CallForTenders": {
       "caption": [
@@ -1081,7 +1124,16 @@
         "CallForTenders",
         "Interval",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Company": {
       "caption": [
@@ -1302,7 +1354,15 @@
         "Organization",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "dissolutionDate"
+        ],
+        "start": [
+          "incorporationDate"
+        ]
+      }
     },
     "Contract": {
       "caption": [
@@ -1606,7 +1666,16 @@
         "Interest",
         "Interval",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "CourtCase": {
       "caption": [
@@ -1754,7 +1823,16 @@
         "CourtCaseParty",
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "CryptoWallet": {
       "caption": [
@@ -1903,7 +1981,16 @@
         "Debt",
         "Interval",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Directorship": {
       "caption": [
@@ -1967,7 +2054,16 @@
         "Directorship",
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Document": {
       "caption": [
@@ -2225,8 +2321,8 @@
       "temporalExtent": {
         "end": [],
         "start": [
-          "authoredAt",
           "date",
+          "authoredAt",
           "publishedAt"
         ]
       }
@@ -2282,7 +2378,16 @@
         "Documentation",
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "EconomicActivity": {
       "caption": [
@@ -2523,7 +2628,16 @@
       "schemata": [
         "EconomicActivity",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Email": {
       "caption": [
@@ -2666,7 +2780,15 @@
         "HyperText",
         "PlainText",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Employment": {
       "caption": [
@@ -2723,7 +2845,16 @@
         "Employment",
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Event": {
       "caption": [
@@ -2797,7 +2928,16 @@
         "Event",
         "Interval",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Family": {
       "description": "Family relationship between two people",
@@ -2859,7 +2999,16 @@
       "schemata": [
         "Family",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Folder": {
       "caption": [
@@ -2907,7 +3056,15 @@
         "Document",
         "Folder",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "HyperText": {
       "caption": [
@@ -2941,7 +3098,15 @@
         "Document",
         "HyperText",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Identification": {
       "caption": [
@@ -3010,7 +3175,16 @@
       "schemata": [
         "Identification",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Image": {
       "caption": [
@@ -3047,7 +3221,15 @@
         "Document",
         "Image",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Interest": {
       "abstract": true,
@@ -3075,7 +3257,16 @@
       "schemata": [
         "Interest",
         "Interval"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Interval": {
       "abstract": true,
@@ -3199,8 +3390,8 @@
           "endDate"
         ],
         "start": [
-          "date",
-          "startDate"
+          "startDate",
+          "date"
         ]
       }
     },
@@ -3966,7 +4157,13 @@
         "License",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "contractDate"
+        ]
+      }
     },
     "Membership": {
       "caption": [
@@ -4023,7 +4220,16 @@
         "Interest",
         "Interval",
         "Membership"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Mention": {
       "caption": [
@@ -4238,7 +4444,17 @@
         "Message",
         "PlainText",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Note": {
       "caption": [
@@ -4295,6 +4511,13 @@
       "label": "Occupancy",
       "plural": "Occupancies",
       "properties": {
+        "declarationDate": {
+          "label": "Declaration date",
+          "maxLength": 32,
+          "name": "declarationDate",
+          "qname": "Occupancy:declarationDate",
+          "type": "date"
+        },
         "holder": {
           "label": "Holder",
           "matchable": true,
@@ -4330,7 +4553,17 @@
       "schemata": [
         "Interval",
         "Occupancy"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "declarationDate",
+          "date"
+        ]
+      }
     },
     "Organization": {
       "caption": [
@@ -4449,7 +4682,15 @@
         "LegalEntity",
         "Organization",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "dissolutionDate"
+        ],
+        "start": [
+          "incorporationDate"
+        ]
+      }
     },
     "Ownership": {
       "edge": {
@@ -4552,7 +4793,16 @@
         "Interest",
         "Interval",
         "Ownership"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Package": {
       "caption": [
@@ -4579,7 +4829,15 @@
         "Folder",
         "Package",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Page": {
       "extends": [],
@@ -4695,7 +4953,15 @@
         "Document",
         "Pages",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Passport": {
       "caption": [
@@ -4734,10 +5000,10 @@
         },
         "gender": {
           "label": "Gender",
-          "maxLength": 1024,
+          "maxLength": 16,
           "name": "gender",
           "qname": "Passport:gender",
-          "type": "string"
+          "type": "gender"
         },
         "givenName": {
           "label": "Given name",
@@ -4779,7 +5045,16 @@
         "Identification",
         "Interval",
         "Passport"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Payment": {
       "caption": [
@@ -4909,7 +5184,16 @@
         "Interval",
         "Payment",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Person": {
       "caption": [
@@ -5265,7 +5549,15 @@
         "Document",
         "PlainText",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Position": {
       "caption": [
@@ -5407,7 +5699,16 @@
         "Interest",
         "Interval",
         "Post"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Project": {
       "caption": [
@@ -5496,7 +5797,16 @@
         "Project",
         "Thing",
         "Value"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "ProjectParticipant": {
       "caption": [
@@ -5548,7 +5858,16 @@
         "Interest",
         "Interval",
         "ProjectParticipant"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "PublicBody": {
       "caption": [
@@ -5576,7 +5895,15 @@
         "Organization",
         "PublicBody",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "dissolutionDate"
+        ],
+        "start": [
+          "incorporationDate"
+        ]
+      }
     },
     "RealEstate": {
       "caption": [
@@ -5766,7 +6093,16 @@
         "Interest",
         "Interval",
         "Representation"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Sanction": {
       "caption": [
@@ -5893,7 +6229,16 @@
       "schemata": [
         "Interval",
         "Sanction"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Security": {
       "caption": [
@@ -6126,7 +6471,16 @@
         "Interest",
         "Interval",
         "Succession"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Table": {
       "caption": [
@@ -6177,7 +6531,15 @@
         "Document",
         "Table",
         "Thing"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "TaxRoll": {
       "description": "A tax declaration of an individual",
@@ -6262,7 +6624,16 @@
       "schemata": [
         "Interval",
         "TaxRoll"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "Thing": {
       "abstract": true,
@@ -6618,7 +6989,16 @@
         "Interval",
         "Thing",
         "Trip"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "UnknownLink": {
       "edge": {
@@ -6670,7 +7050,16 @@
         "Interest",
         "Interval",
         "UnknownLink"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "endDate"
+        ],
+        "start": [
+          "startDate",
+          "date"
+        ]
+      }
     },
     "UserAccount": {
       "caption": [
@@ -7062,7 +7451,16 @@
         "Value",
         "Vehicle",
         "Vessel"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [
+          "deregistrationDate"
+        ],
+        "start": [
+          "buildDate",
+          "registrationDate"
+        ]
+      }
     },
     "Video": {
       "caption": [
@@ -7096,7 +7494,15 @@
         "Document",
         "Thing",
         "Video"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     },
     "Workbook": {
       "caption": [
@@ -7122,7 +7528,15 @@
         "Folder",
         "Thing",
         "Workbook"
-      ]
+      ],
+      "temporalExtent": {
+        "end": [],
+        "start": [
+          "date",
+          "authoredAt",
+          "publishedAt"
+        ]
+      }
     }
   },
   "types": {
@@ -7156,7 +7570,7 @@
         "ad": "Andorra",
         "ae": "United Arab Emirates",
         "af": "Afghanistan",
-        "ag": "Antigua & Barbuda",
+        "ag": "Antigua and Barbuda",
         "ai": "Anguilla",
         "al": "Albania",
         "am": "Armenia",
@@ -7169,8 +7583,8 @@
         "aw": "Aruba",
         "ax": "Åland Islands",
         "az": "Azerbaijan",
-        "az-nk": "Nagorno-Karabakh",
-        "ba": "Bosnia & Herzegovina",
+        "az-nk": "Artsakh",
+        "ba": "Bosnia and Herzegovina",
         "bb": "Barbados",
         "bd": "Bangladesh",
         "be": "Belgium",
@@ -7179,11 +7593,11 @@
         "bh": "Bahrain",
         "bi": "Burundi",
         "bj": "Benin",
-        "bl": "St. Barthélemy",
+        "bl": "Saint Barthélemy",
         "bm": "Bermuda",
         "bn": "Brunei",
         "bo": "Bolivia",
-        "bq": "Caribbean Netherlands",
+        "bq": "Bonaire, Sint Eustatius and Saba",
         "br": "Brazil",
         "bs": "Bahamas",
         "bt": "Bhutan",
@@ -7193,11 +7607,11 @@
         "bz": "Belize",
         "ca": "Canada",
         "cc": "Cocos (Keeling) Islands",
-        "cd": "Congo - Kinshasa",
+        "cd": "DR Congo",
         "cf": "Central African Republic",
-        "cg": "Congo - Brazzaville",
+        "cg": "Congo-Brazzaville",
         "ch": "Switzerland",
-        "ci": "Côte d’Ivoire",
+        "ci": "Côte d'Ivoire",
         "ck": "Cook Islands",
         "cl": "Chile",
         "cm": "Cameroon",
@@ -7215,7 +7629,7 @@
         "cx": "Christmas Island",
         "cy": "Cyprus",
         "cy-trnc": "Northern Cyprus",
-        "cz": "Czech Republic",
+        "cz": "Czechia",
         "dd": "East Germany",
         "de": "Germany",
         "dg": "Diego Garcia",
@@ -7256,13 +7670,13 @@
         "gp": "Guadeloupe",
         "gq": "Equatorial Guinea",
         "gr": "Greece",
-        "gs": "South Georgia & South Sandwich Islands",
+        "gs": "South Georgia and the South Sandwich Islands",
         "gt": "Guatemala",
         "gu": "Guam",
         "gw": "Guinea-Bissau",
         "gy": "Guyana",
-        "hk": "Hong Kong SAR China",
-        "hm": "Heard & McDonald Islands",
+        "hk": "Hong Kong SAR",
+        "hm": "Heard and McDonald Islands",
         "hn": "Honduras",
         "hr": "Croatia",
         "ht": "Haiti",
@@ -7288,7 +7702,7 @@
         "kh": "Cambodia",
         "ki": "Kiribati",
         "km": "Comoros",
-        "kn": "St. Kitts & Nevis",
+        "kn": "Saint Kitts and Nevis",
         "kp": "North Korea",
         "kr": "South Korea",
         "kw": "Kuwait",
@@ -7296,7 +7710,7 @@
         "kz": "Kazakhstan",
         "la": "Laos",
         "lb": "Lebanon",
-        "lc": "St. Lucia",
+        "lc": "Saint Lucia",
         "li": "Liechtenstein",
         "lk": "Sri Lanka",
         "lr": "Liberia",
@@ -7310,14 +7724,14 @@
         "md": "Moldova",
         "md-pmr": "Transnistria (PMR)",
         "me": "Montenegro",
-        "mf": "St. Martin",
+        "mf": "Saint Martin",
         "mg": "Madagascar",
         "mh": "Marshall Islands",
         "mk": "North Macedonia",
         "ml": "Mali",
-        "mm": "Myanmar (Burma)",
+        "mm": "Myanmar",
         "mn": "Mongolia",
-        "mo": "Macao SAR China",
+        "mo": "Macao SAR",
         "mp": "Northern Mariana Islands",
         "mq": "Martinique",
         "mr": "Mauritania",
@@ -7350,10 +7764,10 @@
         "pk": "Pakistan",
         "pk-km": "Kashmir",
         "pl": "Poland",
-        "pm": "St. Pierre & Miquelon",
-        "pn": "Pitcairn Islands",
+        "pm": "Saint Pierre and Miquelon",
+        "pn": "Pitcairn",
         "pr": "Puerto Rico",
-        "ps": "Palestinian Territories",
+        "ps": "Palestinian territories",
         "pt": "Portugal",
         "pw": "Palau",
         "py": "Paraguay",
@@ -7369,9 +7783,9 @@
         "sd": "Sudan",
         "se": "Sweden",
         "sg": "Singapore",
-        "sh": "St. Helena",
+        "sh": "Saint Helena, Ascension and Tristan da Cunha",
         "si": "Slovenia",
-        "sj": "Svalbard & Jan Mayen",
+        "sj": "Svalbard and Jan Mayen",
         "sk": "Slovakia",
         "sl": "Sierra Leone",
         "sm": "San Marino",
@@ -7380,14 +7794,14 @@
         "so-som": "Somaliland",
         "sr": "Suriname",
         "ss": "South Sudan",
-        "st": "São Tomé & Príncipe",
+        "st": "São Tomé and Príncipe",
         "suhh": "Soviet Union",
         "sv": "El Salvador",
         "sx": "Sint Maarten",
         "sy": "Syria",
         "sz": "Eswatini",
         "ta": "Tristan da Cunha",
-        "tc": "Turks & Caicos Islands",
+        "tc": "Turks and Caicos Islands",
         "td": "Chad",
         "tf": "French Southern Territories",
         "tg": "Togo",
@@ -7399,7 +7813,7 @@
         "tn": "Tunisia",
         "to": "Tonga",
         "tr": "Türkiye",
-        "tt": "Trinidad & Tobago",
+        "tt": "Trinidad and Tobago",
         "tv": "Tuvalu",
         "tw": "Taiwan",
         "tz": "Tanzania",
@@ -7410,17 +7824,17 @@
         "ug": "Uganda",
         "um": "U.S. Outlying Islands",
         "un": "United Nations",
-        "us": "United States",
+        "us": "United States of America",
         "uy": "Uruguay",
         "uz": "Uzbekistan",
-        "va": "Vatican City",
-        "vc": "St. Vincent & Grenadines",
+        "va": "Holy See",
+        "vc": "Saint Vincent and the Grenadines",
         "ve": "Venezuela",
         "vg": "British Virgin Islands",
         "vi": "U.S. Virgin Islands",
         "vn": "Vietnam",
         "vu": "Vanuatu",
-        "wf": "Wallis & Futuna",
+        "wf": "Wallis and Futuna",
         "ws": "Samoa",
         "x-so": "South Ossetia (Occupied Georgia)",
         "xk": "Kosovo",

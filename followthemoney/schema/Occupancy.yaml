@@ -20,6 +20,13 @@ Occupancy:
     caption:
       - startDate
       - endDate
+  temporalExtent:
+    start:
+      - startDate
+      - declarationDate
+      - date
+    end:
+      - endDate
   properties:
     holder:
       label: "Holder"
@@ -35,6 +42,10 @@ Occupancy:
         label: "Position holders"
       type: entity
       range: Position
+    declarationDate:
+      label: "Declaration date"
+      type: date
+      matchable: false
     status:
       label: "Status"
       type: string

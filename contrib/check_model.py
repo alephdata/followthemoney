@@ -6,7 +6,6 @@ from followthemoney import model
 IGNORE_DIVERGENT_TYPES = [
     "author",
     "organization",
-    "gender",
     "number",
     "authority",
     "duration",
@@ -63,7 +62,7 @@ def test_divergent_labels(by_name):
     for name, props in by_name.items():
         if len(props) == 1 or name in IGNORE_DIVERGENT_LABELS:
             continue
-        
+
         labels = set([p.label for p in props])
         if len(labels) > 1:
             divergent[name] = props
@@ -90,13 +89,16 @@ def test_label_capitalization():
 
     for schema in model:
         for prop in schema.properties.values():
-            if not prop.label[0].isupper() and prop.label not in IGNORE_LABEL_CAPITALIZATION:
+            if (
+                not prop.label[0].isupper()
+                and prop.label not in IGNORE_LABEL_CAPITALIZATION
+            ):
                 issues.append(prop)
 
     return issues
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     by_name = defaultdict(set)
     by_label = defaultdict(set)
 

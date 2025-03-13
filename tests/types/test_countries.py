@@ -17,7 +17,7 @@ class CountriesTest(unittest.TestCase):
         self.assertTrue(countries.validate("EU"))
 
         self.assertEqual(countries.country_hint("eu"), "eu")
-        assert "iso-3166-1:eu" in countries.rdf("eu")
+        assert "iso-3166:eu" in countries.rdf("eu")
 
     def test_country_names(self):
         countries = registry.country

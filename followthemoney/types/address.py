@@ -2,6 +2,8 @@ import re
 from typing import Optional, TYPE_CHECKING
 from normality import slugify
 from normality.cleaning import collapse_spaces
+from rigour.addresses import normalize_address
+from rigour.text.distance import levenshtein_similarity
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
@@ -41,11 +43,18 @@ class AddressType(PropertyType):
             return None
         return collapsed
 
+    def compare(self, left: str, right: str) -> float:
+        left_norm = normalize_address(left)
+        right_norm = normalize_address(right)
+        if left_norm is None or right_norm is None:
+            return 0.0
+        return levenshtein_similarity(left_norm, right_norm, max_edits=3)
+
     def _specificity(self, value: str) -> float:
         return dampen(10, 60, value)
 
     def node_id(self, value: str) -> Optional[str]:
-        slug = slugify(value)
+        slug = slugify(normalize_address(value))
         if slug is None:
             return None
         return f"addr:{value}"

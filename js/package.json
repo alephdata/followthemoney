@@ -1,6 +1,6 @@
 {
   "name": "@alephdata/followthemoney",
-  "version": "3.8.0",
+  "version": "3.8.1",
   "description": "JavaScript version of the followthemoney data model",
   "keywords": [],
   "main": "dist/followthemoney.umd.js",
@@ -92,6 +92,6 @@
     "typescript-eslint": "^8.19.1"
   },
   "dependencies": {
-    "uuid": "~11.0.4"
+    "uuid": "~11.1.0"
   }
 }

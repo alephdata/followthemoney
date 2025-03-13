@@ -4,6 +4,6 @@ from rdflib import Namespace
 from rdflib.term import Identifier, URIRef, Literal
 from rdflib import RDF, SKOS, XSD
 
-NS = Namespace("https://w3id.org/ftm#")
+NS = Namespace("https://schema.followthemoney.tech/#")
 
 __all__ = ["NS", "XSD", "RDF", "SKOS", "Identifier", "URIRef", "Literal"]

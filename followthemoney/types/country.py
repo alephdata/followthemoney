@@ -1,10 +1,11 @@
 import countrynames
 from typing import Optional, TYPE_CHECKING
 from babel.core import Locale
+from rigour.territories import get_territory, get_ftm_countries
 
 from followthemoney.rdf import URIRef, Identifier
 from followthemoney.types.common import EnumType, EnumValues
-from followthemoney.util import gettext, defer as _
+from followthemoney.util import defer as _
 
 if TYPE_CHECKING:
     from followthemoney.proxy import EntityProxy
@@ -24,52 +25,7 @@ class CountryType(EnumType):
     max_length = 16
 
     def _locale_names(self, locale: Locale) -> EnumValues:
-        # extra territories that OCCRP is interested in.
-        names = {
-            "zz": gettext("Global"),
-            "eu": gettext("European Union"),
-            "un": gettext("United Nations"),
-            "zr": gettext("Zaire"),
-            # Overwrite "Czechia" label:
-            "cz": gettext("Czech Republic"),
-            "xk": gettext("Kosovo"),
-            "dd": gettext("East Germany"),
-            "yucs": gettext("Yugoslavia"),
-            "csxx": gettext("Serbia and Montenegro"),
-            "cshh": gettext("Czechoslovakia"),
-            "suhh": gettext("Soviet Union"),
-            "ge-ab": gettext("Abkhazia (Occupied Georgia)"),
-            "x-so": gettext("South Ossetia (Occupied Georgia)"),
-            "ua-lpr": gettext("Luhansk (Occupied Ukraine)"),
-            "ua-dpr": gettext("Donetsk (Occupied Ukraine)"),
-            "ua-cri": gettext("Crimea (Occupied Ukraine)"),
-            "so-som": gettext("Somaliland"),
-            "cy-trnc": gettext("Northern Cyprus"),
-            "az-nk": gettext("Nagorno-Karabakh"),
-            "iq-kr": gettext("Kurdistan"),
-            "cn-xz": gettext("Tibet"),
-            "cq": gettext("Sark"),
-            "gb-wls": gettext("Wales"),
-            "gb-sct": gettext("Scotland"),
-            "gb-nir": gettext("Northern Ireland"),
-            "md-pmr": gettext("Transnistria (PMR)"),
-            "pk-km": gettext("Kashmir"),
-        }
-        for code, label in locale.territories.items():
-            code = code.lower()
-            if code in names:
-                continue
-            try:
-                int(code)
-            except ValueError:
-                names[code] = label
-        # Remove some ISO-3611 codes that are not countries:
-        names.pop("xa", None)
-        names.pop("xb", None)
-        names.pop("qo", None)
-        names.pop("ea", None)
-        names.pop("ez", None)
-        return names
+        return {t.code: t.name for t in get_ftm_countries()}
 
     def clean_text(
         self,
@@ -82,6 +38,11 @@ class CountryType(EnumType):
 
         The input may be a country code, a country name, etc.
         """
+        territory = get_territory(text)
+        if territory is not None:
+            ftm_country = territory.ftm_country
+            if ftm_country is not None:
+                return ftm_country
         code = countrynames.to_code(text, fuzzy=fuzzy)
         if code is not None:
             lower = code.lower()
@@ -93,4 +54,4 @@ class CountryType(EnumType):
         return value
 
     def rdf(self, value: str) -> Identifier:
-        return URIRef(f"iso-3166-1:{value}")
+        return URIRef(f"iso-3166:{value}")

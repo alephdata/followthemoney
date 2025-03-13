@@ -105,8 +105,8 @@ class Schema:
         "edge_source",
         "edge_target",
         "edge_caption",
-        "temporal_start",
-        "temporal_end",
+        "_temporal_start",
+        "_temporal_end",
         "_extends",
         "extends",
         "schemata",
@@ -183,8 +183,8 @@ class Schema:
         #: Specify which properties should be used to represent this schema in a
         #: timeline.
         temporal_extent = data.get("temporalExtent", {})
-        self.temporal_start = set(temporal_extent.get("start", []))
-        self.temporal_end = set(temporal_extent.get("end", []))
+        self._temporal_start = ensure_list(temporal_extent.get("start", []))
+        self._temporal_end = ensure_list(temporal_extent.get("end", []))
 
         #: Direct parent schemata of this schema.
         self._extends = ensure_list(data.get("extends", []))
@@ -211,6 +211,8 @@ class Schema:
     def generate(self, model: "Model") -> None:
         """While loading the schema, this function will validate and
         load the hierarchy, properties, and flags of the definition."""
+        temporal_start: Optional[List[str]] = None
+        temporal_end: Optional[List[str]] = None
         for extends in self._extends:
             parent = model.get(extends)
             if parent is None:
@@ -227,8 +229,22 @@ class Schema:
                 self.names.add(ancestor.name)
                 ancestor.descendants.add(self)
 
-            self.temporal_start |= parent.temporal_start
-            self.temporal_end |= parent.temporal_end
+            if len(self._temporal_start) == 0 and parent.temporal_start:
+                if (
+                    temporal_start is not None
+                    and temporal_start != parent.temporal_start
+                ):
+                    raise InvalidModel(
+                        "Conflicting temporal start properties: %s" % self.name
+                    )
+                temporal_start = parent.temporal_start
+
+            if len(self._temporal_end) == 0 and parent.temporal_end:
+                if temporal_end is not None and temporal_end != parent.temporal_end:
+                    raise InvalidModel(
+                        "Conflicting temporal start properties: %s" % self.name
+                    )
+                temporal_end = parent.temporal_end
 
         for prop in list(self.properties.values()):
             prop.generate(model)
@@ -310,18 +326,38 @@ class Schema:
         return self.get(self.edge_target)
 
     @property
-    def temporal_start_props(self) -> Set[Property]:
+    def temporal_start(self) -> List[str]:
+        """The entity properties to be used as the start when representing the entity
+        in a timeline."""
+        if not len(self._temporal_start):
+            for parent in self.extends:
+                if len(parent.temporal_start):
+                    return parent.temporal_start
+        return self._temporal_start
+
+    @property
+    def temporal_end(self) -> List[str]:
+        """The entity properties to be used as the end when representing the entity
+        in a timeline."""
+        if not len(self._temporal_end):
+            for parent in self.extends:
+                if len(parent.temporal_end):
+                    return parent.temporal_end
+        return self._temporal_end
+
+    @property
+    def temporal_start_props(self) -> List[Property]:
         """The entity properties to be used as the start when representing the entity
         in a timeline."""
         props = [self.get(prop_name) for prop_name in self.temporal_start]
-        return set([prop for prop in props if prop is not None])
+        return [prop for prop in props if prop is not None]
 
     @property
-    def temporal_end_props(self) -> Set[Property]:
+    def temporal_end_props(self) -> List[Property]:
         """The entity properties to be used as the end when representing the entity
         in a timeline."""
         props = [self.get(prop_name) for prop_name in self.temporal_end]
-        return set([prop for prop in props if prop is not None])
+        return [prop for prop in props if prop is not None]
 
     @property
     def sorted_properties(self) -> List[Property]:
@@ -408,16 +444,10 @@ class Schema:
                 "label": self.edge_label,
                 "directed": self.edge_directed,
             }
-        start_props = [
-            prop.name for prop in self.temporal_start_props if prop.schema == self
-        ]
-        end_props = [
-            prop.name for prop in self.temporal_end_props if prop.schema == self
-        ]
-        if start_props or end_props:
+        if len(self.temporal_start) or len(self.temporal_end):
             data["temporalExtent"] = {
-                "start": sorted(start_props),
-                "end": sorted(end_props),
+                "start": self.temporal_start,
+                "end": self.temporal_end,
             }
         if len(self.featured):
             data["featured"] = self.featured
