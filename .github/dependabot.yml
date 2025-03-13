@@ -20,6 +20,11 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
+  - package-ecosystem: maven
+    open-pull-requests-limit: 99
+    directory: "/java"
+    schedule:
+      interval: monthly
   - package-ecosystem: "github-actions"
     open-pull-requests-limit: 99
     directory: "/"
