@@ -2,13 +2,12 @@ import os
 import json
 import logging
 from typing import Any, Dict, Iterable, List, Optional, Set, TextIO
-import stringcase  # type: ignore
 
 from followthemoney.export.csv import CSVMixin, CSVWriter
 from followthemoney.export.graph import GraphExporter, DEFAULT_EDGE_TYPES
 from followthemoney.graph import Edge, Node
 from followthemoney.schema import Schema
-from followthemoney.util import PathLike
+from followthemoney.util import PathLike, const_case
 
 log = logging.getLogger(__name__)
 NEO4J_ADMIN_PATH = os.environ.get("NEO4J_ADMIN_PATH", "neo4j-admin")
@@ -72,12 +71,12 @@ class Neo4JCSVExporter(CSVMixin, GraphExporter):
 
     def write_edge(self, edge: Edge, extra: List[str]) -> None:
         if edge.prop is not None:
-            type_ = stringcase.constcase(edge.prop.name)
+            type_ = const_case(edge.prop.name)
             row = [type_, edge.source_id, edge.target_id, edge.weight]
             self.links_writer.writerow(row)
         if edge.proxy is not None:
             proxy = edge.proxy
-            type_ = stringcase.constcase(proxy.schema.name)
+            type_ = const_case(proxy.schema.name)
             # That potentially may lead to multiple edges with same id
             cells = [proxy.id, type_, edge.source_id, edge.target_id]
             cells.extend(extra or [])
@@ -174,7 +173,7 @@ class CypherGraphExporter(GraphExporter):
                 % {
                     "source": self._to_map({"id": edge.source_id}),
                     "target": self._to_map({"id": edge.target_id}),
-                    "type": stringcase.constcase(edge.type_name),
+                    "type": const_case(edge.type_name),
                     "map": self._to_map(attributes),
                 }
             )

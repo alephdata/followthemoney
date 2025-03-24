@@ -26,7 +26,7 @@ ENV LANG="en_US.UTF-8" \
 
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
-RUN pip3 install -q --no-cache-dir -U pip setuptools six psycopg2-binary 
+RUN pip3 install -q --no-cache-dir -U pip psycopg2-binary 
 COPY . /opt/followthemoney
 RUN pip3 install -q --no-cache-dir -e /opt/followthemoney
 WORKDIR /opt/followthemoney/docs

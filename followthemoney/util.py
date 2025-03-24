@@ -105,6 +105,11 @@ def join_text(*parts: Any, sep: str = " ") -> Optional[str]:
     return sep.join(texts)
 
 
+def const_case(text: str) -> str:
+    """Convert the given text to a constant case."""
+    return text.upper().replace(" ", "_")
+
+
 def get_entity_id(obj: Any) -> Optional[str]:
     """Given an entity-ish object, try to get the ID."""
     if is_mapping(obj):
