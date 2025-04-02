@@ -45,9 +45,9 @@ class CountryType(EnumType):
                 return ftm_country
         code = countrynames.to_code(text, fuzzy=fuzzy)
         if code is not None:
-            lower = code.lower()
-            if lower in self.codes:
-                return lower
+            territory = get_territory(code)
+            if territory is not None:
+                return territory.ftm_country
         return None
 
     def country_hint(self, value: str) -> str:
