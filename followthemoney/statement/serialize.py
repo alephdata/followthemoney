@@ -10,7 +10,7 @@ from rigour.boolean import text_bool
 
 from followthemoney.statement.statement import Statement, StatementDict
 from followthemoney.statement.util import unpack_prop
-from followthemoney.cli.util import MAX_LINE
+
 
 JSON = "json"
 CSV = "csv"
@@ -37,7 +37,7 @@ CSV_COLUMNS = [
 
 def read_json_statements(
     fh: BinaryIO,
-    max_line: int = MAX_LINE,
+    max_line: int = 40 * 1024 * 1024,
 ) -> Generator[Statement, None, None]:
     while line := fh.readline(max_line):
         data = orjson.loads(line)

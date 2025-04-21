@@ -1,9 +1,9 @@
 import hashlib
 import warnings
 from sqlalchemy.engine import Row
-from typing import Self, cast, TYPE_CHECKING
+from typing import cast, TYPE_CHECKING
 from typing import Any, Dict, Generator, Optional
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, Self
 from rigour.time import datetime_iso, iso_datetime
 from rigour.boolean import bool_text
 
