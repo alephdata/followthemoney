@@ -1,6 +1,8 @@
+import json
 import pytest
 from pathlib import Path
 from typing import Any, Dict
+from tempfile import TemporaryDirectory
 
 from followthemoney.dataset import DataCatalog, Dataset
 from followthemoney.exc import MetadataException
@@ -12,6 +14,7 @@ def test_donations_base(catalog_data: Dict[str, Any]):
     ds = catalog.get("donations")
     assert ds is not None, ds
     assert ds.name == "donations"
+    assert not ds == "donations"
     assert ds.publisher is None
     assert "publisher" not in ds.to_dict()
     assert len(ds.resources) == 2, ds.resources
@@ -56,7 +59,8 @@ def test_hierarchy(catalog_data: Dict[str, Any]):
     assert leak in all_datasets.datasets
     assert len(all_datasets.children) == 2, all_datasets.children
     assert len(all_datasets.datasets) == 5, all_datasets.datasets
-    assert len(all_datasets.leaves) == 3, all_datasets.leaves
+    assert len(all_datasets.dataset_names) == len(all_datasets.datasets)
+    assert len(all_datasets.leaves) == len(all_datasets.leaf_names)
 
 
 def test_from_path(catalog_path: Path):
@@ -66,6 +70,19 @@ def test_from_path(catalog_path: Path):
     data = catalog.to_dict()
     assert isinstance(data, dict)
     assert "datasets" in data
+
+    ds = catalog.get("donations")
+    assert ds is not None, ds
+    assert ds.name == "donations"
+
+    with TemporaryDirectory() as tmpdir:
+        path = Path(tmpdir) / "dataset.json"
+        with open(path, "w") as fh:
+            json.dump(ds.to_dict(), fh, indent=2)
+
+        ds_load = Dataset.from_path(path)
+        assert ds_load.name == ds.name
+        assert ds_load.title == ds.title
 
 
 def test_dataset_aleph_metadata(catalog_data: Dict[str, Any]):
