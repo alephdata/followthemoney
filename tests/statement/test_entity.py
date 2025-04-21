@@ -1,6 +1,5 @@
 import pytest
 from rigour.time import utc_now
-from typing import Any, Dict, List
 
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData
