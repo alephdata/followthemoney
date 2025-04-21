@@ -1,10 +1,11 @@
 import yaml
 import logging
 from functools import cached_property
-from typing import TYPE_CHECKING, Self
+from typing import TYPE_CHECKING
+from typing_extensions import Self
 from typing import Any, Dict, List, Optional, Set, Type, TypeVar
-from followthemoney.types import registry
 
+from followthemoney.types import registry
 from followthemoney.dataset.coverage import DataCoverage
 from followthemoney.dataset.publisher import DataPublisher
 from followthemoney.dataset.resource import DataResource
@@ -20,7 +21,7 @@ from followthemoney.dataset.util import (
 from followthemoney.util import PathLike
 
 if TYPE_CHECKING:
-    from nomenklatura.dataset.catalog import DataCatalog
+    from followthemoney.dataset.catalog import DataCatalog
 
 DS = TypeVar("DS", bound="Dataset")
 log = logging.getLogger(__name__)
@@ -62,7 +63,7 @@ class Dataset(Named):
         self.children: Set[Self] = set()
 
     @cached_property
-    def is_collection(self: "Dataset") -> bool:
+    def is_collection(self: Self) -> bool:
         return len(self._children) > 0
 
     @property
@@ -73,7 +74,7 @@ class Dataset(Named):
         return current
 
     @property
-    def dataset_names(self: "Dataset") -> List[str]:
+    def dataset_names(self: Self) -> List[str]:
         return [d.name for d in self.datasets]
 
     @property
@@ -82,7 +83,7 @@ class Dataset(Named):
         return set([d for d in self.datasets if not d.is_collection])
 
     @property
-    def leaf_names(self: "Dataset") -> Set[str]:
+    def leaf_names(self: Self) -> Set[str]:
         return {d.name for d in self.leaves}
 
     def __eq__(self, other: Any) -> bool:
@@ -103,7 +104,7 @@ class Dataset(Named):
     def __repr__(self) -> str:
         return f"<Dataset({self.name})>"  # pragma: no cover
 
-    def to_dict(self: "Dataset") -> Dict[str, Any]:
+    def to_dict(self: Self) -> Dict[str, Any]:
         data: Dict[str, Any] = {
             "name": self.name,
             "title": self.title,
@@ -143,7 +144,7 @@ class Dataset(Named):
     def from_path(
         cls: Type[DS], path: PathLike, catalog: Optional["DataCatalog[DS]"] = None
     ) -> DS:
-        from nomenklatura.dataset.catalog import DataCatalog
+        from followthemoney.dataset.catalog import DataCatalog
 
         with open(path, "r") as fh:
             data = yaml.safe_load(fh)
@@ -153,7 +154,7 @@ class Dataset(Named):
 
     @classmethod
     def make(cls: Type[DS], data: Dict[str, Any]) -> DS:
-        from nomenklatura.dataset.catalog import DataCatalog
+        from followthemoney.dataset.catalog import DataCatalog
 
         catalog = DataCatalog(cls, {})
         return catalog.make_dataset(data)
