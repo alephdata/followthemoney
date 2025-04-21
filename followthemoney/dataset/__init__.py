@@ -4,7 +4,7 @@ from followthemoney.dataset.resource import DataResource
 from followthemoney.dataset.publisher import DataPublisher
 from followthemoney.dataset.coverage import DataCoverage
 
-DefaultDataset = Dataset.make({"name": "default", "title": "default"})
+DefaultDataset = Dataset.make({"name": "default"})
 
 __all__ = [
     "Dataset",

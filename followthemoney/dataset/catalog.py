@@ -20,6 +20,7 @@ class DataCatalog(Generic[DS]):
         self.updated_at = type_check(registry.date, data.get("updated_at"))
 
     def add(self, dataset: "DS") -> None:
+        """Add a dataset to the catalog. If the dataset already exists, it will be updated."""
         for existing in self.datasets:
             if existing.name in dataset._children:
                 dataset.children.add(existing)
@@ -28,27 +29,33 @@ class DataCatalog(Generic[DS]):
         self.datasets.append(dataset)
 
     def make_dataset(self, data: Dict[str, Any]) -> "DS":
+        """Create a new dataset from the given data. If a dataset with the same name already
+        exists, it will be updated."""
         dataset = self.dataset_type(data)
         self.add(dataset)
         return dataset
 
     def get(self, name: str) -> Optional["DS"]:
+        """Get a dataset by name. Returns None if the dataset does not exist."""
         for ds in self.datasets:
             if ds.name == name:
                 return ds
         return None
 
     def require(self, name: str) -> "DS":
+        """Get a dataset by name. Raises MetadataException if the dataset does not exist."""
         dataset = self.get(name)
         if dataset is None:
             raise MetadataException("No such dataset: %s" % name)
         return dataset
 
     def has(self, name: str) -> bool:
+        """Check if a dataset exists in the catalog."""
         return name in self.names
 
     @property
     def names(self) -> Set[str]:
+        """Get the names of all datasets in the catalog."""
         return {d.name for d in self.datasets}
 
     def __repr__(self) -> str:  # pragma: no cover
