@@ -19,7 +19,6 @@ class DataPublisher(Named):
         self.country = type_check(registry.country, data.get("country"))
         self.official = as_bool(data.get("official", False))
         self.logo_url = type_check(registry.url, data.get("logo_url"))
-        self.issuer_id = type_check(registry.string, data.get("issuer_id"))
 
     @property
     def country_label(self) -> Optional[str]:
@@ -38,6 +37,5 @@ class DataPublisher(Named):
             "country_label": self.country_label,
             "official": self.official,
             "logo_url": self.logo_url,
-            "issuer_id": self.issuer_id,
         }
         return cleanup(data)
