@@ -5,8 +5,7 @@ from typing import Any, Dict, List
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData
 from followthemoney.dataset import Dataset
-from followthemoney.statement.entity import CompositeEntity
-from followthemoney.statement.statement import Statement
+from followthemoney.statement import CompositeEntity, Statement
 
 DAIMLER = "66ce9f62af8c7d329506da41cb7c36ba058b3d28"
 EXAMPLE = {
@@ -15,14 +14,29 @@ EXAMPLE = {
     "properties": {"name": ["John Doe"], "birthDate": ["1976"]},
 }
 
+EXAMPLE_2 = {
+    "id": "test",
+    "schema": "Person",
+    "properties": {
+        "name": ["Ralph Tester"],
+        "birthDate": ["1972-05-01"],
+        "idNumber": ["9177171", "8e839023"],
+        "website": ["https://ralphtester.me"],
+        "phone": ["+12025557612"],
+        "email": ["info@ralphtester.me"],
+        "topics": ["role.spy"],
+    },
+}
 
-def test_donations_entities(donations_json: List[Dict[str, Any]]):
+
+def test_import_entity():
     dx = Dataset.make({"name": "test", "title": "Test"})
-    for data in donations_json:
-        sp = CompositeEntity.from_data(dx, data)
-        assert sp.schema is not None
-        assert sp.id is not None
-        assert len(sp) > 0
+    sp = CompositeEntity.from_data(dx, EXAMPLE_2)
+    assert sp.schema is not None
+    assert sp.schema.name == "Person"
+    assert sp.id == "test"
+
+    assert len(list(sp.statements)) == 9
 
 
 def test_example_entity():
