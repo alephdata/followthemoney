@@ -46,4 +46,4 @@ class DataCoverage(object):
         return cleanup(data)
 
     def __repr__(self) -> str:
-        return f"<DataCoverage({self.start!r}>{self.end!r}, {self.countries!r})>"
+        return f"<DataCoverage({self.start!r}, {self.end!r}, {self.countries!r})>"
