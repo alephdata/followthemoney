@@ -1,18 +1,19 @@
-from nomenklatura.statement.statement import Statement, StatementDict
-from nomenklatura.statement.serialize import CSV, JSON, PACK, FORMATS
-from nomenklatura.statement.serialize import write_statements
-from nomenklatura.statement.serialize import read_statements, read_path_statements
-from nomenklatura.statement.db import make_statement_table
+from followthemoney.statement.statement import Statement, StatementDict
+from followthemoney.statement.serialize import CSV, JSON, PACK, FORMATS
+from followthemoney.statement.serialize import write_statements
+from followthemoney.statement.serialize import read_statements, read_path_statements
+from followthemoney.statement.entity import CE, CompositeEntity
 
 __all__ = [
     "Statement",
     "StatementDict",
+    "CE",
+    "CompositeEntity",
     "CSV",
     "JSON",
     "PACK",
     "FORMATS",
     "write_statements",
     "read_statements",
-    "make_statement_table",
     "read_path_statements",
 ]

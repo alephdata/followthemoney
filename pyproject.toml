@@ -86,6 +86,7 @@ excel = "followthemoney.cli.exports:export_excel"
 rdf = "followthemoney.cli.exports:export_rdf"
 gexf = "followthemoney.cli.exports:export_gexf"
 cypher = "followthemoney.cli.exports:export_cypher"
+statements = "followthemoney.cli.statement:entity_statements"
 
 [tool.hatch.build.targets.sdist]
 only-include = ["followthemoney", "LICENSE", "README.md"]

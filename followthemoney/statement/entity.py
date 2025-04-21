@@ -12,7 +12,7 @@ from followthemoney.util import gettext
 from followthemoney.proxy import P
 from followthemoney.types import registry
 from followthemoney.proxy import EntityProxy
-from followthemoney.dataset import DS, Dataset, DefaultDataset
+from followthemoney.dataset import Dataset, DefaultDataset
 from followthemoney.statement.statement import Statement
 from followthemoney.statement.util import BASE_ID, string_list
 from followthemoney.statement.caption import pick_caption
