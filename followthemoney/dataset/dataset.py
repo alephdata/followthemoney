@@ -32,7 +32,7 @@ class Dataset(Named):
     A dataset is a set of data, sez W3C."""
 
     def __init__(self: Self, data: Dict[str, Any]) -> None:
-        name = type_require(registry.string, data["name"])
+        name = type_require(registry.string, data.get("name"))
         super().__init__(name)
         self.title = type_require(registry.string, data.get("title", name))
         self.license = type_check(registry.url, data.get("license"))

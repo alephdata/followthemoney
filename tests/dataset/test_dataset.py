@@ -49,6 +49,20 @@ def test_company_dataset(catalog_data: Dict[str, Any]):
     assert other == ds, other
 
 
+def test_create(catalog_data: Dict[str, Any]):
+    catalog = DataCatalog(Dataset, {})
+    assert len(catalog.datasets) == 0, catalog.datasets
+
+    with pytest.raises(MetadataException):
+        catalog.make_dataset({})
+
+    ds = catalog.make_dataset({"name": "test_dataset"})
+    assert ds.name == "test_dataset"
+    assert ds.title == "test_dataset"
+    assert ds.license is None
+    assert ds.summary is None
+
+
 def test_hierarchy(catalog_data: Dict[str, Any]):
     catalog = DataCatalog(Dataset, catalog_data)
     all_datasets = catalog.require("all_datasets")
