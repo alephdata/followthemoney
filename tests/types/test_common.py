@@ -17,4 +17,10 @@ class CommonTest(unittest.TestCase):
         data = registry.name.to_dict()
         assert data.get("label") == "Name"
         assert data.get("group") == "names"
-        assert data.get("description", "").startswith("A name used for a person or company.")
+        assert data.get("description", "").startswith(
+            "A name used for a person or company."
+        )
+
+    def test_string_cleaning(self):
+        t = registry.string
+        assert t.clean("₸15,000,000").startswith("₸")
