@@ -34,7 +34,7 @@ class Dataset(Named):
     def __init__(self: Self, data: Dict[str, Any]) -> None:
         name = type_require(registry.string, data["name"])
         super().__init__(name)
-        self.title = type_require(registry.string, data["title"])
+        self.title = type_require(registry.string, data.get("title", name))
         self.license = type_check(registry.url, data.get("license"))
         self.summary = type_check(registry.string, data.get("summary"))
         self.description = type_check(registry.string, data.get("description"))
