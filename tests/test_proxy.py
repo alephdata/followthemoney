@@ -99,7 +99,7 @@ class ProxyTestCase(TestCase):
 
         proxy = model.make_entity("Person")
         value = proxy.unsafe_add(prop, "(202) 555-7612")
-        assert value == None
+        assert value is None
         assert proxy.get("phone") == []
 
     def test_pop(self):
