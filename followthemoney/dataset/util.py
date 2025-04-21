@@ -1,25 +1,19 @@
 from normality import stringify
 from prefixdate import parse as prefix_parse
-from typing import Any, Dict, Iterable, List, Optional
+from typing import Any, Dict, List, Optional
 
 from followthemoney.types import registry
 from followthemoney.types.common import PropertyType
 from followthemoney.exc import MetadataException
 
 
-def type_check(
-    type_: PropertyType, value: Any, options: Iterable[str] = []
-) -> Optional[str]:
+def type_check(type_: PropertyType, value: Any) -> Optional[str]:
     text = stringify(value)
     if text is None:
         return None
     cleaned = type_.clean_text(text)
     if cleaned is None:
         raise MetadataException("Invalid %s: %r" % (type_.name, value))
-    if options and cleaned not in options:
-        raise MetadataException(
-            "Invalid %s: %r not in %s" % (type_.name, value, ",".join(options))
-        )
     return cleaned
 
 

@@ -86,18 +86,6 @@ class Dataset(Named):
     def leaf_names(self: Self) -> Set[str]:
         return {d.name for d in self.leaves}
 
-    def __eq__(self, other: Any) -> bool:
-        try:
-            return self.name == str(other.name)
-        except AttributeError:
-            return False
-
-    def __lt__(self, other: Any) -> bool:
-        try:
-            return self.name < str(other.name)
-        except AttributeError:
-            return False
-
     def __hash__(self) -> int:
         return hash(repr(self))
 

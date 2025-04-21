@@ -2,6 +2,7 @@ from typing import List, Any, Dict
 
 from followthemoney.types import registry
 from followthemoney.dataset.util import type_check, type_require, cleanup
+from followthemoney.exc import MetadataException
 
 
 class DataCoverage(object):
@@ -24,8 +25,14 @@ class DataCoverage(object):
         self.countries: List[str] = []
         for country in data.get("countries", []):
             self.countries.append(type_require(registry.country, country))
-        freq = data.get("frequency", "unknown")
-        self.frequency = type_check(registry.string, freq, self.FREQUENCIES)
+        self.frequency = type_check(
+            registry.string, data.get("frequency", "unknown").lower()
+        )
+        if self.frequency not in self.FREQUENCIES:
+            raise MetadataException(
+                "Invalid coverage frequency: %r not in %s"
+                % (self.frequency, self.FREQUENCIES)
+            )
         self.schedule = type_check(registry.string, data.get("schedule"))
 
     def to_dict(self) -> Dict[str, Any]:
