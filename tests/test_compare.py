@@ -1,9 +1,9 @@
+import pytest
 from copy import deepcopy
-from unittest import TestCase
 
 from followthemoney import model
 from followthemoney.compare import compare, compare_names
-import pytest
+
 
 ENTITY = {
     "id": "test",
