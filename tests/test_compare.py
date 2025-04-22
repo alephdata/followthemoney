@@ -25,9 +25,9 @@ class CompareTestCase(TestCase):
             "properties": {"name": ["mr frank bananoid"]},
         }  # noqa
         right = model.get_proxy(right)
-        same_score = compare_names(left, left)
+        same_score = compare_names(left.schema, left, left)
         assert same_score > 0.5, same_score
-        lr_score = compare_names(left, right)
+        lr_score = compare_names(left.schema, left, right)
         assert lr_score > 0.1, lr_score
         assert lr_score < same_score, (lr_score, same_score)
 
