@@ -1,14 +1,15 @@
 import sys
 from datetime import datetime
-from rdflib import Graph, URIRef, Literal
+from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import OWL, DCTERMS, RDF, RDFS, XSD
 
 from followthemoney import model
 from followthemoney.property import Property
 from followthemoney.schema import Schema
 from followthemoney.types import registry
-from followthemoney.rdf import NS
 from followthemoney.util import PathLike
+
+NS = Namespace("https://schema.followthemoney.tech/#")
 
 
 class Ontology(object):

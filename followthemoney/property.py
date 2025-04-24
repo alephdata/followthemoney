@@ -1,9 +1,8 @@
 from banal import is_mapping, as_bool
-from typing import TYPE_CHECKING, cast, Any, List, Optional, TypedDict
+from typing import TYPE_CHECKING, Any, List, Optional, TypedDict
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry
-from followthemoney.rdf import NS, URIRef
 from followthemoney.util import gettext, get_entity_id
 
 if TYPE_CHECKING:
@@ -136,9 +135,6 @@ class Property:
         #: views.
         self._reverse = data.get("reverse")
         self.reverse: Optional["Property"] = None
-
-        #: RDF term for this property (i.e. the predicate URI).
-        self.uri = URIRef(cast(str, data.get("rdf", NS[self.qname])))
 
     def generate(self, model: "Model") -> None:
         """Setup method used when loading the model in order to build out the reverse
