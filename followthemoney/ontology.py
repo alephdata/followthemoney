@@ -33,37 +33,39 @@ class Ontology(object):
             self.add_class(schema)
 
     def add_class(self, schema: Schema) -> None:
-        self.graph.add((schema.uri, RDF.type, RDFS.Class))
-        self.graph.add((schema.uri, RDFS.isDefinedBy, self.uri))
+        suri = NS[schema.name]
+        self.graph.add((suri, RDF.type, RDFS.Class))
+        self.graph.add((suri, RDFS.isDefinedBy, self.uri))
         for parent in schema.extends:
-            self.graph.add((schema.uri, RDFS.subClassOf, parent.uri))
+            self.graph.add((suri, RDFS.subClassOf, parent.uri))
 
-        self.graph.add((schema.uri, RDFS.label, Literal(schema.label)))
+        self.graph.add((suri, RDFS.label, Literal(schema.label)))
         if schema.description is not None:
             description = Literal(schema.description)
-            self.graph.add((schema.uri, RDFS.comment, description))
+            self.graph.add((suri, RDFS.comment, description))
 
         for _, prop in sorted(schema.properties.items()):
             self.add_property(prop)
 
     def add_property(self, prop: Property) -> None:
-        self.graph.add((prop.uri, RDF.type, RDF.Property))
-        self.graph.add((prop.uri, RDFS.isDefinedBy, self.uri))
+        puri = NS[prop.qname]
+        self.graph.add((puri, RDF.type, RDF.Property))
+        self.graph.add((puri, RDFS.isDefinedBy, self.uri))
 
-        self.graph.add((prop.uri, RDFS.label, Literal(prop.label)))
+        self.graph.add((puri, RDFS.label, Literal(prop.label)))
         if prop.description is not None:
-            self.graph.add((prop.uri, RDFS.comment, Literal(prop.description)))
+            self.graph.add((puri, RDFS.comment, Literal(prop.description)))
 
-        self.graph.add((prop.uri, RDFS.domain, prop.schema.uri))
+        self.graph.add((puri, RDFS.domain, NS[prop.schema.name]))
         if prop.range is not None:
             range = model.get(prop.range)
             if range is not None:
                 range_uri = range.uri
-                self.graph.add((prop.uri, RDFS.range, range_uri))
+                self.graph.add((puri, RDFS.range, range_uri))
         if prop.reverse is not None:
-            self.graph.add((prop.uri, OWL.inverseOf, prop.reverse.uri))
+            self.graph.add((puri, OWL.inverseOf, prop.reverse.uri))
         if prop.type == registry.date:
-            self.graph.add((prop.uri, RDFS.range, XSD.dateTime))
+            self.graph.add((puri, RDFS.range, XSD.dateTime))
 
     def write_namespace_docs(self, path: PathLike) -> None:
         xml_fn = "%s/ftm.xml" % path
