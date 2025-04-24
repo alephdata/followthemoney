@@ -7,12 +7,9 @@ def test_parse():
     assert ibans.clean("GB29 NWBK 6016 1331 9268 19") == "GB29NWBK60161331926819"
 
 
-def test_rdf():
-    rdf = ibans.rdf("GB29NWBK60161331926819")
-    assert "iban:GB29NWBK60161331926819" in rdf
-    nid = ibans.node_id("gb29NWBK60161331926819")
-    assert nid is not None
-    assert "iban:GB" in nid
+def test_node_id():
+    nid = ibans.node_id("GB29NWBK60161331926819")
+    assert "iban:GB29NWBK60161331926819" == nid
 
 
 def test_domain_validity():

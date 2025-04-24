@@ -56,9 +56,6 @@ class DateType(PropertyType):
         prefix = os.path.commonprefix([left, right])
         return dampen(4, 10, prefix)
 
-    def node_id(self, value: str) -> str:
-        return f"date:{value}"
-
     def to_datetime(self, value: str) -> Optional[datetime]:
         return parse(value).dt
 
