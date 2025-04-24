@@ -40,6 +40,3 @@ class UrlType(PropertyType):
 
     def _specificity(self, value: str) -> float:
         return dampen(10, 120, value)
-
-    def node_id(self, value: str) -> Optional[str]:
-        return f"url:{value}"

@@ -119,9 +119,6 @@ def test_model_property():
     assert not name.hidden, name.hidden
     assert name.validate("huhu") is None
 
-    person = model.get("Person")
-    assert str(person.uri) == "http://xmlns.com/foaf/0.1/Person"
-
 
 def test_descendants():
     le = model.schemata["LegalEntity"]

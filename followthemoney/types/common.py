@@ -172,7 +172,7 @@ class PropertyType(object):
         """Return an ID suitable to identify this entity as a typed node in a
         graph representation of some FtM data. It's usually the same as the the
         RDF form."""
-        return str(self.rdf(value))
+        return f"{self.name}:{value}"
 
     def node_id_safe(self, value: Optional[str]) -> Optional[str]:
         """Wrapper for node_id to handle None values."""

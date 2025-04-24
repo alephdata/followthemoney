@@ -1,6 +1,5 @@
 from followthemoney.types import registry
 
 
-def test_rdf():
-    csum = registry.checksum.rdf("00deadbeef")
-    assert "hash:00deadbeef" in csum
+def test_node_id():
+    assert "checksum:00deadbeef" == registry.checksum.node_id("00deadbeef")

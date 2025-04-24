@@ -22,7 +22,7 @@ def test_ip_clean():
 
 
 def test_funcs():
-    assert str(ips.rdf("172.16.254.1")) == "ip:172.16.254.1"
+    assert ips.node_id("172.16.254.1") == "ip:172.16.254.1"
 
 
 def test_specificity():
