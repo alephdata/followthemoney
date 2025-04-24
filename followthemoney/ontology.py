@@ -37,7 +37,7 @@ class Ontology(object):
         self.graph.add((suri, RDF.type, RDFS.Class))
         self.graph.add((suri, RDFS.isDefinedBy, self.uri))
         for parent in schema.extends:
-            self.graph.add((suri, RDFS.subClassOf, parent.uri))
+            self.graph.add((suri, RDFS.subClassOf, NS[parent.name]))
 
         self.graph.add((suri, RDFS.label, Literal(schema.label)))
         if schema.description is not None:
@@ -60,10 +60,9 @@ class Ontology(object):
         if prop.range is not None:
             range = model.get(prop.range)
             if range is not None:
-                range_uri = range.uri
-                self.graph.add((puri, RDFS.range, range_uri))
+                self.graph.add((puri, RDFS.range, NS[range.name]))
         if prop.reverse is not None:
-            self.graph.add((puri, OWL.inverseOf, prop.reverse.uri))
+            self.graph.add((puri, OWL.inverseOf, NS[prop.reverse.qname]))
         if prop.type == registry.date:
             self.graph.add((puri, RDFS.range, XSD.dateTime))
 
