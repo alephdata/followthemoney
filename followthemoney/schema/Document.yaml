@@ -30,12 +30,10 @@ Document:
     title:
       label: "Title"
       type: string
-      rdf: http://purl.org/dc/elements/1.1/title
       caption: true
     author:
       label: "Author"
       description: "The original author, not the uploader"
-      rdf: http://purl.org/dc/elements/1.1/creator
     generator:
       label: "Generator"
       description: "The program used to generate this file"
@@ -61,11 +59,9 @@ Document:
     mimeType:
       label: "MIME type"
       type: mimetype
-      rdf: http://purl.org/dc/terms/format
     language:
       label: "Language"
       type: language
-      rdf: http://purl.org/dc/terms/language
     translatedLanguage:
       label: "The language of the translated text"
       hidden: true
@@ -78,7 +74,6 @@ Document:
       label: "Date"
       description: "If not otherwise specified"
       type: date
-      rdf: http://purl.org/dc/elements/1.1/date
     authoredAt:
       label: "Authored on"
       type: date
@@ -95,7 +90,6 @@ Document:
         name: children
         label: "Child documents"
         hidden: true
-      rdf: http://purl.org/dc/terms/isPartOf
     ancestors:
       label: "Ancestors"
       type: entity

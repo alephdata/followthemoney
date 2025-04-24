@@ -21,7 +21,6 @@ Page:
         name: pages
         label: "Pages"
         hidden: true
-      rdf: http://purl.org/dc/terms/isPartOf
     detectedLanguage:
       label: "Detected language"
       type: language

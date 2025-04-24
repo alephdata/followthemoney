@@ -68,4 +68,3 @@ Contract:
     language:
       label: "Language"
       type: language
-      rdf: http://purl.org/dc/terms/language
