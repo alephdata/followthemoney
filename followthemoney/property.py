@@ -25,7 +25,6 @@ class PropertyDict(TypedDict, total=False):
     deprecated: Optional[bool]
     maxLength: Optional[int]
     # stub: Optional[bool]
-    rdf: Optional[str]
     range: Optional[str]
     format: Optional[str]
 
@@ -65,7 +64,6 @@ class Property:
         "stub",
         "_reverse",
         "reverse",
-        "uri",
     )
 
     #: Invalid property names.

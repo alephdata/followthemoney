@@ -46,7 +46,6 @@ class SchemaSpec(TypedDict, total=False):
     edge: EdgeSpec
     temporalExtent: TemporalExtentSpec
     description: Optional[str]
-    rdf: Optional[str]
     abstract: bool
     hidden: bool
     generated: bool
@@ -89,7 +88,6 @@ class Schema:
         "_plural",
         "_description",
         "_hash",
-        "uri",
         "abstract",
         "hidden",
         "generated",
