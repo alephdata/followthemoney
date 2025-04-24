@@ -1,7 +1,6 @@
 from babel.core import Locale
 
 from followthemoney.types.common import EnumType, EnumValues
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import gettext, defer as _
 
 
@@ -90,6 +89,3 @@ class TopicType(EnumType):
 
     def _locale_names(self, locale: Locale) -> EnumValues:
         return {k: gettext(v) for (k, v) in self._TOPICS.items()}
-
-    def rdf(self, value: str) -> Identifier:
-        return URIRef(f"ftm:topic:{value}")

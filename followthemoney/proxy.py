@@ -21,7 +21,6 @@ from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.types.common import PropertyType
 from followthemoney.property import Property
-from followthemoney.rdf import SKOS, RDF, Literal, URIRef, Identifier
 from followthemoney.util import sanitize_text, gettext
 from followthemoney.util import merge_context, value_list, make_entity_id
 
@@ -30,7 +29,6 @@ if TYPE_CHECKING:
 
 log = logging.getLogger(__name__)
 P = Union[Property, str]
-Triple = Tuple[Identifier, Identifier, Identifier]
 E = TypeVar("E", bound="EntityProxy")
 
 
@@ -376,26 +374,6 @@ class EntityProxy(object):
             if len(values):
                 data[group] = values
         return data
-
-    def triples(self, qualified: bool = True) -> Generator[Triple, None, None]:
-        """Serialise the entity into a set of RDF triple statements. The
-        statements include the property values, an ``RDF#type`` definition
-        that refers to the entity schema, and a ``SKOS#prefLabel`` with the
-        entity caption."""
-        if self.id is None or self.schema is None:
-            return
-        uri = registry.entity.rdf(self.id)
-        yield (uri, RDF.type, self.schema.uri)
-        if qualified:
-            caption = self.caption
-            if caption != self.schema.label:
-                yield (uri, SKOS.prefLabel, Literal(caption))
-        for prop, value in self.itervalues():
-            value = prop.type.rdf(value)
-            if qualified:
-                yield (uri, prop.uri, value)
-            else:
-                yield (uri, URIRef(prop.name), value)
 
     @property
     def caption(self) -> str:
