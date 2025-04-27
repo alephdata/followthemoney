@@ -56,12 +56,6 @@ Company:
     mbsCode:
       label: "MBS"
       type: identifier
-    ibcRuc:
-      # TODO: Remove this. It's a column name in the ICIJ-released OffshoreLeaks datasets
-      # but seems to just mean "company number".
-      deprecated: true
-      label: "ibcRUC"
-      type: identifier
     caemCode:
       label: "COD CAEM"
       description: "(RO) What kind of activity a legal entity is allowed to develop"

@@ -1155,15 +1155,6 @@
           "qname": "Company:fssCode",
           "type": "string"
         },
-        "ibcRuc": {
-          "deprecated": true,
-          "label": "ibcRUC",
-          "matchable": true,
-          "maxLength": 64,
-          "name": "ibcRuc",
-          "qname": "Company:ibcRuc",
-          "type": "identifier"
-        },
         "ipoCode": {
           "label": "IPO",
           "maxLength": 64,
