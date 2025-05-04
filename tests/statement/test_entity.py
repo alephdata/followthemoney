@@ -4,7 +4,7 @@ from rigour.time import utc_now
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData
 from followthemoney.dataset import Dataset
-from followthemoney.statement import CompositeEntity, Statement
+from followthemoney.statement import StatementEntity, Statement
 
 DAIMLER = "66ce9f62af8c7d329506da41cb7c36ba058b3d28"
 EXAMPLE = {
@@ -30,7 +30,7 @@ EXAMPLE_2 = {
 
 def test_import_entity():
     dx = Dataset.make({"name": "test", "title": "Test"})
-    sp = CompositeEntity.from_data(dx, EXAMPLE_2)
+    sp = StatementEntity.from_data(dx, EXAMPLE_2)
     assert sp.schema is not None
     assert sp.schema.name == "Person"
     assert sp.id == "test"
@@ -40,7 +40,7 @@ def test_import_entity():
 
 def test_example_entity():
     dx = Dataset.make({"name": "test", "title": "Test"})
-    sp = CompositeEntity.from_data(dx, EXAMPLE)
+    sp = StatementEntity.from_data(dx, EXAMPLE)
     assert len(sp) == 3
     idstmt = list(sp.statements)[-1]
     assert idstmt.value == "836baf194d59a68c4092e208df30134800c732cc"
@@ -67,7 +67,7 @@ def test_example_entity():
     idstmt2 = list(so.statements)[-1]
     assert idstmt.value == idstmt2.value
 
-    sx = CompositeEntity.from_statements(dx, sp.statements)
+    sx = StatementEntity.from_statements(dx, sp.statements)
     assert sx.id == sp.id
     assert len(sx) == len(sp)
 
@@ -121,7 +121,7 @@ def test_other_entity():
         value="Jane Doe",
         dataset="test",
     )
-    sp = CompositeEntity.from_statements(dx, [smt])
+    sp = StatementEntity.from_statements(dx, [smt])
     assert sp.id == "blubb"
     assert sp.schema.name == "LegalEntity"
     assert "test" in sp.datasets

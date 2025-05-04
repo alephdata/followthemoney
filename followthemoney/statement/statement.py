@@ -10,7 +10,7 @@ from rigour.boolean import bool_text
 from followthemoney.statement.util import get_prop_type, BASE_ID
 
 if TYPE_CHECKING:
-    from followthemoney.statement.entity import CE
+    from followthemoney.statement.entity import SE
 
 
 class StatementDict(TypedDict):
@@ -206,7 +206,7 @@ class Statement(object):
     @classmethod
     def from_entity(
         cls,
-        entity: "CE",
+        entity: "SE",
         dataset: str,
         first_seen: Optional[str] = None,
         last_seen: Optional[str] = None,

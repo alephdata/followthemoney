@@ -7,7 +7,7 @@ from followthemoney.cli.cli import cli
 from followthemoney.cli.util import InPath, OutPath
 from followthemoney.cli.util import path_entities, write_entity, path_writer
 from followthemoney.dataset import Dataset, DefaultDataset
-from followthemoney.statement import Statement, CompositeEntity
+from followthemoney.statement import Statement, StatementEntity
 from followthemoney.statement import FORMATS, CSV
 from followthemoney.statement import write_statements
 from followthemoney.statement import read_path_statements
@@ -20,7 +20,7 @@ from followthemoney.statement import read_path_statements
 @click.option("-f", "--format", type=click.Choice(FORMATS), default=CSV)
 def entity_statements(path: Path, outpath: Path, dataset: str, format: str) -> None:
     def make_statements() -> Generator[Statement, None, None]:
-        for entity in path_entities(path, CompositeEntity):
+        for entity in path_entities(path, StatementEntity):
             yield from Statement.from_entity(entity, dataset=dataset)
 
     with path_writer(outpath) as outfh:
@@ -53,10 +53,10 @@ def statements_aggregate(
         statements: List[Statement] = []
         for stmt in read_path_statements(infile, format=format):
             if len(statements) and statements[0].canonical_id != stmt.canonical_id:
-                entity = CompositeEntity.from_statements(dataset_, statements)
+                entity = StatementEntity.from_statements(dataset_, statements)
                 write_entity(outfh, entity)
                 statements = []
             statements.append(stmt)
         if len(statements):
-            entity = CompositeEntity.from_statements(dataset_, statements)
+            entity = StatementEntity.from_statements(dataset_, statements)
             write_entity(outfh, entity)
