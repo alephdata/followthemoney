@@ -2204,6 +2204,17 @@
           "stub": true,
           "type": "entity"
         },
+        "provenIntervals": {
+          "label": "Derived relationships",
+          "matchable": true,
+          "maxLength": 200,
+          "name": "provenIntervals",
+          "qname": "Document:provenIntervals",
+          "range": "Interval",
+          "reverse": "proof",
+          "stub": true,
+          "type": "entity"
+        },
         "publishedAt": {
           "label": "Published on",
           "maxLength": 32,
@@ -3266,6 +3277,16 @@
           "name": "namesMentioned",
           "qname": "Interval:namesMentioned",
           "type": "name"
+        },
+        "proof": {
+          "label": "Source document",
+          "matchable": true,
+          "maxLength": 200,
+          "name": "proof",
+          "qname": "Interval:proof",
+          "range": "Document",
+          "reverse": "provenIntervals",
+          "type": "entity"
         },
         "publisher": {
           "label": "Publishing source",
