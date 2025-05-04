@@ -1,7 +1,7 @@
 from hashlib import sha1
 from collections.abc import Mapping
-from typing import Any, Dict, List, Optional, Set
-from typing import Generator, Iterable, Tuple, Type, TypeVar
+from typing import Any, Dict, List, Optional, Set, Type
+from typing import Generator, Iterable, Tuple, TypeVar
 
 from followthemoney import model
 from followthemoney.model import Model
@@ -17,10 +17,10 @@ from followthemoney.statement.statement import Statement
 from followthemoney.statement.util import BASE_ID, string_list
 from followthemoney.statement.caption import pick_caption
 
-CE = TypeVar("CE", bound="CompositeEntity")
+SE = TypeVar("SE", bound="StatementEntity")
 
 
-class CompositeEntity(EntityProxy):
+class StatementEntity(EntityProxy):
     """An entity object that can link to a set of datasets that it is sourced from."""
 
     __slots__ = (
@@ -334,14 +334,14 @@ class CompositeEntity(EntityProxy):
     def iterprops(self) -> List[Property]:
         return [self.schema.properties[p] for p in self._statements.keys()]
 
-    def clone(self: CE) -> CE:
+    def clone(self: SE) -> SE:
         data = {"schema": self.schema.name, "id": self.id}
         cloned = type(self)(self.dataset, data)
         for stmt in self._iter_stmt():
             cloned.add_statement(stmt)
         return cloned
 
-    def merge(self: CE, other: "CompositeEntity") -> CE:
+    def merge(self: SE, other: "StatementEntity") -> SE:
         for stmt in other._iter_stmt():
             if self.id is not None:
                 stmt.canonical_id = self.id
@@ -371,29 +371,32 @@ class CompositeEntity(EntityProxy):
 
     @classmethod
     def from_dict(
-        cls: Type[CE],
+        cls: Type[SE],
         model: Model,
         data: Dict[str, Any],
         cleaned: bool = True,
         default_dataset: Optional[Dataset] = None,
-    ) -> CE:
+    ) -> SE:
         # Exists only for backwards compatibility.
         dataset = default_dataset or DefaultDataset
         return cls(dataset, data, cleaned=cleaned)
 
     @classmethod
     def from_data(
-        cls: Type[CE], dataset: Dataset, data: Dict[str, Any], cleaned: bool = True
-    ) -> CE:
+        cls: Type[SE],
+        dataset: Dataset,
+        data: Dict[str, Any],
+        cleaned: bool = True,
+    ) -> SE:
         return cls(dataset, data, cleaned=cleaned)
 
     @classmethod
     def from_statements(
-        cls: Type[CE],
+        cls: Type[SE],
         dataset: Dataset,
         statements: Iterable[Statement],
-    ) -> CE:
-        obj: Optional[CE] = None
+    ) -> SE:
+        obj: Optional[SE] = None
         for stmt in statements:
             if obj is None:
                 data = {"schema": stmt.schema, "id": stmt.canonical_id}

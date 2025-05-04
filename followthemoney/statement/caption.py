@@ -4,10 +4,10 @@ from rigour.names import pick_name
 from followthemoney.types import registry
 
 if TYPE_CHECKING:
-    from followthemoney.statement.entity import CE
+    from followthemoney.statement.entity import SE
 
 
-def pick_caption(proxy: "CE") -> str:
+def pick_caption(proxy: "SE") -> str:
     for prop_ in proxy.schema.caption:
         prop = proxy.schema.properties[prop_]
         values = sorted([s.value for s in proxy.get_statements(prop)])
