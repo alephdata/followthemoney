@@ -1829,11 +1829,11 @@
           "reverse": "cryptoWallets",
           "type": "entity"
         },
-        "mangingExchange": {
+        "managingExchange": {
           "label": "Managing exchange",
           "maxLength": 1024,
-          "name": "mangingExchange",
-          "qname": "CryptoWallet:mangingExchange",
+          "name": "managingExchange",
+          "qname": "CryptoWallet:managingExchange",
           "type": "string"
         },
         "privateKey": {
@@ -6005,10 +6005,10 @@
         },
         "duration": {
           "label": "Duration",
-          "maxLength": 1024,
+          "maxLength": 250,
           "name": "duration",
           "qname": "Sanction:duration",
-          "type": "string"
+          "type": "number"
         },
         "entity": {
           "label": "Entity",
