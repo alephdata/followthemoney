@@ -49,6 +49,7 @@ Sanction:
       label: "Status"
     duration:
       label: "Duration"
+      type: number
     reason:
       label: "Reason"
       type: text
