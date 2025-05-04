@@ -57,8 +57,8 @@ class Registry(object):
         self.types: Set[PropertyType] = set()
         self.groups: Dict[str, PropertyType] = {}
         self.pivots: Set[PropertyType] = set()
-        for name in vars(self):
-            type_ = getattr(name)
+        for name in dir(self):
+            type_ = getattr(self, name)
             if not isinstance(type_, PropertyType):
                 continue
             assert type_.name == name
@@ -76,7 +76,7 @@ class Registry(object):
         # Allow transparent re-checking.
         if isinstance(name, PropertyType):
             return name
-        return self.named.get(name)
+        return getattr(self, name, None)
 
     def get_types(self, names: Iterable[str]) -> List[PropertyType]:
         """Get a list of all types by passing a set of names."""
@@ -85,7 +85,7 @@ class Registry(object):
         return [t for t in types if t is not None]
 
     def __getitem__(self, name: str) -> PropertyType:
-        return self.named[name]
+        return getattr(self, name)
 
 
 registry = Registry()
