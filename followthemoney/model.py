@@ -32,7 +32,7 @@ class Model(object):
         #: All properties defined in the model.
         self.properties: Set[Property] = set()
         self.qnames: Dict[str, Property] = {}
-        for (path, _, filenames) in os.walk(self.path):
+        for path, _, filenames in os.walk(self.path):
             for filename in filenames:
                 self._load(os.path.join(path, filename))
         self.generate()
@@ -124,6 +124,10 @@ class Model(object):
         #         return schema
         msg = "No common schema: %s and %s"
         raise InvalidData(msg % (left, right))
+
+    def matchable_schemata(self) -> Set[Schema]:
+        """Return a list of all schemata that are matchable."""
+        return set([s for s in self.schemata.values() if s.matchable])
 
     def make_entity(
         self, schema: Union[str, Schema], key_prefix: Optional[str] = None
