@@ -3,7 +3,6 @@ from rigour.mime import normalize_mimetype, parse_mimetype
 from rigour.mime import DEFAULT
 
 from followthemoney.types.common import PropertyType
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import defer as _
 
 if TYPE_CHECKING:
@@ -36,9 +35,6 @@ class MimeType(PropertyType):
         if text != DEFAULT:
             return text
         return None
-
-    def rdf(self, value: str) -> Identifier:
-        return URIRef(f"urn:mimetype:{value}")
 
     def caption(self, value: str) -> str:
         return parse_mimetype(value).label or value

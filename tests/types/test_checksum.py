@@ -1,9 +1,5 @@
-import unittest
-
 from followthemoney.types import registry
 
 
-class ChecksumTest(unittest.TestCase):
-    def test_rdf(self):
-        csum = registry.checksum.rdf("00deadbeef")
-        assert "hash:00deadbeef" in csum
+def test_node_id():
+    assert "checksum:00deadbeef" == registry.checksum.node_id("00deadbeef")

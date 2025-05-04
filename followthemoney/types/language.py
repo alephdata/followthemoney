@@ -3,7 +3,6 @@ from babel.core import Locale
 from rigour.langs import iso_639_alpha3
 
 from followthemoney.types.common import EnumType, EnumValues
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import defer as _, gettext
 from followthemoney.util import get_env_list
 
@@ -89,6 +88,7 @@ class LanguageType(EnumType):
         "mya",
         "khm",
         "cnr",
+        "ben",
     ]
     LANGUAGES = get_env_list("FTM_LANGUAGES", LANGUAGES)
     LANGUAGES = [lang.lower().strip() for lang in LANGUAGES]
@@ -119,6 +119,3 @@ class LanguageType(EnumType):
         if code not in self.LANGUAGES:
             return None
         return code
-
-    def rdf(self, value: str) -> Identifier:
-        return URIRef(f"iso-639:{value}")
