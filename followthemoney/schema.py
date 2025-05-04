@@ -312,11 +312,15 @@ class Schema:
     @property
     def source_prop(self) -> Optional[Property]:
         """The entity property to be used as an edge source."""
+        if self.edge_source is None:
+            return None
         return self.get(self.edge_source)
 
     @property
     def target_prop(self) -> Optional[Property]:
         """The entity property to be used as an edge target."""
+        if self.edge_target is None:
+            return None
         return self.get(self.edge_target)
 
     @property
