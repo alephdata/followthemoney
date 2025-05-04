@@ -28,11 +28,14 @@ UserAccount:
       label: "Service"
       type: string
     email:
-      label: "E-Mail"
+      label: E-Mail
       type: email
-    number:
-      label: "Phone Number"
+      description: "Email address"
+    phone:
+      label: Phone
       type: phone
+      description: "Phone number"
+      maxLength: 32
     username:
       label: "Username"
       type: string

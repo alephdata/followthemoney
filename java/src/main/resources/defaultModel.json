@@ -362,61 +362,6 @@
         ]
       }
     },
-    "Assessment": {
-      "caption": [
-        "name"
-      ],
-      "extends": [
-        "Thing"
-      ],
-      "featured": [
-        "name",
-        "publishDate",
-        "author"
-      ],
-      "label": "Assessment",
-      "plural": "Assessments",
-      "properties": {
-        "assessmentId": {
-          "label": "Assessment ID",
-          "maxLength": 1024,
-          "name": "assessmentId",
-          "qname": "Assessment:assessmentId",
-          "type": "string"
-        },
-        "author": {
-          "label": "Author",
-          "matchable": true,
-          "maxLength": 200,
-          "name": "author",
-          "qname": "Assessment:author",
-          "range": "LegalEntity",
-          "reverse": "authoredAssessments",
-          "type": "entity"
-        },
-        "publishDate": {
-          "label": "Date of publishing",
-          "matchable": true,
-          "maxLength": 32,
-          "name": "publishDate",
-          "qname": "Assessment:publishDate",
-          "type": "date"
-        }
-      },
-      "required": [
-        "name"
-      ],
-      "schemata": [
-        "Assessment",
-        "Thing"
-      ],
-      "temporalExtent": {
-        "end": [],
-        "start": [
-          "publishDate"
-        ]
-      }
-    },
     "Asset": {
       "caption": [
         "name"
@@ -1209,15 +1154,6 @@
           "name": "fssCode",
           "qname": "Company:fssCode",
           "type": "string"
-        },
-        "ibcRuc": {
-          "deprecated": true,
-          "label": "ibcRUC",
-          "matchable": true,
-          "maxLength": 64,
-          "name": "ibcRuc",
-          "qname": "Company:ibcRuc",
-          "type": "identifier"
         },
         "ipoCode": {
           "label": "IPO",
@@ -3438,17 +3374,6 @@
           "stub": true,
           "type": "entity"
         },
-        "authoredAssessments": {
-          "label": "Assessments authored",
-          "matchable": true,
-          "maxLength": 200,
-          "name": "authoredAssessments",
-          "qname": "LegalEntity:authoredAssessments",
-          "range": "Assessment",
-          "reverse": "author",
-          "stub": true,
-          "type": "entity"
-        },
         "bvdId": {
           "label": "Bureau van Dijk ID",
           "matchable": true,
@@ -4126,11 +4051,12 @@
       "plural": "Licenses",
       "properties": {
         "area": {
+          "description": "Spatial area of the license or concession",
           "label": "Area",
-          "maxLength": 1024,
+          "maxLength": 250,
           "name": "area",
           "qname": "License:area",
-          "type": "string"
+          "type": "number"
         },
         "commodities": {
           "label": "Commodities",
@@ -4138,6 +4064,15 @@
           "name": "commodities",
           "qname": "License:commodities",
           "type": "string"
+        },
+        "location": {
+          "description": "Location of the license or concession",
+          "label": "Location",
+          "matchable": true,
+          "maxLength": 250,
+          "name": "location",
+          "qname": "License:location",
+          "type": "address"
         },
         "reviewDate": {
           "label": "License review date",
@@ -5452,17 +5387,6 @@
           "stub": true,
           "type": "entity"
         },
-        "posts": {
-          "label": "Posts held",
-          "matchable": true,
-          "maxLength": 200,
-          "name": "posts",
-          "qname": "Person:posts",
-          "range": "Post",
-          "reverse": "holder",
-          "stub": true,
-          "type": "entity"
-        },
         "religion": {
           "label": "Religion",
           "maxLength": 1024,
@@ -5641,72 +5565,6 @@
         ],
         "start": [
           "inceptionDate"
-        ]
-      }
-    },
-    "Post": {
-      "caption": [
-        "summary",
-        "organization",
-        "role"
-      ],
-      "deprecated": true,
-      "description": "A post, role or position held by an individual within an organization or body. This describes the period for which the position is held, not the abstract concept of the post.\n",
-      "extends": [
-        "Interest"
-      ],
-      "featured": [
-        "holder",
-        "organization",
-        "role",
-        "startDate",
-        "endDate"
-      ],
-      "label": "Post",
-      "plural": "Posts",
-      "properties": {
-        "holder": {
-          "label": "Holder",
-          "matchable": true,
-          "maxLength": 200,
-          "name": "holder",
-          "qname": "Post:holder",
-          "range": "Person",
-          "reverse": "posts",
-          "type": "entity"
-        },
-        "organization": {
-          "label": "Organization",
-          "maxLength": 1024,
-          "name": "organization",
-          "qname": "Post:organization",
-          "type": "string"
-        },
-        "wikidataId": {
-          "hidden": true,
-          "label": "Wikidata ID",
-          "matchable": true,
-          "maxLength": 64,
-          "name": "wikidataId",
-          "qname": "Post:wikidataId",
-          "type": "identifier"
-        }
-      },
-      "required": [
-        "holder"
-      ],
-      "schemata": [
-        "Interest",
-        "Interval",
-        "Post"
-      ],
-      "temporalExtent": {
-        "end": [
-          "endDate"
-        ],
-        "start": [
-          "startDate",
-          "date"
         ]
       }
     },
@@ -6805,11 +6663,20 @@
           "type": "name"
         },
         "program": {
+          "description": "Regulatory program or sanctions list on which an entity is listed.",
           "label": "Program",
           "maxLength": 1024,
           "name": "program",
           "qname": "Thing:program",
           "type": "string"
+        },
+        "programId": {
+          "hidden": true,
+          "label": "Program ID",
+          "maxLength": 64,
+          "name": "programId",
+          "qname": "Thing:programId",
+          "type": "identifier"
         },
         "proof": {
           "label": "Source document",
@@ -7082,6 +6949,7 @@
       "plural": "User accounts",
       "properties": {
         "email": {
+          "description": "Email address",
           "label": "E-Mail",
           "matchable": true,
           "maxLength": 250,
@@ -7119,14 +6987,6 @@
           "stub": true,
           "type": "entity"
         },
-        "number": {
-          "label": "Phone Number",
-          "matchable": true,
-          "maxLength": 64,
-          "name": "number",
-          "qname": "UserAccount:number",
-          "type": "phone"
-        },
         "owner": {
           "label": "Owner",
           "matchable": true,
@@ -7143,6 +7003,15 @@
           "name": "password",
           "qname": "UserAccount:password",
           "type": "string"
+        },
+        "phone": {
+          "description": "Phone number",
+          "label": "Phone",
+          "matchable": true,
+          "maxLength": 32,
+          "name": "phone",
+          "qname": "UserAccount:phone",
+          "type": "phone"
         },
         "service": {
           "label": "Service",

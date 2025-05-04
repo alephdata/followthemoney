@@ -76,6 +76,15 @@ Thing:
       range: Address
     program: # Used by sanctions
       label: Program
+      description: Regulatory program or sanctions list on which an entity is listed.
+    programId:
+      # This is a unique identifier for the program issued by OpenSanctions, but
+      # could also be used for authority-issued IDs in other usage scenarios.
+      label: "Program ID"
+      type: identifier
+      maxLength: 64
+      hidden: true
+      matchable: false
     notes:
       label: Notes
       type: text
