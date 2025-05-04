@@ -312,11 +312,15 @@ class Schema:
     @property
     def source_prop(self) -> Optional[Property]:
         """The entity property to be used as an edge source."""
+        if self.edge_source is None:
+            return None
         return self.get(self.edge_source)
 
     @property
     def target_prop(self) -> Optional[Property]:
         """The entity property to be used as an edge target."""
+        if self.edge_target is None:
+            return None
         return self.get(self.edge_target)
 
     @property
@@ -403,7 +407,7 @@ class Schema:
             return None
         return self.properties.get(name)
 
-    def validate(self, data: Any) -> Optional[str]:
+    def validate(self, data: Dict[str, Any]) -> Optional[str]:
         """Validate a dictionary against the given schema.
         This will also drop keys which are not valid as properties.
         """
@@ -471,7 +475,7 @@ class Schema:
     def __eq__(self, other: Any) -> bool:
         """Compare two schemata (via hash)."""
         try:
-            return self._hash == hash(other)
+            return self._hash == other._hash  # type: ignore
         except AttributeError:
             return False
 
@@ -479,10 +483,7 @@ class Schema:
         return self.name.__lt__(other.name)
 
     def __hash__(self) -> int:
-        try:
-            return self._hash
-        except AttributeError:
-            return super().__hash__()
+        return self._hash
 
     def __repr__(self) -> str:
         return "<Schema(%r)>" % self.name

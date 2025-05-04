@@ -1,16 +1,22 @@
-import os
-
 from followthemoney.model import Model
+from followthemoney.types import registry
+from followthemoney.proxy import EntityProxy, E
+from followthemoney.statement import Statement, StatementEntity, SE
 from followthemoney.util import set_model_locale
 
 __version__ = "3.8.2"
 
-
-model_path = os.path.dirname(__file__)
-model_path = os.path.join(model_path, "schema")
-model_path = os.environ.get("FTM_MODEL_PATH", model_path)
-
 # Data model singleton
-model = Model(model_path)
+model = Model.instance()
 
-__all__ = ["model", "set_model_locale"]
+__all__ = [
+    "model",
+    "set_model_locale",
+    "Model",
+    "EntityProxy",
+    "E",
+    "registry",
+    "Statement",
+    "StatementEntity",
+    "SE",
+]

@@ -1,5 +1,5 @@
 import re
-from typing import Optional
+from typing import Optional, Tuple
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _
@@ -21,6 +21,12 @@ class NumberType(PropertyType):
 
     def node_id(self, value: str) -> None:
         return None
+
+    def parse(self, value: str) -> Tuple[Optional[str], Optional[str]]:
+        """Parse a number value into a tuple of (number, unit). The number format
+        must be NNN,NNN.DD (commas as display separators, dot for decimal separator).
+        The unit cannot start with a number, and may be separated from the number by
+        a space."""
 
     def to_number(self, value: str) -> Optional[float]:
         try:

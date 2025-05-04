@@ -25,7 +25,7 @@ ENTITY = {
 def test_base_functions():
     data = dict(ENTITY)
     data["properties"]["banana"] = ["foo"]
-    proxy = EntityProxy.from_dict(model, data)
+    proxy = EntityProxy.from_dict(data)
     assert "test" in repr(proxy), repr(proxy)
     assert hash(proxy) == hash(proxy.id)
     assert proxy.get("name") == ["Ralph Tester"]
@@ -79,7 +79,7 @@ def test_base_functions():
         proxy.add("banana", name)
 
     with raises(InvalidData):
-        EntityProxy.from_dict(model, {})
+        EntityProxy.from_dict({})
 
 
 def test_unsafe_add():
@@ -103,7 +103,7 @@ def test_unsafe_add():
 
 
 def test_pop():
-    proxy = EntityProxy.from_dict(model, ENTITY)
+    proxy = EntityProxy.from_dict(ENTITY)
     get_ids = proxy.get("idNumber")
     assert get_ids, get_ids
     ids = proxy.pop("idNumber")
@@ -118,7 +118,7 @@ def test_pop():
 
 
 def test_remove():
-    proxy = EntityProxy.from_dict(model, ENTITY)
+    proxy = EntityProxy.from_dict(ENTITY)
     assert "9177171" in proxy.get("idNumber")
     proxy.remove("idNumber", "9177171")
     assert "9177171" not in proxy.get("idNumber")
@@ -134,7 +134,7 @@ def test_remove():
 
 
 def test_has():
-    proxy = EntityProxy.from_dict(model, ENTITY)
+    proxy = EntityProxy.from_dict(ENTITY)
     assert not proxy.has("birthPlace")
     proxy.add("birthPlace", "Inferno")
     assert proxy.has("birthPlace")
@@ -155,7 +155,7 @@ def test_has():
 
 def test_total_size():
     t = registry.name
-    proxy = EntityProxy.from_dict(model, ENTITY)
+    proxy = EntityProxy.from_dict(ENTITY)
     prev_size = t.total_size
     t.total_size = len(proxy) + 10
     assert len(proxy.get("name")) == 1
@@ -178,7 +178,7 @@ def test_max_length():
 
 
 def test_len():
-    proxy = EntityProxy.from_dict(model, ENTITY)
+    proxy = EntityProxy.from_dict(ENTITY)
     proxy_len = len(proxy)
     assert proxy_len > 0, proxy_len
     proxy.add("name", "Some text")
@@ -186,7 +186,7 @@ def test_len():
 
 
 def test_dict_passthrough():
-    proxy = EntityProxy.from_dict(model, ENTITY)
+    proxy = EntityProxy.from_dict(ENTITY)
     data = proxy.to_dict()
     assert data["id"] == ENTITY["id"]
     assert data["schema"] == ENTITY["schema"]
@@ -197,7 +197,7 @@ def test_dict_passthrough():
 
 
 def test_inverted_props():
-    proxy = EntityProxy.from_dict(model, ENTITY)
+    proxy = EntityProxy.from_dict(ENTITY)
     data = proxy.get_type_inverted()
     assert "names" in data
     assert "1972-05-01" in data["dates"]
@@ -226,7 +226,7 @@ def test_make_id():
 
 
 def test_clone():
-    proxy = EntityProxy.from_dict(model, ENTITY)
+    proxy = EntityProxy.from_dict(ENTITY)
     other = proxy.clone()
     assert other == proxy
     other.id = "banana"
@@ -236,22 +236,22 @@ def test_clone():
 
 
 def test_merge():
-    proxy = EntityProxy.from_dict(model, ENTITY)
+    proxy = EntityProxy.from_dict(ENTITY)
     proxy.merge(proxy)
     other = {"schema": "LegalEntity", "properties": {"country": ["gb"]}}
-    other = EntityProxy.from_dict(model, other)
+    other = EntityProxy.from_dict(other)
     proxy.merge(other)
     assert "Ralph Tester" in proxy.names, proxy.names
     assert "gb" in proxy.countries, proxy.countries
     with raises(InvalidData):
         other = {"schema": "Vessel"}
-        other = EntityProxy.from_dict(model, other)
+        other = EntityProxy.from_dict(other)
         proxy.merge(other)
 
 
 def test_context():
     data = {"fruit": "banana", "schema": "Person"}
-    proxy = EntityProxy.from_dict(model, data)
+    proxy = EntityProxy.from_dict(data)
     res = proxy.clone().to_dict()
     assert res["fruit"] == data["fruit"], res
 
@@ -277,11 +277,10 @@ def test_temporal_start():
 
 
 def test_temporal_end():
-    proxy = EntityProxy.from_dict(model, {"schema": "Event"})
+    proxy = EntityProxy.from_dict({"schema": "Event"})
     assert proxy.temporal_start is None
 
     proxy = EntityProxy.from_dict(
-        model,
         {
             "schema": "Event",
             "properties": {
@@ -297,7 +296,7 @@ def test_temporal_end():
 
 
 def test_pickle():
-    proxy = EntityProxy.from_dict(model, dict(ENTITY))
+    proxy = EntityProxy.from_dict(dict(ENTITY))
     data = pickle.dumps(proxy)
     proxy2 = pickle.loads(data)
     assert proxy.id == proxy2.id
@@ -307,7 +306,6 @@ def test_pickle():
 
 def test_value_order():
     one = EntityProxy.from_dict(
-        model,
         {
             "id": "one",
             "schema": "Email",
@@ -318,7 +316,6 @@ def test_value_order():
     )
 
     two = EntityProxy.from_dict(
-        model,
         {
             "id": "one",
             "schema": "Email",
@@ -334,7 +331,6 @@ def test_value_order():
 
 def test_value_deduplication():
     proxy = EntityProxy.from_dict(
-        model,
         {
             "id": "acme-inc",
             "schema": "Company",
@@ -347,7 +343,6 @@ def test_value_deduplication():
     assert proxy.get("name") == ["ACME, Inc."]
 
     proxy = EntityProxy.from_dict(
-        model,
         {
             "id": "acme-inc",
             "schema": "Company",
@@ -363,7 +358,6 @@ def test_value_deduplication():
 
 def test_value_deduplication_cleaned():
     proxy = EntityProxy.from_dict(
-        model,
         {
             "id": "acme-inc",
             "schema": "Company",
