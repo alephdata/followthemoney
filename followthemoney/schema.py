@@ -15,7 +15,6 @@ from functools import lru_cache
 from followthemoney.property import Property, PropertySpec, PropertyToDict, ReverseSpec
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData, InvalidModel
-from followthemoney.rdf import URIRef, NS
 from followthemoney.util import gettext
 
 if TYPE_CHECKING:
@@ -47,7 +46,6 @@ class SchemaSpec(TypedDict, total=False):
     edge: EdgeSpec
     temporalExtent: TemporalExtentSpec
     description: Optional[str]
-    rdf: Optional[str]
     abstract: bool
     hidden: bool
     generated: bool
@@ -90,7 +88,6 @@ class Schema:
         "_plural",
         "_description",
         "_hash",
-        "uri",
         "abstract",
         "hidden",
         "generated",
@@ -124,9 +121,6 @@ class Schema:
         self._plural = data.get("plural", self.label)
         self._description = data.get("description")
         self._hash = hash("<Schema(%r)>" % name)
-
-        #: RDF identifier for this schema when it is transformed to a triple term.
-        self.uri = URIRef(cast(str, data.get("rdf", NS[name])))
 
         #: Do not store or emit entities of this type, it is used only for
         #: inheritance.

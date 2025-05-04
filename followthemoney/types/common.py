@@ -5,7 +5,6 @@ from banal import ensure_list
 from normality import stringify
 from typing import Any, Dict, Optional, Sequence, Callable, TYPE_CHECKING, TypedDict
 
-from followthemoney.rdf import Literal, Identifier
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
 
@@ -165,11 +164,6 @@ class PropertyType(object):
         be related to (e.g. using a country prefix on a phone number or IBAN)."""
         return None
 
-    def rdf(self, value: str) -> Identifier:
-        """Return an RDF term to represent the given value - either a string
-        literal, or a URI reference."""
-        return Literal(value)
-
     def pick(self, values: Sequence[str]) -> Optional[str]:
         """Pick the best value to show to the user."""
         raise NotImplementedError
@@ -178,7 +172,7 @@ class PropertyType(object):
         """Return an ID suitable to identify this entity as a typed node in a
         graph representation of some FtM data. It's usually the same as the the
         RDF form."""
-        return str(self.rdf(value))
+        return f"{self.name}:{value}"
 
     def node_id_safe(self, value: Optional[str]) -> Optional[str]:
         """Wrapper for node_id to handle None values."""
