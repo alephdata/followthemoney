@@ -127,6 +127,10 @@ class Model(object):
         msg = "No common schema: %s and %s"
         raise InvalidData(msg % (left, right))
 
+    def matchable_schemata(self) -> Set[Schema]:
+        """Return a list of all schemata that are matchable."""
+        return set([s for s in self.schemata.values() if s.matchable])
+
     def make_entity(
         self, schema: Union[str, Schema], key_prefix: Optional[str] = None
     ) -> EntityProxy:

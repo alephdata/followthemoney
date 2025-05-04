@@ -31,6 +31,11 @@ def test_model_basics():
     assert len(props), props
     assert thing.get("name") in props, props
 
+    person = model.schemata["Person"]
+    sanction = model.schemata["Sanction"]
+    assert person in model.matchable_schemata()
+    assert sanction not in model.matchable_schemata()
+
 
 def test_model_type_schemata():
     schema = model.get_type_schemata(registry.checksum)
