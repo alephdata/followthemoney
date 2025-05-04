@@ -4,8 +4,9 @@ from followthemoney import model
 
 
 IGNORE_DIVERGENT_TYPES = [
+    "number",
     "authority",
-    "duration",
+    "area",
     "subject",
     "sender",
 ]
