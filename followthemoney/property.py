@@ -94,7 +94,7 @@ class Property:
         #: This property should not be shown or mentioned in the user interface.
         self.hidden = as_bool(data.get("hidden"))
 
-        type_ = data.get("type", "string")
+        type_ = data.get("type") or "string"
         #: The data type for this property.
         self.type = registry.get(type_)
         if self.type is None:

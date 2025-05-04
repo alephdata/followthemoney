@@ -1,5 +1,5 @@
 from banal import ensure_list
-from typing import Dict, Iterable, List, Optional, Set
+from typing import Dict, Iterable, List, Optional, Set, cast
 
 from followthemoney.types.url import UrlType
 from followthemoney.types.name import NameType
@@ -70,13 +70,13 @@ class Registry(object):
             if type_.group is not None:
                 self.groups[type_.group] = type_
 
-    def get(self, name: str) -> Optional[PropertyType]:
+    def get(self, name: str) -> PropertyType:
         """For a given property type name, get its type object. This can also
         be used via getattr, e.g. ``registry.phone``."""
         # Allow transparent re-checking.
         if isinstance(name, PropertyType):
             return name
-        return getattr(self, name, None)
+        return cast(PropertyType, getattr(self, name))
 
     def get_types(self, names: Iterable[str]) -> List[PropertyType]:
         """Get a list of all types by passing a set of names."""
@@ -85,7 +85,7 @@ class Registry(object):
         return [t for t in types if t is not None]
 
     def __getitem__(self, name: str) -> PropertyType:
-        return getattr(self, name)
+        return cast(PropertyType, getattr(self, name))
 
 
 registry = Registry()
