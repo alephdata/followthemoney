@@ -1,5 +1,5 @@
 from banal import ensure_list
-from typing import Dict, Iterable, List, Optional, Set, cast
+from typing import Dict, Iterable, List, Set, cast
 
 from followthemoney.types.url import UrlType
 from followthemoney.types.name import NameType
