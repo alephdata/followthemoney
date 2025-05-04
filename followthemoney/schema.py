@@ -398,7 +398,7 @@ class Schema:
             other = other.name
         return other in self.names
 
-    def get(self, name: Optional[str]) -> Optional[Property]:
+    def get(self, name: str) -> Optional[Property]:
         """Retrieve a property defined for this schema by its name."""
         if name is None:
             return None

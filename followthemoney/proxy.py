@@ -1,19 +1,6 @@
 import logging
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    Dict,
-    Generator,
-    List,
-    Optional,
-    Set,
-    Tuple,
-    Union,
-    Type,
-    TypeVar,
-    cast,
-)
-import warnings
+from typing import TYPE_CHECKING, cast, Any
+from typing import Dict, Generator, List, Optional, Set, Tuple, Union, Type, TypeVar
 from itertools import product
 from banal import ensure_dict
 
@@ -449,26 +436,20 @@ class EntityProxy(object):
         return self.caption
 
     def __repr__(self) -> str:
-        return "<E(%r,%r)>" % (self.id, str(self))
+        return "<E(%r,%s,%r)>" % (self.id, self.schema.name, str(self))
 
     def __len__(self) -> int:
         return self._size
 
     def __hash__(self) -> int:
         if not self.id:
-            warnings.warn(
-                "Hashing an EntityProxy without an ID results in undefined behaviour",
-                RuntimeWarning,
-            )
+            raise RuntimeError("Cannot hash entity without an ID")
         return hash(self.id)
 
     def __eq__(self, other: Any) -> bool:
         try:
             if self.id is None or other.id is None:
-                warnings.warn(
-                    "Comparing EntityProxys without IDs results in undefined behaviour",
-                    RuntimeWarning,
-                )
+                raise RuntimeError("Cannot compare entities without IDs.")
             return bool(self.id == other.id)
         except AttributeError:
             return False
