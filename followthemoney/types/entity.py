@@ -65,6 +65,3 @@ class EntityType(PropertyType):
         if self.REGEX.match(text) is not None:
             return text
         return None
-
-    def caption(self, value: str) -> None:
-        return None
