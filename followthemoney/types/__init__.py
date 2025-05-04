@@ -79,7 +79,7 @@ class Registry(object):
         return cast(PropertyType, getattr(self, name))
 
     def get_types(self, names: Iterable[str]) -> List[PropertyType]:
-        """Get a list of all types by passing a set of names."""
+        """Get a list of all property type objects linked to a set of names."""
         names = ensure_list(names)
         types = [self.get(n) for n in names]
         return [t for t in types if t is not None]

@@ -163,6 +163,10 @@ class Property:
             return 0.0
         return self.type.specificity(value)
 
+    def caption(self, value: str) -> str:
+        """Return a user-friendly caption for the given value."""
+        return self.type.caption(value, format=self.format)
+
     def validate(self, data: List[Any]) -> Optional[str]:
         """Validate that the data should be stored.
 

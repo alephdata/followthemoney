@@ -50,5 +50,5 @@ class IbanType(PropertyType):
     def node_id(self, value: str) -> str:
         return f"iban:{value.upper()}"
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: str, format: Optional[str] = None) -> str:
         return IBAN.format(value)

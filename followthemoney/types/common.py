@@ -180,7 +180,7 @@ class PropertyType(object):
             return None
         return self.node_id(value)
 
-    def caption(self, value: str) -> Optional[str]:
+    def caption(self, value: str, format: Optional[str] = None) -> str:
         """Return a label for the given property value. This is often the same as the
         value, but for types like countries or languages, it would return the label,
         while other values like phone numbers can be formatted to be nicer to read."""
@@ -259,7 +259,7 @@ class EnumType(PropertyType):
             return None
         return code
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: str, format: Optional[str] = None) -> str:
         """Given a code value, return the label that should be shown to a user."""
         return self.names.get(value, value)
 

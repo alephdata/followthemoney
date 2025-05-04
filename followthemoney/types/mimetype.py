@@ -36,5 +36,5 @@ class MimeType(PropertyType):
             return text
         return None
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: str, format: Optional[str] = None) -> str:
         return parse_mimetype(value).label or value

@@ -1,14 +1,5 @@
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    Dict,
-    List,
-    Optional,
-    Set,
-    TypedDict,
-    Union,
-    cast,
-)
+from typing import TYPE_CHECKING, Any, cast
+from typing import Dict, List, Optional, Set, TypedDict, Union
 from banal import ensure_list, ensure_dict, as_bool
 from functools import lru_cache
 
@@ -311,14 +302,16 @@ class Schema:
 
     @property
     def source_prop(self) -> Optional[Property]:
-        """The entity property to be used as an edge source."""
+        """The entity property to be used as an edge source when the schema is
+        considered as a relationship."""
         if self.edge_source is None:
             return None
         return self.get(self.edge_source)
 
     @property
     def target_prop(self) -> Optional[Property]:
-        """The entity property to be used as an edge target."""
+        """The entity property to be used as an edge target when the schema is transformed
+        into a relationship."""
         if self.edge_target is None:
             return None
         return self.get(self.edge_target)
