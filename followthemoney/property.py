@@ -95,11 +95,10 @@ class Property:
         self.hidden = as_bool(data.get("hidden"))
 
         type_ = data.get("type", "string")
-        if type_ is None or type_ not in registry.named:
-            raise InvalidModel("Invalid type: %s" % type_)
-
         #: The data type for this property.
-        self.type = registry[type_]
+        self.type = registry.get(type_)
+        if self.type is None:
+            raise InvalidModel("Invalid type: %s" % type_)
 
         #: Whether this property should be used for matching and cross-referencing.
         _matchable = data.get("matchable")

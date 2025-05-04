@@ -1,4 +1,6 @@
-from followthemoney.types.registry import Registry
+from banal import ensure_list
+from typing import Dict, Iterable, List, Optional, Set
+
 from followthemoney.types.url import UrlType
 from followthemoney.types.name import NameType
 from followthemoney.types.email import EmailType
@@ -22,27 +24,70 @@ from followthemoney.types.string import StringType
 from followthemoney.types.number import NumberType
 from followthemoney.types.common import PropertyType
 
+
+class Registry(object):
+    """This registry keeps the processing helpers for all property types in the system. The
+    registry can be used to get a type, which can itself then clean, validate or format values
+    of that type."""
+
+    url = UrlType()
+    name = NameType()
+    email = EmailType()
+    ip = IpType()
+    address = AddressType()
+    date = DateType()
+    phone = PhoneType()
+    country = CountryType()
+    language = LanguageType()
+    mimetype = MimeType()
+    checksum = ChecksumType()
+    identifier = IdentifierType()
+    iban = IbanType()  # TODO: remove
+    entity = EntityType()
+    topic = TopicType()
+    gender = GenderType()
+    json = JsonType()
+    text = TextType()
+    html = HTMLType()
+    string = StringType()
+    number = NumberType()
+
+    def __init__(self) -> None:
+        self.matchable: Set[PropertyType] = set()
+        self.types: Set[PropertyType] = set()
+        self.groups: Dict[str, PropertyType] = {}
+        self.pivots: Set[PropertyType] = set()
+        for name in vars(self):
+            type_ = getattr(name)
+            if not isinstance(type_, PropertyType):
+                continue
+            assert type_.name == name
+            self.types.add(type_)
+            if type_.matchable:
+                self.matchable.add(type_)
+            if type_.pivot:
+                self.pivots.add(type_)
+            if type_.group is not None:
+                self.groups[type_.group] = type_
+
+    def get(self, name: str) -> Optional[PropertyType]:
+        """For a given property type name, get its type object. This can also
+        be used via getattr, e.g. ``registry.phone``."""
+        # Allow transparent re-checking.
+        if isinstance(name, PropertyType):
+            return name
+        return self.named.get(name)
+
+    def get_types(self, names: Iterable[str]) -> List[PropertyType]:
+        """Get a list of all types by passing a set of names."""
+        names = ensure_list(names)
+        types = [self.get(n) for n in names]
+        return [t for t in types if t is not None]
+
+    def __getitem__(self, name: str) -> PropertyType:
+        return self.named[name]
+
+
 registry = Registry()
-registry.add(UrlType)
-registry.add(NameType)
-registry.add(EmailType)
-registry.add(IpType)
-registry.add(AddressType)
-registry.add(DateType)
-registry.add(PhoneType)
-registry.add(CountryType)
-registry.add(LanguageType)
-registry.add(MimeType)
-registry.add(ChecksumType)
-registry.add(IdentifierType)
-registry.add(IbanType)  # TODO: remove
-registry.add(EntityType)
-registry.add(TopicType)
-registry.add(GenderType)
-registry.add(JsonType)
-registry.add(TextType)
-registry.add(HTMLType)
-registry.add(StringType)
-registry.add(NumberType)
 
 __all__ = ["PropertyType", "registry"]
