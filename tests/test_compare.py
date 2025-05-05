@@ -42,35 +42,35 @@ def test_compare_countries():
     no_country = model.get_proxy(
         {"schema": "Person", "properties": {"name": ["Frank Banana"]}}
     )
-    baseline = compare(model, left, no_country)
-    assert compare(model, left, left) > baseline
+    baseline = compare(left, no_country)
+    assert compare(left, left) > baseline
 
 
 def test_compare_basic():
     entity = model.get_proxy(ENTITY)
-    best_score = compare(model, entity, entity)
+    best_score = compare(entity, entity)
     assert best_score > 0.5, best_score
     comp = model.get_proxy({"schema": "RealEstate"})
-    assert compare(model, entity, comp) == pytest.approx(0)
-    assert compare(model, comp, comp) == pytest.approx(0)
+    assert compare(entity, comp) == pytest.approx(0)
+    assert compare(comp, comp) == pytest.approx(0)
 
     comp = model.get_proxy({"schema": "Person"})
-    assert compare(model, entity, comp) == pytest.approx(0)
+    assert compare(entity, comp) == pytest.approx(0)
 
     comp = model.get_proxy({"schema": "LegalEntity"})
-    assert compare(model, entity, comp) == pytest.approx(0)
+    assert compare(entity, comp) == pytest.approx(0)
 
 
 def test_compare_quality():
     entity = model.get_proxy(ENTITY)
-    best_score = compare(model, entity, entity)
+    best_score = compare(entity, entity)
     reduced = deepcopy(ENTITY)
     reduced["properties"].pop("birthDate")
     reduced["properties"].pop("idNumber")
     reduced_proxy = model.get_proxy(reduced)
-    assert compare(model, entity, reduced_proxy) < best_score
+    assert compare(entity, reduced_proxy) < best_score
 
     reduced = deepcopy(ENTITY)
     reduced["properties"]["name"] = ["Frank Banana"]
     reduced_proxy = model.get_proxy(reduced)
-    assert compare(model, entity, reduced_proxy) < best_score
+    assert compare(entity, reduced_proxy) < best_score

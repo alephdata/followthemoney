@@ -56,7 +56,7 @@ def import_vis(infile: Path, outfile: Path) -> None:
             else:
                 raise click.ClickException("No entities found in VIS file")
             for entity_data in ensure_list(entities):
-                entity = EntityProxy.from_dict(model, entity_data)
+                entity = EntityProxy.from_dict(entity_data)
                 write_entity(outfh, entity)
 
 
