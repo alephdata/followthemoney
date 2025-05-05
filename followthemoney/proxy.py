@@ -11,6 +11,8 @@ from followthemoney.property import Property
 from followthemoney.value import string_list, Values
 from followthemoney.util import sanitize_text, gettext
 from followthemoney.util import merge_context, make_entity_id
+from followthemoney.model import Model
+from followthemoney.schema import Schema
 
 if TYPE_CHECKING:
     from followthemoney.model import Model
@@ -31,7 +33,7 @@ class EntityProxy(object):
 
     def __init__(
         self,
-        model: "Model",
+        schema: Schema,
         data: Dict[str, Any],
         key_prefix: Optional[str] = None,
         cleaned: bool = True,
@@ -43,9 +45,6 @@ class EntityProxy(object):
 
         #: The schema definition for this entity, which implies the properties
         #: That can be set on it.
-        schema = model.get(data.pop("schema", None))
-        if schema is None:
-            raise InvalidData(gettext("No schema for entity."))
         self.schema = schema
 
         #: When using :meth:`~make_id` to generate a natural key for this entity,
@@ -412,7 +411,7 @@ class EntityProxy(object):
 
     def clone(self: E) -> E:
         """Make a deep copy of the current entity proxy."""
-        return self.__class__.from_dict(self.schema.model, self.to_dict())
+        return self.__class__.from_dict(self.to_dict())
 
     def merge(self: E, other: E) -> E:
         """Merge another entity proxy into this one. This will try and find
@@ -430,6 +429,18 @@ class EntityProxy(object):
         for prop, values in other._properties.items():
             self.add(prop, values, cleaned=True, quiet=True)
         return self
+
+    def __getstate__(self) -> Dict[str, Any]:
+        data = {slot: getattr(self, slot) for slot in self.__slots__}
+        data["schema"] = self.schema.name
+        return data
+
+    def __setstate__(self, data: Dict[str, Any]) -> None:
+        for slot in self.__slots__:
+            value = data.get(slot)
+            if slot == "schema":
+                value = Model.instance()[data["schema"]]
+            setattr(self, slot, value)
 
     def __str__(self) -> str:
         return self.caption
@@ -456,11 +467,13 @@ class EntityProxy(object):
     @classmethod
     def from_dict(
         cls: Type[E],
-        model: "Model",
         data: Dict[str, Any],
         cleaned: bool = True,
     ) -> E:
         """Instantiate a proxy based on the given model and serialised dictionary.
 
         Use :meth:`followthemoney.model.Model.get_proxy` instead."""
-        return cls(model, data, cleaned=cleaned)
+        schema = Model.instance().get(data.get("schema", ""))
+        if schema is None:
+            raise InvalidData(gettext("No schema for entity."))
+        return cls(schema, data, cleaned=cleaned)

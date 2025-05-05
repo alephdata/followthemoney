@@ -5,7 +5,6 @@ from normality import normalize
 from rigour.names import tokenize_name, remove_person_prefixes
 from rigour.names import replace_org_types_compare
 from followthemoney.exc import InvalidData
-from followthemoney.model import Model
 from followthemoney.schema import Schema
 from followthemoney.types import registry
 from followthemoney.proxy import EntityProxy
@@ -29,10 +28,10 @@ COMPARE_WEIGHTS: Weights = {
 }
 
 
-def compare_scores(model: Model, left: EntityProxy, right: EntityProxy) -> Scores:
+def compare_scores(left: EntityProxy, right: EntityProxy) -> Scores:
     """Compare two entities and return a match score for each property."""
     try:
-        common = model.common_schema(left.schema, right.schema)
+        common = left.schema.model.common_schema(left.schema, right.schema)
     except InvalidData:
         return {}
     scores: Scores = {}
@@ -73,13 +72,12 @@ def _compare(scores: Scores, weights: Weights, n_std: int = 1) -> float:
 
 
 def compare(
-    model: Model,
     left: EntityProxy,
     right: EntityProxy,
     weights: Weights = COMPARE_WEIGHTS,
 ) -> float:
     """Compare two entities and return a match score."""
-    scores = compare_scores(model, left, right)
+    scores = compare_scores(left, right)
     return _compare(scores, weights)
 
 

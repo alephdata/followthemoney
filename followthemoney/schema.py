@@ -401,7 +401,7 @@ class Schema:
             return None
         return self.properties.get(name)
 
-    def validate(self, data: Any) -> Optional[str]:
+    def validate(self, data: Dict[str, Any]) -> Optional[str]:
         """Validate a dictionary against the given schema.
         This will also drop keys which are not valid as properties.
         """
@@ -469,7 +469,7 @@ class Schema:
     def __eq__(self, other: Any) -> bool:
         """Compare two schemata (via hash)."""
         try:
-            return self._hash == hash(other)
+            return self._hash == other._hash  # type: ignore
         except AttributeError:
             return False
 
@@ -477,10 +477,7 @@ class Schema:
         return self.name.__lt__(other.name)
 
     def __hash__(self) -> int:
-        try:
-            return self._hash
-        except AttributeError:
-            return super().__hash__()
+        return self._hash
 
     def __repr__(self) -> str:
         return "<Schema(%r)>" % self.name

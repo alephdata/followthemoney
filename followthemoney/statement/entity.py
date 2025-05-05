@@ -3,7 +3,6 @@ from collections.abc import Mapping
 from typing import Any, Dict, List, Optional, Set, Type
 from typing import Generator, Iterable, Tuple, TypeVar
 
-from followthemoney import model
 from followthemoney.model import Model
 from followthemoney.exc import InvalidData
 from followthemoney.types.common import PropertyType
@@ -36,7 +35,7 @@ class StatementEntity(EntityProxy):
 
     def __init__(self, dataset: Dataset, data: Dict[str, Any], cleaned: bool = True):
         data = dict(data or {})
-        schema = model.get(data.pop("schema", None))
+        schema = Model.instance().get(data.pop("schema", None))
         if schema is None:
             raise InvalidData(gettext("No schema for entity."))
         self.schema = schema
@@ -151,9 +150,10 @@ class StatementEntity(EntityProxy):
         return self._caption
 
     def add_statement(self, stmt: Statement) -> None:
-        if not self.schema.is_a(stmt.schema):
+        schema = self.schema
+        if not schema.is_a(stmt.schema):
             try:
-                self.schema = model.common_schema(self.schema, stmt.schema)
+                self.schema = schema.model.common_schema(schema, stmt.schema)
             except InvalidData as exc:
                 raise InvalidData(f"{self.id}: {exc}") from exc
 
@@ -373,7 +373,6 @@ class StatementEntity(EntityProxy):
     @classmethod
     def from_dict(
         cls: Type[SE],
-        model: Model,
         data: Dict[str, Any],
         cleaned: bool = True,
         default_dataset: Optional[Dataset] = None,
