@@ -1,4 +1,5 @@
 from followthemoney.types import registry
+from followthemoney import model
 
 identifiers = registry.identifier
 
@@ -28,6 +29,15 @@ def test_iban_parse():
     val = "GB29 NWBK 6016 1331 9268 19"
     assert identifiers.clean(val) == val
     assert identifiers.clean(val, format="iban") == "GB29NWBK60161331926819"
+
+
+def test_imo_format():
+    assert identifiers.clean_text("IMO1234567") == "IMO1234567"
+    assert identifiers.caption("IMO1234567", format="imo") == "IMO1234567"
+
+    vessel = model.get("Vessel")
+    prop = vessel.get("imoNumber")
+    assert prop.caption("IMO 1234567") == "IMO1234567"
 
 
 def test_specificity():

@@ -8,10 +8,14 @@ from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.types.common import PropertyType
 from followthemoney.property import Property
+from followthemoney.value import string_list, Values
 from followthemoney.util import sanitize_text, gettext
-from followthemoney.util import merge_context, value_list, make_entity_id
+from followthemoney.util import merge_context, make_entity_id
 from followthemoney.model import Model
 from followthemoney.schema import Schema
+
+if TYPE_CHECKING:
+    from followthemoney.model import Model
 
 log = logging.getLogger(__name__)
 P = Union[Property, str]
@@ -143,7 +147,7 @@ class EntityProxy(object):
     def add(
         self,
         prop: P,
-        values: Any,
+        values: Values,
         cleaned: bool = False,
         quiet: bool = False,
         fuzzy: bool = False,
@@ -173,11 +177,9 @@ class EntityProxy(object):
             msg = gettext("Stub property (%s): %s")
             raise InvalidData(msg % (self.schema, prop))
 
-        for value in value_list(values):
-            if not cleaned:
-                format = format or prop.format
-                value = prop.type.clean(value, proxy=self, fuzzy=fuzzy, format=format)
-            self.unsafe_add(prop, value, cleaned=True)
+        value: Optional[str] = None
+        for value in string_list(values, sanitize=not cleaned):
+            self.unsafe_add(prop, value, cleaned=cleaned, fuzzy=fuzzy, format=format)
         return None
 
     def unsafe_add(
@@ -217,7 +219,7 @@ class EntityProxy(object):
     def set(
         self,
         prop: P,
-        values: Any,
+        values: Values,
         cleaned: bool = False,
         quiet: bool = False,
         fuzzy: bool = False,

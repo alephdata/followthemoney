@@ -99,7 +99,7 @@ class PhoneType(PropertyType):
     def node_id(self, value: str) -> Optional[str]:
         return f"tel:{value}"
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: str, format: Optional[str] = None) -> str:
         try:
             number = parse_number(value)
             formatted = format_number(number, PhoneNumberFormat.INTERNATIONAL)

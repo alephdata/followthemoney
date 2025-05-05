@@ -5,6 +5,7 @@ This module provides an abstract data object that represents a property
 graph. This is used by the exporter modules to convert data
 to a specific output format, like Cypher or NetworkX.
 """
+
 import logging
 from typing import Any, Dict, Generator, Iterable, List, Optional
 
@@ -193,8 +194,7 @@ class Graph(object):
     """
 
     def __init__(self, edge_types: Iterable[PropertyType] = registry.pivots) -> None:
-        types = registry.get_types(edge_types)
-        self.edge_types = [t for t in types if t.matchable]
+        self.edge_types = [t for t in edge_types if t.matchable]
         self.flush()
 
     def flush(self) -> None:
@@ -260,7 +260,7 @@ class Graph(object):
             return
         self.queue(proxy.id, proxy)
         if proxy.schema.edge:
-            for (source, target) in proxy.edgepairs():
+            for source, target in proxy.edgepairs():
                 self._add_edge(proxy, source, target)
         else:
             self._add_node(proxy)

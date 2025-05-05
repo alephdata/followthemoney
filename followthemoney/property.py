@@ -94,12 +94,11 @@ class Property:
         #: This property should not be shown or mentioned in the user interface.
         self.hidden = as_bool(data.get("hidden"))
 
-        type_ = data.get("type", "string")
-        if type_ is None or type_ not in registry.named:
-            raise InvalidModel("Invalid type: %s" % type_)
-
+        type_ = data.get("type") or "string"
         #: The data type for this property.
-        self.type = registry[type_]
+        self.type = registry.get(type_)
+        if self.type is None:
+            raise InvalidModel("Invalid type: %s" % type_)
 
         #: Whether this property should be used for matching and cross-referencing.
         _matchable = data.get("matchable")
@@ -163,6 +162,10 @@ class Property:
         if not self.matchable:
             return 0.0
         return self.type.specificity(value)
+
+    def caption(self, value: str) -> str:
+        """Return a user-friendly caption for the given value."""
+        return self.type.caption(value, format=self.format)
 
     def validate(self, data: List[Any]) -> Optional[str]:
         """Validate that the data should be stored.

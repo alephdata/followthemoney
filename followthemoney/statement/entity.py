@@ -10,10 +10,11 @@ from followthemoney.property import Property
 from followthemoney.util import gettext
 from followthemoney.proxy import P
 from followthemoney.types import registry
+from followthemoney.value import string_list, Values
 from followthemoney.proxy import EntityProxy
 from followthemoney.dataset import Dataset, DefaultDataset
 from followthemoney.statement.statement import Statement
-from followthemoney.statement.util import BASE_ID, string_list
+from followthemoney.statement.util import BASE_ID
 from followthemoney.statement.caption import pick_caption
 
 SE = TypeVar("SE", bound="StatementEntity")
@@ -184,7 +185,7 @@ class StatementEntity(EntityProxy):
     def set(
         self,
         prop: P,
-        values: Any,
+        values: Values,
         cleaned: bool = False,
         quiet: bool = False,
         fuzzy: bool = False,
@@ -210,7 +211,7 @@ class StatementEntity(EntityProxy):
     def add(
         self,
         prop: P,
-        values: Any,
+        values: Values,
         cleaned: bool = False,
         quiet: bool = False,
         fuzzy: bool = False,
@@ -222,7 +223,7 @@ class StatementEntity(EntityProxy):
         if prop_name is None:
             return None
         prop = self.schema.properties[prop_name]
-        for value in string_list(values):
+        for value in string_list(values, sanitize=not cleaned):
             self.unsafe_add(
                 prop,
                 value,

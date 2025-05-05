@@ -2,9 +2,8 @@ import math
 from itertools import islice, product
 from typing import Dict, Generator, Iterable, List, Optional
 from normality import normalize
-from rigour.names import tokenize_name
-from rigour.names.person import remove_person_prefixes
-from rigour.names.org_types import replace_org_types_compare
+from rigour.names import tokenize_name, remove_person_prefixes
+from rigour.names import replace_org_types_compare
 from followthemoney.exc import InvalidData
 from followthemoney.schema import Schema
 from followthemoney.types import registry

@@ -1,5 +1,6 @@
 import pickle
 from pytest import raises
+from datetime import datetime
 from followthemoney.exc import InvalidData
 
 from followthemoney import model
@@ -44,10 +45,31 @@ def test_base_functions():
     assert len(proxy.get("name")) == 2
     proxy.add("name", [""])
     assert len(proxy.get("name")) == 2
-    proxy.add("name", {"name": "banana"})
-    assert len(proxy.get("name")) == 3, proxy.get("name")
+
+    # 2025-05-05 - this isn't supported any more and I really cannot tell why
+    # it was ever supported. But it may cause issues in the downstream code.
+    # proxy.add("name", {"name": "banana"})
+    # assert len(proxy.get("name")) == 3, proxy.get("name")
     assert name in proxy.get("name")
     assert name in proxy.names, proxy.names
+
+    proxy.add("status", True)
+    assert proxy.get("status") == ["true"]
+
+    proxy.add("height", 179)
+    assert proxy.get("height") == ["179"]
+
+    proxy.add("height", 179.666666)
+    assert "179.67" in proxy.get("height")
+
+    proxy.add("parent", {"id": "banana"})
+    assert "banana" in proxy.get("parent")
+
+    proxy.add("deathDate", datetime(2025, 5, 5).date())
+    assert proxy.get("deathDate") == ["2025-05-05"]
+
+    proxy.set("deathDate", datetime(2025, 5, 5))
+    assert proxy.get("deathDate") == ["2025-05-05T00:00:00"]
 
     with raises(InvalidData):
         proxy.add("banana", "yellow")
