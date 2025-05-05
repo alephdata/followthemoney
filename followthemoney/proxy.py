@@ -1,5 +1,5 @@
 import logging
-from typing import cast, Any
+from typing import TYPE_CHECKING, cast, Any
 from typing import Dict, Generator, List, Optional, Set, Tuple, Union, Type, TypeVar
 from itertools import product
 from banal import ensure_dict
