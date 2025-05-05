@@ -5,6 +5,7 @@ from banal import ensure_list
 from normality import stringify
 from typing import Any, Dict, Optional, Sequence, Callable, TYPE_CHECKING, TypedDict
 
+from followthemoney.value import Value
 from followthemoney.util import get_locale
 from followthemoney.util import gettext, sanitize_text
 
@@ -86,7 +87,7 @@ class PropertyType(object):
 
     def clean(
         self,
-        raw: Any,
+        raw: Value,
         fuzzy: bool = False,
         format: Optional[str] = None,
         proxy: Optional["EntityProxy"] = None,
