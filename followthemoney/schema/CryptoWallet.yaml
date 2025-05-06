@@ -31,7 +31,7 @@ CryptoWallet:
       type: date
     currencySymbol:
       label: Currency short code
-    mangingExchange:
+    managingExchange:
       label: Managing exchange
     holder:
       label: Wallet holder

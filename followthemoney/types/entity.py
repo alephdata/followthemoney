@@ -2,7 +2,7 @@ import re
 from typing import Any, Optional, TYPE_CHECKING
 
 from followthemoney.types.common import PropertyType
-from followthemoney.rdf import URIRef, Identifier
+from followthemoney.value import Value
 from followthemoney.util import ENTITY_ID_LEN, get_entity_id, sanitize_text
 from followthemoney.util import gettext, defer as _
 from followthemoney.exc import InvalidData
@@ -31,7 +31,7 @@ class EntityType(PropertyType):
     max_length = ENTITY_ID_LEN
 
     def validate(
-        self, value: str, fuzzy: bool = False, format: Optional[str] = None
+        self, value: Value, fuzzy: bool = False, format: Optional[str] = None
     ) -> bool:
         text = sanitize_text(value)
         if text is None:
@@ -65,10 +65,4 @@ class EntityType(PropertyType):
             raise InvalidData(msg % (proxy.schema, text))
         if self.REGEX.match(text) is not None:
             return text
-        return None
-
-    def rdf(self, value: str) -> Identifier:
-        return URIRef(f"entity:{value}")
-
-    def caption(self, value: str) -> None:
         return None

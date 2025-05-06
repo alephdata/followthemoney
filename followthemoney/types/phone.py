@@ -5,7 +5,6 @@ from phonenumbers import PhoneNumber, PhoneNumberFormat
 from phonenumbers.phonenumberutil import region_code_for_number, NumberParseException
 
 from followthemoney.types.common import PropertyType
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import defer as _
 from followthemoney.util import dampen
 
@@ -97,16 +96,10 @@ class PhoneType(PropertyType):
         # TODO: insert artificial intelligence here.
         return dampen(7, 11, value)
 
-    def rdf(self, value: str) -> Identifier:
-        node_id = self.node_id(value)
-        if node_id is not None:
-            return URIRef(node_id)
-        raise ValueError("Invalid phone number for serialisation: %s" % value)
-
     def node_id(self, value: str) -> Optional[str]:
         return f"tel:{value}"
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: str, format: Optional[str] = None) -> str:
         try:
             number = parse_number(value)
             formatted = format_number(number, PhoneNumberFormat.INTERNATIONAL)

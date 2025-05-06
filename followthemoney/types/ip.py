@@ -2,7 +2,6 @@ from typing import Optional, TYPE_CHECKING
 from ipaddress import ip_address
 
 from followthemoney.types.common import PropertyType
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import defer as _
 
 if TYPE_CHECKING:
@@ -45,6 +44,3 @@ class IpType(PropertyType):
             return str(ip_address(text))
         except ValueError:
             return None
-
-    def rdf(self, value: str) -> Identifier:
-        return URIRef(f"ip:{value}")

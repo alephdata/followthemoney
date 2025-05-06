@@ -12,4 +12,4 @@ def test_topic_country_codes():
     assert topics.validate("DEU") is False
     assert topics.validate("") is False
     assert topics.validate(None) is False
-    assert "ftm:topic:role.pep" in topics.rdf("role.pep")
+    assert "topic:role.pep" in topics.node_id("role.pep")

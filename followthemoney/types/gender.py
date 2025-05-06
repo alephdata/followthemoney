@@ -2,7 +2,6 @@ from typing import Optional, TYPE_CHECKING
 from babel.core import Locale
 
 from followthemoney.types.common import EnumType, EnumValues
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import gettext, defer as _
 
 if TYPE_CHECKING:
@@ -61,6 +60,3 @@ class GenderType(EnumType):
         if code not in self.codes:
             return None
         return code
-
-    def rdf(self, value: str) -> Identifier:
-        return URIRef(f"gender:{value}")

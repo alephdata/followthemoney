@@ -2,7 +2,6 @@ from typing import Optional, TYPE_CHECKING
 from rigour.ids import IBAN
 
 from followthemoney.types.common import PropertyType
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import sanitize_text, defer as _
 
 if TYPE_CHECKING:
@@ -48,11 +47,8 @@ class IbanType(PropertyType):
     def country_hint(self, value: str) -> str:
         return value[:2].lower()
 
-    def rdf(self, value: str) -> Identifier:
-        return URIRef(self.node_id(value))
-
     def node_id(self, value: str) -> str:
         return f"iban:{value.upper()}"
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: str, format: Optional[str] = None) -> str:
         return IBAN.format(value)

@@ -10,4 +10,4 @@ def test_parse_mimetypes():
 
 
 def test_base_mimetypes():
-    assert str(mimetypes.rdf("text/plain")) == "urn:mimetype:text/plain"
+    assert mimetypes.node_id("text/plain") == "mimetype:text/plain"

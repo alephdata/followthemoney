@@ -59,3 +59,9 @@ class IdentifierType(PropertyType):
 
     def node_id(self, value: str) -> str:
         return f"id:{value}"
+
+    def caption(self, value: str, format: Optional[str] = None) -> str:
+        if format in get_identifier_format_names():
+            format_ = get_identifier_format(format)
+            return format_.format(value)
+        return value

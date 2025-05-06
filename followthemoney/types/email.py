@@ -4,7 +4,6 @@ from typing import Optional, TYPE_CHECKING
 from urllib.parse import urlparse
 from normality.cleaning import strip_quotes
 
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.types.common import PropertyType
 from followthemoney.util import sanitize_text, defer as _
 
@@ -80,6 +79,3 @@ class EmailType(PropertyType):
 
     # def country_hint(self, value)
     # TODO: do we want to use TLDs as country evidence?
-
-    def rdf(self, value: str) -> Identifier:
-        return URIRef("mailto:%s" % value.lower())
