@@ -6805,11 +6805,20 @@
           "type": "name"
         },
         "program": {
+          "description": "Regulatory program or sanctions list on which an entity is listed.",
           "label": "Program",
           "maxLength": 1024,
           "name": "program",
           "qname": "Thing:program",
           "type": "string"
+        },
+        "programId": {
+          "hidden": true,
+          "label": "Program ID",
+          "maxLength": 64,
+          "name": "programId",
+          "qname": "Thing:programId",
+          "type": "identifier"
         },
         "proof": {
           "label": "Source document",
@@ -8092,6 +8101,7 @@
         "reg.action": "Regulator action",
         "reg.warn": "Regulator warning",
         "rel": "Religion",
+        "risk.forced.labor": "Forced labor",
         "role.acct": "Accountant",
         "role.act": "Activist",
         "role.civil": "Civil servant",
