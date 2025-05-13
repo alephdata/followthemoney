@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:latest
 
 LABEL org.opencontainers.image.title "FollowTheMoney"
 LABEL org.opencontainers.image.licenses MIT
@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # build-essential 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install locales ca-certificates tzdata curl \
-    python3-pip libpq-dev python3-icu python3-psycopg2 \
+    python3-pip libpq-dev python3-icu python3-psycopg2 libicu-dev \
     python3-venv python3-cryptography \
     && apt-get -qq -y autoremove \
     && apt-get clean \
