@@ -5,7 +5,7 @@
 
     <groupId>tech.followthemoney</groupId>
     <artifactId>followthemoney</artifactId>
-    <version><!-- bump -->3.8.2</version>
+    <version><!-- bump -->3.8.3</version>
     <packaging>jar</packaging>
 
     <name>followthemoney</name>
