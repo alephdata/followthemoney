@@ -9,7 +9,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # build-essential 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install locales ca-certificates tzdata curl \
-    python3-pip libpq-dev python3-icu python3-psycopg2 libicu-dev icu-devtools \
+    python3-pip libpq-dev python3-icu python3-psycopg2 \ 
+    libicu74 libicu-dev icu-devtools pkg-config \
     python3-venv python3-cryptography \
     && apt-get -qq -y autoremove \
     && apt-get clean \
