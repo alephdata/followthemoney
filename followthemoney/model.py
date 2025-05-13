@@ -1,5 +1,6 @@
 import os
 import yaml
+from functools import lru_cache
 from typing import Any, Dict, Generator, Iterator, Optional, Set, TypedDict, Union
 
 from followthemoney.types import registry
@@ -32,7 +33,7 @@ class Model(object):
         #: All properties defined in the model.
         self.properties: Set[Property] = set()
         self.qnames: Dict[str, Property] = {}
-        for (path, _, filenames) in os.walk(self.path):
+        for path, _, filenames in os.walk(self.path):
             for filename in filenames:
                 self._load(os.path.join(path, filename))
         self.generate()
@@ -101,6 +102,7 @@ class Model(object):
             for entity in gen.map(record).values():
                 yield entity
 
+    @lru_cache(maxsize=None)
     def common_schema(
         self, left: Union[str, Schema], right: Union[str, Schema]
     ) -> Schema:
