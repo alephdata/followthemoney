@@ -1,15 +1,15 @@
 FROM ubuntu:latest
 
-LABEL org.opencontainers.image.title "FollowTheMoney"
-LABEL org.opencontainers.image.licenses MIT
-LABEL org.opencontainers.image.source https://github.com/alephdata/followthemoney
+LABEL org.opencontainers.image.title="FollowTheMoney"
+LABEL org.opencontainers.image.licenses=MIT
+LABEL org.opencontainers.image.source=https://github.com/alephdata/followthemoney
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 # build-essential 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install locales ca-certificates tzdata curl \
-    python3-pip libpq-dev python3-icu python3-psycopg2 libicu-dev \
+    python3-pip libpq-dev python3-icu python3-psycopg2 libicu-dev icu-devtools \
     python3-venv python3-cryptography \
     && apt-get -qq -y autoremove \
     && apt-get clean \
@@ -31,4 +31,4 @@ COPY . /opt/followthemoney
 RUN pip3 install -q --no-cache-dir -e /opt/followthemoney
 WORKDIR /opt/followthemoney/docs
 
-CMD ftm
+CMD ["ftm"]
