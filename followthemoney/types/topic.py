@@ -36,7 +36,7 @@ class TopicType(EnumType):
         "crime.traffick": _("Trafficking"),
         "crime.traffick.drug": _("Drug trafficking"),
         "crime.traffick.human": _("Human trafficking"),
-        "forced.labor": _("Forced labor"),
+        "risk.forced.labor": _("Forced labor"),
         "wanted": _("Wanted"),
         "corp.offshore": _("Offshore"),
         "corp.shell": _("Shell company"),
