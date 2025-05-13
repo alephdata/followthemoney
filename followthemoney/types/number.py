@@ -66,7 +66,7 @@ class NumberType(PropertyType):
         except Exception:
             return None
 
-    def caption(self, value: str) -> str:
+    def caption(self, value: str, format: Optional[str] = None) -> str:
         """Return a caption for the number. This is used for display purposes."""
         number, unit = self.parse(value)
         if number is None:
@@ -75,7 +75,9 @@ class NumberType(PropertyType):
             fnumber = float(number)
         except ValueError:
             return value
-        if fnumber.is_integer():
+        if format is not None:
+            number = format.format(fnumber)
+        elif fnumber.is_integer():
             number = self._INT_FMT.format(int(fnumber))
         else:
             number = self._FLOAT_FMT.format(fnumber)
