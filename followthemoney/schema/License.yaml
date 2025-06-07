@@ -21,10 +21,6 @@ License:
       label: "Area"
       type: number
       description: "Spatial area of the license or concession"
-    location:
-      label: "Location"
-      type: address
-      description: "Location of the license or concession"
     commodities:
       label: "Commodities"
     reviewDate:
