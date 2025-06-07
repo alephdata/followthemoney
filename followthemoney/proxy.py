@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING, cast, Any
 from typing import Dict, Generator, List, Optional, Set, Tuple, Union, Type, TypeVar
 from itertools import product
 from banal import ensure_dict
+from rigour.names import pick_name
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
@@ -365,9 +366,16 @@ class EntityProxy(object):
         """The user-facing label to be used for this entity. This checks a list
         of properties defined by the schema (caption) and returns the first
         available value. If no caption is available, return the schema label."""
-        for prop in self.schema.caption:
-            for value in self.get(prop):
-                return value
+        for prop_ in self.schema.caption:
+            prop = self.schema.properties[prop_]
+            values = self.get(prop)
+            if prop.type == registry.name and len(values) > 1:
+                name = pick_name(sorted(values))
+                if name is not None:
+                    return name
+            else:
+                for value in values:
+                    return value
         return self.schema.label
 
     @property
