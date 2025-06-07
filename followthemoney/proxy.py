@@ -88,7 +88,8 @@ class EntityProxy(object):
         of the given components, and the :attr:`~key_prefix` defined in
         the proxy.
         """
-        return make_entity_id(*parts, key_prefix=self.key_prefix)
+        self.id = make_entity_id(*parts, key_prefix=self.key_prefix)
+        return self.id
 
     def _prop_name(self, prop: P, quiet: bool = False) -> Optional[str]:
         # This is pretty unwound because it gets called a *lot*.
