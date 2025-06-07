@@ -13,7 +13,6 @@ from followthemoney.types.language import LanguageType
 from followthemoney.types.mimetype import MimeType
 from followthemoney.types.checksum import ChecksumType
 from followthemoney.types.identifier import IdentifierType
-from followthemoney.types.iban import IbanType
 from followthemoney.types.entity import EntityType
 from followthemoney.types.topic import TopicType
 from followthemoney.types.gender import GenderType
@@ -42,7 +41,6 @@ class Registry(object):
     mimetype = MimeType()
     checksum = ChecksumType()
     identifier = IdentifierType()
-    iban = IbanType()  # TODO: remove
     entity = EntityType()
     topic = TopicType()
     gender = GenderType()
