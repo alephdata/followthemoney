@@ -15,7 +15,6 @@ from followthemoney.proxy import EntityProxy
 from followthemoney.dataset import Dataset, DefaultDataset
 from followthemoney.statement.statement import Statement
 from followthemoney.statement.util import BASE_ID
-from followthemoney.statement.caption import pick_caption
 
 SE = TypeVar("SE", bound="StatementEntity")
 
@@ -139,15 +138,6 @@ class StatementEntity(EntityProxy):
     @key_prefix.setter
     def key_prefix(self, dataset: str) -> None:
         raise NotImplementedError()
-
-    @property
-    def caption(self) -> str:
-        """The user-facing label to be used for this entity. This checks a list
-        of properties defined by the schema (caption) and returns the first
-        available value. If no caption is available, return the schema label."""
-        if self._caption is None:
-            self._caption = pick_caption(self)
-        return self._caption
 
     def add_statement(self, stmt: Statement) -> None:
         schema = self.schema
