@@ -12,6 +12,7 @@ from followthemoney.dataset.resource import DataResource
 from followthemoney.dataset.util import (
     Named,
     cleanup,
+    dataset_name_check,
     string_list,
     type_check,
     type_require,
@@ -32,7 +33,7 @@ class Dataset(Named):
     A dataset is a set of data, sez W3C."""
 
     def __init__(self: Self, data: Dict[str, Any]) -> None:
-        name = type_require(registry.string, data.get("name"))
+        name = dataset_name_check(data.get("name"))
         super().__init__(name)
         self.title = type_require(registry.string, data.get("title", name))
         self.license = type_check(registry.url, data.get("license"))
