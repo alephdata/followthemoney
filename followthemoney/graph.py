@@ -5,6 +5,7 @@ This module provides an abstract data object that represents a property
 graph. This is used by the exporter modules to convert data
 to a specific output format, like Cypher or NetworkX.
 """
+
 import logging
 from typing import Any, Dict, Generator, Iterable, List, Optional
 
@@ -69,6 +70,8 @@ class Node(object):
     def from_proxy(cls, proxy: EntityProxy) -> "Node":
         """For a given :class:`~followthemoney.proxy.EntityProxy`, return a node
         based on the entity."""
+        if proxy.id is None:
+            raise InvalidModel("Invalid entity proxy: %r" % proxy)
         return cls(registry.entity, proxy.id, proxy=proxy)
 
     def __str__(self) -> str:
@@ -256,11 +259,11 @@ class Graph(object):
         """Add an :class:`~followthemoney.proxy.EntityProxy` to the graph and make
         it either a :class:`~followthemoney.graph.Node` or an
         :class:`~followthemoney.graph.Edge`."""
-        if proxy is None:
+        if proxy is None or proxy.id is None:
             return
         self.queue(proxy.id, proxy)
         if proxy.schema.edge:
-            for (source, target) in proxy.edgepairs():
+            for source, target in proxy.edgepairs():
                 self._add_edge(proxy, source, target)
         else:
             self._add_node(proxy)
