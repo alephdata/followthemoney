@@ -332,7 +332,17 @@ class StatementEntity(EntityProxy):
             cloned.add_statement(stmt)
         return cloned
 
-    def merge(self: SE, other: "StatementEntity") -> SE:
+    def merge(self: SE, other: EntityProxy) -> SE:
+        try:
+            self.schema = self.schema.model.common_schema(self.schema, other.schema)
+        except InvalidData as e:
+            msg = "Cannot merge entities with id %s: %s"
+            raise InvalidData(msg % (self.id, e))
+
+        if not isinstance(other, StatementEntity):
+            for prop, values in other._properties.items():
+                self.add(prop, values, cleaned=True, quiet=True)
+            return self
         for stmt in other._iter_stmt():
             if self.id is not None:
                 stmt.canonical_id = self.id
