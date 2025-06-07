@@ -57,7 +57,7 @@ class EntityProxy(object):
         #: A unique identifier for this entity, usually a hashed natural key,
         #: a UUID, or a very simple slug. Can be signed using a
         #: :class:`~followthemoney.namespace.Namespace`.
-        self.id = data.pop("id", None)
+        self.id = str(data["id"]) if "id" in data else None
         if not cleaned:
             self.id = sanitize_text(self.id)
 
@@ -88,7 +88,8 @@ class EntityProxy(object):
         of the given components, and the :attr:`~key_prefix` defined in
         the proxy.
         """
-        return make_entity_id(*parts, key_prefix=self.key_prefix)
+        self.id = make_entity_id(*parts, key_prefix=self.key_prefix)
+        return self.id
 
     def _prop_name(self, prop: P, quiet: bool = False) -> Optional[str]:
         # This is pretty unwound because it gets called a *lot*.
