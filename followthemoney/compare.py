@@ -22,7 +22,6 @@ COMPARE_WEIGHTS: Weights = {
     registry.address: 6.456137299747168,
     registry.phone: 3.538892687331418,
     registry.email: 14.115925628770384,
-    registry.iban: 0.019140301711998726,
     registry.url: 3.211995327345834,
     None: -11.91521189545115,
 }

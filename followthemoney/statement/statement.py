@@ -208,7 +208,7 @@ class Statement(object):
     @classmethod
     def from_entity(
         cls,
-        entity: StatementEntity,
+        entity: "StatementEntity",
         dataset: str,
         first_seen: Optional[str] = None,
         last_seen: Optional[str] = None,

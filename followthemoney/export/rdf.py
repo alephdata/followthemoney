@@ -7,7 +7,7 @@ from typing import Generator, List, Optional, TextIO, Tuple
 
 from followthemoney.export.common import Exporter
 from followthemoney.types import registry
-from followthemoney.proxy import E
+from followthemoney.proxy import EntityProxy
 
 log = logging.getLogger(__name__)
 Triple = Tuple[Identifier, Identifier, Identifier]
@@ -23,8 +23,8 @@ class RDFExporter(Exporter):
         registry.email: "mailto:",
         registry.entity: "e:",
         registry.gender: "gender:",
-        registry.iban: "iban:",
         registry.ip: "ip:",
+        registry.identifier: "id:",
         registry.language: "http://lexvo.org/id/iso639-3/",
         registry.mimetype: "urn:mimetype:",
         registry.phone: "tel:",
@@ -36,7 +36,7 @@ class RDFExporter(Exporter):
         self.fh = fh
         self.qualified = qualified
 
-    def entity_triples(self, proxy: E) -> Generator[Triple, None, None]:
+    def entity_triples(self, proxy: EntityProxy) -> Generator[Triple, None, None]:
         if proxy.id is None or proxy.schema is None:
             return
         entity_prefix = self.TYPE_PREFIXES[registry.entity]
@@ -49,6 +49,8 @@ class RDFExporter(Exporter):
         for prop, value in proxy.itervalues():
             if prop.type in self.TYPE_PREFIXES:
                 prefix = self.TYPE_PREFIXES[prop.type]
+                if prop.type == registry.identifier and prop.format is not None:
+                    prefix = f"{prefix}{prop.format}:"
                 obj: Identifier = URIRef(f"{prefix}{value}")
             elif prop.type == registry.date:
                 if len(value) < Precision.HOUR.value:
@@ -64,7 +66,7 @@ class RDFExporter(Exporter):
             else:
                 yield (uri, URIRef(prop.name), obj)
 
-    def write(self, proxy: E, extra: Optional[List[str]] = None) -> None:
+    def write(self, proxy: EntityProxy, extra: Optional[List[str]] = None) -> None:
         graph = Graph()
 
         for triple in self.entity_triples(proxy):
