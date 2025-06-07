@@ -1,5 +1,4 @@
 import json
-from re import I
 import pytest
 from pathlib import Path
 from typing import Any, Dict
@@ -121,7 +120,9 @@ def test_dataset_name_validation():
     with pytest.raises(MetadataException):
         Dataset({"name": "my dataset"})
     with pytest.raises(MetadataException):
-        Dataset({"name": "My-dataset"})
+        Dataset({"name": "my-dataset"})
+    with pytest.raises(MetadataException):
+        Dataset({"name": "My_dataset"})
     with pytest.raises(MetadataException):
         Dataset({"name": "_test"})
     with pytest.raises(MetadataException):
