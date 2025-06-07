@@ -1,4 +1,4 @@
-from normality import stringify
+from normality import stringify, slugify
 from prefixdate import parse as prefix_parse
 from typing import Any, Dict, List, Optional
 
@@ -39,6 +39,16 @@ def int_check(value: Any) -> Optional[int]:
         return int(value)
     except (TypeError, ValueError):
         return None
+
+
+def dataset_name_check(value: Any) -> str:
+    """Check that the given value is a valid dataset name. This doesn't convert
+    or clean invalid names, but raises an error if they are not compliant to
+    force the user to fix an invalid name"""
+    cleaned = type_require(registry.string, value)
+    if slugify(cleaned, sep="_") != cleaned:
+        raise MetadataException("Invalid %s: %r" % ("dataset name", value))
+    return cleaned
 
 
 def string_list(value: Any) -> List[str]:
