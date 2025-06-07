@@ -136,7 +136,7 @@ class StatementEntity(EntityProxy):
         return self.dataset.name
 
     @key_prefix.setter
-    def key_prefix(self, dataset: str) -> None:
+    def key_prefix(self, dataset: Optional[str]) -> None:
         raise NotImplementedError()
 
     def add_statement(self, stmt: Statement) -> None:
