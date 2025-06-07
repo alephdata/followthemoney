@@ -2,7 +2,6 @@ from functools import cache
 from typing import Tuple
 
 from followthemoney.model import Model
-from followthemoney.util import sanitize_text
 
 BASE_ID = "id"
 

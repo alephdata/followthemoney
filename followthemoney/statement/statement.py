@@ -10,7 +10,7 @@ from rigour.boolean import bool_text
 from followthemoney.statement.util import get_prop_type, BASE_ID
 
 if TYPE_CHECKING:
-    from followthemoney.statement.entity import SE
+    from followthemoney.statement.entity import StatementEntity
 
 
 class StatementDict(TypedDict):
@@ -18,7 +18,6 @@ class StatementDict(TypedDict):
     entity_id: str
     canonical_id: str
     prop: str
-    prop_type: str
     schema: str
     value: str
     dataset: str
@@ -47,7 +46,6 @@ class Statement(object):
         "entity_id",
         "canonical_id",
         "prop",
-        "prop_type",
         "schema",
         "value",
         "dataset",
@@ -76,7 +74,6 @@ class Statement(object):
         self.entity_id = entity_id
         self.canonical_id = canonical_id or entity_id
         self.prop = prop
-        self.prop_type = get_prop_type(schema, prop)
         self.schema = schema
         self.value = value
         self.dataset = dataset
@@ -89,12 +86,16 @@ class Statement(object):
             id = self.generate_key()
         self.id = id
 
+    @property
+    def prop_type(self) -> str:
+        """The type of the property, e.g. 'string', 'number', 'url'."""
+        return get_prop_type(self.schema, self.prop)
+
     def to_dict(self) -> StatementDict:
         return {
             "canonical_id": self.canonical_id,
             "entity_id": self.entity_id,
             "prop": self.prop,
-            "prop_type": self.prop_type,
             "schema": self.schema,
             "value": self.value,
             "dataset": self.dataset,
@@ -109,6 +110,7 @@ class Statement(object):
     def to_csv_row(self) -> Dict[str, Optional[str]]:
         data = cast(Dict[str, Optional[str]], self.to_dict())
         data["external"] = bool_text(self.external)
+        data["prop_type"] = self.prop_type
         return data
 
     def to_db_row(self) -> Dict[str, Any]:
@@ -206,7 +208,7 @@ class Statement(object):
     @classmethod
     def from_entity(
         cls,
-        entity: "SE",
+        entity: StatementEntity,
         dataset: str,
         first_seen: Optional[str] = None,
         last_seen: Optional[str] = None,
