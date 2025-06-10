@@ -382,6 +382,7 @@ class Schema:
                         self._matchable_schemata.add(schema)
         return self._matchable_schemata
 
+    @lru_cache(maxsize=None)
     def can_match(self, other: "Schema") -> bool:
         """Check if an schema can match with another schema."""
         return other in self.matchable_schemata

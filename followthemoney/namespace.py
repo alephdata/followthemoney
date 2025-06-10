@@ -22,6 +22,7 @@ that the combined ID is specific to a dataset, without needing an (expensive)
 index look up of each ID first. It can also be generated on the client or
 the server without compromising isolation.
 """
+
 import hmac
 from typing import Any, Optional, Tuple, Union
 
@@ -95,7 +96,8 @@ class Namespace(object):
         """Rewrite an entity proxy so all IDs mentioned are limited to
         the namespace."""
         signed = proxy.clone()
-        signed.id = self.sign(proxy.id)
+        if proxy.id is not None:
+            signed.id = self.sign(proxy.id)
         if not shallow:
             for prop in proxy.iterprops():
                 if prop.type != registry.entity:

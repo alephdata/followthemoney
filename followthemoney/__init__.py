@@ -7,7 +7,7 @@ from followthemoney.proxy import EntityProxy, E
 from followthemoney.statement import Statement, StatementEntity, SE
 from followthemoney.util import set_model_locale
 
-__version__ = "3.8.2"
+__version__ = "3.8.4"
 
 # Data model singleton
 model = Model.instance()

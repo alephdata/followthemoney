@@ -5,7 +5,7 @@
 
     <groupId>tech.followthemoney</groupId>
     <artifactId>followthemoney</artifactId>
-    <version><!-- bump -->3.8.2</version>
+    <version><!-- bump -->3.8.4</version>
     <packaging>jar</packaging>
 
     <name>followthemoney</name>
@@ -45,7 +45,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>5.12.2</version>
+                <version>5.13.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -108,7 +108,7 @@
                 <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.4.1</version>
+                    <version>3.5.0</version>
                 </plugin>
                 <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
                 <plugin>

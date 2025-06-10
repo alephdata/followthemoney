@@ -70,6 +70,8 @@ class Node(object):
     def from_proxy(cls, proxy: EntityProxy) -> "Node":
         """For a given :class:`~followthemoney.proxy.EntityProxy`, return a node
         based on the entity."""
+        if proxy.id is None:
+            raise InvalidModel("Invalid entity proxy: %r" % proxy)
         return cls(registry.entity, proxy.id, proxy=proxy)
 
     def __str__(self) -> str:
@@ -256,7 +258,7 @@ class Graph(object):
         """Add an :class:`~followthemoney.proxy.EntityProxy` to the graph and make
         it either a :class:`~followthemoney.graph.Node` or an
         :class:`~followthemoney.graph.Edge`."""
-        if proxy is None:
+        if proxy is None or proxy.id is None:
             return
         self.queue(proxy.id, proxy)
         if proxy.schema.edge:

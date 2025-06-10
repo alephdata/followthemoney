@@ -40,7 +40,7 @@ def aggregate(infile: Path, outfile: Path) -> None:
                 entity = namespace.apply(entity)
                 if entity.id in buffer:
                     buffer[entity.id].merge(entity)
-                else:
+                elif entity.id is not None:
                     buffer[entity.id] = entity
 
             for entity in buffer.values():
