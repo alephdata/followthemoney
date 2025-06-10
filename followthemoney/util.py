@@ -5,7 +5,7 @@ from babel import Locale
 from gettext import translation
 
 from threading import local
-from typing import cast, Dict, Any, List, Optional, TypeVar, Union, Sequence
+from typing import cast, Dict, Any, List, Optional, TypeVar, Union
 from normality import stringify
 from normality.cleaning import compose_nfc
 from normality.cleaning import remove_unsafe_chars
@@ -58,12 +58,14 @@ def get_env_list(name: str, default: List[str] = []) -> List[str]:
     return default
 
 
-def sanitize_text(text: Any, encoding: str = DEFAULT_ENCODING) -> Optional[str]:
-    text = stringify(text, encoding_default=encoding)
+def sanitize_text(value: Any, encoding: str = DEFAULT_ENCODING) -> Optional[str]:
+    text = stringify(value, encoding_default=encoding)
     if text is None:
         return None
     try:
         text = compose_nfc(text)
+        if text is None:
+            return None
     except (SystemError, Exception) as ex:
         log.warning("Cannot NFC text: %s", ex)
         return None
@@ -71,16 +73,7 @@ def sanitize_text(text: Any, encoding: str = DEFAULT_ENCODING) -> Optional[str]:
     if text is None:
         return None
     byte_text = text.encode(DEFAULT_ENCODING, "replace")
-    return cast(str, byte_text.decode(DEFAULT_ENCODING, "replace"))
-
-
-def value_list(value: Union[T, Sequence[T]]) -> List[T]:
-    if not isinstance(value, (str, bytes)):
-        try:
-            return [v for v in cast(Sequence[T], value)]
-        except TypeError:
-            pass
-    return [cast(T, value)]
+    return byte_text.decode(DEFAULT_ENCODING, "replace")
 
 
 def key_bytes(key: Any) -> bytes:

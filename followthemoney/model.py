@@ -1,15 +1,18 @@
 import os
 import yaml
 from functools import lru_cache
-from typing import Any, Dict, Generator, Iterator, Optional, Set, TypedDict, Union
+from typing import TYPE_CHECKING, Any
+from typing import Dict, Generator, Iterator, Optional, Set, TypedDict, Union
 
 from followthemoney.types import registry
 from followthemoney.types.common import PropertyType, PropertyTypeToDict
 from followthemoney.schema import Schema, SchemaToDict
 from followthemoney.property import Property
-from followthemoney.mapping import QueryMapping
-from followthemoney.proxy import EntityProxy
 from followthemoney.exc import InvalidModel, InvalidData
+
+if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
+    from followthemoney.mapping import QueryMapping
 
 
 class ModelToDict(TypedDict):
@@ -21,6 +24,8 @@ class Model(object):
     """A collection of all the schemata available in followthemoney. The model
     provides some helper functions to find schemata, properties or to instantiate
     entity proxies based on the schema metadata."""
+
+    _instance: Optional["Model"] = None
 
     __slots__ = ("path", "schemata", "properties", "qnames")
 
@@ -37,6 +42,15 @@ class Model(object):
             for filename in filenames:
                 self._load(os.path.join(path, filename))
         self.generate()
+
+    @classmethod
+    def instance(cls) -> "Model":
+        if cls._instance is None:
+            model_path = os.path.dirname(__file__)
+            model_path = os.path.join(model_path, "schema")
+            model_path = os.environ.get("FTM_MODEL_PATH", model_path)
+            cls._instance = cls(model_path)
+        return cls._instance
 
     def generate(self) -> None:
         """Loading the model is a weird process because the schemata reference
@@ -89,13 +103,15 @@ class Model(object):
 
     def make_mapping(
         self, mapping: Dict[str, Any], key_prefix: Optional[str] = None
-    ) -> QueryMapping:
+    ) -> "QueryMapping":
         """Parse a mapping that applies (tabular) source data to the model."""
+        from followthemoney.mapping import QueryMapping
+
         return QueryMapping(self, mapping, key_prefix=key_prefix)
 
     def map_entities(
         self, mapping: Dict[str, Any], key_prefix: Optional[str] = None
-    ) -> Generator[EntityProxy, None, None]:
+    ) -> Generator["EntityProxy", None, None]:
         """Given a mapping, yield a series of entities from the data source."""
         gen = self.make_mapping(mapping, key_prefix=key_prefix)
         for record in gen.source.records:
@@ -127,20 +143,31 @@ class Model(object):
         msg = "No common schema: %s and %s"
         raise InvalidData(msg % (left, right))
 
+    def matchable_schemata(self) -> Set[Schema]:
+        """Return a list of all schemata that are matchable."""
+        return set([s for s in self.schemata.values() if s.matchable])
+
     def make_entity(
         self, schema: Union[str, Schema], key_prefix: Optional[str] = None
-    ) -> EntityProxy:
+    ) -> "EntityProxy":
         """Instantiate an empty entity proxy of the given schema type."""
-        return EntityProxy(self, {"schema": schema}, key_prefix=key_prefix)
+        from followthemoney.proxy import EntityProxy
 
-    def get_proxy(self, data: Dict[str, Any], cleaned: bool = True) -> EntityProxy:
+        schema_ = self.get(schema)
+        if schema_ is None:
+            raise InvalidData("Schema does not exist: %s" % schema)
+        return EntityProxy(schema_, {}, key_prefix=key_prefix)
+
+    def get_proxy(self, data: Dict[str, Any], cleaned: bool = True) -> "EntityProxy":
         """Create an entity proxy to reflect the entity data in the given
         dictionary. If ``cleaned`` is disabled, all property values are
         fully re-validated and normalised. Use this if handling input data
         from an untrusted source."""
+        from followthemoney.proxy import EntityProxy
+
         if isinstance(data, EntityProxy):
             return data
-        return EntityProxy.from_dict(self, data, cleaned=cleaned)
+        return EntityProxy.from_dict(data, cleaned=cleaned)
 
     def to_dict(self) -> ModelToDict:
         """Return metadata for all schemata and properties, in a serializable form."""

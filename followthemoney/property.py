@@ -1,9 +1,8 @@
 from banal import is_mapping, as_bool
-from typing import TYPE_CHECKING, cast, Any, List, Optional, TypedDict
+from typing import TYPE_CHECKING, Any, List, Optional, TypedDict
 
 from followthemoney.exc import InvalidModel
 from followthemoney.types import registry
-from followthemoney.rdf import NS, URIRef
 from followthemoney.util import gettext, get_entity_id
 
 if TYPE_CHECKING:
@@ -26,7 +25,6 @@ class PropertyDict(TypedDict, total=False):
     deprecated: Optional[bool]
     maxLength: Optional[int]
     # stub: Optional[bool]
-    rdf: Optional[str]
     range: Optional[str]
     format: Optional[str]
 
@@ -66,7 +64,6 @@ class Property:
         "stub",
         "_reverse",
         "reverse",
-        "uri",
     )
 
     #: Invalid property names.
@@ -97,12 +94,11 @@ class Property:
         #: This property should not be shown or mentioned in the user interface.
         self.hidden = as_bool(data.get("hidden"))
 
-        type_ = data.get("type", "string")
-        if type_ is None or type_ not in registry.named:
-            raise InvalidModel("Invalid type: %s" % type_)
-
+        type_ = data.get("type") or "string"
         #: The data type for this property.
-        self.type = registry[type_]
+        self.type = registry.get(type_)
+        if self.type is None:
+            raise InvalidModel("Invalid type: %s" % type_)
 
         #: Whether this property should be used for matching and cross-referencing.
         _matchable = data.get("matchable")
@@ -137,9 +133,6 @@ class Property:
         self._reverse = data.get("reverse")
         self.reverse: Optional["Property"] = None
 
-        #: RDF term for this property (i.e. the predicate URI).
-        self.uri = URIRef(cast(str, data.get("rdf", NS[self.qname])))
-
     def generate(self, model: "Model") -> None:
         """Setup method used when loading the model in order to build out the reverse
         links of the property."""
@@ -169,6 +162,10 @@ class Property:
         if not self.matchable:
             return 0.0
         return self.type.specificity(value)
+
+    def caption(self, value: str) -> str:
+        """Return a user-friendly caption for the given value."""
+        return self.type.caption(value, format=self.format)
 
     def validate(self, data: List[Any]) -> Optional[str]:
         """Validate that the data should be stored.

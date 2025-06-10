@@ -1,21 +1,11 @@
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    Dict,
-    List,
-    Optional,
-    Set,
-    TypedDict,
-    Union,
-    cast,
-)
+from typing import TYPE_CHECKING, Any, cast
+from typing import Dict, List, Optional, Set, TypedDict, Union
 from banal import ensure_list, ensure_dict, as_bool
 from functools import lru_cache
 
 from followthemoney.property import Property, PropertySpec, PropertyToDict, ReverseSpec
 from followthemoney.types import registry
 from followthemoney.exc import InvalidData, InvalidModel
-from followthemoney.rdf import URIRef, NS
 from followthemoney.util import gettext
 
 if TYPE_CHECKING:
@@ -47,7 +37,6 @@ class SchemaSpec(TypedDict, total=False):
     edge: EdgeSpec
     temporalExtent: TemporalExtentSpec
     description: Optional[str]
-    rdf: Optional[str]
     abstract: bool
     hidden: bool
     generated: bool
@@ -90,7 +79,6 @@ class Schema:
         "_plural",
         "_description",
         "_hash",
-        "uri",
         "abstract",
         "hidden",
         "generated",
@@ -124,9 +112,6 @@ class Schema:
         self._plural = data.get("plural", self.label)
         self._description = data.get("description")
         self._hash = hash("<Schema(%r)>" % name)
-
-        #: RDF identifier for this schema when it is transformed to a triple term.
-        self.uri = URIRef(cast(str, data.get("rdf", NS[name])))
 
         #: Do not store or emit entities of this type, it is used only for
         #: inheritance.
@@ -317,12 +302,18 @@ class Schema:
 
     @property
     def source_prop(self) -> Optional[Property]:
-        """The entity property to be used as an edge source."""
+        """The entity property to be used as an edge source when the schema is
+        considered as a relationship."""
+        if self.edge_source is None:
+            return None
         return self.get(self.edge_source)
 
     @property
     def target_prop(self) -> Optional[Property]:
-        """The entity property to be used as an edge target."""
+        """The entity property to be used as an edge target when the schema is transformed
+        into a relationship."""
+        if self.edge_target is None:
+            return None
         return self.get(self.edge_target)
 
     @property
@@ -404,13 +395,13 @@ class Schema:
             other = other.name
         return other in self.names
 
-    def get(self, name: Optional[str]) -> Optional[Property]:
+    def get(self, name: str) -> Optional[Property]:
         """Retrieve a property defined for this schema by its name."""
         if name is None:
             return None
         return self.properties.get(name)
 
-    def validate(self, data: Any) -> Optional[str]:
+    def validate(self, data: Dict[str, Any]) -> Optional[str]:
         """Validate a dictionary against the given schema.
         This will also drop keys which are not valid as properties.
         """
@@ -478,7 +469,7 @@ class Schema:
     def __eq__(self, other: Any) -> bool:
         """Compare two schemata (via hash)."""
         try:
-            return self._hash == hash(other)
+            return self._hash == other._hash  # type: ignore
         except AttributeError:
             return False
 
@@ -486,10 +477,7 @@ class Schema:
         return self.name.__lt__(other.name)
 
     def __hash__(self) -> int:
-        try:
-            return self._hash
-        except AttributeError:
-            return super().__hash__()
+        return self._hash
 
     def __repr__(self) -> str:
         return "<Schema(%r)>" % self.name

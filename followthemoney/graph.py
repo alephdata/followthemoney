@@ -196,8 +196,7 @@ class Graph(object):
     """
 
     def __init__(self, edge_types: Iterable[PropertyType] = registry.pivots) -> None:
-        types = registry.get_types(edge_types)
-        self.edge_types = [t for t in types if t.matchable]
+        self.edge_types = [t for t in edge_types if t.matchable]
         self.flush()
 
     def flush(self) -> None:

@@ -30,9 +30,8 @@ BankAccount:
       maxLength: 64
     iban:
       label: IBAN
-      # type: identifier
-      # format: iban
-      type: iban
+      type: identifier
+      format: iban
       maxLength: 64
     bic:
       label: Bank Identifier Code

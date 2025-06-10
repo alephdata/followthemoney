@@ -4,7 +4,6 @@ from typing import Optional, TYPE_CHECKING
 from prefixdate import parse, parse_format, Precision
 
 from followthemoney.types.common import PropertyType
-from followthemoney.rdf import XSD, Literal, Identifier
 from followthemoney.util import defer as _
 from followthemoney.util import dampen
 
@@ -56,14 +55,6 @@ class DateType(PropertyType):
     def compare(self, left: str, right: str) -> float:
         prefix = os.path.commonprefix([left, right])
         return dampen(4, 10, prefix)
-
-    def rdf(self, value: str) -> Identifier:
-        if len(value) < Precision.HOUR.value:
-            return Literal(value, datatype=XSD.date)
-        return Literal(value, datatype=XSD.dateTime)
-
-    def node_id(self, value: str) -> str:
-        return f"date:{value}"
 
     def to_datetime(self, value: str) -> Optional[datetime]:
         return parse(value).dt

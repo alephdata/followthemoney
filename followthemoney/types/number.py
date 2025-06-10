@@ -1,5 +1,5 @@
 import re
-from typing import Optional
+from typing import Optional, Tuple
 
 from followthemoney.types.common import PropertyType
 from followthemoney.util import defer as _

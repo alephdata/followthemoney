@@ -11,6 +11,12 @@ class FollowTheMoneyException(Exception):
     pass
 
 
+class MetadataException(FollowTheMoneyException):
+    """An exception raised by dataset metadata validation."""
+
+    pass
+
+
 class InvalidData(FollowTheMoneyException):
     """Schema validation errors will be caught by the API."""
 

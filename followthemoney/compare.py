@@ -1,10 +1,11 @@
 import math
-import itertools
+from itertools import islice, product
 from typing import Dict, Generator, Iterable, List, Optional
-import fingerprints
 from normality import normalize
+from rigour.names import tokenize_name, remove_person_prefixes
+from rigour.names import replace_org_types_compare
 from followthemoney.exc import InvalidData
-from followthemoney.model import Model
+from followthemoney.schema import Schema
 from followthemoney.types import registry
 from followthemoney.proxy import EntityProxy
 from followthemoney.types.common import PropertyType
@@ -21,16 +22,15 @@ COMPARE_WEIGHTS: Weights = {
     registry.address: 6.456137299747168,
     registry.phone: 3.538892687331418,
     registry.email: 14.115925628770384,
-    registry.iban: 0.019140301711998726,
     registry.url: 3.211995327345834,
     None: -11.91521189545115,
 }
 
 
-def compare_scores(model: Model, left: EntityProxy, right: EntityProxy) -> Scores:
+def compare_scores(left: EntityProxy, right: EntityProxy) -> Scores:
     """Compare two entities and return a match score for each property."""
     try:
-        model.common_schema(left.schema, right.schema)
+        common = left.schema.model.common_schema(left.schema, right.schema)
     except InvalidData:
         return {}
     scores: Scores = {}
@@ -42,7 +42,7 @@ def compare_scores(model: Model, left: EntityProxy, right: EntityProxy) -> Score
         group = registry.groups[group_name]
         try:
             if group == registry.name:
-                score = compare_names(left, right)
+                score = compare_names(common, left, right)
             elif group == registry.country:
                 score = compare_countries(left, right)
             else:
@@ -71,28 +71,38 @@ def _compare(scores: Scores, weights: Weights, n_std: int = 1) -> float:
 
 
 def compare(
-    model: Model,
     left: EntityProxy,
     right: EntityProxy,
     weights: Weights = COMPARE_WEIGHTS,
 ) -> float:
     """Compare two entities and return a match score."""
-    scores = compare_scores(model, left, right)
+    scores = compare_scores(left, right)
     return _compare(scores, weights)
 
 
-def _normalize_names(names: Iterable[str]) -> Generator[str, None, None]:
+def _normalize_names(
+    schema: Schema, names: Iterable[str]
+) -> Generator[str, None, None]:
     """Generate a sequence of comparable names for an entity. This also
-    generates a `fingerprint`, i.e. a version of the name where all tokens
+    generates a fingerprint, i.e. a version of the name where all tokens
     are sorted alphabetically, and some parts, such as company suffixes,
     have been removed."""
     seen = set()
+    can_person = schema.is_a("LegalEntity") and not schema.is_a("Organization")
+    can_org = schema.is_a("LegalEntity") and not schema.is_a("Person")
     for name in names:
         plain = normalize(name, ascii=True)
         if plain is not None and plain not in seen:
             seen.add(plain)
             yield plain
-        fp = fingerprints.generate(name)
+        if not can_org and not can_person:
+            continue
+        if can_person:
+            name = remove_person_prefixes(name)
+        if can_org:
+            name = replace_org_types_compare(name)
+        tokens = tokenize_name(name.lower())
+        fp = " ".join(sorted(tokens))
         if fp is not None and len(fp) > 6 and fp not in seen:
             seen.add(fp)
             yield fp
@@ -109,16 +119,16 @@ def compare_group(
 
 
 def compare_names(
-    left: EntityProxy, right: EntityProxy, max_names: int = 200
+    common: Schema, left: EntityProxy, right: EntityProxy, max_names: int = 200
 ) -> Optional[float]:
     result = 0.0
-    left_list = list(itertools.islice(_normalize_names(left.names), max_names))
-    right_list = list(itertools.islice(_normalize_names(right.names), max_names))
+    left_list = list(islice(_normalize_names(common, left.names), max_names))
+    right_list = list(islice(_normalize_names(common, right.names), max_names))
     if not left_list and not right_list:
         raise ValueError("At least one proxy must have name properties")
     elif not left_list or not right_list:
         return None
-    for (left_val, right_val) in itertools.product(left_list, right_list):
+    for left_val, right_val in product(left_list, right_list):
         similarity = registry.name.compare(left_val, right_val)
         result = max(result, similarity)
         if result == 1.0:

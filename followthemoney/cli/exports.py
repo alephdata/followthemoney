@@ -6,8 +6,6 @@ from contextlib import contextmanager
 from followthemoney.cli.cli import cli
 from followthemoney.cli.util import InPath, OutPath, export_stream
 from followthemoney.export.csv import CSVExporter
-from followthemoney.export.rdf import RDFExporter
-from followthemoney.export.excel import ExcelExporter
 from followthemoney.export.graph import edge_types, DEFAULT_EDGE_TYPES
 from followthemoney.export.graph import NXGraphExporter
 from followthemoney.export.neo4j import Neo4JCSVExporter
@@ -46,6 +44,9 @@ def export_csv(infile: Path, outdir: Path) -> None:
     required=True,
 )
 def export_excel(infile: Path, outfile: Path) -> None:
+    # lazt load openpyxl
+    from followthemoney.export.excel import ExcelExporter
+
     exporter = ExcelExporter(outfile)
     export_stream(exporter, infile)
 
@@ -60,6 +61,9 @@ def export_excel(infile: Path, outfile: Path) -> None:
     help="Generate full predicates",
 )
 def export_rdf(infile: Path, outfile: Path, qualified: bool = True) -> None:
+    # Lazy load rdflib
+    from followthemoney.export.rdf import RDFExporter
+
     with text_out(outfile) as fh:
         exporter = RDFExporter(fh, qualified=qualified)
         export_stream(exporter, infile)

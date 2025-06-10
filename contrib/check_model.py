@@ -4,11 +4,8 @@ from followthemoney import model
 
 
 IGNORE_DIVERGENT_TYPES = [
-    "author",
-    "organization",
     "number",
     "authority",
-    "duration",
     "area",
     "subject",
     "sender",

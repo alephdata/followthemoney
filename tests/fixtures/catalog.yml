@@ -1,0 +1,40 @@
+datasets:
+  - name: donations
+    title: "Political party donations"
+    resources:
+      - name: donations.csv
+        url: https://archive.pudo.org/
+        timestamp: 2021
+        mime_type: text/csv
+      - name: donations.ijson
+        url: https://archive.pudo.org/
+        timestamp: 2021
+  - name: leak
+    title: Some data leak
+    category: leak
+    coverage:
+      frequency: never
+  - name: company_data
+    title: Company data
+    publisher:
+      name: Registrar's office
+      url: https://reg.gov.us/
+      country: us
+      logo_url: https://placekitten.com/400/400
+    coverage:
+      start: 2005
+      end: 2010-01
+      frequency: monthly
+      countries:
+        - us
+  - name: all_datasets
+    title: All datasets
+    datasets:
+      - leak
+      - collection_a
+  - name: collection_a
+    title: Collection of data
+    children:
+      - collection_a
+      - donations
+      - company_data

@@ -2,7 +2,6 @@ from typing import Optional, TYPE_CHECKING
 from rigour.urls import clean_url, compare_urls
 
 from followthemoney.types.common import PropertyType
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.util import dampen, defer as _
 
 if TYPE_CHECKING:
@@ -41,9 +40,3 @@ class UrlType(PropertyType):
 
     def _specificity(self, value: str) -> float:
         return dampen(10, 120, value)
-
-    def rdf(self, value: str) -> Identifier:
-        return URIRef(value)
-
-    def node_id(self, value: str) -> Optional[str]:
-        return f"url:{value}"

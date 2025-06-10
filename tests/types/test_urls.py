@@ -3,6 +3,10 @@ from followthemoney.types import registry
 urls = registry.url
 
 
+def test_base():
+    assert urls.node_id("http://foo.org") == "url:http://foo.org"
+
+
 def test_is_url():
     assert urls.validate("http://foo.org")
     assert not urls.validate(None)

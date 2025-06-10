@@ -272,13 +272,14 @@
           "type": "email"
         },
         "ibanMentioned": {
+          "format": "iban",
           "hidden": true,
           "label": "Detected IBANs",
           "matchable": true,
           "maxLength": 64,
           "name": "ibanMentioned",
           "qname": "Analyzable:ibanMentioned",
-          "type": "iban"
+          "type": "identifier"
         },
         "ipMentioned": {
           "hidden": true,
@@ -359,61 +360,6 @@
           "date",
           "authoredAt",
           "publishedAt"
-        ]
-      }
-    },
-    "Assessment": {
-      "caption": [
-        "name"
-      ],
-      "extends": [
-        "Thing"
-      ],
-      "featured": [
-        "name",
-        "publishDate",
-        "author"
-      ],
-      "label": "Assessment",
-      "plural": "Assessments",
-      "properties": {
-        "assessmentId": {
-          "label": "Assessment ID",
-          "maxLength": 1024,
-          "name": "assessmentId",
-          "qname": "Assessment:assessmentId",
-          "type": "string"
-        },
-        "author": {
-          "label": "Author",
-          "matchable": true,
-          "maxLength": 200,
-          "name": "author",
-          "qname": "Assessment:author",
-          "range": "LegalEntity",
-          "reverse": "authoredAssessments",
-          "type": "entity"
-        },
-        "publishDate": {
-          "label": "Date of publishing",
-          "matchable": true,
-          "maxLength": 32,
-          "name": "publishDate",
-          "qname": "Assessment:publishDate",
-          "type": "date"
-        }
-      },
-      "required": [
-        "name"
-      ],
-      "schemata": [
-        "Assessment",
-        "Thing"
-      ],
-      "temporalExtent": {
-        "end": [],
-        "start": [
-          "publishDate"
         ]
       }
     },
@@ -684,12 +630,13 @@
           "type": "entity"
         },
         "iban": {
+          "format": "iban",
           "label": "IBAN",
           "matchable": true,
           "maxLength": 64,
           "name": "iban",
           "qname": "BankAccount:iban",
-          "type": "iban"
+          "type": "identifier"
         },
         "maxBalance": {
           "label": "Maximum balance",
@@ -1209,15 +1156,6 @@
           "name": "fssCode",
           "qname": "Company:fssCode",
           "type": "string"
-        },
-        "ibcRuc": {
-          "deprecated": true,
-          "label": "ibcRUC",
-          "matchable": true,
-          "maxLength": 64,
-          "name": "ibcRuc",
-          "qname": "Company:ibcRuc",
-          "type": "identifier"
         },
         "ipoCode": {
           "label": "IPO",
@@ -1893,11 +1831,11 @@
           "reverse": "cryptoWallets",
           "type": "entity"
         },
-        "mangingExchange": {
+        "managingExchange": {
           "label": "Managing exchange",
           "maxLength": 1024,
-          "name": "mangingExchange",
-          "qname": "CryptoWallet:mangingExchange",
+          "name": "managingExchange",
+          "qname": "CryptoWallet:managingExchange",
           "type": "string"
         },
         "privateKey": {
@@ -2264,6 +2202,17 @@
           "name": "proven",
           "qname": "Document:proven",
           "range": "Thing",
+          "reverse": "proof",
+          "stub": true,
+          "type": "entity"
+        },
+        "provenIntervals": {
+          "label": "Derived relationships",
+          "matchable": true,
+          "maxLength": 200,
+          "name": "provenIntervals",
+          "qname": "Document:provenIntervals",
+          "range": "Interval",
           "reverse": "proof",
           "stub": true,
           "type": "entity"
@@ -3331,6 +3280,16 @@
           "qname": "Interval:namesMentioned",
           "type": "name"
         },
+        "proof": {
+          "label": "Source document",
+          "matchable": true,
+          "maxLength": 200,
+          "name": "proof",
+          "qname": "Interval:proof",
+          "range": "Document",
+          "reverse": "provenIntervals",
+          "type": "entity"
+        },
         "publisher": {
           "label": "Publishing source",
           "maxLength": 1024,
@@ -3435,17 +3394,6 @@
           "qname": "LegalEntity:agentRepresentation",
           "range": "Representation",
           "reverse": "client",
-          "stub": true,
-          "type": "entity"
-        },
-        "authoredAssessments": {
-          "label": "Assessments authored",
-          "matchable": true,
-          "maxLength": 200,
-          "name": "authoredAssessments",
-          "qname": "LegalEntity:authoredAssessments",
-          "range": "Assessment",
-          "reverse": "author",
           "stub": true,
           "type": "entity"
         },
@@ -4126,11 +4074,12 @@
       "plural": "Licenses",
       "properties": {
         "area": {
+          "description": "Spatial area of the license or concession",
           "label": "Area",
-          "maxLength": 1024,
+          "maxLength": 250,
           "name": "area",
           "qname": "License:area",
-          "type": "string"
+          "type": "number"
         },
         "commodities": {
           "label": "Commodities",
@@ -5452,17 +5401,6 @@
           "stub": true,
           "type": "entity"
         },
-        "posts": {
-          "label": "Posts held",
-          "matchable": true,
-          "maxLength": 200,
-          "name": "posts",
-          "qname": "Person:posts",
-          "range": "Post",
-          "reverse": "holder",
-          "stub": true,
-          "type": "entity"
-        },
         "religion": {
           "label": "Religion",
           "maxLength": 1024,
@@ -5641,72 +5579,6 @@
         ],
         "start": [
           "inceptionDate"
-        ]
-      }
-    },
-    "Post": {
-      "caption": [
-        "summary",
-        "organization",
-        "role"
-      ],
-      "deprecated": true,
-      "description": "A post, role or position held by an individual within an organization or body. This describes the period for which the position is held, not the abstract concept of the post.\n",
-      "extends": [
-        "Interest"
-      ],
-      "featured": [
-        "holder",
-        "organization",
-        "role",
-        "startDate",
-        "endDate"
-      ],
-      "label": "Post",
-      "plural": "Posts",
-      "properties": {
-        "holder": {
-          "label": "Holder",
-          "matchable": true,
-          "maxLength": 200,
-          "name": "holder",
-          "qname": "Post:holder",
-          "range": "Person",
-          "reverse": "posts",
-          "type": "entity"
-        },
-        "organization": {
-          "label": "Organization",
-          "maxLength": 1024,
-          "name": "organization",
-          "qname": "Post:organization",
-          "type": "string"
-        },
-        "wikidataId": {
-          "hidden": true,
-          "label": "Wikidata ID",
-          "matchable": true,
-          "maxLength": 64,
-          "name": "wikidataId",
-          "qname": "Post:wikidataId",
-          "type": "identifier"
-        }
-      },
-      "required": [
-        "holder"
-      ],
-      "schemata": [
-        "Interest",
-        "Interval",
-        "Post"
-      ],
-      "temporalExtent": {
-        "end": [
-          "endDate"
-        ],
-        "start": [
-          "startDate",
-          "date"
         ]
       }
     },
@@ -6147,10 +6019,10 @@
         },
         "duration": {
           "label": "Duration",
-          "maxLength": 1024,
+          "maxLength": 250,
           "name": "duration",
           "qname": "Sanction:duration",
-          "type": "string"
+          "type": "number"
         },
         "entity": {
           "label": "Entity",
@@ -7091,6 +6963,7 @@
       "plural": "User accounts",
       "properties": {
         "email": {
+          "description": "Email address",
           "label": "E-Mail",
           "matchable": true,
           "maxLength": 250,
@@ -7128,14 +7001,6 @@
           "stub": true,
           "type": "entity"
         },
-        "number": {
-          "label": "Phone Number",
-          "matchable": true,
-          "maxLength": 64,
-          "name": "number",
-          "qname": "UserAccount:number",
-          "type": "phone"
-        },
         "owner": {
           "label": "Owner",
           "matchable": true,
@@ -7152,6 +7017,15 @@
           "name": "password",
           "qname": "UserAccount:password",
           "type": "string"
+        },
+        "phone": {
+          "description": "Phone number",
+          "label": "Phone",
+          "matchable": true,
+          "maxLength": 32,
+          "name": "phone",
+          "qname": "UserAccount:phone",
+          "type": "phone"
         },
         "service": {
           "label": "Service",
@@ -7900,15 +7774,6 @@
       "label": "HTML",
       "maxLength": 65000,
       "plural": "HTMLs"
-    },
-    "iban": {
-      "description": "An international bank account number, as defined in ISO 13616. IBANs are\nmanaged by SWIFT used in the European SEPA payment system.\n\nA notable aspect of IBANs is that they share a country prefix and validation\nmechanism, but the specific length of an IBAN is dependent on the country\ncode defined in the first two characters: `NO8330001234567` and\n`CY21002001950000357001234567` are both valid values.",
-      "group": "ibans",
-      "label": "IBAN",
-      "matchable": true,
-      "maxLength": 64,
-      "pivot": true,
-      "plural": "IBANs"
     },
     "identifier": {
       "description": "Used for registration numbers and other codes assigned by an authority\nto identify an entity. This might include tax identifiers and statistical\ncodes.\n\nSince identifiers are high-value criteria when comparing two entities, numbers\nshould only be modelled as identifiers if they are long enough to be meaningful.\nFour- or five-digit industry classifiers create more noise than value.",

@@ -21,5 +21,5 @@ def test_language_clean():
 def test_language_funcs():
     languages = registry.language
     assert len(languages.names) > 1
-    assert str(languages.rdf("deu")) == "iso-639:deu"
+    assert languages.node_id("deu") == "language:deu"
     assert languages.specificity("deu") == 0
