@@ -114,3 +114,18 @@ def test_dataset_aleph_metadata(catalog_data: Dict[str, Any]):
             "coverage": {"frequency": "foo"},
         }
         ds = Dataset(meta)
+
+
+def test_dataset_name_validation():
+    with pytest.raises(MetadataException):
+        Dataset({"name": "my dataset"})
+    with pytest.raises(MetadataException):
+        Dataset({"name": "my-dataset"})
+    with pytest.raises(MetadataException):
+        Dataset({"name": "My_dataset"})
+    with pytest.raises(MetadataException):
+        Dataset({"name": "_test"})
+    with pytest.raises(MetadataException):
+        Dataset({"name": "ä_dataset"})
+    with pytest.raises(MetadataException):
+        Dataset({"name": "another.invalid.name"})
