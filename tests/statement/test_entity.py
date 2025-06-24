@@ -127,7 +127,7 @@ def test_other_entity():
     assert "test" in sp.datasets
     assert sp.first_seen is None
 
-    dt = utc_now()
+    dt = utc_now().isoformat()
     smt2 = Statement(
         entity_id="gnaa",
         prop="birthDate",
@@ -158,3 +158,25 @@ def test_other_entity():
     sp.add("alias", "Harry", lang="deu")
     aliases = sp.get_statements("alias")
     assert aliases[0].lang == "deu", aliases
+
+
+def test_statement_dict():
+    dx = Dataset.make({"name": "test", "title": "Test"})
+    sp = StatementEntity.from_data(dx, EXAMPLE_2)
+    dt = utc_now().isoformat()
+    sp.last_change = dt
+
+    data = sp.to_statement_dict()
+    assert data["id"] == "test"
+    assert data["schema"] == "Person"
+    assert data["last_change"] == dt
+    assert "properties" not in data
+    stmts = data["statements"]
+    assert len(stmts) == len(list(sp.statements))
+
+    sp2 = StatementEntity.from_data(dx, data)
+    assert sp2.id == sp.id
+    assert sp2.schema.name == sp.schema.name
+    assert sp2.last_change == sp.last_change
+    assert sp2.get("name") == sp.get("name")
+    assert sp2.get("birthDate") == sp.get("birthDate")

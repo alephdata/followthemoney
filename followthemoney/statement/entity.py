@@ -45,7 +45,7 @@ class StatementEntity(EntityProxy):
         self.extra_referents: Set[str] = set(data.pop("referents", []))
         """The IDs of all entities which are included in this canonical entity."""
 
-        self.last_change: Optional[str] = None
+        self.last_change: Optional[str] = data.get("last_change", None)
         """The last time this entity was changed."""
 
         self.dataset = dataset
@@ -58,6 +58,12 @@ class StatementEntity(EntityProxy):
         if isinstance(properties, Mapping):
             for key, value in properties.items():
                 self.add(key, value, cleaned=cleaned, quiet=True)
+
+        for stmt_data in data.pop("statements", []):
+            stmt = Statement.from_dict(stmt_data)
+            if self.id is not None:
+                stmt.canonical_id = self.id
+            self.add_statement(stmt)
 
     @property
     def _properties(self) -> Dict[str, List[str]]:  # type: ignore
@@ -356,6 +362,24 @@ class StatementEntity(EntityProxy):
             "caption": self.caption,
             "schema": self.schema.name,
             "properties": self.properties,
+            "referents": list(self.referents),
+            "datasets": list(self.datasets),
+        }
+        if self.first_seen is not None:
+            data["first_seen"] = self.first_seen
+        if self.last_seen is not None:
+            data["last_seen"] = self.last_seen
+        if self.last_change is not None:
+            data["last_change"] = self.last_change
+        return data
+
+    def to_statement_dict(self) -> Dict[str, Any]:
+        """Return a dictionary representation of the entity's statements."""
+        data: Dict[str, Any] = {
+            "id": self.id,
+            "caption": self.caption,
+            "schema": self.schema.name,
+            "statements": [stmt.to_dict() for stmt in self.statements],
             "referents": list(self.referents),
             "datasets": list(self.datasets),
         }
