@@ -14,7 +14,7 @@ def test_country_codes():
     assert countries.validate("EU")
 
     assert countries.country_hint("eu") == "eu"
-    assert "iso-3166:eu" in countries.rdf("eu")
+    assert "country:eu" == countries.node_id("eu")
 
 
 def test_country_names():

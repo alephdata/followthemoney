@@ -9,7 +9,6 @@ from warnings import warn
 from typing import Any, BinaryIO, Generator, Optional, TextIO, Type
 from banal import is_mapping, is_listish, ensure_list
 
-from followthemoney import model
 from followthemoney.export.common import Exporter
 from followthemoney.proxy import E, EntityProxy
 from followthemoney.util import MEGABYTE, PathLike
@@ -39,7 +38,7 @@ def write_entity(fh: BinaryIO, entity: E) -> None:
 
 def _read_one(data: Any, cleaned: bool = True) -> Generator[EntityProxy, None, None]:
     if is_mapping(data) and "schema" in data:
-        yield model.get_proxy(data, cleaned=cleaned)
+        yield EntityProxy.from_dict(data, cleaned=cleaned)
 
 
 def read_entities(
@@ -79,7 +78,7 @@ def binary_entities(
 ) -> Generator[E, None, None]:
     while line := fh.readline(max_line):
         data = orjson.loads(line)
-        yield entity_type.from_dict(model, data, cleaned=cleaned)
+        yield entity_type.from_dict(data, cleaned=cleaned)
 
 
 def path_entities(

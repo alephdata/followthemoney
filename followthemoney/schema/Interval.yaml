@@ -42,6 +42,13 @@ Interval:
       label: "Source link"
       type: url
       matchable: false
+    proof:
+      label: Source document
+      reverse:
+        name: provenIntervals
+        label: "Derived relationships"
+      type: entity
+      range: Document
     publisher:
       label: "Publishing source"
     publisherUrl:

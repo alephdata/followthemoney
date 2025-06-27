@@ -3,7 +3,6 @@ from typing import Optional, TYPE_CHECKING
 from babel.core import Locale
 from rigour.territories import get_territory, get_ftm_countries
 
-from followthemoney.rdf import URIRef, Identifier
 from followthemoney.types.common import EnumType, EnumValues
 from followthemoney.util import defer as _
 
@@ -52,6 +51,3 @@ class CountryType(EnumType):
 
     def country_hint(self, value: str) -> str:
         return value
-
-    def rdf(self, value: str) -> Identifier:
-        return URIRef(f"iso-3166:{value}")

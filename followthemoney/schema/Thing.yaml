@@ -14,7 +14,6 @@ Thing:
     name:
       label: Name
       type: name
-      rdf: http://www.w3.org/2004/02/skos/core#prefLabel
     summary: # a short one-liner kind of description
       label: Summary
       type: text
@@ -27,7 +26,6 @@ Thing:
     alias:
       label: Other name
       type: name
-      rdf: http://www.w3.org/2004/02/skos/core#altLabel
     previousName:
       label: Previous name
       type: name

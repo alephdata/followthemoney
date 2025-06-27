@@ -31,6 +31,11 @@ def test_model_basics():
     assert len(props), props
     assert thing.get("name") in props, props
 
+    person = model.schemata["Person"]
+    sanction = model.schemata["Sanction"]
+    assert person in model.matchable_schemata()
+    assert sanction not in model.matchable_schemata()
+
 
 def test_model_type_schemata():
     schema = model.get_type_schemata(registry.checksum)
@@ -118,9 +123,6 @@ def test_model_property():
     assert name.name in repr(name), repr(name)
     assert not name.hidden, name.hidden
     assert name.validate("huhu") is None
-
-    person = model.get("Person")
-    assert str(person.uri) == "http://xmlns.com/foaf/0.1/Person"
 
 
 def test_descendants():

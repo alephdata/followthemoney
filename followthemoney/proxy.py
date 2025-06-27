@@ -1,36 +1,25 @@
 import logging
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    Dict,
-    Generator,
-    List,
-    Optional,
-    Set,
-    Tuple,
-    Union,
-    Type,
-    TypeVar,
-    cast,
-)
-import warnings
+from typing import TYPE_CHECKING, cast, Any
+from typing import Dict, Generator, List, Optional, Set, Tuple, Union, Type, TypeVar
 from itertools import product
 from banal import ensure_dict
+from rigour.names import pick_name
 
 from followthemoney.exc import InvalidData
 from followthemoney.types import registry
 from followthemoney.types.common import PropertyType
 from followthemoney.property import Property
-from followthemoney.rdf import SKOS, RDF, Literal, URIRef, Identifier
+from followthemoney.value import string_list, Values
 from followthemoney.util import sanitize_text, gettext
-from followthemoney.util import merge_context, value_list, make_entity_id
+from followthemoney.util import merge_context, make_entity_id
+from followthemoney.model import Model
+from followthemoney.schema import Schema
 
 if TYPE_CHECKING:
     from followthemoney.model import Model
 
 log = logging.getLogger(__name__)
 P = Union[Property, str]
-Triple = Tuple[Identifier, Identifier, Identifier]
 E = TypeVar("E", bound="EntityProxy")
 
 
@@ -45,7 +34,7 @@ class EntityProxy(object):
 
     def __init__(
         self,
-        model: "Model",
+        schema: Schema,
         data: Dict[str, Any],
         key_prefix: Optional[str] = None,
         cleaned: bool = True,
@@ -57,9 +46,6 @@ class EntityProxy(object):
 
         #: The schema definition for this entity, which implies the properties
         #: That can be set on it.
-        schema = model.get(data.pop("schema", None))
-        if schema is None:
-            raise InvalidData(gettext("No schema for entity."))
         self.schema = schema
 
         #: When using :meth:`~make_id` to generate a natural key for this entity,
@@ -162,7 +148,7 @@ class EntityProxy(object):
     def add(
         self,
         prop: P,
-        values: Any,
+        values: Values,
         cleaned: bool = False,
         quiet: bool = False,
         fuzzy: bool = False,
@@ -192,11 +178,9 @@ class EntityProxy(object):
             msg = gettext("Stub property (%s): %s")
             raise InvalidData(msg % (self.schema, prop))
 
-        for value in value_list(values):
-            if not cleaned:
-                format = format or prop.format
-                value = prop.type.clean(value, proxy=self, fuzzy=fuzzy, format=format)
-            self.unsafe_add(prop, value, cleaned=True)
+        value: Optional[str] = None
+        for value in string_list(values, sanitize=not cleaned):
+            self.unsafe_add(prop, value, cleaned=cleaned, fuzzy=fuzzy, format=format)
         return None
 
     def unsafe_add(
@@ -236,7 +220,7 @@ class EntityProxy(object):
     def set(
         self,
         prop: P,
-        values: Any,
+        values: Values,
         cleaned: bool = False,
         quiet: bool = False,
         fuzzy: bool = False,
@@ -377,34 +361,21 @@ class EntityProxy(object):
                 data[group] = values
         return data
 
-    def triples(self, qualified: bool = True) -> Generator[Triple, None, None]:
-        """Serialise the entity into a set of RDF triple statements. The
-        statements include the property values, an ``RDF#type`` definition
-        that refers to the entity schema, and a ``SKOS#prefLabel`` with the
-        entity caption."""
-        if self.id is None or self.schema is None:
-            return
-        uri = registry.entity.rdf(self.id)
-        yield (uri, RDF.type, self.schema.uri)
-        if qualified:
-            caption = self.caption
-            if caption != self.schema.label:
-                yield (uri, SKOS.prefLabel, Literal(caption))
-        for prop, value in self.itervalues():
-            value = prop.type.rdf(value)
-            if qualified:
-                yield (uri, prop.uri, value)
-            else:
-                yield (uri, URIRef(prop.name), value)
-
     @property
     def caption(self) -> str:
         """The user-facing label to be used for this entity. This checks a list
         of properties defined by the schema (caption) and returns the first
         available value. If no caption is available, return the schema label."""
-        for prop in self.schema.caption:
-            for value in self.get(prop):
-                return value
+        for prop_ in self.schema.caption:
+            prop = self.schema.properties[prop_]
+            values = self.get(prop)
+            if prop.type == registry.name and len(values) > 1:
+                name = pick_name(sorted(values))
+                if name is not None:
+                    return name
+            else:
+                for value in values:
+                    return value
         return self.schema.label
 
     @property
@@ -448,7 +419,7 @@ class EntityProxy(object):
 
     def clone(self: E) -> E:
         """Make a deep copy of the current entity proxy."""
-        return self.__class__.from_dict(self.schema.model, self.to_dict())
+        return self.__class__.from_dict(self.to_dict())
 
     def merge(self: E, other: E) -> E:
         """Merge another entity proxy into this one. This will try and find
@@ -467,30 +438,36 @@ class EntityProxy(object):
             self.add(prop, values, cleaned=True, quiet=True)
         return self
 
+    def __getstate__(self) -> Dict[str, Any]:
+        data = {slot: getattr(self, slot) for slot in self.__slots__}
+        data["schema"] = self.schema.name
+        return data
+
+    def __setstate__(self, data: Dict[str, Any]) -> None:
+        for slot in self.__slots__:
+            value = data.get(slot)
+            if slot == "schema":
+                value = Model.instance()[data["schema"]]
+            setattr(self, slot, value)
+
     def __str__(self) -> str:
         return self.caption
 
     def __repr__(self) -> str:
-        return "<E(%r,%r)>" % (self.id, str(self))
+        return "<E(%r,%s,%r)>" % (self.id, self.schema.name, str(self))
 
     def __len__(self) -> int:
         return self._size
 
     def __hash__(self) -> int:
         if not self.id:
-            warnings.warn(
-                "Hashing an EntityProxy without an ID results in undefined behaviour",
-                RuntimeWarning,
-            )
+            raise RuntimeError("Cannot hash entity without an ID")
         return hash(self.id)
 
     def __eq__(self, other: Any) -> bool:
         try:
             if self.id is None or other.id is None:
-                warnings.warn(
-                    "Comparing EntityProxys without IDs results in undefined behaviour",
-                    RuntimeWarning,
-                )
+                raise RuntimeError("Cannot compare entities without IDs.")
             return bool(self.id == other.id)
         except AttributeError:
             return False
@@ -498,11 +475,13 @@ class EntityProxy(object):
     @classmethod
     def from_dict(
         cls: Type[E],
-        model: "Model",
         data: Dict[str, Any],
         cleaned: bool = True,
     ) -> E:
         """Instantiate a proxy based on the given model and serialised dictionary.
 
         Use :meth:`followthemoney.model.Model.get_proxy` instead."""
-        return cls(model, data, cleaned=cleaned)
+        schema = Model.instance().get(data.get("schema", ""))
+        if schema is None:
+            raise InvalidData(gettext("No schema for entity."))
+        return cls(schema, data, cleaned=cleaned)
