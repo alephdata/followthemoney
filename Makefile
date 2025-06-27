@@ -17,7 +17,7 @@ release: clean dist
 	twine upload dist/*
 
 docker:
-	docker build -t alephdata/followthemoney .
+	docker build -t opensanctions/followthemoney .
 
 build: default-model ontology
 
