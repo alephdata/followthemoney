@@ -67,7 +67,7 @@
         "title": "Reference",
         "items": [
           {
-            "link": "https://alephdata.github.io/followthemoney/reference/python",
+            "link": "https://opensanctions.github.io/followthemoney/reference/python",
             "title": "Python Library",
             "external": true
           }

@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 LABEL org.opencontainers.image.title="FollowTheMoney"
 LABEL org.opencontainers.image.licenses=MIT
-LABEL org.opencontainers.image.source=https://github.com/alephdata/followthemoney
+LABEL org.opencontainers.image.source=https://github.com/opensanctions/followthemoney
 
 ENV DEBIAN_FRONTEND=noninteractive
 

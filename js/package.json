@@ -1,5 +1,5 @@
 {
-  "name": "@alephdata/followthemoney",
+  "name": "@opensanctions/followthemoney",
   "version": "3.8.4",
   "description": "JavaScript version of the followthemoney data model",
   "keywords": [],
@@ -13,7 +13,7 @@
   "author": "OCCRP Data <data@occrp.org>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alephdata/followthemoney"
+    "url": "https://github.com/opensanctions/followthemoney"
   },
   "license": "MIT",
   "engines": {

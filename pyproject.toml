@@ -45,7 +45,7 @@ dependencies = [
 
 [project.urls]
 Documentation = "https://followthemoney.tech/"
-Repository = "https://github.com/alephdata/followthemoney.git"
+Repository = "https://github.com/opensanctions/followthemoney.git"
 Issues = "https://github.com/alephdata/followthemoney/issues"
 
 [project.optional-dependencies]
