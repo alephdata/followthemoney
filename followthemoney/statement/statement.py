@@ -1,16 +1,16 @@
 import hashlib
 import warnings
 from sqlalchemy.engine import Row
-from typing import cast, TYPE_CHECKING
-from typing import Any, Dict, Generator, Optional
+from typing import cast
+from typing import Union, Any, Dict, Generator, Optional
 from typing_extensions import TypedDict, Self
 from rigour.time import datetime_iso, iso_datetime
 from rigour.boolean import bool_text
 
+from followthemoney.proxy import EntityProxy
 from followthemoney.statement.util import get_prop_type, BASE_ID
 
-if TYPE_CHECKING:
-    from followthemoney.statement.entity import StatementEntity
+ExtrasValue = Union[str, int, float, bool, None]
 
 
 class StatementDict(TypedDict):
@@ -26,12 +26,14 @@ class StatementDict(TypedDict):
     external: bool
     first_seen: Optional[str]
     last_seen: Optional[str]
+    origin: Optional[str]
+    extras: Optional[Dict[str, ExtrasValue]]
 
 
 class Statement(object):
     """A single statement about a property relevant to an entity.
 
-    For example, this could be useddocker to say: "In dataset A, entity X has the
+    For example, this could be used to say: "In dataset A, entity X has the
     property `name` set to 'John Smith'. I first observed this at K, and last
     saw it at L."
 
@@ -54,6 +56,8 @@ class Statement(object):
         "external",
         "first_seen",
         "last_seen",
+        "origin",
+        "extras",
     ]
 
     def __init__(
@@ -70,6 +74,8 @@ class Statement(object):
         id: Optional[str] = None,
         canonical_id: Optional[str] = None,
         last_seen: Optional[str] = None,
+        origin: Optional[str] = None,
+        extras: Optional[Dict[str, ExtrasValue]] = None,
     ):
         self.entity_id = entity_id
         self.canonical_id = canonical_id or entity_id
@@ -82,6 +88,8 @@ class Statement(object):
         self.first_seen = first_seen
         self.last_seen = last_seen or first_seen
         self.external = external
+        self.origin = origin
+        self.extras = extras
         if id is None:
             id = self.generate_key()
         self.id = id
@@ -104,17 +112,21 @@ class Statement(object):
             "first_seen": self.first_seen,
             "last_seen": self.last_seen,
             "external": self.external,
+            "origin": self.origin,
+            "extras": self.extras,
             "id": self.id,
         }
 
     def to_csv_row(self) -> Dict[str, Optional[str]]:
         data = cast(Dict[str, Optional[str]], self.to_dict())
+        data.pop("extras", None)  # not supported in CSV
         data["external"] = bool_text(self.external)
         data["prop_type"] = self.prop_type
         return data
 
     def to_db_row(self) -> Dict[str, Any]:
         data = cast(Dict[str, Any], self.to_dict())
+        data.pop("extras", None)  # not supported in SQL
         data["first_seen"] = iso_datetime(self.first_seen)
         data["last_seen"] = iso_datetime(self.last_seen)
         return data
@@ -186,6 +198,8 @@ class Statement(object):
             id=data.get("id", None),
             canonical_id=data.get("canonical_id", None),
             last_seen=data.get("last_seen", None),
+            origin=data.get("origin", None),
+            extras=data.get("extras", None),
         )
 
     @classmethod
@@ -203,19 +217,29 @@ class Statement(object):
             first_seen=datetime_iso(row.first_seen),
             external=row.external,
             last_seen=datetime_iso(row.last_seen),
+            origin=row.origin,
         )
 
     @classmethod
     def from_entity(
         cls,
-        entity: "StatementEntity",
+        entity: "EntityProxy",
         dataset: str,
         first_seen: Optional[str] = None,
         last_seen: Optional[str] = None,
         external: bool = False,
+        origin: Optional[str] = None,
     ) -> Generator["Statement", None, None]:
+        from followthemoney.statement.entity import StatementEntity
+
         if entity.id is None:
             raise ValueError("Cannot create statements for entity without ID!")
+
+        # If the entity is already a StatementEntity, we return its statements directly.
+        if isinstance(entity, StatementEntity):
+            yield from entity.statements
+            return
+
         yield cls(
             entity_id=entity.id,
             prop=BASE_ID,
@@ -225,6 +249,7 @@ class Statement(object):
             external=external,
             first_seen=first_seen,
             last_seen=last_seen,
+            origin=origin,
         )
         for prop, value in entity.itervalues():
             yield cls(
@@ -236,4 +261,5 @@ class Statement(object):
                 external=external,
                 first_seen=first_seen,
                 last_seen=last_seen,
+                origin=origin,
             )

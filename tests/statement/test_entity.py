@@ -1,7 +1,9 @@
 import pytest
 from rigour.time import utc_now
 
+from followthemoney.statement.util import BASE_ID
 from followthemoney.types import registry
+from followthemoney.proxy import EntityProxy
 from followthemoney.exc import InvalidData
 from followthemoney.dataset import Dataset
 from followthemoney.statement import StatementEntity, Statement
@@ -34,8 +36,20 @@ def test_import_entity():
     assert sp.schema is not None
     assert sp.schema.name == "Person"
     assert sp.id == "test"
-
     assert len(list(sp.statements)) == 9
+
+
+def test_parse_proxy():
+    sp = EntityProxy.from_dict(EXAMPLE_2)
+    for stmt in Statement.from_entity(sp, dataset="test", origin="space"):
+        assert stmt.entity_id == "test"
+        assert stmt.schema == "Person"
+        assert stmt.dataset == "test"
+        assert stmt.origin == "space"
+        if stmt.prop == BASE_ID:
+            continue
+        assert stmt.prop in sp.schema.properties
+        assert stmt.value in sp.get(stmt.prop)
 
 
 def test_example_entity():
@@ -90,6 +104,12 @@ def test_example_entity():
     assert claim.prop == "nationality", claim
     assert claim.prop_type == "country", claim
     assert claim.original_value == "Germany", claim
+
+    sp.add("classification", "Banana", origin="fruit_knowledge")
+    claim = sp.get_statements("classification")[0]
+    assert claim.value == "Banana", claim
+    assert claim.prop == "classification", claim
+    assert claim.origin == "fruit_knowledge", claim
 
     for prop, val in sp.itervalues():
         if prop.name == "nationality":
