@@ -188,6 +188,7 @@ class StatementEntity(EntityProxy):
         format: Optional[str] = None,
         lang: Optional[str] = None,
         original_value: Optional[str] = None,
+        origin: Optional[str] = None,
     ) -> None:
         prop_name = self._prop_name(prop, quiet=quiet)
         if prop_name is None:
@@ -202,6 +203,7 @@ class StatementEntity(EntityProxy):
             format=format,
             lang=lang,
             original_value=original_value,
+            origin=origin,
         )
 
     def add(
@@ -214,6 +216,7 @@ class StatementEntity(EntityProxy):
         format: Optional[str] = None,
         lang: Optional[str] = None,
         original_value: Optional[str] = None,
+        origin: Optional[str] = None,
     ) -> None:
         prop_name = self._prop_name(prop, quiet=quiet)
         if prop_name is None:
@@ -229,6 +232,7 @@ class StatementEntity(EntityProxy):
                 quiet=quiet,
                 lang=lang,
                 original_value=original_value,
+                origin=origin,
             )
         return None
 
@@ -245,6 +249,7 @@ class StatementEntity(EntityProxy):
         seen: Optional[str] = None,
         lang: Optional[str] = None,
         original_value: Optional[str] = None,
+        origin: Optional[str] = None,
     ) -> Optional[str]:
         """Add a statement to the entity, possibly the value."""
         if value is None or len(value) == 0:
@@ -281,6 +286,7 @@ class StatementEntity(EntityProxy):
             lang=lang,
             original_value=original_value,
             first_seen=seen,
+            origin=origin,
         )
         self.add_statement(stmt)
         return clean

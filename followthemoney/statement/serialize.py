@@ -31,6 +31,7 @@ CSV_COLUMNS = [
     "external",
     "first_seen",
     "last_seen",
+    "origin",
     "id",
 ]
 
