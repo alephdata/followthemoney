@@ -10,6 +10,7 @@ from rigour.boolean import bool_text
 from followthemoney.statement.util import get_prop_type, BASE_ID
 
 if TYPE_CHECKING:
+    from followthemoney.proxy import EntityProxy
     from followthemoney.statement.entity import StatementEntity
 
 
@@ -26,6 +27,8 @@ class StatementDict(TypedDict):
     external: bool
     first_seen: Optional[str]
     last_seen: Optional[str]
+    origin: Optional[str]
+    extra: Optional[Dict[str, str | int | float | bool | None]]
 
 
 class Statement(object):
@@ -54,6 +57,8 @@ class Statement(object):
         "external",
         "first_seen",
         "last_seen",
+        "origin",
+        "extra",
     ]
 
     def __init__(
@@ -70,7 +75,15 @@ class Statement(object):
         id: Optional[str] = None,
         canonical_id: Optional[str] = None,
         last_seen: Optional[str] = None,
+        origin: Optional[str] = None,
+        extra: Optional[Dict[str, str | int | float | bool | None]] = None,
     ):
+        if extra is not None:
+            for key in extra.keys():
+                if key in self.__slots__:
+                    raise ValueError(f"Key {key} is a reserved slot")
+        self.extra = extra
+        self.origin = origin
         self.entity_id = entity_id
         self.canonical_id = canonical_id or entity_id
         self.prop = prop
@@ -105,6 +118,8 @@ class Statement(object):
             "last_seen": self.last_seen,
             "external": self.external,
             "id": self.id,
+            "origin": self.origin,
+            "extra": self.extra,
         }
 
     def to_csv_row(self) -> Dict[str, Optional[str]]:
@@ -186,6 +201,8 @@ class Statement(object):
             id=data.get("id", None),
             canonical_id=data.get("canonical_id", None),
             last_seen=data.get("last_seen", None),
+            origin=data.get("origin", None),
+            extra=data.get("extra", None),
         )
 
     @classmethod
