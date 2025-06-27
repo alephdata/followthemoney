@@ -20,9 +20,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/opensanctions/followthemoney.git</connection>
-        <developerConnection>scm:git:ssh://github.com:opensanctions/followthemoney.git</developerConnection>
-        <url>http://github.com/opensanctions/followthemoney/tree/main</url>
+        <connection>scm:git:git://github.com/alephdata/followthemoney.git</connection>
+        <developerConnection>scm:git:ssh://github.com:alephdata/followthemoney.git</developerConnection>
+        <url>http://github.com/alephdata/followthemoney/tree/main</url>
     </scm>
 
     <developers>
