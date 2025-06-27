@@ -26,7 +26,7 @@ updates:
     schedule:
       interval: monthly
   - package-ecosystem: "github-actions"
-    open-pull-requests-limit: 99
+    open-pull-requests-limit: 10
     directory: "/"
     schedule:
       interval: monthly
