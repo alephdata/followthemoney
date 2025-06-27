@@ -1,0 +1,65 @@
+name: docs
+on:
+  - push
+  - workflow_dispatch
+
+# concurrency:
+#   group: pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          # Fetch all commits and tags
+          # (required to generate version information on schema pages)
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install followthemoney Python package
+        run: make dev
+
+      - name: Build Python API docs
+        run: |
+          pip install pdoc
+          pdoc --no-search -o docs/public/reference/python followthemoney.{model,schema,proxy,property,types.common,namespace,graph,util,exc}
+
+      - name: Build namespace XML
+        run: |
+          make ontology
+
+      - name: Build docs
+        uses: alephdata/astro-theme-docs/.github/actions/build@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docs-path: ./docs
+
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: ["build"]
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.url }}
+
+    steps:
+      - name: Deploy docs
+        id: deployment
+        uses: alephdata/astro-theme-docs/.github/actions/deploy@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
