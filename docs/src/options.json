@@ -2,7 +2,7 @@
   "title": "FollowTheMoney",
   "git": {
     "branch": "main",
-    "githubRepoUrl": "https://github.com/alephdata/followthemoney"
+    "githubRepoUrl": "https://github.com/opensanctions/followthemoney"
   },
   "search": {
     "appId": "M4Z55V9SST",
@@ -67,7 +67,7 @@
         "title": "Reference",
         "items": [
           {
-            "link": "https://opensanctions.github.io/followthemoney/reference/python",
+            "link": "https://followthemoney.tech/followthemoney/reference/python",
             "title": "Python Library",
             "external": true
           }
