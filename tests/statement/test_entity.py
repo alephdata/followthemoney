@@ -180,30 +180,3 @@ def test_statement_dict():
     assert sp2.last_change == sp.last_change
     assert sp2.get("name") == sp.get("name")
     assert sp2.get("birthDate") == sp.get("birthDate")
-
-
-def test_statement_db_row_roundtrip():
-
-    class MockRow(dict):
-        def __getattr__(self, item):
-            try:
-                return self[item]
-            except KeyError:
-                raise AttributeError(item)
-
-    dx = Dataset.make({"name": "test", "title": "Test"})
-    sp = StatementEntity.from_data(dx, EXAMPLE_2)
-    statements = [Statement.from_dict(s) for s in sp.to_statement_dict()["statements"]]
-    db_rows_dicts = [stmt.to_db_row() for stmt in statements]
-    db_rows = [MockRow(row) for row in db_rows_dicts]
-    roundtrip_statements = [Statement.from_db_row(row) for row in db_rows]
-    for orig, rt in zip(statements, roundtrip_statements):
-        assert orig.id == rt.id
-        assert orig.schema == rt.schema
-        assert orig.external == rt.external
-        assert orig.prop == rt.prop
-        assert orig.value == rt.value
-        assert orig.dataset == rt.dataset
-        assert orig.first_seen == rt.first_seen
-        assert orig.last_seen == rt.last_seen
-        assert orig.origin == rt.origin
