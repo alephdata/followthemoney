@@ -68,6 +68,7 @@ dev = [
     "coverage>=4.1",
     "recommonmark>=0.4.0",
 ]
+docs = ["mkdocs>=1.4.0", "mkdocs-material>=9.0.0", "mkdocs-gen-files"]
 
 [project.scripts]
 ftmutil = "followthemoney.cli.cli:cli"
