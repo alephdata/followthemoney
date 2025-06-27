@@ -68,7 +68,7 @@ class SQLSource(Source):
                 return table.refs[ref]
         raise InvalidMapping("Missing reference: %s" % ref)
 
-    def apply_filters(self, q: Select) -> Select:
+    def apply_filters(self, q: Select) -> Select:  # type: ignore
         for col, val in self.filters:
             if is_listish(val):
                 q = q.where(self.get_column(col).in_(val))
@@ -88,7 +88,7 @@ class SQLSource(Source):
             q = q.where(left == right)
         return q
 
-    def compose_query(self) -> Select:
+    def compose_query(self) -> Select:  # type: ignore
         columns = [self.get_column(r) for r in self.query.refs]
         q = select(*columns)
         q = q.select_from(*[t.alias for t in self.tables])
