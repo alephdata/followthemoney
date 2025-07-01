@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@alephdata/followthemoney": "^3.8.4",
-    "astro": "^5.8.1",
+    "astro": "^5.10.2",
     "astro-theme-docs": "github:alephdata/astro-theme-docs",
     "unist-util-visit": "^5.0.0"
   },
