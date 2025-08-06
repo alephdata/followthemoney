@@ -72,3 +72,10 @@ Interval:
       label: "Retrieved on"
       type: date
       matchable: false
+    proof:
+      label: Source document
+      reverse:
+        name: proven
+        label: "Derived entities"
+      type: entity
+      range: Document
