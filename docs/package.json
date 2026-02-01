@@ -18,7 +18,7 @@
     "@alephdata/followthemoney": "^3.8.4",
     "astro": "^5.8.1",
     "astro-theme-docs": "github:alephdata/astro-theme-docs",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@untitaker/hyperlink": "^0.1.44",
