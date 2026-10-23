@@ -52,9 +52,11 @@ class Namespace(object):
             return (None, None)
         try:
             plain_id, checksum = clean_id.rsplit(cls.SEP, 1)
-            return (plain_id, checksum)
         except ValueError:
             return (clean_id, None)
+        if len(checksum) == 40 and all(char in "0123456789abcdef" for char in checksum):
+            return (plain_id, checksum)
+        return (clean_id, None)
 
     @classmethod
     def strip(cls, entity_id: str) -> Optional[str]:

@@ -19,6 +19,16 @@ def test_sign():
     assert ns.signature(None) is None
 
 
+def test_sign_preserves_dotted_plain_ids():
+    namespace = Namespace("synthetic")
+    entity_id = "demo.record"
+
+    assert Namespace.parse(entity_id) == (entity_id, None)
+    signed_id = namespace.sign(entity_id)
+    assert signed_id == f"{entity_id}.{namespace.signature(entity_id)}"
+    assert namespace.sign(signed_id) == signed_id
+
+
 def test_sign_null():
     null = Namespace(None)
     assert null.sign("split") == "split", null.sign("split")
